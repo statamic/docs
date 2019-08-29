@@ -1,0 +1,57 @@
+<div id="site-nav">
+    <div class="flex items-center font-display text-sm border-t-8 border-purple">
+        <div class="w-full max-w-screen-xl relative mx-auto px-6">
+            <div class="flex items-center -mx-6">
+
+                <div class="lg:w-1/4 xl:w-1/5 px-6">
+                    <div class="flex items-center relative">
+                        <a href="/" class="block lg:mr-4 mt-5 text-purple hover:text-pink">
+                            {{ theme:output src="svg/statamic-blob.svg" }}
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="flex flex-grow lg:w-3/4 xl:w-4/5">
+
+                    <div class="w-full xl:w-3/4 lg:px-6 xl:px-12">
+                        <div class="relative">
+                            <input id="docs-search"
+                                class="focus:outline-none border-2 shadow focus:bg-yellow placeholder-blue font-bold rounded bg-blue-lightest py-1 pr-4 pl-8 block w-full appearance-none leading-normal"
+                                type="text" placeholder="Your quest for hidden knowledge begins here...">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                                <svg class="fill-current pointer-events-none text-gray-600 w-4 h-4"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path
+                                        d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                                    </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="sidebar-open"
+                        class="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
+                        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+                    </button>
+
+                    <button type="button" id="sidebar-close"
+                        class="hidden flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
+                        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
+                            </svg>
+                    </button>
+
+                   {{# partial:social #}}
+
+                <div class="hidden lg:flex xl:w-1/4 px-6">
+                    <button class="button">Download Now</button>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

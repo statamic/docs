@@ -1,0 +1,42 @@
+<html lang="en" class="bg-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello! This is the Statamic 3 documentation</title>
+    <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
+</head>
+<body class="text-blue-darkest leading-normal">
+
+{{ partial:partials/nav }}
+
+<div class="w-full max-w-screen-xl mx-auto pt-12 flex relative" id="top">
+    <div class="lg:w-1/4 xl:w-1/5 px-6 pt-1">
+        <nav class="side-nav">
+            <h5>Everything So Far</h5>
+            <ul>
+                {{ structure:documentation }}
+                <li class="{{ if is_current }}active{{ /if }}{{ if ! content }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
+                {{ /structure:documentation }}
+            </ul>
+        </nav>
+    </div>
+    <div class="w-3/4 lg:w-2/4 xl:w-3/5 px-12 lg:px-6 xl:px-12">
+        {{ template_content }}
+    </div>
+    <div class="hidden lg:block lg:w-1/4 xl:w-1/5 px-8 pt-1 relative">
+        <nav class="side-nav sticky top-8">
+            <h5>On This Page</h5>
+            <ul>
+                <li><a class="text-xs" href="#top">Overview</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
+    <p>Copyright {{ now format="Y" }} Statamic • Powered non-exclusively by Laravel, nostalgia, and Tony Hawk's tears.</p>
+    {{ partial:social }}
+</div>
+</body>
+</html>

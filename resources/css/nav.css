@@ -1,0 +1,36 @@
+.side-nav {
+    @apply font-display;
+
+    h5 {
+        @apply font-display font-bold italic text-blue-darkest mb-2 uppercase;
+    }
+
+    ul {
+        @apply mb-8;
+    }
+
+    li {
+        @apply mb-2 leading-tight relative;
+    }
+
+    li a {
+        @apply text-grey-800 text-sm py-1 relative z-10;
+        &:hover {
+            @apply text-pink-hot;
+        }
+    }
+
+    li.active a {
+        @apply font-bold;
+        &:hover { @apply tracking-normal; }
+    }
+
+    li.active a:before {
+        @apply absolute bg-yellow mt-1 ml-1 w-full;
+        z-index: -1;
+        height: 50%;
+        top: 5px;
+        left: 2px;
+        content: '';
+    }
+}

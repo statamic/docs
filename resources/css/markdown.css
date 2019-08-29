@@ -1,0 +1,115 @@
+.markdown {
+    @apply bg-transparent leading-relaxed text-blue-dark;
+
+    > h1 {
+        @apply text-5xl text-blue-darkest font-display font-bold mb-6 -mt-1 leading-none;
+    }
+
+    > h2 {
+        @apply text-2xl text-blue-darkest font-bold mb-4 mt-8 leading-tight;
+    }
+
+    > h3 {
+        @apply text-xl text-blue-darkest font-bold mb-4 mt-8 leading-tight;
+    }
+
+    > h5 {
+        @apply font-display font-display font-bold italic text-blue-darkest;
+    }
+
+    > p, > blockquote > p {
+        @apply text-base mb-6;
+        strong {
+            @apply text-blue-darkest;
+        }
+    }
+
+    > * > a {
+        @apply underline text-pink-hot font-medium;
+        &:hover {
+            @apply text-pink-bright;
+        }
+        &:visited {
+            @apply text-teal-dark;
+        }
+
+    }
+
+    ul:not(.list-none) {
+        @apply pl-0 list-none mb-6;
+        li {
+            @apply relative pl-6 mb-2;
+            &::before {
+                @apply absolute inline-block;
+                content: url('/img/triangle-pink.svg');
+                top: 10px;
+                left: 2px;
+            }
+            &:nth-child(3n+0)::before {
+                content: url('/img/triangle-pink.svg');
+            }
+            &:nth-child(3n+1)::before {
+                content: url('/img/triangle-purple.svg');
+            }
+            &:nth-child(3n+2)::before {
+                content: url('/img/triangle-teal.svg');
+            }
+        }
+    }
+
+    ol {
+        @apply list-none mb-6;
+        counter-reset: item;
+
+        > li {
+            @apply relative pl-10 mb-2;
+        }
+
+        > li::before {
+            @apply absolute top-0 left-0 mt-px flex items-center justify-center h-6 w-6 bg-yellow rounded-full text-blue-darkest text-lg font-bold italic font-display;
+            content: counter(item);
+            counter-increment: item;
+        }
+    }
+
+    :not(pre):not(h1):not(h2):not(h3):not(h4) > code,
+    ul code,
+    ol code {
+        @apply bg-grey-200 text-sm leading-normal;
+    }
+
+    > p code,
+    > ul li *:not(pre) code,
+    > ul li > code,
+    > ol li *:not(pre) code,
+    > ol li > code {
+        @apply inline-block bg-grey-200 text-sm px-1 leading-none whitespace-no-wrap text-purple font-mono align-baseline;
+        font-weight: 400;
+    }
+
+  > pre, pre&, > ul li pre, > ol li pre {
+    @apply flex p-0 bg-grey-800;
+    @apply text-sm leading-normal;
+  }
+
+  > pre code, pre code&, > ul li pre code, > ol li pre code {
+    @apply p-4;
+  }
+
+  > table {
+    @apply w-full text-left table-collapse;
+    th {
+      @apply text-sm font-bold text-grey-700 p-2 bg-grey-100;
+    }
+    td {
+      @apply p-2 border-t border-grey-200 text-sm;
+      code {
+        @apply bg-grey-100 px-1 font-mono text-xs text-purple align-baseline;
+      }
+      &:first-child {
+        @apply border-grey-300;
+      }
+    }
+  }
+
+}

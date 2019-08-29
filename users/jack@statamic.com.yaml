@@ -1,0 +1,10 @@
+name: 'Jack McDade'
+super: true
+id: 3a60f79d-8381-4def-a970-5df62f0f5d56
+password_hash: $2y$10$6ihzAltBt72rVle60ZQxYuO1k0a3Jm/y45FF9P7Pi4rhV2RPfOoLu
+preferences:
+  collections:
+    docs:
+      columns:
+        - title
+        - slug

@@ -1,0 +1,52 @@
+/* @import url('https://rsms.me/inter/inter.css'); */
+
+body {
+    background: #fff url('/img/zigs-top-right.svg') no-repeat calc(100% - 8px) top;
+}
+
+a, button {
+    color: inherit;
+    text-decoration: none;
+    /* cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQ…LaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer; */
+}
+
+.button {
+    @apply h-7 bg-yellow rounded border-2 shadow-md px-4 font-display text-sm font-bold antialiased transition;
+
+    &:hover {
+        @apply shadow;
+    }
+    &:focus {
+        @apply outline-none shadow-outline;
+    }
+}
+
+/* html {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -.02em;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+} */
+
+.transition {
+    transition: all .05s ease-in !important;
+}
+
+.table-collapse {
+    border-collapse: collapse !important;
+}
+/*
+@supports (position: sticky) {
+  @media (min-width: theme('screens.lg')) {
+    .sticky\?lg\:h-screen {
+      height: 100vh !important;
+    }
+    .sticky\?lg\:h-\(screen-16\) {
+      height: ~"calc(100vh - 4rem)" !important;
+    }
+  }
+} */

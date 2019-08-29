@@ -1,0 +1,22 @@
+title: Page
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: intro
+        field:
+          display: Intro
+          type: text
+          localizable: true
+      -
+        handle: content
+        field:
+          display: Content
+          restrict: false
+          smartypants: true
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          type: markdown
+          localizable: true
