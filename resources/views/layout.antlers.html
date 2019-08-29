@@ -14,12 +14,14 @@
 <div class="w-full max-w-screen-xl mx-auto pt-12 flex relative" id="top">
     <div class="lg:w-1/4 xl:w-1/5 px-6 pt-1">
         <nav class="side-nav">
-            <h5>Everything So Far</h5>
+            {{ structure:documentation }}
+            <h5>{{ title }}</h5>
             <ul>
-                {{ structure:documentation }}
-                <li class="{{ if is_current }}active{{ /if }}{{ if ! content }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
-                {{ /structure:documentation }}
+                {{ children }}
+                    <li class="{{ if is_current }}active{{ /if }}{{ if ! content }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
+                {{ /children }}
             </ul>
+            {{ /structure:documentation }}
         </nav>
     </div>
     <div class="w-3/4 lg:w-2/4 xl:w-3/5 px-12 lg:px-6 xl:px-12">
