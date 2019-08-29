@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1cd2652607ef7b390894f2ed6da181f",
+    "content-hash": "00d561dc46883b906442962434da1707",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -3170,7 +3170,7 @@
             "dist": {
                 "type": "path",
                 "url": "../cms",
-                "reference": "63ff301aa35d9c76a46c338a998f33b5c803e893"
+                "reference": "fcc6114387ebb4792c5c4a4f2e2c610de8e37585"
             },
             "require": {
                 "composer/composer": "^1.7",
@@ -7014,9 +7014,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "statamic/cms": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
