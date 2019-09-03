@@ -8,28 +8,40 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 ---
 ## Antlers Syntax
 
-Most of the what Antlers can do is provided through the use of curly brace statements. Those curly braces – often called double mustaches or squiggly braces – look a whole lot like _antlers_ to us, hence the name.
+Antlers adds capabilities to basic HTML through the use of expressions inside curly braces. Those curly braces – often called double mustaches or squiggly braces – look a whole lot like _antlers_ to us, hence the name.
 
 ```
-{{ this_is_an_antlers_tag }}
+{{ hello_world }}
 ```
 
-### Formatting Tips
+Before geting into all the things that can go on inside an Antlers expression, lets take a moment to establish some rules for properly formatting one.
 
-Here are a few tips and gotchas to look for.
+### Formatting Rules
 
-- **Variables and Tag names are case sensitive**. That means `{{ ninjaturtle }}` and `{{ ninjaTurtle }}` are not interchangeable.
-- **Hyphens and underscores are not interchangeable.** For example, `{{ space_jam }}` and `{{ space-jam }}` might as well be from separate planets.
-- Spaces between braces and inner text are optional.
+1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth.
+2. Expressions are **case sensitive**.
+3. Hyphens and underscores are **not** interchangeable.
+4. Whitespace between curly braces and inner text is **recommended**, but optional.
+5. You **can** break up an expression onto multiple lines.
 
-We recommend using spaces between braces, lowercase variable names, and underscores as word separators. Consistency is key, so whatever your preference, stick to it.
+Consistency is very important. We recommend using single spaces between braces, lowercase variable names, and underscores as word separators. Picking your style and stick to it. Future you will thank you, but don't expect a postcard.
 
 ```
-// How we do it.
+// This is great!
 {{ perfectenschlag }}
 
-// Stop it.
-{{sad-trombone_plays    }}
+// This is allowed.
+{{squished}}
+
+// This is fine, especially if you have lots of parameters.
+{{
+  testimonials
+  limit="5"
+  order="username"
+}}
+
+// This is terrible.
+{{sad-trombone_plays            }}
 ```
 
 ---
@@ -73,7 +85,7 @@ Arrays are a collection of elements (values or variables). You can loop through 
 <li>Just Cruisin'</li>
 ```
 
-### Escaping Data
+## Escaping Data {#escaping}
 
 By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this default state is logical. **Never rendered user-submitted data without escaping it first!**
 
@@ -85,19 +97,9 @@ The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) 
 
 ---
 
-## Comments
+## Logic & Conditions {#conditions}
 
-Antlers also allows you to define comments in your vies. However, unlike HTML comments, Antlers are not included in the rendered HTML. You can use these comments to "turn off" chunks of code, document your work, or leave notes for yourself and other developers.
-
-```
-{{# Remember to replace the lorem ipsum this time. #}}
-```
-
----
-
-## Conditional Statements
-
-Antlers can also handle logic and conditional statements, much like native PHP.
+Antlers can handle logic and conditional statements, just like native PHP. You can use logic to check settings, variables, or even user data and alter the output of your page.
 
 You may construct conditional statements using the `if`, `else`, `elseif`, `unless` keywords, and use any of PHP's [comparison](https://www.php.net/manual/en/language.operators.comparison.php) and [logical](https://www.php.net/manual/en/language.operators.logical.php) operators.
 
@@ -114,7 +116,7 @@ You may construct conditional statements using the `if`, `else`, `elseif`, `unle
 ```
 
 
-<blockquote class="tip"><strong>Antlers variables are null by default.</strong> Keep your logic statements simple and skip checking for existence.</blockquote>
+<blockquote class="tip"><strong>Antlers variables are null by default.</strong> Keep your logic statements simple and skip checking for existence altogether.</blockquote>
 
 ### Shorthand Conditions (Ternary)
 
@@ -149,6 +151,18 @@ What if you want to combine an `is set` check with a ternary operator? We've got
 // Longer and bitterer
 {{ if show_title }}{{ title }}{{ /if }}
 ```
+
+---
+
+## Code Comments {#comments}
+
+Antlers also allows you to define comments in your vies. However, unlike HTML comments, Antlers are not included in the rendered HTML. You can use these comments to "turn off" chunks of code, document your work, or leave notes for yourself and other developers.
+
+```
+{{# Remember to replace the lorem ipsum this time. #}}
+```
+
+---
 
 
 ---
