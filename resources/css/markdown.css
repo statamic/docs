@@ -6,7 +6,7 @@
     }
 
     > h2 {
-        @apply text-2xl text-blue-darkest font-bold mb-4 leading-tight mt-16;
+        @apply text-2xl text-blue-darkest font-bold mb-4 leading-tight mt-12 pt-4;
     }
 
     > h3 {
