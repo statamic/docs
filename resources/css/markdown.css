@@ -6,11 +6,11 @@
     }
 
     > h2 {
-        @apply text-2xl text-blue-darkest font-bold mb-4 mt-8 leading-tight;
+        @apply text-2xl text-blue-darkest font-bold mb-4 leading-tight mt-16;
     }
 
     > h3 {
-        @apply text-xl text-blue-darkest font-bold mb-4 mt-8 leading-tight;
+        @apply text-lg text-blue-darkest font-bold mb-4 mt-12 leading-tight;
     }
 
     > h5 {
@@ -24,14 +24,52 @@
         }
     }
 
+    > blockquote {
+        @apply bg-blue-lightest border shadow-md py-4 pl-12 pr-4 font-display relative text-sm mb-8;
+
+        &:before {
+            content: '';
+            background: url('/img/hot-tip.svg') no-repeat;
+            height: 35px;
+            width: 70px;
+            position: absolute;
+            top: 6px;
+            left: -35px;
+            z-index: 2;
+        }
+
+        &.mouth:before {
+            content: '';
+            background: url('/img/open-mouth.svg') no-repeat;
+            height: 50px;
+            width: 64px;
+            position: absolute;
+            top: -10px;
+            left: -32px;
+            z-index: 10;
+        }
+
+        p {
+            @apply text-sm;
+            &:last-child { @apply mb-0; }
+        }
+        strong {
+            @apply italic;
+        }
+    }
+
+    > hr {
+        @apply border-t-2 border-grey-300 my-16;
+    }
+
     > * > a {
         @apply underline text-pink-hot font-medium;
         &:hover {
             @apply text-pink-bright;
         }
-        &:visited {
+        /* &:visited {
             @apply text-teal-dark;
-        }
+        } */
 
     }
 
@@ -75,7 +113,10 @@
     :not(pre):not(h1):not(h2):not(h3):not(h4) > code,
     ul code,
     ol code {
-        @apply bg-grey-200 text-sm leading-normal;
+        @apply bg-grey-200 leading-normal rounded-sm relative;
+        font-size: 80%;
+        padding: .1em .2em;
+        bottom: .05rem;
     }
 
     > p code,
@@ -87,9 +128,13 @@
         font-weight: 400;
     }
 
+    > blockquote code {
+        @apply bg-blue-light text-white !important;
+    }
+
   > pre, pre&, > ul li pre, > ol li pre {
     @apply flex p-0 bg-grey-800;
-    @apply text-sm leading-normal;
+    @apply text-sm leading-loose;
   }
 
   > pre code, pre code&, > ul li pre code, > ol li pre code {

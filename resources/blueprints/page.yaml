@@ -7,7 +7,7 @@ sections:
         handle: intro
         field:
           display: Intro
-          type: text
+          type: textarea
           localizable: true
       -
         handle: content

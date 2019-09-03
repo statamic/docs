@@ -16,7 +16,14 @@ tree:
       -
         entry: e3fedb48-dfdd-4999-9f73-f9ffac24e24c
   -
+    title: Frontend
+    children:
+      -
+        entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
+  -
     title: 'Content Types'
     children:
       -
         entry: d7b7d326-b199-4fd8-984f-7d885e255efb
+  -
+    title: Tutorial

@@ -3,11 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello! This is the Statamic 3 documentation</title>
+    <title>{{ title }} // Statamic 3 Docs</title>
     <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css">
     <link rel="stylesheet" href="/css/tailwind.css">
 </head>
-<body class="text-blue-darkest leading-normal">
+<body class="text-blue-darkest leading-normal language-antlers">
 
 {{ partial:partials/nav }}
 
@@ -40,5 +40,6 @@
     <p>Copyright {{ now format="Y" }} Statamic • Powered non-exclusively by Laravel, nostalgia, and Tony Hawk's tears.</p>
     {{ partial:social }}
 </div>
+<script src="{{ mix src='/js/app.js' }}"></script>
 </body>
 </html>
