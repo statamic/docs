@@ -33,15 +33,15 @@ Consistency is very important. We recommend using single spaces between braces, 
 // This is allowed.
 {{squished}}
 
-// This is fine, especially if you have lots of parameters.
+// This can make sense when you have lots of parameters.
 {{
   testimonials
   limit="5"
   order="username"
 }}
 
-// This is terrible.
-{{sad-trombone_plays            }}
+// This is terrible in every way.
+{{play-sad_Trombone            }}
 ```
 
 ---
@@ -85,7 +85,56 @@ Arrays are a collection of elements (values or variables). You can loop through 
 <li>Just Cruisin'</li>
 ```
 
-## Escaping Data {#escaping}
+---
+
+## Modifying Data
+
+The way data is stored is not always the way you want it presented. The simplest way of modifying data is through the use of variable modifiers.
+
+### Variable Modifiers
+
+Each variable modifier is a function that accepts the value of a variable, manipulates it in some way, and returns it. Modifiers can be chained and are executed in sequence, from left to right inside the Antlers statement.
+
+Let's look at an example.
+
+```
+---
+title: Nickelodeon Studios
+---
+
+// NICKELODEON STUDIOS rocks!
+<h1>{{ title | uppercase | ensure_right:rocks!}}</h1>
+
+// NICKELODEON STUDIOS ROCKS! (order matters)
+<h1>{{ title | ensure_right:rocks! | uppercase }}</h1>
+```
+
+There are over 130 built in [modifiers][modifiers] that do everything from find and replace to automatically write HTML for you.
+
+Modifiers can be written in two styles in order to support different use cases and improve readability.
+
+### String/Shorthand Style
+
+Modifiers are separated by `|` pipe delimiters. Parameters are delimited by `:` colons. This is usually the recommended style while working with string variables, conditions, and when you don't need to pass multi-word arguments in a parameter.
+
+```
+{{ string_var | modifier_1 | modifier_2:param1:param2 }}
+```
+
+If you use this string/shorthand style on arrays, you need to be sure to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
+
+### Array/Tag Parameter Style
+
+Modifiers on array variables are formatted like Tag parameters. Parameters are separated with `|` pipes. You can’t use modifiers in conditions when you format them this way.
+
+```
+{{ array_var modifier="param1|param2" }}
+  // Magic goes here
+{{ /array_var }}
+```
+
+
+### Escaping Data
 
 By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this default state is logical. **Never rendered user-submitted data without escaping it first!**
 
@@ -164,6 +213,39 @@ Antlers also allows you to define comments in your vies. However, unlike HTML co
 
 ---
 
+## Tags
+
+[Tags][tags] are the primary method for implementing most of Statamic's dynamic features, like search, forms, nav building, pagination, collection listing, filtering, image resizing, and so on.
+
+Tags often look quite similar to variables, so it pays to learn the list of available [Tags][tags] so you don't mix them up or create conflicts.
+
+### Variables Inside Tag Parameters
+
+There are two ways to use variables _inside_ a Tag's parameters.
+
+You can use **dynamic binding** to pass the value of a variable via its name.
+
+```
+{{ nav :from="segment_1" }}
+```
+
+Alternatively, you can use **string interpolation** and reference any variables with _single braces_. This method lets you concatenate a string giving you the ability assemble arguments out of various parts. Like Frankenstein's monster.
+
+```
+{{ nav from="{segment_1}/{segment_2}" }}
+```
+
+### Modifiers Inside Parameters
+
+If using a variable inside of a Tag is nice, using a variable with a modifier inside of a Tag is better. Or more complicated. Either way, it works exactly as you’d expect with one small caveat: When using a modifier inside of a Tag, no whitespace is allowed between variables, pipes, and modifiers. Collapse that stuff.
+
+```
+// Totally fine.
+{{ partially:broken src="{featured_image|url}" }}
+
+// Totally not.
+{{ partially:broken src="{ featured_image | url }" }}
+```
 
 ---
 
@@ -193,3 +275,5 @@ Use this method if you need to prevent entire code blocks from being parsed.
 
 [ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
 [vue]: https://vuejs.org
+[modifiers]: /modifiers
+[tags]: /tags

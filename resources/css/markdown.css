@@ -13,8 +13,12 @@
         @apply text-lg text-blue-darkest font-bold mb-4 mt-12 leading-tight;
     }
 
+    > h4 {
+        @apply text-blue-darkest font-bold mb-2 mt-12 leading-tight;
+    }
+
     > h5 {
-        @apply font-display font-display font-bold italic text-blue-darkest;
+        @apply font-display font-bold italic text-blue-darkest;
     }
 
     > p, > blockquote > p {
