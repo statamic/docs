@@ -1,0 +1,9 @@
+title: Tags
+route: '{parent}/{slug}'
+default_status: published
+template: page
+layout: layout
+blueprints:
+  - page
+revisions: false
+mount: 424f5092-be39-449a-b660-f4e077631487

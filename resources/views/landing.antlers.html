@@ -1,0 +1,21 @@
+<header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
+    <h1>{{ title }}</h1>
+    <div class="text-xl">
+        {{ intro | markdown }}</p>
+    </div>
+</header>
+
+<article class="markdown pb-8">
+    <table>
+    {{ collection :from="mount" }}
+        <tr>
+            <td>
+                <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
+            </td>
+            <td>
+                {{ description ?? overview | markdown }}
+            </td>
+        </tr>
+    {{ /collection }}
+    </table>
+</article>

@@ -3,6 +3,7 @@
  * Demo: https://marc.dev/demo/prism-synthwave84
  *
  * Ported for PrismJS by Marc Backes [@themarcba]
+ * Modified by Jack McDade [@jackmcdade]
  */
 
 pre[class*="language-"] {
@@ -143,6 +144,6 @@ pre > code {
 
 	.prism-show-language-label {
 		@apply absolute inline-block bottom-auto left-auto right-0 top-0 w-auto h-auto;
-		@apply text-white uppercase text-xs font-mono px-2 py-1 bg-black opacity-50 rounded-tr-sm;
+		@apply text-white uppercase text-xs font-display tracking-wide px-2 py-1 bg-black select-none opacity-50 rounded-tr-sm;
 	}
 }

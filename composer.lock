@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94a8b546985d4d946ec0e09fae3305a0",
+    "content-hash": "2530b8bc4aba1e874c381eec05825b9a",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -772,6 +772,50 @@
             "time": "2015-11-01T10:19:22+00:00"
         },
         {
+            "name": "facade/ignition-contracts",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-contracts.git",
+                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/f445db0fb86f48e205787b2592840dd9c80ded28",
+                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Facade\\IgnitionContracts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://flareapp.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Solution contracts for Ignition",
+            "homepage": "https://github.com/facade/ignition-contracts",
+            "keywords": [
+                "contracts",
+                "flare",
+                "ignition"
+            ],
+            "time": "2019-08-30T14:06:08+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.2.1",
             "source": {
@@ -1383,16 +1427,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.35",
+            "version": "v5.8.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197"
+                "reference": "c3a870b96c7afe5174f486af74768ccfddeec77b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5a9e4d241a8b815e16c9d2151e908992c38db197",
-                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c3a870b96c7afe5174f486af74768ccfddeec77b",
+                "reference": "c3a870b96c7afe5174f486af74768ccfddeec77b",
                 "shasum": ""
             },
             "require": {
@@ -1475,7 +1519,6 @@
             "suggest": {
                 "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (^3.0).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
-                "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
                 "ext-pcntl": "Required to use all features of the queue worker.",
                 "ext-posix": "Required to use all features of the queue worker.",
                 "filp/whoops": "Required for friendly error pages in development (^2.1.4).",
@@ -1527,7 +1570,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-09-03T16:44:30+00:00"
+            "time": "2019-08-27T14:35:59+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3172,12 +3215,13 @@
             "dist": {
                 "type": "path",
                 "url": "../cms",
-                "reference": "fcc6114387ebb4792c5c4a4f2e2c610de8e37585"
+                "reference": "32b9c3c9bcfed6b9f3d6700d47d2371a889e3c5a"
             },
             "require": {
                 "composer/composer": "^1.7",
                 "erusev/parsedown": "^1.7",
                 "erusev/parsedown-extra": "^0.7.1",
+                "facade/ignition-contracts": "^1.0",
                 "guzzlehttp/guzzle": "^6.3",
                 "laravel/framework": "5.6.*|5.7.*|5.8.*",
                 "laravelcollective/html": "5.6.*|5.7.*|5.8.*",
@@ -5428,16 +5472,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.4.4",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "e7ef941075724c5c91bcb116c47f1d814f226b40"
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/e7ef941075724c5c91bcb116c47f1d814f226b40",
-                "reference": "e7ef941075724c5c91bcb116c47f1d814f226b40",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/5082ea8e531894dca7ffcee25206d93cd25aca42",
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42",
                 "shasum": ""
             },
             "require": {
@@ -5445,7 +5489,7 @@
                 "ext-mbstring": "*",
                 "facade/flare-client-php": "^1.0",
                 "facade/ignition-contracts": "^1.0",
-                "filp/whoops": "^2.1.4",
+                "filp/whoops": "^2.4",
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "monolog/monolog": "^1.12|^2.0",
                 "php": "^7.1",
@@ -5492,51 +5536,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-03T18:51:55+00:00"
-        },
-        {
-            "name": "facade/ignition-contracts",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition-contracts.git",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/f445db0fb86f48e205787b2592840dd9c80ded28",
-                "reference": "f445db0fb86f48e205787b2592840dd9c80ded28",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facade\\IgnitionContracts\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Solution contracts for Ignition",
-            "homepage": "https://github.com/facade/ignition-contracts",
-            "keywords": [
-                "contracts",
-                "flare",
-                "ignition"
-            ],
-            "time": "2019-08-30T14:06:08+00:00"
+            "time": "2019-09-04T19:13:40+00:00"
         },
         {
             "name": "filp/whoops",

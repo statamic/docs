@@ -20,6 +20,8 @@ tree:
     children:
       -
         entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
+      -
+        entry: 424f5092-be39-449a-b660-f4e077631487
   -
     title: 'Content Types'
     children:

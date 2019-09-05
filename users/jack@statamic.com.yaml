@@ -8,3 +8,7 @@ preferences:
       columns:
         - title
         - slug
+    tags:
+      columns:
+        - title
+        - slug

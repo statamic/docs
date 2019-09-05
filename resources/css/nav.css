@@ -5,7 +5,7 @@
         @apply font-display font-bold italic text-blue-darkest mb-2 uppercase;
     }
 
-    ul {
+    ul, ol {
         @apply mb-8;
     }
 

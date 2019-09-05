@@ -20,3 +20,9 @@ sections:
           escape_markup: false
           type: markdown
           localizable: true
+      -
+        handle: template
+        field:
+          display: Template
+          type: template
+          default: page

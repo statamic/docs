@@ -31,7 +31,7 @@ As your site scales, you can choose to move from the flat file driver to the one
 
 ## Your Content, Your Schema
 
-It's completely up to you how to organize your content. With nearly 40 different fieldtypes included, there are a lot of ways to break everything up.
+It's completely up to you how to organize your content. With nearly 40 different fieldtypes included, there are many ways to structure your data.
 
 If you like the "one big field" approach with all your content and markup in one chunk, we've got you covered. Or if you like to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too.
 
@@ -43,7 +43,7 @@ We ship with most areas of the site in a "blank slate" state. We find it's much 
 
 If many of the sites you build share a common set of features, collections, taxonomies, and/or templates, save a copy of that state and use it as a site kickstarter. You'll be able to jump into new projects faster than anyone.
 
-## A LEGO Brick Approach to Features
+## Features = LEGO Bricks
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 
