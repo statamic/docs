@@ -1,6 +1,6 @@
 ---
 title: Antlers
-intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, displaying and modify data, and handle logic. Antlers view files (also called templates) use the `.antlers.html` file extension and are typically stored in the `resources/views` directory.'
+intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, displaying and modify data, and handle logic. Antlers view files (templates) use the `.antlers.html` file extension and are stored in the `resources/views` directory.'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1567519954
 blueprint: page
@@ -8,23 +8,23 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 ---
 ## Antlers Syntax
 
-Antlers adds capabilities to basic HTML through the use of expressions inside curly braces. Those curly braces – often called double mustaches or squiggly braces – look a whole lot like _antlers_ to us, hence the name.
+Antlers adds capabilities on top of HTML through the use of curly brace expressions. Those curly braces – often called double mustaches or squiggly gigglies – look a whole lot like _antlers_ to us, hence the name.
 
 ```
 {{ hello_world }}
 ```
 
-Before geting into all the things that can go on inside an Antlers expression, lets take a moment to establish some rules for properly formatting one.
+Before getting into listing all the things that happen _inside_ an Antlers expression, lets take a moment to establish the rules for properly formatting one.
 
 ### Formatting Rules
 
 1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth.
 2. Expressions are **case sensitive**.
 3. Hyphens and underscores are **not** interchangeable.
-4. Whitespace between curly braces and inner text is **recommended**, but optional.
+4. Whitespace between the curly braces and inner text is **recommended**, but optional.
 5. You **can** break up an expression onto multiple lines.
 
-Consistency is very important. We recommend using single spaces between braces, lowercase variable names, and underscores as word separators. Picking your style and stick to it. Future you will thank you, but don't expect a postcard.
+Consistency is important. We recommend using single spaces between braces, lowercase variable names, and underscores as word separators. Picking your style and stick to it. Future you will thank you, but don't expect a postcard.
 
 ```
 // This is great!
