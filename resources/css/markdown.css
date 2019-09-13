@@ -114,6 +114,14 @@
         }
     }
 
+    /* Code blocks in headers */
+    h1 > code, h2 > code, h3 > code, h4 > code {
+        @apply text-pink-hot bg-grey-200 rounded-sm relative;
+        font-size: 90%;
+        padding: .1em .2em;
+        bottom: .05rem;
+    }
+
     :not(pre):not(h1):not(h2):not(h3):not(h4) > code,
     ul code,
     ol code {
