@@ -1,5 +1,5 @@
 title: Tags
-route: '{parent}/{slug}'
+route: '{mount}/{slug}'
 default_status: published
 template: page
 layout: layout
