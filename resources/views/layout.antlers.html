@@ -18,7 +18,7 @@
             <h5>{{ title }}</h5>
             <ul>
                 {{ children }}
-                    <li class="{{ if is_current }}active{{ /if }}{{ if ! content }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
+                    <li class="{{ if is_current || is_parent }}active{{ /if }}{{ if ! intro }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
                 {{ /children }}
             </ul>
             {{ /structure:documentation }}
@@ -30,7 +30,7 @@
     <div class="hidden lg:block lg:w-1/4 xl:w-1/5 px-8 pt-1 relative">
         <nav class="side-nav sticky top-16">
             <h5>On This Page</h5>
-            {{ content | toc }}
+            {{ content | noparse | toc }}
         </nav>
     </div>
 </div>
