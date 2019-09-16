@@ -12,3 +12,7 @@ preferences:
       columns:
         - title
         - slug
+  favorites:
+    -
+      name: 'Create Docs Page'
+      url: 'http://3-docs-new.test/cp/collections/docs/entries/create/default'

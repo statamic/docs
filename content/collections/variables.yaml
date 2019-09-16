@@ -1,0 +1,9 @@
+title: Variables
+route: '{mount}/{slug}'
+default_status: published
+template: page
+layout: layout
+blueprints:
+  - page
+revisions: false
+mount: 662a5918-ac0f-42a1-bf40-5a7a320e87e1

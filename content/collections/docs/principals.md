@@ -1,6 +1,9 @@
 ---
-title: 'Core Concepts'
+title: Principals
 intro: 'Statamic is opinionated software. Understanding its principals and whatnot will help fine-tune your intuition and help you understand how to take advantage of its efficiencies.'
+template: page
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1568644287
 id: 24a9c9d8-d607-4117-9806-738668c173cd
 ---
 ## Opinionated but Configurable

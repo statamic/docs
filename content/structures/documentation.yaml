@@ -12,20 +12,100 @@ tree:
       -
         entry: 06da5823-69e3-486f-a445-2b5d732a1943
       -
+        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+  -
+    title: Configuration
+    children:
+      -
+        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
+      -
+        entry: 4cec3140-f0a5-4f66-b197-cac25aad219c
+      -
+        entry: a622dd4c-c09a-40b0-ba3f-68ba3ea584c7
+  -
+    title: 'Core Concepts'
+    children:
+      -
         entry: 24a9c9d8-d607-4117-9806-738668c173cd
       -
-        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+        entry: d7b7d326-b199-4fd8-984f-7d885e255efb
+      -
+        entry: 7202c698-942a-4dc0-b006-b982784efb03
+      -
+        entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+      -
+        entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
+      -
+        entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
+      -
+        entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+      -
+        entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
+      -
+        entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
+      -
+        entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
+      -
+        entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
+      -
+        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
+      -
+        entry: 58a65d1a-5111-4fe1-a1a8-9563b412210c
+      -
+        entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
+      -
+        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
   -
     title: Frontend
     children:
       -
+        entry: 84100772-18e4-4a22-8759-219b242a320c
+      -
         entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
+      -
+        entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
+      -
+        entry: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+      -
+        entry: 74c47654-8c47-49b1-a616-ed940ce19977
+      -
+        entry: fbf59081-ba24-4e82-b011-b687be228c89
+      -
+        entry: 5e848460-9bbc-449e-8edd-182d918163ff
+      -
+        entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
+      -
+        entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
       -
         entry: 424f5092-be39-449a-b660-f4e077631487
   -
-    title: 'Content Types'
+    title: 'Control Panel'
     children:
       -
-        entry: d7b7d326-b199-4fd8-984f-7d885e255efb
+        entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+      -
+        entry: 54548616-fd6d-44a3-a379-bdf71c492c63
+      -
+        entry: 2940c834-7062-47a1-957c-88a69e790cbb
+      -
+        entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
   -
-    title: Tutorial
+    title: 'Advanced Capabilities'
+    children:
+      -
+        entry: 83145e6c-45d2-4e9c-a412-48a81f144224
+      -
+        entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
+      -
+        entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
+  -
+    title: Tutorials
+    children:
+      -
+        entry: 2be635d9-e5a9-4411-bc20-368b4bc0ba55
+      -
+        entry: 5ac26285-3b33-458c-bdf5-6045e51b940c
+      -
+        entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
+      -
+        entry: 24eb2de3-b0f9-4a12-9676-5a7845a5c4d4

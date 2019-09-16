@@ -18,7 +18,7 @@
             <h5>{{ title }}</h5>
             <ul>
                 {{ children }}
-                    <li class="{{ if is_current || is_parent }}active{{ /if }}{{ if ! intro }} opacity-50{{ /if }}"><a href="{{ url }}">{{ title }}</a></li>
+                    <li class="{{ if is_current || is_parent }}active{{ /if }}{{ if ! intro }} opacity-50{{ /if }}"><a href="{{ url }}">{{ nav_title ?? title }}</a></li>
                 {{ /children }}
             </ul>
             {{ /structure:documentation }}
