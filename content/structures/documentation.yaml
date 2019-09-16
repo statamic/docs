@@ -6,6 +6,8 @@ tree:
     title: 'Getting Started'
     children:
       -
+        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+      -
         entry: ab08f409-8bbe-4ede-b421-d05777d292f7
       -
         entry: e6f05019-6bdd-488e-ba45-39ae7ea5cee7
@@ -13,15 +15,6 @@ tree:
         entry: 06da5823-69e3-486f-a445-2b5d732a1943
       -
         entry: 56fadb93-b846-4867-ad73-4f721cc940c2
-  -
-    title: Configuration
-    children:
-      -
-        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
-      -
-        entry: 4cec3140-f0a5-4f66-b197-cac25aad219c
-      -
-        entry: a622dd4c-c09a-40b0-ba3f-68ba3ea584c7
   -
     title: 'Core Concepts'
     children:
@@ -56,6 +49,15 @@ tree:
       -
         entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
   -
+    title: Configuration
+    children:
+      -
+        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
+      -
+        entry: 4cec3140-f0a5-4f66-b197-cac25aad219c
+      -
+        entry: a622dd4c-c09a-40b0-ba3f-68ba3ea584c7
+  -
     title: Frontend
     children:
       -
@@ -87,6 +89,8 @@ tree:
         entry: 54548616-fd6d-44a3-a379-bdf71c492c63
       -
         entry: 2940c834-7062-47a1-957c-88a69e790cbb
+      -
+        entry: 249e046f-a9b4-494b-9e4d-084c28e01028
       -
         entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
   -
