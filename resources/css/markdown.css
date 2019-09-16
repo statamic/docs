@@ -122,9 +122,7 @@
         bottom: .05rem;
     }
 
-    :not(pre):not(h1):not(h2):not(h3):not(h4) > code,
-    ul code,
-    ol code {
+    :not(pre):not(h1):not(h2):not(h3):not(h4) > code {
         @apply bg-grey-200 leading-normal rounded-sm relative;
         font-size: 80%;
         padding: .1em .2em;
@@ -145,12 +143,16 @@
     }
 
   > pre, pre&, > ul li pre, > ol li pre {
-    @apply flex p-0 bg-grey-800;
+    @apply flex p-0 bg-grey-800 ;
     @apply text-sm leading-loose;
   }
 
   > pre code, pre code&, > ul li pre code, > ol li pre code {
     @apply p-4;
+  }
+
+  li > pre, li > .prism-show-language {
+      @apply mt-4;
   }
 
   > table {

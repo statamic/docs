@@ -21,6 +21,12 @@ a, button {
     }
 }
 
+header {
+    p {
+        @apply text-xl !important;
+    }
+}
+
 /* html {
     font-family: 'Inter', sans-serif;
     letter-spacing: -.02em;
