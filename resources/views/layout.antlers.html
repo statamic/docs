@@ -14,6 +14,25 @@
 <div class="w-full max-w-screen-xl mx-auto pt-12 flex relative" id="top">
     <div class="lg:w-1/4 xl:w-1/5 px-6 pt-1">
         <nav class="side-nav">
+            <div class="mb-12">
+                <div class="flex items-center mb-4 text-sm font-bold text-purple">
+                    <div class="mr-2">{{ theme:output src="svg/book.svg" }}</div>
+                    <a href="/">Documentation</a>
+                </div>
+                <div class="flex items-center mb-4 text-sm text-grey-600 hover:text-pink-hot">
+                    <div class="mr-2">{{ theme:output src="svg/tv.svg" }}</div>
+                    <a href="#">Screencasts</a>
+                </div>
+                <div class="flex items-center mb-4 text-sm text-grey-600 hover:text-pink-hot">
+                    <div class="mr-2">{{ theme:output src="svg/help-desk.svg" }}</div>
+                    <a href="#">Knowledge Base</a>
+                </div>
+                <div class="flex items-center text-sm text-grey-600 hover:text-pink-hot">
+                    <div class="mr-2">{{ theme:output src="svg/cookbook.svg" }}</div>
+                    <a href="#">Cookbook</a>
+                </div>
+            </div>
+
             {{ structure:documentation }}
             <h5>{{ title }}</h5>
             <ul>
