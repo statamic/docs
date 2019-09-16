@@ -13,8 +13,6 @@ YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive
 
 YAML complies with the JSON spec, making it easy to interchange it with nearly any native data format. It consists of key and value pairs delimited by a colon then a space.
 
-> Always put a space after the colon. **Always.**
-
 ```.language-yaml
 variable_name: value
 ```

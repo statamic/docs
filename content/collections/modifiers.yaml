@@ -1,7 +1,7 @@
 title: Modifiers
 route: '{mount}/{slug}'
 default_status: published
-template: page
+template: modifiers.show
 layout: layout
 blueprints:
   - page

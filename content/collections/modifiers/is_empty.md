@@ -1,0 +1,28 @@
+---
+types:
+  - array
+id: a94a24ce-500d-4194-85db-85fcbb552e06
+---
+Checks to see if an array is empty without any set values. Works with numeric indexes, associative, and string keyed arrays of all depths. It's pretty smart, as these things go.
+
+```.language-yaml
+some_data:
+  - is living here
+more_data:
+  with:
+  hopes:
+  and:
+  dreams:
+    -
+```
+
+```
+{{ if some_data | is_empty }}
+{{ if more_data | is_empty }}
+
+```
+
+```.language-output
+false
+true
+```
