@@ -5,77 +5,100 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1567091687
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
-## Fresh Installation
+## Composer
 
-Statamic utilizes Composer to manage its dependencies. So, before using Statamic, make sure you have Composer installed on your machine.
+Statamic utilizes [Composer](https://getcomposer.org/) to manage its dependencies. So, before using Statamic, make sure you have Composer installed on your machine.
 
-Next, download the Statamic installer with Composer. You only need to do this once on your machine.
+## Alpha prerequisites
 
-```.language-bash
-composer global require statamic/cli
-```
+Once Statamic is out of alpha, Statamic will be publicly available on Packagist. During the alpha period, you'll need to maintain a local versions of the packages, which Composer will reference when you create your sites.
 
-Then run the following command to install Statamic into any `myproject` directory:
+1. Clone the `statamic/cms` package.
 
-```.language-bash
-statamic new myproject
-```
-
-## Fresh Installation (Alpha Edition)
-
-1. Clone github.com/statamic/three-cms.
-2. `cd` into `three-cms` and run `npm install && npm run dev`
-3. Install a Laravel app.
-
-    ```.language-bash
-    laravel new myproject --dev
+    ``` bash
+    git clone git@github.com:statamic/three-cms.git
     ```
 
-4. Open `composer.json` and add a `repositories` object that points to the `three-cms` repo.
+2. Clone the `statamic/statamic` package.
 
-    ```.language-json
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../cms"
-        }
-    ]
+    ``` bash
+    git clone git@github.com:statamic/three-statamic.git
     ```
 
-5. Require `statamic/cms` (and `statamic/definitely-not-v3` to suppress version error).
+3. Compile `statamic/cms`'s assets.
 
-    ```.language-json
-    "require": {
-        "statamic/cms": "dev-master",
-        "statamic/definitely-not-v3": "^3.0"
+    ``` bash
+    cd three-cms
+    npm install && npm run dev
+    ```  
+
+4. Add the packages as path repositories, globally, inside `~/.composer/config.json`
+
+    ``` json
+    {
+        "repositories": [
+            {
+                "type": "path",
+                "url": "/path/to/where/you/cloned/three-cms"
+            },
+            {
+                "type": "path",
+                "url": "/path/to/where/you/cloned/three-statamic",
+                "options": {
+                    "symlink": false
+                }
+            }
+        ]
     }
     ```
 
-6. Add the `statamic:install` to `post-autoload-dump`.
+## Creating a new Statamic project
 
-    ```.language-json
-    "post-autoload-dump": [
-        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-        "@php artisan package:discover",
-        "@php artisan statamic:install"
-    ]
-    ```
-
-7. Composer update.
+1. Use Composer to create a project based off the `statamic/statamic` starter site.
 
     ```.language-bash
-    composer update
-    ```
-
-8. Delete `public/vendor/statamic/cp`, and symlink the CP `resources/dist` directory from your `three-cms` repo.
-
-    ```.language-bash
-    rm -rf public/vendor/statamic/cp
-    ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
+    composer create-project statamic/statamic my-blank-site --stability=dev
     ```
 
 ## Installing into existing Laravel apps
 
-1. Run `composer require statamic/cms`
-2. Run `php artisan statamic:install`
-3. Add the post autoload command as per step 5 of the dev fresh install steps.
+1. Require `statamic/cms` (and `statamic/definitely-not-v3` during alpha).
+
+   ``` json
+    "require": {
+        "statamic/cms": "dev-master",
+        "statamic/definitely-not-v3": "^3.0",
+    }
+   ```
+
+2. Add the `statamic:install` command to `post-autoload-dump`.
+
+    ``` json
+    "post-autoload-dump": [
+        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+        "@php artisan package:discover --ansi",
+        "@php artisan statamic:install --ansi"
+    ]
+    ```
+
+3. Update dependencies.
+
+    ``` bash
+    composer update
+    ```
+
+4. If you would like to use Statamic's file-based users, follow the instructions in the [Auth][auth] guide.
+
+
+## Core Development
+
+While working on the core, or during alpha, where there would be frequent css/js updates, it could be a good idea to symlink assets to prevent needing to continually publish them.
+
+Delete `public/vendor/statamic/cp`, and symlink the CP `resources/dist` directory from your `three-cms` repo.
+
+``` bash
+rm -rf public/vendor/statamic/cp
+ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
+```  
+
+[auth]: /auth
