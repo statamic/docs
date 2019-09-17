@@ -1,8 +1,9 @@
 ---
-title: Installing
-intro: During the **Alpha** phase you'll need to do a bit of extra wangjangling. All of these additional, annoying steps will be eliminated when we make the Github repo public.
+title: Installation
+intro: 'During the **Alpha** phase you''ll need to do a bit of extra wangjangling. All of these additional, annoying steps will be eliminated when we make the Github repo public.'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1567091687
+updated_at: 1568743917
+template: page
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 ## Composer
