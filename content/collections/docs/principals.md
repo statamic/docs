@@ -46,17 +46,17 @@ Much in the same way Statamic doesn't enforce a mono-schema (like WordPress, for
 
 Every Statamic site &mdash; just like every fingerprint, person, and company in the world &mdash; is unique. This is not a platform for the generic web. This is a tool used to build your dreams.
 
-## Build Up, Not Rip Out
+## Turn On What You Need
 
 We ship with most areas of the site in a "blank slate" state. We find it's much easier to turn on the things you need, enable features you plan to use, and name things the way you want, than to have to spend precious time clicking about the control panel disabling stuff you'll never end up needing.
 
 If many of the sites you build share a common set of features, collections, taxonomies, and/or templates, save a copy of that state and use it as a site kickstarter. You'll be able to jump into new projects faster than anyone.
 
-## Features = LEGO Bricks
+## LEGO Brick Toolbox
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 
-Statamic takes a slightly different angle when combined with our "Bring Your Own HTML" core approach, enables you to build almost anything, like a toolbox full of LEGO bricks.
+Statamic takes a different approach, that when combined with our "Bring Your Own HTML" core approach, enables you to build _almost anything_, like a toolbox full of LEGO bricks.
 
 **Want to build a photo gallery?** Add an Assets field that lets you select multiple images, and then loop through the selected images and render thumbnails on the fly with the Glide tag, and link to the full resolution image.
 
