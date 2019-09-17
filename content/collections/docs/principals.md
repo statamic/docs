@@ -32,13 +32,19 @@ Statamic's "default state" is to operate in flat file mode, which not only reduc
 
 As your site scales, you can choose to move from the flat file driver to the one that best suits your needs. Deferring this decision making process is a great way to prevent premature optimization and technical debt.
 
-## Your Content, Your Schema
+## The Schema is Yours
 
 It's completely up to you how to organize your content. With nearly 40 different fieldtypes included, there are many ways to structure your data.
 
 If you like the "one big field" approach with all your content and markup in one chunk, we've got you covered. Or if you like to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too.
 
 What fields are named, how they're organized, grouped, and arranged is all up to you. Your control panel can be as simple or robust as is needed to manage your site intuitively.
+
+## Bring Your Own HTML
+
+Much in the same way Statamic doesn't enforce a mono-schema (like WordPress, for example), neither does it enforce layout, specific HTML, or any styles of its own. That's up to you (or a site kit) to provide.
+
+Every Statamic site &mdash; just like every fingerprint, person, and company in the world &mdash; is unique. This is not a platform for the generic web. This is a tool used to build your dreams.
 
 ## Build Up, Not Rip Out
 

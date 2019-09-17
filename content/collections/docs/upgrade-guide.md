@@ -52,7 +52,7 @@ Blueprints get attached to content. Fieldsets are an optional feature and can be
 - Replaces `field` element in form tag `fields` array with renderable view.
 - `$this->tag_method` is now `$this->method`.
 
-###### Conditions
+### Conditions
 
 Content tag conditions still exist, but now use our new content query builders under the hood.  It's worth noting that some of these conditions may differ in behaviour slightly, as they are now implemented using more agnostic query builder compatible comparisons or regular expressions instead of PHP logic.  That said, the most notable breaking changes are as follows:
 
