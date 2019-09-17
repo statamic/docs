@@ -25,34 +25,29 @@ tree:
       -
         entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
       -
-        entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
-      -
-        entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+        entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
       -
         entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
       -
-        entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
+        entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+      -
+        entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
       -
         entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
       -
-        entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
-      -
-        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
-      -
-        entry: 58a65d1a-5111-4fe1-a1a8-9563b412210c
-      -
-        entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
-      -
-        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
-  -
-    title: Configuration
-    children:
+        entry: eaab9161-6ed8-45d4-9d43-07982f4d0c8e
       -
         entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
       -
-        entry: 4cec3140-f0a5-4f66-b197-cac25aad219c
+        entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
       -
-        entry: a622dd4c-c09a-40b0-ba3f-68ba3ea584c7
+        entry: 58a65d1a-5111-4fe1-a1a8-9563b412210c
+      -
+        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
+      -
+        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
+      -
+        entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
   -
     title: Frontend
     children:
@@ -80,13 +75,13 @@ tree:
     title: 'Control Panel'
     children:
       -
-        entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+        entry: 249e046f-a9b4-494b-9e4d-084c28e01028
       -
         entry: 54548616-fd6d-44a3-a379-bdf71c492c63
       -
-        entry: 2940c834-7062-47a1-957c-88a69e790cbb
+        entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
       -
-        entry: 249e046f-a9b4-494b-9e4d-084c28e01028
+        entry: 2940c834-7062-47a1-957c-88a69e790cbb
       -
         entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
   -
