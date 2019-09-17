@@ -42,9 +42,11 @@ $school = "Flatside High";
 var school = "Flatside High";
 ```
 
-## String Escaping
+### String Escaping
 
 As YAML is a **structured** data format, you will occasionally need to quote your strings to prevent rogue apostrophes, commas, and other reserved constructs from confusing the parser, allowing you to structure your data exactly as desired.
+
+> YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
 
 You can also use quotes to force or typecast another datatype as a string, For example, if your key or value is `10` but you want it to return a String and not an Integer, write `'10'` or `"10"`.
 
@@ -55,12 +57,6 @@ cartoon: Rocko's Modern Life
 # Perfection
 cartoon: "Rocko's Modern Life"
 ```
-
-## String Block Literals
-
-You may have thought to yourself: "But my string has many lines! It's pile of HTML with lots of quotes, characters, indentation, and tender loving care! What then?" No sweat. YAML supports multi-line strings and they can be written in two ways.
-
-> YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
 
 ### Preserving Newlines
 
@@ -93,11 +89,38 @@ test: >
   paragraph breaks.
 ```
 
-## Lists (Indexed Arrays) {#lists}
+## Numbers
 
-Lists can be structured like a plain-text bulleted list or comma delimited inside brackets, much like JSON.
+Numbers are represented as numerals without any "string quotes". Those quotes were meant to demonstrate what string quotes are, not [mock them](https://media.giphy.com/media/Kc7qzYMnOTcDb0aEw5/giphy.gif).
 
 ```.language-yaml
+# an integer
+number: 12
+
+# a float
+number: 26.2
+
+# a hexadecimal
+number: 0xC
+
+# an exponential number
+number: 1.2e+34
+```
+
+## Nulls
+
+Nulls in YAML are expressed with `null` or `~`.
+
+## Booleans
+
+Booleans in YAML are expressed with `true` and `false`.
+
+## Collections
+
+YAML collections can be a sequence (or list)Arrays are lists of values. They can be formatted like a plain-text bulleted list or comma delimited inside brackets, similar to JSON.
+
+```.language-yaml
+# These are both valid YAML arrays
 to_buy:
   - sunglasses
   - sandals
@@ -106,23 +129,10 @@ to_buy:
 to_sell: [aloe vera, winter coat, mittens]
 ```
 
-When parsed, the data will be converted into typical indexed arrays:
+To render the values from a YAML array
 
-```.language-php
-$to_buy = [
-    0 => "sunglasses",
-    1 => "sandals",
-    2 => "surfboard"
-];
 
-$to_sell = [
-    0 => "aloe vera",
-    1 => "winter coat"
-    2 => "wittens"
-];
-```
-
-## Named Lists (Associative Arrays) {#named-lists}
+### Element Map
 
 ```.language-yaml
 antisocial:
@@ -142,11 +152,11 @@ $antisocial = [
 <a href="{{ antisocial:twitter }}">Twitter</a>
 ```
 
-### Lists of Lists (Multidimensional Arrays) {#lists-of-lists}
+### Nesting mappings and sequences
 
-You can create lists of lists, and those lists can have lists, and those lists can have their own lists and lists of lists and -- now you should think carefully before you go any deeper but -- those lists can also have some of their very own lists and lists of lists. Got it?
+You can create mappings of sequences, and those sequences can have mappings, and those mappings can have their own sequences and mappings, and so on and on and on until you choose to skip the rest of the paragraph and go onto the next.
 
-This is a very common pattern in Statamic. Entries Listings, Grid and Replicator fieldtypes, and Search results all use multidimensional array data.
+This is a very common pattern in Statamic. Bard, Grid, and Replicator fieldtypes all use nested mappings and sequences.
 
 ```.language-yaml
 students:
@@ -187,7 +197,7 @@ trips:
     - San Fransisco
 ```
 
-### Comments {#comments}
+## Comments
 
 You can comment out any line of YAML by prefixing it with a `#` hash symbol.
 
@@ -196,26 +206,31 @@ You can comment out any line of YAML by prefixing it with a `#` hash symbol.
 title: Another Monday
 ```
 
-### Casting Data Types {#type-casting}
+## Explicit Typing
 
 YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string that looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
 
 ```.language-yaml
 a: 42                      # integer
-b: "42"                    # string, disambiguated by quotes
-c: 42.0                    # float
-d: !!float 42              # float via explicit data type
-e: !!str 42                # string, disambiguated by explicit type
-f: !!str Yes               # string via explicit type
-g: Yes                     # string
-h: Yes we have No whiskey  # string, disambiguated by context.
+2: "42"                    # string, disambiguated by quotes
+d: 42.0                    # float
+l: !!float 42              # float via explicit data type
+m: !!str 42                # string, disambiguated by explicit type
+n: !!str Yes               # string via explicit type
+o: Yes                     # string
+p: Yes we have No whiskey  # string, disambiguated by context.
 ```
 
-## Conclusion {#conclusion}
+## Related Reading
 
 So there you have it &mdash; YAML in its many shapes and forms. To learn how to render all this lovely data in a template, check out the [Antlers][antlers] section.
 
-Happy YAMLing!
+You can also refer to the [Symfony YAML component][symfony-yaml] and [YAML format][yaml-format] documentation for even more technical and in-depth knowledge gains.
+
+**Bonus points** for reading the full [YAML 1.2 specification document][yaml-spec]. We've done it and it's as dry as a mouthful of cinnamon.
 
 [recursive-acronym]: https://en.wikipedia.org/wiki/Recursive_acronym
 [antlers]: /antlers
+[symfony-yaml]: https://symfony.com/doc/current/components/yaml.html
+[yaml-format]: https://symfony.com/doc/current/components/yaml/yaml_format.html
+[yaml-spec]: https://yaml.org/spec/1.2/spec.html
