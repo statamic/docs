@@ -96,6 +96,12 @@
             &:nth-child(3n+2)::before {
                 content: url('/img/triangle-teal.svg');
             }
+            a {
+                @apply underline text-pink-hot font-medium;
+                &:hover {
+                    @apply text-pink-bright;
+                }
+            }
         }
     }
 

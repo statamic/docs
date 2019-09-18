@@ -4,8 +4,9 @@
         {{ intro | markdown }}</p>
     </div>
 </header>
-{{ mount }}
+
 <article class="markdown pb-8">
+    {{ content }}
     <table>
         {{ collection:modifiers sort="slug" }}
         <tr>
