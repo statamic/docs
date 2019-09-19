@@ -194,12 +194,6 @@ pre > code {
 	background: no-repeat 50% 50% / contain;
 }
 
-.files-part .entry-name:after {
-	 content: "";
-  clear: both;
-  display: table;
-}
-
 .files-part .entry-name.dotfile {
 	opacity: 0.5;
 }
