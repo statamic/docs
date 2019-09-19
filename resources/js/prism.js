@@ -137,10 +137,12 @@ Prism.languages.files = {
 
 Prism.hooks.add('wrap', function(env) {
 	if (env.language === 'files') {
-		// Remove line breaks
-		if(env.type === 'files-part') {
-			env.content = env.content.replace(/\n/g,'')+'<br />';
-		}
+
+		// Remove line breaks (Seems like we don't need this now)
+		// if(env.type === 'files-part') {
+		// 	env.content = env.content.replace(/\n/g,'')+'<br />';
+		// }
+
 		if(env.type === 'entry-name') {
 			if(/(^|[^\\])\/\s*$/.test(env.content)) {
 				env.content = env.content.slice(0,-1);
@@ -166,3 +168,8 @@ Prism.hooks.add('wrap', function(env) {
 		}
 	}
 });
+
+// Prism.languages.files = {
+// 	// Just highlight symbols used to denote folder structure
+// 	keyword: /^([-|+`\s]+)/gm
+// };
