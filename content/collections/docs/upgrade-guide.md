@@ -10,9 +10,9 @@ blueprint: page
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 fantastic new features, and speeds up performance by 5x. What's not to love about that?
 
-## Breaking Changes
+## Breaking Changes: Core
 
-First, let's look at the breaking changes.
+First, let's look at the breaking changes on the core application side. These would be changes that affect the control panel, front-end, cli, and generally anything that doesn't require custom PHP.
 
 ### Globals
 
@@ -54,13 +54,16 @@ Blueprints get attached to content. Fieldsets are an optional feature and can be
 
 ### Conditions
 
-Content tag conditions still exist, but now use our new content query builders under the hood.  It's worth noting that some of these conditions may differ in behaviour slightly, as they are now implemented using more agnostic query builder compatible comparisons or regular expressions instead of PHP logic.  That said, the most notable breaking changes are as follows:
+Content tag conditions still exist, but now use our new content query builders under the hood.  It's worth noting that some of these conditions may differ in behavior slightly, as they are now implemented using more agnostic query builder compatible comparisons or regular expressions instead of PHP logic.  That said, the most notable breaking changes are as follows:
 
 - All comparisons and regex patterns are now case-insensitive by default.
 - `is`, `equals`, `not`, `isnt`, and `aint` no longer work with `_strict` modifier.
 - `contains` and `doesnt_contain` no longer work on array/object data.
 - `matches`, `match`, `regex` and `doesnt_match` now ignore pattern delimiters and modifiers.
 - `is_uppercase`, `is_lowercase`, `is_today`, `is_yesterday`, `is_between`, `is_leap_year`, `is_weekday`, `is_weekend`, `in_array` and `is_json` conditions were removed.
+
+
+## Breaking Changes: API
 
 ### Global Functions
 
@@ -70,17 +73,16 @@ Content tag conditions still exist, but now use our new content query builders u
 - Removed `resources_root()`
 - Removed `format_input_options()` from both PHP and JS (use HasInputOptions mixin)
 
-### Suggest Modes
-
-Suggest modes have been replaced by [customized relationship fieldtypes](/guide/extending/relationship-fieldtypes.html).
-
-### API
-
-###### Entry
+### API\Entry
 
 - Removed `countWhereCollection()`
 - `whereCollection()` now only supports a single collection (use `whereInCollection()` if you need to pass multiple)
 
-###### URL
+
+### API\URL
 
 - Removed `removeSiteRoot()`
+
+### Suggest Modes
+
+Suggest modes have been replaced by [customized relationship fieldtypes](/guide/extending/relationship-fieldtypes.html).
