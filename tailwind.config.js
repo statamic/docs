@@ -74,7 +74,9 @@ module.exports = {
         7: '1.75rem'
       },
       inset: {
-        16: '16px',
+        '16': '16px',
+        '-16': '-16px',
+        '64': '64px',
       },
       maxWidth: theme => {
         return {

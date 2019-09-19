@@ -56,3 +56,14 @@ header {
     }
   }
 } */
+
+.screenshot {
+    @apply bg-yellow px-6 py-10 mb-16 relative;
+    img {
+        @apply border shadow-md;
+    }
+}
+
+.caption {
+    @apply bg-blue-lightest border shadow px-4 py-1 italic font-display text-sm font-bold absolute -bottom-16 right-64 w-auto;
+}
