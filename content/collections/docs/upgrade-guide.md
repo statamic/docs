@@ -13,7 +13,7 @@ Statamic 3 takes everything you love about v2, rewrites all the old stuff (Larav
 > You can install our [migration tools package](https://github.com/statamic/migrator) to automate upgrading your Statamic v2 site to v3!
 >
 > ``` bash
-> composer require statamic/migrator
+> composer require --dev statamic/migrator
 > php please migrate:site
 > ```
 
