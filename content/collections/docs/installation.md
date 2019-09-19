@@ -63,16 +63,7 @@ Once Statamic is out of alpha, Statamic will be publicly available on Packagist.
 
 ## Installing into existing Laravel apps
 
-1. Require `statamic/cms` (and `statamic/definitely-not-v3` during alpha).
-
-   ``` json
-    "require": {
-        "statamic/cms": "dev-master",
-        "statamic/definitely-not-v3": "^3.0",
-    }
-   ```
-
-2. Add the `statamic:install` command to `post-autoload-dump`.
+1. Add the `statamic:install` command to `post-autoload-dump`.
 
     ``` json
     "post-autoload-dump": [
@@ -82,13 +73,13 @@ Once Statamic is out of alpha, Statamic will be publicly available on Packagist.
     ]
     ```
 
-3. Update dependencies.
+2. Require `statamic/cms` (and `statamic/definitely-not-v3` during alpha).
 
-    ``` bash
-    composer update
-    ```
+   ``` json
+   composer require statamic/cms statamic/definitely-not-v3
+   ```
 
-4. If you would like to use Statamic's file-based users, follow the instructions in the [Auth][auth] guide.
+3. If you plan to use the Control Panel, follow the instructions in the [Users][users] guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
 
 
 ## Core Development
@@ -102,4 +93,4 @@ rm -rf public/vendor/statamic/cp
 ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
 ```  
 
-[auth]: /auth
+[users]: /users
