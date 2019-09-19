@@ -140,7 +140,7 @@
         font-weight: 400;
     }
 
-    > blockquote code {
+    > blockquote *:not(pre) > code {
         @apply bg-blue-light text-white !important;
     }
 
