@@ -147,9 +147,9 @@ Prism.hooks.add('wrap', function(env) {
 
 		if(env.type === 'entry-name') {
 			if(/(^|[^\\])\/\s*$/.test(env.content)) {
-				env.content = env.content.slice(0,-1);
 				// This is a folder
 				env.classes.push('dir');
+				// env.content = env.content.slice(0,-1);
 			} else {
 
 				if(/(^|[^\\])[=*|]\s*$/.test(env.content)) {
