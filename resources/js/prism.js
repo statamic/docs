@@ -27,7 +27,8 @@ var Languages = {
 	"statamic": "Template",
 	"output":"Output",
 	"yaml":"YAML",
-	"bash": "Command Line"
+	"bash": "Command Line",
+	"env": ".env"
 };
 
 Prism.hooks.add('before-highlight', function(env) {
@@ -169,7 +170,7 @@ Prism.hooks.add('wrap', function(env) {
 	}
 });
 
-// Prism.languages.files = {
-// 	// Just highlight symbols used to denote folder structure
-// 	keyword: /^([-|+`\s]+)/gm
-// };
+Prism.languages.env = {
+	'attr-name': /.+?(?==)/gm,
+	'punctuation': /=/,
+};
