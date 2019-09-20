@@ -1,6 +1,6 @@
 ---
 title: Structures
-intro:
+intro: A structure is a hierarchy of links and/or text items that are used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568558416
