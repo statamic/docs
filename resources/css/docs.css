@@ -27,17 +27,6 @@ header {
     }
 }
 
-/* html {
-    font-family: 'Inter', sans-serif;
-    letter-spacing: -.02em;
-}
-
-@supports (font-variation-settings: normal) {
-    html {
-        font-family: 'Inter var', sans-serif;
-    }
-} */
-
 .transition {
     transition: all .05s ease-in !important;
 }
@@ -45,25 +34,14 @@ header {
 .table-collapse {
     border-collapse: collapse !important;
 }
-/*
-@supports (position: sticky) {
-  @media (min-width: theme('screens.lg')) {
-    .sticky\?lg\:h-screen {
-      height: 100vh !important;
-    }
-    .sticky\?lg\:h-\(screen-16\) {
-      height: ~"calc(100vh - 4rem)" !important;
-    }
-  }
-} */
 
-.screenshot {
+figure, .screenshot {
     @apply bg-yellow px-6 py-10 mb-16 relative;
     img {
         @apply border shadow-md;
     }
 }
 
-.caption {
+.caption, figure figcaption {
     @apply bg-blue-lightest border shadow px-4 py-1 italic font-display text-sm font-bold absolute -bottom-16 right-64 w-auto;
 }
