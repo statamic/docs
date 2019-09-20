@@ -38,7 +38,7 @@ header {
 figure, .screenshot {
     @apply bg-yellow px-6 py-10 mb-16 relative;
     img {
-        @apply border shadow-md;
+        @apply border shadow-md mx-auto;
     }
 }
 
