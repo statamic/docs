@@ -82,6 +82,7 @@ Prism.languages.antlers = {
 				}
 			},
 			'punctuation': /\{\{\s?\/?|\}\}/,
+			'operator': /\s\|\s/,
 			'plugin-name': {
 				pattern: /^\s*\w+:\w+/,
 				inside: {
