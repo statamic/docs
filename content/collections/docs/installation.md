@@ -12,7 +12,7 @@ Statamic utilizes [Composer](https://getcomposer.org/) to manage its dependencie
 
 ## Alpha prerequisites
 
-Once Statamic is out of alpha, Statamic will be publicly available on Packagist. During the alpha period, you'll need to maintain a local versions of the packages, which Composer will reference when you create your sites.
+Once Statamic is out of alpha, Statamic will be publicly available on [Packagist][packagist]. During the alpha period, you'll need to maintain a local versions of the packages, which Composer will reference when you create your sites.
 
 1. Clone the `statamic/cms` package.
 
@@ -31,7 +31,7 @@ Once Statamic is out of alpha, Statamic will be publicly available on Packagist.
     ``` bash
     cd three-cms
     npm install && npm run dev
-    ```  
+    ```
 
 4. Add the packages as path repositories, globally, inside `~/.composer/config.json`
 
@@ -91,6 +91,7 @@ Delete `public/vendor/statamic/cp`, and symlink the CP `resources/dist` director
 ``` bash
 rm -rf public/vendor/statamic/cp
 ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
-```  
+```
 
 [users]: /users
+[packagist]: https://packagist.org/
