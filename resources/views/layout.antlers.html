@@ -31,17 +31,19 @@
                     <div class="mr-2">{{ theme:output src="svg/tetris.svg" }}</div>
                     <a href="#">Extending Statamic</a>
                 </div>
-                <!-- <div class="flex items-center text-sm text-grey-600 hover:text-pink-hot">
+                {{# <div class="flex items-center text-sm text-grey-600 hover:text-pink-hot">
                     <div class="mr-2">{{ theme:output src="svg/cookbook.svg" }}</div>
                     <a href="#">Cookbook</a>
-                </div> -->
+                </div> #}}
             </div>
 
             {{ structure:documentation }}
             <h5>{{ title }}</h5>
             <ul>
                 {{ children }}
-                    <li class="{{ if is_current || is_parent }}active{{ /if }}{{ if ! intro }} opacity-50{{ /if }}"><a href="{{ url }}">{{ nav_title ?? title }}</a></li>
+                    <li class="{{ is_current || is_parent ??= 'active' }}{{ ! intro ??= ' opacity-50' }}">
+                        <a href="{{ url }}">{{ nav_title ?? title }}{{ if mount }}&hellip;{{ /if }}</a>
+                    </li>
                 {{ /children }}
             </ul>
             {{ /structure:documentation }}
@@ -58,7 +60,7 @@
     </div>
 </div>
 <div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
-    <p>Copyright {{ now format="Y" }} Statamic • Powered non-exclusively by Laravel, nostalgia, and Tony Hawk's tears.</p>
+    <p>Copyright {{ now format="Y" }} Statamic • <b>FOR ALPHA USE ONLY!</b></p>
     {{ partial:social }}
 </div>
 <script src="{{ mix src='/js/app.js' }}"></script>
