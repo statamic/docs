@@ -73,6 +73,8 @@ tree:
         entry: 424f5092-be39-449a-b660-f4e077631487
       -
         entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
+      -
+        entry: 75be125b-7d92-496c-ac5d-7098560d3d44
   -
     title: 'Control Panel'
     children:
@@ -96,9 +98,11 @@ tree:
       -
         entry: 83145e6c-45d2-4e9c-a412-48a81f144224
       -
+        entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
+      -
         entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
       -
-        entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
+        entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
   -
     title: Tutorials
     children:
