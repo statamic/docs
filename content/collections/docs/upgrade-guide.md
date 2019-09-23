@@ -10,6 +10,8 @@ blueprint: page
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 fantastic new features, and speeds up performance by 5x. What's not to love about that?
 
+> **Coming soon:**
+>
 > You can install our [migration tools package](https://github.com/statamic/migrator) to automate upgrading your Statamic v2 site to v3!
 >
 > ``` bash
