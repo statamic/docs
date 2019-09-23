@@ -208,11 +208,9 @@ class CoinFlip extends Protector
 {
     public function protect()
     {
-        $result = (bool) random_int(0, 1);
+        $heads = (bool) random_int(0, 1);
 
-        if ($result) {
-            abort(403);
-        }
+        abort_if($heads, 403);
     }
 }
 ```
