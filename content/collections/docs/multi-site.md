@@ -28,8 +28,6 @@ A URL is also required, which tells Statamic where to expect the site to be serv
 # config/statamic/sites.php
 
 return [
-    'default' => 'default',
-
     'sites' => [
         'default' => [
             'name' => config('app.name'),
@@ -42,12 +40,18 @@ return [
 
 ## Converting from Single to Multiple Sites
 
+> This conversion can be automated with the following command:
+>
+> ``` bash
+> php please multisite
+> ```
+
 1. Add the new site to your `sites.php` config.
 2. For each collection:
     - Move all entries into a directory named after the first site's handle. (eg. `content/collections/blog/*.md` into `content/collections/blog/default/*.md`)
     - Add a `sites` array to the collection's yaml file with each site you want the entries to be available in.
 3. For each structure:
-    - Take the `root`, `route`, and `tree` variables, and move them in a file in a subdirectory named after the first site's handle. (eg. `content/structures/pages.yaml` to `content/structures/default/pages.yaml`)
+    - Take the `root` and `tree` variables, and move them in a file in a subdirectory named after the first site's handle. (eg. `content/structures/pages.yaml` to `content/structures/default/pages.yaml`)
     - Add a `sites` array to the root structure's yaml file with each site you want the structure to be available in.
 4. For each global set:
     - Take the values inside the `data` array, and move them to the top level in a file in a subdirectory named after the first site's handle. (eg. `content/structures/pages.yaml` to `content/structures/default/pages.yaml`)
