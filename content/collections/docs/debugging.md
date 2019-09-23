@@ -1,6 +1,6 @@
 ---
 title: Debugging
-intro: Debugging is the secret art of the experienced developer. The ability to popping the hood, inspect stack traces, or paw through response objects is important for getting yourself unstuck and on track quickly. Here are some tools Statamic provides to make your job easier.
+intro: Debugging is the secret art of the experienced developer. The ability to pop the hood, inspect stack traces, or paw through response objects is important for getting yourself unstuck and on track quickly. Here are some tools Statamic provides to make your job easier.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645126
@@ -37,15 +37,13 @@ Any variables that are defined in a [blueprint](/blueprints) will be shown as a 
 
 ### How to enable the debug bar
 
-You need to require the package with [composer][composer] and enable it in your `.env` file.
+You need to require the package with [Composer][composer].
 
 ``` bash
-composer require barryvdh/laravel-debugbar
+composer require dev barryvdh/laravel-debugbar
 ```
 
-``` env
-DEBUGBAR_ENABLED=true
-```
+It'll be enabled when `APP_DEBUG` is `true` in your env file.
 
 > The debug bar injects javascript into the page and adds significant overhead to each request. Make sure to turn it off when you're testing your site's performance!
 
