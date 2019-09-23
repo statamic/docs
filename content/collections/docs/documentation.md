@@ -37,7 +37,7 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 💡If you have an **idea** on how to improve the way something works, open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
 
-🙋🏼‍♀️If you have a **feature request**, please keep it to yourself (for now). We're feature locked and don't want to push the launch out any further than necessary. There's plenty of time for great new, _new_ things in the near future.
+🙋🏼‍♀️If you have a **feature request**, we ask that you save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things in the near future.
 
 ## Areas NOT Ready for Feedback
 
