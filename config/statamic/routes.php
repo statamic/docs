@@ -16,7 +16,7 @@ return [
     */
 
     'routes' => [
-        // '/' => 'home'
+        'search-results' => 'search'
     ],
 
     /*

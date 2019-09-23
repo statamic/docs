@@ -1,0 +1,32 @@
+<article class="markdown pb-8">
+    <h1>Search Results</h1>
+
+    {{ search:results as="results" }}
+
+        {{ if no_results }}
+
+            {{ if get:q|length < 3 }}
+                <p>Please search for at least 3 characters.</p>
+            {{ else }}
+                <p>No results for <b>{{ get:q }}</b></p>
+            {{ /if }}
+
+        {{ else }}
+
+            <p>Showing results for <b>{{ get:q }}</b></p>
+            <ul>
+                {{ results }}
+                    <li>
+                        <a href="{{ url }}">{{ title }}</a>
+                        {{ if intro }}
+                            <div class="text-grey-600 text-sm">{{ intro }}</div>
+                        {{ /if }}
+                    </li>
+                {{ /results }}
+            </ul>
+
+        {{ /if }}
+
+    {{ /search:results }}
+
+</div>
