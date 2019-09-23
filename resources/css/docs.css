@@ -1,7 +1,8 @@
-/* @import url('https://rsms.me/inter/inter.css'); */
-
 body {
-    background: #fff url('/img/zigs-top-right.svg') no-repeat calc(100% - 8px) top;
+    background-color: #fff;
+    background-image: url('/img/zigs-top-right.svg'), url('/img/zigs-bottom-left.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 8px) top, 80px calc(100% - 160px);
 }
 
 a, button {
