@@ -38,7 +38,7 @@ The first case is for defining the URL structure for a collection. This would be
 Freestyle navigation structures exist to manage a nav out of entries that already exist, as well as freeform links and text (non-link) elements.
 
 
-- A structure that hasn't been linked from an entry will be using this method.
+- A structure that hasn't been linked from a collection will be using this method.
 - You can reference entries, enter hardcoded URLs (internal or external), or enter simple text blocks (that can be used as section headers for dropdown navs, for example).
 - You can select which collections' entries will available to choose from.
 - Any referenced entries will use the URLs defined by the collection, regardless of the position in the Structure.
@@ -116,8 +116,11 @@ When using a Structure to define a collection's URLs, you may also have a root p
 
 ``` yaml
 root: id-of-home
+expects_root: true
 tree: []
 ```
+
+The `expects_root` variable lets the Control Panel know that dragging a page to the top of the tree should make it the root.
 
 ## Localization
 
@@ -132,17 +135,13 @@ sites:
 
 The `tree` and `root` values will also be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
 
-```
+``` files
 content/structures/
 |-- pages.yaml
-|
 |-- site-one/
 |   `-- pages.yaml
-|
 `-- site-two/
     `-- pages.yaml
 ```
 
 A structure will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
-
-Structures that aren't different per site can leave their trees defined in the root file.
