@@ -1,5 +1,5 @@
 title: Docs
-route: '{slug}'
+route: '{{ parent_uri }}/{{ structure_slug or slug }}'
 default_status: published
 template: page
 layout: layout

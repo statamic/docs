@@ -1,0 +1,35 @@
+
+<nav class="side-nav">
+    <div class="mb-12">
+        {{ structure:documentation depth="1" }}
+            <div class="flex items-center mb-4 text-sm hover:text-pink-hot
+                {{ if is_current || is_parent }}font-bold text-purple{{ else }}text-grey-600{{ /if }}
+            ">
+                <div class="mr-2">
+                    {{ if title === "Documentation" }}{{ theme:output src="svg/book.svg" }}
+                    {{ elseif title === "Screencasts" }}{{ theme:output src="svg/tv.svg" }}
+                    {{ elseif title === "Knowledge Base" }}{{ theme:output src="svg/help-desk.svg" }}
+                    {{ elseif title === "Cookbook" }}{{ theme:output src="svg/cookbook.svg" }}
+                    {{ elseif title === "Extending Statamic" }}{{ theme:output src="svg/tetris.svg" }}
+                    {{ /if }}
+                </div>
+                <a href="{{ url }}">{{ title }}</a>
+            </div>
+        {{ /structure:documentation }}
+    </div>
+
+    {{ structure:documentation }}
+        {{ if is_current || is_parent }}
+            {{ children scope="top" }}
+                <h5>{{ title }}</h5>
+                <ul>
+                    {{ top:children }}
+                        <li class="{{ is_current || is_parent ??= 'active' }}{{ ! intro ??= ' opacity-50' }}">
+                            <a href="{{ url }}">{{ nav_title ?? title }}{{ if mount }}&hellip;{{ /if }}</a>
+                        </li>
+                    {{ /top:children }}
+                </ul>
+            {{ /children }}
+        {{ /if }}
+    {{ /structure:documentation }}
+</nav>

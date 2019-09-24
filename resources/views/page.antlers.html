@@ -6,7 +6,7 @@
 <article class="markdown pb-8">
     {{ content | toc:ids | noparse }}
 
-    {{ if ! content }}
+    {{ if ! page:content }}
         <img src="/img/coming-soon.png" alt="Coming Soon">
     {{ /if }}
 </article>

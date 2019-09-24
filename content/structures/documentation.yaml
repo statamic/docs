@@ -3,121 +3,182 @@ expects_root: true
 root: 6aa5449b-5d90-47de-97e7-82ba5f665250
 tree:
   -
-    title: 'Getting Started'
+    title: Documentation
+    url: /
     children:
       -
-        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+        title: 'Getting Started'
+        children:
+          -
+            entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+          -
+            entry: ab08f409-8bbe-4ede-b421-d05777d292f7
+          -
+            entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
       -
-        entry: ab08f409-8bbe-4ede-b421-d05777d292f7
+        title: 'Core Concepts'
+        children:
+          -
+            entry: 24a9c9d8-d607-4117-9806-738668c173cd
+          -
+            entry: d7b7d326-b199-4fd8-984f-7d885e255efb
+          -
+            entry: 7202c698-942a-4dc0-b006-b982784efb03
+          -
+            entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+          -
+            entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
+          -
+            entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
+          -
+            entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
+          -
+            entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+          -
+            entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
+          -
+            entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
+          -
+            entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
+          -
+            entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
+          -
+            entry: 58a65d1a-5111-4fe1-a1a8-9563b412210c
+          -
+            entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
+          -
+            entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
       -
-        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
+        title: Frontend
+        children:
+          -
+            entry: 84100772-18e4-4a22-8759-219b242a320c
+          -
+            entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
+          -
+            entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
+          -
+            entry: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+          -
+            entry: 74c47654-8c47-49b1-a616-ed940ce19977
+          -
+            entry: fbf59081-ba24-4e82-b011-b687be228c89
+          -
+            entry: 5e848460-9bbc-449e-8edd-182d918163ff
+          -
+            entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
+          -
+            entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
+          -
+            entry: 424f5092-be39-449a-b660-f4e077631487
+          -
+            entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
+          -
+            entry: 75be125b-7d92-496c-ac5d-7098560d3d44
+      -
+        title: 'Control Panel'
+        children:
+          -
+            entry: 249e046f-a9b4-494b-9e4d-084c28e01028
+          -
+            entry: 54548616-fd6d-44a3-a379-bdf71c492c63
+          -
+            entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+          -
+            entry: 2940c834-7062-47a1-957c-88a69e790cbb
+          -
+            entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
+          -
+            entry: ac091993-63d7-4cf8-88ae-1325360d3f28
+      -
+        title: 'Advanced Capabilities'
+        children:
+          -
+            entry: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
+          -
+            entry: 83145e6c-45d2-4e9c-a412-48a81f144224
+          -
+            entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
+          -
+            entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
+          -
+            entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
+          -
+            entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
+      -
+        title: Tutorials
+        children:
+          -
+            entry: 2be635d9-e5a9-4411-bc20-368b4bc0ba55
+          -
+            entry: 5ac26285-3b33-458c-bdf5-6045e51b940c
+          -
+            entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
+          -
+            entry: 24eb2de3-b0f9-4a12-9676-5a7845a5c4d4
+      -
+        title: 'Odds & Ends'
+        children:
+          -
+            entry: bd1261de-7c4c-4c22-baf5-8a52cdd10c74
+          -
+            entry: ec382b8f-e16b-4316-bf5e-4f1255e77012
+          -
+            entry: 56fadb93-b846-4867-ad73-4f721cc940c2
   -
-    title: 'Core Concepts'
-    children:
-      -
-        entry: 24a9c9d8-d607-4117-9806-738668c173cd
-      -
-        entry: d7b7d326-b199-4fd8-984f-7d885e255efb
-      -
-        entry: 7202c698-942a-4dc0-b006-b982784efb03
-      -
-        entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
-      -
-        entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
-      -
-        entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
-      -
-        entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
-      -
-        entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
-      -
-        entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
-      -
-        entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
-      -
-        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
-      -
-        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
-      -
-        entry: 58a65d1a-5111-4fe1-a1a8-9563b412210c
-      -
-        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
-      -
-        entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
+    title: Screencasts
+    url: /screencasts
   -
-    title: Frontend
-    children:
-      -
-        entry: 84100772-18e4-4a22-8759-219b242a320c
-      -
-        entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
-      -
-        entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
-      -
-        entry: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
-      -
-        entry: 74c47654-8c47-49b1-a616-ed940ce19977
-      -
-        entry: fbf59081-ba24-4e82-b011-b687be228c89
-      -
-        entry: 5e848460-9bbc-449e-8edd-182d918163ff
-      -
-        entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
-      -
-        entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
-      -
-        entry: 424f5092-be39-449a-b660-f4e077631487
-      -
-        entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
-      -
-        entry: 75be125b-7d92-496c-ac5d-7098560d3d44
+    title: 'Knowledge Base'
+    url: /kb
   -
-    title: 'Control Panel'
-    children:
-      -
-        entry: 249e046f-a9b4-494b-9e4d-084c28e01028
-      -
-        entry: 54548616-fd6d-44a3-a379-bdf71c492c63
-      -
-        entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
-      -
-        entry: 2940c834-7062-47a1-957c-88a69e790cbb
-      -
-        entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
-      -
-        entry: ac091993-63d7-4cf8-88ae-1325360d3f28
+    title: Cookbook
+    url: /cookbook
   -
-    title: 'Advanced Capabilities'
+    entry: caf2a160-de1c-11e9-aaef-0800200c9a66
     children:
       -
-        entry: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
+        title: 'Control Panel'
+        children:
+          -
+            entry: cb8f4d8a-47b6-4567-9510-ed7d9ee9c037
+          -
+            entry: 83786f60-def6-11e9-aaef-0800200c9a66
+          -
+            entry: 06813e5d-158e-4318-aa4a-b29fd87d107f
+          -
+            entry: 5900c99f-89b9-4ee3-834c-cb1b070146e4
+          -
+            entry: 785ffa10-8b63-44b1-9da3-3837250cacbe
+          -
+            entry: ba2e6172-b4dc-443b-8230-b770dec1423c
+          -
+            entry: 06cbe7a2-5322-401a-8bc4-3ab6b20defb7
       -
-        entry: 83145e6c-45d2-4e9c-a412-48a81f144224
+        title: Front-end
+        children:
+          -
+            entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
+          -
+            entry: e052ecb8-60d9-4afa-980e-ce128c301d70
       -
-        entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
+        title: Wherever
+        children:
+          -
+            entry: 51a52222-9be7-46b1-8388-059019281a56
+          -
+            entry: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
+          -
+            entry: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
+          -
+            entry: c3da9537-5d5f-4b84-a4be-882b89217151
+          -
+            entry: 6843f6e9-ac62-4128-8d50-887560f201ca
       -
-        entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
-      -
-        entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
-      -
-        entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
-  -
-    title: Tutorials
-    children:
-      -
-        entry: 2be635d9-e5a9-4411-bc20-368b4bc0ba55
-      -
-        entry: 5ac26285-3b33-458c-bdf5-6045e51b940c
-      -
-        entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
-      -
-        entry: 24eb2de3-b0f9-4a12-9676-5a7845a5c4d4
-  -
-    title: 'Odds & Ends'
-    children:
-      -
-        entry: bd1261de-7c4c-4c22-baf5-8a52cdd10c74
-      -
-        entry: ec382b8f-e16b-4316-bf5e-4f1255e77012
-      -
-        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+        title: Addons
+        url: /extending/addons
+        children:
+          -
+            entry: 5bd75435-806e-458b-872e-7528f24df7e6
+          -
+            entry: a1e29bbe-8fb7-4b46-9929-6440705a5c25
