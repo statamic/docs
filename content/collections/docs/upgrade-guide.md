@@ -19,6 +19,43 @@ Statamic 3 takes everything you love about v2, rewrites all the old stuff (Larav
 > php please migrate:site
 > ```
 
+## Philosophies
+
+We've taken the lessons learned from years of work on Statamic v2 and updated our philosophy-level approach to flat file content management. These new principals guide many of the changes &mdash; breaking and otherwise &mdash; you'll find in Statamic v3.
+
+We don't break things for the fun of it. We hope that understanding these philosophies will help defuse any frustration you may encounter when faced with needing to relearn something fundamental.
+
+### Git changes should be as small and discrete as possible
+
+Wherever reasonable and possible, we will opt for patterns that result in smaller git changes, especially avoiding filename changes. Filename changes cause a `delete` and an `add` in your git history. Examples of this principal in action:
+
+- **Publish status** is now controlled by a YAML variable and no longer results in a file move/delete/add.
+- **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file that stores the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
+
+### Let's build in the open
+
+We're going to be setting the Github repos to public in beta and will be planning and building in the open. This will let us use [Composer][composer] and [Packagist](https://packagist.org) the way they were intended.
+
+- Statamic v3 will be installed via Composer
+- The vendor directory won't be included, making the package much, much smaller
+- Your own Statamic site repos can be `public`
+- Dependencies can be updated (to take advantage of fixes and features) without needing a Statamic core update or patch release
+
+### Don't reinvent Laravel's wheels
+
+Statamic v3 is built as a _Laravel package_ instead of a "complete" application like v2. This makes it drop-in friendly for existing Laravel applications and  your own Statamic sites will be much easier to extend and customize, often without needing to make addons.
+
+To accomplish this we've had to follow more Laravel conventions, a positive thing in many ways, but resulting in numerous small changes. For example...
+
+- Application-level configuration settings are in Laravel config files — PHP files in `config/statamic` — managed **only** on the file level.
+- Many behaviors can now be overridden in your own [service provider](https://laravel.com/docs/providers).
+- Addons will need to be [Composer][composer] packages.
+- You can swap in your own favorite template language by customizing Laravel's view handler. We've heard some people like [Twig](https://twig.symfony.com).
+
+
+---
+
+
 ## Breaking Changes: Core
 
 First, let's look at the breaking changes on the core application side. These would be changes that affect the control panel, front-end, cli, and generally anything that doesn't require custom PHP.
@@ -96,6 +133,7 @@ Content tag conditions still exist, but now use our new content query builders u
 - `contains` and `doesnt_contain` no longer work on array/object data.
 - `matches`, `match`, `regex` and `doesnt_match` now ignore pattern delimiters and modifiers.
 - `is_uppercase`, `is_lowercase`, `is_today`, `is_yesterday`, `is_between`, `is_leap_year`, `is_weekday`, `is_weekend`, `in_array` and `is_json` conditions were removed.
+
 
 ---
 
@@ -302,3 +340,5 @@ Suggest modes have been replaced by [customized relationship fieldtypes](/guide/
 #### Statamic\API\Zip
 
 - Removed because core no longer uses it. If you need it, let us know.
+
+[composer]: https://getcomposer.org
