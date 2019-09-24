@@ -1,0 +1,49 @@
+title: 'Extending Statamic'
+expects_root: true
+root: caf2a160-de1c-11e9-aaef-0800200c9a66
+tree:
+  -
+    title: 'Control Panel'
+    children:
+      -
+        entry: cb8f4d8a-47b6-4567-9510-ed7d9ee9c037
+      -
+        entry: 83786f60-def6-11e9-aaef-0800200c9a66
+      -
+        entry: 06813e5d-158e-4318-aa4a-b29fd87d107f
+      -
+        entry: 5900c99f-89b9-4ee3-834c-cb1b070146e4
+      -
+        entry: 785ffa10-8b63-44b1-9da3-3837250cacbe
+      -
+        entry: ba2e6172-b4dc-443b-8230-b770dec1423c
+      -
+        entry: 06cbe7a2-5322-401a-8bc4-3ab6b20defb7
+  -
+    title: Front-end
+    children:
+      -
+        entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
+      -
+        entry: e052ecb8-60d9-4afa-980e-ce128c301d70
+  -
+    title: Wherever
+    children:
+      -
+        entry: 51a52222-9be7-46b1-8388-059019281a56
+      -
+        entry: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
+      -
+        entry: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
+      -
+        entry: c3da9537-5d5f-4b84-a4be-882b89217151
+      -
+        entry: 6843f6e9-ac62-4128-8d50-887560f201ca
+  -
+    title: Addons
+    url: /extending/addons
+    children:
+      -
+        entry: 5bd75435-806e-458b-872e-7528f24df7e6
+      -
+        entry: a1e29bbe-8fb7-4b46-9929-6440705a5c25

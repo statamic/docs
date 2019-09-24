@@ -1,0 +1,10 @@
+{{ structure :for="for" }}
+    <h5>{{ title }}</h5>
+    <ul>
+        {{ children }}
+            <li class="{{ is_current || is_parent ??= 'active' }}{{ ! intro ??= ' opacity-50' }}">
+                <a href="{{ url }}">{{ nav_title ?? title }}{{ if mount }}&hellip;{{ /if }}</a>
+            </li>
+        {{ /children }}
+    </ul>
+{{ /structure }}

@@ -4,7 +4,6 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264076
 id: 098cb1c5-94c2-4bc0-add7-9aad39951d67
-structure_slug: tags
 intro: Ultimately a Tag is nothing more than a PHP Method called from an Antlers template. This common pattern allows non-PHP developers to take advantage of dynamic features in their site easily without writing any code.
 ---
 ## Anatomy of a Tag

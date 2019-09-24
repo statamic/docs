@@ -1,0 +1,9 @@
+title: Extending
+route: '{{ if depth === 1 }}extending{{ /if }}{{ parent_uri }}/{{ slug }}'
+default_status: published
+template: page
+layout: layout
+blueprints:
+  - page
+structure: extending-docs
+revisions: false
