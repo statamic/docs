@@ -1,7 +1,7 @@
 title: Variables
 route: '{mount}/{slug}'
 default_status: published
-template: page
+template: variables.show
 layout: layout
 blueprints:
   - page
