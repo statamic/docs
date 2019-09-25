@@ -31,8 +31,13 @@ module.exports = {
       md: "3px 3px 0 theme('colors.blue-darkest', 'currentColor')",
       teal: "1px 1px 0 theme('colors.teal', 'currentColor')",
       'md-teal': "3px 3px 0 theme('colors.teal', 'currentColor')",
+      'lg-teal': "5px 5px 0 theme('colors.teal', 'currentColor')",
       orange: "1px 1px 0 theme('colors.orange', 'currentColor')",
       'md-orange': "3px 3px 0 theme('colors.orange', 'currentColor')",
+      'lg-orange': "5px 5px 0 theme('colors.orange', 'currentColor')",
+      mint: "1px 1px 0 theme('colors.mint', 'currentColor')",
+      'md-mint': "3px 3px 0 theme('colors.mint', 'currentColor')",
+      'lg-mint': "5px 5px 0 theme('colors.mint', 'currentColor')",
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
     },
     colors: {
@@ -53,6 +58,7 @@ module.exports = {
       'teal': '#01D7B0',
       'orange': '#FFB47A',
       'yellow': '#FAF77D',
+      'mint': '#b8fff3',
       'cp-bg': '#F1F5F9',
       'grey': {
         100: '#f7fafc',

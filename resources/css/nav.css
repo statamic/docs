@@ -1,5 +1,6 @@
 .side-nav {
     @apply font-display;
+    padding-bottom: 180px;
 
     h5 {
         @apply font-display font-bold italic text-blue-darkest mb-2 uppercase;

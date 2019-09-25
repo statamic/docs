@@ -162,17 +162,16 @@
   }
 
   > table {
-    @apply w-full text-left table-collapse;
+    @apply w-full text-left table-collapse border shadow-lg-mint;
     th {
-      @apply text-sm font-bold text-grey-700 p-2 bg-grey-100;
+      @apply text-base font-display italic font-normal text-black p-3 bg-mint border-t-4 border-b border-black;
     }
     td {
-      @apply p-2 border-t border-grey-200 text-sm;
+      @apply p-3 border-b border-black text-sm;
       code {
-        @apply bg-grey-100 px-1 font-mono text-xs text-purple align-baseline;
-      }
-      &:first-child {
-        @apply border-grey-300;
+        @apply font-mono text-xs p-0 text-purple !important;
+        background-color: transparent !important;
+        bottom: 0;
       }
     }
   }
