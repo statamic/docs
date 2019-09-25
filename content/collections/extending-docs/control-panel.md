@@ -1,5 +1,6 @@
 ---
 title: 'Control Panel'
+nav_title: Overview
 template: page
 parent: caf2a160-de1c-11e9-aaef-0800200c9a66
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
