@@ -4,7 +4,7 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347202
 id: 785ffa10-8b63-44b1-9da3-3837250cacbe
-intro: Creating pages in the control panel using a Controller is all well and good, but wouldn't it be nice if there was an easy way to access them? The Control Panel's navigation bar isn't just for core items. You are able to add your own items in there, too.
+intro: The Control Panel navigation is quite customizable. You can add your own sections, pages, and subpages, as well as remove and modify existing ones.
 ---
 
 Every nav item is represented by a `NavItem` object, which has a [full API](#the-navitem-class) for [adding](#adding-items), [removing](#removing-items), and [modifying](#modifying-items) items.  You may register your nav extensions in the `boot()` method of a service provider.
@@ -14,11 +14,14 @@ Every nav item is represented by a `NavItem` object, which has a [full API](#the
 Let's assume we're creating a Store addon, and want to add a `Store` nav item to the `Content` section of the navigation.  To add this item, we'll add the following code to our service provider's `boot()` method:
 
 ```php
-Nav::extend(function ($nav) {
-    $nav->content('Store')
-    	->url('/store')
-        ->icon('shopping-cart');
-});
+public function boot()
+{
+    Nav::extend(function ($nav) {
+        $nav->content('Store')
+            ->url('/store')
+            ->icon('shopping-cart');
+    });
+}
 ```
 
 The `content()` method there is a [magic method](http://php.net/manual/en/language.oop5.magic.php), and the name of method defines the section name that will be used.  If we need to display special characters in our section name, we can `create()` the nav item and explicitly define the section name:
@@ -124,15 +127,15 @@ Each item you see in the navigation is an instance of the `Statamic\CP\Navigatio
 
 The code examples above demonstrate how to [add](#adding-items), [modify](#modifying-items), and [remove](#removing-items) `NavItem` objects.  Once you have a `NavItem` object, the following chainable methods are available to you:
 
-| Method | Params | Description |
+| Method | Parameters | Description |
 | :--- | :--- | :--- |
-| `name()` | `$name` <small>(string)</small> | Define item name. |
-| `section()` | `$section` <small>(string)</small> | Define section name. |
-| `route()` | `$name` <small>(string)</small>, `$params` <small>(mixed, optional)</small> | Define route. |
-| `url()` | `$url` <small>(string)</small> | Define absolute URL. |
-| `icon()` | `$icon` <small>(string)</small> | Define icon. |
-| `children()` | `$children` <small>(array\|collection\|closure)</small> | Define child items. |
-| `can()` | `$ability` <small>(string)</small>, `$params` <small>(mixed, optional)</small> | Define authorization. |
-| `active()` | `$pattern` <small>(string)</small> | Define active styling pattern. |
-| `view()` | `$view` <small>(string)</small> | Define custom view. |
+| `name()` | `$name` (string) | Define item name. |
+| `section()` | `$section` (string) | Define section name. |
+| `route()` | `$name` (string), `$params` (mixed, optional) | Define route. |
+| `url()` | `$url` (string) | Define absolute URL. |
+| `icon()` | `$icon` (string) | Define icon. |
+| `children()` | `$children` (array\|collection\|closure) | Define child items. |
+| `can()` | `$ability` (string), `$params` (mixed, optional) | Define authorization. |
+| `active()` | `$pattern` (string) | Define active styling pattern. |
+| `view()` | `$view` (string) | Define custom view. |
 

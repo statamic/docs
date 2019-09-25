@@ -4,15 +4,15 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347303
 id: 06813e5d-158e-4318-aa4a-b29fd87d107f
-intro: One of the more powerful fields is the [Relationship fieldtype](/fieldtypes/relationship). So powerful that it gets its own docs page.
+intro: The [Relationship fieldtype](/fieldtypes/relationship) is one of the more powerful fields in Statamic's core. So powerful, in fact, that it earns its very own page in the docs. This is that page.
 ---
-Out of the box, it lets you select entries from various collections. You can also create and edit items on the fly from within the field. Pretty neat!
+By default, the relationship fieldtype lets you select entries from various collections as well as create and edit items on the fly from _within_ the field.
 
-It's possible for you to create your own relationship fields that provide the ability to select different sorts of items.
+You can create your own relationship fields that provide the ability to select all different sorts of items from anywhere.
 
 ## Example
 
-To illustrate that you can get items from anywhere - even across the internet using an API - we'll build a field that lets you select a user's tweets.
+To illustrate that you can get items from anywhere — even remote APIs — we'll build a field where you can select tweets from a given user.
 
 In your blueprints, you'll be able to use `type: tweets` (whatever you name your fieldtype) and all the options that the relationship field would normally give you, like `max_items`:
 
@@ -122,7 +122,7 @@ In order to convert those values into something useful, you'll either need to ov
 public function getItemData($values, $site = null)
 {
     $tweets = Twitter::getStatusesLookup(['id' => implode(',', $values)]);
-    
+
     return $this->formatTweets($tweets);
 }
 ```
@@ -145,8 +145,8 @@ By default, the search bar will be visible in the selector stack. When a user ty
 ``` php
 public function getIndexItems($request)
 {
-    return $request->search 
-        ? $this->searchTweets($request->search) 
+    return $request->search
+        ? $this->searchTweets($request->search)
         : $this->userTweets();
 }
 ```
