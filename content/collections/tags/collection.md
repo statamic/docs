@@ -42,7 +42,7 @@ parameters:
   -
     name: since
     type: string/var
-    description: "Limits the date the earliest point in time from which date-based entries should be fetched. You can use plain English (PHP's `strtotime` method will interprit. eg. `last sunday`, `january 15th, 2013`, `yesterday`) or the name any date variable."
+    description: "Limits the date the earliest point in time from which date-based entries should be fetched. You can use plain English (PHP's `strtotime` method will interpret. eg. `last sunday`, `january 15th, 2013`, `yesterday`) or the name any date variable."
   -
     name: until
     type: string/var
@@ -261,7 +261,7 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 {{ collection:blog taxonomy:tags="harry-potter" }}
 ```
 
-There are a number of different ways to use this parameter. They are explained in depth in the 
+There are a number of different ways to use this parameter. They are explained in depth in the
 [Taxonomies Guide](/taxonomies#collections)
 
 
