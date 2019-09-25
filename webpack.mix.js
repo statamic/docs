@@ -18,3 +18,16 @@ mix.postCss('resources/css/tailwind.css', 'public/css', [
     require('postcss-nested'),
     require('autoprefixer'),
 ])
+
+mix.browserSync({
+    proxy: '3-docs-new.test',
+    injectChanges: true,
+    notify: false,
+    ui: false,
+    files: [
+        './content/**/*.md',
+        './resources/views/**/*.html',
+        './public/css/**/*.css',
+        './public/js/**/*.js'
+    ]
+});

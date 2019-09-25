@@ -11,6 +11,8 @@
     },
     "devDependencies": {
         "axios": "^0.19",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "2.0.1",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.13",
