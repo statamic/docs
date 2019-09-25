@@ -153,6 +153,10 @@
     @apply p-4;
   }
 
+  pre.language-markdown code {
+    white-space: pre-line !important;
+  }
+
   li > pre, li > .prism-show-language {
       @apply mt-4;
   }

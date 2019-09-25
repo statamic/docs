@@ -150,7 +150,14 @@ pre > code {
 
 	.prism-show-language-label {
 		@apply absolute inline-block bottom-auto left-auto right-0 top-0 w-auto h-auto;
-		@apply text-white uppercase text-xs font-display tracking-wide px-2 py-1 bg-black select-none opacity-50 rounded-tr-sm;
+		@apply uppercase text-xs font-display tracking-wide px-2 py-1 select-none rounded-tr-sm;
+		background: rgba(0,0,0,.5);
+		color: rgba(255,255,255,.5);
+
+		&[data-language="Files"] {
+			background: rgba(0,0,0,.2);
+			color: rgba(255,255,255,.75);
+		}
 	}
 }
 
