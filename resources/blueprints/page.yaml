@@ -15,7 +15,7 @@ sections:
           display: Content
           restrict: false
           smartypants: true
-          automatic_line_breaks: true
+          automatic_line_breaks: false
           automatic_links: false
           escape_markup: false
           type: markdown

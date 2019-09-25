@@ -4,5 +4,14 @@
 </header>
 
 <article class="markdown pb-8">
+<<<<<<< HEAD
     {{ content | noparse | toc:ids }}
 </article>
+=======
+    {{ content | toc:ids | noparse }}
+
+    {{ if ! page:content }}
+        <img src="/img/coming-soon.png" alt="Coming Soon">
+    {{ /if }}
+</article>
+>>>>>>> c4c10449c2faa21bc6a77004b2e2aff8e430114c

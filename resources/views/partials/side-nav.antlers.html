@@ -1,0 +1,18 @@
+<nav class="side-nav">
+    <div class="mb-12">
+        {{ pages }}
+            <div class="flex items-center mb-4 text-sm hover:text-pink-hot
+                {{ if active }}font-bold text-purple{{ else }}text-grey-600{{ /if }}
+            ">
+                <div class="mr-2">{{ theme:output src="svg/{icon}.svg" }}</div>
+                <a href="{{ url }}">{{ title }}</a>
+            </div>
+        {{ /pages }}
+    </div>
+
+    {{ if segment_1 === 'extending' }}
+        {{ partial:side-nav-main for="extending-docs" }}
+    {{ else }}
+        {{ partial:side-nav-main for="documentation" }}
+    {{ /if }}
+</nav>
