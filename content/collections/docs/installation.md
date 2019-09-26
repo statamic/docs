@@ -79,7 +79,7 @@ Once Statamic is out of alpha, Statamic will be publicly available on [Packagist
    composer require statamic/cms statamic/definitely-not-v3
    ```
 
-3. If you plan to use the Control Panel, follow the instructions in the [Users][users] guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
+3. If you plan to use the Control Panel, follow the instructions in the [Users](/users#storage) guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
 
 
 ## Core Development
