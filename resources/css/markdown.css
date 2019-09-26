@@ -162,7 +162,7 @@
   }
 
   > table {
-    @apply w-full text-left table-collapse border shadow-lg-mint;
+    @apply w-full text-left table-collapse border shadow-lg-mint mb-8;
     th {
       @apply text-base font-display italic font-normal text-black p-3 bg-mint border-t-4 border-b border-black;
     }
