@@ -22,7 +22,7 @@ Statamic 3 has the ability to adapt to any data storage mechanism, from relation
 
 However, these solutions all add complexity and should only be used when necessary for scale.
 
-Statamic's "default state" is to operate in flat file mode, which not only reduces complexity, but opens up a world of possibilities, like:
+Statamic's "default mode" is to operate in flat file mode, which not only reduces complexity, but opens up a world of possibilities, like:
 
 - End-to-end **version control**.
 - The ability to write and manage content **right in your code editor**.
@@ -32,13 +32,13 @@ Statamic's "default state" is to operate in flat file mode, which not only reduc
 
 As your site scales, you can choose to move from the flat file driver to the one that best suits your needs. Deferring this decision making process is a great way to prevent premature optimization and technical debt.
 
-## The Schema is Yours
+## It's Your Schema
 
 It's completely up to you how to organize your content. With nearly 40 different fieldtypes included, there are many ways to structure your data.
 
 If you like the "one big field" approach with all your content and markup in one chunk, we've got you covered. Or if you like to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too.
 
-What fields are named, how they're organized, grouped, and arranged is all up to you. Your control panel can be as simple or robust as is needed to manage your site intuitively.
+What fields are named and how they're organized, grouped, and arranged is all up to you. Your Control Panel can be as simple or nuanced as is needed to manage your site intuitively.
 
 ## Bring Your Own HTML
 
@@ -52,11 +52,11 @@ We ship with most areas of the site in a "blank slate" state. We find it's much 
 
 If many of the sites you build share a common set of features, collections, taxonomies, and/or templates, save a copy of that state and use it as a site kickstarter. You'll be able to jump into new projects faster than anyone.
 
-## LEGO Brick Toolbox
+## LEGO Bricks
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 
-Statamic takes a different approach, that when combined with our "Bring Your Own HTML" core approach, enables you to build _almost anything_, like a toolbox full of LEGO bricks.
+Statamic takes a different approach, that when combined with our "Bring Your Own HTML" core approach, enables you to build _almost anything_, like a box full of LEGO bricks.
 
 **Want to build a photo gallery?** Add an Assets field that lets you select multiple images, and then loop through the selected images and render thumbnails on the fly with the Glide tag, and link to the full resolution image.
 
@@ -68,4 +68,4 @@ Hopefully you get the idea and see how you can solve almost any challenge with c
 
 ## Control Panel Optional
 
-You can do everything (and more) without ever logging into the Control Panel. Granted, the CP does tend to make some of the more complicated things easier (like creating relationships, discovering all possible options for a given setting, and so on), but we love efficiency and your editor is a great place to find it.
+You can do everything (and more) without ever logging into the Control Panel. Granted, it _does_ tend to make some of the more complicated things easier (like creating relationships, discovering all possible options for a given setting, and so on), but we love efficiency and your editor is a great place to find it.

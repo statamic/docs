@@ -1,6 +1,6 @@
 ---
 title: Requirements
-intro: Statamic is built as a [Laravel](https://laravel.com) package and has the same server requirements as &mdash; you guessed it &mdash; Laravel itself. You'll also need an image transformation library like GD or ImageMagick.
+intro: Statamic is a modern PHP application, built as a [Laravel](https://laravel.com) package and has the same server requirements as &mdash; you guessed it &mdash; Laravel itself. If you'd like to work with image assets, you'll also need an image transformation library like GD Library or ImageMagick.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568656760
@@ -9,7 +9,7 @@ blueprint: page
 ---
 ## Server Requirements
 
-To run Statamic 3 you'll need a server that meets the following requirements:
+To run Statamic 3 you'll need a server that meets the following requirements. These are all pretty standard in most modern hosting platforms.
 
 - PHP `>= 7.2.0`
 - BCMath PHP Extension
@@ -24,7 +24,7 @@ To run Statamic 3 you'll need a server that meets the following requirements:
 
 ## Recommended Hosts
 
-We recommend using [Digital Ocean][do] to host most Statamic sites. Their droplets are fast, inexpensive, and we use them ourselves. **Full disclosure:** that's an affiliate link, but we wouldn't recommend them if they weren't the best.
+We recommend using [Digital Ocean][do] to host most Statamic sites. Their droplets are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if they weren't the best._
 
 We also maintain a user-contributed [Github repo][hosts] full of other host recommendations. Take a peek if Digital Ocean isn't right for you.
 
