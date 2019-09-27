@@ -175,20 +175,22 @@ You may mount a collection onto an entry as a way of saying "all these entries b
     <figcaption>Look at those add and edit links!</figcaption>
 </figure>
 
+### Mount Setting
+
+You can mount a collection to an entry by specifying the ID of said entry. You can also use the `mount` variable in the route to prepend the mounted entry's URL.
+
+So for example, if you mounted a collection to `/blog` with `/{mount}/{slug}`, all your blog URLs will follow the `/blog/entry-url` pattern. If you later move `/blog` to `/articles`, all your entries will follow along with `/articles/entry-url`.
+
+``` yaml
+title: Blog
+mount: id-of-the-blog-entry
+route: '{mount}/{slug}'
+```
+
 ## Revisions
 
 Revisions allow you to see the history of any given entry over time. Revisions need to be enabled on the site level ([read those docs](/revisions)), and then you can enable them for any collection.
 
 ```
 revisions: true
-```
-
-### Mount Setting
-
-Mount the collection by specify the ID of an entry. You can also use the `mount` variable in the route.
-
-``` yaml
-title: Blog
-mount: id-of-the-blog-entry
-route: '{mount}/{slug}'
 ```
