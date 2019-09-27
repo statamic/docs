@@ -149,6 +149,12 @@ route: /{parent_uri}/{slug}.html
 # example: /details/project.html
 ```
 
+#### Organizing sports brackets with structures
+``` yaml
+route: /tournament/round-{depth}/{team}
+# example: /tournament/round-4/chicago-bulls
+```
+
 ## Taxonomies
 
 In Statamic 3, [taxonomies](/taxonomies) are defined on the _collection level_, not the blueprint-level. This enforces a tighter content-model, and reduces complexity when configuring blueprints.
