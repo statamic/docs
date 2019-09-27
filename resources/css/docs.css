@@ -46,3 +46,38 @@ figure, .screenshot {
 .caption, figure figcaption {
     @apply bg-blue-lightest border shadow px-4 py-1 italic font-display text-sm font-bold absolute -bottom-16 right-64 w-auto;
 }
+
+.badge {
+    @apply bg-mint border inline-block shadow-md-mint text-sm font-display py-1 px-2 uppercase italic font-bold;
+}
+
+.rot-1 {
+    transform: rotate(1deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}
+.\-rot-1 {
+    transform: rotate(-1deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}
+.rot-2 {
+    transform: rotate(2deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}
+.\-rot-2 {
+    transform: rotate(-2deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}
+.rot-3 {
+    transform: rotate(3deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}
+.\-rot-3 {
+    transform: rotate(-3deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+}

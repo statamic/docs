@@ -26,3 +26,15 @@ sections:
           display: Template
           type: template
           default: page
+      -
+        handle: stage
+        field:
+          display: Writing Stage
+          type: select
+          options:
+            - Prewriting
+            - Drafting
+            - Major Editing
+            - Polishing
+            - Evaluating
+            - Complete
