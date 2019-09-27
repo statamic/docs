@@ -76,7 +76,11 @@ module.exports = {
       fontFamily: {
         'display': ['code-saver', 'sans-serif'],
       },
+      fontSize: {
+        '2xs': '0.6rem',
+      },
       spacing: {
+        'sm': '2px',
         7: '1.75rem'
       },
       inset: {

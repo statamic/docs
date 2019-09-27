@@ -17,7 +17,18 @@
             <ul>
                 {{ results }}
                     <li>
-                        <a href="{{ url }}">{{ title }}</a>
+                        <div class="flex items-center">
+                            <a href="{{ url }}">{{ title }}</a>
+                            {{ unless collection == "docs" }}
+                            <span class="text-2xs text-grey-700 antialiased border-sm bg-grey-400 px-2 p-sm rounded ml-2">
+                                {{ if collection === "tags" }}Tag
+                                {{ elseif collection === "fieldtypes" }}Fieldtype
+                                {{ elseif collection === "modifiers" }}Modifier
+                                {{ elseif collection === "variables" }}Variable
+                                {{ /if }}
+                            </span>
+                            {{ /unless }}
+                        </div>
                         {{ if intro }}
                             <div class="text-grey-600 text-sm">{{ intro }}</div>
                         {{ /if }}
