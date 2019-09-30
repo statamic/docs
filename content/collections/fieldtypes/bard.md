@@ -115,8 +115,6 @@ If you don't configure any additional sets the field data will be saved as a str
 bard_field: "<p>Oh hi Mark.</p>"
 ```
 
-> Please note that you **cannot** name your Bard field "`content`", but go ahead and name it anything else! The `content` field is what's saved in your markdown files below the YAML, and can only contain a string, where Bard would save an array.
-
 ## Templating {#templating}
 
 Use tag pair syntax with `if/else` conditions to style each set accordingly.
