@@ -66,7 +66,7 @@ Prism.hooks.add('before-highlight', function(env) {
 	}
 });
 
-Prism.languages.antlers = {
+Prism.languages.antlers = Prism.languages.extend("markup", {
 
 	'comment': [
 		/\{\{#[\w\W]*?#\}\}/g,
@@ -103,7 +103,7 @@ Prism.languages.antlers = {
 		inside: Prism.languages.markup
 	}
 
-};
+});
 
 Prism.languages.files = {
 	"files-part": {
