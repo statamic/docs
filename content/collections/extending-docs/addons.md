@@ -305,7 +305,7 @@ Other than that, you're free to write routes [as per any Laravel application](ht
 You may push your own middleware onto two separate stacks which correspond to two of the [route groups](#routing) listed above.
 
 ``` php
-protected $routes = [
+protected $middleware = [
     'cp' => [
         YourCpMiddleware::class,
         AnotherCpMiddleware::class
