@@ -300,6 +300,21 @@ public function boot()
 
 Other than that, you're free to write routes [as per any Laravel application](https://laravel.com/docs/5.6/routing).
 
+## Middleware
+
+You may push your own middleware onto two separate stacks which correspond to two of the [route groups](#routing) listed above.
+
+``` php
+protected $routes = [
+    'cp' => [
+        YourCpMiddleware::class,
+        AnotherCpMiddleware::class
+    ],
+    'web' => [
+        YourWebMiddleware::class
+    ],
+];
+```
 
 ## Events
 
