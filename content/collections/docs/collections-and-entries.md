@@ -156,6 +156,24 @@ route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
 ```
 
+## Data Cascade
+
+When working with entries in your templates, the data will come from a few places.
+
+1. The entry
+2. The origin entry (if using localization)
+3. The collection
+
+If a value doesn't exist in one place, it'll check the next, and so on.
+
+Injecting cascading data into your collection is a handy way of providing default values to your entries. You can do that with the `inject` variable.
+
+``` yaml
+inject:
+  author: jason
+  show_sidebar: true
+```
+
 ## Taxonomies
 
 In Statamic 3, [taxonomies](/taxonomies) are defined on the _collection level_, not the blueprint-level. This enforces a tighter content-model, and reduces complexity when configuring blueprints.
