@@ -6,22 +6,34 @@ template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568644449
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
+stage: Drafting
 blueprint: page
 ---
 ## Overview
 
-Assets are the media and document files that you've given Statamic access to. They usually live in folders on your server but can also exist on an [Amazon S3 bucket](https://aws.amazon.com/s3) or other file storage service.
+Assets are the media and document files that you've given Statamic access to. They usually live in folders on your server but can also exist on an [Amazon S3 bucket](https://aws.amazon.com/s3) or other file storage service. Each of these locations is called a **container**..
 
-Statamic will scan these files and cache basic meta information (like `width` and `height` for images) about them to speed up interactions and response times.
+Statamic will scan the files in each container and cache [meta information](#metadata) (like `width` and `height` for images) about them to speed up interactions and response times when working with them on your front-end.
+
+## Asset Browser
+The Control Panel's asset browser gives you a great view on these files. You can file, sort, and search them, move and rename files, preview media files, and even set focal crop points.
 
 <figure>
     <img src="/img/assets.png" alt="Assets browser">
     <figcaption>The asset browser browsin' some assets.</figcaption>
 </figure>
 
-The Control Panel's asset browser gives you a great view on these files. You can file, sort, and search them, move and rename files, preview media files, and even
+## Asset Fields
 
-Assets are grouped into **containers**, each with its own settings, configurable permissions, and [blueprints](/blueprints). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service. It's up to you.
+Asset fields are configured as a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll be see the fields from the configured blueprint.
+
+This data is stored in the asset's [meta data](#metadata) file.
+
+<figure>
+    <img src="/img/asset-editor.png" alt="The asset editor editing an image">
+    <figcaption>The asset editor in editing an image.</figcaption>
+</figure>
+
 
 ## Metadata
 
@@ -41,12 +53,32 @@ data:
   focus: 54-54-1
 ```
 
-## Asset Fields
+## Containers
 
-_Examples and screenshot of Asset editor_.
+Each container has its own settings, configurable permissions, and [blueprints](/blueprints). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service. It's up to you.
 
-- When editing an asset in the CP, the editor will get its fields from the `blueprint` defined in the container.
-- Asset data is stored in the asset's [meta data](#metadata) file.
+Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
+
+``` yaml
+title: 'Assets'
+disk: 'assets'
+```
+
+Each container implements a disk, which is just a [Laravel Filesystem](https://laravel.com/docs/filesystem) — a native Laravel feature, which is nothing more some glue that groups [driver](#driver), URL, and a location together. Statamic has a nice default asset disk ready for you. You don't need to mess with this stuff unless you want to.
+
+``` php
+'disks' => [
+    'assets' => [
+        'driver' => 'local',
+        'root' => public_path('assets'),
+        'url' => env('APP_URL').'/assets',
+        'visibility' => 'public',
+    ],
+]
+```
+
+Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or anything else as long as there is a Flysystem adapter for it installed.
+
 
 ## Entries
 
@@ -66,30 +98,12 @@ _Examples and screenshot of Asset editor_.
     ```
 - Note: This differs from v2, which saved URLs relative to the root.
 
-## Containers
-
-- A container is any yaml file located in `content/assets`. The `handle` is the filename.
-- It should have a `disk` variable with the name of a filesystem from `config/filesystems.php`
-    ``` yaml
-    title: 'Assets'
-    disk: 'assets'
-    ```
-    ``` php
-    'disks' => [
-        'assets' => [
-            'driver' => 'local',
-            'root' => public_path('assets'),
-            'url' => env('APP_URL').'/assets',
-            'visibility' => 'public',
-        ],
-    ]
-    ```
-- Filesystem disks are entirely a [Laravel concept](https://laravel.com/docs/filesystem). They can point to the local filesystem, S3, or anything else as long as there is a Flysystem adapter for it installed.
 
 ## Drivers
 
-- Being a Laravel feature, the Flysystem included drivers are whatever Laravel includes: Local, S3, and SFTP (the last 2 require a composer dependencies).
-- More Flysystem drivers can be installed by following Laravel's [Custom Filesystems docs](https://laravel.com/docs/6.x/filesystem#custom-filesystems).
+Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/6.x/filesystem#driver-prerequisites).
+
+Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/6.x/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
 
 ## Templating
 
