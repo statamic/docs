@@ -5,9 +5,10 @@ template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568748076
 blueprint: page
+stage: Major Editing
 id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 ---
-## Overview
+## Config Files
 
 Statamic's main config files can be found in `config/statamic/`. They are PHP files, organized by area of responsibility.
 
@@ -38,6 +39,69 @@ It is often helpful to have different configuration values based on the environm
 
 In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your application. If you install Statamic via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
 
-Your `.env` file **should not** be committed to version control because  each developer or server running your application could require a different environment configuration. Not only that, but it could be security risk in the event an intruder gains access to your version control repository, since any sensitive credentials would get exposed.
+### Environment Variable Types
 
-Learn more about [Environment Configuration](https://laravel.com/docs/6.x/configuration#environment-configuration) in the Laravel docs.
+All variables in your `.env` files are parsed as strings, so some reserved values have been created to allow you to return a wider range of types from the `env()` function:
+
+| `.env` Value | `env()` Value |
+|--------------|--------------|
+| `true` | `(bool) true` |
+| `(true)` | `(bool) true` |
+| `false` | `(bool) false` |
+| `(false)` | `(bool) false` |
+| `empty` | `(string) ''` |
+| `(empty)` | `(string) ''` |
+| `null` | `(null) null` |
+| `(null)` | `(null) null` |
+
+If you need to define an environment variable with a value that contains space, you may do so by enclosing the value in double quotes.
+
+``` env
+APP_NAME="New Statamic Site"
+```
+
+### Retrieving Environment Variables
+
+All of the variables listed in this file are available in your config files by using the `env()` helper. The optional second argument lets pass a default value in case you don't have the environment variable set.
+
+``` php
+'awesome' => env('ENABLE_AWESOME', true),
+```
+
+### Don't version your `.env` file
+
+Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be security risk in the event an intruder gains access to your version control repository, since any sensitive credentials would get exposed.
+
+### Hiding Environment Variables from Debug Pages
+
+When an exception is uncaught and the `APP_DEBUG` environment variable is `true`, the debug page will show all environment variables and their contents. You may obscure variables by updating the `debug_blacklist` option in your `config/app.php` config file.
+
+``` php
+return [
+
+    // ...
+
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'MAILCHIMP_API_KEY',
+            'BITCOIN_WALLET_PW',
+        ],
+
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+        ],
+
+        '_POST' => [
+            'password',
+        ],
+    ],
+];
+```
+
+
+Learn more about [environment configuration](https://laravel.com/docs/6.x/configuration#environment-configuration) in the Laravel docs.
+
+
+
