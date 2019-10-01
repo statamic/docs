@@ -35,3 +35,7 @@
         content: '';
     }
 }
+
+.toc li.active a:before {
+    @apply bg-mint;
+}

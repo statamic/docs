@@ -3,7 +3,7 @@ title: 'Writing Stages'
 intro: 'A quick summary of the phases our documentation goes through.'
 template: page
 blueprint: page
-stage: false
+stage: Complete
 id: 6216a669-5103-4665-a5f7-2eea2f08bcb4
 ---
 ## Prewriting

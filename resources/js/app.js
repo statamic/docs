@@ -31,6 +31,8 @@
 
 
 require('./prism.js')
+require('./scrollspy.js')
+
 let phrases = [
     "🍳What's shakin', home skillet?",
     "🐢Cowabunga!",
