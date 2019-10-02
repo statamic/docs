@@ -32,6 +32,7 @@
 
 require('./prism.js')
 require('./scrollspy.js')
+require('./anchors.js')
 
 let phrases = [
     "🍳What's shakin', home skillet?",
@@ -49,3 +50,4 @@ let phrases = [
 console.log(phrases[Math.floor(Math.random() * phrases.length)])
 
 Prism.highlightAll()
+

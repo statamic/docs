@@ -6,11 +6,11 @@
     }
 
     > h2 {
-        @apply text-2xl text-blue-darkest font-bold mb-4 leading-tight mt-12 pt-4;
+        @apply text-2xl text-blue-darkest font-bold pb-4 leading-tight mt-12 pt-4 relative;
     }
 
     > h3 {
-        @apply text-lg text-blue-darkest font-bold mb-4 mt-12 leading-tight;
+        @apply text-lg text-blue-darkest font-bold mb-4 mt-12 leading-tight relative;
     }
 
     > h4 {
@@ -19,6 +19,22 @@
 
     > h5 {
         @apply font-display font-bold italic text-blue-darkest;
+    }
+
+    h2 > .anchor, h3 > .anchor {
+        @apply absolute opacity-0;
+        top: 23px;
+        left: -18px;
+        width: 36px;
+        transition: all .2s ease-in-out;
+        &:hover {
+
+        }
+    }
+
+    h2:hover .anchor, h3:hover .anchor {
+        opacity: 1;
+        left: -24px;
     }
 
     > p, > blockquote > p {
