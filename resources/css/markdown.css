@@ -23,14 +23,13 @@
 
     h2 > .anchor, h3 > .anchor {
         @apply absolute opacity-0;
-        top: 23px;
         left: -18px;
         width: 36px;
         transition: all .2s ease-in-out;
-        &:hover {
-
-        }
     }
+
+    h2 > .anchor { top: 23px; }
+    h3 > .anchor { top: 3px; }
 
     h2:hover .anchor, h3:hover .anchor {
         opacity: 1;
