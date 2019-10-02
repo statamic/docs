@@ -21,15 +21,17 @@ class Toc extends Modifier
     {
         $this->context = $context;
 
-        list($toc, $content) = $this->create($value);
+        $creatingIds = array_get($params, 0) == 'ids';
 
-        return (array_get($params, 0) == 'ids') ? $content : $toc;
+        list($toc, $content) = $this->create($value, $creatingIds ? 3 : 2);
+
+        return $creatingIds ? $content : $toc;
     }
 
     // Good golly this thing is ugly.
-    private function create($content)
+    private function create($content, $maxHeadingLevels)
     {
-        preg_match_all( '/<h([1-2])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
+        preg_match_all( '/<h([1-'.$maxHeadingLevels.'])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
 
         if (! $matches) {
             return [null, $content];
