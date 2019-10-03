@@ -10,7 +10,7 @@
     }
 
     > h3 {
-        @apply text-lg text-blue-darkest font-bold mb-4 mt-12 leading-tight relative;
+        @apply text-lg text-blue-darkest font-bold mb-4 mt-10 pt-2 leading-tight relative;
     }
 
     > h4 {
@@ -29,7 +29,7 @@
     }
 
     h2 > .anchor { top: 23px; }
-    h3 > .anchor { top: 3px; }
+    h3 > .anchor { top: 11px; }
 
     h2:hover .anchor, h3:hover .anchor {
         opacity: 1;
@@ -72,8 +72,13 @@
             @apply text-sm;
             &:last-child { @apply mb-0; }
         }
+
         strong {
             @apply italic;
+        }
+
+        a {
+            @apply italic font-bold;
         }
     }
 
