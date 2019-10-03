@@ -12,7 +12,7 @@ class SideNavComposer
                 'icon' => 'book',
                 'url' => '/',
                 'active' => empty(request()->segments())
-                    || ! in_array(request()->segment(1), ['screencasts', 'kb', 'cookbook', 'extending']),
+                    || ! in_array(request()->segment(1), ['screencasts', 'knowledge-base', 'cookbook', 'extending']),
             ],
             [
                 'title' => 'Screencasts',
@@ -23,15 +23,15 @@ class SideNavComposer
             [
                 'title' => 'Knowledge Base',
                 'icon' => 'help-desk',
-                'url' => '/kb',
-                'active' => request()->segment(1) === 'kb',
+                'url' => '/knowledge-base',
+                'active' => request()->segment(1) === 'knowledge-base',
             ],
-            [
-                'title' => 'Cookbook',
-                'icon' => 'cookbook',
-                'url' => '/cookbook',
-                'active' => request()->segment(1) === 'cookbook',
-            ],
+            // [
+            //     'title' => 'Cookbook',
+            //     'icon' => 'cookbook',
+            //     'url' => '/cookbook',
+            //     'active' => request()->segment(1) === 'cookbook',
+            // ],
             [
                 'title' => 'Extending Statamic',
                 'icon' => 'tetris',

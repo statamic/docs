@@ -1,0 +1,15 @@
+<header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
+    <h1>Knowledge Base</h1>
+    <p class="text-xl">
+        Articles, tips, tricks, and other helpful content to help answer those hard-to-categorize questions.
+        Godspeed on your quest for answers!
+    </p>
+</header>
+
+<article class="markdown pb-8">
+    <ul>
+    {{ collection:knowledge-base }}
+        <li><a href="{{ url }}">{{ title }}</a></li>
+    {{ /collection:knowledge-base }}
+    </ul>
+</article>

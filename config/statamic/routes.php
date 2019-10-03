@@ -16,7 +16,8 @@ return [
     */
 
     'routes' => [
-        'search-results' => 'search'
+        'search-results' => 'search',
+        'knowledge-base' => 'knowledge-base.index'
     ],
 
     /*
