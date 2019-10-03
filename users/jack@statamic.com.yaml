@@ -12,6 +12,11 @@ preferences:
       columns:
         - title
         - slug
+    knowledge-base:
+      columns:
+        - title
+        - stage
+        - slug
   favorites:
     -
       name: 'Create Docs Page'

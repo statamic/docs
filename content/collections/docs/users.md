@@ -1,91 +1,125 @@
 ---
 title: Users
+intro: Users are the member accounts to your site or application. What a user can do with that account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645051
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
+stage: Major Editing
 ---
-## User Storage {#storage}
+## Overview
 
-Users can be stored in [files](#storing-in-files), in a [database](#storing-in-a-database), or really [anywhere else](#custom-user-storage).
+The most common and obvious reason users exist are to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
 
-## Storing Users in Files {#storing-in-files}
+<figure>
+    <img src="/img/users-index.png" alt="List of Statamic Control Panel users">
+    <figcaption>Why hasn't the Hoff logged in?</figcaption>
+</figure>
 
-When creating new site using the `statamic` command or by cloning `statamic/statamic`, your Laravel application will be preconfigured
-to store users as files. Nothing else is required!
+## Creating Users
 
-If you've installed Statamic into an existing Laravel application, it will be expecting users to be stored in the database, but you can switch to the filesystem:
+The easiest way to create your **first user** is by running `make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
 
-1. In `config/statamic/users.php`, change `repository` to `file`.
-2. In `config/auth.php`, change the users provider driver to `statamic`.
-   ``` php
-    'providers' => [
-        'users' => [
-            'driver' => 'statamic',
-        ],
-    ],
-   ```
+<figure>
+    <img src="/img/make-user.png" alt="Make User command" class="shadow-lg-teal rounded">
+    <figcaption>This is all it takes to make your first user.</figcaption>
+</figure>
 
-## Storing Users in a Database {#storing-in-a-database}
+You can also [create users by hand](/knowledge-base/creating-user-files) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
 
-If you have a large amount of users, or you need to scale horizontally, it may make sense to store them in a database. 
+### New User Invitations
 
-### From a fresh Statamic project
+When creating users in the Control Panel you can send email invitations to help guide those users into activating their accounts and signing in for the first time. You can even customize a lovely little welcome message for them.
 
-If you installed Statamic using the `statamic new` command, or created a project based on the `statamic/statamic` repo, it will be configured to store users in files.
+<figure>
+    <img src="/img/user-invitation.png" alt="A user invitation screen">
+    <figcaption>An opportunity for a knock knock joke, perhaps?</figcaption>
+</figure>
 
-Statamic comes with an Eloquent driver to make the transition as seamless as possible.
+> Make sure to [configure the email driver](/email) so those emails actually go out.
 
-1. Ensure you have a [database configured](https://laravel.com/docs/5.7/database#configuration).
-2. In `config/statamic/users.php`, change `repository` to `eloquent`.
-3. Comment out the `users` store in `config/statamic/stache.php`.
-4. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
-5. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
-6. Run `php artisan migrate` 
-7. Run a command to migrate your file based users into the database.
+## User Fields
 
-### In an existing Laravel app
+You're more than welcome — encouraged even — to customize what fields and information you'd like to store on your users. For example, you could store author bios and social media links to be used in articles on your front-end.
 
-If you've installed Statamic into an existing Laravel app, it will already be configured to use the Eloquent driver.
-You will need to run migrations to prepare your database for Statamic's user and permission setup.
+To customize these fields, edit the included `user` [blueprint](/blueprints)  and configure it however you'd like. Just be sure to keep the required system fields:
 
-``` bash
-php please auth:migration
-php artisan migrate
-```
+| Field | Type | Required |
+|-------|------|----------|
+| `email` | `text` | Always |
+| `groups` | `user_groups_roles` | When using groups |
+| `roles` | `user_roles` | When using roles |
 
-This will add some columns to the `users` table (like `super`, and `last_login`), and create the `role_user` and `group_user` pivot tables.
+## Permissions
 
-This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](#custom-user-storage).
+A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for that user to access the control panel, create, edit, or publish content, create users, and so on.
 
-## Custom User Storage
+Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `config/statamic/user_roles.yaml`.
 
-If you'd like to store your users somewhere outside the filesystem, and the included Eloquent implementation doesn't quite cut it for you,
-you're free to write your own.
+In turn, **roles** are attached directly to individual users or [user groups](#user-groups).
 
-You will need to write implementations for all the contracts located in `Statamic\Contracts\Auth`. Of course, you may extend the native classes and override where appropriate, instead of writing everything from scratch.
+### Statamic's native permissions: {#native-permissions}
 
-In a service provider, use the `Statamic\API\User::repository()` method to define a custom repository driver:
+| Permission | Handle |
+|------------|--------|
+| Access the Control Panel | `access cp` |
+| Create, edit, and delete collections | `configure collections` |
+| View entries | `view {collection} entries` |
+| ↳  Edit entries | `edit {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete entries | `delete {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Publish entries | `publish {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Reorder entries | `reorder {collection} entries` |
+| Create, edit, and delete structures | `configure structures` |
+| ↳  View structure | `view {structure} structure` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
+| Edit global variables | `edit {global} globals` |
+| View asset container | `view {container} assets` |
+| ↳  Upload assets | `upload {container} assets` |
+| ↳  Edit assets | `edit {container} assets` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Move assets | `move {container} assets` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Rename assets | `rename {container} assets` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete assets | `delete {container} assets` |
+| View available updates | `view updates` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Perform updates | `perform updates` |
+| View users | `view users` |
+| ↳ Edit users | `edit users` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Create users | `create users` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Delete users | `delete users` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Change passwords | `change passwords` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Edit user groups | `edit user groups` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Edit roles | `edit roles` |
+| Configure forms | `configure forms` |
+| View form submissions | `view {form} submissions` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
 
-``` php
-Statamic\Facades\User::repository('custom', function ($app, $config) {
-    return new CustomUserRepository;
-});
-```
+### Super Users
 
-After you've registered the driver using the `repository` method, you'll want to create a repository in `config/statamic/users.php` that uses the new driver:
+Super Admin accounts are special accounts that **have access and permission to everything**, including things that are reserved just for super users, like the ability to _create more super users_. It's important that we prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
 
-``` php
-'repositories' => [
-    'custom' => [
-        'driver' => 'custom',
-    ]
-]
-```
+## User Groups
 
-Finally, set that repository as the one you want active:
+User groups allow you to attach [roles](#roles), include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
 
-``` php
-'repository' => 'custom'
-```
+## Password Resets
+
+Let's face it. People forget their passwords. A lot, and often. Statamic supports password resets. For users with Control Panel access, the login screen (found by default at `example.com/cp`) already handles this for you automatically.
+
+You can also create your own password reset pages for front-end users by using the [user:forgot_password_form](/tags/user-forgot_password_form) tag.
+
+The user will receive an email with a temporary, single-use token that will let them set a new password and log in again.
+
+## Storing User Records {#storage}
+
+While users are stored in files by default — like everything else in Statamic — they can also be located in a database or really anywhere else. Here are links to articles for the different scenarios you may find yourself in.
+
+- [Storing Laravel Users in Files](/knowledge-base/storing-laravel-users-in-files)
+- [Storing Users in a Database](/knowledge-base/storing-users-in-a-database)
+- [Custom User Storage](/knowledge-base/storing-users-somewhere-custom)
+
+## OAuth
+
+In addition to conventional user authentication, Statamic also provides a simple, convenient way to authenticate with OAuth providers through [Laravel Socialite](https://github.com/laravel/socialite). Socialite currently supports authentication with Facebook, Twitter, LinkedIn, Google, GitHub, GitLab and Bitbucket, while dozens of additional providers are available though [third-party Socialite Providers](https://socialiteproviders.netlify.com/).
+
+Learn how to [configure OAuth](/oauth) on your site.
