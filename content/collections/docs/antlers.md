@@ -1,6 +1,6 @@
 ---
 title: 'Antlers Templates'
-intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, displaying and modify data, and handle logic. Antlers view files (templates) use the `.antlers.html` file extension and are stored in the `resources/views` directory.'
+intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, displaying and modify data, tap into core features like user authentication and search, and handle complex logic.'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568806133
 blueprint: page
@@ -8,6 +8,11 @@ template: page
 stage: Major Editing
 id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 ---
+## Overview
+
+Antlers view files are often called templates. Any files in your `resources/views` directory that use the `.antlers.html` file extension will be parsed with the Antlers engine.
+
+
 ## Antlers Syntax
 
 Antlers adds capabilities on top of HTML through the use of curly brace expressions. Those curly braces – often called double mustaches or squiggly gigglies – look a whole lot like _antlers_ to us, hence the name.
@@ -273,6 +278,13 @@ Use this method if you need to prevent entire code blocks from being parsed.
 {{ /noparse }}
 ```
 
+## Syntax Highlighting
+
+Syntax highlighting packages are available for most of the popular IDEs. Make life that much sweeter.
+
+- [Antlers for Atom](https://github.com/addisonhall/language-antlers)
+- [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
+- [Antlers for VS Code](https://github.com/addisonhall/ahdesign.antlers)
 
 
 [ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
