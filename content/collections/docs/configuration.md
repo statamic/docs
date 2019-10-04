@@ -10,7 +10,7 @@ id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 ---
 ## Config Files
 
-Statamic's main config files can be found in `config/statamic/`. They are PHP files, organized by area of responsibility.
+Statamic's main config files can be found in `config/statamic/`. They are primarily PHP files, organized by area of responsibility.
 
 ``` files
 ├── config/statamic/
@@ -31,6 +31,8 @@ Statamic's main config files can be found in `config/statamic/`. They are PHP fi
 │   ├── system.php
 │   ├── theming.php
 │   └── users.php
+│   └── user_roles.yaml
+│   └── user_groups.yaml
 ```
 
 ## Environment Variables
