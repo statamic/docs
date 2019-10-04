@@ -8,6 +8,7 @@ preferences:
       columns:
         - title
         - slug
+      per_page: 100
     tags:
       columns:
         - title
