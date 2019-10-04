@@ -3,7 +3,7 @@ title: 'Writing Stages'
 intro: 'A quick summary of the phases our documentation goes through.'
 template: page
 blueprint: page
-stage: Complete
+hide_stage: true
 id: 6216a669-5103-4665-a5f7-2eea2f08bcb4
 ---
 ## Prewriting
@@ -28,7 +28,7 @@ And then we layer on the humor when and where we can. We love docs that are fun 
 
 ## Evaluating
 
-Time to assess and receive feeback. If anything is unclear, we'll move back through whichever steps are needed to bring this page to perfection.
+Time to assess and receive feedback. If anything is unclear, we'll move back through whichever steps are needed to bring this page to perfection.
 
 ## Complete
 

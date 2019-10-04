@@ -6,7 +6,7 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568743749
 id: f12f8ba3-19ff-48cb-a07b-653b05082d7e
 blueprint: page
-stage: Drafting
+stage: 1
 ---
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 fantastic new features, and speeds up performance by 5x. What's not to love about that?

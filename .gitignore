@@ -6,6 +6,7 @@
 public/js
 /storage/*.key
 /storage/statamic/users
+/storage/debugbar/*
 /vendor
 .env
 .env.backup

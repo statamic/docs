@@ -5,7 +5,7 @@ template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568644287
 id: 24a9c9d8-d607-4117-9806-738668c173cd
-stage: Major Editing
+stage: 2
 ---
 ## Opinionated but Configurable
 

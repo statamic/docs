@@ -32,9 +32,9 @@ sections:
           display: Writing Stage
           type: select
           options:
-            - Prewriting
-            - Drafting
-            - Major Editing
-            - Polishing
-            - Evaluating
-            - Complete
+            0: Prewriting
+            1: Drafting
+            2: Major Editing
+            3: Polishing & Humorizing
+            4: Evaluating
+            5: Complete
