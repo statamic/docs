@@ -3,10 +3,11 @@
 /public/storage
 /public/css
 /public/vendor/statamic
-public/js
+/public/js
 /storage/*.key
 /storage/statamic/users
 /storage/debugbar/*
+/storage/glide/*
 /vendor
 .env
 .env.backup
@@ -15,3 +16,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# When in dev...
+/public/img/.meta
+/public/img/fieldtypes/.meta
