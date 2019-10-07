@@ -103,3 +103,10 @@ $utility->routes(function ($router) {
 {{ cp_route('utilities.french-fries.make') }}
 // outputs: /cp/utilities/french-fries/make
 ```
+
+## Permissions
+
+A single permission will be registered automatically using the handle.  
+eg. `access french fries utility`
+
+Users without this permission will not see the utility in the navigation or utility listing.
