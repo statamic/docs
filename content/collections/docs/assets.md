@@ -60,6 +60,7 @@ Each container has its own settings, configurable permissions, and [blueprints](
 Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
 
 ``` yaml
+# content/assets/main.yaml
 title: 'Assets'
 disk: 'assets'
 ```
@@ -71,7 +72,7 @@ Each container implements a disk, which is just a [Laravel Filesystem](https://l
     'assets' => [
         'driver' => 'local',
         'root' => public_path('assets'),
-        'url' => env('APP_URL').'/assets',
+        'url' => '/assets',
         'visibility' => 'public',
     ],
 ]
