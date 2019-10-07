@@ -172,7 +172,7 @@ links:
       handle: url
       field: links.url
     -
-      handle: url
+      handle: text
       field: links.text
     -
       handle: external
