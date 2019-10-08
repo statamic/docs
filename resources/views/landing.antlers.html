@@ -1,20 +1,32 @@
 <header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
     <h1>{{ title }}</h1>
     <div class="text-xl">
-        {{ intro | markdown }}</p>
+        {{ intro | markdown }}
     </div>
+    {{ if ! hide_stage }}
+    <div class="badge mt-4 -rot-3">
+        <a href="/writing-stages" class="no-underline text-teal-dark font-bold hover:text-pink-hot">Writing Stage</a>:
+        {{ stage ?? "Prewriting" }}
+    </div>
+    {{ /if }}
 </header>
 
 <article class="markdown pb-8">
     {{ content }}
     <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
     {{ collection :from="mount" }}
         <tr>
             <td>
                 <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
             </td>
             <td>
-                {{ description ?? overview | markdown }}
+                {{ description | markdown ?? overview | markdown }}
             </td>
         </tr>
     {{ /collection }}

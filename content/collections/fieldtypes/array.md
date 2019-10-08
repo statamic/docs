@@ -1,35 +1,35 @@
 ---
 title: Array
-description: Manage data in a `key:value` array format.
+meta_title: Array Fieldtype
+intro: Manage data in a `key:value` array format.
 overview: |
-  This is used to create a very specific type of YAML data, the `key: value` array. This is different from the Grid/Replicator (Multi-dimensional Array) approach because each key is unique instead of looping through sets of the same fields.
-
-  It can provide a cleaner content management experience _and_ cleaner templates when used in the right situation.
-image: /assets/fieldtypes/array.png
+  The array fieldtype is used to manage `key: value` array data. It's similar to the [table](/fieldtypes/table) fieldtype but with a more strict data structure and compact user interface.
+screenshot: fieldtypes/array.png
 options:
   -
     name: keys
     type: array
-    description: |
-      The optional pre-defined keys to be used in the field. See [keyed mode][keyed-mode].
-      [keyed-mode]: #keyed
+    description: >
+      Define keys when using [keyed mode](#keyed-mode).
+      Default: `null`.
+  -
+    name: mode
+    type: string
+    description: "Determine which [mode](#modes) to use. Default: `dynamic`."
+stage: 3
 id: 457f17eb-c0ee-4345-bf90-88322abc212d
 ---
+## Overview
 
-## Variations {#variations}
+This fieldtype is used to manage `key: value` array data in the right situation. It's used for situations when there is data you would like to stay grouped together because there's only _one_ set and you don't want use loops.
 
-The image above shows the two variations of this fieldtype.
+If you'd like to have _lists_ of this type of data, you might want to use a [grid](/fieldstypes/grid) or [replicator](/fieldtypes/replicator) field.
 
-### Dynamic mode {#dynamic}
+## Modes
 
-The first field contains no pre-defined keys. This will allow the user to define them on the fly and re-arrange them.
+The screenshot above depicts the two modes you can choose from. One for when you know there is a fixed set of keys (keyed), and one for when you don't (dynamic).
 
-``` .language-yaml
-address:
-  type: array
-```
-
-### Keyed mode {#keyed}
+### Keyed Mode
 
 The second field contains pre-defined keys. This will give the user a stricter input. They can only enter the values
 for the specified keys, and they cannot be reordered.
@@ -54,8 +54,17 @@ keys:
   - country
 ```
 
+### Dynamic Mode
 
-## Data Structure {#data-structure}
+The second field contains no pre-defined keys. This will allow the user to define them on the fly and re-arrange them.
+
+``` .language-yaml
+address:
+  type: array
+```
+
+
+## Data Structure
 
 In the example above, both fields would save the exact same data.
 
@@ -63,29 +72,28 @@ In the example above, both fields would save the exact same data.
 address:
   street: 221B Baker Street
   city: London
-  country: UK
+  country: England
 ```
 
-## Templating {#templating}
+## Templating
 
-Since the data is saved as a simple key/value pair, you may use basic array access or the [Foreach](/tags/foreach) tag for output.
+_This fieldtype is not [augmented](/augmentation)._
+
+You can use basic array access, nested variables, or the [foreach tag](/tags/foreach) to loop through all of the keys. All three of the following methods are equivalent.
 
 ```
+// Array access
 {{ address }}
     {{ street }} {{ city }} {{ country }}
 {{ /address }}
-```
 
-Nested variables:
-
-```
+// Nested variables
 {{ address:street }} {{ address:city }} {{ address:country }}
-```
 
-Foreach tag:
-
-```
+// Foreach tag:
 {{ foreach:address }}
-    {{ key }}: {{ value }}
+    {{ value }}
 {{ /foreach:addresss }}
 ```
+
+## Config Options

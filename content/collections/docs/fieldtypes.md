@@ -7,4 +7,5 @@ updated_at: 1568643872
 id: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 blueprint: page
 mount: fieldtypes
+stage: 2
 ---

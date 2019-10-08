@@ -1,9 +1,9 @@
 title: Fieldtypes
 route: '{mount}/{slug}'
 default_status: published
-template: page
+template: fieldtypes.show
 layout: layout
 blueprints:
-  - page
+  - fieldtype
 revisions: false
 mount: 9a1d8b88-c600-46f2-8727-1deb56f2e87a

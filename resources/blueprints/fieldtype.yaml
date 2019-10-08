@@ -1,0 +1,63 @@
+title: Page
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: intro
+        field:
+          display: Intro
+          type: markdown
+          localizable: true
+      -
+        handle: screenshot
+        field:
+          type: assets
+          container: main
+          max_files: 1
+      -
+        handle: content
+        field:
+          display: Content
+          restrict: false
+          smartypants: true
+          automatic_line_breaks: false
+          automatic_links: false
+          escape_markup: false
+          type: markdown
+          localizable: true
+      -
+        handle: options
+        field:
+          type: grid
+          fields:
+            -
+              handle: name
+              field:
+                type: text
+            -
+              handle: type
+              field:
+                type: text
+            -
+              handle: description
+              field:
+                type: markdown
+      -
+        handle: template
+        field:
+          display: Template
+          type: template
+          default: page
+      -
+        handle: stage
+        field:
+          display: Writing Stage
+          type: select
+          options:
+            0: Prewriting
+            1: Drafting
+            2: Major Editing
+            3: Polishing & Humorizing
+            4: Evaluating
+            5: Complete
