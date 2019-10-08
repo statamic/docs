@@ -40,6 +40,10 @@ sections:
               field:
                 type: text
             -
+              handle: required
+              field:
+                type: toggle
+            -
               handle: description
               field:
                 type: markdown
