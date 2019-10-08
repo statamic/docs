@@ -70,7 +70,7 @@ Prism.languages.antlers = Prism.languages.extend("markup", {
 
 	'comment': [
 		/\{\{#[\w\W]*?#\}\}/g,
-		/\/\/.*/g,
+		/\/\/\s.*/g,
 	],
 
 	'statamic-tag': {
