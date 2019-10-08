@@ -2,7 +2,7 @@
 
 namespace App\Modifiers;
 
-use Statamic\Extend\Modifier;
+use Statamic\Modifiers\Modifier;
 
 class Toc extends Modifier
 {
