@@ -60,16 +60,16 @@ An addon consists of at least a `composer.json` and a service provider. Your dir
 }
 ```
 
-Note that the service provider should extend `Statamic\Extend\ServiceProvider`, and not Illuminate\Support\ServiceProvider which you might be used to if you come from a Laravel background. The Statamic subclass provides you with some helpers to reduce boilerplate.
+Note that the service provider should extend `Statamic\Providers\AddonServiceProvider`, and not Illuminate\Support\ServiceProvider which you might be used to if you come from a Laravel background. The Statamic subclass provides you with some helpers to reduce boilerplate.
 
 ``` php
 <?php
 
 namespace Acme\Example;
 
-use Statamic\Extend\ServiceProvider as BaseProvider;
+use Statamic\Providers\AddonServiceProvider;
 
-class ServiceProvider extends BaseProvider
+class ServiceProvider extends AddonServiceProvider
 {
     //
 }
