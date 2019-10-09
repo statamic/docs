@@ -1,8 +1,10 @@
 ---
 title: Assets
 meta_title: Assets Fieldtype
-intro: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
+intro: You can't pick a friend's nose but you _can_ pick your own assets. And upload new ones too.
+description: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
 screenshot: fieldtypes/assets-list.png
+stage: 1
 options:
   -
     name: allow_uploads
@@ -55,16 +57,81 @@ The list mode is shown above, while the grid mode is below. There are no functio
 
 ## Data Structure
 
-- Stores relative to asset container
-- Meta data stored in `.meta` of each folder
+Data is stored as an array of image paths relative to the asset container. If `max_files` is set to one, a string will be saved instead.
+
+``` yaml
+# Default YAML
+gallery_images:
+  - fresh-prince.jpg
+  - dj-jazzy-jeff.jpg
+  - uncle-carl.jpg
+
+# With max_items: 1
+hero_image: surf-boards.jpg
+```
 
 ## Templating
 
-- Uses augmentation
-- Access to meta data
-- Use Glide to manipulate images
-- Use the embed modifiers for embedding videos and other files
+The Asset fieldtype uses [augmentation](/augmentation) to automatically relate the files with their Asset records, pull in custom and meta data, and resolve all image paths based on the container.
+
+```
+{{ gallery_images }}
+    <img src="{{ url }}">
+{{ /gallery_images }}
+```
+
+### Variables
+
+Inside an asset variable's tag pair you'll have access to the following variables.
+
+| Variable | Description |
+|----------|-------------|
+| `url` | Web-friendly URL to the file. |
+| `path` |  Path to the file relative to asset container |
+| `basename` | Name of the file without file extension |
+| `blueprint` | Which blueprint is managing the asset container |
+| `container` | Which asset container the file is in |
+| `edit_url` | URL to edit asset in the Control Panel |
+| `extension` | File extension |
+| `filename` | Name of the file with file extension |
+| `folder` | Which folder the file is in |
+| `is_audio` | `true` when file is one of `aac`, `flac`, `m4a`, `mp3`, `ogg`, or `wav`. |
+| `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
+| `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
+| `last_modified` | Formatted date string of the last modified time |
+| `last_modified_instance` | [Carbon][carbon] instance of the last modified time |
+| `last_modified_timestamp` | Unix timestamp of the last modified time |
+| `size` | Pre-formatted file size (`3.48 MB`) |
+| `size_b` | File size in bytes |
+| `size_kb` | File size in kilobytes |
+| `size_mb` | File size in megabytes |
+| `size_gb` | File size in gigabytes |
+
+### Image Assets
+
+| Variable | Description |
+|----------|-------------|
+| `height` | height of an image, in pixels |
+| `width` | width of an image, in pixels |
+| `focus_css` | CSS `background-image` property for a focal point
+| `orientation` | Is one of `portrait`, `landscape`, `square`, or `null`. |
+| `ratio` |  An image's ratio (`1.77`) |
+
+> You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform other sweet image manipulations. Check it out!
+
+### Asset Field Data
+
+All custom data set on the assets will also be available inside the asset tag loop.
+
+```
+{{ gallery_images }}
+  <figure>
+    <img src="{{ url }}" alt="{{ alt }}">
+    <figcaption>{{ caption }}</figcaption>
+  </figure>
+{{ /gallery_images }}
+```
 
 ## Config Options
 
-[private-assets]: /assets#private-assets
+[carbon]: https://carbon.nesbot.com/docs/

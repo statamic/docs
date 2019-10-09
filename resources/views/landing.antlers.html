@@ -26,7 +26,7 @@
                 <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
             </td>
             <td>
-                {{ description | markdown ?? overview | markdown }}
+                {{ description | markdown ?? intro | markdown }}
             </td>
         </tr>
     {{ /collection }}

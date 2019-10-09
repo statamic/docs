@@ -191,7 +191,7 @@
       code {
         @apply font-mono text-xs p-0 text-purple !important;
         background-color: transparent !important;
-        bottom: 0;
+        bottom: 0 !important;
       }
     }
   }
