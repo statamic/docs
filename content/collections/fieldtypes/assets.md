@@ -14,9 +14,8 @@ options:
   -
     name: container
     type: string
-    required: true
     description: |
-      The name of the desired [asset container](/assets#containers) to use for browsing, uploading, and managing assets.
+      The name of the desired [asset container](/assets#containers) to use for browsing, uploading, and managing assets. _Required when the site has more than one container._
   -
     name: folder
     type: string
