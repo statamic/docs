@@ -1,6 +1,6 @@
 ---
 title: Code
-description: 'Boxes that you check!'
+description: 'Write code and see it highlight. But will you choose spaces or tabs?'
 intro: What are you doing writing code in a browser?! Just kidding, it's fine. We made it easy, flexible, and pretty too. We use this fieldtype a lot.
 
 screenshot: fieldtypes/code.png
