@@ -1,7 +1,7 @@
 ---
 title: Assets
 meta_title: Assets Fieldtype
-intro: You can't pick a friend's nose but you _can_ pick your own assets. And upload new ones too.
+intro: Any time you want to list, display, or work with assets (external files with enhanced abilities), this is the way to do it. Upload, browse, reorder, delete, and even manage field data on individual assets.
 description: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
 screenshot: fieldtypes/assets-list.png
 stage: 1
