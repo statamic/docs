@@ -1,8 +1,8 @@
 ---
 title: Checkboxes
-description: Manage an array of boolean values with checkboxes.
+description: Boxes that you check!
 overview: >
-  Create — you guessed it — checkboxes! The selected checkboxes are stored as an array. Keep that in mind when using the data in your templates.
+  Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes that you check.
 screenshot: fieldtypes/checkboxes.png
 options:
   -
@@ -15,7 +15,7 @@ options:
     type: array
     description: >
       Sets of key/value pairs that define the values and labels of the checkbox options.
-stage: 3
+stage: 2
 id: f922cb9b-6fc9-4249-adf4-59aa46285c13
 ---
 ## Overview
@@ -47,7 +47,7 @@ You may omit the labels and just specify keys. If you use this syntax, the value
 
 ## Data Structure
 
-The values in the screenshot would saved as YAML array:
+The values are stored as a YAML array. If you only specified values for the `options` array, then the labels will be saved.
 
 ``` yaml
 favorites:
@@ -55,19 +55,11 @@ favorites:
   - icecream
 ```
 
-If you only specified values for the `options` array, then the labels will be saved.
 
-``` yaml
-favorites:
-  - Donuts
-  - Ice Cream
-```
 
 ## Templating
 
-_This fieldtype is not [augmented](/augmentation)._
-
-Since the data is saved as a simple array, you can use a tag pair to iterate over the `values`.
+You can loop through the checked items and access the value and label of each item inside the loop.
 
 ```
 <ul>
@@ -83,5 +75,15 @@ Since the data is saved as a simple array, you can use a tag pair to iterate ove
     <li>icecream</li>
 </ul>
 ```
+
+### Variables
+
+Inside an asset variable's tag pair you'll have access to the following variables.
+
+| Variable | Description |
+|----------|-------------|
+| `key` | The zero-index count of the current item |
+| `value` | The stored value of the checkbox |
+| `label` | The label of the checkbox item from the field config |
 
 ## Config Options
