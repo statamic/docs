@@ -34,11 +34,7 @@ options:
     name: mode
     type: string
     description: |
-      Choose between `single` or `range`. Range mode disable the time picker. Default: `single`.
-      <figure>
-        <img src="/img/fieldtypes/date-range.png" alt="Date fieldtype in range mode" width="301">
-        <figcaption>Ranges are much simpler than two date fields.</figcaption>
-      </figure>
+      Choose between `single` or `range`. Range mode disables the time picker. Default: `single`.
   -
     name: rows
     type: integer
@@ -94,6 +90,11 @@ Event: {{ date:start }} through {{ date:end }}
 Event: {{ start }} through {{ end }}
 {{ /date }}
 ```
+
+<figure>
+  <img src="/img/fieldtypes/date-range.png" alt="Date fieldtype in range mode" width="301">
+  <figcaption>Ranges are much simpler than two date fields.</figcaption>
+</figure>
 
 ### Formatting Dates
 
