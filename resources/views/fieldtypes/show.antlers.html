@@ -15,16 +15,8 @@
         {{ /screenshot }}
         <figcaption>Behold! The {{ title }} Fieldtype!</figcaption>
     </figure>
+
     {{ content | noparse | toc:ids }}
-
-
-    {{#<div class="border-b border-grey-400 mt-4 pb-4 text-sm">
-        <h3 class="mb-1">
-            <span class="font-display font-bold">{{ name }}</span>
-            <span class="text-xs text-grey-500">{{ type }}</span>
-        </h3>
-        {{ description }}
-    </div>#}}
 
     {{ options }}
     <div class="{{ ! last ??= 'border-b' }} border-grey-400 mt-4 pb-4">

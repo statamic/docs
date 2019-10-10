@@ -3,20 +3,30 @@ title: Checkboxes
 description: Manage an array of boolean values with checkboxes.
 overview: >
   Create — you guessed it — checkboxes! The selected checkboxes are stored as an array. Keep that in mind when using the data in your templates.
-image: /assets/fieldtypes/checkboxes.png
+screenshot: fieldtypes/checkboxes.png
 options:
+  -
+    name: inline
+    type: bool
+    description: >
+      Show the checkboxes next to each other in a row instead of stacked vertically. Default: `false`
   -
     name: options
     type: array
     description: >
       Sets of key/value pairs that define the values and labels of the checkbox options.
+stage: 3
 id: f922cb9b-6fc9-4249-adf4-59aa46285c13
 ---
-## Usage {#usage}
+## Overview
+
+The checkboxes fieldtype is a multiple choice input. It saves one or more options chosen from a preset list. In other words, they're boxes that you check.
+
+## Configuring
 
 Use the `options` setting to define a list of values and labels.
 
-``` .language-yaml
+``` yaml
 favorites:
   type: checkboxes
   instructions: Choose up to 3 favorite foods.
@@ -28,18 +38,18 @@ favorites:
 
 You may omit the labels and just specify keys. If you use this syntax, the value and label will be identical.
 
-``` .language-yaml
+``` yaml
   options:
     - Donuts
     - Ice Cream
     - Brownies
 ```
 
-## Data Structure {#data-structure}
+## Data Structure
 
-The values in the screenshot would saved as a simple list:
+The values in the screenshot would saved as YAML array:
 
-``` .language-yaml
+``` yaml
 favorites:
   - donuts
   - icecream
@@ -47,16 +57,17 @@ favorites:
 
 If you only specified values for the `options` array, then the labels will be saved.
 
-``` .language-yaml
+``` yaml
 favorites:
   - Donuts
   - Ice Cream
 ```
 
+## Templating
 
-## Templating {#templating}
+_This fieldtype is not [augmented](/augmentation)._
 
-Since the data is saved as a simple list, you can use a tag pair to iterate over the values or use an array modifier:
+Since the data is saved as a simple array, you can use a tag pair to iterate over the `values`.
 
 ```
 <ul>
@@ -66,14 +77,11 @@ Since the data is saved as a simple list, you can use a tag pair to iterate over
 </ul>
 ```
 
-```
-{{ favorite | ul }}
-```
-
-``` .language-output
+``` output
 <ul>
     <li>donuts</li>
     <li>icecream</li>
 </ul>
 ```
 
+## Config Options
