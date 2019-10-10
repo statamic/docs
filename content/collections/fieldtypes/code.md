@@ -1,7 +1,7 @@
 ---
 title: Code
 description: 'Boxes that you check!'
-intro: What are you doing writing code in a browser?! Just kidding, it's fine. We made it pretty easy and pretty too.
+intro: What are you doing writing code in a browser?! Just kidding, it's fine. We made it easy, flexible, and pretty too. We use this fieldtype a lot.
 
 screenshot: fieldtypes/code.png
 options:
