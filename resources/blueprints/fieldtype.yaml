@@ -30,19 +30,23 @@ sections:
         handle: options
         field:
           type: grid
+          mode: stacked
           fields:
             -
               handle: name
               field:
                 type: text
+                width: 33
             -
               handle: type
               field:
                 type: text
+                width: 33
             -
               handle: required
               field:
                 type: toggle
+                width: 33
             -
               handle: description
               field:

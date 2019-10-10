@@ -27,7 +27,9 @@
         {{ if required }}
         <span class="ml-1 relative align-top inline-block font-bold text-pink-hot font-display">*</span>
         {{ /if }}
-        {{ description | widont }}
+        <div class="markdown">
+            {{ description | widont }}
+        </div>
     </div>
     {{ /options }}
 </article>

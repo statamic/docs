@@ -1,7 +1,7 @@
 ---
 title: Checkboxes
 description: Boxes that you check!
-overview: >
+intro: >
   Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes that you check.
 screenshot: fieldtypes/checkboxes.png
 options:
