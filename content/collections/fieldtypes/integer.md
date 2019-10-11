@@ -1,6 +1,6 @@
 ---
 title: Integer
-description: 'For numbers! For science!'
+description: 'For when all you want is numbers.'
 intro: 'The integer fieldtype is a text-style input that only accepts integers (numbers) and has increment and decrement controls.'
 screenshot: fieldtypes/integer.png
 stage: 3
