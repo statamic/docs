@@ -1,7 +1,7 @@
 ---
 title: Markdown
-overview: Write and preview Markdown with the help of formatting buttons and other neat things.
-image: /assets/fieldtypes/markdown.png
+intro: Write and preview Markdown with the help of formatting buttons and other neat things.
+screenshot: fieldtypes/markdown.png
 id: 607cfe62-7239-461b-8f55-8e7a312c2d5d
 options:
   -
@@ -26,27 +26,33 @@ options:
     description: >
       If set to `true`, display a link to open a Markdown cheatsheet from the specified field.
 ---
-## Data Structure {#data-structure}
+## Overview
 
-The data will be saved exactly as displayed in the field - as Markdown.
+- Markdown is great because (reasons)
+- Field has a preview button, fullscreen, and cheatsheet helper
+- We're using [Parsedown] with the [Parsedown Extra][extra] extension enabled.
 
-## Templating {#templating}
+## Data Structure
 
-Since the data is a plain string, you will need to parse it as Markdown.
+The data will be saved exactly as written – as Markdown.
 
-``` .language-yaml
-my_markdown_field: 'This is **bold**'
+## Templating
+
+The Markdown string will automatically be transformed into HTML through [augmentation](/augmentation). You need only to the use the variable and the rest is done for you.
+
+``` yaml
+content: '**Bold** move, Cotton.'
 ```
 
 ```
-{{ my_markdown_field }}
-{{ my_markdown_field | markdown }}
+{{ content }}
 ```
 
-``` .language-output
-This is **bold**
-This is <strong>bold</strong>
+``` output
+<p><strong>Bold</strong> move, Cotton.</p>
 ```
 
-> The `content` field will automatically parsed as Markdown if you are using md files. 
-> You do not need to use the markdown modifier. Simply using `{{ content }}` will do!
+## Config Options
+
+[parsedown]: https://parsedown.org/
+[extra]: https://github.com/erusev/parsedown-extra
