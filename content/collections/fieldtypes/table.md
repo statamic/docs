@@ -1,32 +1,30 @@
 ---
 title: Table
 description: Create and manage simple tables of limitless columns and rows.
-overview: >
-  Creating tables can be a nuisance in a WYSIWYG editor, or even when handcrafting them in HTML, _especially_ for less-code-savvy clients. This fieldtype gives you a way to create simple tabular data.
-image: /assets/fieldtypes/table.gif
+intro: >
+  Creating tables can be a nuisance in a WYSIWYG editor. This fieldtype gives you a way to create flexible tabular data.
+screenshot: fieldtypes/table.gif
+stage: 4
 id: 11e0ab78-7698-44c8-98f1-1194cb12ce28
 ---
 ## Data Structure
 
 Data from the Table fieldtype is saved in an array like this:
 
-``` .language-yaml
+``` yaml
 my_table:
   -
     cells:
-      - One
-      - Two
-      - Three
+      - People
+      - Gift
   -
     cells:
-      - Four
-      - Five
-      - Six
+      - Kevin
+      - Kerosene
   -
     cells:
-      - Seven
-      - Eight
-      - Nine
+      - Buzz
+      - Spider
 ```
 
 This data format makes it trivial when it comes time to render it templates.
