@@ -2,7 +2,9 @@
 title: Hidden
 description: Set default data when creating new entries.
 overview: "The hidden field is perfect for setting default data when creating new entries. Set anything as the `default` field value and you're good to go."
+screenshot: true
 stage: 5
+
 id: 791c3fb3-0d3c-4e17-bd97-3ab9529a8691
 ---
 ## Overview
