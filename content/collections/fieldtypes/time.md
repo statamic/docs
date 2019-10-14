@@ -1,5 +1,11 @@
+---
 title: Time
 description: A timepicker. It lets you pick a time.
-overview: The Time fieldtype is a simple timepicker that operates in 24-hour mode and supports keyboard `up` and `down` controls for ease of use.
-image: /assets/fieldtypes/time.gif
+intro: The original time field from the set of Kiefer Sutherland's hit drama "24". It's a simple timepicker that operates in 24-hour mode and supports keyboard `up` and `down` controls.
+screenshot: fieldtypes/time.gif
+stage: 4
 id: ccfbaf71-7823-4f71-a375-e874035f80ca
+---
+## Config Options
+
+None. It just works.
