@@ -15,6 +15,7 @@ options:
     description: >
       Set some default placeholder text.
 screenshot: fieldtypes/textarea.png
+state: 4
 id: 7c54484a-7ba5-4314-b9af-9d9a462090fc
 ---
 ## Config Options
