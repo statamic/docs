@@ -8,7 +8,7 @@ options:
     name: append
     type: string
     description: >
-      Add text before (to the left of) the text input.
+      Add text after (to the right of) the text input.
   -
     name: character_limit
     type: integer
@@ -18,7 +18,7 @@ options:
     name: prepend
     type: string
     description: >
-      Add text after (to the right of) the text input.
+      Add text before (to the left of) the text input.
   -
     name: placeholder
     type: string
