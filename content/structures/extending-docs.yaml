@@ -3,6 +3,13 @@ expects_root: true
 root: caf2a160-de1c-11e9-aaef-0800200c9a66
 tree:
   -
+    title: Front-end
+    children:
+      -
+        entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
+      -
+        entry: e052ecb8-60d9-4afa-980e-ce128c301d70
+  -
     title: 'Control Panel'
     children:
       -
@@ -21,13 +28,6 @@ tree:
         entry: 06cbe7a2-5322-401a-8bc4-3ab6b20defb7
       -
         entry: aa6e0a79-9d3f-493b-92c9-df4d2257bc64
-  -
-    title: Front-end
-    children:
-      -
-        entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
-      -
-        entry: e052ecb8-60d9-4afa-980e-ce128c301d70
   -
     title: Javascript
     children:
