@@ -1,63 +1,64 @@
 ---
 title: Users
-description: Relate one or more Users to your content.
-overview: >
-  Allows you attach Users to your content. This can be used to show authorship, team members, or whatever other use you have for showing people with your content.
-image: /assets/fieldtypes/users.jpg
-id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
+description: Dynamically relate users with your content.
+intro: >
+  Allows you attach users to your content. This can be used to show authorship, list team members, or whatever other use you have for relating people with content.
+screenshot: fieldtypes/users.png
 options:
-  -
-    name: default
-    type: string
-    description: >
-      The default value. If you specify `current`, then the logged in user will be selected by default.
   -
     name: max_items
     type: integer
     description: >
       The maximum number of users than can be selected. By default (blank) there is no limit. Setting to `1` will save the value as a `string` instead of an `array` and will switch to a select dropdown UI.
-  - 
-    name: label
+  -
+    name: mode
     type: string
     description: >
-      How the values should appear. You may use variables within the string, eg. "{{ first_name }} {{ last_name }}"
+      Choose between `select`, `typeahead`, and the `default` stack selector UI modes.
+stage: 4
+id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
 ---
-## Usage
+## Overview
 
-This fieldtype is used to view a list of Users, generally to establish who authored a given entry or page. Setting the default to `current` will use the currently logged in User.
+The most common use for the Users fieldtype is to manage the "author" for entries, but it's hardly the only case. You could...
 
-```.language-yaml
-fields:
-  author:
-    display: Author
-    type: users
-```
+- List people who contributed to a project
+- Link to related authors
+- Manage an "Employee of the Weekend" section. Everyone wants to be the King or Queen of Inventory Saturday.
+- Display team bios
 
 ## Data Structure
 
-The Users fieldtype is a [Relate fieldtype](/fieldtypes/relate), which means the users will be saved as IDs.
+The Users fieldtype is a [relationship fieldtype](/fieldtypes/relationship) – which mean the data will store a reference to the users IDs to main a dynamic link.
 
 ``` .language-yaml
-jedis:
-  - 892jfsd9a90as
-  - 134jk1h78dfas
+author: abc-123-cba-321
 ```
 
 ## Templating
 
-Use the [Relate tag](/tags/relate) to loop through the IDs and fetch the user data.
+All relationship fields use [augmentation](/augmentation) to fetch the actual data objects, allowing you to interact with the related data automatically and dynamically.
 
 ```
-<ul>
-  {{ relate:jedis }}
-    <li>{{ first_name }} {{ last_name }}</li>
-  {{ /relate:jedis }}
-</ul>
+<div class="bg-white p-4 shadow flex items-center">
+{{ author }}
+  <img class="w-10 h-10 rounded-full" src="{{ avatar }}" alt="Avatar of {{ name }}">
+    <div class="text-sm ml-4">
+      <p class="text-gray-900 leading-none">{{ name }}</p>
+      <p class="text-gray-600">{{ email }}</p>
+    </div>
+{{ /author }}
+</div>
 ```
 
-``` .language-output
-<ul>
-  <li>Luke Skywalker</li>
-  <li>Yoda</li>
-</ul>
+``` output
+<div class="bg-white p-4 shadow flex items-center">
+  <img class="w-10 h-10 rounded-full" src="/img/avatars/david.jpg" alt="Avatar of David Hasselhoff">
+    <div class="text-sm ml-4">
+      <p class="text-gray-900 leading-none">David Hasselhoff</p>
+      <p class="text-gray-600">thehoff@statamic.com</p>
+    </div>
+</div>
 ```
+
+## Config Options
