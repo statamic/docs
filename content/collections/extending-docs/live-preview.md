@@ -93,3 +93,10 @@ You can use these values in your views under the `live_preview` array:
 {{ /if }}
 ```
 
+### Props
+
+| Prop | Description |
+|------|-------------|
+| `value` | The value of the input. |
+| `loading` | Whether the live preview contents is being loaded. (eg. when you type) |
+
