@@ -6,6 +6,11 @@ intro: >
 screenshot: fieldtypes/users.png
 options:
   -
+    name: default
+    type: string
+    description: >
+      Setting to `current` will default the field to the currently logged in user.
+  -
     name: max_items
     type: integer
     description: >
