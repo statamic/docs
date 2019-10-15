@@ -1,15 +1,15 @@
 ---
 title: Video
-description: Extract consistent URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline.
-overview: |
-  Extract consistent URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline.
-image: /assets/fieldtypes/video.jpg
-added_in: 2.8
+description: Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline.
+intro: |
+  Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline. Feel free watch the whole thing instead of working – we won't tell.
+screenshot: fieldtypes/video.jpg
+stage: 4
 id: ced8b901-95bd-4006-b70e-4ea04d72fcb7
 ---
 ## Usage
 
-Enter a video URL and it will be loaded and displayed in an embedded player directly beneath the field so you can preview and confirm. Or watch the whole thing instead of working. We don't tell anyone.
+Enter a video URL and it will be loaded in an embedded player directly beneath the field so you can preview it.
 
 You may enter:
 
@@ -27,7 +27,7 @@ video: https://www.youtube.com/watch?v=s9F5fhJQo34
 
 ## Templating
 
-Since the field saves regular Video URLs, you can use the [is_embeddable](/modifiers/is_embeddable) and
+You can use the [is_embeddable](/modifiers/is_embeddable) and
 [embed_url](/modifiers/embed_url) modifiers to display your video player.
 
 ```
