@@ -26,7 +26,7 @@ Your tags will get saved as a simple YAML list, like this:
 Loop through the array items to display each item's `value`.
 
 ```
-<h1>This Cereal Is:</h1>
+<h1>This cereal is:</h1>
 <ul>
   {{ tags }}
     <li>{{ value }}</li>
@@ -35,7 +35,7 @@ Loop through the array items to display each item's `value`.
 ```
 
 ``` output
-<h1>Product Ideas</h1>
+<h1>This cereal is:</h1>
 <ul>
   <li>delicious</li>
   <li>nutritious</li>
