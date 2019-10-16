@@ -11,12 +11,18 @@ Out of the box, Statamic has its own set of permissions that you can choose from
 
 ## Basic Permissions
 
-You can register a basic permission by specifying the string.
+You can register a basic permission in a service provider by specifying the string.
 
 ``` php
 use Statamic\API\Permission;
 
-Permission::register('manage stuff')->withLabel('Manage Custom Stuff');
+public function boot()
+{
+    $this->app->booted(function () {
+        Permission::register('manage stuff')
+                  ->withLabel('Manage Custom Stuff');
+    });
+}
 ```
 
 This will add an option to the permissions list when editing a role in the Control Panel.
