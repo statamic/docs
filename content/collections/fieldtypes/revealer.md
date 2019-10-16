@@ -1,9 +1,10 @@
 ---
 title: Revealer
 description: A button that allows you to reveal conditional fields.
-overview: A button that allows you to reveal conditional fields.
+intro: The revealer is a simple button that allows you to reveal conditional fields without the need to save any additional data.
 id: 54066363-7dec-431c-86c6-7e9353380ef5
-image: /assets/fieldtypes/revealer.gif
+screenshot: fieldtypes/revealer.gif
+stage: 3
 options:
   -
     name: display
@@ -14,25 +15,25 @@ options:
     type: string
     description: Instructional text that will appear as a tooltip on the button.
 ---
-This fieldtype is intended to be used with [conditional field rules](/fieldsets#conditional-fields). If you have some fields that should only sometimes show, throw a Revealer field in there and those fields may be shown once the button is clicked.
+This fieldtype is intended to be used with [conditional field rules](#). If you have some fields that should only sometimes show, throw a Revealer field in there and those fields may be shown once the button is clicked.
 
-The example image above uses the following fieldset:
+The example image above uses the following field configuration:
 
-``` .language-yaml
-fields:
-  content:
-    type: markdown
-  has_extended_content:
-    type: revealer
-    display: Show extended content fields
-  extended_content:
-    type: markdown
-    show_when:
-      has_extended_content: true
-  bibliography:
-    type: markdown
-    show_when:
-      has_extended_content: true
+``` yaml
+  -
+    handle: revealed
+    field:
+      type: text
+      display: 'I am revealed!'
+      if:
+        behold: 'equals true'
+  -
+    handle: behold
+    field:
+      type: revealer
+      display: 'Behold!'
 ```
 
 Regardless of whether the button was clicked or not, no data will be saved.
+
+## Config Options
