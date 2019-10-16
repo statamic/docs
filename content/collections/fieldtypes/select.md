@@ -1,42 +1,86 @@
 ---
 title: Select
-image: /assets/fieldtypes/select.jpg
-id: 812bd19d-ec37-42d5-b8f9-310366ef8abe
-overview: Create a list of predefined options to populate a simple HTML select field.
+description: Choose from predefined options. This field is highly configurable.
+intro: Give your users a list of options to choose from. This select field is highly configurable with support for search, multiple choice, and creating new options on the fly.
+screenshot: fieldtypes/select.png
 options:
   -
+    name: clearable
+    type: boolean
+    description: |
+      Allow deselecting any chosen option and making null a possible value. Default: `false`.
+  -
     name: options
+    required: true
     type: array
     description: >
-      A set of key/value pairs that define the values and labels.
+      A set of key/value pairs that define the values and labels. If you don't define the keys, the value and label will be the same.
   -
-    name: default
+    name: placeholder
     type: string
-    description: The default, preselected option.
+    description: |
+      Set the non-selectable placeholder text. Default: none.
+  -
+    name: multiple
+    type: boolean
+    description: >
+      Allow multiple selections. Default: `false`.
+  -
+    name: searchable
+    type: boolean
+    description: >
+      Enable search with suggestions by typing in the select box. Default: `true`.
+  -
+    name: taggable
+    type: boolean
+    description: >
+      Use a "tag" style UI when selecting multiples. Default: `false`.
+  -
+    name: push_tags
+    type: boolean
+    description: >
+      Add newly created options to the list. Default: `false`.
+stage: 4
+id: 812bd19d-ec37-42d5-b8f9-310366ef8abe
 ---
-## Usage
+## Overview
 
-Select fields need to define a list of options. They can be a simple list -- where the stored value and display label are one and the same, or a key/value pair, allowing you to customize both the value and the label.
+This field is highly configurable, thanks to the fantastic [Vue Select](https://vue-select.org) component. Be sure to explore all the [config options](#config-options)!
 
-### List Example
+## Data Storage
+
+Select fields will store the _value_ of the chosen option or options. Given this configuration...
+
+``` yaml
+handle: select
+  field:
+    display: Select
+    options:
+      face: "So's your face."
+      know: "I know you are, but what am I?"
+      hand: "Talk to the hand."
+      beeswax: "Mind your own beeswax."
+    placeholder: 'Choose your snappy comeback'
+    type: select
+```
+
+Your saved data will be:
+
+``` yaml
+select: face
+```
+
+
+## Templating
+
+Select fields are [augmented](/augmentation) to return the **label** from your field config. You can access to the raw value by using the `[raw](/modifiers/raw)` modifier.
 
 ```
-oscar_winner:
-  type: select
-  options:
-    - Tommy Wiseau
-    - Greg Sistero
-    - James Franco
+<p id="{{ select | raw }}"> Oh yeah? {{ select }}</p>
 ```
 
-### Value/Label Example
-
-
+``` output
+<p id="face">Oh yeah? So's your face.</p>
 ```
-oscar_winner:
-  type: select
-  options:
-    tommy: Tommy Wiseau
-    greg: Greg Sistero
-    james: James Franco
-```
+
+## Config Options
