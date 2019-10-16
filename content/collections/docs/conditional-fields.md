@@ -157,10 +157,10 @@ if:
 
 ## Custom Logic
 
-If you need something more complex than the YAML syntax provides, you may write your own logic.  In a JS script or addon, you can define custom functions using the global `Statamic` JS API:
+If you need something more complex than the YAML syntax provides, you may write your own logic.  In a JS script or addon, you can define custom functions using the `$conditions` JS API:
 
 ```javascript
-Statamic.condition('reallyLovesFood', function (values) {
+Statamic.$conditions.add('reallyLovesFood', function (values) {
     return values.favorite_foods.length > 10;
 });
 ```
@@ -168,7 +168,13 @@ Statamic.condition('reallyLovesFood', function (values) {
 Furthermore, if you need access to values outside of the current `fields` context (see [field context](#field-context)), we also provide a `root` values parameter, as well as an `extra` object parameter with additional access to the VueX store (via `extra.store` and `extra.storeName`):
 
 ```javascript
-Statamic.condition('reallyLovesFood', function (values, root, extra) {
+Statamic.$conditions.add('reallyLovesFood', function (values, root, extra) {
     return root.favorite_foods.length > 10;
 });
+```
+
+Then reference the name in the YAML:
+
+``` yaml
+if: reallyLovesFood
 ```
