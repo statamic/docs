@@ -33,6 +33,7 @@
 require('./prism.js')
 require('./scrollspy.js')
 require('./anchors.js')
+require('./external-links.js')
 
 let phrases = [
     "🍳What's shakin', home skillet?",

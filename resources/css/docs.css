@@ -52,6 +52,11 @@ figure, .screenshot {
     @apply bg-mint border inline-block shadow-md-mint text-sm font-display py-1 px-2 uppercase italic font-bold;
 }
 
+a svg.external {
+    @apply inline-block text-grey-500;
+    vertical-align: text-top;
+}
+
 .rot-1 {
     transform: rotate(1deg);
     -webkit-transform-style: preserve-3d;
