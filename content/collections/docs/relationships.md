@@ -31,7 +31,7 @@ title: Wayne Gretsky Pog Collection
 price: 2495.00
 template: products.show
 id: 123-1234-12-4321
-photo: products/gretsky-pogs-(2).jpg
+photo: products/gretsky-pogs-FINAL-(2).jpg
 author: abc-abcd-ab-dcba
 related_products:
   - 789-7890-78-0987
