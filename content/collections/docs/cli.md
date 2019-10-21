@@ -1,8 +1,10 @@
 ---
 title: CLI
+intro: Statamic has a nice little collection of polite command line commands built on top of Laravel's Artisan console package. They make dev-life easier and just a little bit more enjoyable.
 template: page
 id: 83145e6c-45d2-4e9c-a412-48a81f144224
 blueprint: page
+stage: 4
 ---
 ## Overview
 
