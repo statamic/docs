@@ -94,5 +94,20 @@ rm -rf public/vendor/statamic/cp
 ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
 ```
 
+## Updating Alpha
+
+1. Pull down the latest cms code
+   ``` bash
+   git pull
+   ```
+2. Compile assets. You only need to do this if there have been changes to CSS/JS.
+   ``` bash
+   npm run dev
+   ```
+3. Run the install command from within your project to copy over the assets. Again, only necessary for CSS/JS updates.
+   ``` bash
+   php artisan statamic:install
+   ```
+
 [users]: /users
 [packagist]: https://packagist.org/
