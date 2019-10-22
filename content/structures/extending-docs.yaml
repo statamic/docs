@@ -66,6 +66,8 @@ tree:
         entry: c3da9537-5d5f-4b84-a4be-882b89217151
       -
         entry: 6843f6e9-ac62-4128-8d50-887560f201ca
+      -
+        entry: fd34ca35-57d1-4d28-97f9-ba6801656b39
   -
     title: Addons
     url: /extending/addons
