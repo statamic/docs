@@ -102,6 +102,7 @@ ln -s /path/to/cms/resources/dist public/vendor/statamic/cp
    ```
 2. Compile assets. You only need to do this if there have been changes to CSS/JS.
    ``` bash
+   npm install
    npm run dev
    ```
 3. Run the install command from within your project to copy over the assets. Again, only necessary for CSS/JS updates.
