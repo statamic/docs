@@ -30,6 +30,8 @@ tree:
         entry: aa6e0a79-9d3f-493b-92c9-df4d2257bc64
       -
         entry: b4b46ceb-9feb-4587-8f0d-2080511bf9e3
+      -
+        entry: a96676fe-0ec4-41f5-9205-2fe47988addb
   -
     title: Javascript
     children:
