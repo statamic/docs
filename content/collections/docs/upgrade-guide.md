@@ -97,7 +97,8 @@ First, let's look at the breaking changes on the core application side. These wo
 ### Fieldtypes
 
 - Array fieldtype terminology was changed from `value => text` to `key => value`, and thus config options were also changed to `add_button`, `key_header` and `value_header` to match the new terminology.
-- Relate and Suggest fieldtypes has been removed in favor of the [Relationship](/fieldtypes/relationship) fieldtype
+- Relate and Suggest fieldtypes has been removed in favor of the [Relationship](/fieldtypes/relationship) fieldtype.
+- Redactor fieldtype has been removed in favor of the [Bard](/fieldtypes/bard) fieldtype.
 
 ### Fieldsets
 
