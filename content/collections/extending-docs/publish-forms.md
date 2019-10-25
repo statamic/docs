@@ -56,7 +56,7 @@ public function edit(Product $product)
         'blueprint' => $blueprint->toPublishArray(),
         'values'    => $fields->values(),
         'meta'      => $fields->meta(),
-    ])
+    ]);
 }
 ```
 
