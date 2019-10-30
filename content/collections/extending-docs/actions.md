@@ -15,28 +15,19 @@ You may create an action using the following command, which will generate a clas
 php please make:action
 ```
 
-The most basic action should have `visibleTo` and `run` methods.
+The most basic action should have a `run` method.
 
 ``` php
 use Statamic\Actions\Action;
 
 class Delete extends Action
 {
-    public function visibleTo($key, $context)
-    {
-        return true;
-    }
-
     public function run($items, $values)
     {
         $items->each->delete();
     }
 }
 ```
-
-The `visibleTo` method defines whether the action should be visible on a given listing.
-The listing will have a unique `$key` (for example, `entries` when viewing a list of entries in a collection).
-It may also provide a `$context` array with some extra values (for example, the entries listing will provide the `collection` handle).
 
 The `run` method is for executing the task. You will be provided with a collection of `$items`, and any submitted `$values` (more about those later).
 
@@ -53,6 +44,34 @@ public function boot()
 }
 ```
 
+## Filtering Actions
+
+You may limit which items an action can be applied to using the `filter` method. For example, if you want your action to only be used by entries, you can return a boolean like this:
+
+``` php
+use Statamic\Contracts\Entries\Entry;
+
+public function filter($item)
+{
+    return $item instanceof Entry;
+}
+```
+
+> Don't include authorization in your filter method. Instead, use the authorize method below.
+
+## Authorizing Actions
+
+Before any actions are run, Statamic will make sure the user is allowed to run them. You can return a boolean like this:
+
+``` php
+public function authorize($user, $item)
+{
+    return $user->can('edit', $item);
+}
+```
+
+By default, there is no authorization.
+
 ## Dangerous Actions
 
 You can mark an action as dangerous, which will give it red text and more sinister looking confirmation dialog.
@@ -60,6 +79,17 @@ You can mark an action as dangerous, which will give it red text and more sinist
 ``` php
 protected $dangerous = true;
 ```
+
+## Context
+
+Each action may have additional contextual data passed to it depending on which listing its being used within. For example, you may find
+the collection handle when used inside an entry listing, or the asset container handle when used in an asset listing
+
+``` php
+$this->context; // ['collection' => 'blog']
+```
+
+You may find this useful when building confirmation dialog fields:
 
 ## Adding Fields
 
