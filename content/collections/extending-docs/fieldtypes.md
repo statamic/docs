@@ -48,7 +48,7 @@ class TogglePassword extends \Statamic\Fields\Fieldtype
 }
 ```
 
-Create a Vue component in [one of your loaded javascript files](/guide/extending/addons.html#assets-css-stylesheets-and-javascript) and register it as `[handle]-fieldtype`.
+Create a Vue component in [one of your loaded javascript files](/extending/control-panel#adding-css-and-js-assets) and register it as `[handle]-fieldtype`.
 
 Your component has two requirements:
 
