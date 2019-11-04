@@ -18,7 +18,7 @@ public function boot()
 {
     Nav::extend(function ($nav) {
         $nav->content('Store')
-            ->url('/store')
+            ->route('store.index')
             ->icon('shopping-cart');
     });
 }
@@ -30,7 +30,7 @@ The `content()` method there is a [magic method](http://php.net/manual/en/langua
 Nav::extend(function ($nav) {
     $nav->create('Store')
         ->section('Jack & Sons Inc.')
-    	->url('/store')
+        ->route('store.index')
         ->icon('shopping-cart');
 });
 ```
@@ -42,11 +42,11 @@ Maybe we have `Products` and `Orders`, which we want to display as children unde
 ```php
 Nav::extend(function ($nav) {
     $nav->content('Store')
-    	->url('/store')
+        ->route('store.index')
         ->icon('shopping-cart')
         ->children([
-            'Products' => '/store/products',
-            'Orders' => '/store/orders'
+            'Products' => cp_route('store.products.index'),
+            'Orders' => cp_route('store.orders.index')
         ]);
 });
 ```
@@ -56,12 +56,12 @@ If we need to customize our child items further, we can use object notation.  Fo
 ```php
 Nav::extend(function ($nav) {
     $nav->content('Store')
-    	->url('/store')
+        ->route('store.index')
         ->icon('shopping-cart')
         ->can('view store')
         ->children([
-            $nav->item('Products')->url('/store/products')->can('view products'),
-            $nav->item('Orders')->url('/store/orders')->can('view orders')
+            $nav->item('Products')->route('store.products.index')->can('view products'),
+            $nav->item('Orders')->route('store.orders.index')->can('view orders')
         ]);
 });
 ```
@@ -131,7 +131,7 @@ The code examples above demonstrate how to [add](#adding-items), [modify](#modif
 | :--- | :--- | :--- |
 | `name()` | `$name` (string) | Define item name. |
 | `section()` | `$section` (string) | Define section name. |
-| `route()` | `$name` (string), `$params` (mixed, optional) | Define route. |
+| `route()` | `$name` (string), `$params` (mixed, optional) | Define a route automatically prefixing with `statamic.cp.` |
 | `url()` | `$url` (string) | Define absolute URL. |
 | `icon()` | `$icon` (string) | Define icon. |
 | `children()` | `$children` (array\|collection\|closure) | Define child items. |
