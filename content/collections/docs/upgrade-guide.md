@@ -1,6 +1,6 @@
 ---
 title: 'Upgrade Guide'
-intro: A guide for upgrading your existing Statamic v2.x projects to v3.0.
+intro: A guide for upgrading your existing Statamic v2 projects to v3.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568743749
@@ -11,9 +11,7 @@ stage: 1
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 fantastic new features, and speeds up performance by 5x. What's not to love about that?
 
-> **Coming soon:**
->
-> You can install our [migration tools package](https://github.com/statamic/migrator) to automate upgrading your Statamic v2 site to v3!
+> Install our [migration tools package](https://github.com/statamic/migrator) to automate your v2 upgrade to Statamic 3!
 >
 > ``` bash
 > composer require --dev statamic/migrator
@@ -22,7 +20,7 @@ Statamic 3 takes everything you love about v2, rewrites all the old stuff (Larav
 
 ## Philosophies
 
-We've taken the lessons learned from years of work on Statamic v2 and updated our philosophy-level approach to flat file content management. These new principals guide many of the changes &mdash; breaking and otherwise &mdash; you'll find in Statamic v3.
+We've taken the lessons learned from years of work on Statamic v2 and updated our philosophy-level approach to flat file content management. These principals guide many of the changes &mdash; breaking and otherwise &mdash; you'll find in Statamic v3.
 
 We don't break things for the fun of it. We hope that understanding these philosophies will help defuse any frustration you may encounter when faced with needing to relearn something fundamental.
 
@@ -33,7 +31,7 @@ Wherever reasonable and possible, we will opt for patterns that result in smalle
 - **Publish status** is now controlled by a YAML variable and no longer results in a file move/delete/add.
 - **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file that stores the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
 
-### Let's build in the open
+### Building in the open benefits everyone
 
 We're going to be setting the Github repos to public in beta and will be planning and building in the open. This will let us use [Composer][composer] and [Packagist](https://packagist.org) the way they were intended.
 
@@ -42,11 +40,11 @@ We're going to be setting the Github repos to public in beta and will be plannin
 - Your own Statamic site repos can be `public`
 - Dependencies can be updated (to take advantage of fixes and features) without needing a Statamic core update or patch release
 
-### Don't reinvent Laravel's wheels
+### Reinventing Laravel's wheels is silly
 
 Statamic v3 is built as a _Laravel package_ instead of a "complete" application like v2. This makes it drop-in friendly for existing Laravel applications and  your own Statamic sites will be much easier to extend and customize, often without needing to make addons.
 
-To accomplish this we've had to follow more Laravel conventions, a positive thing in many ways, but resulting in numerous small changes. For example...
+To accomplish this we've had to follow more Laravel conventions, a positive thing in many ways, which result in numerous small changes. For example...
 
 - Application-level configuration settings are in Laravel config files — PHP files in `config/statamic` — managed **only** on the file level.
 - Many behaviors can now be overridden in your own [service provider](https://laravel.com/docs/providers).
