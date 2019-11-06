@@ -5,15 +5,51 @@ id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 
 ## Extensions
 
-You may add your own [TipTap](https://tiptap.scrumpy.io/) extensions to Bard using the `extend` method. The callback may return an extension instance, or an array of them.
+You may add your own [TipTap](https://tiptap.scrumpy.io/) extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
 
 ``` js
-Statamic.$bard.extend(() => new MyExtension);
+Statamic.$bard.extend(({ mark }) => mark(new MyExtension));
 ```
 
 ``` js
-Statamic.$bard.extend(() => [new MyExtension, new AnotherExtension]);
+Statamic.$bard.extend(({ mark }) => {
+    return [
+        mark(new MyExtension), 
+        mark(new AnotherExtension)
+    ]
+});
 ```
+
+The classes you return should be wrapped using the provided helper functions (eg. `mark` in the example above).
+
+### Classes
+
+Your extension class should look like a TipTap extension ([see an example here](https://github.com/scrumpy/tiptap/blob/master/packages/tiptap-extensions/src/marks/Bold.js)) 
+except it should not extend another class, and you should use methods instead of getters.
+
+``` js
+export default class MyExtension {
+  name() {
+    return 'myextension';
+  }
+}
+```
+
+### Marks
+
+The `extend` callback will provide a `mark` function to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
+to be used by Bard.
+
+Within your class, Statamic will provide commonly used functions along with the arguments you'd get in a TipTap extension. This prevents you from needing to
+import the entire TipTap library into your build. For example:
+
+``` js
+commands({ type, toggleMark }) {
+    return () => toggleMark(type)
+}
+```
+
+> If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
 
 ## Buttons
 
@@ -42,4 +78,23 @@ Statamic.$bard.buttons(buttons => {
         name: 'italic', text: 'Italic', command: 'italic', icon: 'italic'
     });
 });
+```
+
+## TipTap API
+
+In your extensions, you may need to use functions from the `tiptap` library. Rather than importing the library yourself and bloating your JS files, you may use methods through our API.
+
+``` js
+Statamic.$bard.tiptap.core; // 'tiptap'
+Statamic.$bard.tiptap.commands; // 'tiptap-commands'
+Statamic.$bard.tiptap.utils; // 'tiptap-utils'
+```
+
+You could shorten things up by using destructuring. For example:
+
+``` js
+const { core: tiptap, commands, utils } = Statamic.$bard.tiptap;
+const selection = new tiptap.TextSelection(...);
+commands.insertText(...);
+utils.getMarkAttrs(...);
 ```
