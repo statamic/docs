@@ -1,0 +1,31 @@
+<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
+    <h1>{{ title ensure_right=" Tag"}}</h1>
+    {{ intro ?? overview | markdown }}
+    {{ if ! hide_stage }}
+    <div class="badge -rot-3">
+        <a href="/writing-stages" class="no-underline text-teal-dark font-bold hover:text-pink-hot">Writing Stage</a>: {{ stage ?? "Prewriting" }}
+    </div>
+    {{ /if }}
+</header>
+
+<article class="markdown pb-8">
+    {{ content | noparse | toc:ids }}
+
+    {{ if parameters }}
+    <h2 id="parameters">Parameters</h2>
+    {{ /if }}
+    {{ parameters }}
+    <div class="{{ ! last ??= 'border-b' }} border-grey-400 mt-4 pb-4">
+        <h3 class="inline-block mb-3 badge text-sm lowercase {{ required ??= 'bg-pink-hot shadow-md-teal text-white' }}">
+            <span class="font-display font-bold">{{ name }}</span>
+            <span class="text-xs opacity-75">{{ type }}</span>
+        </h3>
+        {{ if required }}
+        <span class="ml-1 relative align-top inline-block font-bold text-pink-hot font-display">*</span>
+        {{ /if }}
+        <div class="markdown">
+            {{ description | widont }}
+        </div>
+    </div>
+    {{ /parameters }}
+</article>
