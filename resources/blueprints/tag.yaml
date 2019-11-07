@@ -1,4 +1,4 @@
-title: Fieldtype
+title: Tag
 sections:
   main:
     display: Main
@@ -27,7 +27,7 @@ sections:
           type: markdown
           localizable: true
       -
-        handle: options
+        handle: parameters
         field:
           type: grid
           mode: stacked
@@ -46,6 +46,26 @@ sections:
               handle: required
               field:
                 type: toggle
+                width: 33
+            -
+              handle: description
+              field:
+                type: markdown
+      -
+        handle: variables
+        field:
+          type: grid
+          mode: stacked
+          fields:
+            -
+              handle: name
+              field:
+                type: text
+                width: 33
+            -
+              handle: type
+              field:
+                type: text
                 width: 33
             -
               handle: description

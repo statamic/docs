@@ -1,9 +1,9 @@
 title: Tags
 route: '{mount}/{slug}'
 default_status: published
-template: page
+template: tags.show
 layout: layout
 blueprints:
-  - page
+  - tag
 revisions: false
 mount: 424f5092-be39-449a-b660-f4e077631487
