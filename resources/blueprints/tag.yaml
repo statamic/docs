@@ -78,6 +78,13 @@ sections:
           type: template
           default: page
       -
+        handle: parent_tag
+        field:
+          display: Parent Tag
+          type: collections
+          collection: tags
+          max_items: 1
+      -
         handle: stage
         field:
           display: Writing Stage

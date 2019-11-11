@@ -1,6 +1,6 @@
 ---
 title: Asset
-description: Retrieve an Asset by its URL.
+description: Retrieves an Asset by its URL
 intro: The Asset (singular tense) tag retrieves single assets by their URL.
 parameters:
   -

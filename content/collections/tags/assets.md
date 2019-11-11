@@ -3,7 +3,7 @@ id: 5b748a3f-be0e-41c1-8877-73f6b7ee1d0a
 title: Assets
 intro: >
     Used to retrieve [Assets](/assets) directly from a container where you can then loop, filter, and sort them in expected but exciting ways.
-description: Fetch Assets from a container.
+description: Fetches Assets from a container
 stage: 3
 parameters:
   -

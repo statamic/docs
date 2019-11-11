@@ -1,6 +1,8 @@
 ---
+title: Breadcrumbs
+parent_tag: ed746608-87f9-448f-bf57-051da132fef7
 overview: >
-  Breadcrumbs are a common form of site navigation designed to give the user heirarchial context. Much like the crumbs left by a little German boy named Hansel (so 🔥 right now), they lead from where you are, all the way back home.
+  Breadcrumbs are a common form of site navigation designed to give the user hierarchal context. Much like the crumbs left by a little German boy named Hansel (so 🔥 right now), they lead from where you are, all the way back home.
 description: Display breadcrumb-style navigation links to your current page.
 parameters:
   -
@@ -41,7 +43,6 @@ variables:
       all the variables inside that page. This
       includes things like `title`, `content`,
       etc.
-title: Breadcrumbs
 id: 485f1703-fc6f-4d0f-94f2-e84ae625e1b7
 ---
 ## Example

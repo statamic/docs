@@ -37,9 +37,9 @@ Statamic's main config files can be found in `config/statamic/`. They are primar
 
 ## Environment Variables
 
-It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to enable debug mode on your local server but not your production server (a good idea indeed).
+It is often helpful to have different configuration values based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (a good idea indeed).
 
-In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your application. If you install Statamic via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
+In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. If you install Statamic via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
 
 ### Environment Variable Types
 
