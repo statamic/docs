@@ -1,21 +1,35 @@
 ---
-title: Indent
+title: "Markdown:Indent"
 id: d26ec250-460e-11e7-9598-0800200c9a66
-overview: Convert content between the tags into markdown, ignoring indentation.
+description: Transforms inline Markdown while ignoring whitespace
+intro: This tag is used for transforming Markdown while ignoring whitespace in your view files.
+stage: 4
 ---
-Similar to the [`{{ markdown }}`](/tags/markdown) tag, `{{ markdown:indent }}` is a tag-pair version of the [markdown modifier](/modifiers/markdown). However, it additionally ignores indentation so everything isn't simply rendered in a `<code>` block.
-
 ## Example {#example}
 
 ```
-{{ markdown:indent }}
-  ## Ode To Bacon
+<article class="mx-auto max-w-lg">
+  {{ markdown:indent }}
+    # My Favorite Nickelodeon Shows
 
-  Bacon. Mmm, bacon.
-{{ /markdown:indent }}
+    - Kenan & Kel
+    - All That
+    - Double Dare
+    - Wild & Crazy Kids
+    - Legends of the Hidden Temple
+  {{ /markdown:indent }}
+  </article>
 ```
 
-``` .language-output
-<h3>Ode To Bacon</h3>
-<p>Bacon. Mmm, bacon.</p>
+``` output
+<article class="mx-auto max-w-lg">
+  <h1>My Favorite Nickelodeon Shows</h1>
+  <ul>
+    <li>Kenan & Kel</li>
+    <li>All That</li>
+    <li>Double Dare</li>
+    <li>Wild & Crazy Kids</li>
+    <li>Legends of the Hidden Temple</li>
+  </ul>
+</article>
 ```
