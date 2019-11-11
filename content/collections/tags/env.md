@@ -1,31 +1,33 @@
 ---
 title: Env
-overview: Output environment variable values.
+description: Fetches environment variables from your `.env` file
+intro: The Env tag fetches environment variables from your `.env` file and can set default fallbacks.
 parameters:
   -
-    name: default|fallback
+    name: default
     type: string
-    description: "In the event that the requested variable doesn't exist, this will be used a fallback."
+    description: "In the event that the requested variable doesn't exist, this will be used a fallback. Default: `null`"
+stage: 4
 id: 967d4bad-34a0-4a6a-8af1-6e88c6b900ed
 ---
+## Overview
+
+[Environment variables](/configuration#environment-variables) are used to keep different settings based on the environment where your site is running. For example, you set `APP_DEBUG=true` on a local or staging site, but `APP_DEBUG=false` in your production (live) site.
+
 ## Example
 
-This tag is a nice simple way to output values from your environment variables.
+In your environment file (`.env`), set a variable, and fetch it's value like so:
 
-In your environment file (`.env`):
-
-```
-FOO=bar
+``` env
+RAD_LEVEL=99
 ```
 
 ```
-1. {{ env:FOO }}
-2. {{ env:HELLO }}
-3. {{ env:HELLO default="world" }}
+{{ env:RAD_LEVEL }}
+{{ env:UNSET_VAR default="23" }}
 ```
 
-``` .language-output
-1. bar
-2.
-3. world
+``` output
+99
+23
 ```
