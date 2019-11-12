@@ -1,86 +1,39 @@
 ---
 title: Parent
-overview: Grab the current page's parent's page data. You follow that?
-parameters:
-  -
-    name: field
-    type: tag part
-    description: |
-      The name of the field. This is not actually a parameter, but part of the tag itself.
-      For example, `{{ parent:title }}`
+description: Fetches data from a parent entry
+intro: The Parent tag fetches data from the "parent" page — the URL one level above the current one. For example, the parent of this very URL (`/tags/parent`) is `/tags`, and the parent title is "Tags".
+stage: 3
 id: 932ae2b5-0ff0-40e3-b8a4-1c71784917e4
 ---
-## Example {#example}
+## Overview
 
-### Fetching and iterating over values
+This is a simple utility tag that makes it easy to fetch data from the entry one page above the current entry. It's useful for creating section headers, simple breadcrumbs, and so on.
 
-``` .language-yaml
-# pages/about/index.md
----
-title: About
-stuff:
-  one: uno
-  two: dos
-facts:
-  - potatoes have eyes
-  - bacon gives you superpowers
----
-```
-
-``` .language-yaml
-# pages/about/team/index.md
----
-title: Team
----
-```
-
-If you were on `/about/team` and use the following template:
-
-```
-{{ title }}
-
-{{ parent:title }}
-
-{{ parent:stuff }} {{ one }}, {{ two }} {{ /parent:stuff }}
-
-{{ parent:facts }} {{ value }}, {{ /parent:facts }}
-```
-
-You would get this:
-
-``` .language-output
-Team
-
-About
-
-uno, dos
-
-potatoes have eyes, bacon gives you superpowers,
-```
-
-### Without a tag part
-
-You can also use the parent tag without a tag part. This can do two things:
-
-As a single tag, it'll just output the parent's URL.
+## Parent URL
+By itself the tag returns the parent's URL.
 
 ```
 {{ parent }}
+// Would return "/tags"
 ```
 
-``` .language-output
-/about
-```
-
-As a tag pair, it'll make all the parent's values available:
+## Single Variables
+You can fetch single variables from the parent entry by passing them as the second tag argument.
 
 ```
-{{ parent }} {{ title }} {{ /parent }}
+{{ parent:title }}
+// Would return "Tags"
 ```
 
-``` .language-output
-About
+## Tag Pair
+As a tag pair, it will have access to all the parent's data:
+
+```
+{{ parent }}
+  Go back to <a href="{{ url }}">{{ title }}</a>.
+{{ /parent }}
 ```
 
-**Note**: Do not both a single and tag pair in the same template. It'll get confused by which closing tag belongs to which
-opening tag. Feel free to put them in partials.
+``` output
+Go back to <a href="/tags">Tags</a>.
+```
