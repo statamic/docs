@@ -1,15 +1,14 @@
 ---
-title: Get Content
-id: a33dd9d3-f2f0-4114-b19d-1126361c327e
+title: Get_Content
 parse_content: false
-overview: |
-  With nothing but a URI, or list of URIs, you can fetch all available data regardless of the content type. It is a friend to pages, entries, and taxonomies alike.
-description: Fetch data by one or more URLs regardless of content type.
+intro: |
+  One of the most flexible ways to fetch content from elsewhere in your site is by using the `get_content` tag. Specify a URL and fetch all the data attached to it.
+description: Fetch content by URL
 parameters:
   -
     name: from
     type: string
-    description: Pass a local URI or ID as a literal string, variable, or pipe delimited list, and all retrieved data will be available inside the tag pair.
+    description: Pass a local URL or ID as a string, reference to variable, or pipe delimited list, and all retrieved data will be available inside the tag pair.
   -
     name: limit
     type: integer
@@ -20,52 +19,57 @@ parameters:
     description: Offset the total results when fetching multiple content files.
   -
     name: show_unpublished
-    type: boolean *false*
-    description: Unpublished content is, by it's very nature, unpublished. That is, unless you show it by turning on this parameter.
+    type: boolean
+    description: 'Enable to include unpublished entries. Default: `false`.'
   -
     name: show_future
-    type: boolean *false*
-    description: Date-based entries from the future are excluded from results by default. Of course, if you want to show upcoming events or similar content, flip this switch.
+    type: boolean
+    description: 'Include entries with publish dates in the future, even if the collection has that behavior disabled. Default: `false`'
   -
     name: show_past
-    type: boolean *true*
-    description: Date-based entries from the past are included in results by default.
+    type: boolean
+    description: 'Include entries with publish dates in the past, even if the collection has that behavior disabled. Default: `true`'
   -
     name: sort
-    type: any fieldname
-    description: Sort results by any fieldname when fetching multiple content files.
+    type: string
+    description: >
+      If you're fetching content from multiple URLs, you can sort the results any field handle. Example: `sort="price|desc"`.
   -
     name: locale
     type: string
     description: Show the retrieved content in the selected locale.
+stage: 4
+id: a33dd9d3-f2f0-4114-b19d-1126361c327e
 ---
-## Example {#example}
+## Overview
 
-Let's use the Redwood demo site as an example. Say we want to fetch the Niles Peppertrout's "Fun Facts" and display a random one in the footer of our site.
-If we looked at the `about/index.md` page we would see that there's a variable list called `fun_facts`. That's what we want.
-
-In addition to the `get_content` tag, we'll be using the [shuffle](#) and [limit](#) modifiers to get one item from the list at random, and the [join](#) modifier to collapse an array into a string. This is just one of many ways you could achieve the same result.
+Think of this tag as an all-purpose 🇨🇭Swiss Army Knife for fetching content. Give it one or more URLs and you'll receive all the data that would be injected automatically into the view if you visited it directly. It doesn't matter where the data comes from – entry, taxonomy, route, controller, database, etc.
 
 ```
-{{ get_content from="/about" }}
-  <blockquote>
-    {{ fun_facts | shuffle | limit:1 | join }}
-  </blockquote>
+{{ get_content from="about/team" }}
+  {{ team }}
+    <div class="w-1/3">
+      <img src="{{ headshot }}" alt="{{ name }}">
+      <p>{{ name }}, {{ job_title }}</p>
+    </div>
+  {{ /team }}
 {{ /get_content }}
 ```
 
-### Shorthand syntax
+## Shorthand
 
-You may also use a shorthand syntax, where the second tag part refers to a variable. This variable should hold the URL or
-ID of the content you're fetching.
-
-``` .language-yaml
-page: /about
-```
+You may also use a shorthand syntax, where the second tag argument refers to a variable that contains a URL or ID.
 
 ```
-{{ get_content:page }}
-   ...
-{{ /get_content:page }}
-```
+---
+related_by_url: /about
+related_by_id: 123-321-abc-defg123
+---
+{{ get_content:related_by_url }}
+  {{ title }}
+{{ /get_content:related_by_url }}
 
+{{ get_content:related_by_entry }}
+  {{ title }}
+{{ /get_content:related_by_entry }}
+```
