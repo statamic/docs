@@ -1,49 +1,43 @@
 ---
 title: Increment
-parse_content: false
-overview: "This tag will create an incrementing index for you. Each time the tag is parsed it will increment its value by one."
-description: "This tag will create an incrementing index for you."
+description: "Creates incrementing indexes inside loops"
+intro: "Each time an increment tag is parsed, an index is incremented by one and displayed."
 parameters:
   -
     name: from
-    type: integer *default 0*
+    type: integer
     description: |
-      Pass a number you'd like to start incrementing from.
+      The number to start incrementing from. Default: `0`;
   -
     name: by
-    type: integer *default 1*
+    type: integer
     description: |
-      Pass a number you'd like to increment by.
+      The size to increment by. Default: `1`.
+stage: 4
 id: b33aa176-06e6-411d-a4b7-0a514f697d78
 ---
-## Usage
+## Overview
 
-Let's assume we have a `loop_of_6` variable (or tag pair) that has 6 items in it and we'd like to track an independent counter. Maybe we've encountered a scoping challenge with the native indexes, or perhaps that's being overridden in some other way (aka The Curse of Nested Loops&trade;).
-
-Enter `{{ increment }}` to save the day!
-
-With `{{ increment }}` you can have multiple counters going at different times and also customize the number you want to start from and the amount to increment by.
+Most loops already have an `index` variable that will display which iteration the loop is on. However, there are cases were you may need to start another counter, begin counting from a particular number, or increment by a step size other than `1`. For those reasons, this tag exists.
 
 ```
-{{ loop_of_6 }}
-    {{ increment }}
-{{ /loop_of_6 }}
-
-<!-- Break -->
-
-{{ loop_of_6 }}
-    {{ increment:two from="10" by="2" }}
-{{ /loop_of_6 }}
+{{ items }}
+  {{ increment }}
+{{ /items }}
 ```
 
-```.language-output
-0 1 2 3 4 5
-
-<!-- Break -->
-
-10 12 14 16 18 20
+``` output
+1 2 3 4 5 6
 ```
 
-## Multiple Instances
+> A counter will only be incremented if its parsed. You can wrap it inside an `if` condition if you want it to be conditionally incremented.
 
-As seen in the example above, you can have multiple counter instances by passing the tag a unique name. Feel free to use as many as you'd like, giving each its very own name.
+## Multiple Counters
+
+You can have multiple counters going at once in your view by giving each a unique name as the second tag argument.
+
+```
+{{ items }}
+  {{ increment:again }}
+{{ /items }}
+```
