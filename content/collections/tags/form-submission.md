@@ -1,5 +1,5 @@
 ---
-title: Submission
+title: "Form:Submission"
 id: 8720d9ed-3a5f-4c60-af74-7b82933146a2
 overview: Display data immediately following a successful submission.
 parameters:

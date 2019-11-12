@@ -1,6 +1,6 @@
 ---
 id: 2def7e29-3dbd-4190-b2b1-b84adb4f479d
-title: Image
+title: "Theme:Img"
 overview: Get the URL to an image in your theme.
 parameters:
   -

@@ -1,5 +1,5 @@
 ---
-title: Output
+title: "Theme:Output"
 overview: Render the output of any file in your theme.
 parameters:
   -

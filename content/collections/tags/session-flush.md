@@ -1,5 +1,5 @@
 ---
-title: Session:Flush
+title: "Session:Flush"
 overview: The session:flush tag is used to clear the entire user session.
 id: 1f522665-9fc2-4c9f-9594-04a518c51b39
 ---

@@ -1,5 +1,5 @@
 ---
-title: CSS
+title: "Theme:CSS"
 overview: Get the URL to a stylesheet file in your theme.
 parameters:
   -

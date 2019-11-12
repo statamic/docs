@@ -1,5 +1,5 @@
 ---
-title: Generate
+title: "Glide:Generate"
 id: 0af9e798-850e-427e-8c04-f065185b1b86
 overview: Generate images with a tag pair syntax that exposes variables.
 parameters:

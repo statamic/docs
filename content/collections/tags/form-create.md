@@ -1,5 +1,5 @@
 ---
-title: Create
+title: "Form:Create"
 id: aa96fcf1-510c-404b-9b63-cea8942e1bf8
 overview: >
   Generate necessary `<form>` markup to accept form submissions.
@@ -79,7 +79,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
             <input type="text" name="{{ name }}" value="{{ old }}" />
         </div>
     {{ /fields }}
-    
+
     {{# Or you can hardcode fields... #}}
     <div class="form-group">
         <label>Email</label>

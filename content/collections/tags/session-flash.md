@@ -1,5 +1,5 @@
 ---
-title: Session:Flash
+title: "Session:Flash"
 overview: The session:flash tag is used to store data for a single request.
 id: 29957a36-a15a-4fd0-9342-b829b6235fea
 ---

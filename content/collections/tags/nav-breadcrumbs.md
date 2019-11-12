@@ -1,12 +1,12 @@
 ---
-title: Breadcrumbs
+title: "Nav:Breadcrumbs"
 parent_tag: ed746608-87f9-448f-bf57-051da132fef7
 overview: >
   Breadcrumbs are a common form of site navigation designed to give the user hierarchal context. Much like the crumbs left by a little German boy named Hansel (so 🔥 right now), they lead from where you are, all the way back home.
 description: Display breadcrumb-style navigation links to your current page.
 parameters:
   -
-    name: 'url '
+    name: 'url'
     type: string
     description: >
       Defaults to your current page, but can be set to anywhere if necessary.

@@ -1,5 +1,5 @@
 ---
-title: Session:Dump
+title: "Session:Dump"
 overview: The session:dump tag is used to inspect the user session for debugging purposes.
 id: d1ef36ac-7d21-40b2-a7fc-b53a0be3c79c
 ---

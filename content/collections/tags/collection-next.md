@@ -1,5 +1,5 @@
 ---
-title: Next
+title: "Collection:Next"
 overview:  Grab the next entries relative to current entry in a Collection.
 parameters:
   -

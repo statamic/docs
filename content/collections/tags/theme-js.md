@@ -1,5 +1,5 @@
 ---
-title: JS
+title: "Theme:JS"
 id: 7b0b7fd8-4b7a-42ae-921b-ddc7383e12f2
 overview: Get the URL to a javascript file in your theme.
 parameters:

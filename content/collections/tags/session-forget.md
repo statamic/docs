@@ -1,5 +1,5 @@
 ---
-title: Session:Forget
+title: "Session:Forget"
 overview: The session:forget tag is used to remove data from the user session.
 id: be024503-9796-4f2f-9c75-548e2ea09cec
 ---

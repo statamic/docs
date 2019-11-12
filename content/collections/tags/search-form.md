@@ -1,5 +1,5 @@
 ---
-title: Form
+title: "Search:Form"
 description: How to create a search form.
 id: 1ab4aca4-1add-4b41-b40c-4f3e8170fd98
 ---

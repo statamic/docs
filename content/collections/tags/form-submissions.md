@@ -1,5 +1,5 @@
 ---
-title: Submissions
+title: "Form:Submissions"
 id: afa2740e-2cf7-4ada-a92e-4fc92e827351
 overview: Iterate over and display data from form submissions.
 parameters:

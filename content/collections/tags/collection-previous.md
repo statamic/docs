@@ -1,5 +1,5 @@
 ---
-title: Previous
+title: "Collection:Previous"
 overview: Grab the previous entries relative to current entry in a Collection.
 parent_tag: 045a6e54-c792-483a-a109-f07251a79e47
 id: 741cf972-c0bd-4e3c-81e2-8cc8bea60737

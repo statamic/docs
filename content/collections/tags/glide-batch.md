@@ -1,5 +1,5 @@
 ---
-title: Batch
+title: "Glide:Batch"
 overview: Convert a batch of image URLs to their Glide counterparts.
 parameters:
   -

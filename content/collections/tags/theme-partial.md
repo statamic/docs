@@ -1,5 +1,5 @@
 ---
-title: Partial
+title: "Theme:Partial"
 overview: Render a partial template.
 id: 2b8fb14d-353d-465e-b206-b27436c6692a
 ---
