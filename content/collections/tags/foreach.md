@@ -1,38 +1,37 @@
 ---
 title: Foreach
-parse_content: false
-overview: >
-  An array of named keys and values requires knowing those keys in order to access the data. This tag enables you to access them abstractly and save the day.
-description: Loop through the items of a named key/value array
+description: Loop through keys in a named key/value array
+intro: >
+  Loop through and render values from an array of named keys and values without needing to know the keys.
 parameters:
   -
     name: as
     type: string
     description: |
-      You can rename the `key|value` variables like so:
-      `as="song|rating"`
+      Optionally rename the `key|value` variables. See the above example.
+stage: 4
 id: 34b03d03-a113-467f-a1c9-65bc6b446220
 ---
-## Usage
+## Overview
 
-Let's assume we have a bit of data stored in a nice and neat named array, perhaps created by the [Array fieldtype](/fieldtypes/array).
+Normally when you have data stored in a named array format perhaps created by the [array fieldtype](/fieldtypes/array), you would need to know the keys to render data in your view.
 
-Using the `foreach` tag you can pass the variable name into the second part of the tag call and loop through the data using `{{ key }}` and `{{ value }}`.
+Using the `foreach` tag you can pass in variable name as the second argument in the tag name and loop through the data using `{{ key }}` and `{{ value }}`.
 
-```.language-yaml
+```yaml
 company_info:
-  Address 1: 123 Main Street
-  Address 2: Suite 404
-  City: Saratoga Springs
-  State: New York
-  Zip Code: 12866
+  address_1: 123 Hollywood Blvd
+  address_2: Suite 404
+  city: Beverly Hills
+  state: California
+  zip: 90210
 
 song_reviews:
   Never Gonna Give You Up: 5/5
   My Heart Will Go On: 3/5
 ```
 
-```.language-template
+```
 {{ foreach:company_info }}
   {{ key }}: {{ value }}<br>
 {{ /foreach:company_info }}
@@ -44,15 +43,17 @@ song_reviews:
 </ul>
 ```
 
-```.language-output
-Address 1: 123 Main Street
-Address 2: Suite 404
-City: Saratoga Springs
-State: New York
-Zip Code: 12866
+``` output
+Address 1: 123 Hollywood Blvd<br>
+Address 2: Suite 404<br>
+City: Beverly Hills<br>
+State: California<br>
+Zip Code: 90210
 
-<li>Never Gonna Give You Up: 5/5</li>
-<li>My Heart Will Go On: 3/5</li>
+<ul>
+  <li>Never Gonna Give You Up: 5/5</li>
+  <li>My Heart Will Go On: 3/5</li>
+</ul>
 ```
 
 > **Note:** PHP reserves the word `foreach`, so this tag is _technically_ an alias of `iterate`. If you're spelunking through the source code, that's where you'll find it.
