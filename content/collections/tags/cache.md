@@ -1,29 +1,31 @@
 ---
 title: Cache
-overview: >
-  There are times when you may want to simply cache a section of a template to gain some performance. That’s what this Tag is for. Wrap your markup and you’re off on your way to a snappier, zippier, peppier site.
+description: Cache a chunk of your view for performance gains
+intro: >
+  If you find that a particular chunk of your view logic is the cause of a performance hit — perhaps you're fetching and filtering huge amount of content, or pulling data from an API, caching that portion of your template can remove alleviate any slowdown.
 parameters:
   -
     name: for
     type: string
-    description: 'The length of time to cache this section. You may use plain English to specify the length, eg. `2 hours`, `5 minutes`, etc'
+    description: 'The length of time to cache this section. Use plain English to specify the length, eg. `2 hours`, `5 minutes`, etc.'
   -
     name: scope
-    type: 'string *site*'
-    description: 'Sets the cache scope. You have your choice of the default `site` or `page`.'
-description: Cache a template chunk for performance.
+    type: 'string'
+    description: 'Sets the cache scope. The default `site` scope will cache one instance per tag for the entire site, while a `page` scope will create a unique cache per URL.'
+stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
-## Usage {#usage}
+## Overview
 
-The content between the `{{ cache }}` and `{{ /cache }}` tags is hashed to create a unique key for that tag. The cacher then checks to see if a cache for that unique key already exists. If it exists it displays the rendered HTML, otherwise it will parse and render the content, store that HTML for use later, and _then_ display everything knowing full well it won't have to do that work again next time.
+After an initial render, markup inside a cache tag will be pulled from a cached,statically cached copy until invalidated.
+
 
 ```
-{{ cache for="1 hour" }}
+{{ cache for="5 minutes" }}
   {{ collection:stocks limit="5000" }}
-    <!-- probably lots of things happening -->
+    <!-- probably lots of stuff happening -->
   {{ /collection:stocks }}
 {{ /cache }}
 ```
 
-Cache is smart. Cache doesn't do more work than it has to. We should all take a lesson from Cache's autobiography (entitled _"Catch My Cash Cache If You Can"_).
+It really only makes sense to use the cache tag if you're not using another full-site type of caching, like static or full measure. There's nothing to be gained by caching a cache. That would be like buying four $5 bills with a $20. What have you gained other than a fatter wallet?
