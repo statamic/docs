@@ -1,25 +1,31 @@
 ---
 title: Switch
-description: Loop over a set of values repeatedly.
-overview: >
-  For each time that this tag is called, a value from those listed in the between parameter will be returned. The first value will be returned the first time this tag is called, the second value the second time, etc. Once this tag runs out of values to return, it starts over at the first thing in its list.
+description: Loops a given set of values repeatedly
+intro: >
+  Each time a switch tag is rendered it will return the next value from its `between` parameter until it reaches the end where it will start all over again.
 parameters:
   -
     name: between
     type: array
     description: >
-      A set of values to iterate over, using a
-      pipe-separated string.
+      A set of values to iterate over, using a pipe-separated string.
+stage: 4
 id: 8b558556-a08b-4134-b77d-102b4fb34060
 ---
-## Examples {#examples}
+## Overview
 
-Odd/even table row classes for zebra striping.
+The switch tag is most often used to write HTML classes in your markup to help style lists and grids of items. While CSS has gained a lot of features in recent years with CSS selectors like `nth-of-type`, the switch tag is remains more relevant than ever, especially in combination with utility frameworks like [TailwindCSS](https://tailwindcss.com).
+
+## Examples
+
+Here are a few ideas on what you can do with the switch tag.
+
+### Set alternating background color for table rows
 
 ```
 <table>
   {{ collection:shows }}
-    <tr class="{{ switch between='odd|even' }}">
+    <tr class="{{ switch between='bg-white|bg-grey-100' }}">
       <th>{{ title }}</th>
       <td>{{ rating }}</td>
     <tr>
@@ -27,19 +33,38 @@ Odd/even table row classes for zebra striping.
 </table>
 ```
 
-``` .language-output
-<table>
-  <tr class="odd">
-    <td>Parks & Recreation</td>
-    <td>6/5<td>
-  </tr>
-  <tr class="even">
-    <td>Real Housewives of Detroit</td>
-    <td>1/5<td>
-  </tr>
-  <tr class="odd">
-    <td>5/5</td>
-    <td>The Office</td>
-  </tr>
-</table>
+### Reverse every other pair of items with `flex-direction: row-reverse`
+
 ```
+{{ features }}
+  <div class="flex {{ switch between='flex-row|flex-row-reverse' }}">
+    <div class="w-1/2 px-4 m-2">
+      <h2>{{ feature_name }}</h2>
+      <div>{{ description }}</div>
+    </div>
+    <img src="{{ feature_screenshot }}" class="w-1/2 m-2">
+  </div>
+{{ /features }}
+```
+
+## Multiple Instances
+
+You can have multiple instances of the switch tag in a single view and they won't collide with each other as long as the your set of parameters is unique.
+
+If you want to have multiple, identical switch tags you can add an extra parameter to keep track of which is which.
+
+```
+{{ switch between="even|odd" for="gallery" }}
+{{ switch between="even|odd" for="footer" }}
+```
+
+## Repeating Values
+
+If you have a lot of redundancy in your `between` parameter, you can simplify it by passing in the number of times you want an element to be repeated.
+
+For example, if you'd like to set the background of every 10th element to purple, you could set the first value to white 9 times followed by purple 1 time.
+
+```
+{{ switch between="bg-white:9|bg-purple" }}
+```
+
