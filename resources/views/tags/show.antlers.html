@@ -28,4 +28,25 @@
         </div>
     </div>
     {{ /parameters }}
+    {{ if variables }}
+        <h2 id="parameters">Variables</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ variables }}
+                <tr>
+                    <td class='font-display font-bold'>{{ name | markdown }}</td>
+                    <td><code>{{ type }}</code></td>
+                    <td>{{ description | markdown | noparse }}</td>
+                </tr>
+                {{ /variables}}
+            </tbody>
+        </table>
+    {{ /if }}
 </article>
