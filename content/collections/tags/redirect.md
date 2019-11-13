@@ -1,6 +1,9 @@
 ---
 title: Redirect
-overview: Redirect to another page.
+description: Redirects visitor to another URL
+intro: |
+  Anytime this tag is rendered — whether in a template, partial, or content, Statamic will redirect the visitor to the specified URL.
+stage: 4
 parameters:
   -
     name: url
@@ -12,16 +15,22 @@ parameters:
     description: Alias of `url`
   -
     name: response
-    type: 'integer *302*'
-    description: The HTTP response code to use.
+    type: integer
+    description: 'The HTTP response code to use. Default: `302` (permanent).'
 id: 444d1109-ed96-4162-b86d-24b39f569220
 ---
-## Example {#example}
+## Examples
 
+Let's redirect visitors to the homepage if they're not logged in.
 ```
-{{ if !open }}
+{{ if ! logged_in }}
   {{ redirect to="/" }}
 {{ /if }}
 ```
 
-If the `open` tag is not true, this will forward the visitors to the homepage.
+How about RickRolling visitors if it's April Fool's Day?
+```
+{{ if (now|format:m-d) == "04-01" }}
+  {{ redirect to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" }}
+{{ /if }}
+```
