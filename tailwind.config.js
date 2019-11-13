@@ -54,6 +54,8 @@ module.exports = {
       'pink': '#D365CE',
       'pink-bright': '#FC6EB3',
       'pink-hot': '#FF269E',
+      'red': '#de3618',
+      'green': '#38A169',
       'teal-dark': '#066885',
       'teal': '#01D7B0',
       'orange': '#FFB47A',
