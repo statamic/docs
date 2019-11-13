@@ -1,7 +1,10 @@
 ---
-title: "Session:Dump"
-overview: The session:dump tag is used to inspect the user session for debugging purposes.
+title: 'Session:Dump'
+overview: 'The session:dump tag is used to inspect the user session for debugging purposes.'
+updated_at: 1573660510
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 id: d1ef36ac-7d21-40b2-a7fc-b53a0be3c79c
+published: false
 ---
 ## Usage
 

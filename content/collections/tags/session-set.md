@@ -1,7 +1,10 @@
 ---
-title: "Session:Set"
-overview: "The session:set tag is used to store and persist data in the user session."
+title: 'Session:Set'
+overview: 'The session:set tag is used to store and persist data in the user session.'
+updated_at: 1573660510
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 id: 90796c5b-6b11-4b02-9e6b-fd70211c825a
+published: false
 ---
 ## Usage
 
