@@ -1,97 +1,50 @@
 ---
 title: Partial
-overview: Render a partial template.
+description: Renders a partial view
+intro: Partials are reusable [views](/views) that may find themselves in any number of other layouts, templates, and other partials.
 parameters:
-  -
-    name: partial
-    type: tag part
-    description: "The name of the partial file, relative to the `partials` folder. This is part of the tag, not actually a parameter. For example, you'd use `partial:list` to load the `list` partial."
   -
     name: src
     type: string
     description: |
-      The name of the partial. This is just a more verbose syntax, but can allow you to use a variable for the partial name. eg. `{{ partial src="{my_partial}" }}`
-  -
-    name: variables
-    type: multiple params
-    description: >
-      Any additional parameters specified will
-      be sent into the partial as variables.
+      You can pass the name of the partial with a parameter instead of tag argument. Example: `src="cards/author_bio"` or `:src="var_name"`.
+stage: 4
 id: 1f683992-401e-44f6-8506-7967005778a5
 ---
-## Example 1: The header {#example-header}
+## Overview
 
-The most common usage of a partial is to add a header or navigation into a layout file, like this:
-
-```
-<html>
-<body>
-  {{ partial:header }}
-
-  <div class="main">
-    {{ template_content }}
-  </div>
-</body>
-</html>
-```
-
-The `{{ partial:header }}` tag would output the contents of `site/themes/theme_name/partials/header.html`.  
-
-Splitting your templates up into partials is a nice way to keep things clean and organized. Another great way to keep things tidy is to split up your partials into subdirectories:
+You can use any view as a partial by using this here partial tag.
 
 ```
-partials/
-|-- nav/
-|   |-- top.html
-|-- authors/
-|   |-- meta.html
-|-- session/
-|   |-- message.html
+// This will import /resources/views/blog/_card.antlers.html
+{{ partial:blog/card }}
 ```
 
-To render a partial that's inside a subdirectory, we would simply add `{{ partial:$folder/$filename }}` in our template. In other words, to get our top nav partial we would do `{{ partial:nav/top }}`.
+We recommend prefixing any views intended to be only used as partials with an underscore, `_like-this.antlers.html`. You don’t need to include the underscore in your partial tag.
 
-## Example 2: The reusable chunk {#example-reuse}
+## Passing Data
 
-Another common usage for a partial is to pass in data into a reusable chunk of template code.
-
-Here's a partial which outputs a list.
+You can pass additional data into a partial via on-the-fly parameters. The parameter name will become a variable inside the partial. The only reserved parameter is `src`, so you can name your variables just about anything.
 
 ```
-<h3>{{ header }}</h3>
+{{ partial:list header="favorite ice cream flavors" :items="flavors" }}
+
+// Inside `list.antlers.html`
+<h2>These are my {{ header }}</h2>
+{{ items | ul }}
+```
+
+``` output
+<h2>These are my favorite ice cream flavors</h2>
 <ul>
-  {{ items }}
-    <li>{{ value }}</li>
-  {{ /items }}
+  <li>Chocolate Chip Cookie Dough</li>
+  <li>Mint Chocolate Chip</li>
+  <li>Neon Mind Melter</li>
 </ul>
 ```
 
-In a page, we might have a list of animals.
+Note that the `:items` parameter is prefixed by a colon, meaning it will pass the _value_ of a `flavors` variable, if it exists.
 
-``` language-yaml
-animals:
-  - Stag
-  - Rhino
-  - Alligator
-```
+## Related Reading
 
-Then in our template, we want to output those animals using the partial.
-
-```
-<div>
-  {{ partial:list header="Favorite Animals" :items="animals" }}
-</div>
-```
-
-The resulting output would look like this:
-
-```
-<h3>Favorite Animals</h3>
-<ul>
-  <li>Stag</li>
-  <li>Rhino</li>
-  <li>Alligator</li>
-</ul>
-```
-
-The `:items` parameter was prefixed by a colon, which means it will be [retrieved from the context](/antlers#vars-in-params).
+If you haven't read up on [views](/views) yet, you should. It's fundamental knowledge, just like knowing that seals are just dog mermaids.
