@@ -1,25 +1,58 @@
 ---
 title: Section
-overview: 'Extract a section of template that can be retrieved in a [Yield Tag](/tags/yield).'
+description: Extracts markup to be rendered elsewhere with yield.
+intro: 'The section tag is a useful way to abstract and reuse your views by extracting a section of markup that can then be rendered elsewhere with a [yield tag](/tags/yield).'
+stage: 4
 id: 21481d1a-ee1b-4acd-b5ad-65dc7fcec976
 ---
+## Overview
 
-## Example {#example}
+Most commonly this section/yield approach is used to create a global area in your layout that can be changed by your templates. This eliminates the need for any brittle and messy logic.
 
-Here's an example template:
+**Cheatsheet:**
+
+- <span class="text-red font-bold">No thank you:</span> `{{ if template == "news" }} hardcode something {{ /if }}`
+- <span class="text-green font-bold">Yes please:</span> `{{ section:something }}` + `{{ yield:something }}`
+
+## Example
+
+In the example below, everything within the `section:sidebar` tag will _not_ be rendered in the template, but rather in the layout.
 
 ```
+// The Template
+
 <h1>{{ title }}</h1>
-<div>
-    {{ content }}
-</div>
+{{ content }}
 
 {{ section:sidebar }}
-    Some sidebar stuff!
+  <h2>About the Author</h2>
+  <div>
+    {{ author:name }}
+  </div>
+  {{ author:bio }}
 {{ /section:sidebar }}
 ```
 
-Everything within the `section:sidebar` tag pair will _not_ be rendered in this template. It will be rendered
-in your layout (or partials within a layout) in the `{{ yield:sidebar }}` tag.
+```
+// The Layout
+<html>
+  <head>
+    <title>{{ title }} | {{ site_name }}</title>
+  </head>
+  <body>
+    <article>
+      {{ template_content }}
+    </article>
+    <aside>
+      {{ yield:sidebar }}
+    </aside>
+  </body>
+</html>
+```
+
+## Related Reading
+
+If you haven't read up on [templates and layouts](/views), you should. It's relevant.
+
 
 [yield_tag]: /tags/yield
