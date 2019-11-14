@@ -1,40 +1,41 @@
 ---
 title: "Glide:Batch"
-overview: Convert a batch of image URLs to their Glide counterparts.
+description: Manipulates a whole batch of `<img>` tags
+intro: Use `glide:batch` to manipulate a whole batch of `<img>` tags with [Glide](/tags/glide).
 parameters:
   -
     name: glide parameters
     type: mixed
     description: |
-      All of the API manipulation parameters listed on the [Glide tag][tag].
-      [tag]: /tags/glide#parameters
+      All of the manipulation parameters listed on the [Glide tag](/tags/glide#parameters).
 id: 5173c6fb-8c28-4cb1-9d2e-b7c902f96308
 ---
-## Usage
-This is a tag pair that wraps content containing `<img />` tags. Each image tag's `src` attribute will be converted to Glide URLs.
+## Overview
 
-A common use case for this tag would be to resize all raw image assets inserted into a Markdown or Redactor field.
+Wraps content containing `<img>` tags and each will be manipulated with your desired Glide parameters.
+
+This tag is useful when resizing all images inside a Markdown or other text field.
 
 ## Example
 
-We have a markdown field with some images sprinkled througout.
+``` markdown
+I went exploring today and here are some photos I took and I was too lazy to use an Asset fieldtype so here they all are plop ok
 
-```.language-markdown
-![Bears](/assets/bears.jpg)
-![Beets](/assets/beets.jpg)
-![Battlestar](/assets/galactica.jpg)
+![Bears](/images/bears.jpg)
+![Beets](/images/beets.jpg)
+![Battlestar](/images/galactica.jpg)
 ```
 
 ```
-{{ glide:batch width="300" height="200" fit="crop" }}
-  {{ content | markdown }}
+{{ glide:batch width="600" height="400" fit="crop" }}
+  {{ content }}
 {{ /glide:batch }}
 ```
 
-``` .language-output
-<img src="/img/assets/bears.jpg?w=300&h=200&fit=crop" title="Bears" />
-<img src="/img/assets/beats.jpg?w=300&h=200&fit=crop" title="Beats" />
-<img src="/img/assets/galactica.jpg?w=300&h=200&fit=crop" title="Battlestar" />
-```
+``` output
+<p>I went exploring today and here are some photos I took and I was too lazy to use an Asset fieldtype so here they all are plop ok</p>
 
-[glide_tag]: /tags/glide
+<img src="/img/assets/bears.jpg?w=600&h=400&fit=crop" title="Bears" />
+<img src="/img/assets/beats.jpg?w=600&h=400&fit=crop" title="Beats" />
+<img src="/img/assets/galactica.jpg?w=600&h=400&fit=crop" title="Battlestar" />
+```
