@@ -147,7 +147,7 @@
     :not(pre):not(h1):not(h2):not(h3):not(h4) > code {
         @apply bg-grey-200 leading-normal rounded-sm relative;
         font-size: 80%;
-        padding: .1em .2em;
+        padding: .2em;
         bottom: .05rem;
     }
 

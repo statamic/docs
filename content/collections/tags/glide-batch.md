@@ -14,7 +14,7 @@ id: 5173c6fb-8c28-4cb1-9d2e-b7c902f96308
 
 Wraps content containing `<img>` tags and each will be manipulated with your desired Glide parameters.
 
-This tag is useful when resizing all images inside a Markdown or other text field.
+This tag is useful when uniformly resizing all images inside a chunk of HTML or the contents of Markdown or other fields. If you wrap the tag around Antlers variables, be sure to use **page scope:** `{{ page:content }}` instead of `{{ content }}`.
 
 ## Example
 
@@ -28,7 +28,7 @@ I went exploring today and here are some photos I took and I was too lazy to use
 
 ```
 {{ glide:batch width="600" height="400" fit="crop" }}
-  {{ content }}
+  {{ page:content }}
 {{ /glide:batch }}
 ```
 
