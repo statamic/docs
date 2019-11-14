@@ -1,6 +1,7 @@
 ---
 title: "Glide:Batch"
 description: Manipulates a whole batch of `<img>` tags
+stage: 4
 intro: Use `glide:batch` to manipulate a whole batch of `<img>` tags with [Glide](/tags/glide).
 parameters:
   -
