@@ -114,40 +114,46 @@ filters:
     type: string
     description: >
       Applies a filter effect to the image. Accepts `greyscale` or `sepia`.
-
+variables:
+  -
+    name: url
+    type: string
+    description: The URL of the resized image.
+  -
+    name: width
+    type: integer
+    description: The width of the resized image.
+  -
+    name: height
+    type: integer
+    description: The height of the resized image.
 id: b70a3d9a-6605-446e-b278-de99ba561fe0
 ---
 ## Overview
 
 The Glide tag leverages the fantastic [Glide](http://glide.thephpleague.com/) PHP library to give you on-demand image manipulation, similar to cloud image processing services like [Imgix](https://www.imgix.com/) and [Cloudinary](https://cloudinary.com/).
 
-## Referencing Images
 
-You have three ways to reference images.
-
-### By Variable
+Manipulate images by passing a variable or an explicit URL and adding the desired [parameters](#parameters) like `height`, `crop`, or `quality`.
 
 ```
+// Variable
 <img src="{{ glide:hero_image width="1280" height="800" }}">
-```
 
-### By URL
-
-```
+// URL
 <img src="{{ glide src="/img/heroes/slime.jpg" width="1280" height="800" }}">
 ```
 
-### By Concatenation
 
-If you need to assemble an image path with hardcoded strings and/or multiple variables, use the tag as a pair and the contents will be read as the `src` parameter.
+## Tag Pair
+
+If you use the tag as a pair, you'll have access to `url`, `height`, and `width` variables inside to do with as you wish.
 
 ```
-{{ glide width="600" height="400" tag="true" }}
-  https://example.com/{{ category }}/{{ slug }}.jpg
-{{ /glide }}
+{{ glide:image width="600" }}
+    <img src="{{ url }}" width="{{ width }}" height="{{ height }}">
+{{ /glide:image }}
 ```
-
-> When concatenating an image path, use `tag="true"` so you don't need to jam the whole thing inside an `<img src="">` element. That would be gnarly, and not in a good way.
 
 ## Focal Point Cropping
 
