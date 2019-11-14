@@ -109,20 +109,24 @@ Fieldsets technically still exist, although they are are a now a smaller, compan
 
 ### Tags
 
-- `get_values`
-    - Removed. Use `get_content`.
-- `entries`, `entries:listing`, `pages`
-    - Removed. Use `collection`.
 - `get_content`
     - Now only accepts IDs, not URLs.
-- `relate`
-    - No longer inherits paramaters from the `collection` tag.
-    - You can probably remove this tag entirely, as the values should be [augmented](/augmentation).
-- `form:submissions`
-    - No longer inherits parameters from the `collection` tag.
+- `get_values`
+    - Removed. Use `get_content`.
+- `glide`
+    - When used as a tag pair simply passes data inside. It no longer parses the contents as the `src` parameter.
+- `glide:generate`
+    - Removed. This is now the default behavior of the main `glide` tag when used as a pair. You can use `glide:batch` for this use case.
+- `entries`, `entries:listing`, `pages`
+    - Removed. Use `collection`.
 - `form`
     - Replaced `name` element in `fields` array with `handle`.
     - Replaced `field` element in `fields` array with a [renderable view](/tags/form).
+- `form:submissions`
+    - No longer inherits parameters from the `collection` tag.
+- `relate`
+    - No longer inherits parameters from the `collection` tag.
+    - You can probably remove this tag entirely, as the values should be [augmented](/augmentation).
 
 #### Tag Conditions
 
