@@ -4,10 +4,7 @@ description: Manipulates images on the fly
 intro: The Glide tag makes it easy to manipulate images on the fly – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
 template: tags.glide
 blueprint: tag-glide
-parameters_content: |
-  You may pass any parameter straight from the [Glide API](http://glide.thephpleague.com/1.0/api/quick-reference/) as a parameter.
-  For example, `{{ glide w="300" }}` will use the [width](http://glide.thephpleague.com/1.0/api/size#width-w)
-  API parameter. You can also use our easier-to-read alias parameters below. We're not a huge fan of shortening already short words.
+stage: 4
 parameters:
   -
     name: src|path|id
