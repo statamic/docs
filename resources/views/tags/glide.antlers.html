@@ -1,0 +1,49 @@
+<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
+    <h1>{{ title ensure_right=" Tag"}}</h1>
+    {{ intro ?? overview | markdown }}
+    {{ if ! hide_stage }}
+    <div class="badge -rot-3">
+        <a href="/writing-stages" class="no-underline text-teal-dark font-bold hover:text-pink-hot">Writing Stage</a>:
+        {{ stage ?? "Prewriting" }}
+    </div>
+    {{ /if }}
+</header>
+
+<article class="markdown pb-8">
+    {{ content | noparse | toc:ids }}
+
+    {{ if parameters }}
+    <h2 id="parameters">Parameters</h2>
+    {{ /if }}
+
+    {{ partial:tags/parameters }}
+
+    <h3>Size, Crop, and Output</h3>
+    {{ partial:tags/parameters :parameters="shape" }}
+
+    <h3>Filters and Effects</h3>
+    {{ partial:tags/parameters :parameters="filters" }}
+
+    {{ if variables }}
+    <h2 id="parameters">Variables</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Variable</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ variables }}
+            <tr>
+                <td class='font-display font-bold'>{{ name | markdown }}</td>
+                <td><code>{{ type }}</code></td>
+                <td>{{ description | markdown | noparse }}</td>
+            </tr>
+            {{ /variables}}
+        </tbody>
+    </table>
+    {{ /if }}
+
+</article>

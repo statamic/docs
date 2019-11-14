@@ -1,10 +1,11 @@
 ---
 title: Glide
-overview: Manipulate images on the fly using the wonderful [Glide](http://glide.thephpleague.com/) library.
-template: tag-glide
-video: https://youtu.be/cwRxk-lqxpg
+description: Manipulates images on the fly
+intro: The Glide tag makes it easy to manipulate images on the fly – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
+template: tags.glide
+blueprint: tag-glide
 parameters_content: |
-  You may pass any parameter straight from the [Glide API](http://glide.thephpleague.com/1.0/api/quick-reference/) as a parameter.  
+  You may pass any parameter straight from the [Glide API](http://glide.thephpleague.com/1.0/api/quick-reference/) as a parameter.
   For example, `{{ glide w="300" }}` will use the [width](http://glide.thephpleague.com/1.0/api/size#width-w)
   API parameter. You can also use our easier-to-read alias parameters below. We're not a huge fan of shortening already short words.
 parameters:
@@ -17,7 +18,7 @@ parameters:
   -
     name: field
     type: tag part
-    description: 'The name of the field containing the asset ID or image path when using the shorthand syntax. This is not actually a parameter, but part of the tag itself. For example, `{{ glide:hero_image }}`.'    
+    description: 'The name of the field containing the asset ID or image path when using the shorthand syntax. This is not actually a parameter, but part of the tag itself. For example, `{{ glide:hero_image }}`.'
   -
     name: tag
     type: boolean *false*
@@ -61,19 +62,19 @@ shape:
       Crops the image to specific dimensions prior to any other resize operations. Required format: `width,height,x,y`.
   -
     name: orient
-    type: mixed *auto*
+    type: mixed
     description: >
-      Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`. The `auto` option uses Exif data to automatically orient images correctly.
+      Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`. The `auto` option uses Exif data to automatically orient images correctly. Default: `auto`.
   -
     name: quality
-    type: integer *90*
+    type: integer
     description: >
-      Defines the quality of the image. Use values between `0` and `100`. Only relevant if the format is `jpg` or `pjpg`.
+      Defines the quality of the image. Use values between `0` and `100`. Only relevant if the format is `jpg` or `pjpg`. Default: `90`.
   -
     name: format
-    type: string *jpg*
+    type: string
     description: >
-      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png` or `gif`.
+      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png` or `gif`. Default: `jpg`.
 
 filters:
   -
@@ -119,111 +120,76 @@ filters:
 
 id: b70a3d9a-6605-446e-b278-de99ba561fe0
 ---
-## Examples {#examples}
+## Overview
 
-### Single Images {#single-images}
+The Glide tag leverages the fantastic [Glide](http://glide.thephpleague.com/) PHP library to give you on-demand image manipulation, similar to cloud image processing services like [Imgix](https://www.imgix.com/) and [Cloudinary](https://cloudinary.com/).
 
-We have an image's asset URL saved in the YAML, and we want to resize it to 300x200, fit it inside the area by cropping it, and apply a sepia filter.
+## Referencing Images
 
-``` language-yaml
-image: "/assets/food/bacon.jpg"
-```
+You have three ways to reference images.
 
-```
-{{ glide :src="image" width="300" height="200" fit="crop" filter="sepia" }}
-
-<!-- shorthand syntax: -->
-{{ glide:image width="300" height="200" fit="crop" filter="sepia" }}
-```
-
-``` .language-output
-/img/assets/food/bacon.jpg?w=300&h=200&fit=crop&filt=sepia&s=3982hf983f2mf90r23
-```
-
-### Multiple Images {#multiple}
-
-If you have a list of assets, you may want to loop over them and generate images for each one. Nothing special here, just loop over them.
-
-``` .language-yaml
-images:
-  - /assets/food/bacon.jpg
-  - /assets/drinks/whisky.jpg
-```
-
-Since the current iteration of the loop would be output using `{{ value }}`, you can reference that in the Glide tag like so:
+### By Variable
 
 ```
-{{ images }}
-  {{ glide:value width="300" height="200" }}
-{{ /images }}
+<img src="{{ glide:hero_image width="1280" height="800" }}">
 ```
 
-``` .language-output
-/img/assets/food/bacon.jpg?w=300&h=200&s=3982hf983f2mf90r23
-/img/assets/drinks/whisky.jpg?w=300&h=200&s=3982hf983f2mf90r23
-```
-
-### Complex image paths {#complex-image-paths}
-
-If you need the path to your image to be generated with another tag, you can't just drop that into the `path` parameter.
-It would likely be confusing to read your templates – there could be parameters in parameters, oh my.
-
-Instead, use the `glide` tag as a tag pair. The contents of the tag will be used as the `src`.
+### By URL
 
 ```
-{{ glide width="300" height="200" fit="crop" filter="sepia" }}
-  {{ theme:img src="photo.jpg" }}
+<img src="{{ glide src="/img/heroes/slime.jpg" width="1280" height="800" }}">
+```
+
+### By Concatenation
+
+If you need to assemble an image path with hardcoded strings and/or multiple variables, use the tag as a pair and the contents will be read as the `src` parameter.
+
+```
+{{ glide width="600" height="400" tag="true" }}
+  https://example.com/{{ category }}/{{ slug }}.jpg
 {{ /glide }}
 ```
 
-``` .language-output
-/img/site/themes/your-theme/img/photo.jpg?w=300&h=200&fit=crop&filt=sepia&s=3982hf983f2mf90r23
+> When concatenating an image path, use `tag="true"` so you don't need to jam the whole thing inside an `<img src="">` element. That would be gnarly, and not in a good way.
+
+## Focal Point Cropping
+
+Focal point cropping helps ensure the important bits of an image stay in the bounds of any crops you perform.
+
+### Using the focal point picker
+
+You can set focal points and zoom-levels for your images in the control panel using the asset editor. Use `fit="crop_focal"` while cropping to use an asset's saved focal point, if it has one.
+
+<figure>
+  <img src="/img/focal-point-picker.jpg" alt="The Focal Point Picker">
+  <figcaption>The focal point picker. Make sure to keep that hair in the shot!</figcaption>
+</figure>
+
+### Manually setting focal points
+
+When setting focal points manually, specify two offset percentages: `crop-x%-y%`.
+
+For example, `fit="crop-75-50"` would crop the image and make sure that the point at 75% across and 50% down would be the focal point.
+
+If asset doesn't have a focal point set it will simply crop from the center.
+
+_Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
+
+## Serving Cached Images Directly
+
+The default behavior is to simply output a URL. When that URL is
+visited, Glide analyzes the URL and manipulates an image. However, if there are a lot of manipulation on any given page quest, the total execution time can soon start to add up.
+
+You can avoid these slowdowns by generating static images. Your server will load the images directly instead of handing the work over to the Glide process each time. You can enable this behavior in your assets config file.
+
+``` php
+// config/statamic/assets.php
+
+'cache' => true,
 ```
 
+## Using Glide with Locales
 
-## Focal Crop {#focal-crop}
+When using Glide with multiple locales, the generated image path will include the proper `site_root` as dictated by the locale, but the actual asset will be stored wherever you have set the `cache_path`.
 
-When using the `fit` parameter, you may choose to crop to a focal point. You may specify the
-two offset percentages: `crop-x%-y%`.
-
-For example, `fit="crop-75-50"` would crop the image and make sure that the point at 75% across
-and 50% down would be the focal point.
-
-Rather than specifying the offsets, you may use `crop_focal` to use the asset's saved focal point.
-
-A Statamic image asset can be assigned a percentage based focal point. You can do this by editing an
-asset and defining the focal point using the UI. Or, you may add `focus: x-y` to the asset's metadata.
-
-When using `crop_focal` and an asset doesn't have a focal point set, it will crop from the center.
-
-Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_
-setting. This happens even when you don't specify a `fit` parameter. You may override this behavior
-per-image/tag by specifying the `fit` parameter as described above.
-
-
-## Serving Cached Images Directly {#serving-cached-images}
-
-Glide brings you some pretty nifty on-the-fly URL manipulations. The default behaviour of the Glide tag is to simply output a URL. When that URL is
-visited, Glide analyses the URL and manipulates an image. However, if you have a lot of assets in your site and a lot of them on a page, time for each
-request can soon start to add up.
-
-It is possible to "reverse" this behavior and to simply generate static images. Your server will load the images directly instead of handing the work
-over to Glide each time. If you are familiar with Statamic v1, this can be thought of similar to the "Transform" tag.
-
-In `Configure > Settings > Assets`, or `site/settings/assets.yaml`:
-
-``` .language-yaml
-# Enable or disable the feature
-image_manipulation_cached: true
-
-# The folder containing the manipulated images.
-# If you're running above webroot, this might be something like public/img
-image_manipulation_cached_path: img
-
-# The URL to the folder
-image_manipulation_route: img
-```
-
-## Using Glide with Locales {#glide-and-locales}
-
-When using Glide with multiple locales, the generated image path will include the proper `site_root` as dictated by the locale, but the actual asset will be stored wherever you have set the `image_manipulation_cached_path`. To serve these assets when on a localized version, you'll need to create a symlink from your `/$locale/image_manipulation_cached_path` to `image_manipulation_cached_path`. 
+To serve these assets when on a localized version, you'll need to create a symlink from your `/$locale/cache_path` to `cache_path`.
