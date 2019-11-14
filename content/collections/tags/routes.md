@@ -1,16 +1,17 @@
 ---
 title: Routes
-is_parent_tag: true
-overview: Loop through your Template Routes and access inline data.
+description: Accesses data defined in frontend routes
+intro: The routes tag gives you access to your frontend routes and access any data set inline.
+stage: 4
 variables:
   -
     name: url
     type: string
-    description: The route's URL
+    description: "The route's defined URL"
   -
     name: permalink
     type: string
-    description: The route's fully qualified permalink
+    description: "The route's fully qualified URL"
   -
     name: template
     type: string
@@ -18,29 +19,35 @@ variables:
   -
     name: \*
     type: mixed
-    description: Any other inline variables
+    description: All other defined variables
 id: ad1b968e-9069-4977-a8ba-b12fe7885ebe
 ---
-This tag can save you from having to hardcode links to your [Template Routes](/routing#template-routes) and gives you access to any inline data you added in your route rules too. It's a simple thing. Don't overthink it.
+## Overview
+This tag can save you from having to hardcode links to your [frontend routes](/routes) and gives you access to any inline data you added in your route rules too. These routes are defined in `config/statamic/routes.php`.
 
-## Example {#example}
+## Example
 
-```.language-yaml
-/contact: contact
-/press:
-  template: press
-  title: Press & Media Resources
-  show_sidebar: false
-
+``` php
+  'routes' => [
+      'search' => [
+          'template' => 'search',
+          'blueprint' => 'page',
+          'title' => 'Search for all the things!'
+      ],
+      'login' => [
+          'template' => 'login',
+          'title' => 'Account Login'
+      ],
+  ],
 ```
 
 ```
 {{ routes }}
-  <a href="{{ url }}">{{ title or template | deslugify | title }}</a>
+    <a href="{{ url }}">{{ title }}</a>
 {{ /routes }}
 ```
 
-```.language-output
-  <a href="/contact">Contact</a>
-  <a href="/press">Press & Media Resources</a>
+``` output
+<a href="/search">Search for all the things!</a>
+<a href="/login">Account Login</a>
 ```
