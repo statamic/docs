@@ -1,6 +1,6 @@
 ---
 title: Cache
-description: Cache a chunk of your view for performance gains
+description: Caches a view chunk for performance gains
 intro: >
   If you find that a particular chunk of your view logic is the cause of a performance hit — perhaps you're fetching and filtering huge amount of content, or pulling data from an API, caching that portion of your template can remove alleviate any slowdown.
 parameters:

@@ -1,6 +1,6 @@
 ---
 title: Yield
-description: 'Displays content extracted elsewhere by the section tag.'
+description: 'Displays content extracted elsewhere by the section tag'
 intro: 'The yield tag is a useful way to abstract and reuse your views by displaying content or markup extracted in a template by the [section tag](/tags/section).'
 stage: 4
 id: f3035f71-347e-4b99-bc27-71956315692a

@@ -194,6 +194,9 @@
         bottom: 0 !important;
       }
     }
+    p {
+        @apply leading-normal;
+    }
   }
 
 }

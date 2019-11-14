@@ -1,6 +1,6 @@
 ---
 title: Dump
-description: Dump the variables in the current view context
+description: Debugs variables in current view context
 intro: The dump tag is used for debugging data inside your current view context.
 stage: 5
 id: 32bc9a50-3b12-11e6-bdf4-0800200c9a66

@@ -1,6 +1,6 @@
 ---
 title: Foreach
-description: Loop through keys in a named key/value array
+description: Loops through keys in a named key/value array
 intro: >
   Loop through and render values from an array of named keys and values without needing to know the keys.
 parameters:

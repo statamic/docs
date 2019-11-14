@@ -1,9 +1,8 @@
 ---
 title: Get_Content
-parse_content: false
+description: Fetches content by URL
 intro: |
   One of the most flexible ways to fetch content from elsewhere in your site is by using the `get_content` tag. Specify a URL and fetch all the data attached to it.
-description: Fetch content by URL
 parameters:
   -
     name: from
