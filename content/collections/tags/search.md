@@ -87,7 +87,7 @@ An overview on how to _configure_ search, indexing, and the query form can be fo
 
 ## Example
 
-On a search result page, you can loop through the results of the search like they were entries. You'll have access to all the data of all the content returned so you can format your results however you'd like.
+On a search result page, you can loop through the results of the search like they were entries. You'll have access to all the data of all the content of your search results returned so you can format them any way you wish.
 
 ```
 {{ search:results }}
@@ -104,4 +104,15 @@ On a search result page, you can loop through the results of the search like the
   {{ /if }}
 
 {{ /search:results }}
+```
+
+## Search Forms
+
+The search form itself — that text box users type into, is a normal, every day HTML form with a `search` input that submits to a URL containing a `search:results` tag in the template. Nice and simple.
+
+```
+<form action="/search/results">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">Make it so!</button>
+</form>
 ```

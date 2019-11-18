@@ -10,11 +10,11 @@ stage: 1
 ---
 ## Overview
 
-There are three components — coincidentally the same number of Hanson brothers — whose powers combine to create search. The form, the index, and the driver.
+There are three components — coincidentally the same number of Hanson brothers — whose powers combine to provide you the power of search. The form, the index, and the driver.
 
 ## Search Forms
 
-The search form is the most visible part of your site search. Create a normal, every day HTML form with a `search` input and have it submit to any URL containing a `search:results` tag in your template. This is usually in the nav
+The search form is the most visible part of your site search. Create a normal, every day HTML form with a `search` input and have it submit to any URL containing a `search:results` tag in your template. This is usually — but not always — found in the nav.
 
 ```
 <form action="/search/results">
@@ -23,7 +23,7 @@ The search form is the most visible part of your site search. Create a normal, e
 </form>
 ```
 
-Next, set up the search _results_. You'll have access to all the content and variables inside each res
+Next, set up the search _results_. You'll have access to all the content and variables inside each result.
 
 ```
 {{ search:results }}
