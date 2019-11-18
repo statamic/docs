@@ -219,3 +219,10 @@ Revisions allow you to see the history of any given entry over time. Revisions n
 ```
 revisions: true
 ```
+
+## Localization
+
+When running a [multi-site](/multi-site) installation, you can have entries that exist in multiple sites with different content,
+or have entries exclusive to a site.
+
+[Read about localizing entries](/knowledge-base/localizing-entries)

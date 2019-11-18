@@ -68,45 +68,6 @@ If you don't assign a [Blueprint](/blueprints) to your global set, Statamic will
 
 ## Localization
 
-When using [multiple sites](/multisite), you'll need to specify which sites a global set can be used in.
+When running a [multi-site](/multi-site) installation, you can have globals that exist in multiple sites with different content.
 
-``` yaml
-title: Globals
-sites:
-  - english
-  - french
-```
-
-The `data` will also be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
-
-``` files
-globals/
-|-- global.yaml
-|-- footer.yaml
-|
-|-- english/
-|   |-- global.yaml
-|   `-- footer.yaml
-`-- french/
-    |-- global.yaml
-    `-- footer.yaml
-```
-
-In these new nested files, the data can exist at the top level.
-
-``` yaml
-# english/global.yaml
-food: bacon
-drink: whisky
-sport: football
-```
-``` yaml
-# french/global.yaml
-origin: english
-food: baguette
-drink: champagne
-```
-
-A localized global set should reference the origin. In this example, the french set originates from the english, so the `sport` variable will be inherited.
-
-A global set will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
+[Read about localizing globals](/knowledge-base/localizing-globals)

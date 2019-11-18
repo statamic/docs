@@ -125,24 +125,8 @@ The `expects_root` variable lets the Control Panel know that dragging a page to 
 
 ## Localization
 
-When using [multiple sites](/multi-site), you'll need to specify which sites a structure can be used in.
+When running a [multi-site](/multi-site) installation, you can have a different tree for each structure.
 
-``` yaml
-title: Pages
-sites:
-  - site-one
-  - site-two
-```
+For example, entries organized in a different order, or references to entirely different entries.
 
-The `tree` and `root` values will also be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
-
-``` files
-content/structures/
-|-- pages.yaml
-|-- site-one/
-|   `-- pages.yaml
-`-- site-two/
-    `-- pages.yaml
-```
-
-A structure will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
+[Read about localizing structures](/knowledge-base/localizing-structures)
