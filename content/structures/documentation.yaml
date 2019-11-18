@@ -103,6 +103,10 @@ tree:
         entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
       -
         entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
+      -
+        entry: 499d808b-18be-42e9-acd0-91bcdff73193
+      -
+        entry: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
   -
     title: Tutorials
     children:
