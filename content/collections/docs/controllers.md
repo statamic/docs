@@ -1,44 +1,60 @@
 ---
 title: Controllers
-template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568558701
+intro: Controllers group related Laravel request handling logic into single classes stored in the `app/Https/Controllers/` directory. Use them to build frontend areas or full custom apps, the Laravel way!
 id: 5e848460-9bbc-449e-8edd-182d918163ff
+stage: 4
 blueprint: page
 ---
-Since Statamic is a package sitting inside of a regular Laravel application, you have the freedom to create your own routes.
+## Overview
 
-Inside `routes/web.php`, you can [define routes](https://laravel.com/docs/6.x/routing).
+Statamic is a package sitting _inside_ a standard Laravel application, giving you have the freedom to create your own routes, map them to controllers, and build your own custom application and business logic outside of Statamic's feature set.
 
-> These will take precedence over any Statamic routing rules.
+Anything you can do in Laravel you can do here. Because you're using Laravel. You just _also_ have access to all of Statamic's capabilities and features.
 
-For example, a `GET` request to `yoursite.com/example` will load the `index` method in the `app\Http\Controllers\ExampleController.php` file:
+## Routes
+
+[Routes][laravel-routes] are defined in `routes/web.php`.
+
+> These explicitly defined routes will take precedence over Statamic routes and URL patterns.
+
+For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app\Http\Controllers\ExampleController.php` file like this:
 
 ``` php
 Route::get('example', 'ExampleController@index');
 ```
 
-In your controller, you can render views like you would in a regular app:
+## Basic Controller
+
+In your controller, render views like you would in a regular Laravel app:
 
 ``` php
-public function index()
-{
-    // ...
+<?php
 
-    return view('myview');  // resources/views/myview.blade.php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+
+class ExampleController extends Controller
+{
+    public function index()
+    {
+        $data = [
+            'title' => 'Example Title'
+        ];
+
+        return view('myview', $data);  // resources/views/myview.blade.php
+    }
 }
 ```
 
-> Generate a controller with an Artisan command:
+> Generate a controller with an [Artisan command](https://laravel.com/docs/artisan):
 > ``` cli
 > php artisan make:controller ExampleController
 > ```
 
-## Rendering Antlers views
+## Antlers Views
 
-Returning `view('myview')` _will_ render the `myview.antlers.html` view, however you won't automatically get the template-injected-into-a-layout behavior you'd normally expect.
-
-To do that, you can return a `Statamic\View\View` instance:
+Returning `view('myview')` _will_ render the `myview.antlers.html` view. To take advantage of Statamic's standard template-injected-into-a-layout behavior, return a `Statamic\View\View` instance instead of a regular Laravel one.
 
 ``` php
 public function index()
@@ -46,9 +62,18 @@ public function index()
     return (new \Statamic\View\View)
         ->template('myview')
         ->layout('mylayout')
-        ->with(['title' => 'The title']);
+        ->with(['title' => 'Example Title']);
 }
 ```
 
 Now, `myview` will be injected into `mylayout`'s `template_content` variable.
 Anything provided to `with` (eg. `title`) will be available in both views.
+
+## Related Reading
+
+- [Laravel Controllers][laravel-controllers]
+- [Laravel Routes][laravel-routes]
+- [Antlers](/antlers)
+
+[laravel-controllers]: https://laravel.com/docs/controllers
+[laravel-routes]: https://laravel.com/docs/routing
