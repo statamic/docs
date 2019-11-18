@@ -29,6 +29,11 @@ public function index()
 }
 ```
 
+> Generate a controller with an Artisan command:
+> ``` cli
+> php artisan make:controller ExampleController
+> ```
+
 ## Rendering Antlers views
 
 Returning `view('myview')` _will_ render the `myview.antlers.html` view, however you won't automatically get the template-injected-into-a-layout behavior you'd normally expect.
