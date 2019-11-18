@@ -97,7 +97,7 @@ export default {
 
 **Do not** modify the `value` prop directly. Instead, call `this.update(value)` and let the Vuex store handle the update appropriately.
 
-### Meta Data
+## Meta Data
 
 Fieldtypes can preload additional "meta" data from PHP into JavaScript. This can be anything you want, from settings to eager loaded data.
 
@@ -127,6 +127,26 @@ Here are some reasons why you might want to use this feature:
 
 - The assets and relationship fieldtypes only store IDs, so they will fetch item data using AJAX requests. If you have many of these fields in one form, you'd have a bunch of AJAX requests fire off when the page loads. Preload the item data to avoid the initial AJAX requests.
 - Grid, Bard, and Replicator fields all preload values for what a new row/set contains, plus the recursive meta values of any nested fields.
+
+
+## Replicator Preview
+
+When [Replicator](/fieldtypes/replicator) (or [Bard](/fieldtypes/bard)) sets are collapsed, Statamic will display a preview of the values within it.
+
+By default, Statamic will do its best to display your fields value. However, if you have a value more complex than a simple string or array, you may want to customize it.
+
+You may customize the preview text by adding a `replicatorPreview` computed value to your Vue component. For example:
+
+``` js
+computed: {
+    replicatorPreview() {
+        return this.value.join('+');
+    }
+}
+```
+
+> This _does_ support returning an html string, so you could display image tags for a thumbnail, etc. But be aware of the limited space.
+
 
 ## Index Fieldtypes
 
@@ -214,5 +234,7 @@ export default {
 }
 </script>
 ```
+
+If you had a `replicatorPreviewText` method, it should be renamed to `replicatorPreview` and moved to a computed.
 
 The PHP file should require no changes.

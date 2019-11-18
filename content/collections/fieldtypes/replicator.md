@@ -17,7 +17,7 @@ id: 00b140e3-413a-4d91-b9e7-65f58d56a41b
 
 You will be presented with a button for each set you’ve defined. Clicking one will replicate an empty set. You can [replicate](https://www.youtube.com/watch?v=qD4EVXkfe0w) a single set type as many times as you like as well as dragging and dropping them to adjust their order.
 
-You may collapse your sets to conserve space. If you do, a preview of the data contained within it will be displayed. [Third party fieldtypes may control how their data will be previewed](/addons/classes/fieldtypes#replicator-preview-text). You can prevent certain fields being shown in the preview text by adding `replicator_preview: false`.
+You may collapse your sets to conserve space. If you do, a preview of the data contained within it will be displayed. [Third party fieldtypes may control how their data will be previewed](/extending/fieldtypes#replicator-preview). You can prevent certain fields being shown in the preview text by adding `replicator_preview: false`.
 
 The following fieldset YAML is an example of what could be used to construct the Replicator shown in the screenshot above:
 
