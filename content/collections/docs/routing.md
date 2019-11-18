@@ -1,39 +1,78 @@
 ---
 title: Routing
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568558573
+intro: Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
+stage: 4
 id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
-blueprint: page
 ---
-## Statamic routing
+## Overview
 
-Any requests to your site will be handled by Statamic (unless you [create your own Laravel routes](#laravel-routing)).
+All requests to your site are handled by Statamic unless you [create your own Laravel routes](#laravel-routes). Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
 
-## Data routing
+If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting in `config/statamic/routing.php`.
 
-Entries and taxonomy terms will have their own dedicated URLs if you defined a route in their respective collection or taxonomy yaml files.
+``` php
+// Lemme do it my way
+'enabled' => false,
+```
 
-Same syntax as v2.
+## Content Routes
 
-## Template routes
+- [Collections](/collections-and-entries#routing) - each entry often has its own URL.
+- [Structures](/structures#routing) can define explicit URLs that are routed to specific templates.
+- [Taxonomies](/taxonomies#routing) can have their own URLs.
 
-Same as v2, except they live in `config/statamic/routes.php`.
+## Statamic Routes
 
-### Content types 
+User-configured Statamic routes live in `config/statamic/routes.php`. Instead of mapping URL patterns to Controllers (like in Laravel), these routes map URL patterns to Statamic [templates](/views#templates). You can also use these routes to pass in additional data and set settings (like `layout`).
 
-Same as v2. Add `'content_type' => 'application/json'` to serve `application/json`. The shorthands are there too. `json` becomes `application/json`.
+``` php
+'routes' => [
+    '/' => 'home',
+    'feed' => [
+        'template' => 'rss.feed',
+        'layout' => 'rss.layout',
+        'content_type' => 'xml',
+    ],
+    'search' => 'search.index',
+],
+```
+
+### Content Type Headers
+
+You can control the content type headers by setting `'content_type' => '{content_type}'`. To make your life easier we also support a few shorthand syntaxes for the most common content types. Nobody wants to memorize this stuff, ourselves included.
+
+| Shorthand | Resolves to |
+|-----------|-------------|
+| `json` | `application/json` |
+| `xml` | `text/xml` |
+| `atom` | `application/atom+xml` (ensures `utf8` charset) |
 
 ## Redirects
 
-Same as v2, except they live in `config/statamic/routes.php`.
+Perminant redirects (301) live in `config/statamic/routes.php`.
+
+``` php
+'redirect' => [
+    '/here' => '/there',
+    '/coupon-codes' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+],
+```
+
+Vanity (302 temporary) redirects are configured in the `vanity` key.
+
+``` php
+'vanity' => [
+    '/black-friday' => 'blog/2019/10/black-friday-deals',
+],
+```
 
 
-## Laravel routing
+## Laravel Routes
 
-You're free to configure your own regular Laravel routes like you would in a regular app. Plop them in your `routes/web.php` file. Use closures, or point to a [controller](/controllers). Again, this is just [standard Laravel stuff](https://laravel.com/docs/6.x/routing). 
+You're free to configure your own regular Laravel routes like you would in a regular app. Plop them in your `routes/web.php` file. Use closures, or point to a [controller](/controllers). This is just [standard Laravel stuff](https://laravel.com/docs/routing).
 
-## Error pages
+## Error Pages
 
 Whenever an error is encountered, a view will be rendered based on the status code. It will look for the view in `resources/views/errors/{status}.antlers.html`.
 
