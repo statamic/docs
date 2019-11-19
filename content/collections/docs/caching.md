@@ -9,14 +9,9 @@ blueprint: page
 
 _Purpose: Replaces the database_
 
-Instead of parsing and loading content files on the fly, Statamic uses a cache-based storage layer affectionately named the "Stache". Think of it like Tom Selleck's face if it were a flat-file database.
+Instead of parsing and loading content files on the fly, Statamic uses a cache-based storage layer affectionately named the "Stache".
 
-<figure class='bg-mint'>
-    <img src="/img/tom-selleck-lg.jpg" alt="Tom Selleck as Magnum P.I.">
-    <figcaption>Behold, the stache of all staches!</figcaption>
-</figure>
-
-Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system that is then stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content changes or changes to the site are deployed to a production server.
+Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system that is then stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content or settings change, or when updates are deployed to a production server.
 
 You cannot disable it, nor would you want to. You can clear it using `php please stache:clear`, rebuild it using `php please stache:warm`, and do both together using `php please stache:refresh`.
 

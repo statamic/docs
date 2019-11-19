@@ -1,13 +1,19 @@
 ---
 title: Stache
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568748305
-blueprint: page
-intro: 'Statamic''s data storage layer is affectionately named the "Stache". Think of it like Magnum PI''s face, if it were a flat-file database.'
+intro: >
+    Statamic's data storage layer is affectionately named the "Stache". Think of it like Tom Selleck's face, if it were a flat-file database..
+stage: 4
 id: 499d808b-18be-42e9-acd0-91bcdff73193
 ---
-Rather than placing your data in a database, it converts the data in your content files into a more efficient index-based system. All of the indexes are stored in the cache, which can be rebuilt from scrach at any time.
+## Overview
+
+Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system that is then stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content or settings change, or when updates are deployed to a production server.
+
+<figure class='bg-mint'>
+    <img src="/img/tom-selleck-lg.jpg" alt="Tom Selleck as Magnum P.I.">
+    <figcaption>Behold, the stache of all staches!</figcaption>
+</figure>
 
 ## File Changes
 
@@ -16,7 +22,7 @@ Since your data is coming from your content files, you're able to just open an e
 When you try to access an item, under the hood the Stache will watch for any modified files, and then update the corresponding indexes.
 
 > This is great for local development, but on a production environment, it's a good idea to disable the file watcher. If you're editing content through the control panel, or only ever pushing content through deployments, you would be incurring extra overhead for no reason.
-> 
+>
 > You can disable this feature in `config/statamic/stache.php`.
 >
 > ``` php
