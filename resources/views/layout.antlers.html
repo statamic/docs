@@ -13,11 +13,11 @@
 
 {{ partial:partials/nav }}
 
-<div class="w-full max-w-screen-xl mx-auto pt-12 flex relative" id="top">
-    <div class="lg:w-1/4 xl:w-1/5 px-6 pt-1 pb-12 overflow-scroll min-h-screen">
+<div class="w-full max-w-screen-xl mx-auto pt-12 lg:flex relative" id="top">
+    <div id="side-nav" class="hidden lg:block w-full lg:w-1/4 xl:w-1/5 px-6 pt-1 pb-12 overflow-scroll min-h-screen">
         {{ partial:side-nav }}
     </div>
-    <div class="w-3/4 lg:w-2/4 xl:w-3/5 px-12 lg:px-6 xl:px-12">
+    <div id="content" class="w-full lg:w-2/4 xl:w-3/5 px-4 lg:px-6 xl:px-12">
         {{ template_content }}
     </div>
     <div class="hidden lg:block lg:w-1/4 xl:w-1/5 px-8 pt-1 relative">
@@ -31,6 +31,10 @@
     <p>Copyright {{ now format="Y" }} Statamic • <b>FOR ALPHA USE ONLY!</b></p>
     {{ partial:social }}
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
 <script src="{{ mix src='/js/app.js' }}"></script>
 </body>
 </html>

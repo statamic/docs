@@ -32,6 +32,7 @@
 
 require('./prism.js')
 require('./scrollspy.js')
+require('./nav.js')
 require('./anchors.js')
 require('./external-links.js')
 
@@ -51,4 +52,3 @@ let phrases = [
 console.log(phrases[Math.floor(Math.random() * phrases.length)])
 
 Prism.highlightAll()
-
