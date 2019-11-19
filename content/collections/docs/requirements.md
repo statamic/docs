@@ -25,7 +25,7 @@ To run Statamic 3 you'll need a server that meets the following requirements. Th
 
 ## Recommended Hosts
 
-We recommend using [Digital Ocean][do] to host most Statamic sites. Their droplets are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if they weren't the best._
+We recommend using [Digital Ocean][do] (or [Vultr][vultr] if you're on a budget) to host most Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** those are affiliate links but we wouldn't recommend them if they weren't excellent options._
 
 We also maintain a user-contributed [Github repo][hosts] full of other host recommendations. Take a peek if Digital Ocean isn't right for you.
 
@@ -44,6 +44,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We don’t use Windows ourselves so we can’t vouch for it personally, though.
 
 [do]: https://m.do.co/c/6469827e2269
+[vultr]: https://www.vultr.com/?ref=7337126
 [hosts]: https://github.com/statamic/hosts
 [homestead]: https://laravel.com/docs/6.x/homestead
 [valet]: https://laravel.com/docs/valet
