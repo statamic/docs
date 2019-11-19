@@ -31,8 +31,6 @@ Statamic's main config files can be found in `config/statamic/`. They are primar
 │   ├── system.php
 │   ├── theming.php
 │   └── users.php
-│   └── user_roles.yaml
-│   └── user_groups.yaml
 ```
 
 ## Environment Variables
@@ -104,6 +102,3 @@ return [
 
 
 Learn more about [environment configuration](https://laravel.com/docs/6.x/configuration#environment-configuration) in the Laravel docs.
-
-
-
