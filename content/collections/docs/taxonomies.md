@@ -1,65 +1,30 @@
 ---
 title: Taxonomies
-template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568558383
+intro: A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.
+stage: 3
 id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
-blueprint: page
 ---
-Taxonomies are kept in `content/taxonomies`, each with their own YAML file, and their entries in a subdirectory.
+## Overview
 
-```
-taxonomies/
-|-- tags.yaml
-|-- tags/
-    |-- good.yaml
-    |-- great.yaml
-    |-- best.yaml
-```
+Taxonomies give you the ability to tag your entries and then fetch and sort all the entries who share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
 
-Each Taxonomy's YAML file can configure various things, such as the route for the terms.
-It can also define data that should cascade down to all of its terms.
+Practically speaking, taxonomies are very similar to [collections](/collections-and-entries). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
-``` yaml
-title: Tags
-route: 'tags/{slug}'
-```
+Each entry in a taxonomy is often called a **term**.
 
-## Assigning to Collections
+## Collections
 
-A taxonomy (or multiple taxonomies) can be assigned to a collection.
+Each collection defines which taxonomies are part of its content model in their blueprint. Thus, taxonomies and their terms are connected to entries _through_ the collection in a strict relationship. Once you attach a taxonomy to a collection, the fields, variables, and routes are added automatically.
 
-``` yaml
-# content/collections/blog.yaml
+Taxonomies can be attached to any number of collections but their terms are _global_, which means that any data stored on each term will be the same no matter the collection it's being related through. This is usually what you want, but if it isn't you can create additional taxonomies for specific collections. For example: `product_tags` in addition to `tags`.
 
-title: Blog
-taxonomies:
-  - tags
-```
+## Blueprints
 
-When editing an entry in that collection, taxonomy fields will be automatically added.
-
-## Taxonomizing Entries
-
-To taxonomize an entry, you can add [term values](#term-values-and-slug) to a field named **exactly** the same as the taxonomy's handle.
-
-``` yaml
-title: My Entry
-tags:
-  - foo
-  - bar
-  - baz
-```
-
-Now when listing entries that belong to the `foo`, `bar`, or `baz` terms, the entry will appear.
-
->  Make sure that the field is named exactly the same as the taxonomy handle, otherwise it will not be considered part of that taxonomy term.
+Each taxonomy can have a blueprint to define the available fields on your terms.
 
 ## Routing
 
-You don't need to manually set up any routes, they are automatically generated for you.
-
-For each taxonomy, a number of routes will exist:
+Taxonomy routes are automatically created for you.
 
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
@@ -116,13 +81,13 @@ tags:
 
 Titles are saved on a first-come, first-serve basis, which means consistency is important. If you enter `Star Wars` in one entry, and `star wars` in another, whichever term Statamic encounters first will be used as the title.
 
-To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If perfect consistency is important, you can add a title field to a term’s [additional data](#additional-term-data).
+To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If case-sensitivity is important, you can add a `title` field to the taxonomy blueprint.
 
 ## Templating
 
 ### Outputting Terms
 
-Term values will be augmented into term objects (assuming you haven't overidden the fieldtype in your blueprint).
+Term values will be [augmented](/augmentation) into term objects and will have access to all data
 
 ``` yaml
 tags:
@@ -147,12 +112,12 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 - ✅ Looping through terms in a taxonomy tag pair, using the collection parameter.
 - ❌ Looping through terms in a taxonomy tag pair, without specifying a collection.
 
-### Listing Taxonomy Terms
+### Listings and Indexes
 
 When on a [taxonomy route](#routing), you can list the terms by using either a `terms` tag pair. For example:
 
-``` html
-{{ terms paginate="5" }}
+```
+{{ terms }}
   <ul>
   {{ results }}
     <li><a href="{{ url }}">{{ title }}</a></li>
@@ -167,7 +132,7 @@ When on a [taxonomy route](#routing), you can list the terms by using either a `
 
 When on a [term route](#routing), you can list the entries by using an `entries` tag pair. For example:
 
-``` html
+```
 {{ entries paginate="5" }}
   <ul>
   {{ results }}
@@ -177,25 +142,8 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 {{ /entries }}
 ```
 
-## Additional Term Data
+## Related Reading
 
-Additional data (custom fields) can be added to a term by creating a yaml file matching the term’s [slug](#term-values-and-slugs).
-
-```
-site/content/taxonomies
-|-- tags.yaml
-`-- tags
-    |-- foo.yaml
-    `-- bar.yaml
-```
-
-In the YAML file, add data like so:
-
-``` yaml
-food: bacon
-drink: whisky
-```
-
-Whenever referencing the Terms in your templates, now `{{ food }}` and `{{ drink }}` would output `bacon` and `whiskey` respectively.
-
-Just like entries, these values will be augmented automatically in your templates depending on the blueprint.
+- A fundamental understanding of [collections](/collections-and-entries) is pretty important.
+- The [taxonomy tag](/tags/taxonomy) can come in handy when you're not on taxonomy routes.
+- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/knowledge-base/taxonomies-by-hand)
