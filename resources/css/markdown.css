@@ -44,7 +44,8 @@
     }
 
     > blockquote {
-        @apply bg-blue-lightest border shadow-md py-4 pl-12 pr-4 font-display relative text-sm mb-8;
+        @apply bg-blue-lightest border shadow-md py-4 pl-4 pr-4 font-display relative text-sm mb-8;
+        @apply pt-6;
 
         &:before {
             content: '';
@@ -52,8 +53,8 @@
             height: 35px;
             width: 70px;
             position: absolute;
-            top: 6px;
-            left: -35px;
+            top: -16px;
+            left: -12px;
             z-index: 2;
         }
 
@@ -199,4 +200,16 @@
     }
   }
 
+}
+
+@screen lg {
+    .markdown {
+        > blockquote {
+            @apply pl-12 pt-4;
+        }
+        > blockquote:before {
+            top: 6px;
+            left: -35px;
+        }
+    }
 }

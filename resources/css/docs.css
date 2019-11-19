@@ -49,7 +49,13 @@ figure, .screenshot {
 }
 
 .caption, figure figcaption {
-    @apply bg-blue-lightest border shadow px-4 py-1 italic font-display text-sm font-bold absolute -bottom-16 right-64 w-auto;
+    @apply px-4 py-1 italic font-display mt-6 text-sm font-bold w-full text-center;
+}
+
+@screen lg {
+    .caption, figure figcaption {
+        @apply bg-blue-lightest border shadow font-display mt-0 text-sm font-bold absolute -bottom-16 right-64 w-auto text-left;
+    }
 }
 
 .badge {
