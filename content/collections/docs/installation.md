@@ -35,5 +35,13 @@ stage: 4
 
 3. If you plan to use the Control Panel, follow the instructions in the [Users](/users#storage) guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
 
+## Updating
+
+1. From within your application, use Composer to update the package:
+
+    ``` bash
+    composer update statamic/cms
+    ```
+
 [users]: /users
 [packagist]: https://packagist.org/
