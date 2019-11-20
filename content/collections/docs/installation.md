@@ -11,7 +11,7 @@ stage: 4
 
 1. Use Composer to create a project based off the `statamic/statamic` starter site.
 
-    ```.language-bash
+    ``` bash
     composer create-project statamic/statamic my-blank-site --stability=dev
     ```
 
@@ -29,7 +29,7 @@ stage: 4
 
 2. Require `statamic/cms`.
 
-   ``` json
+   ``` bash
    composer require statamic/cms statamic/definitely-not-v3
    ```
 
