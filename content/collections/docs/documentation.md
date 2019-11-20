@@ -1,31 +1,33 @@
 ---
 title: Documentation
-intro: Welcome to the <mark class="font-bold">Statamic 3 Alpha!</mark> If you're reading this, you've been chosen to be 1 of 100 developers whose feedback will be extremely valuable in helping us smooth out the kinks, inconsistencies, and bugs before we launch into the open beta. Thank you for being willing to help!
+intro: Welcome to the <mark class="font-bold">Statamic 3 Beta!</mark> If you dive in, **you will** encounter bugs, typos, missing documentation, and unclear instructions. If you find yourself confused, frustrated, or stuck, fear not! It is expected and your feedback will make everything better.
 updated_by: 4ce13ed6-e14c-4222-adbd-6c4d86ab5c39
 updated_at: 1567102213
 id: 6aa5449b-5d90-47de-97e7-82ba5f665250
 blueprint: page
 template: home
 ---
-## Before You Start
-
-Remember that Statamic 3 is in a _pre-beta_ state. **You will** encounter bugs, typos, missing documentation, and unclear instructions. If you spend any amount of time working with v3, you will likely find yourself confused, frustrated, or stuck.
-
 ## Your Mission
 
 Your mission -- should you choose to accept it -- is to provide feedback whenever you get confused or stuck so we can smooth out, rewrite, or fix whatever tripped you up.
 
-We need the outside perspective that you can bring to help us get into (and back out of) beta. There are **fundamental changes** to the way some features work, how to configure your site, the names of things, and so on.
+We need the outside perspective that you can bring to help us get out of beta. There are **fundamental changes** to the way some features work, how to configure your site, the names of things, and so on.
 
-There are new features that need testing, documentation that needs reading (and writing &mdash; we're working on that right now), and workflows that need using.
+There are new features that need testing, documentation that needs reading (and writing and rewriting), and workflows that need trying.
 
 If you're able and willing to help us with these things, we will be forever grateful. Statamic's successful future will have you to thank.
 
+## Before You Start
+
+If this is your first experience with Statamic, please reserve your final judgement as to the quality or utility of the platform until we're out of beta. We've built a very solid and flexible foundation and most bugs and snags will be a minor efforts to correct.
+
+> We have a v2 migrator! Instead of upgrading an existing site by hand, [let magic do it for you!](https://github.com/statamic/migrator)
+
 ## Not for Production Use
 
-**This cannot be stated loudly enough. Statamic 3 Alpha is NOT for production use.** There may be more <mark>breaking changes</mark> coming which could result in large amounts of manual work needed to get a site back in sync. You may encounter show-stopping bugs. You will almost definitely regret it.
+**Statamic 3 Beta is NOT intended for production use.** There may still be <mark>breaking changes</mark> which may result in manual work and rewriting or refactoring necessary on your end to get back in sync with master. You may encounter show-stopping bugs. Features may get removed last minute.
 
-So when you're tempted to launch that site you built anyway even after reading this warning, just remember &mdash; we told you not to do it, we still love you, and you're on own.
+So when you're tempted to launch that site you built anyway even after reading this warning, just remember &mdash; we told you not to do it and we still love you.
 
 ## What You See...
 
@@ -37,19 +39,18 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 💡If you have an **idea** on how to improve the way something works, open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
 
-🙋🏼‍♀️If you have a **feature request**, we ask that you save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things in the near future.
+🙋🏼‍♀️If you have a **feature request**, we ask that you save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things soon enough.
 
-## Areas NOT Ready for Feedback
+## WIP WIP WIP 🚧
 
-Before you start opening Github Issues, here are a few areas we know aren't finished. Some are in progress and others will need to wait until after the git repos are public.
+Beta = Work In Progress. Before you start opening Github Issues, here are some notes on the state of various things.
 
-- The **Control Panel** is not fully responsive. Please only use it on Desktop for now.
-- The **install process** is temporary, an unfortunate necessity when dealing with private git repos.
-- The **Updater**, while functional, won't do much until the repo is public.
-- **Multi-user editing** is a separate addon not included in this Alpha.
-- **These docs** are unfinished and very rough. Hang in there, Jack gets through about 4-6 pages a day. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch brain dumps during development.
+- The **Control Panel** is not fully responsive. Please only provide feedback on the Desktop breakpoint for now.
+- **Multi-user editing** is a separate addon not included in Beta.
+- **These docs** are still a work in progress. Hang in there, you can see by the commit log that we're working around the clock on them. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch our brain dumps during development.
+- Using Statamic in an existing Laravel application can lead to unexpected edge cases. Bring them to us so we can smooth out this integration!
 
 <figure>
     <img src="/img/participant.jpg">
-    <figcaption>Chris Traeger would LITERALLY thank you for helping, if he were real.</figcaption>
+    <figcaption>Chris Traeger thanks you for participating!</figcaption>
 </figure>
