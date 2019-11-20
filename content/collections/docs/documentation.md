@@ -25,9 +25,9 @@ If this is your first experience with Statamic, please reserve your final judgem
 
 ## Not for Production Use
 
-**Statamic 3 Beta is NOT intended for production use.** There may still be <mark>breaking changes</mark> which may result in manual work and rewriting or refactoring necessary on your end to get back in sync with master. You may encounter show-stopping bugs. Features may get removed last minute.
+**Statamic 3 Beta is NOT intended for production use.** You may encounter show-stopping bugs. Features may be removed last minute. There may still be <mark>breaking changes≥ resulting in tedious manual labor and refactoring on your end to get back in sync with master.
 
-So when you're tempted to launch that site you built anyway even after reading this warning, just remember &mdash; we told you not to do it and we still love you.
+So when you're tempted to launch that site you built anyway even after reading this warning, just remember — we told you not to do it and we still love you. ❤️
 
 ## What You See...
 
@@ -35,7 +35,7 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 ## Providing Feedback
 
-🐛If you encounter anything looks, smells, feels, or tastes like a **bug**, open an issue on the main [`statamic/three-cms`](https://github.com/statamic/three-cms) repo.
+🐛If you encounter anything looks, smells, feels, or tastes like a **bug**, open an issue on the main [`statamic/cms`](https://github.com/statamic/cms) repo.
 
 💡If you have an **idea** on how to improve the way something works, open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
 

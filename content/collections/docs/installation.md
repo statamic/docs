@@ -18,19 +18,19 @@ Once Statamic is out of alpha, Statamic will be publicly available on [Packagist
 1. Clone the `statamic/cms` package.
 
     ``` bash
-    git clone git@github.com:statamic/three-cms.git
+    git clone git@github.com:statamic/cms.git
     ```
 
 2. Clone the `statamic/statamic` package.
 
     ``` bash
-    git clone git@github.com:statamic/three-statamic.git
+    git clone git@github.com:statamic/statamic.git
     ```
 
 3. Compile `statamic/cms`'s assets.
 
     ``` bash
-    cd three-cms
+    cd cms
     npm install && npm run dev
     ```
 
@@ -41,11 +41,11 @@ Once Statamic is out of alpha, Statamic will be publicly available on [Packagist
         "repositories": [
             {
                 "type": "path",
-                "url": "/path/to/where/you/cloned/three-cms"
+                "url": "/path/to/where/you/cloned/cms"
             },
             {
                 "type": "path",
-                "url": "/path/to/where/you/cloned/three-statamic",
+                "url": "/path/to/where/you/cloned/statamic",
                 "options": {
                     "symlink": false
                 }
@@ -87,7 +87,7 @@ Once Statamic is out of alpha, Statamic will be publicly available on [Packagist
 
 While working on the core, or during alpha, where there would be frequent css/js updates, it could be a good idea to symlink assets to prevent needing to continually publish them.
 
-Delete `public/vendor/statamic/cp`, and symlink the CP `resources/dist` directory from your `three-cms` repo.
+Delete `public/vendor/statamic/cp`, and symlink the CP `resources/dist` directory from your `cms` repo.
 
 ``` bash
 rm -rf public/vendor/statamic/cp
