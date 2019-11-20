@@ -28,7 +28,7 @@
     </div>
 </div>
 <div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
-    <p>Copyright {{ now format="Y" }} Statamic • <b>FOR BETA USE ONLY!</b></p>
+    <p>Copyright {{ now format="Y" }} Statamic • <b>Powered by {{ powered_by sort="random" limit="1" }}{{ value }}{{ /powered_by }}.</b></p>
     {{ partial:social }}
 </div>
 <script
