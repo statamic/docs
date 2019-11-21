@@ -25,7 +25,7 @@ If this is your first experience with Statamic, please reserve your final judgem
 
 ## Not for Production Use
 
-**Statamic 3 Beta is NOT intended for production use.** You may encounter show-stopping bugs. Features may be removed last minute. There may still be <mark>breaking changes≥ resulting in tedious manual labor and refactoring on your end to get back in sync with master.
+**Statamic 3 Beta is NOT intended for production use.** You may encounter show-stopping bugs. Features may be removed last minute. There may still be <mark>breaking changes</mark> resulting in tedious manual labor and refactoring on your end to get back in sync with master.
 
 So when you're tempted to launch that site you built anyway even after reading this warning, just remember — we told you not to do it and we still love you. ❤️
 
