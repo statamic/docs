@@ -30,7 +30,7 @@ stage: 4
 2. Require `statamic/cms`.
 
    ``` bash
-   composer require statamic/cms statamic/definitely-not-v3
+   composer require statamic/cms
    ```
 
 3. If you plan to use the Control Panel, follow the instructions in the [Users](/users#storage) guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
