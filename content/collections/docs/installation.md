@@ -12,7 +12,7 @@ stage: 4
 1. Use Composer to create a project based off the `statamic/statamic` starter site.
 
     ``` bash
-    composer create-project statamic/statamic my-blank-site --stability=dev
+    composer create-project statamic/statamic my-site --prefer-stable --stability=dev
     ```
 
 ## Installing into existing Laravel apps
