@@ -15,7 +15,6 @@ Statamic 3 takes everything you love about v2, rewrites all the old stuff (Larav
 >
 > ``` bash
 > composer require statamic/migrator --dev
-> php please site:clear
 > php please migrate:site
 > ```
 
