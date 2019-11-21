@@ -9,11 +9,11 @@ stage: 4
 ---
 ## Creating a new Statamic project
 
-1. Use Composer to create a project based off the `statamic/statamic` starter site.
+Use Composer to create a project based off the `statamic/statamic` starter site.
 
-    ``` bash
-    composer create-project statamic/statamic my-site --prefer-dist --stability=dev
-    ```
+``` bash
+composer create-project statamic/statamic my-site --prefer-dist --stability=dev
+```
 
 ## Installing into existing Laravel apps
 
@@ -37,11 +37,11 @@ stage: 4
 
 ## Updating
 
-1. From within your application, use Composer to update the package:
+From within your application, use Composer to update the package:
 
-    ``` bash
-    composer update statamic/cms
-    ```
+``` bash
+composer update statamic/cms
+```
 
 [users]: /users
 [packagist]: https://packagist.org/
