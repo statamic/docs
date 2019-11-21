@@ -13,6 +13,7 @@ You can use [Blade](https://laravel.com/docs/blade) or other template engines by
 
 Instead of naming your views `myview.antlers.html` use `.blade.php` extension (or whatever other engine's extensions you may have installed).
 
+
 ## View Data
 
 You will have access to the same top level data as you would in Antlers views.
@@ -31,8 +32,6 @@ I did not win but I did have good timez.
 ```
 
 ``` blade
-@extends('site')
-
 <h1>{{ $title }}</h1>
 
 <p>First I did
@@ -69,3 +68,61 @@ it, rather than using a `value` method.
 ```
 
 > Note that when using multi-word modifiers, like `ensure_right`, you should use the camelCased version (`ensureRight`).
+
+
+## Layouts
+
+When Statamic attempts to render a URL (eg. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
+
+When the _template_ is **not** an Antlers view, this rule doesn't apply. The layout is ignored, allowing you to use `@extends` the way you would expect.
+
+``` blade
+{{-- mytemplate.blade.php --}}
+
+@extends('layout')
+
+@section('body')
+  The body content
+@endsection
+```
+
+``` blade
+{{-- mylayout.blade.php --}}
+
+<html>
+<body>
+  @yield('body')
+</body>
+</html>
+```
+
+``` output
+<html>
+<body>
+  The body content
+</body>
+</html>
+```
+
+This rule only applies to the _template_. You're free to use a `.antlers.html` template and a `.blade.php` layout.
+If you want to do this, instead of a `yield`, the contents of the template will be available as in the `template_content` variable.
+
+```
+{{# mytemplate.antlers.html #}}
+
+The template content
+```
+
+``` blade
+{{-- mylayout.blade.php --}}
+
+{!! $template_content !!}
+```
+
+``` output
+<html>
+<body>
+The template contents
+</body>
+</html>
+```
