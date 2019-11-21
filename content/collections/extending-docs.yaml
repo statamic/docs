@@ -7,3 +7,5 @@ blueprints:
   - page
 structure: extending-docs
 revisions: false
+inject:
+  stage: 2
