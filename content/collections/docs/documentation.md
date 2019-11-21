@@ -41,11 +41,14 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 🙋🏼‍♀️If you have a **feature request**, we ask that you save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things soon enough.
 
+🎁 If you're interested in _contributing_ to Statamic 3, please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first. Statamic isn't _Free Open Source Software_ so there are a couple of little caveats to be aware of first. Thank you for considering it!
+
 ## WIP WIP WIP 🚧
 
 Beta = Work In Progress. Before you start opening Github Issues, here are some notes on the state of various things.
 
 - The **Control Panel** is not fully responsive. Please only provide feedback on the Desktop breakpoint for now.
+- **The addon directory** is not enabled yet. We needed to wait until the GitHub repos were public before we finish it and open it to testing.
 - **Multi-user editing** is a separate addon not included in Beta.
 - **These docs** are still a work in progress. Hang in there, you can see by the commit log that we're working around the clock on them. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch our brain dumps during development.
 - Using Statamic in an existing Laravel application can lead to unexpected edge cases. Bring them to us so we can smooth out this integration!
