@@ -20,7 +20,7 @@ mix.postCss('resources/css/tailwind.css', 'public/css', [
 ])
 
 mix.browserSync({
-    proxy: '3-docs-new.test',
+    proxy: 'docs.test',
     injectChanges: true,
     notify: false,
     ui: false,
