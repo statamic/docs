@@ -95,7 +95,7 @@ First, let's look at the breaking changes on the core application side. These wo
 
 ### Fieldsets
 
-Fieldsets technically still exist, although they are are a now a smaller, companion feature to Blueprints. Blueprints get attached to content. Fieldsets are an optional feature and can be used inside blueprints.
+Fieldsets technically still exist, although they are now a smaller, companion feature to Blueprints. Blueprints get attached to content. Fieldsets are an optional feature and can be used inside blueprints.
 
 - In content etc, you should reference `blueprint: foo`  instead of `fieldset: foo`.
 - There is no more `fieldsets` fieldtype. You should use the `blueprints` fieldtype.
