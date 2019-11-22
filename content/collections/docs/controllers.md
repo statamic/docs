@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Statamic is a package sitting _inside_ a standard Laravel application, giving you have the freedom to create your own routes, map them to controllers, and build your own custom application and business logic outside of Statamic's feature set.
+Statamic is a package sitting _inside_ a standard Laravel application, giving you the freedom to create your own routes, map them to controllers, and build your own custom application and business logic outside of Statamic's feature set.
 
 Anything you can do in Laravel you can do here. Because you're using Laravel. You just _also_ have access to all of Statamic's capabilities and features.
 
