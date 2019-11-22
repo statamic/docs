@@ -17,6 +17,7 @@ return [
 
     'routes' => [
         'search-results' => 'search',
+        'screencasts' => 'screencasts',
         'knowledge-base' => 'knowledge-base.index'
     ],
 
