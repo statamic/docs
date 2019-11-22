@@ -75,7 +75,7 @@ You can take this a step further in the collection's YAML file. Consider this th
 ``` yaml
 date_behaviors:
   past: public|private|unlisted
-  future: private|private|unlisted
+  future: public|private|unlisted
 ```
 
 - **public** - Entries will be visible in listings and at their own URLs.
