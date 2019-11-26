@@ -15,13 +15,13 @@ Statamic 3 takes everything you love about v2, rewrites all the old stuff (Larav
 
 ## Philosophies
 
-We've taken the lessons learned from years of work on Statamic v2 and updated our philosophy-level approach to flat file content management. These principals guide many of the changes &mdash; breaking and otherwise &mdash; you'll find in Statamic v3.
+We've taken the lessons learned from years of work on Statamic v2 and updated our philosophy-level approach to flat file content management. These principles guide many of the changes &mdash; breaking and otherwise &mdash; you'll find in Statamic v3.
 
 We don't break things for the fun of it. We hope that understanding these philosophies will help defuse any frustration you may encounter when faced with needing to relearn something fundamental.
 
 ### Git changes should be as small and discrete as possible
 
-Wherever reasonable and possible, we will opt for patterns that result in smaller git changes, especially avoiding filename changes. Filename changes cause a `delete` and an `add` in your git history. Examples of this principal in action:
+Wherever reasonable and possible, we will opt for patterns that result in smaller git changes, especially avoiding filename changes. Filename changes cause a `delete` and an `add` in your git history. Examples of this principle in action:
 
 - **Publish status** is now controlled by a YAML variable and no longer results in a file move/delete/add.
 - **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file that stores the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
