@@ -40,7 +40,7 @@ composer create-project statamic/statamic my-site --prefer-dist --stability=dev
 From within your application, use Composer to update the package:
 
 ``` bash
-composer update statamic/cms
+composer update statamic/cms --with-dependencies
 ```
 
 [users]: /users
