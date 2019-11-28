@@ -32,7 +32,7 @@
 
 require('./prism.js')
 require('./scrollspy.js')
-require('./nav.js')
+// require('./nav.js')
 require('./anchors.js')
 require('./external-links.js')
 
