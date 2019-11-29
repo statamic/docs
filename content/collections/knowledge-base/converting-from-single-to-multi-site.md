@@ -30,7 +30,7 @@ By default, the first site is named `default`, but feel free to rename it.
 
 > This can be automated using the following command:
 > ``` cli
-> php please multisite:migrate
+> php please multisite
 > ```
 
 2. For each collection:

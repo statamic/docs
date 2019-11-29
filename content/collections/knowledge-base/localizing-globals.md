@@ -2,7 +2,7 @@
 title: 'Localizing Globals'
 id: 660e700e-0602-49fc-a8fb-ac47b9884e52
 ---
-> You can use the `php please multisite:migrate` to automate converting from a single to a multisite installation.
+> You can use the `php please multisite` to automate converting from a single to a multisite installation.
 
 ## Defining Sites
 

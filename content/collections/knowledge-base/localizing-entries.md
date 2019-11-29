@@ -3,7 +3,7 @@ title: 'Localizing Entries'
 id: 4bc357de-4711-4010-8b83-77ca7337e90b
 ---
 
-> You can use the `php please multisite:migrate` to automate converting from a single to a multisite installation.
+> You can use the `php please multisite` to automate converting from a single to a multisite installation.
 
 ## Defining Sites
 

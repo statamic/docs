@@ -2,7 +2,7 @@
 title: 'Localizing Structures'
 id: 35c9cd07-f377-4fcb-b02c-72c1925e6fdf
 ---
-> You can use the `php please multisite:migrate` to automate converting from a single to a multisite installation.
+> You can use the `php please multisite` to automate converting from a single to a multisite installation.
 
 ## Defining Sites
 
