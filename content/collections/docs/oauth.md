@@ -157,7 +157,7 @@ You may customize how it's done by adding a callback to your `AppServiceProvider
 The only data added to the user will be their `name`. If you would like to customize what gets created, you can return an array from the provider's `withUser` callback. The closure will be given an instance of `Laravel\Socialite\Contracts\User`.
 
 ``` php
-use Statamic\API\OAuth;
+use Statamic\Facades\OAuth;
 
 OAuth::provider('github')->withUserData(function ($user) {
     return [
@@ -172,8 +172,8 @@ OAuth::provider('github')->withUserData(function ($user) {
 If you want more control over the actual user object being created, you can return a user from the provider's `withUser` callback. The closure will be given an instance of `Laravel\Socialite\Contracts\User`.
 
 ``` php
-use Statamic\API\User;
-use Statamic\API\OAuth;
+use Statamic\Facades\User;
+use Statamic\Facades\OAuth;
 
 OAuth::provider('github')->withUser(function ($user) {
     return User::make()

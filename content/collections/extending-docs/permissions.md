@@ -14,7 +14,7 @@ Out of the box, Statamic has its own set of permissions that you can choose from
 You can register a basic permission in a service provider by specifying the string.
 
 ``` php
-use Statamic\API\Permission;
+use Statamic\Facades\Permission;
 
 public function boot()
 {
