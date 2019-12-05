@@ -24,7 +24,7 @@ composer create-project statamic/statamic my-site --prefer-dist --stability=dev
         "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
         "@php artisan package:discover --ansi",
         "@php artisan statamic:install --ansi"
-    ]
+    ],
     ```
 
 2. Require `statamic/cms`.
