@@ -17,14 +17,14 @@ composer create-project statamic/statamic my-site --prefer-dist --stability=dev
 
 ## Installing into existing Laravel apps
 
-1. Add the `statamic:install` command to `post-autoload-dump`.
+1. Add the `statamic:install` command to `post-autoload-dump` in `composer.json`.
 
     ``` json
     "post-autoload-dump": [
         "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
         "@php artisan package:discover --ansi",
         "@php artisan statamic:install --ansi"
-    ]
+    ],
     ```
 
 2. Require `statamic/cms`.
