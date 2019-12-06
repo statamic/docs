@@ -22,4 +22,4 @@ Dropping it inside a loop will jump all the data _just for that loop context_.
 {{ /gallery }}
 ```
 
-> You can also use the [dump modifier](/modifiers/dump) to a similar effect.
+> You can also use the [dump modifier](/modifiers/dump) to achieve a similar effect.
