@@ -34,6 +34,8 @@ class AppServiceProvider
 
 These commands will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
 
+> This, as well as the webpack config below are already included in the `statamic/statamic` starter site. You just have to uncomment them.
+
 ## Adding assets to your build process
 
 Rather than writing flat CSS and JS files directly into the `public` directory, you can (and should) set up source files that output there instead.
