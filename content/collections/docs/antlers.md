@@ -140,6 +140,8 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 {{ /array_var }}
 ```
 
+> You **cannot** mix and match modifier styles.  
+> ie. This totally won't work: `{{ var | foo | bar="baz" }}`
 
 ### Escaping Data
 
