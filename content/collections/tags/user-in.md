@@ -27,3 +27,13 @@ Let's say we want show a list of downloadable PDFs if the user is in a `coaches`
 </ul>
 {{ /user:in }}
 ```
+
+## Not In
+
+We also support the negative use case using the `{{ user:not_in }}` tag.
+
+```
+{{ user:not_in group="coaches" }}
+  <p>Hello, sportsball players!</p>
+{{ /user:not_in }}
+```
