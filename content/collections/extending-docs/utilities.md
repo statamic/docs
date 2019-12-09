@@ -28,7 +28,7 @@ use Statamic\Facades\Utility;
 
 public function boot()
 {
-    Utility::make('french fries')
+    Utility::make('french-fries')
         ->view('fries-utility')
         ->register();
 }
