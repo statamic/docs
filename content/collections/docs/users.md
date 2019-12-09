@@ -55,7 +55,7 @@ To customize these fields, edit the included `user` [blueprint](/blueprints)  an
 
 A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for that user to access the control panel, create, edit, or publish content, create users, and so on.
 
-Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `config/statamic/user_roles.yaml`.
+Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `resources/users/roles.yaml`.
 
 In turn, **roles** are attached directly to individual users or [user groups](#user-groups).
 
@@ -101,6 +101,8 @@ Super Admin accounts are special accounts that **have access and permission to e
 ## User Groups
 
 User groups allow you to attach [roles](#roles), include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
+
+User groups are stored in `resources/users/groups.yaml`.
 
 ## Password Resets
 
