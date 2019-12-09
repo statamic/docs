@@ -1,29 +1,29 @@
 ---
-title: In (Group)
+title: User:In
 description: Checks if a user is in a specific user group
+intro: Anything inside the `user:in` tag will only be rendered if the user is in the specified group.
 parameters:
   -
     name: group|groups
     type: string
-    description: 'The groups(s) to check against. You may specify multiple groups by pipe separating them. eg. `{{ user:in group="foo" }}` or `{{ user:in groups="foo|bar" }}`'
+    description: |
+      The groups or groups to check against. You may specify multiple groups by pipe separating them: `{{ user:in groups="jocks|geeks" }}`.
 id: 57184c18-28d3-433f-b6ee-0e4539f6b504
 ---
-## Example {#example}
+## Overview
+User tags are designed for sites that have areas or features behind a login. The `{{ user:in }}` tag is used to check if the currently logged in user is in a specific user group.
 
-We want to show a picture of delicious bacon if the user is in the `bacon_enthusiasts` group.
+## Example
+
+
+Let's say we want show a list of downloadable PDFs if the user is in a `coaches` group.
 
 ```
-{{ user:in group="bacon_enthusiasts" }}
-    <img src="delicious-bacon.jpg" />
+{{ user:in group="coaches" }}
+<ul>
+  {{ assets in="pdf" }}
+    <li><a href="{{ url }}">{{ title }}</a></li>
+  {{ /assets }}
+</ul>
 {{ /user:in }}
-```
-
-If the user isn't in the `bacon_enthusiasts` group, the content between the tags simply won't be rendered.
-
-A shorthand syntax is also available, however this only allows checking against a single group:
-
-```
-{{ in:bacon_enthusiasts }}
-    <img src="delicious-bacon.jpg" />
-{{ /in:bacon_enthusiasts }}
 ```
