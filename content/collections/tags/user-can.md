@@ -25,6 +25,10 @@ Let's say we want a link to edit the current entry in the control panel if the u
 {{ /user:can }}
 ```
 
+### Super Users
+
+[Super users](/users#super-users) can always do everything, so no matter what you check for — whether it exists as an actual permission or not — it will always return `true`.
+
 ### Can’t
 
 We also support the negative use case using `{{ user:cant }}` tags.
