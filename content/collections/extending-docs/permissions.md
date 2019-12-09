@@ -56,7 +56,7 @@ Permission::register('view blog entries', function ($permission) {
         Permission::make('edit blog entries')->children([
             Permission::make('create blog entries'),
             Permission::make('delete blog entries')
-        ]);
+        ])
     ]);
 });
 ```
