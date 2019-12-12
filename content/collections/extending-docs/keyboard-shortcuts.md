@@ -38,7 +38,7 @@ destroy it once you're done.
 
 When destroying the binding, it will revert back to the previous binding if one existed.
 
-eg. If you're on a form which already uses mod+s to save it, and you open your component which re-binds mod+s, when you destroy
+For example: If you're on a form which already uses mod+s to save it, and you open your component which re-binds mod+s, when you destroy
 your binding, the previous form's binding will kick back into gear.
 
 ## Available methods
@@ -64,13 +64,13 @@ A sequence can be:
 
 - a single key. eg. `/`
 - multiple keys together: eg. `shift+/`
-- an actual sequence of keys: `up up down down`
+- an actual sequence of keys: eg. `up up down down`
 
 ## Available keys
 
 For modifier keys you can use `shift`, `ctrl`, `alt`, or `meta`.
 
-You can substitute option for `alt` and `command` for meta.
+You can substitute `option` for `alt` and `command` for `meta`.
 
 Other special keys are `backspace`, `tab`, `enter`, `return`, `capslock`, `esc`, `escape`, `space`, `pageup`, `pagedown`, `end`, `home`, `left`, `up`, `right`, `down`, `ins`, `del`, and `plus`.
 
