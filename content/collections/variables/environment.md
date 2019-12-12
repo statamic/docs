@@ -1,7 +1,7 @@
 ---
 id: 8426c6e0-6641-11e6-bdf4-0800200c9a66
 types:
-  - global
+  - system
 ---
 Outputs the current environment.
 

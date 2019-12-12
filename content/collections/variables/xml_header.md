@@ -1,7 +1,7 @@
 ---
 id: 81617b1f-000e-4d18-b5ea-592b9d845ccb
 types:
-  - global
+  - system
 ---
 Simply outputs an XML Header tag.
 

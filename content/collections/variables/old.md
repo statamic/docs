@@ -1,6 +1,6 @@
 ---
 types:
-  - global
+  - system
 id: a1d6bfec-e0dd-45a5-9c9e-200d700de244
 ---
 An array of sanitized variables POSTed from the previous request.

@@ -1,0 +1,5 @@
+---
+title: Content
+order: 2
+---
+"Content" encompasses data types that can be mapped to a URL. These include Entries and Taxonomy Terms. Any time you encounter one of these, the following variables will be available, as well as any fields you've defined in the [blueprint](/blueprints).

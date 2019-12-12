@@ -1,0 +1,5 @@
+---
+title: System
+order: 5
+---
+System variables are available at any time, regardless of whether the URL you are on is for content (eg. an Entry or Term) or if it has been created using a route.

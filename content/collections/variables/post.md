@@ -1,7 +1,7 @@
 ---
 id: dc9c535d-59ac-475d-af4f-a0204a71f31b
 types:
-  - global
+  - system
 ---
 An array of sanitized `POST` variables that come from any form data present for a POST to the current URL. It can be used as a tag pair with access to all your data or as a single tag to access variables directly. A counterpart to `{{ get }}`.
 

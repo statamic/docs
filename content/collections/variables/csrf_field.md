@@ -1,6 +1,6 @@
 ---
 types:
-  - global
+  - system
 id: 344d0518-9deb-4bfc-ac62-fe48a9304a81
 ---
 A helper to output the CSRF token inside a hidden field named `_token` from the session.
