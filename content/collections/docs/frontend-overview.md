@@ -1,6 +1,6 @@
 ---
 title: 'Frontend Overview'
-intro: Frontend, backend, control panel, client-site, server-side, left-side, strong-side, front-side fakey 180...there's a lot of terminology flying around when referring to the various parts of a website. Let's clear 'em up.
+intro: Frontend, backend, control panel, client-side, server-side, left-side, strong-side, front-side fakey 180...there's a lot of terminology flying around when referring to the various parts of a website. Let's clear 'em up.
 nav_title: "Overview"
 template: page
 id: 84100772-18e4-4a22-8759-219b242a320c
