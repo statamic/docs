@@ -33,6 +33,16 @@ It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at 
 
 You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and what you prefer in the moment.
 
+### Data Cascade
+
+Entries have their own unique URLs — when you're on them, all of that entry's variables will be available in your views. If an entry is missing a variable, it will fall back to a series of defaults. We call this the cascade.
+
+1. The entry
+2. The origin entry (if using localization)
+3. The collection
+
+If a value doesn't exist in one place, it'll check the next, and so on.
+
 ## Collections
 
 Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So not really the same thing. Not nearly as romantic anyway.
@@ -50,6 +60,14 @@ A collection is defined by way of a YAML file in the `content/collections` direc
 │   │   ├── hello.md
 │   │   ├── is-it-me.md
 │   │   ├── youre-looking-for.md
+```
+
+Injecting data into your collection is a handy way of providing default values to your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+
+``` yaml
+inject:
+  author: jason
+  show_sidebar: true
 ```
 
 ## Blueprints
@@ -154,24 +172,6 @@ route: /{parent_uri}/{slug}.html
 ``` yaml
 route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
-```
-
-## Data Cascade
-
-When working with entries in your templates, the data will come from a few places.
-
-1. The entry
-2. The origin entry (if using localization)
-3. The collection
-
-If a value doesn't exist in one place, it'll check the next, and so on.
-
-Injecting cascading data into your collection is a handy way of providing default values to your entries. You can do that with the `inject` variable.
-
-``` yaml
-inject:
-  author: jason
-  show_sidebar: true
 ```
 
 ## Taxonomies
