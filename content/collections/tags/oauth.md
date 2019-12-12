@@ -5,7 +5,8 @@ parameters:
   -
     name: provider
     type: string|tagpart
-    description: The provider to be used. You may either specify as a parameter or as a tagpart for shorthand. eg. `{{ oauth provider="github" }}` or `{{ oauth:github }}`
+    description: |
+      The provider to be used. You may either specify as a parameter or as a tagpart for shorthand: `{{ oauth provider="github" }}` or `{{ oauth:github }}`
   -
     name: redirect
     type: string
@@ -20,7 +21,7 @@ Regular/verbose syntax. This can be useful if the provider needs to be a variabl
 {{ oauth provider="github" }}
 ```
 
-``` .language-output
+``` output
 /oauth/github
 ```
 
@@ -30,7 +31,7 @@ Shorthand:
 {{ oauth:github }}
 ```
 
-``` .language-output
+``` output
 /oauth/github
 ```
 
@@ -40,6 +41,6 @@ With a redirect parameter:
 {{ oauth:github redirect="/account" }}
 ```
 
-``` .language-output
+``` output
 /oauth/github?redirect=/account
 ```
