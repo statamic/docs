@@ -46,8 +46,9 @@ return [
     |
     */
 
-    'redirects' => [
-        // '/here' => '/there',
+    'redirect' => [
+        '/entries' => '/collections-and-entries',
+        '/collections' => '/collections-and-entries',
     ],
 
     /*
