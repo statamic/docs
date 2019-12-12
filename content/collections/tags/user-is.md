@@ -12,7 +12,7 @@ id: 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
 ---
 ## Overview
 
-User tags are designed for sites that have areas or features behind a login. The `{{ user:is }}` tag is used to check if the currently logged in user has a one or more specific [roles](http://localhost:3000/users#permissions).
+User tags are designed for sites that have areas or features behind a login. The `{{ user:is }}` tag is used to check if the currently logged in user has a one or more specific [roles](/users#permissions).
 
 ## Example
 
