@@ -68,7 +68,7 @@ Statamic.$components.register('toggle_password-fieldtype', Fieldtype);
 ``` vue
 <template>
     <div>
-        <text-input :type="inputType" :value="value" @input="update">
+        <text-input :type="inputType" :value="value" @input="update" />
         <label><input type="checkbox" v-model="show" /> Show Password</label>
     </div>
 </template>
