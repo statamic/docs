@@ -38,3 +38,7 @@ sections:
             3: Needs Polish & Humor
             4: Ready for Feedback
             5: Complete
+      -
+        handle: nav_title
+        field:
+          type: text
