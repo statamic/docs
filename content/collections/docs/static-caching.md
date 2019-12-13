@@ -3,7 +3,7 @@ title: 'Static Caching'
 template: page
 blueprint: page
 intro: |
-    There is nothing faster on the web than static pages. They're like the speed of light — the theoretical maximum speed of anything. Instead of rendering pagse dynamically, Statamic can cache static pages and pass routing to Apache or Nginx through reverse proxying.
+    There is nothing faster on the web than static pages. They're like the speed of light — the theoretical maximum speed of anything. Instead of rendering pages dynamically, Statamic can cache static pages and pass routing to Apache or Nginx through reverse proxying.
 stage: 3
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
