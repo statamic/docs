@@ -12,7 +12,7 @@ Statamic taps into Laravel's clean, simple API over the popular [SwiftMailer][sw
 
 ## Configuring
 
-Your mail settings are located in `config/statamic/mail.php` and pre-wired to use environment variables so you can easily swap out providers and keep credentials safe and out of your project files.
+Your mail settings are located in `config/mail.php` and pre-wired to use [environment variables](/configuration#environment-variables) so you can easily swap out providers and keep credentials safe and out of your project files.
 
 
 ## Drivers
