@@ -103,6 +103,6 @@ You probably noticed that there is some _very_ basic styling going on. That's co
 
 Your layout file contains any markup you want present no matter what page you’re on, no matter where you go, how far you travel, or loudly you sing. It's the perfect place to put all your `<head>` and meta tags, main site nav, and footer bits.
 
-You can think of layouts like picture frames for your website. Everything you want rendered into the _contents_ of the frame — things that may change from section to seciton and page to page — goes into template. Those template are rendered wherever you put that `{{ template_content }}` variable in your layout.
+You can think of layouts like picture frames for your website. Everything you want rendered into the _contents_ of the frame — things that may change from section to section and page to page — goes into template. Those template are rendered wherever you put that `{{ template_content }}` variable in your layout.
 
 ## TO BE CONTINUED...
