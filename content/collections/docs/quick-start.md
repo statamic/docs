@@ -20,7 +20,7 @@ We're going to build a simple personal website for a fictious young aspiring pro
 
 The first step — as I hope you have guessed — is to install Statamic. Let's get a brand new empty project running, and then we'll do stuff to it until it looks like a website.
 
-First, we're going to run a [`composer create-project`](https://getcomposer.org/doc/03-cli.md#create-project) command from the command line, wich clones the [statamic/statamic repo](https://github.com/statamic/statamic) and then runs a series of scripts on it to automate steps you would otherwise need to perform manually if you cloned the repo directly.
+First, we're going to run a [`composer create-project`](https://getcomposer.org/doc/03-cli.md#create-project) command from the command line, which clones the [statamic/statamic repo](https://github.com/statamic/statamic) and then runs a series of scripts on it to automate steps you would otherwise need to perform manually if you cloned the repo directly.
 
 You should run this command from you `~/Sites` directory if you're using a [Valet](https://laravel.com/docs/valet) or similar setup where each subdirectory maps to a `.test` local domain.
 
