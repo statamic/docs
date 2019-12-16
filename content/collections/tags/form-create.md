@@ -76,7 +76,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
     {{ fields }}
         <div class="form-group">
             <label>{{ display }}</label>
-            <input type="text" name="{{ name }}" value="{{ old }}" />
+            <input type="text" name="{{ handle }}" value="{{ old }}" />
         </div>
     {{ /fields }}
 
