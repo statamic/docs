@@ -24,7 +24,7 @@ Each file inside your `resources/views` directory is a **view**. Each view can b
 
 **Layouts** are the the foundation of your frontend's HTML. Any markup you want present no matter what page you're on, no matter where you go, how far you travel, or loud you sing, should go into a layout.
 
-By default, Statamic will look for and use `/resources/views/layout.antlers.html`, but you're welcome create other layouts and configure specific entries, whole sections, or the whole site to use those instead.
+By default, Statamic will look for and use `/resources/views/layout.antlers.html`, but you're welcome to create other layouts and configure specific entries, whole sections, or the whole site to use those instead.
 
 Layouts usually contain `<head></head>` markup, global header, navigation, footer, JavaScript includes, and so on. In between all that HTML is your _template_ area — the magical place where unique, non-global things happen. Use the `{{ template_content }}` variable to set where you'd like that live.
 
