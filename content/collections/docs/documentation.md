@@ -19,7 +19,7 @@ If you're able and willing to help us with these things, we will be forever grat
 
 ## Before You Start
 
-If this is your first experience with Statamic, please reserve your final judgement as to the quality or utility of the platform until we're out of beta. We've built a very solid and flexible foundation and most bugs and snags will be a minor efforts to correct.
+If this is your first experience with Statamic, please reserve your final judgement as to the quality or utility of the platform until we're out of beta. We've built a very solid and flexible foundation and most bugs and snags will be a minor effort to correct.
 
 > We have a v2 migrator! Instead of upgrading an existing site by hand, [let magic do it for you!](https://github.com/statamic/migrator)
 
