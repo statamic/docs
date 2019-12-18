@@ -71,7 +71,7 @@ We can also defer the creation of children until render time by passing a closur
 ```php
 Nav::extend(function ($nav) {
     $nav->content('Store')
-    	->url('/store')
+        ->url('store')
         ->icon('shopping-cart')
         ->children(function () {
             return ProductType::hasPublished()->get()->map(function ($type) {
@@ -132,10 +132,10 @@ The code examples above demonstrate how to [add](#adding-items), [modify](#modif
 | `name()` | `$name` (string) | Define item name. |
 | `section()` | `$section` (string) | Define section name. |
 | `route()` | `$name` (string), `$params` (mixed, optional) | Define a route automatically prefixing with `statamic.cp.` |
-| `url()` | `$url` (string) | Define absolute URL. |
+| `url()` | `$url` (string) | Define a URL instead of a route. A string without a leading slash will be relative from the CP. A leading slash will be relative from the root. You may provide an absolute URL. |
 | `icon()` | `$icon` (string) | Define icon. |
 | `children()` | `$children` (array\|collection\|closure) | Define child items. |
 | `can()` | `$ability` (string), `$params` (mixed, optional) | Define authorization. |
-| `active()` | `$pattern` (string) | Define active styling pattern. |
 | `view()` | `$view` (string) | Define custom view. |
+| `active()` | `$pattern` (string) | A regular expression to check if the nav item is active. The URL will be relative from the CP. eg. on `/cp/foo`, you'd just get `foo`. |
 
