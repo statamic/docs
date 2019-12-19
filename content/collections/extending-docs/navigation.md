@@ -14,6 +14,8 @@ Every nav item is represented by a `NavItem` object, which has a [full API](#the
 Let's assume we're creating a Store addon, and want to add a `Store` nav item to the `Content` section of the navigation.  To add this item, we'll add the following code to our service provider's `boot()` method:
 
 ```php
+use Statamic\Facades\Nav;
+
 public function boot()
 {
     Nav::extend(function ($nav) {
