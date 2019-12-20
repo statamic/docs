@@ -214,7 +214,7 @@ What if you want to combine an `is set` check with a ternary operator? We've got
 
 ## Code Comments {#comments}
 
-Antlers also allows you to define comments in your vies. However, unlike HTML comments, Antlers are not included in the rendered HTML. You can use these comments to "turn off" chunks of code, document your work, or leave notes for yourself and other developers.
+Antlers also allows you to define comments in your views. However, unlike HTML comments, Antlers are not included in the rendered HTML. You can use these comments to "turn off" chunks of code, document your work, or leave notes for yourself and other developers.
 
 ```
 {{# Remember to replace the lorem ipsum this time. #}}
