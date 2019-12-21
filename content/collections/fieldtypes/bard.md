@@ -126,7 +126,7 @@ partials/
 
 ## Extending Bard
 
-Bard uses [TipTap](https://tiptap.scrumpy.com) (which in turn is built on top of [ProseMirror][prosemirror]) as the foundation for our quintessential block-based editor.
+Bard uses [TipTap](https://tiptap.scrumpy.io) (which in turn is built on top of [ProseMirror][prosemirror]) as the foundation for our quintessential block-based editor.
 
 - Link to [TipTap Extensions](https://tiptap.scrumpy.io/docs/api/extensions.html)
 - Explain how to bootstrap said extensions and buttons
