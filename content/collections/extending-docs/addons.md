@@ -189,6 +189,49 @@ protected $commands = [
 
 ```
 
+## Registering Views
+
+If you want to use your own views, remember to register them in your Service provider:
+
+```php
+
+class ServiceProvider extends AddonServiceProvider
+{
+    public function boot()
+    {
+        parent::boot();
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views/', 'YourAddonName');
+    }
+}
+```
+
+The path `/resources/views/` may be customized as you as you need, but saving your views in the resources/views folder i common practice. 
+
+Lets assume we got the following file structure
+
+``` files
+/
+|-- addons/
+|   `-- example/
+|       |-- resources/
+|           |-- views/
+|               |  `beautifullView.blade.php
+|       |-- src/
+|       |   `-- ServiceProvider.php
+|       `-- composer.json
+|-- app/
+|-- public/
+`-- composer.json
+```
+
+To load your view in a Controller
+
+```php
+return view('YourAddonName::beautifulView', $someOptionalDataIfYouWant);
+```
+   
+
 ## Assets
 
 ### CSS and Javascript
