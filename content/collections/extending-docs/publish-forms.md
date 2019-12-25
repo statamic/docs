@@ -162,7 +162,7 @@ Blueprint::make()->setContents([
         'main' => ['fields' => [
             ['handle' => 'title', 'field' => ['type' => 'text']],
             ['handle' => 'content', 'field' => ['type' => 'markdown']],
-        ]]
+        ]],
         'sidebar' => ['fields' => [
             ['handle' => 'slug', 'field' => ['type' => 'slug']],
         ]]
