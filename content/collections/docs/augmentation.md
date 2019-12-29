@@ -9,7 +9,7 @@ Augmentation is a transformation step in Statamic 3's data layer that establishe
 
 In other words, augmentation automatically transforms the rendered output of each variable based on the fieldtype chosen to manage it.
 
-If you choose a Markdown fieldtype, your content will automatically be converted to Markdown without the need to use a [markdown modifier](/modifiers/markdown).
+If you choose a Markdown fieldtype, your content will automatically be converted to HTML without the need to use a [markdown modifier](/modifiers/markdown).
 
 Each [fieldtype](/fieldtyhpes) documents if and how augmentation affects your output.
 
