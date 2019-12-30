@@ -12,43 +12,58 @@ Much of the documentation is intended to be used as a reference sheet for variou
 3. You can copy and paste a few commands into the command line.
 4. You have more than 5 minutes to spare. Let's enjoy ourselves here.
 
-## What we're building
+### What we're building
 
 We're going to build a simple personal website for a fictious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="uppercase font-bold tracking-widest text-green font-display">Cyberspace</span>.
 
+## High level approach
+
+A high level approach to building a site in Statamic usually looks like this.
+
+1. Start with a static HTML site or series of different layouts
+2. Break static files up into the appropriate [Antlers views](/antlers) (layouts, templates, and partials)
+3. Create applicable [collections](/collections) and [routes](/routing) to hold content
+4. Stub out top level pages and map them to the proper templates
+5. Add fields to your [blueprints](/blueprints) and start moving static content from HTML into their proper fields
+6. Keep going until your site is done!
+
+Once familiar with Statamic, many developers begin building their static site right in Statamic, often blending all the steps into a smooth flowing river of productivity.
+
 ## Install Statamic
 
-The first step — as I hope you have guessed — is to install Statamic. Let's get a brand new empty project running, and then we'll do stuff to it until it looks like a website.
+Let's start right at the very beginning. Installing Statamic.
 
-First, we're going to run a [`composer create-project`](https://getcomposer.org/doc/03-cli.md#create-project) command from the command line, which clones the [statamic/statamic repo](https://github.com/statamic/statamic) and then runs a series of scripts on it to automate steps you would otherwise need to perform manually if you cloned the repo directly.
+First, run [`composer create-project`](https://getcomposer.org/doc/03-cli.md#create-project) command from the command line. This clones the [statamic/statamic repo](https://github.com/statamic/statamic) and then runs a series of scripts on it to automate steps you would otherwise need to perform manually if you cloned the repo directly. Nice.
 
-You should run this command from your `~/Sites` directory if you're using a [Valet](https://laravel.com/docs/valet) or similar setup where each subdirectory maps to a `.test` local domain.
+You should run this command from your `~/Sites` directory if you're using [Valet](https://laravel.com/docs/valet) or a similar dev environment where directories map to `.test` local domains.
 
 ``` bash
 composer create-project statamic/statamic cyberspace-place --prefer-dist --stability=dev
 ```
 
-If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen.
+If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen. If you encounter errors, Google them frantically and do anything and everything suggested until it magically begins working.
+
+Just kidding, that's a terrible idea. Please don't do that. You should check our [knowledge base](/knowledge-base) and [forums](https://statamic.com/forums) to look for a validated solution before resorting to such measures.
 
 <figure>
     <img src="/img/quick-start/installed.png" alt="Statamic 3 Welcome Screen">
-    <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest" href="https://www.youtube.com/watch?v=5pL6uUYdWbU">If do right, no can defense.</a></figcaption>
+    <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
-Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the directory in your code editor.
+Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor.
 
 ## Create your first user
 
-Now we can create a new super user and get into the control panel so we can start to create some content to display on the frontend.
+Now we can create a new super user and sign into the control panel and start creating some content to display on the frontend.
 
-Run `php please make:user` from the command line inside your new project directory and follow the steps. Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. What are you afraid of?
+Run `php please make:user` from the command line inside that new project directory and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of comitting to success.
 
 <figure>
     <img src="/img/quick-start/make-user.png" alt="Statamic 3 Make:User Command" width="453">
     <figcaption>We can customize user fields later — this is just fine for today.</figcaption>
 </figure>
 
-Now you can log in! Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to be granted access to the secret world of Narnia.
+Now you can sign in! Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to be granted access to the secret world of Narnia.
 
 <figure>
     <img src="/img/quick-start/login.png" alt="Statamic 3 Login Screen">
