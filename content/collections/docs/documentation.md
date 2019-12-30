@@ -23,11 +23,9 @@ If this is your first experience with Statamic, please reserve your final judgem
 
 > We have a v2 migrator! Instead of upgrading an existing site by hand, [let magic do it for you!](https://github.com/statamic/migrator)
 
-## Not for Production Use
+## Regarding Production Use
 
-**Statamic 3 Beta is NOT intended for production use.** You may encounter show-stopping bugs. Features may be removed last minute. There may still be <mark>breaking changes</mark> resulting in tedious manual labor and refactoring on your end to get back in sync with master.
-
-So when you're tempted to launch that site you built anyway even after reading this warning, just remember — we told you not to do it and we still love you. ❤️
+During the beta there still may be **breaking changes**. You may have to manually wangjangle yourself back onto `master`. You may encounter show-stopping bugs. Features may be removed.  You may need to buy a license when 3.0 final is launched. If you are okay with taking these risks, you're welcome to use Statamic however you'd like. ❤️
 
 ## What You See...
 
@@ -43,17 +41,16 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 🎁 If you're interested in _contributing_ to Statamic 3, please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first. Statamic isn't _Free Open Source Software_ so there are a couple of little caveats to be aware of first. Thank you for considering it!
 
-## WIP WIP WIP 🚧
+## Still WIP 🚧
 
 Beta = Work In Progress. Before you start opening Github Issues, here are some notes on the state of various things.
 
 - The **Control Panel** is not fully responsive. Please only provide feedback on the Desktop breakpoint for now.
 - **The addon directory** is not enabled yet. We needed to wait until the GitHub repos were public before we finish it and open it to testing.
-- **Multi-user editing** is a separate addon not included in Beta.
 - **These docs** are still a work in progress. Hang in there, you can see by the commit log that we're working around the clock on them. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch our brain dumps during development.
 - Using Statamic in an existing Laravel application can lead to unexpected edge cases. Bring them to us so we can smooth out this integration!
 
 <figure>
     <img src="/img/participant.jpg">
-    <figcaption>Chris Traeger thanks you for participating!</figcaption>
+    <figcaption>Thank you for your support!</figcaption>
 </figure>
