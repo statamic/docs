@@ -10,6 +10,8 @@ tree:
       -
         entry: ab08f409-8bbe-4ede-b421-d05777d292f7
       -
+        entry: 24a9c9d8-d607-4117-9806-738668c173cd
+      -
         entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
       -
         entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
@@ -17,31 +19,29 @@ tree:
     title: 'Core Concepts'
     children:
       -
-        entry: 24a9c9d8-d607-4117-9806-738668c173cd
+        entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
+      -
+        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
       -
         entry: d7b7d326-b199-4fd8-984f-7d885e255efb
       -
         entry: 7202c698-942a-4dc0-b006-b982784efb03
       -
-        entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
       -
-        entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
+        entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
       -
         entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
       -
         entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
+      -
+        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
       -
         entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
       -
         entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
       -
         entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
-      -
-        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
-      -
-        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
-      -
-        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
       -
         entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
   -
@@ -59,8 +59,6 @@ tree:
         entry: 74c47654-8c47-49b1-a616-ed940ce19977
       -
         entry: fbf59081-ba24-4e82-b011-b687be228c89
-      -
-        entry: 4086d572-5e20-4e4d-9e29-2335b87ac5db
       -
         entry: 5e848460-9bbc-449e-8edd-182d918163ff
       -
