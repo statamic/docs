@@ -41,7 +41,7 @@ The modifier class expects one `index` method which should return a modified `$v
 
 namespace App\Modifiers;
 
-use Statamic\Extend\Modifier;
+use Statamic\Modifiers\Modifier;
 
 class Repeat extends Modifier
 {
@@ -81,7 +81,7 @@ Let’s say we need a modifier that repeats things. Maybe even delicious things.
 
 namespace App\Modifiers;
 
-use Statamic\Extend\Modifier;
+use Statamic\Modifiers\Modifier;
 
 class Repeat extends Modifier
 {
