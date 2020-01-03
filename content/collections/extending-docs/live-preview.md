@@ -16,7 +16,7 @@ If you have complex requirements – for example, needing to render it through 
 The `LocalizedEntry` class has a `toLivePreviewResponse` method. You can override this and return whatever you want to be
 rendered in Live Preview's content pane.
 
-[See how to override the entry classes.](/guide/extending/repositories.html#custom-data-classes)
+[See how to override the entry classes.](/extending/repositories#custom-data-classes)
 
 ``` php
 <?php
