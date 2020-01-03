@@ -106,7 +106,7 @@ php please make:tags Foo
 
 This'll create a class in `app/Tags` which will be automatically registered.
 
-To create and register a tag inside an addon instead, check out the [addon docs](/guide/extending/addons.html).
+To create and register a tag inside an addon instead, check out the [addon docs](/extending/addons#registering-components).
 
 ## Tag Handle
 
