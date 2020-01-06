@@ -332,7 +332,7 @@ protected $subscribe = [
 ];
 ```
 
-Consult the [Laravel event documentation]() to learn how to define events, listeners, and subscribers.
+Consult the [Laravel event documentation](https://laravel.com/docs/master/events) to learn how to define events, listeners, and subscribers.
 
 
 ## Scheduling
@@ -346,4 +346,4 @@ protected function schedule($schedule)
 }
 ```
 
-Consult the [Laravel scheduling documentation]() to learn how to define your schedule.
+Consult the [Laravel scheduling documentation](https://laravel.com/docs/master/scheduling#defining-schedules) to learn how to define your schedule.
