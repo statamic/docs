@@ -30,7 +30,7 @@ php please make:modifier Repeat
 
 This'll create a class in `app/Modifiers` which will be automatically registered.
 
-To create and register a modifier inside an addon instead, check out the [addon docs](/guide/extending/addons.html).
+To create and register a modifier inside an addon instead, check out the [addon docs](/extending/addons#registering-components).
 
 ## Modifying a value
 
