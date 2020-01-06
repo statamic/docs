@@ -69,7 +69,7 @@ title: Photo Gallery
 
 ## Partials
 
-Partials are reusable views that may find themselves in any number of other layouts, templates, and other partials. You can use any view as a partial by using the [partial](/tags/partials) tag.
+Partials are reusable views that may find themselves in any number of other layouts, templates, and other partials. You can use any view as a partial by using the [partial](/tags/partial) tag.
 
 ```
 // This will import /resources/views/blog/_card.antlers.html
