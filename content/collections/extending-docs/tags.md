@@ -101,7 +101,7 @@ introduced the `wildcard` method to prevent some infinite looping situations you
 You can generate a Tags class with a console command:
 
 ``` bash
-php please make:tags Foo
+php please make:tag Foo
 ```
 
 This'll create a class in `app/Tags` which will be automatically registered.
