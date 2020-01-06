@@ -23,7 +23,7 @@ Statamic's **Control Panel** sits _outside_ both the frontend and backend as a t
 
 In today's tech-driven ecosystem there are countless ways to build a website. You could...
 
-- Write a Single Page Application (SPA) with [Vue.js](https://reactjs.org) or [React](https://reactjs.org) to run your entire site without the need for page refreshes
+- Write a Single Page Application (SPA) with [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to run your entire site without the need for page refreshes
 - Use HTML and Statamic's [Antlers](/antlers) template language to build a dynamic site with smart caching
 - Use [Webpack](https://webpack.js.org), [Laravel Mix][mix], or [Gulp](https://gulpjs.com) to compile your JavaScript and SCSS/LESS
 - Go for the [JAMStack](https://jamstack.org) approach and run a statically generated site without server-side processing
