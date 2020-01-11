@@ -31,7 +31,7 @@ A few other extensions are available, but disabled by default:
 
 Under the hood, we're using the [league/commonmark](https://commonmark.thephpleague.com/) package which supports all sorts of customization using extensions.
 
-You may add an extension with the `addExtension` or `addExtensions` methods. Either return an extension instance, or an array of them.
+You may add an extension with the `addExtension` or `addExtensions` methods. For example, in the `boot` method of your `AppServiceProvider`, return an extension instance, or an array of them.
 
 ``` php
 Markdown::addExtension(function () {
