@@ -2,6 +2,8 @@ title: Modifiers
 route: '{mount}/{slug}'
 default_status: published
 template: modifiers.show
+inject:
+  view_model: App\ViewModels\Modifiers
 layout: layout
 blueprints:
   - page
