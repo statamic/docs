@@ -48,18 +48,6 @@ For each taxonomy [assigned to a collection](#assigning-to-collections), and whe
   - Accessible at `/{collection url}/{taxonomy slug}/{term slug}` (eg. `/blog/tags/retrowave`)
   - The `term` view will be used.
 
-### Customizing Collection Views
-
-If you want to use specific views for the collection's automatic routes, you can add the following to the collection's YAML file:
-
-``` yaml
-taxonomies:
-  tags:
-    routes:
-      index: tags.index
-      show: tags.show
-```
-
 ## Term Values and Slugs
 
 A term **value** is how you might identify a term in your content. For example, “Star Wars”.
@@ -84,6 +72,17 @@ Titles are saved on a first-come, first-serve basis, which means consistency is 
 To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If case-sensitivity is important, you can add a `title` field to the taxonomy blueprint.
 
 ## Templating
+
+### Views
+
+Taxonomies use the following view template naming convention:
+
+| Purpose | View |
+|---|---|
+| Taxonomy Index  | `{taxonomy_name}/index` |
+| Single Term | `{taxonomy_name}/show` |
+
+So for example, you would set up your "topics" index page in `resources/views/topics/index.antlers.html` and then a specific topic with a list of all entries inside it at `resources/views/topics/show.antlers.html`.
 
 ### Outputting Terms
 
