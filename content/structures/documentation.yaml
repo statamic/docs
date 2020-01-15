@@ -88,6 +88,8 @@ tree:
         entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
       -
         entry: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
+      -
+        entry: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
   -
     title: 'Advanced Capabilities'
     children:
