@@ -43,9 +43,36 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 
 We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We don’t use Windows ourselves so we can’t vouch for it personally, though.
 
+
+
+### Windows: Laragon
+
+For people that come from a Mac or have problems with WAMP, give [Laragon][laragon] a go. It allows for easy configuration, use of nGinX or Apache, Multiple versions of PHP, NodeJS, Go, MySQL/MariaDB or Postgress/MongoDB and more.
+It can easily map all subdirectories of a "web" directory to `.test` or `.localhost` domains and even lets you share the sites publicly using local tunnels.
+
+After I moved away from the Mac platform I needed a robust and just working tool and found that in Laragon.
+
+#### Laragon: Add a quickinstall for Statamic
+
+Laragon can instantly create a project for you that will be accessible after completing the install. To do so, you can edit the `Quick App` menu, by right clicking the Laragon icon in the system-tray and selecting the option: "Quick App" > "Configuration".
+A text-editor opens. Add the following lines at the end:
+```
+------------------------------------------------------
+
+# Statamic CMS:
+
+Statamic v3(beta)=composer create-project statamic/statamic %s --prefer-dist --stability=dev
+
+------------------------------------------------------
+```
+Then save the file and enter the "Quick Add" menu again, but now select the new option "Statamic v3(beta)". It asks for a projectname and then starts installing Statamic 3 and all it's subcomponents. When it's ready, it shows the URL on which the site is available and restarts the nginx/apache service for you. 
+If you then visit the URL the new Statamic 3 site is available!
+
+
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
 [hosts]: https://github.com/statamic/hosts
 [homestead]: https://laravel.com/docs/6.x/homestead
 [valet]: https://laravel.com/docs/valet
 [wamp]: http://www.wampserver.com/
+[laragon]:https://laragon.org/
