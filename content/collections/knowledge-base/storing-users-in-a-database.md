@@ -14,11 +14,12 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 
 1. Ensure you have a [database configured](https://laravel.com/docs/5.7/database#configuration).
 2. In `config/statamic/users.php`, change `repository` to `eloquent`.
-3. Comment out the `users` store in `config/statamic/stache.php`.
-4. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
-5. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
-6. Run `php artisan migrate`
-7. Run a command to migrate your file based users into the database.
+3. In `config/statamic/stache.php`, comment out the `users` store.
+4. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider.
+5. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
+6. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
+7. Run `php artisan migrate`
+8. Run a command to migrate your file based users into the database.
 
 ### In an existing Laravel app
 
