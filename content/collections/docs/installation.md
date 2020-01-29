@@ -7,15 +7,22 @@ template: page
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
 stage: 4
 ---
-## Creating a new Statamic project
+## Creating a new Statamic project?
 
-Use Composer to create a project based off the `statamic/statamic` starter site.
+If you want to start from scratch, use Composer to create a project based off the [`statamic/statamic`](https://github.com/statamic/statamic) starter site.
 
 ``` bash
 composer create-project statamic/statamic my-site --prefer-dist --stability=dev
 ```
 
-## Installing into existing Laravel apps
+### Starter Kits
+
+You can also use one of the starter kits to jump ahead with a pre-built site. Each starter kit has its own installation docs.
+
+- [Cool Writings](https://github.com/statamic/starter-kit-cool-writings)
+- [Doogie Browser](https://github.com/statamic/starter-kit-doogie-browser)
+
+## You can also install into an _existing_ Laravel app {#exising-laravel}
 
 1. Add the `statamic:install` command to `post-autoload-dump` in `composer.json`.
 
@@ -37,7 +44,7 @@ composer create-project statamic/statamic my-site --prefer-dist --stability=dev
 
 ## Updating
 
-From within your application, use Composer to update the package:
+From within your project, use Composer to update the Statamic CMS package:
 
 ``` bash
 composer update statamic/cms --with-dependencies
