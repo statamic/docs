@@ -198,13 +198,13 @@ When all you need to do is display a variable and set a fallback when it’s fal
 {{ meta_title ?? title ?? "No Title Set" }}
 ```
 
-### Conditional Variable Fallbacks (Null Coalescing Assignment)
+### Conditional Variable Fallbacks
 
 What if you want to combine an `is set` check with a ternary operator? We've got that covered too.
 
 ```
 // Short and sweet
-{{ show_title ??= title }}
+{{ show_title ?= title }}
 
 // Longer and bitterer
 {{ if show_title }}{{ title }}{{ /if }}
