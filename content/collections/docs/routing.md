@@ -22,20 +22,34 @@ If you want to defer **everything** to explicit Laravel routes (perhaps you're u
 - [Structures](/structures#routing) can define explicit URLs that are routed to specific templates.
 - [Taxonomies](/taxonomies#routing) can have their own URLs.
 
+## Custom Routes
+
+While URLs will be generated for your content and routed automatically, you may wish to create your own routes.
+
+You're free to configure your own regular Laravel routes like you would in a regular app. Plop them in your `routes/web.php` file. Use closures, or point to a [controller](/controllers). This is just [standard Laravel stuff](https://laravel.com/docs/routing).
+
 ## Statamic Routes
 
-User-configured Statamic routes live in `config/statamic/routes.php`. Instead of mapping URL patterns to Controllers (like in Laravel), these routes map URL patterns to Statamic [templates](/views#templates). You can also use these routes to pass in additional data and set settings (like `layout`).
+While dropping a route in your `routes/web.php` will work just fine, you're typically in charge of all the logic, like preparing variables, getting globals if you need them, and fetching the view.
+
+Statamic provides a `Route::statamic()` method that will handle that for you.
 
 ``` php
-'routes' => [
-    '/' => 'home',
-    'feed' => [
-        'template' => 'rss.feed',
-        'layout' => 'rss.layout',
-        'content_type' => 'xml',
-    ],
-    'search' => 'search.index',
-],
+Route::statamic('uri', 'view', ['foo' => 'bar']);
+```
+```
+{{ myglobal }} // globals are available
+{{ foo }} // bar
+```
+
+The first argument is the URI, the second is the name of the [template](/views#templates), and the third is an optional array of additional data.
+
+### Layout
+
+When using `Route::statamic()`, Statamic will automatically inject the selected view into the default layout. You can customize which layout is used by adding a `layout` to the route data.
+
+``` php
+Route::statamic('uri', 'view', ['layout' => 'custom']);
 ```
 
 ### Content Type Headers
@@ -50,27 +64,15 @@ You can control the content type headers by setting `'content_type' => '{content
 
 ## Redirects
 
-Perminant redirects (301) live in `config/statamic/routes.php`.
+Creating redirects can be done in your `routes/web.php` using native Laravel Route methods:
 
 ``` php
-'redirect' => [
-    '/here' => '/there',
-    '/coupon-codes' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-],
+Route::redirect('/here', '/there');
+Route::redirect('/here', '/there', 301);
+Route::permanentRedirect('/here', '/there');
 ```
 
-Vanity (302 temporary) redirects are configured in the `vanity` key.
-
-``` php
-'vanity' => [
-    '/black-friday' => 'blog/2019/10/black-friday-deals',
-],
-```
-
-
-## Laravel Routes
-
-You're free to configure your own regular Laravel routes like you would in a regular app. Plop them in your `routes/web.php` file. Use closures, or point to a [controller](/controllers). This is just [standard Laravel stuff](https://laravel.com/docs/routing).
+[More details on the Laravel docs](https://laravel.com/docs/6.x/routing#redirect-routes).
 
 ## Error Pages
 
