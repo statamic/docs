@@ -40,7 +40,11 @@ You can also use one of the starter kits to jump ahead with a pre-built site. Ea
    composer require statamic/cms
    ```
 
-3. If you plan to use the Control Panel, follow the instructions in the [Users](/users#storage) guide to learn how to make your existing users compatible with Statamic, or how to switch to Statamic's file-based user driver.
+3. If you have existing users in your application, [follow these instructions](/users#storage) to learn how to make them compatible with Statamic, or how to switch to Statamic's file-based user driver.
+
+After Statamic is installed, you'll have the `content/`, `users/`, and `config/statamic` directories added to your project. Your app will continue to work as before and you'll have Statamic available at your fingertips.
+
+Your explicit routes will take precedence and anything not caught by your app will run through Statamic and will work as documented. Enjoy!
 
 ## Updating
 
