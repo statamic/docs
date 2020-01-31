@@ -145,7 +145,7 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 
 ### Escaping Data
 
-By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this default state is logical. **Never rendered user-submitted data without escaping it first!**
+By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this default state is logical. **Never render user-submitted data without escaping it first!**
 
 The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) modifier. This will run the data through PHP's `htmlspecialchars()` function and prevent XSS attacks and other potential nastiness.
 
