@@ -258,8 +258,8 @@ may expose without being a prominent section of the website. For example, somewh
 
 #### Web Routes
 
-Web routes have no prefix and no middleware attached. They will be added at the root level, as if you were adding them to a standard
-Laravel app's `routes/web.php` file, giving you complete control.
+Web routes have no prefix and no Statamic middleware attached. They will be added at the root level, as if you were adding
+them to a standard Laravel app's `routes/web.php` file, giving you complete control. However, as a Laravel route, they will have the `web` middleware attached.
 
 ### Writing Routes
 
