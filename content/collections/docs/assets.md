@@ -25,7 +25,7 @@ The Control Panel's asset browser gives you a great view on these files. You can
 
 ## Asset Fields
 
-Asset fields are configured as a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll be see the fields from the configured blueprint.
+Asset fields are configured as a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll see the fields from the configured blueprint.
 
 This data is stored in the asset's [meta data](#metadata) file.
 
@@ -40,7 +40,7 @@ This data is stored in the asset's [meta data](#metadata) file.
 - Each asset in a container will have a corresponding yaml file located in a `.meta` subdirectory. eg. `images/tree.jpg` would have an `images/.meta/tree.jpg.yaml`
 - These files contain cached data about the files which increases performance (since it doesn't have to be continually recalculated). Things like image dimensions, file size, last modification dates.
 - They also contain user generated data. The fields are defined by the asset container's blueprint. Typically things like alt text, focal points, etc.
-- Note: This differs from v2, where user generated data lived inside a big array in the the container's yaml file.
+- Note: This differs from v2, where user generated data lived inside a big array in the container's yaml file.
 - The option to version control these files - like the assets themselves - is up to you.
 
 ``` yaml
@@ -60,12 +60,12 @@ Each container has its own settings, configurable permissions, and [blueprints](
 Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
 
 ``` yaml
-# content/assets/main.yaml
+# content/assets/assets.yaml
 title: 'Assets'
 disk: 'assets'
 ```
 
-Each container implements a disk, which is just a [Laravel Filesystem](https://laravel.com/docs/filesystem) — a native Laravel feature, which is nothing more some glue that groups [driver](#driver), URL, and a location together. Statamic has a nice default asset disk ready for you. You don't need to mess with this stuff unless you want to.
+Each container implements a disk, which is just a [Laravel Filesystem](https://laravel.com/docs/filesystem) — a native Laravel feature, which is nothing more than some glue that groups [driver](#drivers), URL, and a location together. Statamic has a nice default asset disk ready for you. You don't need to mess with this stuff unless you want to.
 
 ``` php
 'disks' => [
