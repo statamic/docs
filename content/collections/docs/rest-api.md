@@ -262,3 +262,46 @@ The `path` in the URL should be the relative path from the container's root.
   }
 }
 ```
+
+## Customizing Resources
+
+By default the resources generally use the item's [Augmented](/augmentation) data.
+
+You are free to override the resource classes with your own, in turn letting you customize the responses.
+
+In a service provider, use the `map` method to define the overriding resources:
+
+``` php
+use App\Http\Resources\CustomEntryResource;
+use Statamic\Http\Resources\API\Resource;
+use Statamic\Http\Resources\API\EntryResource;
+
+class AppServiceProvider extends Provider
+{
+    public function boot()
+    {
+        Resource::map([
+            EntryResource::class => CustomEntryResource::class,
+        ]);
+    }
+}
+```
+
+``` php
+<?php
+
+namespace App\Http\Resources;
+
+use Statamic\Http\Resources\API\EntryResource;
+
+class CustomEntryResource extends EntryResource
+{
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->resource->id(),
+            'title' => $this->resource->value('title'),
+        ];
+    }
+}
+```
