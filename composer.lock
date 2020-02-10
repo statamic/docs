@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.4",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "10bb96592168a0f8e8f6dcde3532d9fa50b0b527"
+                "reference": "47fe531de31fca4a1b997f87308e7d7804348f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
-                "reference": "10bb96592168a0f8e8f6dcde3532d9fa50b0b527",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/47fe531de31fca4a1b997f87308e7d7804348f7e",
+                "reference": "47fe531de31fca4a1b997f87308e7d7804348f7e",
                 "shasum": ""
             },
             "require": {
@@ -28,7 +28,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 8",
                 "psr/log": "^1.0",
-                "symfony/process": "^2.5 || ^3.0 || ^4.0"
+                "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0"
             },
             "type": "library",
             "extra": {
@@ -60,20 +60,20 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-08-30T08:44:50+00:00"
+            "time": "2020-01-13T10:02:55+00:00"
         },
         {
             "name": "composer/composer",
-            "version": "1.9.1",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f"
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/bb01f2180df87ce7992b8331a68904f80439dd2f",
-                "reference": "bb01f2180df87ce7992b8331a68904f80439dd2f",
+                "url": "https://api.github.com/repos/composer/composer/zipball/1291a16ce3f48bfdeca39d64fca4875098af4d7b",
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b",
                 "shasum": ""
             },
             "require": {
@@ -140,28 +140,27 @@
                 "dependency",
                 "package"
             ],
-            "time": "2019-11-01T16:20:17+00:00"
+            "time": "2020-02-04T11:58:49+00:00"
         },
         {
             "name": "composer/semver",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e"
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
-                "reference": "46d9139568ccb8d9e7cdd4539cab7347568a5e2e",
+                "url": "https://api.github.com/repos/composer/semver/zipball/c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
+                "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.2 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5 || ^5.0.5",
-                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+                "phpunit/phpunit": "^4.5 || ^5.0.5"
             },
             "type": "library",
             "extra": {
@@ -202,7 +201,7 @@
                 "validation",
                 "versioning"
             ],
-            "time": "2019-03-19T17:25:45+00:00"
+            "time": "2020-01-13T12:06:48+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -307,38 +306,6 @@
                 "performance"
             ],
             "time": "2019-11-06T16:40:04+00:00"
-        },
-        {
-            "name": "container-interop/container-interop",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/container-interop/container-interop.git",
-                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/79cbf1341c22ec75643d841642dd5d6acd83bdb8",
-                "reference": "79cbf1341c22ec75643d841642dd5d6acd83bdb8",
-                "shasum": ""
-            },
-            "require": {
-                "psr/container": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Interop\\Container\\": "src/Interop/Container/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
-            "homepage": "https://github.com/container-interop/container-interop",
-            "abandoned": "psr/container",
-            "time": "2017-02-14T19:40:03+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -684,16 +651,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.8.0-beta-7",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955"
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955",
-                "reference": "fe7a50eceb4a3c867cc9fa9c0aa906b1067d1955",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
                 "shasum": ""
             },
             "require": {
@@ -726,57 +693,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2019-03-17T18:47:21+00:00"
-        },
-        {
-            "name": "erusev/parsedown-extra",
-            "version": "0.8.0-beta-1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erusev/parsedown-extra.git",
-                "reference": "e756b1bf8642ab1091403e902b0503f1cec7527d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown-extra/zipball/e756b1bf8642ab1091403e902b0503f1cec7527d",
-                "reference": "e756b1bf8642ab1091403e902b0503f1cec7527d",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "^1.8.0|^1.8.0-beta-4",
-                "ext-dom": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.3.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ParsedownExtra": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Emanuil Rusev",
-                    "email": "hello@erusev.com",
-                    "homepage": "http://erusev.com"
-                }
-            ],
-            "description": "An extension of Parsedown that adds support for Markdown Extra.",
-            "homepage": "https://github.com/erusev/parsedown-extra",
-            "keywords": [
-                "markdown",
-                "markdown extra",
-                "parsedown",
-                "parser"
-            ],
-            "time": "2018-05-08T21:54:32+00:00"
+            "time": "2019-12-30T22:54:17+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -967,16 +884,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.0",
+            "version": "6.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5"
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
-                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +947,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-07T18:20:45+00:00"
+            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1697,17 +1614,330 @@
             "time": "2019-08-07T15:10:45+00:00"
         },
         {
-            "name": "league/csv",
-            "version": "9.4.1",
+            "name": "league/commonmark",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/csv.git",
-                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c"
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
-                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/4f30be7a2cbf3bfa5788abab71384713e48f451f",
+                "reference": "4f30be7a2cbf3bfa5788abab71384713e48f451f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7.1"
+            },
+            "conflict": {
+                "scrutinizer/ocular": "1.7.*"
+            },
+            "require-dev": {
+                "cebe/markdown": "~1.0",
+                "commonmark/commonmark.js": "0.29.1",
+                "erusev/parsedown": "~1.0",
+                "ext-json": "*",
+                "github/gfm": "0.29.0",
+                "michelf/php-markdown": "~1.4",
+                "mikehaertl/php-shellcommand": "^1.4",
+                "phpstan/phpstan-shim": "^0.11.5",
+                "phpunit/phpunit": "^7.5",
+                "scrutinizer/ocular": "^1.5",
+                "symfony/finder": "^4.2"
+            },
+            "bin": [
+                "bin/commonmark"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and Github-Flavored Markdown (GFM)",
+            "homepage": "https://commonmark.thephpleague.com",
+            "keywords": [
+                "commonmark",
+                "flavored",
+                "gfm",
+                "github",
+                "github-flavored",
+                "markdown",
+                "md",
+                "parser"
+            ],
+            "time": "2020-02-08T23:42:03+00:00"
+        },
+        {
+            "name": "league/commonmark-ext-autolink",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark-ext-autolink.git",
+                "reference": "9b10753fa6cb21893f63d16680f01712adbc0f61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-autolink/zipball/9b10753fa6cb21893f63d16680f01712adbc0f61",
+                "reference": "9b10753fa6cb21893f63d16680f01712adbc0f61",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "commonmark-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\Ext\\Autolink\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Extension for league/commonmark which autolinks URLs, emails, and @-mentions",
+            "homepage": "https://github.com/thephpleague/commonmark-ext-autolink",
+            "keywords": [
+                "autolink",
+                "commonmark",
+                "extension",
+                "gfm",
+                "github",
+                "markdown",
+                "twitter"
+            ],
+            "time": "2020-01-14T01:53:02+00:00"
+        },
+        {
+            "name": "league/commonmark-ext-smartpunct",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark-ext-smartpunct.git",
+                "reference": "3746a86c91903fe200999a992de064f87b352019"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-smartpunct/zipball/3746a86c91903fe200999a992de064f87b352019",
+                "reference": "3746a86c91903fe200999a992de064f87b352019",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "jgm/smartpunct": "0.29",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "commonmark-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\Ext\\SmartPunct\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Intelligently converts ASCII quotes, dashes, and ellipses in Markdown to their Unicode equivalents",
+            "homepage": "https://github.com/thephpleague/commonmark-ext-smartpunct",
+            "keywords": [
+                "commonmark",
+                "extension",
+                "markdown",
+                "punctuation",
+                "smartpunct"
+            ],
+            "time": "2019-10-03T12:57:34+00:00"
+        },
+        {
+            "name": "league/commonmark-ext-strikethrough",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark-ext-strikethrough.git",
+                "reference": "99892ad549e101fe1fbe424ff71224efc32d2d68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-strikethrough/zipball/99892ad549e101fe1fbe424ff71224efc32d2d68",
+                "reference": "99892ad549e101fe1fbe424ff71224efc32d2d68",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "league/commonmark": "^1.0",
+                "php": "^7.1"
+            },
+            "replace": {
+                "uafrica/commonmark-ext": ">=0.1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "commonmark-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\Ext\\Strikethrough\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com"
+                },
+                {
+                    "name": "Johan Meiring",
+                    "email": "johan@uafrica.com"
+                }
+            ],
+            "description": "Strikethrough support for the PHP League's CommonMark Markdown parser",
+            "homepage": "https://github.com/thephpleague/commonmark-ext-strikethrough",
+            "keywords": [
+                "commonmark",
+                "extension",
+                "markdown",
+                "strikeout",
+                "strikethrough"
+            ],
+            "time": "2019-06-29T11:34:00+00:00"
+        },
+        {
+            "name": "league/commonmark-ext-table",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark-ext-table.git",
+                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/3228888ea69636e855efcf6636ff8e6316933fe7",
+                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "~0.19.3|^1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpstan/phpstan": "~0.11",
+                "phpunit/phpunit": "^7.0|^8.0",
+                "symfony/var-dumper": "^4.0",
+                "vimeo/psalm": "^3.0"
+            },
+            "type": "commonmark-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\CommonMark\\Ext\\Table\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Hasoň",
+                    "email": "martin.hason@gmail.com"
+                },
+                {
+                    "name": "Webuni s.r.o.",
+                    "homepage": "https://www.webuni.cz"
+                },
+                {
+                    "name": "Colin O'Dell",
+                    "email": "colinodell@gmail.com",
+                    "homepage": "https://www.colinodell.com"
+                }
+            ],
+            "description": "Table extension for league/commonmark",
+            "homepage": "https://github.com/thephpleague/commonmark-ext-table",
+            "keywords": [
+                "commonmark",
+                "extension",
+                "markdown",
+                "table"
+            ],
+            "time": "2019-09-26T13:28:33+00:00"
+        },
+        {
+            "name": "league/csv",
+            "version": "9.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/b348d09d0d258a4f068efb50a2510dc63101c213",
+                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213",
                 "shasum": ""
             },
             "require": {
@@ -1763,20 +1993,20 @@
                 "read",
                 "write"
             ],
-            "time": "2019-10-17T06:05:32+00:00"
+            "time": "2019-12-15T19:51:41+00:00"
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.61",
+            "version": "1.0.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9"
+                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4fb13c01784a6c9f165a351e996871488ca2d8c9",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
+                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
                 "shasum": ""
             },
             "require": {
@@ -1788,7 +2018,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^3.4",
-                "phpunit/phpunit": "^5.7.10"
+                "phpunit/phpunit": "^5.7.26"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -1847,7 +2077,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-12-08T21:46:50+00:00"
+            "time": "2020-02-05T18:14:17+00:00"
         },
         {
             "name": "league/glide",
@@ -1912,16 +2142,16 @@
         },
         {
             "name": "marcusschwarz/lesserphp",
-            "version": "v0.5.2",
+            "version": "v0.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarcusSchwarz/lesserphp.git",
-                "reference": "b02ee973ee1fff3237f7feaf44885596fb5ee323"
+                "reference": "3a0f5ae0d63cbb661b5f4afd2f96875e73b3ad7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarcusSchwarz/lesserphp/zipball/b02ee973ee1fff3237f7feaf44885596fb5ee323",
-                "reference": "b02ee973ee1fff3237f7feaf44885596fb5ee323",
+                "url": "https://api.github.com/repos/MarcusSchwarz/lesserphp/zipball/3a0f5ae0d63cbb661b5f4afd2f96875e73b3ad7e",
+                "reference": "3a0f5ae0d63cbb661b5f4afd2f96875e73b3ad7e",
                 "shasum": ""
             },
             "require-dev": {
@@ -1960,70 +2190,20 @@
             ],
             "description": "lesserphp is a compiler for LESS written in PHP based on leafo's lessphp.",
             "homepage": "http://leafo.net/lessphp/",
-            "time": "2018-05-28T12:54:01+00:00"
-        },
-        {
-            "name": "michelf/php-smartypants",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/michelf/php-smartypants.git",
-                "reference": "47d17c90a4dfd0ccf1f87e25c65e6c8012415aad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-smartypants/zipball/47d17c90a4dfd0ccf1f87e25c65e6c8012415aad",
-                "reference": "47d17c90a4dfd0ccf1f87e25c65e6c8012415aad",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Michelf": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Michel Fortin",
-                    "role": "Developer",
-                    "email": "michel.fortin@michelf.ca",
-                    "homepage": "https://michelf.ca/"
-                },
-                {
-                    "name": "John Gruber",
-                    "homepage": "https://daringfireball.net/"
-                }
-            ],
-            "description": "PHP SmartyPants",
-            "homepage": "https://michelf.ca/projects/php-smartypants/",
-            "keywords": [
-                "dashes",
-                "quotes",
-                "spaces",
-                "typographer",
-                "typography"
-            ],
-            "time": "2016-12-13T01:01:17+00:00"
+            "time": "2020-01-19T19:18:49+00:00"
         },
         {
             "name": "monolog/monolog",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f9d56fd2f5533322caccdfcddbb56aedd622ef1c"
+                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f9d56fd2f5533322caccdfcddbb56aedd622ef1c",
-                "reference": "f9d56fd2f5533322caccdfcddbb56aedd622ef1c",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c861fcba2ca29404dc9e617eedd9eff4616986b8",
+                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8",
                 "shasum": ""
             },
             "require": {
@@ -2091,7 +2271,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-11-13T10:27:43+00:00"
+            "time": "2019-12-20T14:22:59+00:00"
         },
         {
             "name": "mrclay/jsmin-php",
@@ -2147,16 +2327,16 @@
         },
         {
             "name": "mrclay/minify",
-            "version": "3.0.6",
+            "version": "3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mrclay/minify.git",
-                "reference": "63a812af8dcd0e1ce3c158fa3efdb82c627683f9"
+                "reference": "7378a0efe8e54d9950088422973423846bda5404"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mrclay/minify/zipball/63a812af8dcd0e1ce3c158fa3efdb82c627683f9",
-                "reference": "63a812af8dcd0e1ce3c158fa3efdb82c627683f9",
+                "url": "https://api.github.com/repos/mrclay/minify/zipball/7378a0efe8e54d9950088422973423846bda5404",
+                "reference": "7378a0efe8e54d9950088422973423846bda5404",
                 "shasum": ""
             },
             "require": {
@@ -2165,7 +2345,7 @@
                 "marcusschwarz/lesserphp": "~0.5.1",
                 "monolog/monolog": "~1.1|~2.0",
                 "mrclay/jsmin-php": "~2",
-                "mrclay/props-dic": "^2.2",
+                "mrclay/props-dic": "^2.2|^3.0",
                 "php": "^5.3.0 || ^7.0",
                 "tubalmartin/cssmin": "~4"
             },
@@ -2202,28 +2382,28 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
+            "description": "Minify is a PHP app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
             "homepage": "https://github.com/mrclay/minify",
-            "time": "2019-10-28T11:39:13+00:00"
+            "time": "2019-12-10T06:31:58+00:00"
         },
         {
             "name": "mrclay/props-dic",
-            "version": "2.2.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mrclay/Props.git",
-                "reference": "9ed6cf3a027f1eab03abdd134ec209467cf9c77e"
+                "reference": "0b0fd254e33e2d60bc2bcd7867f2ab3cdd05a843"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mrclay/Props/zipball/9ed6cf3a027f1eab03abdd134ec209467cf9c77e",
-                "reference": "9ed6cf3a027f1eab03abdd134ec209467cf9c77e",
+                "url": "https://api.github.com/repos/mrclay/Props/zipball/0b0fd254e33e2d60bc2bcd7867f2ab3cdd05a843",
+                "reference": "0b0fd254e33e2d60bc2bcd7867f2ab3cdd05a843",
                 "shasum": ""
             },
             "require": {
-                "container-interop/container-interop": "^1.1",
                 "php": ">=5.3.3",
-                "pimple/pimple": "~3.0"
+                "pimple/pimple": "~3.0",
+                "psr/container": "^1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8"
@@ -2232,8 +2412,7 @@
             "autoload": {
                 "psr-0": {
                     "Props\\": [
-                        "src/",
-                        "test/"
+                        "src/"
                     ]
                 }
             },
@@ -2256,7 +2435,7 @@
                 "di",
                 "di container"
             ],
-            "time": "2016-02-10T18:59:20+00:00"
+            "time": "2019-11-26T17:56:10+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3071,16 +3250,16 @@
         },
         {
             "name": "scrumpy/html-to-prosemirror",
-            "version": "0.5.2",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrumpy/html-to-prosemirror.git",
-                "reference": "a68cce889b41abf2872a47c4c222119b76a75dcd"
+                "reference": "1ad8e975b99e45c14024f8f07c159fbcae7d6e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrumpy/html-to-prosemirror/zipball/a68cce889b41abf2872a47c4c222119b76a75dcd",
-                "reference": "a68cce889b41abf2872a47c4c222119b76a75dcd",
+                "url": "https://api.github.com/repos/scrumpy/html-to-prosemirror/zipball/1ad8e975b99e45c14024f8f07c159fbcae7d6e0f",
+                "reference": "1ad8e975b99e45c14024f8f07c159fbcae7d6e0f",
                 "shasum": ""
             },
             "require": {
@@ -3111,20 +3290,20 @@
             "keywords": [
                 "prosemirror"
             ],
-            "time": "2019-08-15T14:21:57+00:00"
+            "time": "2020-01-31T10:17:48+00:00"
         },
         {
             "name": "scrumpy/prosemirror-to-html",
-            "version": "0.7.1",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrumpy/prosemirror-to-html.git",
-                "reference": "996f27f668a2688e7e385da547dd4e6c27393f22"
+                "reference": "7a385d711a2df2f2bc06ffea4a45ceca9a593820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrumpy/prosemirror-to-html/zipball/996f27f668a2688e7e385da547dd4e6c27393f22",
-                "reference": "996f27f668a2688e7e385da547dd4e6c27393f22",
+                "url": "https://api.github.com/repos/scrumpy/prosemirror-to-html/zipball/7a385d711a2df2f2bc06ffea4a45ceca9a593820",
+                "reference": "7a385d711a2df2f2bc06ffea4a45ceca9a593820",
                 "shasum": ""
             },
             "require": {
@@ -3154,7 +3333,7 @@
             "keywords": [
                 "prosemirror"
             ],
-            "time": "2019-08-16T08:15:03+00:00"
+            "time": "2020-01-31T10:03:49+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -3207,16 +3386,16 @@
         },
         {
             "name": "seld/phar-utils",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/phar-utils.git",
-                "reference": "7009b5139491975ef6486545a39f3e6dad5ac30a"
+                "reference": "84715761c35808076b00908a20317a3a8a67d17e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/7009b5139491975ef6486545a39f3e6dad5ac30a",
-                "reference": "7009b5139491975ef6486545a39f3e6dad5ac30a",
+                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/84715761c35808076b00908a20317a3a8a67d17e",
+                "reference": "84715761c35808076b00908a20317a3a8a67d17e",
                 "shasum": ""
             },
             "require": {
@@ -3247,40 +3426,43 @@
             "keywords": [
                 "phra"
             ],
-            "time": "2015-10-13T18:44:15+00:00"
+            "time": "2020-01-13T10:41:09+00:00"
         },
         {
             "name": "statamic/cms",
-            "version": "v3.0.0-beta.5",
+            "version": "v3.0.0-beta.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "ff70da6e2de84bc1f3420481a01402dc3aad7ad7"
+                "reference": "e47b23d4a85b95ef8421aa6ebf9f4123004e051b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/ff70da6e2de84bc1f3420481a01402dc3aad7ad7",
-                "reference": "ff70da6e2de84bc1f3420481a01402dc3aad7ad7",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/e47b23d4a85b95ef8421aa6ebf9f4123004e051b",
+                "reference": "e47b23d4a85b95ef8421aa6ebf9f4123004e051b",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "^1.7",
-                "erusev/parsedown": "^1.8@beta",
-                "erusev/parsedown-extra": "^0.8@beta",
                 "facade/ignition-contracts": "^1.0",
                 "guzzlehttp/guzzle": "^6.3",
                 "laravel/framework": "5.6.* || 5.7.* || 5.8.* || ^6.0",
                 "laravel/helpers": "^1.1",
+                "league/commonmark": "^1.1",
+                "league/commonmark-ext-autolink": "^1.0",
+                "league/commonmark-ext-smartpunct": "^1.1",
+                "league/commonmark-ext-strikethrough": "^1.0",
+                "league/commonmark-ext-table": "^2.1",
                 "league/csv": "^9.0",
                 "league/glide": "^1.1",
-                "michelf/php-smartypants": "^1.8",
                 "pixelfear/composer-dist-plugin": "^0.1.0",
-                "scrumpy/html-to-prosemirror": "^0.5.2",
-                "scrumpy/prosemirror-to-html": "^0.7.1",
+                "scrumpy/html-to-prosemirror": "^0.6.0",
+                "scrumpy/prosemirror-to-html": "^0.8.0",
                 "statamic/stringy": "^3.1",
                 "symfony/var-exporter": "^4.3",
                 "symfony/yaml": "^4.1@dev",
                 "twistor/flysystem-guzzle": "^6.0",
+                "webuni/commonmark-attributes-extension": "^1.0",
                 "wilderborn/partyline": "^1.0"
             },
             "require-dev": {
@@ -3324,7 +3506,7 @@
                 "laravel",
                 "statamic"
             ],
-            "time": "2019-12-09T17:21:31+00:00"
+            "time": "2020-01-31T17:23:24+00:00"
         },
         {
             "name": "statamic/stringy",
@@ -3451,16 +3633,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201"
+                "reference": "f512001679f37e6a042b51897ed24a2f05eba656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
+                "url": "https://api.github.com/repos/symfony/console/zipball/f512001679f37e6a042b51897ed24a2f05eba656",
+                "reference": "f512001679f37e6a042b51897ed24a2f05eba656",
                 "shasum": ""
             },
             "require": {
@@ -3523,7 +3705,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-01T10:06:17+00:00"
+            "time": "2020-01-25T12:44:29+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -3692,16 +3874,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "b3c3068a72623287550fe20b84a2b01dcba2686f"
+                "reference": "9e3de195e5bc301704dd6915df55892f6dfc208b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/b3c3068a72623287550fe20b84a2b01dcba2686f",
-                "reference": "b3c3068a72623287550fe20b84a2b01dcba2686f",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9e3de195e5bc301704dd6915df55892f6dfc208b",
+                "reference": "9e3de195e5bc301704dd6915df55892f6dfc208b",
                 "shasum": ""
             },
             "require": {
@@ -3758,7 +3940,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-28T13:33:56+00:00"
+            "time": "2020-01-10T21:54:01+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -3820,16 +4002,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "40c2606131d56eff6f193b6e2ceb92414653b591"
+                "reference": "266c9540b475f26122b61ef8b23dd9198f5d1cfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/40c2606131d56eff6f193b6e2ceb92414653b591",
-                "reference": "40c2606131d56eff6f193b6e2ceb92414653b591",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/266c9540b475f26122b61ef8b23dd9198f5d1cfd",
+                "reference": "266c9540b475f26122b61ef8b23dd9198f5d1cfd",
                 "shasum": ""
             },
             "require": {
@@ -3866,20 +4048,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-26T23:16:41+00:00"
+            "time": "2020-01-21T08:20:44+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "ce8743441da64c41e2a667b8eb66070444ed911e"
+                "reference": "3a50be43515590faf812fbd7708200aabc327ec3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/ce8743441da64c41e2a667b8eb66070444ed911e",
-                "reference": "ce8743441da64c41e2a667b8eb66070444ed911e",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/3a50be43515590faf812fbd7708200aabc327ec3",
+                "reference": "3a50be43515590faf812fbd7708200aabc327ec3",
                 "shasum": ""
             },
             "require": {
@@ -3915,7 +4097,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-17T21:56:56+00:00"
+            "time": "2020-01-04T13:00:46+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -4126,16 +4308,16 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.0.1",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68"
+                "reference": "b1ab86ce52b0c0abe031367a173005a025e30e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
-                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/b1ab86ce52b0c0abe031367a173005a025e30e04",
+                "reference": "b1ab86ce52b0c0abe031367a173005a025e30e04",
                 "shasum": ""
             },
             "require": {
@@ -4176,7 +4358,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2020-01-04T14:08:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4590,16 +4772,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "51c0135ef3f44c5803b33dc60e96bf4f77752726"
+                "reference": "f5697ab4cb14a5deed7473819e63141bf5352c36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/51c0135ef3f44c5803b33dc60e96bf4f77752726",
-                "reference": "51c0135ef3f44c5803b33dc60e96bf4f77752726",
+                "url": "https://api.github.com/repos/symfony/process/zipball/f5697ab4cb14a5deed7473819e63141bf5352c36",
+                "reference": "f5697ab4cb14a5deed7473819e63141bf5352c36",
                 "shasum": ""
             },
             "require": {
@@ -4635,7 +4817,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-28T13:33:56+00:00"
+            "time": "2020-01-09T09:50:08+00:00"
         },
         {
             "name": "symfony/routing",
@@ -4773,16 +4955,16 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.0.1",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "d410282956706e0b08681a5527447a8e6b6f421e"
+                "reference": "5d9add8034135b9a5f7b101d1e42c797e7f053e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/d410282956706e0b08681a5527447a8e6b6f421e",
-                "reference": "d410282956706e0b08681a5527447a8e6b6f421e",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5d9add8034135b9a5f7b101d1e42c797e7f053e4",
+                "reference": "5d9add8034135b9a5f7b101d1e42c797e7f053e4",
                 "shasum": ""
             },
             "require": {
@@ -4819,7 +5001,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2020-01-04T14:08:26+00:00"
         },
         {
             "name": "symfony/translation",
@@ -5032,16 +5214,16 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "e566070effe60b8d16b99e958cdbd92aa2e470cb"
+                "reference": "1a76a943f2af334da13bc9f33f49392fa530eec9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/e566070effe60b8d16b99e958cdbd92aa2e470cb",
-                "reference": "e566070effe60b8d16b99e958cdbd92aa2e470cb",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/1a76a943f2af334da13bc9f33f49392fa530eec9",
+                "reference": "1a76a943f2af334da13bc9f33f49392fa530eec9",
                 "shasum": ""
             },
             "require": {
@@ -5088,20 +5270,20 @@
                 "instantiate",
                 "serialize"
             ],
-            "time": "2019-12-01T08:39:58+00:00"
+            "time": "2020-01-04T13:00:46+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.1",
+            "version": "v4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "76de473358fe802578a415d5bb43c296cf09d211"
+                "reference": "cd014e425b3668220adb865f53bff64b3ad21767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/76de473358fe802578a415d5bb43c296cf09d211",
-                "reference": "76de473358fe802578a415d5bb43c296cf09d211",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/cd014e425b3668220adb865f53bff64b3ad21767",
+                "reference": "cd014e425b3668220adb865f53bff64b3ad21767",
                 "shasum": ""
             },
             "require": {
@@ -5147,7 +5329,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-12T14:51:11+00:00"
+            "time": "2020-01-21T11:12:16+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -5358,6 +5540,66 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
+        },
+        {
+            "name": "webuni/commonmark-attributes-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webuni/commonmark-attributes-extension.git",
+                "reference": "428c5ad073558a7ee0887b3017f161af59de29e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webuni/commonmark-attributes-extension/zipball/428c5ad073558a7ee0887b3017f161af59de29e0",
+                "reference": "428c5ad073558a7ee0887b3017f161af59de29e0",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "league/commonmark-ext-table": "^1.0|^2.0",
+                "phpstan/phpstan": "~0.11",
+                "phpunit/phpunit": "^7.0|^8.0",
+                "symfony/var-dumper": "^4.3",
+                "vimeo/psalm": "^3.5"
+            },
+            "type": "commonmark-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webuni\\CommonMark\\AttributesExtension\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Hasoň",
+                    "email": "martin.hason@gmail.com"
+                },
+                {
+                    "name": "Webuni s.r.o.",
+                    "homepage": "https://www.webuni.cz"
+                }
+            ],
+            "description": "The attributes extension adds a syntax to define attributes on the various HTML elements in CommonMark PHP implementation.",
+            "homepage": "https://github.com/webuni/commonmark-attributes-extension",
+            "keywords": [
+                "attributes",
+                "commonmark",
+                "markdown"
+            ],
+            "time": "2019-09-11T21:27:00+00:00"
         },
         {
             "name": "wilderborn/partyline",
