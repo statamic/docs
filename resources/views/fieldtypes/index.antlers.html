@@ -6,7 +6,7 @@
     {{ if ! hide_stage }}
     <div class="badge mt-4 -rot-3">
         <a href="/writing-stages" class="no-underline text-teal-dark font-bold hover:text-pink-hot">Writing Stage</a>:
-        {{ stage ?? "Prewriting" }}
+        {{ stage:label ?? "Prewriting" }}
     </div>
     {{ /if }}
 </header>

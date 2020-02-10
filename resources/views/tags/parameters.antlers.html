@@ -1,6 +1,6 @@
 {{ parameters }}
-<div class="{{ ! last ??= 'border-b' }} border-grey-400 mt-4 pb-4">
-    <h3 class="inline-block mb-3 badge text-sm lowercase {{ required ??= 'bg-pink-hot shadow-md-teal text-white' }}">
+<div class="{{ ! last ?= 'border-b' }} border-grey-400 mt-4 pb-4">
+    <h3 class="inline-block mb-3 badge text-sm lowercase {{ required ?= 'bg-pink-hot shadow-md-teal text-white' }}">
         <span class="font-display font-bold">{{ name }}</span>
         <span class="text-xs opacity-75">{{ type }}</span>
     </h3>
