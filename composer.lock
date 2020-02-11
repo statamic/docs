@@ -1688,245 +1688,6 @@
             "time": "2020-02-08T23:42:03+00:00"
         },
         {
-            "name": "league/commonmark-ext-autolink",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-autolink.git",
-                "reference": "9b10753fa6cb21893f63d16680f01712adbc0f61"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-autolink/zipball/9b10753fa6cb21893f63d16680f01712adbc0f61",
-                "reference": "9b10753fa6cb21893f63d16680f01712adbc0f61",
-                "shasum": ""
-            },
-            "require": {
-                "league/commonmark": "^1.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.5"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\Autolink\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "Extension for league/commonmark which autolinks URLs, emails, and @-mentions",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-autolink",
-            "keywords": [
-                "autolink",
-                "commonmark",
-                "extension",
-                "gfm",
-                "github",
-                "markdown",
-                "twitter"
-            ],
-            "time": "2020-01-14T01:53:02+00:00"
-        },
-        {
-            "name": "league/commonmark-ext-smartpunct",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-smartpunct.git",
-                "reference": "3746a86c91903fe200999a992de064f87b352019"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-smartpunct/zipball/3746a86c91903fe200999a992de064f87b352019",
-                "reference": "3746a86c91903fe200999a992de064f87b352019",
-                "shasum": ""
-            },
-            "require": {
-                "league/commonmark": "^1.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "jgm/smartpunct": "0.29",
-                "phpunit/phpunit": "^7.5"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\SmartPunct\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "Intelligently converts ASCII quotes, dashes, and ellipses in Markdown to their Unicode equivalents",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-smartpunct",
-            "keywords": [
-                "commonmark",
-                "extension",
-                "markdown",
-                "punctuation",
-                "smartpunct"
-            ],
-            "time": "2019-10-03T12:57:34+00:00"
-        },
-        {
-            "name": "league/commonmark-ext-strikethrough",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-strikethrough.git",
-                "reference": "99892ad549e101fe1fbe424ff71224efc32d2d68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-strikethrough/zipball/99892ad549e101fe1fbe424ff71224efc32d2d68",
-                "reference": "99892ad549e101fe1fbe424ff71224efc32d2d68",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "league/commonmark": "^1.0",
-                "php": "^7.1"
-            },
-            "replace": {
-                "uafrica/commonmark-ext": ">=0.1.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.5"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\Strikethrough\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com"
-                },
-                {
-                    "name": "Johan Meiring",
-                    "email": "johan@uafrica.com"
-                }
-            ],
-            "description": "Strikethrough support for the PHP League's CommonMark Markdown parser",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-strikethrough",
-            "keywords": [
-                "commonmark",
-                "extension",
-                "markdown",
-                "strikeout",
-                "strikethrough"
-            ],
-            "time": "2019-06-29T11:34:00+00:00"
-        },
-        {
-            "name": "league/commonmark-ext-table",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-table.git",
-                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/3228888ea69636e855efcf6636ff8e6316933fe7",
-                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7",
-                "shasum": ""
-            },
-            "require": {
-                "league/commonmark": "~0.19.3|^1.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "phpstan/phpstan": "~0.11",
-                "phpunit/phpunit": "^7.0|^8.0",
-                "symfony/var-dumper": "^4.0",
-                "vimeo/psalm": "^3.0"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\Table\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Martin Hasoň",
-                    "email": "martin.hason@gmail.com"
-                },
-                {
-                    "name": "Webuni s.r.o.",
-                    "homepage": "https://www.webuni.cz"
-                },
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com"
-                }
-            ],
-            "description": "Table extension for league/commonmark",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-table",
-            "keywords": [
-                "commonmark",
-                "extension",
-                "markdown",
-                "table"
-            ],
-            "time": "2019-09-26T13:28:33+00:00"
-        },
-        {
             "name": "league/csv",
             "version": "9.5.0",
             "source": {
@@ -3430,16 +3191,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v3.0.0-beta.14",
+            "version": "v3.0.0-beta.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "e47b23d4a85b95ef8421aa6ebf9f4123004e051b"
+                "reference": "3b7079ac65c55146d48a78c08f3455ebefc3779a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/e47b23d4a85b95ef8421aa6ebf9f4123004e051b",
-                "reference": "e47b23d4a85b95ef8421aa6ebf9f4123004e051b",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/3b7079ac65c55146d48a78c08f3455ebefc3779a",
+                "reference": "3b7079ac65c55146d48a78c08f3455ebefc3779a",
                 "shasum": ""
             },
             "require": {
@@ -3448,11 +3209,7 @@
                 "guzzlehttp/guzzle": "^6.3",
                 "laravel/framework": "5.6.* || 5.7.* || 5.8.* || ^6.0",
                 "laravel/helpers": "^1.1",
-                "league/commonmark": "^1.1",
-                "league/commonmark-ext-autolink": "^1.0",
-                "league/commonmark-ext-smartpunct": "^1.1",
-                "league/commonmark-ext-strikethrough": "^1.0",
-                "league/commonmark-ext-table": "^2.1",
+                "league/commonmark": "^1.3",
                 "league/csv": "^9.0",
                 "league/glide": "^1.1",
                 "pixelfear/composer-dist-plugin": "^0.1.0",
@@ -3506,7 +3263,7 @@
                 "laravel",
                 "statamic"
             ],
-            "time": "2020-01-31T17:23:24+00:00"
+            "time": "2020-02-11T16:28:11+00:00"
         },
         {
             "name": "statamic/stringy",
