@@ -1,28 +1,52 @@
 ---
-title: REST API
+title: Content API
+intro: The Content REST API is a **read-only** API for delivering content from Statamic to your frontend, external apps, SPAs, and numerous other possible sources. Content is delivered as JSON data.
+stage: 1
 id: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
 ---
 
-## Enabling
+## Enable the API
 
-To enable the API, in `config/statamic/api.php` set `enabled` to `true`, or setting `STATAMIC_API_ENABLED=true` in your `.env` file.
+Enable the API in your config or with an environment variable.
+
+```php
+// config/statamic/api.php
+'enabled' => true,
+```
+
+```env
+STATAMIC_API_ENABLED=true
+```
+
+## Authentication
+
+**Coming soon.** At this stage of the beta there are no access tokens or other common authentication methods ready to use. Yet.
 
 ## Endpoints
 
-Once enabled, you can make requests to `/api/{endpoint}`. You may customize the route from `api` by changing the `route` config variable, or `STATAMIC_API_ROUTE` in your `.env` file.
+`
+https://yourdomain.tld/api/{endpoint}
+`
+You may send requests to the following endpoints:
 
-Currently you may send requests to the following endpoints:
+- [Entries](#entries) / [Entry](#entry)
+- [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
+- [Assets](#assets) / [Asset](#asset)
+- [Globals](#globals) / [Global](#global)
+- [Users](#users) / [User](#user)
 
-- [Entries](#entries)
-- [Entry](#entry)
-- [Taxonomy Terms](#taxonomy-terms)
-- [Taxonomy Term](#taxonomy-term)
-- [Globals](#globals)
-- [Global](#global)
-- [Users](#users)
-- [User](#user)
-- [Assets](#assets)
-- [Asset](#asset)
+### Customizing the API URL
+You may customize the route in your api config file or with an environment variable.
+
+```php
+// config/statamic/api.php
+ 'route' => 'not_api',
+```
+
+ ```env
+ STATAMIC_API_ROUTE=not_api
+ ```
+
 
 ## Filtering
 
@@ -38,7 +62,7 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 /endpoint?filter[title:contains]=awesome&filter[featured]=true
 ```
 
-This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured` 
+This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
 
 
@@ -67,7 +91,7 @@ You may sort by multiple fields by comma separating them. The reverse flag can b
 
 You may specify which top level fields should be included in the response.
 
-```
+``` url
 /endpoint?fields=id,title,content
 ```
 
