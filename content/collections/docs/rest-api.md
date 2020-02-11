@@ -3,6 +3,27 @@ title: REST API
 id: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
 ---
 
+## Enabling
+
+To enable the API, in `config/statamic/api.php` set `enabled` to `true`, or setting `STATAMIC_API_ENABLED=true` in your `.env` file.
+
+## Endpoints
+
+Once enabled, you can make requests to `/api/{endpoint}`. You may customize the route from `api` by changing the `route` config variable, or `STATAMIC_API_ROUTE` in your `.env` file.
+
+Currently you may send requests to the following endpoints:
+
+- [Entries](#entries)
+- [Entry](#entry)
+- [Taxonomy Terms](#taxonomy-terms)
+- [Taxonomy Term](#taxonomy-term)
+- [Globals](#globals)
+- [Global](#global)
+- [Users](#users)
+- [User](#user)
+- [Assets](#assets)
+- [Asset](#asset)
+
 ## Filtering
 
 You may filter results by using the `filter` query parameter.
