@@ -24,12 +24,14 @@
         {{ template_content }}
         {{ partial:edit }}
     </div>
+    {{ unless response_code == 404 }}
     <div class="hidden lg:block lg:w-1/4 xl:w-1/5 px-8 pt-1 relative">
         <nav class="side-nav sticky top-16">
             <h5>On This Page</h5>
             {{ content | noparse | toc }}
         </nav>
     </div>
+    {{ /unless }}
 </div>
 
 <div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
