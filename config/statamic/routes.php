@@ -4,40 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Routes
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define any template or controller based routes. Each route
-    | may contain wildcards and can point to the name of a template or an
-    | array containing any data you want passed in to that template.
-    |
-    | More info: https://docs.statamic.com/routing
-    |
-    */
-
-    'routes' => [
-        'search-results' => 'search',
-        'screencasts' => 'screencasts',
-        'knowledge-base' => 'knowledge-base.index'
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Vanity Routes
-    |--------------------------------------------------------------------------
-    |
-    | Vanity URLs are easy to remember aliases that 302 redirect visitors to
-    | permanent URLs. For example, you can set https://example.com/hot-dogs
-    | to redirect to https://example.com/blog/2019/09/big-sale-on-hot-dogs.
-    |
-    */
-
-    'vanity' => [
-        // '/promo' => '/blog/2019/09/big-sale-on-hot-dogs',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Permanent Redirects
     |--------------------------------------------------------------------------
     |
