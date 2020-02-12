@@ -14,7 +14,14 @@ If you want to work on this project on your local machine, you may follow the in
 3. Clone your fork into the `~/Sites/docs` folder, by running the following command with your username placed into the {username} slot:
     git clone git@github.com:{username}/docs statamic-docs
 4. CD into the new directory you just created.
-5. Run `npm install && npm run dev`.
+5. Run the following commands:
+  ```
+  composer install
+  npm install
+  npm run dev
+  cp .env.example .env
+  php artisan key:generate
+  ```
 
 ## Open Beta
 
