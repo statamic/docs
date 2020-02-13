@@ -79,6 +79,20 @@ A basic registration form, with validation errors.
 {{ /user:register_form }}
 ```
 
+## Password Rules
+
+You may also customize your password rules by explicitly setting a `password` field in your `user.yaml` blueprint.
+
+```yaml
+-
+  handle: password
+  field:
+    type: text
+    display: Password
+    input: password
+    validate: 'min:8|alpha_num'
+```
+
 ## Additional Fields
 
 You are allowed to add any additional fields to your registration form, and they will be added to the user's account provided that they exist in the `user.yaml` blueprint.
