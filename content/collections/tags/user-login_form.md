@@ -26,6 +26,10 @@ variables:
     name: old
     type: array
     description: An array of previously submitted values.
+  -
+    name: success
+    type: string
+    description: A success message.
 id: 7432f1cb-7418-4d54-8e65-51b1ae3bcb3a
 ---
 ## Overview
@@ -44,6 +48,12 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
             {{ errors }}
                 {{ value }}<br>
             {{ /errors }}
+        </div>
+    {{ /if }}
+
+    {{ if success }}
+        <div class="bg-green-300 text-white p-2">
+            {{ success }}<br>
         </div>
     {{ /if }}
 
