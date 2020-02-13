@@ -101,6 +101,7 @@ Fieldsets technically still exist, although they are now a smaller, companion fe
 - There is no more `fieldsets` fieldtype. You should use the `blueprints` fieldtype.
 - Field conditions use a slightly different syntax for multiple `OR` conditions and null/empty checks.
 - Consider using the `statamic:migrate:fieldset` command to convert your v2 fieldsets to blueprints.
+- The `partial` fieldtype has been removed in favor of the [import](/blueprints#importing-fieldsets) feature in Blueprints.
 
 ### Tags
 
