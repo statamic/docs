@@ -51,7 +51,7 @@ variables:
     type: boolean
     description: This will be `true` if the form was submitted successfully.
 ---
-## Example {#example}
+## Overview
 
 Here we'll be creating a form to submit an entry in the `contact` form.
 
@@ -59,7 +59,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
 {{ form:create in="contact" }}
 
     {{ if errors }}
-        <div class="alert alert-danger">
+        <div class="bg-red-300 text-white p-2">
             {{ errors }}
                 {{ value }}<br>
             {{ /errors }}
@@ -67,24 +67,16 @@ Here we'll be creating a form to submit an entry in the `contact` form.
     {{ /if }}
 
     {{ if success }}
-        <div class="alert alert-success">
+        <div class="bg-green-300 text-white p-2">
             Form was submitted successfully.
         </div>
     {{ /if }}
 
-    {{# You can loop through fields from the formset... #}}
-    {{ fields }}
-        <div class="form-group">
-            <label>{{ display }}</label>
-            <input type="text" name="{{ handle }}" value="{{ old }}" />
-        </div>
-    {{ /fields }}
+    <label>Email</label>
+    <input type="text" name="email" value="{{ old:email }}" />
 
-    {{# Or you can hardcode fields... #}}
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="email" value="{{ old:email }}" />
-    </div>
+    <label>Message</label>
+    <textarea name="message" rows="5">{{ old:message }}</textarea>
 
     <button>Submit</button>
 
