@@ -6,3 +6,5 @@ Route::statamic('knowledge-base', 'knowledge-base.index');
 
 Route::permanentRedirect('entries', 'collections-and-entries');
 Route::permanentRedirect('collections', 'collections-and-entries');
+
+Route::redirect('fieldtypes/partial', '/blueprints#importing-fieldsets');
