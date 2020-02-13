@@ -32,8 +32,7 @@ variables:
     name: fields
     type: array
     description: >
-      An array of the fields in your formset. Each field contains an `old` value that holds previous input
-      in the case of failed submission.
+      An array of available fields for [dynamic rendering](#dynamic-rendering).
   -
     name: errors
     type: array
@@ -82,3 +81,25 @@ Here we'll be creating a form to submit an entry in the `contact` form.
 
 {{ /form:create }}
 ```
+
+## Dynamic Rendering
+
+Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
+
+```
+{{ fields }}
+    <div class="p-2">
+        <label>{{ display }}</label>
+        <div class="p-1">{{ field }}</div>
+        {{ if error }}
+            <p class="text-gray-500">{{ error }}</p>
+        {{ /if }}
+    </div>
+{{ /fields }}
+```
+
+Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
+
+You will also find the field's `old` input on unsuccessful submission, as well as an `error` message when relevant.
+
+Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-views`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
