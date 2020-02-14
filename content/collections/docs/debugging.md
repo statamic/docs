@@ -48,6 +48,14 @@ It'll be enabled when `APP_DEBUG` is `true` in your env file.
 
 > The debug bar injects javascript into the page and adds significant overhead to each request. Make sure to turn it off when you're testing your site's performance!
 
+## How to disable the debug bar
+
+You can disable the debug bar without removing the package via composer by adding the following setting in your `.env` file.
+
+```
+DEBUGBAR_ENABLED=false
+```
+
 ## Dump Modifier
 
 When working in [Antlers](/antlers) templates, you can smack the [dump modifier](/modifiers/dump) onto any variable to explore its contents. Here's an example.
