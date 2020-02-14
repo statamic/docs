@@ -62,7 +62,7 @@ APP_NAME="New Statamic Site"
 
 ### Retrieving Environment Variables
 
-All of the variables listed in this file are available in your config files by using the `env()` helper. The optional second argument lets pass a default value in case you don't have the environment variable set.
+All of the variables listed in this file are available in your config files by using the `env()` helper. The optional second argument lets you pass a default value in case you don't have the environment variable set.
 
 ``` php
 'awesome' => env('ENABLE_AWESOME', true),
@@ -70,7 +70,7 @@ All of the variables listed in this file are available in your config files by u
 
 ### Don't version your `.env` file
 
-Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be security risk in the event an intruder gains access to your version control repository, since any sensitive credentials would get exposed.
+Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be a security risk in the event an intruder gains access to your version control repository, since any sensitive credentials would get exposed.
 
 ### Hiding Environment Variables from Debug Pages
 
