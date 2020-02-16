@@ -83,6 +83,14 @@ Bard stores your data as a [ProseMirror document](https://prosemirror.net/docs/r
 
 ## Templating
 
+### Without Sets
+
+If you are using Bard just as a RTE and have no need for sets you would use a single tag to render the content.
+
+`{{ bard_field }}`
+
+### With Sets
+
 Use tag pair syntax with `if/else` conditions to style each set accordingly.
 
 ```
