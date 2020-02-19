@@ -11,7 +11,7 @@ In other words, augmentation automatically transforms the rendered output of eac
 
 If you choose a Markdown fieldtype, your content will automatically be converted to HTML without the need to use a [markdown modifier](/modifiers/markdown).
 
-Each [fieldtype](/fieldtyhpes) documents if and how augmentation affects your output.
+Each [fieldtype](/fieldtypes) documents if and how augmentation affects your output.
 
 > Variables created on the fly with Front Matter won't be augmented until you define them in the entry's [blueprint](/blueprints).
 
