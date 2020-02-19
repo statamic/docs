@@ -4,10 +4,10 @@ id: 0b9590a7-f8b3-4a11-92b5-60d6d43cf869
 overview: Wrap a group of form tags to set them all to the same formset.
 parameters:
   -
-    name: in|is|formset
+    name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the formset to use. You can use `in`, `is`, or `formset`. Whichever feels more natural to you.
+      The name of the form this tag should be targeting.
 ---
 ## Usage {#usage}
 
