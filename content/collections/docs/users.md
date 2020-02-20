@@ -48,7 +48,7 @@ To customize these fields, edit the included `user` [blueprint](/blueprints)  an
 | Field | Type | Required |
 |-------|------|----------|
 | `email` | `text` | Always |
-| `groups` | `user_groups_roles` | When using groups |
+| `groups` | `user_groups` | When using groups |
 | `roles` | `user_roles` | When using roles |
 
 ## Permissions
