@@ -44,6 +44,24 @@ Route::statamic('uri', 'view', ['foo' => 'bar']);
 
 The first argument is the URI, the second is the name of the [template](/views#templates), and the third is an optional array of additional data.
 
+### Parameters
+
+You may use wildcard parameters in your routes. This allows you to match multiple URLs with the same route.
+
+``` php
+Route::statamic('things/{thing}', 'things.show');
+```
+
+The parameter values will be available in your templates. For example, if you visited `/things/foo`:
+
+```
+{{ thing }}
+```
+
+``` output
+foo
+```
+
 ### Layout
 
 When using `Route::statamic()`, Statamic will automatically inject the selected view into the default layout. You can customize which layout is used by adding a `layout` to the route data.
