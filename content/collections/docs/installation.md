@@ -54,5 +54,7 @@ From within your project, use Composer to update the Statamic CMS package:
 composer update statamic/cms --with-dependencies
 ```
 
+> You may prefer to run `composer update` to update _all_ of your dependencies listed in your composer.json file
+
 [users]: /users
 [packagist]: https://packagist.org/
