@@ -107,7 +107,7 @@ Given the following data:
 
 ``` yaml
 times: 5
-thing: Bacon
+thing: Pizza
 ```
 
 And template:
@@ -118,16 +118,10 @@ And template:
 {{ thing | repeat:times }}
 ```
 
-You would find yourself with varying amounts of bacon.
+You would find yourself with varying amounts of pizza.
 
 ``` output
-BaconBacon
-BaconBaconBacon
-BaconBaconBaconBaconBacon
-```
-
-```
-BaconBacon
-BaconBaconBacon
-BaconBaconBaconBaconBacon
+PizzaPizza
+PizzaPizzaPizza
+PizzaPizzaPizzaPizzaPizza
 ```
