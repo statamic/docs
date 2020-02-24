@@ -12,7 +12,7 @@ stage: 2
 
 [Ignition][ignition] is an elegant Laravel package for debugging exceptions. It provides you with a clean and well organized stack trace, code snippets, information about the request, and more.
 
-To enable Ignition you need only set `APP_DEBUG=true` in your [.env](/env) file.
+To enable Ignition you need only set `APP_DEBUG=true` in your [.env](/configuration#environment-variables) file.
 
 <figure>
     <img src="/img/ignition-collection.png" alt="Ignition error screen showing a typo in a collection tag.">
