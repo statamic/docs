@@ -37,7 +37,7 @@ id: fa6d2032-0e42-4ea5-b20c-4226941bf0da
 ---
 ## Fieldtypes
 
-You can use any fieldtypes inside a Grid. Just remember that because you can't doesn't mean you should. Your UI experience will vary greatly. Make sure to compare the experience with the other meta-fields: [Replicator](/fieldtypes/replicator) and [Bard](/fieldtypes/bard).
+You can use any fieldtypes inside a Grid. Just remember that because you can doesn't mean you should. Your UI experience will vary greatly. Make sure to compare the experience with the other meta-fields: [Replicator](/fieldtypes/replicator) and [Bard](/fieldtypes/bard).
 
 ## Data Structure {#data-structure}
 
