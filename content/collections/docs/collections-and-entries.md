@@ -47,11 +47,11 @@ If a value doesn't exist in one place, it'll check the next, and so on.
 
 Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So not really the same thing. Not nearly as romantic anyway.
 
-The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#behaviors).
+The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#date-behaviors-setting).
 
 You can also set default values for all entries, including default template, blueprint, and publish status.
 
-A collection is defined by way of a YAML file in the `content/collections` directory. All accompanying entries will be in a sibling with the same directory name. For example, a `blog` collection would look like this:
+A collection is defined by way of a YAML file in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a name that matches the collection. For example, a `blog` collection would look like this:
 
 ``` files
 ├── content/collections/
@@ -62,7 +62,7 @@ A collection is defined by way of a YAML file in the `content/collections` direc
 │   │   ├── youre-looking-for.md
 ```
 
-Injecting data into your collection is a handy way of providing default values to your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+Injecting data into your collection is a handy way of providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
 ``` yaml
 inject:
@@ -81,7 +81,7 @@ You **can** set more than one blueprint. If you do, you'll be given the option t
 Very often — but not always — entries require a publish date. There are three types of pre-configured date behaviors you can choose from when creating your collection.
 
 - **Articles** - Where publish dates set into the future are private so you can schedule them.
-- **Events** - Where publish dates set in the past are private so they automatically expire and remove themself from your front-end.
+- **Events** - Where publish dates set in the past are private so they automatically expire and remove themselves from your front-end.
 - **No dates** - Where there are no publish dates. Logically.
 
 These behaviors apply when listing entries with a [collection](/tags/collection) tag as well as each entry's URL.
