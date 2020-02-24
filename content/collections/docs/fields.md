@@ -61,7 +61,7 @@ Fields can be localized, allowing you to translate or modify content in a multi-
 
 For example, you're building the website for a multi-national company with headquarters in the United States, UK, and Germany.
 
-- 🇺🇸 The "base" site the US/English version, and all content is created while with that location and audience in mind.
+- 🇺🇸 The "base" site the US/English version, and all content is created with that location and audience in mind.
 
 - 🇬🇧 In the UK version you only need to localize a few fields, replacing "color" and "favorite" with "colour" and "favourite", as well as update company phone numbers and addresses.
 
