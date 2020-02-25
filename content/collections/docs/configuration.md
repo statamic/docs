@@ -1,6 +1,6 @@
 ---
 title: Configuration
-intro: Statamic utilizes standard Laravel config files and `.env` variables for most application-level configuration settings.
+intro: Statamic utilizes standard Laravel config files and environment variables for most application-level configuration settings.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568748076
@@ -10,7 +10,7 @@ id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 ---
 ## Config Files
 
-Statamic's main config files can be found in `config/statamic/`. They are primarily PHP files, organized by area of responsibility.
+Statamic's main config files can be found in `config/statamic/`. They are simple PHP files, organized by area of responsibility.
 
 ``` files
 ├── config/statamic/
@@ -35,15 +35,15 @@ Statamic's main config files can be found in `config/statamic/`. They are primar
 
 ## Environment Variables
 
-It is often helpful to have different configuration values based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (a good idea indeed).
+It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (a good idea indeed).
 
 In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. If you install Statamic via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
 
 ### Environment Variable Types
 
-All variables in your `.env` files are parsed as strings, so some reserved values have been created to allow you to return a wider range of types from the `env()` function:
+All variables in your `.env` files are parsed as strings. Some specific values are reserved to allow you to return a wider range of types:
 
-| `.env` Value | `env()` Value |
+| `.env` Value | Parsed Value |
 |--------------|--------------|
 | `true` | `(bool) true` |
 | `(true)` | `(bool) true` |
@@ -62,15 +62,23 @@ APP_NAME="New Statamic Site"
 
 ### Retrieving Environment Variables
 
-All of the variables listed in this file are available in your config files by using the `env()` helper. The optional second argument lets you pass a default value in case you don't have the environment variable set.
+All of the variables listed in this file are available in your config files by using the `env()` helper function. An optional second argument allows you to pass a default value.
 
 ``` php
+// config/statamic/app.php
 'awesome' => env('ENABLE_AWESOME', true),
+```
+
+Once passed into a config file, you can use the variable in your templates with the `{{ config }}` tag.
+
+``` antlers
+// To retrieve the above 'awesome' value...
+{{ config:app:awesome }}
 ```
 
 ### Don't version your `.env` file
 
-Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be a security risk in the event an intruder gains access to your version control repository, since any sensitive credentials would get exposed.
+Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be a security risk in the event an intruder gains access to your version control repository because any sensitive credentials (API keys, for example) would be visible.
 
 ### Hiding Environment Variables from Debug Pages
 
