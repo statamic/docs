@@ -25,71 +25,82 @@ Okay let's just pretend you're a famous celebrity's _web developer_. You've been
 - level of adoration (appreciation, fixation, or obsession)
 - message
 
-### Create the formset
+### Create the form
 
 First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `site/settings/formsets` which will contain all the form fields and settings.
 
-Each form should contain a title and a set of fields with [validation rules][rules]. Optionally it may also have metrics
-and email configuration.
+Each form should contain a title and a reference to a [blueprint](blueprints). Optionally it may also have metrics and email configuration.
 
-Once configured you will have a formset file that looks something like this:
-
-```.language-yaml
+```yaml
 title: Super Fans
-
-fields:
-  name:
-    display: Name
-    validate: required
-  age:
-    display: Favorite Number
-    validate: required|integer
-  adoration:
-    display: Level of Adoration
-    validate: required
-  message:
-    display: Message
-    validate: required
+blueprint: super_fans
 ```
 
-Next you can check out some of the other [Form Tags][tags] available to you to display any errors, show a success message, and so on. We'll keep this example brief and you can explore those at leisure.
+### The Blueprint
+
+The [blueprint](blueprints) is where you define your form's `fields` and validation rules to be used on form submission.
+
+```yaml
+fields:
+  -
+    handle: name
+    field:
+      display: Name
+      type: text
+      validate: required
+  -
+    handle: age
+    field:
+      display: Age
+      type: text
+      validate: required|integer
+  -
+    handle: adoration
+    field:
+      display: Level of Adoration
+      type: text
+      validate: required
+  -
+    handle: message
+    field:
+      display: Message
+      type: textarea
+      validate: required
+```
 
 ### The Template
 
-Next, we need to set up the form in your template. There are two basic ways to markup your form's HTML. The first is to loop through your form's fields like so:
+Several [form tags](tags/form) are provided to help you render your form.  You can explore these at your leisure, but here is a basic example of a form template.
 
 ```
-{{ form:create in="superfans" }}
-  {{ fields }}
-    <label>{{ display }}</label>
-    <input type="text" name="{{ field }}" value="{{ old }}" />
-  {{ /fields }}
-{{ /form:create }}
+{{ form:super_fans }}
+
+    {{ if errors }}
+        <div class="bg-red-300 text-white p-2">
+            {{ errors }}
+                {{ value }}<br>
+            {{ /errors }}
+        </div>
+    {{ /if }}
+
+    {{ if success }}
+        <div class="bg-green-300 text-white p-2">
+            Form was submitted successfully.
+        </div>
+    {{ /if }}
+
+    {{ fields }}
+        <div class="p-2">
+            <label>{{ display }}</label>
+            <div class="p-1">{{ field }}</div>
+            {{ if error }}
+                <p class="text-gray-500">{{ error }}</p>
+            {{ /if }}
+        </div>
+    {{ /fields }}
+
+{{ /form:super_fans }}
 ```
-
-Alternately, you can take a full-control approach and write out all the inputs yourself explicitly. This is useful when all of your fields aren't uniform -- when certain aspects require more control. In this case, your template might look more like this:
-
-```
-{{ form:create in="superfans" }}
-  <label>Name</label>
-  <input type="text" name="name" value="{{ old:name }}" />
-
-  <label>Age</label>
-  <input type="text" name="age" value="{{ old:age }}" />
-
-  <label>Level of Adoration</label>
-  <select name="adoration">
-    <option>Appreciation</option>
-    <option>Fixation</option>
-    <option>Obsession</option>
-  </select>
-
-  <label>Your Message</label>
-  <textarea name="message">{{ old:message }}</textarea>
-
-{{ /form:create }}
-```
-
 
 ## Viewing Submissions
 
@@ -124,7 +135,7 @@ You have access to `average`, `sum`, `min`, `max`, and `total` metrics that can 
 
 ## Displaying submission data
 
-You can display any or all of the submissions of your forms on the front-end of your site using the [formsubmissions][submissions] Tag.
+You can display any or all of the submissions of your forms on the front-end of your site using the [form submissions][submissions] Tag.
 
 ```
 <h2>My fans have said some things you can't forget...<h2>
@@ -285,7 +296,6 @@ axios.post(form.action, new FormData(form))
   });
 ```
 
-[rules]: https://laravel.com/docs/5.1/validation#available-validation-rules
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
 
