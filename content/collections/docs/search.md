@@ -27,10 +27,14 @@ Next, set up the search _results_. You'll have access to all the content and var
 
 ```
 {{ search:results }}
-    <a href="{{ url }}">
-        <h2>{{ title }}</h2>
-        <p>{{ description | truncate:180 }}</p>
-    </a>
+    {{ if no_results }}
+        <h2>No results.</h2>
+    {{ else }}
+        <a href="{{ url }}">
+            <h2>{{ title }}</h2>
+            <p>{{ description | truncate:180 }}</p>
+        </a>
+    {{ /if }}
 {{ /search:results }}
 ```
 
