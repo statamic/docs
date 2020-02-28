@@ -4,11 +4,11 @@ id: e7430255-6237-4cc8-96c2-e8338758851f
 overview: Boolean if a form submission was successful.
 parameters:
   -
-    name: formset|in
+    name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the formset this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `formset` defined in the current context.
+      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
+      if you don't have a `form` defined in the current context.
 ---
 ## Example {#example}
 

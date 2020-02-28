@@ -10,6 +10,7 @@ parameters:
       after logging out. Defaults to the home
       page.
 id: 3604bfe9-89be-42af-8163-4b378279026a
+stage: 3
 ---
 
 ## Example {#example}

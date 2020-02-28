@@ -26,15 +26,19 @@ variables:
     name: old
     type: array
     description: An array of previously submitted values.
+  -
+    name: success
+    type: string
+    description: A success message.
 id: 7432f1cb-7418-4d54-8e65-51b1ae3bcb3a
 ---
 ## Overview
 
-User tags are designed for sites that have areas or features behind a login. The `user:login` tag helps you build that login form.
+User tags are designed for sites that have areas or features behind a login. The `user:login_form` tag helps you build that login form.
 
 The tag will render the opening and closing `<form>` HTML elements for you. The rest of the form markup is up to you as long as you have an `email` and `password` input field.
 
-## Example
+### Example
 
 ```
 {{ user:login_form }}
@@ -44,6 +48,12 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
             {{ errors }}
                 {{ value }}<br>
             {{ /errors }}
+        </div>
+    {{ /if }}
+
+    {{ if success }}
+        <div class="bg-green-300 text-white p-2">
+            {{ success }}<br>
         </div>
     {{ /if }}
 

@@ -5,11 +5,11 @@ overview: >
   Generate necessary `<form>` markup to accept form submissions.
 parameters:
   -
-    name: formset|in
+    name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the formset this form should use. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `formset` defined in the current context.
+      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
+      if you don't have a `form` defined in the current context.
   -
     name: redirect
     type: string
@@ -32,8 +32,7 @@ variables:
     name: fields
     type: array
     description: >
-      An array of the fields in your formset. Each field contains an `old` value that holds previous input
-      in the case of failed submission.
+      An array of available fields for [dynamic rendering](#dynamic-rendering).
   -
     name: errors
     type: array
@@ -51,7 +50,7 @@ variables:
     type: boolean
     description: This will be `true` if the form was submitted successfully.
 ---
-## Example {#example}
+## Overview
 
 Here we'll be creating a form to submit an entry in the `contact` form.
 
@@ -59,7 +58,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
 {{ form:create in="contact" }}
 
     {{ if errors }}
-        <div class="alert alert-danger">
+        <div class="bg-red-300 text-white p-2">
             {{ errors }}
                 {{ value }}<br>
             {{ /errors }}
@@ -67,26 +66,48 @@ Here we'll be creating a form to submit an entry in the `contact` form.
     {{ /if }}
 
     {{ if success }}
-        <div class="alert alert-success">
+        <div class="bg-green-300 text-white p-2">
             Form was submitted successfully.
         </div>
     {{ /if }}
 
-    {{# You can loop through fields from the formset... #}}
-    {{ fields }}
-        <div class="form-group">
-            <label>{{ display }}</label>
-            <input type="text" name="{{ handle }}" value="{{ old }}" />
-        </div>
-    {{ /fields }}
+    <label>Email</label>
+    <input type="text" name="email" value="{{ old:email }}" />
 
-    {{# Or you can hardcode fields... #}}
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="email" value="{{ old:email }}" />
-    </div>
+    <label>Message</label>
+    <textarea name="message" rows="5">{{ old:message }}</textarea>
 
     <button>Submit</button>
 
 {{ /form:create }}
 ```
+
+You can also use the shorthand syntax for `form:create in="contact"`.
+
+```
+{{ form:contact }}
+    ...
+{{ /form:contact }}
+```
+
+## Dynamic Rendering
+
+Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
+
+```
+{{ fields }}
+    <div class="p-2">
+        <label>{{ display }}</label>
+        <div class="p-1">{{ field }}</div>
+        {{ if error }}
+            <p class="text-gray-500">{{ error }}</p>
+        {{ /if }}
+    </div>
+{{ /fields }}
+```
+
+Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
+
+You will also find the field's `old` input on unsuccessful submission, as well as an `error` message when relevant.
+
+Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-views`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
