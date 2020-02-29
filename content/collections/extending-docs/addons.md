@@ -245,6 +245,8 @@ protected $routes = [
 ];
 ```
 
+**NOTE**: There are several reserved named parameters: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form` & `user`. You can use them in your routes, but they will continue to behave as defined in Statamic. For example, if you use `{site}` as a named parameter in your route, Statamic will try to find a local "site" with that handle.
+
 #### Control Panel Routes
 
 Control Panel routes will be prefixed by `/cp` (or whatever the cp route has been configure) and will have authorization automatically applied.
