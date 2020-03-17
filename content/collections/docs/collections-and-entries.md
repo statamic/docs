@@ -153,7 +153,7 @@ structure:
   tree: [...]
 ```
 
-> Setting `max_depth: 1` will replace the page tree UI with a more linear table UI.
+> Setting `max_depth: 1` will replace the page tree UI with a more linear table-based UI.
 
 ## Routing
 
