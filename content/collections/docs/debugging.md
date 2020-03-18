@@ -41,7 +41,7 @@ Any variables that are defined in a [blueprint](/blueprints) will be shown as a 
 You need to require the package with [Composer][composer].
 
 ``` bash
-composer require dev barryvdh/laravel-debugbar
+composer require --dev barryvdh/laravel-debugbar
 ```
 
 It'll be enabled when `APP_DEBUG` is `true` in your env file.
