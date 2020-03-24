@@ -7,6 +7,8 @@ id: 785ffa10-8b63-44b1-9da3-3837250cacbe
 intro: The Control Panel navigation is quite customizable. You can add your own sections, pages, and subpages, as well as remove and modify existing ones.
 ---
 
+> This page refers to the Control Panel's side-bar navigation. Not to be confused with ["Navs"](/navigation), where you can create trees to be used for the front-end of your site.
+
 Every nav item is represented by a `NavItem` object, which has a [full API](#the-navitem-class) for [adding](#adding-items), [removing](#removing-items), and [modifying](#modifying-items) items.  You may register your nav extensions in the `boot()` method of a service provider.
 
 ## Adding Items
@@ -14,6 +16,8 @@ Every nav item is represented by a `NavItem` object, which has a [full API](#the
 Let's assume we're creating a Store addon, and want to add a `Store` nav item to the `Content` section of the navigation.  To add this item, we'll add the following code to our service provider's `boot()` method:
 
 ```php
+use Statamic\Facades\CP\Nav;
+
 public function boot()
 {
     Nav::extend(function ($nav) {
@@ -34,6 +38,10 @@ Nav::extend(function ($nav) {
         ->icon('shopping-cart');
 });
 ```
+
+> Note that the `Nav` facade is `Statamic\Facades\CP\Nav`.
+>
+> There's another Nav facade without the CP namespace - that one's for the front-end ["Navs"](/navs) feature.
 
 ## Adding Children
 
