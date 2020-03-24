@@ -110,7 +110,7 @@ title: Nickelodeon Studios
 ---
 
 // NICKELODEON STUDIOS rocks!
-<h1>{{ title | uppercase | ensure_right:rocks!}}</h1>
+<h1>{{ title | uppercase | ensure_right:rocks! }}</h1>
 
 // NICKELODEON STUDIOS ROCKS! (order matters)
 <h1>{{ title | ensure_right:rocks! | uppercase }}</h1>
