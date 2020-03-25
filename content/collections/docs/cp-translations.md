@@ -37,7 +37,7 @@ preferences:
 | Portuguese | `pt` |
 | Spanish | `es` |
 
-_Transations are community contributed so may you find them to be incomplete shortly after an update._
+_Translations are community contributed so may you find them to be incomplete shortly after an update._
 
 ## Contributing a New Translation
 
