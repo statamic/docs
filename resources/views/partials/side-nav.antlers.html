@@ -12,10 +12,10 @@
     </div>
 
     {{ if segment_1 === 'extending' }}
-        {{ partial:side-nav-main for="extending-docs" }}
+        {{ partial:side-nav-main for="collection::extending-docs" }}
     {{ elseif segment_1 === 'knowledge-base' }}
         {{ partial:side-nav-knowledge-base }}
     {{ else }}
-        {{ partial:side-nav-main for="documentation" }}
+        {{ partial:side-nav-main for="collection::docs" }}
     {{ /if }}
 </nav>
