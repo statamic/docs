@@ -11,6 +11,8 @@ stage: 4
 
 If you want to start from scratch, use Composer to create a project based off the [`statamic/statamic`](https://github.com/statamic/statamic) starter site.
 
+Remember to change ```my-site``` to the name of the directory you want your new site to live in, e.g. ```mynewawesomesite.com``` or ```mynewawesomesite```
+
 ``` bash
 composer create-project statamic/statamic my-site --prefer-dist --stability=dev
 ```
@@ -48,7 +50,7 @@ Your explicit routes will take precedence and anything not caught by your app wi
 
 ## Updating
 
-From within your project, use Composer to update the Statamic CMS package:
+From within your project, use Composer to update the Statamic CMS package. Make sure you're in your project directory first (e.g. ```cd myawesomesite.com```)
 
 ``` bash
 composer update statamic/cms --with-dependencies
