@@ -110,11 +110,9 @@ Algolia is a full-featured search and navigation cloud service. They offer searc
     'driver' => 'algolia',
     'searchables' => 'all',
 ],
-
+```
 
 To set up the Algolia driver, create an account on [their site](https://www.algolia.com/), drop your API credentials into your `.env`, and install the composer dependency. 
-
-Statamic will automatically create and sync your indexes as you create a modify entries, but to get the initial index created on Algolia run `php please search:update`.
 
 ``` env
 ALGOLIA_APP_ID=your-algolia-app-id
@@ -124,6 +122,8 @@ ALGOLIA_SECRET=your-algolia-admin-key
 ``` bash
 composer require algolia/algoliasearch-client-php
 ```
+
+Statamic will automatically create and sync your indexes as you create and modify entries, but to get the initial index created on Algolia, run `php please search:update`.
 
 ### Templating with Algolia
 
