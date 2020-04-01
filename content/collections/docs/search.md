@@ -93,18 +93,24 @@ php please search:update name
 ```
 
 
-
 ## Drivers
 
 Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and [custom drivers](#) provide features and capabilities that go well beyond our core feature set.
 
 ### Local
 
- It uses JSON files to store indexes and will perform searches against them. It lacks advanced features like weighting and relevance matching, but hey. It Just Works™. It's a good way to get started quickly.
+It uses JSON files to store indexes and will perform searches against them. It lacks advanced features like weighting and relevance matching, but hey. It Just Works™. It's a good way to get started quickly.
 
 ### Algolia
 
 Algolia is a full-featured search and navigation cloud service. They offer search that is relevant and fast with results in under 100 ms (99% under 20 ms), that get prioritized and displayed using the customizable ranking formula.
+
+``` php
+'default' => [
+    'driver' => 'algolia',
+    'searchables' => 'all',
+],
+
 
 To set up the Algolia driver, create an account on [their site](https://www.algolia.com/), drop your API credentials into your `.env`, and install the composer dependency. Statamic will automatically create and sync your indexes.
 
