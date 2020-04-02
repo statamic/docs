@@ -3,8 +3,9 @@ title: Navigation
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347202
-id: 785ffa10-8b63-44b1-9da3-3837250cacbe
 intro: The Control Panel navigation is quite customizable. You can add your own sections, pages, and subpages, as well as remove and modify existing ones.
+stage: 1
+id: 785ffa10-8b63-44b1-9da3-3837250cacbe
 ---
 
 > This page refers to the Control Panel's side-bar navigation. Not to be confused with ["Navs"](/navigation), where you can create trees to be used for the front-end of your site.

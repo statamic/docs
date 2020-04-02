@@ -1,8 +1,9 @@
 ---
 title: 'Publish Components'
-id: e2577828-504b-490b-a8b6-10991ae8a0b6
 intro: |
   The components that power [Publish forms](/extending/publish-forms) throughout Statamic.
+stage: 1
+id: e2577828-504b-490b-a8b6-10991ae8a0b6
 ---
 
 ## Overview
@@ -16,7 +17,7 @@ If you're creating a basic form, there's a [pre-built form component](#form) tha
 
 ### Complex Forms
 
-For more complex forms, you can use the underlying components to build out the functionality you need. You'll need to have a Vue 
+For more complex forms, you can use the underlying components to build out the functionality you need. You'll need to have a Vue
 component responsible for your form's logic. At a minimum, it needs to hold values and submit them somewhere.
 
 ``` blade
@@ -108,7 +109,7 @@ You can use it in Blade or in another Vue component.
 
 ## Container
 
-The `PublishContainer` component is the workhorse. Among other things, it'll spin up a dedicated Vuex store and maintain the state of 
+The `PublishContainer` component is the workhorse. Among other things, it'll spin up a dedicated Vuex store and maintain the state of
 all the values when modified in fieldtypes, emit events, and manage the "dirty state" of the page.
 
 Since it's renderless, you will typically want to wrap your entire component with it. That will let everything be able
@@ -152,7 +153,7 @@ things like the dirty state and events.
 
 | Prop | Type | Description |
 |------|------|-------------|
-| `name`* | String | The identifying name of the form. A Vuex store will be created using this as for the namespace. 
+| `name`* | String | The identifying name of the form. A Vuex store will be created using this as for the namespace.
 | `blueprint`* | object | The blueprint contents. Use `$blueprint->toPublishArray()`
 | `meta`* | object | The blueprint fields' meta data. Use `$fields->meta()`
 | `values`* | object | The field values. This is the prop used by `v-model`. Populate it with `$fields->values()`
@@ -182,7 +183,7 @@ without needing to manually provide props.
 
 ### Props
 
-| Prop | Type | Description | 
+| Prop | Type | Description |
 |------|------|-------------|
 | `readOnly` | bool | Whether the fields should be read only. `false` by default.
 | `enableSidebar` | bool | Shows the sidebar. `true` by default.

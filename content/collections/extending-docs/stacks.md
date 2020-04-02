@@ -1,8 +1,9 @@
 ---
 title: Stacks
-id: c21a18cc-b9a9-4b1a-b1f7-97473f7d82f1
 intro: |
-  A Stack is a way to add a layer of UX to the Control Panel. 
+  A Stack is a way to add a layer of UX to the Control Panel.
+stage: 1
+id: c21a18cc-b9a9-4b1a-b1f7-97473f7d82f1
 ---
 ## Stacks
 For example, when editing a related entry while you're already editing another entry would open a second publish form over the top. Once you're done, the layer would close and return you to your original task, without you losing any progress, or needing to navigate away.
@@ -39,10 +40,10 @@ When closed, the modal will emit a `closed` event. It's recommended to use this 
 
     <!-- instead of this: --->
     <button @click="isEditing = false">Close</button>
-  
+
     <!-- do this: -->
     <button @click="close">Close</button>
-  
+
   </div>
 </stack>
 ```

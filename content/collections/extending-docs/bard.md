@@ -1,5 +1,6 @@
 ---
 title: Bard
+stage: 1
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
 
@@ -14,7 +15,7 @@ Statamic.$bard.extend(({ mark }) => mark(new MyExtension));
 ``` js
 Statamic.$bard.extend(({ mark }) => {
     return [
-        mark(new MyExtension), 
+        mark(new MyExtension),
         mark(new AnotherExtension)
     ]
 });
@@ -24,7 +25,7 @@ The classes you return should be wrapped using the provided helper functions (eg
 
 ### Classes
 
-Your extension class should look like a TipTap extension ([see an example here](https://github.com/scrumpy/tiptap/blob/master/packages/tiptap-extensions/src/marks/Bold.js)) 
+Your extension class should look like a TipTap extension ([see an example here](https://github.com/scrumpy/tiptap/blob/master/packages/tiptap-extensions/src/marks/Bold.js))
 except it should not extend another class, and you should use methods instead of getters.
 
 ``` js

@@ -3,8 +3,9 @@ title: Actions
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347227
-id: ba2e6172-b4dc-443b-8230-b770dec1423c
 intro: Actions allow you perform tasks on one or more items. You can trigger actions by selecting multiple items in a listing, or using each item's contextual menu.
+stage: 1
+id: ba2e6172-b4dc-443b-8230-b770dec1423c
 ---
 
 ## Defining an action

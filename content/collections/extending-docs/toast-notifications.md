@@ -1,7 +1,8 @@
 ---
 title: Toast Notifications
-id: 52af4663-ebbd-467c-8659-9c7bb94cb7cc
 intro: Simple notification messages that "pop" into the screen like toast popping out of a toaster.
+stage: 1
+id: 52af4663-ebbd-467c-8659-9c7bb94cb7cc
 ---
 You may display simple toast notifications through the `$toast` instance method.
 

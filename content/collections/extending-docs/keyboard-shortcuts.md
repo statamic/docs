@@ -1,8 +1,8 @@
 ---
 title: 'Keyboard Shortcuts'
 intro: 'Improve usability by adding keyboard shortcuts.'
-id: efcca509-5690-4201-88d7-74c542bb9900
 stage: 4
+id: efcca509-5690-4201-88d7-74c542bb9900
 ---
 You may add keyboard shortcuts with a simple syntax, based on the [Mousetrap](https://craig.is/killing/mice) library.
 
@@ -24,7 +24,7 @@ export default {
         this.binding.destroy();
     },
     methods: {
-        save() { 
+        save() {
             //
         }
     }
@@ -47,7 +47,7 @@ your binding, the previous form's binding will kick back into gear.
 this.$keys.bind(keys, fn);
 ```
 
-Creates a keyboard shortcut binding.  
+Creates a keyboard shortcut binding.
 First argument is a [key sequence](#key-sequences), or array of key sequences. Second argument is a function to be executed.
 The `Binding` object is returned.
 
@@ -55,7 +55,7 @@ The `Binding` object is returned.
 this.$keys.bindGlobal(keys, fn);
 ```
 
-Creates a global keyboard shortcut binding.  
+Creates a global keyboard shortcut binding.
 Works the same as `bind`, except that the shortcut will work inside text fields.
 
 ## Key sequences

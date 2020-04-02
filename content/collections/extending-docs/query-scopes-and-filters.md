@@ -3,8 +3,9 @@ title: 'Query Scopes & Filters'
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347415
-id: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
 intro: Query scopes and filters allow you to narrow down query results using custom conditions.
+stage: 1
+id: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
 ---
 You may create scopes that can be used in various places, such as inside the collection tag or inside control panel listings.
 

@@ -3,8 +3,9 @@ title: Addons
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264134
-id: 5bd75435-806e-458b-872e-7528f24df7e6
 intro: An addon is a composer package that you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.
+stage: 1
+id: 5bd75435-806e-458b-872e-7528f24df7e6
 ---
 
 ## Creating an addon

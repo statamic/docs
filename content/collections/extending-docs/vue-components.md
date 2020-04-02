@@ -1,9 +1,10 @@
 ---
 title: 'Vue Components'
+stage: 1
 id: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
 ---
 
-## Registering Components 
+## Registering Components
 
 In order to use a custom Vue component, it needs to be registered. You should do this inside the `Statamic.booting()` callback.
 
