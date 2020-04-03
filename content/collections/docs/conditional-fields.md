@@ -176,8 +176,8 @@ You may also pass parameters to your custom functions:
 
 ```yaml
 if:
-  hero_video: 'custom isFiletype:mp4'
-  hero_image: 'custom isFiletype:jpg,png'
+  hero_video_url: 'custom isFiletype:mp4'
+  hero_image_url: 'custom isFiletype:jpg,png'
 ```
 
 ```javascript
