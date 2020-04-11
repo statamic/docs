@@ -65,7 +65,7 @@ APP_NAME="New Statamic Site"
 All of the variables listed in this file are available in your config files by using the `env()` helper function. An optional second argument allows you to pass a default value.
 
 ``` php
-// config/statamic/app.php
+// config/app.php
 'awesome' => env('ENABLE_AWESOME', true),
 ```
 
