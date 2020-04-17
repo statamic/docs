@@ -33,4 +33,4 @@ php artisan migrate
 
 This will add some columns to the `users` table (like `super`, and `last_login`), and create the `role_user` and `group_user` pivot tables.
 
-This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](#custom-user-storage).
+This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/knowledge-base/storing-users-somewhere-custom).
