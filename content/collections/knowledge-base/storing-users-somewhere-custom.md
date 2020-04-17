@@ -8,7 +8,7 @@ you're free to write your own.
 
 You will need to write implementations for all the contracts located in `Statamic\Contracts\Auth`. Of course, you may extend the native classes and override where appropriate, instead of writing everything from scratch.
 
-In a service provider, use the `Statamic\Auth\UserRepositoryManager::repository()` method to define a custom repository driver:
+In a service provider, use the `Statamic\Auth\UserRepositoryManager::extend()` method to define a custom repository driver:
 
 ``` php
 public function register()
