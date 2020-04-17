@@ -302,11 +302,12 @@ Other than that, you're free to write routes [as per any Laravel application](ht
 
 ## Middleware
 
-You may push your own middleware onto two separate stacks which correspond to two of the [route groups](#routing) listed above.
+You may push your own middleware onto respective middleware groups using the `$middlewareGroups` property.
+The keys are the names of the groups, and the values are arrays of middleware classes to be applied.
 
 ``` php
-protected $middleware = [
-    'cp' => [
+protected $middlewareGroups = [
+    'statamic.cp.authenticated' => [
         YourCpMiddleware::class,
         AnotherCpMiddleware::class
     ],
@@ -315,6 +316,16 @@ protected $middleware = [
     ],
 ];
 ```
+
+Available middleware groups are:
+
+| Group | Description |
+|-------|-------------|
+| `web` | Front-end web requests, defined in the project's `App\Http\Kernel` class.
+| `statamic.web` | Statamic-specific front-end web requests. This includes routes that correspond to content (like entries), as well as manually defined routes using `Route::statamic()`. These will also have `web` middleware applied.
+| `statamic.cp` | All control panel requests (even ones not protected by authentication, like the login page).
+| `statamic.cp.authenticated` | Control panel routes behind authentication. Anything in there can assume there will be an authenticated user available. These will also have the `statamic.cp` middleware applied.
+
 
 ## Events
 
