@@ -1,9 +1,9 @@
 {{ structure :for="for" }}
     <h5>{{ title }}</h5>
     <ul>
-        {{ children }}
+        {{ children scope="child" }}
             <li class="{{ is_current || is_parent ?= 'active' }}{{ ! stage ?= ' opacity-50' }}">
-                <a href="{{ url }}">{{ nav_title ?? title }}{{ if mount }}&hellip;{{ /if }}</a>
+                <a href="{{ url }}">{{ nav_title ?? title }}{{ if child:mount }}&hellip;{{ /if }}</a>
             </li>
         {{ /children }}
     </ul>

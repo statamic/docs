@@ -1,5 +1,6 @@
 ---
 title: Slugify
+stage: 1
 id: d84613d5-2b2b-465d-8f02-c71b6d2aadf1
 ---
 You can use the `<slugify>` component to generate a slug based off another property:

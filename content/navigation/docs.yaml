@@ -1,6 +1,4 @@
-title: Documentation
-expects_root: true
-root: 6aa5449b-5d90-47de-97e7-82ba5f665250
+title: Docs
 tree:
   -
     title: 'Getting Started'
@@ -38,6 +36,8 @@ tree:
         entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
       -
         entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+      -
+        entry: 2af9fc45-66d0-4ca5-9761-00017076144f
       -
         entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
       -
@@ -90,6 +90,8 @@ tree:
         entry: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
       -
         entry: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
+      -
+        entry: 4b77c19b-129c-4271-a724-eea884eb3e2e
   -
     title: 'Advanced Capabilities'
     children:

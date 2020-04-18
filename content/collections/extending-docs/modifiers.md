@@ -3,8 +3,9 @@ title: Modifiers
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264085
+stage: 1
+intro: Modifiers give you the ability to manipulate the data of your variables on the fly. They can manipulate strings, filter arrays and lists, help you compare things, do basic math, simplify your markup, play Numberwang, and even help you debug.
 id: e052ecb8-60d9-4afa-980e-ce128c301d70
-intro: Modifers give you the ability to manipulate the data of your variables on the fly. They can manipulate strings, filter arrays and lists, help you compare things, do basic math, simplify your markup, play Numberwang, and even help you debug.
 ---
 ## Anatomy of a Modifier
 

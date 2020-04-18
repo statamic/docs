@@ -1,5 +1,6 @@
 ---
 title: Modals
+stage: 1
 id: 88bf3f66-4b80-42c9-8b65-bef712b8f413
 ---
 ## Modals
@@ -8,8 +9,8 @@ You can create modals using the `<modal>` component.
 
 ``` html
 <modal
-    v-if="isOpen" 
-    name="my-modal" 
+    v-if="isOpen"
+    name="my-modal"
     width="300px" height="300px"
     @closed="isOpen = false"
 >

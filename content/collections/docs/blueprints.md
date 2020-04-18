@@ -103,7 +103,7 @@ fields:
 
 Here, the `display` and `validate` would replace whatever was defined in the fieldset.
 
-**Note:** This only applies to referenced fields. you can just set everything right there.
+**Note:** This only applies to referenced fields. For inline fields, you can just set everything right there.
 
 ### Importing Fieldsets
 

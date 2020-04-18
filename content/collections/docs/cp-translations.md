@@ -37,7 +37,7 @@ preferences:
 | Portuguese | `pt` |
 | Spanish | `es` |
 
-_Transations are community contributed so may you find them to be incomplete shortly after an update._
+_Translations are community contributed so may you find them to be incomplete shortly after an update._
 
 ## Contributing a New Translation
 
@@ -58,7 +58,7 @@ You can specify a short 2 character language code (`es`) or the full 4 character
 php translator generate eo
 ```
 
-- The JSON file contains all the "short strings" established on the fly with the tranlation helpers, e.g. `__('Cowabunga')`.
+- The JSON file contains all the "short strings" established on the fly with the translation helpers, e.g. `__('Cowabunga')`.
 - The PHP files contain longer strings and are well organized by section of the control panel.
 
 ``` files

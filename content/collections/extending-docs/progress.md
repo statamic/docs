@@ -1,8 +1,9 @@
 ---
 title: Progress
-id: 28068f9a-f269-4646-87e4-881e5477558d
 intro: |
   Control the magic progress bar at the top of the page.
+stage: 1
+id: 28068f9a-f269-4646-87e4-881e5477558d
 ---
 You can control the progress bar at the top of the page through the `$progress` instance method.
 This progress bar will get a little further in small intervals automatically but will never reach 100% until
@@ -22,7 +23,7 @@ this.$progress.count(); // How many are being tracked.
 this.$progress.isComplete(); // Whether all the items that were being tracked have completed.
 ```
 
-> If you have a component that may appear multiple times on one page (for example, a fieldtype), 
+> If you have a component that may appear multiple times on one page (for example, a fieldtype),
 > make sure the name is unique. All Vue components already have a unique `_uid` property that could be used for this.
 >
 > ``` js

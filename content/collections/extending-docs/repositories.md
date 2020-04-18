@@ -3,8 +3,9 @@ title: Repositories
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347424
-id: c3da9537-5d5f-4b84-a4be-882b89217151
 intro: Statamic uses a repository pattern to retrieve data from various places.
+stage: 1
+id: c3da9537-5d5f-4b84-a4be-882b89217151
 ---
 
 For example, when you call `Entry::whereCollection('blog')`, it asks "the entry repository" to get the blog entries

@@ -3,13 +3,14 @@ title: 'Live Preview'
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347444
-id: 06cbe7a2-5322-401a-8bc4-3ab6b20defb7
+stage: 1
 intro: The Live Preview feature lets you see what an entry will look like on the front-end of your site as you edit it.
+id: 06cbe7a2-5322-401a-8bc4-3ab6b20defb7
 ---
 
 ## Customizing how an entry is rendered
 
-Out of the box, Statamic will push the temporary version of the entry through its usual render process. 
+Out of the box, Statamic will push the temporary version of the entry through its usual render process.
 
 If you have complex requirements – for example, needing to render it through a different frontend – you are able to customize it.
 

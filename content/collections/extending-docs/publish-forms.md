@@ -1,13 +1,14 @@
 ---
 title: 'Publish Forms'
-id: b4b46ceb-9feb-4587-8f0d-2080511bf9e3
 intro: |
   Build custom forms by harnessing the power of Blueprints and fieldtypes.
+stage: 1
+id: b4b46ceb-9feb-4587-8f0d-2080511bf9e3
 ---
 
 ## Overview
 
-When creating or editing content (entries, pages, etc), you are presented with a form view. This is what we call 
+When creating or editing content (entries, pages, etc), you are presented with a form view. This is what we call
 the "Publish" form. You're free to use these in your own addons or custom features.
 
 The publish form flow would essentially be this:
@@ -28,7 +29,7 @@ For example's sake, we'll be using the publish form to update Eloquent models (a
 ``` php
 public function edit(Product $product)
 {
-    // Get an array of values from the item that you want to be populated 
+    // Get an array of values from the item that you want to be populated
     // in the form. eg. ['title' => 'My Product', 'slug' => 'my-product']
     $values = $product->toArray();
 
@@ -99,7 +100,7 @@ public function update(Request $request, Product $product)
     $fields = $blueprint->fields()->addValues($request->all());
 
     // Perform validation. Like Laravel's standard validation, if it fails,
-    // a 422 response will be sent back with all the validation errors. 
+    // a 422 response will be sent back with all the validation errors.
     $fields->validate();
 
     // Perform post-processing. This will convert values the Vue components
@@ -122,7 +123,7 @@ In the examples above, we just said "get a blueprint". There are a couple of way
 
 ### Get an actual user defined blueprint
 
-Get one from where all the blueprints are typically stored, by its handle.  
+Get one from where all the blueprints are typically stored, by its handle.
 If it doesn't exist, it'll return null.
 
 ``` php

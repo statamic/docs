@@ -1,5 +1,6 @@
 ---
 title: Lifecycle
+stage: 1
 id: fd34ca35-57d1-4d28-97f9-ba6801656b39
 ---
 
@@ -29,13 +30,13 @@ public function boot()
 
 ## Auth service provider boots
 
-As part of the boot process, Statamic will set up its permissions. If you'd like to do anything permission or auth 
-related, (like adding custom [permissions](/extending/permissions)) you should wrap your provider code in a booted 
+As part of the boot process, Statamic will set up its permissions. If you'd like to do anything permission or auth
+related, (like adding custom [permissions](/extending/permissions)) you should wrap your provider code in a booted
 callback to ensure it happens _after_ Statamic has done its thing.
 
 ``` php
 public function boot()
-{   
+{
     $this->app->booted(function () {
         Permission::register(...);
     });

@@ -2,6 +2,7 @@
 title: 'Blink Cache'
 template: page
 intro: 'The Blink Cache allows you to cache expensive operations for the life of a single request.'
+stage: 1
 id: 73010f4f-bb62-4feb-a6ff-88031f488db8
 ---
 ## Basic Usage

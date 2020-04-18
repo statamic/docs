@@ -3,8 +3,9 @@ title: Tags
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264076
-id: 098cb1c5-94c2-4bc0-add7-9aad39951d67
 intro: Ultimately a Tag is nothing more than a PHP Method called from an Antlers template. This common pattern allows non-PHP developers to take advantage of dynamic features in their site easily without writing any code.
+stage: 1
+id: 098cb1c5-94c2-4bc0-add7-9aad39951d67
 ---
 ## Anatomy of a Tag
 
@@ -132,14 +133,14 @@ author: john
 ```
 
 ```
-{{ mytag 
-    greeting="hello" 
-    :name="author" 
-    do_this="true" 
-    do_that="false" 
-    limit="5" 
-    latitude="6" 
-    things="foo|bar" 
+{{ mytag
+    greeting="hello"
+    :name="author"
+    do_this="true"
+    do_that="false"
+    limit="5"
+    latitude="6"
+    things="foo|bar"
 }}
 ```
 
@@ -337,7 +338,7 @@ return array_merge(
 
 - `$this->content` - When using a tag pair, this is what's between them.
 - `$this->isPair` - Boolean for whether a single or tag pair was used.
-- `$this->tag` - The full tag that was used.  
+- `$this->tag` - The full tag that was used.
     - For `{{ ron foo="bar" }}` it would be `ron:index`
     - For `{{ ron:swanson foo="bar" }}`, this would be `ron:swanson`
     - For `{{ ron:swanson:breakfast foo="bar" }}`, this would be `ron:swanson:breakfast`

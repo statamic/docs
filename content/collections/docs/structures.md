@@ -1,7 +1,6 @@
 ---
 title: Structures
-intro: STRUCTURES ARE BEING REWORKED. ALL OF THE BELOW CONTENT WILL SOON BE OBSOLETE. STRUCTURES WILL BE BROKEN INTO ORDERABLE COLLECTIONS AND A NEW "NAV BUILDER" FEATURE.
-# intro: A structure is a hierarchy of links and/or text items that are used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
+intro: A structure is a hierarchy of items that are used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568558416
@@ -9,14 +8,15 @@ id: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
 blueprint: page
 stage: 1
 ---
+
 ## Overview
 
-Statamic 2's Pages feature has been replaced by Structures &mdash; a way more flexible (and reusable) feature.
+Structures are a flexible way to create hierarchies of different items. Statamic 2's "Pages" feature has been replaced by a "Structured Collection" (more on that in a bit).
 
 Each structure is a hierarchy of links and/or titles. These links may be to entries in one or more [collections](/collections), external URLs, or even anchor links in your content.
 
 <figure>
-    <img src="/img/structure.png" alt="The Statamic 3 blueprint configuration screen" width="535">
+    <img src="/img/structure.png" alt="A Statamic 3 structure page tree" width="535">
     <figcaption>Part of the structure of this very site.</figcaption>
 </figure>
 
@@ -25,26 +25,32 @@ Each structure is a hierarchy of links and/or titles. These links may be to entr
 Structures come in two flavors, unlike Pringles. They can control the discrete URL pattern and order for a collection (like v2's Pages), or manage ad hoc navigation trees. And _just like_ Pringles &mdash; once you pop the top, you can't stop.
 
 
-## Collection Structures
+## Structured Collections
 
-The first case is for defining the URL structure for a collection. This would be the equivalent of "Pages" in Statamic v2.
+The first type of structure is for defining the URL structure for a collection. This would be the equivalent of "Pages" in Statamic v2.
 
-- A Structure that has been linked from a collection will be using this method.
+- An "orderable" collection will be using a Structure under the hood.
 - You will only be able to add entries from that collection.
 - The order and arrangement of the entries will dictate their URLs.
 - This will make `parent_uri` and `depth` variables available to the Collection's route.
 - You can only place an entry once.
+- You can create internal and external redirects.
+- The structure is stored on the collection itself.
 
-## Navigation Structures
+[Read more about using Structures to manage your Collections](/collections-and-entries#ordering)
+
+## Navigation (or "Navs") {#navigation}
 
 Freestyle navigation structures exist to manage a nav out of entries that already exist, as well as freeform links and text (non-link) elements.
 
-
-- A structure that hasn't been linked from a collection will be using this method.
 - You can reference entries, enter hardcoded URLs (internal or external), or enter simple text blocks (that can be used as section headers for dropdown navs, for example).
 - You can select which collections' entries will available to choose from.
 - Any referenced entries will use the URLs defined by the collection, regardless of the position in the Structure.
 - You can place the same entry multiple times.
+- The structure is stored as a YAML file inside `content/navigation`.
+
+[Read more about Navigation](/navigation)
+
 
 ## Templating
 
@@ -52,33 +58,10 @@ You can work with the [structure tag](/tags/structure) to loop through and rende
 
 ```
 <ul>
-{{ structure:top }}
+{{ structure:top_nav }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-{{ /structure:top }}
+{{ /structure:top_nav }}
 </ul>
-```
-
-
-## File Overview
-
-Structures are stored in `content/structures/`. Each gets its own YAML file and its handle is its filename.
-
-```
-content/
-|-- structures/
-    |-- pages.yaml
-    |-- footer.yaml
-```
-
-``` yaml
-title: Footer
-route: '{parent_uri}/{slug}'
-max_depth: 3
-collections:
-  - pages
-  - posts
-  - documents
-tree: [] # details below
 ```
 
 ## Tree
@@ -109,25 +92,7 @@ tree:
 Each page may have an optional `children` array which is itself another tree. You can repeat this pattern and go as deep as necessary. The `max_depth` setting on the Structure will prevent you from placing pages any deeper when using the Control Panel.
 
 - An entry reference should contain an `entry` key with a value of the entry's ID. The about, hobbies, blog, and contact pages in the snippet above are examples.
-- A hardcoded link should contain a `url` key with either an internal or external URL. The `title` is optional. The GitHub page in the snippet above is an example.
-- Text can just contain a `title`. The Support page above is an example.
+- A hardcoded link* should contain a `url` key with either an internal or external URL. The `title` is optional. The GitHub page in the snippet above is an example.
+- Text* can just contain a `title`. The Support page above is an example.
 
-### Root Page
-
-When using a Structure to define a collection's URLs, you may also have a root page. Typically this would be the "home" page. You should reference an entry's ID here too. It's separate from the tree.
-
-``` yaml
-root: id-of-home
-expects_root: true
-tree: []
-```
-
-The `expects_root` variable lets the Control Panel know that dragging a page to the top of the tree should make it the root.
-
-## Localization
-
-When running a [multi-site](/multi-site) installation, you can have a different tree for each structure.
-
-For example, entries organized in a different order, or references to entirely different entries.
-
-[Read about localizing structures](/knowledge-base/localizing-structures)
+_\* Text and link branches are only available in Navs._

@@ -1,6 +1,7 @@
 ---
-id: b7519137-73b6-46c7-8432-da7725b1d9b4
 title: Event Bus
+stage: 1
+id: b7519137-73b6-46c7-8432-da7725b1d9b4
 ---
 For situations where emitting an event to the parent component doesn't make sense, Statamic has a global event bus. You can emit and listen to events directly on this which will be available to all Vue components.
 

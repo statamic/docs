@@ -36,7 +36,7 @@ I did not win but I did have good timez.
 
 <p>First I did
 @foreach ($moves as $move)
-    {{ $thing }}, then I did
+    {{ $move }}, then I did
 @endforeach
 and it was sick.</p>
 

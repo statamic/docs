@@ -17,7 +17,7 @@ Your mail settings are located in `config/mail.php` and pre-wired to use [enviro
 
 ## Drivers
 
-The API based drivers like as Mailgun and Postmark are often simpler and faster than SMTP servers. If possible, you should use one of these drivers. All of the API drivers require the Guzzle HTTP library, which may be installed via the Composer package manager:
+The API based drivers like Mailgun and Postmark are often simpler and faster than SMTP servers. If possible, you should use one of these drivers. All of the API drivers require the Guzzle HTTP library, which may be installed via the Composer package manager:
 
 ``` bash
 composer require guzzlehttp/guzzle

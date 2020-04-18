@@ -3,8 +3,9 @@ title: Queries
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347265
-id: 51a52222-9be7-46b1-8388-059019281a56
 intro: Statamic has a number of query builders that provide a convenient, fluent interface for retrieving data. It's very similar to Eloquent in Laravel.
+stage: 1
+id: 51a52222-9be7-46b1-8388-059019281a56
 ---
 ## Retrieving results
 
@@ -92,7 +93,7 @@ The `container` and `folder` columns will allow you to refine the location of th
 
 ### Asset Container Assets
 
-Query against all assets in a particular container.  
+Query against all assets in a particular container.
 Similar to the above query, but with the container already implied.
 
 ``` php
@@ -114,7 +115,7 @@ Statamic\Facades\Entry::query()
 
 ### Collection Entries
 
-Query against entries in a particular collection.  
+Query against entries in a particular collection.
 Similar to the above query, but with the container already implied.
 
 ``` php
@@ -136,7 +137,7 @@ Statamic\Facades\User::query()
 
 ### User Group Users
 
-Query against users in a particular user group.  
+Query against users in a particular user group.
 Similar to the above query, but with the group already implied.
 
 ``` php
@@ -151,7 +152,7 @@ Statamic\Facades\UserGroup::find('admin')
 
 The Statamic query builder are **similar to** Laravel's Eloquent and database query builders, but they are _not entirely the same_.
 
-Where the Laravel query builders would translate to SQL under the hood, the Statamic equivalent ones may not. So, for instance, you 
+Where the Laravel query builders would translate to SQL under the hood, the Statamic equivalent ones may not. So, for instance, you
 cannot use features such a raw SQL expressions, joins, etc.
 
 If you have re-bound a particular repository or query builder to an Eloquent equivalent, you may be able to use these features,

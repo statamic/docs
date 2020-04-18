@@ -3,9 +3,10 @@ title: Permissions
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347255
+stage: 1
 id: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
 ---
-Permissions are the abilities that can be assigned to [Roles](/guide/authorization.html#roles). 
+Permissions are the abilities that can be assigned to [Roles](/guide/authorization.html#roles).
 
 Out of the box, Statamic has its own set of permissions that you can choose from to configure your roles. However, you are free to add your own that can be used throughout your project, or included with addons.
 
@@ -144,7 +145,7 @@ Permission::group('collections', function () {
 It's possible to add to the built-in permission tree if you need to.
 
 For example, maybe you want to add a permission to send tweets once an entry is published. You might want to jam
-that in every collection's permission tree under its 'edit' permission. 
+that in every collection's permission tree under its 'edit' permission.
 
 You can use the `addChild` method on an existing permission to inject it at that position.
 

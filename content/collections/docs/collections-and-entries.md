@@ -47,11 +47,11 @@ If a value doesn't exist in one place, it'll check the next, and so on.
 
 Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So not really the same thing. Not nearly as romantic anyway.
 
-The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#behaviors).
+The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#date-behaviors-setting).
 
 You can also set default values for all entries, including default template, blueprint, and publish status.
 
-A collection is defined by way of a YAML file in the `content/collections` directory. All accompanying entries will be in a sibling with the same directory name. For example, a `blog` collection would look like this:
+A collection is defined by way of a YAML file in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a name that matches the collection. For example, a `blog` collection would look like this:
 
 ``` files
 ├── content/collections/
@@ -62,7 +62,7 @@ A collection is defined by way of a YAML file in the `content/collections` direc
 │   │   ├── youre-looking-for.md
 ```
 
-Injecting data into your collection is a handy way of providing default values to your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+Injecting data into your collection is a handy way of providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
 ``` yaml
 inject:
@@ -81,7 +81,7 @@ You **can** set more than one blueprint. If you do, you'll be given the option t
 Very often — but not always — entries require a publish date. There are three types of pre-configured date behaviors you can choose from when creating your collection.
 
 - **Articles** - Where publish dates set into the future are private so you can schedule them.
-- **Events** - Where publish dates set in the past are private so they automatically expire and remove themself from your front-end.
+- **Events** - Where publish dates set in the past are private so they automatically expire and remove themselves from your front-end.
 - **No dates** - Where there are no publish dates. Logically.
 
 These behaviors apply when listing entries with a [collection](/tags/collection) tag as well as each entry's URL.
@@ -108,23 +108,52 @@ If you set an `expires_at` date field, entries will disappear from listings and 
 
 ## Ordering
 
-Collections can be manually orderable. If you make a dated collection orderable, the manual order will be the default. You can still sort by date with the sort parameter `sort="date"`.
+Entries in a collection may be manually ordered by giving it a [Structure](#structure).
+
+If you're using the Control Panel, you can just flick the "Orderable" switch on the Collection's settings page. Statamic will connect
+the dots for you.
+
+If you're digging through files, you can add a `structure` to the Collection's YAML file.
+
+> Order will take precedence when sorting. eg. If you make a dated collection orderable, the manual order will be the default. You can still sort by date with the sort parameter `sort="date"`.
 
 <figure>
     <img src="/img/reorderable-entries.png" alt="A list of reorderable entries">
     <figcaption>Here we see drag & drop entry ordering in action.</figcaption>
 </figure>
 
-### Order Settings
+## Structure
 
-A collection's order will be stored in the collection's YAML file.
+An entry with an associated [Structure](/structures) will be how you make its entries "orderable", as well as defining its URL structure.
+
+The structure's tree will dictate how its entries' URLs are generated. If you plan to [allow nesting](#constraining-depth), make sure you include the `parent_uri` in the [route](#routing).
 
 ``` yaml
-orderable: true
-entry_order:
-  - id-of-first-entry
-  - id-of-second-entry
+structure:
+  tree:
+    -
+      entry: id-of-first-entry    
+      children:
+        -
+          entry: id-of-child-entry
+    -
+      entry: id-of-second-entry    
 ```
+
+Any entries not found in the tree will be assumed to be at the top level.
+
+### Constraining Depth
+
+By default, the structure will **not** have a maximum depth. You can nest entries as deep as you like. 
+If you want only allow a certain number of levels, you may set the `max_depth` on the structure:
+
+``` yaml
+structure:
+  max_depth: 3
+  tree: [...]
+```
+
+> Setting `max_depth: 1` will replace the page tree UI with a more linear table-based UI.
 
 ## Routing
 
@@ -142,8 +171,8 @@ route: /blog/{slug}
 | `year` | when in a dated collection |
 | `month` | when in a dated collection |
 | `day` | when in a dated collection |
-| `parent_uri` | when connected to a [structure](/structures) |
-| `depth` | when connected to a [structure](/structures) |
+| `parent_uri` | when in an [orderable](#ordering) collection and max_depth > 1 |
+| `depth` | when in an [orderable](#ordering) collection and max_depth > 1 |
 | `mount` | when [mounted](#mounting) to an entry |
 
 ### Example routes
@@ -173,6 +202,34 @@ route: /{parent_uri}/{slug}.html
 route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
 ```
+
+## Redirects
+
+Adding a `redirect` variable to one of your entries will cause an HTTP redirect when visiting its URL.
+
+``` yaml
+---
+id: page-book-tickets
+title: Book Ticket
+redirect: http://booking.mysite.com
+```
+
+A particularly useful example of when you might want to do this is if you need an external link in your nav but creating a completely separate nav would be overkill.
+
+The following redirects are supported:
+- external links (starting with `http`)
+- internal links (starting with `/`)
+- other entries or terms (eg. `entry::id-of-entry` or `term::id-of-term`)
+- it's first child page (`@child`) - If there are no child pages you will get a 404
+- a `404` response
+
+Any other strings will be assumed to be a relative link. (eg. if the page URL is `/my/page` and you have `redirect: is/here`, you will be redirected to `/my/page/is/here`)
+
+### Entry Link Blueprint
+
+When a Collection is structured, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
+
+This will load a behind-the-scenes blueprint containing `title` and `redirect` fields. You are free to modify what's shown on these pages by creating your own `entry_link` blueprint.
 
 ## Taxonomies
 

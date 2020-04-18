@@ -5,5 +5,4 @@ template: page
 layout: layout
 blueprints:
   - page
-structure: documentation
 revisions: false

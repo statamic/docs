@@ -159,22 +159,54 @@ if:
 
 If you need something more complex than the YAML syntax provides, you may write your own logic.  In a JS script or addon, you can define custom functions using the `$conditions` JS API:
 
+```yaml
+if:
+  quote: custom isCanadian
+```
+
 ```javascript
-Statamic.$conditions.add('reallyLovesFood', function (values) {
-    return values.favorite_foods.length > 10;
+Statamic.$conditions.add('isCanadian', ({ target }) => {
+    return new RegExp('eh|bud|hoser').test(target);
 });
 ```
 
-Furthermore, if you need access to values outside of the current `fields` context (see [field context](#field-context)), we also provide a `root` values parameter, as well as an `extra` object parameter with additional access to the VueX store (via `extra.store` and `extra.storeName`):
+### Parameters
+
+You may also pass parameters to your custom functions:
+
+```yaml
+if:
+  hero_video_url: 'custom isFiletype:mp4'
+  hero_image_url: 'custom isFiletype:jpg,png'
+```
 
 ```javascript
-Statamic.$conditions.add('reallyLovesFood', function (values, root, extra) {
-    return root.favorite_foods.length > 10;
+Statamic.$conditions.add('isFiletype', ({ target, params }) => {
+    return new RegExp(params.join('|') + '$').test(target);
 });
 ```
 
-Then reference the name in the YAML:
+### Without Target
 
-``` yaml
+If you need to perform a condition against multiple hardcoded values, you can bypass setting a target field in the yaml by referencing your function name at the top of your `if` condition:
+
+```yaml
 if: reallyLovesFood
+```
+
+```javascript
+Statamic.$conditions.add('reallyLovesFood', ({ values }) => {
+    return (values.meals.length + values.desserts.length) > 10;
+});
+
+```
+
+### Field Context
+
+Furthermore, if you need access to values outside of the current [field context](#field-context), we also provide a `root` values parameter, as well as access to the VueX store via `store` and `storeName`:
+
+```javascript
+Statamic.$conditions.add('...', ({ root, store, storeName }) => {
+    //
+});
 ```
