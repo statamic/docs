@@ -15,7 +15,7 @@
     }
 
     li a {
-        @apply text-grey-800 text-sm py-1 relative z-10;
+        @apply text-grey-800 text-sm py-1 relative z-10 inline-block;
         &:hover {
             @apply text-pink-hot;
         }
