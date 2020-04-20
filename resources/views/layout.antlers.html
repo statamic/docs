@@ -10,17 +10,17 @@
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css">
     <link rel="stylesheet" href="/css/tailwind.css">
-    <script src="https://cdn.jsdelivr.net/gh/calebporzio/project-x@v0.4.0/dist/project-x.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="text-blue-darkest leading-normal language-antlers" x-data="{ show: false }">
+<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }">
 
 {{ partial:partials/nav }}
 
 <div class="w-full max-w-screen-xl mx-auto pt-12 lg:flex relative" id="top">
-    <div id="side-nav" class="lg:block w-full lg:w-1/4 xl:w-1/5 px-6 pt-1 pb-12 overflow-auto min-h-screen" x-show="show">
+    <div id="side-nav" class="lg:block w-full lg:w-1/4 xl:w-1/5 px-6 pt-1 pb-12 overflow-auto min-h-screen" x-show="showNav">
         {{ partial:side-nav }}
     </div>
-    <div id="content" class="w-full lg:w-2/4 xl:w-3/5 px-4 lg:px-6 xl:px-12" x-bind:class="{ 'overflow-state': show }">
+    <div id="content" class="w-full lg:w-2/4 xl:w-3/5 px-4 lg:px-6 xl:px-12" x-bind:class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:edit }}
     </div>

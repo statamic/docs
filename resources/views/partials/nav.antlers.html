@@ -33,8 +33,8 @@
 
                     <button type="button"
                         id="sidebar-open"
-                        x-bind:class="{ 'hidden': show }"
-                        x-on:click="show = true"
+                        x-bind:class="{ 'hidden': showNav }"
+                        @click="showNav = true"
                         class="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
                         <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
@@ -42,8 +42,8 @@
 
                     <button type="button"
                         id="sidebar-close"
-                        x-bind:class="{ 'hidden': ! show }"
-                        x-on:click="show = false"
+                        x-bind:class="{ 'hidden': ! showNav }"
+                        @click="showNav = false"
                         class="lg:flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
                         <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path
