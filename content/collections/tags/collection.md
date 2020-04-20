@@ -1,8 +1,9 @@
 ---
 title: Collection
 is_parent_tag: true
-overview: Entries are grouped into Collections and connected to this tag to provide you means to fetch, sort, filter, and arrange them in various ways. A Collection might contain blog posts, products, or even a pile of terrible knock-knock jokes. We don't judge, and neither does the Collection Tag.
+intro: Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don't judge and neither does the Collection Tag.
 description: Grab and filter the entries in a specified Collection.
+stage: 1
 parameters:
   -
     name: from|folder|use
@@ -73,14 +74,7 @@ parameters:
     name: group_by_date
     type: string
     description: >
-      Group entries by date, given a specified format.
-  -
-    name: filter
-    type: wizardry
-    description: >
-      Filter the listing by either a custom
-      class or using a special syntax, both of
-      which are outlined in more detail below.
+      Group entries by date. [Read more](#grouping-by-date)
   -
     name: paginate
     type: 'boolean *false*'
@@ -96,12 +90,6 @@ parameters:
     type: string
     description: >
       Scope your entries with a variable prefix.
-  -
-    name: supplement_taxonomies
-    type: boolean *true*
-    description: >
-      By default, Statamic will convert taxonomy term values into actual term objects that you may loop through.
-      This has some performance overhead, so you may disable this for a speed boost if taxonomies aren't necessary.
   -
     name: locale
     type: string
@@ -139,105 +127,55 @@ variables:
     type: integer
     description: The total number of results in the loop when there are results. You should use `no_results` to check if any results exist.
   -
-    name: page data
+    name: entry data
     type: mixed
     description: >
-      Each page being iterated has access to all the variables inside that page. This includes things like `title`, `content`, etc.
+      Each result has access to all the variables inside that entry (`title`, `content`, etc).
 id: 045a6e54-c792-483a-a109-f07251a79e47
 ---
-## Example {#example}
+## Overview
 
-The most basic example would be to iterate over entries in a single collection:
+The collection tag is one of main workhorses of your Statamic [frontend](/frontend). It's like an Eloquent model in Laravel or "The Loop" in WordPress – it's how you get data from everywhere (_other than_ the current entry and global variables) into your [view](/views).
+
+## Example
+
+A basic example would be to loop through the entries in a blog collection and link to each individual blog post:
 
 ```
+<ul>
 {{ collection from="blog" }}
-    {{ title }}
+    <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /collection }}
+</ul>
 ```
 
-You can also use the shorthand syntax for this:
+You can also use the shorthand syntax for this. We prefer this style ourselves.
 
 ```
+<ul>
 {{ collection:blog }}
-    {{ title }}
+    <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /collection:blog }}
+</ul>
 ```
 
-If you'd like to fetch entries from multiple collections, you can only do that in the standard syntax, like so:
+If you'd like to fetch entries from multiple collections, you'll need to use the standard syntax.
 
 ```
 {{ collection from="blog|events" }}
-    {{ title }}
-{{ /collection }}
 ```
 
-To get entries from all collections, use `*`. You may also exclude collections when doing this.
+To get entries from _all_ collections, use the wildcard `*`. You may also exclude collections when doing this.
 
 ```
 {{ collection from="*" not_from="blog|events" }}
-    {{ title }}
-{{ /collection }}
 ```
 
-## Grouping entries by date {#group_by_date}
-
-You can visually group repeating date-based entries.
-
-When using this parameter, the templating structure you need to use will be a little different from a regular loop.
-
-### Example
-
-Let's assume that the entries in the `blog` collection are date-based.
-
-
-```
-{{ collection:blog group_by_date="M Y" as="entries" }}
-    {{ date_groups }}
-        <h3>{{ date_group }}</h3>
-        <ul>
-            {{ entries }}
-                <li>{{ title }}</li>
-            {{ /entries }}
-        </ul>
-    {{ /date_groups }}
-{{ /collection:blog }}
-```
-
-The code above will output something like this:
-
-```
-<h3>May 2015</h3>
-<ul>
-  <li>A post from May</li>
-  <li>Another from May</li>
-</ul>
-<h3>June 2015</h3>
-<ul>
-  <li>A post from June</li>
-</ul>
-```
-
-The `{{ date_group }}` variable will be the date formatted by whatever you specifed in the `group_by_date` parameter.
-
-The `{{ entries }}{{ /entries }}` tag pair will allow you to iterate over the entries in that date group. The name of this variable is specified by the `as` parameter. For example, if you used `as="posts"`, you'd use a `{{ posts }}{{ /posts }}` tag pair.
-
-### Grouping by a custom date field {#group_by_date-custom-field}
-
-If you'd like to group by an arbitrary date field, you can specify the field name as the second value of the parameter.
-
-```
-{{ collection:blog group_by_date="M Y|purchase_date" sort="purchase_date" }}
-```
-
-Here we are grouping on the `purchase_date` field. Note that you should also sort by that field, as the default sorting
-on date-based entries would still be the entry date.
-
-
-## Filtering {#filtering}
+## Filtering
 
 There are a number of ways to filter your collection. There's the conditions syntax for filtering by fields, taxonomy filter for using terms, and the custom filter class if you need extra control.
 
-### Conditions syntax {#conditions}
+### Conditions
 
 Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
 
@@ -251,7 +189,7 @@ Want to get entries where the title has the words "awesome" and "thing", and "jo
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
 
-### Taxonomies {#taxonomies}
+### Taxonomies
 
 Filtering by a taxonomy term (or terms) is done using the `taxonomy` parameter, similar to the conditions syntax mentioned above.
 
@@ -265,35 +203,11 @@ There are a number of different ways to use this parameter. They are explained i
 [Taxonomies Guide](/taxonomies#collections)
 
 
-### Custom filters {#custom-filters}
+### Custom Query Scopes
 
-Doing something complicated? You can reference a [custom filter][custom_filters] which can do the heavy lifting from outside of the template.
+Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results.
 
-For example, want to filter drink entries by whether or not it's one of the user's favorites?
-
-```
-{{ collection:drinks filter="users_favorite" }}
-```
-
-This'll load a custom filter file and do its thing from within there. Statamic makes the collection available to you, and you can manipulate it however you like. For example:
-
-``` language-php
-class UsersFavoriteFilter extends Filter
-{
-    public function filter()
-    {
-        $faves = User::getCurrent()->get('favorite_drinks');
-
-        return $this->collection->filter(function($entry) use ($faves) {
-            return in_array($entry->get('title'), $faves);
-        });
-    }
-}
-```
-
-[Read more about custom filters][custom_filters].
-
-## Pagination {#pagination}
+## Pagination
 
 To enable pagination mode, add the `paginate="true"` parameter, along with the `limit` parameter to specify the number of entries in each page.
 
@@ -333,7 +247,7 @@ The `paginate` variable will become available to you. This is an array containin
 | `total_items` |	The total number of entries.
 | `total_pages` |	The number of paginated pages.
 | `current_page` |	The current paginated page. (ie. the x in the ?page=x param)
-| `auto_links` |	Outputs a Twitter Bootstrap ready list of links.
+| `auto_links` |	Outputs an HTML list of paginated links.
 | `links` |	Contains data for you to construct a custom list of links.
 | `links:all` |	An array of all the pages. You can loop over this and output {{ url }} and {{ page }}.
 | `links:segments` |	An array of data for you to create a segmented list of links.
@@ -342,15 +256,15 @@ The `paginate` variable will become available to you. This is an array containin
 
 ### Pagination Examples
 
-The `auto_links` tag is designed to be your friend. It'll save you more than a few keystrokes, and even more headaches.
-It'll output a Twitter Bootstrap-ready list of links for you. With a large number of pages, it will create segments
-so that you don't end up with hundreds of numbers. You will see something like this:
+The `auto_links` tag is designed to be your friend. It'll save you more than a few keystrokes, and even more headaches. It will output an HTML list of links for you. With a large number of pages, it will create segments so that you don't end up with hundreds of numbers.
 
-![](/assets/examples/pagination-auto-links.png)
+It's clever enough to work out a comfortable range of numbers to display, and it'll also throw in the prev/next arrow for good measure.
 
-It's clever enough to work out a comfortable range of numbers to display, and it'll also throw in the prev/next arrow for good measure. Nice, right?
+Maybe the default markup isn't for you and you want total control. You're a maverick. That's cool, we roll that way sometimes too. That's where the `links:all` or `links:segments` array variables come in. These give you all the data you need to recreate your own set of links.
 
-Maybe the Bootstrap markup isn't for you. You want something more custom. You're a maverick. That's cool. You'll want to check out the `links:all` or `links:segments` arrays. These give you all the data you need to recreate your own set of links. The `links:all` array is simply _all_ the pages with `url` and `page` variables. The `links:segments` will contain the segments like we mentioned earlier. You'll be able to access `first`, `slider`, and `last`, which are the 3 segments.
+- The `links:all` array is _all_ the pages with `url` and `page` variables.
+
+- The `links:segments` array will contain the segments mentioned above. You'll be able to access `first`, `slider`, and `last`, which are the 3 segments.
 
 Here's the `auto_links` output, recreated using the other tags, for you mavericks out there:
 
@@ -455,5 +369,58 @@ You can also add your scope down into your [alias](#alias) loop. Yep, we thought
 
 Combining both an Alias and a Scope on a Collection Tag doesn't make a whole lot of sense. You shouldn't do that.
 
+## Grouping by date {#group_by_date}
+
+You can visually group repeating date-based entries.
+
+When using this parameter, the templating structure you need to use will be a little different from a regular loop.
+
+### Example
+
+Let's assume that the entries in the `blog` collection are date-based.
+
+
+```
+{{ collection:blog group_by_date="M Y" as="entries" }}
+    {{ date_groups }}
+        <h3>{{ date_group }}</h3>
+        <ul>
+            {{ entries }}
+                <li>{{ title }}</li>
+            {{ /entries }}
+        </ul>
+    {{ /date_groups }}
+{{ /collection:blog }}
+```
+
+The code above will output something like this:
+
+```
+<h3>May 2015</h3>
+<ul>
+  <li>A post from May</li>
+  <li>Another from May</li>
+</ul>
+<h3>June 2015</h3>
+<ul>
+  <li>A post from June</li>
+</ul>
+```
+
+The `{{ date_group }}` variable will be the date formatted by whatever you specified in the `group_by_date` parameter.
+
+The `{{ entries }}{{ /entries }}` tag pair will allow you to iterate over the entries in that date group. The name of this variable is specified by the `as` parameter. For example, if you used `as="posts"`, you'd use a `{{ posts }}{{ /posts }}` tag pair.
+
+### Grouping by a custom date field {#group_by_date-custom-field}
+
+If you'd like to group by an arbitrary date field, you can specify the field name as the second value of the parameter.
+
+```
+{{ collection:blog group_by_date="M Y|purchase_date" sort="purchase_date" }}
+```
+
+Here we are grouping on the `purchase_date` field. Note that you should also sort by that field, as the default sorting
+on date-based entries would still be the entry date.
+
 [conditions]: /conditions
-[custom_filters]: /addons/classes/filters
+
