@@ -113,9 +113,7 @@ Flick on the "Orderable" switch in a collection's settings and you'll have a dra
 
 ### Constraining Depth
 
-A structured collection will **not** have a maximum depth by default, allowing you to nest entries as deep as you like. Set the `max_depth` option to limit this behavior.
-
-> Setting `max_depth: 1` will replace the page tree UI with a flat, table-based UI.
+A structured collection will **not** have a maximum depth by default, allowing you to nest entries as deep as you like. Set the `max_depth` option to limit this behavior. Setting `max_depth: 1` will replace the page tree UI with a flat, table-based UI.
 
 <figure>
     <img src="/img/reorderable-entries.png" alt="An orderable collection with max depth of 1">
