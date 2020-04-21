@@ -41,13 +41,23 @@ Each entry has its own unique URL. When you're on that unique URL, all of the en
 2. The origin entry (if using localization)
 3. The collection
 
-If a value doesn't exist in one place, it'll check the next, then the next, and so on.
+If a value doesn't exist in one place, it'll check the next place, then the next, and so on.
+
+### Default collection data
+
+Injecting data into your collection allows you providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+
+``` yaml
+inject:
+  author: jason
+  show_sidebar: true
+```
 
 ## Collections
 
 Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So, not exactly the same thing, or at least not as romantic anyway.
 
-The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#date-behaviors-setting).
+The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [date behaviors](#dates).
 
 You can also set default values for all entries, including default template, blueprint, and publish status.
 
@@ -60,14 +70,6 @@ A collection is defined by a YAML file stored in the `content/collections` direc
 │   │   ├── hello.md
 │   │   ├── is-it-me.md
 │   │   ├── youre-looking-for.md
-```
-
-Injecting data into your collection allows you providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
-
-``` yaml
-inject:
-  author: jason
-  show_sidebar: true
 ```
 
 ## Blueprints
