@@ -18,7 +18,7 @@ If you want to defer **everything** to explicit Laravel routes (perhaps you're u
 
 ## Content Routes
 
-- [Collections](/collections-and-entries#routing) - each entry often has its own URL.
+- [Collections](/collections#routing) - each entry often has its own URL.
 - [Structures](/structures#routing) can define explicit URLs that are routed to specific templates.
 - [Taxonomies](/taxonomies#routing) can have their own URLs.
 

@@ -37,7 +37,7 @@ The first type of structure is for defining the URL structure for a collection. 
 - You can create internal and external redirects.
 - The structure is stored on the collection itself.
 
-[Read more about using Structures to manage your Collections](/collections-and-entries#ordering)
+[Read more about using Structures to manage your Collections](/collections#ordering)
 
 ## Navigation (or "Navs") {#navigation}
 

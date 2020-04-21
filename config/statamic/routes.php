@@ -13,8 +13,8 @@ return [
     */
 
     'redirect' => [
-        '/entries' => '/collections-and-entries',
-        '/collections' => '/collections-and-entries',
+        '/collections-and-entries' => '/collections',
+        '/entries' => '/collections',
     ],
 
     /*

@@ -8,7 +8,7 @@ id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
 
 Taxonomies give you the ability to tag your entries and then fetch and sort all the entries who share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
 
-Practically speaking, taxonomies are very similar to [collections](/collections-and-entries). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
+Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
 Each entry in a taxonomy is often called a **term**.
 
@@ -143,6 +143,6 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 
 ## Related Reading
 
-- A fundamental understanding of [collections](/collections-and-entries) is pretty important.
+- A fundamental understanding of [collections](/collections) is pretty important.
 - The [taxonomy tag](/tags/taxonomy) can come in handy when you're not on taxonomy routes.
 - Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/knowledge-base/taxonomies-by-hand)

@@ -1,25 +1,25 @@
 ---
-title: 'Collections & Entries'
-intro: Entries are the primary element that holds your content. Entries are grouped into Collections and can be used in many different and powerful ways for a multitude of purposes. A collection may contain entries that represent blog posts, products, recipes, or perhaps even roadside oddities.
+title: 'Collections'
+intro: Collections are containers that hold groups of related entries. Each entry in a collection might represent a blog post, product, recipe, or even chapter of your Family Matters fan fiction novel following Steve Urkel's rise to UFC Heavyweight Champion.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568644358
 blueprint: page
-stage: 1
+stage: 4
 id: 7202c698-942a-4dc0-b006-b982784efb03
 ---
 ## Entries
 
-Each entry has — at the very least — a title, a published status, an id, and some content. The content fields are determined by one or more [blueprints](/blueprints) set on the collection. By default they're stored as Markdown files inside their collection's respective directory (`content/collections/<collection>/entry.md`).
+Each entry has — at the very least — a title, a published status, an id, and some content. The content fields are determined by one or more [blueprints](/blueprints) set on the collection. By default they're stored as Markdown files inside their collection's respective directory (`content/collections/{collection}/entry.md`).
 
-Let's pretend it's the summer of '99. Here's an entry we might be writing if we were covering the X-Games.
+Let's pretend it's currently the summer of '99 and we are journalists covering the X-Games. Here's an entry we might write.
 
 <figure>
     <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic 3 control panel">
     <figcaption>Entry publishing with only the default content fields.</figcaption>
 </figure>
 
-And here's what the Markdown file would look like for the very same entry.
+And here's what the Markdown file would look like for that same entry.
 
 ``` markdown
 <!-- content/collections/blog/1999-07-27.tony-hawks-900.md -->
@@ -31,27 +31,27 @@ id: 3a28f050-f8d2-4a56-ba8a-314a9d46bf38
 It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at the 1999 Summer X Games in a moment that launched the sport into popular consciousness in a new way.
 ```
 
-You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and what you prefer in the moment.
+You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of moment. Let your passion carry you away.
 
 ### Data Cascade
 
-Entries have their own unique URLs — when you're on them, all of that entry's variables will be available in your views. If an entry is missing a variable, it will fall back to a series of defaults. We call this the cascade.
+Each entry has its own unique URL. When you're on that unique URL, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
 
 1. The entry
 2. The origin entry (if using localization)
 3. The collection
 
-If a value doesn't exist in one place, it'll check the next, and so on.
+If a value doesn't exist in one place, it'll check the next, then the next, and so on.
 
 ## Collections
 
-Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So not really the same thing. Not nearly as romantic anyway.
+Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So, not exactly the same thing, or at least not as romantic anyway.
 
 The collection holds settings that affect all the of entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [behaviors](#date-behaviors-setting).
 
 You can also set default values for all entries, including default template, blueprint, and publish status.
 
-A collection is defined by way of a YAML file in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a name that matches the collection. For example, a `blog` collection would look like this:
+A collection is defined by a YAML file stored in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a matching name. For example, a `blog` collection looks like this:
 
 ``` files
 ├── content/collections/
@@ -62,7 +62,7 @@ A collection is defined by way of a YAML file in the `content/collections` direc
 │   │   ├── youre-looking-for.md
 ```
 
-Injecting data into your collection is a handy way of providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+Injecting data into your collection allows you providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
 ``` yaml
 inject:
@@ -74,86 +74,51 @@ inject:
 
 Each Collection needs at least one Blueprint to define the available fields when creating and editing entries.
 
-You **can** set more than one blueprint. If you do, you'll be given the option to choose from them when creating entries.
+If you set _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
 ## Dates
 
-Very often — but not always — entries require a publish date. There are three types of pre-configured date behaviors you can choose from when creating your collection.
+If your collection requires a date, as they often do, you can decide how Statamic uses it to control default visibility. For example, you can choose to have dates set in the future to be private (404), which effectively allows you to schedule their publish date.
 
-- **Articles** - Where publish dates set into the future are private so you can schedule them.
-- **Events** - Where publish dates set in the past are private so they automatically expire and remove themselves from your front-end.
-- **No dates** - Where there are no publish dates. Logically.
+Alternatively, you could have _past_ dates be private which would make entries act like "upcoming events" that disappear from a list when they're over.
 
-These behaviors apply when listing entries with a [collection](/tags/collection) tag as well as each entry's URL.
+<figure>
+    <img src="/img/collection-date-behaviors.png" alt="Collection Date Behaviors">
+    <figcaption>Just imagine! This could be you, configuring date behaviors.</figcaption>
+</figure>
 
-### Date Behaviors Setting
+### Available Date Behaviors
 
-You can take this a step further in the collection's YAML file. Consider this the "advanced mode".
-
-``` yaml
-date_behaviors:
-  past: public|private|unlisted
-  future: public|private|unlisted
-```
+Each of these behaviors is available for future and past dates.
 
 - **public** - Entries will be visible in listings and at their own URLs.
 - **unlisted** - Entries will be hidden in listings but available at their own URLs.
 - **private** - Entries will be hidden in listings, and their own URLs will 404.
 
-### Expirable
-
-If you set an `expires_at` date field, entries will disappear from listings and trigger 404s after that date and time.
-
 > Date behaviors are _defaults_. They can be overridden on the tag level.
 
 ## Ordering
 
-Entries in a collection may be manually ordered by giving it a [Structure](#structure).
+Flick on the "Orderable" switch in a collection's settings and you'll have a drag and drop UI in the control panel to order the entries. The collection is now "structured". Learn more about [structures](/structures).
 
-If you're using the Control Panel, you can just flick the "Orderable" switch on the Collection's settings page. Statamic will connect
-the dots for you.
-
-If you're digging through files, you can add a `structure` to the Collection's YAML file.
-
-> Order will take precedence when sorting. eg. If you make a dated collection orderable, the manual order will be the default. You can still sort by date with the sort parameter `sort="date"`.
 
 <figure>
-    <img src="/img/reorderable-entries.png" alt="A list of reorderable entries">
-    <figcaption>Here we see drag & drop entry ordering in action.</figcaption>
+    <img src="/img/collection-structure.png" alt="An orderable collection">
+    <figcaption>You can tell these entries are orderable because of the way they are.</figcaption>
 </figure>
 
-## Structure
-
-An entry with an associated [Structure](/structures) will be how you make its entries "orderable", as well as defining its URL structure.
-
-The structure's tree will dictate how its entries' URLs are generated. If you plan to [allow nesting](#constraining-depth), make sure you include the `parent_uri` in the [route](#routing).
-
-``` yaml
-structure:
-  tree:
-    -
-      entry: id-of-first-entry    
-      children:
-        -
-          entry: id-of-child-entry
-    -
-      entry: id-of-second-entry    
-```
-
-Any entries not found in the tree will be assumed to be at the top level.
+> Order will take precedence when sorting. For example, if you make a dated collection **orderable**, that manual order will be the default order, not date. You can sort by date by specifying `sort="date"` on your [collection tag](/tags/collection).
 
 ### Constraining Depth
 
-By default, the structure will **not** have a maximum depth. You can nest entries as deep as you like. 
-If you want only allow a certain number of levels, you may set the `max_depth` on the structure:
+A structured collection will **not** have a maximum depth by default, allowing you to nest entries as deep as you like. Set the `max_depth` option to limit this behavior.
 
-``` yaml
-structure:
-  max_depth: 3
-  tree: [...]
-```
+> Setting `max_depth: 1` will replace the page tree UI with a flat, table-based UI.
 
-> Setting `max_depth: 1` will replace the page tree UI with a more linear table-based UI.
+<figure>
+    <img src="/img/reorderable-entries.png" alt="An orderable collection with max depth of 1">
+    <figcaption>These reorderable entries have a max depth of 1.</figcaption>
+</figure>
 
 ## Routing
 

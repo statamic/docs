@@ -46,7 +46,7 @@ You'll be able to take advantage of all of our powerful, tightly coupled [tags](
 Let's take a quick look at what happens during a typical Statamic frontend request:
 
 1. User visits a URL.
-2. Statamic sees if there's some data matching that URL (eg. an [entry](/collections-and-entries) or [route](/routing#statamic-routes)).
+2. Statamic sees if there's some data matching that URL (eg. an [entry](/collections) or [route](/routing#statamic-routes)).
 3. [Variables](/variables) for that data item get compiled.
 4. It loads the appropriate [view](/views) and passes in the variables.
 5. Contents of the rendered view is sent back to the user's browser.

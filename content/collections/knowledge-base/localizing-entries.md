@@ -18,7 +18,7 @@ sites:
 
 ## Folder Structure
 
-The folder structure will differ from the single site structure explained in the [entries guide](/collections-and-entries). Now, entries should be organized into the respective sites.
+The folder structure will differ from the single site structure explained in the [entries guide](/collections). Now, entries should be organized into the respective sites.
 
 ``` files
 collections
@@ -37,7 +37,7 @@ collections
     `-- en/
        `-- 2017-04-01.its-happening.md
 ```
-       
+
 
 <mark>An entry will only be available in that site if the entry has explicitly been localized.</mark> For example, in the blog above, `my-first-day` would appear in both English and French sites, where `bastille-day` would only appear in the French site.
 
