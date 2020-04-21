@@ -43,7 +43,7 @@ Each entry has its own unique URL. When you're on that unique URL, all of the en
 
 If a value doesn't exist in one place, it'll check the next place, then the next, and so on.
 
-### Default collection data
+### Default collection data {#inject}
 
 Injecting data into your collection allows you providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
