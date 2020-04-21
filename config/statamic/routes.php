@@ -4,21 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Permanent Redirects
-    |--------------------------------------------------------------------------
-    |
-    | While it's recommended to add permanent redirects (301s) on the server
-    | for performence, you may also define them here for your convenience.
-    |
-    */
-
-    'redirect' => [
-        '/collections-and-entries' => '/collections',
-        '/entries' => '/collections',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Action Route Prefix
     |--------------------------------------------------------------------------
     |
