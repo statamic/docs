@@ -1,12 +1,12 @@
 ---
 title: Globals
-intro: Globals are variables made available everywhere in your templates, throughout your entire site. They are never tied to any one specific page, entry, or URL.
+intro: Global variables store content that belongs to the **whole site**, not just a single page or URL. Globals are available everywhere, in all of your views, all of the time. Just like the memory of eating your first hot pepper. 🌶
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645065
 id: 1e91dd54-c452-4e3b-8972-dba83c048d3d
 blueprint: page
-stage: 1
+stage: 4
 ---
 ## Overview
 
@@ -39,7 +39,6 @@ globals/
 ```
 
 ``` yaml
-id: a63f6dd0-1f45-11e9-b56e-0800200c9a66
 title: Footer
 blueprint: footer_globals
 data:
@@ -47,7 +46,7 @@ data:
   flair: Made with ❤️ by humans
 ```
 
-> If you're coming from Statamic v2, be aware that the variables need to be nested within the `data` key. This allows meta variables (like title, id, and blueprint) to be excluded.
+> If you're coming from Statamic v2, be aware that the variables need to be nested within the `data` key. This allows meta variables (title, id, blueprint, etc) to be excluded.
 
 ## Templating
 
@@ -60,11 +59,13 @@ In this example all of the variables inside a `footer` global set will be access
 </footer>
 ```
 
-If you only have the default global set (called Globals), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
+If you only have the default global set (which we named Globals because it can't get any more generic than that), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
 
-## Blueprint Optional
+## Blueprint is Optional
 
-If you don't assign a [Blueprint](/blueprints) to your global set, Statamic will try to render each field in the YAML file as a text input. So as a rule of thumb, they're only necessary when you need more control over your fieldtypes, or want to create fields before you have content to put in them.
+If you don't assign a [Blueprint](/blueprints) to your global set, Statamic will try to render each field in the YAML file as a text input. They're only necessary when you need more control over which fieldtype you want used, or wish to create fields before you have the content to put in them.
+
+Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 
 ## Localization
 
