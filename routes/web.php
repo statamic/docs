@@ -6,5 +6,6 @@ Route::statamic('search-results', 'search');
 Route::statamic('screencasts', 'screencasts');
 Route::statamic('knowledge-base', 'knowledge-base.index');
 Route::permanentRedirect('collections-and-entries', 'collections');
+Route::permanentRedirect('entries', 'collections#entries');
 
 Route::redirect('fieldtypes/partial', '/blueprints#importing-fieldsets');
