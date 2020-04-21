@@ -1,16 +1,16 @@
 ---
 title: Configuration
-intro: Statamic utilizes standard Laravel config files and environment variables for most application-level configuration settings.
+intro: Statamic uses standard Laravel config files and environment variables for application-level settings.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568748076
 blueprint: page
-stage: 2
+stage: 4
 id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 ---
 ## Config Files
 
-Statamic's main config files can be found in `config/statamic/`. They are simple PHP files, organized by area of responsibility.
+Statamic's config files are located in `config/statamic/`. They are PHP files named by area of responsibility.
 
 ``` files
 ├── config/statamic/
@@ -35,13 +35,13 @@ Statamic's main config files can be found in `config/statamic/`. They are simple
 
 ## Environment Variables
 
-It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (a good idea indeed).
+It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (**hint: you should do this**).
 
-In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. If you install Statamic via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
+In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. Rename or copy it to `.env` to enable it. If you install Statamic via Composer, this file will be renamed automatically.
 
 ### Environment Variable Types
 
-All variables in your `.env` files are parsed as strings. Some specific values are reserved to allow you to return a wider range of types:
+Variables in your `.env` files are parsed as strings. In order to handle a wider range of types, some specific values are reserved.
 
 | `.env` Value | Parsed Value |
 |--------------|--------------|
@@ -57,7 +57,7 @@ All variables in your `.env` files are parsed as strings. Some specific values a
 If you need to define an environment variable with a value that contains space, you may do so by enclosing the value in double quotes.
 
 ``` env
-APP_NAME="New Statamic Site"
+APP_NAME="Gluten Free Surgical Masks For Llamas"
 ```
 
 ### Retrieving Environment Variables
@@ -69,7 +69,7 @@ All of the variables listed in this file are available in your config files by u
 'awesome' => env('ENABLE_AWESOME', true),
 ```
 
-Once passed into a config file, you can use the variable in your templates with the `{{ config }}` tag.
+Once passed into a config file, the variable can be used in your views with the `{{ config }}` tag.
 
 ``` antlers
 // To retrieve the above 'awesome' value...
