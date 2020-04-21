@@ -1,18 +1,18 @@
 ---
 title: Requirements
-intro: Statamic is a modern PHP application, built as a [Laravel](https://laravel.com) package and has the same server requirements as &mdash; you guessed it &mdash; Laravel itself. If you'd like to work with image assets, you'll also need an image transformation library like GD Library or ImageMagick.
+intro: Statamic is a modern PHP application, built as a [Laravel](https://laravel.com) package, and has the same server requirements as &mdash; you guessed it &mdash; Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568656760
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
-stage: 1
+stage: 4
 ---
 ## Server Requirements
 
 To run Statamic 3 you'll need a server that meets the following requirements. These are all pretty standard in most modern hosting platforms.
 
-- PHP `>= 7.2.0`
+- PHP `>= 7.2.5`
 - BCMath PHP Extension
 - Ctype PHP Extension
 - JSON PHP Extension
@@ -25,9 +25,9 @@ To run Statamic 3 you'll need a server that meets the following requirements. Th
 
 ## Recommended Hosts
 
-We recommend using [Digital Ocean][do] (or [Vultr][vultr] if you're on a budget) to host most Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** those are affiliate links but we wouldn't recommend them if they weren't excellent options._
+We recommend using [Digital Ocean][do] to host most Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 
-We also maintain a user-contributed [Github repo][hosts] full of other host recommendations. Take a peek if Digital Ocean isn't right for you.
+We also maintain a user-contributed [Github repo][hosts] full of other host recommendations.
 
 ## Development Environments
 
@@ -41,7 +41,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 
 ### Windows: WAMP
 
-We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We don’t use Windows ourselves so we can’t vouch for it personally, though.
+We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We don’t use Windows ourselves though so we can’t vouch for it personally.
 
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
