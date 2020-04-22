@@ -16,9 +16,9 @@ Statamic forms serve to collect, report, and reuse user submitted data. The end-
 
 ## Your First Form
 
-Let's pretend, shall we, that you are a famous celebrity with a large following of dedicated fans. If that is true of you -- kudos by the way -- but why are you building your own website? You don't have time for that. Who's going to sail your yacht?
+Let's pretend you're are a famous celebrity with a large following of dedicated fans. If this is true, why are you building your own website? Who's going to sail your yacht?
 
-Okay let's just pretend you're a famous celebrity's _web developer_. You've been tasked with collecting electronic fan mail (we'll call it ef-Mail). You want to collect the following bits of info from <del>crazed</del> enthusiastic fans:
+Okay, let's just pretend you're a famous celebrity's _web developer_. You've been tasked with collecting electronic fan mail (we'll call it EF-Mail). You want to collect the following bits of info from <del>crazed</del> enthusiastic fans:
 
 - name
 - age
@@ -104,7 +104,7 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
 
 ## Viewing Submissions
 
-The Control Panel enables you to explore the collected responses, configure dashboards with reporting metrics, and export that data to CSV or JSON formats.
+The Control Panel enables you to explore the collected responses, configure dashboards with reporting metrics, and export the data to CSV or JSON formats.
 
 ![Forms](/assets/img/screenshots/cp-forms.jpg) {.rounded}
 
@@ -131,7 +131,7 @@ metrics:
     precision: 1
 ```
 
-You have access to `average`, `sum`, `min`, `max`, and `total` metrics that can be applied to any field in your form.
+You can apply `average`, `sum`, `min`, `max`, and `total` metrics to any applicable field in your form.
 
 ## Displaying submission data
 
@@ -199,7 +199,7 @@ email:
 
 ## File Uploads
 
-Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. All you need to do is inform Statamic that you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusuable Assets.
+Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusuable Assets.
 
 First up, add `files="true"` to  your form tag. (This will add `enctype="multipart/form-data"` to the generated `<form>` tag. That's always so difficult to remember.)
 

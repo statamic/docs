@@ -10,7 +10,7 @@ stage: 4
 ---
 ## Overview
 
-Globals are designed for reusable content. If you have some data that you want to repeat throughout a site and only manage in one place, a globals are the way to go. For example:
+Globals are designed for reusable content. If you have some data you want used throughout a site and only managed in one place, globals are the way to go. For example:
 
 - Company phone number, address, and logo
 - Footer content
@@ -46,7 +46,7 @@ data:
   flair: Made with ❤️ by humans
 ```
 
-> If you're coming from Statamic v2, be aware that the variables need to be nested within the `data` key. This allows meta variables (title, id, blueprint, etc) to be excluded.
+> If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, blueprint, etc) to be excluded.
 
 ## Templating
 
@@ -59,7 +59,7 @@ In this example all of the variables inside a `footer` global set will be access
 </footer>
 ```
 
-If you only have the default global set (which we named Globals because it can't get any more generic than that), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
+If you only have the default global set (which we named Globals because it can't get any more generic), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
 
 ## Blueprint is Optional
 
@@ -69,6 +69,6 @@ Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 
 ## Localization
 
-When running a [multi-site](/multi-site) installation, you can have globals that exist in multiple sites with different content.
+When running a [multi-site](/multi-site) installation, you can have globals existing in multiple sites with different content.
 
 [Read about localizing globals](/knowledge-base/localizing-globals)

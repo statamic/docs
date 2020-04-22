@@ -13,7 +13,7 @@ Statamic relationships are defined by storing the ID of one piece of content (an
 
 ## Fieldtypes
 
-There are 4 primary fieldtypes that manage relationships. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data.
+There are 4 primary fieldtypes used to manage relationships. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data.
 
 - [Assets](/fieldtypes/assets)
 - [Entries](/fieldtypes/entries)
@@ -40,7 +40,7 @@ related_products:
 
 ### Field Breakdown
 - `id` is the unique identifier given to this particular entry
-- `photo` is a reference to an asset image of the product (why didn't they clean up that filename?)
+- `photo` is a reference to an asset image of the product (why didn't they clean up the filename?)
 - `author` is the id of the user who created this entry
 - `related_products` is an array of other product entry ids
 
@@ -84,7 +84,7 @@ If you _aren't_ using a relationship fieldtype but _do_ have an ID to fetch data
   <a href="{{ url }}">{{ title }}</a>
 {{ /get_content }}
 
-// Or pass the variable that holds it
+// Or pass the variable holding it
 {{ get_content :from="related_id" }}
   <a href="{{ url }}">{{ title }}</a>
 {{ /get_content }}

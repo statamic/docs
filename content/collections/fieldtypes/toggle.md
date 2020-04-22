@@ -1,6 +1,6 @@
 ---
 title: Toggle
-description: A toggle switch that manages booleans (`true` and `false`).
+description: A toggle switch for booleans (`true` and `false`).
 intro: A nice little toggle switch generally used to manage settings-type variables. It stores `true` or `false` and is delightfully uncomplicated, just like our relationship with yogurt.
 screenshot: fieldtypes/toggle.png
 stage: 4

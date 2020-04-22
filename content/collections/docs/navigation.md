@@ -6,14 +6,14 @@ stage: 4
 ---
 ## Overview
 
-Each Nav is a [structure](/structures) that allows you to rearrange items though the delightful experience of dragging and dropping boxes.
+Each Nav is a [structure](/structures) giving you the ability rearrange items though the delightful experience of dragging and dropping boxes.
 
 <figure>
     <img src="/img/structure.png" alt="A Statamic 3 structure page tree" width="535">
 </figure>
 
 
-- You can **reference** entries, enter hardcoded URLs (internal or external), or enter simple text blocks (that can be used as section headers for dropdown navs, for example).
+- You can **reference** entries, enter hardcoded URLs (internal or external), or enter simple text blocks (which can be used as section headers for dropdown navs, for example).
 - You can **choose** which collections' entries will available to choose from.
 - Any referenced entries will use the URLs **defined by the collection**, regardless of the position in the Structure.
 - You can place the same entry **multiple** times. Two times, three times, four times, even six times are all possible numbers of times you can place something.

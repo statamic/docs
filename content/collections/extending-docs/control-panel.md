@@ -39,7 +39,7 @@ These commands will make Statamic expect files at `public/vendor/app/js/cp.js` a
 
 ## Adding assets to your build process
 
-Rather than writing flat CSS and JS files directly into the `public` directory, you can (and should) set up source files that output there instead.
+Rather than writing flat CSS and JS files directly into the `public` directory, you can (and should) set up source files to output there instead.
 
 Add the following to your `webpack.mix.js`, adjusting the location of your source files as necessary:
 
@@ -80,4 +80,4 @@ export default {
 </script>
 ```
 
-> You may of course change filenames and folder structure, and even your entire build process. The thing that's important is that the compiled files are imported using `Statamic::script()`
+> You may of course change filenames and folder structure, and even your entire build process. The important thing is to compiled imported files with `Statamic::script()`

@@ -9,11 +9,11 @@ stage: 1
 ---
 Statamic lets your users authenticate with OAuth using [Laravel Socialite](https://github.com/laravel/socialite).
 
-Out of the box, Statamic supports the providers that are bundled with Socialite (Facebook, Twitter, Google, LinkedIn, GitHub, and Bitbucket).
+Out of the box, Statamic supports the bundled with Socialite providers (Facebook, Twitter, Google, LinkedIn, GitHub, and Bitbucket).
 
-The [Socialite Providers][socialite-providers] Github organization contains over 100 additional providers that require minimal effort to install.
+The [Socialite Providers][socialite-providers] Github organization contains over 100 additional providers requiring minimal effort to install.
 
-Finally, if you require a provider that isn’t on that list, you may write your own, which is also quite straight forward.
+Finally, if you require a provider not on the list, you may write your own.
 
 ## Installation
 
@@ -69,7 +69,7 @@ OAuth behavior may be configured in `config/statamic/oauth.php`.
 
 ### Providers
 
-You should add your intended OAuth providers to the config so that Statamic can provide your users with buttons on the login page.
+You should add your intended OAuth providers to the config so Statamic can provide your users with buttons on the login page.
 
 You can specify just the name of the provider, or use a name/label pair if you would like to customize how it's displayed.
 

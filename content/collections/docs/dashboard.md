@@ -1,6 +1,6 @@
 ---
 title: Dashboard
-intro: The dashboard is a user-customizable screen that contains widgets. Lots of widgets, few widgets, custom widgets, or prebuilt widgets. All kinds of widgets.
+intro: The dashboard is a user-customizable screen containing widgets. Lots of widgets, few widgets, custom widgets, or prebuilt widgets. All kinds of widgets.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568659758
@@ -10,7 +10,7 @@ stage: 1
 ---
 ## Overview
 
-When you log into the control panel, you will be taken to the dashboard &mdash; a customizable screen that contains widgets. Widgets!
+When you log into the control panel, you will be taken to the dashboard &mdash; a customizable screen containing widgets. Widgets!
 
 <div class="screenshot">
     <img src="/img/dashboard.png" alt="Statamic Global Set Example">
@@ -19,7 +19,7 @@ When you log into the control panel, you will be taken to the dashboard &mdash; 
 
 ## Widgets
 
-A widget can contain just about anything. _ANYTHING_ From a list of recent entries to an embedded iframe that plays nothing but [Poolside.fm](https://poolside.fm). However, it probably makes sense to make and use widgets that have _something_ to do with your site. Like seeing draft or scheduled entries, recent form submissions, and if there are any software updates.
+A widget can contain just about anything. _ANYTHING_ From a list of recent entries to an embedded iframe playing [Poolside.fm](https://poolside.fm). However, it probably makes sense to make and use widgets that have _something_ to do with your site. Like seeing draft or scheduled entries, recent form submissions, and if there are any software updates.
 
 Statamic comes bundled with a [handful of widgets](#), and you may also [create your own](#) or use ones created by others.
 

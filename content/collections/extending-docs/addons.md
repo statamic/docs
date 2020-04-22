@@ -3,7 +3,7 @@ title: Addons
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264134
-intro: An addon is a composer package that you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.
+intro: An addon is a composer package you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.
 stage: 1
 id: 5bd75435-806e-458b-872e-7528f24df7e6
 ---
@@ -61,7 +61,7 @@ An addon consists of at least a `composer.json` and a service provider. Your dir
 }
 ```
 
-Note that the service provider should extend `Statamic\Providers\AddonServiceProvider`, and not Illuminate\Support\ServiceProvider which you might be used to if you come from a Laravel background. The Statamic subclass provides you with some helpers to reduce boilerplate.
+Note the service provider should extend `Statamic\Providers\AddonServiceProvider`, and not Illuminate\Support\ServiceProvider. The Statamic subclass provides you with some helpers to reduce boilerplate when compared to stock Laravel.
 
 ``` php
 <?php
@@ -111,7 +111,7 @@ Your addon is now installed. You should be able to go to `/cp/addons` and see it
 
 ### Public addons
 
-A public addon is one that is available as a composer package on packagist.org. Simple require it with composer:
+A public addon is one available as a composer package on packagist.org. Simple require it with composer:
 
 ``` bash
 composer require vendor/package
@@ -121,7 +121,7 @@ After the composer package has been brought in, Statamic will automatically acti
 
 ### Private addons
 
-A private addon is one that isn't on packagist.org. You will need to use a composer path repository.
+A private addon is one _not_ on packagist.org. You will need to use a composer path repository.
 
 Download the package to a directory of your choosing.
 
@@ -248,7 +248,7 @@ We recommend prefixing routes with your addon's name but we didn't enforce this 
 
 #### Action Routes
 
-Action routes will be prefixed by `/!/addon-name` and are generally intended as front-end "actions" that your addon may expose without being a prominent section of the website. For example, somewhere to process a form submission.
+Action routes will be prefixed by `/!/addon-name` and are generally intended as front-end "actions" your addon may expose without being a prominent section of the website. For example, somewhere to process a form submission.
 
 #### Web Routes
 
@@ -297,9 +297,9 @@ Other than that, you're free to write routes [as per any Laravel application](ht
 
 Statamic uses [route model binding](https://laravel.com/docs/7.x/routing#route-model-binding) to automatically convert some route parameters into usable objects.
 
-Words that align with core Statamic concepts will automatically be converted to their appropriate objects: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form`, and `user`
+Words aligning with core Statamic concepts will automatically be converted to their appropriate objects: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form`, and `user`
 
-You're free to use these words as your route parameters, but be aware that they will automatically attempt to convert to the respective objects. For example:
+You're free to use these words as your route parameters, but be aware they will automatically attempt to convert to the respective objects. For example:
 
 ``` php
 public function example(Request $request, $entry)

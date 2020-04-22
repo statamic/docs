@@ -24,8 +24,8 @@ public function boot()
 
 Fieldtypes have two pieces:
 
-  - A PHP class that handles data processing and validation
-  - A Vue component that handles the view and data binding
+  - A PHP class handling data processing and validation
+  - A Vue component handling the view and data binding
 
 For this example we will create a password field with a "show" toggle control:
 
@@ -56,7 +56,7 @@ Your component has two requirements:
 - It must expect a `value` prop.
 - It must emit an `input` event whenever the value updates.
 
-Statamic provides you with a `Fieldtype` mixin that does this automatically so you can cut away boilerplate code.
+Statamic provides you with a `Fieldtype` mixin that does this automatically to reduce boilerplate code.
 
 ### Example Vue component
 ``` js
@@ -94,7 +94,7 @@ export default {
 #### Example walkthrough:
 - The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field.
 - The `text-input` component emits an `input` event whenever you type into it. Our component is listening for that event and calls the `update` method.
-- The `Fieldtype` mixin is providing that `update` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
+- The `Fieldtype` mixin is providing an `update` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
 
 **Do not** modify the `value` prop directly. Instead, call `this.update(value)` and let the Vuex store handle the update appropriately.
 

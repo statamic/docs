@@ -33,13 +33,11 @@ export default {
 
 ## Unbinding
 
-If you are binding a keyboard shortcut in a component that may disappear - perhaps it's in a stack or modal - you should
-destroy it once you're done.
+If you are binding a keyboard shortcut in a component that may disappear - perhaps it's in a stack or modal - you should destroy it once you're done.
 
 When destroying the binding, it will revert back to the previous binding if one existed.
 
-For example: If you're on a form which already uses mod+s to save it, and you open your component which re-binds mod+s, when you destroy
-your binding, the previous form's binding will kick back into gear.
+For example: If you're on a form which already uses mod+s to save it, and you open your component which re-binds mod+s, when you destroy your binding, the previous form's binding will kick back into gear.
 
 ## Available methods
 
@@ -56,7 +54,7 @@ this.$keys.bindGlobal(keys, fn);
 ```
 
 Creates a global keyboard shortcut binding.
-Works the same as `bind`, except that the shortcut will work inside text fields.
+Works the same as `bind`, except the shortcut will work inside text fields.
 
 ## Key sequences
 

@@ -10,7 +10,7 @@ stage: 4
 ---
 ## Server Requirements
 
-To run Statamic 3 you'll need a server that meets the following requirements. These are all pretty standard in most modern hosting platforms.
+To run Statamic 3 you'll need a server meeting the following requirements. These are all pretty standard in most modern hosting platforms.
 
 - PHP `>= 7.2.5`
 - BCMath PHP Extension

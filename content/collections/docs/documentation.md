@@ -11,9 +11,9 @@ template: home
 
 Your mission -- should you choose to accept it -- is to provide feedback whenever you get confused or stuck so we can smooth out, rewrite, or fix whatever tripped you up.
 
-We need the outside perspective that you can bring to help us get out of beta. There are **fundamental changes** to the way some features work, how to configure your site, the names of things, and so on.
+We need the outside perspective you can bring to help us get out of beta. There are **fundamental changes** to the way some features work, how to configure your site, the names of things, and so on.
 
-There are new features that need testing, documentation that needs reading (and writing and rewriting), and workflows that need trying.
+New features need testing, documentation needs reading (and writing and rewriting), and workflows need trying.
 
 If you're able and willing to help us with these things, we will be forever grateful. Statamic's successful future will have you to thank.
 
@@ -37,7 +37,7 @@ May not be part of Statamic core when we launch 3.0. Some features may be extrac
 
 💡If you have an **idea** on how to improve the way something works, open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
 
-🙋🏼‍♀️If you have a **feature request**, we ask that you save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things soon enough.
+🙋🏼‍♀️If you have a **feature request**, we ask you to save it for later. We're feature locked and don't want to push the launch out any further than necessary. There will be plenty of time for great new, _new_ things soon enough.
 
 🎁 If you're interested in _contributing_ to Statamic 3, please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first. Statamic isn't _Free Open Source Software_ so there are a couple of little caveats to be aware of first. Thank you for considering it!
 
@@ -47,7 +47,7 @@ Beta = Work In Progress. Before you start opening Github Issues, here are some n
 
 - The **Control Panel** is not fully responsive. Please only provide feedback on the Desktop breakpoint for now.
 - **The addon directory** is not enabled yet. We needed to wait until the GitHub repos were public before we finish it and open it to testing.
-- **These docs** are still a work in progress. Hang in there, you can see by the commit log that we're working around the clock on them. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch our brain dumps during development.
+- **These docs** are still a work in progress. Hang in there, you can see by the commit log we're working around the clock on them. If you're interested in more reading, we have even rougher [wip docs](https://statamic3-docs.netlify.com) we used to catch our brain dumps during development.
 - Using Statamic in an existing Laravel application can lead to unexpected edge cases. Bring them to us so we can smooth out this integration!
 
 <figure>

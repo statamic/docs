@@ -35,7 +35,7 @@ You can create, edit, and delete entries in the control panel _or_ filesystem, i
 
 ### Data Cascade
 
-Each entry has its own unique URL. When you're on that unique URL, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
+Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
 
 1. The entry
 2. The origin entry (if using localization)
@@ -45,7 +45,7 @@ If a value doesn't exist in one place, it'll check the next place, then the next
 
 ### Default collection data {#inject}
 
-Injecting data into your collection allows you providing default values for your entries. You can do that with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+Injecting data into your collection allows you providing default values for your entries with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
 ``` yaml
 inject:
@@ -109,7 +109,7 @@ Flick on the "Orderable" switch in a collection's settings and you'll have a dra
     <figcaption>You can tell these entries are orderable because of the way they are.</figcaption>
 </figure>
 
-> Order will take precedence when sorting. For example, if you make a dated collection **orderable**, that manual order will be the default order, not date. You can sort by date by specifying `sort="date"` on your [collection tag](/tags/collection).
+> Order will take precedence when sorting. For example, if you make a dated collection **orderable**, date will no longer be the default sort order. You still can sort by date by specifying `sort="date"` on your [collection tag](/tags/collection).
 
 ### Constraining Depth
 
@@ -215,7 +215,7 @@ taxonomies:
 You may mount a collection onto an entry as a way of saying "all these entries belong to this section". When you do this, two neat things happen:
 
 - The collection will share the URL of the entry.
-- If that entry is listed in a structure, you will see shortcut links to **add or edit** entries in that collection.
+- If the entry is listed in a structure, you will see shortcut links to **add or edit** entries in that collection.
 
 <figure>
     <img src="/img/mounted-collection.png" alt="Mounted collections in a structure">
@@ -244,7 +244,6 @@ revisions: true
 
 ## Localization
 
-When running a [multi-site](/multi-site) installation, you can have entries that exist in multiple sites with different content,
-or have entries exclusive to a site.
+When running a [multi-site](/multi-site) installation, you can have entries exist in multiple sites with different content, or have entries exclusive to a site.
 
 [Read about localizing entries](/knowledge-base/localizing-entries)

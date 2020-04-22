@@ -8,7 +8,7 @@ stage: 3
 
 ## Overview
 
-Revisions is Statamic's publishing workflow feature that provides different _states_ your entries can be in — published, unpublished, working copy, and revision.
+Revisions is Statamic's publishing workflow feature providing different _states_ for your entries — published, unpublished, working copy, and revision.
 
 <figure>
     <img src="/img/publish-revision.png" alt="Revisions" width="398">

@@ -7,7 +7,7 @@ id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
 ## Configuration
 
-Set which language you want to use by default in `config/app.php`. You may also choose a fallback locale in the event that new content and strings are added to the control panel before an accompanying translation has been updated.
+Set which language you want to use by default in `config/app.php`. You may also choose a fallback locale in case new content and strings are added to the control panel before an accompanying translation has been updated.
 
 ``` php
 'locale' => 'es',

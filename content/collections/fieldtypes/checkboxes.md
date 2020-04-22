@@ -1,8 +1,8 @@
 ---
 title: Checkboxes
-description: Boxes that you check!
+description: Boxes you check!
 intro: >
-  Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes that you check.
+  Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes you check.
 screenshot: fieldtypes/checkboxes.png
 options:
   -
@@ -14,13 +14,13 @@ options:
     name: options
     type: array
     description: >
-      Sets of key/value pairs that define the values and labels of the checkbox options.
+      Sets of key/value pairs define the values and labels of the checkbox options.
 stage: 2
 id: f922cb9b-6fc9-4249-adf4-59aa46285c13
 ---
 ## Overview
 
-The checkboxes fieldtype is a multiple choice input. It saves one or more options chosen from a preset list. In other words, they're boxes that you check.
+The checkboxes fieldtype is a multiple choice input. It saves one or more options chosen from a preset list. In other words, they're boxes you check.
 
 ## Configuring
 

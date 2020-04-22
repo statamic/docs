@@ -95,7 +95,7 @@ php please search:update name
 
 ## Drivers
 
-Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and [custom drivers](#) provide features and capabilities that go well beyond our core feature set.
+Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and [custom drivers](#) provide features and capabilities going well beyond our core feature set.
 
 ### Local
 
@@ -103,7 +103,7 @@ It uses JSON files to store indexes and will perform searches against them. It l
 
 ### Algolia
 
-Algolia is a full-featured search and navigation cloud service. They offer search that is relevant and fast with results in under 100 ms (99% under 20 ms), that get prioritized and displayed using the customizable ranking formula.
+Algolia is a full-featured search and navigation cloud service. They offer fast and relevant search with results in under 100 ms (99% under 20 ms). Results are prioritized and displayed using a customizable ranking formula.
 
 ``` php
 'default' => [
@@ -112,7 +112,7 @@ Algolia is a full-featured search and navigation cloud service. They offer searc
 ],
 ```
 
-To set up the Algolia driver, create an account on [their site](https://www.algolia.com/), drop your API credentials into your `.env`, and install the composer dependency. 
+To set up the Algolia driver, create an account on [their site](https://www.algolia.com/), drop your API credentials into your `.env`, and install the composer dependency.
 
 ``` env
 ALGOLIA_APP_ID=your-algolia-app-id
@@ -136,6 +136,6 @@ We recommend using the [Javascript implementation](https://www.algolia.com/doc/a
 
 You can add values into the defaults array, which will cascade down to all the indexes, regardless of which driver they use.
 
-Then you can add values into the drivers array, which will cascade down to any indexes that use the respective driver. A good use case for this is to share API credentials across indexes.
+Then you can add values into the drivers array, which will cascade down to any indexes using the respective driver. A good use case for this is to share API credentials across indexes.
 
 Of course, any values you add to an individual index will only be applied there.

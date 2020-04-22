@@ -60,8 +60,7 @@ Statamic.$config.get('foo'); // 'bar'
 
 ## Vue boots
 
-If you've built a Vue application, you'll know that any global components need to be registered _before_ the root
-Vue instance is created. Statamic provides a `booting` callback for that.
+If you've ever built a Vue application, you'll know that any global components need to be registered _before_ the root Vue instance is created. Statamic provides a `booting` callback for that.
 
 ``` js
 Statamic.booting(() => {
@@ -69,11 +68,9 @@ Statamic.booting(() => {
 })
 ```
 
-Then, the Vue app will boot, and you'll have a chance to do any other JavaScript work within a `booted` callback.
-This is almost the equivalent to putting things in a `created` hook of a Vue component.
+Then, the Vue app will boot and you'll have a chance to do other JavaScript work within a `booted` callback. This is almost equivalent to putting things in a `created` hook of a Vue component.
 
-This is where you'd do things like adding [Bard extensions](/extending/bard) and wiring up [Hooks](/extending/hooks)
-or [events](/extending/js-events).
+This is where you'd do things like adding [Bard extensions](/extending/bard) and wiring up [Hooks](/extending/hooks) or [events](/extending/js-events).
 
 ``` js
 Statamic.booted(() => {
@@ -82,5 +79,4 @@ Statamic.booted(() => {
 });
 ```
 
-> The Vue part of the lifecycle only applies to Control Panel requests. Since you have 100% control
-> over the front-end of your site, you can do whatever you want.
+> The Vue part of the lifecycle only applies to Control Panel requests. Since you have 100% control over the front-end of your site, you can do whatever you want.

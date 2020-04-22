@@ -9,11 +9,11 @@ stage: 1
 ---
 ## Clarification
 
-The **frontend** of a website is what users see and interact with in their browser. It includes everything from the text and images, to the various layouts and even RSS feeds that your readers and visitors consume.
+The **frontend** of a website is what users see and interact with in their browser. It includes everything from the text and images, to the various layouts and even RSS feeds your readers and visitors consume.
 
 > It's highly likely this isn't new information – most people who read these docs are developers with front-end experience. Please keep reading though! There's good info in here.
 
-When we refer to the frontend of a _Statamic_ site, we're talking about the templates and views, JavaScript and CSS files, media assets, and other resources that are used to render your final website.
+When we refer to the frontend of a _Statamic_ site, we're talking about the templates and views, JavaScript and CSS files, media assets, and other resources used to render your final website.
 
 The **backend** of a Statamic site is all of the PHP and Laravel code that you can customize and extend to add your own unique features and capabilities to your site.
 
@@ -28,10 +28,10 @@ In today's tech-driven ecosystem there are countless ways to build a website. Yo
 - Use [Webpack](https://webpack.js.org), [Laravel Mix][mix], or [Gulp](https://gulpjs.com) to compile your JavaScript and SCSS/LESS
 - Go for the [JAMStack](https://jamstack.org) approach and run a statically generated site without server-side processing
 - Build a standard Statamic site and deploy a static version to [Netlify](https://www.netlify.com)
-- Go skateboarding and stay away from computers and the nerds that use them
+- Go skateboarding and stay away from computers and their nerd owners
 - <span class="font-display">Kick it old-school and write your own HTML, plain CSS, and vanilla JavaScript</span>
 
-Just like the [honey badger](https://www.youtube.com/watch?v=4r7wHMg5Yjg), Statamic don't care. You can take any of these approaches or one of many others — including several that will be invented tomorrow and forgotten by spring.
+Just like the [honey badger](https://www.youtube.com/watch?v=4r7wHMg5Yjg), Statamic don't care. You can take any of these approaches or one of many others — including several that will be invented tomorrow and forgotten by autumn.
 
 **It's up to you.** Write or generate HTML somehow and let Statamic get it to the browser.
 
@@ -46,7 +46,7 @@ You'll be able to take advantage of all of our powerful, tightly coupled [tags](
 Let's take a quick look at what happens during a typical Statamic frontend request:
 
 1. User visits a URL.
-2. Statamic sees if there's some data matching that URL (eg. an [entry](/collections) or [route](/routing#statamic-routes)).
+2. Statamic sees if there's some data matching the URL (eg. an [entry](/collections) or [route](/routing#statamic-routes)).
 3. [Variables](/variables) for that data item get compiled.
 4. It loads the appropriate [view](/views) and passes in the variables.
 5. Contents of the rendered view is sent back to the user's browser.

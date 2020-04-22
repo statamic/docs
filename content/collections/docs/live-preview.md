@@ -7,7 +7,7 @@ id: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
 ---
 ## Overview
 
-The ability to preview what your content looks like in real-time is practically a super power. You can be confident that you won't have any layout surprises.
+The ability to preview what your content looks like in real-time is practically a super power. You can be confident you won't have any layout surprises.
 
 Live Preview will render your work-in-progress content with whichever template you have currently loaded. You can even switch between templates while previewing.
 
@@ -80,7 +80,7 @@ These values are available in your views, scoped into the `live_preview` array:
 
 ## Custom Render Methods
 
-If you need to customize how Live Preview renders your content — say you're using Statamic as a headless CMS or pushing data into mobile devices or kiosk applications or something equally fancy — here's how to go about doing that.
+If you need to customize how Live Preview renders your content — say you're using Statamic as a headless CMS or pushing data into mobile devices or kiosk applications or something equally fancy — follow these steps.
 
 By overriding the `LocalizedEntry` class's `toLivePreviewResponse()` method, you can return anything you want.
 

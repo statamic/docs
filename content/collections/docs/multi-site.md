@@ -53,7 +53,7 @@ php please multisite
 
 [Views](/views) can be organized into site directories.
 
-If a requested view exists in a subdirectory named after your site, it will load that instead. This lets you have site-specific views without needing to add any extra configuration.
+If a requested view exists in a subdirectory named after your site, it will load it instead. This lets you have site-specific views without needing to add any extra configuration.
 
 ``` php
 # config/statamic/sites.php

@@ -10,7 +10,7 @@ stage: 3
 ---
 ## What is YAML?
 
-YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut that down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
+YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut it down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
 
 YAML complies with the JSON spec, making it easy to interchange it with nearly any native data format. It consists of key and value pairs delimited by a colon then a space.
 
@@ -169,7 +169,7 @@ students:
     school: Flatside High
 ```
 
-Look at how pretty that data is.
+Look at how pretty the data is.
 
 ```.language-php
 $students = [
@@ -184,7 +184,7 @@ $students = [
 ];
 ```
 
-### Mixing and Matching {#mixing-and-matching}
+### Mixing and Matching
 
 You can build multidimensional arrays full of associative arrays, and vice versa.
 
@@ -209,7 +209,7 @@ title: Another Monday
 
 ## Explicit Typing
 
-YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string that looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
+YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
 
 ```.language-yaml
 a: 42                      # integer

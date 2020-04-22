@@ -54,7 +54,7 @@ Variables in your `.env` files are parsed as strings. In order to handle a wider
 | `null` | `(null) null` |
 | `(null)` | `(null) null` |
 
-If you need to define an environment variable with a value that contains space, you may do so by enclosing the value in double quotes.
+If you need to define an environment variable with a value containing a space, you may do so by enclosing the value in double quotes.
 
 ``` env
 APP_NAME="Gluten Free Surgical Masks For Llamas"

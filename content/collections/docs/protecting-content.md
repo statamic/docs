@@ -19,7 +19,7 @@ There are a number of drivers for protecting content available out of the box:
 
 You can also [create your own drivers](#custom-drivers).
 
-Whichever approach you choose, know that it is designed to help you out. We’ve tried to keep the syntax as simple as possible while allowing for flexibility. Because of this, if Statamic sees that you’ve set `protect`, but the scheme has been configured incorrectly, _all users will be denied_.
+Whichever approach you choose, know that it's designed to help you out. We’ve tried to keep the syntax as simple as possible while allowing for flexibility. Because of this, if Statamic sees you’ve set `protect`, but the scheme has been configured incorrectly, _all users will be denied_.
 
 > This feature only applies to the front-end of your site on pages routed through Statamic (entry URLs and routes defined in routes.php). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
 
@@ -27,7 +27,7 @@ Whichever approach you choose, know that it is designed to help you out. We’ve
 
 To protect a page, add a `protect` variable with a corresponding scheme name.
 
-For example, Statamic comes pre-configured with a `logged_in` protection scheme that will only show the content to authenticated users. You might have an entry like this:
+For example, Statamic comes pre-configured with a `logged_in` protection scheme that only shows the content to authenticated users. You might have an entry like this:
 
 ``` yaml
 ---
@@ -123,9 +123,9 @@ Override the view by creating `vendor/statamic/auth/protect/password.antlers.htm
 {{ /protect:password_form }}
 ```
 
-The `protect:password_form` tag is going to wrap everything between the tags in an HTML form tag that’s pointing to the appropriate place.
+The `protect:password_form` tag is going to wrap everything between the tags in an HTML form tag pointing to the appropriate place.
 
-The HTML of the form itself is up to you. The only requirement is that the password input name is `password`. Other than that, you can do anything you want.
+The HTML of the form itself is up to you. The only requirement is to name the password input `password`. You can do anything else you want.
 
 #### Custom Form URL
 
@@ -145,15 +145,15 @@ The `error` variable will be a string with the first error, useful if you want t
 The `errors` variable will be an array keyed by field names, each containing an array of messages. This is useful for _inline_ errors.
 
 ### Token
-When visiting a password protected page, Statamic will generate a token and append it to the form’s URL. Without a token, the form cannot function correctly. In the example above, you can see that the `no_token` boolean will be populated for you. This may happen if you visit the form URL directly.
+When visiting a password protected page, Statamic will generate a token and append it to the form’s URL. Without a token, the form cannot function correctly. In the example above, you can see the `no_token` boolean will be populated for you. This may happen if you visit the form URL directly.
 
 ### Invalid Passwords
 If someone submits a password and it isn’t valid, Statamic will redirect back with the appropriate validation error. Valid passwords can vary from piece of content to piece of content. This one form is smart enough to handle all password management between password-protected URLs.
 
 ### Valid Passwords
-A valid password is one that matches any of the passwords in the allowed list as configured on the page (or site-wide). This means that you can send three people three different passwords to access the same URL, each having their own way in. Additionally, you could also set just one password and send that to 100 people and they can all use the same password.
+A valid password is anything matching one of the passwords in the allowed list as configured on the page (or site-wide). This means that you can send three people three different passwords to access the same URL, each having their own way in. Additionally, you could also set just one password and send that to 100 people and they can all use the same password.
 
-As always with online security, be careful with who share passwords with or you'll be changing them often.
+As always with online security, be careful with who you share passwords with or you'll find yourself changing them often.
 
 > This protection method is only meant for short-term access control. For example, showing a client your progress without the public or to prevent Google from indexing a staging site. It's secure like a curtain over an open window: just good enough for passerbys.
 
@@ -220,9 +220,9 @@ Within this class, you have a number of properties available to you.
 
 ``` php
 $this->scheme; // The name of the scheme.
-$this->config; // The configuration array of that scheme.
+$this->config; // The configuration array of the scheme.
 $this->url;    // The URL the protection was triggered on.
-$this->data;   // The data object (eg. the Entry) that is being protected.
+$this->data;   // The data object (eg. the Entry) being protected.
 ```
 
 ### Registering the Driver

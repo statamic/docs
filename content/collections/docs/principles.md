@@ -9,7 +9,7 @@ stage: 2
 ---
 ## Opinionated but Configurable
 
-Statamic is an opinionated platform. We strive for smart defaults and patterns that help speed up workflow, enforce consistency, and make it easy to share code between projects.
+Statamic is an opinionated platform. We strive for smart defaults and patterns to help speed up workflow, enforce consistency, and make it easy to share code between projects.
 
 Following these conventions will make switching between multiple sites trivial, reducing learning curve. You'll know right where everything is.
 
@@ -31,7 +31,7 @@ Statamic operates in flat file "mode" by default, which reduces complexity compa
 - **Ridiculously simple** deployment and load balancing scenarios.
 - Lots, lots more.
 
-As your site scales, you can choose to move from the flat file driver to one that best suits your needs. **Deferring this decision prevents premature optimization and technical debt.**
+As your site scales, you can choose to move from the flat file driver to one best suiting your needs. **Deferring this decision prevents premature optimization and technical debt.**
 
 <figure>
     <img src="https://imgs.xkcd.com/comics/the_general_problem.png" alt="Premature Optimization comic by XKCD">

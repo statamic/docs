@@ -15,7 +15,7 @@ A modifer consists of a few parts. Let’s break it down.
 {{ variable | repeat:2 }}
 ```
 
-- The first part? That’s just a regular old variable: `variable`.
+- The first part? A regular old variable: `variable`.
 - Next up, the modifier's [handle](#handle): `repeat`
 - And finally, a parameter: `2`
 

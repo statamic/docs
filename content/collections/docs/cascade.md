@@ -7,7 +7,7 @@ id: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
 ---
 ## Overview
 
-One of the many benefits of working with a content management system is that it does a lot of work for you. One of Statamic's "behind-the-scenes" conventions is the way we inject and override data in your [views](/views), based on what URL you're on.
+Content management systems do a lot of work for you. It's the main reason people use them. One of Statamic's "behind-the-scenes" conventions is the way we inject and override data in your [views](/views), based on what URL you're on.
 
 ## Global Data
 
@@ -16,7 +16,7 @@ On any given Statamic-managed URL (clarifying this point for anyone building out
 Every view will have access to [system variables](/variables#variables#system-variables) like `site_url`, `segment_1`, `current_url`, [global variables](/globals), and anything injected via [View Model](/view-models).
 
 ## Entry Data
-Furthermore, each entry has its own unique URL. When you're on one of those unique URL, all of that particular entry's data will be available in your view. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults.
+Furthermore, each entry has its own unique URL. When you're on one of those unique URLs, all of an entry's data will be available in your view. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults.
 
 We call this fallback logic "the cascade", because the value of any given variable "cascades" down from the "top" until it finds where its defined. If a value doesn't exist in one place, it'll check the next place, then the next, and so on. If it doesn't find anything, the value is `null`.
 

@@ -25,7 +25,7 @@ You can also configure regular Laravel routes much like you would in a regular L
 
 ## Statamic Routes
 
-Statamic provides a `Route::statamic()` method that will do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view. layout, and so on.
+Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view. layout, and so on.
 
 ``` php
 Route::statamic('uri', 'view', ['foo' => 'bar']);

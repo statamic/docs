@@ -10,7 +10,7 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 ---
 ## Overview
 
-Antlers view files are often called templates. Any files in your `resources/views` directory that use the `.antlers.html` file extension will be parsed with the Antlers engine.
+Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
 
 
 ## Antlers Syntax
@@ -140,7 +140,7 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 {{ /array_var }}
 ```
 
-> You **cannot** mix and match modifier styles.  
+> You **cannot** mix and match modifier styles.
 > ie. This totally won't work: `{{ var | foo | bar="baz" }}`
 
 ### Escaping Data
@@ -200,7 +200,7 @@ When all you need to do is display a variable and set a fallback when it’s fal
 
 ### Conditional Variable Fallbacks
 
-What if you want to combine an `is set` check with a ternary operator? We've got that covered too.
+What if you want to combine an `is set` check with a ternary operator? No problem.
 
 ```
 // Short and sweet
@@ -282,7 +282,7 @@ Use this method if you need to prevent entire code blocks from being parsed.
 
 ## Syntax Highlighting
 
-Syntax highlighting packages are available for most of the popular IDEs. Make life that much sweeter.
+Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter.
 
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)

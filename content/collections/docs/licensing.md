@@ -27,7 +27,7 @@ This happens just once an hour and only when logged into the control panel. Chan
 
 A Statamic license entitles you to run one install on one domain and unlimited subdomains. You will need to specify the domain you plan to use from the license area of your Statamic Account. This domain will be treated as a wildcard so you can use subdomains for locales, testing, and other purposes.
 
-If you attempt to use the site from another domain you will get a notification inside the Control Panel informing you that your key is being used on more than one site and be prompted to make the necessary changes. You may change the domain associated with a license at any time.
+If you attempt to use the site from another domain you will get a notification inside the Control Panel informing you thusly to make the necessary changes. You may change the domain associated with a license at any time on [statamic.com](https://statamic.com).
 
 ## Public Domains
 When Statamic calls home we use a series of rules to determine if the domain it’s running on is considered “public”.

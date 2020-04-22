@@ -1,6 +1,6 @@
 ---
 title: Structures
-intro: A structure is a hierarchy of items that are used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
+intro: A structure is a hierarchy of items used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568558416
@@ -41,9 +41,9 @@ The first type of structure is for defining the URL structure for a collection. 
 
 ## Navigation (or "Navs") {#navigation}
 
-Freestyle navigation structures exist to manage a nav out of entries that already exist, as well as freeform links and text (non-link) elements.
+Freestyle navigation structures exist to manage a nav out of existing entries, as well as freeform links and text (non-link) elements.
 
-- You can reference entries, enter hardcoded URLs (internal or external), or enter simple text blocks (that can be used as section headers for dropdown navs, for example).
+- You can reference entries, enter hardcoded URLs (internal or external), or enter simple text blocks (which can be used as section headers for dropdown navs, for example).
 - You can select which collections' entries will available to choose from.
 - Any referenced entries will use the URLs defined by the collection, regardless of the position in the Structure.
 - You can place the same entry multiple times.

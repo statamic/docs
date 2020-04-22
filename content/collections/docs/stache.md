@@ -8,7 +8,7 @@ id: 499d808b-18be-42e9-acd0-91bcdff73193
 ---
 ## Overview
 
-Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system that is then stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content or settings change, or when updates are deployed to a production server.
+Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content or settings change, or when updates are deployed to a production server.
 
 <figure class='bg-mint'>
     <img src="/img/tom-selleck-lg.jpg" alt="Tom Selleck as Magnum P.I.">
@@ -33,9 +33,9 @@ When you try to access an item, under the hood the Stache will watch for any mod
 
 ## Stores
 
-The Stache is comprised of different stores that are responsible for fetching its own set of data.
+The Stache is comprised of different stores responsible for fetching their own data sets.
 
-For instance, if you wanted to get a `Collection` object, the `CollectionStore` would be in charge. It would know that any yaml file inside `content/collections` would translate into one.
+For instance, if you wanted to get a `Collection` object, the `CollectionStore` would be in charge. It knows that any YAML file inside `content/collections` translates into one.
 
 There are also stores for globals, structures, taxonomies, entries (grouped by collection), terms (grouped by taxonomy), asset containers, and users.
 

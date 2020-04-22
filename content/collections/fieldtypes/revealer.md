@@ -1,7 +1,7 @@
 ---
 title: Revealer
-description: A button that allows you to reveal conditional fields.
-intro: The revealer is a simple button that allows you to reveal conditional fields without the need to save any additional data.
+description: A button that reveals conditional fields like magic.
+intro: The revealer is a simple button that reveals conditional fields without saving any additional data.
 id: 54066363-7dec-431c-86c6-7e9353380ef5
 screenshot: fieldtypes/revealer.gif
 stage: 3

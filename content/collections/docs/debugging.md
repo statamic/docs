@@ -25,7 +25,7 @@ Statamic will try to detect why you're receiving a specific exception and provid
 
 ## Debug Bar
 
-The debug bar is a convenient way to explore many of the things that are happening in any given page request. You can see data Statamic is fetching, which views are being rendered, information on the current route, available variables, user's session, request data, and more.
+The debug bar is a convenient way to explore many of the things happening in any given page request. You can see data Statamic is fetching, which views are being rendered, information on the current route, available variables, user's session, request data, and more.
 
 <figure>
     <img src="/img/debug-bar.png" alt="Debug bar showing available variables">
@@ -34,7 +34,7 @@ The debug bar is a convenient way to explore many of the things that are happeni
 
 ### Exploring variables
 
-Any variables that are defined in a [blueprint](/blueprints) will be shown as a `Value` object in the Variables tab. They can be expanded to see their "raw" original data, as well what fieldtype they're managed by, and their augmented value.
+Any variables defined in a [blueprint](/blueprints) will be shown as a `Value` object in the Variables tab. They can be expanded to see their "raw" original data, as well what fieldtype they're managed by, and their augmented value.
 
 - Learn more about [augmentation](/fields#augmentation).
 

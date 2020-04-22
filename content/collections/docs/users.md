@@ -1,6 +1,6 @@
 ---
 title: Users
-intro: Users are the member accounts to your site or application. What a user can do with that account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
+intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645051
@@ -53,7 +53,7 @@ To customize these fields, edit the included `user` [blueprint](/blueprints)  an
 
 ## Permissions
 
-A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for that user to access the control panel, create, edit, or publish content, create users, and so on.
+A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for a user to access the control panel, create, edit, or publish content, create users, and so on.
 
 Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `resources/users/roles.yaml`.
 
@@ -96,7 +96,7 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 
 ### Super Users
 
-Super Admin accounts are special accounts that **have access and permission to everything**, including things that are reserved just for super users, like the ability to _create more super users_. It's important that we prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
+Super Admin accounts are special accounts with **access and permission to everything**. This includes things reserved only for super users like the ability to _create more super users_. It's important to prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
 
 ## User Groups
 
@@ -110,7 +110,7 @@ Let's face it. People forget their passwords. A lot, and often. Statamic support
 
 You can also create your own password reset pages for front-end users by using the [user:forgot_password_form](/tags/user-forgot_password_form) tag.
 
-The user will receive an email with a temporary, single-use token that will let them set a new password and log in again.
+The user will receive an email with a temporary, single-use token allowing them to set a new password and log in again.
 
 ## Storing User Records {#storage}
 

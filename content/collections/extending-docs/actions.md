@@ -34,7 +34,7 @@ The `run` method is for executing the task. You will be provided with a collecti
 
 ## Registering an Action
 
-Any action classes that exist in the `App\Actions` namespace will be automatically registered.
+Any action classes in the `App\Actions` namespace will be automatically registered.
 
 If you would like to store them elsewhere, you can manually register an action in a service provider by calling the static `register` method on your action class.
 
@@ -96,7 +96,7 @@ You may find this useful when building confirmation dialog fields:
 
 By default, an action will prompt you with an "Are you sure?" dialog.
 
-However, you're free to add fields to the action that'll be displayed in that confirmation dialog. Do that by adding a `$fields` property with a fieldset-style definition.
+You're free to add additional fields to the action by adding a `$fields` property with a fieldset-style definition. Each will be added to the confirmation dialog.
 
 ``` php
 protected $fields = [
