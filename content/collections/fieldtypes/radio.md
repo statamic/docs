@@ -1,6 +1,6 @@
 ---
 title: Radio
-description: 'Circles that you click. You can only choose one.'
+description: 'Circles you click. You can only choose one.'
 intro: |
   Radio buttons. The "you can only have one" variation of checkboxes. Create some options and let your users select one and only one. May they choose wisely.
 
@@ -15,7 +15,7 @@ options:
   -
     name: options
     type: array
-    description: 'Sets of key/value pairs that define the values and labels of the radio options.'
+    description: 'Sets of key/value pairs define the values and labels of the radio options.'
 stage: 4
 id: 0b662f17-1cd1-4c64-a705-980a2ca5aab4
 ---
