@@ -198,11 +198,11 @@ In your service provider, you may register any number of stylesheets or scripts 
 
 ``` php
 protected $scripts = [
-    __DIR__.'/resources/js/example.js'
+    __DIR__.'/../resources/js/example.js'
 ];
 
 protected $stylesheets = [
-    __DIR__.'/resources/css/example.css'
+    __DIR__.'/../resources/css/example.css'
 ];
 ```
 
@@ -228,7 +228,7 @@ You may also mark generic assets for publishing by providing a `publishables` ar
 
 ``` php
 protected $publishables = [
-    ___DIR__.'/resources/images' => 'images',
+    __DIR__.'/../resources/images' => 'images',
 ];
 ```
 
@@ -240,9 +240,9 @@ You may register three types of routes in your service provider.
 
 ``` php
 protected $routes = [
-    'cp' => __DIR__.'/routes/cp.php',
-    'actions' => __DIR__.'/routes/actions.php',
-    'web' => __DIR__.'/routes/web.php',
+    'cp' => __DIR__.'/../routes/cp.php',
+    'actions' => __DIR__.'/../routes/actions.php',
+    'web' => __DIR__.'/../routes/web.php',
 ];
 ```
 
