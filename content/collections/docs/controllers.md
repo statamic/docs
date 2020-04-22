@@ -1,6 +1,6 @@
 ---
 title: Controllers
-intro: Controllers group related Laravel request handling logic into single classes stored in the `app/Https/Controllers/` directory. Use them to build frontend areas or full custom apps, the Laravel way!
+intro: Controllers group related Laravel request handling logic into single classes stored in the `app/Http/Controllers/` directory. Use them to build frontend areas or full custom apps, the Laravel way!
 id: 5e848460-9bbc-449e-8edd-182d918163ff
 stage: 4
 blueprint: page
