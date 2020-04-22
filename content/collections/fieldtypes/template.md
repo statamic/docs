@@ -17,4 +17,4 @@ options:
 
 This is generally used as a "system" field to control an entry's template. It points to the `resources/views` directory and will list all available templates therein.
 
-## Options
+## Config Options
