@@ -326,6 +326,23 @@ protected $middleware = [
 ];
 ```
 
+## Views
+
+Any views located in your `resources/views` directory will automatically available to use in your code using your package name as the namespace.
+
+``` files
+/
+|-- src/
+|-- resources/
+    `-- resources/
+        `-- views/
+            `-- foo.blade.php
+```
+
+``` php
+return view('my-addon::foo'); // assuming your package is named vendor/my-addon
+```
+
 ## Events
 
 You may register any number of event listeners or subscribers the same way you would in a traditional Laravel application's EventServiceProvider – by using a `$listen` or `$subscribes` array:
