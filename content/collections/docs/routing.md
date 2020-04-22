@@ -17,22 +17,15 @@ If you want to defer **everything** to explicit Laravel routes (perhaps you're u
 ```
 
 ## Content Routes
-
-- [Collections](/collections#routing) - each entry often has its own URL.
-- [Structures](/structures#routing) can define explicit URLs that are routed to specific templates.
-- [Taxonomies](/taxonomies#routing) can have their own URLs.
+[Collection entries](/collections#routing) and [taxonomy terms](/taxonomies#routing) can have their own URLs as defined by their own flexible route patterns in their respective configuration areas.
 
 ## Custom Routes
 
-While URLs will be generated for your content and routed automatically, you may wish to create your own routes.
-
-You're free to configure your own regular Laravel routes like you would in a regular app. Plop them in your `routes/web.php` file. Use closures, or point to a [controller](/controllers). This is just [standard Laravel stuff](https://laravel.com/docs/routing).
+You can also configure regular Laravel routes much like you would in a regular Laravel application in `routes/web.php`. You can use closures, point to a [controller](/controllers), and so on. This is [standard Laravel stuff](https://laravel.com/docs/routing) and the standard Laravel docs apply.
 
 ## Statamic Routes
 
-While dropping a route in your `routes/web.php` will work just fine, you're typically in charge of all the logic, like preparing variables, getting globals if you need them, and fetching the view.
-
-Statamic provides a `Route::statamic()` method that will handle that for you.
+Statamic provides a `Route::statamic()` method that will do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view. layout, and so on.
 
 ``` php
 Route::statamic('uri', 'view', ['foo' => 'bar']);
@@ -94,8 +87,8 @@ Route::permanentRedirect('/here', '/there');
 
 ## Error Pages
 
-Whenever an error is encountered, a view will be rendered based on the status code. It will look for the view in `resources/views/errors/{status}.antlers.html`.
+Whenever an error is encountered, a view will be rendered based on the status code. It will look for the view in `resources/views/errors/{status_code}.antlers.html`.
 
-Your standard layout will be used. You can use a custom layout for errors by making sure a `layout.antlers.html` exists in the errors directory.
+You can use a custom layout for errors by creating a `resources/views/errors/layout.antlers.html` view.
 
-Statamic will automatically render 404 pages for any unhandled routes.
+Statamic will automatically render `404` pages for any unhandled routes.
