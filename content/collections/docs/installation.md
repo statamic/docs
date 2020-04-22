@@ -12,8 +12,10 @@ stage: 4
 If you want to start from scratch, use Composer to create a project based off the [`statamic/statamic`](https://github.com/statamic/statamic) starter site.
 
 ``` bash
-composer create-project statamic/statamic my-site --prefer-dist --stability=dev
+composer create-project statamic/statamic {change_me} --prefer-dist --stability=dev
 ```
+
+_(hint: replace `{change_me}` with whatever you'd like to name your site.)_
 
 ### Starter Kits
 
