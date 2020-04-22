@@ -165,6 +165,7 @@ resources/views/
 
 ## Additional Reading
 
+- If you want to learn more about how data gets into your view, check out [The Cascade](/cascade)
 - If you'd like to manipulate your data _before_ it arrives in your view, check out [View Models](/view-models).
 - If you want to use a third-party template engine (like Twig), check out [Other Template Engines](/other-template-engines).
 - If you want to fetch data from Laravel or do other more programmery-things, you'll want to do that from a [Controller](/controllers).
