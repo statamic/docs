@@ -40,7 +40,7 @@ By default, the first site is named `default`, but feel free to rename it.
     - Take the `root` and `tree` variables, and move them in a file in a subdirectory named after the first site's handle. (eg. `content/structures/pages.yaml` to `content/structures/default/pages.yaml`)
     - Add a `sites` array to the root structure's yaml file with each site you want the structure to be available in.
 4. For each global set:
-    - Take the values inside the `data` array, and move them to the top level in a file in a subdirectory named after the first site's handle. (eg. `content/structures/pages.yaml` to `content/structures/default/pages.yaml`)
+    - Take the values inside the `data` array, and move them to the top level in a file in a subdirectory named after the first site's handle. (eg. `content/globals/pages.yaml` to `content/globals/default/pages.yaml`)
     - Add a `sites` array to the root global's yaml file with each site you want the structure to be available in.
 5. Clear the cache:
   ``` cli
