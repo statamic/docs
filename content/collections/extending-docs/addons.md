@@ -343,6 +343,15 @@ Any views located in your `resources/views` directory will automatically availab
 return view('my-addon::foo'); // assuming your package is named vendor/my-addon
 ```
 
+If you want to customize the namespace, you can set the `$viewNamespace` property on your provider:
+
+``` php
+protected $viewNamespace = 'custom';
+```
+``` php
+return view('custom::foo');
+```
+
 ## Events
 
 You may register any number of event listeners or subscribers the same way you would in a traditional Laravel application's EventServiceProvider – by using a `$listen` or `$subscribes` array:
