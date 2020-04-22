@@ -246,23 +246,21 @@ protected $routes = [
 ];
 ```
 
-**NOTE**: There are several reserved named parameters: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form` & `user`. You can use them in your routes, but they will continue to behave as defined in Statamic. For example, if you use `{site}` as a named parameter in your route, Statamic will try to find a local "site" with that handle.
+> There are several reserved named parameters: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form` & `user`. You can use them in your routes but they will continue to behave as defined in Statamic. For example, using `{site}` as a named parameter in your route will be matched to the local "site" matching that handle.
 
 #### Control Panel Routes
 
-Control Panel routes will be prefixed by `/cp` (or whatever the cp route has been configure) and will have authorization automatically applied.
+Control Panel routes will be automatically prefixed by `/cp` (or whatever URL the control panel has been configured to use) and will have authorization applied.
 
-We recommend that you prefix your routes with your addon's name, but we've purposely left it off to give you more flexibility.
+We recommend prefixing routes with your addon's name but we didn't enforce this explicitly to give you a bit more flexibility.
 
 #### Action Routes
 
-Action routes will be prefixed by `/!/addon-name` and are generally intended as front-end "actions" that your addon
-may expose without being a prominent section of the website. For example, somewhere to process a form submission.
+Action routes will be prefixed by `/!/addon-name` and are generally intended as front-end "actions" that your addon may expose without being a prominent section of the website. For example, somewhere to process a form submission.
 
 #### Web Routes
 
-Web routes have no prefix and no Statamic middleware attached. They will be added at the root level, as if you were adding
-them to a standard Laravel app's `routes/web.php` file, giving you complete control. However, as a Laravel route, they will have the `web` middleware attached.
+Web routes have no prefix and no Statamic middleware attached. They will be added at the root level, as if you were adding them to a standard Laravel app's `routes/web.php` file, giving you complete control. However, as a Laravel route, they will have the `web` middleware attached.
 
 ### Writing Routes
 
