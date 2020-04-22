@@ -10,15 +10,15 @@ id: 821a636f-2ebd-4297-b459-47e702f899df
 ---
 ## Overview
 
-You can press `enter`, `tab`, or `,` to add a tag, navigate through tags with your arrow keys; use `backspace` or click the `x` to delete tags, and drag and drop tags to rearrange them. That's all there is to it.
+Press `enter`, `tab`, or `,` to add a tag. Click an <span class="bg-grey-200 text-grey-600 rounded font-bold px-1">×</span> to remove one. That's  all there is to it.
 
 ## Data Storage
 Your tags will get saved as a simple YAML list, like this:
 
 ``` .language-yaml
-- delicious
-- nutritious
-- part of a balanced breakfast
+- applesauce
+- garbage pants
+- socks
 ```
 
 ## Templating
@@ -26,7 +26,7 @@ Your tags will get saved as a simple YAML list, like this:
 Loop through the array items to display each item's `value`.
 
 ```
-<h1>This cereal is:</h1>
+<h1>I've heard rumors of:</h1>
 <ul>
   {{ tags }}
     <li>{{ value }}</li>
@@ -35,11 +35,11 @@ Loop through the array items to display each item's `value`.
 ```
 
 ``` output
-<h1>This cereal is:</h1>
+<h1>I've heard rumors of:</h1>
 <ul>
-  <li>delicious</li>
-  <li>nutritious</li>
-  <li>part of a balanced breakfast</li>
+  <li>applesauce</li>
+  <li>garbage pants</li>
+  <li>socks</li>
 </ul>
 ```
 
