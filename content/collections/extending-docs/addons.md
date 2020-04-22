@@ -246,8 +246,6 @@ protected $routes = [
 ];
 ```
 
-> There are several reserved named parameters: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form` & `user`. You can use them in your routes but they will continue to behave as defined in Statamic. For example, using `{site}` as a named parameter in your route will be matched to the local "site" matching that handle.
-
 #### Control Panel Routes
 
 Control Panel routes will be automatically prefixed by `/cp` (or whatever URL the control panel has been configured to use) and will have authorization applied.
@@ -300,6 +298,23 @@ public function boot()
 ```
 
 Other than that, you're free to write routes [as per any Laravel application](https://laravel.com/docs/5.6/routing).
+
+### Route Model Binding
+
+Statamic uses [route model binding](https://laravel.com/docs/7.x/routing#route-model-binding) to automatically convert some route parameters into usable objects.
+
+Words that align with core Statamic concepts will automatically be converted to their appropriate objects: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form`, and `user`
+
+You're free to use these words as your route parameters, but be aware that they will automatically attempt to convert to the respective objects. For example:
+
+``` php
+public function example(Request $request, $entry)
+{
+    // Given a route of "/example/{entry}", when visiting "/example/123"
+    // $entry will be an Entry object with an ID of 123.
+    // There will be a 404 if an entry with an ID of 123 doesn't exist.
+}
+```
 
 ## Middleware
 
