@@ -41,7 +41,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 
 ### Windows: WAMP
 
-We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We don’t use Windows ourselves though so we can’t vouch for it personally.
+[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion.
 
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
@@ -49,3 +49,4 @@ We hear [WAMP][wamp] is a good choice for those of the Windows persuasion. We do
 [homestead]: https://laravel.com/docs/6.x/homestead
 [valet]: https://laravel.com/docs/valet
 [wamp]: http://www.wampserver.com/
+[laragon]:https://laragon.org/
