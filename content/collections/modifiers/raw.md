@@ -25,7 +25,6 @@ markdown_field: >
 ### The Template
 ```
 {{ markdown_field | raw }}
-{{ markdown_field }}
 ```
 
 ### The Output
