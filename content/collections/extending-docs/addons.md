@@ -80,15 +80,9 @@ In your project root's `composer.json`, add your package to the `require` and `r
 
 ``` json
 {
-    ...
-
     "require": {
-        ...,
         "acme/example": "*"
     },
-
-    ...
-
     "repositories": [
         {
             "type": "path",
