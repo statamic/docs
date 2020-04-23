@@ -336,6 +336,31 @@ Available middleware groups are:
 | `statamic.cp` | All control panel requests (even ones not protected by authentication, like the login page).
 | `statamic.cp.authenticated` | Control panel routes behind authentication. Anything in there can assume there will be an authenticated user available. These will also have the `statamic.cp` middleware applied.
 
+## Views
+
+Any views located in your `resources/views` directory will automatically available to use in your code using your package name as the namespace.
+
+``` files
+/
+|-- src/
+|-- resources/
+    `-- resources/
+        `-- views/
+            `-- foo.blade.php
+```
+
+``` php
+return view('my-addon::foo'); // assuming your package is named vendor/my-addon
+```
+
+If you want to customize the namespace, you can set the `$viewNamespace` property on your provider:
+
+``` php
+protected $viewNamespace = 'custom';
+```
+``` php
+return view('custom::foo');
+```
 
 ## Events
 
