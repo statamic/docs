@@ -338,19 +338,20 @@ Available middleware groups are:
 
 ## Views
 
-Any views located in your `resources/views` directory will automatically available to use in your code using your package name as the namespace.
+Any views located in your `resources/views` directory will automatically be available to use in your code using your package name as the namespace.
 
 ``` files
 /
 |-- src/
-|-- resources/
+`-- resources/
     `-- resources/
         `-- views/
             `-- foo.blade.php
 ```
 
 ``` php
-return view('my-addon::foo'); // assuming your package is named vendor/my-addon
+// assuming your package is named vendor/my-addon
+return view('my-addon::foo');
 ```
 
 If you want to customize the namespace, you can set the `$viewNamespace` property on your provider:
