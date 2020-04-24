@@ -110,7 +110,7 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
 
 ```yaml
 -
-  handle: favorite_foods
+  handle: favorite_food
   field:
     type: text
 -
@@ -118,13 +118,13 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
   field:
     type: text
     if:
-      favorite_foods: 'contains pizza'
+      favorite_food: 'contains pizza'
 -
   handle: favorite_italian_singer
   field:
     type: text
     if:
-      favorite_foods: 'contains_any pizza, lasagna'
+      favorite_food: 'contains_any pizza, lasagna'
 ```
 
 ## Advanced Comparisons
