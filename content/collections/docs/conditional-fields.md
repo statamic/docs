@@ -53,7 +53,7 @@ If you need to show a field based on whether another field is empty or not, you 
       favorite_food: not empty
 ```
 
-## Equality Comparison
+## Equality
 
 Maybe you might wish to show various fields based on the value of a select field:
 
@@ -79,7 +79,55 @@ Maybe you might wish to show various fields based on the value of a select field
       post_type: video
 ```
 
-## Advanced Comparison
+## Contains
+
+If you are dealing with an array of options, you can conditionally show fields when an array contains specific value(s) using `contains` or `contains_any`:
+
+```yaml
+-
+  handle: favorite_foods
+  field:
+    type: checkboxes
+    options:
+      - pizza
+      - lasagna
+      - oatmeal
+-
+  handle: favorite_topping
+  field:
+    type: text
+    if:
+      favorite_foods: 'contains pizza'
+-
+  handle: favorite_italian_singer
+  field:
+    type: text
+    if:
+      favorite_foods: 'contains_any pizza, lasagna'
+```
+
+If you are dealing with a string value, `contains` and `contains_any` will perform sub-string checks instead:
+
+```yaml
+-
+  handle: favorite_foods
+  field:
+    type: text
+-
+  handle: favorite_topping
+  field:
+    type: text
+    if:
+      favorite_foods: 'contains pizza'
+-
+  handle: favorite_italian_singer
+  field:
+    type: text
+    if:
+      favorite_foods: 'contains_any pizza, lasagna'
+```
+
+## Advanced Comparisons
 
 For more advanced comparisons, several operators and right-hand-side literals/options are available to you.  For example, we could show an `email` field if age is greater than or equal to `16`:
 
@@ -108,7 +156,8 @@ Available operators include:
 | `>=` | Greater than or equal to comparison. |
 | `<` | Less than comparison. |
 | `<=` | Less than or equal to comparison. |
-| `contains` `includes` | Check if array contains a value, or if a string contains a sub-string. |
+| `contains` `includes` | Check if array contains a value, or if a string contains a sub-string value. |
+| `contains_any` `includes_any` | Check if array contains any of a comma-separated list of values, or if a string contains any of a comma-separated list of sub-strings values. |
 
 Available right-hand-side literals/options include:
 
@@ -119,7 +168,7 @@ Available right-hand-side literals/options include:
 | `false` | Will be evaluated as a literal `false`. |
 | `empty` | Will intelligently check if value is empty. |
 
-## Multiple Field
+## Multiple Conditions
 
 If you define multiple field conditions, all conditions need to pass for the field to be shown (or hidden if you use the `unless` / `hide_when` parent key).  For example, the following will show the field when `this_field` is `bacon` *__AND__* `that_field` is `cheeseburger`:
 
@@ -137,7 +186,7 @@ if_any:
   that_field: cheeseburger
 ```
 
-## Nested Field
+## Nested Fields
 
 You may use dot notation to access nested values when necessary.  For example, maybe you would like to show a field when an `array` fieldtype's `country` value is `Canada`:
 
