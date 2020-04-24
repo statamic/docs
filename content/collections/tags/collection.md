@@ -94,6 +94,11 @@ parameters:
     name: locale
     type: string
     description: Show the retrieved content in the selected locale.
+  -
+    name: redirects|links
+    type: 'boolean *false*'
+    description: >
+      By default, entries with redirects will be filtered out. Set this to `true` to include them.
 variables:
   -
     name: first

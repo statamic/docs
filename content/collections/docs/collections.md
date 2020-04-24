@@ -190,6 +190,8 @@ The following redirects are supported:
 
 Any other strings will be assumed to be a relative link. (eg. if the page URL is `/my/page` and you have `redirect: is/here`, you will be redirected to `/my/page/is/here`)
 
+> Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
+
 ### Entry Link Blueprint
 
 When a Collection is structured, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
