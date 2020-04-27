@@ -28,7 +28,7 @@ parameters:
   -
     name: offset
     type: integer
-    description: Skip a specific number of results. Useful for if you want to pull the first one out as a hero imagine or something similar.
+    description: Skip a specific number of results. Useful for if you want to pull the first one out as a hero image or something similar.
   -
     name: sort
     type: string
