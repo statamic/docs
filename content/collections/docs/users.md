@@ -19,7 +19,7 @@ The most common and obvious reason users exist are to have the means to access t
 
 ## Creating Users
 
-The easiest way to create your **first user** is by running `make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
+The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
 
 <figure>
     <img src="/img/make-user.png" alt="Make User command" class="shadow-lg-teal rounded">
