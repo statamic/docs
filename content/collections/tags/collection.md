@@ -109,12 +109,12 @@ variables:
     type: boolean
     description: Is this the last item in the loop?
   -
-    name: index
+    name: count
     type: integer
     description: >
       The number/index of current iteration in the loop, starting from 1
   -
-    name: zero_index
+    name: index
     type: integer
     description: >
       The number/index of current iteration in the loop, starting from 0

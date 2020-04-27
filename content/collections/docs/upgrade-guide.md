@@ -66,6 +66,7 @@ First, let's look at the breaking changes on the core application side. These wo
 - Templates (views) are now located in the `resources/views` instead of separate `templates`, `layouts`, and `partials` directories.
 - Removed `theme:partial` tag in favor of `partial`.
 - The `content` field is no longer automatically parsed for Antlers. You can flag it for parsing in the [blueprint](/blueprints). (As well as any other fields)
+- Inside loops `index` now starts at `0`, `count` starts at `1`, and `zero_index` is no more.
 
 ### Collections
 
@@ -342,6 +343,6 @@ Suggest modes have been replaced by [customized relationship fieldtypes](/guide/
 
 #### Statamic\API\Zip
 
-- Removed because core no longer uses it. If you need it, let us know.
+- Removed because core no longer uses it.
 
 [composer]: https://getcomposer.org
