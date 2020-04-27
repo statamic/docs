@@ -19,7 +19,8 @@ a, button {
     @apply h-7 bg-yellow rounded border-2 shadow-md px-4 font-display text-sm font-bold antialiased whitespace-no-wrap transition;
 
     &:hover {
-        @apply shadow;
+        @apply shadow relative;
+        transform: translate(2px, 2px);
     }
     &:focus {
         @apply outline-none shadow-outline;
