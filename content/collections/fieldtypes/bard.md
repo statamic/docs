@@ -127,11 +127,11 @@ An alternative approach (for those who like DRY or small templates) is to create
 ```language-files
 partials/
 |-- sets/
-|   |-- _gallery.antlers.html
-|   |-- _image.antlers.html
-|   |-- _poll.antlers.html
-|   |-- _text.antlers.html
-|   |-- _video.antlers.html
+|   |-- gallery.antlers.html
+|   |-- image.antlers.html
+|   |-- poll.antlers.html
+|   |-- text.antlers.html
+|   |-- video.antlers.html
 ```
 
 ## Extending Bard
