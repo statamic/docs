@@ -29,11 +29,11 @@ Taxonomy routes are automatically created for you.
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
   - Accessible at `/{taxonomy slug}` (eg. `/tags`)
-  - The `{taxonomy}.index` view will be used (eg. `tags.index`)
+  - The `{taxonomy}/index` view will be used (eg. `tags/index.antlers.html`)
 - **Global Term details**
   - Display the details of the term, so you can list the entries.
   - Accessible at `/{taxonomy slug}/{term slug}` (eg. `/tags/retrowave`)
-  - The `{taxonomy}.show` view will be used. (eg. `tags.show`)
+  - The `{taxonomy}/show` view will be used. (eg. `tags/show.antlers.html`)
 
 For each taxonomy [assigned to a collection](#assigning-to-collections), and when [the collection has been mounted](/guide/collections.html#mounting), you will also get these routes:
 
@@ -41,12 +41,12 @@ For each taxonomy [assigned to a collection](#assigning-to-collections), and whe
   - Display the details of the taxonomy, so you can list the terms.
   - Only terms that have been used in entries in the collection will be displayed.
   - Accessible at `/{collection url}/{taxonomy slug}` (eg. `/blog/tags`)
-  - The `{taxonomy}.index` view will be used (eg. `tags.index`)
+  - The `{taxonomy}/index` view will be used (eg. `tags/index.antlers.html`)
 - **Collection Term details**
   - Display the details of the term, so you can list the entries.
   - Only entries that exist in the collection will be displayed.
   - Accessible at `/{collection url}/{taxonomy slug}/{term slug}` (eg. `/blog/tags/retrowave`)
-  - The `{taxonomy}.show` view will be used. (eg. `tags.show`)
+  - The `{taxonomy}/show` view will be used. (eg. `tags/show.antlers.html`)
 
 ## Term Values and Slugs
 
