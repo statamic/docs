@@ -48,6 +48,17 @@ After Statamic is installed, you'll have the `content/`, `users/`, and `config/s
 
 Your explicit routes will take precedence and anything not caught by your app will run through Statamic and will work as documented. Enjoy!
 
+## Make a new user to use the control panel (optional)
+If you want to use the control panel add a new superuser first:
+
+``` bash
+php please make:user
+```
+Read more information about [creating a user](/users#creating-users).
+
+## Open the control panel (optional)
+Go to http://cool-site.test/cp or whatever you set it to.
+
 ## Updating
 
 From within your project, use Composer to update the Statamic CMS package:
