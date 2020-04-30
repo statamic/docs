@@ -120,6 +120,8 @@ Fieldsets technically still exist, although they are now a smaller, companion fe
 - `form`
     - Replaced `name` element in `fields` array with `handle`.
     - Replaced `field` element in `fields` array with a [renderable view](/tags/form).
+- `form:create`
+    - `attr` is no longer a parameter, add them directly to the [tag](/tags/form-create)
 - `form:submissions`
     - No longer inherits parameters from the `collection` tag.
 - `relate`
