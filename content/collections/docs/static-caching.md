@@ -11,7 +11,7 @@ Certain features — such as forms with server-side validation or randomization 
 
 ## Caching Strategies
 
-Various caching strategies can be configured in different ways. Out of the box, in `static_cache.php` you will find two pre-configured strategies - one for each supported driver.
+Various caching strategies can be configured in different ways. Out of the box, in `static_caching.php` you will find two pre-configured strategies - one for each supported driver.
 
 ``` php
 return [
