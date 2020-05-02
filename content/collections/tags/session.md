@@ -6,7 +6,6 @@ is_parent_tag: true
 updated_at: 1573660509
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 id: c15836c2-808d-4260-9d01-e5a569da5b5a
-published: false
 ---
 ## Retrieving Session Data
 
