@@ -9,7 +9,7 @@ parameters:
     name: times
     type: int
     description: |
-      Number of times to loop
+      Number of times to loop.
 
   -
     name: from
@@ -26,7 +26,7 @@ id: 0c59949c-2a78-4f83-94c3-164736140f03
 ---
 ## Overview
 
-Create and iterate through a loop a a specific number of times using the `times` parameter, or through a range with the `from` and `to` parameters. Do not use both. It'll make a weird mess.
+Create and iterate through a loop a specific number of times using the `times` parameter, or through a range with the `from` and `to` parameters. Do not use both. It'll make a weird mess.
 
 ## Examples
 
