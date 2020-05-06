@@ -7,17 +7,19 @@ id: fc136da3-ba46-46e1-8443-e345d5b548ac
 ---
 ## About
 
-Hooks are programmable interfaces which you can use to modify or extend already existing code. 
+Hooks are programmable interfaces which you can use to modify or extend already existing JavaScript code inside the Control Panel.
+
 Normally they work like this: 
-1. Framework Code is running
-2. Framework Code checks for existing Hooks
+
+1. Statamic code is running
+2. Statamic code checks for existing Hooks
 3. Your custom hook was found
 4. The code inside your custom hook will be run
-5. Framework code continues to run (with modfied data etc.)
+5. Statamic code continues to run (with modfied data etc.)
 
 ## Prerequisites
 
-Before you start using hooks (for example in the control panel), you need to register the corresponding javascript file.
+Before you start using hooks, you need to register the corresponding javascript file.
 Please follow the guide on [Adding CSS and JS assets](/extending/control-panel#adding-css-and-js-assets).
 
 ## How to use hooks
