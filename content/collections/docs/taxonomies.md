@@ -24,7 +24,7 @@ Each taxonomy can have a blueprint to define the available fields on your terms.
 
 ## Routing
 
-Taxonomy routes are automatically created for you.
+Taxonomy routes are automatically created for you **if the corresponding view exists**.
 
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
@@ -41,12 +41,12 @@ For each taxonomy [assigned to a collection](#assigning-to-collections), and whe
   - Display the details of the taxonomy, so you can list the terms.
   - Only terms that have been used in entries in the collection will be displayed.
   - Accessible at `/{collection url}/{taxonomy slug}` (eg. `/blog/tags`)
-  - The `{taxonomy}/index` view will be used (eg. `tags/index.antlers.html`)
+  - The `{collection}/{taxonomy}/index` view will be used (eg. `blog/tags/index.antlers.html`)
 - **Collection Term details**
   - Display the details of the term, so you can list the entries.
   - Only entries that exist in the collection will be displayed.
   - Accessible at `/{collection url}/{taxonomy slug}/{term slug}` (eg. `/blog/tags/retrowave`)
-  - The `{taxonomy}/show` view will be used. (eg. `tags/show.antlers.html`)
+  - The `{collection}/{taxonomy}/show` view will be used. (eg. `blog/tags/show.antlers.html`)
 
 ## Term Values and Slugs
 
@@ -81,8 +81,12 @@ Taxonomies use the following view template naming convention:
 |---|---|
 | Taxonomy Index  | `{taxonomy_name}/index` |
 | Single Term | `{taxonomy_name}/show` |
+| Taxonomy Index (for collection)  | `{collection}/{taxonomy_name}/index` |
+| Single Term (for collection) | `{collection}/{taxonomy_name}/show` |
 
-So for example, you would set up your "topics" index page in `resources/views/topics/index.antlers.html` and then a specific topic with a list of all entries inside it at `resources/views/topics/show.antlers.html`.
+For example, you would set up your "topics" index page in `resources/views/topics/index.antlers.html` and then a specific topic with a list of all entries inside it at `resources/views/topics/show.antlers.html`.
+
+The collection equivalents would automatically filter terms that have been associated to entries in that collection.
 
 ### Outputting Terms
 
