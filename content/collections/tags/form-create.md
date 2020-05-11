@@ -22,11 +22,10 @@ parameters:
     description: >
       The same as `redirect`, but for failed submissions.
   -
-    name: attr
-    type: string
+    name: HTML Attributes
+    type:
     description: >
-      Allows you to set any number of HTML attributes on the `<form>` tag. You can specify multiple
-      attributes by pipe delimiting them. eg. `attr="class:pretty-form|id:contact"`
+      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="contact-form"`.
 variables:
   -
     name: fields
