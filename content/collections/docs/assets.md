@@ -1,7 +1,7 @@
 ---
 title: Assets
 intro: >
- Assets are media and document files managed by Statamic. They can be images, videos, PDFs or even zip files and can have fields and content attached to them, just like entries.
+ Assets are media and document files managed by Statamic. They can be images, videos, PDFs, zip files, or any other kind of file. Each can have fields and content attached to them, just like entries.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568644449
@@ -114,7 +114,7 @@ _Examples and link to Assets tag._
 
     ```
     {{ images }}
-        {{ url }} {{ alt }}
+        <img src="{{ url }}" alt="{{ alt }}">
     {{ /images }}
     ```
 
