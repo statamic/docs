@@ -344,9 +344,8 @@ Any views located in your `resources/views` directory will automatically be avai
 /
 |-- src/
 `-- resources/
-    `-- resources/
-        `-- views/
-            `-- foo.blade.php
+    `-- views/
+        `-- foo.blade.php
 ```
 
 ``` php
