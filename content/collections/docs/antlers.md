@@ -13,6 +13,9 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
 
 
+
+<blockquote class="tip"><strong>Make sure to always use the `.antlers.html` file extension instead of just `.html`. Otherwise, you won't have access to all the things Antlers has to offer.</blockquote>
+
 ## Antlers Syntax
 
 Antlers adds capabilities on top of HTML through the use of curly brace expressions. Those curly braces – often called double mustaches or squiggly gigglies – look a whole lot like _antlers_ to us, hence the name.
