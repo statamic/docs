@@ -73,10 +73,10 @@ select: face
 
 ## Templating
 
-Select fields are [augmented](/augmentation) to return the **label** from your field config. You can access to the raw value by using the `[raw](/modifiers/raw)` modifier.
+Select fields return the **value** from your selected option. You can access the label with `select_var:label`.
 
 ```
-<p id="{{ select | raw }}"> Oh yeah? {{ select }}</p>
+<p id="{{ select }}"> Oh yeah? {{ select:value }}</p>
 ```
 
 ``` output
