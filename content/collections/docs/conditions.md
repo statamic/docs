@@ -81,8 +81,8 @@ The following conditions apply to fields with data stored as strings.
 | `gte` | Check if field is **greater than or equal to** value. |
 | `lt` | Check if field is **less than** value. |
 | `lte` | Check if field is **less than or equal to** value. |
-| `matches` / `regex` | Check if field **matches** regex. |
-| `doesnt_match` | Check if field **doesn't match** regex. |
+| `matches` / `regex` | Check if field **matches** case insensitive regex. |
+| `doesnt_match` | Check if field **doesn't match** case insensitive regex. |
 | `is_alpha` | Check if field contains **only alphabetical characters**. |
 | `is_numeric` | Check if field contains **only numeric characters**. |
 | `is_alpha_numeric` | Check if field contains **only alphanumeric characters**. |
