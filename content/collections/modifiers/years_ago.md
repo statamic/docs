@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - date
 id: e73f1574-732e-4a74-be47-37e1fddb05d6
 parse_content: true

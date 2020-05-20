@@ -6,17 +6,14 @@
 </header>
 
 <article class="markdown pb-8">
-    {{ content }}
-    <table>
-        {{ collection:modifiers sort="slug" }}
-        <tr>
-            <td>
-                <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ slug }}</a>
-            </td>
-            <td>
-                {{ description ?? overview | markdown }}
-            </td>
-        </tr>
-        {{ /collection:modifiers }}
-    </table>
+    {{ content | noparse | toc:ids }}
+
+    {{ taxonomy:modifier_types collection="modifiers" }}
+        <h3>{{ title | title }}</h3>
+        <div class="column-list-3">
+            {{ entries sort="slug" }}
+                <div><a href="{{ url }}">{{ slug }}</a></div>
+            {{ /entries }}
+        </div>
+    {{ /taxonomy:modifier_types }}
 </article>

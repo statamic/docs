@@ -1,6 +1,6 @@
 ---
 title: Get
-types:
+modifier_types:
   - asset
   - utility
   - relationship

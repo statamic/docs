@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
   - markup
 id: fbdb7bf5-ac19-444c-9536-57332ffff388
@@ -7,7 +7,7 @@ id: fbdb7bf5-ac19-444c-9536-57332ffff388
 Turn a key/value array, otherwise known as a YAML mapping, into an HTML definition list.
 
 ```.language-yaml
-food: 
+food:
   Delicious:
     - bacon
     - sushi

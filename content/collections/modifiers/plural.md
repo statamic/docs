@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
   - utility
 id: d464d979-7e57-40a6-8892-a08d08bd7ccf

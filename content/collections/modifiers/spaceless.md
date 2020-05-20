@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
   - utility
 added_in: 2.8.4

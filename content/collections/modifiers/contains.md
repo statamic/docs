@@ -1,6 +1,6 @@
 ---
-types:
-  - condition
+modifier_types:
+  - conditions
   - array
   - string
 id: 75145be0-966f-490e-af3d-ed122eb6445b

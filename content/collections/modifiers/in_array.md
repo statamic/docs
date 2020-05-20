@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
   - utility
   - conditions

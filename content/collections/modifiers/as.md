@@ -1,6 +1,6 @@
 ---
 id: ada24ec2-1b6e-4759-b2c0-06d9d464f3f9
-types:
+modifier_types:
   - array
   - utility
 ---

@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - markup
   - string
 id: ee9e1c05-8b5d-47f9-b476-3d108a9c14af

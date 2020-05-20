@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
   - markup
 id: 327f4a3b-04d4-4069-881a-fe50ddb9be23

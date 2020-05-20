@@ -1,11 +1,12 @@
 title: Modifiers
-route: '{mount}/{slug}'
-default_status: published
 template: modifiers.show
-inject:
-  view_model: App\ViewModels\Modifiers
 layout: layout
 blueprints:
   - page
-revisions: false
 mount: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
+taxonomies:
+  - modifier_types
+revisions: false
+route: '{mount}/{slug}'
+inject:
+  view_model: App\ViewModels\Modifiers

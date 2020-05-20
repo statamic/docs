@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
 id: 287d14d7-6660-4ac6-aa1b-0ca4d298cdcc
 ---
@@ -12,7 +12,7 @@ Translate plain ASCII punctuation characters into “smart” typographic punctu
 
 ``` .language-yaml
 conversation: |
-  "What's your favorite album?" asked Lars. ``...And Justice for All'' replied 
+  "What's your favorite album?" asked Lars. ``...And Justice for All'' replied
   Kirk -- who was icing his hands after a 20 minute guitar solo.
 ```
 
@@ -21,13 +21,13 @@ conversation: |
 ```
 
 ``` .language-output
-“What’s your favorite album?” asked Lars. “…And Justice for All” replied 
+“What’s your favorite album?” asked Lars. “…And Justice for All” replied
 Kirk — who was icing his hands after a 20 minute guitar solo.
 ```
 
 or more precisely...
 
 ``` .language-output
-&#8220;What&#8217;s your favorite album?&#8221; asked Lars. &#8220;&#8230;And Justice for All&#8221; replied 
+&#8220;What&#8217;s your favorite album?&#8221; asked Lars. &#8220;&#8230;And Justice for All&#8221; replied
 Kirk &#8212; who was icing his hands after a 20 minute guitar solo.
 ```

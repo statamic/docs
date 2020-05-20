@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - math
 id: 10875a6a-9cb8-4e2a-9d39-0d8e4059d815
 ---

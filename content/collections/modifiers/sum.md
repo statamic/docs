@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
   - math
 id: ee2da74a-0788-400f-804f-c85ad9b635c0

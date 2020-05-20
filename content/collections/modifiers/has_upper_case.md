@@ -1,6 +1,6 @@
 ---
-types:
-  - condition
+modifier_types:
+  - conditions
 id: b2936dd3-f8b1-44a7-bb40-f3b0a8b47e90
 ---
 Returns `true` if the string contains an uppercase character, `false` otherwise.

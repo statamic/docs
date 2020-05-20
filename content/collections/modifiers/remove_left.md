@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
   - utility
 id: 71feed11-dcb7-4405-8f50-a17cb4c021ef

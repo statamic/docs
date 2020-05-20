@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - date
   - string
 id: 756d23b4-209c-457c-b9f5-d69347bbe8fe

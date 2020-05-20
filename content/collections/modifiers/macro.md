@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
   - array
   - utility
@@ -33,7 +33,7 @@ When passing multiple parameters to a modifier, you'll need to pop down into a s
 ```.language-yaml
 # /site/theme/<your_theme>/settings/macros.yaml
 excerpt:
-  safe_truncate: 
+  safe_truncate:
     - 175
     - ...
 ```

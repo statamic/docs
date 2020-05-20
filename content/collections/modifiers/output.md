@@ -1,6 +1,6 @@
 ---
 title: Output
-types:
+modifier_types:
   - asset
   - utility
 id: b5409a41-cc62-4ca1-bb8a-f6700b2c8c29

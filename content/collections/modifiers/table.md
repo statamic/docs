@@ -1,6 +1,6 @@
 ---
 title: Table
-types:
+modifier_types:
   - string
   - markup
   - utility

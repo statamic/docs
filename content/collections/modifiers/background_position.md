@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - asset
   - string
 id: 0904f610-eee8-4b86-827b-0dc281d553ca

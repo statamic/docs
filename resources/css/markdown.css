@@ -182,6 +182,17 @@
       @apply mt-4;
   }
 
+  .column-list-3 {
+    column-count: 3;
+    column-gap: 2em;
+    a {
+        @apply font-display text-base text-pink-hot font-bold;
+        &:hover {
+            @apply italic;
+        }
+    }
+}
+
   > table {
     @apply w-full text-left table-collapse border shadow-lg-mint mb-8;
     th {

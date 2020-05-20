@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
   - conditions
 id: 85303071-213b-4e6c-8fb7-10f703a4a52e

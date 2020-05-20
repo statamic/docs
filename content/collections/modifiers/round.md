@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - math
   - utility
 id: 5166ff7e-2fad-414c-b232-f04108c08900

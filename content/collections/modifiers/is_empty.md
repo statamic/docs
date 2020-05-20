@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
 id: a94a24ce-500d-4194-85db-85fcbb552e06
 ---

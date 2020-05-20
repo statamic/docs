@@ -1,6 +1,6 @@
 ---
-types:
-- asset
+modifier_types:
+  - asset
   - markup
 attributes: true
 id: 26045669-567d-4e93-b3ba-34c835f5c5e9

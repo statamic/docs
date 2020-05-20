@@ -1,6 +1,6 @@
 ---
-types:
-  - condition
+modifier_types:
+  - conditions
   - array
 id: c36a6f62-aaf4-478b-a469-29cdb1eab8dc
 ---

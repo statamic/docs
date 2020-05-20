@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - markup
 attributes: true
 id: 65bcc454-2731-4f83-97cf-03659fb38db5

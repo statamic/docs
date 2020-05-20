@@ -1,6 +1,6 @@
 ---
-types:
-  - condition
+modifier_types:
+  - conditions
 id: 20ac3e9a-4a45-4c2f-9052-be222fc84016
 ---
 Search a string against multiple needles and return `true` if any are found, otherwise `false`. Case-insensitive.

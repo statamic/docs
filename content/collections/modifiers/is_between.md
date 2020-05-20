@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - date
   - conditions
 id: cfbf8926-47ee-42e1-a972-86e3dc13633b

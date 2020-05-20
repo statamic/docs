@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - string
 id: 45310885-fbd3-438d-85d5-076dda1646e0
 ---

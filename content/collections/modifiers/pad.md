@@ -1,5 +1,5 @@
 ---
-types:
+modifier_types:
   - array
 id: 0a1595bc-5b41-401c-bb9c-45c35e8e5d7c
 ---
