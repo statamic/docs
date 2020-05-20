@@ -158,7 +158,7 @@ The verbose syntax is useful if you need to pass the taxonomy as a parameter.
 </ul>
 ```
 
-## Collection {#collection}
+## Entries
 
 The `taxonomy` tag allows you to iterate over taxonomies, but in each iteration, you also have access to all the corresponding content.
 
@@ -166,9 +166,9 @@ The `taxonomy` tag allows you to iterate over taxonomies, but in each iteration,
 {{ taxonomy:categories }}
   <h2>{{ title }}</h2>
   <ul>
-    {{ collection }}
+    {{ entries }}
       <li><a href="{{ url }}">{{ title }}</a></li>
-    {{ /collection }}
+    {{ /entries }}
   </ul>
 {{ /taxonomy:categories }}
 ```
@@ -187,7 +187,7 @@ The `taxonomy` tag allows you to iterate over taxonomies, but in each iteration,
 </ul>
 ```
 
-## Filtering {#filtering}
+## Filtering
 
 There are two options when it comes to filtering. There's the conditions syntax, and the custom filter class. You can't use both at the same time, so pick your poison.
 
