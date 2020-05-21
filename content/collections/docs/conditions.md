@@ -20,8 +20,23 @@ _Note: These conditions currently apply to the [collections](/tags/collections),
 The conditions syntax has 3 parts: the field name, the condition name, and the value.
 
 <div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm">
-<span class="bg-pink text-white px-1 rounded-sm">field_name</span>:<span class="bg-purple text-white px-1 rounded-sm">condition</span><span class="px-1">=</span>"<span class="bg-teal text-white px-1 rounded-sm">value</span>"
+<span class="bg-pink text-white p-1 rounded-sm">{field_name}</span>:<span class="bg-purple text-white p-1 rounded-sm">{condition}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{value}</span>"
 </div>
+
+### Using a variable reference
+If you prefix the field name with a colon, it will use the value of a variable in your view
+
+```
+:author:is="author"
+```
+
+
+### Multiple values
+You can pass multiple values by separating them with a pipe.
+
+```
+taxonomy:category="happy|radical"
+```
 
 ### Comparisons
 
@@ -61,37 +76,39 @@ Need multiple conditions? Yeah, we support that.
 {{ /collection:drinks }}
 ```
 
+### Passing multiple values
+
 ## String Conditions
 
 The following conditions apply to fields with data stored as strings.
 
 | Condition | Description |
 | :--- | :--- |
-| `is` / `equals` | Check if field **is equal** to value. |
-| `not` / `isnt` | Check if field is **not equal** to value. |
-| `exists` / `isset` | Check if field **exists**. |
-| `doesnt_exist` / `is_empty` / `null` | Check if field **doesn't exist**. |
-| `contains` | Check if field **contains** value. |
-| `doesnt_contain` | Check if field **doesn't contain** value. |
-| `starts_with` | Check if field **starts with** value. |
-| `doesnt_start_with` | Check if field **doesn't start** with value. |
-| `ends_with` | Check if field **ends with** value. |
-| `doesnt_end_with` | Check if field **doesn't end with** value. |
-| `gt` | Check if field is **greater than** value. |
-| `gte` | Check if field is **greater than or equal to** value. |
-| `lt` | Check if field is **less than** value. |
-| `lte` | Check if field is **less than or equal to** value. |
-| `matches` / `regex` | Check if field **matches** case insensitive regex. |
-| `doesnt_match` | Check if field **doesn't match** case insensitive regex. |
-| `is_alpha` | Check if field contains **only alphabetical characters**. |
-| `is_numeric` | Check if field contains **only numeric characters**. |
-| `is_alpha_numeric` | Check if field contains **only alphanumeric characters**. |
-| `is_url` | Check if field **is a valid URL**. |
-| `is_embeddable` | Check if field **is an embeddable video URL**. |
-| `is_email` | Check if field **is valid email address**. |
-| `is_after` | Check if field **is after** date. |
-| `is_before` | Check if field **is before** date. |
-| `is_numberwang` | Check if field **is numberwang**. |
+| `is` / `equals` | Include if field **is equal** to value. |
+| `not` / `isnt` | Include if field is **not equal** to value. |
+| `exists` / `isset` | Include if field **exists**. |
+| `doesnt_exist` / `is_empty` / `null` | Include if field **doesn't exist**. |
+| `contains` | Include if field **contains** value. |
+| `doesnt_contain` | Include if field **doesn't contain** value. |
+| `starts_with` | Include if field **starts with** value. |
+| `doesnt_start_with` | Include if field **doesn't start** with value. |
+| `ends_with` | Include if field **ends with** value. |
+| `doesnt_end_with` | Include if field **doesn't end with** value. |
+| `gt` | Include if field is **greater than** value. |
+| `gte` | Include if field is **greater than or equal to** value. |
+| `lt` | Include if field is **less than** value. |
+| `lte` | Include if field is **less than or equal to** value. |
+| `matches` / `regex` | Include if field **matches** case insensitive regex. |
+| `doesnt_match` | Include if field **doesn't match** case insensitive regex. |
+| `is_alpha` | Include if field contains **only alphabetical characters**. |
+| `is_numeric` | Include if field contains **only numeric characters**. |
+| `is_alpha_numeric` | Include if field contains **only alphanumeric characters**. |
+| `is_url` | Include if field **is a valid URL**. |
+| `is_embeddable` | Include if field **is an embeddable video URL**. |
+| `is_email` | Include if field **is valid email address**. |
+| `is_after` | Include if field **is after** date. |
+| `is_before` | Include if field **is before** date. |
+| `is_numberwang` | Include if field **is numberwang**. |
 
 ## Array/Object Conditions
 
@@ -99,5 +116,49 @@ The following conditions apply to fields with data stored as arrays or objects.
 
 | Condition | Description |
 | :--- | :--- |
-| `in` | Check if an array field **has** value. |
-| `not_in` | Check if an array field **does not have** value. |
+| `in` | Include if an array field **has** value. |
+| `not_in` | Include if an array field **does not have** value. |
+
+## Taxonomy Conditions
+
+[Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, and finally the term you're seeking.
+
+<div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm">
+<span class="bg-pink text-white p-1 rounded-sm">taxonomy</span>:<span class="bg-purple text-white p-1 rounded-sm">{taxonomy_name}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{term}</span>"
+</div>
+
+| Condition | Description |
+| :--- | :--- |
+| `{term}` | Include if entry **has** a specific term. |
+
+## Snippets
+
+Here are some common and useful conditions snippets to grab on your next project.
+
+### Exclude the current entry
+
+```
+:id:not="id"
+```
+
+### Entries with specific "tags"
+
+Assuming you have a taxonomy named "Tags"...
+```
+taxonomy:tags="review|colorful"
+```
+
+### Show draft (unpublished) entries
+
+```
+status:is="draft"
+```
+
+
+### Published before a specific date
+
+Let's use Y2K as the example date.
+
+```
+date:is_before="2000-01-01"
+```
