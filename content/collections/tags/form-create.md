@@ -46,8 +46,8 @@ variables:
     description: An array of submitted values from the previous request. Useful for re-populating fields if there are validation errors.
   -
     name: success
-    type: boolean
-    description: This will be `true` if the form was submitted successfully.
+    type: string
+    description: Will return success message if the form was submitted successfully.
 ---
 ## Overview
 
@@ -66,7 +66,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
 
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
-            Form was submitted successfully.
+	    {{ success }}
         </div>
     {{ /if }}
 
