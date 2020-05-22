@@ -1,8 +1,8 @@
 ---
 title: Markdown
 id: 3f0e8d63-f6ca-4a8e-86dd-8361aa328807
-description: Transforms inline Markdown written in your view files
-intro: The Markdown tag is used for transforming inline Markdown written in your view files.
+description: Transforms inline Markdown written in your template.
+intro: Transform Markdown content written inline in your template. For when you just can't be bothered to write HTML or make another variable.
 stage: 5
 ---
 ## Example
