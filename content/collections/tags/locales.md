@@ -1,8 +1,9 @@
 ---
 title: Locales
 id: ec775716-e573-4a0e-b6e6-23ca1d7b3bbd
-overview: >
-    Iterate through and output localized versions of content.
+intro: Create links to localized content.
+overview: If you need to generate links to your site's content in other languages (using [multi-site](/multi-site)), you've come to the right place.
+stage: 4
 parameters:
   -
     name: id
@@ -29,15 +30,13 @@ variables:
     name: content data
     type: mixed
     description: >
-      Each piece of content being iterated through has access to all the variables inside. This includes things like `title`, `content`, `url`, etc.     
+      Each piece of content being iterated through has access to all the variables inside. This includes things like `title`, `content`, `url`, etc.
 ---
-## Usage {#usage}
-
-This tag allows you to loop over the content in all of its locales. Or to target the content in a specific locale. This is handy for generating things like a "View this in French" style URLs.
+## Examples
 
 ### Iterating over locales {#iterating}
 
-Loop through a piece of content in each locale. An example use case may be to create a dropdown where you select which locale you want to view it in.
+You can loop through in each locale to get URLs to translated versions of an entry or taxonomy term.
 
 ```
 <ul>
@@ -49,7 +48,7 @@ Loop through a piece of content in each locale. An example use case may be to cr
 
 ### Targeting a locale {#targeting}
 
-Rather than looping, you can specify a locale to target it directly.
+You can also specify a locale directly instead of looping through them all.
 
 ```
 {{ locales:fr }}
