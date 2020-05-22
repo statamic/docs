@@ -1,80 +1,74 @@
 ---
 title: User:Profile
-description: Fetches user data
+description: Fetches user data.
+intro: Fetching user data made easy.
 parameters:
   -
     name: id
     type: string
     description: |
-      Specify the ID for a user to output their data.
-      Leave blank to target the currently logged in user.
-  -
-    name: username
-    type: string
-    description: |
-      Specify the username of a user to output their data.
-      Leave blank to target the currently logged in user.
+      Fetch user by ID.
   -
     name: email
     type: string
     description: |
-      Specify the email of a user to output their data.
-      Leave blank to target the currently logged in user.
+      Fetch user by email.
 variables:
   -
     name: user data
     type: mixed
     description: >
-      All user data (front matter) will be
+      All user data (except password) is
       available.
   -
     name: no_results
     type: boolean
     description: >
-      If a specified user cannot be found, or
-      if the user is logged out, this will be
-      `true`.
+      `true` if user cannot be found or is logged out.
   -
     name: 'is_[role]'
     type: boolean
     description: >
-      A boolean for checking if the user is
-      assigned a given role. eg. `is_admin` or
+      `true` if user is assigned a given role. For example, `is_admin` or
       `is_banned`.
   -
     name: 'in_[group]'
     type: boolean
     description: >
-      A boolean for checking if the user is in
-      a given group. eg. `in_admins` or
+      `true` if user is in a given group. For example, `in_admin` or
       `in_editors`.
 id: 3be76d15-dee7-4619-a4cb-4a343e93c677
 ---
-The `{{ user:profile }}` tag (or simply `{{ user }}`) will make all the fields in a user available.
+## Overview
+The `{{ user:profile }}` tag has access to all of a user's basic data. Passwords and hashes are _not_ available through this tag.
 
-If you don't specify the user with either `id`, `username`, or `email` parameters, the currently logged in user will be shown.
+> This will default to the currently logged in user if none are specified.
 
-## Example {#example}
+
+## Shorthand
+
+You can use `{{ user }}` and drop the `:profile` bit off if you prefer.
+
+## Examples
 
 To output the currently logged in user's details, you can do this:
 
 ```
 {{ user }}
-  The current user's username is {{ username }} and their email is {{ email }}.
+  The current user's name is {{ first_name }} {{ last_name }}.
 {{ /user }}
 ```
 
 Or perhaps you'd like to show user profile pages. You could create a wildcard route like this:
 
-``` .language-yaml
-routes:
-  /users/{username}
+```php
+Route::statamic('users/{user}', 'users.show');
 ```
 
-Then when visiting `/users/chuck`, for example, you could display their details like this:
+Then when visiting `/users/chuck`, for example, you could display Chuck's details like this:
 
 ```
-{{ user:profile username="{username}" }}
+{{ user:profile :email="email" }}
   {{ first_name }} {{ last_name }}
 {{ /user:profile }}
 ```
