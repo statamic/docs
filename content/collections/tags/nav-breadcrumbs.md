@@ -55,7 +55,7 @@ Here's an example of what breadcrumbs might look like, as well as a code example
     <figcaption>These crumbs are delicious.</figcaption>
 </figure>
 
-``` php
+```
 <ul class="breadcrumbs">
     {{ nav:breadcrumbs }}
     <li{{ if is_current }} class="current"{{ /if }}>
