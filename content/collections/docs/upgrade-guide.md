@@ -124,6 +124,8 @@ Fieldsets technically still exist, although they are now a smaller, companion fe
     - `attr` is no longer a parameter, add them directly to the [tag](/tags/form-create)
 - `form:submissions`
     - No longer inherits parameters from the `collection` tag.
+- `nav:exists`
+    - Removed. It's much cleaner to use the main nav tag, alias the results to a variable, and check if it's empty.
 - `relate`
     - No longer inherits parameters from the `collection` tag.
     - You can probably remove this tag entirely, as the values should be [augmented](/augmentation).
