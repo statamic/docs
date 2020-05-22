@@ -1,13 +1,11 @@
 ---
 title: 'Session:Set'
-overview: 'The session:set tag is used to store and persist data in the user session.'
-updated_at: 1573660510
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+description: 'Store and persist data in the user session.'
+intro: Data set in the session will be available in all future requests until such time that the session is cleared over time (sessions eventually expire) or intentionally. Session variables can be retrieved with the main [session](/tags/session) tag.
 id: 90796c5b-6b11-4b02-9e6b-fd70211c825a
+stage: 4
 ---
-## Usage
-
-Data set in the session will be available in all future requests until such time that the session is cleared, either over time (sessions eventually expire) or intentionally. Session variables can be retrieved with the base [session](/tags/session) tag.
+## Example
 
 This can be used for many different things. For example, you could set a set a variable if a user has filled out a special survey form.
 
@@ -27,24 +25,25 @@ Later you could decide to show the user has filled out the form.
 
 ## Multiple Variables
 
-You can set multiple variables at once, and reference interpolated data just like all other tags.
+You can set multiple variables at once and reference interpolated data (references to variables).
 
 ```
-{{ session:set likes="hats" :referral="get:ref" }}
+{{ session:set likes="hats" :visited="url" }}
 ```
 
 ## Tag Pair
-This tag is also available as a pair, which allows you to display any data immediately if you so desire.
+
+This tag is also available as a pair, which can be used to immediately display set data.
 
 ```
-{{ session:set likes="books" }}
+{{ session:set likes="boomboxes" }}
     <p>You like {{ likes }}, huh?</p>
 {{ /session:set }}
 ```
 
 ## Setting Array Data
 
-You can even set array data with dot notation.
+Array data can be set with dot notation.
 
 ```
 {{ session:set likes.books="true" likes.hats="true" }}
@@ -52,4 +51,4 @@ You can even set array data with dot notation.
 
 ## Forgetting Data
 
-You can remove data from the session [session:forget](/tags/session-forget), and flush the entire session with [session:flush](/tags/session-flush).
+Data can be removed from the session [session:forget](/tags/session-forget), and the entire session flushed with [session:flush](/tags/session-flush). 🚽

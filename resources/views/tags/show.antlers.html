@@ -11,7 +11,7 @@
 <article class="markdown pb-8">
     {{ content | noparse | toc:ids }}
 
-    {{ if parameters | length > 0 }}
+    {{ if parameters }}
     <h2 id="parameters">Parameters</h2>
     {{ /if }}
 

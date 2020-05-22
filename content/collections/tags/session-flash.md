@@ -1,22 +1,34 @@
 ---
 title: 'Session:Flash'
-overview: 'The session:flash tag is used to store data for a single request.'
-updated_at: 1573660510
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+description: 'Store data for a single request.'
+intro: Flash data is session data that is only kept for a single request. It is most often used for success/failure messages that automatically disappear after a page refresh.
+stage: 5
 id: 29957a36-a15a-4fd0-9342-b829b6235fea
 ---
-## Usage
-
-Flash data is only kept for a single request. It is generally used for success/failure messages that remove themselves automatically.
-
-Setting and retrieving flash data works in exactly the same fashion as regular session data.
-```
-{{ session:flash success="true" message="You did it!" }}
-```
-
-The next (and only next) request will then have those variables available for you.
+## Example
 
 ```
-{{ session:success }} ~> true
-{{ session:message }} ~> You did it!
+{{ session:flash message="You did it!" }}
+```
+
+The next (and only next) request will then have that variable available.
+
+```
+{{ session:message }} // You did it!
+```
+
+## Multiple Variables
+
+You can set multiple variables at once and reference interpolated data (references to variables).
+
+```
+{{ session:flash success="true" :clicked="order_button" }}
+```
+
+## Setting Array Data
+
+Array data can be set with dot notation.
+
+```
+{{ session:flash likes.snow_cones="true" likes.italian_ice="false" }}
 ```
