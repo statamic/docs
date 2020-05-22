@@ -66,7 +66,7 @@ Here we'll be creating a form to submit an entry in the `contact` form.
 
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
-	    {{ success }}
+            {{ success }}
         </div>
     {{ /if }}
 
