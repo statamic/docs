@@ -1,6 +1,8 @@
 ---
 title: OAuth
-overview: Generate OAuth login URLs.
+description: Generate OAuth login URLs.
+intro: If you're using [OAuth](/oauth) to manage user authentication, you may find you need to generate login URLs at some point. Here's how you do it.
+stage: 4
 parameters:
   -
     name: provider
@@ -13,34 +15,34 @@ parameters:
     description: The URL to be taken to after authenticating. This will be appending onto the generated URL as a query parameter.
 id: f7676fe0-abb3-4a05-8530-6d23a9b5130d
 ---
-## Usage
+## Examples
 
-Regular/verbose syntax. This can be useful if the provider needs to be a variable.
-
-```
-{{ oauth provider="github" }}
-```
-
-``` output
-/oauth/github
-```
-
-Shorthand:
+Here's the regular/parameter syntax in action, especially useful if the provider name comes from variable.
 
 ```
-{{ oauth:github }}
+<a href="{{ oauth provider="github" }}">Sign In with Github</a>
 ```
 
-``` output
-/oauth/github
+```output
+<a href="/oauth/github">Sign In with Github</a>
 ```
 
-With a redirect parameter:
+And the shorthand version.
 
 ```
-{{ oauth:github redirect="/account" }}
+<a href="{{ oauth:github }}">Sign In with Github</a>
 ```
 
 ``` output
-/oauth/github?redirect=/account
+<a href="/oauth/github">Sign In with Github</a>
+```
+
+And now with a redirect:
+
+```
+<a href="{{ oauth:github redirect="/account" }}>Sign In with Github</a>
+```
+
+``` output
+<a href="/oauth/github?redirect=/account">Sign In with Github</a>
 ```
