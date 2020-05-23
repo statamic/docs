@@ -1,6 +1,6 @@
 ---
 title: User:Register_Form
-description: For creating user registration forms
+description: Creates user registration forms
 stage: 2
 parameters:
   -

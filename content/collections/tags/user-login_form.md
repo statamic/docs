@@ -1,6 +1,6 @@
 ---
 title: User:Login_Form
-description: For creating a user login form
+description: Creates user login forms
 intro: If you wan to build a login form for your users, this is the easiest way to do it.
 stage: 4
 parameters:

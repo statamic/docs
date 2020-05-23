@@ -2,7 +2,7 @@
 title: Collection
 is_parent_tag: true
 intro: Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don't judge and neither does the Collection Tag.
-description: Grab and filter the entries in a specified Collection.
+description: Fetches and filters entries in one or more collections.
 stage: 1
 parameters:
   -
