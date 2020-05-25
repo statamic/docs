@@ -85,7 +85,7 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
 
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
-            Form was submitted successfully.
+            {{ success }}
         </div>
     {{ /if }}
 
