@@ -150,6 +150,7 @@
         font-size: 80%;
         padding: .2em;
         bottom: .05rem;
+        white-space: nowrap;
     }
 
     > p code,
