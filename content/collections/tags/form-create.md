@@ -1,35 +1,33 @@
 ---
 title: "Form:Create"
 id: aa96fcf1-510c-404b-9b63-cea8942e1bf8
-overview: >
-  Generate necessary `<form>` markup to accept form submissions.
+description: Manages markup and success/error handling for forms.
+intro: Statamic [forms](/forms) serve to collect, report, and reuse user submitted data. This tag handles the HTML markup, redirect behavior, and success/error states and messages for these forms.
 parameters:
   -
-    name: handle|is|in|form|formset
+    name: handle|is|in|form
     type: string
     description: >
-      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `form` defined in the current context.
+      Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.
   -
     name: redirect
     type: string
     description: >
-      The location your user will be taken after a successful form submission. If left blank, the user will stay
-      on the same page.
+      The location your user will be taken after a successful form submission. If left blank, the user will stay on the same page.
   -
     name: error_redirect
     type: string
     description: >
-      The same as `redirect`, but for failed submissions.
+      The location your user will be taken after a failed form submission. If left blank, the user will stay on the same page.
   -
     name: allow_request_redirect
     type: boolean
-    description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
+    description: When `true`, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL. For example, `?redirect=/thanks`
   -
     name: HTML Attributes
     type:
     description: >
-      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="contact-form"`.
+      Set HTML attributes as if you were on an HTML element. For example, `class="required" id="contact-form"`.
 variables:
   -
     name: fields
@@ -39,23 +37,26 @@ variables:
   -
     name: errors
     type: array
-    description: An indexed array of any validation errors upon submission. Suitable for looping through. eg. `{{ errors }}{{ value }}{{ /errors }}`
+    description: |
+      An indexed array of any validation errors upon submission. For example: `{{ errors }}{{ value }}{{ /errors }}`
   -
     name: error
     type: array
-    description: An array of validation errors indexed by field names. Suitable for targeting fields. eg. `{{ error:email }}`
+    description: |
+      An array of validation errors indexed by **field name**. For example: `{{ error:email }}`
   -
     name: old
     type: array
-    description: An array of submitted values from the previous request. Useful for re-populating fields if there are validation errors.
+    description: An array of submitted values from the previous request. Used for re-populating fields if there are validation errors.
   -
     name: success
     type: string
-    description: A success message.
+    description: A success message, usually used in a condition to check of a form submission was successful. `{{ if success }} Hurray! {{ /if }}`
+stage: 4
 ---
 ## Overview
 
-Here we'll be creating a form to submit an entry in the `contact` form.
+Here we'll be creating a form to submit an entry in a `contact` form.
 
 ```
 {{ form:create in="contact" }}
@@ -95,7 +96,7 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 
 ## Dynamic Rendering
 
-Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
+Instead of hardcoding individual fields, you may loop through the `fields` array to render fields in a dynamic fashion.
 
 ```
 {{ fields }}
@@ -109,8 +110,53 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 {{ /fields }}
 ```
 
-Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
+Each item in the `fields` array contains the following data configurable in the form's blueprint.
 
-You will also find the field's `old` input on unsuccessful submission, as well as an `error` message when relevant.
+| Variable | Type | Description |
+|---|---| --- |
+| `handle` | string | System name for the field |
+| `display` | string | User-friendly field label |
+| `type` | string | Name of the [fieldtype](/fieldtypes) |
+| ` field` | string | Pre-rendered HTML based on the fieldtype |
+| `error` | string | Error message from an unsuccessful |
+| `old` | array | Contains user input from an unsuccessful submission |
 
-Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-forms`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
+
+### Pre-rendered HTML
+
+Using the `field` variable will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.
+
+You can customize these pre-rendered snippets by running `php artisan vendor:publish --tag=statamic-forms`. It will expose editable templates snippets in your `views/vendor/statamic/forms/fields` directory that will be used by each fieldtype.
+
+This approach, combined with the [blueprint editor](/blueprints), will give you something very similar to a traditional "Form Builder" from other platforms.
+
+**Example**
+
+```
+{{ form:contact }}
+    {{ fields }}
+        <div class="mb-2">
+            <label class="block">{{ display }}</label>
+            {{ field }}
+        </div>
+    {{ /fields }}
+{{ /form:contact }}
+```
+
+```output
+<form method="POST" action="https://website.example/!/forms/contact">
+    <input type="hidden" name="_token" value="cN03woeRj5Q0GtlOj7GydsZcRwlyp9VLzfpwDFJZ">
+    <div class="mb-2">
+        <label class="block">Name</label>
+        <input type="text" name="name" value="">
+    </div>
+      <div class="mb-2">
+        <label class="block">Email Address</label>
+        <input type="text" name="email" value="">
+    </div>
+      <div class="mb-2">
+        <label class="block">Note</label>
+        <textarea name="message"></textarea>
+    </div>
+</form>
+```
