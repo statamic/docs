@@ -22,6 +22,10 @@ parameters:
     description: >
       The same as `redirect`, but for failed submissions.
   -
+    name: allow_request_redirect
+    type: boolean
+    description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
+  -
     name: HTML Attributes
     type:
     description: >
@@ -47,7 +51,7 @@ variables:
   -
     name: success
     type: string
-    description: Will return success message if the form was submitted successfully.
+    description: A success message.
 ---
 ## Overview
 

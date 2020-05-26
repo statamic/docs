@@ -4,20 +4,25 @@ description: Creates user registration forms
 stage: 2
 parameters:
   -
-    name: attr
-    type: string
-    description: |
-      Set HTML attributes like so: `attr="class:form|id:form"`. This will become: `<form class="form" id="form">`.
-  -
     name: redirect
     type: string
     description: >
       Where the user should be taken after
       successfully registering.
   -
+    name: error_redirect
+    type: string
+    description: >
+      The same as `redirect`, but for failed registrations.
+  -
     name: allow_request_redirect
     type: boolean
     description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
+  -
+    name: HTML Attributes
+    type:
+    description: >
+      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="registration-form"`.
 variables:
   -
     name: fields
@@ -28,6 +33,10 @@ variables:
     name: errors
     type: array
     description: An array of validation errors.
+  -
+    name: error
+    type: array
+    description: An array of validation errors indexed by field names. Suitable for targeting fields. eg. `{{ error:email }}`
   -
     name: old
     type: array
