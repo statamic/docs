@@ -17,7 +17,7 @@ parameters:
   -
     name: allow_request_redirect
     type: boolean
-    description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
+    description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
   -
     name: HTML Attributes
     type:
