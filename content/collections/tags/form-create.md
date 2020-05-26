@@ -118,7 +118,7 @@ Each item in the `fields` array contains the following data configurable in the 
 | `display` | string | User-friendly field label |
 | `type` | string | Name of the [fieldtype](/fieldtypes) |
 | ` field` | string | Pre-rendered HTML based on the fieldtype |
-| `error` | string | Error message from an unsuccessful |
+| `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
 
 
