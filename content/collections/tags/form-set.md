@@ -1,18 +1,19 @@
 ---
-title: "Form:Formset"
+title: "Form:Set"
 id: 0b9590a7-f8b3-4a11-92b5-60d6d43cf869
-overview: Wrap a group of form tags to set them all to the same formset.
+description: Wraps other form tags to group them by the same formset.
+intro: This is a "convenience" wrapper tag that will set all _other_ form tags to use the same formset.
 parameters:
   -
     name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the form this tag should be targeting.
+      Specify the name of the form.
+stage: 4
 ---
-## Usage {#usage}
+## Overview
 
-Each `form` tag needs to know which formset it is handling. As a convenience, rather than re-specifying the same formset parameter
-over and over, we can use an enclosing `{{ form:set }}` tag pair to apply it automatically.
+Each `form` tag needs to know which formset it is handling. As a convenience, rather than re-specifying the same formset parameter over and over, we can use an enclosing `{{ form:set }}` tag pair to apply it everywhere, automatically.
 
 ```
 {{ form:set is="contact" }}
