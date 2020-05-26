@@ -1,28 +1,23 @@
 ---
 title: "Form:Success"
 id: e7430255-6237-4cc8-96c2-e8338758851f
-overview: Boolean if a form submission was successful.
+overview: Returns true after a successful form submission.
+intro: >
+  This is how you check if a form was successful _outside_ of a [form:create](/tags/form-create) tag.
 parameters:
   -
     name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `form` defined in the current context.
+      Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.
+stage: 4
 ---
-## Example {#example}
+## Example
 
 ```
-{{ form:set is="feedback" }}
-
-    {{ if {form:success} }}
-        Thanks for your feedback!
-    {{ else }}
-        {{ form:create }} ... {{ /form:create }}
-    {{ /if }}
-
-{{ /form:set }}
+{{ if {form:success in="contact} }}
+    <p>Thanks for filling out the survey! Sorry it was so long.</p>
+{{ /if }}
 ```
 
-Note that since `form:success` is a Tag rather than a variable, it should be wrapped with single braces when
-inside the conditional.
+> `form:success` is a Tag, not a variable. Wrap it with single braces when inside a conditional.
