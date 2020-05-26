@@ -1,26 +1,24 @@
 ---
 title: "Form:Errors"
 id: eff214d5-cd61-4318-b351-14f765bbe4fc
-overview: >
-  When a form submission encounters a validation error, this Tag allows
-  you to show your user where everything went south.
-description: Display form errors.
+intro: >
+  If a form submission encounters a validation error, you can use this tag to loop through the error messages and show your user where everything went south.
+description: Provides access to form errors.
 parameters:
   -
-    name: handle|is|in|form|formset
+    name: handle|is|in|form
     type: string
     description: >
-      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `form` defined in the current context.
+      Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.
 variables:
   -
     name: value
     type: string
     description: >
-      The output of the errors tag is a primitive array. That means in each iteration the `{{ value }}` will output
-      a different error message. See the example below.
+      This tag contains a primitive array. In each iteration, the `{{ value }}` will output a different error message. See the example above.
+stage: 4
 ---
-## Example {#example}
+## Example
 
 This tag can be used both as a conditional and as the data itself.
 
@@ -41,5 +39,4 @@ This tag can be used both as a conditional and as the data itself.
 {{ /form:set }}
 ```
 
-Note that since `form:errors` is a Tag rather than a variable, it should be wrapped with single braces when
-inside the conditional.
+> `form:errors` is a Tag, not a variable. Wrap it with single braces when inside a conditional.
