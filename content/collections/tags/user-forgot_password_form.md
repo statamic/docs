@@ -38,20 +38,17 @@ variables:
     description: An array of validation errors.
 id: 3e69f12e-72ac-4f1a-9847-fa08d651e750
 ---
-## The form {#form}
+## Example
 
-Here's a basic forgot password form. A user will enter their username, and an email will be
-sent to the corresponding email address. Since we don't set a `redirect` parameter, the user
-will come right back here after submitting, where the `email_sent` condition will kick in
-and they will be shown a success message.
+Let's build a basic "I forgot my password" form for your frontend.
+
+A user will enter their email address in the form and upon submitting, an email will be sent with a link to create a new password. Unless you set a `redirect` parameter, the user will be redirected back to the same page after submitting, and the `email_sent` condition will will allow you to show a success message.
 
 ```
 {{ user:forgot_password_form reset_url="/reset-password" }}
 
     {{ if email_sent }}
-
         <p>Email sent!</p>
-
     {{ else }}
 
         {{ if errors }}
@@ -62,26 +59,22 @@ and they will be shown a success message.
             </div>
         {{ /if }}
 
-        <label>Username</label>
-        <input type="text" name="username" />
-
-        <button>Send email</button>
-
+        <label>Email Address</label>
+        <input type="text" name="email" />
+        <button>Send Reset Email</button>
     {{ /if }}
 
 {{ /user:forgot_password_form }}
 ```
 
-The email that they receive will contain a link to the URL specified in the `reset_url` parameter
-along with some extra query parameters. On that page, you should add a `user:reset_password_form`
-tag, so they can reset their password.
+The email that they receive will contain a link to the URL specified in the `reset_url` parameter, along with extra query parameters. On that page you'll need to add a [user:reset_password_form](/tags/user-reset_password_form) tag to finish the task.
+
+> The user needs to be logged out for this tag to do anything. You may way to wrap the form in `{{ if logged_out }}{{ /if }}`.
 
 ## The email {#email}
 
 Once the form is submitted, an email will be sent containing the URL for resetting the password.
 
-This email is bundled with Statamic and will work for most people out of the box. However, if you'd
-like to customize it, you can. [Find out how to write custom emails][custom-emails]. The template
-used is `user-reset` and should contain a `{{ reset_url }}` variable, which is the generated reset URL.
+This email is bundled with Statamic and will work for most people out of the box. However, if you'd like to customize it, you can. [Find out how to write custom emails][custom-emails]. The template used is `user-reset` and should contain a `{{ reset_url }}` variable, which is the generated reset URL.
 
 [custom-emails]: /knowledge-base/emails#templates
