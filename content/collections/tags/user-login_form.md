@@ -5,18 +5,23 @@ intro: If you wan to build a login form for your users, this is the easiest way 
 stage: 4
 parameters:
   -
-    name: attr
-    type: string
-    description: |
-      Set HTML attributes like so: `attr="class:form|id:form"`. This will become: `<form class="form" id="form">`.
-  -
     name: redirect
     type: string
     description: Where the user should be taken after successfully logging in.
   -
+    name: error_redirect
+    type: string
+    description: >
+      The same as `redirect`, but for failed logins.
+  -
     name: allow_request_redirect
     type: boolean
-    description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
+    description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
+  -
+    name: HTML Attributes
+    type:
+    description: >
+      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="login-form"`.
 variables:
   -
     name: errors
