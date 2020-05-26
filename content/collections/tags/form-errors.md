@@ -6,7 +6,7 @@ intro: >
 description: Provides access to form errors.
 parameters:
   -
-    name: handle|is|in|form
+    name: handle|is|in|form|formset
     type: string
     description: >
       Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.

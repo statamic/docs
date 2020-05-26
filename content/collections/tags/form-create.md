@@ -5,7 +5,7 @@ description: Manages markup and success/error handling for forms.
 intro: Statamic [forms](/forms) serve to collect, report, and reuse user submitted data. This tag handles the HTML markup, redirect behavior, and success/error states and messages for these forms.
 parameters:
   -
-    name: handle|is|in|form
+    name: handle|is|in|form|formset
     type: string
     description: >
       Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.
