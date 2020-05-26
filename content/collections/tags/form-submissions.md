@@ -1,36 +1,43 @@
 ---
 title: "Form:Submissions"
 id: afa2740e-2cf7-4ada-a92e-4fc92e827351
-overview: Iterate over and display data from form submissions.
+description: Fetches data from form submissions.
+intro: This is how you fetch data and display data from form submissions. It works very much like the [collection](/tags/collection) tag.
 parameters:
   -
     name: handle|is|in|form|formset
     type: string
     description: >
-      The name of the form this tag should be targeting. This is only required if you do _not_ use the `form:set` tag, or
-      if you don't have a `form` defined in the current context.
+      Specify the name of the form. Only required if you do _not_ use the `form:set` tag, or don't have a `form` defined in the current context.
 variables:
   -
     name: submission data
     type: mixed
-    description: Each submission being iterated has access to all the field names as variables.
+    description: Each submission has access to all the submitted data.
   -
     name: date
-    type: Carbon|string
+    type: Carbon object
     description: Along with the submission data, all submissions will contain the date they were submitted.
+  -
+    name: no_results
+    type: boolean
+    description: >
+      `true` if no results.
+  -
+    name: total_results
+    type: integer
+    description: The total number of results, if any.
+stage: 4
 ---
 
-## Usage {#usage}
-
-This tag has the same functionality as the [collection](/tags/collection) tag, with exception that the collection
-is of form submissions rather than entries.
+## Example
 
 ```
 {{ form:submissions in="feedback" }}
     <div>
-        Submitted on {{ date }}
-        Name: {{ name }}
-        Rating: {{ rating }}
+        Submitted on {{ date }}<br>
+        Name: {{ name }}<br>
+        Rating: {{ rating }}<br>
         Comment: {{ comment }}
     </div>
 {{ /form:submissions }}
