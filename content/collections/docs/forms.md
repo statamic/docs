@@ -1,18 +1,15 @@
 ---
 title: Forms
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568644914
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
 stage: 1
 ---
-
 ## Overview
 
-Forms are a natural part of the internet experience and a core component of most websites in some shape or form. From "Contact Us" to "Vote for Your Favorite Porg", Statamic can help manage your forms and make your life a little easier.
+Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Us" to "Vote for Your Favorite Porg" survey, Statamic can help manage your forms and make your life a little easier.
 
-Statamic forms serve to collect, report, and reuse user submitted data. The end-to-end solution includes Tags, settings, and a dedicated area of the Control Panel. And yes, "Forms" is a pretty boring title. But at least it's fairly clear as to what it does.
+Statamic forms collect submissions, provide reports and metrics on them on aggrigate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
 ## Your First Form
 
@@ -70,7 +67,7 @@ fields:
 
 ### The Template
 
-Several [form tags](tags/form) are provided to help you render your form.  You can explore these at your leisure, but here is a basic example of a form template.
+Several [form tags](tags/form) are provided to help you render your form.  You can explore these at your leisure, but for now let's use basic form template.
 
 ```
 {{ form:super_fans }}
@@ -98,6 +95,8 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
             {{ /if }}
         </div>
     {{ /fields }}
+
+    <button type="submit">Submit</button>
 
 {{ /form:super_fans }}
 ```
@@ -150,34 +149,33 @@ Exporting your data is as easy as click the **Export** button when viewing your 
 
 ## Emails
 
-Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you
-head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? It's simple to send
-an email when a form is submitted.
+Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? Let's hook that up next.
 
 You can add any number of emails to your formset.
 
-``` .language-yaml
+```yaml
 email:
   -
     to: hello@celebrity.com
     from: website@celebrity.com
     subject: You've got fan mail!
-    template: fan-mail
+    html: fan-mail
+    text: fan-mail-text
   -
     to: agent@celebrity.com
     subject: Someone still likes your client
     automagic: true
 ```
 
-Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent.
-The first one uses a Statamic template, the other gets an "automagic" email. The automagic email will be a simple
-list of all the fields and values in the submission.
+Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses Statamic templates while the other gets an "automagic" email. The automagic email will be a simple text email with a lost of all fields and values in the submission.
 
 ### Setting the Recipient Dynamically
 
+> Not yet supported in v3
+
 You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
-``` .language-yaml
+```yaml
 email:
   -
     to: "{{ email }}"
@@ -188,7 +186,7 @@ email:
 
 You can set the "reply to" to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
-``` .language-yaml
+```yaml
 email:
   -
     reply_to: "{{ email }}"
@@ -199,7 +197,7 @@ email:
 
 ## File Uploads
 
-Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusuable Assets.
+Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
 
 First up, add `files="true"` to  your form tag. (This will add `enctype="multipart/form-data"` to the generated `<form>` tag. That's always so difficult to remember.)
 
@@ -216,7 +214,7 @@ Then the fields:
 <input type="file" name="fancy" />
 ```
 
-``` .language-yaml
+```yaml
 fields:
   simple:
     type: file
@@ -243,7 +241,7 @@ Or, you can enable multiple files on one field, by setting type with the plural 
 <input type="file" name="many[]" multiple />
 ```
 
-``` .language-yaml
+```yaml
 fields:
   many:
     type: files
