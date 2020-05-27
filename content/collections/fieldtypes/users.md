@@ -1,8 +1,8 @@
 ---
 title: Users
-description: Dynamically relate users with your content.
+description: Relate users with your content.
 intro: >
-  Allows you attach users to your content. This can be used to show authorship, list team members, or whatever other use you have for relating people with content.
+  Attach users to your content to show authorship, list team members, assign the winners of a foot race, or even winners of an elbow race.
 screenshot: fieldtypes/users.png
 options:
   -
@@ -14,7 +14,7 @@ options:
     name: max_items
     type: integer
     description: >
-      The maximum number of users than can be selected. By default (blank) there is no limit. Setting to `1` will save the value as a `string` instead of an `array` and will switch to a select dropdown UI.
+      The maximum number of users than can be selected. Leave it empty for no limit (default). Setting to `1` will save the value as a `string` instead of an `array` and will switch to a select dropdown UI.
   -
     name: mode
     type: string
@@ -25,12 +25,13 @@ id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
 ---
 ## Overview
 
-The most common use for the Users fieldtype is to manage the "author" for entries, but it's hardly the only case. You could...
+The most common use for the Users fieldtype is to set the "author" for entries, but it's not the only use. You could...
 
 - List people who contributed to a project
 - Link to related authors
-- Manage an "Employee of the Weekend" section. Everyone wants to be the King or Queen of Inventory Saturday.
+- Manage an "Employee of the Weekend" section. Everyone wants to be the King or Queen of Inventory Saturday, right?
 - Display team bios
+- Pull in customer's testimonials through their user account.
 
 ## Data Structure
 

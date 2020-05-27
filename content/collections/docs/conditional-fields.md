@@ -1,6 +1,6 @@
 ---
 title: 'Conditional Fields'
-intro: Conditional fields are used to show and hide fields in your publish forms based on conditions and triggers. For example, you may only want to show a caption field if an asset field has an image selected, or a whole block of fields if a toggle switch is enabled.
+intro: Show and hide fields in your publish forms based on conditions and triggers. For example, you may only want to show a caption field if an asset field has an image selected, or a whole block of fields if a toggle switch is enabled.
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645321
