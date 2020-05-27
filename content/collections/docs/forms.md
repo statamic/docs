@@ -4,12 +4,11 @@ template: page
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
 stage: 1
+intro: Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.
 ---
 ## Overview
 
-Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Us" to "Vote for Your Favorite Porg" survey, Statamic can help manage your forms and make your life a little easier.
-
-Statamic forms collect submissions, provide reports and metrics on them on aggrigate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
+Statamic forms collect submissions, provide reports and metrics on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
 ## Your First Form
 
@@ -67,11 +66,11 @@ fields:
 
 ### The Template
 
-Several [form tags](tags/form) are provided to help you render your form.  You can explore these at your leisure, but for now let's use basic form template.
+Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
 
 ```
 {{ form:super_fans }}
-
+    // show any errors here
     {{ if errors }}
         <div class="bg-red-300 text-white p-2">
             {{ errors }}
@@ -80,12 +79,14 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
         </div>
     {{ /if }}
 
+    // show a success message after submitting here
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
             {{ success }}
         </div>
     {{ /if }}
 
+    // Loop through and render the form inputs
     {{ fields }}
         <div class="p-2">
             <label>{{ display }}</label>
@@ -96,6 +97,7 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
         </div>
     {{ /fields }}
 
+    // This is just a submit button.
     <button type="submit">Submit</button>
 
 {{ /form:super_fans }}
@@ -103,34 +105,12 @@ Several [form tags](tags/form) are provided to help you render your form.  You c
 
 ## Viewing Submissions
 
-The Control Panel enables you to explore the collected responses, configure dashboards with reporting metrics, and export the data to CSV or JSON formats.
+In the Forms area of the control panel you can explore the collected responses, configure dashboards with reporting metrics, and export the data to CSV or JSON formats.
 
-![Forms](/assets/img/screenshots/cp-forms.jpg) {.rounded}
-
-You can jump back into your form's settings and pick which fields you want shown, as well as configure metrics you'd like shown above your responses. **Here's an example:**
-
-![Metrics](/assets/img/screenshots/cp-metrics.jpg) {.rounded}
-
-These metrics would have a configuration like this:
-
-```language-yaml
-metrics:
-  -
-    type: total
-    label: Total Responses
-  -
-    type: average
-    field: rating
-    label: Average Rating
-    precision: 1
-  -
-    type: average
-    field: age
-    label: Average Age
-    precision: 1
-```
-
-You can apply `average`, `sum`, `min`, `max`, and `total` metrics to any applicable field in your form.
+<figure>
+  <img src="/img/cp-forms.png" alt="List of form submissions in the control panel">
+  <figcaption>Forms. Submissions. Features.</figcaption>
+</figure>
 
 ## Displaying submission data
 
@@ -145,7 +125,7 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 ## Exporting your data
 
-Exporting your data is as easy as click the **Export** button when viewing your form in the Control Panel. You have the choice between CSV and JSON. Choose wisely.
+Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
 
 ## Emails
 
@@ -167,7 +147,7 @@ email:
     automagic: true
 ```
 
-Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses Statamic templates while the other gets an "automagic" email. The automagic email will be a simple text email with a lost of all fields and values in the submission.
+Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses Statamic templates while the other gets an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
 
 ### Setting the Recipient Dynamically
 
