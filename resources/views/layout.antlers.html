@@ -9,7 +9,8 @@
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css">
-    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }">
@@ -54,5 +55,16 @@ fathom('set', 'siteId', 'LGYIPVOA');
 fathom('trackPageview');
 </script>
 <!-- / Fathom -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">docsearch({
+algoliaOptions: {
+    hitsPerPage: 8,
+},
+apiKey: 'b5e8f73c7462a6d5c8b525ef183aabec',
+indexName: 'statamic_3',
+inputSelector: '#docs-search',
+debug: false
+});
+</script>
 </body>
 </html>

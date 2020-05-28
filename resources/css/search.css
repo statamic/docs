@@ -1,0 +1,46 @@
+.algolia-autocomplete {
+    width: 672px;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+    @apply text-blue-darkest font-bold border-blue-darkest px-4 py-2;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+    @apply text-purple;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--content:before {
+    @apply bg-blue-darkest;
+}
+
+.algolia-autocomplete .ds-dropdown-menu {
+    @apply shadow-md rounded-none mt-3 w-full;
+
+    &:before {
+        @apply border-blue-darkest;
+    }
+}
+
+.algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
+    @apply border border-blue-darkest rounded-none p-0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion {
+    padding: 0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+    @apply bg-yellow text-blue-darkest;
+}
+
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion.suggestion-layout-simple, .algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
+    @apply bg-yellow;
+}
+
+.algolia-autocomplete .algolia-docsearch-footer {
+    @apply border-t-2 border-l-2;
+    padding: 8px;
+    width: 150px;
+    height: 36px;
+}

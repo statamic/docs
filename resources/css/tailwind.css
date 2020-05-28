@@ -4,6 +4,7 @@
 @import "docs";
 @import "markdown";
 @import "nav";
+@import "search";
 
 @import "tailwindcss/components";
 

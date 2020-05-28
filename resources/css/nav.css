@@ -11,7 +11,7 @@
     }
 
     li {
-        @apply mb-2 leading-tight relative;
+        @apply mb-1 leading-tight relative;
     }
 
     li a {
