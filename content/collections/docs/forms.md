@@ -151,8 +151,6 @@ Here we'll send two emails for every submission of this form. One will go to the
 
 ### Setting the Recipient Dynamically
 
-> Not yet supported in v3
-
 You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
 ```yaml
@@ -170,6 +168,17 @@ You can set the "reply to" to an address submitted in the form by using the vari
 email:
   -
     reply_to: "{{ email }}"
+    # other settings here
+```
+
+### Setting the "Subject" Dynamically
+
+You can set the set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
+
+```yaml
+email:
+  -
+    subject: '{{ subject ?? "Email Form Submission" }}'
     # other settings here
 ```
 
