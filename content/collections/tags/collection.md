@@ -209,10 +209,17 @@ There are a number of different ways to use this parameter. They are explained i
 
 ### Published Status
 
-By default, only `published` entries will be shown.  You can also query for `draft`, `scheduled`, or `expired` entries by using the above [conditions syntax](#conditions) on `status` like this:
+By default, only `published` entries are included.  Entries can be queried against `draft`, `scheduled`, or `expired` status with [conditions](#conditions) on `status` like this:
 
 ```
+// Include draft entries
+{{ collection:blog status:is="published|draft" }}
+
+// Only include expired entries
 {{ collection:blog status:is="expired" }}
+
+// Exclude published entries
+{{ collection:blog status:not="published" }}
 ```
 
 
