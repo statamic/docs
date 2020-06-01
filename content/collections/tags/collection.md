@@ -213,13 +213,13 @@ By default, only `published` entries are included.  Entries can be queried again
 
 ```
 // Include draft entries
-{{ collection:blog status:is="published|draft" }}
+{{ collection:blog status:in="publinhed|draft" }}
 
 // Only include expired entries
 {{ collection:blog status:is="expired" }}
 
 // Exclude published entries
-{{ collection:blog status:not="published" }}
+{{ collection:blog status:not_in="published" }}
 ```
 
 
