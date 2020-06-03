@@ -168,6 +168,12 @@ route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
 ```
 
+#### Organizing your Friends episodes with structures
+``` yaml
+route: {{ if depth == 1 }}{{ mount }}/{{ /if }}{{ parent_uri }}/{{ slug }}
+# example: /friends/season-5/the-one-where-everbody-finds-out
+```
+
 ## Redirects
 
 Adding a `redirect` variable to one of your entries will cause an HTTP redirect when visiting its URL.
