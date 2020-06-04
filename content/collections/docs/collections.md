@@ -170,9 +170,11 @@ route: /tournament/round-{depth}/{team}
 
 #### Organizing your Friends episodes with structures
 ``` yaml
-route: {{ if depth == 1 }}{{ mount }}/{{ /if }}{{ parent_uri }}/{{ slug }}
+route: {{ depth == 1 ??= mount }}{{ parent_uri }}/{{ slug }}
 # example: /friends/season-5/the-one-where-everbody-finds-out
 ```
+
+> When in an [orderable](#ordering) collection, you can use the route condition `{{ depth == 1 ??= mount }}` to prepend your [mounted](#mounting) entry's URL only for top-level parent items. Your collection URLs will follow the pattern `/mounted-url/parent-url/entry-url`.
 
 ## Redirects
 
