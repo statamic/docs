@@ -33,7 +33,10 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind(EntryRepository::class, DatabaseEntryRepository::class);
+        $this->app->bind(
+            EntryRepository::class,
+            DatabaseEntryRepository::class
+        );
     }
 }
 ```
@@ -51,13 +54,30 @@ class MyEntryRepository extends EntryRepository
 
 ## Custom Data Classes
 
-Each repository is also responsible for making instances of their items. eg. an `EntryRepository` should know how to make an `Entry` class.
+Each repository is also responsible for making instances of their items. eg. an `EntryRepository` makes `Entry` classes. The `make` method will resolve the appropriate class out of the container based on the contract.
 
-You can have the repository return your custom classes:
+The repository has a `bindings` method that defines these. Your custom repository may override these to return different classes.
 
 ``` php
-public function make(): EntryContract
+public static function bindings(): array
 {
-    return new \App\DatabaseEntry;
+    return [
+        Statamic\Contracts\Entries\Entry::class => DatabaseEntry::class,
+    ];
+}
+```
+
+Alternatively, if you want to use a custom item class without customizing the entire repository, you're free to just re-bind that class in your service provider. This could be more useful to you if you just need to customize a method or two.
+
+``` php
+class AppServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        $this->app->bind(
+            Statamic\Contracts\Entries\Entry::class,
+            CustomEntry::class
+        );
+    }
 }
 ```
