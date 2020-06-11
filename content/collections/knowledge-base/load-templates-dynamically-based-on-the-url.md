@@ -15,9 +15,10 @@ Route::statamic('/', 'home');
 
 Route::get('{template}', function ($template) {
     return View::make($template)->layout('layout');
-})->where('template', '.+');
-
+})->where('template', '(?!cp).+');
 ```
+
+_Note: This route rule assumes the control panel login is `/cp` and you're using the default `layout.antlers.html` layout file. You can edit accordingly if you've customized these things. We trust you can figure out which thing to edit where. We believe in you.
 
 ## Examples
 Here's this route rule in action.
