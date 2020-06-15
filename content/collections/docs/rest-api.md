@@ -36,7 +36,7 @@ You may send requests to the following endpoints:
 - [Users](#users) / [User](#user)
 
 ### Customizing the API URL
-You may customize the route in your api config file or with an environment variable.
+You may customize the route in your API config file or with an environment variable.
 
 ```php
 // config/statamic/api.php
