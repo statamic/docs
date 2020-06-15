@@ -33,7 +33,6 @@ An addon consists of at least a `composer.json` and a service provider. Your dir
 {
     "name": "acme/example",
     "description": "Example Addon",
-    "type": "statamic-addon",
     "autoload": {
         "psr-4": {
             "Acme\\Example\\": "src"
