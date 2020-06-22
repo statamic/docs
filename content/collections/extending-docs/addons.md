@@ -269,23 +269,25 @@ When referencing a controller in a route, it will automatically be namespaced to
 Route::get('/', 'ExampleController@index'); // Acme\Example\ExampleController
 ```
 
-If you'd prefer not to have separate route files, you can write routes into a closure directly in your service provider's `boot` method.
+If you'd prefer not to have separate route files, you can write routes into a `Statamic::booted()` closure in your service provider's `boot` method.
 
 ``` php
 public function boot()
 {
     parent::boot();
 
-    $this->registerCpRoutes(function () {
-        Route::get(...);
-    });
+    Statamic::booted(function () {
+        $this->registerCpRoutes(function () {
+            Route::get(...);
+        });
 
-    $this->registerWebRoutes(function () {
-        Route::get(...);
-    });
+        $this->registerWebRoutes(function () {
+            Route::get(...);
+        });
 
-    $this->registerActionRoutes(function () {
-        Route::get(...);
+        $this->registerActionRoutes(function () {
+            Route::get(...);
+        });
     });
 }
 ```
