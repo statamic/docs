@@ -18,9 +18,13 @@
 
                     <div class="w-full xl:w-3/4 lg:px-6 py-3 lg:py-0 xl:px-12">
                         <form class="relative m-0" action="/search-results">
-                            <input id="docs-search" name="q"
+                            <input 
+                                id="docs-search" 
+                                name="q"
+                                x-ref="docsSearch"
+                                @keydown.escape="$refs.docsSearch.blur(), $refs.docsSearch.value = ''"
                                 class="focus:outline-none border-2 shadow focus:bg-yellow placeholder-blue font-bold rounded bg-blue-lightest py-1 pr-4 pl-8 block w-full appearance-none leading-normal"
-                                type="text" placeholder="Search...">
+                                type="text" placeholder="Search... (Press &quot;/&quot; to focus)">
                             <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
                                 <svg class="fill-current pointer-events-none text-gray-600 w-4 h-4"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }">
+<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }" @keydown.slash.prevent="$refs.docsSearch.focus()">
 
 {{ partial:partials/nav }}
 
