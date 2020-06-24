@@ -1,7 +1,7 @@
 ---
 title: 'Control Panel Translations'
 nav_title: Translations
-intro: "Statamic's Control Panel is currently available in 6 languages. We always welcome new translations!"
+intro: "Statamic's Control Panel is currently available in 7 languages. We always welcome new translations!"
 stage: 4
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
@@ -31,6 +31,7 @@ preferences:
 | Language | Code |
 |----------|------|
 | English | `en` |
+| Dutch | `nl` |
 | French | `fr` |
 | German | `de` |
 | Italian | `it` |
@@ -44,9 +45,10 @@ _Translations are community contributed so may you find them to be incomplete sh
 There are 4 steps.
 
 1. Clone [`statamic/cms`](https://github.com/statamic/cms) locally
-2. Generate a new translation from source files
-3. Translate new message files in `resources/lang`
-4. Commit changes and submit a PR
+2. Run `composer install`
+3. Generate a new translation from source files
+4. Translate new message files in `resources/lang`
+5. Commit changes and submit a PR
 
 ### Generating Translation Files
 
@@ -60,6 +62,8 @@ php translator generate eo
 
 - The JSON file contains all the "short strings" established on the fly with the translation helpers, e.g. `__('Cowabunga')`.
 - The PHP files contain longer strings and are well organized by section of the control panel.
+- Translatable strings can contain a `|` to separate singular and plurals. 
+- Translatable strings can contain the `:something` format to indicate a variable.
 
 ``` files
 resources/lang/
@@ -81,7 +85,7 @@ php translator generate eo --key=abc123
 
 ### Using the Reviewer
 
-Running the `translator review` command will loop through all the translations showing you the key, the English phrase, and new translated phrase for proofreading. You can enter new translations during this process.
+Running the `translator review` command will loop through all the translations showing you the key, the English phrase, and new translated phrase for proofreading. You can enter new translations during this process. You can also use this command to gather new or changed translatable strings after a Statamic update.
 
 ``` bash
 php translator review eo messages
