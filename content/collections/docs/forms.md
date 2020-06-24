@@ -68,6 +68,8 @@ fields:
 
 Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
 
+This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#dynamic-rendering).
+
 ```
 {{ form:super_fans }}
     // show any errors here
