@@ -121,6 +121,13 @@ protected static $handle = 'example';
 
 Then, using the example above, `my_tags:x` would now be `example:x`
 
+## Aliases
+
+You may choose to create aliases for your tag too. It will then be usable by its handle, or any of its aliases.
+
+``` php
+protected static $aliases = ['sample'];
+```
 
 ## Parameters
 

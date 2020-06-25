@@ -72,6 +72,14 @@ protected static $handle = 'repeatrepeat';
 
 Then, using the example above, `variable | repeat` would now be `variable | repeatrepeat`.
 
+## Aliases
+
+You may choose to create aliases for your modifier too. It will then be usable by its handle, or any of its aliases.
+
+``` php
+protected static $aliases = ['duplicate'];
+```
+
 
 ## Example
 
