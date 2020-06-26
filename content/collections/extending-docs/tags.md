@@ -207,6 +207,16 @@ $this->context->get('unknown', 'fallback');
 $this->context->get(['first_this', 'then_this']);
 ```
 
+If the item you are retrieving is defined in a Blueprint, it'll be a `Value` object. To avoid you needing to check for Value objects and manually convert them yourself, you may use the `value` and `raw` methods instead:
+
+``` php
+// If it's a Value object, it'll get the augmented value for you.
+$this->context->value('something');
+
+// If it's a Value object, it'll get the raw value for you.
+$this->context->raw('something');
+```
+
 ## Rendering Data
 
 Rendering your tag data is a little different depending on whether you intend to have a single tag or a tag pair.

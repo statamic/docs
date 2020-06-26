@@ -191,6 +191,20 @@ export default {
 
 The `IndexFieldtype` mixin will provide you with a `value` prop so you can display it however you'd like. Continuing our example above, we will replace the value with bullets.
 
+## Augmentation
+
+By default, a fieldtype will not perform any augmentation. It will just return the value as-is.
+
+You can customize how it gets augmented with an augment method:
+
+``` php
+public function augment($value)
+{
+    return strtoupper($value);
+}
+```
+
+[Read more about augmentation](/extending/augmentation)
 
 ## Updating from v2
 

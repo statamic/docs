@@ -27,8 +27,14 @@ content: |
 ```
 
 ```
+// With Markdown augmentation
 <article>
   {{ content }}
+</article>
+
+// Without
+<article>
+  {{ content | raw }}
 </article>
 ```
 
@@ -46,3 +52,7 @@ content: |
   Bend your knees more and then spring upwards a _lot_ faster.
 </article>
 ```
+
+## Digging Deeper
+
+[Learn the inner workings of Augmentation](/extending/augmentation) and how to use it in your own code over in the Extending Statamic docs.

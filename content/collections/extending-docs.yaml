@@ -88,6 +88,8 @@ structure:
           entry: be292d2b-dc0e-48dc-bce4-0058df27ccc6
         -
           entry: 73010f4f-bb62-4feb-a6ff-88031f488db8
+        -
+          entry: af1de577-8f75-4623-a0a3-d4c4c49390aa
     -
       title: Addons
       url: /extending/addons
