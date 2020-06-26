@@ -26,7 +26,7 @@ Here's this route rule in action.
 | URL | Template |
 |---|---|
 | `/` | `resources/views/home.antlers.html` |
-| `/design` | `resources/views/design/index.antlers.html` |
+| `/design` | `resources/views/design.antlers.html` |
 | `/design/stuff` | `resources/views/design/stuff.antlers.html` |
 | `/design/your/popsicle` | `resources/views/design/your/popsicle.antlers.html` |
 
