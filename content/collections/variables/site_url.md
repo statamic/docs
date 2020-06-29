@@ -6,7 +6,7 @@ types:
 The URL of the site. Aliased by `homepage`.
 
 ```
-{{ site_url }}
+{{ site:url }}
 ```
 
 ``` .language-output
