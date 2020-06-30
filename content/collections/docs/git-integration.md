@@ -1,6 +1,6 @@
 ---
 title: 'Git Integration'
-intro: 'Enabling Git integration in Statamic is like having Spock in your _enterprise_, listening for content changes with those large handsome ears. You won''t find anymore more _committed_!'
+intro: 'Enabling Git integration in Statamic is like having Spock in your _enterprise_, listening for content changes with those large handsome ears. You won''t find anyone more _committed_!'
 stage: 4
 id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 ---
