@@ -6,7 +6,7 @@ id: caf2a160-de1c-11e9-aaef-0800200c9a66
 ---
 ## To addon, or not to addon?
 
-In Statamic v2, practically every customization would need to be contained within an addon, even you had no intention of distributing it.
+In Statamic v2, practically every customization would need to be contained within an addon, even if you had no intention of distributing it.
 
 Since Statamic v3 is a Laravel package, you are in control over your application code. You're free to add whatever extra code you like.
 
