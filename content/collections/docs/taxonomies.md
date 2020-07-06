@@ -35,7 +35,7 @@ Taxonomy routes are automatically created for you **if the corresponding view ex
   - Accessible at `/{taxonomy slug}/{term slug}` (eg. `/tags/retrowave`)
   - The `{taxonomy}/show` view will be used. (eg. `tags/show.antlers.html`)
 
-For each taxonomy [assigned to a collection](#assigning-to-collections), and when [the collection has been mounted](/guide/collections.html#mounting), you will also get these routes:
+For each taxonomy [assigned to a collection](#assigning-to-collections), and when [the collection has been mounted](/collections#mounting), you will also get these routes:
 
 - **Collection Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
