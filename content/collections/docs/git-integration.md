@@ -1,12 +1,14 @@
 ---
 title: 'Git Integration'
-intro: 'Enabling Git integration in Statamic is like having Spock in your _enterprise_, listening for content changes with those large handsome ears. You won''t find anyone more _committed_!'
-stage: 4
+intro: Statamic can automate your version control workflow with Git. It can automatically commit and push content as it's changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works.
+stage: 5
 id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 ---
 ## Overview
 
-When enabled, Statamic can help automate your Git workflow in production.  It can help you automatically commit and push content as it's changed, schedule commits, or allow control panel users to manually trigger commits without having to understand git.
+Enabling Statamic's Git integration is like having Spock in your enterprise, listening for content changes with those large handsome ears. You won't find anyone more committed. 🖖
+
+> This feature is the evolution of Statamic v2's [Spock addon](https://github.com/statamic/).
 
 <figure>
     <img src="/img/git-utility.png" alt="Git utility allowing user to manually trigger commits from control panel">
@@ -61,7 +63,7 @@ You are free to define the tracked paths to be considered when staging and commi
 
 ## Committing Changes
 
-By default, Statamic listens to various `Saved` and `Deleted` data events to determine when your content is changed, and will automatically commit your changes.  If you prefer users to manually trigger commits using the Git utility interface, you may set this to `false` in your [configuration](#configuration):
+By default, Statamic listens to various `Saved` and `Deleted` data events to determine when your content is changed, and will automatically commit your changes. If you prefer users to manually trigger commits using the Git utility interface, you may set this to `false` in your [configuration](#configuration):
 
 ```php
 'automatic' => env('STATAMIC_GIT_AUTOMATIC', false),
@@ -75,7 +77,7 @@ STATAMIC_GIT_AUTOMATIC=false
 
 ### From the command line
 
-You can also manually trigger a commit on the command line using the following command:
+Manually trigger commits via command line using the following command:
 
 ```bash
 php please git:commit
@@ -83,7 +85,7 @@ php please git:commit
 
 ## Pushing Changes
 
-Statamic can also `git push` your changes after committing.  To enable this functionality, set this to `true` in your [configuration](#configuration):
+Statamic can also `git push` your changes after committing. Enable this behavior in your [configuration](#configuration):
 
 ```php
 'push' => env('STATAMIC_GIT_PUSH', true)
@@ -97,7 +99,7 @@ STATAMIC_GIT_PUSH=true
 
 ## Queueing Commits
 
-When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing.  By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
+When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
 
 ```env
 QUEUE_DRIVER=sync
@@ -125,7 +127,7 @@ Or in a specific environment's `.env` file:
 STATAMIC_GIT_DISPATCH_DELAY=10
 ```
 
-In this example, we queue a delayed commit to run 10 minutes after a user makes a content change.  If at that time the repository status is clean, the commit will be cancelled.
+In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
 
 > Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
 
@@ -144,11 +146,11 @@ protected function schedule(Schedule $schedule)
 }
 ```
 
-In this example, we schedule a commit to run 10 minutes after a user makes a content change.  If at that time the repository status is clean, the commit will be cancelled.
+In this example, we schedule a commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
 
 ### Scheduling for performance
 
-Scheduling commits can be a great alternative [queueing](#queueing-commits), for when you don't have a proper queue setup.  If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
+Scheduling commits can be a great alternative [queueing](#queueing-commits), for when you don't have a proper queue setup. If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
 
 > Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
 
@@ -156,9 +158,9 @@ _Note: When commits are scheduled to run via cron, there will be no authenticate
 
 ## Customizing Commits
 
-If you need to customize the commits themselves, you can do so by modifying the `commands` array within your [configuration](#configuration) file.
+To customize the commits messages themselves, modify the `commands` array in the [configuration](#configuration) file.
 
-For example, maybe you want to append `[BOT]` to the commit message so that you can selectively disable automatic site deployments when a commit is [automatically pushed](#pushing-changes) back to your repository:
+For example, you can append `[BOT]` to the commit message so that you can selectively disable automatic site deployments when a commit is [automatically pushed](#pushing-changes) back to your repository:
 
 ```php
 'commands' => [
@@ -169,7 +171,7 @@ For example, maybe you want to append `[BOT]` to the commit message so that you 
 
 ## Ignoring Events
 
-When [automatically committing](#committing-changes), Statamic will listen on all `Saved` and `Deleted` events, as well as any events registered by installed addons. If you wish to ignore any specific events, you can do so by adding to the `ignored_events` array withing your [configuration](#configuration) file.
+When [automatically committing](#committing-changes), Statamic will listen on all `Saved` and `Deleted` events, as well as any events registered by installed addons. To ignore specific events, add them to the `ignored_events` array in the [configuration](#configuration) file.
 
 For example, if you're [storing users in a database](/knowledge-base/storing-users-in-a-database), you may wish to ignore user-based events:
 
