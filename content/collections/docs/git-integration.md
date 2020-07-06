@@ -8,7 +8,7 @@ id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 
 Enabling Statamic's Git integration is like having Spock in your enterprise, listening for content changes with those large handsome ears. You won't find anyone more committed. 🖖
 
-> This feature is the evolution of Statamic v2's [Spock addon](https://github.com/statamic/).
+> This feature is the evolution of Statamic v2's [Spock addon](https://github.com/statamic/spock).
 
 <figure>
     <img src="/img/git-utility.png" alt="Git utility allowing user to manually trigger commits from control panel">
@@ -158,7 +158,7 @@ _Note: When commits are scheduled to run via cron, there will be no authenticate
 
 ## Customizing Commits
 
-To customize the commits messages themselves, modify the `commands` array in the [configuration](#configuration) file.
+To customize the commit messages themselves, modify the `commands` array in the [configuration](#configuration) file.
 
 For example, you can append `[BOT]` to the commit message so that you can selectively disable automatic site deployments when a commit is [automatically pushed](#pushing-changes) back to your repository:
 
