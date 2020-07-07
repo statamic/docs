@@ -24,7 +24,7 @@ We don't break things for the fun of it. We hope understanding these philosophie
 Wherever reasonable and possible, we will opt for patterns resulting in smaller git changes, especially those avoiding filename changes. Filename changes cause a messy `delete` and `add` diff in your git history. Examples of this principle in action:
 
 - **Publish status** is now controlled by a YAML variable and no longer results in a file move/delete/add.
-- **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file storeing the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
+- **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file storing the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
 
 ### Building in the open benefits everyone
 
