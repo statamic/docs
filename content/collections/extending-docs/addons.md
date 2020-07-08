@@ -116,8 +116,6 @@ A public addon is one available as a composer package on packagist.org. Simple r
 composer require vendor/package
 ```
 
-After the composer package has been brought in, Statamic will automatically activate it and publish its assets.
-
 ### Private addons
 
 A private addon is one _not_ on packagist.org. You will need to use a composer path repository.
@@ -394,3 +392,56 @@ protected function schedule($schedule)
 ```
 
 Consult the [Laravel scheduling documentation](https://laravel.com/docs/master/scheduling#defining-schedules) to learn how to define your schedule.
+
+## Editions
+
+An addon can have various editions which enable you to limit your features depending on which is selected.
+
+For example, you could have a free edition with limited features, and an edition with extra features that requires a license.
+
+### Defining Editions
+
+You can define your editions in your `composer.json`. They should match the edition handles that you set up on the Marketplace.
+
+``` json
+{
+    "extra": {
+        "statamic": {
+            "editions": ["free", "pro"]
+        }
+    }
+}
+```
+
+> The first edition will be the default for when a user hasn't explicitly selected one. Naturally, your editions should be listed from least to most expensive.
+
+### Feature Toggles
+
+You can check for the configured edition in order to toggle features.
+
+``` php
+$addon = Addon::get('vendor/package');
+
+if ($addon->edition() === 'pro') {
+    //
+}
+```
+
+> You don't need to check whether a license is valid, Statamic will do that automatically for you.
+
+
+## Publishing to the Marketplace
+
+Once your addon is ready to be shared, you can publish it on the Marketplace where it can be discovered by others.
+
+Before you can publish your addon, you'll need a couple of things:
+
+- Publish your Composer package on [packagist.org](https://packagist.org).
+- Create a [statamic.com seller account](https://statamic.com/seller)
+- If you're planning to charge for your addons, you'll need to link connect your bank details to your seller account.
+
+In your seller dashboard, you can create a product. There you'll be able to link your Composer package that you created on Packagist, choose a price, write a description, and so on.
+
+Products will be marked as drafts that you can preview and tweak until you're ready to go.
+
+Once published, you'll be able to see your addon on the Marketplace and within the Addons area of the Statamic Control Panel.
