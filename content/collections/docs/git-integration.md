@@ -97,6 +97,12 @@ Or in a specific environment's `.env` file:
 STATAMIC_GIT_PUSH=true
 ```
 
+### Remote setup
+
+When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) with an upstream branch set, and are authenticated to push to your remote [via SSH](https://docs.github.com/en/github/using-git/which-remote-url-should-i-use).
+
+> If you use [Laravel Forge](https://forge.laravel.com/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
+
 ## Queueing Commits
 
 When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
