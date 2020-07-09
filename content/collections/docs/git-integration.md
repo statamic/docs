@@ -55,6 +55,7 @@ You are free to define the tracked paths to be considered when staging and commi
     resource_path('fieldsets'),
     resource_path('forms'),
     resource_path('users'),
+    storage_path('forms'),
     public_path('assets'),
 ],
 ```
