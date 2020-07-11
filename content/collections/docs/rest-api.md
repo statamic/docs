@@ -56,7 +56,7 @@ You may filter results by using the `filter` query parameter.
 /endpoint?filter[{field}:{condition}]={value}
 ```
 
-You may use the [conditions](/conditions) available to the collection tag. eg. `contains`, `is`, etc. For example:
+You may use the [conditions](/conditions) available to the collection tag. eg. `contains`, `is`, `isnt` (or `not`), etc. For example:
 
 ``` url
 /endpoint?filter[title:contains]=awesome&filter[featured]=true
