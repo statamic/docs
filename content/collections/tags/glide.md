@@ -178,6 +178,20 @@ If asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
 
+## Avoid using Glide on SVGs
+
+Check file type before using Glide to leave that SVG alone.
+
+```
+{{ assets:image  }}
+    {{ if extension == 'svg' }}
+         <img src="{{ url }}">
+    {{ else }}
+         <img src="{{ glide:url width="600" }}">
+    {{ /if }}
+{{ /assets:image  }}
+```
+
 ## Serving Cached Images Directly
 
 The default behavior is to simply output a URL. When that URL is
