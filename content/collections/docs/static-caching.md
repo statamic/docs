@@ -182,7 +182,7 @@ return [
 
 ### By Force
 
-To clear the static file cache you can run `php please clear:static` (and/or delete the appropriate static file locations).
+To clear the static file cache you can run `php please static:clear` (and/or delete the appropriate static file locations).
 
 ## File Locations
 
