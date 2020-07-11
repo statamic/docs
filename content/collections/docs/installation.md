@@ -48,7 +48,7 @@ After Statamic is installed, you'll have the `content/`, `users/`, and `config/s
 
 Your explicit routes will take precedence and anything not caught by your app will run through Statamic and will work as documented. Enjoy!
 
-## After installing
+## Next Steps
 
 Once you've installed Statamic, you're ready to start building! Check out the [Quick Start](/quick-start) page for a walkthrough on how to build a simple site, access the Control Panel, creating a user, and more.
 
