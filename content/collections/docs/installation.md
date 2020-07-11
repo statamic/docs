@@ -48,16 +48,11 @@ After Statamic is installed, you'll have the `content/`, `users/`, and `config/s
 
 Your explicit routes will take precedence and anything not caught by your app will run through Statamic and will work as documented. Enjoy!
 
-## Make a new user to use the control panel (optional)
-If you want to use the control panel add a new superuser first:
+## After installing
 
-``` bash
-php please make:user
-```
-Read more information about [creating a user](/users#creating-users).
+Once you've installed Statamic, you're ready to start building! Check out the [Quick Start](/quick-start) page for a walkthrough on how to build a simple site, access the Control Panel, creating a user, and more.
 
-## Open the control panel (optional)
-Go to http://cool-site.test/cp or whatever you set it to.
+Want to jump right in? You can create a user by running `php please make:user`, and heading to `http://yoursite.com/cp`.
 
 ## Updating
 
