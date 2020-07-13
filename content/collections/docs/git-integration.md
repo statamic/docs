@@ -109,7 +109,7 @@ When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/
 When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
 
 ```env
-QUEUE_DRIVER=sync
+QUEUE_CONNECTION=sync
 ```
 
 ### Queueing for performance
