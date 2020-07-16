@@ -72,35 +72,37 @@ This example dynamically renders each input's HTML. You could alternatively writ
 
 ```
 {{ form:super_fans }}
-    // show any errors here
-    {{ if errors }}
-        <div class="bg-red-300 text-white p-2">
-            {{ errors }}
-                {{ value }}<br>
-            {{ /errors }}
-        </div>
-    {{ /if }}
 
-    // show a success message after submitting here
+    // First let's check if this is after a submission, and if so, was it successful.
+    // If it was, just show the success message. After all, we don't want them submitting again once they've gotten in touch!
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
             {{ success }}
         </div>
+    {{ else }}
+        // If we weren't successful, show any errors. If a fresh page load, there's no errors, so do nothing.
+        {{ if errors }}
+            <div class="bg-red-300 text-white p-2">
+                {{ errors }}
+                    {{ value }}<br>
+                {{ /errors }}
+            </div>
+        {{ /if }}
+
+        // Loop through and render the form inputs
+        {{ fields }}
+            <div class="p-2">
+                <label>{{ display }}</label>
+                <div class="p-1">{{ field }}</div>
+                {{ if error }}
+                    <p class="text-gray-500">{{ error }}</p>
+                {{ /if }}
+            </div>
+        {{ /fields }}
+
+        // This is just a submit button.
+        <button type="submit">Submit</button>
     {{ /if }}
-
-    // Loop through and render the form inputs
-    {{ fields }}
-        <div class="p-2">
-            <label>{{ display }}</label>
-            <div class="p-1">{{ field }}</div>
-            {{ if error }}
-                <p class="text-gray-500">{{ error }}</p>
-            {{ /if }}
-        </div>
-    {{ /fields }}
-
-    // This is just a submit button.
-    <button type="submit">Submit</button>
 
 {{ /form:super_fans }}
 ```
