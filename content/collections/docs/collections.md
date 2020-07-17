@@ -74,9 +74,11 @@ A collection is defined by a YAML file stored in the `content/collections` direc
 
 ## Blueprints
 
-Each Collection needs at least one Blueprint to define the available fields when creating and editing entries.
+Each Collection uses blueprints to define the available fields when creating and editing its entries.
 
-If you set _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
+If you don't explicitly create a blueprint, your entries will have a basic set of fields: title, markdown content, slug, etc. Of course, you're able to create your own.
+
+If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
 ## Dates
 

@@ -55,7 +55,7 @@ data:
 
 ## Containers
 
-Each container has its own settings, configurable permissions, and [blueprints](/blueprints). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service. It's up to you.
+Each container has its own settings, configurable permissions, and [blueprint](#blueprint). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service. It's up to you.
 
 Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
 
@@ -80,6 +80,11 @@ Each container implements a disk, which is just a [Laravel Filesystem](https://l
 
 Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or anything else as long as there is a Flysystem adapter for it installed.
 
+## Blueprint
+
+If you don't explicitly edit the [Blueprint](/blueprints) for your container, you'll get a single "alt text" field.
+
+If you want to customize the fields, you're able to create your own blueprint. You'll find it in `resources/blueprints/assets/{handle}.yaml`. Or, just go ahead and edit it through the control panel and it'll create the file for you.
 
 ## Entries
 

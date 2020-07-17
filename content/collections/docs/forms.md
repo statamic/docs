@@ -23,18 +23,21 @@ Okay, let's just pretend you're a famous celebrity's _web developer_. You've bee
 
 ### Create the form
 
-First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `site/settings/formsets` which will contain all the form fields and settings.
+First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `resources/forms` which will contain all the form's settings.
 
-Each form should contain a title and a reference to a [blueprint](blueprints). Optionally it may also have metrics and email configuration.
+Each form should contain a title. Optionally it may also have metrics and email configuration.
 
 ```yaml
 title: Super Fans
-blueprint: super_fans
+email: []
+metrics: []
 ```
 
 ### The Blueprint
 
 The [blueprint](blueprints) is where you define your form's `fields` and validation rules to be used on form submission.
+
+The blueprint is located in `resources/blueprints/forms/{handle}.yaml`
 
 ```yaml
 fields:
