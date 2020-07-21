@@ -40,13 +40,12 @@ globals/
 
 ``` yaml
 title: Footer
-blueprint: footer_globals
 data:
   copyright: 2019 Company Name, LLC
   flair: Made with ❤️ by humans
 ```
 
-> If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, blueprint, etc) to be excluded.
+> If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, etc) to be excluded.
 
 ## Templating
 
@@ -63,7 +62,9 @@ If you only have the default global set (which we named Globals because it can't
 
 ## Blueprint is Optional
 
-If you don't assign a [Blueprint](/blueprints) to your global set, Statamic will try to render each field in the YAML file as a text input. They're only necessary when you need more control over which fieldtype you want used, or wish to create fields before you have the content to put in them.
+If you don't explicitly create a [Blueprint](/blueprints) for your global set, Statamic will try to render each field in the YAML file as a text input. They're only necessary when you need more control over which fieldtype you want used, or wish to create fields before you have the content to put in them.
+
+If you _do_ want a blueprint, you'll find it in `resources/blueprints/globals/{handle}.yaml`. Or, edit it through the control panel and it'll create the file for you.
 
 Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 

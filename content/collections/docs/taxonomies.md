@@ -20,7 +20,11 @@ Taxonomies can be attached to any number of collections but their terms are _glo
 
 ## Blueprints
 
-Each taxonomy can have a blueprint to define the available fields on your terms.
+Each taxonomy uses blueprints to define the available fields when creating and editing its terms.
+
+If you don't explicitly create a blueprint, your terms will have a basic set of fields: title, markdown content, slug, etc. Of course, you're able to create your own.
+
+If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new term.
 
 ## Routing
 

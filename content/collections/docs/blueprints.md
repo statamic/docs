@@ -9,7 +9,14 @@ stage: 1
 ---
 ## Overview
 
-Think of blueprints as stencils for your content. They control what [fields](/fields) users get to work with when publishing content, as well as the schema of the data developers will be tapping into to build the [front-end](/front-end) of your site. Blueprints can be attached to collections, global sets, assets, users, and even forms.
+Think of blueprints as stencils for your content. They control what [fields](/fields) users get to work with when publishing content, as well as the schema of the data developers will be tapping into to build the [front-end](/front-end) of your site.
+
+Each blueprint belongs to an item: 
+
+- You can define multiple Blueprints for collections, and each entry will have the opportunity to choose from one of them.
+- Same goes for taxonomies and their terms.
+- Global sets, Asset containers, and Forms each get their own Blueprint.
+- Users all share a Blueprint.
 
 <figure>
     <img src="/img/blueprints.png" alt="The Statamic 3 blueprint configuration screen">
@@ -18,7 +25,45 @@ Think of blueprints as stencils for your content. They control what [fields](/fi
 
 ## Creating Blueprints
 
-You can create blueprints in the **Blueprints** area of the control panel or by creating a YAML file in `resources/blueprints/`. Once created, you can begin to define fields and the sections that hold them. If you have more than one section, each becomes a tab in the publish form.
+There are 3 ways to create blueprints:
+
+- In the respective areas of the control panel. For instance, the collections area will let you define its blueprints.
+  The forms area will let you define its blueprints, and so on.
+- In the **Blueprints** area of the control panel. This page serves as a hub to jump over to managing blueprints in various areas.
+- Creating a YAML file in the appropriate place within `resources/blueprints/`. More on that in a moment.
+
+Once created, you can begin to define fields and the sections that hold them. If you have more than one section, each becomes a tab in the publish form.
+
+## Directory Structure
+
+Whether you manually create your blueprint's YAML file, or use the control panel, they will all end up as YAML files in the `resources/blueprints` directory.
+
+``` files
+resources/
+`-- blueprints/
+    |-- collections/
+    |   `-- blog/
+    |       |-- basic_post.yaml
+    |       `-- art_directed_post.yaml
+    |-- taxonomies/
+    |   `-- tags/
+    |       `-- tag.yaml
+    |-- globals/
+    |   |-- global.yaml
+    |   `-- company.yaml
+    |-- assets/
+    |   `-- main.yaml
+    |-- forms/
+    |   `-- contact.yaml
+    `-- user.yaml
+```
+
+Collections and Taxonomies have their available blueprints organized in subdirectories named after their collections.
+When you create an entry or term, you will be able to choose which blueprint to use (if there are multiple).
+
+Globals, Asset Containers, and Forms can only have one blueprint per item, so they are organized into their own subdirectories, where each YAML file is the handle of the item.
+
+All users will share the same blueprint, and it hangs out in the root of the directory.
 
 ## Conditional Fields
 
@@ -33,10 +78,9 @@ To learn what's possible and how implement the various rules, head over to the a
 
 ## YAML Structure
 
-At its most basic, a blueprint has a title and an array of sections.
+At its most basic, a blueprint has an array of sections.
 
 ``` yaml
-title: My Blueprint
 sections: []
 ```
 
@@ -61,7 +105,7 @@ sections:
         type: textarea
 ```
 
-> Unlike fieldsets, blueprint fields are **sequence indexed** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
+> Blueprint fields are **sequence indexed** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
 
 ## Reusable Fields
 
@@ -125,9 +169,11 @@ fields:
 # the survey.yaml fieldset
 
 fields:
-  food:
+  -
+    handle: food
     type: text
-  food_reason:
+  -
+    handle: food_reason
     type: textarea
 ```
 
@@ -160,11 +206,11 @@ If you omit the `prefix` you won't be able to import them more than once at the 
 
 ## Grid Fieldtype
 
-The Grid fieldtype lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
+The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
 
 You should define its fields using the blueprint field syntax. This will allow you to reference other fields and/or import entire fieldsets.
 
-```
+``` yaml
 links:
   type: grid
   fields:
