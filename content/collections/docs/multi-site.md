@@ -18,7 +18,7 @@ Each site can have different base URLs:
 
 ## Configuration
 
-Whether or are using multiple sites or not, every Statamic install needs at least one site.
+Whether you are using multiple sites or not, every Statamic install needs at least one site.
 
 Each site has a locale which is used to format region-specific data, namely date strings.
 A URL is also required, telling Statamic where to expect the site to be served.
