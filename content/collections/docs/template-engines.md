@@ -69,6 +69,15 @@ it, rather than using a `value` method.
 
 > Note that when using multi-word modifiers, like `ensure_right`, you should use the camelCased version (`ensureRight`).
 
+## Blade Directives
+
+Statamic adds a few Blade directives, allowing you easier access to Statamic data:
+
+``` blade
+@collection('pages')
+  {{ $entry['title'] }}
+@endcollection
+```
 
 ## Layouts
 
