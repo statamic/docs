@@ -149,7 +149,24 @@ Run composer update from your project root:
 composer update
 ```
 
-After the composer package has been brought in, Statamic will automatically activate it and publish its assets.
+After the composer package has been brought in, Statamic will automatically activate it and [publish its assets](#publishing-assets).
+
+### Post-install commands {#post-install-commands}
+
+By default the `vendor:publish` command will be run for you after `statamic:install`, letting your assets be automatically published.
+
+However, you can run other commands or custom code too using the `afterInstalled` method:
+
+``` php
+public function boot()
+{
+    parent::boot();
+
+    Statamic::afterInstalled(function ($command) {
+        $command->call('some:command');
+    });
+}
+```
 
 
 ## Registering Components
@@ -197,21 +214,7 @@ protected $stylesheets = [
 ];
 ```
 
-This will do two things:
-- Statamic will load the respective files in the Control Panel. It will assume they exist in `public/vendor/[vendor]/[package].js` and `css` directories.
-- Mark the file for publishing when the `artisan vendor:publish` command is used.
-
-``` bash
-php artisan vendor:publish --provider=YourServiceProvider --force
-```
-
-When an end user installs or updates your addon, the `vendor:publish` command will automatically be run behind the scenes for them.
-
-> During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your directory:
->
-> ``` bash
-> ln -s /path/to/addons/example/resources public/vendor/example/package
-> ```
+Statamic will load the respective files in the Control Panel. It will assume they exist in `public/vendor/[vendor]/[package].js` and `css` directories.
 
 ### Publishables
 
@@ -222,6 +225,33 @@ protected $publishables = [
     __DIR__.'/../resources/images' => 'images',
 ];
 ```
+
+### Publishing assets
+
+When using the `$scripts`, `$stylesheets`, and `$publishables` properties, these files will be made available to the `artisan vendor:publish` command.
+They will all be tagged using your addon's slug.
+
+Whenever the `statamic:install` command is run (i.e. after running `composer update`, etc) the following command will be run:
+
+``` bash
+php artisan vendor:publish --tag=your-addon-slug --force
+```
+
+You can prevent these from being automatically published by adding a property to your provider:
+
+``` php
+protected $publishAfterInstall = false;
+```
+
+This may be useful if you need more control around groups of assets to be published, or if you're using custom [post-install commands](#post-install-commands).
+
+### Assets during development
+
+> During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your directory:
+>
+> ``` bash
+> ln -s /path/to/addons/example/resources public/vendor/example/package
+> ```
 
 ## Routing
 
