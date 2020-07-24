@@ -52,6 +52,8 @@ commands({ type, toggleMark }) {
 
 > If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
 
+If you're providing a new mark and intend to use this Bard field on the front-end, you will also need to create a Mark class to be used by the PHP [renderer](#prosemirror-rendering).
+
 ## Buttons
 
 To add a button to the toolbar, use the `buttons` method. The callback may return a button object, or an array of them.
@@ -98,4 +100,22 @@ const { core: tiptap, commands, utils } = Statamic.$bard.tiptap;
 const selection = new tiptap.TextSelection(...);
 commands.insertText(...);
 utils.getMarkAttrs(...);
+```
+
+## ProseMirror Rendering
+
+If you have created a mark on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
+
+The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
+
+You can use the `addMark` method to bind a [Mark](https://github.com/ueberdosis/prosemirror-to-html) class into the renderer. Your service provider's `boot` method
+is a good place to do this.
+
+``` php
+use Statamic\Fieldtypes\Bard\Augmentor;
+
+public function boot()
+{
+    Augmentor::addMark(MyMark::class);
+}
 ```
