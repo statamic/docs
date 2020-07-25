@@ -74,7 +74,7 @@ it, rather than using a `value` method.
 Statamic adds a few Blade directives, allowing you easier access to Statamic data:
 
 ``` blade
-@collection('pages')
+@collection('pages', ['where' => 'title:My Title,author:Erin', 'limit' => 3, 'orderBy' => 'title:desc'])
   {{ $entry['title'] }}
 @endcollection
 ```
