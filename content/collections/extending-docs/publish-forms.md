@@ -116,6 +116,12 @@ public function update(Request $request, Product $product)
 
 You've just rendered an item in form and handled updating it. Awesome!
 
+> Since the values are being processed through the blueprint's fieldtypes, their values
+> will be saved in such a way that you may need augmentation to use them.
+> For instance, an assets fieldtype will save an array of paths relative to the configured
+> asset container, and when augmented will return an array of Asset objects.
+> So, you may want to make sure that when you retrieve your data later, that it's [augmented](/extending/augmentation).
+
 
 ## Blueprints
 
