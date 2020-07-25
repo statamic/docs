@@ -46,7 +46,7 @@ The tag has a lot more fine-tuned control available, like renaming the query par
 
 A search index is a copy of your data stored in a search-friendly format and used for optimizing speed and performance when executing a search query. Without an index, each search would need to scan every entry in your site. Hardly an efficient way to go about it.
 
-Indexes are configured in `config/statamic/search.php` and you can has as many as you'd like. Each holds different pieces of content — and a piece of content may be stored in multiple indexes.
+Indexes are configured in `config/statamic/search.php` and you can have as many as you'd like. Each holds different pieces of content — and a piece of content may be stored in multiple indexes.
 
 > An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
 
