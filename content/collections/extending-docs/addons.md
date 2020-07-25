@@ -250,7 +250,7 @@ This may be useful if you need more control around groups of assets to be publis
 > During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your directory:
 >
 > ``` bash
-> ln -s /path/to/addons/example/resources public/vendor/example/package
+> ln -s /path/to/addons/example/resources public/vendor/package
 > ```
 
 ## Routing
