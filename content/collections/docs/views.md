@@ -80,7 +80,7 @@ Partials are reusable views that may find themselves in any number of other layo
 
 ## Using Blade
 
-If your view ends with `.blade.php` instead of `.antlers.html`, it will be rendered with Larvel's [Blade](https://laravel.com/docs/blade) engine. All of the same data will be injected into the view, but you won't have access to Statamic's [tags](/tags).
+If your view ends with `.blade.php` instead of `.antlers.html`, it will be rendered with Laravel's [Blade](https://laravel.com/docs/blade) engine. All of the same data will be injected into the view, but you won't have access to Statamic's [tags](/tags).
 
 This is useful if...
 
