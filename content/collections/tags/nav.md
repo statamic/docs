@@ -140,7 +140,7 @@ variables:
 ---
 ### Basic Example
 
-Here is an example to output your nav on the front-end.
+Here is an example of how to output your nav on the front-end.
 
 ```
 {{ nav include_home="true" }}
