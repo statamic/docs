@@ -63,9 +63,9 @@ You can loop through the checked items and access the value and label of each it
 
 ```
 <ul>
-{{ favorite }}
+{{ favorites }}
     <li>{{ value }}</li>
-{{ /favorite }}
+{{ /favorites }}
 </ul>
 ```
 
