@@ -140,29 +140,22 @@ variables:
 ---
 ### Basic Example
 
-Here is an example of how to output your nav on the front-end.
-
-```
-{{ nav include_home="true" }}
-  {{ title }}
-{{ /nav }}
-```
-
-Here Statamic will just output the names of all your navigation items. Now that we've output the nav we probably want to sprinkle some markup between our items. We can do something like this:
-
+A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
 ```
 <ul>
   {{ nav include_home="true" }}
     <li>
-      <a href="{{ url }}"{{ if is_current || is_parent }} class="on"{{ /if }}>{{ title }}</a>
+      <a href="{{ url }}"{{ if is_current || is_parent }} class="current"{{ /if }}>
+        {{ title }}
+      </a>
     </li>
   {{ /nav }}
 </ul>
 ```
 
-## Recursion {#recursion}
+## Multi-level Nav Example Recursion {#multi-level}
 
-It's possible to use recursive tags for semi-automatically creating deeply-nested lists of links as your navigations. A sample set-up looks something like this:
+Build an infinitely deep nav is possible by using recursion.
 
 ```
 <ul>
@@ -179,34 +172,6 @@ It's possible to use recursive tags for semi-automatically creating deeply-neste
 </ul>
 ```
 
-The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ nav }}` tag using child elements if they exist. This means that as long as there are children to display, and we’re still on either the current or parent page of those children, the nav tag will traverse deeper. If your scoped variables have trouble making it through to the next recursion, you can glue them to children like this: `{{ *recursive children:my_scoped_variable* }}`.
+The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ nav }}` tag using child elements, if they exist. As long as there are children to display, and we’re still on either the current or parent page of those children, the nav tag will traverse deeper. If your scoped variables have trouble making it through to the next recursion, you can glue them to children like this: `{{ *recursive children:my_scoped_variable* }}`.
 
-It’s an admittedly weird concept, and might take some fiddling with to truly understand, but is very powerful when fully understood. Take the time. Learn to wield it. A powerful Jedi will you be.
-
-## Hidden Pages {#hidden-pages}
-
-A common use-case for navigation is to make some pages "hidden", which means to hide them from the nav, but keep them
-available when accessed directly.
-
-Note: In Statamic v1, you should set the status to hidden or prefix the filename with an underscore. In v2, this method
-has been removed in favor of the following workflow.
-
-1. Add a field to your page fieldset that'll be used to indicate a "hidden" page:
-
-   ``` .language-yaml
-   fields:
-      is_hidden:  # the field name can be whatever you want
-        type: toggle
-        display: Hide from navigation
-   ```
-
-2. In your `nav` tag, use the [conditions syntax](/conditions) to remove any hidden pages:
-
-   ```
-   {{ nav from="/" is_hidden:isnt="true" }}
-       ...
-   {{ /nav }}
-   ```
-
-   This is saying, only show pages where the `is_hidden` field _isn't set to true_. That will leave you with unhidden pages.
-   Remember, the field can be named whatever you want.
+Take the time to wrap your brain around this concept and learn to wield it and a powerful Jedi will you be.
