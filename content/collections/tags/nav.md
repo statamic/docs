@@ -138,6 +138,28 @@ variables:
       Recursively output the entire contents
       of the `nav` tag pair.
 ---
+### Basic Example
+
+Here is an example to output your nav on the front-end.
+
+```
+{{ nav include_home="true" }}
+  {{ title }}
+{{ /nav }}
+```
+
+Here Statamic will just output the names of all your navigation items. Now that we've output the nav we probably want to sprinkle some markup between our items. We can do something like this:
+
+```
+<ul>
+  {{ nav include_home="true" }}
+    <li>
+      <a href="{{ url }}"{{ if is_current || is_parent }} class="on"{{ /if }}>{{ title }}</a>
+    </li>
+  {{ /nav }}
+</ul>
+```
+
 ## Recursion {#recursion}
 
 It's possible to use recursive tags for semi-automatically creating deeply-nested lists of links as your navigations. A sample set-up looks something like this:
