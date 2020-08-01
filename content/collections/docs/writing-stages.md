@@ -19,7 +19,7 @@ This is where a page starts to gain an outline, intro and overview text is added
 
 ## 3. Ready for Editing
 
-This is where do our best to make sure the page covers all the scope it needs to, the words flow and read well, and is structured properly and consistently.
+This is where we do our best to make sure the page covers all the scope it needs to, the words flow and read well, and is structured properly and consistently.
 
 ## 4. Needs Polish & Humor
 
