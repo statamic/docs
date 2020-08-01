@@ -55,6 +55,9 @@ submitting, where the `success` condition will kick in and they will be shown a 
             </div>
         {{ /if }}
 
+        <label>E-Mail</label>
+        <input type="email" name="email" />
+
         <label>Password</label>
         <input type="password" name="password" />
 
