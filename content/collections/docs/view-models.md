@@ -9,7 +9,7 @@ blueprint: page
 stage: 1
 ---
 ## Overview
-Have ever had some complex data or conditions you found challenging to work with in your [Antlers][antlers] templates? Sure you have. Have you ever peeled a banana and had the stem hang onto the peel stubbornly only to have the fruit poke it's face out of a surprise gap like a hoodie? You can probably relate to that too.
+Have you ever had some complex data or conditions you found challenging to work with in your [Antlers][antlers] templates? Sure you have. Have you ever peeled a banana and had the stem hang onto the peel stubbornly only to have the fruit poke it's face out of a surprise gap like a hoodie? You can probably relate to that too.
 
 While Antlers is powerful and flexible, what if you could just jump into PHP-land, work out some tricky logic, and put the data back in place before it was rendered?
 
