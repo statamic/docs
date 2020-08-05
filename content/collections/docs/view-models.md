@@ -24,11 +24,18 @@ While _inside_ the view model, you have access to the full cascade and can set n
 ## Example
 Let's assume we have a [Replicator][replicator] field with a bunch of content blocks (an associative array) and we'd like to calculate some stats on how much content there is and how long it might take to read it.
 
-**First**, let's define the view model location.
+**First**, let's define the view model location. Rather than putting it in an entry, we'll put it in the collection so that it's applied to every entry.
 
 ```.language-yaml
+# content/collections/articles.yaml
+title: Articles
+inject:
+  view_model: App\ViewModels\ArticleStats
+```
+
+```.language-yaml
+# content/collections/articles/a-long-article.md
 title: "A Long Article Plz Read it Mmmkay?"
-view_model: App\ViewModels\ArticleStats
 content:
   -
     type: text
