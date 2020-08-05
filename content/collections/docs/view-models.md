@@ -35,6 +35,18 @@ content:
     text: # Piles of content live here
 ```
 
+## Usage in collections
+You can inject view models into your collection views as well. It's important to use the `inject` syntax as written below. 
+
+```
+title: Articles
+template: articles/show
+inject:
+  view_model: App\ViewModels\Articles
+...
+```
+...
+
 **Next,** we'll loop through the content, assemble a giant string of all the content, perform some math, and return the stats.
 
 ```.language-php
