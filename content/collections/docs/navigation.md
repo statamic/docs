@@ -6,7 +6,7 @@ stage: 4
 ---
 ## Overview
 
-Each Nav is a [structure](/structures) giving you the ability rearrange items though the delightful experience of dragging and dropping boxes.
+Each Nav is a [structure](/structures) giving you the ability to rearrange items though the delightful experience of dragging and dropping boxes.
 
 <figure>
     <img src="/img/structure.png" alt="A Statamic 3 structure page tree" width="535">
