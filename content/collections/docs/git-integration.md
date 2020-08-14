@@ -8,6 +8,9 @@ id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 
 Enabling Statamic's Git integration is like having Spock in your enterprise, listening for content changes with those large handsome ears. You won't find anyone more committed. 🖖
 
+## Statamic Tier:
+Note: This epic feature is available on the Statamic Pro tier and not the non-pro tier. Support those developers!
+
 > This feature is the evolution of Statamic v2's [Spock addon](https://github.com/statamic/spock).
 
 <figure>
