@@ -203,27 +203,21 @@ First up, add `files="true"` to  your form tag. (This will add `enctype="multipa
 {{ /form:create }}
 ```
 
-Then the fields:
+Then add an `assets` field to your blueprint, with a `max_files` setting of `1`:
 
 ```
-<input type="file" name="simple" />
-<input type="file" name="fancy" />
+<input type="file" name="cat_selfie" />
 ```
 
 ```yaml
 fields:
-  simple:
-    type: file
-    destination: uploads/
-  fancy:
-    type: asset
-    container: uploads
-    folder: fan-art
+  -
+    handle: cat_selfie
+    field:
+      type: assets
+      container: main
+      max_files: 1
 ```
-
-**Simple Uploads**: Set `type: file` and a `destination` (path from webroot). That's it.
-
-**Asset Uploads**: Set `type: asset`, specify the asset `container` via handle or ID, and which folder inside said container.
 
 ### Multiple files
 
@@ -231,20 +225,20 @@ You have two methods available to you:
 
 First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
-Or, you can enable multiple files on one field, by setting type with the plural form of the type option, `files` or `assets`, and indicating an array in your input by adding a set of square brackets to the `name` attribute.
+Or, you can enable multiple files on one field by dropping the `max_files` setting on your assets field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
 ```
-<input type="file" name="many[]" multiple />
+<input type="file" name="selfies[]" multiple />
 ```
 
 ```yaml
 fields:
-  many:
-    type: files
-    destination: uploads/
+  -
+    handle: selfies
+    field:
+      type: assets
+      container: main
 ```
-
-> If you use the square bracket `name` syntax, but use the singular `type` in your formset, only the first selected file will be uploaded. Don't forget to set both.
 
 ## Honeypot
 
