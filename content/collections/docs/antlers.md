@@ -212,6 +212,15 @@ What if you want to combine an `is set` check with a ternary operator? No proble
 {{ if show_title }}{{ title }}{{ /if }}
 ```
 
+### Using Tags in Conditions
+
+Yes, you can even use tags in conditions.
+
+```
+{{ if {session:some_var} == "Statamic is rad!" }}
+  ...
+{{ /if }}
+```
 ---
 
 ## Code Comments {#comments}
