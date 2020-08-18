@@ -2,14 +2,12 @@
 title: 'Upgrade Guide'
 intro: A guide for upgrading your existing Statamic v2 projects to v3.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568743749
 id: f12f8ba3-19ff-48cb-a07b-653b05082d7e
 blueprint: page
-stage: 1
+stage: 4
 ---
 ## Overview
-Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 fantastic new features, and speeds up performance by 5x. What's not to love about that?
+Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 million fantastic new features, and speeds up performance by 5x-200x. What's not to love about that?
 
 > Install our [migrator package](https://github.com/statamic/migrator) to help automate your v2 upgrade!
 
@@ -21,29 +19,27 @@ We don't break things for the fun of it. We hope understanding these philosophie
 
 ### Git changes should be as small and discrete as possible
 
-Wherever reasonable and possible, we will opt for patterns resulting in smaller git changes, especially those avoiding filename changes. Filename changes cause a messy `delete` and `add` diff in your git history. Examples of this principle in action:
+Wherever reasonable and possible, we opt for patterns resulting in smaller git changes, especially those avoiding filename changes. Filename changes cause a messy `delete` and `add` diff in your git history. Examples of this principle in action:
 
 - **Publish status** is now controlled by a YAML variable and no longer results in a file move/delete/add.
 - **Pages** and their parent/child folder hierarchies are now standard entries combined with a single YAML file storing the tree (this feature is called [Structures](/structures)). Rearranging your nav results in a single file change instead of a huge file/folder wangjanglification.
 
 ### Building in the open benefits everyone
 
-We're going to be setting the Github repos to public in beta and will be planning and building in the open. This will let us use [Composer][composer] and [Packagist](https://packagist.org) the way they were intended.
+- Statamic v3 is now installed via [Composer][composer].
+- Dependencies can be updated to take advantage of features and fixes without needing a Statamic core update or patch release.
+- The vendor directory is not included, making the package much, much smaller.
+- Your own Statamic site repos can be `public`.
 
-- Statamic v3 will be installed via Composer
-- The vendor directory won't be included, making the package much, much smaller
-- Your own Statamic site repos can be `public`
-- Dependencies can be updated (to take advantage of fixes and features) without needing a Statamic core update or patch release
+### Reinventing Laravel's wheels is counterproductive
 
-### Reinventing Laravel's wheels is silly
-
-Statamic v3 is built as a _Laravel package_ instead of a "complete" application like v2. This makes it drop-in friendly for existing Laravel applications and  your own Statamic sites will be much easier to extend and customize, often without needing to make addons.
+Statamic v3 is built as a _Laravel package_ instead of a "siloed" application like v2. This makes it drop-in friendly for existing Laravel applications and  your own Statamic sites become much easier to extend and customize &mdash; often without needing to make addons.
 
 To accomplish this we've had to follow more Laravel conventions, a positive thing in many ways, which result in numerous small changes. For example...
 
-- Application-level configuration settings are in Laravel config files — PHP files in `config/statamic` — managed **only** on the file level.
+- Application-level configuration settings are now in Laravel config files — PHP files in `config/statamic` — managed **only** on the file level.
 - Many behaviors can now be overridden in your own [service provider](https://laravel.com/docs/providers).
-- Addons will need to be [Composer][composer] packages.
+- Addons are now [Composer][composer] packages.
 - You can swap in your own favorite template language by customizing Laravel's view handler. We've heard some people like [Twig](https://twig.symfony.com).
 
 
@@ -52,7 +48,7 @@ To accomplish this we've had to follow more Laravel conventions, a positive thin
 
 ## Breaking Changes: Core
 
-First, let's look at the breaking changes on the core application side. These would be changes affecting the control panel, front-end, cli, and generally anything that doesn't require custom PHP.
+First, let's look at the breaking changes on the core application side. These are changes affecting the control panel, front-end, cli, and generally anything that doesn't require custom PHP.
 
 ### General
 
@@ -62,7 +58,7 @@ First, let's look at the breaking changes on the core application side. These wo
 
 ### Theming and Views
 
-- The concept of "themes" is gone. Your site just has the one, and it's in `resources`.
+- The concept of "themes" is gone. Your site just has just one frontend, and it's in `resources`.
 - Templates (views) are now located in the `resources/views` instead of separate `templates`, `layouts`, and `partials` directories.
 - Removed `theme:partial` tag in favor of `partial`.
 - The `content` field is no longer automatically parsed for Antlers. You can flag it for parsing in the [blueprint](/blueprints). (As well as any other fields)

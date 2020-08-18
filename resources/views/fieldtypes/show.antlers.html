@@ -1,11 +1,6 @@
 <header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
     <h1>{{ title ensure_right=" Fieldtype"}}</h1>
     {{ intro ?? overview | markdown }}
-    {{ if ! hide_stage }}
-    <div class="badge -rot-3">
-        <a href="/writing-stages" class="no-underline text-teal-dark font-bold hover:text-pink-hot">Writing Stage</a>: {{ stage:label ?? "Prewriting" }}
-    </div>
-    {{ /if }}
 </header>
 
 <article class="markdown pb-8">

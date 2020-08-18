@@ -20,7 +20,7 @@ STATAMIC_API_ENABLED=true
 
 ## Authentication
 
-**Coming soon.** At this stage of the beta there are no access tokens or other common authentication methods ready to use. Yet.
+**Coming soon.** There are no _native_ access tokens or other common authentication methods ready to use. Yet.
 
 ## Endpoints
 
