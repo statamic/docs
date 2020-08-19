@@ -112,10 +112,10 @@ The response will contain your `data`, `links` to easily get next/previous URLs,
         {...},
     ],
     "links": {
-        "first": "/endpoint?limt=10&page=1",
-        "last": "/endpoint?limt=10&page=3",
+        "first": "/endpoint?limit=10&page=1",
+        "last": "/endpoint?limit=10&page=3",
         "prev": null,
-        "next": "/endpoint?limt=10&page=2",
+        "next": "/endpoint?limit=10&page=2",
     },
     "meta": {
         "current_page": 1,
