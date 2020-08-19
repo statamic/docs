@@ -52,7 +52,7 @@ Your explicit routes will take precedence and anything not caught by your app wi
 
 Once you've installed Statamic, you're ready to start building! Check out the [Quick Start](/quick-start) page for a walkthrough on how to build a simple site, access the Control Panel, creating a user, and more.
 
-> If you want to use Pro features while in developement (like users, permissions & groups, revisions, and git integration), set `'pro' => true` in `config/statamic/editions.php`.
+> If you want to use Pro features while in development (like users, permissions & groups, revisions, and git integration), set `'pro' => true` in `config/statamic/editions.php`.
 
 Want to jump right in? You can create a user by running `php please make:user`, and heading to `http://yoursite.com/cp`.
 
