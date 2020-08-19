@@ -7,13 +7,24 @@ template: home
 ---
 
 ## Popular Links
+<div class="flex">
+<div class="w-1/2" markdown=1>
+
 - [How to install Statamic](/installation)
-- [Tags](/tags)
-- [Fieldtypes](/fieldtypes)
-- [Modifiers](/modifiers)
 - [Antlers template language](/antlers)
 - [Static Site Generator](https://github.com/statamic/ssg)
 - [Addon directory](https://statamic.com/addons)
+
+</div>
+<div class="w-1/2 pl-5" markdown=1>
+
+- [Tags](/tags)
+- [Fieldtypes](/fieldtypes)
+- [Modifiers](/modifiers)
+- [Collections](/collections)
+
+</div>
+</div>
 
 ## Starter Kits
 Looking to jump right into a ready-made site?
@@ -35,8 +46,8 @@ Looking to jump right into a ready-made site?
 
 ## Providing Feedback
 
-🐛If you encounter anything looks, smells, feels, or tastes like a **bug**, open an issue on the main [`statamic/cms`](https://github.com/statamic/cms) repo.
+🐛 Encounter something looks, smells, feels, or tastes like a **bug**? Open an issue on the main [`statamic/cms`](https://github.com/statamic/cms) repo!
 
-💡If you have an **idea** on how to improve something, you can open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
+💡 Have an **idea** on how to improve something? Open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
 
-🎁 Interested in _contributing_ to Statamic? Please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first.
+🎁 Interested in contributing to Statamic? Please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first.

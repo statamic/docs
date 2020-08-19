@@ -18,10 +18,6 @@ Enable the API in your config or with an environment variable.
 STATAMIC_API_ENABLED=true
 ```
 
-## Authentication
-
-**Coming soon.** There are no _native_ access tokens or other common authentication methods ready to use. Yet.
-
 ## Endpoints
 
 `
@@ -350,3 +346,7 @@ class CustomEntryResource extends EntryResource
     }
 }
 ```
+
+## Authentication
+
+**Coming soon.** There are no _native_ access tokens or other common authentication methods ready to use. Yet.
