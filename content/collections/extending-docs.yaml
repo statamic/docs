@@ -1,10 +1,12 @@
 title: Extending
-route: '{{ if depth === 1 }}extending{{ /if }}{{ parent_uri }}/{{ slug }}'
-default_status: published
 template: page
 layout: layout
 blueprints:
   - page
+revisions: false
+route: '{{ if depth === 1 }}extending{{ /if }}{{ parent_uri }}/{{ slug }}'
+inject:
+  stage: 2
 structure:
   root: true
   tree:
@@ -14,9 +16,13 @@ structure:
       title: Front-end
       children:
         -
-          entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
+          entry: af1de577-8f75-4623-a0a3-d4c4c49390aa
+        -
+          entry: be292d2b-dc0e-48dc-bce4-0058df27ccc6
         -
           entry: e052ecb8-60d9-4afa-980e-ce128c301d70
+        -
+          entry: 098cb1c5-94c2-4bc0-add7-9aad39951d67
     -
       title: 'Control Panel'
       children:
@@ -70,7 +76,7 @@ structure:
         -
           entry: e2577828-504b-490b-a8b6-10991ae8a0b6
     -
-      title: Wherever
+      title: Core & Data
       children:
         -
           entry: 51a52222-9be7-46b1-8388-059019281a56
@@ -85,11 +91,7 @@ structure:
         -
           entry: fd34ca35-57d1-4d28-97f9-ba6801656b39
         -
-          entry: be292d2b-dc0e-48dc-bce4-0058df27ccc6
-        -
           entry: 73010f4f-bb62-4feb-a6ff-88031f488db8
-        -
-          entry: af1de577-8f75-4623-a0a3-d4c4c49390aa
     -
       title: Addons
       url: /extending/addons
@@ -98,6 +100,3 @@ structure:
           entry: 5bd75435-806e-458b-872e-7528f24df7e6
         -
           entry: a1e29bbe-8fb7-4b46-9929-6440705a5c25
-revisions: false
-inject:
-  stage: 2
