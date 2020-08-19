@@ -15,26 +15,7 @@
                 <th>Description</th>
             </tr>
         </thead>
-        {{ collection :from="tags" stage:gte="1" }}
-        <tr>
-            <td>
-                <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
-            </td>
-            <td>
-                {{ description | markdown ?? intro | markdown }}
-            </td>
-        </tr>
-        {{ /collection }}
-    </table>
-    <h2>Everything Else</h2>
-    <table class="opacity-50">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        {{ collection :from="tags" stage:lt="1" }}
+        {{ collection :from="tags" }}
         <tr>
             <td>
                 <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>

@@ -1,6 +1,9 @@
 ---
 title: Taxonomy
 overview: Fetch and filter Taxonomy terms.
+intro: Taxonomy terms are grouped into taxonomies and are fetched and filtered by this tag. A taxonomy could contain tags, categories, or sock colors.
+description: Fetches and filters terms in one or more taxonomies.
+stage: 1
 parameters:
   -
     name: taxonomy
@@ -132,35 +135,42 @@ id: ba832b71-a567-491c-b1a3-3b3fae214703
 ---
 ## Example {#example}
 
-### Shorthand Syntax
 
-A simple listing of taxonomies in the `categories` group.
+A basic example would be to loop through the terms in a tags taxonomy and link to each individual tag:
 
 ```
-<h2>Categories</h2>
 <ul>
-  {{ taxonomy:categories }}
+{{ taxonomy from="tags" }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  {{ /taxonomy:categories }}
+{{ /taxonomy }}
 </ul>
 ```
 
-### Verbose syntax
-
-The verbose syntax is useful if you need to pass the taxonomy as a parameter.
+You can also use the shorthand syntax for this. We prefer this style ourselves.
 
 ```
-<h2>Categories</h2>
 <ul>
-  {{ taxonomy use="categories" }}
+{{ taxonomy:tags }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  {{ /taxonomy }}
+{{ /taxonomy:tags }}
 </ul>
+```
+
+If you'd like to fetch tags from multiple taxonomies, you'll need to use the standard syntax.
+
+```
+{{ taxonomy from="tags|categories" }}
+```
+
+To get terms from _all_ taxonomies, use the wildcard `*`. You may also exclude taxonomies when doing this.
+
+```
+{{ taxonomy from="*" not_from="tags" }}
 ```
 
 ## Entries
 
-The `taxonomy` tag allows you to iterate over taxonomies, but in each iteration, you also have access to all the corresponding content.
+The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iteration, you also have access to all the corresponding content.
 
 ```
 {{ taxonomy:categories }}
@@ -189,16 +199,14 @@ The `taxonomy` tag allows you to iterate over taxonomies, but in each iteration,
 
 ## Filtering
 
-There are two options when it comes to filtering. There's the conditions syntax, and the custom filter class. You can't use both at the same time, so pick your poison.
+There are a couple of ways to filter your taxonomy terms. There's the conditions syntax for filtering by fields, or the custom filter class if you need extra control.
 
-### Conditions syntax {#conditions}
-
-The conditions syntax will allow you filter the content in the underlying collection - not the actual taxonomy listing itself.
+### Conditions
 
 Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
 
 ```
-{{ taxonomy:categories
+{{ taxonomy:tags
    title:contains="awesome"
    title:contains="thing"
    author:is="joe"
@@ -208,13 +216,9 @@ Want to get entries where the title has the words "awesome" and "thing", and "jo
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
 
 
-### Custom filters {#custom-filters}
+### Custom Query Scopes
 
-Doing something complicated? You can reference a [custom filter][custom_filters] which can do the heavy lifting from outside of the template.
-
-The filter will get the taxonomy collection instance, _not_ the content collection. However, you can access that from within the taxonomy collection.
-
-[Read more about custom filters][custom_filters].
+Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results.
 
 
 

@@ -5,6 +5,7 @@ template: page
 blueprint: page
 hide_stage: true
 stage: 5
+published: false
 id: 6216a669-5103-4665-a5f7-2eea2f08bcb4
 ---
 ## 1. Gathering Knowledge

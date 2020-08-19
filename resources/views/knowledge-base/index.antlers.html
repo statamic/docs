@@ -6,10 +6,11 @@
     </p>
 </header>
 
-<article class="markdown pb-8">
+<article class="pb-8">
     <ul>
     {{ collection:knowledge-base }}
-        <li><a href="{{ url }}">{{ title }}</a></li>
+        <li class="mb-2 pb-2 border-b border-grey-300"><a href="{{ url }}" class="text-lg hover:text-pink-hot font-mono">{{ title }}</a></li>
     {{ /collection:knowledge-base }}
     </ul>
+    <p class="text-sm mt-8 italic text-grey-600 font-mono">Many more articles coming soon!</p>
 </article>

@@ -7,17 +7,17 @@ blueprint: page
 id: 56fadb93-b846-4867-ad73-4f721cc940c2
 stage: 1
 ---
-## Free vs. Pro
+## Solo vs. Pro
 
-Statamic is available in two flavors: **Free** and **Pro**. You can read about what's included in each on our [blog](https://statamic.com/blog/everything-about-statamic-3).
+Statamic is available in two flavors: **Solo** and **Pro**. You can read about what's included in each on our [blog](https://statamic.com/blog/everything-about-statamic-3).
 
-When you install Statamic, it will be configured to use the free version. You're able to opt into Pro at any time in your `config/statamic/editions.php` file:
+When you install Statamic, it will be configured to use the free Solo edition. You're able to opt into Pro at any time in your `config/statamic/editions.php` file:
 
 ``` php
 'pro' => true
 ```
 
-Once you've opted into Pro, additional features will be available.
+Once you've opted into Pro, many additional features will be available.
 
 ## Trial Mode
 

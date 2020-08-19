@@ -1,5 +1,5 @@
 // Add external link icons & set target="_blank"
-var elements = document.querySelectorAll('article a');
+var elements = document.querySelectorAll('article a:not(.custom)');
 
 function isExternal(url) {
     var match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);

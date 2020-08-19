@@ -1,8 +1,9 @@
 ---
 title: Nav
-overview: >
-  The nav tags are designed to help your users navigate through your hierarchy of pages. They work together to allow you to easily traverse your content upways and downways, sideways, slantways, longways, backways, squareways, frontways, and any other ways that you can think of.
-description: Create site navigation based off your Pages structure.
+intro: >
+  The nav tags are designed to help your users navigate through your hierarchy of navigations and collections.
+description: Creates site navigations.
+stage: 2
 id: ed746608-87f9-448f-bf57-051da132fef7
 is_parent_tag: true
 parameters:
@@ -138,7 +139,35 @@ variables:
       Recursively output the entire contents
       of the `nav` tag pair.
 ---
-### Basic Example
+## Overview
+The various Nav tags work together to allow you to easily traverse your content upways and downways, sideways, slantways, longways, backways, squareways, frontways, and any other ways that you can think of.
+
+This tag is designed to be used for top-level and multi-level navs.
+
+## Navs or Collections
+
+The nav tag supports both [navigations](/navigation) or multi-depth [collections](/collections).
+
+You specify what kind you need by using the second tag part:
+
+```
+// The "links" nav
+{{ nav:links }} ... {{ /nav:links }}
+```
+
+```
+// The "pages" collection
+{{ nav:collection:pages }} ... {{ /nav:collection:pages }}
+```
+
+If you use the tag on it's own without a second part, it will assume you want the `pages` collection. That's a super common thing to do, and the `statamic/statamic` repo comes bundled with it.
+
+```
+// Also the "pages" collection
+{{ nav }} ... {{ /nav }}
+```
+
+## Basic Example
 
 A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
 ```

@@ -1,7 +1,7 @@
 ---
 title: User:Reset_Password_Form
-description: >
-  For creating a user password reset form
+description: Creates a "Create a New Password" form
+intro: This tag is used to to set a new password _after_ a user has received the reset link from the "forgot my password" form.
 parameters:
   -
     name: redirect
@@ -24,15 +24,14 @@ variables:
     name: errors
     type: array
     description: An array of validation errors.
+stage: 4
 id: e39fad1d-8b31-4dba-b32e-a0048084d178
 ---
+## Overview
 
-## The form {#form}
+After a user has put their email address into the [user:forgot_password_form](/tags/user-forgot_password_form), they'll arrive here to reset their password. This is the form used to create a _new_ password. That's really all there is to it.
 
-Here's a basic reset password form. A user will enter and confirm their new password.
-
-Since we don’t set a `redirect` parameter, the user will come right back here after
-submitting, where the `success` condition will kick in and they will be shown a success message.
+## Example
 
 ```
 {{ user:reset_password_form }}
@@ -67,6 +66,8 @@ submitting, where the `success` condition will kick in and they will be shown a 
 
 {{ /user:reset_password_form }}
 ```
+
+## Arriving at this URL
 
 Visiting the URL containing this form _directly_ will set a `url_invalid` invalid variable you can use to check if they've actually come from the form in their previous request.
 

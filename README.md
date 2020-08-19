@@ -1,8 +1,8 @@
 <p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
 
-## Statamic 3 Beta Documentation
+## Statamic 3 Documentation
 
-This is the source of the official [Statamic 3 Beta docs][docs].
+This is the source of the official [Statamic 3 docs][docs].
 
 
 ## Local Development
@@ -23,18 +23,16 @@ If you want to work on this project on your local machine, you may follow the in
   php artisan key:generate
   ```
 
-## Open Beta
+## Providing Feedback
 
-Statamic 3 is now in **open beta!** We welcome you try it out, [read the docs](https://statamic.dev), experiment, send [bug reports][contribution], provide thoughtful feedback, and otherwise do anything you feel will make the platform better and more stable for launch.
-
-If this is your first experience with Statamic, please reserve your final judgement until we're out of beta. We've built a solid and flexible foundation and most bugs and rough edges should be minor efforts to address.
-
-Statamic 3 has extensive (in progress) [documentation][docs], and this is the repo for them. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, wait a day or two and check back again. If it's still confusing, feel free to open an issue or chat with us on [Discord][discord] about it!
+We love it when people provide thoughtful feedback! Feel free to open issues on for any content you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
 
 
 ## Contributing
 
-Thank you for considering contributing to Statamic! Please review the [contribution guide][contribution] before you open issues or send pull requests.
+Thank you for considering contributing to Statamic! Every page in the [docs site](https://statamic.dev) has a link at the bottom that will take you right to the exact content file that renders the page. Click the edit button and submit those PRs!
+
+**We simply ask that you please review the [contribution guide][contribution] before you send pull requests.**
 
 
 ## Code of Conduct
@@ -44,13 +42,15 @@ In order to ensure that the Statamic community is welcoming to all and generally
 
 ## Important Links
 
+- [Statamic Main Site](https://statamic.com)
 - [Statamic 3 Documentation][docs]
-- [Statamic 3 Application Repo][app-repo]
+- [Statamic 3 CMS Repo][cms-repo] (that we maintain)
+- [Statamic 3 Application Repo][app-repo] (that you clone)
 - [Statamic 3 Migrator](https://github.com/statamic/migrator)
-- [Statamic 3 Development Blog](https://v3.statamic.com)
 - [Statamic Discord][discord]
 
 [docs]: https://statamic.dev/
 [discord]: https://statamic.com/discord
 [contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
 [app-repo]: https://github.com/statamic/statamic
+[cms-repo]: https://github.com/statamic/cms

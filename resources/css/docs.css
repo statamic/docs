@@ -33,7 +33,7 @@ header {
     }
 }
 
-.transition {
+.t {
     transition: all .05s ease-in !important;
 }
 
