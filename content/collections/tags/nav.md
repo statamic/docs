@@ -1,7 +1,7 @@
 ---
 title: Nav
 intro: >
-  The nav tags are designed to help your users navigate through your hierarchy of navigations and structures.
+  The nav tags are designed to help your users navigate through your hierarchy of navigations and collections.
 description: Creates site navigations.
 stage: 2
 id: ed746608-87f9-448f-bf57-051da132fef7
@@ -144,7 +144,30 @@ The various Nav tags work together to allow you to easily traverse your content 
 
 This tag is designed to be used for top-level and multi-level navs.
 
-### Basic Example
+## Navs or Collections
+
+The nav tag supports both [navigations](/navigation) or multi-depth [collections](/collections).
+
+You specify what kind you need by using the second tag part:
+
+```
+// The "links" nav
+{{ nav:links }} ... {{ /nav:links }}
+```
+
+```
+// The "pages" collection
+{{ nav:collection:pages }} ... {{ /nav:collection:pages }}
+```
+
+If you use the tag on it's own without a second part, it will assume you want the `pages` collection. That's a super common thing to do, and the `statamic/statamic` repo comes bundled with it.
+
+```
+// Also the "pages" collection
+{{ nav }} ... {{ /nav }}
+```
+
+## Basic Example
 
 A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
 ```
