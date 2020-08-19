@@ -15,7 +15,7 @@ variables:
 id: d99ec742-2947-4b72-ba39-af51a9fed626
 ---
 ## Overview
-This tag is equivalent to the `route()` helper in [Laravel](https://laravel.com/docs/7.x/urls#urls-for-named-routes). Useful for outputting the correct urls for all your glorious routes.
+This tag is equivalent to the `route()` helper in [Laravel](https://laravel.com/docs/urls#urls-for-named-routes). Useful for outputting the correct urls for all your glorious routes.
 
 ## Example
 

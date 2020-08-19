@@ -107,9 +107,9 @@ If you want to customize the fields, you're able to create your own blueprint. Y
 
 ## Drivers
 
-Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/6.x/filesystem#driver-prerequisites).
+Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/filesystem#driver-prerequisites).
 
-Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/6.x/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
+Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
 
 ## Templating
 

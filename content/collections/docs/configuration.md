@@ -109,4 +109,4 @@ return [
 ```
 
 
-Learn more about [environment configuration](https://laravel.com/docs/6.x/configuration#environment-configuration) in the Laravel docs.
+Learn more about [environment configuration](https://laravel.com/docs/configuration#environment-configuration) in the Laravel docs.

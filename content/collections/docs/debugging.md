@@ -97,4 +97,4 @@ Follow along with Laravel's documentation and you'll (probably) be up and runnin
 
 [composer]: https://getcomposer.org/
 [ignition]: https://flareapp.io/docs/ignition-for-laravel/introduction
-[telescope]: https://laravel.com/docs/6.x/telescope
+[telescope]: https://laravel.com/docs/telescope

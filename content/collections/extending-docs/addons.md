@@ -320,11 +320,11 @@ public function boot()
 }
 ```
 
-Other than that, you're free to write routes [as per any Laravel application](https://laravel.com/docs/5.6/routing).
+Other than that, you're free to write routes [as per any Laravel application](https://laravel.com/docs/routing).
 
 ### Route Model Binding
 
-Statamic uses [route model binding](https://laravel.com/docs/7.x/routing#route-model-binding) to automatically convert some route parameters into usable objects.
+Statamic uses [route model binding](https://laravel.com/docs/routing#route-model-binding) to automatically convert some route parameters into usable objects.
 
 Words aligning with core Statamic concepts will automatically be converted to their appropriate objects: `collection`, `entry`, `taxonomy`, `term`, `asset_container`, `asset` ,`global`, `site`, `revision`, `form`, and `user`
 
@@ -407,7 +407,7 @@ protected $subscribe = [
 ];
 ```
 
-Consult the [Laravel event documentation](https://laravel.com/docs/master/events) to learn how to define events, listeners, and subscribers.
+Consult the [Laravel event documentation](https://laravel.com/docs/events) to learn how to define events, listeners, and subscribers.
 
 
 ## Scheduling
@@ -421,7 +421,7 @@ protected function schedule($schedule)
 }
 ```
 
-Consult the [Laravel scheduling documentation](https://laravel.com/docs/master/scheduling#defining-schedules) to learn how to define your schedule.
+Consult the [Laravel scheduling documentation](https://laravel.com/docs/scheduling#defining-schedules) to learn how to define your schedule.
 
 ## Editions
 

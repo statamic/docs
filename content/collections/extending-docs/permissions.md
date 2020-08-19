@@ -67,7 +67,7 @@ The second argument of the `register` method accepts a closure that allows you t
 
 ## Policy based permissions
 
-When dealing with a permission that could apply to a variable number of items, it makes more sense to use a [Policy](https://laravel.com/docs/5.7/authorization#creating-policies).
+When dealing with a permission that could apply to a variable number of items, it makes more sense to use a [Policy](https://laravel.com/docs/authorization#creating-policies).
 
 You may combine your policy with a wildcard permission. A new permission will be created for each item you require.
 

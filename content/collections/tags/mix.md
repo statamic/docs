@@ -43,5 +43,5 @@ By default Mix will assume that the `manifest.json` file that points to the prop
 - [Using TailwindCSS with Laravel Mix](https://tailwindcss.com/docs/installation/#laravel-mix)
 - [Webpack][webpack]
 
-[mix]: https://laravel.com/docs/6.x/mix
+[mix]: https://laravel.com/docs/mix
 [webpack]: https://webpack.js.org/

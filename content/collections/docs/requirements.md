@@ -46,7 +46,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
 [hosts]: https://github.com/statamic/hosts
-[homestead]: https://laravel.com/docs/6.x/homestead
+[homestead]: https://laravel.com/docs/homestead
 [valet]: https://laravel.com/docs/valet
 [wamp]: http://www.wampserver.com/
 [laragon]:https://laragon.org/

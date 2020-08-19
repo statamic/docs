@@ -30,7 +30,7 @@ class SomeListener
 }
 ```
 
-Consult the [Laravel event documentation](https://laravel.com/docs/master/events) for a more in-depth explanation on events.
+Consult the [Laravel event documentation](https://laravel.com/docs/events) for a more in-depth explanation on events.
 
 If you're creating an addon, you can quickly [register event listeners or subscribers](/extending/addons#events).
 
