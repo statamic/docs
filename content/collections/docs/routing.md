@@ -83,7 +83,7 @@ Route::redirect('/here', '/there', 301);
 Route::permanentRedirect('/here', '/there');
 ```
 
-[More details on the Laravel docs](https://laravel.com/docs/6.x/routing#redirect-routes).
+[More details on the Laravel docs](https://laravel.com/docs/routing#redirect-routes).
 
 ## Error Pages
 

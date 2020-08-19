@@ -157,7 +157,7 @@ Most of the global functions have been removed in an effort to prevent pollution
 - Removed `str_bool()`, use `Statamic\Support\Str::toBool()`
 - Removed `site_locale()`, use `Statamic\Facades\Site::current()->handle()`
 - Removed `default_locale()`, use `Statamic\Facades\Config::getDefaultLocale()`
-- `cp_resource_url()` is now `Statamic\Statamic::assetUrl()` (being consistent with [what Laravel considers an asset](https://laravel.com/docs/5.8/mix))
+- `cp_resource_url()` is now `Statamic\Statamic::assetUrl()` (being consistent with [what Laravel considers an asset](https://laravel.com/docs/mix))
 - `resource_url()` is now `Statamic\Statamic::url()`
 - Removed `path()`, use `Statamic\Facades\Path::tidy($from . '/' . $to)`
 - Removed `root_path()`, use `base_path()`

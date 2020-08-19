@@ -51,4 +51,4 @@ Let's take a quick look at what happens during a typical Statamic frontend reque
 4. It loads the appropriate [view](/views) and passes in the variables.
 5. Contents of the rendered view is sent back to the user's browser.
 
-[mix]: https://laravel.com/docs/6.x/mix
+[mix]: https://laravel.com/docs/mix

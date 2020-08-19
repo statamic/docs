@@ -12,7 +12,7 @@ If you installed Statamic using the `statamic new` command, or created a project
 
 Statamic comes with an Eloquent driver to make the transition as seamless as possible.
 
-1. Ensure you have a [database configured](https://laravel.com/docs/5.7/database#configuration).
+1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
 2. In `config/statamic/users.php`, change `repository` to `eloquent`.
 3. In `config/statamic/stache.php`, comment out the `users` store.
 4. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider.

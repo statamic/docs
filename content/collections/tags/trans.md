@@ -1,7 +1,7 @@
 ---
 title: Translate
 intro: |
-  Retrieve a string from a language file in the current locale. It is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/6.x/localization) provided by Laravel.
+  Retrieve a string from a language file in the current locale. It is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
 parameters:
   -
     name: key

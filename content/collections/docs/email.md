@@ -23,7 +23,7 @@ The API based drivers like Mailgun and Postmark are often simpler and faster tha
 composer require guzzlehttp/guzzle
 ```
 
-For specific driver configuration details, reference the [Laravel Mail Driver documentation](https://laravel.com/docs/6.x/mail#driver-prerequisites).
+For specific driver configuration details, reference the [Laravel Mail Driver documentation](https://laravel.com/docs/mail#driver-prerequisites).
 
 ## Testing
 

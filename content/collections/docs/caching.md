@@ -22,7 +22,7 @@ The Stache can be configured to improve your site's performance. [Read more abou
 
 _Purpose: Make site faster_
 
-The application cache is used by your site or application, packages, and Statamic to store data for pre-defined lengths of time, much like sessions or cookies might do on the browser side. It uses [Laravel’s cache API](https://laravel.com/docs/6.x/cache). For example, the [Image Transform](/tags/glide) feature uses this cache to store all the manipulated images at their various sizes.
+The application cache is used by your site or application, packages, and Statamic to store data for pre-defined lengths of time, much like sessions or cookies might do on the browser side. It uses [Laravel’s cache API](https://laravel.com/docs/cache). For example, the [Image Transform](/tags/glide) feature uses this cache to store all the manipulated images at their various sizes.
 
 Each item inserted into the cache can optionally and automatically expire after a specified length of time. If you want to clear everything at once, use the `php artisan cache:clear` command.
 
