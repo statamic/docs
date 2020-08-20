@@ -90,6 +90,8 @@ The following conditions apply to fields with data stored as strings.
 | `doesnt_exist` / `is_empty` / `null` | Include if field **doesn't exist**. |
 | `contains` | Include if field **contains** value. |
 | `doesnt_contain` | Include if field **doesn't contain** value. |
+| `in` | Include if field value is **in** the provided array. |
+| `not_in` | Include if field value is **not_in** the provided array. |
 | `starts_with` | Include if field **starts with** value. |
 | `doesnt_start_with` | Include if field **doesn't start** with value. |
 | `ends_with` | Include if field **ends with** value. |
