@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start'
 intro: "This is a step-by-step walkthrough on installing and building a simple Statamic 3 site. It is focused more on the fundamental building blocks and less on design and aesthetics. In fact, it will be an ugly site. Just brace yourself ahead of time."
-published: false
+stage: 1
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
