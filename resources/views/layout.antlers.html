@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
-<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false, ref: (document.referrer) ? (new URL(document.referrer)).hostname : null }" @keydown.slash.prevent="$refs.docsSearch.focus()">
+<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }" @keydown.slash.prevent="$refs.docsSearch.focus()">
 
 {{ partial:partials/nav }}
 
@@ -43,7 +43,7 @@
     {{ /unless }}
 </div>
 
-<template x-cloak x-if="ref === 'docs.statamic.com'">
+{{ if get:ref == "docs.statamic.com" }}
     <div class="fixed z-50 bottom-0 inset-x-0 pb-2 sm:pb-5 translate-y-0">
         <div class="py-3 px-5 bg-blue-darkest text-white font-display shadow-lg-mint mx-4">
             <div class="flex items-center justify-between flex-wrap">
@@ -57,8 +57,7 @@
             </div>
         </div>
     </div>
-</template>
-
+{{ /if }}
 
 <div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
     <p>Copyright {{ now format="Y" }} Statamic • <b>Powered by {{ powered_by sort="random" limit="1" }}{{ value }}{{ /powered_by }}</b></p>
