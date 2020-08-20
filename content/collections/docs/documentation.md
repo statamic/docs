@@ -4,6 +4,19 @@ intro: If you're looking to learn how to build and manage sites with Statamic, y
 id: 6aa5449b-5d90-47de-97e7-82ba5f665250
 blueprint: page
 template: home
+sponsors:
+  -
+    name: James Blair
+    avatar_url: https://avatars1.githubusercontent.com/u/4450975?s=400&u=3ae89e529e10dc471bf184db3e5ef99661b3f181&v=4
+    url: https://github.com/jsblair9
+  -
+    name: Simon Hamp
+    avatar_url: https://avatars3.githubusercontent.com/u/31628?s=400&v=4
+    url: https://github.com/simonhamp
+  -
+    name: Steven Grant
+    avatar_url: https://avatars0.githubusercontent.com/u/112473?s=400&v=4
+    url: https://github.com/1stevengrant
 ---
 
 ## Popular Links
@@ -11,7 +24,7 @@ template: home
 <div class="w-1/2" markdown=1>
 
 - [How to install Statamic](/installation)
-- [Antlers template language](/antlers)
+- [Statamic 2 Migrator](https://github.com/statamic/migrator)
 - [Static Site Generator](https://github.com/statamic/ssg)
 - [Addon directory](https://statamic.com/addons)
 
@@ -44,10 +57,6 @@ Looking to jump right into a ready-made site?
     </a>
 </div>
 
-## Providing Feedback
+## Sponsors
 
-🐛 Encounter something looks, smells, feels, or tastes like a **bug**? Open an issue on the main [`statamic/cms`](https://github.com/statamic/cms) repo!
-
-💡 Have an **idea** on how to improve something? Open an issue on the [`statamic/ideas`](https://github.com/statamic/ideas) repo.
-
-🎁 Interested in contributing to Statamic? Please read our [Contribution Guide](https://github.com/statamic/cms/blob/master/CONTRIBUTING.md) first.
+We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.
