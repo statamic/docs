@@ -2,9 +2,9 @@
 title: Taxonomy
 extends: 9dd58c40-6e33-49c8-83fa-61a69f6371be
 description: Attach Taxonomy Terms to your content.
-overview: >
-  Allows you attach Taxonomy Terms to your content. Tags, Categories, Colors, Flavors, you name it. Taxonomy all the things! Learn more about [Taxonomies](/taxonomies).
-image: /assets/fieldtypes/taxonomy.jpg
+intro: >
+  Allows you attach Taxonomy Terms to your content. They could be Tags, Categories, Colors, Flavors, you name it. We highly recommend [learning more about Taxonomies](/taxonomies) before going any further.
+screenshot: fieldtypes/taxonomy.png
 options:
   -
     name: taxonomy
@@ -17,18 +17,20 @@ options:
     type: boolean *true*
     description: >
       By default you may create new terms. Set to `false` to only allow selecting from existing terms.
+stage: 2
 id: 31adcc00-4fbb-4fe9-9b48-401061273096
 ---
 
 
-> **This is a special field!**
-If [taxonomizing content](/taxonomies#control-panel) (the most common use case), you should place this field within the `taxonomies` key in your fieldset. Otherwise, learn more about [how else it can be used](#without-taxonomizing).
+## Overview
+
+Taxonomies are usually relationships established on the collection-configuration level. Make sure to read the [Taxonomies documentation](/taxonomies) to understand how everything works.
 
 ## Data Structure {#data-structure}
 
 If the field is being used for taxonomizing your content (ie. the field name matches the taxonomy handle), the term's _slugs_ will be saved.
 
-``` .language-yaml
+``` yaml
 wildlife:
   - kangaroo
   - three-toed-sloth
@@ -41,7 +43,7 @@ However, if you just want to store references to taxonomy terms for other purpos
 A term ID is the taxonomy handle combined with the slug.
 This way, you may reference terms from multiple taxonomies.
 
-``` .language-yaml
+``` yaml
 things_you_may_find_adorable:
   - wildlife/panda
   - people/the-elderly
@@ -98,3 +100,5 @@ You will need to use the [Relate Tag](/tags/relate) in your template to have the
   <li><a href="/tags/delightful">Delightful</a></li>
 </ul>
 ```
+
+## Config Options
