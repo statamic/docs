@@ -51,9 +51,10 @@ resources/views/
 |   |-- blog/
 |   |--   |-- index.antlers.html
 |   |--   |-- show.antlers.html
-|   |-- blog/
-|   |--   |-- index.antlers.html
-|   |--   |-- show.antlers.html
+|-- blog/
+|--   |-- index.antlers.html
+|--   |-- show.antlers.html
+
 ```
 
 For example, if an entry loaded a `blog/show` view by default, its AMP view would be `amp/blog/show`. You will need to create these alternate views yourself.
