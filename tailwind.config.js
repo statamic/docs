@@ -90,6 +90,14 @@ module.exports = {
         '-16': '-16px',
         '64': '64px',
       },
+      rotate: {
+        '-1': '-1deg',
+        '-2': '-2deg',
+        '-3': '-3deg',
+        '1': '1deg',
+        '2': '2deg',
+        '3': '3deg'
+      },
       maxWidth: theme => {
         return {
           'screen-xl': theme('screens.xl'),

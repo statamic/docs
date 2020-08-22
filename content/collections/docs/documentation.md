@@ -17,6 +17,10 @@ sponsors:
     name: Steven Grant
     avatar_url: https://avatars0.githubusercontent.com/u/112473?s=400&v=4
     url: https://github.com/1stevengrant
+  -
+    name: Anthony Sexton
+    avatar_url: https://avatars1.githubusercontent.com/u/858300?s=400&u=6b3abb7e0e31f7a6debd08a974be4b5cc6f9086c&v=4
+    url: https://github.com/anthonysexton
 ---
 
 ## Popular Links
