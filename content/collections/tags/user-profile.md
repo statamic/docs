@@ -14,6 +14,16 @@ parameters:
     type: string
     description: |
       Fetch user by email.
+  -
+    name: field
+    type: string
+    description: |
+      Fetch user by a specific field value. Used with `value` below.
+  -
+    name: value
+    type: string
+    description: |
+      Value of above `field` to fetch user by.
 variables:
   -
     name: user data
@@ -60,13 +70,20 @@ To output the currently logged in user's details, you can do this:
 {{ /user }}
 ```
 
-Or perhaps you'd like to show user profile pages. You could create a wildcard route like this:
+Or perhaps you'd like to show user profile pages. Assuming your users have a `username` field, you could create a wildcard route like this:
 
 ```php
-Route::statamic('users/{user}', 'users.show');
+Route::statamic('users/{username}', 'users.show');
 ```
 
 Then when visiting `/users/chuck`, for example, you could display Chuck's details like this:
+
+```
+{{ user:profile field="username" :value="segment_2" }}
+  {{ first_name }} {{ last_name }}
+{{ /user:profile }}
+```
+Or to find a user by email:
 
 ```
 {{ user:profile :email="email" }}
