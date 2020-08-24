@@ -33,4 +33,6 @@ php artisan migrate
 
 This will add some columns to the `users` table (like `super`, and `last_login`), and create the `role_user` and `group_user` pivot tables.
 
+> When using `sqlite` as your database driver, make sure to `composer require doctrine/dbal`. We do change the `users` table in our auth migrations and therefore [require](https://laravel.com/docs/master/migrations#modifying-columns) the `doctrine/dbal` to run the migrations without errors.
+
 This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/knowledge-base/storing-users-somewhere-custom).
