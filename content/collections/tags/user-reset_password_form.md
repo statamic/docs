@@ -54,6 +54,9 @@ After a user has put their email address into the [user:forgot_password_form](/t
             </div>
         {{ /if }}
 
+        <label>E-Mail</label>
+        <input type="email" name="email" />
+
         <label>Password</label>
         <input type="password" name="password" />
 
