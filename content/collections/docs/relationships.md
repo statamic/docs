@@ -17,7 +17,7 @@ There are 4 primary fieldtypes used to manage relationships. When you use these 
 
 - [Assets](/fieldtypes/assets)
 - [Entries](/fieldtypes/entries)
-- [Taxonomy](/fieldtypes/taxonomy)
+- [Taxonomy Terms](/fieldtypes/terms)
 - [Users](/fieldtypes/users)
 
 

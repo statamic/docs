@@ -1,10 +1,10 @@
 ---
-title: Taxonomy
+title: Terms
 extends: 9dd58c40-6e33-49c8-83fa-61a69f6371be
 description: Attach Taxonomy Terms to your content.
 intro: >
   Allows you attach Taxonomy Terms to your content. They could be Tags, Categories, Colors, Flavors, you name it. We highly recommend [learning more about Taxonomies](/taxonomies) before going any further.
-screenshot: fieldtypes/taxonomy.png
+screenshot: fieldtypes/terms.png
 options:
   -
     name: taxonomy
@@ -21,12 +21,11 @@ stage: 2
 id: 31adcc00-4fbb-4fe9-9b48-401061273096
 ---
 
-
 ## Overview
 
 Taxonomies are usually relationships established on the collection-configuration level. Make sure to read the [Taxonomies documentation](/taxonomies) to understand how everything works.
 
-## Data Structure {#data-structure}
+## Data Structure
 
 If the field is being used for taxonomizing your content (ie. the field name matches the taxonomy handle), the term's _slugs_ will be saved.
 
@@ -49,7 +48,7 @@ things_you_may_find_adorable:
   - people/the-elderly
 ```
 
-## Templating {#templating}
+## Templating
 
 As outlined in the [Taxonomies Guide](/taxonomies#templating), term slugs will automatically be converted to Term objects which means
 you will have all of the term's data available as variables.
