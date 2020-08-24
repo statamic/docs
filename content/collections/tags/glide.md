@@ -71,7 +71,7 @@ shape:
     name: format
     type: string
     description: >
-      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png` or `gif`. Default: `jpg`.
+      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. Default: `jpg`.
 
 filters:
   -
