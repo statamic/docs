@@ -64,9 +64,9 @@ Adding this scheme to a page will redirect to a login page unless the user is al
 
 ``` php
 'logged_in' => [
-  'driver' => 'auth',
-  'login_url' => '/login',
-  'append_redirect' => true,
+    'driver' => 'auth',
+    'login_url' => '/login',
+    'append_redirect' => true,
 ]
 ```
 
