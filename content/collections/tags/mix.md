@@ -30,7 +30,7 @@ id: b8936f37-a237-4fad-bf70-a6421ab413ae
 
 ## Default Directory
 
-By default Mix will assume that the `manifest.json` file that points to the proper file locations is in your `public/` directory. If your file is configured to build elsewhere you can point to it with the `in` parameter.
+By default Mix will assume that the `mix-manifest.json` file that points to the proper file locations is in your `public/` directory. If your file is configured to build elsewhere you can point to it with the `in` parameter.
 
 ```
 <link href="{{ mix src='/css/tailwind.css' in='assets' }}" rel="stylesheet">
