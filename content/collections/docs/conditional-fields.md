@@ -206,7 +206,7 @@ if:
 
 ## Custom Logic
 
-If you need something more complex than the YAML syntax provides, you may write your own logic.  In a JS script or addon, you can define custom functions using the `$conditions` JS API:
+If you need something more complex than the YAML syntax provides, you may write your own logic.  In a [JS script](/extending/control-panel) or addon, you can define custom functions using the `$conditions` JS API:
 
 ```yaml
 if:
