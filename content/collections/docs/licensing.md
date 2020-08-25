@@ -80,7 +80,7 @@ If any of the following rules match, the domain is considered _not public_ (lett
 - Is it an IP address?
 - Does it use a port other than `80` or `443`?
 - Does it have a dev-related subdomain? `test.`, `testing.`, `sandbox.`,  `local.`, `dev.`, `stage.`, or `staging.`
-- Does it use a dev-related TLD? `.local`, `.localhost`, `.test`, `.invalid`, `.example`, `.wip`, or `.app`
+- Does it use a dev-related TLD? `.local`, `.localhost`, `.test`, `.invalid`, `.example`, or `.wip`
 
 ## Special Circumstances
 
