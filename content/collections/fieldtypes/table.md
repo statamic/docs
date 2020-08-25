@@ -51,7 +51,7 @@ Here’s the same thing that the modifier would have output, but we’re modifyi
 </table>
 ```
 
-Wan’t even more control? This example assumes you have a boolean field in your front-matter named `first_row_headers` which toggles whether or not to render the first row of the table in a `<thead>` with `<th>` tags.
+Want even more control? This example assumes you have a boolean field in your front-matter named `first_row_headers` which toggles whether or not to render the first row of the table in a `<thead>` with `<th>` tags.
 
 ```
 <table>
