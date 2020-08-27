@@ -17,7 +17,7 @@ When you install Statamic, it will be configured to use the free Solo edition. Y
 
 Once you've opted into Pro, many additional features will be available.
 
-## Trying Pro Mode #trial-mode
+## Trying Pro Mode {#trial-mode}
 
 You can use **Statamic Pro** locally without a license key for as long as you'd like. This is called **Trial Mode**.
 
