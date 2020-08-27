@@ -53,6 +53,10 @@ To customize these fields, edit the included `user` [blueprint](/blueprints)  an
 
 ## Permissions
 
+<div class="mb-8">
+    <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+</div>
+
 A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for a user to access the control panel, create, edit, or publish content, create users, and so on.
 
 Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `resources/users/roles.yaml`.
@@ -99,6 +103,10 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 Super Admin accounts are special accounts with **access and permission to everything**. This includes things reserved only for super users like the ability to _create more super users_. It's important to prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
 
 ## User Groups
+
+<div class="mb-8">
+    <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+</div>
 
 User groups allow you to attach [roles](#roles), include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
 

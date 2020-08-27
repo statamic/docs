@@ -4,6 +4,7 @@ intro: The Revisions feature adds an entire publishing workflow to your authorin
 template: page
 id: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
 stage: 3
+pro: true
 ---
 
 ## Overview

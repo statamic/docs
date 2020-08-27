@@ -1,6 +1,11 @@
 <header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
     <h1>{{ title }}</h1>
     {{ intro ?? overview | markdown }}
+    {{ if pro }}
+        <div>
+            <a class="bg-black hover:bg-purple no-underline px-6 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+        </div>
+    {{ /if }}
 </header>
 
 <article class="markdown pb-8">
