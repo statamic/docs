@@ -4,5 +4,15 @@
 </header>
 
 <article class="markdown pb-8">
+    {{ if plan == "pro" }}
+    <blockquote class="neat">
+        <p>This feature is part of the <a href="https://statamic.com/pricing">pro plan</a>.</p>
+    </blockquote>
+    {{ elseif plan == "mixed" }}
+    <blockquote class="neat">
+        <p>Some of these features are a part of the <a href="https://statamic.com/pricing">pro plan</a>.</p>
+    </blockquote>
+    {{ /if }}
+
     {{ content | noparse | toc:ids }}
 </article>

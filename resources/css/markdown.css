@@ -69,6 +69,17 @@
             z-index: 10;
         }
 
+        &.neat:before {
+            content: '';
+            background: url('/img/neat.svg') no-repeat;
+            height: 50px;
+            width: 64px;
+            position: absolute;
+            top: -10px;
+            left: -32px;
+            z-index: 10;
+        }
+
         p {
             @apply text-sm;
             &:last-child { @apply mb-0; }

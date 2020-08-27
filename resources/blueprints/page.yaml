@@ -10,6 +10,23 @@ sections:
           type: markdown
           localizable: true
       -
+        handle: plan
+        field:
+          options:
+            free: null
+            mixed: null
+            pro: null
+          clearable: false
+          multiple: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          type: select
+          localizable: false
+          listable: hidden
+          display: Plan
+      -
         handle: content
         field:
           display: Content
