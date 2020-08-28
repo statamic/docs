@@ -151,10 +151,44 @@ email:
   -
     to: agent@celebrity.com
     subject: Someone still likes your client
-    automagic: true
 ```
 
-Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses Statamic templates while the other gets an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
+Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses custom html and text views while the other doesn't, so it'll get an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
+
+### Email variables
+
+Inside your email view, you have a number of variables available:
+
+- `date`, `now`, `today` - The current date/time
+- `site_url` - The site home page.
+- `site`, `locale` - The handle of the site
+- All of the submitted form values
+- A `fields` array
+
+The submitted form values will be augmented for you. For instance, if you have an `assets` field, you will get a collection of Asset objects rather than just an array of paths. Or, a `select` field will be an array with `label` and `value` rather than just the value.
+
+```
+<b>Name:</b> {{ name }}
+<b>Email:</b> {{ email }}
+```
+
+The `fields` variable is an array available for you for if you'd rather loop over your values in a dynamic way:
+
+```
+{{ fields }}
+    <b>{{ display }}</b> {{ value }}
+{{ /fields }}
+```
+
+In each iteration of the `fields` array, you have access to:
+
+- `display` - The display name of the field. (e.g. "Name")
+- `handle` - The handle of the field (e.g. "name")
+- `value` - The augmented value (same as explained above)
+- `fieldtype` - The handle of the fieldtype (e.g. "assets")
+- `config` - The configuration of the blueprint field
+
+
 
 ### Setting the Recipient Dynamically
 
