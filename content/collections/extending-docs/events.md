@@ -317,7 +317,7 @@ You can `return false` to prevent the submission, but appear to the user as thou
 If you'd like to show validation errors, you may throw an `Illuminate\Validation\ValidationException`:
 
 ``` php
-throw new ValidationException::withMessages(['You did something wrong.']);
+throw ValidationException::withMessages(['You did something wrong.']);
 ```
 
 You may also just modify the submission object. You do not need to `return` anything.
