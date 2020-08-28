@@ -60,12 +60,14 @@ fields:
       type: text
       validate: required
   -
-    handle: message
+    handle: comment
     field:
-      display: Message
+      display: Comment
       type: textarea
       validate: required
 ```
+
+> The `message` variable is reserved within emails, so you should avoid using that as a field handle if you intend on using the email feature.
 
 ### The Template
 
