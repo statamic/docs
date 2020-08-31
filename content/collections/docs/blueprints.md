@@ -11,7 +11,7 @@ stage: 1
 
 Think of blueprints as stencils for your content. They control what [fields](/fields) users get to work with when publishing content, as well as the schema of the data developers will be tapping into to build the [front-end](/front-end) of your site.
 
-Each blueprint belongs to an item: 
+Each blueprint belongs to an item:
 
 - You can define multiple Blueprints for collections, and each entry will have the opportunity to choose from one of them.
 - Same goes for taxonomies and their terms.
@@ -204,11 +204,39 @@ It would bring every field inline and prefix each field's handle appropriately.
 If you omit the `prefix` you won't be able to import them more than once at the same level because they would have the same handle and overwrite each other.
 
 
+## Required Fields
+
+Fields can be required, enforcing the need for content creators fill them out before saving or publishing.
+
+While configuring a field, switch to the **Validation** tab and add the rule for `required` to the list.
+
+<div class="screenshot">
+    <img src="/img/required-field.png" width="521" alt="Required field validation"/>
+    <div class="caption">This is how you make a field required.</div>
+</div>
+
+Here's a peek at how that YAML is structured.
+
+```yaml
+-
+  handle: your_field
+  field:
+    type: text
+    validation:
+      - required
+```
+
+
 ## Grid Fieldtype
 
 The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
 
 You should define its fields using the blueprint field syntax. This will allow you to reference other fields and/or import entire fieldsets.
+
+<div class="screenshot">
+    <img src="/img/grid.png" alt="An example grid field" />
+    <div class="caption">This is an example Grid field.</div>
+</div>
 
 ``` yaml
 links:
@@ -224,11 +252,6 @@ links:
       handle: external
       field: links.external
 ```
-
-<div class="screenshot">
-    <img src="/img/grid.png" />
-    <div class="caption">This is an example Grid field.</div>
-</div>
 
 
 ## Unlisted Fields
