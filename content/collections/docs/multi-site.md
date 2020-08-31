@@ -48,7 +48,7 @@ Luckily for you, this conversion can be done automatically with the following co
 php please multisite
 ```
 
-This command needs te be run *before* making changes to the config file.
+This command needs te be run **before** making changes to the config file.
 
 [More details on how to convert to a multi-site setup](/knowledge-base/converting-from-single-to-multi-site)
 
