@@ -32,7 +32,7 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
 
 ```
 {{ if video | is_embeddable }}
-    <!-- Youtube and Video -->
+    <!-- Youtube and Vimeo -->
     <iframe src="{{ video | embed_url }}" ...></iframe>
 {{ else }}
     <!-- Other HTML5 video types -->
