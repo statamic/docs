@@ -21,7 +21,7 @@ You can also [create your own drivers](#custom-drivers).
 
 Whichever approach you choose, know that it's designed to help you out. We’ve tried to keep the syntax as simple as possible while allowing for flexibility. Because of this, if Statamic sees you’ve set `protect`, but the scheme has been configured incorrectly, _all users will be denied_.
 
-> This feature only applies to the front-end of your site on pages routed through Statamic (entry URLs and routes defined in routes.php). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
+> This feature only applies to the front-end of your site on pages routed through Statamic (like entry URLs). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
 
 ## Basic Usage
 
