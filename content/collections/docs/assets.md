@@ -80,6 +80,23 @@ Each container implements a disk, which is just a [Laravel Filesystem](https://l
 
 Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or anything else as long as there is a Flysystem adapter for it installed.
 
+## Private Containers
+
+Sometimes it’s handy to store assets that shouldn’t be freely accessible through the browser.
+
+<mark>If your asset container's disk does not have a `url` property, Statamic will not output URLs.</mark>
+
+This means you should put the container's disk somewhere above the webroot. If you leave the disk within the webroot, while Statamic won't output URLs, they are _technically_ still accessible if you type the URL manually.
+
+``` files
+/
+|-- put-it-out-here
+|-- public
+|   `-- not-in-here
+```
+
+If you're using a service based driver (like Amazon S3) then you should make sure you are **not** setting the `visibility`. Or, set it to `private` if you want to be doubly sure.
+
 ## Blueprint
 
 If you don't explicitly edit the [Blueprint](/blueprints) for your container, you'll get a single "alt text" field.
