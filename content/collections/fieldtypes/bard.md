@@ -63,6 +63,12 @@ options:
     type: boolean
     description: >
       Save HTML instead of structured data. This simplifies – but limits – control of your template markup. Default: `false`.
+  -
+    name: always_show_set_button
+    type: boolean
+    description: >
+      Always show the "Add Set" button. Default: `false`.
+      
 stage: 1
 id: f4bf58d3-cbce-4957-b883-d92fd4791e89
 ---
