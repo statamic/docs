@@ -152,7 +152,7 @@ You can use the `addChild` method on an existing permission to inject it at that
 ``` php
 $this->app->booted(function () {
     Permission::get('edit {collection} entries')->addChild(
-        Permission::make('tweet {collection} entries');
+        Permission::make('tweet {collection} entries')
     );
 });
 ```
