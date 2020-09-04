@@ -44,7 +44,7 @@ shape:
     name: square
     type: integer
     description: >
-      A shortcut for setting `width` and `height` to the same value.
+      A shortcut for setting `width` and `height` to the same value. For example `square="250"` is a shortcut for `width="250" height="250"`.
   -
     name: fit
     type: string
@@ -67,6 +67,11 @@ shape:
     type: integer
     description: >
       Defines the quality of the image. Use values between `0` and `100`. Only relevant if the format is `jpg` or `pjpg`. Default: `90`.
+  -
+    name: dpr
+    type: integer
+    description: >
+      Defines the device pixel ratio. This makes it possible to display images at the correct pixel density on a variety of devices. For example the following would output an image of 400px `{{ glide:image width="200" dpr="2" square }}`. Default: `1`. The maximum value that can be set for dpr is `8`.
   -
     name: format
     type: string
