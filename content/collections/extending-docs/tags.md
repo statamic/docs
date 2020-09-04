@@ -259,7 +259,7 @@ If your tag doesn’t return anything, your tag won’t render anything. This ca
 
 ### Tag Pairs
 
-When using your tag in a pair, you can return an array (or Collection) to be used as the new context. Its variables will be available between your tags. The context _outside_ of your tag pair will **not** be available inside the tag pair.
+When using your tag in a pair, you can return an array (or Collection) to be used as the new context. Its variables will be available between your tags.
 
 ``` php
 public function method() {
