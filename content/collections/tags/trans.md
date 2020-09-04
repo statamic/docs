@@ -8,6 +8,10 @@ parameters:
     type: tagpart|string
     description: 'The key of the translation string to find. Include both the filename and string key delimited with dots. Can be used as a tag part or a `key` parameter. If your key contains a namespace, you should use the key parameter instead of the tag part.'
   -
+    name: locale|site
+    type: string
+    description: 'The locale to be used when translating.'
+  -
     name: 'any parameters'
     type: string
     description: 'Any additional parameters will be treated as parameters that should be replaced in the string.'
