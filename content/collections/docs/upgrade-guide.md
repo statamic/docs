@@ -217,7 +217,7 @@ Most of the global functions have been removed in an effort to prevent pollution
 
 ### Suggest Modes
 
-Suggest modes have been replaced by [customized relationship fieldtypes](/guide/extending/relationship-fieldtypes.html).
+Suggest modes have been replaced by [customized relationship fieldtypes](/extending/relationship-fieldtypes).
 
 ### Statamic\API
 
