@@ -22,7 +22,7 @@ We call this fallback logic "the cascade", because the value of any given variab
 
 ## Priority Order
 
-Here's the priority order in which the the cascade will look for the value of any given variable.
+Here's the priority order in which the cascade will look for the value of any given variable.
 
 1. Has it been set in a ViewModel?
 2. If not, has it been set on the entry?
