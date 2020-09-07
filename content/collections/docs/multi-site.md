@@ -17,6 +17,18 @@ Each site can have different base URLs:
 - subdirectories: `example.com` and `example.com/fr/`
 - different domains: `hello.com` and `bonjour.com`
 
+## Converting from Single to Multiple Sites
+
+The default single-site setup uses a folder structure optimized for hand editing, but when using a multi-site setup the folder structure is a bit more complex. If you already have a site with content, switching to a multi-site setup will require moving files and folders around.
+
+Luckily for you, this conversion can be done automatically with the following command:
+
+``` bash
+php please multisite
+```
+
+[More details on how to convert to a multi-site setup](/knowledge-base/converting-from-single-to-multi-site)
+
 ## Configuration
 
 Whether you are using multiple sites or not, every Statamic install needs at least one site.
@@ -37,18 +49,6 @@ return [
     ]
 ];
 ```
-
-## Converting from Single to Multiple Sites
-
-The default single-site setup uses a folder structure optimized for hand editing, but when using a multi-site setup the folder structure is a bit more complex. If you already have a site with content, switching to a multi-site setup will require moving files and folders around.
-
-Luckily for you, this conversion can be done automatically with the following command:
-
-``` bash
-php please multisite
-```
-
-[More details on how to convert to a multi-site setup](/knowledge-base/converting-from-single-to-multi-site)
 
 ## Views
 
