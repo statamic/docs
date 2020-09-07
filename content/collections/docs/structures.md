@@ -44,7 +44,7 @@ The first type of structure is for defining the URL structure for a collection. 
 Freestyle navigation structures exist to manage a nav out of existing entries, as well as freeform links and text (non-link) elements.
 
 - You can reference entries, enter hardcoded URLs (internal or external), or enter simple text blocks (which can be used as section headers for dropdown navs, for example).
-- You can select which collections' entries will available to choose from.
+- You can select which collections' entries will be available to choose from.
 - Any referenced entries will use the URLs defined by the collection, regardless of the position in the Structure.
 - You can place the same entry multiple times.
 - The structure is stored as a YAML file inside `content/navigation`.
