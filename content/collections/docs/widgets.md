@@ -22,7 +22,7 @@ You may use the same widget multiple times, configured in different ways.
 
 Display a listing of entries from a collection
 
-```
+``` php
 [
 	'type' => 'collection',
 	'collection' => 'blog', // name of your collection
@@ -35,7 +35,7 @@ Display a listing of entries from a collection
 
 Display a listing of form submissions.
 
-```
+``` php
 [
 	'type' => 'collection',
 	'form' => 'contact', // name of your form
@@ -48,7 +48,7 @@ Display a listing of form submissions.
 
 Will display if updates are available
 
-```
+``` php
 [
 	'type' => 'updater',
 	'width' => 100,
@@ -56,30 +56,31 @@ Will display if updates are available
 ```
 
 ## An example
-```
+
+``` php
 'widgets' => [
-        [
-            'type' => 'collection',
-            'collection' => 'blog',
-            'width' => 50,
-            'limit' => 10,
-        ],
-        [
-            'type' => 'collection',
-            'collection' => 'products',
-            'width' => 50,
-            'limit' => 10
-        ],
-        [
-            'type' => 'form',
-            'form' => 'contact',
-            'width' => 100,
-            'limit' => 20,
-        ],
-        [
-            'type' => 'updater',
-            'width' => '100',
-        ],
+    [
+        'type' => 'collection',
+        'collection' => 'blog',
+        'width' => 50,
+        'limit' => 10,
     ],
+    [
+        'type' => 'collection',
+        'collection' => 'products',
+        'width' => 50,
+        'limit' => 10
+    ],
+    [
+        'type' => 'form',
+        'form' => 'contact',
+        'width' => 100,
+        'limit' => 20,
+    ],
+    [
+        'type' => 'updater',
+        'width' => '100',
+    ],
+],
 
 ```
