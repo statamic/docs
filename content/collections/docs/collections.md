@@ -45,7 +45,7 @@ If a value doesn't exist in one place, it'll check the next place, then the next
 
 ### Default collection data {#inject}
 
-Injecting data into your collection allows you providing default values for your entries with the `inject` variable. If entries have these variables set, they will override the collection defaults.
+Injecting data into your collection allows you to provide default values for your entries with the `inject` variable. If entries have these variables set, they will override the collection defaults.
 
 ``` yaml
 inject:
