@@ -183,16 +183,25 @@ If asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
 
-## Not supported formats like SVGs
+## Unsupported formats
 
-Don't worry about not supported files too much. In case a format is not supported, glide will simply return the image path without cropping.
+Glide will resize whatever images it supports, like jpgs or pngs. If you pass an unsupported type to Glide, like an svg, it'll just return the unmodified URL.
 
-The example below would crop supported images, but would simply return formats like an SVG directly without cropping. But you don't want to croop an SVG anyway, right?
+``` yaml
+images:
+  - image.jpg
+  - image.svg
+```
 
 ```
-{{ assets:image  }}
-    <img src="{{ glide:url width="600" }}">
-{{ /assets:image  }}
+{{ images }}
+  <img src="{{ glide:url width="600" }}" />
+{{ /images }}
+```
+
+``` output
+<img src="/img/image.jpg?w=600" />
+<img src="/assets/image.svg" />
 ```
 
 ## Serving Cached Images Directly
