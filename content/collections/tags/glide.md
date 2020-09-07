@@ -76,7 +76,7 @@ shape:
     name: format
     type: string
     description: >
-      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. Default: `jpg`.
+      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg` 
 
 filters:
   -
