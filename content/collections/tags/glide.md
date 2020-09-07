@@ -185,19 +185,13 @@ _Note: All Glide generated images are cropped at their focal point, unless you d
 
 ## Not supported formats like SVGs
 
-Check file type before using Glide to leave that SVG alone.
-Don't worry about them. In case a format is not supported, glide will return the plain image path. 
+Don't worry about not supported files too much. In case a format is not supported, glide will simply return the image path without cropping.
 
 The example below would crop supported images, but would simply return formats like an SVG directly without cropping. But you don't want to croop an SVG anyway, right?
 
 ```
 {{ assets:image  }}
-    {{ if extension == 'svg' }}
-         <img src="{{ url }}">
-    {{ else }}
-         <img src="{{ glide:url width="600" }}">
-    {{ /if }}
-     <img src="{{ glide:url width="600" }}">
+    <img src="{{ glide:url width="600" }}">
 {{ /assets:image  }}
 ```
 
