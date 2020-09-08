@@ -121,7 +121,7 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 
 ### Listings and Indexes
 
-When on a [taxonomy route](#routing), you can list the terms by using either a `terms` tag pair. For example:
+When on a [taxonomy route](#routing), you can list the terms by using a `terms` tag pair. For example:
 
 ```
 {{ terms }}
