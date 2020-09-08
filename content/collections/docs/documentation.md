@@ -21,6 +21,14 @@ sponsors:
     name: Anthony Sexton
     avatar_url: https://avatars1.githubusercontent.com/u/858300?s=400&u=6b3abb7e0e31f7a6debd08a974be4b5cc6f9086c&v=4
     url: https://github.com/anthonysexton
+  -
+    name: Daniel Plomp
+    avatar_url: https://avatars0.githubusercontent.com/u/1482375?s=400&v=4
+    url: https://github.com/plompd
+  -
+    name: Laravel Shift
+    avatar_url: https://avatars3.githubusercontent.com/u/15991828?s=400&u=cd8244b2ba4350056c6f61c03ace9e46b02480cb&v=4
+    url: https://github.com/laravel-shift
 ---
 
 ## Popular Links
@@ -61,6 +69,6 @@ Looking to jump right into a ready-made site?
     </a>
 </div>
 
-## Sponsors
+## Hero Sponsors
 
 We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.
