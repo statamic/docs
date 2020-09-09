@@ -39,7 +39,12 @@ default_status: draft
 A new entry begins in the unpublished state. As long as your entry _remains_ unpublished, you're simply working directly on the entry located in your content/collections/{collection} directory. It will not be visible from the front-end of your site until it's published, and you can save a revision at any point.
 
 ### Revision
-Revisions are stored in the `storage` directory and include all the data for your entries at the time of revisions, including additional meta data about the author, timestamp, and so on. You can choose whether you want to include these files in your git repo or not by adding a new line with `!revisions/**` to the bottom of the `.gitignore` file in `storage/statamic`.
+Revisions are stored in the `storage` directory and include all the data for your entries at the time of revisions, including additional meta data about the author, timestamp, and so on. You can include these files in your git repo by adding two new lines at the bottom of the `.gitignore` file in `storage/statamic`:
+
+```
+!revisions
+!revisions/**
+```
 
 Revisions can be previewed and restored as the [working copy](#working-copy) so you can edit and/or publish them if you wish.
 
