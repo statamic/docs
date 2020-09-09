@@ -15,6 +15,7 @@ To run Statamic 3 you'll need a server meeting the following requirements. These
 - PHP `>= 7.2.5`
 - BCMath PHP Extension
 - Ctype PHP Extension
+- Exif PHP Extension
 - JSON PHP Extension
 - Mbstring PHP Extension
 - OpenSSL PHP Extension
