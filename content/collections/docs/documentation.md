@@ -55,13 +55,19 @@ sponsors:
 Looking to jump right into a ready-made site?
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <a href="https://github.com/statamic/starter-kit-cool-writings" class="custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative mb-8">
+    <a href="https://github.com/statamic/starter-kit-starters-creek" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Starter's Creek</div>
+            <div class="text-black text-xs">A beautiful, multi-author capable blog.</div>
+        </div>
+    </a>
+    <a href="https://github.com/statamic/starter-kit-cool-writings" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
             <div class="font-bold">Cool Writings</div>
             <div class="text-black text-xs">A super clean, Markdown focused blog.</div>
         </div>
     </a>
-    <a href="https://github.com/statamic/starter-kit-doogie-browser" class="custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative mb-8">
+    <a href="https://github.com/statamic/starter-kit-doogie-browser" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
             <div class="font-bold">Doogie Browser</div>
             <div class="text-black text-xs">A retro, IBM/VGA inspired journaling blog.</div>
