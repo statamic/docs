@@ -3,15 +3,19 @@ title: 'Static Caching'
 template: page
 blueprint: page
 intro: |
-    There is nothing faster on the web than static pages. They're like the speed of light — the theoretical maximum speed of anything. Instead of rendering pages dynamically, Statamic can cache static pages and pass routing to Apache or Nginx through reverse proxying.
+    Nothing loads faster faster than static pages. Instead of rendering pages dynamically on demand, Statamic can cache static pages and pass routing to Apache or Nginx with reverse proxying.
 stage: 3
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
-Certain features — such as forms with server-side validation or randomization — don’t work with static page caching. As long as you understand that, you can leverage static caching for the fastest sites possible.
+## Important Prefece
+
+Certain features — such as forms with server-side validation or content randomization — don’t work with static page caching. As long as you understand that, you can leverage static caching for maximum performance.
+
+> You can also use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
 
 ## Caching Strategies
 
-Various caching strategies can be configured in different ways. Out of the box, in `static_caching.php` you will find two pre-configured strategies - one for each supported driver.
+Each caching strategy can be configured independently. Inside `config/static_caching.php` you will find two pre-configured strategies - one for each supported driver.
 
 ``` php
 return [
@@ -28,7 +32,7 @@ return [
 ];
 ```
 
-Set `strategy` to the name of the strategy you wish to use. Set it to `null` to disable static caching completely.
+Set `strategy` to the name of the strategy you wish to use, or `null` to disable static caching completely.
 
 ## Application Driver
 
