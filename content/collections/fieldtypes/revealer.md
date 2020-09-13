@@ -15,7 +15,7 @@ options:
     type: string
     description: Instructional text that will appear as a tooltip on the button.
 ---
-This fieldtype is intended to be used with [conditional field rules](#). If you have some fields that should only sometimes show, throw a Revealer field in there and those fields may be shown once the button is clicked.
+This fieldtype is intended to be used with [conditional field rules](/conditional-fields). If you have some fields that should only sometimes show, throw a Revealer field in there and those fields may be shown once the button is clicked.
 
 The example image above uses the following field configuration:
 
