@@ -23,11 +23,11 @@ To enable in a specific environment, add the following to your `.env` file:
 STATAMIC_GIT_ENABLED=true
 ```
 
-By default, content will automatically be committed as it's changed, but you can customize your git workflow using the provided [configuration options](#configuration).
+By default, content will be committed automatically as it's changed, but you can customize your git workflow using the provided [configuration options](#configuration).
 
 ## Configuration
 
-Git workflow can configured in your `config/statamic/git.php` file, or per environment in your `.env` file.
+Git workflow can be configured in your `config/statamic/git.php` file, or per environment in your `.env` file.
 
 ## Git User
 
@@ -61,7 +61,7 @@ You are free to define the tracked paths to be considered when staging and commi
 ],
 ```
 
-> You may also referencing absolute paths to external repositories!  If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
+> You may also reference absolute paths to external repositories!  If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
 
 ## Committing Changes
 
@@ -79,7 +79,7 @@ STATAMIC_GIT_AUTOMATIC=false
 
 ### From the command line
 
-Manually trigger commits via command line using the following command:
+Manually trigger commits via the command line with the following command:
 
 ```bash
 php please git:commit
@@ -115,7 +115,7 @@ QUEUE_CONNECTION=sync
 
 ### Queueing for performance
 
-If you are experiencing slow-down when saving or deleting content in the control panel, we recommended configuring another queue driver so that commits can be run by a background process, will will help keep the experience fast for your users.
+If you are experiencing slow-down when saving or deleting content in the control panel, we recommended configuring another queue driver so that commits can be run by a background process, which will help keep the experience fast for your users.
 
 > A popular choice is to use a [Redis](https://laravel.com/docs/redis) store and [queue driver](https://laravel.com/docs/queues#driver-prerequisites), along with [Laravel Horizon](https://laravel.com/docs/horizon) for managing your Redis queues.
 
@@ -158,7 +158,7 @@ In this example, we schedule a commit to run 10 minutes after a user makes a con
 
 ### Scheduling for performance
 
-Scheduling commits can be a great alternative [queueing](#queueing-commits), for when you don't have a proper queue setup. If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
+Scheduling commits can be a great alternative to [queueing](#queueing-commits), for when you don't have a proper queue setup. If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
 
 > Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
 
