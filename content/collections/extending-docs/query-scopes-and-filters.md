@@ -33,7 +33,7 @@ class Featured extends Scope
 
 The `apply` method will give you a query builder instance, allowing you to modify it how you see fit.
 
-It will also give you `$values`, which will be an array of contextual values. For example, when [using the scope on a collection tag](), you will get all the parameter values. When used as a [filter](#filters) inside the control panel, you will get all of your filter's field values.
+It will also give you `$values`, which will be an array of contextual values. For example, when [using the scope on a collection tag](/tags/collection#custom-query-scopes), you will get all the parameter values. When used as a [filter](#filters) inside the control panel, you will get all of your filter's field values.
 
 ## Filters
 
