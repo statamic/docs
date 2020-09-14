@@ -22,6 +22,16 @@ Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `
 
 > We recommend leaving Revisions **off** while your site is in development. It'll add extra steps to each update to your content.
 
+## Storage
+
+Revisions are tucked away in the `storage/statamic/revisions` directory by default. Out of the box, this directory is ignored by Git. If you want to version control your revisions, you could tweak the `.gitignore` file, however a better solution would be to move the directory to somewhere more visible:
+
+``` php
+// config/statamic/revisions.php
+
+'path' => base_path('content/revisions'),
+```
+
 ## Revision States
 
 At any given point your content can be in one or more publish states. You can control the default beginning state with the `default_status` collection setting.
@@ -39,7 +49,7 @@ default_status: draft
 A new entry begins in the unpublished state. As long as your entry _remains_ unpublished, you're simply working directly on the entry located in your content/collections/{collection} directory. It will not be visible from the front-end of your site until it's published, and you can save a revision at any point.
 
 ### Revision
-Revisions are stored in the `storage` directory and include all the data for your entries at the time of revisions, including additional meta data about the author, timestamp, and so on. You can choose whether you want to include these files in your git repo or not via your `.gitignore` rules.
+Revisions are [stored as YAML files](#storage) and include all the data for your entries at the time of revisions, including additional meta data about the author, timestamp, and so on.
 
 Revisions can be previewed and restored as the [working copy](#working-copy) so you can edit and/or publish them if you wish.
 
