@@ -25,7 +25,7 @@ use Statamic\Statamic;
 
 class AppServiceProvider
 {
-    public function boot
+    public function boot()
     {
         Statamic::script('app', 'cp.js');
         Statamic::style('app', 'cp.css');
