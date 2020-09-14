@@ -10,7 +10,7 @@ Consider the various aspects of Statamic: Entries, Terms, Globals, and Assets. T
 
 In most cases, the first point of contact with Statamic functionality will be through a Facade.
 
-You can find more details on which ones to use later, but you will find them all in the `Statamic\Facades` namespace. Of course there are exceptions, but in most cases you will looking for a Facade.
+You can find more details on which ones to use later, but you will find them all in the `Statamic\Facades` namespace. Of course there are exceptions, but in most cases you will be looking for a Facade.
 
 Each facade will proxy method calls to another class. You can see which class by looking for the `getFacadeAccessor` method.
 
