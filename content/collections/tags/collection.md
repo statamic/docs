@@ -62,6 +62,10 @@ parameters:
     type: integer
     description: Limit the total results returned.
   -
+    name: filter|query_scope
+    type: string
+    description: Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters)
+  -
     name: offset
     type: integer
     description: The number of entries the results should by offset by.
@@ -225,7 +229,11 @@ By default, only `published` entries are included.  Entries can be queried again
 
 ### Custom Query Scopes
 
-Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results.
+Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results with the `query_scope` or `filter` parameter:
+
+```
+{{ collection:blog query_scope="your_query_scope" }}
+```
 
 ## Pagination
 
@@ -443,4 +451,3 @@ Here we are grouping on the `purchase_date` field. Note that you should also sor
 on date-based entries would still be the entry date.
 
 [conditions]: /conditions
-
