@@ -79,6 +79,8 @@ structure:
       title: Core & Data
       children:
         -
+          entry: 0267eb5a-f54b-4e3f-bef0-1f16762720b1
+        -
           entry: 51a52222-9be7-46b1-8388-059019281a56
         -
           entry: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
