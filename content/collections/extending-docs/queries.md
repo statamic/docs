@@ -125,6 +125,16 @@ Statamic\Facades\Collection::find('blog')
     ->get();
 ```
 
+### Global Fields
+
+Get access to [Global](/globals) fields from your PHP files.
+
+``` php
+use Statamic\Facades\GlobalSet;
+
+GlobalSet::findByHandle('footer')->get('copyright');
+```
+
 ### Users
 
 Query against all users.
