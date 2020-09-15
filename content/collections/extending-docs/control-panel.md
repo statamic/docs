@@ -81,3 +81,24 @@ export default {
 ```
 
 > You may of course change filenames and folder structure, and even your entire build process. The important thing is to compiled imported files with `Statamic::script()`
+
+## Adding control panel routes
+
+If you need to have some custom routes for the control panel
+1. Create a file `routes/cp.php`
+2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:  
+
+```
+// app\Providers\AppServiceProvider.php
+
+public function boot()
+{
+    // ...
+    
+    Statamic::pushCpRoutes(function () {
+        return require_once realpath(__DIR__ . '../../../routes/cp.php');
+    });
+}
+```
+
+3. Any routes in `cp.php` will have `name()`, `namespace()` and `middleware()` set for them.
