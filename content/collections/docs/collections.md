@@ -170,6 +170,18 @@ route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
 ```
 
+#### Organizing gaming articles
+
+You can even use Antlers to get more complicated. Here we'll include the [mounted](#mounting) entry at the top level.
+
+``` yaml
+mount: 'id-of-games-page'
+route: '{{ depth == 1 ?= mount }}/{{ parent_uri }}/{{ slug }}'
+# example: /games/zork/how-to-play/controls
+```
+
+> If you're using Antlers in your route, you need to stick with the `{{ double curlies }}` syntax.
+
 ## Redirects
 
 Adding a `redirect` variable to one of your entries will cause an HTTP redirect when visiting its URL.
