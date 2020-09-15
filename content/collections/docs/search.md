@@ -92,6 +92,23 @@ php please search:update
 php please search:update name
 ```
 
+### Connecting Indexes
+
+When you perform a search in the control panel in either collections, taxonomies, or asset containers, Statamic will search in their selected index.
+
+(If an index hasn't been specified, Statamic will still perform a "search" but it will be using a less efficient query - not an actual search.)
+
+You can define which search index will be used by adding it to the respective YAML file:
+
+``` yaml
+# content/collections/blog.yaml
+title: Blog
+search_index: blog
+```
+
+> Even if you specify that an index contains entries from a collection (in [searchables](#searchables)), you still need to specify the index
+> in the collection. This is because it's perfectly acceptable for entries in one collection to be available in multiple indexes.
+
 
 ## Drivers
 
