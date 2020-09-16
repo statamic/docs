@@ -61,7 +61,7 @@ You can display data passed into your Antlers views by wrapping the variable nam
 
 Let's take the following data as an example:
 
-```.language-yaml
+``` yaml
 ---
 title: DJ Jazzy Jeff & The Fresh Prince
 songs:
@@ -80,9 +80,9 @@ You can display the contents of the `title` variable like this:
 ```
 
 ### Arrays
+Arrays are a collection of elements (values or variables). You can loop through the elements of the array using the `{{ value }}` variable, or reach in and pluck out specific elements by their index.
 
-Arrays are a collection of elements (values or variables). You can loop through the elements of the array to access and display their contents.
-
+#### Looping
 ```
 {{ songs }}
   <li>{{ value }}</li>
@@ -94,7 +94,98 @@ Arrays are a collection of elements (values or variables). You can loop through 
 <li>Just Cruisin'</li>
 ```
 
+#### Plucking
+
+```
+<p>Time to {{ songs:0 }} cuz we're {{ songs:2 }}.</p>
+
+// Output
+<p>Boom! Shake the Room cuz we're Just Crusin'.</p>
+```
+
+### Dictionaries
+Dictionaries are represented in YAML by nested key:value pairs, _inside_ another variable name. These are sometimes called element maps, or associative arrays.
+
+``` yaml
+mailing_address:
+  address: 123 Foo Ave
+  city: Barville
+  province: West Exampleton
+  country: Docsylvania
+```
+
+#### Accessing Data
+You can access the keys inside the dictionary by "gluing" the parent/child keys together you want to traverse through, much like breadcrumbs.
+
+```
+I live in {{ mailing_address:city }}.
+
+// Output
+I live in Barville.
+```
+
+### Multi-Dimensional Arrays
+More complex data is stored in objects or arrays inside arrays. This is usually called a multi-dimensional array.
+
+``` yaml
+skaters:
+  -
+    name: Tony Hawk
+    style: Vert
+  -
+    name: Rodney Mullen
+    style: Street
+```
+
+If you know the names of the variables inside the array, you can loop through the items and access their variables.
+
+```
+{{ skaters }}
+<div class="card">
+  <h2>{{ name }}</h2>
+  <p>{{ style }}</p>
+</div>
+{{ /skaters }}
+
+// Output
+<div class="card">
+  <h2>Tony Hawk</h2>
+  <p>Vert</p>
+</div>
+<div class="card">
+  <h2>Rodney Mullen</h2>
+  <p>Street</p>
+</div>
+```
+
+### Dynamic Access
+If you don't know the names of the keys inside the array – which can happen when working with dynamic or user submitted data – you can access the elements dynamically using variables for the key names.
+
+Using the mailing list example, we could use a `field` variable to pluck out specific keys.
+
+```
 ---
+field: country
+---
+{{ mailing_address[field] }}
+
+// Output
+Docsylvania
+```
+
+You can use this same syntax with literal key names as well.
+
+```
+// These are equivalent
+{{ mailing_address:city }}
+{{ mailing_address['city'] }}
+```
+
+You can combine literal and dynamic keys and get real fancy if you need to.
+
+```
+{{ complex_data:3[field]['title'] }}
+```
 
 ## Modifying Data
 
@@ -147,7 +238,7 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 
 ### Escaping Data
 
-By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this default state is logical. **Never render user-submitted data without escaping it first!**
+By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this is the most logical default behavior. **But remember: never render user-submitted data without escaping it first!**
 
 The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) modifier. This will run the data through PHP's `htmlspecialchars()` function and prevent XSS attacks and other potential nastiness.
 
