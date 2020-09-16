@@ -9,11 +9,6 @@ parameters:
     description: >
       Explicitly define a collection. Defaults to whatever collection the current entry is in.
   -
-    name: wrap
-    type: boolean
-    description: >
-      When `true`, will "wrap around" to the other end of the list and return the first entry. Default: `false`.
-  -
     name: current
     type: 'string'
     description: >
