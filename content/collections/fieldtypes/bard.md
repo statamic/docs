@@ -104,13 +104,13 @@ Use tag pair syntax with `if/else` conditions to style each set accordingly.
 ```
 {{ bard_field }}
 
-  {{ if type == "text" }}
+  {{ if text }}
 
     <div class="text">
       {{ text }}
     </div>
 
-  {{ elseif type == "image" }}
+  {{ elseif image }}
 
     <figure>
       <img src="{{ image }}" alt="{{ caption }}" />
@@ -131,7 +131,7 @@ An alternative approach (for those who like DRY or small templates) is to create
 ```
 
 ```language-files
-partials/
+resources/views/partials/
 |-- sets/
 |   |-- gallery.antlers.html
 |   |-- image.antlers.html
