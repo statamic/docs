@@ -75,11 +75,6 @@ parameters:
     description: >
       A multitude of ways to filter by taxonomies. [More details](#taxonomies)
   -
-    name: group_by_date
-    type: string
-    description: >
-      Group entries by date. [Read more](#grouping-by-date)
-  -
     name: paginate
     type: 'boolean *false*'
     description: >
@@ -396,58 +391,5 @@ You can also add your scope down into your [alias](#alias) loop. Yep, we thought
 ```
 
 Combining both an Alias and a Scope on a Collection Tag doesn't make a whole lot of sense. You shouldn't do that.
-
-## Grouping by date {#group_by_date}
-
-You can visually group repeating date-based entries.
-
-When using this parameter, the templating structure you need to use will be a little different from a regular loop.
-
-### Example
-
-Let's assume that the entries in the `blog` collection are date-based.
-
-
-```
-{{ collection:blog group_by_date="M Y" as="entries" }}
-    {{ date_groups }}
-        <h3>{{ date_group }}</h3>
-        <ul>
-            {{ entries }}
-                <li>{{ title }}</li>
-            {{ /entries }}
-        </ul>
-    {{ /date_groups }}
-{{ /collection:blog }}
-```
-
-The code above will output something like this:
-
-```
-<h3>May 2015</h3>
-<ul>
-  <li>A post from May</li>
-  <li>Another from May</li>
-</ul>
-<h3>June 2015</h3>
-<ul>
-  <li>A post from June</li>
-</ul>
-```
-
-The `{{ date_group }}` variable will be the date formatted by whatever you specified in the `group_by_date` parameter.
-
-The `{{ entries }}{{ /entries }}` tag pair will allow you to iterate over the entries in that date group. The name of this variable is specified by the `as` parameter. For example, if you used `as="posts"`, you'd use a `{{ posts }}{{ /posts }}` tag pair.
-
-### Grouping by a custom date field {#group_by_date-custom-field}
-
-If you'd like to group by an arbitrary date field, you can specify the field name as the second value of the parameter.
-
-```
-{{ collection:blog group_by_date="M Y|purchase_date" sort="purchase_date" }}
-```
-
-Here we are grouping on the `purchase_date` field. Note that you should also sort by that field, as the default sorting
-on date-based entries would still be the entry date.
 
 [conditions]: /conditions
