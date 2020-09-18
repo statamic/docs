@@ -29,55 +29,10 @@ parameters:
       You may pipe-separate multiple
       collections.
   -
-    name: page
-    type: string
-    description: >
-      Filter the listing by terms that
-      only appear in entries mounted to the
-      specified page. You may pipe-separate
-      multiple pages.
-  -
-    name: show
-    type: string
-    description: >
-      Set this to `all` to show all taxonomy terms. This will prevent any filtering of the underlying
-      content collection. The filtering parameters (`show_unpublished`, `show_future`, etc) will
-      all be ignored.
-  -
-    name: show_unpublished
-    type: 'boolean *false*'
-    description: >
-      Allow unpublished content in the
-      underlying collection.
-  -
-    name: show_future
-    type: 'boolean *false*'
-    description: >
-      Allow date-based entries with future
-      dates in the underlying collection.
-  -
-    name: show_past
-    type: 'boolean *true*'
-    description: >
-      Just like `show_future`, but with
-      content in the past.
-  -
-    name: since
-    type: string/var
-    description: "Limits the date the earliest point in time from which date-based entries should be fetched. You can use plain English (PHP's `strtotime` method will interprit. eg. `last sunday`, `january 15th, 2013`, `yesterday`) or the name any date variable."
-  -
-    name: until
-    type: string/var
-    description: >
-      The inverse of `since`, but sets the _max_
-      date.
-  -
     name: sort
-    type: 'string *results*'
+    type: 'string *title*'
     description: >
-      Sort entries by a field. By default it
-      will be sorted by the number of results
-      for each taxonomy.
+      Sort terms by a field. By default it will be sorted by the title. Also available is `entries_count` if you wanted to sort by the most popular terms.
   -
     name: filter
     type: wizardry
@@ -111,11 +66,10 @@ variables:
     type: integer
     description: The number of results in the loop.
   -
-    name: results
+    name: entries_count
     type: integer
     description: >
-      The number of times the taxonomy has
-      been used.
+      The number of entries taxonomized by this term.
   -
     name: taxonomy data
     type: mixed
@@ -125,12 +79,10 @@ variables:
       taxonomy. This includes things like
       `title`, `content`, etc.
   -
-    name: collection
-    type: array
+    name: entries
+    type: query builder
     description: >
-      An array containing all the content that
-      is associated with the particular
-      taxonomy. More details below.
+      If you use this as a tag pair, you can loop through entries associated with the term. See [entries](#entries) above.
 id: ba832b71-a567-491c-b1a3-3b3fae214703
 ---
 ## Example {#example}
@@ -196,6 +148,8 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
   <li><a href="/events/summer-camp">Summer camp</a></li>
 </ul>
 ```
+
+You're free to use use filtering or sorting parameters on the `entries` pair that you'd find on the [collection tag](/tags/collection).
 
 ## Filtering
 
