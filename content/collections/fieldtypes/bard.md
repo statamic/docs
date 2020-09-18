@@ -130,14 +130,13 @@ An alternative approach (for those who like DRY or small templates) is to create
 {{ /bard_field }}
 ```
 
-```language-files
-partials/
-|-- sets/
-|   |-- gallery.antlers.html
-|   |-- image.antlers.html
-|   |-- poll.antlers.html
-|   |-- text.antlers.html
-|   |-- video.antlers.html
+``` files
+resources/views/partials/sets/
+|-- gallery.antlers.html
+|-- image.antlers.html
+|-- poll.antlers.html
+|-- text.antlers.html
+`-- video.antlers.html
 ```
 
 ## Extending Bard
