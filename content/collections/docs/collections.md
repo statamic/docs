@@ -35,7 +35,7 @@ You can create, edit, and delete entries in the control panel _or_ filesystem, i
 
 ### Data Cascade
 
-Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
+Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not, it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
 
 1. The entry
 2. The origin entry (if using localization)
