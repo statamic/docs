@@ -100,7 +100,7 @@ Arrays are a collection of elements (values or variables). You can loop through 
 <p>Time to {{ songs:0 }} cuz we're {{ songs:2 }}.</p>
 
 // Output
-<p>Boom! Shake the Room cuz we're Just Crusin'.</p>
+<p>Time to Boom! Shake the Room cuz we're Just Crusin'.</p>
 ```
 
 ### Dictionaries
