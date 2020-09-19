@@ -203,10 +203,10 @@ title: Nickelodeon Studios
 ---
 
 // NICKELODEON STUDIOS rocks!
-<h1>{{ title | uppercase | ensure_right:rocks! }}</h1>
+<h1>{{ title | upper | ensure_right:rocks! }}</h1>
 
 // NICKELODEON STUDIOS ROCKS! (order matters)
-<h1>{{ title | ensure_right:rocks! | uppercase }}</h1>
+<h1>{{ title | ensure_right:rocks! | upper }}</h1>
 ```
 
 There are over 130 built in [modifiers][modifiers] that do everything from find and replace to automatically write HTML for you.
