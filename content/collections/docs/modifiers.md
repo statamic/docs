@@ -19,7 +19,7 @@ You could take some text, render it as markdown, uppercase it, and ensure there 
 
 ```
 // This...
-{{ "Ruth, Ruth, Ruth! Baby Ruth!" | markdown | uppercase | widont }}
+{{ "Ruth, Ruth, Ruth! Baby Ruth!" | markdown | upper | widont }}
 
 // Becomes this!
 <p>RUTH, RUTH, RUTH! BABY&nbsp;RUTH!</p>
