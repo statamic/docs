@@ -14,11 +14,11 @@ favorites:
 ```
 {{ favorites }}
   My favorite {{ key }} is {{ value }}.
-{{ /favoites }}
+{{ /favorites }}
 
 {{ favorites | flip }}
   My favorite {{ key }} is {{ value }}.
-{{ /favoites }}
+{{ /favorites }}
 ```
 
 ```.language-output
