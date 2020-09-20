@@ -66,5 +66,15 @@ composer update statamic/cms --with-dependencies
 
 > You may prefer to run `composer update` to update _all_ of your dependencies listed in your composer.json file
 
+## Statamic is Not Updating Properly
+
+If you've tried to update from the Statamic Control Panel and it has failed for any reason you will no longer be able to update from the command line because Statamic has changed the version number to a fixed version number. To correct this issue make sure that your composer file includes statamic in this format.
+
+```json
+"statamic/cms": "^3.0"
+```
+
+Then run `composer update` and you will be able to update from the command line.
+
 [users]: /users
 [packagist]: https://packagist.org/
