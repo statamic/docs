@@ -139,6 +139,10 @@ resources/views/partials/sets/
 `-- video.antlers.html
 ```
 
+### Image Sets
+
+If you're adding an image set in bard via the 'asset' field type, and you'd like to output a a single image on the front-end with Antlers, in your blueprint you'll need to add a 'Max Files' of 1 to the asset field type. Setting a max value of 1 will save the image url as a string so it's successfully [augmented](https://statamic.dev/extending/augmentation) on the front-end. Without a `max_files` value of `1` Bard will pass an array of data to Antlers, which will result in no natural augumented data output (if you have multiple images passed via an array like this then you'd need to loop over the images).
+
 ## Extending Bard
 
 Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [ProseMirror][prosemirror]) as the foundation for our quintessential block-based editor.
