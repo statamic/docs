@@ -13,7 +13,7 @@ Content management systems do a lot of work for you. It's the main reason people
 
 On any given Statamic-managed URL (clarifying this point for anyone building out sections of their site with vanilla Laravel) there is a fair amount of data available in your view.
 
-Every view will have access to [system variables](/variables#variables#system-variables) like `site_url`, `segment_1`, `current_url`, [global variables](/globals), and anything injected via [View Model](/view-models).
+Every view will have access to [system variables](/variables#variables#system-variables) like `site:url`, `segment_1`, `current_url`, [global variables](/globals), and anything injected via [View Model](/view-models).
 
 ## Entry Data
 Furthermore, each entry has its own unique URL. When you're on one of those unique URLs, all of an entry's data will be available in your view. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults.
