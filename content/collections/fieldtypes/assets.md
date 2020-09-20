@@ -73,10 +73,40 @@ hero_image: surf-boards.jpg
 
 The Asset fieldtype uses [augmentation](/augmentation) to automatically relate the files with their Asset records, pull in custom and meta data, and resolve all image paths based on the container.
 
+By using a tag pair syntax, you'll be able to output variables for each asset:
+
 ```
 {{ gallery_images }}
-    <img src="{{ url }}">
+    <img src="{{ url }}" alt="{{ alt }}" />
 {{ /gallery_images }}
+
+{{ hero_image }}
+    <img src="{{ url }}" alt="{{ alt }}" />
+{{ /hero_image }}
+```
+
+``` output
+<img src="/assets/fresh-prince.jpg" alt="Will Smith as the Fresh Prince" />
+<img src="/assets/dj-jazzy-jeff.jpg" alt="Jeffrey Allen Townes as DJ Jazzy Jeff" />
+<img src="/assets/uncle-carl.jpg" alt="Reginald VelJohnson as Carl Winslow" />
+
+<img src="/assets/surf-boards.jpg" alt="3 colorful surf boards" />
+```
+
+The same tag pair syntax can be used regardless of your `max_files` setting.
+
+If you have `max_files: 1`, you can also use a single tag syntax to directly use a variable inside the asset. Without a second tag part, the URL will be used.
+
+```
+{{ hero_image }}
+{{ hero_image:url }}
+{{ hero_image:alt }}
+```
+
+``` output
+/assets/surf-boards.jpg
+/assets/surf-boards.jpg
+3 colorful surf boards
 ```
 
 ### Variables
