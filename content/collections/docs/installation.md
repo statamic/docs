@@ -68,14 +68,14 @@ From within your project, use Composer to update the Statamic CMS package:
 composer update statamic/cms --with-dependencies
 ```
 
-> You may prefer to run `composer update` to update _all_ of your dependencies listed in your composer.json file
+You may prefer to run `composer update` to update _all_ of your dependencies listed in your composer.json file
 
 ### Control Panel
 
 You may also update Statamic from within the Control Panel. Head to the "Updates" section and click update.
 
-Updating via the CP will lock that specific version of `statamic/cms` in your `composer.json`. If you want to update using
-the command line later, you'll need to update the version manually before running `composer update`.
+> Updating via the CP will lock that specific version of `statamic/cms` in your `composer.json`. If you want to update using
+> the command line later, you'll need to update the version manually before running `composer update`.
 
 [users]: /users
 [packagist]: https://packagist.org/
