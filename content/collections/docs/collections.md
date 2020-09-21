@@ -182,6 +182,13 @@ route: '{{ depth == 1 ?= mount }}/{{ parent_uri }}/{{ slug }}'
 
 > If you're using Antlers in your route, you need to stick with the `{{ double curlies }}` syntax.
 
+### Index route
+
+When you've set up a route for your entries (e.g. `/collection/{slug}`) you'll usually want an index page listing all your entries as well. It's important to know that Statamic doesn't create this for you automatically. You need to either:
+
+1. add a page and link it to your index template or
+2. add a custom route.
+
 ## Redirects
 
 Adding a `redirect` variable to one of your entries will cause an HTTP redirect when visiting its URL.
