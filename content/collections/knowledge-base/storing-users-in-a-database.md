@@ -15,7 +15,17 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
 2. In `config/statamic/users.php`, change `repository` to `eloquent`.
 3. In `config/statamic/stache.php`, comment out the `users` store.
-4. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider.
+4. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider:
+
+```php
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\User::class,
+    ],
+],
+```
+
 5. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
 6. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
 7. Run `php artisan migrate`
