@@ -1,72 +1,53 @@
 ---
 title: Get_Content
-description: Fetches content by URL
+description: Fetches content by URL or ID
 intro: |
-  One of the most flexible ways to fetch content from elsewhere in your site is by using the `get_content` tag. Specify a URL and fetch all the data attached to it.
+  It gets content from other entries! Specify a URI or ID and fetch all the data attached to it.
 parameters:
   -
     name: from
     type: string
-    description: Pass a local URL or ID as a string, reference to variable, or pipe delimited list, and all retrieved data will be available inside the tag pair.
+    description: Pass a URI (e.g. `/about`), an ID (e.g. `123`), a pipe delimited list of them (e.g. `123|456`), or a reference to a variable containing them (e.g. `:from="ids"`), and all retrieved data will be available inside the tag pair.
   -
-    name: limit
-    type: integer
-    description: Limit the total results when fetching multiple content files.
-  -
-    name: offset
-    type: integer
-    description: Offset the total results when fetching multiple content files.
-  -
-    name: show_unpublished
-    type: boolean
-    description: 'Enable to include unpublished entries. Default: `false`.'
-  -
-    name: show_future
-    type: boolean
-    description: 'Include entries with publish dates in the future, even if the collection has that behavior disabled. Default: `false`'
-  -
-    name: show_past
-    type: boolean
-    description: 'Include entries with publish dates in the past, even if the collection has that behavior disabled. Default: `true`'
-  -
-    name: sort
+    name: site|locale
     type: string
-    description: >
-      If you're fetching content from multiple URLs, you can sort the results any field handle. Example: `sort="price|desc"`.
-  -
-    name: locale
-    type: string
-    description: Show the retrieved content in the selected locale.
+    description: Show the retrieved content in the selected site.
 stage: 4
 id: a33dd9d3-f2f0-4114-b19d-1126361c327e
 ---
 ## Overview
 
-Think of this tag as an all-purpose 🇨🇭Swiss Army Knife for fetching content. Give it one or more URLs and you'll receive all the data that would be injected automatically into the view if you visited it directly. It doesn't matter where the data comes from – entry, taxonomy, route, controller, database, etc.
+This tag lets you fetch data from other entries. It's useful if you need to hard-code some dynamic content in your template.
+
+> If you're using a fieldtype like [entries](/fieldtypes/entries) to select which entries you'd like to render, then you don't even need this tag!
+> You can simply loop over the selections like this: `{{ your_entries_field }} {{ title }} {{ /your_entries_field }}`
+
+For example, you might want to output some company information from your home page:
 
 ```
-{{ get_content from="about/team" }}
-  {{ team }}
+{{ get_content from="/about/company" }}
+  {{ staff }}
     <div class="w-1/3">
       <img src="{{ headshot }}" alt="{{ name }}">
       <p>{{ name }}, {{ job_title }}</p>
     </div>
-  {{ /team }}
+  {{ /staff }}
 {{ /get_content }}
 ```
 
+
 ## Shorthand
 
-You may also use a shorthand syntax, where the second tag argument refers to a variable that contains a URL or ID.
+You may also use a shorthand syntax, where the second tag argument refers to a variable that contains a URI or ID.
 
 ```
 ---
-related_by_url: /about
+related_by_uri: /about
 related_by_id: 123-321-abc-defg123
 ---
-{{ get_content:related_by_url }}
+{{ get_content:related_by_uri }}
   {{ title }}
-{{ /get_content:related_by_url }}
+{{ /get_content:related_by_uri }}
 
 {{ get_content:related_by_entry }}
   {{ title }}
