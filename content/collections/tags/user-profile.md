@@ -66,7 +66,7 @@ To output the currently logged in user's details, you can do this:
 
 ```
 {{ user }}
-  The current user's name is {{ first_name }} {{ last_name }}.
+  The current user's name is {{ name }}.
 {{ /user }}
 ```
 
