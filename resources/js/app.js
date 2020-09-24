@@ -1,8 +1,8 @@
+require('./anchors.js')
+require('./cookies.js')
+require('./external-links.js')
 require('./prism.js')
 require('./scrollspy.js')
-// require('./nav.js')
-require('./anchors.js')
-require('./external-links.js')
 
 let phrases = [
     "🍳 What's cookin', home skillet?",
@@ -20,3 +20,5 @@ let phrases = [
 console.log(phrases[Math.floor(Math.random() * phrases.length)])
 
 Prism.highlightAll()
+
+// alert(document.cookie)
