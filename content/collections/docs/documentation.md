@@ -6,6 +6,10 @@ blueprint: page
 template: home
 sponsors:
   -
+    name: LionsMouth Digital
+    avatar_url: https://pbs.twimg.com/profile_images/487282271414517760/yfwCITdy_400x400.png
+    url: https://github.com/LionsMouthDigital
+  -
     name: James Blair
     avatar_url: https://avatars1.githubusercontent.com/u/4450975?s=400&u=3ae89e529e10dc471bf184db3e5ef99661b3f181&v=4
     url: https://github.com/jsblair9
