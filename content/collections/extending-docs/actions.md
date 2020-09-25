@@ -16,6 +16,7 @@ You may create an action using the following command, which will generate a clas
 php please make:action
 ```
 
+### Basics
 The most basic action should have a `run` method.
 
 ``` php
@@ -31,6 +32,27 @@ class Delete extends Action
 ```
 
 The `run` method is for executing the task. You will be provided with a collection of `$items`, and any submitted `$values` (more about those later).
+
+### Redirects
+
+If you want to redirect after your action completes, override the `redirect` method and return the route:
+``` php
+public function redirect($items, $values)
+{
+    return route('some.where.over.the', $rainbow);
+}
+```
+
+### Downloads
+
+To produce a download, override the `download` method:
+
+``` php
+public function download($items, $values)
+{
+    return storage_path('some/file.pdf');
+}
+```
 
 ## Registering an Action
 
