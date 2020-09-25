@@ -17,6 +17,7 @@ php please make:action
 ```
 
 ### Basics
+
 The most basic action should have a `run` method.
 
 ``` php
@@ -35,7 +36,8 @@ The `run` method is for executing the task. You will be provided with a collecti
 
 ### Redirects
 
-If you want to redirect after your action completes, override the `redirect` method and return the route:
+If you want to redirect after your action completes, override the `redirect` method and return a route or URL:
+
 ``` php
 public function redirect($items, $values)
 {
@@ -45,7 +47,7 @@ public function redirect($items, $values)
 
 ### Downloads
 
-To produce a download, override the `download` method:
+To produce a download, override the `download` method and return a file path or download response:
 
 ``` php
 public function download($items, $values)
