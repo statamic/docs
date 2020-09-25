@@ -8,68 +8,23 @@ id: ed746608-87f9-448f-bf57-051da132fef7
 is_parent_tag: true
 parameters:
   -
+    name: handle
+    type: string
+    description: 'The navigation or collection to use. Not necessary if you''re using the shorthand tag (e.g. `{{ nav:links }}`)'
+  -
     name: from
     type: string
-    description: "The starting point for your navigation. If unspecified, it'll use the current URI."
-  -
-    name: max_depth
-    type: 'integer 2*'
-    description: >
-      The maximum number of subdirectory
-      levels to traverse, letting you build a
-      multi-level nav.
-  -
-    name: limit
-    type: integer
-    description: Limit the total items returned.
+    description: "The starting point for your navigation. If unspecified, it'll start from the top."
   -
     name: show_unpublished
     type: 'boolean *false*'
     description: "Unpublished content is, by it's very nature, unpublished. That is, unless you show it by turning on this parameter."
   -
-    name: include_entries
-    type: 'boolean *false*'
-    description: >
-      Whether entries mounted under a page
-      should be included as part of the
-      navigation.
-  -
-    name: sort
-    type: string
-    description: >
-      The field by which the pages will be
-      sorted. For example, specify `title` to
-      sort alphabetically by the title field.
-  -
     name: include_home
     type: 'boolean *false*'
     description: >
-      You can choose to turn off the home page
-      in the tree, opting to start the crumbs
-      from the first level nav item.
-  -
-    name: include_root
-    type: 'boolean *false*'
-    description: >
-      You can choose to turn off the root page (whatever you've provided to the `from` parameter)
-      in the tree, opting to start the crumbs from the first level nav item. (When from is the root, this is
-      the same as the `include_home` parameter)
-  -
-    name: exclude
-    type: 'string|array'
-    description: >
-      A single URL, or a list of multiple pipe-separated URLs, to be excluded.
-  -
-    name: filter
-    type: wizardry
-    description: >
-      Filter the tree by using a special conditions syntax, the same as the [Collections tag](/tags/collection). View the [available conditions](/conditions).
-  -
-    name: supplement_taxonomies
-    type: boolean *true*
-    description: >
-      By default, Statamic will convert taxonomy term values into actual term objects that you may loop through.
-      This has some performance overhead, so you may disable this for a speed boost if taxonomies aren't necessary.
+      You can choose to turn off the home page in the tree, opting to start the crumbs from the first level nav item. Doesn't do
+      anything if you're using the `from` paramter.
 variables:
   -
     name: is_published
@@ -167,6 +122,12 @@ If you use the tag on it's own without a second part, it will assume you want th
 {{ nav }} ... {{ /nav }}
 ```
 
+You can also specify the navigation using the `handle` parameter:
+
+```
+{{ nav handle="links" }} ... {{ /nav }}
+```
+
 ## Basic Example
 
 A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
@@ -188,7 +149,7 @@ Build an infinitely deep nav is possible by using recursion.
 
 ```
 <ul>
-   {{ nav from="/{segment_1}" max_depth="2" }}
+   {{ nav :from="segment_1" }}
       <li>
          <a href="{{ url }}"{{ if is_current || is_parent }} class="on"{{ /if }}>{{ title }}</a>
          {{ if is_current || is_parent }}
