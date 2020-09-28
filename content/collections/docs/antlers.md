@@ -221,7 +221,7 @@ Modifiers are separated by `|` pipe delimiters. Parameters are delimited by `:` 
 {{ string_var | modifier_1 | modifier_2:param1:param2 }}
 ```
 
-If you use this string/shorthand style on arrays, you need to be sure to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
+If you use this string/shorthand style on arrays, you need to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
 
 ### Array/Tag Parameter Style
 
