@@ -165,3 +165,5 @@ Build an infinitely deep nav is possible by using recursion.
 The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ nav }}` tag using child elements, if they exist. As long as there are children to display, and we’re still on either the current or parent page of those children, the nav tag will traverse deeper. If your scoped variables have trouble making it through to the next recursion, you can glue them to children like this: `{{ *recursive children:my_scoped_variable* }}`.
 
 Take the time to wrap your brain around this concept and learn to wield it and a powerful Jedi will you be.
+
+> The Jedi have blessed us all with [even more recursive nav examples](/knowledge-base/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
