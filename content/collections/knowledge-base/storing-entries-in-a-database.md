@@ -1,31 +1,37 @@
 ---
 title: 'Storing Entries in a Database'
-intro: 'Statamic stores entries as markdown files by default, but you don''t have to! This article shows how you can store them in a database.'
+intro: |
+    Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we'll show you how to store entries a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).
 id: 853b6690-c1fc-46bc-b865-e61a33d14563
 ---
-Statamic uses a repository pattern to retrieve data from various places. You can read about the feature in general over on the [repositories page](/extending/repositories).
+## Overview
 
-## Database?
+Statamic uses a [repository pattern](/extending/repositories) to interact with your site or application's data. Statamic's core flat file implementation uses the [Stache](/stache) driver, but you can extend and build your own drivers to work with data stored just about anywhere, from MongoDB and [Firebase](https://firebase.google.com/) to a shoebox with a good REST API.
 
-This article will be putting the entries into a database, but you could create something that stores them anywhere you want like MongoDB or an API.
+### Why would you want to do this?
+
+The flat file pattern is amazing for a whole pile of reasons. However, if you're going to be working with a huge amount of data (tens of thousands, millions, gazillions, etc), it has its limitations. This is where databases come in.
+
+The ability to trading flexibility for scalability without changing platforms is a powerful feature.
 
 
 ## What we're building
 
-In this article we'll create a package that'll contain an Eloquent powered repository, along with all the other moving parts. 
+In this article we'll be creating a package that contains an Eloquent powered repository driver along with all the other required moving parts.
 
-You can check out the finished product on [GitHub][repo], and use it in your own projects.
+You can check out the finished product on [GitHub][repo], and even use it as a template to jumpstart your own project.
 
-Since entries are usually the things you'll have the most of, we'll be putting them in the database and leave everything else as flat files.
+For the sake of brevity, we're going to focus only on **entries** for this article. In most cases, entries are the content type with the most records, making them the most likely candidate for needing a database.
 
-> If you just want to store your entries in a database and don't want to learn **how** to build it, you can just install the [package][repo].
+Everything you learn here can be applied to Taxonomies, GlobalSets, and all other content types.
+
+> If you just want to store your entries in a database and don't want to learn **how** to build it, you can just jump over to the [package][repo] itself.
 
 ## Database Schema
 
-One of the great features of Statamic is being able to throw data of any type into an entry and not worry about needing to create corresponding columns in a database.
+One of Statamic's great features is being able to throw data of any type into an entry and without needing to create corresponding columns in a database.  But here we are in database land, and we need a table and some columns.
 
-Here's what our database schema will look like. We'll have a number of columns to hold common, essential things like id, site, etc. Then a `data` column that'll
-hold a big blob of JSON for all the fields defined in the blueprint, like what you'd find in your entries' markdown files.
+Here's what our database schema will look like. We'll have a number of columns to hold common, required fields like `id`, `site`, and so on. Additionally, we'll create a `data` column that will store JSON for all of the blueprint-defined fields.
 
 ``` php
 public function up()
@@ -46,13 +52,13 @@ public function up()
 }
 ```
 
-> If you wanted to have separate columns for each blueprint field, you could. But your repository would need to be set up to handle that.
-> You'd also need to write migrations to add columns whenever you add a field to your blueprints. The JSON column will work for our purposes
-> and allow most people to just drop this driver into their site and get going.
+If you want separate columns for each blueprint field, go for it. But you'll need to define all those fields in your repository and write migrations to add columns whenever you add a field to your blueprints.
 
-The `id` and `origin_id` columns are strings, to make migrating from files easier. If they were incrementing integers, you'd need to update anywhere 
-the IDs are referenced. Relationship field values, collections' mount values, structures, etc. This is fairly uncommon, so the [Eloquent model](#the-model)
-would need a little tweak to handle it.
+The "catch all" JSON field works well in most cases, and allows you to drop this driver into your site and be off and running with very little fiddling.
+
+**Note:** The `id` and `origin_id` columns are strings to make migrating from files easier. If you want to use incrementing integers and aren't starting on a fresh, empty project, you'll need to update all the IDs in your content to use integers (out of the scope of this article). They might be found in relationship field values, collections' mount values, structures, and so on.
+
+Using strings as IDs is fairly uncommon in Laravel Land, so we'll need to tweak the [Eloquent model](#the-model) to handle it.
 
 ## The Repository
 
@@ -209,7 +215,7 @@ for stuff inside JSON columns.
 
 ``` php
 $query->where('column->field', 'value')
-``` 
+```
 
 Since the query builder is expecting an instance of the Eloquent query builder, we'll need to wire that up in our provider:
 
@@ -224,7 +230,7 @@ public function register()
 
 ## The Model
 
-Naturally, since we're using Eloquent, we'll need a model. 
+Naturally, since we're using Eloquent, we'll need a model.
 
 ``` php
 <?php
@@ -253,7 +259,7 @@ class EntryModel extends Eloquent
 }
 ```
 
-Pretty simple stuff here. One relationship, which is just to other entries for multi-site. 
+Pretty simple stuff here. One relationship, which is just to other entries for multi-site.
 
 The `incrementing` and `keyType` properties are necessary because we're using strings for the `id` column. When you disable `incrementing`, you just have to make
 sure that you pass an ID in when saving a new model since Eloquent doesn't know how to generate a new primary key automatically.
@@ -463,7 +469,7 @@ The entry query builder has a couple of extra methods necessary for performing t
 a single term, and `whereTaxonomyIn` to filter by multiple.
 
 Since we're leaving the associations in the Stache, we'll be able to query against the taxonomies the same way as the Stache query builder
-would. Statamic provides a `QueriesTaxonomizedEntries` trait for us to use that'll add those methods. We just need to make sure to compile 
+would. Statamic provides a `QueriesTaxonomizedEntries` trait for us to use that'll add those methods. We just need to make sure to compile
 them before the query is performed in `get`, `paginate`, and `count`.
 
 ``` php
