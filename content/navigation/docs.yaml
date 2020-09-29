@@ -56,27 +56,27 @@ tree:
       -
         entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
       -
+        entry: 9b2f6f55-5355-4334-b90d-d1236fb58887
+      -
+        entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
+      -
+        entry: 9751908a-a10c-4c36-abd3-2251e83fbc65
+      -
+        entry: 5e848460-9bbc-449e-8edd-182d918163ff
+      -
+        entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
+      -
         entry: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+      -
+        entry: 75be125b-7d92-496c-ac5d-7098560d3d44
+      -
+        entry: 424f5092-be39-449a-b660-f4e077631487
+      -
+        entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
       -
         entry: 74c47654-8c47-49b1-a616-ed940ce19977
       -
         entry: fbf59081-ba24-4e82-b011-b687be228c89
-      -
-        entry: 5e848460-9bbc-449e-8edd-182d918163ff
-      -
-        entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
-      -
-        entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
-      -
-        entry: 424f5092-be39-449a-b660-f4e077631487
-      -
-        entry: 9b2f6f55-5355-4334-b90d-d1236fb58887
-      -
-        entry: 9751908a-a10c-4c36-abd3-2251e83fbc65
-      -
-        entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
-      -
-        entry: 75be125b-7d92-496c-ac5d-7098560d3d44
   -
     title: 'Control Panel'
     children:
@@ -121,17 +121,6 @@ tree:
         entry: c095fb87-4c02-462c-9e6f-dfe0b6889248
       -
         entry: 5bb3e677-8b9c-4e77-be24-5fefec9c1af0
-  # -
-  #   title: Tutorials
-  #   children:
-  #     -
-  #       entry: 2be635d9-e5a9-4411-bc20-368b4bc0ba55
-  #     -
-  #       entry: 5ac26285-3b33-458c-bdf5-6045e51b940c
-  #     -
-  #       entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
-  #     -
-  #       entry: 24eb2de3-b0f9-4a12-9676-5a7845a5c4d4
   -
     title: 'Odds & Ends'
     children:
