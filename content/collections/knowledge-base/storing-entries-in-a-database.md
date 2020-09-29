@@ -25,7 +25,7 @@ For the sake of brevity, we're going to focus only on **entries** for this artic
 
 Everything you learn here can be applied to Taxonomies, GlobalSets, and all other content types.
 
-> If you just want to store your entries in a database and don't want to learn **how** to build it, you can just jump over to the [package][repo] itself.
+> If you just want to store your entries in a database and don't want to learn **how** to build it, you can just jump over to the [package](https://github.com/statamic/eloquent-driver) itself.
 
 ## Database Schema
 
@@ -62,7 +62,7 @@ Using strings as IDs is fairly uncommon in Laravel Land, so we'll need to tweak 
 
 ## The Repository
 
-When working with Entries in PHP, you use the [`Entry`](https://github.com/statamic/cms/blob/master/src/Contracts/Entries/EntryRepository.php) facade class. It automatically routes the request to proper class depending on what driver you're using. For example, fetching all entries with `Entry::all()`, will call `$repository->all()` behind the scene, which will offload the work to the Stache driver by default, or in this case – our custom Eloquent driver.
+When working with Entries in PHP, you use the [`Entry`](https://github.com/statamic/cms/blob/master/src/Contracts/Entries/EntryRepository.php) facade class. It automatically routes the request to proper class depending on what driver you're using. For example, fetching all entries with `Entry::all()`, will call `$repository->all()` behind the scenes, which will offload the work to the Stache driver by default, or in this case – our custom Eloquent driver.
 
 When building your own custom repository class (like we're doing right now), you'll need to implement all of the methods on the `EntryRepository` interface. These methods — like `all`, `find`, `whereCollection`, and `query`, handle all of the data I/O. Think of this class like a little data router.
 
@@ -449,7 +449,7 @@ public function register()
 
 ## Taxonomies
 
-We don't want to forget about taxonomies. Unless your project doesn't need them, then you could totally skip them like a bad desert. Vanilla wafers are a terrible desert. You should always skip vanilla wafers and save your calories for non-garbage foods.
+We don't want to forget about taxonomies. Unless your project doesn't need them, then you could totally skip them like a bad dessert. Vanilla wafers are a terrible dessert. You should always skip vanilla wafers and save your calories for non-garbage foods.
 
 ### Storing associations
 
