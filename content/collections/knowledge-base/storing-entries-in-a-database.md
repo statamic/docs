@@ -1,7 +1,7 @@
 ---
 title: 'Storing Entries in a Database'
 intro: |
-    Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we'll show you how to store entries a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).
+    Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we'll show you how to store entries in a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).
 id: 853b6690-c1fc-46bc-b865-e61a33d14563
 ---
 ## Overview
@@ -31,7 +31,7 @@ Everything you learn here can be applied to Taxonomies, GlobalSets, and all othe
 
 One of Statamic's great features is being able to throw data of any type into an entry and without needing to create corresponding columns in a database.  But here we are in database land, and we need a table and some columns.
 
-Here's what our database schema will look like. We'll have a number of columns to hold common, required fields like `id`, `site`, and so on. Additionally, we'll create a `data` column that will store JSON for all of the blueprint-defined fields.
+Here's what our database schema will look like. We'll have a number of columns to hold common fields like `id`, `site`, and so on. Additionally, we'll create a `data` column that will store JSON for all of the blueprint-defined fields.
 
 ``` php
 public function up()
@@ -126,7 +126,7 @@ public function register()
 
 The Stache entry repository delegates a lot of logic to a query builder which uses the Stache to get the data. Ours will use Eloquent to read from a database instead.
 
-Statamic's has a base Eloquent Query Builder class ready for you. Here's a simplified snippet:
+Statamic has a base Eloquent Query Builder class ready for you. Here's a simplified snippet:
 
 ``` php
 abstract class EloquentQueryBuilder implements Builder
