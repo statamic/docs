@@ -62,12 +62,11 @@ Using strings as IDs is fairly uncommon in Laravel Land, so we'll need to tweak 
 
 ## The Repository
 
-The repository is what's used whenever you use the `Entry` Facade. Use `Entry::all()`, it'll call `$repository->all()`, and so on.
+When working with Entries in PHP, you use the [`Entry`](https://github.com/statamic/cms/blob/master/src/Contracts/Entries/EntryRepository.php) facade class. It automatically routes the request to proper class depending on what driver you're using. For example, fetching all entries with `Entry::all()`, will call `$repository->all()` behind the scene, which will offload the work to the Stache driver by default, or in this case – our custom Eloquent driver.
 
-If you intend to write your own repository, you'll need to implement all the methods on the `EntryRepository` interface. There's `all`,
-`find`, `whereCollection`, `query`, and a bunch more.
+When building your own custom repository class (like we're doing right now), you'll need to implement all of the methods on the `EntryRepository` interface. These methods — like `all`, `find`, `whereCollection`, and `query`, handle all of the data I/O. Think of this class like a little data router.
 
-The default Stache implementation pushes most of the logic into its query builder. For example, the `find` method looks like this:
+The default Stache implementation pushes most of the logic into its query builder class. For example, the `find` method looks like this:
 
 ``` php
 public function find($id): ?Entry
@@ -76,8 +75,7 @@ public function find($id): ?Entry
 }
 ```
 
-That's handy for us, because that'll mean we can just extend the Stache repository, point to our own query builder, and customize
-only a few additional things. The resulting class looks something like this. It's fairly bare-bones!
+We  we can extend the Stache repository to gain all of these features, point to our own query builder, and customize only a small set of methods that need tweaking to work with Eloquent. The resulting class looks something like this. As you can see, it's quite minimal.
 
 ``` php
 <?php
@@ -112,9 +110,11 @@ class EntryRepository extends StacheRepository
 
 Aside from overriding the query builder and entry class bindings, there's also the `save` and `delete` methods that control what happens when you call those methods on an entry. We'll fill those in later.
 
-To have Statamic actually use our class, we'll bind it using the `Statamic::repository()` method in our service provider:
+To have Statamic actually use our class, we'll bind it using the `Statamic::repository()` method in our package's service provider:
 
 ``` php
+// src/ServiceProvider.php
+
 public function register()
 {
     Statamic::repository(EntryRepositoryContract::class, EntryRepository::class);
@@ -124,10 +124,9 @@ public function register()
 
 ## The Query Builder
 
-The Stache entry repository delegates a lot of logic to a query builder which naturally uses the Stache to get the data. Instead, ours will use Eloquent
-to read from a database.
+The Stache entry repository delegates a lot of logic to a query builder which uses the Stache to get the data. Ours will use Eloquent to read from a database instead.
 
-Luckily, Statamic already has a base Eloquent Query Builder class (because of the out-of-the-box Eloquent-based user support). Here's a simplified snippet from there:
+Statamic's has a base Eloquent Query Builder class ready for you. Here's a simplified snippet:
 
 ``` php
 abstract class EloquentQueryBuilder implements Builder
@@ -167,10 +166,10 @@ abstract class EloquentQueryBuilder implements Builder
 }
 ```
 
-The gist of what this class does is take an actual Eloquent query builder, and proxy most method calls onto that (like `where` or `limit`). Then it would `transform`
+This class takes an actual Eloquent query builder and proxies most method calls onto it (like `where` or `limit`), and then transforms
 regular Eloquent models into whatever Statamic classes are required.
 
-Our Entry query builder can extend this, letting our class also be fairly simple:
+Our Entry query builder can extend this, helping us keep our class simple:
 
 ``` php
 <?php
@@ -209,17 +208,19 @@ class EntryQueryBuilder extends EloquentQueryBuilder implements QueryBuilder
 
 The `transform` method will convert the `Collection` of all the Eloquent models into a `EntryCollection` full of Statamic `Entry` classes.
 
-The `column` method is used whenever we're performing some sort of column based query (like a `where`). If the column isn't in our
-list, we'll assume it's in the JSON `data` column, so we'll adjust the query. In case you didn't know, you can totally query
-for stuff inside JSON columns.
+The `column` method is used whenever we're performing any kind of column based query (like a `where`). If the column isn't in our list, we'll assume it's in the JSON `data` column and adjust the query accordingly.
+
+> In case you didn't know, you can totally [query for stuff](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html) inside JSON columns. It's pretty awesome.
 
 ``` php
 $query->where('column->field', 'value')
 ```
 
-Since the query builder is expecting an instance of the Eloquent query builder, we'll need to wire that up in our provider:
+Since the query builder is expecting an instance of the Eloquent query builder, let's wire that up in our provider:
 
 ``` php
+// src/ServiceProvider.php
+
 public function register()
 {
     $this->app->bind(EntryQueryBuilder::class, function () {
@@ -230,7 +231,7 @@ public function register()
 
 ## The Model
 
-Naturally, since we're using Eloquent, we'll need a model.
+Since we're using Eloquent, we need a [model](https://laravel.com/docs/8.x/eloquent#defining-models). Let's set one up.
 
 ``` php
 <?php
@@ -259,14 +260,13 @@ class EntryModel extends Eloquent
 }
 ```
 
-Pretty simple stuff here. One relationship, which is just to other entries for multi-site.
+This is pretty basic stuff here – just one relationship (`origin()`) which allows us to handle multi-site entries.
 
-The `incrementing` and `keyType` properties are necessary because we're using strings for the `id` column. When you disable `incrementing`, you just have to make
-sure that you pass an ID in when saving a new model since Eloquent doesn't know how to generate a new primary key automatically.
+The `incrementing` and `keyType` properties are necessary because we're using strings for the `id` column. When you disable `incrementing` you also need to pass an ID in when saving a new model. Eloquent doesn't know how to generate a new primary key automatically.
 
 ## The Entry
 
-In our repository, we re-bound the native Statamic Entry class to our own. We'll extend the native one, but make a handful of tweaks to keep it Eloquent-y.
+In our repository, we re-bound the native Statamic Entry class to our own. We'll extend the native one but make a handful of tweaks to keep it Eloquent-y. Is that a word? It is now.
 
 ``` php
 <?php
@@ -282,8 +282,7 @@ class Entry extends FileEntry
     protected $model;
 ```
 
-The `fromModel` is used frequently by the query builder to convert an Eloquent model into a Statamic entry. It basically just feeds attributes into the appropriate entry methods.
-There's also a getter/setter for setting the `model` so we can reach into it where necessary.
+The `fromModel` is used frequently by the query builder to convert an Eloquent model into a Statamic entry. It's role is to feed attributes into the appropriate entry methods. There's also a getter/setter for setting the `model` so we can reach into it where necessary.
 
 ``` php
     public static function fromModel(Model $model)
@@ -312,7 +311,7 @@ There's also a getter/setter for setting the `model` so we can reach into it whe
     }
 ```
 
-The `toModel` method converts the entry back to an Eloquent model, ready to be inserted into the database when saving an entry. We use the `findOrNew` method to it'll grab an existing one if it exists, or just create a freshie.
+The `toModel` method converts the entry _back_ to an Eloquent model where it's ready to be inserted into the database when an entry is saved. We use the `findOrNew` method – it will grab an existing entry if it exists, otherwise create a new one. A freshie, as we say.
 
 ```php
     public function toModel()
@@ -332,8 +331,7 @@ The `toModel` method converts the entry back to an Eloquent model, ready to be i
     }
 ```
 
-In files, the last modified date comes from a property named `updated_at` in the entry, and falls back to the file's last modified timestamp.
-Since we're not dealing with files anymore, we'll just use the model's `updated_at` timestamp.
+When working with files, the last modified date comes from a property named `updated_at` in the entry, which falls back to the file's last modified timestamp. Because we're not dealing with files anymore, we'll use the model's `updated_at` timestamp instead.
 
 ``` php
     public function lastModified()
@@ -342,8 +340,7 @@ Since we're not dealing with files anymore, we'll just use the model's `updated_
     }
 ```
 
-If you aren't familiar with Statamic's multi-site feature, here's the extremely condensed version: Entries can be localized based of another entry. The origin id
-gets saved inside the localized entry.
+If you aren't familiar with Statamic's multi-site feature, you should know that entries can be localized based off another entry. The `origin_id` gets saved inside the localized entry and is a reference to where the data originated (e.g. the original translation of some content).
 
 Since we're saving the `origin_id` in a column separate from the rest of the YAML-based data, we'll override a few methods to handle reading through the Eloquent relationship.
 
@@ -381,11 +378,11 @@ Since we're saving the `origin_id` in a column separate from the rest of the YAM
 
 ## Saving and Deleting
 
-When you call `$entry->save()`, or `delete()`, it will perform some essential functions inside the method itself that should always just happen, like emitting events. The actual saving/deleting behavior is handed off to the repository.
+When you call `$entry->save()`, or `delete()`, it will perform essential functions inside the method itself – like emitting events. The actual saving/deleting behavior is handed off to the repository.
 
-For instance, when using the Stache, we'll want to write or delete a file. But for our case, we'll need to insert or delete a database record.
+For instance, when using the Stache, we may want to write or delete a _file_, but in here we need to insert or delete a database record.
 
-So, back in our repository: When it's time to save an entry, we'll make a model (which is either an existing one, or a fresh one), save it to the database, and plop the fresh model back into the entry.
+Okay, let's get back to our repository. When it's time to save an entry we'll make a model (an existing or a fresh one), save it to the database, and plop the fresh model back into the entry.
 
 ``` php
 class EntryRepository extends StacheRepository
@@ -414,7 +411,7 @@ Deleting is as simple as removing the model:
 
 ## Collections
 
-While we're keeping the collections stored in the filesystem, there is one thing we need to tweak, so we'll make a custom collection repository too.
+While we're keeping the collections themselves (not the entries) stored in the filesystem, we need to tell it how to route urls to the database. Time to make custom collection repository to define that.
 
 When a collection is updated, specifically it's `route`, all of it's entries will need to have their `uri`s updated.
 
@@ -452,23 +449,20 @@ public function register()
 
 ## Taxonomies
 
-Everyone loves taxonomies. We can't forget about them. Unless your project doesn't need them, then you could totally skip it.
+We don't want to forget about taxonomies. Unless your project doesn't need them, then you could totally skip them like a bad desert. Vanilla wafers are a terrible desert. You should always skip vanilla wafers and save your calories for non-garbage foods.
 
 ### Storing associations
 
-Another method in the entry repository is `taxonomize`, which gets called when you save an entry. This is essentially a hook to
-let you organize your taxonomy term associations however appropriate. By default, the Stache repository will loop through
-the taxonomy fields in the entry and track them in the "taxonomy terms" Stache store.
+Another method in the entry repository is `taxonomize` which is called when an entry is saved. This is a hook to let you organize your taxonomy term associations however appropriate. By default, the Stache repository will loop through the taxonomy fields in the entry and track them in the "taxonomy terms" Stache store.
 
-If you wanted to store all the term associations in the database, you absolutely could. But for the purposes of this example
-we'll just let them stay in the Stache. We don't need to do anything.
+If you wanted to store all the term associations in the database, you can, but for the purposes of this example we'll just let them stay in the Stache. Let's move on.
 
 ### Querying Taxonomies
 
-The entry query builder has a couple of extra methods necessary for performing taxonomy based queries. `whereTaxonomy` to filter by
-a single term, and `whereTaxonomyIn` to filter by multiple.
+The entry query builder has a few of required methods for performing taxonomy based queries. `whereTaxonomy` filters entries by
+a single term, and `whereTaxonomyIn` filters by multiple.
 
-Since we're leaving the associations in the Stache, we'll be able to query against the taxonomies the same way as the Stache query builder
+Since we're leaving the associations in the Stache we'll be able to query against the taxonomies the same way as the Stache query builder
 would. Statamic provides a `QueriesTaxonomizedEntries` trait for us to use that'll add those methods. We just need to make sure to compile
 them before the query is performed in `get`, `paginate`, and `count`.
 
@@ -503,7 +497,11 @@ class EntryQueryBuilder extends EloquentQueryBuilder implements QueryBuilder
 ```
 
 > If you were to store the associations in the database, you'd need to define your own `whereTaxonomy` and `whereTaxonomyIn` methods that would
-> query through a pivot table. Then you would probably not need to override `get`, `paginate`, and `count`.
+> query through a pivot table. In that case you probably wouldn't need to override `get`, `paginate`, and `count`.
+
+## Conclusion
+
+And there you have it. You've built a custom Eloquent repository, re-wired all the data I/O touch-points, and should now be able to handle a butt-ton of entries. Good luck!
 
 
 [repo]: https://github.com/statamic/eloquent-entries
