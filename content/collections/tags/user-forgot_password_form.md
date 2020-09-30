@@ -29,7 +29,7 @@ parameters:
     name: HTML Attributes
     type:
     description: >
-      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="registration-form"`.
+      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="forgot-password-form"`.
 variables:
   -
     name: errors
