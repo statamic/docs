@@ -7,14 +7,16 @@ parameters:
     name: redirect
     type: string
     description: >
-      The URL the user will be taken after the
-      form is successfully submitted. Leaving
-      this blank will keep the user on the
-      same page.
+      Where the user should be taken after requesting a password reset.
+  -
+    name: error_redirect
+    type: string
+    description: >
+      The same as `redirect`, but for for failed password reset requests.
   -
     name: allow_request_redirect
     type: boolean
-    description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
+    description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
   -
     name: reset_url
     type: string
@@ -23,19 +25,28 @@ parameters:
       Form. A link to this URL will be
       included in the email, along with the
       appropriate query parameters.
+  -
+    name: HTML Attributes
+    type:
+    description: >
+      Set HTML attributes as if you were in an HTML element. For example, `class="required" id="registration-form"`.
 variables:
-  -
-    name: success
-    type: boolean
-    description: "This will be `true` if the form has been submitted successfully. If you don't use the `redirect` parameter, you can keep your users on the same page and show a success message."
-  -
-    name: email_sent
-    type: boolean
-    description: The same as the `success` variable.
   -
     name: errors
     type: array
     description: An array of validation errors.
+  -
+    name: old
+    type: array
+    description: An array of previously submitted values.
+  -
+    name: success
+    type: string
+    description: A success message.
+  -
+    name: email_sent
+    type: string
+    description: An alias of the `success` variable.
 stage: 4
 id: 3e69f12e-72ac-4f1a-9847-fa08d651e750
 ---
@@ -43,29 +54,31 @@ id: 3e69f12e-72ac-4f1a-9847-fa08d651e750
 
 Users will enter their email address in the form and, upon submitting, an email will be sent with a link to create a new password.
 
-Unless you set a `redirect` parameter, the user will be redirected back to the **same page** after submitting, and the `email_sent` condition will will allow you to show a success message.
+Unless you set a `redirect` parameter, the user will be redirected back to the **same page** after submitting, and the `success` variable will allow you to show a success message.
 
 ## Example
 
 ```
 {{ user:forgot_password_form reset_url="/reset-password" }}
 
-    {{ if email_sent }}
-        <p>Email sent!</p>
-    {{ else }}
-
-        {{ if errors }}
-            <div class="alert alert-danger">
-                {{ errors }}
-                    {{ value }}<br>
-                {{ /errors }}
-            </div>
-        {{ /if }}
-
-        <label>Email Address</label>
-        <input type="text" name="email" />
-        <button>Send Reset Email</button>
+    {{ if errors }}
+        <div class="bg-red-300 text-white p-2">
+            {{ errors }}
+                {{ value }}<br>
+            {{ /errors }}
+        </div>
     {{ /if }}
+
+    {{ if success }}
+        <div class="bg-green-300 text-white p-2">
+            {{ success }}<br>
+        </div>
+    {{ /if }}
+
+    <label>Email</label>
+    <input type="text" name="email" value="{{ old:email }}" />
+
+    <button type="submit">Send Reset Email</button>
 
 {{ /user:forgot_password_form }}
 ```
