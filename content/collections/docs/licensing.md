@@ -72,7 +72,7 @@ If any of the following rules match, the domain is considered _not public_ (lett
 - Is it a single segment? eg. `localhost`
 - Is it an IP address?
 - Does it use a port other than `80` or `443`?
-- Does it have a dev-related subdomain? `test.`, `testing.`, `sandbox.`,  `local.`, `dev.`, `stage.`, or `staging.`
+- Does it have a dev-related subdomain? `test.`, `testing.`, `sandbox.`,  `local.`, `dev.`, `stage.`, `staging.`, or `statamic.`
 - Does it use a dev-related TLD? `.local`, `.localhost`, `.test`, `.invalid`, `.example`, or `.wip`
 
 ## Special Circumstances
