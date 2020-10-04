@@ -119,13 +119,13 @@ An alternative, and often cleaner, approach is to have multiple 'set' partials a
 ```
 Then inside your partials directory you could have:
 
-`sets/image_set.html`
-`sets/quote_set.html`
+`sets/image.html`
+`sets/quote.html`
 
 and the set partial may look something like:
 
 ```
-{{# this is image_set.html #}}
+{{# this is image.html #}}
 
 <img src="{{ image }}" alt="{{ caption }}" >
 ```
