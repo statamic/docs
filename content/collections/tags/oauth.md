@@ -40,7 +40,7 @@ And the shorthand version.
 And now with a redirect:
 
 ```
-<a href="{{ oauth:github redirect="/account" }}>Sign In with Github</a>
+<a href="{{ oauth:github redirect="/account" }}">Sign In with Github</a>
 ```
 
 ``` output
