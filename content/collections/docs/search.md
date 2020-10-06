@@ -80,6 +80,33 @@ The searchables value determines what items are contained in a given index. By p
 
 The general rule for creating a searchable index is to simplify your record structure as much as possible. Each record should contain enough information to be discoverable on its own, and no more. You can customize this record by deciding which _fields_ are included in the index.
 
+### Transforming Fields
+
+By default, the data in the entry/term/etc that corresponds to the `fields` you've selected will be stored in the index. However, you're able to tailor the values exactly how you want using `transformers`.
+
+Each transformer is a closure that would correspond to a field in your index's `fields` array.
+
+``` php
+'fields' => ['title', 'address'],
+'transformers' => [
+
+    // Return a value to store in the index.
+    'title' => function ($title) {
+        return ucfirst($title);
+    },
+
+    // Return an array of values to be stored.
+    // These will all be separate searchable fields in the index.
+    'address' => function ($address) {
+        return [
+            '_geoloc' => $address['geolocation'],
+            'location' => $address['location'],
+            'region' => $address['region'],
+        ]
+    }
+]
+```
+
 ### Updating Indexes
 
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand you can insert records and update the index via command line.
