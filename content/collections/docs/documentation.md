@@ -7,7 +7,7 @@ template: home
 sponsors:
   -
     name: LionsMouth Digital
-    avatar_url: https://pbs.twimg.com/profile_images/487282271414517760/yfwCITdy_400x400.png
+    avatar_url: https://avatars2.githubusercontent.com/u/11314482?s=200&v=4
     url: https://github.com/LionsMouthDigital
   -
     name: James Blair
