@@ -9,20 +9,19 @@ parameters:
     type: string
     description: 'The length of time to cache this section. Use plain English to specify the length, eg. `2 hours`, `5 minutes`, etc.'
   -
+    name: key
+    type: string
+    description: 'The cache key to be used, if you''d like to manually invalidate this tag pair programmatically.'
+  -
     name: scope
     type: 'string'
-    description: 'Sets the cache scope. The default `site` scope will cache one instance per tag for the entire site, while a `page` scope will create a unique cache per URL.'
-   -
-    name: key
-    type: 'string'
-    description: 'Sets the key used to store the value in the Laravel cache. `key` can't be used at the same time as `scope`.'
+    description: 'Sets the [cache scope](#scope). Either `site` or `page`. Has no effect when using the `key` parameter.'
 stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
 ## Overview
 
-After an initial render, markup inside a cache tag will be pulled from a cached,statically cached copy until invalidated.
-
+After an initial render, markup inside a cache tag will be pulled from a cached, statically cached copy until invalidated.
 
 ```
 {{ cache for="5 minutes" }}
@@ -32,4 +31,89 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 {{ /cache }}
 ```
 
-It really only makes sense to use the cache tag if you're not using another full-site type of caching, like static or full measure. There's nothing to be gained by caching a cache. That would be like buying four $5 bills with a $20. What have you gained other than a fatter wallet?
+## Invalidation
+
+Caching is handy to speed up parts of your site, but it's not very useful unless it's able to be updated at some stage. Here's how
+the tag contents can be invalidated.
+
+### Time
+
+Using the `for` parameter allows you to say how long the tag pair contents should be cached in time.
+
+```
+{{ cache for="5 minutes" }} ... {{ /cache }}
+```
+
+### Key
+
+By specifying a `key`, you can invalidate it programmatically.
+
+```
+{{ cache key="homepage_stocks" }} ... {{ /cache }}
+```
+
+For example, you could listen for an entry in the `stocks` collection being saved and then bust the key.
+
+``` php
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Event;
+
+class EventServiceProvider
+{
+    public function boot()
+    {
+        Event::listen(function (EntrySaved $event) {
+            if ($event->entry->collectionHandle() === 'stocks') {
+                Cache::forget('homepage_stocks');
+            }
+        });
+    }
+}
+```
+
+### Cache clear
+
+The contents of your cache tags are stored in the application cache. Clear that, and you'll see fresh content next visit.
+
+You can clear your cache using the Artisan command:
+
+``` bash
+php artisan cache:clear
+```
+
+### Tag parameters and contents
+
+It might be useful to know that if you aren't using the `key` parameter, a key is generated behind the scenes based on what
+parameters and values you've used, along with what's between the tag pair.
+
+So, if you change your template or parameters, you'll see a fresh version next time you visit the page.
+
+
+## Scope
+
+The `scope` parameter allows you cache the template chunk either across the whole site (the default behavior), or per page.
+
+For example, you might have a "recent articles" list on the sidebar that's the same on every page. Or, your footer navigation is
+probably the same on every page. You can use the `site` scope for those.
+
+However, your header navigation might have "active" states on it, so you'd want to make sure to cache it per page.
+
+```
+{{ cache scope="page" }}
+    {{ nav }} ... {{ /nav }}
+{{ /cache }}
+```
+
+
+> The `scope` parameter has no effect if you use the `key` parameter.
+
+
+## Static Caching
+
+You're free to use the cache tag on top of [static caching](/static-caching).
+
+You'll probably have static caching disabled during development so you can see your changes without having to continually clear anything.
+The cache tag could be a nice compromise to speed up heavy areas for a few minutes at a time. Or, if you have some pages excluded
+from static caching (like pages with forms) then the cache tag could be useful there.
+
+Of course, if you *do* have static caching enabled, keep in mind that you aren't going to gain anything by using both at the same time.
