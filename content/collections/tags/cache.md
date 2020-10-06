@@ -12,6 +12,10 @@ parameters:
     name: scope
     type: 'string'
     description: 'Sets the cache scope. The default `site` scope will cache one instance per tag for the entire site, while a `page` scope will create a unique cache per URL.'
+   -
+    name: key
+    type: 'string'
+    description: 'Sets the key used to store the value in the Laravel cache. `key` can't be used at the same time as `scope`.'
 stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
