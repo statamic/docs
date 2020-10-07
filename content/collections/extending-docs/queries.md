@@ -132,7 +132,9 @@ Get access to [Global](/globals) fields from your PHP files.
 ``` php
 use Statamic\Facades\GlobalSet;
 
-GlobalSet::findByHandle('footer')->get('copyright');
+GlobalSet::findByHandle('footer')
+    ->inCurrentSite()
+    ->get('copyright');
 ```
 
 ### Users
