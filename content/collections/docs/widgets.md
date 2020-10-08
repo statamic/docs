@@ -37,7 +37,7 @@ Display a listing of form submissions.
 
 ``` php
 [
-	'type' => 'collection',
+	'type' => 'form',
 	'form' => 'contact', // name of your form
 	'width' => 100,
 	'limit' => 10
