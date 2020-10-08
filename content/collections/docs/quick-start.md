@@ -42,7 +42,11 @@ You should run this command from your `~/Sites` directory if you're using [Valet
 composer create-project statamic/statamic cyberspace-place --prefer-dist --stability=dev
 ```
 
-If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen. If you encounter errors, Google them frantically and try anything and everything suggested until it magically begins working.
+If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen.
+
+If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file.
+
+If you encounter any other errors, Google them frantically and try anything and everything suggested until it magically begins working.
 
 Just kidding, that's a terrible idea. Please don't do that. You should check our [knowledge base](/knowledge-base) and [forums](https://statamic.com/forums) to look for a validated solution before resorting to such measures.
 
