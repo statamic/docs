@@ -308,7 +308,7 @@ Dispatched when a [Form](/forms) is submitted on the front-end, before the Submi
 ``` php
 public function handle(FormSubmitted $event)
 {
-    $event->form; // The Submission object
+    $event->submission; // The Submission object
 }
 ```
 
