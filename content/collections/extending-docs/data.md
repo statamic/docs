@@ -1,6 +1,7 @@
 ---
 id: 0267eb5a-f54b-4e3f-bef0-1f16762720b1
 title: Data Retrieval and Manipulation
+slug: data-retrieval-and-manipulation
 intro: One of the most crucial aspects of extending a Content Management System is being able to retrieve the data and manipulate it. Statamic has a number of classes to provide you with ways to handle these sorts of situations.
 ---
 
@@ -36,10 +37,18 @@ The facades will have a `@see` annotation in their docblock to give you a hint o
 
 You should retrieve data using Facade methods. If you’ve used Laravel, it should feel similar to Eloquent. If it helps, try thinking of each data type mentioned above as a Model. We have a Facade for each of those.
 
-For example, this will find an entry with an ID of `1`.
+For example, this will find an entry with an ID of `0267eb5a-f54b-4e3f-bef0-1f16762720b1`.
 
 ``` php
-$entry = \Statamic\Facades\Entry::find('1');
+$entry = \Statamic\Facades\Entry::find('0267eb5a-f54b-4e3f-bef0-1f16762720b1');
+```
+
+You can also find an entry by it's slug or URI.
+
+``` php
+$entry = \Statamic\Facades\Entry::findByUri('/parent/data-retrieval-and-manipulation');
+$entry = \Statamic\Facades\Entry::findByUri('/parent/data-retrieval-and-manipulation', 'site-name'); // For multisite
+$entry = \Statamic\Facades\Entry::findBySlug('data-retrieval-and-manipulation', 'pages');
 ```
 
 Like Laravel, if you’re expecting a collection of models, you will receive a collection. However, Statamic will give you a subclass like `EntryCollection` which will do everything `Illuminate\Support\Collection` does [(docs)](https://laravel.com/docs/collections), with a few more contextual methods at your disposal should you need them.
