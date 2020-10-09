@@ -36,10 +36,18 @@ The facades will have a `@see` annotation in their docblock to give you a hint o
 
 You should retrieve data using Facade methods. If you’ve used Laravel, it should feel similar to Eloquent. If it helps, try thinking of each data type mentioned above as a Model. We have a Facade for each of those.
 
-For example, this will find an entry with an ID of `1`.
+For example, this will find an entry with an ID of `f6d5a87`.
 
 ``` php
-$entry = \Statamic\Facades\Entry::find('1');
+$entry = \Statamic\Facades\Entry::find('f6d5a87');
+```
+
+Each data type may have more methods for retrieving data. You can also find an entry by it's slug or URI:
+
+``` php
+Entry::findBySlug('shoes', 'clothing');
+Entry::findByUri('/clothing/shoes');
+Entry::findByUri('/vetements/chaussures', 'french'); // For multisite
 ```
 
 Like Laravel, if you’re expecting a collection of models, you will receive a collection. However, Statamic will give you a subclass like `EntryCollection` which will do everything `Illuminate\Support\Collection` does [(docs)](https://laravel.com/docs/collections), with a few more contextual methods at your disposal should you need them.
