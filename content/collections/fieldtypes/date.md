@@ -107,6 +107,16 @@ You can format the output of your date fields with the [format modifier](/modifi
 {{ date format="l, F jS" }} // Sunday, January 21st
 ```
 
+### Formatting localized Dates
+
+You can format localized dates with the [iso modifier](/modifiers/iso_format) and [ISO formatting options](https://carbon.nesbot.com/docs/#api-localization). This use Carbon's inner translations rather than language packages you need to install on every machine where you deploy your application.
+
+```
+{{ date iso_format="YYYY" }} // 2019
+{{ date iso_format="YYYY-MM-DD" }} // 2019-10-10
+{{ date iso_format="dddd, MMMM Mo" }} // Sunday, January 21st
+```
+
 ## Config Options
 
 [carbon]: https://carbon.nesbot.com/docs/
