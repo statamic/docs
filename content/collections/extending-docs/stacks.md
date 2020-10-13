@@ -48,7 +48,7 @@ When closed, the modal will emit a `closed` event. It's recommended to use this 
 </stack>
 ```
 
-## Preving Stacks from closing
+## Preventing Stacks from closing
 
 Before a Stack is closed, you have the opportunity to cancel it. For instance, if your Stack contains a form, you may want to give a warning about unsaved changes when the user tries to close it. To prevent closing of a Stack, you should pass in a function that returns `false` to stop closing and `true` to allow it.
 
