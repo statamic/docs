@@ -73,3 +73,33 @@ title: Mon Premier Jour
 Here you can see that since the French version does not have `image` defined, it will inherit it from the English version.
 
 > Notice that the French version has a different ID from the English version. In Statamic v3, <mark>every entry has its own ID</mark>, which is different from the Statamic v2 behavior.
+
+## Deleting
+
+As explained above, when you localize an entry, an `origin` is added to the localization. If you were to delete the original entry, the localization would then
+be referencing an entry that no longer exists. This could cause some confusion to Statamic!
+
+If you want to delete an origin, you need to make a decision on how to handle any of its localizations. When deleting entries through the Control Panel, you will be presented with two options:
+
+![](/img/knowledge-base/delete-localization-modal.png)
+
+### Option 1: Delete
+
+If you no longer need the localized version, then you can choose to just delete them.
+
+An example of this may be when you have an entry and then you've simply translated it. It probably doesn't make sense to keep a translated version if the original no longer exists.
+
+When dealing with files, simply make sure that you've also deleted the localization.
+
+### Option 2: Detach
+
+Detaching essentially turns the localizations into their own standalone entries.
+
+An example of this may be when you have a product being sold in multiple locations. You may have created the product
+in one location, and localized the price in other locations. Then, you discontinue the product in the original location.
+You probably still want the product to exist in the other location.
+
+What will happen with this option is that any data that you haven't overridden on the localization will be copied to it.
+The `origin` will also be removed.
+
+When dealing with files, make sure that you remove the origin, and copy any leftover data across manually.
