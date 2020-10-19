@@ -17,6 +17,8 @@ composer create-project --prefer-dist statamic/statamic {change_me}
 
 _(hint: replace `{change_me}` with whatever you'd like to name your site.)_
 
+After you've installed, make sure to point your web server to your `public` folder. If you use Laravel Valet, that will be automatically picked up.
+
 ### Starter Kits
 
 You can also use one of the starter kits to jump ahead with a pre-built site. Each starter kit has its own installation docs.
