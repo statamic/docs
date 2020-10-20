@@ -13,7 +13,7 @@ You may deny front-end access to your content on a **per-page** or **site-wide**
 
 There are a number of drivers for protecting content available out of the box:
 
-- [auth](#auth) for only allowing authenticated users.
+- [auth](#authentication) for only allowing authenticated users.
 - [ip_address](#ip-address) for allowing specific IP addresses.
 - [password](#password) will force users to enter a specified password.
 
