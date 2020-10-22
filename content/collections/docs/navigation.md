@@ -14,7 +14,7 @@ Each Nav is a [structure](/structures) giving you the ability to rearrange items
 
 
 - You can **reference** entries, enter hardcoded URLs (internal or external), or enter simple text blocks (which can be used as section headers for dropdown navs, for example).
-- You can **choose** which collections' entries will available to choose from.
+- You can **choose** which collections' entries will be available to choose from.
 - Any referenced entries will use the URLs **defined by the collection**, regardless of the position in the Structure.
 - You can place the same entry **multiple** times. Two times, three times, four times, even six times are all possible numbers of times you can place something.
 
