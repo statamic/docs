@@ -6,16 +6,36 @@ updated_at: 1568743917
 template: page
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
 stage: 4
+video: https://youtu.be/zuKZQNUYSf8
 ---
 ## Creating a new Statamic project?
 
-If you want to start from scratch, use Composer to create a project based off the [`statamic/statamic`](https://github.com/statamic/statamic) starter site.
+If you're starting a new site from scratch, we recommend using use one of the following methods.
 
-``` bash
-composer create-project --prefer-dist statamic/statamic {change_me}
+### Via Statamic CLI Installer (preferred method) {#cli}
+
+First, download the Statamic CLI installer using Composer:
+
+```
+composer global require statamic/cli
 ```
 
-_(hint: replace `{change_me}` with whatever you'd like to name your site.)_
+
+Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the `statamic` executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
+
+- MacOS: `$HOME/.composer/vendor/bin`
+- Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
+- GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
+
+Once installed, you will be able to run `statamic new {site_name}` to install a fresh copy of Statmaic. You'll even be given the option to start with one of our ready-made Starter Kits.
+
+### Via Composer
+
+You can install Statamic with regular, old Composer if you'd prefer. To do so, you'll probably want to use the [`statamic/statamic`](https://github.com/statamic/statamic) empty starter site.
+
+``` bash
+composer create-project --prefer-dist statamic/statamic {site_name}
+```
 
 After you've installed, make sure to point your web server to your `public` folder. If you use Laravel Valet, that will be automatically picked up.
 
