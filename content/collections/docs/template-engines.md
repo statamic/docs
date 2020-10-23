@@ -67,6 +67,22 @@ it, rather than using a `value` method.
 {{ $modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
 ```
 
+You could also opt to create a global helper in your project.
+
+```php
+use Statamic\Modifiers\Modify;
+
+function modify($value): Modify
+{
+    return Modify::value($value);
+}
+```
+
+``` blade
+{!! modify($title)->wrap('h1') !!}
+{{ modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
+```
+
 > Note that when using multi-word modifiers, like `ensure_right`, you should use the camelCased version (`ensureRight`).
 
 
