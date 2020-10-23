@@ -49,7 +49,7 @@ related_by_id: 123-321-abc-defg123
   {{ title }}
 {{ /get_content:related_by_uri }}
 
-{{ get_content:related_by_entry }}
+{{ get_content:related_by_id }}
   {{ title }}
-{{ /get_content:related_by_entry }}
+{{ /get_content:related_by_id }}
 ```
