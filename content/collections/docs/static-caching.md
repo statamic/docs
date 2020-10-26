@@ -130,9 +130,22 @@ A statically cached page will be served until it is invalidated. You have a seve
 
 ### Time Limit
 
-When using the application driver, you may specify the `expiry` time in minutes. After this length of time, the next request will be served fresh. By leaving the expiry setting `null`, it will never expire, except when you manually run `php artisan cache:clear`.
+When using the application driver, you may specify the `default_cache_length`. After this amount of minutes, the next request will be served fresh. By leaving the `default_cache_length` setting `null`, it will never expire, except when you manually run `php artisan cache:clear`.
 
-**The expiry option is not available when using the file driver.** The generated HTML files will be served before PHP ever gets hit, and there's just nothing we can do about that.
+```php
+return [
+    'strategy' => 'half',
+
+    'strategies' => [
+        'half' => [
+            'driver' => 'application',
+            'default_cache_length' => 15,
+        ]
+    ]
+];
+```
+
+**The `default_cache_length` option is not available when using the file driver.** The generated HTML files will be served before PHP ever gets hit, and there's just nothing we can do about that.
 
 ### When Saving
 
