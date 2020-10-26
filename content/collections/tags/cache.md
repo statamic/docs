@@ -31,6 +31,8 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 {{ /cache }}
 ```
 
+> Caching will not work if you're using the `null` driver, make sure you've configured a [caching strategy](/static-caching#caching-strategies).
+
 ## Invalidation
 
 Caching is handy to speed up parts of your site, but it's not very useful unless it's able to be updated at some stage. Here's how
