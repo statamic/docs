@@ -23,10 +23,10 @@
 {{ partial:partials/nav }}
 
 <div class="w-full max-w-screen-xl mx-auto pt-12 lg:flex relative" id="top">
-    <div id="side-nav" class="lg:block w-full lg:w-auto flex-1 px-6 {{ hide_sidebar ?= 'pr-2' }} pt-1 pb-12 overflow-auto min-h-screen" x-show="showNav">
+    <div id="side-nav" class="lg:block w-full lg:w-auto flex-1 px-6 {{ hide_sidebar ?= 'pr-2'}} pt-1 pb-12 overflow-auto min-h-screen" x-show="showNav">
         {{ partial:side-nav }}
     </div>
-    <div id="content" class="w-full lg:w-3/4 {{ hide_sidebar ? 'xl:w-4/5' : 'xl:w-3/5' }} px-4 lg:px-6 xl:px-12" x-bind:class="{ 'overflow-state': showNav }">
+    <div id="content" class="w-full lg:w-1/2 {{ hide_sidebar ? 'lg:w-3/4 xl:w-4/5' : 'xl:w-3/5' }} px-4 lg:px-6 xl:px-12" x-bind:class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:edit }}
     </div>
