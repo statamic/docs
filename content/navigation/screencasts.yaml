@@ -1,0 +1,15 @@
+title: Screencasts
+collections:
+  - screencasts
+tree:
+  -
+    title: 'Getting Started'
+    children:
+      -
+        entry: 401a9d31-29f4-4cde-aaed-4ef494dfc611
+      -
+        entry: 494663ef-8bf5-4d96-a2b5-de89cc627c1f
+      -
+        entry: dbd8a228-2111-4356-b093-2414f7443215
+      -
+        entry: 31d4a021-83da-4349-b9ad-ffcfcf3b5724

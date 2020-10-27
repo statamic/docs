@@ -15,6 +15,8 @@
         {{ partial:side-nav-main for="collection::extending-docs" }}
     {{ elseif segment_1 === 'knowledge-base' }}
         {{ partial:side-nav-knowledge-base }}
+    {{ elseif segment_1 === 'screencasts' }}
+        {{ partial:side-nav-screencasts }}
     {{ else }}
         {{ partial:side-nav-main for="docs" }}
     {{ /if }}

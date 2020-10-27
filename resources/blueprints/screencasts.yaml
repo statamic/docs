@@ -1,0 +1,20 @@
+title: Screencast
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: video
+        field:
+          type: video
+          localizable: false
+          listable: hidden
+          display: Video
+      -
+        handle: length
+        field:
+          input_type: text
+          type: text
+          localizable: false
+          listable: hidden
+          display: Length

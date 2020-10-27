@@ -1,0 +1,15 @@
+title: Screencasts
+template: screencasts/show
+layout: layout
+blueprints:
+  - screencasts
+  - page
+revisions: false
+route: '/screencasts/{slug}'
+date: true
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+inject:
+  hide_sidebar: true
