@@ -30,27 +30,29 @@ If you create _more than_ one blueprint you'll be given the option to choose whi
 
 Taxonomy routes are automatically created for you **if the corresponding view exists**.
 
+> URLs will use slugs with dashes, and views will use handles which have underscores.
+
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
-  - Accessible at `/{taxonomy slug}` (eg. `/tags`)
-  - The `{taxonomy}/index` view will be used (eg. `tags/index.antlers.html`)
+  - Accessible at `/{taxonomy-slug}` (eg. `/product-tags`)
+  - The `{taxonomy_handle}/index` view will be used (eg. `product_tags/index.antlers.html`)
 - **Global Term details**
   - Display the details of the term, so you can list the entries.
-  - Accessible at `/{taxonomy slug}/{term slug}` (eg. `/tags/retrowave`)
-  - The `{taxonomy}/show` view will be used. (eg. `tags/show.antlers.html`)
+  - Accessible at `/{taxonomy-slug}/{term-slug}` (eg. `/product-tags/t-shirts`)
+  - The `{taxonomy_handle}/show` view will be used. (eg. `product_tags/show.antlers.html`)
 
 For each taxonomy [assigned to a collection](#collections), and when [the collection has been mounted](/collections#mounting), you will also get these routes:
 
 - **Collection Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
   - Only terms that have been used in entries in the collection will be displayed.
-  - Accessible at `/{collection url}/{taxonomy slug}` (eg. `/blog/tags`)
-  - The `{collection}/{taxonomy}/index` view will be used (eg. `blog/tags/index.antlers.html`)
+  - Accessible at `/{collection-url}/{taxonomy-slug}` (eg. `/products/tags`)
+  - The `{collection_handle}/{taxonomy_handle}/index` view will be used (eg. `blog/tags/index.antlers.html`)
 - **Collection Term details**
   - Display the details of the term, so you can list the entries.
   - Only entries that exist in the collection will be displayed.
-  - Accessible at `/{collection url}/{taxonomy slug}/{term slug}` (eg. `/blog/tags/retrowave`)
-  - The `{collection}/{taxonomy}/show` view will be used. (eg. `blog/tags/show.antlers.html`)
+  - Accessible at `/{collection-url}/{taxonomy slug}/{term slug}` (eg. `/blog/tags/retrowave`)
+  - The `{collection_handle}/{taxonomy}/show` view will be used. (eg. `blog/tags/show.antlers.html`)
 
 ## Term Values and Slugs
 
