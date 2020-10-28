@@ -94,7 +94,7 @@ Bard stores your data as a [ProseMirror document](https://prosemirror.net/docs/r
 If you are using Bard just as a rich text editor and have no need for sets you would use a single tag to render the content.
 
 ```
-{{ bard_field }}
+{{ bard }}
 ```
 
 ### With Sets
@@ -102,7 +102,7 @@ If you are using Bard just as a rich text editor and have no need for sets you w
 Use tag pair syntax with `if/else` conditions to style each set accordingly.
 
 ```
-{{ bard_field }}
+{{ bard }}
 
   {{ if type == "text" }}
 
@@ -119,15 +119,15 @@ Use tag pair syntax with `if/else` conditions to style each set accordingly.
 
   {{ /if }}
 
-{{ /bard_field }}
+{{ /bard }}
 ```
 
 An alternative approach (for those who like DRY or small templates) is to create multiple "set" partials and pass the data to them dynamically, moving the markup into corresponding partials bearing the set's name.
 
 ```
-{{ bard_field }}
+{{ bard }}
   {{ partial src="sets/{type}" }}
-{{ /bard_field }}
+{{ /bard }}
 ```
 
 ``` files
