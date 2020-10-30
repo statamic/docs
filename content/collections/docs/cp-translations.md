@@ -31,11 +31,13 @@ preferences:
 | Language | Code |
 |----------|------|
 | English | `en` |
+| Danish | `da` |
 | Dutch | `nl` |
 | French | `fr` |
 | German | `de` |
 | Italian | `it` |
 | Portuguese | `pt` |
+| Slovene | `sl` |
 | Spanish | `es` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
