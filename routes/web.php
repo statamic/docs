@@ -2,7 +2,7 @@
 
 Route::statamic('/', 'home', ['load' => '/documentation']);
 
-Route::statamic('search-results', 'search');
+Route::statamic('search-results', 'search', ['hide_sidebar' => true]);
 Route::redirect('screencasts', '/screencasts/installation');
 Route::statamic('knowledge-base', 'knowledge-base.index');
 Route::permanentRedirect('collections-and-entries', 'collections');
