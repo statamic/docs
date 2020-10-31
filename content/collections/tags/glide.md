@@ -206,10 +206,9 @@ images:
 
 ## Serving Cached Images Directly
 
-The default behavior is to simply output a URL. When that URL is
-visited, Glide analyzes the URL and manipulates an image. However, if there are a lot of manipulation on any given page quest, the total execution time can soon start to add up.
+The default Glide tag behavior is to simply output a URL. When a URL is visited, Glide analyzes the URL and manipulates the image. However, if there are a lot of manipulations on any given page request, the total execution time can soon start to add up.
 
-You can avoid these slowdowns by generating static images. Your server will load the images directly instead of handing the work over to the Glide process each time. You can enable this behavior in your assets config file.
+You can avoid these slowdowns by generating static images. Your server will load images directly instead of handing the work over to the Glide process each time. You can enable this behavior in your assets config file.
 
 ``` php
 // config/statamic/assets.php
