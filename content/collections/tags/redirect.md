@@ -16,7 +16,7 @@ parameters:
   -
     name: response
     type: integer
-    description: 'The HTTP response code to use. Default: `302` (permanent).'
+    description: 'The HTTP response code to use. Default: `302` (temporary).'
 id: 444d1109-ed96-4162-b86d-24b39f569220
 ---
 ## Examples
