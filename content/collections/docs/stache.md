@@ -122,3 +122,20 @@ By default it's in the filesystem, but of course you can feel free to use Redis,
 ``` env
 CACHE_DRIVER=redis
 ```
+
+## Locks
+
+Statamic will create indexes and build the cache on demand where appropriate. Depending on the amount of content you have, this
+could be a resource-heavy operation. To prevent excess CPU and memory usage, subsequent requests will be locked while the cache is being updated.
+
+When a page is requested while the cache is being updated, it will wait until it's ready. If it's not ready after the configured timeout
+length (default of 30 seconds), a 503 response will be served with a `<meta>` tag that'll immediately re-request the page.
+
+``` php
+return [
+    'lock' => [
+        'enabled' => true,
+        'timeout' => 30,
+    ]
+]
+```
