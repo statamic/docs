@@ -8,7 +8,7 @@ intro: Forms are a natural part of the internet experience and a core component 
 ---
 ## Overview
 
-Statamic forms collect submissions, provide reports and metrics on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
+Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
 ## Your First Form
 
@@ -25,12 +25,11 @@ Okay, let's just pretend you're a famous celebrity's _web developer_. You've bee
 
 First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `resources/forms` which will contain all the form's settings.
 
-Each form should contain a title. Optionally it may also have metrics and email configuration.
+Each form should contain a title. Optionally it may also have an email configuration.
 
 ```yaml
 title: Super Fans
 email: []
-metrics: []
 ```
 
 ### The Blueprint
@@ -114,7 +113,7 @@ This example dynamically renders each input's HTML. You could alternatively writ
 
 ## Viewing Submissions
 
-In the Forms area of the control panel you can explore the collected responses, configure dashboards with reporting metrics, and export the data to CSV or JSON formats.
+In the Forms area of the control panel you can explore the collected responses, configure dashboards and export the data to CSV or JSON formats.
 
 <figure>
   <img src="/img/cp-forms.png" alt="List of form submissions in the control panel">
