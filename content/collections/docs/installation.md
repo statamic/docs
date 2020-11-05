@@ -87,7 +87,7 @@ Statamic is updated using Composer either directly on the command line or throug
 From within your project, use Composer to update the Statamic CMS package:
 
 ``` bash
-composer update statamic/cms --with-dependencies
+composer update statamic/cms
 ```
 
 You may prefer to run `composer update` to update _all_ of your dependencies listed in your composer.json file
