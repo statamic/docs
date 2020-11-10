@@ -34,5 +34,15 @@ There's an email utility in the control panel to help you easily test your email
     <figcaption>Is email working? Click to find out!</figcaption>
 </figure>
 
+## Customizing
+
+You can modify the HTML and plain-text template used by mail notifications by publishing the view files to your project. After running the following command, the mail email notification templates will be located in the `resources/views/vendor/notifications` directory:
+
+```bash
+php artisan vendor:publish --tag=laravel-notifications
+```
+
+
+
 
 [swiftmailer]: https://swiftmailer.symfony.com
