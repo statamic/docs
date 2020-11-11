@@ -177,6 +177,26 @@ For example, you can append `[BOT]` to the commit message so that you can select
 ],
 ```
 
+In your deploy scripts on [Forge](https://forge.laravel.com) or [Ploi](https://ploi.io) you could then add the following:
+
+### Forge
+
+```bash
+if [[ $FORGE_DEPLOY_MESSAGE =~ "[BOT]" ]]; then
+    echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
+    exit 0
+fi
+```
+
+### Ploi
+
+```bash
+if [[ {COMMIT_MESSAGE} =~ "[BOT]" ]]; then
+    echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
+    exit 0
+fi
+```
+
 ## Ignoring Events
 
 When [automatically committing](#committing-changes), Statamic will listen on all `Saved` and `Deleted` events, as well as any events registered by installed addons. To ignore specific events, add them to the `ignored_events` array in the [configuration](#configuration) file.
