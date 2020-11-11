@@ -177,7 +177,7 @@ For example, you can append `[BOT]` to the commit message so that you can select
 ],
 ```
 
-In your deploy scripts on Forge or Ploi you could then add the following:
+In your deploy scripts on [Forge](https://forge.laravel.com) or [Ploi](https://ploi.io) you could then add the following:
 
 ### Forge
 
