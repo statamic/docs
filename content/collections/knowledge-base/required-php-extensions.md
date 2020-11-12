@@ -3,8 +3,6 @@ title: 'Required PHP Extensions for Assets'
 intro: 'Is your Control Panel subtly broken?  Check to see if you have these PHP extensions enabled.'
 template: page
 stage: Complete
-updated_by: a27325f4-59bb-4b77-94e0-75ef4d5e7aaf
-updated_at: 1605216044
 id: 0c30a664-9bc3-4c5e-ad8c-66452b049748
 ---
 Control Panel will gently fail, particularly in the **Assets** section and **Glide** on the front end, unless you have the following PHP extensions enabled on your server:
