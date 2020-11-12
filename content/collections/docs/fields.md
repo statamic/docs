@@ -30,7 +30,7 @@ All fields share the following settings regardless of type:
 
 Blueprints are attached to collections, taxonomies, global sets, assets, users, and even forms, all which help to determine their content schema.
 
-[Fieldsets](/fieldsets) are used to store and organize **reusable fields**. Blueprints can reference fields or entire fieldsets, helping you keep your configurations nice and [DRY][dry].
+[Fieldsets](/fieldtypes/fieldset) are used to store and organize **reusable fields**. Blueprints can reference fields or entire fieldsets, helping you keep your configurations nice and [DRY][dry].
 
 ## Fieldtypes
 
