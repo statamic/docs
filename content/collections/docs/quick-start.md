@@ -136,6 +136,16 @@ You can think of layouts like **picture frames** for your website. Everything yo
 
 ## Create an About page
 
-Let's make our first _new_ page!
+Let's make our first _new_ page! Head back to our Dashboard to `Collections -> Pages` to add our new page. Above our table with our Home page click the **Create Entry** button.
+
+We're dropped into a blank Page form just like our Home page form from before. Here we'll create our new page just as we did before.
+
+You can add any title you like in the `title` box based on search engine optimization, marketing, and other wizardry; for now, we'll stick with "About".
+
+Next, add a catchy description in the `content` box, something like "The greatest professional wrestling fan site, OOOOH YEAAAH!"
+
+Now, scroll down to Template. From the drop down we have several options. We used "home" for our Home page, now let's secect "default" for our About page.
+
+Click **Save & Publish** and you'll see your new page titled "About" in the List.
 
 ## TO BE CONTINUED...
