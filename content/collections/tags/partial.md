@@ -75,7 +75,7 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
 
 ```output
 <div class="bg-white rounded shadow">
-  <h2 class="p-2 border-b">{{ title }}</h2>
+  <h2 class="p-2 border-b">Confirmation</h2>
     <div class="flex items-center">
       <img src="/img/warning.svg" />
       <p>Are you sure you want to delete your entire collection of WWE wrestling figures?</p>
