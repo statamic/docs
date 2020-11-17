@@ -3,9 +3,10 @@ title: Nav
 intro: >
   The nav tags are designed to help your users navigate through your hierarchy of navigations and collections.
 description: Creates site navigations.
-stage: 2
+stage: 3
 id: ed746608-87f9-448f-bf57-051da132fef7
 is_parent_tag: true
+video: https://youtu.be/POgIsLeWGGQ
 parameters:
   -
     name: handle
