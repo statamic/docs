@@ -427,15 +427,11 @@ class CollectionRepository extends StacheRepository
 {
     public function updateEntryUris($collection)
     {
-        foreach ($collection->sites() as $site) {
-            $collection
-                ->queryEntries()
-                ->where('site', $site)
-                ->get()->each(function ($entry) {
-                    EntryModel::where('id', $entry->id())
-                              ->update(['uri' => $entry->uri()]);
-                });
-        }
+        $collection
+            ->queryEntries()
+            ->get()->each(function ($entry) {
+                EntryModel::where('id', $entry->id())->update(['uri' => $entry->uri()]);
+            });
     }
 }
 ```
