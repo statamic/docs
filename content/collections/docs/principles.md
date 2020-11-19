@@ -23,7 +23,7 @@ Statamic 3 has the ability to adapt to any data storage mechanism, from relation
 
 However, these solutions add complexity and need only be used when necessary, most often for scaling for large amounts of data (tens of thousands of records) or high volume traffic.
 
-Statamic operates in flat file "mode" by default, which reduces complexity compared to other architectures, and opens up a many possibilities like:
+Statamic operates in flat file "mode" by default, which reduces complexity compared to other architectures, and opens up many possibilities like:
 
 - End-to-end **version control**.
 - The ability to write and manage content, configs, and templates all **right in your code editor**.
