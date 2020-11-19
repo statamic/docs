@@ -18,7 +18,7 @@ Out of the box, Statamic will typically use an implementation that gets data fro
 Let's say you want to store your entries in a database. You would need to swap the default entry repository (which gets entries from the Stache)
 with your own that would get entries from a database.
 
-In a service provider, you can re-bind the contract:
+In a service provider's `register` you can re-bind the contract using the `Statamic::repository()` method:
 
 ``` php
 <?php
@@ -28,12 +28,13 @@ namespace App\Providers;
 use App\DatabaseEntryRepository;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Contracts\Entries\EntryRepository;
+use Statamic\Statamic;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind(
+        Statamic::repository(
             EntryRepository::class,
             DatabaseEntryRepository::class
         );
@@ -63,16 +64,17 @@ public static function bindings(): array
 {
     return [
         Statamic\Contracts\Entries\Entry::class => DatabaseEntry::class,
+        Statamic\Contracts\Entries\QueryBuilder::class => DatabaseEntryQueryBuilder::class,
     ];
 }
 ```
 
-Alternatively, if you want to use a custom item class without customizing the entire repository, you're free to just re-bind that class in your service provider. This could be more useful to you if you just need to customize a method or two.
+Alternatively, if you want to use a custom item class without customizing the entire repository, you're free to just re-bind that class in your service provider's `boot` method (so it's re-bound after everything else). This could be more useful to you if you just need to customize a method or two.
 
 ``` php
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function boot()
     {
         $this->app->bind(
             Statamic\Contracts\Entries\Entry::class,
