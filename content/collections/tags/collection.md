@@ -56,7 +56,7 @@ parameters:
     description: >
       Sort entries by field name (or `random`). You may pipe-separate multiple fields for sub-sorting and specify sort direction of each field using a colon.
       For example, `sort="title"` or `sort="date:asc|title:desc"` to sort by date then by title.
-      To sort numerically, use `sort="order"`. (Make sure to include `order: number` in your collection's folder.yaml file).
+      To sort manually, use `sort="order"`. (Make sure to set max depth to 1 for your collection).
   -
     name: limit
     type: integer
