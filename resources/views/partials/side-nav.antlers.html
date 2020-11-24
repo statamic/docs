@@ -3,7 +3,7 @@
         {{# This section of the nav controlled by SideNavComposer.php #}}
         {{ pages }}
             <div class="flex items-center mb-4 text-sm hover:text-pink-hot
-                {{ if active }}font-bold text-purple{{ else }}text-grey-600{{ /if }}
+                {{ if active }}font-bold text-purple{{ else }}text-grey-900{{ /if }}
             ">
                 <div class="mr-2">{{ theme:output src="svg/{icon}.svg" }}</div>
                 <a href="{{ url }}">{{ title }}</a>

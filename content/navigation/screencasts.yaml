@@ -13,3 +13,20 @@ tree:
         entry: dbd8a228-2111-4356-b093-2414f7443215
       -
         entry: 31d4a021-83da-4349-b9ad-ffcfcf3b5724
+      -
+        entry: a492f0e1-454e-42e6-a9af-cfb2c9a6adde
+  -
+    title: 'Building a Blog'
+    children:
+      -
+        entry: a6a956fd-647d-4503-9a4a-3b24198e6e73
+      -
+        entry: 6946623d-f9d3-40a8-93d1-00721bb3cc32
+      -
+        entry: 9ea94cd6-9f21-42b8-9019-313ed172cb29
+      -
+        entry: e15f4700-1c45-460d-8215-4649fbe911f9
+      -
+        entry: 50758908-d9be-428c-b626-e0a5a5de5d1b
+      -
+        entry: 7044e150-acc1-4a15-bf51-f957371d29ed
