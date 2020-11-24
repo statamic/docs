@@ -2,6 +2,7 @@
 title: Partial
 description: Renders a partial view
 intro: Partials are reusable [views](/views) that may find themselves in any number of other layouts, templates, and other partials.
+video: https://youtu.be/Ddz6mD-jT7E
 parameters:
   -
     name: src
