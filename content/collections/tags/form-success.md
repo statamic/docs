@@ -15,7 +15,7 @@ stage: 4
 ## Example
 
 ```
-{{ if {form:success in="contact} }}
+{{ if {form:success in="contact"} }}
     <p>Thanks for filling out the survey! Sorry it was so long.</p>
 {{ /if }}
 ```
