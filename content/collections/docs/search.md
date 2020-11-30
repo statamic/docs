@@ -60,6 +60,16 @@ Your site's default index includes _only_ the title from from _all_ collections.
 ],
 ```
 
+## Search the specific Index
+To search a specific index, add the following line to your search form `<input type="hidden" name="index" value="help">` changing the value to the name of the index created in `config/statamic/search.php`. The search form should look something like this:
+```
+<form action="/search/results">
+    <input type="search" name="q" placeholder="Search">
+    <input type="hidden" name="index" value="help">
+    <button type="submit">Make it so!</button>
+</form>
+```
+
 ### Searchables
 
 The searchables value determines what items are contained in a given index. By passing an array of searchable values you can customize your index however you'd like. For example, to index all blog posts and news articles together, you could do this:
