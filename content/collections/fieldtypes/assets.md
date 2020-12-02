@@ -117,12 +117,12 @@ Inside an asset variable's tag pair you'll have access to the following variable
 |----------|-------------|
 | `url` | Web-friendly URL to the file. |
 | `path` |  Path to the file relative to asset container |
-| `basename` | Name of the file without file extension |
+| `basename` | Name of the file with file extension |
 | `blueprint` | Which blueprint is managing the asset container |
 | `container` | Which asset container the file is in |
 | `edit_url` | URL to edit asset in the Control Panel |
 | `extension` | File extension |
-| `filename` | Name of the file with file extension |
+| `filename` | Name of the file without file extension |
 | `folder` | Which folder the file is in |
 | `is_audio` | `true` when file is one of `aac`, `flac`, `m4a`, `mp3`, `ogg`, or `wav`. |
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
