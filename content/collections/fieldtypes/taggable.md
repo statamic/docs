@@ -1,11 +1,14 @@
 ---
-title: Tags
+title: Taggable
 screenshot: fieldtypes/tags.png
-description: Enter a list of items with a tag-style interface.
-overview: >
-  Users can enter “taggable” values, which are formatted
-  automatically into a YAML list format. It's a lot like the [list fieldtype](/fieldtypes/list) but with a different UI.
+description: 'Enter a list of items with a tag-style interface.'
+overview: |
+  Users can enter “taggable” values, which are formatted automatically into a YAML list format. It's a lot like the [list fieldtype](/fieldtypes/list) but with a different UI.
+  
 stage: 4
+template: page
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1607013600
 id: 821a636f-2ebd-4297-b459-47e702f899df
 ---
 ## Overview
