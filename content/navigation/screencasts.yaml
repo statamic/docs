@@ -30,3 +30,10 @@ tree:
         entry: 50758908-d9be-428c-b626-e0a5a5de5d1b
       -
         entry: 7044e150-acc1-4a15-bf51-f957371d29ed
+  -
+    title: Taxonomies
+    children:
+      -
+        entry: 1ae2abc9-264a-47b9-b529-bb9f93b74734
+      -
+        entry: 4253d876-ec1a-4d02-be7a-19ab0bab19fe

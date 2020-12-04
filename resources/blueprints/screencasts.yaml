@@ -4,6 +4,15 @@ sections:
     display: Main
     fields:
       -
+        handle: sidebar_title
+        field:
+          input_type: text
+          type: text
+          instructions: 'A shorter title, if necessary'
+          localizable: false
+          listable: hidden
+          display: 'Sidebar Title'
+      -
         handle: video
         field:
           type: video
