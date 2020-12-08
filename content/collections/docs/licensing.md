@@ -62,7 +62,7 @@ This happens once per hour, and only when logged into the control panel. Changin
 
 Each license entitles you to run one production installation. You will need to specify the domains you plan to use from the "Sites" area of your Statamic Account. Domain are treated as wildcards so you can use subdomains for locales, testing, and other purposes.
 
-If you attempt to use the site from a domain not listed in your Site settings, you will get a notification inside the Control Panel informing you thusly to make the necessary changes. You may change the domain associated with a license at any time on [statamic.com](https://statamic.com/sites).
+If you attempt to use the site from a domain not listed in your Site settings, you will get a notification inside the Control Panel informing you thusly to make the necessary changes. You may change the domain associated with a license at any time on [statamic.com](https://statamic.com/account/sites).
 
 ## Public Domains
 When Statamic calls home we use a series of rules to determine if the domain it’s running on is considered “public”.
