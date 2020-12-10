@@ -20,7 +20,7 @@ Revisions is Statamic's publishing workflow feature providing different _states_
 
 Since Revisions is a Pro feature, make sure you've [enabled Pro](/licensing).
 
-Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `.env` file. Once done, you can set `revisions: true` on any or all collections you'd like to use revisions.
+Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `.env` file. Once done, you can set `revisions: true` on any or all collections you'd like to use revisions. Don't forget to restart your server if you use `php artisan serve` or revisions will not work.
 
 > We recommend leaving Revisions **off** while your site is in development. It'll add extra steps to each update to your content.
 
