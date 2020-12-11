@@ -202,6 +202,7 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 ```
 {{ collection:blog taxonomy:tags="harry-potter" }}
 ```
+It is important that the taxonomy is "mounted" to the collection in order to filter the results based on the passed in term.
 
 There are a number of different ways to use this parameter. They are explained in depth in the
 [Taxonomies Guide](/taxonomies#collections)
