@@ -23,7 +23,7 @@ id: 457f17eb-c0ee-4345-bf90-88322abc212d
 
 This fieldtype is used to manage `key: value` array data in the right situation. It's used for situations when there is data you would like to stay grouped together because there's only _one_ set and you don't want to use loops.
 
-If you'd like to have _lists_ of this type of data, you might want to use a [grid](/fieldstypes/grid) or [replicator](/fieldtypes/replicator) field.
+If you'd like to have _lists_ of this type of data, you might want to use a [grid](/fieldtypes/grid) or [replicator](/fieldtypes/replicator) field.
 
 ## Modes
 
