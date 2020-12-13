@@ -32,7 +32,7 @@ video: https://youtu.be/TkxvBIGzUr8
 You can relate any of the base [Content Types](/content-types), each of which with its own specific fieldtype. They all extend this core Relate fieldtype.
 
 - [Taxonomy Terms](/fieldtypes/terms) - for Taxonomy Terms
-- [Collection](/fieldtypes/collection) - for Entries
+- [Collection](/fieldtypes/collections) - for Entries
 - [Pages](/fieldtypes/pages) - for Pages
 - [Users](/fieldtypes/users) - for Users
 - [Assets](/fieldtypes/assets) - for Assets (it doesn't extend this Relate fieldtype)
