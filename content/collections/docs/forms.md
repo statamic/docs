@@ -8,7 +8,7 @@ intro: Forms are a natural part of the internet experience and a core component 
 ---
 ## Overview
 
-Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
+Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend-overview). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
 ## Your First Form
 
@@ -224,7 +224,7 @@ email:
     # other settings here
 ```
 
-[Learn how to create your emails](/knowledge-base/emails)
+[Learn how to create your emails](/email)
 
 ## File Uploads
 
