@@ -42,7 +42,7 @@ Nav::extend(function ($nav) {
 
 > Note that the `Nav` facade is `Statamic\Facades\CP\Nav`.
 >
-> There's another Nav facade without the CP namespace - that one's for the front-end ["Navs"](/navs) feature.
+> There's another Nav facade without the CP namespace - that one's for the front-end ["Navs"](/navigation) feature.
 
 ## Adding Children
 
