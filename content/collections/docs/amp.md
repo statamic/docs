@@ -8,7 +8,7 @@ id: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
 ---
 ## Overview
 
-Statamic supports [AMP]((https://amp.dev)) by providing a "pivot" route which serves an alternate set of views and layouts conforming to AMP requirements.
+Statamic supports [AMP](https://amp.dev) by providing a "pivot" route which serves an alternate set of views and layouts conforming to AMP requirements.
 
 ## Turn it On
 
