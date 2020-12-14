@@ -13,7 +13,7 @@ Quite often you'll find that you don't want to fetch _all_ entries from a collec
 
 For example, you may want to list all entries that _aren't_ the one you're viewing, are after your birthday 🎂 but before Christmas 🎄, or have a custom field like `pinned` 📌 set to `true`. Piece of cake. Piece of crumb cake. 🥮
 
-_Note: These conditions currently apply to the [collections](/tags/collections), [taxonomy](/tags/taxonomy), and [users](/tags/users) tags._
+_Note: These conditions currently apply to the [collections](/tags/collection), [taxonomy](/tags/taxonomy), and [users](/tags/users) tags._
 
 ## Syntax
 
