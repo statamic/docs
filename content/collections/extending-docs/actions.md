@@ -71,18 +71,18 @@ public function boot()
 
 ## Filtering Actions
 
-You may limit which items an action can be applied to using the `filter` method. For example, if you want your action to only be used by entries, you can return a boolean like this:
+You may limit which items an action can be applied to using the `visibleTo` method. For example, if you want your action to only be used by entries, you can return a boolean like this:
 
 ``` php
 use Statamic\Contracts\Entries\Entry;
 
-public function filter($item)
+public function visibleTo($item)
 {
     return $item instanceof Entry;
 }
 ```
 
-> Don't include authorization in your filter method. Instead, use the authorize method below.
+> Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
 
 ## Authorizing Actions
 
