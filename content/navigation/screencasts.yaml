@@ -39,3 +39,8 @@ tree:
         entry: 4253d876-ec1a-4d02-be7a-19ab0bab19fe
       -
         entry: 95cb8f7f-1b9f-440e-9e35-9c9fa6c03687
+  -
+    title: Search
+    children:
+      -
+        entry: 2022056a-d901-423a-aaa7-ee04fff40739
