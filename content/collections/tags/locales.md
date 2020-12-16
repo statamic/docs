@@ -14,7 +14,7 @@ parameters:
     name: sort
     type: string
     description: |
-      Sort by one of the keys in your `system.yaml`'s `locales` array. (eg. `name` or `full`). If left blank, the order in the file will be maintained. Only applicable in the tag pair.
+      Sort by one of the keys in your `sites.php`'s `sites` array. (eg. `name` or `full`). If left blank, the order in the file will be maintained. Only applicable in the tag pair.
   -
    name: current_first
    type: boolean *true*
