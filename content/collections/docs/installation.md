@@ -45,6 +45,12 @@ You can also use one of the starter kits to jump ahead with a pre-built site. Ea
 
 - [Cool Writings](https://github.com/statamic/starter-kit-cool-writings)
 - [Doogie Browser](https://github.com/statamic/starter-kit-doogie-browser)
+- [Starters Creek](https://github.com/statamic/starter-kit-starters-creek)
+- [Docs](https://github.com/doublethreedigital/docs-starter-kit)
+- [Simple Commerce](https://github.com/doublethreedigital/sc-starter-kit)
+- [Butik](https://github.com/jonassiewertsen/statamic-butik-starter-kit)
+- [Peak](https://github.com/studio1902/statamic-peak)
+
 
 ## You can also install into an _existing_ Laravel app {#exising-laravel}
 
