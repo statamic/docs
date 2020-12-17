@@ -460,6 +460,19 @@ if ($addon->edition() === 'pro') {
 > You don't need to check whether a license is valid, Statamic will do that automatically for you.
 
 
+## Update Scripts
+
+You may register update scripts to help your users migrate data, etc. when breaking changes are introduced.
+
+``` php
+protected $updateScripts = [
+    \Acme\Example\Updates\UpdateUserPermissions::class,
+];
+```
+
+Consult our [update script documentation](/update-scripts) to learn how to create update scripts.
+
+
 ## Publishing to the Marketplace
 
 Once your addon is ready to be shared, you can publish it on the Marketplace where it can be discovered by others.
