@@ -24,6 +24,11 @@ parameters:
     type: integer
     description: Skip the first `n` number of results.
   -
+    name: as
+    type: string
+    description: >
+      Alias your results into a new variable loop.
+  -
     name: supplement_data
     type: string
     description: >
