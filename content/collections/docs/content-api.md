@@ -202,7 +202,7 @@ On this endpoint, the [fields](#selecting-fields) param will allow you to select
 
 ## Navigation Tree
 
-`GET` `/api/navigation/{navigation}/tree`
+`GET` `/api/navs/{nav}/tree`
 
 Gets tree for a navigation structure.
 
@@ -235,7 +235,7 @@ Gets tree for a navigation structure.
 On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
 
 ```url
-/api/navigation/{navigation}/tree?fields=title,url&max_depth=2
+/api/navs/{nav}/tree?fields=title,url&max_depth=2
 ```
 
 
