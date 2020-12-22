@@ -1,13 +1,10 @@
 ---
 title: 'Pushing related entries to an Algolia index'
 template: page
-updated_by: 24edf4ac-9a21-4e94-b3c3-f6448059bc1a
-updated_at: 1603277774
 intro: 'It''s possible to transform the data from Statamic before it gets pushed to an Algolia index, but here''s some help on transforming the data to push related data into the index.'
-stage: 'Ready for Feedback'
 id: 5fcf5a56-c120-4988-a4c7-0c5e942327b7
 ---
-consider the following index in `config/statamic/search.php`:
+Consider the following index in `config/statamic/search.php`:
 
 ```php
 'videos' => [
@@ -29,8 +26,8 @@ If we update our index to include transformers:
     'searchables' => 'collection:videos',
     'fields' => ['title', 'artwork', 'tags', 'description', 'id', 'author'],
     'transformers' => [
-    'author' => function($author) {
-        $entry = Entry::find($author);
+        'author' => function ($author) {
+            $entry = Entry::find($author);
             return [
                 'author_name' => "{$entry->author_first_name} {$entry->title}",
             ];
@@ -41,3 +38,5 @@ If we update our index to include transformers:
 We pass the entry id into a function, lookup the entry by its id, we can then push the author name - where our blueprint has `author_first_name` as a field of course.
 
 Happy transforming.
+
+_Contributed by Steven Grant_
