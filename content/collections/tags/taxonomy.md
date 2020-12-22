@@ -39,7 +39,7 @@ parameters:
     description: >
       Filter the listing by either a custom
       class or using a special syntax, both of
-      which are outlined in more detail within the **Filtering** section on this page.
+      which are outlined in more detail within the [Filtering](#filtering) section.
 variables:
   -
     name: first
