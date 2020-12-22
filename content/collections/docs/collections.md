@@ -131,10 +131,11 @@ route: /blog/{slug}
 ```
 
 If you are building a multi-site and want different routes for different locales:
+
 ```yaml
 route:
-  default: /blog/{slug}
-  fi: /blogi/{slug}
+  english: /events/{slug}
+  french: /evenements/{slug}
 ```
 
 ### Meta variables
