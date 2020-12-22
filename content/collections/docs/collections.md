@@ -130,6 +130,13 @@ Entries receive their URLs from their collection's route setting. You can use st
 route: /blog/{slug}
 ```
 
+If you are building a multi-site and want different routes for different locales:
+```yaml
+route:
+  default: /blog/{slug}
+  fi: /blogi/{slug}
+```
+
 ### Meta variables
 
 | Variable | Available |
