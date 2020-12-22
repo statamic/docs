@@ -84,21 +84,23 @@ export default {
 
 ## Adding control panel routes
 
-If you need to have some custom routes for the control panel
-1. Create a file `routes/cp.php`
+If you need to have custom routes for the control panel:
+
+1. Create a routes file. Name it whatever you want, for example: `routes/cp.php`
 2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:  
 
-```
-// app\Providers\AppServiceProvider.php
+    ```php
+    use Illuminate\Support\Facades\Route;
+    use Statamic\Statamic;
 
-public function boot()
-{
-    // ...
-    
-    Statamic::pushCpRoutes(function () {
-        return require_once realpath(__DIR__ . '../../../routes/cp.php');
-    });
-}
-```
+    public function boot()
+    {
+        Statamic::pushCpRoutes(function () {
+            Route::namespace('\App\Http\Controllers')->group(function () {
+                require base_path('routes/cp.php');
+            });
+        });
+    }
+    ```
 
-3. Any routes in `cp.php` will have `name()`, `namespace()` and `middleware()` set for them.
+3. Any routes in the file will have the appropriate name prefix and middleware applied.
