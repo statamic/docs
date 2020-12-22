@@ -185,8 +185,8 @@ return [
 
 - “when an entry in the blog collection is saved, we should invalidate the /blog page, any pages beginning with /blog/category/, and the home page.”
 - “when a term in the tags taxonomy is saved, we should invalidate those same pages”
-- “when a global setting is saved, we invalidate all url's”
-- “when a navigation is updated, we invalidate all url's”
+- “when the settings global set is saved, we invalidate all urls”
+- “when the links navigation is saved, we invalidate all urls”
 
 You may add as many collections and taxonomies as you need.
 
