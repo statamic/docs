@@ -1,6 +1,6 @@
 ---
 title: 'Antlers Templates'
-intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, displaying and modify data, tap into core features like user authentication and search, and handle complex logic.'
+intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display and modify data, tap into core features like user authentication and search, and handle complex logic.'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568806133
 blueprint: page
