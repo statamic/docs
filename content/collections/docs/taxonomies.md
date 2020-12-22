@@ -129,9 +129,7 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 ```
 {{ terms }}
   <ul>
-  {{ results }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  {{ /results }}
   </ul>
 {{ /terms }}
 ```
