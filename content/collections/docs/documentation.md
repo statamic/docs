@@ -33,6 +33,10 @@ sponsors:
     name: Laravel Shift
     avatar_url: https://avatars3.githubusercontent.com/u/15991828?s=400&u=cd8244b2ba4350056c6f61c03ace9e46b02480cb&v=4
     url: https://github.com/laravel-shift
+  -
+    name: Nick Hamze
+    avatar_url: https://statamic.com/images/storage/avatars/zZGgwFvGojqTufxgA8dhImXMsG000pHQrxzRerU1.png?fit=max&w=300&h=300
+    url: https://github.com/nickhamze
 ---
 
 ## Popular Links
