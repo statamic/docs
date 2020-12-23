@@ -15,7 +15,7 @@ parameters:
   -
     name: from
     type: string
-    description: "The starting point for your navigation. If unspecified, it'll start from the top."
+    description: "The starting point for your navigation. If unspecified, it'll start from the top. Note: this parameter is only supported for orderable collections."
   -
     name: show_unpublished
     type: 'boolean *false*'
