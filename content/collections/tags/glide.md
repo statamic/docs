@@ -51,7 +51,7 @@ shape:
     description: >
       See the [Glide docs](http://glide.thephpleague.com/1.0/api/size/#fit-fit) on this parameter. In addition to the
       Glide's fit options, Statamic also supports `crop_focal` to automatically fit/crop to a predefined focal point.
-      See the [_Focal Crop_](#focal-crop) section for more details.
+      See the [_Focal Crop_](#focal-point-cropping) section for more details.
   -
     name: crop
     type: string
