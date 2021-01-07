@@ -462,7 +462,7 @@ if ($addon->edition() === 'pro') {
 
 ## Update Scripts
 
-You may register update scripts to help your users migrate data, etc. when new features are added, breaking changes are introduced, etc.
+You may register update scripts to help your users migrate data, etc. when new features are added or breaking changes are introduced.
 
 For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission. To do this, first register your update script in your addon's service provider:
 
