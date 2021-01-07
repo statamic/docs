@@ -6,7 +6,7 @@ id: 68dcd2ce-f10c-4363-8f8d-3c97d3264dd0
 
 ## What are update scripts?
 
-Update scripts are used for automatically updating data when breaking changes are introduced by Statamic and/or its addons. This feature was introduced for Statamic 3.1, and new installations will have all of this preconfigured out-of-the-box. For older installations, you may need to manually configure update scripts in your app:
+[Update scripts](/extending/addons#update-scripts) are used for automatically updating data when breaking changes are introduced by Statamic or by addons. This feature was introduced for Statamic 3.1, and new installations will have all of this preconfigured out-of-the-box. For older installations, you may need to manually configure update scripts in your app:
 
 ### Updating your composer.json
 
