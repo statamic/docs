@@ -16,6 +16,18 @@ options:
     name: mode
     type: string
     description: "Determine which [mode](#modes) to use. Default: `dynamic`."
+  -
+    name: value_header
+    type: string
+    description: >
+      **Value** column heading displayed when using [dynamic mode](#dynamic-mode)
+      Default: `null`.
+  -
+    name: key_header
+    type: string
+    description: >
+      **Key** column heading displayed when using [dynamic mode](#dynamic-mode)
+      Default: `null`.
 stage: 3
 id: 457f17eb-c0ee-4345-bf90-88322abc212d
 ---
@@ -61,6 +73,11 @@ The second field contains no pre-defined keys. This will allow the user to defin
 ``` .language-yaml
 address:
   type: array
+```
+Column headings can be set with `value_header` & `key_header`.
+```
+value_header: Type of Bacon
+key_header: Why is it awesome?
 ```
 
 
