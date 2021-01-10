@@ -21,13 +21,19 @@ options:
     type: string
     description: >
       **Value** column heading displayed when using [dynamic mode](#dynamic-mode)
-      Default: `null`.
+      Default: `Value`.
   -
     name: key_header
     type: string
     description: >
       **Key** column heading displayed when using [dynamic mode](#dynamic-mode)
-      Default: `null`.
+      Default: `Key`.
+  -
+    name: add_button
+    type: string
+    description: >
+      Add button text customization.
+      Default: `Add Row`.
 stage: 3
 id: 457f17eb-c0ee-4345-bf90-88322abc212d
 ---
