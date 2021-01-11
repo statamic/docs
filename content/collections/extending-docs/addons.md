@@ -468,7 +468,7 @@ For example, maybe you've added a new permission and want to automatically give 
 
 ``` php
 protected $updateScripts = [
-    \Acme\Example\Updates\UpdateUserPermissions::class,
+    \Acme\Example\Updates\UpdatePermissions::class,
 ];
 ```
 
@@ -479,11 +479,6 @@ use Statamic\UpdateScripts\UpdateScript;
 
 class UpdatePermissions extends UpdateScript
 {
-    public function package()
-    {
-        return 'acme/example';
-    }
-
     public function shouldUpdate($newVersion, $oldVersion)
     {
         return $this->isUpdatingTo('1.2.0');
@@ -501,8 +496,6 @@ class UpdatePermissions extends UpdateScript
     }
 }
 ```
-
-The `package()` should output your composer `vendor/package` string for scoping purposes.
 
 The `shouldUpdate()` method helps Statamic determine when to run the update script. Feel free to use the `isUpdatingTo()` helper method, or the provided `$newVersion` and `$oldVersion` variables to help you write this logic.
 
