@@ -42,7 +42,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 
 ### Windows: WAMP
 
-[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion.
+[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion. You may also want to checkout [Laravel Sail](https://laravel.com/docs/8.x/sail), which works well with Statamic.
 
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
