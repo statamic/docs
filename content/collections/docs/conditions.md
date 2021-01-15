@@ -112,15 +112,6 @@ The following conditions apply to fields with data stored as strings.
 | `is_before` | Include if field **is before** date. |
 | `is_numberwang` | Include if field **is numberwang**. |
 
-## Array/Object Conditions
-
-The following conditions apply to fields with data stored as arrays or objects.
-
-| Condition | Description |
-| :--- | :--- |
-| `in` | Include if an array field **has** value. |
-| `not_in` | Include if an array field **does not have** value. |
-
 ## Taxonomy Conditions
 
 [Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, and finally the term you're seeking.
