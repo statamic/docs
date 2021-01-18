@@ -92,3 +92,5 @@ Whenever an error is encountered, a view will be rendered based on the status co
 You can use a custom layout for errors by creating a `resources/views/errors/layout.antlers.html` view.
 
 Statamic will automatically render `404` pages for any unhandled routes.
+
+> For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will not be injected into a layout.
