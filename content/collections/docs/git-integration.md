@@ -177,7 +177,7 @@ For example, you can append `[BOT]` to the commit message so that you can select
 ],
 ```
 
-In your deploy scripts on [Forge](https://forge.laravel.com) or [Ploi](https://ploi.io) you could then add the following:
+In your deploy scripts on [Forge](https://forge.laravel.com), [Ploi](https://ploi.io), or [Cleavr](https://cleavr.io) you could then add the following:
 
 ### Forge
 
@@ -194,6 +194,15 @@ fi
 if [[ {COMMIT_MESSAGE} =~ "[BOT]" ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
+fi
+```
+
+### Cleavr
+
+```bash
+if [[ "{{ commitMessage }}" =~ "[BOT]" ]]; then
+    echo 'AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY.'
+    exit 1
 fi
 ```
 
