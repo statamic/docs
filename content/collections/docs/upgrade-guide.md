@@ -63,6 +63,7 @@ First, let's look at the breaking changes on the core application side. These ar
 - Removed `theme:partial` tag in favor of `partial`.
 - The `content` field is no longer automatically parsed for Antlers. You can flag it for parsing in the [blueprint](/blueprints). (As well as any other fields)
 - Inside loops `index` now starts at `0`, `count` starts at `1`, and `zero_index` is no more.
+- Statamic no longer automatically registers routes for taxonomies. If you need them, you can register them yourself.
 
 ### Collections
 
