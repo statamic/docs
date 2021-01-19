@@ -62,6 +62,8 @@ sponsors:
 ## Starter Kits
 Looking to jump right into a ready-made site?
 
+**Official Starter Kits**
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <a href="https://github.com/statamic/starter-kit-starters-creek" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
@@ -79,6 +81,35 @@ Looking to jump right into a ready-made site?
         <div>
             <div class="font-bold">Doogie Browser</div>
             <div class="text-black text-xs">A retro, IBM/VGA inspired journaling blog.</div>
+        </div>
+    </a>
+</div>
+
+**Community Starter Kits**
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="https://github.com/doublethreedigital/docs-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Docs</div>
+            <div class="text-black text-xs">Quick start your documentation website.</div>
+        </div>
+    </a>
+    <a href="https://github.com/doublethreedigital/sc-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Simple Commerce</div>
+            <div class="text-black text-xs">Pairs with the Simple Commerce addon to quick start your ecommerce website.</div>
+        </div>
+    </a>
+    <a href="https://github.com/jonassiewertsen/statamic-butik-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Butik</div>
+            <div class="text-black text-xs">Pairs with the Butik addon to quickly start your new online Butik.</div>
+        </div>
+    </a>
+    <a href="https://github.com/studio1902/statamic-peak" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Peak</div>
+            <div class="text-black text-xs">An opinionated starter kit for bespoke client websites featuring a page builder and more.</div>
         </div>
     </a>
 </div>
