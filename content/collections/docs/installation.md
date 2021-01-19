@@ -43,13 +43,13 @@ After you've installed, make sure to point your web server to your `public` fold
 
 You can also use one of the starter kits to jump ahead with a pre-built site. Each starter kit has its own installation docs.
 
-- [Cool Writings](https://github.com/statamic/starter-kit-cool-writings)
-- [Doogie Browser](https://github.com/statamic/starter-kit-doogie-browser)
-- [Starters Creek](https://github.com/statamic/starter-kit-starters-creek)
-- [Docs](https://github.com/doublethreedigital/docs-starter-kit)
-- [Simple Commerce](https://github.com/doublethreedigital/sc-starter-kit)
-- [Butik](https://github.com/jonassiewertsen/statamic-butik-starter-kit)
-- [Peak](https://github.com/studio1902/statamic-peak)
+- [Cool Writings](https://github.com/statamic/starter-kit-cool-writings) Blog with clean and modern typography. By Statamic.
+- [Doogie Browser](https://github.com/statamic/starter-kit-doogie-browser) Retro blogging. By Statamic.
+- [Starters Creek](https://github.com/statamic/starter-kit-starters-creek) A Bard focused blogging experience with multiple design options. By Statamic.
+- [Docs](https://github.com/doublethreedigital/docs-starter-kit) Quick start your documentation website.
+- [Simple Commerce](https://github.com/doublethreedigital/sc-starter-kit) Pairs with the [Simple Commerce addon](https://github.com/doublethreedigital/simple-commerce) to quick start your ecommerce website.
+- [Butik](https://github.com/jonassiewertsen/statamic-butik-starter-kit) Pairs with the [Butik addon](https://statamic.com/addons/jonassiewertsen/statamic-butik) to quickly start your new online Butik. 
+- [Peak](https://github.com/studio1902/statamic-peak) An opinionated starter kit for bespoke client websites featuring a page builder and more. 
 
 
 ## You can also install into an _existing_ Laravel app {#exising-laravel}
