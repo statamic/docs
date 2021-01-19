@@ -142,4 +142,8 @@ _Examples and link to Assets tag._
 
 ## Image Manipulation
 
-_Examples and link to Glide tag_.
+Statamic comes with Glide, a popular image manipulation library. It's really easy to use and even has [it's own tag](/tags/glide).
+
+```
+{{ glide:image width="120" height="500" }}
+```
