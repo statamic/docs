@@ -138,6 +138,8 @@ route:
   french: /evenements/{slug}
 ```
 
+> When creating new collections, Statamic doesn't automatically define a default route rule. If you want entries in your new collection to receive URLs, make sure you define a route rule!
+
 ### Meta variables
 
 | Variable | Available |
