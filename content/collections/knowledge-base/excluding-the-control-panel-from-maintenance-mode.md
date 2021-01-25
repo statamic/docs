@@ -23,10 +23,10 @@ php artisan up
 
 ## Excluding URLs
 
-URLs that should remain "up" while in maintenance mode can be defined in your `app/Http/Middleware/CheckForMaintenanceMode.php` file. Assuming your control panel uses the default `/cp` URL, use the following config to exclude it:
+URLs that should remain "up" while in maintenance mode can be defined in your `app/Http/Middleware/PreventRequestsDuringMaintenance` file. Assuming your control panel uses the default `/cp` URL, use the following config to exclude it:
 
 ```php
-// app/Http/Middleware/CheckForMaintenanceMode.php
+// app/Http/Middleware/PreventRequestsDuringMaintenance.php
 
 protected $except = [
     '/cp',
