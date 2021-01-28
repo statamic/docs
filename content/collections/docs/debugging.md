@@ -10,7 +10,7 @@ stage: 2
 ---
 ## Ignition Debug Screens
 
-[Ignition][ignition] is an included Laravel package for debugging exceptions. It provides a clean and organized stack trace, code snippets, information about the request, and even the ability the share the error message others.
+[Ignition][ignition] is an included Laravel package for debugging exceptions. It provides a clean and organized stack trace, code snippets, information about the request, and even the ability to share the error message with others.
 
 To enable Ignition, set `APP_DEBUG=true` in your [.env](/configuration#environment-variables) file.
 
