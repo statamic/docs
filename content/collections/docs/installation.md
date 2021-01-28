@@ -40,17 +40,59 @@ composer create-project --prefer-dist statamic/statamic {site_name}
 After you've installed, make sure to point your web server to your `public` folder. If you use Laravel Valet, that will be automatically picked up.
 
 ### Starter Kits
+Looking to jump right into a ready-made site?
 
-You can also use one of the starter kits to jump ahead with a pre-built site. Each starter kit has its own installation docs.
+**Official Starter Kits**
 
-- [Cool Writings](https://github.com/statamic/starter-kit-cool-writings) Blog with clean and modern typography. By Statamic.
-- [Doogie Browser](https://github.com/statamic/starter-kit-doogie-browser) Retro blogging. By Statamic.
-- [Starters Creek](https://github.com/statamic/starter-kit-starters-creek) A Bard focused blogging experience with multiple design options. By Statamic.
-- [Docs](https://github.com/doublethreedigital/docs-starter-kit) Quick start your documentation website.
-- [Simple Commerce](https://github.com/doublethreedigital/sc-starter-kit) Pairs with the [Simple Commerce addon](https://github.com/doublethreedigital/simple-commerce) to quick start your ecommerce website.
-- [Butik](https://github.com/jonassiewertsen/statamic-butik-starter-kit) Pairs with the [Butik addon](https://statamic.com/addons/jonassiewertsen/statamic-butik) to quickly start your new online Butik. 
-- [Peak](https://github.com/studio1902/statamic-peak) An opinionated starter kit for bespoke client websites featuring a page builder and more. 
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <a href="https://github.com/statamic/starter-kit-starters-creek" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Starter's Creek</div>
+            <div class="text-black text-xs">A beautiful, multi-author capable blog.</div>
+        </div>
+    </a>
+    <a href="https://github.com/statamic/starter-kit-cool-writings" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Cool Writings</div>
+            <div class="text-black text-xs">A super clean, Markdown focused blog.</div>
+        </div>
+    </a>
+    <a href="https://github.com/statamic/starter-kit-doogie-browser" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Doogie Browser</div>
+            <div class="text-black text-xs">A retro, IBM/VGA inspired journaling blog.</div>
+        </div>
+    </a>
+</div>
 
+**Community Starter Kits**
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="https://github.com/doublethreedigital/docs-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Docs</div>
+            <div class="text-black text-xs">Quick start your documentation website.</div>
+        </div>
+    </a>
+    <a href="https://github.com/doublethreedigital/sc-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Simple Commerce</div>
+            <div class="text-black text-xs">Pairs with the Simple Commerce addon to quick start your ecommerce website.</div>
+        </div>
+    </a>
+    <a href="https://github.com/jonassiewertsen/statamic-butik-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Butik</div>
+            <div class="text-black text-xs">Pairs with the Butik addon to quickly start your new online Butik.</div>
+        </div>
+    </a>
+    <a href="https://github.com/studio1902/statamic-peak" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
+        <div>
+            <div class="font-bold">Peak</div>
+            <div class="text-black text-xs">An opinionated starter kit for bespoke client websites featuring a page builder and more.</div>
+        </div>
+    </a>
+</div>
 
 ## You can also install into an _existing_ Laravel app {#exising-laravel}
 
