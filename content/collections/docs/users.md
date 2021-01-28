@@ -7,6 +7,7 @@ updated_at: 1568645051
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
 stage: 3
+pro: true
 video: https://youtu.be/KuiPocGq3L8
 ---
 ## Overview
