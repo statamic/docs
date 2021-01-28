@@ -8,13 +8,13 @@ id: 32bc9a50-3b12-11e6-bdf4-0800200c9a66
 ## Overview
 This tag is useful for debugging. It will stop execution of the page and render the raw data of the variables in your current context (page, variable loop, etc).
 
-Dropping it a template or layout will show you all the data the data that's been injected into the view layer.
+Dropping it in a template or layout will show you all the data that's been injected into the view layer.
 
 ```
 {{ dump }}
 ```
 
-Dropping it inside a loop will jump all the data _just for that loop context_.
+Dropping it inside a loop will dump all the data _just for that loop context_.
 
 ```
 {{ gallery }}
