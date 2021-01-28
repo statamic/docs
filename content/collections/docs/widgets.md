@@ -39,6 +39,7 @@ Display a listing of form submissions.
 [
 	'type' => 'form',
 	'form' => 'contact', // name of your form
+    'fields' => ['name','email'], // the fields you want to display in the widget
 	'width' => 100,
 	'limit' => 10
 ]
@@ -74,6 +75,7 @@ Will display if updates are available
     [
         'type' => 'form',
         'form' => 'contact',
+        'fields' => ['name','email'],
         'width' => 100,
         'limit' => 20,
     ],
