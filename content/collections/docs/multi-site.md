@@ -24,8 +24,10 @@ The default single-site setup uses a folder structure optimized for hand editing
 Luckily for you, this conversion can be done automatically with the following command:
 
 ``` bash
-php please multisite
+php artisan statamic:multisite
 ```
+
+> Clear the cache before running this command: ```php artisan cache:clear ```
 
 [More details on how to convert to a multi-site setup](/knowledge-base/converting-from-single-to-multi-site)
 
