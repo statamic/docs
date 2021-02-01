@@ -382,7 +382,7 @@ If you wish to disable caching altogether, set `cache` to `false`.
 
 ### Custom Cache Driver
 
-If you need a more intricate caching solution, you may reference a custom cache driver class, and pass extra config along if necessary.
+If you need a more intricate caching solution, you may reference a custom cache driver class and pass extra config along if necessary.
 
 ```php
 'cache' => [
