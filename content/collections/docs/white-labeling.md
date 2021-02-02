@@ -9,7 +9,7 @@ id: 5bd9426f-23cf-4196-9848-471dff67f5ea
 ---
 
 ## Configuration
-Your White Label options are avialble in `config/statamic/cp.php` or through their corresponding .env variables.
+Your White Label options are available in `config/statamic/cp.php` or through their corresponding .env variables.
 
 > Keep in mind that according to the license terms you can only rebrand for personal, internal, or client usage. You cannot resell Statamic under another name.
 
