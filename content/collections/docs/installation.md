@@ -10,7 +10,7 @@ video: https://youtu.be/zuKZQNUYSf8
 ---
 ## Creating a new Statamic project?
 
-If you're starting a new site from scratch, we recommend using use one of the following methods.
+If you're starting a new site from scratch, we recommend using one of the following methods.
 
 ### Via Statamic CLI Installer (preferred method) {#cli}
 
