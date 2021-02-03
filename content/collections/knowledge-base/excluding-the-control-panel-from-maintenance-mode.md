@@ -1,6 +1,6 @@
 ---
 title: 'Excluding the control panel from maintenance mode'
-intro: '[Laravel''s maintenance mode](https://laravel.com/docs/configuration#maintenance-mode) is a great way to notify visitors that your site is down but will be shortly. But what if you still want to get into the control panel? Here''s how.'
+intro: '[Laravel''s maintenance mode](https://laravel.com/docs/configuration#maintenance-mode) is a great way to notify visitors that your site is down but will be back up shortly. But what if you still want to get into the control panel? Here''s how.'
 template: page
 stage: 4
 id: 4f480db2-f80b-4b97-905c-b946f94c544d
