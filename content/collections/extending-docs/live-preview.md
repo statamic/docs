@@ -14,7 +14,7 @@ Out of the box, Statamic will push the temporary version of the entry through it
 
 If you have complex requirements – for example, needing to render it through a different frontend – you are able to customize it.
 
-The `LocalizedEntry` class has a `toLivePreviewResponse` method. You can override this and return whatever you want to be
+The `Entry` class has a `toLivePreviewResponse` method. You can override this and return whatever you want to be
 rendered in Live Preview's content pane.
 
 [See how to override the entry classes.](/extending/repositories#custom-data-classes)
@@ -24,9 +24,9 @@ rendered in Live Preview's content pane.
 
 namespace App;
 
-use Statamic\Data\Entries\LocalizedEntry as BaseLocalizedEntry;
+use Statamic\Entries\Entry;
 
-class LocalizedEntry extends BaseLocalizedEntry
+class YourCustomEntry extends Entry
 {
     public function toLivePreviewResponse($request, $extra)
     {
