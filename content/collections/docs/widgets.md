@@ -27,7 +27,8 @@ Display a listing of entries from a collection
 	'type' => 'collection',
 	'collection' => 'blog', // name of your collection
 	'width' => 100,
-	'limit' => 10
+	'limit' => 10,
+	'sort' => 'title:desc'
 ]
 ```
 
