@@ -53,6 +53,10 @@ inject:
   show_sidebar: true
 ```
 
+### Default sorting in Control Panel
+
+You can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
+
 ## Collections
 
 Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So, not exactly the same thing, or at least not as romantic anyway.
