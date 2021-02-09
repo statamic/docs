@@ -149,7 +149,7 @@ search_index: blog
 
 ## Drivers
 
-Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and [custom drivers](#) provide features and capabilities going well beyond our core feature set.
+Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and custom drivers provide features and capabilities going well beyond our core feature set.
 
 ### Local
 
