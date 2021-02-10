@@ -47,6 +47,15 @@ Swap out the logo with a URL to one of your own.
 'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', null),
 ```
 
+You may set different logos for inside and outside Control Panel (nav bar and login screen, respectively) by passing an array.
+
+``` php
+'custom_logo_url' => [
+    'nav' => '/logo-white.png',
+    'outside' => '/logo-dark.png'
+],
+```
+
 ### Custom Favicon
 
 Swap out the favicon with a URL to one of your own.
