@@ -73,6 +73,12 @@ $entry->save();
 
 Now it’ll be written to file. Nice.
 
+### Events
+When you are saving your data instance, the `Statamic\Events\EntrySaving` and `Statamic\Events\EntrySaved` events are dispatched.  
+ In some cases, you would rather suppress those events. For example, to prevent causing an infinite loop of `EntrySaved` events. 
+``` php
+$entry->saveQuietly();
+```
 
 ## Creating Data
 
