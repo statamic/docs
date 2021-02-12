@@ -23,14 +23,14 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 ```
 
 ```
-{{ site }}
+{{ sites }}
     {{ handle }}
     {{ name }}
     {{ locale }}
     {{ short_locale }}
     {{ url }}
 
-{{ /site }}
+{{ /sites }}
 ```
 
 ``` output
