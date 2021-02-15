@@ -98,6 +98,16 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 {{ /form:contact }}
 ```
 
+When you need to render a form that's selected via the Form Fieldtype you can use this pattern:
+
+```
+{{ form:create in="{ form_fieldtype:handle }" }}
+    ...
+{{ /form:create }}
+```
+
+This way you can let Control Panel users selected which form should be used on an entry.
+
 ## Dynamic Rendering
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields in a dynamic fashion.
@@ -124,7 +134,6 @@ Each item in the `fields` array contains the following data configurable in the 
 | ` field` | string | Pre-rendered HTML based on the fieldtype |
 | `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
-
 
 ### Pre-rendered HTML
 
