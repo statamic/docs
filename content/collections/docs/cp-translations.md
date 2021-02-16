@@ -34,7 +34,7 @@ preferences:
 | Danish | `da` |
 | Dutch | `nl` |
 | French | `fr` |
-| German | `de` |
+| German | `de` or `de-CH` |
 | Italian | `it` |
 | Portuguese | `pt` |
 | Slovene | `sl` |
