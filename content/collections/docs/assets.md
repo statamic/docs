@@ -122,12 +122,6 @@ If you want to customize the fields, you're able to create your own blueprint. Y
 - Note: This differs from v2, which saved URLs relative to the root.
 
 
-## Drivers
-
-Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/filesystem#driver-prerequisites).
-
-Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
-
 ## Templating
 
 _Examples and link to Assets tag._
@@ -147,3 +141,52 @@ Statamic comes with Glide, a popular image manipulation library. It's really eas
 ```
 {{ glide:image width="120" height="500" }}
 ```
+
+## Drivers
+
+Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/filesystem#driver-prerequisites).
+
+Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
+
+**DigitalOcean Spaces S3 example**
+
+Let's say you want to connect an asset container to a certain folder on your [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/) so you can store video's there via the CP and serve them using DigitalOcean's built in CDN.
+
+The following principles work for Amazon S3 as well, except you can use the already available `s3` driver in `config/filesystems.php`. 
+
+Add a filesystem to `config/filesystems.php`.
+
+```php
+'do_spaces' => [     
+    'driver' => 's3',     
+    'key' => env('DO_SPACES_KEY'),     
+    'secret' => env('DO_SPACES_SECRET'),     
+    'endpoint' => env('DO_SPACES_ENDPOINT'),     
+    'region' => env('DO_SPACES_REGION'),     
+    'bucket' => env('DO_SPACES_BUCKET'),
+    'root' => env('DO_SPACES_ROOT'),
+    'url' => env('DO_SPACES_URL'),
+    'visibility' => 'public',
+],
+```
+
+Add the following enviromental variables to your `.env` file and fill in with the values unique to your Space. You can generate keys and secrets from the DigitalOcean API settings.
+
+```env
+DO_SPACES_KEY=
+DO_SPACES_SECRET=
+DO_SPACES_ENDPOINT=https://ams3.digitaloceanspaces.com (depending on your region)
+DO_SPACES_REGION=AMS3 (depending on your region)
+DO_SPACES_BUCKET=statamic (the name of your space)
+DO_SPACES_ROOT=the_folder/you_want (the root folder on your Space you want for this container)
+DO_SPACES_URL=https://cdn.statamic.com/ (the URL Statamic should prepend to the file name and the root when you request an asset in your templates)
+```
+
+Create a new Asset Container using this `do_spaces` as a Disk. You can do this via the CP or add a `handle.yaml` file to `content/assets`:
+
+```yaml
+title: 'MySpace'
+disk: do_spaces
+```
+
+
