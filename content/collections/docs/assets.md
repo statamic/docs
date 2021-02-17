@@ -166,7 +166,7 @@ Add a filesystem to `config/filesystems.php`.
     'bucket' => env('DO_SPACES_BUCKET'),
     'root' => env('DO_SPACES_ROOT'),
     'url' => env('DO_SPACES_URL'),
-    'visibility' => 'public',
+    'visibility' => 'public', // Set this public so the files uploaded are available publically.
 ],
 ```
 
@@ -175,11 +175,11 @@ Add the following enviromental variables to your `.env` file and fill in with th
 ```env
 DO_SPACES_KEY=
 DO_SPACES_SECRET=
-DO_SPACES_ENDPOINT=https://ams3.digitaloceanspaces.com (depending on your region)
-DO_SPACES_REGION=AMS3 (depending on your region)
-DO_SPACES_BUCKET=statamic (the name of your space)
-DO_SPACES_ROOT=the_folder/you_want (the root folder on your Space you want for this container)
-DO_SPACES_URL=https://cdn.statamic.com/ (the URL Statamic should prepend to the file name and the root when you request an asset in your templates)
+DO_SPACES_ENDPOINT=https://ams3.digitaloceanspaces.com  // Depending on your region.
+DO_SPACES_REGION=AMS3                                   // Depending on your region.
+DO_SPACES_BUCKET=statamic                               // The name of your Space.
+DO_SPACES_ROOT=the_folder/you_want                      // The root folder on your Space you want for this container.
+DO_SPACES_URL=https://cdn.statamic.com/                 // The URL Statamic should prepend to the file name and the root when you request an asset in your templates.
 ```
 
 Create a new Asset Container using this `do_spaces` as a Disk. You can do this via the CP or add a `handle.yaml` file to `content/assets`:
