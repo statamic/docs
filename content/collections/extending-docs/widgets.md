@@ -6,4 +6,4 @@ updated_at: 1569264107
 id: 5900c99f-89b9-4ee3-834c-cb1b070146e4
 ---
 
-For widgets start with ‘php please make:widget’
+For widgets, start with `php please make:widget`
