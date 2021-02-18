@@ -12,7 +12,7 @@ parameters:
     name: error_redirect
     type: string
     description: >
-      The same as `redirect`, but for for failed password reset requests.
+      The same as `redirect`, but for failed password reset requests.
   -
     name: allow_request_redirect
     type: boolean
@@ -85,13 +85,13 @@ Unless you set a `redirect` parameter, the user will be redirected back to the *
 
 The email will contain a link to the URL specified in the `reset_url` parameter, along with extra query parameters. On that URL you must have a [user:reset_password_form](/tags/user-reset_password_form) tag to finish the task and let the user set their new password.
 
-> The user needs to be logged out for this tag to do anything. You may way to wrap the form in `{{ if logged_out }}{{ /if }}`.
+> The user needs to be logged out for this tag to do anything. You may want to wrap the form in `{{ if logged_out }}{{ /if }}`.
 
 ## The email {#email}
 
 Once the form is submitted, an email will be sent containing the URL for resetting the password.
 
-This email is bundled with Statamic and will work for most people out of the box. However, if you'd like to customize it, you can. [Here's how to create custom emails][custom-emails].
+This email is bundled with Statamic and will work for most people out of the box. However, if you'd like to customize it, you can.
 
 The template is named `user-reset` and should contain a `{{ reset_url }}` variable, which is the generated reset URL.
 
