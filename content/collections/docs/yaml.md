@@ -118,7 +118,7 @@ Booleans in YAML are expressed with `true` and `false`.
 
 ## Collections
 
-YAML collections can be a sequence (or list)Arrays are lists of values. They can be formatted like a plain-text bulleted list or comma delimited inside brackets, similar to JSON.
+YAML collections can be a sequence (or list). Arrays are lists of values. They can be formatted like a plain-text bulleted list or comma delimited inside brackets, similar to JSON.
 
 ```.language-yaml
 # These are both valid YAML arrays
@@ -130,7 +130,7 @@ to_buy:
 to_sell: [aloe vera, winter coat, mittens]
 ```
 
-To render the values from a YAML array
+To render the values from a YAML array:
 
 
 ### Element Map
