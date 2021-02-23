@@ -5,14 +5,17 @@ updated_at: 1567099283
 id: e6f05019-6bdd-488e-ba45-39ae7ea5cee7
 blueprint: page
 ---
-## With statamic CLI (recommended)
-If you installed statamic CLI you can update your installation with the following command:
+## With Statamic CLI
+
+If you installed with [Statamic CLI](/cli), you can update your installation with the following command:
 ```
 statamic update
 ```
 
 ## With Composer
-If you installed statmic using composer you can update your installation with the following command:
+
+If you installed with Composer, you can update your installation with the following command:
 ```
-composer update
+composer update statamic/cms --with-dependencies
 ```
+ Note: You may prefer to run `composer update` to update _all_ of your dependencies.
