@@ -27,7 +27,11 @@ Make sure to place Composer's system-wide vendor bin directory in your `$PATH` s
 - Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 - GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 
-**Once installed,** run `statamic new {site_name}` to kickstart a fresh new Statamic project. You'll even be given the option to start with one of our ready-made Starter Kits.
+**Once installed,** run the following command to kickstart a fresh new Statamic project (and even choose from some free Starter Kits).
+
+``` bash
+statamic new {site_name}
+```
 
 ### Via Composer
 
