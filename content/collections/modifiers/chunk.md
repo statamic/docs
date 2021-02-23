@@ -3,87 +3,44 @@ modifier_types:
   - markup
   - utility
 ---
-Chunk, A nice and simple way to split up code output and organize your data without going crazy modifying your theme. You may for example find this helpful in a Mega Menu scenario where you want to load your URLS in blocks to appear in some stacked order
+Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
 
-Using the Bootstrap grid for our sample: the basic grid code with chunk is:
 
 ```
-{{ collection:newsroom as="posts" limit="6" }}
-<div class="container">
+{{ collection:news as="posts" limit="6" }}
   {{ posts chunk="3" }} 
-  <div class="row">
+  <div class="flex space-x-4">
     {{ chunk }}
-    <div class="col-sm border bg-light">
-      {{ title }}
-    </div>
+      <a href="{{ url }}" class="bg-purple-800 text-white p-4">
+        {{ title }}
+      </a>
     {{ /chunk }}
   </div>
   {{ /posts }}
-</div>
 {{ /collection:newsroom }}
 ```
-This outputs:
 
-```
-<div class="container">
-  <div class="row">
-        <div class="col-sm border bg-light">
-      How to prepare for an Interview
-    </div>
-        <div class="col-sm border bg-light">
-      Image Test Post
-    </div>
-        <div class="col-sm border bg-light">
-      They call me mellow yellow
-    </div>
-  </div>
-   
-  <div class="row">
-        <div class="col-sm border bg-light">
-      2nd post
-    </div>
-        <div class="col-sm border bg-light">
-      3rd post
-    </div>
-        <div class="col-sm border bg-light">
-      First post
-    </div>
-    
-  </div>
+``` output
+<div class="flex space-x-4">
+  <a href="/ideas/book" class="bg-purple-800 text-white p-4">
+    Book: Somehow I Manage
+  </a>
+  <a href="/ideas/party" class="bg-purple-800 text-white p-4">
+    Party: Goodbye Toby
+  </a>
+  <a href="/ideas/screenplay" class="bg-purple-800 text-white p-4">
+    Screenplay: Threat Level Midnight
+  </a>
 </div>
-```
-
-Changing the chunk from `3` to `2` gives us:
-
-```
-<div class="container">
-   
-  <div class="row">
-        <div class="col-sm border bg-light">
-      How to prepare for an Interview
-    </div>
-        <div class="col-sm border bg-light">
-      Image Test Post
-    </div>
-  </div>
-   
-  <div class="row">
-        <div class="col-sm border bg-light">
-      They call me mellow yellow
-    </div>
-        <div class="col-sm border bg-light">
-      2nd post
-    </div>
-  </div>
-   
-  <div class="row">
-        <div class="col-sm border bg-light">
-            3rd post
-    </div>
-        <div class="col-sm border bg-light">
-      First post
-    </div>
-    
-  </div>
+<div class="flex space-x-4">
+  <a href="/ideas/art" class="bg-purple-800 text-white p-4">
+    Art: A Stapler
+  </a>
+  <a href="/ideas/poster" class="bg-purple-800 text-white p-4">
+    Poster: Kids Playing Instruments
+  </a>
+  <a href="/ideas/mug" class="bg-purple-800 text-white p-4">
+    Mug: World's Best Boss
+  </a>
 </div>
 ```
