@@ -1,17 +1,26 @@
 ---
 title: 'Using Front-End Frameworks'
-intro: 'There are quite a few methods of passing data to your components. We''ll show you how to utilize some of the methods available within Statamic to get the data you need, and how to format it correctly so you can use it in your front-end components.'
+intro: 'There are many different approaches you could take to pass data to JavaScriptLand. Here are some suggestions on how to fetch, format, and hydrate (inject data) typical JavaScript components.'
 template: page
 stage: 'Needs Polish & Humor'
 nav_title: 'Front-End Frameworks'
-updated_by: 00e54795-ff8f-4be5-af67-3254d7c269a7
 updated_at: 1613922784
 id: 131259a5-2072-49d8-9ea4-2099e0338e2f
 ---
-The examples below are demonstrating how this works in context with [Vue JS](https://vuejs.org/) - but this methodology also applies to other frameworks.
+The examples below use [Vue.js](https://vuejs.org/) as the framework of choice, but these techniques will apply to most JavaScript frameworks.
 
-## Manually building JSON in antlers to pass to components
-This method is not very scalable but does give you control over exactly what data you want to send to your components.
+## Pass all page data directly to a component
+This is probably the simplest possible method. You can encode all the page data into JSON and inject it directly into your component. The downside is that you'll be exposing all that data to the client-side, if that's a concern for your particular site.
+
+```vue
+<home-page
+  :page-data="{{ page | to_json | entities }}">
+</home-page>
+```
+
+
+## Assemble selective JSON inside Antlers and pass to components via props
+This method is simple, best used for one-off situations. It provides you control over exactly what data you want to pass to your components, but is too messy to be used at a larger scale.
 
 ```vue
 <home-page
@@ -27,17 +36,8 @@ This method is not very scalable but does give you control over exactly what dat
 ></home-page>
 ```
 
-## Passing the available data of the page directly to a component
-This is the simplest method available, we will simply pass all of the page data directly to your component.
-
-```vue
-<home-page
-  :page-data="{{ page | to_json | entities }}">
-</home-page>
-```
-
 ## Fetching data from a collection
-This method is used to fetch data that is not available on your current page.
+This method is used to fetch _any_ entry-based data, not just that available on the current page.
 
 ```vue
 <home-page
@@ -48,9 +48,9 @@ This method is used to fetch data that is not available on your current page.
 > Note that when using [the Live Preview feature](https://statamic.dev/live-preview), only the current page data is available to you. Trying to query collection data **will not work**.
 
 ## The Content API
-[The Content API](https://statamic.dev/content-api) can be used on its own or in conjunction with the above methods. 
-Below we show a simple example component, which fetches the data in it's (async) created function. This data can then be used in the component or passed down to child components.
-The example uses the standard Fetch method but you can use any AJAX library.
+[The Content API](https://statamic.dev/content-api) can be used on its own, or in conjunction with the above methods. 
+
+Here is a simple example component that fetches data using the asynchronous `created()` function. This data can then be used in the component or passed down to child components. The example uses the standard `Fetch` method but you can use any AJAX library (Axios, etc).
 
 ```vue
 <template>
