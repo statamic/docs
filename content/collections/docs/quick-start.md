@@ -77,7 +77,7 @@ Now you can sign in! Head to [http://cyberspace-place.test/cp](http://cyberspace
 
 ## Make a home page
 
-Next, let's get some content of _our_ choosing to show on the homepage. Head to to `Collections → Pages` in the control panel and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
+Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
 
 <figure>
     <img src="/img/quick-start/editing-home.png" alt="Editing the home page">
