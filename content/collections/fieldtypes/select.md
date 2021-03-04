@@ -21,6 +21,11 @@ options:
     description: |
       Set the non-selectable placeholder text. Default: none.
   -
+    name: default
+    type: string
+    description: |
+      Set the default option key. Default: none.
+  -
     name: multiple
     type: boolean
     description: >
