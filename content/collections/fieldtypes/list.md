@@ -28,9 +28,9 @@ Loop through the array items to display each item's `value`.
 ```
 <h1>Product Ideas</h1>
 <ul>
-  {{ todo }}
+  {{ product_ideas }}
     <li>{{ value }}</li>
-  {{ /todo }}
+  {{ /product_ideas }}
 </ul>
 ```
 
