@@ -111,5 +111,6 @@ module.exports = {
     borderWidth: ['responsive', 'first', 'last', 'hover', 'focus'],
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
     outline: ['focus'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled']
   }
 }
