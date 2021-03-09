@@ -6,9 +6,11 @@ types:
 An array of sanitized `POST` variables that come from any form data present for a POST to the current URL. It can be used as a tag pair with access to all your data or as a single tag to access variables directly. A counterpart to `{{ get }}`.
 
 ```
-<form action="post">
+<form method="post">
+  <input type="hidden" name="_token" value="csrftokenhere" />
   <input type="text" name="first_name" value="Niles">
   <input type="text" name="last_name" value="Peppertrout">
+  <button>Submit</button>
 </form>
 ```
 
