@@ -134,6 +134,7 @@ Each item in the `fields` array contains the following data configurable in the 
 | ` field` | string | Pre-rendered HTML based on the fieldtype |
 | `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
+| `instructions` | string | User-friendly instructions label |
 
 ### Pre-rendered HTML
 
