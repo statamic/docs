@@ -6,11 +6,6 @@ intro: >
 description: Display breadcrumb-style navigation links to your current page.
 parameters:
   -
-    name: 'url'
-    type: string
-    description: >
-      Defaults to your current page.
-  -
     name: include_home
     type: 'boolean'
     description: >
