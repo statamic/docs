@@ -1,22 +1,20 @@
 ---
 title: Assets
 intro: >
- Assets are media and document files managed by Statamic. They can be images, videos, PDFs, zip files, or any other kind of file. Each can have fields and content attached to them, just like entries.
+ Assets are files managed by Statamic contained in specific directories. They can be images, videos, PDFs, giant text documents containing video game walk-throughs, or literally any other type of file. Each asset can have fields and content attached to them, just like entries.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568644449
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
-stage: 1
+stage: 3
 blueprint: page
 ---
 ## Overview
 
-Assets are the media and document files that you've given Statamic access to. They usually live in folders on your server but can also exist on an [Amazon S3 bucket](https://aws.amazon.com/s3) or other file storage service. Each of these locations is called a **container**..
+Assets most often live in folders on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage service. Each of these defined locations is called a **container**..
 
-Statamic will scan the files in each container and cache [meta information](#metadata) (like `width` and `height` for images) about them to speed up interactions and response times when working with them on your front-end.
+Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
 ## Asset Browser
-The Control Panel's asset browser gives you a great view on these files. You can file, sort, and search them, move and rename files, preview media files, and even set focal crop points.
+The Control Panel's asset browser gives you a great view on these files. You can file, sort, search, move, rename, preview, and — if working with images — even set focal crop points to make dynamically resized images significantly more useful.
 
 <figure>
     <img src="/img/assets.png" alt="Assets browser">
@@ -25,7 +23,7 @@ The Control Panel's asset browser gives you a great view on these files. You can
 
 ## Asset Fields
 
-Asset fields are configured as a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll see the fields from the configured blueprint.
+Asset fields are configured like a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll see the fields from the configured blueprint.
 
 This data is stored in the asset's [meta data](#metadata) file.
 
@@ -34,14 +32,12 @@ This data is stored in the asset's [meta data](#metadata) file.
     <figcaption>The asset editor in editing an image.</figcaption>
 </figure>
 
-
 ## Metadata
 
-- Each asset in a container will have a corresponding yaml file located in a `.meta` subdirectory. eg. `images/tree.jpg` would have an `images/.meta/tree.jpg.yaml`
-- These files contain cached data about the files which increases performance (since it doesn't have to be continually recalculated). Things like image dimensions, file size, last modification dates.
-- They also contain user generated data. The fields are defined by the asset container's blueprint. Typically things like alt text, focal points, etc.
-- Note: This differs from v2, where user generated data lived inside a big array in the container's yaml file.
-- The option to version control these files - like the assets themselves - is up to you.
+- Each asset in a container has a corresponding yaml file located in a `.meta` subdirectory. For example, `images/tree.jpg` gets an `images/.meta/tree.jpg.yaml` cache file.
+- These files contain cached data, including but not limited to: image dimensions, file size, last modification dates, and so on.
+- These cache files can also contain user created data. The fields are defined by the asset container's blueprint. Typically these are alt text, focal points, descriptions, and so on, but they could be anything you want at all.
+- You may version control these files along with the assets themselves. It's up to you if you find that helpful.
 
 ``` yaml
 size: 9151
@@ -55,7 +51,7 @@ data:
 
 ## Containers
 
-Each container has its own settings, configurable permissions, and [blueprint](#blueprint). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service. It's up to you.
+Each container has its own settings, configurable permissions, and [blueprint](#blueprint). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service.
 
 Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
 
@@ -65,7 +61,7 @@ title: 'Assets'
 disk: 'assets'
 ```
 
-Each container implements a disk, which is just a [Laravel Filesystem](https://laravel.com/docs/filesystem) — a native Laravel feature, which is nothing more than some glue that groups [driver](#drivers), URL, and a location together. Statamic has a nice default asset disk ready for you. You don't need to mess with this stuff unless you want to.
+Each container implements a "disk", also known as a [Laravel Filesystem](https://laravel.com/docs/filesystem). This native Laravel feature groups a [driver](#drivers), URL, and location together. Statamic includes a local disk on fresh installs. You can modify or delete it, but many sites can simply use it as is.
 
 ``` php
 'disks' => [
@@ -78,15 +74,15 @@ Each container implements a disk, which is just a [Laravel Filesystem](https://l
 ]
 ```
 
-Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or anything else as long as there is a Flysystem adapter for it installed.
+Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
 ## Private Containers
 
-Sometimes it’s handy to store assets that shouldn’t be freely accessible through the browser.
+Sometimes it’s handy to store assets that shouldn’t be publicly visible through a direct URL or browser.
 
-<mark>If your asset container's disk does not have a `url` property, Statamic will not output URLs.</mark>
+>>> If your asset container's disk does not have a `url` property, Statamic will not output URLs.
 
-This means you should put the container's disk somewhere above the webroot. If you leave the disk within the webroot, while Statamic won't output URLs, they are _technically_ still accessible if you type the URL manually.
+Private contains should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
 
 ``` files
 /
@@ -95,32 +91,15 @@ This means you should put the container's disk somewhere above the webroot. If y
 |   `-- not-in-here
 ```
 
-If you're using a service based driver (like Amazon S3) then you should make sure you are **not** setting the `visibility`. Or, set it to `private` if you want to be doubly sure.
+If you're using a service based driver like Amazon S3, make sure you **do not** set the `visibility` to anything other than `private`.
 
-## Blueprint
+## Blueprints
 
-If you don't explicitly edit the [Blueprint](/blueprints) for your container, you'll get a single "alt text" field.
+The default container [Blueprint](/blueprints) contains a single "alt text" field — just useful and simple enough to get you started.
 
-If you want to customize the fields, you're able to create your own blueprint. You'll find it in `resources/blueprints/assets/{handle}.yaml`. Or, just go ahead and edit it through the control panel and it'll create the file for you.
+You can customize the fields on the blueprint by visiting the container in the Control Panel and choosing "Edit Blueprint" in the options dropdown.
 
-## Entries
-
-- The [assets fieldtype](/fieldtypes/assets) will save paths relative to the container.
-    ``` yaml
-    # blueprint
-    -
-      handle: images
-      field:
-        type: assets
-    ```
-    ``` yaml
-    # entry
-    images:
-      - img/foo.jpg
-      - img/bar.jpg
-    ```
-- Note: This differs from v2, which saved URLs relative to the root.
-
+If you want to edit the blueprint file directly, you can do so in `resources/blueprints/assets/{handle}.yaml`.
 
 ## Drivers
 
@@ -128,22 +107,48 @@ Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and othe
 
 Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
 
-## Templating
 
-_Examples and link to Assets tag._
+## Frontend Templating {#templating}
 
-- As long as the entry has an asset field in the blueprint, augmentation will take care of it. Just loop over the array.
+There are two main methods for working with Asset data on the frontend. The Assets Fieldtype, and the Assets Tag.
 
-    ```
-    {{ images }}
+## Assets Fieldtype
+
+The [Assets Fieldtype](/fieldtypes/asset) can be used in your content Blueprints to attach assets to your entries, taxonomy terms, globals, or user accounts. It can be used to create image galleries, video players, zip downloads, or anything else you can think of.
+
+All of the data stored on your Assets will be available on the frontend without having to create any kind of duplication.
+
+### Example
+
+If you had a `slideshow` field with a whole bunch of images selected, you can render them by looping through them.
+
+```
+<div class="slideshow">
+    {{ slideshow }}
         <img src="{{ url }}" alt="{{ alt }}">
-    {{ /images }}
-    ```
+    {{ /slideshow }}
+</div>
+```
+
+Learn more about the [Assets Fieldtype](/fieldtypes/assets).
+
+## Assets Tag
+
+If you ever find yourself needing to loop over all of the assets in a container (or folder inside a container) instead of selecting them manually with the Assets Fieldtype, this is the way.
+
+### Example
+```
+{{ assets container="photoshoots" limit="10" sort="rating" }}
+    <img src="{{ url }}" alt="{{ alt }}" />
+{{ /assets }}
+```
+
+Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
 ## Image Manipulation
 
-Statamic comes with Glide, a popular image manipulation library. It's really easy to use and even has [it's own tag](/tags/glide).
+Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamically resize, crop, and manipulate images. It's really easy to use and has [its own tag](/tags/glide).
 
 ```
-{{ glide:image width="120" height="500" }}
+{{ glide:image width="120" height="500" filter="sepia" }}
 ```

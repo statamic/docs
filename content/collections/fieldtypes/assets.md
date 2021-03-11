@@ -56,7 +56,9 @@ The list mode is shown above, while the grid mode is below. There are no functio
 
 ## Data Structure
 
-Data is stored as an array of image paths relative to the asset container. If `max_files` is set to one, a string will be saved instead.
+Data is stored as an array of image paths _relative to the asset container_. Each asset's full URL is generated dynamically on the frontend based on the image path and its container. This allows containers to be a bit more portable by avoiding fully hardcoded file paths.
+
+If `max_files` is set to `1`, a string will be saved instead of an array.
 
 ``` yaml
 # Default YAML
