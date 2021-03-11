@@ -18,4 +18,12 @@ example: <b>NEAT</b>
 &lt;b&gt;NEAT&lt;b&gt;
 ```
 
+## Double Encoding
+
+You can double encode HTML entities by passing `true` as an argument. This is useful for preserving JSON formatting.
+
+```
+{{ example | sanitize:true }}
+```
+
 [htmlspecialchars]: http://php.net/manual/en/function.htmlspecialchars.php
