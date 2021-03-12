@@ -163,10 +163,10 @@ Available right-hand-side literals/options include:
 
 | Literal / Option | Description |
 | :--- | :--- |
-| `null` | Will be evaluated as a literal `null`. |
-| `true` | Will be evaluated as a literal `true`. |
-| `false` | Will be evaluated as a literal `false`. |
-| `empty` | Will intelligently check if value is empty. |
+| `empty` | Will intelligently check if value is empty (ie. `null`, `''`, `[]`, or `{}`). |
+| `null` | Will be evaluated as a **literal** `null`. |
+| `true` | Will be evaluated as a **literal** `true`. |
+| `false` | Will be evaluated as a **literal** `false`. |
 
 ## Multiple Conditions
 
