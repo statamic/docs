@@ -29,9 +29,30 @@ If you turn the watcher off, it won't need to look at the filesystem on every re
 With this off, you will need to use the Control Panel to manage your assets (and edit entries, etc) or clear the cache manually
 if you do make manual changes to the files.
 
-### 2. Disable filesystem asserts
+### 2. Enabling Flysystem caching
 
-Statamic's assets use Flysystem under the hood. Flysystem has a feature where any time you try to read a file, it will first
+Statamic's assets use Flysystem under the hood. Flysystem has a feature where it can cache filesystem calls, you just need to install and enable it.
+
+```bash
+composer require league/flysystem-cached-adapter
+```
+
+```php
+/// config/filesystems.php
+'disks' => [
+    's3' => [
+        'driver' => 's3',
+        // ...
+        'cache' => true,
+    ]
+]
+```
+
+More details in the [Laravel Docs](https://laravel.com/docs/8.x/filesystem#caching).
+
+### 3. Disable Filesystem asserts
+
+Flysystem also has a feature where any time you try to read a file, it will first
 check if it exists. You disable this though, using the `disable_asserts` (that's asserts, not assets) flag on your Asset Container's disk.
 
 ```php
