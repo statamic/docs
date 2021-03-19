@@ -77,6 +77,12 @@ variables:
       being viewed. Also useful for outputting
       active states.
   -
+    name: is_external
+    type: boolean
+    description: >
+      Whether the current nav URL is an external link . Useful for outputting
+      `target=_"blank"` in menu templates.      
+  -
     name: depth
     type: integer
     description: The depth of the page within the nav structure.
