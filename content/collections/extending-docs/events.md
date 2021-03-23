@@ -498,7 +498,7 @@ An example of when this would be useful is to add a section to a blueprint in th
 public function handle(TermBlueprintFound $event)
 {
     $event->blueprint;
-    $event->entry;
+    $event->term;
 }
 ```
 
