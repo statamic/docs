@@ -10,8 +10,15 @@ id: 5bd75435-806e-458b-872e-7528f24df7e6
 
 ## Creating an addon
 
-Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory).
-During development however, you can keep it somewhere on your local filesystem and require it in your composer.json as a path repository.
+You can generate an addon with a console command:
+
+``` bash
+php please make:addon example/my-addon
+```
+
+This will scaffold out everything you need to get started as a [private addon](#private-addons) within your site's `addons` directory.
+
+Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
 > If you don't plan on distributing your addon, you may be fine with [application code](/extending).
 
