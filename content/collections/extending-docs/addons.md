@@ -460,6 +460,50 @@ if ($addon->edition() === 'pro') {
 > You don't need to check whether a license is valid, Statamic will do that automatically for you.
 
 
+## Update Scripts
+
+You may register update scripts to help your users migrate data, etc. when new features are added or breaking changes are introduced.
+
+For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission. To do this, first register your update script in your addon's service provider:
+
+``` php
+protected $updateScripts = [
+    \Acme\Example\Updates\UpdatePermissions::class,
+];
+```
+
+Then in your update script, you can extend `UpdateScript` and implement the necessary methods:
+
+``` php
+use Statamic\UpdateScripts\UpdateScript;
+
+class UpdatePermissions extends UpdateScript
+{
+    public function shouldUpdate($newVersion, $oldVersion)
+    {
+        return $this->isUpdatingTo('1.2.0');
+    }
+
+    public function update()
+    {
+        Role::all()->each(function ($role) {
+            if ($role->hasPermission('configure forms')) {
+                $role->addPermission('configure goat-survey-pro')->save();
+            }
+        });
+
+        $this->console()->info('Permissions added successfully!');
+    }
+}
+```
+
+The `shouldUpdate()` method helps Statamic determine when to run the update script. Feel free to use the `isUpdatingTo()` helper method, or the provided `$newVersion` and `$oldVersion` variables to help you write this logic.
+
+The `update()` method is where your custom data migration logic happens. Feel free to use the `console()` helper to output to the user's console as well. In the above example, we assign the new `configure goat-survey-pro` permission to all users who have the `configure forms` permission.
+
+That's it! Statamic should now automatically run your update script as your users update their addons.
+
+
 ## Publishing to the Marketplace
 
 Once your addon is ready to be shared, you can publish it on the Marketplace where it can be discovered by others.
