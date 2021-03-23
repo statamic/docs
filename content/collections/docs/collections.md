@@ -122,6 +122,10 @@ A structured collection will **not** have a maximum depth by default, allowing y
     <figcaption>These reorderable entries have a max depth of 1.</figcaption>
 </figure>
 
+### Default sort order in listings
+
+For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
+
 ## Routing
 
 Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule.
