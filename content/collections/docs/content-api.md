@@ -27,6 +27,7 @@ https://yourdomain.tld/api/{endpoint}
 You may send requests to the following endpoints:
 
 - [Entries](#entries) / [Entry](#entry)
+- [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
@@ -164,6 +165,84 @@ Gets a single entry.
     "title": "My First Day"
   }
 }
+```
+
+
+## Collection Tree
+
+`GET` `/api/collections/{collection}/tree`
+
+Gets entry tree for a structured collection.
+
+``` json
+{
+  "data": [
+    {
+      "page": {
+        "title": "About",
+        "url": "/about"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "page": {
+            "title": "Articles",
+            "url": "/about/articles"
+          },
+          "depth": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Params
+
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+
+```url
+/api/collections/{collection}/tree?fields=title,url&max_depth=2
+```
+
+
+## Navigation Tree
+
+`GET` `/api/navs/{nav}/tree`
+
+Gets tree for a navigation structure.
+
+``` json
+{
+  "data": [
+    {
+      "page": {
+        "title": "Recommended Products",
+        "url": "https://rainforest.store/?cid=statamic",
+      },
+      "depth": 1,
+      "children": [
+        {
+          "page": {
+            "title": "Books",
+            "url": "https://rainforest.store/?cid=statamic&type=books",
+          },
+          "depth": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Params
+
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+
+```url
+/api/navs/{nav}/tree?fields=title,url&max_depth=2
 ```
 
 
