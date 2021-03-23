@@ -41,6 +41,15 @@ Entry::query()
     ->get();
 ```
 
+### Filtering by taxonomies
+
+If you want to filter by a [taxonomy](/taxonomies) term, you can use `whereTaxonomy`. For instance:
+
+```php
+Entry::query()
+    ->whereTaxonomy('tags::harry-potter');
+```
+
 ## Ordering, Limit, and Offset
 
 The `orderBy` method allows you to sort by a given field:
