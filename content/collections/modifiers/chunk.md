@@ -2,6 +2,7 @@
 modifier_types:
   - markup
   - utility
+id: 10b38f50-e33c-47e0-8e94-bc4dc551600f
 ---
 Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
 
