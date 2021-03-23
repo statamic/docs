@@ -5,6 +5,7 @@ stage: 1
 pro: true
 id: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
 ---
+(If you're interested in [GraphQL](/graphql), we have that too.)
 
 ## Enable the API
 

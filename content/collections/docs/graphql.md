@@ -5,6 +5,7 @@ stage: 1
 pro: true
 id: fc564ddf-80c1-4d87-8675-4a41f13c7774
 ---
+(If you're interested in a [REST API](/content-api), we have one of those too.)
 
 ## Enable GraphQL
 
