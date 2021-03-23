@@ -34,7 +34,7 @@ preferences:
 | Danish | `da` |
 | Dutch | `nl` |
 | French | `fr` |
-| German | `de` or `de-CH` |
+| German | `de` or `de_CH` |
 | Italian | `it` |
 | Portuguese | `pt` |
 | Slovene | `sl` |
@@ -56,7 +56,7 @@ There are 4 steps.
 
 Run the `translator generate` command in the `statamic/cms` project, along with the new language code as an argument. This will generate empty JSON and PHP files in `resources/lang` ready to be translated into the locale of your choice.
 
-You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es-MX`).
+You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`).
 
 ``` bash
 php translator generate eo
