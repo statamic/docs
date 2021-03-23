@@ -86,7 +86,7 @@ class Featured extends Filter
 
     public function visibleTo($key)
     {
-        return $key === 'entries';
+        return $key === 'entries' && $this->context['collection'] == 'blog';
     }
 }
 ```
@@ -97,7 +97,7 @@ The `apply` method works exactly as it would in a standard [scope](#scopes).
 
 The `badge` method lets you define the badge text to be used when the filter is active on a listing.
 
-The `visibleTo` method allows you to control in which listings this filter will be displayed. You will be given a key that represents the type of listing. For example, an author filter might be appropriate for the `entries` listing but not `users`. You may also be given an array of contextual data which will vary depending on the listing. For instance, the `entries` listing will also provide the collection.
+The `visibleTo` method allows you to control in which listings this filter will be displayed. You will be given a key that represents the type of listing. For example, an author filter might be appropriate for the `entries` listing but not `users`. You may also be given an array of contextual data which will vary depending on the listing. For instance, for `entries`, the current collection name can be accessed with `$this->context['collection']`.
 
 The `autoApply` method lets you define a default value to apply.
 
