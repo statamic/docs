@@ -23,14 +23,14 @@ STATAMIC_GRAPHQL_ENABLED=true
 > If you publish the underlying [package's](#laravel-package) config, the query routes will
 > be enabled regardless of whether you've disabled it in the Statamic config.
 
-You will also need to enable the queries you want to be available. For security, they're all disabled by default.
+You will also need to enable the resources you want to be available. For security, they're all disabled by default.
 
 ```php
 // config/statamic/graphql.php
 
-'queries' => [
-  'entries' => true,
+'resources' => [
   'collections' => true,
+  'taxonomies' => true,
   // etc
 ]
 ```

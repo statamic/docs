@@ -20,6 +20,18 @@ Enable the API in your config or with an environment variable.
 STATAMIC_API_ENABLED=true
 ```
 
+You will also need to enable the resources you want to be available. For security, they're all disabled by default.
+
+```php
+// config/statamic/api.php
+
+'resources' => [
+  'collections' => true,
+  'taxonomies' => true,
+  // etc
+]
+```
+
 ## Endpoints
 
 `
