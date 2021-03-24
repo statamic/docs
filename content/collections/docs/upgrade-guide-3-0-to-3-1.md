@@ -6,6 +6,7 @@ blueprint: page
 id: 769f1c97-3fb4-4303-a60b-4096c06b7870
 ---
 ### High impact changes
+- [Update Scripts](#update-scripts)
 - [Collection and Nav trees](#collection-and-nav-trees)
 - [Opt-in REST API Resources](#optin-rest-api-resources)
 
@@ -17,6 +18,33 @@ id: 769f1c97-3fb4-4303-a60b-4096c06b7870
 - [Broadcasting auth endpoint](#broadcasting-auth-endpoint)
 
 ---
+
+## Update scripts
+
+Statamic 3.1 introduced the concept of update scripts, which you can think of like database migrations. It'll let
+Statamic perform adjustments for any particular upgrade path.
+
+Some of the changes listed in this upgrade guide will be performed automatically by an update script.
+
+In order for it to work, you'll need a section added to your `composer.json`.
+
+**When upgrading using Composer, Statamic should add this automatically for you.**
+
+(An update script adding its own update script, say whaaat?)
+
+If it doesn't, add this `pre-update-cmd` under the `scripts` section of your `composer.json`:
+
+```json
+"scripts": {
+    "pre-update-cmd": [
+        "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
+    ],
+    ...
+}
+```
+
+
+
 
 ## Collection and Nav Trees
 The trees for collections and navs are now stored separately from the collections and navs themselves.
