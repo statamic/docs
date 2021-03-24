@@ -5,6 +5,7 @@ stage: 1
 pro: true
 id: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
 ---
+(If you're interested in [GraphQL](/graphql), we have that too.)
 
 ## Enable the API
 
@@ -27,6 +28,7 @@ https://yourdomain.tld/api/{endpoint}
 You may send requests to the following endpoints:
 
 - [Entries](#entries) / [Entry](#entry)
+- [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
@@ -164,6 +166,84 @@ Gets a single entry.
     "title": "My First Day"
   }
 }
+```
+
+
+## Collection Tree
+
+`GET` `/api/collections/{collection}/tree`
+
+Gets entry tree for a structured collection.
+
+``` json
+{
+  "data": [
+    {
+      "page": {
+        "title": "About",
+        "url": "/about"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "page": {
+            "title": "Articles",
+            "url": "/about/articles"
+          },
+          "depth": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Params
+
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+
+```url
+/api/collections/{collection}/tree?fields=title,url&max_depth=2
+```
+
+
+## Navigation Tree
+
+`GET` `/api/navs/{nav}/tree`
+
+Gets tree for a navigation structure.
+
+``` json
+{
+  "data": [
+    {
+      "page": {
+        "title": "Recommended Products",
+        "url": "https://rainforest.store/?cid=statamic",
+      },
+      "depth": 1,
+      "children": [
+        {
+          "page": {
+            "title": "Books",
+            "url": "https://rainforest.store/?cid=statamic&type=books",
+          },
+          "depth": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Params
+
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+
+```url
+/api/navs/{nav}/tree?fields=title,url&max_depth=2
 ```
 
 
@@ -351,6 +431,74 @@ class CustomEntryResource extends EntryResource
             'id' => $this->resource->id(),
             'title' => $this->resource->value('title'),
         ];
+    }
+}
+```
+
+## Caching
+
+API responses are cached by default. You may customize the cache expiry in `config/statamic/api.php`.
+
+```php
+'cache' => [
+    'expiry' => 60,
+],
+```
+
+### Cache Invalidation
+
+Cached responses are automatically invalidated when content is changed. Depending on your API usage and blueprint schema, you may also wish to ignore specific events when invalidating.
+
+```php
+'cache' => [
+    'expiry' => 60,
+    'ignored_events' => [
+        \Statamic\Events\UserSaved::class,
+        \Statamic\Events\UserDeleted::class,
+    ],
+],
+```
+
+### Disabling Caching
+
+If you wish to disable caching altogether, set `cache` to `false`.
+
+```php
+'cache' => false,
+```
+
+### Custom Cache Driver
+
+If you need a more intricate caching solution, you may reference a custom cache driver class and pass extra config along if necessary.
+
+```php
+'cache' => [
+    'class' => CustomCacher::class,
+    'expiry' => 60,
+    'foo' => 'bar',
+],
+```
+
+Be sure to extend `Statamic\API\AbstractCacher` and implement the required methods. You can access custom config via the `config()` method, ie. `$this->config('foo')`.
+
+```php
+use Statamic\API\AbstractCacher;
+
+class CustomCacher extends AbstractCacher
+{
+    public function get(Request $request)
+    {
+        //
+    }
+
+    public function put(Request $request, JsonResponse $response)
+    {
+        //
+    }
+
+    public function handleInvalidationEvent(Event $event)
+    {
+        //
     }
 }
 ```
