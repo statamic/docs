@@ -61,7 +61,7 @@ title: 'Assets'
 disk: 'assets'
 ```
 
-Each container implements a "disk", also known as a [Laravel Filesystem](https://laravel.com/docs/filesystem). This native Laravel feature groups a [driver](#drivers), URL, and location together. Statamic includes a local disk on fresh installs. You can modify or delete it, but many sites can simply use it as is.
+Each container implements a "disk", also known as a [Laravel Filesystem](https://laravel.com/docs/filesystem). This native Laravel feature groups a [driver](#drivers), URL, location, and [visibility](#visibility) together. Statamic includes a local disk on fresh installs. You can modify or delete it, but many sites can simply use it as is.
 
 ``` php
 'disks' => [
@@ -69,12 +69,10 @@ Each container implements a "disk", also known as a [Laravel Filesystem](https:/
         'driver' => 'local',
         'root' => public_path('assets'),
         'url' => '/assets',
-        'visibility' => 'public',
+        'visibility' => 'public', // (more info about visibility below)
     ],
 ]
 ```
-
-> Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate images in your container.
 
 Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
@@ -84,7 +82,7 @@ Sometimes it’s handy to store assets that shouldn’t be publicly visible thro
 
 >>> If your asset container's disk does not have a `url` property, Statamic will not output URLs.
 
-Private contains should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
+Private containers should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
 
 ``` files
 /
@@ -93,7 +91,17 @@ Private contains should be located above webroot. If you leave the disk within t
 |   `-- not-in-here
 ```
 
-If you're using a service based driver like Amazon S3, make sure you **do not** set the `visibility` to anything other than `private`.
+Make sure to also set the [visibility](#visibility) to `private`.
+
+
+## Visibility
+
+Your filesystem's disk can have a `visibility` which is abstraction of file permissions. You can set it to `public` or `private`, 
+which essentially controls whether they're accessible or not.
+
+Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
+
+> If you're using a service based driver like Amazon S3, and you want the files to be accessibly by URL, make sure you set the [visibility](#visibility) to `public`.
 
 ## Blueprints
 
