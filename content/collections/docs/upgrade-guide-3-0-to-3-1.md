@@ -5,6 +5,24 @@ template: page
 blueprint: page
 id: 769f1c97-3fb4-4303-a60b-4096c06b7870
 ---
+
+First read through this guide to see if there's anything that you might need to adjust.
+When upgrading, Statamic may automate some things for you. They'll be noted below.
+
+In your `composer.json`, change the `statamic/cms` requirement:
+
+```json
+"statamic/cms": "3.1.*"
+```
+
+Then run:
+
+```bash
+composer update statamic/cms --with-dependencies
+```
+
+---
+
 ### High impact changes
 - [Update Scripts](#update-scripts)
 - [Collection and Nav trees](#collection-and-nav-trees)
