@@ -74,6 +74,8 @@ Each container implements a "disk", also known as a [Laravel Filesystem](https:/
 ]
 ```
 
+> Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate images in your container.
+
 Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
 ## Private Containers
