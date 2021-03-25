@@ -5,6 +5,7 @@ template: page
 stage: 'Needs Polish & Humor'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1612297554
+pro: true
 id: 5bd9426f-23cf-4196-9848-471dff67f5ea
 ---
 
