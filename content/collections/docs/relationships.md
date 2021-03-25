@@ -26,12 +26,12 @@ There are 4 primary fieldtypes used to manage relationships. When you use these 
 Let's use this example product entry to walk through displaying data from the three relationships: photo, author, and related products.
 
 ``` yaml
-# /content/products/wayne-gretsky-pog-collection.md
-title: Wayne Gretsky Pog Collection
+# /content/products/wayne-gretzky-pog-collection.md
+title: Wayne Gretzky Pog Collection
 price: 2495.00
 template: products.show
 id: 123-1234-12-4321
-photo: products/gretsky-pogs-FINAL-(2).jpg
+photo: products/gretzky-pogs-FINAL-(2).jpg
 author: abc-abcd-ab-dcba
 related_products:
   - 789-7890-78-0987
