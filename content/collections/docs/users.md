@@ -1,14 +1,14 @@
 ---
 title: Users
-intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
+intro: 'Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.'
 template: page
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568645051
-id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
 stage: 3
 pro: true
-video: https://youtu.be/KuiPocGq3L8
+video: 'https://youtu.be/KuiPocGq3L8'
+id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 ---
 ## Overview
 
@@ -129,6 +129,7 @@ While users are stored in files by default — like everything else in Statamic 
 - [Storing Laravel Users in Files](/knowledge-base/storing-laravel-users-in-files)
 - [Storing Users in a Database](/knowledge-base/storing-users-in-a-database)
 - [Custom User Storage](/knowledge-base/storing-users-somewhere-custom)
+- [Using an Independent Auth Guard](/knowledge-base/using-an-independent-authentication-guard)
 
 ## OAuth
 
