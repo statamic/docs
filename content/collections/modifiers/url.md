@@ -1,6 +1,7 @@
 ---
 id: eb68e4e1-c1b2-4806-a477-6c0491616b88
 modifier_types:
+  - asset
   - string
   - relationship
 ---
