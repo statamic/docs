@@ -124,7 +124,7 @@ There are two main methods for working with Asset data on the frontend. The Asse
 
 ## Assets Fieldtype
 
-The [Assets Fieldtype](/fieldtypes/asset) can be used in your content Blueprints to attach assets to your entries, taxonomy terms, globals, or user accounts. It can be used to create image galleries, video players, zip downloads, or anything else you can think of.
+The [Assets Fieldtype](/fieldtypes/assets) can be used in your content Blueprints to attach assets to your entries, taxonomy terms, globals, or user accounts. It can be used to create image galleries, video players, zip downloads, or anything else you can think of.
 
 All of the data stored on your Assets will be available on the frontend without having to create any kind of duplication.
 
