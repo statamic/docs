@@ -226,6 +226,26 @@ Here's a peek at how that YAML is structured.
       - required
 ```
 
+More complex validation can also be applied using Laravel's [built in rules](https://laravel.com/docs/8.x/validation#available-validation-rules), which looks like this in the YAML.
+
+```yaml
+-
+  handle: input
+  field:
+    type: select
+    options:
+      option_a: null
+      option_b: null
+-
+  handle: other
+  field:
+    input_type: text
+    validate:
+      - 'requiredif:input,option_a'
+```
+
+> When applying custom validation through the dashboard, you must press enter after typing your rule into the field in order for it to be saved.
+
 
 ## Grid Fieldtype
 
