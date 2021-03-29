@@ -1121,7 +1121,7 @@ However, you're free to use this package on its own, as if you've installed it i
 If Statamic detects that you've published the package's config file (located at `config/graphql.php`), it will assume you're trying to use it manually and will
 avoid doing the automatic setup steps mentioned above.
 
-If you'd like to use Statamic's GraphQL schema in within the config file (maybe you want a different default, and want Statamic's one at `/graphql/statamic`)
+If you'd like to use Statamic's GraphQL schema within the config file (maybe you want a different default, and want Statamic's one at `/graphql/statamic`)
 you can use the `DefaultSchema` class.
 
 ```php
