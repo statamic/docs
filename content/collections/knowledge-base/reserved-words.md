@@ -30,3 +30,8 @@ This is the list of reserved words you shouldn't use as field names, in addition
 
 ## As Taxonomy Group Names
 - `register`
+
+## As Wildcard Variables in Statamic Routes
+
+- `entry`
+- `taxonomy`
