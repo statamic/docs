@@ -129,6 +129,7 @@ While users are stored in files by default — like everything else in Statamic 
 - [Storing Laravel Users in Files](/knowledge-base/storing-laravel-users-in-files)
 - [Storing Users in a Database](/knowledge-base/storing-users-in-a-database)
 - [Custom User Storage](/knowledge-base/storing-users-somewhere-custom)
+- [Using an Independent Auth Guard](/knowledge-base/using-an-independent-authentication-guard)
 
 ## OAuth
 
