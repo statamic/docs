@@ -204,16 +204,19 @@ It would bring every field inline and prefix each field's handle appropriately.
 If you omit the `prefix` you won't be able to import them more than once at the same level because they would have the same handle and overwrite each other.
 
 
-## Required Fields
+## Validation
 
-Fields can be required, enforcing the need for content creators fill them out before saving or publishing.
+Fields can have various validation rules applied to them, enforcing the need for content creators to fill them out in a specific way before saving or publishing.
 
-While configuring a field, switch to the **Validation** tab and add the rule for `required` to the list.
+While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/8.x/validation#available-validation-rules).
 
 <div class="screenshot">
-    <img src="/img/required-field.png" width="521" alt="Required field validation"/>
-    <div class="caption">This is how you make a field required.</div>
+    <img src="/img/field-validation.png" width="521" alt="Field validation"/>
+    <div class="caption">Add validation rules (with a shortcut for requiring)</div>
 </div>
+
+In this screenshot, you can see that the field has an `alpha_dash` and `min:4` rule which means you can only type letters and dashes, like a slug, and that it
+must be at least 4 characters. You have plenty of options to be creative and confident that your data will be entered the way you need it to be.
 
 Here's a peek at how that YAML is structured.
 
@@ -223,8 +226,15 @@ Here's a peek at how that YAML is structured.
   field:
     type: text
     validation:
-      - required
+      - alpha_dash
+      - 'min:4'
 ```
+
+> If you're typing a rule, make sure to hit enter to confirm it!
+
+### Required Fields
+
+Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
 
 
 ## Grid Fieldtype
