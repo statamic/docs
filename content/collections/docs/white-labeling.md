@@ -71,3 +71,19 @@ Set the path to a CSS file and easily add your own styles to the control panel.
 ``` php
 'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', null),
 ```
+
+### Support URL
+
+Set the location of the support link in the "Useful Links" header dropdown. Use `false` to remove it entirely.
+
+```php
+'support_url' => env('STATAMIC_SUPPORT_URL', 'https://statamic.com/support'),
+```
+
+### Documentation
+
+Whether to show links to Statamic documentation throughout the Control Panel.
+
+```php
+'link_to_docs' => env('STATAMIC_LINK_TO_DOCS', true),
+```
