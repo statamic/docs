@@ -28,7 +28,7 @@ The easiest way to create your **first user** is by running `php please make:use
     <figcaption>This is all it takes to make your first user.</figcaption>
 </figure>
 
-You can also [create users by hand](/knowledge-base/creating-user-files) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
+You can also [create users by hand](/knowledge-base/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
 
 ### New User Invitations
 
