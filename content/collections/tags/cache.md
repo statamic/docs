@@ -13,6 +13,10 @@ parameters:
     type: string
     description: 'The cache key to be used, if you''d like to manually invalidate this tag pair programmatically.'
   -
+    name: tags
+    type: string|array
+    description: 'The [cache tags](https://laravel.com/docs/8.x/cache#cache-tags) this section will be using, if you''d like to invalidate this pair programmatically. If you use this, do not also use `key`.'
+  -
     name: scope
     type: 'string'
     description: 'Sets the [cache scope](#scope). Either `site` or `page`. Has no effect when using the `key` parameter.'
@@ -70,6 +74,27 @@ class EventServiceProvider
     }
 }
 ```
+
+> Invalidating by `key` won't work if you're using tags. In that case, you should invalidate by flushing the tag.
+
+### Tag
+
+By specifying `tags`, you can invalidate it programmatically. You must be using a cache driver that supports [tags](https://laravel.com/docs/8.x/cache#cache-tags), like Redis or Memcached.
+
+```
+{{ cache tags="stocks|home" }} ... {{ /cache }}
+{{ cache tags="home" }} ... {{ /cache }}
+{{ cache tags="stocks" }} ... {{ /cache }}
+```
+
+Similar to invalidating by a key as explained above, you can flush all keys that use the tags.
+
+```php
+Cache::tags('home')->flush(); // invalidates first and second pair
+Cache::tags('stocks')->flush(); // invalidates first and third pair
+```
+
+> Don't use the `key` and `tags` parameters together.
 
 ### Cache clear
 
