@@ -593,6 +593,69 @@ Used for querying a single Nav.
 }
 ```
 
+## Custom Queries
+
+Here's an example of a basic query class. It has the name attribute which is the key the user needs to put in the request, any number of middleware, the type(s) that will be returned, any arguments, and how the data should be resolved.
+
+```php
+use Statamic\Facades\GraphQL;
+use Statamic\GraphQL\Queries\Query;
+
+class Products extends Query
+{
+    protected $attributes = [
+        'name' => 'products',
+    ];
+
+    protected $middleware = [
+        MyMiddleware::class,
+    ];
+
+    public function type(): Type
+    {
+        return GraphQL::paginate(GraphQL::type(ProductType::NAME));
+    }
+
+    public function args(): array
+    {
+        return [
+            'limit' => GraphQL::int(),
+        ];
+    }
+
+    public function resolve($root, $args)
+    {
+        return Product::paginate($args['limit']);
+    }
+}
+```
+
+```graphql
+{
+    products {
+        name
+        price
+    }
+}
+```
+
+You may add your own queries to Statamic's default schema.
+
+You can add them to the config file, which makes sense for app specific queries:
+
+```php
+// config/statamic/graphql.php
+'queries' => [
+    MyCustomQuery::class
+]
+```
+
+Or, you may use the `addQuery` method on the facade, which would be useful for addons.
+
+```php
+GraphQL::addQuery(MyCustomQuery::class);
+```
+
 ## Types
 
 - [EntryInterface](#entry-interface)
@@ -1236,6 +1299,45 @@ If you wish to disable caching altogether, set `cache` to `false`.
 
 ```php
 'cache' => false,
+```
+
+## Custom Middleware
+
+You may add custom middleware, which is almost identical to a standard Laravel middleware class.
+
+Use the `handle` method to perform some action, and pass the request on.
+
+```php
+use Closure;
+use GraphQL\Type\Definition\ResolveInfo;
+use Rebing\GraphQL\Support\Middleware;
+
+class MyMiddleware extends Middleware
+{
+    public function handle($root, $args, $context, ResolveInfo $info, Closure $next)
+    {
+        // do something
+
+        return $next($root, $args, $context, $info);
+    }
+}
+```
+
+You may add your own middleware to Statamic's default schema.
+
+You can add them to the config file, which makes sense for app specific middleware:
+
+```php
+// config/statamic/graphql.php
+'middleware' => [
+    MyMiddleware::class
+]
+```
+
+Or, you may use the `addMiddleware` method on the facade, which would be useful for addons.
+
+```php
+GraphQL::addMiddleware(MyMiddleware::class);
 ```
 
 ## Troubleshooting
