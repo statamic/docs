@@ -73,11 +73,11 @@ variables:
   -
     name: is_entry
     type: boolean
-    description: Whether the current item is an entry.
+    description: Whether the current item is an entry. Available when `supplement_data` is `true`.
   -
     name: is_term
     type: boolean
-    description: Whether the current item is a taxonomy term.
+    description: Whether the current item is a taxonomy term. Available when `supplement_data` is `true`.
   -
     name: _highlightResult
     type: array
