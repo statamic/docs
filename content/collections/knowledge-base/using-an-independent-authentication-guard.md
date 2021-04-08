@@ -51,4 +51,4 @@ Any non-Statamic routes (e.g. any routes you've manually added to routes/web.php
     ],
 ],
 ```
-In this example we'll use the Statamic guard, which uses the Statamic provider to handle Statamic authentication. If you'd like to use Statamic's filesystem to store users in YAML files alongside users stored in the database be sure to set `'repository' => 'file',` in config/statamic/users.php.
+In this example we'll use the custom `statamic` auth guard to authenticate users using the statamic driver. Following the steps in [Storing Laravel Users in Files](https://statamic.dev/knowledge-base/storing-laravel-users-in-files) we can have some users stored in the database and Statamic users stored in files. 
