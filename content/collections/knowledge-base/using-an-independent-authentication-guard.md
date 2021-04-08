@@ -15,8 +15,8 @@ If you'd like Statamic to use its own guards, you can configure it that way in y
 // config/statamic/users.php
 
 'guards' => [
-    'cp' => 'web', // the guard when using the cp
-    'web' => 'web', // the guard when using Statamic frontend routes
+    'cp' => 'statamic', // the guard when using the cp
+    'web' => 'statamic', // the guard when using Statamic frontend routes
 ],
 ```
 
@@ -51,3 +51,4 @@ Any non-Statamic routes (e.g. any routes you've manually added to routes/web.php
     ],
 ],
 ```
+In this example we'll use the Statamic guard, which uses the Statamic provider to handle Statamic authentication. If you'd like to use Statamic's filesystem to store users in YAML files alongside users stored in the database be sure to set `'repository' => 'file',` in config/statamic/users.php.
