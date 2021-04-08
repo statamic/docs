@@ -15,8 +15,8 @@ If you'd like Statamic to use its own guards, you can configure it that way in y
 // config/statamic/users.php
 
 'guards' => [
-    'cp' => 'web', // the guard when using the cp
-    'web' => 'web', // the guard when using Statamic frontend routes
+    'cp' => 'statamic', // the guard when using the cp
+    'web' => 'statamic', // the guard when using Statamic frontend routes
 ],
 ```
 
@@ -51,3 +51,4 @@ Any non-Statamic routes (e.g. any routes you've manually added to routes/web.php
     ],
 ],
 ```
+In this example we'll use the custom `statamic` auth guard to authenticate users using the statamic driver. Following the steps in [Storing Laravel Users in Files](https://statamic.dev/knowledge-base/storing-laravel-users-in-files) we can have some users stored in the database and Statamic users stored in files. 
