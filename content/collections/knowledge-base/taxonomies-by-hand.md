@@ -16,12 +16,12 @@ taxonomies/
     |-- best.yaml
 ```
 
-Each Taxonomy's YAML file can configure various things, such as the route for the terms.
-It can also define data that should cascade down to all of its terms.
+Each Taxonomy's YAML file can contain its title, as well as any data that should be injected into all its terms.
 
 ``` yaml
 title: Tags
-route: 'tags/{slug}'
+inject:
+  foo: bar
 ```
 
 ## Assigning to Collections
