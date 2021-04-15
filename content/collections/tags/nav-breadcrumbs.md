@@ -9,7 +9,7 @@ parameters:
     name: include_home
     type: 'boolean'
     description: >
-      Remove the home page and begin from the first level nav item. Default: `true`.
+      Include the home page as the first breadcrumb. Default: `true`.
   -
     name: reverse
     type: 'boolean'
