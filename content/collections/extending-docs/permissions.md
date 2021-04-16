@@ -6,7 +6,7 @@ updated_at: 1569347255
 stage: 1
 id: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
 ---
-Permissions are the abilities that can be assigned to [Roles](/guide/authorization.html#roles).
+Permissions are the abilities that can be assigned to [Roles](/users#permissions).
 
 Out of the box, Statamic has its own set of permissions that you can choose from to configure your roles. However, you are free to add your own that can be used throughout your project, or included with addons.
 
