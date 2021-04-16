@@ -32,7 +32,7 @@ parameters:
     name: supplement_data
     type: string
     description: >
-      When `true` will include all non-indexed content field. Disabling may result in performance increases with the trade-off that only indexed fields will be available. Default: `true`.
+      When `true` will include all non-indexed content field. See [supplementing data](#supplementing-data) Default: `true`.
 variables:
   -
     name: no_results
@@ -71,13 +71,9 @@ variables:
       for debugging, but useless to the
       public. Only applies when using the local driver.
   -
-    name: is_entry
-    type: boolean
-    description: Whether the current item is an entry.
-  -
-    name: is_term
-    type: boolean
-    description: Whether the current item is a taxonomy term.
+    name: result_type
+    type: string
+    description: The type of result. e.g. `entry`, `term`, `asset`, etc.
   -
     name: _highlightResult
     type: array
@@ -121,3 +117,22 @@ The search form itself — that text box users type into, is a normal, every day
     <button type="submit">Make it so!</button>
 </form>
 ```
+
+## Supplementing Data
+
+By default, data will be supplemented. This means that while your search indexes can remain lean by only including the fields you actually
+want to be searchable, the tag will convert your results into full objects (entries, terms, etc.) which allow you to use any of their fields.
+
+There is an overhead associated with this though, so if all you need is to display values that are in the index, you may disable supplementing.
+
+```
+{{ search:results supplement_data="false" }}
+```
+
+This has a few caveats:
+
+- Only fields that you've indexed will be available.
+- The search tag will filter out any unpublished items by default. If you haven't indexed the `status` field, you will get no results. Either
+  index the `status` field, or add `status:is=""` to your tag to prevent the filtering.
+- When using multiple sites, the search tag will filter items for the current site. If you haven't indexed the `site` field, you will get no results. Either
+  index the `site` field, or add `site:is=""` to your tag to prevent the filtering.
