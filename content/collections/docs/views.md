@@ -65,7 +65,7 @@ template: gallery
 title: Photo Gallery
 ```
 
-> You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy.
+> You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so go wild!
 
 ## Partials
 
