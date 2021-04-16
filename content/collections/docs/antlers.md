@@ -305,7 +305,7 @@ What if you want to combine an `is set` check with a ternary operator? No proble
 
 ### Using Tags in Conditions
 
-Yes, you can even use tags in conditions.
+Yes, you can even use tags in conditions. When working with [tags][tags] instead of variables, you **must** wrap the tag in a pair of additional single braces to tell the parser to run that logic first.
 
 ```
 {{ if {session:some_var} == "Statamic is rad!" }}
