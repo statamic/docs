@@ -50,6 +50,7 @@ Add your provider's credentials to `config/services.php` and [callback URL](#rou
 If you plan to use a third party provider, follow the steps [below](#third-party-providers).
 
 ## Usage
+
 Send your users to the provider’s login URL to begin the OAuth workflow. You may do this with the `oauth` tag:
 
 ```
