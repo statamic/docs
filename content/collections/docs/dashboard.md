@@ -21,7 +21,7 @@ When you log into the control panel, you will be taken to the dashboard &mdash; 
 
 A widget can contain just about anything. _ANYTHING_ From a list of recent entries to an embedded iframe playing [Poolside.fm](https://poolside.fm). However, it probably makes sense to make and use widgets that have _something_ to do with your site. Like seeing draft or scheduled entries, recent form submissions, and if there are any software updates.
 
-Statamic comes bundled with a [handful of widgets](/widgets), and you may also [create your own](#) or use ones created by others.
+Statamic comes bundled with a [handful of widgets](/widgets), and you may also [create your own](/extending/widgets) or use ones created by others.
 
 ## Configuration
 
