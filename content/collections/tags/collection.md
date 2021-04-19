@@ -139,7 +139,7 @@ id: 045a6e54-c792-483a-a109-f07251a79e47
 ---
 ## Overview
 
-The collection tag is one of main workhorses of your Statamic [frontend](/frontend-overview). It's like an Eloquent model in Laravel or "The Loop" in WordPress – it's how you get data from everywhere (_other than_ the current entry and global variables) into your [view](/views).
+The collection tag is one of main workhorses of your Statamic [frontend](/frontend). It's like an Eloquent model in Laravel or "The Loop" in WordPress – it's how you get data from everywhere (_other than_ the current entry and global variables) into your [view](/views).
 
 ## Example
 
