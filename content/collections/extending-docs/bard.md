@@ -1,12 +1,26 @@
 ---
 title: Bard
 stage: 1
+intro: 'The Bard editor used in the control panel is based on [TipTap](https://tiptap.scrumpy.io/) (which is a Vue WYWIWYG editor), which in turn is a wrapper around [ProseMirror](https://prosemirror.net/docs/guide/) (which is a plain JavaScript WYSIWYG editor).'
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
+## Necessary reading materials
+
+Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle, before you can even ride a bike (which is pretty cool, but might not be the smartest choice, I'll leave that to you)! To have a better understanding of how to write a TipTap extension, you'd in turn have to read up on how Prosemirror works.
+
+> Writing custom extensions for the Bard editor is pretty complicated, so prepare for a deep dive!
+
+In short, here's a quickstart of the things you should probably start with:
+
+- [The Prosemirror guide](https://prosemirror.net/docs/guide/) (yes, it's really long, but you should really read it!)
+- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/main/packages/tiptap-extensions), so you can understand how TipTap relates to Prosemirror
+- Come back here again, so you can read how to hook your extensions into Bard!
 
 ## Extensions
 
-You may add your own [TipTap](https://tiptap.scrumpy.io/) extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
+If you don't know [how to extend the control panel](/extending/control-panel) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/extending/addons).
+
+You may add your own TipTap extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
 
 ``` js
 Statamic.$bard.extend(({ mark }) => mark(new MyExtension));
