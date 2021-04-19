@@ -11,7 +11,7 @@ blueprint: page
 
 Assets most often live in folders on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage service. Each of these defined locations is called a **container**..
 
-Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend-overview) of your site.
+Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
 ## Asset Browser
 The Control Panel's asset browser gives you a great view on these files. You can file, sort, search, move, rename, preview, and — if working with images — even set focal crop points to make dynamically resized images significantly more useful.
