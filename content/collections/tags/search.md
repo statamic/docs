@@ -16,6 +16,12 @@ parameters:
     description: >
       The query string parameter used for the search term. Default: `q`.
   -
+    name: site
+    type: string
+    required: false
+    description: >
+      The site you wish to search. If you wish to search in all sites, you can use a wildcard: `*`. Default: the current site.
+  -
     name: limit
     type: integer
     description: Limit the total results returned.
