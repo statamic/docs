@@ -1,12 +1,25 @@
 ---
 title: Bard
 stage: 1
+intro: "The Bard fieldtype is a rich-text editor based on [TipTap](https://tiptap.scrumpy.io/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/), which is robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
+## Required Reading
+
+Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a TipTap extension, you'd in turn benefit grealy on reading about how Prosemirror works.
+
+> Writing custom extensions for Bard is pretty complicated, but can be wildly rewarding with powerful results.
+
+In short, here's a quickstart of the things you should probably start with:
+
+- [The Prosemirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
+- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/main/packages/tiptap-extensions), so you can understand how TipTap relates to Prosemirror
+- If you don't know [how to extend the control panel](/extending/control-panel) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/extending/addons).
+- Come back here again and keep on going.
 
 ## Extensions
 
-You may add your own [TipTap](https://tiptap.scrumpy.io/) extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
+You may add your own TipTap extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
 
 ``` js
 Statamic.$bard.extend(({ mark }) => mark(new MyExtension));
