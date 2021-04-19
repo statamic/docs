@@ -57,7 +57,7 @@ Now when listing entries that belong to the `foo`, `bar`, or `baz` terms, the en
 
 ## Additional Term Data
 
-Additional data (custom fields) can be added to a term by creating a yaml file matching the term’s [slug](#term-values-and-slugs).
+Additional data (custom fields) can be added to a term by creating a yaml file matching the term’s [slug](/taxonomies#term-values-and-slugs).
 
 ```
 site/content/taxonomies

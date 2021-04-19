@@ -144,7 +144,7 @@ Before you dive into creating your own, you should check the [SocialiteProviders
 
 To create your own OAuth provider, you should make your own SocialiteProvider-ready provider. All that's needed is the event handler (eg. `DropboxExtendSocialite.php`) and the provider (eg. `Dropbox.php`).
 
-Follow the [third party installation steps](#third-party), but skip the Composer bits. You can just keep the classes somewhere in your project.
+Follow the [third party installation steps](#third-party-providers), but skip the Composer bits. You can just keep the classes somewhere in your project.
 
 ## Customizing User Data
 

@@ -51,7 +51,7 @@ data:
 
 ## Containers
 
-Each container has its own settings, configurable permissions, and [blueprint](#blueprint). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service.
+Each container has its own settings, configurable permissions, and [blueprint](#blueprints). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service.
 
 Containers can be created through the Control Panel and are defined as YAML files located in `content/assets`. Each container's filename becomes its `handle`.
 

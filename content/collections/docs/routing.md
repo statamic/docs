@@ -7,7 +7,7 @@ id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
 ---
 ## Overview
 
-All requests to your site are handled by Statamic unless you [create your own Laravel routes](#laravel-routes). Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
+All requests to your site are handled by Statamic unless you [create your own Laravel routes](#custom-routes). Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
 
 If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting in `config/statamic/routes.php`.
 
