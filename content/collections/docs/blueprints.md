@@ -9,7 +9,7 @@ stage: 1
 ---
 ## Overview
 
-Think of blueprints as stencils for your content. They control what [fields](/fields) users get to work with when publishing content, as well as the schema of the data developers will be tapping into to build the [front-end](/frontend-overview) of your site.
+Think of blueprints as stencils for your content. They control what [fields](/fields) users get to work with when publishing content, as well as the schema of the data developers will be tapping into to build the [front-end](/frontend) of your site.
 
 Each blueprint belongs to an item:
 
