@@ -150,6 +150,22 @@ A single level nav, much like something you'd have at the top of your site, can 
 </ul>
 ```
 
+## Show the children of the current page
+
+Use the uri to get the children of the current page.
+
+```
+<ul>
+    {{ nav from="{uri}" }}
+        {{ unless no_results }}
+            <li>
+                <a href="{{ url }}">{{ title }}</a>
+            </li>
+        {{ /unless }}
+    {{ /nav }}
+</ul>
+```
+
 ## Multi-level Nav Example Recursion {#multi-level}
 
 Build an infinitely deep nav is possible by using recursion.
