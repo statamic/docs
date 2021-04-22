@@ -37,7 +37,35 @@ The Stache is comprised of different stores responsible for fetching their own d
 
 For instance, if you wanted to get a `Collection` object, the `CollectionStore` would be in charge. It knows that any YAML file inside `content/collections` translates into one.
 
-There are also stores for globals, structures, taxonomies, entries (grouped by collection), terms (grouped by taxonomy), asset containers, and users.
+The following stores exist in the Stache:
+
+- `taxonomies`
+- `terms` (grouped by taxonomy)
+- `collections`
+- `entries` (grouped by collection)
+- `collection-trees`
+- `navigation`
+- `nav-trees`
+- `globals`
+- `asset-containers`
+- `assets`* (grouped by container)
+- `users`
+
+You're able to customize all the stores inside the Stache by referencing the keys above. You can change the directories for each of them. You can also change the class if you need to customize any of its logic.
+
+```php
+// config/statamic/stache.php
+'stores' => [
+    'entries' => [
+        'class' => EntriesStore::class,
+        'directory' => base_path('content/collections')
+    ]
+]
+```
+
+> If you only want to change the `directory`, you don't need to include the `class`.
+
+\* The `assets` store cannot have its directory customized here. You configure its location through the [container](/assets#containers).
 
 ## Indexes
 
