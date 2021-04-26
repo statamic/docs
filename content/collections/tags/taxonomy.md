@@ -149,7 +149,7 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
 </ul>
 ```
 
-You're free to use use filtering or sorting parameters on the `entries` pair that you'd find on the [collection tag](/tags/collection).
+You're free to use filtering or sorting parameters on the `entries` pair that you'd find on the [collection tag](/tags/collection).
 
 ## Filtering
 
