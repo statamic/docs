@@ -312,6 +312,17 @@ Yes, you can even use tags in conditions. When working with [tags][tags] instead
   ...
 {{ /if }}
 ```
+
+### Combining Modifiers
+
+You can use [modifiers](/modifiers) inside your conditions if you wrap them them up along with their variable in `( parentheses )`.
+
+```
+{{ if (date | modify_date:+73 years | format:Y) == "2021" }}
+  This was indeed written in 1948. Somehow.
+{{ /if }}
+```
+
 ---
 
 ## Code Comments {#comments}
