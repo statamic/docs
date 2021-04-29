@@ -283,6 +283,16 @@ This item is {{ is_sold ? "sold" : "available" }}.
 
 Learn more about [ternary operators][ternary] in PHP.
 
+### Modifiers Inside Conditions
+
+If you want to manipulate a variable with [modifiers](/modifiers) before evaluating a condition, wrap the expression in (parenthesis).
+
+```
+{{ if (number_of_bedrooms | count) > 10 }}
+  <p>Who are you, Dwane Johnson?</p>
+{{ /if }}
+```
+
 ### Variable Fallbacks (Null Coalescence)
 
 When all you need to do is display a variable and set a fallback when it’s falsey, use the null coalescence operator (`??`).
