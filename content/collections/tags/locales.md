@@ -55,3 +55,15 @@ You can also specify a locale directly instead of looping through them all.
     <a href="{{ url }}">View in French</a>
 {{ /locales:fr }}
 ```
+
+### Hide current locale {#hidecurrent}
+
+You can display each locale except the current one.
+
+```
+{{ locales }}
+    {{ if current != locale.key }}
+        <li><a href="{{ url }}">{{ locale:name }}</a></li>
+    {{ /if }}
+{{ /locales }}
+```
