@@ -20,7 +20,9 @@ Anything you can do in Laravel you can do here. Because you're using Laravel. Yo
 For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app\Http\Controllers\ExampleController.php` file like this:
 
 ``` php
-Route::get('example', 'ExampleController@index');
+use App\Http\Controllers\ExampleController;
+
+Route::get('example', [ExampleController::class, 'index']);
 ```
 
 ## Basic Controller
