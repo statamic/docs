@@ -144,7 +144,7 @@ You can add any title you like in the `title` box based on search engine optimiz
 
 Next, add a catchy description in the `content` box, something like "The greatest professional wrestling fan site, OOOOH YEAAAH!"
 
-Now, scroll down to Template. From the drop down we have several options. We used "home" for our Home page, now let's secect "default" for our About page.
+Now, scroll down to Template. From the drop down we have several options. We used "home" for our Home page, now let's select "default" for our About page.
 
 Click **Save & Publish** and you'll see your new page titled "About" in the List.
 
