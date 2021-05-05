@@ -166,6 +166,11 @@ Using the mailing list example, we could use a `field` variable to pluck out spe
 ```
 ---
 field: country
+mailing_address:
+  address: 123 Scary Mansion Lane
+  country: Docsylvania
+  city: Arteefem
+  postal_code: RU 7337
 ---
 {{ mailing_address[field] }}
 
