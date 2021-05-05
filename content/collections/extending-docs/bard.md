@@ -38,7 +38,7 @@ The classes you return should be wrapped using the provided helper functions (eg
 
 ### Classes
 
-Your extension class should look like a TipTap extension ([see an example here](https://github.com/scrumpy/tiptap/blob/master/packages/tiptap-extensions/src/marks/Bold.js))
+Your extension class should look like a TipTap extension ([see an example here](https://github.com/ueberdosis/tiptap/blob/v1/packages/tiptap-extensions/src/marks/Bold.js))
 except it should not extend another class, and you should use methods instead of getters.
 
 ``` js
