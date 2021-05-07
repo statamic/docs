@@ -397,9 +397,17 @@ Use this method if you need to prevent entire code blocks from being parsed.
 {{ /noparse }}
 ```
 
-## Syntax Highlighting
+## Using Antlers in Content
 
-Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter.
+By default, Antlers expressions and tags are **not** parsed inside your content. This is for performance and security reasons.
+
+For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't access to.
+
+If this isn't a concern of yours, you can enable Antlers parsing by setting `antlers: true` in an any entry to allow it for just that one, or collection YAML config for the whole collection.
+
+## IDEs & Syntax Highlighters
+
+Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter, like they do with tea in the south.
 
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
