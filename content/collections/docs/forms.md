@@ -192,6 +192,15 @@ In each iteration of the `fields` array, you have access to:
 - `config` - The configuration of the blueprint field
 
 
+### Setting the From and Reply-To Name
+
+You can set a full "From" and "Reply-To" name in addition to the email address using the following syntax:
+
+```
+from: 'Jack Black <jack@jackblack.com>'
+reply_to: 'Jack Black <jack@jackblack.com>'
+```
+
 
 ### Setting the Recipient Dynamically
 
