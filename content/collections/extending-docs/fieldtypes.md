@@ -30,7 +30,7 @@ Fieldtypes have two pieces:
 For this example we will create a password field with a "show" toggle control:
 
 <figure>
-    <img src="https://docs.statamic.com/assets/examples/password-fieldtype.gif" alt="An example fieldtype that reveals a password field" class="p-4 bg-white">
+    <img src="/img/example-password-fieldtype.png" alt="An example fieldtype that reveals a password field" class="p-4 bg-white" width="477">
     <figcaption>Follow along and you could make this!</figcaption>
 </figure>
 
