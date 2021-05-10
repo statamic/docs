@@ -70,11 +70,6 @@ Adding this scheme to a page will redirect to a login page unless the user is al
 ]
 ```
 
-<figure>
-    <img src="/img/password-protected.png" alt="A Statamic 3 password protected page">
-    <figcaption>The default password protected login screen.</figcaption>
-</figure>
-
 If the `login_url` has not been defined the user will see an “Access Denied” page instead of a login screen. In this case, the user could log in through the Control Panel and then come back.
 
 The `append_redirect` setting will add `?redirect=/the-protected-url` to your login_url. This pairs with the [user:login_form tag’s allow_request_redirect parameter](https://docs.statamic.com/tags/user-login_form#parameters) which will redirect the user to the intended page once successfully logged in.
@@ -95,6 +90,11 @@ This is perfect for times when you want to password-protect one or more files bu
 ```
 
 ### Password Form
+
+<figure>
+    <img src="/img/password-protected.png" alt="A Statamic 3 password protected page">
+    <figcaption>The default password protected login screen.</figcaption>
+</figure>
 
 You’ll need to provide a way for people to enter passwords for URLs. Statamic has a built-in generic password entry form. If you want to customize it, you have two options:
 
