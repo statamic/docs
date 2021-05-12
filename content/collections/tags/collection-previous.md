@@ -1,7 +1,7 @@
 ---
 title: "Collection:Previous"
 description:  Fetches the previous entries in order.
-intro: If you're on a single entry page and want to show _previous_ entries in order, this is the tag you want. It doesn't matter whether the collection is ordered alphabetically, by date, or manually.
+intro: If you're on a single entry page and want to show _previous_ entries in order (publish date, alphabetical, or manual), this is the tag you're looking for.
 parent_tag: 045a6e54-c792-483a-a109-f07251a79e47
 parameters:
   -
@@ -27,6 +27,9 @@ variables:
 stage: 4
 id: 741cf972-c0bd-4e3c-81e2-8cc8bea60737
 ---
+## Date Order
+This tag relies on the native publish `date` field for date ordering.
+
 ## Example
 
 This will show the next 2 posts in a `blog` collection. It'll scope the entries loop into the `posts` tag pair. If there are no more entries, the no results text will be shown.
