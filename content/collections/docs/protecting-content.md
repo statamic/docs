@@ -9,7 +9,7 @@ stage: 1
 ---
 ## Overview
 
-You may deny front-end access to your content on a **per-page** or **site-wide** basis.
+You may deny front-end access to your content on a **per-page**, **per-collection**, or **site-wide** basis.
 
 There are a number of drivers for protecting content available out of the box:
 
@@ -23,9 +23,9 @@ Whichever approach you choose, know that it's designed to help you out. We’ve 
 
 > This feature only applies to the front-end of your site on pages routed through Statamic (like entry URLs). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
 
-## Basic Usage
+## Protecting an entry
 
-To protect a page, add a `protect` variable with a corresponding scheme name.
+To protect an entry, add a `protect` variable with a corresponding scheme name.
 
 For example, Statamic comes pre-configured with a `logged_in` protection scheme that only shows the content to authenticated users. You might have an entry like this:
 
@@ -36,6 +36,16 @@ protect: logged_in
 ---
 When visiting this entry's URL, logged in users will see it,
 but logged out users will be redirected to a login page.
+```
+
+## Protecting a Collection
+
+To protect an entire collection, inject a `protect` variable into your collection. To do this, add the following to your collection's YAML config file. This cannot be done in the control panel.
+
+``` yaml
+---
+inject:
+  protect: logged_in
 ```
 
 
