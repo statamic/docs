@@ -98,6 +98,50 @@ export default {
 
 **Do not** modify the `value` prop directly. Instead, call `this.update(value)` and let the Vuex store handle the update appropriately.
 
+## Configuration Fields
+
+You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
+
+``` php
+protected function configFieldItems(): array
+{
+    return [
+        'mode' => [
+            'display' => 'Mode',
+            'instructions' => 'Choose which mode you want to use',
+            'type' => 'select',
+            'default' => 'regular',
+            'options' => [
+                'regular' => __('Regular'),
+                'enhanced' => __('Enhanced'),
+            ],
+            'width' => 50
+        ],
+        'secret_agent_features' => [
+            'display' => 'Enable super secret agent features',
+            'instructions' => 'Can you even handle these features?',
+            'type' => 'toggle',
+            'default' => false,
+            'width' => 50
+        ],
+    ];
+}
+```
+
+### Options
+
+| Key | Definition |
+|---|---|
+| **display** | The field's display label |
+| **instructions** | Text shown underneath the display label. Supports Markdown. |
+| **type** | Name of the fieldtype used to manage the config option. |
+| **default** | An optional default value. |
+| **width*
+| ***other*** | Some fieldtypes have additional configuration options available. |
+
+> A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.1/src/Fieldtypes>
+
+
 ## Meta Data
 
 Fieldtypes can preload additional "meta" data from PHP into JavaScript. This can be anything you want, from settings to eager loaded data.
