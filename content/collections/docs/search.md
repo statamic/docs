@@ -1,34 +1,40 @@
 ---
 title: Search
-intro: Help your visitors find what they're looking for with search. Use  configurable indexes to fine tune what fields are important, which aren't, and keep results relevant.
+intro: Help your visitors find what they're looking for with search. Use  configurable indexes to fine tune which fields are important, which aren't, and fine-tune your way to relevant results.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568644905
 id: 420f083d-99be-4d54-9f81-3c09cb1f97b7
 blueprint: page
-stage: 1
 ---
 ## Overview
 
-There are three components — coincidentally the same number of Hanson brothers — whose powers combine to provide you the power of search. The form, the index, and the driver.
+There are four components (coincidentally the same number of Ninja Turtles) whose powers combine to provide you fully comprehensive powers of search.
 
-## Search Forms
+1. Forms
+2. Results
+3. Indexes
+4. Drivers
 
-The search form is the most visible part of your site search. Create a normal, every day HTML form with a `search` input and have it submit to any URL containing a `search:results` tag in your template. This is usually — but not always — found in the nav.
+## Forms
+
+The search form is the most visible part of your site search. Search forms are built as a simple, every day HTML form. All that form needs is a `text` or `search` input named `q` that submit to a URL that holds a `search:results` tag in your view. You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
 
 ```
 <form action="/search/results">
     <input type="search" name="q" placeholder="Search">
-    <button type="submit">Make it so!</button>
+    <button type="submit">Go find it!</button>
 </form>
 ```
 
-Next, set up the search _results_. You'll have access to all the content and variables inside each result.
+## Results
+
+Results are powered by the [Search Results](/tags/search) tag. The tag will look for that `q` input sent by the [form](#forms) as a query string in the URL (e.g. `/search/results?q=where's%20the%20beef`).
+
+Inside the tag you have access to all the content and variables from each result.
 
 ```
-{{ search:results }}
+{{ search:results index="default" }}
     {{ if no_results }}
-        <h2>No results.</h2>
+        <h2>No results found for {{ get:q }}.</h2>
     {{ else }}
         <a href="{{ url }}">
             <h2>{{ title }}</h2>
@@ -38,19 +44,17 @@ Next, set up the search _results_. You'll have access to all the content and var
 {{ /search:results }}
 ```
 
-The tag assumes you're passing the search string through as a GET parameter as we've shown above. You'll see it in the address bar: `/search/results?q=where's%20the%20beef`.
-
-The tag has a lot more fine-tuned control available, like renaming the query parameter, filtering fields and collections, and so on. You can read more about it in the [search results tag](/tags/search) docs.
+The tag has a lot more fine-tuned control available, like renaming the query parameter, filtering on fields and collections, and so on. You can read more about it in the [search results tag](/tags/search) docs.
 
 ## Indexes
 
-A search index is a copy of your data stored in a search-friendly format and used for optimizing speed and performance when executing a search query. Without an index, each search would need to scan every entry in your site. Hardly an efficient way to go about it.
+A search index is an ephemeral copy of your content, optimized for speed and performance while executing search queries. Without indexes, each search would require a scan of every entry in your site. Not an efficient way to go about it, but still technically possible.
 
-Indexes are configured in `config/statamic/search.php` and you can have as many as you'd like. Each holds different pieces of content — and a piece of content may be stored in multiple indexes.
+Indexes are configured in `config/statamic/search.php` and you can create as many as you want. Each index can hold different pieces of content — and any one piece of content may be stored in any number of indexes.
 
 > An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
 
-Your site's default index includes _only_ the title from from _all_ collections. Its config looks like this:
+Your site's default index includes _only_ the title from from _all_ collections. The default config looks like this:
 
 ``` php
 'default' => [
@@ -60,15 +64,17 @@ Your site's default index includes _only_ the title from from _all_ collections.
 ],
 ```
 
-## Search a specific Index
-To search a specific index, add an `index` parameter to your `search:results` tag.
+### Search a specific index
+
+The index you wish you to search can be specified as a parameter on your [search results](#results) tag. You can specify more than one index by delimiting each with a `|` pipe.
+
 ```
-{{ search:results index="my_index" }} ... {{ /search:results }}
+{{ search:results index="docs|articles" }} ... {{ /search:results }}
 ```
 
 ### Searchables
 
-The searchables value determines what items are contained in a given index. By passing an array of searchable values you can customize your index however you'd like. For example, to index all blog posts and news articles together, you could do this:
+The searchables value determines what items are contained in a given index. By passing an array of searchable values you can customize your index however you'd like. For example, to index all blog posts and news articles together, you can do this:
 
 ``` php
 'searchables' => ['collection:blog', 'collection:news']
@@ -84,7 +90,7 @@ The searchables value determines what items are contained in a given index. By p
 
 ### Records & Fields
 
-The general rule for creating a searchable index is to simplify your record structure as much as possible. Each record should contain enough information to be discoverable on its own, and no more. You can customize this record by deciding which _fields_ are included in the index.
+The best practice for creating search indexes is to simplify your record structure as much as possible. Each record should contain only enough information to be discoverable on its own, and no more. You can customize this record by deciding which _fields_ are included in the index.
 
 ### Transforming Fields
 
@@ -115,7 +121,7 @@ Each transformer is a closure that would correspond to a field in your index's `
 
 ### Updating Indexes
 
-Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand you can insert records and update the index via command line.
+Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
 ``` bash
 # Update all indexes
@@ -127,11 +133,11 @@ php please search:update name
 
 ### Connecting Indexes
 
-When you perform a search in the control panel in either collections, taxonomies, or asset containers, Statamic will search in their selected index.
+When a search is performed in the control panel (in collections, taxonomies, or asset containers, for example), Statamic will search the configured index for that content type.
 
-(If an index hasn't been specified, Statamic will still perform a "search" but it will be using a less efficient query - not an actual search.)
+If an index _hasn't_ been defined or specified, Statamic will perform a less efficient, generic search. It'll be slower and less relevant, but better than nothing.
 
-You can define which search index will be used by adding it to the respective YAML file:
+You can define which search index will be used by adding it to the respective YAML config file:
 
 ``` yaml
 # content/collections/blog.yaml
@@ -139,19 +145,23 @@ title: Blog
 search_index: blog
 ```
 
-> Even if you specify that an index contains entries from a collection (in [searchables](#searchables)), you still need to specify the index
-> in the collection. This is because it's perfectly acceptable for entries in one collection to be available in multiple indexes.
+> Even if you specify that an index contains entries from a collection (in [searchables](#searchables)), you still **also** need to specify the index
+> in the collection config itself. This is because different collections and entries can be available in multiple indexes.
 
 
 ## Drivers
 
-Statamic takes a driver-based approach to search engines. The native "local" is simple and requires no additional configuration, while Algolia and custom drivers provide features and capabilities going well beyond our core feature set.
+Statamic takes a "driver" based approach to search engines. Drivers are interchangeable so you can gain new features or integrate with 3rd party services without ever having to change your data or frontend.
 
-### Local
+The native [local driver](#local-driver) is simple and requires no additional configuration, while the included [algolia driver](#algolia-driver) makes it super simple to integrate with [Algolia](https://algolia.com), one of the leading search as a service providers.
 
-It uses JSON files to store indexes and will perform searches against them. It lacks advanced features like weighting and relevance matching, but hey. It Just Works™. It's a good way to get started quickly.
+You can build your own custom search drivers or look at the [Addon Marketplace](https://statamic.com/addons) to see what the community has already created.
 
-### Algolia
+### Local {#local-driver}
+
+The `local` driver uses JSON to store key/value pairs, mapping fields to the content IDs they belong to. It lacks advanced features like weighting and relevance matching, but hey, It Just Works™. It's a great way to get a search started quickly.
+
+### Algolia {#algolia-driver}
 
 Algolia is a full-featured search and navigation cloud service. They offer fast and relevant search with results in under 100 ms (99% under 20 ms). Results are prioritized and displayed using a customizable ranking formula.
 
@@ -173,11 +183,11 @@ ALGOLIA_SECRET=your-algolia-admin-key
 composer require algolia/algoliasearch-client-php
 ```
 
-Statamic will automatically create and sync your indexes as you create and modify entries, but to get the initial index created on Algolia, run `php please search:update`.
+Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.
 
 ### Templating with Algolia
 
-We recommend using the [Javascript implementation](https://www.algolia.com/doc/api-client/getting-started/install/javascript/?language=javascript) to communicate directly with them for the frontend of your site, as this will be incredibly fast, and avoids using Statamic as a middleman.
+We recommend using the [Javascript implementation](https://www.algolia.com/doc/api-client/getting-started/install/javascript/?language=javascript) to communicate directly with them for the frontend of your site. This bypasses Statamic entirely in the request lifecycle and is incredibly fast.
 
 
 ## Extras
@@ -186,6 +196,6 @@ We recommend using the [Javascript implementation](https://www.algolia.com/doc/a
 
 You can add values into the defaults array, which will cascade down to all the indexes, regardless of which driver they use.
 
-Then you can add values into the drivers array, which will cascade down to any indexes using the respective driver. A good use case for this is to share API credentials across indexes.
+You can also add values to the drivers array, which will cascade down to any indexes using that respective driver. A good use case for this is to share API credentials across indexes.
 
 Of course, any values you add to an individual index will only be applied there.
