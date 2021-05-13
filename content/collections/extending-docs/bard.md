@@ -13,7 +13,7 @@ Before you attempt to create any Bard extensions, it would be wise to learn how 
 In short, here's a quickstart of the things you should probably start with:
 
 - [The Prosemirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
-- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/main/packages/tiptap-extensions), so you can understand how TipTap relates to Prosemirror
+- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions), so you can understand how TipTap relates to Prosemirror
 - If you don't know [how to extend the control panel](/extending/control-panel) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/extending/addons).
 - Come back here again and keep on going.
 
