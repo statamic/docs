@@ -101,6 +101,10 @@ Each of these behaviors is available for future and past dates.
 
 > Date behaviors are _defaults_. They can be overridden on the tag level.
 
+## Times
+
+To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will repsect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
+
 ## Ordering
 
 Flick on the "Orderable" switch in a collection's settings and you'll have a drag and drop UI in the control panel to order the entries. The collection is now "structured". Learn more about [structures](/structures).
