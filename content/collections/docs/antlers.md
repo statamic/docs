@@ -405,6 +405,10 @@ For example, a guest author with limited access to the control panel could conce
 
 If this isn't a concern of yours, you can enable Antlers parsing on a per-field basis by setting `antlers: true` in your blueprint.
 
+## Using PHP in Antlers
+
+PHP is disabled by default, but if you change your view's file extension from `.antlers.html` to `.antlers.php`, you can write all the PHP you want in that template.
+
 ## IDEs & Syntax Highlighters
 
 Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter, like they do with tea in the south.
