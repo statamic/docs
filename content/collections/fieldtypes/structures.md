@@ -1,6 +1,6 @@
 ---
 title: Structures
-meta_title: 'Entries Fieldtype'
+meta_title: 'Structures Fieldtype'
 description: 'Create relationships with structures.'
 intro: |
   For when you need to create a relationship to one or more [structures](/structures). This could be useful to pick which version of a sidebar or footer to include on a page, or other similar things.
