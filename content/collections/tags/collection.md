@@ -1,7 +1,7 @@
 ---
 title: Collection
 is_parent_tag: true
-intro: Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don't judge and neither does the Collection Tag.
+intro: Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don't judge, and neither does the Collection Tag.
 description: Fetches and filters entries in one or more collections.
 stage: 1
 parameters:
@@ -17,14 +17,6 @@ parameters:
     name: collection
     type: tag part
     description: 'The name of the collection when using the shorthand syntax. This is not actually a parameter, but part of the tag itself. For example, `{{ collection:blog }}`.'
-  -
-    name: show_unpublished
-    type: 'boolean *false*'
-    description: "Unpublished content is, by it's very nature, unpublished. That is, unless you show it by turning on this parameter."
-  -
-    name: show_published
-    type: 'boolean *true*'
-    description: 'Setting this to `false` will prevent published entries from being displayed. Pairs nicely with `show_unpublished="true"` to only show drafts.'
   -
     name: show_future
     type: 'boolean *false*'
