@@ -6,7 +6,6 @@ use Statamic\Modifiers\Modifier;
 
 class Toc extends Modifier
 {
-
     private $context;
 
     /**
@@ -31,7 +30,7 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        preg_match_all( '/<h([1-'.$maxHeadingLevels.'])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER );
+        preg_match_all('/<h([1-'.$maxHeadingLevels.'])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER);
 
         if (! $matches) {
             return [null, $content];
@@ -47,20 +46,19 @@ class Toc extends Modifier
         $matches = $this->appendParamsAndVars($matches);
 
         foreach ($matches as $heading) {
-
             if ($i == 0) {
                 $startlvl = $heading[1];
             }
 
             $lvl = $heading[1];
 
-            $ret = preg_match( '/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor );
+            $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
                 $anchor = stripslashes($anchor[1]);
                 $add_id = false;
             } else {
-                $anchor = preg_replace( '/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower( $heading[3] ) ) );
+                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower($heading[3])));
                 $add_id = true;
             }
 
@@ -69,7 +67,7 @@ class Toc extends Modifier
             } else {
                 $orig_anchor = $anchor;
                 $i = 2;
-                while (in_array( $anchor, $anchors)) {
+                while (in_array($anchor, $anchors)) {
                     $anchor = $orig_anchor.'-'.$i;
                     $i++;
                 }
@@ -77,20 +75,21 @@ class Toc extends Modifier
             }
 
             if ($add_id) {
-                $content = substr_replace( $content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos( $content, $heading[0] ), strlen( $heading[0] ) );
+                $content = substr_replace($content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos($content, $heading[0]), strlen($heading[0]));
             }
 
-            $ret = preg_match( '/title=[\'|"](.*)?[\'|"]/i', stripslashes( $heading[2] ), $title );
-            if ( $ret && $title[1] != '' )
-                $title = stripslashes( $title[1] );
-            else
+            $ret = preg_match('/title=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $title);
+            if ($ret && $title[1] != '') {
+                $title = stripslashes($title[1]);
+            } else {
                 $title = $heading[3];
-            $title 		= trim( strip_tags( $title ) );
+            }
+            $title 		= trim(strip_tags($title));
 
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
                     $toc .= "\n"."<ol>"."\n";
-                } else if ($prevlvl > $lvl) {
+                } elseif ($prevlvl > $lvl) {
                     $toc .= '</li>'."\n";
                     while ($prevlvl > $lvl) {
                         $toc .= "</ol>"."\n".'</li>'."\n";
@@ -108,9 +107,9 @@ class Toc extends Modifier
             $i++;
         }
 
-        unset( $anchors );
+        unset($anchors);
 
-        while ( $lvl > $startlvl ) {
+        while ($lvl > $startlvl) {
             $toc .= "\n</ol>";
             $lvl--;
         }
@@ -123,7 +122,8 @@ class Toc extends Modifier
 
     private function appendParamsAndVars($matches)
     {
-        if (array_key_exists('parameters', $this->context)) {
+        $parameters = array_key_exists('parameters', $this->context) && count($this->context['parameters']->value()) > 0;
+        if ($parameters) {
             $matches[] = [
                 '<h2 id="parameters">Parameters</h2>',
                 '2',
@@ -132,7 +132,8 @@ class Toc extends Modifier
             ];
         }
 
-        if (array_key_exists('variables', $this->context)) {
+        $variables = array_key_exists('variables', $this->context) && count($this->context['variables']->value()) > 0;
+        if ($variables) {
             $matches[] = [
                 '<h2 id="variables">Variables</h2>',
                 '2',
