@@ -120,10 +120,20 @@ class Toc extends Modifier
         return array($toc, $content);
     }
 
+    private function valueGet($value)
+    {
+        if ($value instanceof \Statamic\Fields\Value) {
+            return $value->value();
+        }
+
+        return $value;
+    }
+
     private function appendParamsAndVars($matches)
     {
-        $parameters = array_key_exists('parameters', $this->context) && count($this->context['parameters']->value()) > 0;
-        if ($parameters) {
+        $parameters = $this->valueGet($this->context['parameters'] ?? null);
+
+        if ($parameters && count($parameters) > 0) {
             $matches[] = [
                 '<h2 id="parameters">Parameters</h2>',
                 '2',
@@ -132,8 +142,9 @@ class Toc extends Modifier
             ];
         }
 
-        $variables = array_key_exists('variables', $this->context) && count($this->context['variables']->value()) > 0;
-        if ($variables) {
+        $variables = $this->valueGet($this->context['variables'] ?? null);
+
+        if ($variables && count($variables) > 0) {
             $matches[] = [
                 '<h2 id="variables">Variables</h2>',
                 '2',
