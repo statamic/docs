@@ -17,8 +17,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script>
+        function bodyData() {
+            let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
+            return {
+                showNav: false,
+                showEasterEgg: false,
+                bindings: {
+                    ['@keydown.slash.prevent']() {
+                        this.$refs.docsSearch.focus();
+                    },
+                    ['@keydown.' + primaryKeyBind + '.k.prevent']() {
+                        this.$refs.docsSearch.focus();
+                    }
+                }
+            };
+        }
+    </script>
 </head>
-<body class="text-blue-darkest leading-normal language-antlers" x-data="{ showNav: false, showEasterEgg: false }" @keydown.slash.prevent="$refs.docsSearch.focus()">
+<body class="text-blue-darkest leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
 
 {{ partial:partials/nav }}
 
