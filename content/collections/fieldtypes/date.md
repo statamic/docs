@@ -19,7 +19,7 @@ options:
     name: format
     type: string
     description: |
-      Optionally format the date string using Moment.js's [formatting options](https://momentjs.com/docs/#/displaying/format/).
+      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php)
   -
     name: full_width
     type: boolean
