@@ -220,6 +220,8 @@ return [
 ];
 ```
 
+You will need to update your appropriate server rewrite rules.
+
 
 ### Multiple sites
 
@@ -239,5 +241,3 @@ return [
     ]
 ];
 ```
-
-You will need to update your appropriate server rewrite rules.
