@@ -221,9 +221,9 @@ return [
 ```
 
 
-## File Locations for Multi-Sites
+### Multiple sites
 
-When using multi-site you can override the path with an array of your sites, usefull when using multiple root domains per site.
+When using multi-site you can override the path with an array of your sites, useful when using multiple root domains per site.
 
 ``` php
 return [
