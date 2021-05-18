@@ -22,19 +22,19 @@ In short, here's a quickstart of the things you should probably start with:
 You may add your own TipTap extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
 
 ``` js
-Statamic.$bard.extend(({ mark }) => mark(new MyExtension));
+Statamic.$bard.extend(({ mark, node }) => mark(new MyExtension));
 ```
 
 ``` js
-Statamic.$bard.extend(({ mark }) => {
+Statamic.$bard.extend(({ mark, node }) => {
     return [
         mark(new MyExtension),
-        mark(new AnotherExtension)
+        node(new AnotherExtension)
     ]
 });
 ```
 
-The classes you return should be wrapped using the provided helper functions (eg. `mark` in the example above).
+The classes you return should be wrapped using the provided helper functions (i.e. `mark` or `node` like in the example above).
 
 ### Classes
 
@@ -49,23 +49,29 @@ export default class MyExtension {
 }
 ```
 
-### Marks
+### Marks and Nodes
 
-The `extend` callback will provide a `mark` function to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
+The `extend` callback will provide the `mark` and `node` functions to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
 to be used by Bard.
 
 Within your class, Statamic will provide commonly used functions along with the arguments you'd get in a TipTap extension. This prevents you from needing to
 import the entire TipTap library into your build. For example:
 
 ``` js
+// mark
 commands({ type, toggleMark }) {
     return () => toggleMark(type)
+}
+
+// node
+commands({ type, toggleBlockType }) {
+    return () => toggleBlockType(type)
 }
 ```
 
 > If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
 
-If you're providing a new mark and intend to use this Bard field on the front-end, you will also need to create a Mark class to be used by the PHP [renderer](#prosemirror-rendering).
+If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#prosemirror-rendering).
 
 ## Buttons
 
@@ -117,11 +123,11 @@ utils.getMarkAttrs(...);
 
 ## ProseMirror Rendering
 
-If you have created a mark on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
+If you have created a mark or node on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
 
 The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
 
-You can use the `addMark` method to bind a [Mark](https://github.com/ueberdosis/prosemirror-to-html) class into the renderer. Your service provider's `boot` method
+You can use the `addMark` and `addNode` methods to bind a [Mark or Node](https://github.com/ueberdosis/prosemirror-to-html) class into the renderer. Your service provider's `boot` method
 is a good place to do this.
 
 ``` php
@@ -130,5 +136,6 @@ use Statamic\Fieldtypes\Bard\Augmentor;
 public function boot()
 {
     Augmentor::addMark(MyMark::class);
+    Augmentor::addNode(MyNode::class);
 }
 ```
