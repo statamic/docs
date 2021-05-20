@@ -283,6 +283,23 @@ Revisions allow you to see the history of any given entry over time. Revisions n
 revisions: true
 ```
 
+## Labels
+
+Throughout the control panel you may find buttons that say "Create Entry".
+
+If you would rather them say something more specific (for example, "Create Article"), you may customize them per-collection by adding a translation key.
+
+In `resources/lang/en/messages.php`, you can add `{handle}_collection_create_entry` with the appropriate label.
+
+```php
+<?php
+return [
+    'articles_collection_create_entry' => 'Create Article',
+];
+```
+
+Of course, you may add the same key to `messages.php` in other language directories as necessary.
+
 ## Localization
 
 When running a [multi-site](/multi-site) installation, you can have entries exist in multiple sites with different content, or have entries exclusive to a site.
