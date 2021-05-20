@@ -104,18 +104,22 @@ Use tag pair syntax with `if/else` conditions to style each set accordingly.
 ```
 {{ bard_field }}
 
-  {{ if type == "text" }}
+  {{ if type == "poll" }}
 
-    <div class="text">
-      {{ text }}
-    </div>
-
-  {{ elseif type == "image" }}
-
-    <figure>
-      <img src="{{ image }}" alt="{{ caption }}" />
-      <figcaption>{{ caption }}</figcaption>
+    <figure class="poll">
+      <figcaption>{{ question }}</figcaption>
+      <ul>
+        {{ options }}
+          <li>{{ text }}</li>
+        {{ /options }}
+      </ul>
     </figure>
+
+  {{ elseif type == "hero_image" }}
+
+    <div class="heroimage">
+      <img src="{{ hero_image }}" alt="{{ caption }}" />
+    </div>
 
   {{ /if }}
 
@@ -133,9 +137,8 @@ An alternative approach (for those who like DRY or small templates) is to create
 ``` files
 resources/views/partials/sets/
 |-- gallery.antlers.html
-|-- image.antlers.html
+|-- hero_image.antlers.html
 |-- poll.antlers.html
-|-- text.antlers.html
 `-- video.antlers.html
 ```
 
