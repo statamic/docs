@@ -68,7 +68,7 @@ options:
     type: boolean
     description: >
       Always show the "Add Set" button. Default: `false`.
-      
+
 stage: 1
 id: f4bf58d3-cbce-4957-b883-d92fd4791e89
 ---
@@ -104,8 +104,12 @@ Use tag pair syntax with `if/else` conditions to style each set accordingly.
 ```
 {{ bard_field }}
 
-  {{ if type == "poll" }}
+  {{ if type == "text" }}
+    <div class="text">
+      {{ text }}
+    </div>
 
+  {{ elseif type == "poll" }}
     <figure class="poll">
       <figcaption>{{ question }}</figcaption>
       <ul>
@@ -116,11 +120,9 @@ Use tag pair syntax with `if/else` conditions to style each set accordingly.
     </figure>
 
   {{ elseif type == "hero_image" }}
-
     <div class="heroimage">
       <img src="{{ hero_image }}" alt="{{ caption }}" />
     </div>
-
   {{ /if }}
 
 {{ /bard_field }}
