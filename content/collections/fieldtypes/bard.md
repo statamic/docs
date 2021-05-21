@@ -141,6 +141,7 @@ resources/views/partials/sets/
 |-- gallery.antlers.html
 |-- hero_image.antlers.html
 |-- poll.antlers.html
+|-- text.antlers.html
 `-- video.antlers.html
 ```
 
