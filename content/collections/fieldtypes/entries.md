@@ -18,6 +18,11 @@ options:
     type: integer
     description: >
       The maximum number of items that may be selected. Setting this to `1` will change the UI to a dropdown.
+  -
+    name: mode
+    type: string
+    description: |
+        Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field). 
 stage: 4
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
