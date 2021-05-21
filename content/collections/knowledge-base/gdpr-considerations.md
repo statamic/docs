@@ -21,7 +21,7 @@ If you take this approach, your production server will be the single source of t
 
 Another option would be to store your users in a database so you can remove them without leaving data fragments behind.
 
-[Here's an article](knowledge-base/storing-users-in-a-database) on how to do just that.
+[Here's an article](/knowledge-base/storing-users-in-a-database) on how to do just that.
 
 
 ## Form Submissions
