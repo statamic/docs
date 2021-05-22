@@ -97,9 +97,11 @@ If you are using Bard just as a rich text editor and have no need for sets you w
 {{ bard_field }}
 ```
 
+> To style the output of rich text editor on front-end, we recommend using [TailwindCSS typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin.
+
 ### With Sets
 
-Use tag pair syntax with `if/else` conditions to style each set accordingly.
+Use tag pair syntax with `if/else` conditions to style each set accordingly. A conditional for `text` type can be added to handle the rich text editor content between the sets.
 
 ```
 {{ bard_field }}
