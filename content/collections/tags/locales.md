@@ -40,18 +40,23 @@ variables:
     name: locale:full
     type: string
     description: |
-      The full, 4 character system locale (.e.g `en_US`) for any given locale as set in `config/statamic/sites.php`.
+      The full, 4 character system locale (e.g. `en_US`) for any given locale as set in `config/statamic/sites.php`.
   -
     name: locale:full
     type: string
     description: |
-      The short 2 character system locale (.e.g `en`) for any given locale as set in `config/statamic/sites.php`.
+      The short 2 character system locale (e.g. `en`) for any given locale as set in `config/statamic/sites.php`.
   -
     name: locale:is_current
     type: boolean
     description: >
       `true` if the given locale in the loop is the current one.
 ---
+## Overview
+
+This tag is used to access all the locales any given entry or term is available in. It's most commonly used as a language switcher.
+
+Each locale's system data, as configured in `config/statamic/sites.php`, is available inside of a `locale` array.
 ## Examples
 
 ### Iterating over locales {#iterating}
