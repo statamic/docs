@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2252f4adc2e7184a53763c604f120d3c",
+    "content-hash": "30eb8b6c52308d4c00a059cc11588765",
     "packages": [
         {
             "name": "brick/math",
@@ -3679,16 +3679,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v3.0.0-beta.38",
+            "version": "v3.0.0-beta.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "49e07887b7c6309d857557f9c6a3e5d38d61aef1"
+                "reference": "aa8892f1a3b98ebc770febd1b5bd362f33e636b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/49e07887b7c6309d857557f9c6a3e5d38d61aef1",
-                "reference": "49e07887b7c6309d857557f9c6a3e5d38d61aef1",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/aa8892f1a3b98ebc770febd1b5bd362f33e636b9",
+                "reference": "aa8892f1a3b98ebc770febd1b5bd362f33e636b9",
                 "shasum": ""
             },
             "require": {
@@ -3752,7 +3752,7 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cms/issues",
-                "source": "https://github.com/statamic/cms/tree/v3.0.0-beta.38"
+                "source": "https://github.com/statamic/cms/tree/master"
             },
             "funding": [
                 {
@@ -3760,7 +3760,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-21T15:06:47+00:00"
+            "time": "2020-08-18T17:11:48+00:00"
         },
         {
             "name": "statamic/stringy",
