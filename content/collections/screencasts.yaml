@@ -1,9 +1,6 @@
 title: Screencasts
 template: screencasts/show
 layout: layout
-blueprints:
-  - screencasts
-  - page
 revisions: false
 route: '/screencasts/{slug}'
 date: true

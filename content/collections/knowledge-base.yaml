@@ -1,9 +1,7 @@
-title: Knowledge Base
+title: 'Knowledge Base'
 route: 'knowledge-base/{slug}'
 default_status: published
 template: page
 layout: layout
-blueprints:
-  - page
 revisions: false
 mount: 3c17dff9-e45f-44ec-9516-be32218259c4
