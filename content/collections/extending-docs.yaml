@@ -6,5 +6,3 @@ route: '{{ if depth === 1 }}extending{{ /if }}{{ parent_uri }}/{{ slug }}'
 sort_dir: asc
 inject:
   stage: 2
-structure:
-  root: true
