@@ -2,7 +2,7 @@ title: Extending
 template: page
 layout: layout
 revisions: false
-route: '{{ if depth === 1 }}extending{{ /if }}{{ parent_uri }}/{{ slug }}'
+route: '/extending/{slug}'
 sort_dir: asc
 inject:
   stage: 2
