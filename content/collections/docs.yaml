@@ -3,6 +3,4 @@ route: '{{ parent_uri }}/{{ slug }}'
 default_status: published
 template: page
 layout: layout
-blueprints:
-  - page
 revisions: false

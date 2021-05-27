@@ -1,4 +1,4 @@
-title: Tag
+title: Fieldtype
 sections:
   main:
     display: Main
@@ -27,7 +27,7 @@ sections:
           type: markdown
           localizable: true
       -
-        handle: parameters
+        handle: options
         field:
           type: grid
           mode: stacked
@@ -52,47 +52,20 @@ sections:
               field:
                 type: markdown
       -
-        handle: variables
-        field:
-          type: grid
-          mode: stacked
-          fields:
-            -
-              handle: name
-              field:
-                type: text
-                width: 33
-            -
-              handle: type
-              field:
-                type: text
-                width: 33
-            -
-              handle: description
-              field:
-                type: markdown
-      -
         handle: template
         field:
           display: Template
           type: template
           default: page
       -
-        handle: parent_tag
-        field:
-          display: Parent Tag
-          type: collections
-          collection: tags
-          max_items: 1
-      -
         handle: stage
         field:
-          display: Writing Stage
+          display: 'Writing Stage'
           type: select
           options:
-            0: Gathering Knowledge
-            1: Writing the Draft
-            2: Ready for Editing
-            3: Needs Polish & Humor
-            4: Ready for Feedback
-            5: Complete
+            - 'Gathering Knowledge'
+            - 'Writing the Draft'
+            - 'Ready for Editing'
+            - 'Needs Polish & Humor'
+            - 'Ready for Feedback'
+            - Complete

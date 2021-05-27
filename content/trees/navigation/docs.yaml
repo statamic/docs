@@ -1,0 +1,139 @@
+tree:
+  -
+    title: 'Getting Started'
+    children:
+      -
+        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+      -
+        entry: ab08f409-8bbe-4ede-b421-d05777d292f7
+      -
+        entry: 24a9c9d8-d607-4117-9806-738668c173cd
+      -
+        entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
+      -
+        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
+  -
+    title: 'Core Concepts'
+    children:
+      -
+        entry: 7277432d-bb25-458a-a3a2-a72976b44ad5
+      -
+        entry: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
+      -
+        entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
+      -
+        entry: d7b7d326-b199-4fd8-984f-7d885e255efb
+      -
+        entry: 7202c698-942a-4dc0-b006-b982784efb03
+      -
+        entry: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
+      -
+        entry: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+      -
+        entry: 1e91dd54-c452-4e3b-8972-dba83c048d3d
+      -
+        entry: 8ed04215-9f46-4000-bd67-c71b21b67d85
+      -
+        entry: 420f083d-99be-4d54-9f81-3c09cb1f97b7
+      -
+        entry: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+      -
+        entry: 2af9fc45-66d0-4ca5-9761-00017076144f
+      -
+        entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
+      -
+        entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
+      -
+        entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
+  -
+    title: Frontend
+    children:
+      -
+        entry: 84100772-18e4-4a22-8759-219b242a320c
+      -
+        entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
+      -
+        entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
+      -
+        entry: 131259a5-2072-49d8-9ea4-2099e0338e2f
+      -
+        entry: 9b2f6f55-5355-4334-b90d-d1236fb58887
+      -
+        entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
+      -
+        entry: 9751908a-a10c-4c36-abd3-2251e83fbc65
+      -
+        entry: 5e848460-9bbc-449e-8edd-182d918163ff
+      -
+        entry: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
+      -
+        entry: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+      -
+        entry: 75be125b-7d92-496c-ac5d-7098560d3d44
+      -
+        entry: 424f5092-be39-449a-b660-f4e077631487
+      -
+        entry: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
+      -
+        entry: 74c47654-8c47-49b1-a616-ed940ce19977
+      -
+        entry: fbf59081-ba24-4e82-b011-b687be228c89
+  -
+    title: 'Control Panel'
+    children:
+      -
+        entry: 249e046f-a9b4-494b-9e4d-084c28e01028
+      -
+        entry: 54548616-fd6d-44a3-a379-bdf71c492c63
+      -
+        entry: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+      -
+        entry: 2940c834-7062-47a1-957c-88a69e790cbb
+      -
+        entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
+      -
+        entry: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
+      -
+        entry: a3adf32a-37a5-4e96-beee-f107dc1b81a9
+      -
+        entry: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
+      -
+        entry: 5bd9426f-23cf-4196-9848-471dff67f5ea
+      -
+        entry: 4b77c19b-129c-4271-a724-eea884eb3e2e
+  -
+    title: 'Advanced Capabilities'
+    children:
+      -
+        entry: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
+      -
+        entry: 83145e6c-45d2-4e9c-a412-48a81f144224
+      -
+        entry: fdb45b84-3568-437d-84f7-e3c93b6da3e6
+      -
+        entry: 3dbb14fd-a762-4891-bce1-daf13b8c5981
+      -
+        entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
+      -
+        entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
+      -
+        entry: 499d808b-18be-42e9-acd0-91bcdff73193
+      -
+        entry: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
+      -
+        entry: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
+      -
+        entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
+      -
+        entry: c095fb87-4c02-462c-9e6f-dfe0b6889248
+      -
+        entry: 5bb3e677-8b9c-4e77-be24-5fefec9c1af0
+  -
+    title: 'Odds & Ends'
+    children:
+      -
+        entry: bd1261de-7c4c-4c22-baf5-8a52cdd10c74
+      -
+        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+      -
+        entry: 6216a669-5103-4665-a5f7-2eea2f08bcb4

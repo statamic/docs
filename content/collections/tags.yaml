@@ -3,7 +3,5 @@ route: '{mount}/{slug}'
 default_status: published
 template: tags.show
 layout: layout
-blueprints:
-  - tag
 revisions: false
 mount: 424f5092-be39-449a-b660-f4e077631487
