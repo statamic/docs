@@ -12,7 +12,7 @@
         <figcaption>Behold! The {{ title }} Fieldtype!</figcaption>
     </figure>
 
-    {{ content | noparse | toc:ids }}
+    {{ content | toc:ids }}
 
     {{ options }}
     <div class="{{ ! last ?= 'border-b' }} border-grey-400 mt-4 pb-4">

@@ -6,7 +6,7 @@
 </header>
 
 <article class="markdown pb-8">
-    {{ content | noparse | toc:ids }}
+    {{ content | toc:ids }}
 
     {{ taxonomy:modifier_types collection="modifiers" }}
         <h3>{{ title | title }}</h3>
