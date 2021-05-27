@@ -22,26 +22,55 @@ parameters:
      When true, this ensures that the current site locale will be first in the list. Only applicable in the tag pair.
 variables:
   -
-    name: locale
-    type: array
-    description: |
-      The locale data of the current iteration. Contains `key`, `name`, and `full`. You can use array format to access the nested value (eg. `{{ locale:name }}`)
-  -
-    name: content data
-    type: mixed
+    name: current
+    type: string
     description: >
-      Each piece of content being iterated through has access to all the variables inside. This includes things like `title`, `content`, `url`, etc.
+      The `handle` of the current locale.
+  -
+    name: locale:[key/handle]
+    type: string
+    description: |
+      The system handle for any given locale as set in `config/statamic/sites.php`.
+  -
+    name: locale:name
+    type: string
+    description: |
+      The user-friendly name for any given locale as set in `config/statamic/sites.php`.
+  -
+    name: locale:full
+    type: string
+    description: |
+      The full, 4 character system locale (e.g. `en_US`) for any given locale as set in `config/statamic/sites.php`.
+  -
+    name: locale:full
+    type: string
+    description: |
+      The short 2 character system locale (e.g. `en`) for any given locale as set in `config/statamic/sites.php`.
+  -
+    name: locale:is_current
+    type: boolean
+    description: >
+      `true` if the given locale in the loop is the current one.
 ---
+## Overview
+
+This tag is used to access all the locales any given entry or term is available in. It's most commonly used as a language switcher.
+
+Each locale's system data, as configured in `config/statamic/sites.php`, is available inside of a `locale` array.
 ## Examples
 
 ### Iterating over locales {#iterating}
 
-You can loop through in each locale to get URLs to translated versions of an entry or taxonomy term.
+Loop through in each locale to get URLs to translated versions of an entry or taxonomy term.
 
 ```
 <ul>
 {{ locales }}
-  <li><a href="{{ url }}">View in {{ locale:name }}</a></li>
+    <li>
+      {{ locale }}
+        <a href="{{ url }}">View in {{ name }}</a>
+      {{ /locale }}
+    </li>
 {{ /locales }}
 </ul>
 ```
@@ -54,4 +83,15 @@ You can also specify a locale directly instead of looping through them all.
 {{ locales:fr }}
     <a href="{{ url }}">View in French</a>
 {{ /locales:fr }}
+```
+### Excluding the current locale {#excluding}
+
+You can choose to not show the current locale in a list.
+
+```
+{{ locales }}
+  {{ if ! is_current }}
+    <a href="{{ locale:url }}">View in {{ locale:name }}</a>
+  {{ /if }}
+{{ /locales }}
 ```

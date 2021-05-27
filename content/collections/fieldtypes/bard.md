@@ -99,7 +99,7 @@ If you are using Bard just as a rich text editor and have no need for sets you w
 
 ### With Sets
 
-Use tag pair syntax with `if/else` conditions to style each set accordingly.
+When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. The non-set content uses type `text`.
 
 ```
 {{ bard_field }}
