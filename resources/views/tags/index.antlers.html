@@ -15,7 +15,7 @@
                 <th>Description</th>
             </tr>
         </thead>
-        {{ collection :from="tags" }}
+        {{ collection:tags }}
         <tr>
             <td>
                 <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
@@ -24,6 +24,6 @@
                 {{ description | markdown ?? intro | markdown }}
             </td>
         </tr>
-        {{ /collection }}
+        {{ /collection:tags }}
     </table>
 </article>
