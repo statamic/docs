@@ -54,15 +54,6 @@ Like Laravel, if you’re expecting a collection of models, you will receive a c
 
 If you’re expecting a single model you’ll get the corresponding class. (In the example above, you'll get a `Statamic\Entries\Entry` instance).
 
-### Globals
-
-To retrieve data from Global Sets you can use the `\Statamic\Facades\GlobalSet` Facade.
-
-
-Since Globals are organized into ["sets"](/globals#global-sets) you can, for example, retrieve the `copyright` field from the set with the handle `footer`.
-```php
-GlobalSet::find('footer')->in('default')->get('copyright');
-```
 
 ## Manipulating Data
 
