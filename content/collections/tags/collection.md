@@ -176,11 +176,7 @@ There are a number of ways to filter your collection. There's the conditions syn
 Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
 
 ```
-{{ collection:blog
-   title:contains="awesome"
-   title:contains="thing"
-   author:is="joe"
-}}
+{{ collection:blog title:contains="awesome" title:contains="thing" author:is="joe" }}
 ```
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
