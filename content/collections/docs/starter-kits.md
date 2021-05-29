@@ -1,49 +1,32 @@
 ---
 id: 3a2e714c-57de-4b16-a916-7e7aba22de03
 title: 'Starter Kits'
-intro: 'Designers and developers can easily build starter kits to help people get up and running quickly with Statamic. Whether it''s a theme, an icon set, a pre-configured collection, or a set of re-usable blueprints, the sky is the limit! Starter kits can be easily shared or sold on the Statamic Marketplace.'
-stage: 3
+intro: |-
+  Starter Kits are pre-built site packages that jump-start new Statamic sites with features, functionality, and even design.
+
+  Built by the core team or designers & developers in the community, Starter Kits can can cover a wide range of uses, from fully-built, ready-to-go sites, to developer-focused boilerplates for common frontend frameworks. Starter Kits can be shared and even sold on the <a href="https://statamic.com/marketplace">Statamic Marketplace</a>.
+template: page
+nav_title: Overview
 ---
-## Finding Starter Kits
+## Statamic Starter Kits vs WordPress Themes
 
-You can browse the [Statamic Marketplace](https://statamic.com/marketplace) to find starter kits, or use the "Starter Kits" section inside your Statamic Control Panel.
+While they may seem similar on the surface, Statamic Starter Kits and WordPress Themes take a very different approach to the end-goal of speeding up the web design and development process. Allow us to explain the difference.
 
-## Installing Starter Kits
+Many WordPress themes are interchangeable because WordPress uses the same content model for all sites. This is both a strength and a weakness of the platform. The strength is the interchangeability, but the weakness is that not every business or website _should_ be the same. Sites often outgrow their themes with feature and content needs the theme doesn't support. When this happens, site owners need to either start hacking and slashing away at someone else's code, or installing plugins and hoping for the best.
 
-Within the Control Panel, you can install starter kits by browsing to the one you want and clicking install.
+Statamic Starter Kits are designed to be a **starting place**. Good, clean code, ready to be changed, built-upon, and adapted to your needs. Each Starter Kit can have a unique content model, design, and set of features that fits its creator's purpose.
 
-If you want to manually install into an existing site, you can run the following command directly on the command line:
+We envision Starter Kits as a great way to "skip ahead" in the usual development cycle of a website, and less of a "no-code" approach to web development.
+## Where to Find Starter Kits
 
-``` bash
-php please starter-kit:install vendor/starter-kit
-```
+The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace) or the **Tools &rarr; Starter Kits** section of the Statamic 3 Control Panel.
 
-If you are spinning up a new Statamic installation, you may also use the [Statamic CLI Tool](https://github.com/statamic/cli):
+<figure>
+    <img src="https://github.com/statamic/statamic-starter-doogie-browser/raw/master/screenshot.png" alt="Doogie Browser – a Statatmic Starter Kit">
+    <figcaption>This is <a class="font-bold text-blue-dark no-underline" href="https://github.com/statamic/statamic-starter-doogie-browser">Doogie Browser</a> — a fun, retro-themed Starter Kit.</figcaption>
+</figure>
 
-``` bash
-statamic new my-site vendor/starter-kit
-```
+## Recommended Reading
 
-### Installing a paid starter kit
-
-If you are installing a paid starter kit, you will be prompted to purchase and/or validate a single-use license. Once successfully installed, this license will be marked as used, and cannot be used on future Statamic sites.
-
-### Clearing your site first
-
-If you are installing into a fresh Statamic installation (a theme for example), you may wish to clear your site of any sample content first.
-
-If you are installing a more modular starter kit into an existing Statamic site (an icon set for example), you will want to skip this step!
-
-The installer should ask you if you wish to clear your site first, but you can also force clear by running with the `--clear-site` install option.
-
-### Installing without dependencies
-
-If you wish to install without bundled dependencies, you can run with the `--without-dependencies` install option.
-
-## Creating Starter Kits
-
-To learn how to create your own starter kit, as well as publishing it to the Statamic Marketplace, head over to the [Extending Statamic](/extending/starter-kits) area.
-
-## Licensing
-
-Some starter kits may require a license, which you can purchase at the [Marketplace](https://statamic.com/marketplace).
+- [How to Install a Starter Kit](/installing-a-starter-kit)
+- [How to Create Your Own Starter Kit](/creating-a-starter-kit)

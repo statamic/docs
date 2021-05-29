@@ -1,14 +1,19 @@
 ---
-id: c10e059a-58ad-4d70-b57e-1c2c00e20dbb
-title: Starter Kits
+id: 9c703f43-30de-4f65-98bb-2b89f80012b7
+title: 'Creating a Starter Kit'
 template: page
-updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
-intro: 'A starter kit is pre-configured set of files and/or settings you intend to reuse, distribute, or sell, to get a Statamic site up and running quickly.'
-stage: 1
+intro: 'Thinking of creating your own Statamic Starter Kit? Here''s everything you need to know to get started.'
+nav_title: Creating
 ---
 ## Overview
 
-Starter kit development happens within a real instance of Statamic, as if you were developing a regular Statamic site using your normal preferred workflows. For example, maybe you are building a starter kit theme, the high-level workflow could look like this:
+Starter kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
+
+A released Starter Kit package contains **only** the files relevant to the kit itself, and not a full Statamic/Laravel instance. Our Import/Export tools will allow you to maintain **only those relevant files**, without having to worry about maintaining the Statamic and underlying Laravel instances as they get updated over time.
+
+The **Export** command will export all the files and directories you've created or configured to a new location. It's this directory that becomes the package, and is the thing you should version control, not the sandbox instance.
+
+For example, maybe you are creating a pre-built, theme-style Starter Kit, the high-level workflow might look like this:
 
 1. Create a new Statamic project.
 
@@ -27,7 +32,7 @@ Starter kit development happens within a real instance of Statamic, as if you we
     ```
 
 
-## Creating a Starter Kit
+## Creating the Starter Kit Project
 
 The first step is to [create a new Statamic project](http://docs.test/installation#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
 
@@ -42,7 +47,9 @@ php please starter-kit:export {export_repo_path}
 
 If you are exporting for the first time, a new `starter-kit.yaml` config file will be created in your app's root, and you will be instructed to configure which paths you would like to export.
 
-For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace. Anything not configured in your `starter-kit.yaml` will not be exported; This way you don't have to maintain a full Statamic site, or any bootstrapping that is unrelated to your starter kit.
+For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
+
+Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.
 
 ``` yaml
 export_paths:
@@ -92,36 +99,27 @@ Once exported, you will notice that a sample `composer.json` file was created at
 }
 ```
 
-Now create a `README.md` file and push to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/), as you would any PHP package. This is all that is required to publish a free starter kit!
+Now create a `README.md` file and push to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/), as you would any PHP package. This is all that is required to publish a free Starter Kit!
 
 > Unlike addons, you are not required to register on [Packagist](https://packagist.org/).
 
-If you would like more exposure, or if you would like to charge for your starter kit, you can also [publish to the Statamic Marketplace](#publishing-to-the-marketplace).
+If you would like to share your kit, receive more exposure, or would like to charge for your Starter Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
 
 
 ## Publishing to the Marketplace
 
-Once your starter kit is ready to be shared, you can publish it on the [Statamic Marketplace](https://statamic.com/marketplace) where it can be discovered by others.
+Once your Starter Kit is ready for the world, you can publish it on the [Statamic Marketplace](https://statamic.com/marketplace) where it can be discovered by others.
 
-Before you can publish your starter kit, you'll need a couple of things:
+Before you can publish your Starter Kit, you'll need a couple of things:
 
-- Create a [statamic.com seller account](https://statamic.com/seller)
-- If you're planning to charge for your starter kits, you'll need to link connect your bank details to your seller account.
+- A [Statamic Seller Account](https://statamic.com/seller)
+- A connected [Stripe](https://stripe.com) account _only if_ you're planning to sell your Starter Kits.
 
 In your seller dashboard, you can create a product. There you'll be able to link your Composer package that you created on Packagist, choose a price, write a description, and so on.
 
 Products will be marked as drafts that you can preview and tweak until you're ready to go.
 
-Once published, you'll be able to see your starter kit on the Marketplace and within the Starter Kits area of the Statamic Control Panel.
-
-
-## Installing a Starter Kit
-
-To install into an existing site, you can run the following command directly on the command line:
-
-``` bash
-php please starter-kit:install vendor/starter-kit
-```
+Once published, you'll be able to see your Starter Kit on the Marketplace and within the Starter Kits area of the Statamic Control Panel.
 
 If you are spinning up a new Statamic installation, you may also use the [Statamic CLI Tool](https://github.com/statamic/cli):
 
@@ -134,22 +132,22 @@ More information on basic install options for the end-user [are explained here](
 
 ## Maintaining a Starter Kit
 
-When making changes to your starter kit, just [re-export](#exporting-files) from your development repo and push your changes from your exported repo.
+When making changes to your Starter Kit, just [re-export](#exporting-files) from your development repo and push your changes from your exported repo.
 
 ### Keeping up-to-date with Statamic and Laravel
 
-Rather than maintaining your development repo as new Statamic and Laravel versions are released, you can always install your starter kit into a fresh Statamic instance by using the `--with-config` install option.
+Rather than maintaining your development repo as new Statamic and Laravel versions are released, you can always install your Starter Kit into a fresh Statamic instance by using the `--with-config` install option.
 
 ``` bash
 statamic new kung-fury-dev the-hoff/kung-fury-theme --with-config
 ```
 
-This will install your starter kit into a brand new Statamic project, along with your `starter-kit.yaml` config file for future exports.
+This will install your Starter Kit into a brand new Statamic project, along with your `starter-kit.yaml` config file for future exports.
 
 
 ## Addons vs. Starter Kits
 
-Both addons and starter kits can be used to extend the Statamic experience, but they have different strengths and use cases:
+Both addons and Starter Kits can be used to extend the Statamic experience, but they have different strengths and use cases:
 
 ### Addons
 
@@ -167,4 +165,9 @@ Both addons and starter kits can be used to extend the Statamic experience, but 
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install
 
-> An example use case is a front end theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
+> An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
+
+## Related Reading
+
+- [Starter Kit Overview](/starter-kits)
+- [How to Install a Starter Kit](/installing-starter-kits)
