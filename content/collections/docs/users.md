@@ -77,6 +77,9 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete entries | `delete {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Publish entries | `publish {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Reorder entries | `reorder {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
 | Create, edit, and delete structures | `configure structures` |
 | ↳  View structure | `view {structure} structure` |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
