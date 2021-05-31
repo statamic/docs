@@ -121,14 +121,6 @@ Products will be marked as drafts that you can preview and tweak until you're re
 
 Once published, you'll be able to see your Starter Kit on the Marketplace and within the Starter Kits area of the Statamic Control Panel.
 
-If you are spinning up a new Statamic installation, you may also use the [Statamic CLI Tool](https://github.com/statamic/cli):
-
-``` bash
-statamic new my-site vendor/starter-kit
-```
-
-More information on basic install options for the end-user [are explained here](/starter-kits#installing-starter-kits).
-
 
 ## Maintaining a Starter Kit
 
