@@ -49,8 +49,6 @@ If you are exporting for the first time, a new `starter-kit.yaml` config file wi
 
 For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
 
-Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.
-
 ``` yaml
 export_paths:
   - content
@@ -65,6 +63,8 @@ export_paths:
   - tailwind.config.js
   - webpack.mix.js
 ```
+
+Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.
 
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
 
