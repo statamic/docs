@@ -7,7 +7,7 @@ nav_title: Installing
 ---
 ## Read This First
 
-Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site as it might wipe out or override your work.
+Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
 
 ## Installing from the Control Panel {#control-panel}
 
