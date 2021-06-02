@@ -160,4 +160,6 @@ Given a properly configured Laravel Forge (or similar) solution, your typical de
 
 - [Deploying Laravel to Digital Ocean](https://scotch.io/tutorials/deploying-laravel-to-digitalocean) – If you want to skip the server management portion, you can follow this guide and configure your own server. Just skip the MySQL part, you're not gonna need it.
 
+- [Deploying Websites With a Tiny Git Hook](http://ryanflorence.com/deploying-websites-with-a-tiny-git-hook/) — Got a server already set up and just need to hook up the git part? This article will get you there. Yes, it's from 2010, but this is a tried and true approach.
+
 - [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) – When working with a team (and even when by yourself) it's a good practices to follow a standardized workflow for working with git. We recommend Gitflow.
