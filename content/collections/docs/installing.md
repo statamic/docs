@@ -1,8 +1,6 @@
 ---
-title: Installation
+title: Installing
 intro: Statamic utilizes [Composer](https://getcomposer.org/) to manage its dependencies. So, before using Statamic, make sure you have Composer installed on your machine.
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568743917
 template: page
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
 stage: 4
@@ -20,7 +18,7 @@ First, download the Statamic CLI installer using Composer:
 composer global require statamic/cli
 ```
 
-Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the `statamic` executable can be located by your system. 
+Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the `statamic` executable can be located by your system.
 [Here's how](/knowledge-base/adding-to-path).
 
 **Once installed,** run the following command to kickstart a fresh new Statamic project (and even choose from some free Starter Kits).

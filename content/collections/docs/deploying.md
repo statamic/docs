@@ -1,5 +1,5 @@
 ---
-title: 'Deployment'
+title: 'Deploying'
 intro: Statamic is a modern PHP application, built as a [Laravel](https://laravel.com) package, and is deployed like any standard Laravel application. Here are a few common deployment solutions.
 template: page
 blueprint: page
