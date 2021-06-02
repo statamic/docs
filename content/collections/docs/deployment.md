@@ -46,7 +46,7 @@ Note that when hosting a static site, you lose the ability to login to the Contr
 
 ### Shared Hosting
 
-Shared hosting providers often offer the cheapest rates, but the least flexibility and worst security. This is probably the least ideal option for Statamic, and your mileage may vary, though still very possible if its your own option.
+Shared hosting providers often offer the cheapest rates, but the least flexibility and worst security. This is probably the least ideal option for Statamic, and your mileage may vary, though still very possible if its your only option.
 
 For more info on shared web hosts that play well with Statamic, check out our [user notes](https://github.com/statamic/hosts).
 
