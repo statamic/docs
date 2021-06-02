@@ -12,6 +12,8 @@ tree:
         entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
       -
         entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
+      -
+        entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
   -
     title: 'Core Concepts'
     children:
