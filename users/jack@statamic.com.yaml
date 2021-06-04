@@ -17,8 +17,8 @@ preferences:
     knowledge-base:
       columns:
         - title
-        - stage
         - slug
+        - categories
     fieldtypes:
       columns:
         - title

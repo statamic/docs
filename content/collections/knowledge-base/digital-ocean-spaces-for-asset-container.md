@@ -1,8 +1,12 @@
 ---
-title: "Using Digital Ocean Spaces for an Asset Container"
 id: 2aa44c22-f626-4f9e-826d-c23ef482cf08
+title: 'Using Digital Ocean Spaces for an Asset Container'
+template: page
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821446
 ---
-
 You might know it's possible to use Amazon S3 for your Asset Containers, but it's also very simple to use [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/).
 
 Since Digital Ocean Spaces is compatible with the Amazon S3 API, you can use the `s3` flysystem driver, but with Digital Ocean credentials.

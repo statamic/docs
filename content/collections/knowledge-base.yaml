@@ -1,7 +1,9 @@
 title: 'Knowledge Base'
-route: 'knowledge-base/{slug}'
-default_status: published
 template: page
 layout: layout
+mount: 3e260b43-aa71-43b6-832e-1ebf2f59f39b
+taxonomies:
+  - categories
 revisions: false
-mount: 3c17dff9-e45f-44ec-9516-be32218259c4
+route: '/knowledge-base/{slug}'
+sort_dir: asc

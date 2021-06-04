@@ -1,8 +1,12 @@
 ---
+id: 5fcf5a56-c120-4988-a4c7-0c5e942327b7
 title: 'Pushing related entries to an Algolia index'
 template: page
 intro: 'It''s possible to transform the data from Statamic before it gets pushed to an Algolia index, but here''s some help on transforming the data to push related data into the index.'
-id: 5fcf5a56-c120-4988-a4c7-0c5e942327b7
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821214
 ---
 Consider the following index in `config/statamic/search.php`:
 

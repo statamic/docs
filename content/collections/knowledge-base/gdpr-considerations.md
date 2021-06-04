@@ -1,7 +1,12 @@
 ---
+id: 3859a6bf-8ece-44d0-9a30-4879c93924bf
 title: 'GDPR Considerations'
 intro: 'We aren''t lawyers and this isn''t official advice, but here are some things to consider if you need to comply with [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation).'
-id: 3859a6bf-8ece-44d0-9a30-4879c93924bf
+template: page
+categories:
+  - privacy-gdpr
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821116
 ---
 ## User Accounts and Git
 
@@ -32,4 +37,3 @@ You may also want to disable form submission storing on any [forms](/forms), and
     <img src="/img/knowledge-base/form-disable-store-submissions.png" alt="Form submission storage disabled" width="516">
     <figcaption>You can disable storing form submissions on your server.</figcaption>
 </figure>
-

@@ -1,6 +1,12 @@
 ---
-title: 'List of Reserved Words'
 id: 264048cb-30fd-4529-aa48-7236434d1ec4
+title: 'List of Reserved Words'
+template: page
+categories:
+  - development
+  - troubleshooting
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821138
 ---
 ## As Field Names
 

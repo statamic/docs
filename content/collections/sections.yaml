@@ -1,0 +1,12 @@
+title: Sections
+template: default
+layout: layout
+revisions: false
+route: '{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+structure:
+  root: false
+  max_depth: 1

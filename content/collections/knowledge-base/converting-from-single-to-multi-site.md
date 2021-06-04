@@ -1,8 +1,14 @@
 ---
-title: 'Converting from Single to Multi-site'
 id: e1da92af-a0d8-40bb-9417-52675fad5e1f
+title: 'Converting from Single to Multi-site'
+template: page
+categories:
+  - development
+  - cli
+  - localization
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821029
 ---
-
 ## Move files
 
 > This can be automated using the following command:

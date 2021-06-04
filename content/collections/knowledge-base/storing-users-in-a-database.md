@@ -1,12 +1,18 @@
 ---
-title: 'Storing Users in a Database'
-intro: 'Sometimes you just gotta or wanna.'
 id: 4c3f5caa-a861-4ffd-a856-1692cafeb870
+title: 'Storing Users in a Database'
+intro: 'If you have a large or unknown number of users, it can be a good idea to store them in a database instead of the filesystem for the sake of performance or scaling.'
+template: page
+categories:
+  - development
+  - database
+  - laravel
+  - performance
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821321
 ---
-## Overview
-If you have a large amount of users, or you need to scale horizontally, it may make sense to store them in a database.
 
-### From a fresh Statamic project
+## From a fresh Statamic project
 
 If you installed Statamic using the `statamic new` command, or created a project based on the `statamic/statamic` repo, it will be configured to store users in files.
 
@@ -21,7 +27,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 7. Run `php artisan migrate`
 8. Run a command to migrate your file based users into the database.
 
-### In an existing Laravel app
+## In an existing Laravel app
 
 If you've installed Statamic into an existing Laravel app, it will already be configured to use the Eloquent driver.
 You will need to run migrations to prepare your database for Statamic's user and permission setup.

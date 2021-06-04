@@ -1,9 +1,14 @@
 ---
-title: "Optimizing Assets"
 id: b50310b0-64ae-4ae4-b219-a637ed89e4d7
+title: 'Optimizing Assets'
+template: page
+categories:
+  - development
+  - performance
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821191
 ---
-
-**⚠️ Applies to Statamic 3.1**
+> **This only Applies to Statamic 3.1+**
 
 Statamic's asset system allows you to point at a directory either locally or a remote service like Amazon S3.
 
@@ -14,7 +19,7 @@ or Digital Ocean Spaces, because it would be performing API requests.
 
 Don't worry though, there are ways to keep things zippy!
 
-### 1. Disable the Stache watcher
+## 1. Disable the Stache watcher
 
 Statamic stores information about assets in the Stache which is our flat file database. The Stache has a "watcher" feature that will keep
 an eye on your files, and update things whenever it notices they've changed.
@@ -29,7 +34,7 @@ If you turn the watcher off, it won't need to look at the filesystem on every re
 With this off, you will need to use the Control Panel to manage your assets (and edit entries, etc) or clear the cache manually
 if you do make manual changes to the files.
 
-### 2. Enabling Flysystem caching
+## 2. Enabling Flysystem caching
 
 Statamic's assets use Flysystem under the hood. Flysystem has a feature where it can cache filesystem calls, you just need to install and enable it.
 
@@ -50,7 +55,7 @@ composer require league/flysystem-cached-adapter
 
 More details in the [Laravel Docs](https://laravel.com/docs/8.x/filesystem#caching).
 
-### 3. Disable Filesystem asserts
+## 3. Disable Filesystem asserts
 
 Flysystem also has a feature where any time you try to read a file, it will first
 check if it exists. You disable this though, using the `disable_asserts` (that's asserts, not assets) flag on your Asset Container's disk.
@@ -68,7 +73,7 @@ check if it exists. You disable this though, using the `disable_asserts` (that's
 
 _It's possible that in the future Statamic will do this automatically for you._
 
-### 3. Check for existence through Assets
+## 3. Check for existence through Assets
 
 This one is a tip mostly for addon developers.
 

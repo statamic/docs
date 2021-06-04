@@ -1,7 +1,12 @@
 ---
+id: 1e22effb-69e4-46cf-9bad-6500d7347362
 title: 'Recursive Nav Examples'
 intro: 'Statamic''s [nav tag](/tags/nav) is capable of some pretty rad stuff, but recursion can be a little bit hard on the old brain (on the old brain).'
-id: 1e22effb-69e4-46cf-9bad-6500d7347362
+template: page
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821220
 ---
 Let's say we have the following pages:
 

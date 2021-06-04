@@ -5,7 +5,6 @@ namespace App\Tags;
 use Statamic\Facades\Data;
 use Illuminate\Support\Str;
 
-
 class GithubEditUrl extends \Statamic\Tags\Tags
 {
     private $endpoint = 'https://github.com/statamic/docs/blob/master/content/';
@@ -18,7 +17,11 @@ class GithubEditUrl extends \Statamic\Tags\Tags
 
         $content = Data::find($id);
 
-        $path = Str::after($content->initialPath(), 'content/');
+        if ($content instanceof \Statamic\Taxonomies\LocalizedTerm) {
+            return;
+        }
+
+        $path = Str::after($path = $content->path(), 'content/');
 
         return $this->endpoint . $path;
     }
