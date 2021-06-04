@@ -54,6 +54,8 @@ Like Laravel, if you’re expecting a collection of models, you will receive a c
 
 If you’re expecting a single model you’ll get the corresponding class. (In the example above, you'll get a `Statamic\Entries\Entry` instance).
 
+Once you have your objects, you may get data out of them in [a handful of ways](#methods).
+
 
 ## Manipulating Data
 
@@ -99,3 +101,96 @@ $entry->save();
 
 > Make sure to use the `make` method, rather than simply `new`'ing up a class. For example, if a user has customized their application
 > to store entries in a database, they will have a different Entry class. Using `Entry::make()` will make sure to get the right class.
+
+
+## Getting Field Data
+
+### Data
+This would be the data defined directly on the item, like what you'd find in an entry's YAML front-matter. (Some specific keys may be stripped out, like an entry's `id`).
+
+```yaml
+id: 123
+title: My post
+content: The post content
+```
+
+```php
+$entry->data();
+// Illuminate\Support\Collection([
+//    'title' => 'My post', 
+//    'content' => 'The post content'
+// ])
+```
+
+You can use the `get` method to get a single field's data.
+
+```php
+$entry->get('title') // 'My post'
+```
+
+More often than not, you'll want to be using `values` or `value` instead.
+
+### Values
+The "values" are similar to data, except they will also inherit from any originating items. For example, if an entry has been localized
+from another entry.
+
+```yaml
+id: 123
+title: My post
+content: The post content
+```
+
+```yaml
+id: 456
+origin: 123
+title: My localized post
+```
+
+```php
+$entry->values();
+// Illuminate\Support\Collection([
+//    'title' => 'My localized post', 
+//    'content' => 'The post content'
+// ])
+```
+
+You can use the `value` method to get a single field's value.
+
+```php
+$entry->value('title'); // 'My localized post'
+```
+
+### Augmented Values
+
+Items that support augmentation (e.g. entries) will be able to provide an augmented version of themselves.
+
+Read more about [Augmentation](/extending/augmentation).
+
+You can get a single augmented value:
+
+```php
+$entry->augmentedValue('title'); // Statamic\Fields\Value
+```
+
+All the augmented values:
+
+``` php
+$entry->toAugmentedArray();
+// [
+//    'title' => Statamic\Fields\Value,
+//    'content' => Statamic\Fields\Value,
+//    'collection' => Statamic\Entries\Collection,
+//    'uri' => '/posts/my-post',
+//    ...etc...
+// ]
+```
+
+Or a subset of augmented values:
+
+```php
+$entry->toAugmentedArray(['title', 'collection']);
+// [
+//    'title' => Statamic\Fields\Value,
+//    'collection' => Statamic\Entries\Collection,
+// ]
+```
