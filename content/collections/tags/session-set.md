@@ -7,13 +7,13 @@ stage: 4
 ---
 ## Example
 
-This can be used for many different things. For example, you could set a variable if a user has filled out a special survey form.
+This can be used for many different things. For example, you could set a variable on the form success page if a user has filled out a special survey form.
 
 ```
 {{ session:set entered_survey="true" }}
 ```
 
-Later you could decide to show the user has filled out the form.
+Later you could decide to show a message isntead of the form if the user has already filled it out.
 
 ```
 {{ session }}
