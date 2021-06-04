@@ -1,7 +1,12 @@
 ---
+id: d42da120-03f9-4eaf-bdfe-420736ca55e7
 title: 'Using an Independent Authentication Guard'
 template: page
-id: d42da120-03f9-4eaf-bdfe-420736ca55e7
+categories:
+  - development
+  - laravel
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821437
 ---
 By default, Statamic comes configured to use the default auth guard.
 
@@ -51,4 +56,4 @@ Any non-Statamic routes (e.g. any routes you've manually added to routes/web.php
     ],
 ],
 ```
-In this example we'll use the custom `statamic` auth guard to authenticate users using the statamic driver. Following the steps in [Storing Laravel Users in Files](https://statamic.dev/knowledge-base/storing-laravel-users-in-files) we can have some users stored in the database and Statamic users stored in files. 
+In this example we'll use the custom `statamic` auth guard to authenticate users using the statamic driver. Following the steps in [Storing Laravel Users in Files](https://statamic.dev/knowledge-base/storing-laravel-users-in-files) we can have some users stored in the database and Statamic users stored in files.

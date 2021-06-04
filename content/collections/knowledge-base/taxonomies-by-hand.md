@@ -1,7 +1,12 @@
 ---
-title: 'Working with Taxonomies by Hand'
-intro: 'Sometimes you just don''t feel like using a control panel.'
 id: 3f5506d6-03e0-4fcf-b4e8-334c48d51f81
+title: 'Working with Taxonomies by Hand'
+intro: 'Sometimes you just don''t feel like using a control panel. Managing content in your Code Editor can be the most productive or fun option.'
+template: page
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821454
 ---
 ## Creating Taxonomies
 

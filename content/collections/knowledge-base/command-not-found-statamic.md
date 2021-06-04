@@ -1,11 +1,15 @@
 ---
-title: 'Adding to PATH'
 id: 5d5e0add-3e2b-44c9-8ec2-7d18b9965504
-intro: |
-  In order for you to run globally installed Composer binaries, (like our `statamic` installer) you'll need to tell your
-  computer where it's located.
+title: 'CLI Command Not Found: Statamic'
+intro: |-
+  In order for you to run globally installed [Composer](https://composer.org) binaries, (like our `statamic` installer) you'll need to tell your computer where it's located.
+template: page
+categories:
+  - cli
+  - troubleshooting
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622820986
 ---
-
 If you were to run `statamic` in your terminal, it would have no idea you meant the one you just installed with Composer.
 
 ```bash

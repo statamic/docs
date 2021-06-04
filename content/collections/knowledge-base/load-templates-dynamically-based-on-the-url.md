@@ -1,7 +1,12 @@
 ---
-title: 'Load templates dynamically based on the URL'
 id: 8eac02d5-1fc1-477c-a571-4aba29f1b60e
-intro: If you've ever just wanted to start working on the frontend HTML/CSS without messing around with collections and blueprints yet, here's a fun little trick. These two route rules will give you a homepage and then dynamically map your URLs to match the folder structure of your views directory.
+title: 'Load templates dynamically based on the URL'
+intro: 'If you''ve ever just wanted to start working on the frontend HTML/CSS without messing around with collections and blueprints yet, here''s a fun little trick. These two route rules will give you a homepage and then dynamically map your URLs to match the folder structure of your views directory.'
+template: page
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821148
 ---
 ## The Snippet
 All you need to do is drop these route rules in your `routes/web.php` file. Everything else will work as usual – tags, modifiers, etc, and use the default `layout.antlers.html` layout.
@@ -29,4 +34,3 @@ Here's this route rule in action.
 | `/design` | `resources/views/design.antlers.html` |
 | `/design/stuff` | `resources/views/design/stuff.antlers.html` |
 | `/design/your/popsicle` | `resources/views/design/your/popsicle.antlers.html` |
-

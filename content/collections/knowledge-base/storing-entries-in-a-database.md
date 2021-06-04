@@ -1,8 +1,14 @@
 ---
-title: 'Storing Entries in a Database'
-intro: |
-    Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we'll show you how to store entries in a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).
 id: 853b6690-c1fc-46bc-b865-e61a33d14563
+title: 'Storing Entries in a Database'
+intro: 'Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we''ll show you how to store entries in a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).'
+template: page
+categories:
+  - development
+  - database
+  - laravel
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821277
 ---
 ## Overview
 

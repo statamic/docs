@@ -1,0 +1,40 @@
+title: Categories
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: content
+        field:
+          type: markdown
+          localizable: true
+      -
+        handle: icon
+        field:
+          mode: grid
+          container: main
+          folder: knowledge-base
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          display: Icon
+          type: assets
+          icon: assets
+          listable: hidden
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          validate:
+            - required

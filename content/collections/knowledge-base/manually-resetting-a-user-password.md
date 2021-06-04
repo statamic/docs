@@ -1,6 +1,11 @@
 ---
-title: 'Manually Resetting a User Password'
 id: f7de14cd-9160-43c1-a017-c3af018ab8ab
+title: 'Manually Resetting a User Password'
+template: page
+categories:
+  - development
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821169
 ---
 Sometimes you're stuck in a perfect storm of an error loop (like if your file permissions are wrong _and_ your didn't configure your email provider correctly) and just need to reset a user's password by any means necessary.
 

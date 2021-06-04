@@ -1,16 +1,31 @@
-<header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
+<header class="markdown">
     <h1>Knowledge Base</h1>
     <p class="text-xl">
-        Articles, tips, tricks, and other helpful content to help answer those hard-to-categorize questions.
-        Godspeed on your quest for answers!
+        Articles, tips, tricks, and other helpful content to help answer those not-quite-sure-where-they-belong-in-the-docs questions.
+        Godspeed on your quest for answers.
     </p>
 </header>
 
-<article class="pb-8">
-    <ul>
-    {{ collection:knowledge-base }}
-        <li class="mb-2 pb-2 border-b border-grey-300"><a href="{{ url }}" class="text-lg hover:text-pink-hot font-mono">{{ title }}</a></li>
-    {{ /collection:knowledge-base }}
-    </ul>
-    <p class="text-sm mt-8 italic text-grey-600 font-mono">Many more articles coming soon!</p>
-</article>
+<section class="py-8 my-12 grid grid-cols-3 gap-8">
+    {{ taxonomy:categories collection="knowledge-base" }}
+    <div class="bg-blue-lightest hover:text-black no-underline relative border rounded shadow-md font-display flex flex-col">
+        <div class="bg-white border absolute rounded-full p-4 -top-16 -left-16 shadow">
+            <img src="{{ icon }}" class="h-8 w-8">
+        </div>
+        <h2 class="text-2xl font-bold pl-16 mt-2 mb-4"><a href="{{ url }}" class="hover:text-pink">{{ title }}</a></h2>
+        <ul class="space-y-2 mb-4 px-2 py-4 flex-1">
+            {{ entries limit="4" }}
+                <li class="leading-snug">
+                    <a href="{{ url }}" class="block hover:bg-mint rounded p-2 flex font-sans">
+                        <img src="/img/knowledge-base/document.svg" class="h-4 w-4 mr-2" style="margin-top: 3px;">
+                        {{ title | widont }}
+                    </a>
+                </li>
+            {{ /entries }}
+        </ul>
+        {{ if entries_count > 4 }}
+            <a href="{{ url }}" class="border-t p-3 text-sm w-full font-bold block hover:text-blue-dark">View all {{ entries_count }} article{{ if entries_count > 1 }}s{{ /if }} &rarr;</a>
+        {{ /if }}
+    </div>
+    {{ /taxonomy:categories }}
+</section>

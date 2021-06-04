@@ -1,10 +1,15 @@
 ---
-title: 'Troubleshooting: Assets don''t have URLs'
 id: 458b8203-e330-4d78-9bf5-82aaec8d458b
+title: 'Assets are Missing URLs'
+template: page
+categories:
+  - troubleshooting
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821385
 ---
-Trying to output an asset's details and `url` is just blank? 
+Trying to output an asset's details and `url` is just blank?
 
-Perhaps `alt` text, even `width` and `height` work, but not `url`?  
+Perhaps `alt` text, even `width` and `height` work, but not `url`?
 You might have something like this:
 
 ``` yaml

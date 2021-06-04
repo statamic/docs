@@ -1,7 +1,13 @@
 ---
-title: 'Troubleshooting: Asset Permissions'
-intro: 'You''ve uploaded files to a service like Amazon S3 or Digital Ocean Spaces, but your files are private.'
 id: ede9cc18-90fe-4775-9e50-83724149abf3
+title: 'Troubleshooting Asset Permissions'
+intro: 'You''ve uploaded files to a service like Amazon S3 or Digital Ocean Spaces, but your files are private.'
+template: page
+categories:
+  - troubleshooting
+  - privacy-gdpr
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821358
 ---
 By default, filesystem disk permissions are private for security.
 

@@ -1,7 +1,12 @@
 ---
+id: 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
 title: 'Storing Users Somewhere Custom'
 intro: 'Sometimes you just gotta be special.'
-id: 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
+template: page
+categories:
+  - database
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821332
 ---
 If you'd like to store your users somewhere outside the filesystem, and the included Eloquent implementation doesn't quite cut it for you,
 you're free to write your own.

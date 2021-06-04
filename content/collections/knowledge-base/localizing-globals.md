@@ -1,6 +1,11 @@
 ---
-title: 'Localizing Globals'
 id: 660e700e-0602-49fc-a8fb-ac47b9884e52
+title: 'Localizing Globals'
+template: page
+categories:
+  - localization
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821162
 ---
 > You can use the `php please multisite` to automate converting from a single to a multisite installation.
 

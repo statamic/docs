@@ -1,10 +1,15 @@
 ---
-title: 'Laravel Nova'
-intro: 'Nova is an admin panel designed to manage your Eloquent models and other things. It can work hand in hand with Statamic.'
 id: 9af8c58e-7a9f-4f9c-89cd-97dfb3de33e6
+title: 'Using Statamic Alongside Laravel Nova'
+intro: 'Nova is an admin panel designed to manage your Eloquent models and other things. It can work hand in hand with Statamic.'
+template: page
+categories:
+  - development
+  - laravel
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821126
 ---
-We've heard users saying they'd like to manage the front-end with Statamic and the back-end with Nova.
-That's fine! It's possible to run both Statamic and Nova together. 
+We've heard users saying they'd like to manage the front-end with Statamic and the back-end with [Laravel Nova](https://nova.laravel.com/). That's fine! It's possible to run both Statamic and Nova together.
 
 > If you'd like to manage Eloquent models within Statamic, [you're able to do that, too](/extending/publish-forms).
 
@@ -35,7 +40,7 @@ That's fine! It's possible to run both Statamic and Nova together.
             'provider' => 'statamic',
         ],
    ],
-   
+
    'providers' => [
         'users' => [
             'driver' => 'eloquent',

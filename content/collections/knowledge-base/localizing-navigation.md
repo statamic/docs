@@ -1,6 +1,11 @@
 ---
-title: 'Localizing Navigation'
 id: 35c9cd07-f377-4fcb-b02c-72c1925e6fdf
+title: 'Localizing Navigation'
+template: page
+categories:
+  - localization
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1622821176
 ---
 > You can use the `php please multisite` to automate converting from a single to a multisite installation.
 
