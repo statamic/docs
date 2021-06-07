@@ -66,11 +66,7 @@ Loop through in each locale to get URLs to translated versions of an entry or ta
 ```
 <ul>
 {{ locales }}
-    <li>
-      {{ locale }}
-        <a href="{{ url }}">View in {{ name }}</a>
-      {{ /locale }}
-    </li>
+    <li><a href="{{ url }}">View in {{ locale:name }}</a></li>
 {{ /locales }}
 </ul>
 ```
@@ -91,7 +87,7 @@ You can choose to not show the current locale in a list.
 ```
 {{ locales }}
   {{ if ! is_current }}
-    <a href="{{ locale:url }}">View in {{ locale:name }}</a>
+    <a href="{{ url }}">View in {{ locale:name }}</a>
   {{ /if }}
 {{ /locales }}
 ```
