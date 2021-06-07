@@ -25,7 +25,7 @@ public function boot()
 Fieldtypes have two pieces:
 
   - A PHP class handling data processing and validation
-  - A Vue component handling the view and data binding
+  - A Vue 2 component handling the view and data binding
 
 For this example we will create a password field with a "show" toggle control:
 

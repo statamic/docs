@@ -2,6 +2,7 @@
 title: 'Vue Components'
 stage: 1
 id: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
+overview: Here's how you can add your own Vue 2 components to the Statamic Control Panel.
 ---
 
 ## Registering Components
