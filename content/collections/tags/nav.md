@@ -168,7 +168,7 @@ Use the `uri` to get the children of the current page.
 
 ## Multi-level Nav Example Recursion {#multi-level}
 
-Build an infinitely deep nav is possible by using recursion.
+Building an infinitely deep nav is possible by using recursion.
 
 ```
 <ul>
