@@ -315,7 +315,7 @@ name of the field by adding `honeypot: something` to your formset.
 
 To submit the form with AJAX, be sure to pass all the form inputs in with the submission, as Statamic sets `_token` and `_params`, both of which are required.
 
-You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest'.
+You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest`.
 
 ### Axios Example
 
