@@ -96,12 +96,12 @@ Make sure to also set the [visibility](#visibility) to `private`.
 
 ## Visibility
 
-Your filesystem's disk can have a `visibility` which is abstraction of file permissions. You can set it to `public` or `private`, 
+Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`, 
 which essentially controls whether they're accessible or not.
 
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
 
-> If you're using a service based driver like Amazon S3, and you want the files to be accessibly by URL, make sure you set the [visibility](#visibility) to `public`.
+> If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
 
 ## Blueprints
 
