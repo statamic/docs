@@ -28,11 +28,15 @@ class Delete extends Action
     public function run($items, $values)
     {
         $items->each->delete();
+
+        return trans_choice('Item deleted.|:count items deleted.', $items);
     }
 }
 ```
 
 The `run` method is for executing the task. You will be provided with a collection of `$items`, and any submitted `$values` (more about those later).
+
+If you return a string, it will be shown in the toast notification. Otherwise, you'll get a generic success message.
 
 ### Redirects
 
