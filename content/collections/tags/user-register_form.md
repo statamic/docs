@@ -130,7 +130,7 @@ Each item in the `fields` array contains `type`, `display` and `handle`, which a
 
 You will also find the field's `old` input on unsuccessful submission, as well as an `error` message when relevant.
 
-Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-views`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
+Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-forms`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
 
 ## New User Roles
 
