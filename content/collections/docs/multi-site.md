@@ -50,6 +50,59 @@ return [
 ];
 ```
 
+## Site URLs
+
+As mentioned above, each site needs to define a `url`.
+
+Out of the box, the site's `url` is `/`, which should work for most cases. There's a little magic behind the scenes to work out what the full URL should be.
+
+However, it's a good idea to change this to be a full/absolute URL. This guarantees that no server/environment configuration or quirks gets in the way.
+Using an environment variable is an ideal solution here.
+
+```php
+'sites' => [
+    'en' => [
+        // ...
+        'url' => env('APP_URL')
+    ],
+    'fr' => [
+        // ...
+        'url' => env('APP_URL').'/fr'
+    ]
+]
+```
+
+```env
+# production
+APP_URL=https://mysite.com/
+```
+```env
+# development
+APP_URL=http://mysite.test/
+```
+
+## Text Direction
+
+If your sites have different text directions, for example if you have an English and a Hebrew version, you can define the direction in the config and use it on your front-end.
+
+```php
+'sites' => [
+    'en' => [
+        'name' => 'English',
+    ],
+    'he' => [
+        'name' => 'Hebrew',
+        'direction' => 'rtl',
+    ]
+]
+```
+
+```
+<html dir="{{ site:direction }}">
+```
+
+> You can omit the `direction` from `ltr` sites since it's the default.
+
 ## Views
 
 [Views](/views) can be organized into site directories.
