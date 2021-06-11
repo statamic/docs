@@ -67,7 +67,7 @@ Using an environment variable is an ideal solution here.
     ],
     'fr' => [
         // ...
-        'url' => env('APP_URL').'/fr'
+        'url' => env('APP_URL').'/fr/'
     ]
 ]
 ```
