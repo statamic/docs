@@ -39,7 +39,7 @@ sponsors:
 <div class="flex">
 <div class="w-1/2" markdown=1>
 
-- [How to install Statamic](/installation)
+- [How to install Statamic](/installing)
 - [Statamic 2 Migrator](https://github.com/statamic/migrator)
 - [Static Site Generator](https://github.com/statamic/ssg)
 - [Addon directory](https://statamic.com/addons)
