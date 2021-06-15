@@ -149,8 +149,7 @@ resources/views/partials/sets/
 
 Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [ProseMirror][prosemirror]) as the foundation for our quintessential block-based editor.
 
-- Link to [TipTap Extensions](https://tiptap.dev/docs)
-- Explain how to bootstrap said extensions and buttons
+[Learn how to extend Bard](/extending/bard)
 
 ## Config Options
 
