@@ -19,7 +19,7 @@ composer global require statamic/cli
 ```
 
 Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the `statamic` executable can be located by your system.
-[Here's how](/knowledge-base/adding-to-path).
+[Here's how](/knowledge-base/command-not-found-statamic).
 
 **Once installed,** run the following command to kickstart a fresh new Statamic project (and even choose from some free Starter Kits).
 
