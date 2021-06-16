@@ -125,6 +125,27 @@ You can also create your own password reset pages for front-end users by using t
 
 The user will receive an email with a temporary, single-use token allowing them to set a new password and log in again.
 
+## Password Validation
+
+By default, passwords need to be 8 characters long. If you'd like to customize the default rules, you can use the `Password` rule object. (Requires at least Laravel 8.43).
+
+These rules will be used when creating passwords throughout Statamic. In the `make:user` command, in the `user:register_form` tag, or during the password activation/reset flows. If you create the password by hand in user yaml files, the rules will be bypassed.
+
+You can drop this into your `AppServiceProvider`'s `boot` method.
+
+```php
+use Illuminate\Validation\Rules\Password;
+
+public function boot()
+{
+    Password::defaults(function () {
+        return Password::min(16);
+    });
+}
+```
+
+Consult the [Laravel documentation](https://laravel.com/docs/8.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
+
 ## Storing User Records {#storage}
 
 While users are stored in files by default — like everything else in Statamic — they can also be located in a database or really anywhere else. Here are links to articles for the different scenarios you may find yourself in.

@@ -230,7 +230,7 @@ Here's a peek at how that YAML is structured.
       - 'min:4'
 ```
 
-> If you're typing a rule, make sure to hit enter to confirm it!
+> If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
 
 ### Required Fields
 
