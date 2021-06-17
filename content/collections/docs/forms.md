@@ -68,6 +68,15 @@ fields:
 
 > The `message` variable is reserved within emails, so you should avoid using that as a field handle if you intend on using the email feature.
 
+If you use the Control Panel to build your blueprint, you will find that there's only a subset of fieldtypes available to you.
+These are the fields that have corresponding views ready to be used on the front-end.
+
+If you'd like to include more fieldtypes, you can opt into each one by calling `makeSelectableInForms` on the respective class within a service provider:
+
+```php
+Statamic\Fieldtypes\Section::makeSelectableInForms();
+```
+
 ### The Template
 
 Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
