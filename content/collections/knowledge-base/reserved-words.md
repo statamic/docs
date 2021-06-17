@@ -28,6 +28,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 
 - `content` as a field name when _also_ utilizing the "content area" of your YAML front-loaded Markdown files (usually when working in the files directly)
 - `global` with any datatype storing data as an array when there is _also_ a global field of the same name.
+- `type` inside a Replicator set. The type is the handle of the set.
 
 ## As Form Fields
 
