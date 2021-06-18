@@ -46,6 +46,26 @@ export default class MyExtension {
   name() {
     return 'myextension';
   }
+  
+  schema() {
+    // Your schema stuff
+  }
+  
+  commands({type}) {
+    // Your command stuff
+  }
+
+  inputRules({type}) {
+    return [] // Input rules if you want
+  }
+
+  plugins() {
+    return []
+  }
+
+  pasteRules() {
+    return []
+  }
 }
 ```
 
