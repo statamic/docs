@@ -56,7 +56,7 @@ Here we dynamically insert a CSS class based on the current item's `depth` in th
 ```antlers
 ---
 nav_classes:
-  1: 'font-gray-900 font-bold'
+  1: 'text-gray-900 font-bold'
   2: 'text-gray-800 ml-3'
   3: 'text-gray-500 ml-6 text-sm'
 ---
