@@ -183,6 +183,13 @@ If asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
 
+
+``` php
+// config/statamic/assets.php
+
+'auto_crop' => true,
+```
+
 ## Unsupported formats
 
 Glide will resize whatever images it supports, like jpgs or pngs. If you pass an unsupported type to Glide, like an svg, it'll just return the unmodified URL.
