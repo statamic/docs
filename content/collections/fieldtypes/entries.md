@@ -8,7 +8,7 @@ screenshot: fieldtypes/entries.png
 video: https://youtu.be/WWbsM5u9afc
 options:
   -
-    name: collection
+    name: collections
     type: array
     description: |
       Configure which collections you want to allow relationships with.
