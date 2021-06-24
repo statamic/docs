@@ -66,7 +66,7 @@ shape:
     name: quality
     type: integer
     description: >
-      Defines the quality of the image. Use values between `0` and `100`. Only relevant if the format is `jpg` or `pjpg`. Default: `90`.
+      Defines the quality of the image. Use values between `0` and `100`. Only relevant if the format is `jpg`, `pjpg` or `webp`. Default: `90`.
   -
     name: dpr
     type: integer
