@@ -9,15 +9,20 @@
 
 <article class="markdown pb-8">
     {{ content | toc:ids  }}
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        {{ sponsors }}
-        <a href="{{ url }}" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
-            <img src="{{ avatar_url }}" class="rounded h-12 w-12 mr-4"/>
-            <span>{{ name }}</span>
-        </a>
-        {{ /sponsors }}
-    </div>
-
-    <iframe src="https://github.com/sponsors/statamic/card" title="Sponsor statamic" height="225" width="600" class="w-full" style="border: 0;"></iframe>
+    <table>
+        <thead>
+            <th>Page</th>
+            <th>Section</th>
+            <th>Last Updated</th>
+        </thead>
+        <tbody>
+            {{ collection from="*" sort="last_modified:desc" limit="15" title:not="Documentation" scope="entry" }}
+                <tr>
+                    <td><a href="{{ entry:url }}">{{ entry:title }}</a></td>
+                    <td>{{ entry:collection | deslugify | title }}</td>
+                    <td>{{ entry:last_modified | ago }}</td>
+                </tr>
+            {{ /collection }}
+        </tbody>
+    </table>
 </article>

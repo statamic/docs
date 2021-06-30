@@ -4,35 +4,6 @@ intro: If you're looking to learn how to build and manage sites with Statamic, y
 id: 6aa5449b-5d90-47de-97e7-82ba5f665250
 blueprint: page
 template: home
-sponsors:
-  -
-    name: LionsMouth Digital
-    avatar_url: https://avatars2.githubusercontent.com/u/11314482?s=200&v=4
-    url: https://github.com/LionsMouthDigital
-  -
-    name: James Blair
-    avatar_url: https://avatars1.githubusercontent.com/u/4450975?s=400&u=3ae89e529e10dc471bf184db3e5ef99661b3f181&v=4
-    url: https://github.com/jsblair9
-  -
-    name: Simon Hamp
-    avatar_url: https://avatars3.githubusercontent.com/u/31628?s=400&v=4
-    url: https://github.com/simonhamp
-  -
-    name: Steven Grant
-    avatar_url: https://avatars0.githubusercontent.com/u/112473?s=400&v=4
-    url: https://github.com/1stevengrant
-  -
-    name: Daniel Plomp
-    avatar_url: https://avatars0.githubusercontent.com/u/1482375?s=400&v=4
-    url: https://github.com/plompd
-  -
-    name: Nick Hamze
-    avatar_url: https://statamic.com/images/storage/avatars/zZGgwFvGojqTufxgA8dhImXMsG000pHQrxzRerU1.png?fit=max&w=300&h=300
-    url: https://github.com/nickhamze
-  -
-    name: Potentweb
-    avatar_url: https://avatars.githubusercontent.com/u/4548490?s=400&u=1aadacc6935366b7d3d408435ab4defba096c229&v=4
-    url: https://github.com/potentweb
 ---
 
 ## Popular Links
@@ -113,3 +84,44 @@ Looking to jump right into a ready-made site?
 ## Hero Sponsors
 
 We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+    <a href="https://github.com/LionsMouthDigital" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars2.githubusercontent.com/u/11314482?s=200&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>LionsMouth Digital</span>
+    </a>
+    <a href="https://github.com/jsblair9" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars1.githubusercontent.com/u/4450975?s=400&amp;u=3ae89e529e10dc471bf184db3e5ef99661b3f181&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>James Blair</span>
+    </a>
+    <a href="https://github.com/simonhamp" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars3.githubusercontent.com/u/31628?s=400&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>Simon Hamp</span>
+    </a>
+    <a href="https://github.com/1stevengrant" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars0.githubusercontent.com/u/112473?s=400&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>Steven Grant</span>
+    </a>
+    <a href="https://github.com/plompd" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars0.githubusercontent.com/u/1482375?s=400&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>Daniel Plomp</span>
+    </a>
+    <a href="https://github.com/nickhamze" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://statamic.com/images/storage/avatars/zZGgwFvGojqTufxgA8dhImXMsG000pHQrxzRerU1.png?fit=max&amp;w=300&amp;h=300" class="rounded h-12 w-12 mr-4">
+        <span>Nick Hamze</span>
+    </a>
+    <a href="https://github.com/potentweb" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars.githubusercontent.com/u/4548490?s=400&amp;u=1aadacc6935366b7d3d408435ab4defba096c229&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>Potentweb</span>
+    </a>
+    <a href="https://github.com/mitydigital" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+        <img src="https://avatars.githubusercontent.com/u/76409329?s=200&amp;v=4" class="rounded h-12 w-12 mr-4">
+        <span>Mity Digital</span>
+    </a>
+    <a href="https://github.com/sponsors/statamic" class="rounded custom text-white bg-black transform hover:-rotate-1 no-underline flex border shadow-md py-1 px-3 text-center items-center relative">
+        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" class="rounded-full h-12 w-12 mr-4">
+        <spa>Are you next?</spa>
+    </a>
+</div>
+
+## Recently Updated
