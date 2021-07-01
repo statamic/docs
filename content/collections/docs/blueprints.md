@@ -237,6 +237,23 @@ Here's a peek at how that YAML is structured.
 Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
 
 
+## Localization
+
+If your site is set up as a multi-site, you can decide which fields should be editable in other languages and which should copy their content from the master language.
+
+To change the behaviour of a field, toggle the respective globe symbol in the list of fields, located between the width selector and delete icon.
+
+You can also set this manually in the blueprint's yaml file:
+
+``` yaml
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      localizable: true
+```
+
 ## Grid Fieldtype
 
 The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
