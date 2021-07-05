@@ -32,7 +32,7 @@ parameters:
     name: sort
     type: 'string *title*'
     description: >
-      Sort terms by a field. By default it will be sorted by the title. Also available is `entries_count` if you wanted to sort by the most popular terms.
+      Sort terms by a field. By default it will be sorted by the title. Also available is `entries_count:desc` if you wanted to sort by the most popular terms.
   -
     name: filter
     type: wizardry
