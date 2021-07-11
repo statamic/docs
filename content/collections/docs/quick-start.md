@@ -19,56 +19,62 @@ We're going to build a simple personal website for a fictitious young aspiring p
 
 ## High level approach
 
-A high level approach to building a site in Statamic usually looks like this.
+A high level approach to building a site in Statamic often looks like this.
 
 1. Start with a static HTML site or series of different layouts
 2. Break static files up into the appropriate [Antlers views](/antlers) (layouts, templates, and partials)
-3. Create applicable [collections](/collections) and [routes](/routing) to hold content
+3. Create applicable [collections](/collections) to hold content and set up [routes](/routing) to determine your URL patterns
 4. Stub out top level pages and map them to the proper templates
 5. Add fields to your [blueprints](/blueprints) and start moving static content from HTML into their proper fields
-6. Keep going until your site is done!
+6. Keep going until your site is done
 
 Once familiar with Statamic, many developers begin building their static site right in Statamic, often blending all the steps into a smooth flowing river of productivity.
+
+## Prerequisites
+
+We want this quick start guide to be just that — quick. Rather than stop after each of the first steps to explain development environment stuff, we recommend you follow the [Getting Your Development Environment Up & Running](#) guide first to make sure you're ready to run Statamic on your machine.
 
 ## Install Statamic
 
 Let's start right at the very beginning. Installing Statamic.
 
-First, we're going to [`composer create-project`](https://getcomposer.org/doc/03-cli.md#create-project) command from the command line. This clones the [statamic/statamic repo](https://github.com/statamic/statamic) and then runs a series of scripts on it to automate steps you would otherwise need to perform manually if you cloned the repo directly. Nice.
+There are a [few ways to do it](/installing), but we'll just go with the simplest, most copy & pasteable method – using [Composer'a](https://getcomposer.org) `create-project` command.
 
-You should run this command from your `~/Sites` directory if you're using [Valet](https://laravel.com/docs/valet) or a similar dev environment where directories map to `.test` local domains.
+The command you're about to run clones (makes a copy of) our [empty starter site](https://github.com/statamic/statamic) and then runs a few automated scripts to get your new blank site ready.
+
+You should run this command from your Terminal application of choice (we like [iTerm2](#)) inside your `~/Sites` directory or wherever you prefer putting your sites.
 
 ``` bash
-composer create-project statamic/statamic cyberspace-place --prefer-dist --stability=dev
+composer create-project --prefer-dist statamic/statamic cyberspace-place
 ```
 
 If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen.
 
-If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file.
+If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file. If you encounter a Composer error, try running `composer global update` and trying again.
 
 If you encounter any other errors, Google them frantically and try anything and everything suggested until it magically begins working.
 
-Just kidding, that's a terrible idea. Please don't do that. You should check our [knowledge base](/knowledge-base) and [forums](https://statamic.com/forums) to look for a validated solution before resorting to such measures.
+**Just kidding**, that's a terrible idea. Please don't do that. You should check our [knowledge base](/knowledge-base) and [forums](https://statamic.com/forums) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
     <img src="/img/quick-start/installed.png" alt="Statamic 3 Welcome Screen">
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
-Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor.
+Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](#) but there are a ton of great editors and IDEs out there.
 
 ## Create your first user
 
-Now we can create a new super user and sign into the control panel and start creating some content to display on the frontend.
+Now we can create a new **super user**, sign into the control panel, and start creating content to display on the frontend.
 
-Run `php please make:user` from the command line inside that new project directory and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
+Run `php please make:user` from the command line and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
 
 <figure>
     <img src="/img/quick-start/make-user.png" alt="Statamic 3 Make:User Command" width="453">
     <figcaption>We can customize user fields later — this is just fine for today.</figcaption>
 </figure>
 
-Now you can sign in! Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to sign into the control panel.
+Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to sign into the control panel.
 
 <figure>
     <img src="/img/quick-start/login.png" alt="Statamic 3 Login Screen">
@@ -86,7 +92,7 @@ Next, let's get some content of _our_ choosing to show on the homepage. Head to 
 
 Note that the entry is using the `home` template (you can see it there in the `template` field). Let's edit it and reveal your new and incredible content to the browser.
 
-In your code editor, open the file `resources/views/home.antlers.html`. This is the home template. The name of a template is the filename _up until the file extension_. Any view ending in `.antlers.html` will be parsed with Statamic's [Antlers](/antlers) template parser.
+In your code editor, open the file `resources/views/home.antlers.html`. This is the home template. The "name" of a template is the filename _up until the file extension_. Any view ending in `.antlers.html` will be parsed with Statamic's [Antlers](/antlers) template parser.
 
 > If a view file ends with `.blade.php` it will use Laravel's [Blade language](/template-engines). This same pattern applies for other template engines that could be installed in the future.
 
@@ -96,7 +102,7 @@ Delete all the placeholder HTML from the template and replace it with the follow
 {{ content }}
 ```
 
-Refresh the site in your browser and you should see your content in all of its glory. Each of those double curly tags is a **variable**. When on a URL that's loading content from an entry, all of the content fields are available to you with their corresponding variable name (also called a "handle"). We'll get into adding new fields in just a bit.
+Refresh the site in your browser and you should see your content in all of its glory. Each of those double curly tags is a **variable**. When on a URL that matches an entry's route rule, all of that entry's field data is available automatically in the defined template. We'll get into adding new fields in just a bit.
 
 <figure>
     <img src="/img/quick-start/new-home.png" alt="Your new home page" width="424">
@@ -112,7 +118,7 @@ You probably noticed that there is some _very_ basic styling going on. That's co
 <html>
 <head>
     <title>{{ title }}</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white text-lg font-mono">
     <div class="container max-w-lg mx-auto py-8">
@@ -123,9 +129,9 @@ You probably noticed that there is some _very_ basic styling going on. That's co
 
 ```
 
-Your layout file contains any markup you want present no matter what page you’re on, where you go, how far you travel, or loudly you sing. It's the perfect place to put your `<head>` stuff, main site nav, and site footer bits.
+Your layout file contains any markup you want present no matter what page you’re on. It's usually the best place to put your `<head>` meta markup, persistent site navigation, site footer, and other global things.
 
-You can think of layouts like **picture frames** for your website. Everything you want rendered into the _contents_ of the frame — those things that may change from section to section and page to page — goes into templates. Those templates are rendered wherever you put that `{{ template_content }}` variable in your layout.
+Think of layouts like a **picture frame**, and everything that changes from section to section, page to page _inside_ the frame — goes into templates. In practice, templates are injected inline wherever you put a `{{ template_content }}` variable in your layout to create a complete HTML document.
 
 
 <figure>
@@ -133,8 +139,91 @@ You can think of layouts like **picture frames** for your website. Everything yo
     <figcaption>If copy & pasted properly you should see this 👆</figcaption>
 </figure>
 
+## Now let's build a blog
 
-## Create an About page
+You might have known it was coming next – it's the staple of every CMS walkthrough. How easy is it to build a blog? You're about to find out.
+
+But first, let's talk about what a blog is. A "blog" is a collection of posts that shares common traits or attributes. A typical blog post might contain a title, featured image, an author, a few tags, and the article content.
+
+There also always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
+
+Here's our todo list:
+
+- Crete a blog "Collection" with the following fields: `title` , `featured_image` , `author` , `tags` , and `content`
+- Create a blog index page (`/blog`)
+- Create a blog detail page (`/blog/why-i-love-mustard`)
+- Add a list of the most recent 5 blog entries to the homepage
+
+### Create a new Collection
+
+Head back to the Control Panel and click on the Collections link in the sidebar. Click the blue **Create Collection** button and then call your new collection "Blog".
+
+<figure>
+    <img src="/img/quick-start/create-collection.jpg" alt="Creating a blog collection" width="600">
+    <figcaption>You can name it whatever you want, as long as you name it Blog.</figcaption>
+</figure>
+
+## Scaffold your templates
+
+Let's save you a minute or two and generate the index and show template. Click on **Scaffold Resources**
+
+<figure>
+    <img src="/img/quick-start/scaffold-resources-link.jpg" alt="Link to Scaffold resources" width="600">
+    <figcaption>Click it.</figcaption>
+</figure>
+
+And then click the Create Resources button. The defaults are perfect.
+
+<figure>
+    <img src="/img/quick-start/scaffold-resources.jpg" alt="Scaffold collection resources" width="600">
+    <figcaption>Click the button.</figcaption>
+</figure>
+
+Two new files will be created. We'll be editing them soon:
+
+- `resources/views/blog/index.antlers.html`
+- `resources/views/blog/show.antlers.html`
+
+## Configure the collection
+
+Next, let's configure the collection to behave the way a typical blog should. Click **Configure Collection**.
+
+<figure>
+    <img src="/img/quick-start/configure-collection-link.jpg" alt="Link to configure your collection" width="600">
+    <figcaption>And now click this.</figcaption>
+</figure>
+
+
+> Statamic does its best to take a "turn it on and build it up" approach to features and settings, in contrast to other platforms that take a "turn it off and rip it out" approach. This means that Statamic doesn't do everything right out the box, allowing you to customize how you'd like everything to work.
+
+We'll review some of the important settings, but we only need to touch two of them to make a blog:
+
+- Enable Publish Dates (the subs-setting defaults are perfect)
+- Set your route rule
+
+<figure>
+    <img src="/img/quick-start/blog-settings.jpg" alt="Settings to make a blog" width="600">
+    <figcaption>These are the only two you need to set.</figcaption>
+</figure>
+
+By enabling **Publish Dates**, Statamic will add a date field to your list of available entry fields (called a Blueprint), and will use the specified date to determine whether a given entry should be visible or not. Typical blog posts with a date in the future would be a _scheduled_ post and not yet published, and one in the past is published, and therefore visible. This is how we'll configure our Blog Collection, and is the default behavior when you enable this feature.
+
+As you scroll you'll notice a **Content Model** section. That template you scaffolded in the previous step is automatically selected as the default template for new Blog entries.
+
+And finally in the **Routing & URLs** section you'll find the **Route** setting. Here you can create the URL pattern that all of your entries will follow. You can change this anytime and use any of the Collection's fields as variables in the pattern by surrounding them in single braces, `{like_this}`.
+
+Here are some common patterns you could choose from:
+
+| Example URL | Route Pattern Rule |
+|-----------------------------------|-----------------------------------|
+|`/blog/2021-12-24/merry-christmas` | `/blog/{year}-{month}-{day}/{slug}` |
+|`/blog/2020/still-bored` | `/blog/{year}/{slug}` |
+|`/blog/happy-new-year` | `/blog/{slug}` |
+| `/evergreen-syle` | `/{slug}` |
+
+
+
+<!-- ## Create an About page
 
 Let's make our first _new_ page! Head back to our Dashboard to `Collections -> Pages` to add our new page. Above our table with our Home page click the **Create Entry** button.
 
@@ -148,4 +237,4 @@ Now, scroll down to Template. From the drop down we have several options. We use
 
 Click **Save & Publish** and you'll see your new page titled "About" in the List.
 
-## TO BE CONTINUED...
+## TO BE CONTINUED... -->
