@@ -84,4 +84,4 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-> You should clear your cache after changing a binding like this.
+> Don't forget to run `php please stache:clear`, for the new bindings to take effect.
