@@ -83,3 +83,5 @@ class AppServiceProvider extends ServiceProvider
     }
 }
 ```
+
+> You should clear your cache after changing a binding like this.
