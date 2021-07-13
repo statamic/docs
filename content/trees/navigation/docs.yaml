@@ -104,6 +104,15 @@ tree:
       -
         entry: 4b77c19b-129c-4271-a724-eea884eb3e2e
   -
+    title: 'Starter Kits'
+    children:
+      -
+        entry: 3a2e714c-57de-4b16-a916-7e7aba22de03
+      -
+        entry: c51a5de8-4b02-4240-8195-3ff7987c43cf
+      -
+        entry: 9c703f43-30de-4f65-98bb-2b89f80012b7
+  -
     title: 'Advanced Capabilities'
     children:
       -

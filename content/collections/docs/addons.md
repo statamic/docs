@@ -5,11 +5,11 @@ intro: Developers can easily build new features that are compatible with everyon
 stage: 3
 ---
 
-## Finding addons
+## Finding Addons
 
 You can browse the [Statamic Marketplace](https://statamic.com/addons) to find addons, or use the "Addons" section inside your Statamic Control Panel.
 
-## Installing addons
+## Installing Addons
 
 Within the Control Panel, you can install addons by browsing to the one you want and clicking install. Behind the scenes, the addon will be installed using Composer.
 
@@ -19,7 +19,7 @@ If you want to do it yourself, you can use Composer directly on the command line
 composer require vendor/package
 ```
 
-## Creating addons
+## Creating Addons
 
 To learn how to create your own addon, as well as publishing it to the Statamic Marketplace, head over to the [Extending Statamic](/extending/addons) area.
 
