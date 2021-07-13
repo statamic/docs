@@ -44,7 +44,7 @@ There are a [few ways to do it](/installing), but we'll just go with the simples
 
 The command you're about to run clones (makes a copy of) our [empty starter site](https://github.com/statamic/statamic) and then runs a few automated scripts to get your new blank site ready.
 
-You should run this command from your Terminal application of choice (we like [iTerm2](#)) inside your `~/Sites` directory or wherever you prefer putting your sites.
+You should run this command from your Terminal application of choice (we like [iTerm2](https://iterm2.com/index.html) inside your `~/Sites` directory or wherever you prefer putting your sites.
 
 ``` bash
 composer create-project --prefer-dist statamic/statamic cyberspace-place
@@ -63,7 +63,7 @@ If you encounter any other errors, Google them frantically and try anything and 
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
-Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](#) but there are a ton of great editors and IDEs out there.
+Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](https://code.visualstudio.com/) but there are a ton of great editors and IDEs out there.
 
 ## Create your first user
 
