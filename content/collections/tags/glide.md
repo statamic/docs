@@ -179,7 +179,7 @@ When setting focal points manually, specify two offset percentages: `crop-x%-y%`
 
 For example, `fit="crop-75-50"` would crop the image and make sure that the point at 75% across and 50% down would be the focal point.
 
-If asset doesn't have a focal point set it will simply crop from the center.
+If an asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
 
