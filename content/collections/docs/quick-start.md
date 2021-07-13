@@ -1,7 +1,8 @@
 ---
 title: 'Quick Start Guide'
-intro: "This is a step-by-step walkthrough on installing and building a simple Statamic 3 site. It is focused more on the fundamental building blocks and less on design and aesthetics. In fact, it will be an ugly site. Just brace yourself ahead of time."
+intro: "This is a step-by-step walkthrough on installing and building a simple Statamic 3 site. It is focused on the fundamental building blocks and less on design and aesthetics."
 stage: 1
+video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
@@ -25,14 +26,14 @@ A high level approach to building a site in Statamic often looks like this.
 2. Break static files up into the appropriate [Antlers views](/antlers) (layouts, templates, and partials)
 3. Create applicable [collections](/collections) to hold content and set up [routes](/routing) to determine your URL patterns
 4. Stub out top level pages and map them to the proper templates
-5. Add fields to your [blueprints](/blueprints) and start moving static content from HTML into their proper fields
+5. Configure [blueprints](/blueprints) to hold fields that match your HTML (like title, author, date, content) and move static content out of your markup and into entries using the beautiful UI
 6. Keep going until your site is done
 
 Once familiar with Statamic, many developers begin building their static site right in Statamic, often blending all the steps into a smooth flowing river of productivity.
 
-## Prerequisites
+<!-- ## Prerequisites
 
-We want this quick start guide to be just that — quick. Rather than stop after each of the first steps to explain development environment stuff, we recommend you follow the [Getting Your Development Environment Up & Running](#) guide first to make sure you're ready to run Statamic on your machine.
+We want this quick start guide to be just that — quick. Rather than stop after each of the first steps to explain development environment stuff, we recommend you follow the [Getting Your Development Environment Up & Running](#) guide first to make sure you're ready to run Statamic on your machine. -->
 
 ## Install Statamic
 
@@ -71,7 +72,7 @@ Run `php please make:user` from the command line and follow along with the promp
 
 <figure>
     <img src="/img/quick-start/make-user.png" alt="Statamic 3 Make:User Command" width="453">
-    <figcaption>We can customize user fields later — this is just fine for today.</figcaption>
+    <figcaption>You can customize user fields later.</figcaption>
 </figure>
 
 Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to sign into the control panel.
@@ -160,7 +161,7 @@ Head back to the Control Panel and click on the Collections link in the sidebar.
 
 <figure>
     <img src="/img/quick-start/create-collection.jpg" alt="Creating a blog collection" width="600">
-    <figcaption>You can name it whatever you want, as long as you name it Blog.</figcaption>
+    <figcaption>Name it whatever you want, as long as you name it Blog.</figcaption>
 </figure>
 
 ## Scaffold your templates
@@ -221,20 +222,198 @@ Here are some common patterns you could choose from:
 |`/blog/happy-new-year` | `/blog/{slug}` |
 | `/evergreen-syle` | `/{slug}` |
 
+When in doubt, keep it simple. And then save your changes.
+
+## Creating your first entry
+
+We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we add all configure all the custom fields and whatnot.
+
+Head back to your blog Collection screen and click **Create Entry**.
+
+<figure>
+    <img src="/img/quick-start/create-entry-link.jpg" alt="Link to create your first blog entry" width="600">
+    <figcaption>And finally, click this.</figcaption>
+</figure>
+
+Now you can see all the default fields for your new Collection. They're the same as the Home entry you edited a few moments ago. Go ahead and make a new blog post. Make two if you'd like! It's up to you.
+
+| Field | Notes |
+|-----------------------------------|-----------------------------------|
+| **Title** | The required title of the entry |
+| **Content** | A simple [Markdown](/fieldtypes/markdown) field |
+| **Author** | Defaults to whoever is logged in |
+| **Template** | When not _explicitly set_ will use the Collection's default |
+| **Slug** | Automatically generated off the title until you edit it manually |
+| **Date** | Defaults to today |
+
+## Time for more frontend
+
+It's code editor time! Let's get that list of the 5 most recent entries onto the homepage since it already exists and is one of our todos. Open `resources/views/home.antlers.html` and replace that lonely `{{ content }}` with this markup (don't worry, we'll explain what's going on in a moment):
+
+```
+// resources/views/home.antlers.html
+
+<h1 class="text-2xl font-bold my-6">Welcome to my CyberSpace Place!</h1>
+{{ content }}
+
+<section class="border border-green-400 mt-12">
+    <h2 class="p-5">Recent Blog Posts</h2>
+    {{ collection:blog limit="5" }}
+        <a href="{{ url }}" class="flex items-center justify-between p-5 border-t border-green-400 text-green-400 hover:text-green-900 hover:bg-green-400">
+            <span>{{ title }}</span>
+            <span class="text-green-900 text-sm">{{ date }}</span>
+        </a>
+    {{ /collection:blog }}
+</section>
+```
+
+If you refresh your homepage (and managed to name your placeholder entry or two the same as us), you should see this:
+
+<figure>
+    <img src="/img/quick-start/new-homepage.jpg" alt="Link to create your first blog entry" width="600">
+    <figcaption>We said it would look ugly, but we lied.</figcaption>
+</figure>
+
+Let's take a closer look at how this works. Stripping out all the styling in the example, here's the most basic [Antlers](/antlers) template snippet that fetches your entries.
+
+```
+{{ collection:blog limit="5" }}
+    <a href="{{ url }}">{{ title }}</a>
+{{ /collection:blog }}
+```
+
+Here you can see we're telling the [Collection Tag](/tags/collection) tag to use the `blog` collection and limit the number of returned entries to 5. Inside the tag pair is a loop that iterates over each entry with access to all the data available as `{{ variables }}`.
+
+The `url` will follow the pattern you set in the route rule (`/blog/hello-from-cyberspace` perhaps?) and if you were to click it, you'd see a new page using the `resources/views/blog/show.antlers.html` template, which is empty so there's not much to look at. Let's edit that next.
+
+## The blog "show" template
+
+Now that we're on an entry's very own unique URL, you no longer need that `{{ collection:blog }}` tag pair to fetch data. All of the entry's data is available automatically. Here's a really simple snippet you can drop in so you can see the data pull through.
+
+```
+// resources/views/blog/show.antlers.html
+
+<h1 class="text-3xl bg-green-400 text-center text-green-900 font-bold mt-6 p-6">{{ title }}</h1>
+<div class="border text-center text-green-600 border-green-400 mt-8 p-3 text-xs uppercase">
+    Published on {{ date }} by {{ author:name }}
+</div>
+
+<article class="space-y-4 mt-8 text-sm text-green-400 leading-loose">
+    {{ content }}
+</article>
+```
+
+A few cool things to note here in this code example:
+
+- The author's `name` is being accessed by reaching into the `{{ author }}` object. You can retrieve any data (but not password) on a user this way. Pretty cool.
+- The `content` field is being automatically converted from Markdown to HTML because we're using a [Markdown](/fieldtypes/markdown) field. If you were to use a generic [Textarea](/fieldtypes/textarea) field, you'd need to transform the Markdown yourself by using a [modifier](/modifiers). It would look like this: `{{ textarea | markdown }}`.
+
+<figure>
+    <img src="/img/quick-start/blog-show.jpg" alt="A blog post" width="600">
+    <figcaption>How close does your look?</figcaption>
+</figure>
 
 
-<!-- ## Create an About page
+## Blog Index
 
-Let's make our first _new_ page! Head back to our Dashboard to `Collections -> Pages` to add our new page. Above our table with our Home page click the **Create Entry** button.
+Next, let's make that blog index page. Head back to the control panel and go to the **Pages** collection. Create a new entry and call it "Blog", "My Blog", or even "My CyberBlog" — just make sure the slug is `blog`. Set the template to `blog/index`.
 
-We're dropped into a blank Page form just like our Home page form from before. Here we'll create our new page just as we did before.
+Back to your code editor — open up the `resources/vies/blog/index.antlers.html` template and drop in this snippet. It's essentially what we built on the home page, but without the limit.
 
-You can add any title you like in the `title` box based on search engine optimization, marketing, and other wizardry; for now, we'll stick with "About".
+```
+// resources/views/blog/index.antlers.html
 
-Next, add a catchy description in the `content` box, something like "The greatest professional wrestling fan site, OOOOH YEAAAH!"
+<h1 class="text-2xl font-bold my-6">{{ title }}</h1>
+{{ content }}
 
-Now, scroll down to Template. From the drop down we have several options. We used "home" for our Home page, now let's select "default" for our About page.
+<section class="border border-green-400 mt-12">
+{{ collection:blog }}
+    <a href="{{ url }}" class="flex items-center justify-between p-5 border-t border-green-400 text-green-400 hover:text-green-900 hover:bg-green-400">
+        <span>{{ title }}</span>
+        <span class="text-green-900 text-sm">{{ date }}</span>
+    </a>
+{{ /collection:blog }}
+</section>
+```
 
-Click **Save & Publish** and you'll see your new page titled "About" in the List.
+And stop right there. We've now duplicated a whole chunk of code save for one little tiny bit — `limit="5'`. Let's DRY this up (reduce code duplication).
 
-## TO BE CONTINUED... -->
+> It's totally fine to duplicate code sometimes, especially if you have to make some code significantly more complex to reuse it. Just keep that in mind. We'll keep this simple.
+
+## Your first partial
+
+Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
+
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage or blog index. Or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
+
+```
+{{ collection:blog :limit="limit" }}
+```
+
+By prefixing the `limit` parameter with a colon we're telling Statamic to look for a variable named "limit" as the argument. If there isn't one it will be null, and not add a limit — just how we want it on the blog index template.
+
+Your blog index template can now look like as simple as this:
+
+```
+// resources/views/blog/index.antlers.html
+
+<h1 class="text-2xl font-bold my-6">{{ title }}</h1>
+{{ content }}
+{{ partial:blog/listing }}
+```
+
+Now let's dry up the home template. We know we need to pass that limit in, but if you recall (or visit the homepage), we had that extra `<h2>` above the `collection:blog` tag. This is a perfect opportunity to add a "slot".
+
+Switch to your new `blog/listing` partial and add `{{ slot }}` to the line right above the collection tag, like so:
+
+```
+// resources/views/blog/_listing.antlers.html
+
+<section class="border border-green-400 mt-12">
+    {{ slot }}
+    {{ collection:blog :limit="limit" }}
+...
+```
+
+Back in your `home` template, you can now replace that chunk of markup with a call to the partial, setting the limit, and using it as a tag pair to send the contents in as the `slot`. A super helpful little pattern.
+
+Here's your entire home template:
+
+```
+// resources/views/home.antlers.html
+
+<h1 class="text-2xl font-bold my-6">Welcome to my CyberSpace Place!</h1>
+{{ content }}
+{{ partial:blog/listing limit="5" }}
+    <h2 class="p-5">Recent Blog Posts</h2>
+{{ /partial:blog/listing }}
+```
+
+## The nav
+
+We're almost done, but before we head back to the control panel to add a few more fields to your blog blueprint, let's add a nav.
+
+Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This let's you have a page with a slug of `/`.
+
+We can use the [Nav tag](/tags/nav) to fetch the entries in the Pages collection in the order you have them arranged.
+
+Open up your layout file and drop in this nav snippet, right after the open body tag.
+
+```
+// resources/views/layout.antlers.html
+// ...
+
+<nav class="bg-black text-xs uppercase text-green text-center flex items-center justify-center space-x-4">
+    {{ nav from="pages" include_home="true" }}
+        <a href="{{ url }}" class="p-2 block hover:text-yellow-200">{{ title }}</a>
+    {{ /nav  }}
+</nav>
+```
+
+The nav tag works very much like the `collections` tag. It loops through the entries and gives you access to all the data inside each.
+
+## Customizing your blueprint
+
+We've got a pretty functional site going here, but so far we've only worked with the default fields. Few sites can be so simple, so let's spice it up a bit.
+
+Head to the Blog Collection in the control panel and edit an existing entry.
