@@ -19,6 +19,7 @@ preferences:
         - title
         - slug
         - categories
+      after_save: continue_editing
     fieldtypes:
       columns:
         - title
