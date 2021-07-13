@@ -471,7 +471,7 @@ Head back to `resources/views/blog/show.antlers.html` in your code editor. Add t
 // resources/views/blog/show.antlers.html
 // ...
 
-<img src="{{ featured_image }}" class="border-2 border-green-400 p-1" alt="{{ alt }}" />
+<img src="{{ featured_image }}" class="border-2 border-green-400 p-1" alt="{{ featured_image:alt }}" />
 ```
 
 Refresh the page and there you have it — a basic but fully functional website. Hopefully you'll have a better idea how the basics fit together, as well as the relationship between the control panel and the frontend. There are so many more things you can do – like add [Taxonomies](/taxonomies), [Forms](/forms), [dynamic image manipulations](/tags/glide), fetch data with JavaScript with our [Content API](/content-api) and on and on.
