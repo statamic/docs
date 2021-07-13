@@ -62,7 +62,7 @@ options:
     name: save_html
     type: boolean
     description: >
-      Save HTML instead of structured data. This simplifies – but limits – control of your template markup. Default: `false`.
+      Save HTML instead of structured data. This simplifies – but limits – control of your template markup. Only works in Bard fields with no defined sets. Default: `false`.
   -
     name: always_show_set_button
     type: boolean
