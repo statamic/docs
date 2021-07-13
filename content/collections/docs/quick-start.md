@@ -3,6 +3,7 @@ title: 'Quick Start Guide'
 intro: "This is a step-by-step walkthrough on installing and building a simple Statamic 3 site. It is focused on the fundamental building blocks and less on design and aesthetics."
 stage: 1
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
+video_cta_text: We have a screencast series if you'd rather not read!
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
@@ -150,7 +151,7 @@ There also always a list (sometimes called an "archive") of blog posts linking t
 
 Here's our todo list:
 
-- Crete a blog "Collection" with the following fields: `title` , `featured_image` , `author` , `tags` , and `content`
+- Crete a blog "Collection" with the following fields: `title` , `featured_image` , `author` , and `content`
 - Create a blog index page (`/blog`)
 - Create a blog detail page (`/blog/why-i-love-mustard`)
 - Add a list of the most recent 5 blog entries to the homepage
@@ -414,6 +415,70 @@ The nav tag works very much like the `collections` tag. It loops through the ent
 
 ## Customizing your blueprint
 
-We've got a pretty functional site going here, but so far we've only worked with the default fields. Few sites can be so simple, so let's spice it up a bit.
+We've got a pretty functional site going here, but so far we've only worked with default fields. Few sites can be so simple, so let's spice it up a bit.
 
-Head to the Blog Collection in the control panel and edit an existing entry.
+Head to the **Blueprints** area in the sidebar and click **Blog**. Now you're looking at all the fields you've been working with, organized into Tab Sections.
+
+Tab Sections let you group fields into Tabs which can help you stay organized, keep similar fields together, or help push optional, unusual fields out of mind for most authors. It's up to you how you'd like to organize these.
+
+<figure>
+    <img src="/img/quick-start/blueprint-sections.jpg" alt="A Blueprint and its default fields" width="600">
+    <figcaption>This is content modeling right here.</figcaption>
+</figure>
+
+You can drag, drop, and rearrange fields inside and across your sections. This order will be how you see the fields in the publish screen.
+
+> **The Sidebar** is a special section. It controls the fields shown in the publish sidebar when your browser is wide enough, and collapses those fields to a tab when it isn't. If you delete the Sidebar section, you won't have one — and if you create a new one called "Sidebar", it'll work just as before.
+
+Let's create a new field called `featured_image`.
+
+Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldstyles) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
+
+When this screen is opened, you're automatically focused in the search box, so you can start typing the fieldtype name if you know it (Hint: you could type `assets` now). Or, you can narrow the fields down by type – All, Text, Media, and Relationship. You'd find the Assets fieldtype inside Media.
+
+<figure>
+    <img src="/img/quick-start/fieldtypes.jpg" alt="A list of Statamic's fieldtypes" width="600">
+    <figcaption>Over 40 different types to pick from!</figcaption>
+</figure>
+
+Find the **Assets** fieldtype and click it. Assets fields let you pick from and upload new files.
+
+Next, give the field the `Display` name "Featured Image" and you'll see the `Handle` get slugified automatically to `featured_image`. This will be the variable name you will use in your templates to get the asset's data. The only additional setting you should tweak for now is to set `Max Files` to `1`. When you're done, click **Finish**.
+
+<figure>
+    <img src="/img/quick-start/fieldtype-config.jpg" alt="Configuring an Assets fieldtype" width="547">
+    <figcaption>Every fieldtype has shared & unique options.</figcaption>
+</figure>
+
+Head back to your Blog collection and edit an entry (or create a new one if you'd like). You'll see your new field right there. Upload any image you have on your computer. If you need a dummy image, we recommend Google Image Searching for "rad 90s kid bedroom". That's a gold mine right there.
+
+Hover over the thumbnail for your new image and click the Edit button (it looks like a pencil). There you can make a few adjustments to the image – like setting an Alt tag.
+
+<figure>
+    <img src="/img/quick-start/asset-editor.jpg" alt="Adding an Alt tag to an image" width="547">
+    <figcaption>Ducktails!</figcaption>
+</figure>
+
+> Assets can have Blueprints too!
+
+When you're done, **Save & Publish** your changes.
+
+## Wiring up the new field
+
+Head back to `resources/views/blog/show.antlers.html` in your code editor. Add the following snippet anywhere you'd like in the template. Either before or after the `{{ content }}` variable is probably a good place.
+
+```
+// resources/views/blog/show.antlers.html
+// ...
+
+<img src="{{ featured_image }}" class="border-2 border-green-400 p-1" alt="{{ alt }}" />
+```
+
+Refresh the page and there you have it — a basic but fully functional website. Hopefully you'll have a better idea how the basics fit together, as well as the relationship between the control panel and the frontend. There are so many more things you can do – like add [Taxonomies](/taxonomies), [Forms](/forms), [dynamic image manipulations](/tags/glide), fetch data with JavaScript with our [Content API](/content-api) and on and on.
+
+And make sure to not miss the list of [Tags](/tags) and [Modifiers](/modifiers) that do all sorts of powerful things in your templates.
+
+## Going Deeper
+
+We have a screencast series that covers getting started but goes much further and deeper. Feel free to [check that out here](https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc). Good luck!
+
