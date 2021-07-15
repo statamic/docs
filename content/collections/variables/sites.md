@@ -13,11 +13,19 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
         'name' => 'English Site',
         'locale' => 'en_US',
         'url' => 'http://mysite.com/',
+        'direction' => 'ltr',
+        'attributes' => [
+            'foo' => 'bar',
+        ]
     ],
     'french' => [
         'name' => 'French Site',
         'locale' => 'en_FR',
         'url' => 'http://mysite.com.fr/',
+        'direction' => 'ltr',
+        'attributes' => [
+            'foo' => 'baz',
+        ]
     ]
 ]
 ```
@@ -29,6 +37,10 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
     {{ locale }}
     {{ short_locale }}
     {{ url }}
+    {{ direction }}
+    {{ attributes }}
+        {{ foo }}
+    {{ /attributes }}
 
 {{ /sites }}
 ```
@@ -39,11 +51,15 @@ English Site
 en_US
 en
 http://mysite.com/
+ltr
+bar
 
 french
 French Site
 fr_FR
 fr
 http://mysite.com.fr/
+ltr
+baz
 
 ```

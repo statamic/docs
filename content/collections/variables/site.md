@@ -15,6 +15,10 @@ It's a `Statamic\Sites\Site` object and can be used as a single tag or tag pair.
         'name' => 'My Statamic Site',
         'locale' => 'en_US',
         'url' => 'http://mysite.com/',
+        'direction' => 'ltr',
+        'attributes' => [
+            'foo' => 'bar',
+        ],
     ]
 ]
 ```
@@ -38,6 +42,10 @@ As a tag pair, you can access additional information:
     {{ locale }}
     {{ short_locale }}
     {{ url }}
+    {{ direction }}
+    {{ attributes }}
+        {{ foo }}
+    {{ /attributes }}
 {{ /site }}
 ```
 
@@ -53,8 +61,10 @@ You can also access those variables directly as single tags:
 
 ```
 {{ site:name }}
+{{ site:attributes:foo }}
 ```
 
 ``` output
 My Statamic Site
+bar
 ```

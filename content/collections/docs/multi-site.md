@@ -103,6 +103,27 @@ If your sites have different text directions, for example if you have an English
 
 > You can omit the `direction` from `ltr` sites since it's the default.
 
+## Attributes
+
+You may add an array of arbitrary attributes to your site's config.
+
+```php
+'sites' => [
+    'en' => [
+        'name' => 'English',
+        'attributes' => [
+            'theme' => 'standard',
+        ]
+    ],
+]
+```
+
+```
+<body class="theme-{{ site:attributes:theme }}">
+```
+
+> There's nothing fancy going on here. It's just passing the values as-is along to your templates. If you need them to be editable, or store more complex data, you should use [Globals](/globals).
+
 ## Views
 
 [Views](/views) can be organized into site directories.
