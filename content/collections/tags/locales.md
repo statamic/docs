@@ -42,7 +42,7 @@ variables:
     description: |
       The full, 4 character system locale (e.g. `en_US`) for any given locale as set in `config/statamic/sites.php`.
   -
-    name: locale:full
+    name: locale:short
     type: string
     description: |
       The short 2 character system locale (e.g. `en`) for any given locale as set in `config/statamic/sites.php`.
