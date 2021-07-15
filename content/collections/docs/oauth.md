@@ -108,6 +108,16 @@ Require the appropriate provider using Composer:
 composer require socialiteproviders/dropbox
 ```
 
+Ensure the `SocialiteProviders\Manager\ServiceProvider` is present in `config/app.php`:
+
+```php
+'providers' => [
+    // (...)
+    SocialiteProviders\Manager\ServiceProvider::class,
+    // (...)
+];
+```
+
 Add the event listener to your EventServiceProvider:
 
 ``` php
