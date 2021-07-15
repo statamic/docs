@@ -42,6 +42,7 @@ and it was sick.</p>
 
 {{ $content }}
 ```
+It is important to note that Antlers outputs unescaped values by default, while `{{ $content }}` in Blade will be escaped, if you need to output unescaped HTML then you may do so with `{!! $content !!}`
 
 ## Modifiers + Blade
 
