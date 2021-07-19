@@ -35,7 +35,7 @@ The first type of structure is for defining the URL structure for a collection. 
 - This will make `parent_uri` and `depth` variables available to the Collection's route.
 - You can only place an entry once.
 - You can create internal and external redirects.
-- The structure is stored on the collection itself.
+- The structure is stored on the collection itself, and its tree is stored in `content/trees/collections`.
 
 [Read more about using Structures to manage your Collections](/collections#ordering)
 
@@ -47,7 +47,7 @@ Freestyle navigation structures exist to manage a nav out of existing entries, a
 - You can select which collections' entries will be available to choose from.
 - Any referenced entries will use the URLs defined by the collection, regardless of the position in the Structure.
 - You can place the same entry multiple times.
-- The structure is stored as a YAML file inside `content/navigation`.
+- The structure is stored as a YAML file inside `content/navigation`, and its tree is stored in `content/trees/navigation`.
 
 [Read more about Navigation](/navigation)
 

@@ -22,23 +22,27 @@ Each Nav is a [structure](/structures) giving you the ability to rearrange items
 
 Navs are stored in `content/navigation`. Each gets its own YAML file whose handle matches its filename.
 
+The actual contents of the structure - the "tree" - is stored separately in `content/trees/navigation`.
+
 ``` files
 content/
-`-- navigation/
+|-- navigation/
+|   |-- header.yaml
+|   `-- footer.yaml
+`-- trees/
     |-- header.yaml
     `-- footer.yaml
 ```
 
 ``` yaml
+# content/navigation/footer.yaml
 title: Footer
 max_depth: 3
 collections:
   - pages
   - posts
   - documents
-tree: [...] # details below
 ```
-
 
 ## Templating
 
