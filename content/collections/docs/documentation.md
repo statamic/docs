@@ -67,12 +67,6 @@ Looking to jump right into a ready-made site?
             <div class="text-black text-xs">Pairs with the Simple Commerce addon to quick start your ecommerce website.</div>
         </div>
     </a>
-    <a href="https://github.com/jonassiewertsen/statamic-butik-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
-        <div>
-            <div class="font-bold">Butik</div>
-            <div class="text-black text-xs">Pairs with the Butik addon to quickly start your new online Butik.</div>
-        </div>
-    </a>
     <a href="https://github.com/studio1902/statamic-peak" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
             <div class="font-bold">Peak</div>
