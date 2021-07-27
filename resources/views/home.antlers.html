@@ -18,9 +18,9 @@
         <tbody>
             {{ collection from="*" sort="last_modified:desc" limit="15" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td><a href="{{ entry:url }}">{{ entry:title }}</a></td>
+                    <td><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
-                    <td>{{ entry:last_modified | ago }}</td>
+                    <td>{{ entry:last_modified }}</td>
                 </tr>
             {{ /collection }}
         </tbody>
