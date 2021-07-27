@@ -31,7 +31,7 @@ Looking to jump right into a ready-made site?
 
 **Official Starter Kits**
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
     <a href="https://github.com/statamic/starter-kit-starters-creek" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
             <div class="font-bold">Starter's Creek</div>
@@ -54,7 +54,7 @@ Looking to jump right into a ready-made site?
 
 **Community Starter Kits**
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <a href="https://github.com/doublethreedigital/docs-starter-kit" class="rounded custom bg-blue-lightest hover:text-black no-underline flex border shadow-md p-3 font-display relative">
         <div>
             <div class="font-bold">Docs</div>
