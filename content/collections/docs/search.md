@@ -66,10 +66,10 @@ Your site's default index includes _only_ the title from from _all_ collections.
 
 ### Search a specific index
 
-The index you wish you to search can be specified as a parameter on your [search results](#results) tag. You can specify more than one index by delimiting each with a `|` pipe.
+The index you wish you to search can be specified as a parameter on your [search results](#results) tag.
 
 ```
-{{ search:results index="docs|articles" }} ... {{ /search:results }}
+{{ search:results index="docs" }} ... {{ /search:results }}
 ```
 
 ### Searchables
