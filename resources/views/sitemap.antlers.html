@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{ get_content from="6aa5449b-5d90-47de-97e7-82ba5f665250" }}
+  <url>
+    <loc>{{ homepage }}</loc>
+    <lastmod>{{ last_modified format="Y-m-d" }}</lastmod>
+  </url>
+{{ /get_content }}
+{{ collection from="*" }}
+  <url>
+    <loc>{{ permalink }}</loc>
+    <lastmod>{{ last_modified format="Y-m-d" }}</lastmod>
+  </url>
+{{ /collection }}
+</urlset>
