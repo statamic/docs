@@ -25,7 +25,7 @@ composer global update
 
 ## Popping the Hood
 
-If that doesn't resolve the issue, you may need to look at your list of global dependencies for clues. You may have a package that requires an older version of PHP or another dependency. This might take a little Googling , trial and error (remove a line and run `composer globl update` and try again), or brute force, but will almost definitely result in finding the problem. Eventually. We're sorry it has come to this.
+If that doesn't resolve the issue, you may need to look at your list of global dependencies for clues. You may have a package that requires an older version of PHP or another dependency. This might take a little Googling , trial and error (remove a line and run `composer global update` and try again), or brute force, but will almost definitely result in finding the problem. Eventually. We're sorry it has come to this.
 
 You can find where the global `composer.json` config file is by running the following command and looking at the `[home]` line.
 
