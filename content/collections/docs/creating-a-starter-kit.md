@@ -122,6 +122,30 @@ Products will be marked as drafts that you can preview and tweak until you're re
 Once published, you'll be able to see your Starter Kit on the Marketplace and within the Starter Kits area of the Statamic Control Panel.
 
 
+## Installing from a Local Repo
+
+To test install your Starter Kit from your local exported repo, you can add the repo's local path to your global Composer `config.json` file as a repository:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/hasselhoff/kung-fury-theme"
+        }
+    ]
+}
+```
+
+> If you are not sure where your `config.json` is located, run `composer config --global home` to see the location of your global Composer config.
+
+With your repo's local path added to your `config.json`, you should now be able to install using the `--local` cli option:
+
+```
+statamic new kung-fury-dev the-hoff/kung-fury-theme --local
+```
+
+
 ## Maintaining a Starter Kit
 
 When making changes to your Starter Kit, just [re-export](#exporting-files) from your development repo and push your changes from your exported repo.
