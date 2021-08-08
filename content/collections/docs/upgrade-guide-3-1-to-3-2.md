@@ -25,6 +25,9 @@ composer update statamic/cms --with-dependencies
 ### Medium impact changes
 - [Nav Page IDs](#nav-page-ids)
 
+### Low impact changes
+- [Nav GraphQL Changes](#nav-graphql-changes)
+
 ---
 
 ## Nav Page IDs
@@ -68,3 +71,70 @@ Change to this for 3.2:
 ```
 
 > If you're using the `nav` tag to output a _collection's_ tree (e.g. your `pages` collection), the `id` will still be the entry ID.
+
+
+## Nav GraphQL Changes
+
+### TreeBranch type split
+The `TreeBranch` type has been split into `NavTreeBranch` and `CollectionTreeBranch` types.
+Likely the only place you would use this is if you were using the [Recursive Tree Branches example](/graphql#recursive-tree-branches):
+
+```graphql
+fragment Fields on TreeBranch {
+    # ...
+}
+fragment RecursiveChildren on TreeBranch {
+    # ...
+}
+```
+
+### PageInterface
+The `PageInterface` now only applies to navs.
+
+#### Usage in navs
+The `PageInterface` no longer contains all the entry's fields. It now has it's own subset of fields (`id`, `title`, `url`, `permalink`).
+
+If you needed entry specific fields, you can explicitly query the interface. In this example, `url` is included, but not `edit_url` anymore.
+
+Before:
+
+```graphql
+page {
+    url
+    edit_url
+}
+```
+
+After:
+
+```graphql
+page {
+    url
+    ... on EntryInterface {
+        edit_url
+    }
+}
+```
+
+If you added any [custom fields](/graphql#custom-fields) to `EntryInterface`, it will no longer be added to `PageInterface`. If you need it there, you can explicitly add it to `PageInterface`.
+
+#### Usage in collections
+
+Within a collection's tree, the `page` is now an `EntryInterface`.
+If you're using `EntryPage_x` implementations, you should now just use `Entry_x` implementations:
+
+```graphql
+page {
+    ... on EntryPage_Blog_Post { # change to Entry_Blog_post
+        # ...
+    }
+}
+```
+
+Also, within collection trees, since you're now getting the actual entry, `page` has been deprecated in favor of `entry`. Both still work but you may want to update it while you're here.
+
+```graphql
+page { # change to entry
+  # ...
+}
+```
