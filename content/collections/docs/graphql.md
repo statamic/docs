@@ -1313,9 +1313,6 @@ You may add custom fields to the following types and any of their implementation
 - `AssetInterface`
 - `GlobalSetInterface`
 
-Note that if you add fields to an `EntryInterface`, it will be shared with the `PageInterface`.
-If you add fields to a `PageInterface`, it will _not_ be shared with the `EntryInterface`.
-
 ## Caching
 
 GraphQL uses a basic whole-response cache by default. Each query/variables combination's response will be cached for an hour. You may customize the cache expiry in `config/statamic/graphql.php`.
