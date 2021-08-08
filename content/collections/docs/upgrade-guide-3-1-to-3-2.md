@@ -27,6 +27,8 @@ composer update statamic/cms --with-dependencies
 
 ### Low impact changes
 - [Nav GraphQL Changes](#nav-graphql-changes)
+- [Getting tree pages by ID](#getting-tree-pages-by-id)
+- [Tree root is now an array](#tree-root-is-now-an-array)
 
 ---
 
@@ -72,6 +74,7 @@ Change to this for 3.2:
 
 > If you're using the `nav` tag to output a _collection's_ tree (e.g. your `pages` collection), the `id` will still be the entry ID.
 
+In PHP land, if you were doing `$page->id()`, you can now do `$page->reference()` or `optional($page->entry())->id()`.
 
 ## Nav GraphQL Changes
 
@@ -138,3 +141,22 @@ page { # change to entry
   # ...
 }
 ```
+
+
+## Getting tree pages by ID
+
+`$tree->page($id)` would previously get a page in a tree by an entry ID.
+
+Now, `$tree->page()` has been deprecated in favor of `$tree->find()` which will get a page by its ID, not the entry's ID.
+(For collection trees, since `entry` _is_ the ID, it'll work the same way.)
+
+If you want to find a page by the entry ID, there's a new `findByEntry($id)` method.
+
+
+## Tree root is now an array
+
+`$tree->root()` would previous return the `entry` of the root tree branch.
+
+Now, it'll be the entire array.
+
+If you need the entry, you can do `$tree->root()['entry']`.
