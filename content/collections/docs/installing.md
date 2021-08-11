@@ -112,7 +112,7 @@ Looking to jump right into a ready-made site?
    composer require statamic/cms
    ```
 
-3. If you have existing users in your application, [follow these instructions](/users#storage) to learn how to make them compatible with Statamic, or how to switch to Statamic's file-based user driver.
+3. Head over to the [Storing User Records](/users#storage) section and follow the instructions for the scenario that makes sense for your project. If you want to continue to keep users in a database, you can jump straight over to [Storing Users in a Database in an existing Laravel app](/knowledge-base/storing-users-in-a-database#in-an-existing-laravel-app).
 
 After Statamic is installed, you'll have the `content/`, `users/`, and `config/statamic` directories added to your project. Your app will continue to work as before and you'll have Statamic available at your fingertips.
 
