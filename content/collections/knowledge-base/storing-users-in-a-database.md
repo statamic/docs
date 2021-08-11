@@ -30,15 +30,41 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 ## In an existing Laravel app
 
 If you've installed Statamic into an existing Laravel app, it will already be configured to use the Eloquent driver.
-You will need to run migrations to prepare your database for Statamic's user and permission setup.
 
-``` bash
-php please auth:migration
-php artisan migrate
-```
+You will need to run migrations to prepare your database for Statamic's user, password reset, and permission setup.
 
-This will add some columns to the `users` table (like `super`, and `last_login`), and create the `role_user` and `group_user` pivot tables.
+1. Configure the two separate password reset drivers. Unlike a regular Laravel installation, Statamic has a second table to track password _activations_ which are the same as resets, but last a little longer before they expire. This is optional.
 
-> When using `sqlite` or `mysql` as your database driver, make sure to `composer require doctrine/dbal`. We do change the `users` table in our auth migrations and therefore [require](https://laravel.com/docs/master/migrations#modifying-columns) the `doctrine/dbal` to run the migrations without errors.
+   In `config/auth.php` add the following inside the `passwords` array:
+
+    ```php
+    'activations' => [
+        'provider' => 'users',
+        'table' => 'password_activations',
+        'expire' => 4320,
+        'throttle' => 60,
+    ],
+    ```
+
+    In `config/statamic/users.php` change the `passwords` array to:
+
+    ```php
+    'passwords' => [
+        'resets' => 'resets',
+        'activations' => 'activations',
+    ],
+    ```
+
+2. Create and run the migrations.
+
+    This will add some columns to the `users` table (like `super`, and `last_login`), create the `role_user` and `group_user` pivot tables, and create the `password_activations` table.
+
+    ``` bash
+    php please auth:migration
+    php artisan migrate
+    ```
+
+> When using `sqlite` or `mysql` as your database driver, make sure to `composer require doctrine/dbal`. We change the `users` table in our auth migrations and therefore [require](https://laravel.com/docs/master/migrations#modifying-columns) the `doctrine/dbal` to run the migrations without errors.
+
 
 This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/knowledge-base/storing-users-somewhere-custom).
