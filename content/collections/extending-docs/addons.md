@@ -8,7 +8,7 @@ stage: 1
 id: 5bd75435-806e-458b-872e-7528f24df7e6
 ---
 
-## Creating an addon
+## Creating an Addon
 
 You can generate an addon with a console command:
 
@@ -113,7 +113,7 @@ Discovered Addon: acme/example
 Your addon is now installed. You should be able to go to `/cp/addons` and see it listed.
 
 
-## Installing an addon
+## Installing an Addon
 
 ### Public addons
 
@@ -513,7 +513,7 @@ That's it! Statamic should now automatically run your update script as your user
 
 ## Publishing to the Marketplace
 
-Once your addon is ready to be shared, you can publish it on the Marketplace where it can be discovered by others.
+Once your addon is ready to be shared, you can publish it on the [Statamic Marketplace](https://statamic.com/marketplace) where it can be discovered by others.
 
 Before you can publish your addon, you'll need a couple of things:
 
@@ -526,3 +526,26 @@ In your seller dashboard, you can create a product. There you'll be able to link
 Products will be marked as drafts that you can preview and tweak until you're ready to go.
 
 Once published, you'll be able to see your addon on the Marketplace and within the Addons area of the Statamic Control Panel.
+
+
+## Addons vs. Starter Kits
+
+Both addons and starter kits can be used to extend the Statamic experience, but they have different strengths and use cases:
+
+### Addons
+
+- Addons are installed via `composer`, like any PHP package
+- Addons live within your app's `vendor` folder after they are installed
+- Addons can be updated over time
+- Addon licenses are tied to your site
+
+> An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
+
+### Starters Kits
+
+- Starter kits are installed via `php please starter-kit:install`
+- Starter kits install pre-configured files and settings into your site
+- Starter kits do not live as updatable packages within your apps
+- Starter kit licenses are not tied to a specific site, and expire after a successful install
+
+> An example use case is a front end theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
