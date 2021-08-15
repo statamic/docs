@@ -151,7 +151,7 @@ There also always a list (sometimes called an "archive") of blog posts linking t
 
 Here's our todo list:
 
-- Crete a blog "Collection" with the following fields: `title` , `featured_image` , `author` , and `content`
+- Create a blog "Collection" with the following fields: `title` , `featured_image` , `author` , and `content`
 - Create a blog index page (`/blog`)
 - Create a blog detail page (`/blog/why-i-love-mustard`)
 - Add a list of the most recent 5 blog entries to the homepage
