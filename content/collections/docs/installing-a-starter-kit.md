@@ -5,6 +5,8 @@ intro: Installing a Starter Kit is a pretty simple thing, but like with many thi
 template: page
 nav_title: Installing
 ---
+> Available from Statamic 3.2 beta.
+
 ## Read This First
 
 Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
