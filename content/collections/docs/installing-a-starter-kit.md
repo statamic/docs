@@ -11,10 +11,6 @@ nav_title: Installing
 
 Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
 
-## Installing from the Control Panel {#control-panel}
-
-You can install a Starter Kit from inside the Control Panel by browsing to the one you want in **Tools &rarr; Starter Kits**, and then clicking the appropriate **install** button. That's all there is to it.
-
 ## Installing from the Command Line
 
 You can spin up a **new** install of Statamic along with a Starter Kit at the all in one command by using the [Statamic CLI Tool](https://github.com/statamic/cli):
