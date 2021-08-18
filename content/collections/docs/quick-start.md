@@ -319,7 +319,7 @@ A few cool things to note here in this code example:
 
 Next, let's make that blog index page. Head back to the control panel and go to the **Pages** collection. Create a new entry and call it "Blog", "My Blog", or even "My CyberBlog" — just make sure the slug is `blog`. Set the template to `blog/index`.
 
-Back to your code editor — open up the `resources/vies/blog/index.antlers.html` template and drop in this snippet. It's essentially what we built on the home page, but without the limit.
+Back to your code editor — open up the `resources/views/blog/index.antlers.html` template and drop in this snippet. It's essentially what we built on the home page, but without the limit.
 
 ```
 // resources/views/blog/index.antlers.html
