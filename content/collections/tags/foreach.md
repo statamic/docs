@@ -9,6 +9,11 @@ parameters:
     type: string
     description: |
       Optionally rename the `key|value` variables. See the above example.
+  -
+    name: array
+    type: string|array
+    description: |
+      The name of the array to loop over, or a reference to the array itself. See [dynamic variables](#dynamic-variables).
 stage: 4
 id: 34b03d03-a113-467f-a1c9-65bc6b446220
 ---
@@ -57,3 +62,27 @@ Zip Code: 90210
 ```
 
 > **Note:** PHP reserves the word `foreach`, so this tag is _technically_ an alias of `iterate`. If you're spelunking through the source code, that's where you'll find it.
+
+
+## Dynamic Variables
+
+Instead of using the shorthand `{{ foreach:variable_name }}` syntax, you may pass in the array's name manually.
+
+```
+{{ foreach array="song_reviews" }}
+    ...
+{{ /foreach }}
+```
+
+If you have a more complicated array location, you can use a dynamic parameter to pass the array itself.
+
+```yaml
+reviews:
+  songs: [...]
+```
+
+```
+{{ foreach :array="reviews:songs" }}
+    ...
+{{ /foreach }}
+```
