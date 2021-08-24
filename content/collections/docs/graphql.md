@@ -661,7 +661,8 @@ GraphQL::addQuery(MyCustomQuery::class);
 - [EntryInterface](#entry-interface)
 - [Collection](#collection-type)
 - [CollectionStructure](#collection-structure-type)
-- [TreeBranch](#tree-branch-type)
+- [CollectionTreeBranch](#collection-tree-branch-type)
+- [NavTreeBranch](#nav-tree-branch-type)
 - [PageInterface](#page-interface)
 - [TermInterface](#term-interface)
 - [AssetInterface](#asset-interface)
@@ -711,28 +712,73 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 |-------|------|-------------|
 | `handle` | `String!` | 
 | `title` | `String!` |
-| `tree` | [[`TreeBranch`](#tree-branch-type)] | A list of tree branches.
+| `tree` | [[`CollectionTreeBranch`](#collection-tree-branch-type)] | A list of tree branches.
 
-### TreeBranch {#tree-branch-type}
+### CollectionTreeBranch {#collection-tree-branch-type}
 
-Represents a branch within a (collection or nav) structure's tree.
+Represents a branch within a structured collection's tree.
 
 | Field | Type | Description |
 |-------|------|-------------|
 | `depth` | `Int!` | The nesting level of the current branch.
-| `page` | [`PageInterface`](#page-interface) | Contains page's fields.
-| `children` | [[`TreeBranch`](#tree-branch-type)] | A list of tree branches.
+| `entry` (or `page`) | [`EntryInterface`](#entry-interface) | Contains the entry's fields.
+| `children` | [[`CollectionTreeBranch`](#collection-tree-branch-type)] | A list of tree branches.
 
 > Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
 > take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
 
+### NavTreeBranch {#nav-tree-branch-type}
+
+Represents a branch within a nav's tree.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `depth` | `Int!` | The nesting level of the current branch.
+| `page` | [`PageInterface`](#page-interface) | Contains the page's fields.
+| `children` | [[`NavTreeBranch`](#nav-tree-branch-type)] | A list of tree branches.
+
+> Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
+> take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+
+
 ### PageInterface {#page-interface}
 
-A "page" within a structure tree could be a basic text/url node, or it could be a reference to an entry.
+A "page" within a nav's tree.
 
-When it's a basic node, you'll have access to all the [EntryInterface](#entry-interface)'s basic fields like `title` and `url`.
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | `ID!` | The ID of the page.
+| `entry_id` | `ID` | The `entry` ID.
+| `title` | `String` | For entry pages, it's the entry's `title` unless overridden on the branch. For basic pages, it's the `title`.
+| `url` | `String` | For entry pages, it's the entry's `url`. For basic pages, it's the `url`. For text-only pages it'll be null.
+| `permalink` | `String` | The absolute version of `url`.
 
-When it's a reference to an entry, you'll _also_ be able to query any of the entry's implementations. However, instead of the `Entry_` prefix, you'll need to use an `EntryPage_` prefix.
+If you want to query any fields that you've added to the nav's blueprint, you have 4 different options available to you that you can use as inline fragments.
+You can use more than one at a time:
+
+- `EntryInterface` for all entry pages.
+- `NavEntryPage_{NavHandle}_{Collection}_{Blueprint}` for a specific entry/blueprint combination on entry pages.
+- `NavBasicPage_{NavHandle}` for basic non-entry pages.
+- `NavPage_{NavHandle}` for either basic or entry pages.
+
+```graphql
+page {
+    title
+    url
+    ... on EntryInterface {
+        # ...
+    }
+    ... on NavPage_HeaderLinks {
+        # ...
+    }
+    ... on NavBasicPage_HeaderLinks {
+        # ...
+    }
+    ... on NavEntryPage_HeaderLinks_Blog_ArtDirected {
+        # ...
+    }
+}
+```
 
 ### TermInterface {#term-interface}
 
@@ -1091,7 +1137,9 @@ In GraphQL, it's not possible to perform recursive queries like that. You'll nee
 
 In this example, if you wanted anything more than `title` and `url`, you'd need to add them to each level.
 
-This can quickly become tedious and is very repetitive, so here's a workaround using fragments. If you wanted to add more fields, you only need to do it one spot. If you want to query more levels, you can just increase the nesting level of the recursive fragment.
+This can quickly become tedious and is very repetitive, so here's a workaround using fragments. 
+
+If you wanted to add more fields, you only need to do it one spot - the `Fields` fragment. If you want to query more levels, you can just increase the nesting level of the `RecursiveChildren` fragment.
 
 ```graphql
 {
@@ -1103,7 +1151,7 @@ This can quickly become tedious and is very repetitive, so here's a workaround u
     }
 }
 
-fragment Fields on TreeBranch {
+fragment Fields on NavTreeBranch {
     depth
     page {
         title
@@ -1112,14 +1160,14 @@ fragment Fields on TreeBranch {
     }
 }
 
-fragment RecursiveChildren on TreeBranch {
+fragment RecursiveChildren on NavTreeBranch {
     children {
         ...Fields
         children {
             ...Fields
             children {
                 ...Fields
-                ## just keep repeating this as deep as necessary
+                # just keep repeating this as deep as necessary
             }
         }
     }
@@ -1264,9 +1312,6 @@ You may add custom fields to the following types and any of their implementation
 - `TermInterface`
 - `AssetInterface`
 - `GlobalSetInterface`
-
-Note that if you add fields to an `EntryInterface`, it will be shared with the `PageInterface`.
-If you add fields to a `PageInterface`, it will _not_ be shared with the `EntryInterface`.
 
 ## Caching
 
