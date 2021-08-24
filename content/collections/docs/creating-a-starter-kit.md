@@ -5,6 +5,8 @@ template: page
 intro: 'Thinking of creating your own Statamic Starter Kit? Here''s everything you need to know to get started.'
 nav_title: Creating
 ---
+> Available from Statamic 3.2 beta.
+
 ## Overview
 
 Starter kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.

@@ -12,7 +12,7 @@ Returns `true` if a match is found, otherwise `false`.
 The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching
 variable, otherwise it will use the parameter as the value.
 
-### Strings
+## Strings
 
 Case-insensitive by default but can be made sensitive by setting the second parameter to `true`.
 
@@ -36,7 +36,7 @@ true   (there's a field named "adjective", and it got the value which was "best"
 false  (there's a field named "noun", and it got the value which was "carrot")
 ```
 
-### Arrays
+## Arrays
 You can set strict type checking by setting the second parameter to `true`.
 ``` .language-yaml
 foods:

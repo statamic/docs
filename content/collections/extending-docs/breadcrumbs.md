@@ -1,5 +1,5 @@
 ---
-title: Breadcrumbs
+title: CP Breadcrumbs
 intro: |
   At the top of most pages in the control panel, you will see a title with breadcrumbs sitting above. Statamic provides
   ways to generate these links without you having to worry about manually generating the HTML.

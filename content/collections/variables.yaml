@@ -7,3 +7,5 @@ revisions: false
 mount: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
 taxonomies:
   - types
+inject:
+  view_model: App\ViewModels\Variables

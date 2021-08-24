@@ -151,7 +151,7 @@ There also always a list (sometimes called an "archive") of blog posts linking t
 
 Here's our todo list:
 
-- Crete a blog "Collection" with the following fields: `title` , `featured_image` , `author` , and `content`
+- Create a blog "Collection" with the following fields: `title` , `featured_image` , `author` , and `content`
 - Create a blog index page (`/blog`)
 - Create a blog detail page (`/blog/why-i-love-mustard`)
 - Add a list of the most recent 5 blog entries to the homepage
@@ -319,7 +319,7 @@ A few cool things to note here in this code example:
 
 Next, let's make that blog index page. Head back to the control panel and go to the **Pages** collection. Create a new entry and call it "Blog", "My Blog", or even "My CyberBlog" — just make sure the slug is `blog`. Set the template to `blog/index`.
 
-Back to your code editor — open up the `resources/vies/blog/index.antlers.html` template and drop in this snippet. It's essentially what we built on the home page, but without the limit.
+Back to your code editor — open up the `resources/views/blog/index.antlers.html` template and drop in this snippet. It's essentially what we built on the home page, but without the limit.
 
 ```
 // resources/views/blog/index.antlers.html
@@ -343,7 +343,7 @@ And stop right there. We've now duplicated a whole chunk of code save for one li
 
 ## Your first partial
 
-Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
+Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
 Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage or blog index. Or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
 

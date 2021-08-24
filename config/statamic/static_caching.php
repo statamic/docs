@@ -20,7 +20,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may define all of the static caching strategies for your
-    | application as well as their drivers. 
+    | application as well as their drivers.
     |
     | Supported drivers: "application", "file"
     |
@@ -46,14 +46,14 @@ return [
     | Exclusions
     |--------------------------------------------------------------------------
     |
-    | Here you may define a list of URLs to be excluded from static 
-    | caching. You may want to exclude URLs containing dynamic 
+    | Here you may define a list of URLs to be excluded from static
+    | caching. You may want to exclude URLs containing dynamic
     | elements like contact forms, or shopping carts.
     |
     */
 
     'exclude' => [
-        //
+        '/sitemap.xml'
     ],
 
     /*

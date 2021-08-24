@@ -8,6 +8,8 @@ intro: |-
 template: page
 nav_title: Overview
 ---
+> Available from Statamic 3.2 beta.
+
 ## Statamic Starter Kits vs WordPress Themes
 
 While they may seem similar on the surface, Statamic Starter Kits and WordPress Themes take a very different approach to the end-goal of speeding up the web design and development process. Allow us to explain the difference.

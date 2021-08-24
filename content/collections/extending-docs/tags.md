@@ -1,5 +1,5 @@
 ---
-title: Tags
+title: Building Tags
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264076

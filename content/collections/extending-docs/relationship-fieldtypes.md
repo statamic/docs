@@ -3,7 +3,7 @@ title: 'Relationship Fieldtypes'
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347303
-intro: The [Relationship fieldtype](/fieldtypes/relationship) is one of the more powerful fields in Statamic's core. So powerful, in fact, that it earns its very own page in the docs. This is that page.
+intro: The Relationship fieldtype is one of the more powerful fields in Statamic's core. So powerful, in fact, that it earns its very own page in the docs. This is that page.
 stage: 1
 id: 06813e5d-158e-4318-aa4a-b29fd87d107f
 ---
