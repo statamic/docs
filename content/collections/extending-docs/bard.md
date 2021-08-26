@@ -6,14 +6,14 @@ id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
 ## Required Reading
 
-Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a TipTap extension, you'd in turn benefit grealy on reading about how Prosemirror works.
+Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a TipTap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
 
 > Writing custom extensions for Bard is pretty complicated, but can be wildly rewarding with powerful results.
 
 In short, here's a quickstart of the things you should probably start with:
 
-- [The Prosemirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
-- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions), so you can understand how TipTap relates to Prosemirror
+- [The ProseMirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
+- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions), so you can understand how TipTap relates to ProseMirror
 - If you don't know [how to extend the control panel](/extending/control-panel) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/extending/addons).
 - Come back here again and keep on going.
 
