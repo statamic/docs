@@ -8,7 +8,7 @@ intro: |-
 template: page
 nav_title: Overview
 ---
-> Available from Statamic 3.2 beta.
+> Available in Statamic 3.2+.
 
 ## Statamic Starter Kits vs WordPress Themes
 
@@ -24,8 +24,8 @@ We envision Starter Kits as a great way to "skip ahead" in the usual development
 The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace) or the **Tools &rarr; Starter Kits** section of the Statamic 3 Control Panel.
 
 <figure>
-    <img src="https://github.com/statamic/statamic-starter-doogie-browser/raw/master/screenshot.png" alt="Doogie Browser – a Statatmic Starter Kit">
-    <figcaption>This is <a class="font-bold text-blue-dark no-underline" href="https://github.com/statamic/statamic-starter-doogie-browser">Doogie Browser</a> — a fun, retro-themed Starter Kit.</figcaption>
+    <img src="https://statamic.com/images/storage/products/HRU3TVeiAnVlzRecp8G6pUiYGagWTvWzoh7ZWC27.jpeg" alt="Podcaster – a Statatmic Starter Kit">
+    <figcaption>This is <a class="font-bold text-blue-dark no-underline" href="https://statamic.com/starter-kits/statamic/podcaster">Podcaster</a> — a Starter Kit for podcasters.</figcaption>
 </figure>
 
 ## Recommended Reading
