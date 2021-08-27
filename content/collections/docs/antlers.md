@@ -300,7 +300,7 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 
 ### Variable Fallbacks (Null Coalescence)
 
-When all you need to do is display a variable and set a fallback when it’s falsey, use the null coalescence operator (`??`).
+When all you need to do is display a variable and set a fallback when it’s null, use the null coalescence operator (`??`).
 
 ```
 {{ meta_title ?? title ?? "No Title Set" }}
