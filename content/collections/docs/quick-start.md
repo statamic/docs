@@ -40,7 +40,7 @@ We want this quick start guide to be just that — quick. Rather than stop after
 
 Let's start right at the very beginning. Installing Statamic.
 
-There are a [few ways to do it](/installing), but we'll just go with the simplest, most copy & pasteable method – using [Composer'a](https://getcomposer.org) `create-project` command.
+There are a [few ways to do it](/installing), but we'll just go with the simplest, most copy & pasteable method – using [Composer's](https://getcomposer.org) `create-project` command.
 
 The command you're about to run clones (makes a copy of) our [empty starter site](https://github.com/statamic/statamic) and then runs a few automated scripts to get your new blank site ready.
 
