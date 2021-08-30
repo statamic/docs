@@ -12,7 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "statamic/cms": "3.1.*"
+        "statamic/cms": "3.2.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",

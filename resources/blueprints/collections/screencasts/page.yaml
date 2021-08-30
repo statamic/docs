@@ -1,8 +1,14 @@
+order: 2
 title: Page
 sections:
   main:
     display: Main
     fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
       -
         handle: intro
         field:
@@ -42,4 +48,18 @@ sections:
         handle: nav_title
         field:
           type: text
-order: 2
+  sidebar:
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: date
+        field:
+          type: date
+          required: true

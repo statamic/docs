@@ -4,6 +4,11 @@ sections:
     display: Main
     fields:
       -
+        handle: title
+        field:
+          type: text
+          required: true
+      -
         handle: sidebar_title
         field:
           input_type: text
@@ -27,3 +32,18 @@ sections:
           localizable: false
           listable: hidden
           display: Length
+  sidebar:
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: date
+        field:
+          type: date
+          required: true

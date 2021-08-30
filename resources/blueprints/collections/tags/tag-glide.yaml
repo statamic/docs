@@ -4,6 +4,11 @@ sections:
     display: Main
     fields:
       -
+        handle: title
+        field:
+          type: text
+          required: true
+      -
         handle: intro
         field:
           display: Intro
@@ -109,3 +114,13 @@ sections:
             - 'Needs Polish & Humor'
             - 'Ready for Feedback'
             - Complete
+  sidebar:
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - 'unique_entry_value:{collection},{id},{site}'

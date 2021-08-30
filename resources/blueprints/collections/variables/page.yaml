@@ -4,6 +4,11 @@ sections:
     display: Main
     fields:
       -
+        handle: title
+        field:
+          type: text
+          required: true
+      -
         handle: intro
         field:
           display: Intro
@@ -42,3 +47,21 @@ sections:
         handle: nav_title
         field:
           type: text
+  sidebar:
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: types
+        field:
+          type: terms
+          taxonomies:
+            - types
+          display: 'Variable Types'
+          mode: select
