@@ -1,8 +1,9 @@
 <header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
     <h1>{{ title }}</h1>
     {{ intro ?? overview | markdown }}
     {{ partial:pro-badge }}
-    {{ partial:video_link }}
+    {{# {{ partial:video_link }} #}}
     {{ partial:toc }}
 </header>
 

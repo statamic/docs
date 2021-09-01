@@ -1,7 +1,12 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
     <h1>{{ title ensure_right=" Tag"}}</h1>
     {{ intro ?? overview | markdown }}
+    {{ partial:pro-badge }}
+    {{ partial:toc }}
 </header>
+
+{{ svg src="zig-zag" class="mx-auto mb-12" }}
 
 <article class="markdown pb-8">
     {{ content | toc:ids }}

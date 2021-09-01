@@ -1,5 +1,7 @@
 html {
     height: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
 }
 
 body {
@@ -24,12 +26,15 @@ article, .markdown {
         line-height: 1.75em;
     }
 
-    ul, ol {
+    ul {
         @apply mb-6;
     }
 
     a {
         @apply text-pink font-bold underline;
+        &:hover {
+            @apply text-purple;
+        }
     }
 
     a svg.external {
@@ -39,8 +44,58 @@ article, .markdown {
 
     .anchor { @apply hidden; }
 
+    > ul:not(.list-none) {
+        @apply pl-0 list-none mb-6 text-lg;
+
+        li {
+            @apply relative pl-6 mb-2;
+
+            &::before {
+                @apply absolute inline-block;
+                content: url('/img/triangle-pink.svg');
+                top: 10px;
+                left: 2px;
+            }
+
+            &:nth-child(3n+0)::before {
+                content: url('/img/triangle-pink.svg');
+            }
+
+            &:nth-child(3n+1)::before {
+                content: url('/img/triangle-purple.svg');
+            }
+
+            &:nth-child(3n+2)::before {
+                content: url('/img/triangle-teal.svg');
+            }
+
+            a {
+                @apply underline text-pink font-bold;
+
+                &:hover {
+                    @apply text-pink;
+                }
+            }
+        }
+    }
+
+    > ol {
+        @apply list-none mb-6 text-lg;
+        counter-reset: item;
+
+        >li {
+            @apply relative pl-10 mb-2;
+        }
+
+        >li::before {
+            @apply absolute top-0 left-0 mt-px flex items-center justify-center h-6 w-6 bg-yellow rounded-full text-lg font-bold font-display;
+            content: counter(item);
+            counter-increment: item;
+        }
+    }
+
     blockquote {
-        @apply bg-black px-7 pt-7 pb-5 text-white antialiased relative;
+        @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
 
         &:before {
             content: '';
@@ -54,7 +109,7 @@ article, .markdown {
         }
 
         &.tip {
-            @apply shadow-pink-lg;
+
         }
 
         &.warning {
@@ -65,7 +120,7 @@ article, .markdown {
         }
 
         &.best-practice {
-            @apply shadow-teal-lg;
+            @apply shadow-teal-lg mt-10;
             &:before {
                 background: url('/img/label-best-practice.svg') no-repeat;
                 height: 48px;
@@ -86,10 +141,36 @@ article, .markdown {
 }
 
 .toc {
+    @apply font-display py-3;
     column-count: 3;
-    li { @apply mb-3; }
+    column-rule: 1px solid theme('colors.black');
+
+    li {
+        @apply my-1.5 px-3 inline-block leading-tight text-base;
+    }
+
     li a {
-        @apply text-black text-base no-underline hover:text-pink font-normal;
+        @apply text-black no-underline hover:text-pink font-medium;
+    }
+}
+
+figure, .screenshot {
+    @apply rounded-lg shadow-lg bg-gradient-to-br from-blue-dark to-blue-light px-6 py-6 pb-12 mb-12 relative;
+
+    img {
+        @apply border-2 shadow-lg mx-auto;
+        /* box-sizing: content-box; */
+    }
+
+}
+
+.caption,
+figure figcaption {
+    @apply bg-black px-3 py-1 text-blue-lightest text-sm inline-block antialiased absolute right-8 bottom-6 transform -rotate-2;
+
+    code {
+        font-size: 12px !important;
+        padding: 1px 2px !important;
     }
 }
 
