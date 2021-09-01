@@ -1,16 +1,4 @@
 <nav class="side-nav">
-    <div class="mb-12">
-        {{# This section of the nav controlled by SideNavComposer.php #}}
-        {{ pages }}
-            <div class="flex items-center mb-4 text-sm hover:text-pink-hot
-                {{ if active }}font-bold text-purple{{ else }}text-grey-900{{ /if }}
-            ">
-                <div class="mr-2">{{ theme:output src="svg/{icon}.svg" }}</div>
-                <a href="{{ url }}">{{ title }}</a>
-            </div>
-        {{ /pages }}
-    </div>
-
     {{ if segment_1 === 'extending' }}
         {{ partial:side-nav-main for="extending_docs" }}
     {{ elseif segment_1 === 'knowledge-base' }}

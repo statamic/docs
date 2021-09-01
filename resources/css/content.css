@@ -1,0 +1,110 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+article, .markdown {
+    h1 {
+        @apply font-display font-extrabold text-7xl mb-6;
+    }
+
+    h2 {
+        @apply font-display font-extrabold text-3xl mb-6 mt-16;
+    }
+
+    h3 {
+        @apply font-display font-extrabold text-xl mb-2 mt-12;
+    }
+
+    p {
+        @apply text-lg mb-6;
+        line-height: 1.75em;
+    }
+
+    ul, ol {
+        @apply mb-6;
+    }
+
+    a {
+        @apply text-pink font-bold underline;
+    }
+
+    a svg.external {
+        @apply inline-block text-gray-400;
+        vertical-align: text-top;
+    }
+
+    .anchor { @apply hidden; }
+
+    blockquote {
+        @apply bg-black px-7 pt-7 pb-5 text-white antialiased relative;
+
+        &:before {
+            content: '';
+            background: url('/img/label-tip.svg') no-repeat;
+            height: 40px;
+            width: 94px;
+            position: absolute;
+            top: -10px;
+            left: -12px;
+            z-index: 2;
+        }
+
+        &.tip {
+            @apply shadow-pink-lg;
+        }
+
+        &.warning {
+            @apply shadow-purple-lg;
+            &:before {
+                background: url('/img/label-warning.svg') no-repeat;
+            }
+        }
+
+        &.best-practice {
+            @apply shadow-teal-lg;
+            &:before {
+                background: url('/img/label-best-practice.svg') no-repeat;
+                height: 48px;
+                width: 138px;
+                top: -18px;
+                left: -16px;
+            }
+        }
+
+        p {
+            @apply text-base;
+        }
+
+        p:last-child {
+            @apply mb-0;
+        }
+    }
+}
+
+.toc {
+    column-count: 3;
+    li { @apply mb-3; }
+    li a {
+        @apply text-black text-base no-underline hover:text-pink font-normal;
+    }
+}
+
+.hover\:bg-gradient-animate {
+    background-size: 200% 200%;
+}
+
+.bg-gradient-animate,
+.hover\:bg-gradient-animate:hover {
+    background-size: 200% 200%;
+    animation: colorSweep 5s ease infinite;
+}
+
+@keyframes colorSweep {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}

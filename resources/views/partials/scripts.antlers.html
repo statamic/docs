@@ -1,0 +1,31 @@
+<script src="{{ mix src='/js/app.js' }}"></script>
+
+{{ if environment === "production" }}
+<!-- Fathom - simple website analytics - https://usefathom.com -->
+<script>
+(function(f, a, t, h, o, m){
+a[h]=a[h]||function(){
+(a[h].q=a[h].q||[]).push(arguments)
+};
+o=f.createElement('script'),
+m=f.getElementsByTagName('script')[0];
+o.async=1; o.src=t; o.id='fathom-script';
+m.parentNode.insertBefore(o,m)
+})(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'LGYIPVOA');
+fathom('trackPageview');
+</script>
+<!-- / Fathom -->
+{{ /if }}
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">docsearch({
+algoliaOptions: {
+    hitsPerPage: 8,
+},
+apiKey: 'b5e8f73c7462a6d5c8b525ef183aabec',
+indexName: 'statamic_3',
+inputSelector: '#docs-search',
+debug: false
+});
+</script>

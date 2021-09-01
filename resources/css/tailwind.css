@@ -6,5 +6,8 @@
 /* @import "nav"; */
 /* @import "search"; */
 
+@import "code";
+@import "content";
+
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";

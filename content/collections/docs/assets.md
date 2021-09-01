@@ -1,7 +1,7 @@
 ---
 title: Assets
 intro: >
- Assets are files managed by Statamic contained in specific directories. They can be images, videos, PDFs, giant text documents containing video game walk-throughs, or literally any other type of file. Each asset can have fields and content attached to them, just like entries.
+ Assets are files managed by Statamic contained in specific directories. They can be images, videos, PDFs, giant text documents containing video game walk-throughs, or literally any other type of file. _Each asset can have fields and content attached to them, just like entries._
 template: page
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
 stage: 3
@@ -96,7 +96,7 @@ Make sure to also set the [visibility](#visibility) to `private`.
 
 ## Visibility
 
-Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`, 
+Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`,
 which essentially controls whether they're accessible or not.
 
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.

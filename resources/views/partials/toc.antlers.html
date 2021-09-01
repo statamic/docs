@@ -1,0 +1,10 @@
+{{ if content | toc }}
+    <div id="table-of-contents" class="border-2 shadow rounded mt-12">
+        <div class="bg-black text-white py-3 px-5">
+            On this page
+        </div>
+        <div class="px-5 pt-5 pb-0">
+            {{ content | toc }}
+        </div>
+    </div>
+    {{ /if }}

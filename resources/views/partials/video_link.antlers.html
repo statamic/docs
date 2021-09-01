@@ -1,4 +1,4 @@
-    {{ if video }}
+{{ if video }}
     <div class="bg-mint text-black flex items-center justify-between text-sm font-mono shadow-md border rounded">
         <span class="px-4 py-2">{{ video_cta_text ?? "We have a screencast about this!" }}</span>
         <a href="{{ video }}" class="bg-purple hover:bg-blue-darkest border-l rounded-r-sm pl-4 pr-6 py-2 no-underline text-white flex items-center" target="_blank">
@@ -6,4 +6,4 @@
             <span>Watch Now</span>
         </a>
     </div>
-    {{ /if }}
+{{ /if }}

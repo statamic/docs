@@ -45,6 +45,10 @@ class Toc extends Modifier
         // temporarily wangjangle the params and vars in there.
         $matches = $this->appendParamsAndVars($matches);
 
+        if (count($matches) < 3) {
+            return null;
+        }
+
         foreach ($matches as $heading) {
             if ($i == 0) {
                 $startlvl = $heading[1];
