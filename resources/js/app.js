@@ -1,24 +1,49 @@
-require('./anchors.js')
+// import * as Turbo from "@hotwired/turbo"
+import Alpine from 'alpinejs';
+
+// require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
 require('./prism.js')
-// require('./scrollspy.js')
 
-// let phrases = [
-//     "🍳 What's cookin', home skillet?",
-//     "🐢 Cowabunga!",
-//     "🥤 Who loves orange soda?",
-//     "🔩 I put the screw in the tuna!",
-//     "🤪 I know you are but what am I?",
-//     "💣 You da bomb!",
-//     "🤚 Talk to the hand!",
-//     "🔥 Let's get crunk!",
-//     "✂️ Cut. It. Out.",
-//     "💥 These docs are all that and a bag of chips.",
-// ]
-
-// console.log(phrases[Math.floor(Math.random() * phrases.length)])
+window.bodyData = function() {
+    let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
+    return {
+        showNav: true,
+        showEasterEgg: false,
+        nearTop: true,
+        bindings: {
+            ['@keydown.slash.prevent']() {
+                this.$refs.docsSearch.focus();
+            },
+            ['@keydown.' + primaryKeyBind + '.k.prevent']() {
+                this.$refs.docsSearch.focus();
+            }
+        }
+    };
+}
 
 Prism.highlightAll()
 
-// alert(document.cookie)
+Alpine.start();
+window.Alpine = Alpine;
+
+// Turbo + Alpine.js 3 bridge
+// via: https://gist.github.com/calebporzio/20cf74af4a015644c7bef5166cffd86c
+document.addEventListener('turbo:before-render', () => {
+    let permanents = document.querySelectorAll('[data-turbo-permanent]')
+
+    let undos = Array.from(permanents).map(el => {
+        el._x_ignore = true
+
+        return () => {
+            delete el._x_ignore
+        }
+    })
+
+    document.addEventListener('turbo:render', function handler() {
+        while(undos.length) undos.shift()()
+
+        document.removeEventListener('turbo:render', handler)
+    })
+})

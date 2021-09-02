@@ -1,10 +1,10 @@
-<div class="font-bold text-xl border-b-2 border-gray-200">Docs</div>
+<div class="font-display font-bold text-xl border-b-2 border-gray">Docs</div>
 {{ structure :for="for" }}
-    <div class="text-lg font-bold my-4">{{ title }}</div>
-    <ul class="space-y-2 ml-6">
+    <div class="text-lg font-medium font-display my-4">{{ title }}</div>
+    <ul class="space-y-2 ml-4 font-display">
         {{ children scope="child" }}
             <li class="{{ is_current || is_parent ?= 'active' }}">
-                <a href="{{ url }}" class="relative group antialiased">
+                <a href="{{ url }}" class="hover:text-pink">
                     {{ nav_title ?? title }}
                 </a>
             </li>

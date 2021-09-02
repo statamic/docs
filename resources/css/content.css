@@ -38,14 +38,14 @@ article, .markdown {
     }
 
     a svg.external {
-        @apply inline-block text-gray-400;
+        @apply inline-block text-gray-dark;
         vertical-align: text-top;
     }
 
     .anchor { @apply hidden; }
 
     > ul:not(.list-none) {
-        @apply pl-0 list-none mb-6 text-lg;
+        @apply pl-0 list-none mb-6 text-base;
 
         li {
             @apply relative pl-6 mb-2;
@@ -128,7 +128,7 @@ article, .markdown {
                 top: -18px;
                 left: -16px;
             }
-        }
+        }z
 
         p {
             @apply text-base;
@@ -141,12 +141,12 @@ article, .markdown {
 }
 
 .toc {
-    @apply font-display py-3;
+    @apply font-display py-3 space-y-4;
     column-count: 3;
-    column-rule: 1px solid theme('colors.black');
+    column-rule: 1px dashed theme('colors.black');
 
     li {
-        @apply my-1.5 px-3 inline-block leading-tight text-base;
+        @apply px-3 leading-tight text-base;
     }
 
     li a {
@@ -174,6 +174,33 @@ figure figcaption {
     }
 }
 
+.button {
+    @apply py-1 px-4 relative inline-block bg-yellow rounded border-2 shadow-md font-display text-base whitespace-nowrap transition;
+
+    &:hover {
+        box-shadow: none;
+        transform: translate(2px, 2px);
+    }
+
+    &:focus {
+        @apply outline-none shadow-outline;
+    }
+}
+
+.side-nav li.active a {
+    @apply relative font-bold;
+
+    &:before {
+        @apply absolute bg-yellow;
+        z-index: -1;
+        height: 9px;
+        top: 10px;
+        left: -5%;
+        width: 110%;
+        content: '';
+    }
+}
+
 .hover\:bg-gradient-animate {
     background-size: 200% 200%;
 }
@@ -188,4 +215,14 @@ figure figcaption {
     0% { background-position: 0% 50% }
     50% { background-position: 100% 50% }
     100% { background-position: 0% 50% }
+}
+
+.turbo-progress-bar {
+    /* @apply bg-pink; */
+    /* height: 5px; */
+    display: none;
+}
+
+[x-cloak] {
+    display: none;
 }

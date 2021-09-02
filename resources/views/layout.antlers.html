@@ -15,41 +15,22 @@
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-    <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script type="text/javascript">
-        function bodyData() {
-            let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
-            return {
-                showNav: true,
-                showEasterEgg: false,
-                bindings: {
-                    ['@keydown.slash.prevent']() {
-                        this.$refs.docsSearch.focus();
-                    },
-                    ['@keydown.' + primaryKeyBind + '.k.prevent']() {
-                        this.$refs.docsSearch.focus();
-                    }
-                }
-            };
-        }
-    </script>
+    <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}" data-turbolinks-track="reload">
+    <script src="{{ mix src='/js/app.js' }}" data-turbolinks-track="reload" defer></script>
 </head>
 <body class="font-sans leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
-
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
-
-<div class="max-w-7xl mx-auto flex px-4 pt-12" id="top">
-    <div id="side-nav" class="w-80 px-2" x-show="showNav">
+<div class="max-w-7xl mx-auto flex px-6 py-12" name="top">
+    <div id="side-nav" class="w-80 px-2 relative sticky top-24" x-show="showNav">
         {{ partial:side-nav }}
     </div>
     <div id="content" class="max-w-2xl" x-bind:class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:edit }}
+        {{ partial:back-to-top }}
     </div>
 </div>
-
 {{ partial:old-docs-banner }}
 
 {{# <div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
@@ -57,6 +38,6 @@
     {{ partial:social }}
 </div> #}}
 
-{{ partial:scripts }}
+{{# {{ partial:scripts }} #}}
 </body>
 </html>

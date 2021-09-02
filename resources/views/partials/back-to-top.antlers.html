@@ -1,0 +1,9 @@
+<a
+    href="#top"
+    class="button items-center bg-pink-light fixed bottom-8 right-8 opacity-0 transistion duration-200 hidden lg:flex"
+    @scroll.window="nearTop = window.pageYOffset > 600 ? false : true"
+    x-bind:class="{ 'opacity-100' : !nearTop }"
+>
+    {{ svg src="arrow-up" class="relative -ml-1" }}
+    <span class="ml-2">Back to the top</span>
+</a>

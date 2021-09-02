@@ -27,5 +27,8 @@
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.12"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@hotwired/turbo": "^7.0.0-rc.3",
+        "alpinejs": "^3.2.4"
+    }
 }

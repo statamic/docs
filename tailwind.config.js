@@ -30,7 +30,12 @@ module.exports = {
       teal: '#01D7B0',
       mint: '#B8FFF3',
       yellow: 'FAF77D',
-      gray: colors.trueGray,
+      gray: {
+        lightest: '#EEF2F6',
+        light: '#E7ECF1',
+        DEFAULT: '#CBD5E1',
+        'dark': '#94A3B8',
+      }
     },
     borderColor: theme => ({
        ...theme('colors'),
@@ -43,6 +48,7 @@ module.exports = {
     },
     boxShadow: {
       DEFAULT: "2px 2px 0 theme('colors.black', 'currentColor')",
+      'sm': "1px 1px 0 theme('colors.black', 'currentColor')",
       'md': "2px 2px 0 theme('colors.black', 'currentColor')",
       'lg': "4px 4px 0 theme('colors.black', 'currentColor')",
       'mint': "1px 1px 0 theme('colors.mint', 'currentColor')",
@@ -57,7 +63,10 @@ module.exports = {
       'teal': "1px 1px 0 theme('colors.teal', 'currentColor')",
       'teal-md': "2px 2px 0 theme('colors.teal', 'currentColor')",
       'teal-lg': "7px 7px 0 theme('colors.teal', 'currentColor')",
-      outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+      'stack': "5px 5px 0 -1px #fff, 5px 5px 0 theme('colors.black')",
+      'stack-md': "10px 10px 0 -1px #fff, 10px 10px 0 theme('colors.black')",
+      'stack-lg': "20px 20px 0 -1px #fff, 20px 20px 0 theme('colors.black'), 40px 40px 0 -1px #fff, 40px 40px 0 theme('colors.black')",
+      'outline': '0 0 0 3px rgba(66, 153, 225, 0.5)',
     },
     extend: {
       fontSize: {

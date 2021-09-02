@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -22,12 +21,8 @@ mix.postCss('resources/css/tailwind.css', 'public/css', [
 ])
 
 if (mix.inProduction()) {
-    mix.version();
-    mix.purgeCss({
-     enabled: true,
-     whitelistPatternsChildren: [/^markdown$/],
-   });
- }
+   mix.version();
+}
 
 mix.browserSync({
     proxy: 'docs.test',
