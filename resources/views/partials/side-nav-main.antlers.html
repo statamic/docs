@@ -1,6 +1,10 @@
 <div class="font-display font-bold text-xl border-b-2 border-gray">Docs</div>
 {{ structure :for="for" }}
-    <div class="text-lg font-medium font-display my-4">{{ title }}</div>
+<div class="relative">
+    <button class="text-lg relative font-medium font-display my-4 flex items-center -ml-1">
+        {{ svg src="chevron" class="mr-3" }}
+        <span>{{ title }}</span>
+    </button>
     <ul class="space-y-2 ml-4 font-display">
         {{ children scope="child" }}
             <li class="{{ is_current || is_parent ?= 'active' }}">
