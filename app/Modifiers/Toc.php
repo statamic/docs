@@ -45,10 +45,6 @@ class Toc extends Modifier
         // temporarily wangjangle the params and vars in there.
         $matches = $this->appendParamsAndVars($matches);
 
-        if (count($matches) < 3) {
-            return null;
-        }
-
         foreach ($matches as $heading) {
             if ($i == 0) {
                 $startlvl = $heading[1];
@@ -121,7 +117,10 @@ class Toc extends Modifier
         $toc .= '</li>'."\n";
         $toc .= '</ol>'."\n";
 
-        return array($toc, $content);
+        // A tiny TOC is a lame TOC
+        $toc = (count($matches) < 3) ? null : $toc;
+
+        return [$toc, $content];
     }
 
     private function valueGet($value)
