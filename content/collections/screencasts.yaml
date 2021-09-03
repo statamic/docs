@@ -10,3 +10,4 @@ date_behavior:
   future: private
 inject:
   hide_sidebar: true
+  section: screencasts

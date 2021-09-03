@@ -5,3 +5,5 @@ template: fieldtypes.show
 layout: layout
 revisions: false
 mount: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+inject:
+  section: references

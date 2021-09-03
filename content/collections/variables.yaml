@@ -9,3 +9,4 @@ taxonomies:
   - types
 inject:
   view_model: App\ViewModels\Variables
+  section: references

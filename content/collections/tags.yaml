@@ -5,3 +5,5 @@ template: tags.show
 layout: layout
 revisions: false
 mount: 424f5092-be39-449a-b660-f4e077631487
+inject:
+  section: references

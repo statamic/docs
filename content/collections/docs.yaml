@@ -8,3 +8,4 @@ structure:
   root: false
 inject:
   blueprint: page
+  section: docs
