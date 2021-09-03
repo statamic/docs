@@ -145,6 +145,30 @@ article, .markdown {
     }
 }
 
+.markdown-tight {
+    h1, h2, h3, h4, h5, h6 {
+        @apply m-0;
+    }
+
+    p, ul, ol {
+        font-size: inherit;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+}
+
+.parameter .markdown {
+    p {
+        @apply text-base;
+    }
+
+    code {
+        @apply bg-gray-light text-sm;
+    }
+}
+
 .toc {
     @apply font-display py-3 space-y-4;
     column-count: 3;
