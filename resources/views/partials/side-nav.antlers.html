@@ -8,7 +8,7 @@
         </button>
         <ul class="space-y-2 ml-4 font-display" x-show="open == '{{ title }}'">
             {{ children scope="child" }}
-                <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
                     <a href="{{ url }}" class="hover:text-pink">
                         {{ nav_title ?? title }}
                     </a>
