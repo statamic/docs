@@ -1,7 +1,7 @@
 ---
 title: Conditions
 template: page
-stage: 2
+blueprint: page
 id: 9751908a-a10c-4c36-abd3-2251e83fbc65
 intro: Conditions allow you to filter the results of your content tags (e.g. Collections, Taxonomies) using the data inside them, much like WHERE clauses do with SQL.
 ---

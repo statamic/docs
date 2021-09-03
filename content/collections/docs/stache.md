@@ -3,7 +3,7 @@ title: Stache
 template: page
 intro: >
     Statamic's data storage layer is affectionately named the "Stache". Think of it like Tom Selleck's face, if it were a flat-file database..
-stage: 4
+blueprint: page
 id: 499d808b-18be-42e9-acd0-91bcdff73193
 ---
 ## Overview

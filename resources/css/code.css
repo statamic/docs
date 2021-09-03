@@ -168,6 +168,7 @@ pre>code {
 
 /* File Tree */
 .files-part .entry-line {
+    @apply text-black;
     position: relative;
     text-indent: -99em;
     display: inline-block;
@@ -202,6 +203,7 @@ pre>code {
 }
 
 .files-part .entry-name {
+    @apply text-black;
     position: relative;
     display: inline-block;
     vertical-align: top;

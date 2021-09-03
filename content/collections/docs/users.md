@@ -2,11 +2,8 @@
 title: Users
 intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645051
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
-stage: 3
 pro: true
 video: https://youtu.be/KuiPocGq3L8
 ---

@@ -3,7 +3,7 @@ title: Installing
 intro: Statamic utilizes [Composer](https://getcomposer.org/) to manage its dependencies. So, before using Statamic, make sure you have Composer installed on your machine.
 template: page
 id: ab08f409-8bbe-4ede-b421-d05777d292f7
-stage: 4
+blueprint: page
 video: https://youtu.be/zuKZQNUYSf8
 ---
 ## Creating a new Statamic project?

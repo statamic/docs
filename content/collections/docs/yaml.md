@@ -2,11 +2,8 @@
 title: YAML
 intro: YAML is a data storage format designed to be human readable and easily manipulated by hand. It's interchangeable with JSON and in most cases easier to write. Statamic uses YAML extensively to store data, content, and settings.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645112
 id: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
 blueprint: page
-stage: 3
 ---
 ## What is YAML?
 

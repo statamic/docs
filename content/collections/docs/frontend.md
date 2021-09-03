@@ -5,7 +5,6 @@ nav_title: "Overview"
 template: page
 id: 84100772-18e4-4a22-8759-219b242a320c
 blueprint: page
-stage: 2
 ---
 ## Clarification
 

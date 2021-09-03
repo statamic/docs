@@ -3,7 +3,6 @@ title: Licensing
 intro: 'Statamic 3 is available in two distinct flavors, but one splendid codebase. Statamic Solo is **free and open source** for personal and hobby use, while **Statamic Pro** is powerful commercial software designed for team use.'
 blueprint: page
 id: 56fadb93-b846-4867-ad73-4f721cc940c2
-stage: 5
 ---
 ## Solo vs. Pro
 

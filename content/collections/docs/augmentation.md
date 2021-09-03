@@ -1,6 +1,6 @@
 ---
 title: Augmentation
-stage: 3
+blueprint: page
 id: 9b2f6f55-5355-4334-b90d-d1236fb58887
 ---
 ## Overview

@@ -2,7 +2,7 @@
 title: 'The Cascade'
 intro: 'Statamic has the ability to set data on the global, collection, view, and entry levels. We call the way the data can be inherited and overridden "The Cascade™".'
 template: page
-stage: 4
+blueprint: page
 id: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
 ---
 ## Overview

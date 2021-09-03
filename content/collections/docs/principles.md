@@ -2,10 +2,8 @@
 title: Principles
 intro: 'Statamic is opinionated software. Understanding the principles we follow while designing features and conventions will help train your intuition and understanding of how to take advantage of its conventions. This is a fancy way of saying you will need to RTFM less.'
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568644287
+blueprint: page
 id: 24a9c9d8-d607-4117-9806-738668c173cd
-stage: 2
 ---
 ## Opinionated but Configurable
 

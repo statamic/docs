@@ -2,9 +2,8 @@
 title: 'Using Front-End Frameworks'
 intro: 'There are many different approaches you could take to pass data to JavaScriptLand. Here are some suggestions on how to fetch, format, and hydrate (inject data) typical JavaScript components.'
 template: page
-stage: 'Needs Polish & Humor'
+blueprint: page
 nav_title: 'Front-End Frameworks'
-updated_at: 1613922784
 id: 131259a5-2072-49d8-9ea4-2099e0338e2f
 ---
 The examples below use [Vue.js](https://vuejs.org/) as the framework of choice, but these techniques will apply to most JavaScript frameworks.
@@ -25,7 +24,7 @@ This method is simple, best used for one-off situations. It provides you control
 ```vue
 <home-page
   :navigation="[
-   {{ nav:main_navigation }} 
+   {{ nav:main_navigation }}
       {
         title: '{{ title }}',
         slug: '{{ url }}',
@@ -48,7 +47,7 @@ This method is used to fetch _any_ entry-based data, not just that available on 
 > Note that when using [the Live Preview feature](https://statamic.dev/live-preview), only the current page data is available to you. Trying to query collection data **will not work**.
 
 ## The Content API
-[The Content API](https://statamic.dev/content-api) can be used on its own, or in conjunction with the above methods. 
+[The Content API](https://statamic.dev/content-api) can be used on its own, or in conjunction with the above methods.
 
 Here is a simple example component that fetches data using the asynchronous `created()` function. This data can then be used in the component or passed down to child components. The example uses the standard `Fetch` method but you can use any AJAX library (Axios, etc).
 

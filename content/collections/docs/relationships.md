@@ -4,7 +4,6 @@ template: page
 intro: |
   Content is often related to other content and bits of data. For example, a blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard.
 id: 8ed04215-9f46-4000-bd67-c71b21b67d85
-stage: 4
 blueprint: page
 ---
 ## Overview

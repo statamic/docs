@@ -4,7 +4,6 @@ intro: >
  Assets are files managed by Statamic contained in specific directories. They can be images, videos, PDFs, giant text documents containing video game walk-throughs, or literally any other type of file. _Each asset can have fields and content attached to them, just like entries._
 template: page
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
-stage: 3
 blueprint: page
 ---
 ## Overview

@@ -4,7 +4,6 @@ template: page
 blueprint: page
 intro: |
     Nothing loads faster than static pages. Instead of rendering pages dynamically on demand, Statamic can cache static pages and pass routing to Apache or Nginx with reverse proxying.
-stage: 3
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
 ## Important Preface

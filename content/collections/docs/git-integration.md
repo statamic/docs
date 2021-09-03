@@ -1,8 +1,8 @@
 ---
 title: 'Git Integration'
 intro: Statamic can automate your version control workflow with Git. It can automatically commit and push content as it's changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works.
-stage: 5
 pro: true
+blueprint: page
 id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 ---
 ## Overview

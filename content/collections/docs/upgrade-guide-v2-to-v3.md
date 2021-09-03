@@ -3,7 +3,6 @@ title: 'Upgrading from v2 to v3'
 intro: 'A guide for upgrading your existing Statamic v2 projects to v3.'
 template: page
 blueprint: page
-stage: 4
 id: 031d1f39-1026-47c7-8d85-18642b33f017
 ---
 ## Overview

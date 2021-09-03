@@ -1,17 +1,30 @@
+title: Sections
 sections:
   main:
+    display: Main
     fields:
       -
         handle: title
         field:
           type: text
           required: true
+          validate:
+            - required
       -
         handle: content
         field:
           type: markdown
           localizable: true
+      -
+        handle: template
+        field:
+          hide_partials: true
+          display: Template
+          type: template
+          icon: template
+          listable: hidden
   sidebar:
+    display: Sidebar
     fields:
       -
         handle: slug
@@ -20,5 +33,6 @@ sections:
           required: true
           localizable: true
           validate:
-            - 'unique_entry_value:{collection},{id},{site}'
-title: Sections
+            - required
+          listable: hidden
+          generate: true

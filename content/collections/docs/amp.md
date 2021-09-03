@@ -3,7 +3,7 @@ title: AMP
 template: page
 intro: |
     [AMP](https://amp.dev) (Accelerated Mobile Pages) is a web component framework by Google to serve fast, content-optimized versions of your websites.
-stage: 3
+blueprint: page
 id: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
 ---
 ## Overview

@@ -2,10 +2,7 @@
 title: 'Collections'
 intro: Collections are containers that hold groups of related entries. Each entry in a collection might represent a blog post, product, recipe, or even chapter of your Family Matters fan fiction novel following Steve Urkel's rise to UFC Heavyweight Champion.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568644358
 blueprint: page
-stage: 4
 id: 7202c698-942a-4dc0-b006-b982784efb03
 ---
 ## Entries

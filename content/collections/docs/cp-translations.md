@@ -2,7 +2,7 @@
 title: 'Control Panel Translations'
 nav_title: Translations
 intro: "Statamic's Control Panel is currently available in 7 languages. We always welcome new translations!"
-stage: 4
+blueprint: page
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
 ## Configuration
@@ -64,7 +64,7 @@ php translator generate eo
 
 - The JSON file contains all the "short strings" established on the fly with the translation helpers, e.g. `__('Cowabunga')`.
 - The PHP files contain longer strings and are well organized by section of the control panel.
-- Translatable strings can contain a `|` to separate singular and plurals. 
+- Translatable strings can contain a `|` to separate singular and plurals.
 - Translatable strings can contain the `:something` format to indicate a variable.
 
 ``` files

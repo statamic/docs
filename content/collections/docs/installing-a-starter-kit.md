@@ -3,6 +3,7 @@ id: c51a5de8-4b02-4240-8195-3ff7987c43cf
 title: 'Installing a Starter Kit'
 intro: Installing a Starter Kit is a pretty simple thing, but like with many things in life, there are a few different ways you can do it. Let's cover them all.
 template: page
+blueprint: page
 nav_title: Installing
 ---
 > Available from Statamic 3.2 beta.

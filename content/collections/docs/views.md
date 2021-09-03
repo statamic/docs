@@ -3,7 +3,6 @@ title: Views
 intro: Views contain HTML, have access to your data, and are used to render the front-end of your site. Layouts, templates, and partials are all different types of views.
 template: page
 blueprint: page
-stage: 4
 id: 74c47654-8c47-49b1-a616-ed940ce19977
 ---
 Views contain the HTML served by the frontend of your site and are stored in the `resources/views` directory. A simple view might look something like this (but should it?):

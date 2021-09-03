@@ -1,8 +1,8 @@
 ---
 title: Taxonomies
 intro: A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.
-stage: 3
-vide: https://youtu.be/vssXeEC118M
+blueprint: page
+video: https://youtu.be/vssXeEC118M
 id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
 ---
 ## Overview

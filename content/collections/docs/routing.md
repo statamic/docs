@@ -2,7 +2,7 @@
 title: Routing
 template: page
 intro: Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
-stage: 4
+blueprint: page
 id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
 ---
 ## Overview

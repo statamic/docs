@@ -2,6 +2,7 @@
 id: 9c703f43-30de-4f65-98bb-2b89f80012b7
 title: 'Creating a Starter Kit'
 template: page
+blueprint: page
 intro: 'Thinking of creating your own Statamic Starter Kit? Here''s everything you need to know to get started.'
 nav_title: Creating
 ---

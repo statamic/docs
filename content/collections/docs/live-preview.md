@@ -2,7 +2,7 @@
 title: 'Live Preview'
 intro: 'Live Preview gives you the ability to see what your entry will look like in real time as you write and edit. You can configure and switch the preview screen size, pop it out into a new window, and even switch to AMP mode if enabled.'
 template: page
-stage: 3
+blueprint: page
 id: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
 ---
 ## Overview

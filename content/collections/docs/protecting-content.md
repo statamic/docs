@@ -2,10 +2,8 @@
 title: 'Protecting Content'
 intro: It's common to want to put a site online before it's ready to be viewed by the public. Statamic has built-in ways of making this very easy for you.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568946050
+blueprint: page
 id: 75be125b-7d92-496c-ac5d-7098560d3d44
-stage: 1
 ---
 ## Overview
 

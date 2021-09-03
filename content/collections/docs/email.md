@@ -4,7 +4,6 @@ intro: Be sure to configure your email settings if you want to invite new users,
 template: page
 id: bd1261de-7c4c-4c22-baf5-8a52cdd10c74
 blueprint: page
-stage: 4
 ---
 ## Overview
 

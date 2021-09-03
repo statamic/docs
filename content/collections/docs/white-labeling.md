@@ -2,6 +2,7 @@
 title: 'White Labeling'
 intro: 'White Labeling allows you to customize the logo, visible name, and basic theme of the CMS throughout the control panel.'
 template: page
+blueprint: page
 pro: true
 id: 5bd9426f-23cf-4196-9848-471dff67f5ea
 ---

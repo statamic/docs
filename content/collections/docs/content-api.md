@@ -1,7 +1,7 @@
 ---
 title: Content API
 intro: The Content REST API is a **read-only** API for delivering content from Statamic to your frontend, external apps, SPAs, and numerous other possible sources. Content is delivered as JSON data.
-stage: 1
+blueprint: page
 pro: true
 id: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
 ---

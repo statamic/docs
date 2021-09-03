@@ -3,7 +3,6 @@ title: Forms
 template: page
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
-stage: 1
 intro: Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.
 ---
 ## Overview

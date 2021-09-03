@@ -1,8 +1,6 @@
 ---
 title: Widgets
-stage: 'Gathering Knowledge'
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1585861788
+blueprint: page
 id: 4b77c19b-129c-4271-a724-eea884eb3e2e
 ---
 The dashboard of the Control Panel may contain any number of widgets. A widget can contain anything you can think of. From a list of recent entries to a randomized inspiration quote.
@@ -12,7 +10,7 @@ Statamic comes bundled with a handful of widgets, however you may also [create y
 ## Configuration
 Widgets can be added to the dashboard by modifying the widgets array in the `config/statamic/cp.php` file.
 
-Each item in the array should specify the widget as the type, plus any widget-specific configuration values. 
+Each item in the array should specify the widget as the type, plus any widget-specific configuration values.
 
 You may use the same widget multiple times, configured in different ways.
 

@@ -2,7 +2,6 @@
 title: 'Other Template Engines'
 intro: Antlers is not always the best tool for the job. If you're using Statamic as a headless CMS or want to share views with a Laravel application, Blade or another engine might be a better fit.
 blueprint: page
-stage: 4
 id: c7816387-ebc4-4204-b5f2-8e7073a4db8b
 ---
 ## Overview

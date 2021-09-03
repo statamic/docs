@@ -2,7 +2,7 @@
 title: Navigation
 intro: A nav (or navigation for long) is a hierarchy of links and text nodes that are used to build navs and menus on the frontend of your site.
 id: 2af9fc45-66d0-4ca5-9761-00017076144f
-stage: 4
+blueprint: page
 ---
 ## Overview
 

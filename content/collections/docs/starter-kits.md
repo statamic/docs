@@ -6,6 +6,7 @@ intro: |-
 
   Built by the core team or designers & developers in the community, Starter Kits can can cover a wide range of uses, from fully-built, ready-to-go sites, to developer-focused boilerplates for common frontend frameworks. Starter Kits can be shared and even sold on the <a href="https://statamic.com/marketplace">Statamic Marketplace</a>.
 template: page
+blueprint: page
 nav_title: Overview
 ---
 > Available from Statamic 3.2 beta.
