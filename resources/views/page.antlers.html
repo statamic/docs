@@ -1,9 +1,10 @@
 <header class="markdown pb-8 mb-8">
     {{ partial:breadcrumbs }}
-    <h1>{{ title }}</h1>
+    <div class="flex items-center">
+        <h1>{{ title }}</h1>
+        {{ partial:pro-badge }}
+    </div>
     {{ intro ?? overview | markdown }}
-    {{ partial:pro-badge }}
-    {{# {{ partial:video_link }} #}}
     {{ partial:toc }}
 </header>
 

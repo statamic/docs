@@ -1,6 +1,12 @@
 id: 02174866-a776-4fea-b7e0-935980d9cf1c
 title: Globals
 data:
+  pro_badges:
+    - magnum
+    - mrt
+    - miyagi
+    - rocky
+    - sigourney
   powered_by:
     - 'the sweat of Rambo'
     - 'Michael McDonald''s beard'
