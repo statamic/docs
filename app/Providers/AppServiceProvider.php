@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use App\Markdown\Hint\HintExtension;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 // use App\Http\View\Composers\SideNavComposer;
 use Statamic\Facades\Markdown;
-use League\CommonMark\Extension\Attributes\AttributesExtension;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         // View::composer('partials.side-nav', SideNavComposer::class);
 
         Markdown::addExtensions(function () {
-            return [new AttributesExtension];
+            return [new HintExtension];
         });
     }
 
