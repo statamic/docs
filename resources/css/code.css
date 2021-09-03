@@ -48,9 +48,8 @@ pre[class*="language-files"] {
 
 /* Inline code */
 :not(pre)>code[class*="language-"] {
-    @apply text-purple py-1 rounded-sm;
-    padding-left: 2px;
-    padding-right: 2px;
+    @apply text-purple rounded;
+    padding: 1px 2px;
     font-size: 15px;
     background-color: #E7ECF1;
 }
