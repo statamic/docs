@@ -4,6 +4,7 @@ blueprint: sections
 title: Docs
 intro: 'If you''re looking to learn how to build and manage sites with Statamic, you''ve come to the right place. Make yourself at home, there''s lots to learn!'
 template: home
+section: docs
 ---
 ## Popular Links
 <div class="flex">

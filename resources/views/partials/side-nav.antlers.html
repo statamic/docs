@@ -1,6 +1,6 @@
 <nav class="side-nav pr-16 sticky top-4 min-height-screen" x-data="{ open: 'Getting Started' }">
     <header class="font-display font-bold text-xl border-b-2 border-gray">Docs</header>
-    {{ nav:docs }}
+    {{ nav :handle="section" }}
     <div class="relative"">
         <button class="text-lg relative font-medium font-display my-4 flex items-center -ml-5" @click="open = '{{ title }}'">
             <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
@@ -15,5 +15,5 @@
                 </li>
             {{ /children }}
         </ul>
-    {{ /nav:docs }}
+    {{ /nav }}
 </nav>
