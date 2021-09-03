@@ -1,4 +1,4 @@
-title: Tag
+title: 'Tag Glide'
 sections:
   main:
     display: Main
@@ -8,6 +8,8 @@ sections:
         field:
           type: text
           required: true
+          validate:
+            - required
       -
         handle: intro
         field:
@@ -102,19 +104,8 @@ sections:
           display: Template
           type: template
           default: page
-      -
-        handle: stage
-        field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
   sidebar:
+    display: Sidebar
     fields:
       -
         handle: slug
@@ -123,4 +114,5 @@ sections:
           required: true
           localizable: true
           validate:
+            - required
             - 'unique_entry_value:{collection},{id},{site}'

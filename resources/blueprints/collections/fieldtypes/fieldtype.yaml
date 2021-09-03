@@ -8,29 +8,16 @@ sections:
         field:
           type: text
           required: true
+          validate:
+            - required
       -
-        handle: intro
-        field:
-          display: Intro
-          type: markdown
-          localizable: true
+        import: page
       -
         handle: screenshot
         field:
           type: assets
           container: main
           max_files: 1
-      -
-        handle: content
-        field:
-          display: Content
-          restrict: false
-          smartypants: true
-          automatic_line_breaks: false
-          automatic_links: false
-          escape_markup: false
-          type: markdown
-          localizable: true
       -
         handle: options
         field:
@@ -56,25 +43,8 @@ sections:
               handle: description
               field:
                 type: markdown
-      -
-        handle: template
-        field:
-          display: Template
-          type: template
-          default: page
-      -
-        handle: stage
-        field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
   sidebar:
+    display: Sidebar
     fields:
       -
         handle: slug
@@ -83,4 +53,5 @@ sections:
           required: true
           localizable: true
           validate:
+            - required
             - 'unique_entry_value:{collection},{id},{site}'

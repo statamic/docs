@@ -1,0 +1,52 @@
+title: Page
+fields:
+  -
+    handle: intro
+    field:
+      restrict: false
+      automatic_line_breaks: true
+      automatic_links: false
+      escape_markup: false
+      smartypants: false
+      antlers: false
+      display: Intro
+      type: markdown
+      icon: markdown
+      listable: hidden
+  -
+    handle: content
+    field:
+      restrict: false
+      automatic_line_breaks: true
+      automatic_links: false
+      escape_markup: false
+      smartypants: false
+      antlers: false
+      display: Content
+      type: markdown
+      icon: markdown
+      listable: hidden
+  -
+    handle: template
+    field:
+      hide_partials: true
+      display: Template
+      type: template
+      icon: template
+      listable: hidden
+  -
+    handle: related_entries
+    field:
+      mode: default
+      create: true
+      collections:
+        - fieldtypes
+        - modifiers
+        - screencasts
+        - tags
+        - variables
+        - docs
+      display: 'Related Entries'
+      type: entries
+      icon: entries
+      listable: hidden
