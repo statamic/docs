@@ -187,6 +187,18 @@ figure figcaption {
     }
 }
 
+#site-nav {
+    ul li a {
+        @apply py-2;
+    }
+
+    ul li a.active {
+        @apply font-bold;
+        background: url('/img/zigzag.svg') 0 90% repeat-x;
+        background-size: 400% auto;
+    }
+}
+
 .side-nav li.active a {
     @apply relative font-bold;
 
