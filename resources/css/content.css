@@ -99,6 +99,32 @@ article, .markdown {
         }
     }
 
+    table {
+        @apply border-2 rounded-md border-separate overflow-hidden;
+        border-spacing: 0;
+
+        thead {
+            @apply bg-black text-white font-display font-bold text-lg;
+            th {
+                @apply px-5 py-2 text-left;
+            }
+        }
+        tbody {
+            tr {
+                @apply even:bg-gray-lightest;
+            }
+            td {
+                @apply px-5 py-3;
+            }
+            p {
+                @apply text-base leading-tight;
+            }
+            :not(pre) > code {
+                @apply bg-transparent font-bold text-purple;
+            }
+        }
+    }
+
     blockquote {
         @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
 
@@ -145,7 +171,7 @@ article, .markdown {
     }
 }
 
-.markdown-tight {
+.markdown-tight, table {
     h1, h2, h3, h4, h5, h6 {
         @apply m-0;
     }
