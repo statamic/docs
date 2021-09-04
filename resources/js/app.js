@@ -1,7 +1,7 @@
 // import * as Turbo from "@hotwired/turbo"
 import Alpine from 'alpinejs';
 
-// require('./anchors.js')
+require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
 require('./prism.js')

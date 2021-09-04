@@ -19,11 +19,11 @@ article, .markdown {
     }
 
     h2 {
-        @apply font-display font-extrabold text-3xl mb-6 mt-16;
+        @apply font-display font-extrabold text-3xl mb-6 mt-16 relative;
     }
 
     h3 {
-        @apply font-display font-extrabold text-xl mb-2 mt-12;
+        @apply font-display font-extrabold text-xl mb-2 mt-12 relative;
     }
 
     p {
@@ -47,7 +47,35 @@ article, .markdown {
         vertical-align: text-top;
     }
 
-    .anchor { @apply hidden; }
+    h2>.anchor,
+    h3>.anchor {
+        @apply absolute top-0 no-underline text-white opacity-0;
+        text-shadow: -1px -1px 0 theme('colors.pink.DEFAULT'),
+            1px -1px 0 theme('colors.pink.DEFAULT'),
+            -1px 1px 0 theme('colors.pink.DEFAULT'),
+            1px 1px 0 theme('colors.pink.DEFAULT');
+        transition: all .2s ease-in-out;
+        &:hover {
+            @apply text-pink;
+            text-shadow: none;
+        }
+    }
+
+    h2 > .anchor {
+        @apply -left-10 pr-4;
+    }
+
+    h2:hover > .anchor {
+        @apply -left-8 opacity-100;
+    }
+
+    h3 > .anchor {
+        @apply -left-7 pr-2;
+    }
+
+    h3:hover > .anchor {
+        @apply -left-5 opacity-100;
+    }
 
     > ul:not(.list-none) {
         @apply pl-0 list-none mb-6 text-base;
@@ -190,8 +218,8 @@ article, .markdown {
         @apply text-base;
     }
 
-    code {
-        @apply bg-gray-light text-sm;
+    :not(pre)>code {
+        @apply bg-transparent text-purple font-bold text-sm;
     }
 }
 
