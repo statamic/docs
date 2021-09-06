@@ -51,6 +51,8 @@ module.exports = {
       'sm': "1px 1px 0 theme('colors.black', 'currentColor')",
       'md': "2px 2px 0 theme('colors.black', 'currentColor')",
       'lg': "4px 4px 0 theme('colors.black', 'currentColor')",
+      'white': "2px 2px 0 theme('colors.white', 'currentColor')",
+      'white-lg': "4px 4px 0 theme('colors.white', 'currentColor')",
       'mint': "1px 1px 0 theme('colors.mint', 'currentColor')",
       'mint-md': "2px 2px 0 theme('colors.mint', 'currentColor')",
       'mint-lg': "7px 7px 0 theme('colors.mint', 'currentColor')",

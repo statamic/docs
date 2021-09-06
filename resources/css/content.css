@@ -324,3 +324,24 @@ figure figcaption {
 /* .overflow-state {
     @apply overflow-hidden max-h-screen fixed;
 } */
+
+.hover\:underline-grow,
+.hover-within\:underline-grow a {
+    position: relative;
+
+    &:after {
+        @apply absolute block bg-white right-0 w-0;
+        content: '';
+        height: 1px;
+        margin-top: 2px;
+        ;
+        transition: width .2s ease;
+        -webkit-transition: width .2s ease;
+    }
+
+    &:hover:after {
+        width: 100%;
+        left: 0;
+        background: #fff;
+    }
+}
