@@ -33,9 +33,9 @@ final class HintRenderer implements BlockRendererInterface
             : '';
 
         $content = new HtmlElement(
-            'p',
+            'div',
             ['class' => 'hint-content'],
-            $childRenderer->renderInlines($node->children())
+            $childRenderer->renderBlocks($node->children())
         );
 
         return new HtmlElement(

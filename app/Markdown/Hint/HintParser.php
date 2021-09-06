@@ -14,16 +14,15 @@ class HintParser implements BlockParserInterface
             return false;
         }
 
-        if ($cursor->getLine() === ':::') {
-            return false;
-        }
+        $fence = $cursor->match('/^(:::)(?:.+)$/');
 
-        $fence = $cursor->match('/^(?:\:{3,}(?!.*`))/');
         if ($fence === null) {
             return false;
         }
 
-        $context->addBlock(new Hint);
+        [$type, $heading] = array_pad(explode(' ', substr($fence, 3), 2), 2, '');
+
+        $context->addBlock(new Hint($type, $heading));
 
         return true;
     }

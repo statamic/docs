@@ -3,18 +3,22 @@
 namespace App\Markdown\Hint;
 
 use League\CommonMark\Block\Element\AbstractBlock;
-use League\CommonMark\Block\Element\AbstractStringContainerBlock;
-use League\CommonMark\ContextInterface;
 use League\CommonMark\Cursor;
-use League\CommonMark\Util\RegexHelper;
 
-class Hint extends AbstractStringContainerBlock
+class Hint extends AbstractBlock
 {
-    private ?string $header = '';
+    protected $type;
+    protected $title;
+
+    public function __construct($type, $title)
+    {
+        $this->type = $type;
+        $this->title = $title;
+    }
 
     public function canContain(AbstractBlock $block): bool
     {
-        return false;
+        return true;
     }
 
     public function isCode(): bool
@@ -24,72 +28,32 @@ class Hint extends AbstractStringContainerBlock
 
     public function matchesNextLine(Cursor $cursor): bool
     {
-        return true;
-    }
-
-    public function handleRemainingContents(ContextInterface $context, Cursor $cursor)
-    {
-        $cursor->advanceToNextNonSpaceOrTab();
-        $cursor->advanceBySpaceOrTab();
-
-        if ($cursor->getLine() === ':::') {
-            return $this->finalize($context, $context->getLineNumber());
+        if ($cursor->match('/^:::$/')) {
+            return false;
         }
 
-        $tip = $context->getTip();
-        $tip->addLine($cursor->getRemainder());
+        return true;
     }
 
     public function getTitle(): ?string
     {
-        $words = $this->getHeaderWords();
-
-        if (count($words) > 1) {
-            array_shift($words);
-
-            return join(' ', $words);
+        if ($this->title) {
+            return $this->title;
         }
 
-        return null;
+        if ($this->type === 'warning') {
+            return 'Warning!';
+        }
+
+        if ($this->type === 'best-practice') {
+            return 'Best Practice';
+        }
+
+        return 'Hot Tip!';
     }
 
     public function getType(): ?string
     {
-        $words = $this->getHeaderWords();
-
-        if (count($words) > 0) {
-            return $words[0];
-        }
-
-        return null;
-    }
-
-    public function getHeaderWords(): array
-    {
-        return \preg_split('/\s+/', $this->header ?? '') ?: [];
-    }
-
-    public function setHeader($header)
-    {
-        $this->header = $header;
-    }
-
-    public function finalize(ContextInterface $context, int $lineNumber)
-    {
-        parent::finalize($context, $lineNumber);
-
-        // first line becomes info string
-        $firstLine = $this->strings->first();
-        if ($firstLine === false) {
-            $firstLine = '';
-        }
-
-        $this->setHeader(RegexHelper::unescape(\trim($firstLine)));
-
-        if ($this->strings->count() === 1) {
-            $this->finalStringContents = '';
-        } else {
-            $this->finalStringContents = \implode("\n", $this->strings->slice(1)) . "\n";
-        }
+        return $this->type;
     }
 }
