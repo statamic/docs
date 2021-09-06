@@ -1,9 +1,11 @@
 ---
+id: 031d1f39-1026-47c7-8d85-18642b33f017
+blueprint: page
 title: 'Upgrading from v2 to v3'
 intro: 'A guide for upgrading your existing Statamic v2 projects to v3.'
 template: page
-blueprint: page
-id: 031d1f39-1026-47c7-8d85-18642b33f017
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1630938195
 ---
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 million fantastic new features, and speeds up performance by 5x-200x. What's not to love about that?

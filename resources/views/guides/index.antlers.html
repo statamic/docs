@@ -1,0 +1,19 @@
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <h1>{{ title }}</h1>
+    <div class="text-xl">{{ intro ?? overview | markdown }}
+    {{ partial:toc }}
+</header>
+
+<section class="pb-16 grid grid-cols-3 gap-8">
+    {{ collection:guides }}
+        <div class="bg-gray-light border shadow-stack p-5">
+            <h2 class="text-2xl mb-3 font-bold font-display">{{ title }}</h2>
+            <div class="text-base">{{ intro }}</div>
+            <a class="button bg-mint mt-3" href="{{ url }}">Read Now</a>
+        </div>
+    {{ /collection:guides }}
+
+</section>
+
+{{ partial:suggest }}

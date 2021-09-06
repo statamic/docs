@@ -4,7 +4,7 @@ tree:
     title: 'Getting Started'
     children:
       -
-        id: 8a55c0af-bbae-4499-a03e-b46a6887cdfd
+        id: 67a031f2-f519-4179-b793-0c9d04f44662
         entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
       -
         id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
@@ -37,9 +37,6 @@ tree:
       -
         id: 96556b26-af4e-484d-9de7-87e3d5f28d87
         entry: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
-      -
-        id: 4e37c889-3248-4ba0-8067-b6116d7efb99
-        entry: d7b7d326-b199-4fd8-984f-7d885e255efb
       -
         id: 2d35188b-c048-474d-9634-991f1ee840a4
         entry: 7202c698-942a-4dc0-b006-b982784efb03

@@ -1,7 +1,6 @@
 ---
 title: 'Quick Start Guide'
-intro: "This is a step-by-step walkthrough on installing and building a simple Statamic 3 site. It is focused on the fundamental building blocks and less on design and aesthetics."
-blueprint: page
+intro: "A step-by-step guide to installing and building your first Statamic 3 site."
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 video_cta_text: We have a screencast series if you'd rather not read!
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b

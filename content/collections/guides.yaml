@@ -1,0 +1,12 @@
+title: Guides
+template: guides/show
+layout: layout
+mount: 173b892f-7f5a-4b88-8830-f28d8f90265f
+revisions: false
+route: '/guides/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+inject:
+  section: guides
