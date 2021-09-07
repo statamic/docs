@@ -155,32 +155,28 @@ article, .markdown {
     blockquote, .hint {
         @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
 
-        h2 {
-            @apply uppercase text-base bg-gray text-black inline-block p-1.5 leading-none absolute -left-3 -top-3 m-0 border-2 -rotate-6 font-semibold tracking-wide;
+        .hint-title {
+            @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border-2 -rotate-6 font-semibold tracking-wide;
+            font-size: 15px;
         }
 
         &.tip {
-            h2 { @apply bg-pink-light }
+            .hint-title { @apply bg-pink-light }
         }
 
         &.warning {
             @apply shadow-purple-lg;
-            h2 { @apply bg-mint }
-            &:before {
-                background: url('/img/label-warning.svg') no-repeat;
-            }
+            .hint-title { @apply bg-mint }
         }
 
         &.best-practice {
-            @apply shadow-teal-lg mt-10;
-            h2 { @apply bg-yellow }
-            &:before {
-                background: url('/img/label-best-practice.svg') no-repeat;
-                height: 48px;
-                width: 138px;
-                top: -18px;
-                left: -16px;
-            }
+            @apply shadow-stack bg-gray-lightest text-black border subpixel-antialiased;
+
+            .hint-title { @apply bg-yellow }
+        }
+
+        :not(.best-practice) :not(pre) > code {
+            @apply bg-transparent text-pink font-bold mx-px text-sm;
         }
 
         p {
@@ -189,6 +185,10 @@ article, .markdown {
 
         p:last-child {
             @apply mb-0;
+        }
+
+        .button {
+            @apply text-black no-underline absolute -bottom-4 right-4 font-normal bg-white;
         }
     }
 }

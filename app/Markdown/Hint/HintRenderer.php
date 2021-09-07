@@ -26,7 +26,7 @@ final class HintRenderer implements BlockRendererInterface
         $title = $node->getTitle();
         $title = $title
             ? new HtmlElement(
-                'h2',
+                'span',
                 ['class' => 'hint-title'],
                 $title,
             )
