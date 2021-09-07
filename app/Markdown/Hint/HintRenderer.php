@@ -23,6 +23,10 @@ final class HintRenderer implements BlockRendererInterface
             $attrs['class'] .= $type;
         }
 
+        if ($type === 'watch') {
+            return $this->renderWatch($node, $childRenderer, $attrs);
+        }
+
         $title = $node->getTitle();
         $title = $title
             ? new HtmlElement(
@@ -45,6 +49,27 @@ final class HintRenderer implements BlockRendererInterface
             $title . "\n" .
             $content .
             "\n"
+        );
+    }
+
+    private function renderWatch(Hint $node, ElementRendererInterface $childRenderer, array $attrs)
+    {
+        // Grab the first paragraph. There should only be one anyway.
+        $content = $node->children()[0];
+
+        $caption = new HtmlElement(
+            'p',
+            ['class' => 'caption'],
+            $childRenderer->renderInlines($content->children())
+        );
+
+        return new HtmlElement(
+            'div',
+            $attrs,
+            '<div class="embed">'.
+                '<iframe src="'.$node->getTitle().'"></iframe>'.
+            '</div>'.
+            $caption
         );
     }
 }
