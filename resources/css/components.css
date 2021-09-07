@@ -1,0 +1,81 @@
+blockquote,
+.hint {
+    @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
+
+    .hint-title {
+        @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border-2 -rotate-6 font-semibold tracking-wide;
+        font-size: 15px;
+    }
+
+    &.tip {
+        .hint-title {
+            @apply bg-pink-light
+        }
+    }
+
+    &.warning {
+        @apply shadow-purple-lg;
+
+        .hint-title {
+            @apply bg-mint
+        }
+    }
+
+    &.best-practice {
+        @apply shadow-stack bg-gray-lightest text-black border subpixel-antialiased;
+
+        .hint-title {
+            @apply bg-yellow
+        }
+    }
+
+    :not(.best-practice) :not(pre)>code {
+        @apply bg-transparent text-pink font-bold mx-px text-sm;
+    }
+
+    p {
+        @apply text-base;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+
+    .button {
+        @apply text-black no-underline absolute -bottom-4 right-4 font-normal bg-white;
+    }
+}
+
+figure,
+.screenshot {
+    @apply rounded-lg shadow-lg bg-gradient-to-br from-blue-dark to-blue-light px-6 py-6 pb-12 mb-12 relative;
+
+    img {
+        @apply border-2 shadow-lg mx-auto;
+        /* box-sizing: content-box; */
+    }
+
+}
+
+.caption,
+figure figcaption {
+    @apply bg-black px-3 py-1 text-blue-lightest text-sm inline-block antialiased absolute right-8 bottom-6 transform -rotate-2;
+
+    code {
+        font-size: 12px !important;
+        padding: 1px 2px !important;
+    }
+}
+
+.button {
+    @apply py-1 px-5 relative inline-block bg-yellow rounded border-2 shadow-md font-display text-base whitespace-nowrap transition;
+
+    &:hover {
+        box-shadow: none;
+        transform: translate(2px, 2px);
+    }
+
+    &:focus {
+        @apply outline-none shadow-outline;
+    }
+}
