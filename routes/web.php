@@ -1,7 +1,5 @@
 <?php
 
-Route::statamic('/', 'home', ['load' => '/documentation']);
-
 Route::statamic('search-results', 'search', ['hide_sidebar' => true]);
 Route::statamic('sitemap.xml', 'sitemap', ['content_type' => 'xml', 'layout' => 'sitemap']);
 Route::redirect('screencasts', '/screencasts/installation');
