@@ -37,7 +37,7 @@ blockquote,
         }
 
         p.caption {
-            @apply absolute right-8 bottom-2 transform -rotate-3 text-pink-light text-sm bg-black px-2 py-1 shadow;
+            @apply absolute right-8 -bottom-4 transform -rotate-2 text-pink-light text-sm bg-black px-3 py-1 shadow;
         }
     }
 
