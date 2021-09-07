@@ -1,0 +1,23 @@
+<header class="markdown">
+    <h1>{{ title }}</h1>
+    <div class="max-w-lg">{{ intro }}</div>
+</header>
+
+<section class="markdown mt-20 w-full">
+    <table>
+        <thead>
+            <th>Page</th>
+            <th>Section</th>
+            <th>Last Updated</th>
+        </thead>
+        <tbody>
+            {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="100" title:not="Documentation" scope="entry" }}
+                <tr>
+                    <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td>{{ entry:collection | deslugify | title }}</td>
+                    <td>{{ entry:last_modified | ago }}</td>
+                </tr>
+            {{ /collection }}
+        </tbody>
+    </table>
+</section>
