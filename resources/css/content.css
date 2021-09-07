@@ -114,7 +114,7 @@ article, .markdown {
     }
 
     table {
-        @apply border-2 rounded-md border-separate overflow-hidden;
+        @apply border-2 rounded-md border-separate overflow-hidden w-full;
         border-spacing: 0;
 
         thead {
@@ -142,6 +142,7 @@ article, .markdown {
 
 article, .markdown {
     blockquote {
+        p { @apply text-base; }
         &:before {
             content: '';
             background: url('/img/label-tip.svg') no-repeat;

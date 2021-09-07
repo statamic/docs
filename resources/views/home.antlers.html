@@ -1,10 +1,58 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>Statamic 3 Documentation</h1>
-    {{ intro }}
+<header class="markdown">
+    <h1>Learn Statamic</h1>
+    <div class="max-w-lg">{{ intro }}</div>
 </header>
 
-<article class="markdown pb-8">
-    {{ content | toc:ids  }}
+<div class="bg-gray-lightest mt-12 py-5 px-8 border shadow-stack">
+    <div class="flex items-center">
+        <div class="md:w-1/2">
+            <h2 class="font-display text-3xl font-semibold mb-2">Install Statamic</h2>
+            <p>There's more than one way to get started with Statamic.</p>
+            <div class="flex flex-wrap space-x-4 mt-6">
+                <a href="" class="button">Install Statamic</a>
+                <a href="" class="button bg-mint">Quick Start Guide</a>
+            </div>
+            <div class="flex flex-wrap space-x-4 mt-6">
+                <a href="" class="button button-small">Local Environment Setup</a>
+                <a href="" class="button button-small">Requirements</a>
+                <a href="" class="button button-small">Starter Kits</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 md:pl-8">
+            <img src="/img/control-panel-screenshot.png" alt="The Statamic 3 Control Panel" class="border shadow rounded">
+        </div>
+    </div>
+</div>
+
+<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white flex items-center justify-between">
+    <h2 class="font-display text-2xl font-semibold antialised">Quick Start</h2>
+    <p>The fastest way to get started with Statamic.</p>
+    <a href="/guides/quick-start" class="button">Get Started</a>
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 space-x-4 mt-6">
+    <div class="bg-gray-light border shadow-stack p-5">
+        <h2 class="text-2xl mb-3 font-bold font-display">Watch + Learn</h2>
+        <div class="text-base">Our screencasts cover a wide range of topics. It's a great way to learn Statamic.</div>
+        <a class="button bg-mint mt-3" href="/screencasts">Watch Now</a>
+    </div>
+    <div class="bg-gray-light border shadow-stack p-5">
+        <h2 class="text-2xl mb-3 font-bold font-display">Migration Guides</h2>
+        <div class="text-base">The need-to-knows about migraging from Statamic v2 or (gasp) even v1.</div>
+        <a class="button bg-mint mt-3" href="/upgrade-guide">Watch Now</a>
+    </div>
+    <div class="bg-gray-light border shadow-stack p-5">
+        <h2 class="text-2xl mb-3 font-bold font-display">Community</h2>
+        <div class="text-base">Get development support through our Discord and the official support team.</div>
+        <a class="button bg-mint mt-3" href="https://statamic.com/discord">Join the community</a>
+    </div>
+</div>
+
+
+
+<section class="markdown mt-20">
+    <h2>Recent Updates</h2>
+    <p>Keep your Statamic upserpowers up-to-date with the latest updates to the docs.</p>
     <table>
         <thead>
             <th>Page</th>
@@ -12,13 +60,14 @@
             <th>Last Updated</th>
         </thead>
         <tbody>
-            {{# {{ collection from="*" sort="last_modified:desc" limit="15" title:not="Documentation" scope="entry" }}
+            {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
-                    <td>{{ entry:last_modified }}</td>
+                    <td>{{ entry:last_modified | ago }}</td>
                 </tr>
-            {{ /collection }} #}}
+            {{ /collection }}
         </tbody>
     </table>
-</article>
+    <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
+</section>
