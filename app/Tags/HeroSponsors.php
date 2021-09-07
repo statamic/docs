@@ -17,7 +17,7 @@ class HeroSponsors extends Tags
             try {
                 return $this->sponsors()->collect()->where('price', '>=', 100);
             } catch (\Exception $e) {
-                Log::error($e->getMessage());
+                Log::error($e);
                 return collect(['error' => true]);
             }
         });
