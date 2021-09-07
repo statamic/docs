@@ -42,6 +42,14 @@ It also has multiple lines.
 <a href="" class="button">Try it here</a>
 :::
 
+<div class="hint watch">
+    <div class="embed">
+        <iframe src="https://www.youtube.com/embed/zuKZQNUYSf8"></iframe>
+    </div>
+    <p class="caption">This is the caption</p>
+</div>
+
+
 ## Overview
 
 Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for glueing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.

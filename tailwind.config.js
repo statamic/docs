@@ -20,6 +20,10 @@ module.exports = {
         light: '#FFDCED',
         DEFAULT: '#FF269E'
       },
+      red: {
+        DEFAULT: '#DE3618',
+        dark: '#98230E',
+      },
       purple: '#6B26FF',
       blue: {
         lightest: '#B1D8FC',
@@ -62,6 +66,12 @@ module.exports = {
       'purple': "1px 1px 0 theme('colors.purple', 'currentColor')",
       'purple-md': "2px 2px 0 theme('colors.purple', 'currentColor')",
       'purple-lg': "7px 7px 0 theme('colors.purple', 'currentColor')",
+      'red': "1px 1px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-md': "2px 2px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-lg': "7px 7px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-dark': "1px 1px 0 theme('colors.red.dark', 'currentColor')",
+      'red-dark-md': "2px 2px 0 theme('colors.red.dark', 'currentColor')",
+      'red-dark-lg': "7px 7px 0 theme('colors.red.dark', 'currentColor')",
       'teal': "1px 1px 0 theme('colors.teal', 'currentColor')",
       'teal-md': "2px 2px 0 theme('colors.teal', 'currentColor')",
       'teal-lg': "7px 7px 0 theme('colors.teal', 'currentColor')",

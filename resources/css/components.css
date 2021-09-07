@@ -17,7 +17,27 @@ blockquote,
         @apply shadow-purple-lg;
 
         .hint-title {
-            @apply bg-mint
+            @apply bg-mint;
+        }
+    }
+
+    &.watch {
+        @apply bg-gradient-to-br from-red to-pink shadow-red-dark-lg rounded-lg px-4;
+
+        iframe {
+            @apply shadow-lg;
+        }
+
+        .hint-title {
+            @apply bg-pink-light;
+        }
+
+        .hint-content {
+            @apply relative;
+        }
+
+        p.caption {
+            @apply absolute right-8 bottom-2 transform -rotate-3 text-pink-light text-sm bg-black px-2 py-1 shadow;
         }
     }
 
@@ -43,6 +63,14 @@ blockquote,
 
     .button {
         @apply text-black no-underline absolute -bottom-4 right-4 font-normal bg-white;
+    }
+}
+
+.embed {
+    @apply relative w-full;
+    padding-bottom: 56.25%;
+    iframe {
+        @apply absolute top-0 left-0 w-full h-full border-0;
     }
 }
 
