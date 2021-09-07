@@ -49,6 +49,27 @@
 </div>
 
 
+<section class="markdown mt-20">
+    <h2>Hero Sponsors</h2>
+    <p>We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        {{ hero_sponsors }}
+            {{ if error }}
+                <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
+            {{ else }}
+                <a href="{{ url }}" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
+                    <img src="{{ avatarUrl }}" class="rounded h-12 w-12 mr-4">
+                    <span>{{ name }}</span>
+                </a>
+            {{ /if }}
+        {{ /hero_sponsors }}
+        <a href="https://github.com/sponsors/statamic" class="rounded custom text-white bg-black transform hover:-rotate-1 no-underline flex border shadow-md py-1 px-3 text-center items-center relative">
+            <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" class="rounded-full h-12 w-12 mr-4">
+            <spa>Are you next?</spa>
+        </a>
+    </div>
+</section>
 
 <section class="markdown mt-20">
     <h2>Recent Updates</h2>
