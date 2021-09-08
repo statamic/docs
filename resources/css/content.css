@@ -1,7 +1,7 @@
 article, .markdown {
     background: white;
     h1 {
-        @apply font-display font-extrabold text-7xl mb-6;
+        @apply font-display font-extrabold text-5xl lg:text-7xl mb-6;
     }
 
     h2 {
@@ -13,7 +13,7 @@ article, .markdown {
     }
 
     p {
-        @apply text-lg mb-6;
+        @apply text-base md:text-lg mb-6;
         line-height: 1.75em;
     }
 
@@ -99,7 +99,7 @@ article, .markdown {
     }
 
     > ol {
-        @apply list-none mb-6 text-lg;
+        @apply list-none mb-6 text-base md:text-lg;
         counter-reset: item;
 
         >li {
@@ -114,31 +114,40 @@ article, .markdown {
     }
 
     table {
-        @apply border-2 rounded-md border-separate overflow-hidden w-full;
+        @apply border-2 rounded-md border-separate overflow-hidden w-full mb-6;
         border-spacing: 0;
 
         thead {
             @apply bg-black text-white font-display font-bold text-lg;
             th {
-                @apply px-5 py-2 text-left;
+                @apply px-3 py-2 md:px-5 md:py-3 text-left;
             }
         }
         tbody {
             tr {
                 @apply even:bg-gray-lightest;
             }
+            tr:last-child {
+                @apply rounded-b;
+            }
             td {
-                @apply px-5 py-3;
+                @apply px-3 py-2 md:px-5 md:py-3;
             }
             p {
-                @apply text-base leading-tight;
+                @apply text-sm md:text-base leading-tight;
             }
             :not(pre) > code {
-                @apply bg-transparent font-bold text-purple;
+                @apply bg-transparent text-xs md:text-base font-bold text-purple;
             }
         }
     }
 }
+/*
+@media screen(md) {
+    article h1, .markdown h1 {
+        @apply text-7xl;
+    }
+} */
 
 article, .markdown {
     blockquote {
@@ -198,8 +207,6 @@ article, .markdown {
 
 .toc {
     @apply font-display py-3 space-y-4;
-    column-count: 3;
-    column-rule: 1px dashed theme('colors.black');
 
     li {
         @apply px-3 leading-tight text-base;
@@ -209,3 +216,14 @@ article, .markdown {
         @apply text-black no-underline hover:text-pink font-medium;
     }
 }
+
+@media screen(lg) {
+    .toc {
+        column-count: 3;
+        column-rule: 1px dashed theme('colors.black');
+    }
+}
+
+/* pre.language-markdown code {
+    white-space: pre-line !important;
+} */

@@ -79,7 +79,9 @@ Filesystems are defined in `config/filesystems.php`  They can point to the local
 
 Sometimes it’s handy to store assets that shouldn’t be publicly visible through a direct URL or browser.
 
->>> If your asset container's disk does not have a `url` property, Statamic will not output URLs.
+:::tip
+If your asset container's disk does not have a `url` property, Statamic will not output URLs.
+:::
 
 Private containers should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
 
@@ -100,7 +102,9 @@ which essentially controls whether they're accessible or not.
 
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
 
-> If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+:::tip
+ If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+:::
 
 ## Blueprints
 
@@ -117,7 +121,7 @@ Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and othe
 Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
 
 
-## Frontend Templating {#templating}
+## Templating
 
 There are two main methods for working with Asset data on the frontend. The Assets Fieldtype, and the Assets Tag.
 

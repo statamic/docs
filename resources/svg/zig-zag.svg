@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="123px" height="13px" viewBox="0 0 123 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Zig-zags/HR:-Content" transform="translate(1.000000, 2.000000)" stroke-width="3">
-            <g id="Group">
-                <polyline id="Path-3" stroke="#B1D8FC" points="1 9 12.3207547 2 23.6415094 9 34.9622642 2 46.2830189 9 57.6037736 2 68.9245283 9 80.245283 2 91.5660377 9 102.886792 2 114.207547 9 121 5.5"></polyline>
-                <polyline id="Path-3" stroke="#01D7B0" points="0 7 11.3207547 0 22.6415094 7 33.9622642 0 45.2830189 7 56.6037736 0 67.9245283 7 79.245283 0 90.5660377 7 101.886792 0 113.207547 7 120 3.5"></polyline>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="123" height="13" viewBox="0 0 123 13" xmlns="http://www.w3.org/2000/svg"><g stroke-width="3" fill="none" fill-rule="evenodd"><path stroke="#B1D8FC" d="M2 11l11.32-7 11.322 7 11.32-7 11.321 7 11.32-7 11.322 7 11.32-7 11.321 7 11.32-7 11.322 7L122 7.5"/><path stroke="#01D7B0" d="M1 9l11.32-7 11.322 7 11.32-7 11.321 7 11.32-7 11.322 7 11.32-7 11.321 7 11.32-7 11.322 7L121 5.5"/></g></svg>

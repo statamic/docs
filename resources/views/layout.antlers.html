@@ -21,11 +21,11 @@
 <body class="font-sans leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
-<div class="max-w-7xl mx-auto flex px-4 md:px-10 md:py-12 overflow-hidden" name="top">
-    <div id="side-nav" class="lg:block w-full md:w-80 px-2 relative md:sticky min-h-screen overflow-auto md:top-24 z-30" x-show="showNav">
+<div class="max-w-7xl mx-auto flex px-4 md:px-10 py-12 overflow/hidden" name="top">
+    <div id="side-nav" class="md:block w-full md:w-80 px-2 relative md:sticky min-h-screen md:top-24 z-30" :class="{'mobile-open': showNav}" x-show="showNav">
         {{ partial:side-nav }}
     </div>
-    <div id="content" class="{{ content_width ?? 'max-w-2xl' }}" x-bind:class="{ 'overflow-state': showNav }">
+    <div id="content" class="w-full {{ content_width ?? 'max-w-2xl' }}" :class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:back-to-top }}
     </div>

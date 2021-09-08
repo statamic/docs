@@ -76,18 +76,18 @@ blockquote,
 
 figure,
 .screenshot {
-    @apply rounded-lg shadow-lg bg-gradient-to-br from-blue-dark to-blue-light px-6 py-6 pb-12 mb-12 relative;
+    @apply rounded md:rounded-lg shadow md:shadow-lg bg-gradient-to-br from-blue-dark to-blue-light p-3 md:p-6 mb-12 relative;
+    @apply pb-6 md:pb-12;
 
     img {
         @apply border-2 shadow-lg mx-auto;
-        /* box-sizing: content-box; */
     }
 
 }
 
 .caption,
 figure figcaption {
-    @apply bg-black px-3 py-1 text-blue-lightest text-sm inline-block antialiased absolute right-8 bottom-6 transform -rotate-2;
+    @apply bg-black px-3 py-1 text-blue-lightest text-sm inline-block antialiased absolute right-2 md:right-8 bottom-2 md:bottom-6 transform -rotate-2;
 
     code {
         font-size: 12px !important;

@@ -1,8 +1,15 @@
 {{ if section }}
-<nav class="side-nav bg-white pr-16 md:sticky md:top-4 min-height-screen" x-data="{ open: 'Getting Started' }">
-    <header class="font-display font-bold text-xl border-b-2 border-gray">{{ section | title }}</header>
+<nav class="side-nav bg-white md:pr-16 md:sticky md:top-4 pb-6" x-data="{ open: 'Getting Started' }">
+    <header class="hidden mb:block font-display font-bold text-xl border-b-2 border-gray">{{ section | title }}</header>
+    <form class="relative flex md:hidden items-center w-full h-9 my-2 rounded border-2 border-black shadow-sm" action="/search-results">
+        <input
+            class="hidden md:block focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
+            type="text" placeholder="Search... (Press &quot;/&quot; to focus)">
+        <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
+    </form>
+    <div class="pl-8 md:p-0">
         {{ nav :handle="section" }}
-        <div class="relative"">
+        <div class="relative">
             <button class="text-lg relative font-medium font-display my-4 flex items-center -ml-5" @click="open = '{{ title }}'">
                 <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
                 <span>{{ title }}</span>
@@ -17,5 +24,6 @@
                 {{ /children }}
             </ul>
         {{ /nav }}
-    </nav>
+    </div>
+</nav>
 {{ /if }}
