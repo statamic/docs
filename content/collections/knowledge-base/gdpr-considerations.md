@@ -12,7 +12,7 @@ updated_at: 1622821116
 
 If you're version controlling everything (which we usually recommend), you may want to consider excluding your users from version control or storing them in a database as references to user data will persist in a git repository's history even after that user is removed from the application.
 
-### Option 1: Gitingore rule
+### Option 1: Gitignore rule
 
 ```git
 # .gitignore
