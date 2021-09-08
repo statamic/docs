@@ -9,7 +9,7 @@
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:description" content="{{ intro | striptags }}" />
     <meta property="og:url" content="{{ permalink }}" />
-    <meta property="og:site_name" content="statamic.dev" />
+    <meta property="og:site_name" content="Statamic Docs" />
     <meta property="og:locale" content="en_US" />
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
@@ -21,12 +21,11 @@
 <body class="font-sans leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
-<div class="max-w-7xl mx-auto flex px-10 py-12 overflow-hidden" name="top">
-    <div id="side-nav" class="w-80 px-2 relative sticky top-24" x-show="showNav">
+<div class="max-w-7xl mx-auto flex px-4 md:px-10 md:py-12 overflow-hidden" name="top">
+    <div id="side-nav" class="lg:block w-full md:w-80 px-2 relative md:sticky min-h-screen overflow-auto md:top-24 z-30" x-show="showNav">
         {{ partial:side-nav }}
     </div>
-    {{# <div id="content" class="{{ content_width ?? 'max-w-2xl' }}" x-bind:class="{ 'overflow-state': showNav }"> #}}
-    <div id="content" class="{{ content_width ?? 'max-w-2xl' }}">
+    <div id="content" class="{{ content_width ?? 'max-w-2xl' }}" x-bind:class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:back-to-top }}
     </div>

@@ -1,11 +1,11 @@
 <header class="markdown">
     <h1>Learn Statamic</h1>
-    <div class="max-w-lg">{{ intro }}</div>
+    <div class="max-w-2xl">{{ intro }}</div>
 </header>
 
 <div class="bg-gray-lightest mt-12 py-5 px-8 border shadow-stack">
     <div class="flex items-center">
-        <div class="md:w-1/2">
+        <div class="flex-1">
             <h2 class="font-display text-3xl font-semibold mb-2">Install Statamic</h2>
             <p>There's more than one way to get started with Statamic.</p>
             <div class="flex flex-wrap space-x-4 mt-6">
@@ -18,13 +18,13 @@
                 <a href="" class="button button-small">Starter Kits</a>
             </div>
         </div>
-        <div class="md:w-1/2 md:pl-8">
+        <div class="md:w-96 md:pl-8">
             <img src="/img/control-panel-screenshot.png" alt="The Statamic 3 Control Panel" class="border shadow rounded">
         </div>
     </div>
 </div>
 
-<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white flex items-center justify-between">
+<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white flex-none md:flex items-center justify-between">
     <h2 class="font-display text-2xl font-semibold antialised">Quick Start</h2>
     <p>The fastest way to get started with Statamic.</p>
     <a href="/guides/quick-start" class="button">Get Started</a>
@@ -48,29 +48,6 @@
     </div>
 </div>
 
-
-<section class="markdown mt-20">
-    <h2>Hero Sponsors</h2>
-    <p>We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-        {{ hero_sponsors }}
-            {{ if error }}
-                <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
-            {{ else }}
-                <a href="{{ url }}" class="rounded custom text-black bg-white transform hover:-rotate-1 no-underline flex border shadow-md p-1 items-center relative">
-                    <img src="{{ avatarUrl }}" class="rounded h-12 w-12 mr-4">
-                    <span>{{ name }}</span>
-                </a>
-            {{ /if }}
-        {{ /hero_sponsors }}
-        <a href="https://github.com/sponsors/statamic" class="rounded custom text-white bg-black transform hover:-rotate-1 no-underline flex border shadow-md py-1 px-3 text-center items-center relative">
-            <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" class="rounded-full h-12 w-12 mr-4">
-            <spa>Are you next?</spa>
-        </a>
-    </div>
-</section>
-
 <section class="markdown mt-20">
     <h2>Recent Updates</h2>
     <p>Keep your Statamic superpowers up-to-date with the latest updates to the docs.</p>
@@ -91,4 +68,31 @@
         </tbody>
     </table>
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
+</section>
+
+<section class="mt-64 relative min-h-[440px]">
+    <img src="/img/splatter-sponsors.png" alt="" class="absolute max-w-none w-[1100px] left-[-170px] top-[-130px]" loading="lazy">
+    <img src="/img/palms-left.png" width="448" class="absolute left-[-100px] top-[-180px]" alt="" loading="lazy">
+    <img src="/img/palms-right.png" width="159" class="absolute right-0 top-[-140px]" alt="" loading="lazy">
+    <div class="bg-yellow border shadow-stack transform -rotate-2 px-5 py-8 relative">
+        <header class="markdown markdown-tight bg-transparent mb-5">
+            <h2 class="mb-3">Sponsors</h2>
+            <p>We've reserved this space to thank our top Open Source sponsors! With their support we will be able to grow our Open Source features, Starter Kits, addons, and other resources.</p>
+        </header>
+        <div class="flex flex-wrap">
+            {{ hero_sponsors }}
+                {{ if error }}
+                    <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
+                {{ else }}
+                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-4 pl-2 pr-3">
+                        <img src="{{ avatarUrl }}" class="rounded h-10 w-10 mr-2">
+                        <span class="font-bold">{{ name }}</span>
+                    </a>
+                {{ /if }}
+            {{ /hero_sponsors }}
+        </div>
+        <a href="https://github.com/sponsors/statamic" class="button bg-white">
+            Become a Statamic Sponsor &rarr;
+        </a>
+    </div>
 </section>

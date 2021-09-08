@@ -1,5 +1,5 @@
 {{ if section }}
-<nav class="side-nav pr-16 sticky top-4 min-height-screen" x-data="{ open: 'Getting Started' }">
+<nav class="side-nav bg-white pr-16 md:sticky md:top-4 min-height-screen" x-data="{ open: 'Getting Started' }">
     <header class="font-display font-bold text-xl border-b-2 border-gray">{{ section | title }}</header>
         {{ nav :handle="section" }}
         <div class="relative"">

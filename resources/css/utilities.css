@@ -32,9 +32,9 @@
     display: none;
 }
 
-/* .overflow-state {
-    @apply overflow-hidden max-h-screen fixed;
-} */
+.overflow-state {
+    @apply overflow-hidden lg:overflow-visible max-h-full;
+}
 
 .hover\:underline-grow,
 .hover-within\:underline-grow a {
