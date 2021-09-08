@@ -5,51 +5,6 @@ video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 video_cta_text: We have a screencast series if you'd rather not read!
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
-:::tip
-This is a hot tip.
-
-```php
-class ThisIs {
-    function someCode() {
-        return 'here';
-    }
-}
-```
-
-It has multiple lines `with inline code`.
-:::
-
-a line between
-
-:::tip Custom Label
-This is a hot tip with a custom label.
-:::
-
-a line between
-
-:::warning
-This is a warning!
-
-It also has multiple lines.
-:::
-
-a line between
-
-:::best-practice
-This is a best practice.
-
-It also has multiple lines.
-<a href="" class="button">Try it here</a>
-:::
-
-<div class="hint watch">
-    <div class="embed">
-        <iframe src="https://www.youtube.com/embed/zuKZQNUYSf8"></iframe>
-    </div>
-    <p class="caption">This is the caption</p>
-</div>
-
-
 ## Overview
 
 Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for glueing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
