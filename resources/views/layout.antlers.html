@@ -21,10 +21,9 @@
 <body class="font-sans leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
-<div class="max-w-7xl mx-auto flex px-4 md:px-10 py-12 overflow/hidden" name="top">
-    <div id="side-nav" class="md:block w-full md:w-80 px-2 relative md:sticky min-h-screen md:top-24 z-30" :class="{'mobile-open': showNav}" x-show="showNav">
-        {{ partial:side-nav }}
-    </div>
+<div class="hidden lg:block h-10 pointer-events-none fixed inset-x-0 z-30 top-[80px] bg-gradient-to-b from-white"></div>
+<div class="max-w-7xl mx-auto flex px-4 md:px-10 py-6 lg:py-12" name="top">
+    {{ partial:side-nav }}
     <div id="content" class="w-full {{ content_width ?? 'max-w-2xl' }}" :class="{ 'overflow-state': showNav }">
         {{ template_content }}
         {{ partial:back-to-top }}

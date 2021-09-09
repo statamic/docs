@@ -1,4 +1,9 @@
-<nav id="site-nav" class="site-nav hidden md:block max-w-7xl mx-auto md:flex border-b-2 border-gray md:border-none items-center justify-between px-4 md:px-10 font-display h-24 md:h-20">
+<nav
+    id="site-nav"
+    class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20"
+    :class="{'': ! atTop}"
+    @scroll.window="atTop = window.pageYOffset > 36 ? false : true"
+>
     <div class="w-full flex items-center justify-between md:block md:w-80">
         <a href="/" class="relative top-[-3px] text-pink hover:text-purple">
             {{ svg src="docs-logo" class="block" title="Statamic"}}

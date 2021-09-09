@@ -33,7 +33,7 @@ module.exports = {
       },
       teal: '#01D7B0',
       mint: '#B8FFF3',
-      yellow: 'FAF77D',
+      yellow: '#FAF77D',
       gray: {
         lightest: '#EEF2F6',
         light: '#E7ECF1',
@@ -60,6 +60,9 @@ module.exports = {
       'mint': "1px 1px 0 theme('colors.mint', 'currentColor')",
       'mint-md': "2px 2px 0 theme('colors.mint', 'currentColor')",
       'mint-lg': "7px 7px 0 theme('colors.mint', 'currentColor')",
+      'yellow': "1px 1px 0 theme('colors.yellow', 'currentColor')",
+      'yellow-md': "2px 2px 0 theme('colors.yellow', 'currentColor')",
+      'yellow-lg': "7px 7px 0 theme('colors.yellow', 'currentColor')",
       'pink': "1px 1px 0 theme('colors.pink.DEFAULT', 'currentColor')",
       'pink-md': "2px 2px 0 theme('colors.pink.DEFAULT', 'currentColor')",
       'pink-lg': "7px 7px 0 theme('colors.pink.DEFAULT', 'currentColor')",
@@ -84,6 +87,9 @@ module.exports = {
       fontSize: {
         '3xl': ['2rem', 1],
         '7xl': ['4.25rem', 1],
+      },
+      height: {
+        'screen-sans-nav': 'calc(100vh - 100px)',
       }
     },
   },

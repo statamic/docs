@@ -1,29 +1,34 @@
-{{ if section }}
-<nav class="side-nav bg-white md:pr-16 md:sticky md:top-4 pb-6" x-data="{ open: 'Getting Started' }">
-    <header class="hidden mb:block font-display font-bold text-xl border-b-2 border-gray">{{ section | title }}</header>
-    <form class="relative flex md:hidden items-center w-full h-9 my-2 rounded border-2 border-black shadow-sm" action="/search-results">
-        <input
-            class="hidden md:block focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
-            type="text" placeholder="Search... (Press &quot;/&quot; to focus)">
-        <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
-    </form>
-    <div class="pl-8 md:p-0">
-        {{ nav :handle="section" }}
-        <div class="relative">
-            <button class="text-lg relative font-medium font-display my-4 flex items-center -ml-5" @click="open = '{{ title }}'">
-                <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
-                <span>{{ title }}</span>
-            </button>
-            <ul class="space-y-2 ml-4 font-display" x-show="open == '{{ title }}'">
-                {{ children scope="child" }}
-                    <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
-                        <a href="{{ url }}" class="hover:text-pink">
-                            {{ title }}
-                        </a>
-                    </li>
-                {{ /children }}
-            </ul>
-        {{ /nav }}
+<div id="side-nav" class="md:block relative z-20 w-full md:w-80 lg:px-2 lg:-ml-6" :class="{'mobile-open': showNav}" x-show="showNav">
+    {{ if section }}
+    <div class="side-nav bg-white md:bg-transparent sticky top-24 md:pr-16 pb-6" x-data="{ open: 'Getting Started' }">
+        <nav class="lg:overflow-y-auto lg:overflow-x-visible h-screen-sans-nav">
+            <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray">{{ section | title }}</header>
+            <form class="relative flex md:hidden items-center w-full h-9 mb-4 rounded border-2 border-black shadow-sm" action="/search-results">
+                <input
+                    class="focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
+                    type="text" placeholder="Search for..." />
+                <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
+            </form>
+            <div class="pl-2 md:p-0">
+                {{ nav :handle="section" }}
+                <div class="relative pl-1">
+                    <button class="text-lg relative font-medium font-display my-4 flex items-center" @click="open = '{{ title }}'">
+                        <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
+                        <span>{{ title }}</span>
+                    </button>
+                    <ul class="space-y-2 ml-4 font-display lg:ml-6" x-show="open == '{{ title }}'">
+                        {{ children scope="child" }}
+                            <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                                <a href="{{ url }}" class="hover:text-pink">
+                                    {{ title }}
+                                </a>
+                            </li>
+                        {{ /children }}
+                    </ul>
+                </div>
+                {{ /nav }}
+            </div>
+        </nav>
     </div>
-</nav>
-{{ /if }}
+    {{ /if }}
+</div>
