@@ -17,6 +17,7 @@ mix.postCss('resources/css/tailwind.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),
     require('postcss-nested'),
+    require('autoprefixer'),
     require('postcss-preset-env')({stage: 0})
 ])
 

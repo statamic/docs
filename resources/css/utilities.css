@@ -33,10 +33,6 @@
         display: none;
     }
 
-    .overflow-state {
-        @apply overflow-hidden lg:overflow-visible max-h-screen;
-    }
-
     .hover\:underline-grow,
     .hover-within\:underline-grow a {
         position: relative;
@@ -46,7 +42,6 @@
             content: '';
             height: 1px;
             margin-top: 2px;
-            ;
             transition: width .2s ease;
             -webkit-transition: width .2s ease;
         }

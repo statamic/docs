@@ -8,10 +8,9 @@ require('./prism.js')
 window.bodyData = function() {
     let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
     return {
-        showNav: true,
+        showNav: false,
         showEasterEgg: false,
         nearTop: true,
-        atTop: true,
         bindings: {
             ['@keydown.slash.prevent']() {
                 this.$refs.docsSearch.focus();
