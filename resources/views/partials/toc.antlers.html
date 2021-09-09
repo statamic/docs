@@ -1,10 +1,18 @@
 {{ if content | toc }}
-    <div id="table-of-contents" class="border-2 shadow rounded mt-12">
-        <div class="bg-black text-white py-3 px-5">
-            On this page
+    <div id="table-of-contents" class="border-2 shadow rounded mt-12" x-data="{open: getCookie('toc_open') != 'false'}">
+        <div class="bg-black text-white py-3 px-4 flex items-center justify-between">
+            <span x-text="open ? 'On this page' : 'See what\'s on this page'"></span>
+            <button @click="open = false; setCookie('toc_open', 'false'); $refs.close.play()" x-show="open">
+                <svg viewBox="0 0 16 16" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.6,0,0,1.6,0,0)"><path d="M9.78.22a.749.749,0,0,0-1.06,0L7.2,1.741,6.354.9A.5.5,0,0,0,5.5,1.25V4a.5.5,0,0,0,.5.5H8.75A.5.5,0,0,0,9.1,3.646L8.259,2.8,9.78,1.28A.749.749,0,0,0,9.78.22Z" fill="#ffffff" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path><path d="M4,5.5H1.25A.5.5,0,0,0,.9,6.354l.845.844L.22,8.72A.75.75,0,1,0,1.28,9.78L2.8,8.259l.844.845A.5.5,0,0,0,4,9.25a.493.493,0,0,0,.191-.038A.5.5,0,0,0,4.5,8.75V6A.5.5,0,0,0,4,5.5Z" fill="#ffffff" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path></g></svg>
+            </button>
+            <button @click="open = true; setCookie('toc_open', 'true'); $refs.open.play()" x-show="!open" x-cloak>
+                <svg viewBox="0 0 16 16" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.6,0,0,1.6,0,0)"><path d="M9.5,0H6.75A.5.5,0,0,0,6.4.854l.845.844L5.72,3.22A.75.75,0,1,0,6.78,4.28L8.3,2.759l.844.845A.5.5,0,0,0,9.5,3.75a.493.493,0,0,0,.191-.038A.5.5,0,0,0,10,3.25V.5A.5.5,0,0,0,9.5,0Z" fill="#FFFFFF" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path><path d="M3.22,5.72,1.7,7.241.854,6.4A.5.5,0,0,0,0,6.75V9.5a.5.5,0,0,0,.5.5H3.25A.5.5,0,0,0,3.6,9.146L2.759,8.3,4.28,6.78A.75.75,0,0,0,3.22,5.72Z" fill="#FFFFFF" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path></g></svg>
+            </button>
         </div>
-        <div class="px-2">
+        <div class="px-2" x-show="open">
             {{ content | toc }}
         </div>
+         <audio x-ref="open"><source src="/audio/open.mp3" type="audio/mpeg" /></audio>
+         <audio x-ref="close"><source src="/audio/close.mp3" type="audio/mpeg" /></audio>
     </div>
 {{ /if }}

@@ -207,9 +207,11 @@ article, .markdown {
 
 .toc {
     @apply font-display py-3 space-y-4;
+    list-style-type: decimal;
+    list-style-position: inside;
 
     li {
-        @apply px-3 leading-tight text-base;
+        @apply px-2 leading-tight text-base;
     }
 
     li a {
