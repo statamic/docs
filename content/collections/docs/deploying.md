@@ -120,7 +120,7 @@ The Deploy Script area is where you'd add commands to install Composer and NPM d
 ``` cli
 cd /home/forge/{example}.{tld}
 git pull origin main
-npm install && npm run production
+npm ci && npm run production
 php please cache:clear
 ```
 
