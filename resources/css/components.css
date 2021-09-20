@@ -3,7 +3,7 @@ blockquote,
     @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
 
     .hint-title {
-        @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border-2 -rotate-6 font-semibold tracking-wide;
+        @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 font-semibold tracking-wide;
         font-size: 15px;
     }
 
@@ -76,11 +76,11 @@ blockquote,
 
 figure,
 .screenshot {
-    @apply rounded md:rounded-lg shadow md:shadow-lg bg-gradient-to-br from-blue-dark to-blue-light p-3 md:p-6 mb-12 relative;
+    @apply rounded md:rounded-lg shadow md:shadow-lg bg-mint border p-3 md:p-6 mb-12 relative;
     @apply pb-6 md:pb-12;
 
     img {
-        @apply border-2 shadow-lg mx-auto;
+        @apply border shadow-lg mx-auto;
     }
 
 }
@@ -96,7 +96,7 @@ figure figcaption {
 }
 
 .button {
-    @apply py-1 px-5 relative inline-block bg-yellow font-normal rounded border-2 shadow-md font-display text-base whitespace-nowrap transition no-underline text-black !important;
+    @apply py-1 px-5 relative inline-block bg-yellow font-normal rounded border shadow-md font-display text-base whitespace-nowrap transition no-underline text-black !important;
 
     &:hover {
         box-shadow: none !important;
