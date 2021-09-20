@@ -1,5 +1,7 @@
 ---
 id: c77b02b6-3ce5-40e0-964c-a669685c12d3
+blueprint: modifiers
+title: Trans
 ---
 Retrieve a string from a language file in the current locale. It is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
 

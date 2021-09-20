@@ -1,7 +1,9 @@
 ---
+id: ef2a1b64-d2a6-4ade-988d-33b279e47bfd
+blueprint: modifiers
 modifier_types:
   - string
-id: ef2a1b64-d2a6-4ade-988d-33b279e47bfd
+title: Singular
 ---
 Get the singular form of an English word.
 

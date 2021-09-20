@@ -1,8 +1,10 @@
 ---
+id: 9433b8cd-b2e0-4fbf-85bd-85edf317efa4
+blueprint: modifiers
 modifier_types:
   - array
   - utility
-id: 9433b8cd-b2e0-4fbf-85bd-85edf317efa4
+title: Offset
 ---
 Offsets the items returned in an array.
 

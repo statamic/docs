@@ -1,7 +1,9 @@
 ---
+id: a5ce6691-840c-4bf7-b5f4-b87bb4845055
+blueprint: modifiers
 modifier_types:
   - conditions
-id: a5ce6691-840c-4bf7-b5f4-b87bb4845055
+title: 'Has Lower Case'
 ---
 Returns `true` if the string contains a lowercase character, `false` otherwise.
 

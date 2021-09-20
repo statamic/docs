@@ -1,9 +1,11 @@
 ---
+id: 23d51738-5043-49e3-8ca3-d5848427216f
+blueprint: modifiers
 modifier_types:
   - utility
   - string
   - array
-id: 23d51738-5043-49e3-8ca3-d5848427216f
+title: Partial
 ---
 Inject a variable's data into a partial and render it without any page scopes whatsoever. This is really just syntactical sugar, but it _is_ delicious.
 

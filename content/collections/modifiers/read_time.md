@@ -1,8 +1,10 @@
 ---
+id: 6a0abbe0-860a-4e30-b1e7-ecac343149ce
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: 6a0abbe0-860a-4e30-b1e7-ecac343149ce
+title: 'Read Time'
 ---
 Provide an estimate of the read time in minutes based on a given number of words per minute. Defaults to 200/wpm.
 

@@ -1,10 +1,17 @@
-<header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
-    <h1>Modifier: <code>{{ slug }}</code></h1>
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1><code>{{ slug }}</code> Modifier</h1>
+        {{ partial:pro-badge }}
+    </div>
     {{ intro ?? overview | markdown }}
+    {{ partial:toc }}
 </header>
 
-<article class="markdown pb-8">
-    {{ content | toc:ids  }}
+{{ svg src="zig-zag" class="mx-auto my-12" }}
+
+<article class="markdown pb-16">
+    {{ content | toc:ids }}
 </article>
 
 {{ partial:edit }}

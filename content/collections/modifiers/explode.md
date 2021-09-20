@@ -1,8 +1,10 @@
 ---
+id: c3d3e2c4-218e-4841-a594-647f10863866
+blueprint: modifiers
 modifier_types:
   - string
   - array
-id: c3d3e2c4-218e-4841-a594-647f10863866
+title: Explode
 ---
 Breaks a string into an array of strings split on a given delimiter.
 

@@ -1,7 +1,9 @@
 ---
+id: 45310885-fbd3-438d-85d5-076dda1646e0
+blueprint: modifiers
 modifier_types:
   - string
-id: 45310885-fbd3-438d-85d5-076dda1646e0
+title: 'Embed Url'
 ---
 Converts a Youtube or Vimeo link to their embed URLs.
 

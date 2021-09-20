@@ -1,8 +1,10 @@
 ---
 id: ada24ec2-1b6e-4759-b2c0-06d9d464f3f9
+blueprint: modifiers
 modifier_types:
   - array
   - utility
+title: As
 ---
 Alias an array variable with a key, giving you some useful markup/iteration options.
 

@@ -1,8 +1,10 @@
 ---
+id: 923f34bd-d17d-4353-821f-48e986bdce3b
+blueprint: modifiers
 modifier_types:
   - string
   - conditions
-id: 923f34bd-d17d-4353-821f-48e986bdce3b
+title: 'Is Alphanumeric'
 ---
 Returns `true` if string contains **only** alphanumeric characters. Punctuation, whitespace, and another other special characters will cause a `false`.
 

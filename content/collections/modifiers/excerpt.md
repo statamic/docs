@@ -1,9 +1,10 @@
 ---
+id: 051ecd7b-1cf7-4b47-b8c1-cfcede33289f
+blueprint: modifiers
 title: Excerpt
 intro: 'Generate an excerpt from your content.'
 modifier_types:
   - string
-id: 051ecd7b-1cf7-4b47-b8c1-cfcede33289f
 ---
 Breaks a string at a given marker. Uses `<!--more-->` by default.
 

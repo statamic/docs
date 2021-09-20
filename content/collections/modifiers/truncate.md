@@ -1,7 +1,9 @@
 ---
+id: cc80cc58-f73a-47fd-8f4d-e1cfc23c5d56
+blueprint: modifiers
 modifier_types:
   - string
-id: cc80cc58-f73a-47fd-8f4d-e1cfc23c5d56
+title: Truncate
 ---
 Truncates the string to a given length (parameter 1). You can append a string with parameter 2, and if truncating occurs the string is further truncated so that it may be appended without exceeding the desired length.
 

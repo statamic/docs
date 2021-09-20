@@ -1,9 +1,11 @@
 ---
+id: e100a366-b69c-4d59-bec7-eac18c0b286b
+blueprint: modifiers
 modifier_types:
   - string
   - array
   - utility
-id: e100a366-b69c-4d59-bec7-eac18c0b286b
+title: Raw
 ---
 ## Overview
 Returns the [unaugmented](/augmentation) version of the variable.

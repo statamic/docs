@@ -1,9 +1,11 @@
 ---
+id: f3538ff6-b658-45d0-b3e0-fbac49f05da9
+blueprint: modifiers
 modifier_types:
   - markup
   - string
   - utility
-id: f3538ff6-b658-45d0-b3e0-fbac49f05da9
+title: 'Strip Tags'
 ---
 Strip HTML tags from a string, allowing you optionally to pass in a list of tags or a variable name containing the specific tags you want stripped.
 

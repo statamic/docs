@@ -1,8 +1,10 @@
 ---
+id: 756d23b4-209c-457c-b9f5-d69347bbe8fe
+blueprint: modifiers
 modifier_types:
   - date
   - string
-id: 756d23b4-209c-457c-b9f5-d69347bbe8fe
+title: Format
 ---
 Given a date string, or anything that sort of looks like a date string, `format` will convert it to a [Carbon][carbon] instance and allow you to format it with PHP's [datetime format][datetime] variables.
 

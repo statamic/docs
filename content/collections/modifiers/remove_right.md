@@ -1,8 +1,10 @@
 ---
+id: ec6e096f-ee52-449e-96b5-e0d759f982f0
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: ec6e096f-ee52-449e-96b5-e0d759f982f0
+title: 'Remove Right'
 ---
 Ensures that the string never ends with a specified string.
 

@@ -1,9 +1,10 @@
 ---
+id: b5409a41-cc62-4ca1-bb8a-f6700b2c8c29
+blueprint: modifiers
 title: Output
 modifier_types:
   - asset
   - utility
-id: b5409a41-cc62-4ca1-bb8a-f6700b2c8c29
 ---
 Given the URL to an Asset file, returns the string output of an Asset file's contents. This is primarily useful for rendering inline SVGs, but could also be used to display a lot of gibberish to your users if you're into that kind of thing.
 

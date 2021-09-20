@@ -1,8 +1,10 @@
 ---
+id: 02db0ee5-585b-4e40-ab2b-f15a596b341c
+blueprint: modifiers
 modifier_types:
   - string
   - conditions
-id: 02db0ee5-585b-4e40-ab2b-f15a596b341c
+title: 'Is Numeric'
 ---
 Returns `true` if variable is a number or numeric string.
 

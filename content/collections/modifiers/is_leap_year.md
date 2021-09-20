@@ -1,8 +1,10 @@
 ---
+id: 0438995d-7100-4a72-9c0c-985e00f482bb
+blueprint: modifiers
 modifier_types:
   - date
   - conditions
-id: 0438995d-7100-4a72-9c0c-985e00f482bb
+title: 'Is Leap Year'
 ---
 Returns `true` if date is in a leap year. Try and find a regular use for this one, we dare you.
 

@@ -1,9 +1,11 @@
 ---
+id: ecbf79c1-be5d-412e-a677-30a847cfffa6
+blueprint: modifiers
 modifier_types:
   - string
   - markup
 attributes: true
-id: ecbf79c1-be5d-412e-a677-30a847cfffa6
+title: Nl2br
 ---
 Replaces line breaks with `<br>` tags.
 

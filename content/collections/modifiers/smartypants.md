@@ -1,7 +1,9 @@
 ---
+id: 287d14d7-6660-4ac6-aa1b-0ca4d298cdcc
+blueprint: modifiers
 modifier_types:
   - string
-id: 287d14d7-6660-4ac6-aa1b-0ca4d298cdcc
+title: Smartypants
 ---
 Translate plain ASCII punctuation characters into “smart” typographic punctuation HTML entities. It performs the following transformations:
 

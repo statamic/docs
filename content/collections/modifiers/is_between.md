@@ -1,8 +1,10 @@
 ---
+id: cfbf8926-47ee-42e1-a972-86e3dc13633b
+blueprint: modifiers
 modifier_types:
   - date
   - conditions
-id: cfbf8926-47ee-42e1-a972-86e3dc13633b
+title: 'Is Between'
 ---
 Returns `true` if a date variable is between two other dates. Those dates can be the name of other variables or literal date strings.
 

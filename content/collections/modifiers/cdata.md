@@ -1,8 +1,10 @@
 ---
+id: f1b59bce-43e7-41a4-b82f-e16016d90b18
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: f1b59bce-43e7-41a4-b82f-e16016d90b18
+title: CDATA
 ---
 Wraps a string in [CDATA][cdata] tags, useful for formatting characters properly in XML.
 

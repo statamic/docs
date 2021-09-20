@@ -1,8 +1,10 @@
 ---
+id: 6854539a-4661-483b-bb1f-2d28df0db76e
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: 6854539a-4661-483b-bb1f-2d28df0db76e
+title: 'Ensure Right'
 ---
 Ensures that the string ends with a specified string. If it doesn't, it will now.
 

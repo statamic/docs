@@ -1,7 +1,9 @@
 ---
+id: a7b58312-3498-4807-b2bc-6fcb640fe231
+blueprint: modifiers
 modifier_types:
   - array
-id: a7b58312-3498-4807-b2bc-6fcb640fe231
+title: Count
 ---
 Count the number of items in an array.
 

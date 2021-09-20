@@ -1,10 +1,12 @@
 ---
+id: c0ab61af-c0c2-4ead-b64f-2e23325e917f
+blueprint: modifiers
 modifier_types:
   - string
   - array
   - utility
   - markup
-id: c0ab61af-c0c2-4ead-b64f-2e23325e917f
+title: Macro
 ---
 Macro is a very special modifier. It performs no modifications of its own, but rather lets you create reusable groups of modifiers and give them a name. Those groups are each called a "macro" and are stored in your `resources/macros.yaml` file. Keep in mind that the order of modifiers within a macro matter, the same way as regular modifiers.
 

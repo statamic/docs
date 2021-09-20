@@ -1,8 +1,10 @@
 ---
+id: d464d979-7e57-40a6-8892-a08d08bd7ccf
+blueprint: modifiers
 modifier_types:
   - array
   - utility
-id: d464d979-7e57-40a6-8892-a08d08bd7ccf
+title: Plural
 ---
 Get the plural form of an English word. Accepts a numerical parameter, either as a literal value or a variable, to control plurality. It's important to note that you should use the singular form of the word to ensure the best results.
 

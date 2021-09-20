@@ -1,9 +1,11 @@
 ---
 id: eb68e4e1-c1b2-4806-a477-6c0491616b88
+blueprint: modifiers
 modifier_types:
   - asset
   - string
   - relationship
+title: Url
 ---
 Get the URL of an Asset, Page, Entry, or Taxonomy term from an ID.
 

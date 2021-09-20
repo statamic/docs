@@ -1,8 +1,10 @@
 ---
+id: 53a0c177-ce45-43e6-a166-d21f8baeffab
+blueprint: modifiers
 modifier_types:
   - markup
 attributes: true
-id: 53a0c177-ce45-43e6-a166-d21f8baeffab
+title: Textile
 ---
 Transform a string with [Textile][textile].
 

@@ -1,8 +1,10 @@
 ---
+id: ee2da74a-0788-400f-804f-c85ad9b635c0
+blueprint: modifiers
 modifier_types:
   - array
   - math
-id: ee2da74a-0788-400f-804f-c85ad9b635c0
+title: Sum
 ---
 Returns the sum of all items in an array, optionally specified by a specific key.
 

@@ -1,8 +1,10 @@
 ---
+id: 16312447-a597-4a98-9726-8e97718c9788
+blueprint: modifiers
 modifier_types:
   - markup
 attributes: true
-id: 16312447-a597-4a98-9726-8e97718c9788
+title: Link
 ---
 Generate an HTML link element with the value as `href`.
 

@@ -1,7 +1,9 @@
 ---
+id: c5a7e328-3d6a-4866-970f-5a4e0061d606
+blueprint: modifiers
 modifier_types:
   - date
-id: c5a7e328-3d6a-4866-970f-5a4e0061d606
+title: Timezone
 ---
 Applies a timezone to a date value. Aliased as `tz`.
 

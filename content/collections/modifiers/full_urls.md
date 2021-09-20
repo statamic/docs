@@ -1,8 +1,10 @@
 ---
+id: 44cb7965-877e-49b3-92fe-a24970b542a2
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: 44cb7965-877e-49b3-92fe-a24970b542a2
+title: 'Full Urls'
 ---
 Replaces root-relative URLs with absolute URLs. This is generally used in RSS feeds and other places where markup may be used off the main site.
 

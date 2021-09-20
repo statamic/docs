@@ -1,8 +1,10 @@
 ---
+id: 536ac4b3-bfc7-4ced-8c83-d389fb94a262
+blueprint: modifiers
 modifier_types:
   - markup
 attributes: true
-id: 536ac4b3-bfc7-4ced-8c83-d389fb94a262
+title: 'Obfuscate Email'
 ---
 Obfuscates an email address with special characters making it hard for spam bots to sniff out and scrape off your site. Still reads like an email address as far as readers are concerned.
 

@@ -7,4 +7,5 @@ taxonomies:
 revisions: false
 route: '{mount}/{slug}'
 inject:
+  section: references
   view_model: App\ViewModels\Modifiers

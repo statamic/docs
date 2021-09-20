@@ -1,7 +1,9 @@
 ---
+id: d977361d-0576-469d-9430-f4d82b5666b4
+blueprint: modifiers
 modifier_types:
   - string
-id: d977361d-0576-469d-9430-f4d82b5666b4
+title: Ucfirst
 ---
 Converts the first character of a string to upper case.
 

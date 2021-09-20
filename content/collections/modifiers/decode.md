@@ -1,7 +1,9 @@
 ---
+id: 1fd780fd-ae92-4e73-9513-2b9c845976e9
+blueprint: modifiers
 modifier_types:
   - utility
-id: 1fd780fd-ae92-4e73-9513-2b9c845976e9
+title: Decode
 ---
 Convert all HTML entities to their applicable characters via PHP's [html_entity_decode()][decode] function. Will convert both double and single quotes. This is the opposite of the [entities][entities] modifier.
 

@@ -1,8 +1,10 @@
 ---
+id: cbb290f3-ffd0-4dc1-8989-1d10a92ff17d
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: cbb290f3-ffd0-4dc1-8989-1d10a92ff17d
+title: Widont
 ---
 Attempts to prevent widows (a line with a single word) in a string by adding non-breaking spaces between the last two words of each paragraph.
 

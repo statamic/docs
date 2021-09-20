@@ -1,9 +1,11 @@
 ---
+id: 4e349523-cba6-4f3b-a0e1-bd4e8b1cf6b9
+blueprint: modifiers
 modifier_types:
   - array
   - utility
   - conditions
-id: 4e349523-cba6-4f3b-a0e1-bd4e8b1cf6b9
+title: 'In Array'
 ---
 Check if an array contains a specific value. Returns `true` if a match is found.
 

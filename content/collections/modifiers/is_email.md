@@ -1,8 +1,10 @@
 ---
+id: 471b3281-4573-43ee-9fee-eb55edf26ad0
+blueprint: modifiers
 modifier_types:
   - string
   - conditions
-id: 471b3281-4573-43ee-9fee-eb55edf26ad0
+title: 'Is Email'
 ---
 Returns `true` if a string is a valid email address.
 
