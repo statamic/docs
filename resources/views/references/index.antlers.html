@@ -1,0 +1,15 @@
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title }}</h1>
+    </div>
+    {{ intro ?? overview | markdown }}
+</header>
+
+{{ svg src="zig-zag" class="mx-auto my-12" }}
+
+<article class="markdown pb-16">
+    {{ content | toc:ids }}
+</article>
+
+{{ partial:edit }}

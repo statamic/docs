@@ -17,13 +17,24 @@
                         <span>{{ title }}</span>
                     </button>
                     <ul class="space-y-2 ml-4 font-display lg:ml-6" x-show="open == '{{ title }}'">
-                        {{ children scope="child" }}
-                            <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
-                                <a href="{{ url }}" class="hover:text-pink">
-                                    {{ title }}
-                                </a>
-                            </li>
-                        {{ /children }}
+                        {{ if children }}
+                            {{ children scope="child" }}
+                                <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                                    <a href="{{ url }}" class="hover:text-pink">
+                                        {{ title }}
+                                    </a>
+                                </li>
+                            {{ /children }}
+                        {{ /if }}
+                        {{ if section == "references" }}
+                            {{ collection :from="slug" }}
+                                <li class="{{ is_current || is_parent || segment_2 === slug ?= 'active' }}" {{ if is_current || is_parent || segment_2 === slug }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                                    <a href="{{ url }}" class="hover:text-pink">
+                                        {{ title }}
+                                    </a>
+                                </li>
+                            {{ /collection }}
+                        {{ /if }}
                     </ul>
                 </div>
                 {{ /nav }}
