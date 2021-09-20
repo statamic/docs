@@ -42,8 +42,8 @@ class Toc extends Modifier
         $toc = '<ol class="toc">'."\n";
         $i = 0;
 
-        // temporarily wangjangle the params and vars in there.
-        $matches = $this->appendParamsAndVars($matches);
+        // Wangjangle params, vars, and options in there.
+        $matches = $this->appendDetails($matches);
 
         foreach ($matches as $heading) {
             if ($i == 0) {
@@ -132,7 +132,7 @@ class Toc extends Modifier
         return $value;
     }
 
-    private function appendParamsAndVars($matches)
+    private function appendDetails($matches)
     {
         $parameters = $this->valueGet($this->context['parameters'] ?? null);
 
@@ -153,6 +153,17 @@ class Toc extends Modifier
                 '2',
                 ' id="variables"',
                 'Variables'
+            ];
+        }
+
+        $options = $this->valueGet($this->context['options'] ?? null);
+
+        if ($options && count($options) > 0) {
+            $matches[] = [
+                '<h2 id="options">Options</h2>',
+                '2',
+                ' id="options"',
+                'Options'
             ];
         }
 
