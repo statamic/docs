@@ -135,7 +135,7 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 ```
 <h2>My fans have said some things you can't forget...<h2>
-{{ form:submissions in="superfans" limit="15" }}
+{{ form:submissions in="superfans" }}
   {{ message | markdown }}
 {{ /form:submissions }}
 ```
