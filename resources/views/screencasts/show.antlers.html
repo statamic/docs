@@ -1,7 +1,20 @@
-<header class="markdown pb-0 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title }}</h1>
+<header class="markdown">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title }}</h1>
+        {{ partial:pro-badge }}
+    </div>
+    {{ intro ?? overview | markdown }}
 </header>
 
-<div class="video-embed mb-16 shadow-lg-teal">
-    <iframe class="" width="1120" height="630" src="{{ video | embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
-</div>
+<article class="markdown pb-12">
+    <div class="p-2 border shadow-stack rounded">
+        <div class="embed">
+            <iframe class="" width="1120" height="630" src="{{ video | embed_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+        </div>
+    </div>
+    {{ content }}
+
+</article>
+
+{{ partial:suggest }}

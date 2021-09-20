@@ -9,5 +9,7 @@ date_behavior:
   past: public
   future: private
 inject:
-  hide_sidebar: true
   section: screencasts
+  content_width: w-full
+structure:
+  root: false
