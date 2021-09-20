@@ -19,6 +19,7 @@
     {{ content | toc:ids }}
 
     {{ if options }}
+        <h2 id="options">Options</h2>
         {{ partial:details :details="options" }}
     {{ /if }}
 </article>
