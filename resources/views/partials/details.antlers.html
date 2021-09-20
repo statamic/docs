@@ -1,0 +1,20 @@
+<div class="space-y-10">
+    {{ details }}
+    <div class="parameter relative">
+        <header class="inline-flex items-center relative shadow-stack border overflow-hidden h-10">
+            <h3 class="bg-black m-0 py-2 px-4 font-bold text-lg text-white tracking-wide">
+                {{ name }}
+            </h3>
+            <div class="bg-mint py-4 px-4 font-mono leading-none text-xs font-bold">
+                {{ type }}
+            </div>
+            {{ if required }}
+                <div class="bg-white py-4 px-4 font-mono leading-none text-xs font-bold text-pink border-l">required</div>
+            {{ /if }}
+        </header>
+        <div class="markdown markdown-tight bg-gray-lightest text-base px-4 py-2 leading-tight shadow-stack border relative z-10 -top-px">
+            {{ description | widont  }}
+        </div>
+    </div>
+    {{ /details }}
+</div>

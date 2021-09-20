@@ -14,31 +14,13 @@
     {{ content | toc:ids }}
 
     {{ if parameters }}
-    <h2 id="parameters">Parameters</h2>
+        <h2 id="parameters">Parameters</h2>
+        {{ partial:details :details="parameters" }}
     {{ /if }}
-
-    {{ partial:tags/parameters }}
 
     {{ if variables }}
         <h2 id="variables">Variables</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Variable</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ variables }}
-                <tr>
-                    <td class='font-display font-bold'>{{ name | markdown }}</td>
-                    <td><code>{{ type }}</code></td>
-                    <td>{{ description | markdown  }}</td>
-                </tr>
-                {{ /variables}}
-            </tbody>
-        </table>
+        {{ partial:variables }}
     {{ /if }}
 
 </article>

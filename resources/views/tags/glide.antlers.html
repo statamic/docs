@@ -15,34 +15,17 @@
     <h2 id="parameters">Parameters</h2>
     {{ /if }}
 
-    {{ partial:tags/parameters }}
+    {{ partial:details details="options" }}
 
     <h3>Size, Crop, and Output</h3>
-    {{ partial:tags/parameters :parameters="shape" }}
+    {{ partial:details :details="shape" }}
 
     <h3>Filters and Effects</h3>
-    {{ partial:tags/parameters :parameters="filters" }}
+    {{ partial:details :details="filters" }}
 
     {{ if variables }}
-    <h2 id="variables">Variables</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Variable</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{ variables }}
-            <tr>
-                <td class='font-display font-bold'>{{ name | markdown }}</td>
-                <td><code>{{ type }}</code></td>
-                <td>{{ description | markdown  }}</td>
-            </tr>
-            {{ /variables}}
-        </tbody>
-    </table>
+        <h2 id="variables">Variables</h2>
+        {{ partial:variables }}
     {{ /if }}
 
 </article>
