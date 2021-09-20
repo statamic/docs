@@ -118,5 +118,3 @@ You can use basic array access, nested variables, or the [foreach tag](/tags/for
     {{ value }}
 {{ /foreach:addresss }}
 ```
-
-## Config Options

@@ -22,4 +22,4 @@ This fieldtype is presentation-only and stores no data.
 
 This fieldtype is presentation-only and has no function or purpose on the frontend. Kind of like neckties.
 
-## Config Options
+

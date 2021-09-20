@@ -105,4 +105,4 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `value` | The stored value of the checkbox |
 | `label` | The label of the checkbox item from the field config |
 
-## Config Options
+

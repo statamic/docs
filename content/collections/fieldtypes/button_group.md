@@ -61,4 +61,4 @@ It's a string, so you can just use that value.
 <p>I love sitting in the middle seat. A lot.</p>
 ```
 
-## Config Options
+

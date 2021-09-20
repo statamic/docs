@@ -36,4 +36,4 @@ The example image above uses the following field configuration:
 
 Regardless of whether the button was clicked or not, no data will be saved.
 
-## Config Options
+

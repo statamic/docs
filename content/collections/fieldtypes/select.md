@@ -88,4 +88,4 @@ Select fields return the **value** from your selected option. You can access the
 <p id="face">Oh yeah? So's your face.</p>
 ```
 
-## Config Options
+

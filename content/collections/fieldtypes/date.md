@@ -117,6 +117,6 @@ You can format localized dates with the [iso modifier](/modifiers/iso_format) an
 {{ date iso_format="dddd, MMMM Mo" }} // Sunday, January 21st
 ```
 
-## Config Options
+
 
 [carbon]: https://carbon.nesbot.com/docs/

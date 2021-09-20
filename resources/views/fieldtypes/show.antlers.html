@@ -1,7 +1,11 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title ensure_right=" Fieldtype"}}</h1>
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title ensure_right=" Fieldtype" }}</h1>
+        {{ partial:pro-badge }}
+    </div>
     {{ intro ?? overview | markdown }}
-    {{ partial:video_link }}
+    {{ partial:toc }}
 </header>
 
 <article class="markdown pb-8">
@@ -15,7 +19,6 @@
     {{ content | toc:ids }}
 
     {{ if options }}
-        <h2 id="options">Options</h2>
         {{ partial:details :details="options" }}
     {{ /if }}
 </article>

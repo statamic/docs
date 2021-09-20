@@ -52,4 +52,4 @@ The color is output as a simple string. Most often you'll use this in an inline 
 </div>
 ```
 
-## Config Options
+

@@ -163,6 +163,6 @@ All custom data set on the assets will also be available inside the asset tag lo
 {{ /gallery_images }}
 ```
 
-## Config Options
+
 
 [carbon]: https://carbon.nesbot.com/docs/

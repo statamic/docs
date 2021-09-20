@@ -151,6 +151,6 @@ Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [Prose
 
 [Learn how to extend Bard](/extending/bard)
 
-## Config Options
+
 
 [prosemirror]: https://prosemirror.net/

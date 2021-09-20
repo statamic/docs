@@ -22,7 +22,7 @@ options:
     name: mode
     type: string
     description: |
-        Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field). 
+        Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
 stage: 4
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
@@ -59,4 +59,4 @@ Loop through the entries and do anything you want with the data.
 </ul>
 ```
 
-## Config Options
+

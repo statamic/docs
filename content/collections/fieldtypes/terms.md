@@ -100,4 +100,4 @@ You will need to use the [Relate Tag](/tags/relate) in your template to have the
 </ul>
 ```
 
-## Config Options
+

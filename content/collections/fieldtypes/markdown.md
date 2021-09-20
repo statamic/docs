@@ -82,7 +82,7 @@ The Markdown fieldtype also has a dark mode when in fullscreen for those of you 
     <figcaption><span class="not-italic">😎</span> Sunglasses off.</figcaption>
 </figure>
 
-## Config Options
+
 
 [parsedown]: https://parsedown.org/
 [extra]: https://michelf.ca/projects/php-markdown/extra/

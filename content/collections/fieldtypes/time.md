@@ -6,6 +6,6 @@ screenshot: fieldtypes/time.gif
 stage: 4
 id: ccfbaf71-7823-4f71-a375-e874035f80ca
 ---
-## Config Options
+
 
 None. It just works.

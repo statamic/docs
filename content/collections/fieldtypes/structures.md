@@ -51,4 +51,4 @@ Loop through the structure collecctions with access to all of the entries.
 </ul>
 ```
 
-## Config Options
+

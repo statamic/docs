@@ -67,4 +67,4 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 </div>
 ```
 
-## Config Options
+
