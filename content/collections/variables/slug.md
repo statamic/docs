@@ -1,7 +1,9 @@
 ---
+id: b391facf-5041-498b-a244-0df2359ec30e
+blueprint: variables
 types:
   - content
-id: b391facf-5041-498b-a244-0df2359ec30e
+title: Slug
 ---
 A slug is the string that identifies your content. It usually sits at the end of the URL.
 

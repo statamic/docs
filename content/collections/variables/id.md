@@ -1,7 +1,9 @@
 ---
+id: a7a7a927-fd46-4b01-887b-99d4ce5f8e1e
+blueprint: variables
 types:
   - content
-id: a7a7a927-fd46-4b01-887b-99d4ce5f8e1e
+title: Id
 ---
 The ID is the identifier of the content. It's usually a long number that you wouldn't want to show anyone.
 However it's super handy to pass into other tags.

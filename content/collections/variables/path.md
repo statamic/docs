@@ -1,7 +1,9 @@
 ---
+id: dcb4c134-08ad-4b48-a2dd-1f8fcd652c57
+blueprint: variables
 types:
   - asset
-id: dcb4c134-08ad-4b48-a2dd-1f8fcd652c57
+title: Path
 ---
 The path to the file, relative to the asset container.
 

@@ -1,7 +1,9 @@
 ---
 id: 4b4bd7a7-6fc8-4457-b030-56d4474e20b0
+blueprint: variables
 types:
   - content
+title: 'Edit Url'
 ---
 Get the URL to edit a the current page or entry in the Control Panel, if there is one (for example, there is no `edit_url` for a template route).
 

@@ -1,7 +1,9 @@
 ---
 id: e6fdbeb6-7808-45b0-b012-89a34993778b
+blueprint: variables
 types:
   - system
+title: Site
 ---
 The current site being targeted in the request.
 

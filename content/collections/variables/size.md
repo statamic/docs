@@ -1,7 +1,9 @@
 ---
+id: 514642f6-5e7b-4ffc-abad-7a2637615a45
+blueprint: variables
 types:
   - asset
-id: 514642f6-5e7b-4ffc-abad-7a2637615a45
+title: Size
 ---
 The file size of the asset, in an appropriate human-readable format.
 

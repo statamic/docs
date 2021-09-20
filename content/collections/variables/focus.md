@@ -1,7 +1,9 @@
 ---
+id: d61d8f8c-4e7e-4933-8f34-0cdba2a3ee82
+blueprint: variables
 types:
   - asset
-id: d61d8f8c-4e7e-4933-8f34-0cdba2a3ee82
+title: Focus
 ---
 The focal point of the asset, defaulting to center (`50-50`).
 
