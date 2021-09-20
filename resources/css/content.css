@@ -35,7 +35,7 @@ article, .markdown {
 
     h2>.anchor,
     h3>.anchor {
-        @apply absolute top-0 no-underline text-white opacity-0;
+        @apply absolute top-0 no-underline text-white opacity-0 block;
         text-shadow: -1px -1px 0 theme('colors.pink.DEFAULT'),
             1px -1px 0 theme('colors.pink.DEFAULT'),
             -1px 1px 0 theme('colors.pink.DEFAULT'),
@@ -48,7 +48,7 @@ article, .markdown {
     }
 
     h2 > .anchor {
-        @apply -left-10 pr-4;
+        @apply -left-6 pr-4;
     }
 
     h2:hover > .anchor {
@@ -56,7 +56,7 @@ article, .markdown {
     }
 
     h3 > .anchor {
-        @apply -left-7 pr-2;
+        @apply -left-3 pr-2;
     }
 
     h3:hover > .anchor {
@@ -114,13 +114,13 @@ article, .markdown {
     }
 
     table {
-        @apply border-2 rounded-md border-separate overflow-hidden w-full mb-6;
+        @apply border rounded-md border-separate overflow-hidden w-full mb-6;
         border-spacing: 0;
 
         thead {
             @apply bg-black text-white font-display font-bold text-lg;
             th {
-                @apply px-3 py-2 md:px-5 md:py-3 text-left;
+                @apply px-3 py-2 md:px-5 text-left;
             }
         }
         tbody {
