@@ -1,7 +1,7 @@
 <div id="side-nav" class="md:block relative w-full md:w-80 lg:px-2 lg:-ml-6" :class="{'mobile-open': showNav}" x-show="showNav">
     {{ if section }}
     <div class="side-nav bg-white md:bg-transparent sticky top-24 md:pr-16 pb-6" x-data="{ open: 'Getting Started' }">
-        <nav class="lg:overflow-y-auto lg:overflow-x-visible h-screen-sans-nav">
+        <nav class="lg:overflow-y-auto lg:overflow-x-visible max-h-screen-sans-nav">
             <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray">{{ section | title }}</header>
             <form class="relative flex md:hidden items-center w-full h-9 mb-4 rounded border-2 border-black shadow-sm" action="/search-results">
                 <input
