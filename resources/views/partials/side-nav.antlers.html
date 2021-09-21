@@ -28,7 +28,7 @@
                         {{ /if }}
                         {{ if section == "references" }}
                             {{ collection :from="slug" }}
-                                <li class="{{ is_current || is_parent || segment_2 === slug ?= 'active' }}" {{ if is_current || is_parent || segment_2 === slug }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                                <li class="{{ segment_3 === slug ?= 'active' }}" {{ if segment_3 === slug }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
                                     <a href="{{ url }}" class="hover:text-pink">
                                         {{ title }}
                                     </a>

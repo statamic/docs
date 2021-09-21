@@ -16,14 +16,14 @@ sections:
           type: markdown
           localizable: true
       -
-        handle: collection
+        handle: template
         field:
-          max_items: 1
-          mode: default
-          display: Collection
-          type: collections
-          icon: collections
+          hide_partials: true
+          display: Template
+          type: template
+          icon: template
           listable: hidden
+          instructions_position: above
   sidebar:
     display: Sidebar
     fields:
@@ -35,3 +35,12 @@ sections:
           localizable: true
           validate:
             - required
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - references
+          max_items: 1
+          listable: false
+          localizable: true

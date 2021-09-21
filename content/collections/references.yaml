@@ -10,3 +10,5 @@ date_behavior:
   future: private
 structure:
   root: false
+inject:
+  section: references
