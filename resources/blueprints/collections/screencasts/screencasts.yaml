@@ -1,5 +1,4 @@
-order: 2
-title: Page
+title: Screencast
 sections:
   main:
     display: Main
@@ -12,7 +11,29 @@ sections:
           validate:
             - required
       -
-        import: page
+        handle: sidebar_title
+        field:
+          input_type: text
+          type: text
+          instructions: 'A shorter title, if necessary'
+          localizable: false
+          listable: hidden
+          display: 'Sidebar Title'
+      -
+        handle: video
+        field:
+          type: video
+          localizable: false
+          listable: hidden
+          display: Video
+      -
+        handle: length
+        field:
+          input_type: text
+          type: text
+          localizable: false
+          listable: hidden
+          display: Length
   sidebar:
     display: Sidebar
     fields:
@@ -24,7 +45,6 @@ sections:
           localizable: true
           validate:
             - required
-            - 'unique_entry_value:{collection},{id},{site}'
       -
         handle: date
         field:

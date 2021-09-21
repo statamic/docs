@@ -1,5 +1,5 @@
 ---
-title: Get_Content
+title: Get Content
 description: Fetches content by URL or ID
 intro: |
   It gets content from other entries! Specify a URI or ID and fetch all the data attached to it.
