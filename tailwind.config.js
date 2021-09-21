@@ -78,6 +78,7 @@ module.exports = {
       'teal': "1px 1px 0 theme('colors.teal', 'currentColor')",
       'teal-md': "2px 2px 0 theme('colors.teal', 'currentColor')",
       'teal-lg': "7px 7px 0 theme('colors.teal', 'currentColor')",
+      'stack-sm': "3px 3px 0 -1px #fff, 3px 3px 0 theme('colors.black')",
       'stack': "5px 5px 0 -1px #fff, 5px 5px 0 theme('colors.black')",
       'stack-md': "10px 10px 0 -1px #fff, 10px 10px 0 theme('colors.black')",
       'stack-lg': "20px 20px 0 -1px #fff, 20px 20px 0 theme('colors.black'), 40px 40px 0 -1px #fff, 40px 40px 0 theme('colors.black')",
@@ -89,6 +90,9 @@ module.exports = {
         '7xl': ['4.25rem', 1],
       },
       height: {
+        'screen-sans-nav': 'calc(100vh - 100px)',
+      },
+      maxHeight: {
         'screen-sans-nav': 'calc(100vh - 100px)',
       }
     },

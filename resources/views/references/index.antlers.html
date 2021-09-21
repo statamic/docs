@@ -1,15 +1,18 @@
-<header class="markdown pb-8 mb-8">
+<header class="markdown pb-8">
     {{ partial:breadcrumbs }}
-    <div class="flex items-center">
-        <h1>{{ title }}</h1>
-    </div>
-    {{ intro ?? overview | markdown }}
+    <h1>{{ title }}</h1>
+    <div class="text-2xl max-w-2xl">{{ intro ?? overview | markdown }}</div>
 </header>
 
-{{ svg src="zig-zag" class="mx-auto my-12" }}
-
-<article class="markdown pb-16">
-    {{ content | toc:ids }}
-</article>
-
-{{ partial:edit }}
+<section class="grid md:grid-cols-3 gap-6">
+    {{ nav handle="references" }}
+        <a href="{{ url }}" class="bg-gray-lightest border shadow-stack-sm p-5 block">
+            {{# <img src="/img/references/{{ slug }}.svg" alt="{{ title }} icon" class="mx-auto mb-3"> #}}
+            <h2 class="text-2xl font-bold font-display mb-3">{{ title }}</h2>
+            {{ content | widont }}
+            {{ collection :in="slug" as="entries" }}
+                <button class="button bg-mint mt-3">Explore all {{ entries | count }} {{ title }}</button>
+            {{ /collection }}
+        </a>
+    {{ /nav }}
+</section>
