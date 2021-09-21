@@ -19,7 +19,6 @@ summary: >
 
 ```
 {{ summary | add_slashes }}
-
 ```
 
 ``` output
