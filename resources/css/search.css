@@ -73,8 +73,12 @@
 #docsearch {
     @apply w-full !important;
 }
+
 .DocSearch-Button {
-    @apply h-5 m-0 w-full text-black antialiased font-normal !important;
+    @apply h-5 m-0 w-full text-black antialiased font-normal cursor-text !important;
+    &:hover {
+        box-shadow: none !important;
+    }
 }
 
 .DocSearch-Button-Key {
@@ -84,25 +88,3 @@
 .DocSearch-Button-Container {
     @apply flex-1 !important;
 }
-
-/* .DocSearch-Hits mark {
-    @apply font-bold text-black px-1 z-10 relative !important;
-    &:before {
-        @apply absolute bg-yellow mt-1 w-full !important;
-        z-index: -1 !important;
-        height: 50% !important;
-        top: 5px !important;
-        left: 2px !important;
-        content: '' !important;
-    }
-}
-
-
-.DocSearch-Hits .DocSearch-Hit[aria-selected=true] mark {
-    @apply text-black no-underline !important;
-    &:before {
-        height: 100% !important;
-        top: -2px !important;
-        left: 0px !important
-    }
-} */
