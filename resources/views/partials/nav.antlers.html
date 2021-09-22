@@ -15,11 +15,7 @@
         </ul>
         <div class="flex items-center h-full">
             <form class="relative hidden md:flex items-center text-sm w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px]" action="/search-results">
-                <div id="docsearch"></div>
-                {{# <input
-                    class="hidden md:block focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
-                    type="text" placeholder="Search... (Press &quot;/&quot; to focus)"> #}}
-                {{# <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button> #}}
+                <div id="docsearch" ref="docSearch"></div>
             </form>
         </div>
     </div>
@@ -55,23 +51,6 @@
             <li><a class="hover:text-pink {{ page:section === slug ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
             {{ /nav:collection:sections }}
         </ul>
-        <div class="flex items-center h-full">
-            <form class="relative hidden md:flex items-center text-sm w-[240px] md:w-[360px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px]" action="/search-results">
-                {{# <input
-                    id="docs-search"
-                    name="q"
-                    x-ref="docsSearch"
-                    @keydown.escape="$refs.docsSearch.blur(), $refs.docsSearch.value = ''"
-                    class="focus:outline-none bg-transparent px-3 flex-1 appearance-none"
-                    type="text" placeholder="Search... (Press &quot;/&quot; to focus)"> #}}
-                <input
-                    class="hidden md:block focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
-                    type="text" placeholder="Search... (Press &quot;/&quot; to focus)">
-                {{# <input
-                    class="md:hidden focus:outline-none placeholder-black antialised px-2 flex-1 appearance-none"
-                    type="text" placeholder="Search..."> #}}
-                <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
-            </form>
-        </div>
+
     </div>
 </nav>

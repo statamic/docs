@@ -16,7 +16,6 @@ docsearch({
   transformItems(items) {
     return items.map((item) => {
         // Transform the absolute URL into a relative URL so it works locally.
-        console.log(item);
         const a = document.createElement('a');
         a.href = item.url;
 
@@ -35,14 +34,6 @@ window.bodyData = function() {
         showSearch: false,
         showEasterEgg: false,
         nearTop: true,
-        bindings: {
-            ['@keydown.slash.prevent']() {
-                this.$refs.docsSearch.focus();
-            },
-            ['@keydown.' + primaryKeyBind + '.k.prevent']() {
-                this.$refs.docsSearch.focus();
-            }
-        }
     };
 }
 
