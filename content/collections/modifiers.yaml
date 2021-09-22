@@ -5,7 +5,7 @@ mount: a4bc698a-5971-474d-a19c-0c43c0d641b9
 taxonomies:
   - modifier_types
 revisions: false
-route: '{mount}/{slug}'
+route: '/modifiers/{slug}'
 sort_dir: asc
 inject:
   section: references

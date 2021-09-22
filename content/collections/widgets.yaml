@@ -3,7 +3,7 @@ template: widgets/show
 layout: layout
 mount: 565f0285-43b1-41d2-935c-e52ad00c012c
 revisions: false
-route: '{mount}/{slug}'
+route: '/widgets/{slug}'
 sort_dir: asc
 date_behavior:
   past: public

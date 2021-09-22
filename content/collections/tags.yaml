@@ -3,7 +3,7 @@ template: tags.show
 layout: layout
 mount: 710810c7-f710-4364-a6e4-cedf8c292d88
 revisions: false
-route: '{mount}/{slug}'
+route: '/tags/{slug}'
 sort_dir: asc
 inject:
   section: references

@@ -1,7 +1,6 @@
 ---
 title: Modifiers
 intro: Modifiers manipulate the data of your variables on the fly in Antlers templates. They can modify strings, filter arrays and lists, perform comparisons, handle basic math, simplify your markup, and even help you debug.
-template: modifiers.index
 blueprint: page
 mount: modifiers
 id: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6

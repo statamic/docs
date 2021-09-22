@@ -3,7 +3,7 @@ template: fieldtypes.show
 layout: layout
 mount: 5a8fe626-b073-41fc-8da4-264b54837600
 revisions: false
-route: '{mount}/{slug}'
+route: '/fieldtypes/{slug}'
 sort_dir: asc
 inject:
   section: references
