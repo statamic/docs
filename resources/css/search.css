@@ -1,0 +1,108 @@
+/* Algolia DocSearch Variables */
+:root {
+    /* --docsearch-primary-color: rgb(84, 104, 255); */
+    --docsearch-primary-color: theme('colors.purple') !important;
+    --docsearch-text-color: rgb(28, 30, 33);
+    --docsearch-spacing: 16px !important;
+    --docsearch-icon-stroke-width: 1.4;
+    --docsearch-highlight-color: var(--docsearch-primary-color);
+    --docsearch-muted-color: rgb(150, 159, 175);
+    --docsearch-container-background: rgba(101, 108, 133, 0.4) !important;
+    --docsearch-logo-color: theme('colors.black') !important;
+
+    /* modal */
+    --docsearch-modal-width: 760px !important;
+    --docsearch-modal-height: 600px;
+    --docsearch-modal-background: #fff !important;
+    --docsearch-modal-shadow: 4px 4px 0 theme('colors.black') !important;
+
+    /* searchbox */
+    --docsearch-searchbox-height: 56px;
+    --docsearch-searchbox-background: #fff !important;
+    --docsearch-searchbox-focus-background: #fff;
+    --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
+
+    /* hit */
+    --docsearch-hit-height: 56px;
+    --docsearch-hit-color: rgb(68, 73, 80);
+    --docsearch-hit-active-color: #fff;
+    --docsearch-hit-background: theme('colors.gray.lightest') !important;
+    --docsearch-hit-shadow: none !important;
+
+    /* key */
+    --docsearch-key-gradient: linear-gradient(-225deg,
+            rgb(213, 219, 228) 0%,
+            rgb(248, 248, 248) 100%);
+    --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230),
+        inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
+
+    /* footer */
+    --docsearch-footer-height: 60px !important;
+    --docsearch-footer-background: #fff;
+    --docsearch-footer-shadow: none !important;
+}
+
+.DocSearch-Modal {
+    @apply rounded-lg border !important;
+    /* .DocSearch-Hit-title { display: none !important; } */
+}
+
+.DocSearch-Hit-Container {
+    @apply h-16 !important;
+}
+
+.DocSearch-Hit-content-wrapper {
+    @apply mx-4 flex-col-reverse !important;
+}
+
+.DocSearch-Commands {
+    @apply hidden !important;
+}
+
+.DocSearch-Footer {
+    @apply border-t !important;
+}
+
+.DocSearch-Hit-path {
+    @apply text-lg font-display font-medium text-black !important;
+}
+
+.DocSearch-Hits mark {
+    color: inherit !important;
+}
+#docsearch {
+    @apply w-full !important;
+}
+.DocSearch-Button {
+    @apply h-5 m-0 w-full text-black antialiased font-normal !important;
+}
+
+.DocSearch-Button-Key {
+    @apply bg-white border shadow-md text-black pb-0 !important;
+}
+
+.DocSearch-Button-Container {
+    @apply flex-1 !important;
+}
+
+/* .DocSearch-Hits mark {
+    @apply font-bold text-black px-1 z-10 relative !important;
+    &:before {
+        @apply absolute bg-yellow mt-1 w-full !important;
+        z-index: -1 !important;
+        height: 50% !important;
+        top: 5px !important;
+        left: 2px !important;
+        content: '' !important;
+    }
+}
+
+
+.DocSearch-Hits .DocSearch-Hit[aria-selected=true] mark {
+    @apply text-black no-underline !important;
+    &:before {
+        height: 100% !important;
+        top: -2px !important;
+        left: 0px !important
+    }
+} */

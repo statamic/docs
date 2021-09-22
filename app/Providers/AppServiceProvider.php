@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 // use App\Http\View\Composers\SideNavComposer;
 use Statamic\Facades\Markdown;
+use Torchlight\Commonmark\TorchlightExtension;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         // View::composer('partials.side-nav', SideNavComposer::class);
 
         Markdown::addExtensions(function () {
-            return [new HintExtension];
+            return [new HintExtension, new TorchlightExtension];
         });
     }
 

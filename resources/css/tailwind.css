@@ -4,6 +4,7 @@
 @import "content";
 @import "layout";
 @import "components";
+@import "search";
 @import "utilities";
 
 @import "tailwindcss/components";

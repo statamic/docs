@@ -28,6 +28,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@docsearch/js": "^3.0.0-alpha.40",
         "@hotwired/turbo": "^7.0.0-rc.3",
         "alpinejs": "^3.2.4"
     }

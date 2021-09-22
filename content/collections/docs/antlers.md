@@ -16,7 +16,7 @@ Antlers view files are often called templates. Any files in your `resources/view
 
 Antlers adds capabilities on top of HTML through the use of curly brace expressions. Those curly braces – often called double mustaches or squiggly gigglies – look a whole lot like _antlers_ to us, hence the name.
 
-```
+```antlers
 {{ hello_world }}
 ```
 
@@ -32,31 +32,27 @@ Before getting into listing all the things that happen _inside_ an Antlers expre
 
 Consistency is important. We recommend using single spaces between braces, lowercase variable names, and underscores as word separators. Picking your style and stick to it. Future you will thank you, but don't expect a postcard.
 
-```
-// This is great!
+``` antlers
+This is great!
 {{ perfectenschlag }}
 
-// This is allowed.
+This is allowed.
 {{squished}}
 
-// This can make sense when you have lots of parameters.
+This can make sense when you have lots of parameters.
 {{
   testimonials
   limit="5"
   order="username"
 }}
 
-// This is terrible in every way.
+This is terrible in every possible way.
 {{play-sad_Trombone            }}
 ```
 
----
-
 ## Displaying Data
 
-You can display data passed into your Antlers views by wrapping the variable name in curly braces.
-
-Let's take the following data as an example:
+You can display data passed into your Antlers views by wrapping the variable in double curly braces. For example, given the following data:
 
 ``` yaml
 ---
@@ -69,10 +65,12 @@ songs:
 ```
 
 You can display the contents of the `title` variable like this:
-```
-<h1>{{ title }}</h1>
 
-// Output
+``` antlers
+<h1>{{ title }}</h1>
+```
+
+``` html
 <h1>DJ Jazzy Jeff & The Fresh Prince</h1>
 ```
 
@@ -80,23 +78,30 @@ You can display the contents of the `title` variable like this:
 Arrays are a collection of elements (values or variables). You can loop through the elements of the array using the `{{ value }}` variable, or reach in and pluck out specific elements by their index.
 
 #### Looping
-```
+
+``` antlers
+<ul>
 {{ songs }}
   <li>{{ value }}</li>
 {{ /songs }}
+</ul>
+```
 
-// Output
-<li>Boom! Shake the Room</li>
-<li>Summertime</li>
-<li>Just Cruisin'</li>
+``` html
+<ul>
+  <li>Boom! Shake the Room</li>
+  <li>Summertime</li>
+  <li>Just Cruisin'</li>
+</ul>
 ```
 
 #### Plucking
 
-```
+``` antlers
 <p>Time to {{ songs:0 }} cuz we're {{ songs:2 }}.</p>
+```
 
-// Output
+``` html
 <p>Time to Boom! Shake the Room cuz we're Just Crusin'.</p>
 ```
 
@@ -114,11 +119,8 @@ mailing_address:
 #### Accessing Data
 You can access the keys inside the dictionary by "gluing" the parent/child keys together you want to traverse through, much like breadcrumbs.
 
-```
+``` antlers
 I live in {{ mailing_address:city }}.
-
-// Output
-I live in Barville.
 ```
 
 ### Multi-Dimensional Arrays
@@ -136,15 +138,16 @@ skaters:
 
 If you know the names of the variables inside the array, you can loop through the items and access their variables.
 
-```
+``` antlers
 {{ skaters }}
 <div class="card">
   <h2>{{ name }}</h2>
   <p>{{ style }}</p>
 </div>
 {{ /skaters }}
+```
 
-// Output
+``` html
 <div class="card">
   <h2>Tony Hawk</h2>
   <p>Vert</p>
@@ -160,7 +163,7 @@ If you don't know the names of the keys inside the array – which can happen wh
 
 Using the mailing list example, we could use a `field` variable to pluck out specific keys.
 
-```
+``` md
 ---
 field: country
 mailing_address:

@@ -49,7 +49,7 @@ blockquote,
         }
     }
 
-    :not(.best-practice) :not(pre)>code {
+    :not(.best-practice) code:not(.torchlight) {
         @apply bg-transparent text-pink font-bold mx-px text-sm;
     }
 
@@ -111,3 +111,4 @@ figure figcaption {
         @apply outline-none shadow-outline;
     }
 }
+
