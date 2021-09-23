@@ -6,7 +6,7 @@
             <form class="relative flex md:hidden items-center w-full h-9 mb-4 rounded border-2 border-black shadow-sm" action="/search-results">
                 <input
                     class="focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
-                    type="text" placeholder="Search for..." @click="alert('make it focus the actual search somehow')" />
+                    type="text" placeholder="Search for..." @click="document.getElementsByClassName('DocSearch-Button')[0].click()" />
                 <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
             </form>
             <div class="pl-2 md:p-0">
