@@ -6,4 +6,4 @@ revisions: false
 route: '/tags/{slug}'
 sort_dir: asc
 inject:
-  section: references
+  section: reference

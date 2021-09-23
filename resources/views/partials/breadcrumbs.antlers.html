@@ -1,8 +1,8 @@
-{{ if segment_3 || section === 'references' }}
+{{ if segment_2 }}
 <nav class="breadcrumbs mb-8 text-sm">
     {{ nav:breadcrumbs include_home="false" }}
         {{ if is_current }}
-            <span>{{ title }}</span>
+            <span>This Page</span>
         {{ else }}
             <a href="{{ url }}" class="no-underline font-normal">{{ title }}</a> /
         {{ /if }}

@@ -8,5 +8,5 @@ revisions: false
 route: '/modifiers/{slug}'
 sort_dir: asc
 inject:
-  section: references
+  section: reference
   view_model: App\ViewModels\Modifiers

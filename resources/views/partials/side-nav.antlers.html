@@ -16,7 +16,7 @@
                         <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
                         <span>{{ title }}</span>
                     </button>
-                    <ul class="space-y-2 ml-4 font-display lg:ml-6" x-show="open == '{{ title }}'">
+                    <ul class="space-y-2 ml-4 font-display lg:ml-5" x-show="open == '{{ title }}'">
                         {{ if children }}
                             {{ children scope="child" }}
                                 <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
@@ -26,7 +26,7 @@
                                 </li>
                             {{ /children }}
                         {{ /if }}
-                        {{ if section == "references" }}
+                        {{ if section == "reference" }}
                             {{ collection :from="slug" }}
                                 <li class="{{ segment_2 === slug ?= 'active' }}" {{ if segment_2 === slug }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
                                     <a href="{{ url }}" class="hover:text-pink">

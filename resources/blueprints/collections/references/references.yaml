@@ -1,4 +1,4 @@
-title: References
+title: Reference
 sections:
   main:
     display: Main
@@ -40,7 +40,7 @@ sections:
         field:
           type: entries
           collections:
-            - references
+            - reference
           max_items: 1
           listable: false
           localizable: true

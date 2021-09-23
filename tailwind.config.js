@@ -94,6 +94,11 @@ module.exports = {
       },
       maxHeight: {
         'screen-sans-nav': 'calc(100vh - 100px)',
+      },
+      spacing: {
+        68: '17rem',
+        74: '18.5rem',
+        76: '19rem'
       }
     },
   },

@@ -7,19 +7,21 @@ title: Add
 ---
 Add a value or another variable to your variable. Pass an integer or the name of a second variable as the parameter. Also supports `+` as shorthand.
 
-```.language-yaml
+``` yaml
 books: 5
 magazines: 10
 ```
 
-```
+``` antlers
 {{ books | add:5 }}
 {{ books | add:magazines }}
 {{ books | +:magazines }}
 ```
 
-```.language-output
+```
 10
 15
 15
 ```
+
+<div data-antlers-run="ksC6fvMwKXaFl2uq"></div>

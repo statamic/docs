@@ -1,8 +1,0 @@
-title: Troubleshooting
-template: page
-layout: layout
-taxonomies:
-  - categories
-revisions: false
-route: '/troubleshooting/{slug}'
-sort_dir: asc

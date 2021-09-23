@@ -9,4 +9,4 @@ route: '/variables/{slug}'
 sort_dir: asc
 inject:
   view_model: App\ViewModels\Variables
-  section: references
+  section: reference

@@ -10,9 +10,6 @@ tree:
         id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
         entry: 792644d2-8bd2-421d-a080-e0be7fca125c
       -
-        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
-        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
-      -
         id: f03ca036-43d5-4bcb-ba03-260732fdf163
         entry: 24a9c9d8-d607-4117-9806-738668c173cd
       -
@@ -21,9 +18,6 @@ tree:
       -
         id: efa84d9d-48a0-4e61-a745-7c014efeaff7
         entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
-      -
-        id: bfc8f09a-19f7-46af-88bc-a30dc504a71d
-        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
   -
     id: 561b2475-a98a-498d-8cbe-2de46e8f5d06
     title: 'Core Concepts'
@@ -77,6 +71,7 @@ tree:
       -
         id: 6482b878-b8eb-4114-886e-dc8c9eb277b8
         entry: 84100772-18e4-4a22-8759-219b242a320c
+        title: Overview
       -
         id: 6ee59577-5f3f-4cbe-8c92-9ce3da648594
         entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
@@ -136,6 +131,9 @@ tree:
         id: 04e7b53e-af60-4421-8414-cd9b9ea0296e
         entry: 2940c834-7062-47a1-957c-88a69e790cbb
       -
+        id: 5b54ac61-838a-4c5d-8c24-b36a6deb3f89
+        entry: c095fb87-4c02-462c-9e6f-dfe0b6889248
+      -
         id: 9919cc65-a3d1-4adb-b450-bb93fed4f6fb
         entry: dd52c1f6-661b-4408-83c6-691fa341aaa7
       -
@@ -153,19 +151,6 @@ tree:
       -
         id: 4a2e132e-7fd6-4c84-95a1-ab6c732abf12
         entry: 4b77c19b-129c-4271-a724-eea884eb3e2e
-  -
-    id: 6e285cb4-23db-4817-abc6-1c76a08def33
-    title: 'Starter Kits'
-    children:
-      -
-        id: a4591991-324c-4678-9993-a735d09269ed
-        entry: 3a2e714c-57de-4b16-a916-7e7aba22de03
-      -
-        id: a6efd593-b837-46c8-8a36-7bd4b509cf0c
-        entry: c51a5de8-4b02-4240-8195-3ff7987c43cf
-      -
-        id: f36f50e5-1935-4203-8c02-4d71965a4d2c
-        entry: 9c703f43-30de-4f65-98bb-2b89f80012b7
   -
     id: 3c6081eb-746f-44f0-ae90-fffec9fdef9f
     title: 'Advanced Capabilities'
@@ -197,21 +182,63 @@ tree:
       -
         id: 716bb7b8-952a-45b7-9c20-24c4e0a24e43
         entry: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
+  -
+    id: 54d885ee-1b58-41ed-9268-baca6e83e9e8
+    title: Addons
+    children:
       -
-        id: 6784cd38-b385-4401-b159-7b6669c276a3
-        entry: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
+        id: dae0a662-0a66-4a4f-8d2a-b63c2eaf8f65
+        entry: bc2ad29d-50c3-47fb-9213-8553bcb5a48a
+        title: Overview
       -
-        id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
-        entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
-      -
-        id: 5b54ac61-838a-4c5d-8c24-b36a6deb3f89
-        entry: c095fb87-4c02-462c-9e6f-dfe0b6889248
+        id: d08bdd5e-a743-4630-9ba6-a21c217db804
+        entry: 8e084d33-e1c7-43ac-ae43-2988c2ab0ac0
       -
         id: 8868cd27-71c8-4de4-b700-c93a31782758
         entry: 5bb3e677-8b9c-4e77-be24-5fefec9c1af0
   -
+    id: 6e285cb4-23db-4817-abc6-1c76a08def33
+    title: 'Starter Kits'
+    children:
+      -
+        id: a4591991-324c-4678-9993-a735d09269ed
+        entry: 3a2e714c-57de-4b16-a916-7e7aba22de03
+        title: Overview
+      -
+        id: a6efd593-b837-46c8-8a36-7bd4b509cf0c
+        entry: c51a5de8-4b02-4240-8195-3ff7987c43cf
+      -
+        id: f36f50e5-1935-4203-8c02-4d71965a4d2c
+        entry: 9c703f43-30de-4f65-98bb-2b89f80012b7
+  -
     id: e53f115e-e42f-4454-a642-55b0e6073bfe
-    title: Extending
+    title: 'Our APIs'
+    children:
+      -
+        id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
+        entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
+      -
+        id: 6784cd38-b385-4401-b159-7b6669c276a3
+        entry: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
+      -
+        id: d7970aa0-e88f-45e7-b313-8f1f49e43cf0
+        entry: e7833062-e05c-42c9-ad35-dc5077f1f0b8
   -
     id: ae5c17c7-dbde-489f-a1ef-50ac1206a44f
-    title: Troubleshooting
+    title: Resources
+    children:
+      -
+        id: 2cfa8593-cb18-4370-aa24-8c2408b59c87
+        entry: 0efc0286-bfb1-4d54-8a94-8589b35adf88
+      -
+        id: 74125138-d6bd-46ce-9bf2-e7f6309a3177
+        entry: 55a99a3b-e40d-4033-9a70-823de8e4255f
+      -
+        id: bfc8f09a-19f7-46af-88bc-a30dc504a71d
+        entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+      -
+        id: d187ac97-9bc6-4354-a3ba-382daf94d657
+        entry: cd0428cf-2c4a-43b9-8e61-dd8123799ed8
+      -
+        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
+        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e

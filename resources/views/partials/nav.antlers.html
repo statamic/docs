@@ -2,13 +2,13 @@
     id="site-nav"
     class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20"
 >
-    <div class="w-full flex items-center justify-between md:block md:w-80">
+    <div class="w-full flex items-center justify-between md:block md:w-74">
         <a href="/" class="relative top-[-3px] text-pink hover:text-purple">
             {{ svg src="docs-logo" class="block" title="Statamic"}}
         </a>
     </div>
     <div class="flex-1 flex items-center justify-between md:h-full">
-        <ul class="flex items-center space-x-3 md:space-x-10 md:text-lg">
+        <ul class="flex items-center space-x-2 md:space-x-10 md:text-lg">
             {{ nav:collection:sections include_home="true" }}
             <li><a class="hover:text-pink {{ page:section === slug ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
             {{ /nav:collection:sections }}

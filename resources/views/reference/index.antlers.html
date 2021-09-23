@@ -5,9 +5,8 @@
 </header>
 
 <section class="grid md:grid-cols-3 gap-6">
-    {{ nav handle="references" }}
+    {{ nav handle="reference" }}
         <a href="{{ url }}" class="bg-gray-lightest border shadow-stack-sm p-5 block">
-            {{# <img src="/img/references/{{ slug }}.svg" alt="{{ title }} icon" class="mx-auto mb-3"> #}}
             <h2 class="text-2xl font-bold font-display mb-3">{{ title }}</h2>
             {{ content | widont }}
             {{ collection :in="slug" as="entries" }}

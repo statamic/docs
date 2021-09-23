@@ -6,5 +6,5 @@ revisions: false
 route: '/fieldtypes/{slug}'
 sort_dir: asc
 inject:
-  section: references
+  section: reference
   view_model: App\ViewModels\Fieldtypes

@@ -37,7 +37,5 @@ window.bodyData = function() {
     };
 }
 
-// Prism.highlightAll()
-
 Alpine.start();
 window.Alpine = Alpine;

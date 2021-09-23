@@ -1,0 +1,16 @@
+<header class="markdown pb-8">
+    {{ partial:breadcrumbs }}
+    <h1>{{ title }}</h1>
+    <div class="text-2xl max-w-2xl">{{ intro ?? overview | markdown }}</div>
+</header>
+
+<article class="markdown pb-8">
+    {{ content }}
+    <ul>
+    {{ collection:troubleshooting }}
+        <li><h2 class="mb-1 mt-0"><a href="{{ url }}" class="text-xl font-medium ">{{ title }}</a></h2></li>
+    {{ /collection:troubleshooting }}
+    </ul>
+</article>
+
+{{ partial:suggest }}
