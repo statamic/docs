@@ -1,9 +1,11 @@
 ---
-title: Conditions
-template: page
-blueprint: page
 id: 9751908a-a10c-4c36-abd3-2251e83fbc65
-intro: Conditions allow you to filter the results of your content tags (e.g. Collections, Taxonomies) using the data inside them, much like WHERE clauses do with SQL.
+blueprint: page
+title: 'Tag Conditions'
+template: page
+intro: 'Conditions allow you to filter the results of your content tags (e.g. Collections, Taxonomies) using the data inside them, much like WHERE clauses do with SQL.'
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632512130
 ---
 > Are you looking "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
 

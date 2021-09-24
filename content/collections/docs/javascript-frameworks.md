@@ -1,10 +1,12 @@
 ---
-title: 'Using Front-End Frameworks'
+id: 131259a5-2072-49d8-9ea4-2099e0338e2f
+blueprint: page
+title: 'JavaScript Frameworks'
 intro: 'There are many different approaches you could take to pass data to JavaScriptLand. Here are some suggestions on how to fetch, format, and hydrate (inject data) typical JavaScript components.'
 template: page
-blueprint: page
 nav_title: 'Front-End Frameworks'
-id: 131259a5-2072-49d8-9ea4-2099e0338e2f
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632512027
 ---
 The examples below use [Vue.js](https://vuejs.org/) as the framework of choice, but these techniques will apply to most JavaScript frameworks.
 

@@ -1,16 +1,22 @@
 ---
-title: 'Other Template Engines'
-intro: Antlers is not always the best tool for the job. If you're using Statamic as a headless CMS or want to share views with a Laravel application, Blade or another engine might be a better fit.
-blueprint: page
 id: c7816387-ebc4-4204-b5f2-8e7073a4db8b
+blueprint: page
+title: 'Blade Templates'
+intro: '[Antlers](/antlers) is not _always_ the best template engine for the job. If you''re using Statamic as a headless CMS or want to share views with a Laravel application already using [Blade](https://laravel.com/docs/blade) or another engine, you can do that. **Just know there are a few caveats before you do.**'
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632512605
 ---
 ## Overview
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend.
 
+Antlers handles the responsibilities of both Blade _and_ [Controllers](/controllers), all in your template. If you choose to **not** use Antlers, know that you'll have to do additional work in PHP somewhere to fetch and prep content another other way.
+
 You can use [Blade](https://laravel.com/docs/blade) or other template engines by using their respective file extensions.
 
-Instead of naming your views `myview.antlers.html` use `.blade.php` extension (or whatever other engine's extensions you may have installed).
+## How to Render A Template with Blade
+
+Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension (or whatever other engine's extensions you may have installed).
 
 
 ## View Data
@@ -42,7 +48,7 @@ and it was sick.</p>
 {{ $content }}
 ```
 
-## Modifiers + Blade
+## Using Modifiers with Blade
 
 You can use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax.
 

@@ -15,7 +15,7 @@ Sometimes these conventions don't fit your project, or perhaps you have your own
 
 > **But don't break convention unless you have a really, really good reason.** Like integrating with an existing Laravel app or when porting a site from another platform.
 
-A good example of this is the decision on whether to use [Antlers](/antlers) as the template language over [Blade](https://laravel.com/docs/blade). Antlers is deeply integrated with Statamic and handles the responsibiliies of both Blade _and_ Controllers, all in your template. In short, if you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
+A good example of this is the decision on whether to use [Antlers](/antlers) as the template language over [Blade](https://laravel.com/docs/blade). Antlers is deeply integrated with Statamic and handles the responsibilities of both Blade _and_ Controllers, all in your template. In short, if you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
 
 ## Flat Is First
 

@@ -1,9 +1,11 @@
 ---
-title: 'Git Integration'
-intro: Statamic can automate your version control workflow with Git. It can automatically commit and push content as it's changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works.
-pro: true
-blueprint: page
 id: c095fb87-4c02-462c-9e6f-dfe0b6889248
+blueprint: page
+title: 'Git Automation'
+intro: 'Statamic can automate your version control workflow with Git. It can automatically commit and push content as it''s changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works.'
+pro: true
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632512218
 ---
 ## Overview
 
@@ -220,5 +222,3 @@ For example, if you're [storing users in a database](/knowledge-base/storing-use
 ```
 
 > When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
-
-

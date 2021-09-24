@@ -1,9 +1,11 @@
 ---
-title: 'The Cascade'
-intro: 'Statamic has the ability to set data on the global, collection, view, and entry levels. We call the way the data can be inherited and overridden "The Cascade™".'
-template: page
-blueprint: page
 id: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
+blueprint: page
+title: 'Data Inheritance'
+intro: 'Statamic sets data a series of scopes that can inherit over override each other, from globals, to collections, to the entry, and finally view level. We call this data inheritance model **The Cascade**.'
+template: page
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632511754
 ---
 ## Overview
 
