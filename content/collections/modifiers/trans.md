@@ -65,6 +65,6 @@ These will be referenced from `resources/lang/fr.json` (where `fr` is the locale
 {{ "Hello" | trans }}
 ```
 
-``` output
+```html
 Bonjour
 ```

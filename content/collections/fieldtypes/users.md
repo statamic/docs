@@ -57,7 +57,7 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 </div>
 ```
 
-``` output
+```html
 <div class="bg-white p-4 shadow flex items-center">
   <img class="w-10 h-10 rounded-full" src="/img/avatars/david.jpg" alt="Avatar of David Hasselhoff">
     <div class="text-sm ml-4">

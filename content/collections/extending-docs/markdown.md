@@ -11,7 +11,7 @@ You may parse Markdown in Statamic by using the `Markdown` facade.
 ``` php
 Statamic\Facades\Markdown::parse('# Hello World!');
 ```
-``` output
+```html
 <h1>Hello World!</h1>
 ```
 

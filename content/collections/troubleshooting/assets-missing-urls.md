@@ -21,7 +21,7 @@ my_asset_field:
     <img src="{{ url }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}" />
 {{ /my_asset_field }}
 ```
-``` output
+```html
 <img src="" alt="An image" width="100" height="150" />
 ```
 

@@ -69,7 +69,7 @@ You can loop through the checked items and access the value and label of each it
 </ul>
 ```
 
-``` output
+```html
 <ul>
     <li>donuts</li>
     <li>icecream</li>

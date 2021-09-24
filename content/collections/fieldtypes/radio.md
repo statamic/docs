@@ -64,7 +64,7 @@ It's a string, so you can just use that value.
 <p>I love {{ favorite }}. A lot.</p>
 ```
 
-``` output
+```html
 <p>I love donuts. A lot.</p>
 ```
 

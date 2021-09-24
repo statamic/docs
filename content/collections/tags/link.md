@@ -26,7 +26,7 @@ For example, if you had a link to `<a href="fanny-packs">`, it would be broken i
 {{ link to="fanny-packs" absolute="true" }}
 ```
 
-``` output
+```html
 /fanny-packs
 https://example.com/fanny-packs
 ```

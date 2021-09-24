@@ -33,7 +33,7 @@ And the shorthand version.
 <a href="{{ oauth:github }}">Sign In with Github</a>
 ```
 
-``` output
+```html
 <a href="/oauth/github">Sign In with Github</a>
 ```
 
@@ -43,6 +43,6 @@ And now with a redirect:
 <a href="{{ oauth:github redirect="/account" }}">Sign In with Github</a>
 ```
 
-``` output
+```html
 <a href="/oauth/github?redirect=/account">Sign In with Github</a>
 ```

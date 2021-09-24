@@ -87,7 +87,7 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
 {{ /hero_image }}
 ```
 
-``` output
+```html
 <img src="/assets/fresh-prince.jpg" alt="Will Smith as the Fresh Prince" />
 <img src="/assets/dj-jazzy-jeff.jpg" alt="Jeffrey Allen Townes as DJ Jazzy Jeff" />
 <img src="/assets/uncle-carl.jpg" alt="Reginald VelJohnson as Carl Winslow" />
@@ -105,7 +105,7 @@ If you have `max_files: 1`, you can also use a single tag syntax to directly use
 {{ hero_image:alt }}
 ```
 
-``` output
+```html
 /assets/surf-boards.jpg
 /assets/surf-boards.jpg
 3 colorful surf boards

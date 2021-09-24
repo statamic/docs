@@ -200,7 +200,7 @@ images:
 {{ /images }}
 ```
 
-``` output
+```html
 <img src="/img/image.jpg?w=600" />
 <img src="/assets/image.svg" />
 ```

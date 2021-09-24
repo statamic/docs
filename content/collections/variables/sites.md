@@ -47,7 +47,7 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 {{ /sites }}
 ```
 
-``` output
+```html
 english
 English Site
 en_US

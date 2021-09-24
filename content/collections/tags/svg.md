@@ -38,7 +38,7 @@ To make dev life easier, this tag collapses whitespace automatically and can set
 {{ svg src="img/icons/square" class="fill-current text-mint" }}
 ```
 
-``` output
+```html
 <svg class="fill-current text-teal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="50"/>
 </svg>

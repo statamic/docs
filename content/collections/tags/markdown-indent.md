@@ -21,7 +21,7 @@ stage: 4
   </article>
 ```
 
-``` output
+```html
 <article class="mx-auto max-w-lg">
   <h1>My Favorite Nickelodeon Shows</h1>
   <ul>

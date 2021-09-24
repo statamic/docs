@@ -52,7 +52,7 @@ Wrap your value with the `Statamic\Modifiers\Modify::value()` method and chain m
 {{ Statamic\Modifiers\Modify::value($content)->striptags()->backspace(1)->ensureRight('!!!') }}
 ```
 
-``` output
+```html
 THIS IS THE FIRST POST, HOW EXCITING!!!
 ```
 
@@ -111,7 +111,7 @@ When the _template_ is **not** an Antlers view, this rule doesn't apply. The lay
 </html>
 ```
 
-``` output
+```html
 <html>
 <body>
   The body content
@@ -134,7 +134,7 @@ The template content
 {!! $template_content !!}
 ```
 
-``` output
+```html
 <html>
 <body>
 The template contents

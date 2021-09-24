@@ -51,7 +51,7 @@ The parameter values will be available in your templates. For example, if you vi
 {{ thing }}
 ```
 
-``` output
+```html
 foo
 ```
 

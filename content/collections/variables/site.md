@@ -31,7 +31,7 @@ As a single tag, it will output the handle of the site:
 {{ site }}
 ```
 
-``` output
+```html
 default
 ```
 
@@ -51,7 +51,7 @@ As a tag pair, you can access additional information:
 {{ /site }}
 ```
 
-``` output
+```html
 default
 My Statamic Site
 en_US
@@ -66,7 +66,7 @@ You can also access those variables directly as single tags:
 {{ site:attributes:foo }}
 ```
 
-``` output
+```html
 My Statamic Site
 bar
 ```

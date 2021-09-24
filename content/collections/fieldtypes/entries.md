@@ -52,7 +52,7 @@ Loop through the entries and do anything you want with the data.
 </ul>
 ```
 
-``` output
+```html
 <ul>
   <li><a href="/look-at-this">Look at This!</a></li>
   <li><a href="/look-at-that">Wait, Look at That!</a></li>

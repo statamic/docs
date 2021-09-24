@@ -68,7 +68,7 @@ The Markdown content will be automatically transformed into HTML through [augmen
 {{ content }}
 ```
 
-``` output
+```html
 <h2>Overview</h2>
 <p>This is the Markdown fieldtype. It's for writing <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, an easy-to-read, easy-to-write plain text format that magically transforms into HTML.</p>
 ```

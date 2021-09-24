@@ -11,6 +11,6 @@ Creates an md5 hash of a variable.
 {{ "hello" | md5 }}
 ```
 
-``` output
+```html
 5d41402abc4b2a76b9719d911017c592
 ```

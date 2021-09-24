@@ -50,7 +50,7 @@ Use the variable in your templates to display the value. That's pretty much it.
 <p>My favorite number is {{ number }}.</p>
 ```
 
-``` output
+```html
 <p>My favorite number is 42.</p>
 ```
 

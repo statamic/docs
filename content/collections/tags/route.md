@@ -29,7 +29,7 @@ This tag is equivalent to the `route()` helper in [Laravel](https://laravel.com/
 </form>
 ```
 
-``` output
+```html
 <form action="/bacon/6">
    ... yummy bacon goodness
 </form>

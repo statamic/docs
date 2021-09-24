@@ -44,7 +44,7 @@ Loop through the structure collecctions with access to all of the entries.
 </ul>
 ```
 
-``` output
+```html
 <ul>
   <li><a href="/look-at-this">Look at This!</a></li>
   <li><a href="/look-at-that">Wait, Look at That!</a></li>

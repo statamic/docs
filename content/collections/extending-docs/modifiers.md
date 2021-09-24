@@ -129,7 +129,7 @@ And template:
 
 You would find yourself with varying amounts of pizza.
 
-``` output
+```html
 PizzaPizza
 PizzaPizzaPizza
 PizzaPizzaPizzaPizzaPizza

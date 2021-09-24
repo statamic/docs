@@ -12,7 +12,7 @@ Break arrays or collections into smaller (wait for it) chunks of any given size.
 
 ```
 {{ collection:news as="posts" limit="6" }}
-  {{ posts chunk="3" }} 
+  {{ posts chunk="3" }}
   <div class="flex space-x-4">
     {{ chunk }}
       <a href="{{ url }}" class="bg-purple-800 text-white p-4">
@@ -24,7 +24,7 @@ Break arrays or collections into smaller (wait for it) chunks of any given size.
 {{ /collection:newsroom }}
 ```
 
-``` output
+```html
 <div class="flex space-x-4">
   <a href="/ideas/book" class="bg-purple-800 text-white p-4">
     Book: Somehow I Manage

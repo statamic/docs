@@ -34,7 +34,7 @@ Loop through the array items to display each item's `value`.
 </ul>
 ```
 
-``` output
+```html
 <h1>Product Ideas</h1>
 <ul>
   <li>'Knife-Wrench (for kids!)</li>

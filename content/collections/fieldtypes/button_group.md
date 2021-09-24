@@ -57,7 +57,7 @@ It's a string, so you can just use that value.
 <p>I love sitting in the {{ seat_choice }} seat. A lot.</p>
 ```
 
-``` output
+```html
 <p>I love sitting in the middle seat. A lot.</p>
 ```
 

@@ -10,9 +10,6 @@ tree:
         id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
         entry: 792644d2-8bd2-421d-a080-e0be7fca125c
       -
-        id: f03ca036-43d5-4bcb-ba03-260732fdf163
-        entry: 24a9c9d8-d607-4117-9806-738668c173cd
-      -
         id: a3f8cff7-6bf4-42ff-9731-42a2a3aecd55
         entry: ab08f409-8bbe-4ede-b421-d05777d292f7
       -
@@ -22,6 +19,10 @@ tree:
     id: 561b2475-a98a-498d-8cbe-2de46e8f5d06
     title: 'Core Concepts'
     children:
+      -
+        id: f03ca036-43d5-4bcb-ba03-260732fdf163
+        entry: 24a9c9d8-d607-4117-9806-738668c173cd
+        title: Overview
       -
         id: 5d8ab0c2-6d95-4877-a4ac-985b22ba408b
         entry: 7277432d-bb25-458a-a3a2-a72976b44ad5

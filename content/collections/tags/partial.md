@@ -40,7 +40,7 @@ You can pass additional data into a partial via on-the-fly parameters. The param
 {{ items | ul }}
 ```
 
-``` output
+```html
 <h2>These are my favorite ice cream flavors</h2>
 <ul>
   <li>Chocolate Chip Cookie Dough</li>

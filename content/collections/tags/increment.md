@@ -26,7 +26,7 @@ Most loops already have an `index` variable that will display which iteration th
 {{ /items }}
 ```
 
-``` output
+```html
 0 1 2 3 4 5
 ```
 

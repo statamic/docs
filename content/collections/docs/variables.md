@@ -71,7 +71,7 @@ foo: bar
 ---
 {{ view:foo }}
 ```
-``` output
+```html
 bar
 ```
 
