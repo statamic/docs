@@ -12,7 +12,7 @@
             <div class="pl-2 md:p-0">
                 {{ nav :handle="section" }}
                 <div class="relative pl-1">
-                    <button class="text-lg relative font-medium font-display my-4 flex items-center" @click="open = '{{ title }}'">
+                    <button class="text-lg relative font-medium font-display my-4 flex items-center" @click="open = (open === '{{ title }}') ? '' : '{{ title }}'">
                         <img src="/img/chevron.svg" class="mr-3 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
                         <span>{{ title }}</span>
                     </button>
