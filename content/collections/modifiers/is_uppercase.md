@@ -8,7 +8,7 @@ title: 'Is Uppercase'
 ---
 Returns `true` if string is only uppercase characters.
 
-```.language-yaml
+```yaml
 declaration: NOISES
 cite: anonymous
 ```
@@ -18,7 +18,7 @@ cite: anonymous
 {{ if cite | is_uppercase }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

@@ -11,6 +11,6 @@ Get the absolute URL to the content. This will include your site URL.
 {{ permalink }}
 ```
 
-``` .language-output
+```html
 http://example.com/posts/bacon
 ```

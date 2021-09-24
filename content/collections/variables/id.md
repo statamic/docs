@@ -12,6 +12,6 @@ However it's super handy to pass into other tags.
 {{ id }}
 ```
 
-``` .language-output
+```html
 0020c540-d4cd-11e5-a837-0800200c9a66
 ```

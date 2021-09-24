@@ -12,7 +12,7 @@ You can turn off the extra words "ago", "until", and so on by passing `false` as
 
 The string will be localized into your current site locale.
 
-```.language-yaml
+```yaml
 past_date: October 1 2015
 future_date: October 1 2019
 ```
@@ -25,7 +25,7 @@ future_date: October 1 2019
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 {{ test_date | relative }}
 {{ test_future_date | relative }}
 {{ test_date | relative:false }}

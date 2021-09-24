@@ -9,7 +9,7 @@ title: 'Is Today'
 ---
 Returns `true` if date is today - using the server's time.
 
-```.language-yaml
+```yaml
 date: {{ now format="F j Y" }}
 another_date: November 6 2015
 ```
@@ -20,7 +20,7 @@ another_date: November 6 2015
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 true
 false
 ```

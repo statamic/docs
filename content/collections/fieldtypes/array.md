@@ -52,7 +52,7 @@ The screenshot above depicts the two modes you can choose from. One for when you
 The second field contains pre-defined keys. This will give the user a stricter input. They can only enter the values
 for the specified keys, and they cannot be reordered.
 
-``` .language-yaml
+```yaml
 address:
   type: array
   keys:
@@ -76,7 +76,7 @@ keys:
 
 The second field contains no pre-defined keys. This will allow the user to define them on the fly and re-arrange them.
 
-``` .language-yaml
+```yaml
 address:
   type: array
 ```
@@ -91,7 +91,7 @@ key_header: Why is it awesome?
 
 In the example above, both fields would save the exact same data.
 
-``` .language-yaml
+```yaml
 address:
   street: 221B Baker Street
   city: London

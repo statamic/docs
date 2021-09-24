@@ -11,7 +11,7 @@ Format a number with grouped thousands and decimal points. In other words, make 
 - Parameter 2: Decimal point (default `.`)
 - Parameter 3: Thousands separator (default: `,`)
 
-```.language-yaml
+```yaml
 lucky_number: 130134.109
 ```
 
@@ -19,6 +19,6 @@ lucky_number: 130134.109
 {{ lucky_number format_number="1|,|," }}
 ```
 
-```.language-output
+```html
 130,134,1
 ```

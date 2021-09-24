@@ -8,7 +8,7 @@ title: URL Decode
 ---
 URL-decodes a string. The inverse of [urlencode](#urlencode)
 
-```.language-yaml
+```yaml
 string: I+just+want+%26+need+%24pecial+characters%21
 ```
 
@@ -16,6 +16,6 @@ string: I+just+want+%26+need+%24pecial+characters%21
 {{ string | urldecode }}
 ```
 
-```.language-output
+```html
 I just want & need $pecial characters!
 ```

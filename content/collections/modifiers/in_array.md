@@ -11,7 +11,7 @@ Check if an array contains a specific value. Returns `true` if a match is found.
 
 The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching variable, otherwise it will use the parameter as the value. You can pass multiple arguments.
 
-```.language-yaml
+```yaml
 shopping_list:
   - eggs
   - flour
@@ -26,7 +26,7 @@ want: eggs
 ```
 
 
-```.language-output
+```html
 GOT IT!
 GOT EM!
 YES I DID NOT FORGET!

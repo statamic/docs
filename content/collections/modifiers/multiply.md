@@ -7,7 +7,7 @@ title: Multiply
 ---
 Multiply a value or another variable to your variable. Pass an integer or the name of a second variable as the parameter. Also supports `*` as shorthand.
 
-```.language-yaml
+```yaml
 smiles: 3
 winks: 4
 ```
@@ -19,7 +19,7 @@ winks: 4
 
 ```
 
-```.language-output
+```html
 30
 12
 12

@@ -7,7 +7,7 @@ title: Trim
 ---
 Returns a string with whitespace removed from the start and end of the string. Supports the removal of unicode whitespace.
 
-```.language-yaml
+```yaml
 string: "    This is so sloppy   "
 ```
 
@@ -15,6 +15,6 @@ string: "    This is so sloppy   "
 {{ string | trim }}
 ```
 
-```.language-output
+```html
 This is so sloppy
 ```

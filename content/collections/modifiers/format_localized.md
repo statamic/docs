@@ -10,7 +10,7 @@ Given a date string, or anything that sort of looks like a date string, `format`
 
 For this to work you will need to have the necessary locales installed in your hosting environment.
 
-```.language-yaml
+```yaml
 event_date: April 15 2016
 ```
 
@@ -20,7 +20,7 @@ event_date: April 15 2016
 
 Assuming your locale is `fr_FR`:
 
-```.language-output
+```html
 Vendredi 15 avril 2016
 ```
 

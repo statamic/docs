@@ -8,7 +8,7 @@ title: Markdown
 ---
 Transform a string with [Markdown][markdown].
 
-```.language-yaml
+```yaml
 quote: You can't wait for inspiration. **You have to go after it with a club.**
 
 ```
@@ -17,7 +17,7 @@ quote: You can't wait for inspiration. **You have to go after it with a club.**
 {{ quote | markdown }}
 ```
 
-```.language-output
+```html
 <p>
     You can't wait for inspiration. <strong>You have to go after it with a club.</strong>
 </p>

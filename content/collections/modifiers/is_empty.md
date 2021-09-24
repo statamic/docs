@@ -7,7 +7,7 @@ title: 'Is Empty'
 ---
 Checks to see if an array is empty without any set values. Works with numeric indexes, associative, and string keyed arrays of all depths. It's pretty smart, as these things go.
 
-```.language-yaml
+```yaml
 some_data:
   - is living here
 more_data:
@@ -24,7 +24,7 @@ more_data:
 
 ```
 
-```.language-output
+```html
 false
 true
 ```

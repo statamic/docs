@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="{{ mix src='/js/app.js' }}" defer></script>
 </head>
-<body class="font-sans leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
+<body class="font-sans leading-normal" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
 <div class="max-w-7xl mx-auto flex px-4 md:px-10 py-6 lg:py-12" name="top">
@@ -31,6 +31,5 @@
 {{ partial:old-docs-banner }}
 {{ partial:footer }}
 {{ partial:scripts }}
-<script src="https://run.antlers.dev/js/embed.js"></script>
 </body>
 </html>

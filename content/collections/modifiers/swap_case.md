@@ -8,7 +8,7 @@ title: 'Swap Case'
 ---
 Returns a case swapped version of the string.
 
-```.language-yaml
+```yaml
 string: IpHONE
 ```
 
@@ -16,6 +16,6 @@ string: IpHONE
 {{ string | swap_case }}
 ```
 
-```.language-output
+```html
 iPhone
 ```

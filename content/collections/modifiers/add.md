@@ -23,5 +23,3 @@ magazines: 10
 15
 15
 ```
-
-<div data-antlers-run="ksC6fvMwKXaFl2uq"></div>

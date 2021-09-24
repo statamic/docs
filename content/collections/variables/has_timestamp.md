@@ -15,6 +15,6 @@ A boolean for whether or not an entry is time-based.
 {{ /if }}
 ```
 
-``` .language-output
+```html
 January 1st, 2016 11:30 am
 ```

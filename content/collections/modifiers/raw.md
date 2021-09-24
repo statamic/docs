@@ -15,7 +15,7 @@ Returns the [unaugmented](/augmentation) version of the variable.
 If you had a Markdown field and wanted to render the actual Markdown-formatted text instead of rendered HTML, you can do this:
 
 ### The YAML
-```.language-yaml
+```yaml
 markdown_field: >
   # How to Breakdance
 

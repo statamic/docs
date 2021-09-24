@@ -7,7 +7,7 @@ title: Backspace
 ---
 Removes a specified number of characters from the end of a string.
 
-```.language-yaml
+```yaml
 title: supercalifragilisticexpialidocious
 ```
 
@@ -15,6 +15,6 @@ title: supercalifragilisticexpialidocious
 {{ title | backspace:29 }}
 ```
 
-```.language-output
+```html
 super
 ```

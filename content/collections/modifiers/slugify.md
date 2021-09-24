@@ -10,7 +10,7 @@ Converts the string into an URL slug. This includes replacing non-ASCII characte
 and non-alphanumeric characters, and replacing whitespace with dashes. And then everything is lowercased.
 
 
-```.language-yaml
+```yaml
 string: Please, have some lemoñade.
 ```
 
@@ -18,6 +18,6 @@ string: Please, have some lemoñade.
 {{ string | slugify }}
 ```
 
-```.language-output
+```html
 please-have-some-lemonade
 ```

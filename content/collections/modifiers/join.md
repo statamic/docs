@@ -9,7 +9,7 @@ title: Join
 ---
 Turn an array into a string by gluing together all the data with any specified delimiter. It uses a comma by default.
 
-```.language-yaml
+```yaml
 tasks:
   - take a shower
   - brush hair
@@ -21,7 +21,7 @@ tasks:
 {{ tasks join=" + " }} = ready
 ```
 
-```.language-output
+```html
 take a shower, brush hair, clip toenails
 take a shower + brush hair + clip toenails = ready
 ```

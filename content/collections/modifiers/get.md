@@ -10,7 +10,7 @@ modifier_types:
 Gets a value from a relationship based on its ID. This is like a nicer-to-read single tag version of the
 [Get_Content Tag](/tags/get_content).
 
-``` .language-yaml
+```yaml
 featured_post: 4e82a520-275f-11e6-bdf4-0800200c9a66
 ```
 
@@ -18,7 +18,7 @@ featured_post: 4e82a520-275f-11e6-bdf4-0800200c9a66
 {{ featured_post | get:title }}
 ```
 
-``` .language-output
+```html
 Featured Post Title
 ```
 

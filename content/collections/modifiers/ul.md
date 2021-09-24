@@ -8,7 +8,7 @@ title: UL
 ---
 Turn an array into an HTML unordered list element.
 
-```.language-yaml
+```yaml
 food:
   - sushi
   - broccoli
@@ -19,7 +19,7 @@ food:
 {{ food | ul }}
 ```
 
-```.language-output
+```html
 <ul>
   <li>sushi</li>
   <li>broccoli</li>

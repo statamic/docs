@@ -11,6 +11,6 @@ Get the pre-formatted date of the entry as a string.
 {{ date }}
 ```
 
-``` .language-output
+```html
 February 16, 2016
 ```

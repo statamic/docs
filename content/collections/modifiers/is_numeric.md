@@ -8,7 +8,7 @@ title: 'Is Numeric'
 ---
 Returns `true` if variable is a number or numeric string.
 
-```.language-yaml
+```yaml
 sequence: 4815162342
 another_sequence: just type 4 8 15 16 23 42
 ```
@@ -18,7 +18,7 @@ another_sequence: just type 4 8 15 16 23 42
 {{ if another_sequence | is_numeric }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

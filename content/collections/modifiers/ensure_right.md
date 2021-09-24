@@ -8,7 +8,7 @@ title: 'Ensure Right'
 ---
 Ensures that the string ends with a specified string. If it doesn't, it will now.
 
-```.language-yaml
+```yaml
 links:
   - statamic
   - wilderborn.com
@@ -20,7 +20,7 @@ links:
 {{ /links }}
 ```
 
-```.language-output
+```html
 <li>statamic.com</li>
 <li>wilderborn.com</li>
 ```

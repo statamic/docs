@@ -9,7 +9,7 @@ title: First
 ---
 Returns the first X characters of a string, where X is any positive integer.
 
-```.language-yaml
+```yaml
 title: 2015 Year Books Photos
 ```
 
@@ -17,6 +17,6 @@ title: 2015 Year Books Photos
 {{ title | first:4 }}
 ```
 
-```.language-output
+```html
 2015
 ```

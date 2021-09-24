@@ -8,7 +8,7 @@ title: Link
 ---
 Generate an HTML link element with the value as `href`.
 
-```.language-yaml
+```yaml
 neat_site: http://example.com
 ```
 
@@ -16,6 +16,6 @@ neat_site: http://example.com
 {{ neat_site | link }}
 ```
 
-```.language-output
+```html
 <a href="http://example.com">http://example.com</a>
 ```

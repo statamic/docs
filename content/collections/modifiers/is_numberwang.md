@@ -8,7 +8,7 @@ title: 'Is Numberwang'
 ---
 Is it or is it not numberwang? Returns `true` if it is indeed numberwang.
 
-```.language-yaml
+```yaml
 number: 1002
 ```
 
@@ -16,6 +16,6 @@ number: 1002
 {{ if number | is_numberwang }}
 ```
 
-```.language-output
+```html
 ???
 ```

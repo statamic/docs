@@ -7,7 +7,7 @@ title: Sort
 ---
 Sort an array by key as parameter 1 and direction (`asc`/`desc`) as parameter 2. If sorting a primitive list no parameters are necessary.
 
-```.language-yaml
+```yaml
 primitive:
   - Zebra
   - Alpha
@@ -36,7 +36,7 @@ complex:
 {{ /complex }}
 ```
 
-```.language-output
+```html
 Alpha, Bravo, Zebra
 
 Hello, Altruistic Alpha

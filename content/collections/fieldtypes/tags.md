@@ -15,7 +15,7 @@ Press `enter`, `tab`, or `,` to add a tag. Click an <span class="bg-grey-200 tex
 ## Data Storage
 Your tags will get saved as a simple YAML list, like this:
 
-``` .language-yaml
+```yaml
 - applesauce
 - garbage pants
 - socks

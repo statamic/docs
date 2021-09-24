@@ -12,7 +12,7 @@ A slug is the string that identifies your content. It usually sits at the end of
 {{ slug }}
 ```
 
-``` .language-output
+```html
 <h1>My Thoughts on Bacon</h1>
 my-thoughts-on-bacon
 ```

@@ -12,6 +12,6 @@ The name of the template currently in use.
 {{ template }}
 ```
 
-``` .language-output
+```html
 landing-two
 ```

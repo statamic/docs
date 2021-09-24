@@ -7,7 +7,7 @@ title: 'Starts With'
 ---
 Returns `true` if the value starts with a given string. This comparison is case-insensitive.
 
-```.language-yaml
+```yaml
 reply: Actually, I disagree because this is the internet.
 ```
 
@@ -16,7 +16,7 @@ reply: Actually, I disagree because this is the internet.
 {{ if reply | starts_with:respectfully }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

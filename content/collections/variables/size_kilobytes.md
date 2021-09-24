@@ -11,6 +11,6 @@ The file size of the asset, in kilobytes. Also available as `size_kb`.
 {{ size_kilobytes }}
 ```
 
-``` .language-output
+```html
 127.69
 ```

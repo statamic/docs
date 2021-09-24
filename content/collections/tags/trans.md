@@ -29,7 +29,7 @@ stage: 4
 
 Get the `bar` string from the `resources/lang/en/foo.php` translation file (where `en` is the current locale).
 
-``` .language-php
+```php
 <?php
 return [
     'bar' => 'Bar!',
@@ -42,19 +42,19 @@ return [
 {{ trans:foo.bar }} or {{ trans key="foo.bar" }}
 ```
 
-``` .language-output
+```html
 Bar!
 ```
 
 ## Replacements
 
-Any additional tag parameters will be treated as parameters that should be replaced in the string. 
+Any additional tag parameters will be treated as parameters that should be replaced in the string.
 
 ```
 {{ trans:foo.welcome name="Bob" }}
 ```
 
-``` .language-output
+```html
 Welcome, Bob!
 ```
 
@@ -66,6 +66,6 @@ To pluralize, use the `trans_choice` tag with a `count` parameter.
 {{ trans_choice:foo.apples count="2" }}
 ```
 
-``` .language-output
+```html
 There are 2 apples
 ```

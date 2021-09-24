@@ -7,7 +7,7 @@ title: 'Is Blank'
 ---
 Returns `true` if the string contains only whitespace chars.
 
-```.language-yaml
+```yaml
 ghost:
 zombie: BRAINSSSS
 ```
@@ -17,7 +17,7 @@ zombie: BRAINSSSS
 {{ if zombie | is_blank }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

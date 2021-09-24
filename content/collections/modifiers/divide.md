@@ -7,7 +7,7 @@ title: Divide
 ---
 Divide a value or another variable by your variable. Pass an integer or the name of a second variable as the parameter.
 
-```.language-yaml
+```yaml
 bacon: 21
 skillets: 3
 ```
@@ -17,7 +17,7 @@ skillets: 3
 {{ skillets divide="3" }}
 ```
 
-```.language-output
+```html
 7
 1
 ```

@@ -8,7 +8,7 @@ title: lcfirst
 ---
 Converts the first character of the supplied string to lower case.
 
-```.language-yaml
+```yaml
 title: Wow
 ```
 
@@ -16,6 +16,6 @@ title: Wow
 {{ title | lcfirst }}
 ```
 
-```.language-output
+```html
 wow
 ```

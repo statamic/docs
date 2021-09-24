@@ -9,7 +9,7 @@ title: Reverse
 ---
 Reverse the order of the characters in a string or the items in an array.
 
-```.language-yaml
+```yaml
 status: repaid
 order_of_ceremony:
   - photos
@@ -23,7 +23,7 @@ order_of_ceremony:
 {{ order_of_ceremony | reverse | list }}
 ```
 
-```.language-output
+```html
 diapers
 party, eat, service, photos
 ```

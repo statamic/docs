@@ -7,7 +7,7 @@ title: 'Console Log'
 ---
 Debug a variable by dumping its contents to your browser's JavaScript's console via `console.log`.
 
-```.language-yaml
+```yaml
 fruit:
   - apples
   - bananas
@@ -18,7 +18,7 @@ fruit:
 {{ fruit | console_log }}
 ```
 
-```.language-javascript
+```js
 ["apples", "banana", "jerky"]
 ```
 

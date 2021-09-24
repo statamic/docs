@@ -11,6 +11,6 @@ The URL of the homepage. Usually (but not always) the same as `{{ site:url }}`.
 {{ homepage }}
 ```
 
-``` .language-output
+```html
 https://docs.statamic.com/
 ```

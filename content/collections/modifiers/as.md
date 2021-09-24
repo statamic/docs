@@ -8,7 +8,7 @@ title: As
 ---
 Alias an array variable with a key, giving you some useful markup/iteration options.
 
-```.language-yaml
+```yaml
 blocks:
   -
     type: text
@@ -24,7 +24,7 @@ blocks:
 {{ /blocks }}
 ```
 
-```.language-output
+```html
 <!-- Each block would be rendered with its own partial matching the {{ type }} var -->
 
 <div class="text">

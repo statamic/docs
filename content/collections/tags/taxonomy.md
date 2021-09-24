@@ -135,7 +135,7 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
 {{ /taxonomy:categories }}
 ```
 
-``` .language-output
+```html
 <h2>News</h2>
 <ul>
   <li><a href="/blog/breaking">A breaking story!</a></li>

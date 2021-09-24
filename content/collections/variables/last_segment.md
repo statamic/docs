@@ -13,6 +13,6 @@ Example URL: `/nestled/safely/under/our/tree`
 {{ last_segment }}
 ```
 
-``` .language-output
+```html
 tree
 ```

@@ -8,7 +8,7 @@ title: 'Ampersand List'
 ---
 Turn a simple array into a comma delimited string with a friendly little ampersand between the last two items.
 
-```.language-yaml
+```yaml
 fruits:
   - apples
   - bananas
@@ -19,6 +19,6 @@ fruits:
 {{ fruits | ampersand_list }}
 ```
 
-```.language-output
+```html
 apples, bananas & jerky
 ```

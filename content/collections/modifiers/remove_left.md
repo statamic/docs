@@ -8,7 +8,7 @@ title: 'Remove Left'
 ---
 Ensures that the string never begins with a specified string.
 
-```.language-yaml
+```yaml
 twitter: @statamic
 ```
 
@@ -16,6 +16,6 @@ twitter: @statamic
 <a href="http://twitter.com/{{ twitter | remove_left:@ }}">Twitter</a>
 ```
 
-```.language-output
+```html
 <a href="http://twitter.com/statamic">Twitter</a>
 ```

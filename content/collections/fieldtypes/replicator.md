@@ -25,7 +25,7 @@ You may collapse your sets to conserve space. If you do, a preview of the data c
 
 The following fieldset YAML is an example of what could be used to construct the Replicator shown in the screenshot above:
 
-``` language-yaml
+``` yaml
 fields:
   my_replicator_field:
     type: replicator
@@ -66,7 +66,7 @@ You can use any fieldtypes inside your Replicator sets. Make sure to compare the
 
 Replicator stores your data as an array with the set name as `type`.
 
-```.language-yaml
+```yaml
 my_replicator_field:
   -
     type: text

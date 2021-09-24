@@ -9,7 +9,7 @@ title: Last
 ---
 Returns the last X characters of a string, where X is any positive integer.
 
-```.language-yaml
+```yaml
 title: 2015 Denver Nuggets
 ```
 
@@ -17,6 +17,6 @@ title: 2015 Denver Nuggets
 {{ title | last:7 }}
 ```
 
-```.language-output
+```html
 Nuggets
 ```

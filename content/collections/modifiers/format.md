@@ -8,7 +8,7 @@ title: Format
 ---
 Given a date string, or anything that sort of looks like a date string, `format` will convert it to a [Carbon][carbon] instance and allow you to format it with PHP's [datetime format][datetime] variables.
 
-```.language-yaml
+```yaml
 event_date: April 15 2016
 ```
 
@@ -16,7 +16,7 @@ event_date: April 15 2016
 {{ event_date format="Y-m-d"}}
 ```
 
-```.language-output
+```html
 2016-04-15
 ```
 

@@ -8,7 +8,7 @@ title: Sanitize
 ---
 Convert special characters to HTML entities with [htmlspecialchars][htmlspecialchars].
 
-```.language-yaml
+```yaml
 example: <b>NEAT</b>
 ```
 
@@ -16,7 +16,7 @@ example: <b>NEAT</b>
 {{ example | sanitize }}
 ```
 
-```.language-output
+```html
 &lt;b&gt;NEAT&lt;b&gt;
 ```
 

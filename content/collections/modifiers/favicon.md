@@ -8,7 +8,7 @@ title: Favicon
 ---
 Given a valid URL will generate a proper favicon meta tag.
 
-```.language-yaml
+```yaml
 icon: /assets/img/favicon.png
 ```
 
@@ -16,6 +16,6 @@ icon: /assets/img/favicon.png
 {{ icon | favicon }}
 ```
 
-```.language-output
+```html
 <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png" />
 ```

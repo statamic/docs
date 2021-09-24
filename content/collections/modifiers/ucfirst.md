@@ -7,7 +7,7 @@ title: Ucfirst
 ---
 Converts the first character of a string to upper case.
 
-```.language-yaml
+```yaml
 string: i wanna go home.
 ```
 
@@ -15,6 +15,6 @@ string: i wanna go home.
 {{ string | ucfirst }}
 ```
 
-```.language-output
+```html
 I wanna go home.
 ```

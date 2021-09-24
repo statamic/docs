@@ -8,7 +8,7 @@ title: Collapse
 ---
 Collapses an array of arrays into a flat array. If duplicate keys exist they *will* get stomped over.
 
-```.language-yaml
+```yaml
 numbers:
   - [one, two, three]
   - [four, five, six]
@@ -18,7 +18,7 @@ numbers:
 {{ numbers | collapse }}
 ```
 
-```.language-yaml
+```yaml
 numbers:
   - one
   - two

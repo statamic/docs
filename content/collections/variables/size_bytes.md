@@ -11,6 +11,6 @@ The file size of the asset, in bytes. Also available as `size_b`.
 {{ size_bytes }}
 ```
 
-``` .language-output
+```html
 130754
 ```

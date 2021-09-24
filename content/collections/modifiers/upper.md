@@ -7,7 +7,7 @@ title: Upper
 ---
 Transform a string into uppercase. Multi-byte friendly.
 
-```.language-yaml
+```yaml
 string: That is über neat.
 ```
 
@@ -15,6 +15,6 @@ string: That is über neat.
 {{ string | upper }}
 ```
 
-```.language-output
+```html
 THAT IS ÜBER NEAT.
 ```

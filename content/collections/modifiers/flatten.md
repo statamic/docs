@@ -8,7 +8,7 @@ title: Flatten
 ---
 Flattens a multi-dimensional array (a Grid or Replicator field for example) into a single dimension.
 
-```.language-yaml
+```yaml
 ingredients:
   spices: [garlic, cumin, ginger, turmeric, paprika, curry powder]
   vegetables: [tomatoes, onion]
@@ -19,7 +19,7 @@ ingredients:
 {{ ingredients | flatten }}
 ```
 
-```.language-yaml
+```yaml
 ingredients:
   - garlic
   - cumin

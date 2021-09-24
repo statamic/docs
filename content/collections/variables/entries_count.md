@@ -11,6 +11,6 @@ Get the number of entries that use this taxonomy term.
 There are {{ entries_count }} 'news' entries.
 ```
 
-``` .language-output
+```html
 There are 85 'news' entries.
 ```

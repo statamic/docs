@@ -8,7 +8,7 @@ title: 'Sentence List'
 ---
 Turn a simple array into a friendly comma delimited list with the word "and" before the last item.
 
-```.language-yaml
+```yaml
 things:
   - batman
   - zombies
@@ -19,7 +19,7 @@ things:
 I like {{ things | sentence_list }}.
 ```
 
-```.language-output
+```html
 I like batman, zombies, and scrunchies.
 ```
 
@@ -29,7 +29,7 @@ By default, the "glue" is the word "and", and will be translated appropriately. 
 I like {{ things | sentence_list:& }}.
 ```
 
-```.language-output
+```html
 I like batman, zombies, & scrunchies.
 ```
 
@@ -39,6 +39,6 @@ The second argument controls the oxford comma. Set that to 0 and it'll get remov
 I like {{ things | sentence_list:and:0 }}.
 ```
 
-```.language-output
+```html
 I like batman, zombies and scrunchies.
 ```

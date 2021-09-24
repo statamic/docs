@@ -7,7 +7,7 @@ title: Dashify
 ---
 Returns a lowercase and trimmed string separated by dashes. Dashes are inserted before uppercase characters (with the exception of the first character of the string), and in place of spaces as well as underscores.
 
-```.language-yaml
+```yaml
 title: Just Because I Can
 ```
 
@@ -15,7 +15,7 @@ title: Just Because I Can
 {{ title | dashify }}
 ```
 
-```.language-output
+```html
 just-because-i-can
 ```
 

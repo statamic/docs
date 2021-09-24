@@ -13,6 +13,6 @@ For pages this could be a number. For entries it could be a number or a date str
 {{ order }}
 ```
 
-``` .language-output
+```html
 1
 ```

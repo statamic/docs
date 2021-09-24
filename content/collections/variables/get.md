@@ -20,7 +20,7 @@ Example URL: `/about?show=pants&hide=jeggings`
 
 ```
 
-``` .language-output
+```html
 pants
 
 pants

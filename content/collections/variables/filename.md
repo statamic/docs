@@ -11,6 +11,6 @@ The filename of the asset, without the extension.
 {{ filename }}
 ```
 
-``` .language-output
+```html
 black-bear-cubs
 ```

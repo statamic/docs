@@ -9,7 +9,7 @@ title: 'Modify Date'
 Alters a timestamp by incrementing or decrementing in a format accepted by PHP's native [`strtotime()`](http://php.net/manual/en/function.strtotime.php) method.
 
 
-```.language-yaml
+```yaml
 date: {{ now }}
 ```
 
@@ -21,7 +21,7 @@ date: {{ now }}
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 {{ now | modify_date:last Sunday }}
 {{ now | modify_date:+3 months }}
 {{ now | modify_date:-2 weeks }}

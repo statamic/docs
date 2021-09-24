@@ -9,7 +9,7 @@ title: 'Is Yesterday'
 ---
 Returns `true` if date is yesterday - using the server's time.
 
-```.language-yaml
+```yaml
 date: {{ now modify_date="-1 day" format="F j Y" }}
 ```
 {{ noparse }}
@@ -18,6 +18,6 @@ date: {{ now modify_date="-1 day" format="F j Y" }}
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 true
 ```

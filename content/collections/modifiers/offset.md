@@ -8,7 +8,7 @@ title: Offset
 ---
 Offsets the items returned in an array.
 
-```.language-yaml
+```yaml
 playlist:
   - Emancipator
   - Gong Gong
@@ -22,7 +22,7 @@ Use with the pipe syntax to continue chaining in a single tag like so:
 {{ playlist | offset:1 | join }}
 ```
 
-```.language-output
+```html
 Gong Gong, Possom Posse, Justin Bieber
 ```
 
@@ -34,7 +34,7 @@ Or using the parameter syntax:
 {{ /playlist }}
 ```
 
-```.language-output
+```html
 <li>Gong Gong</li>
 <li>Possom Posse</li>
 <li>Justin Bieber</li>

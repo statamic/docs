@@ -8,7 +8,7 @@ title: Floor
 ---
 Rounds a number down to the next whole number.
 
-```.language-yaml
+```yaml
 number: 25.98
 ```
 
@@ -16,6 +16,6 @@ number: 25.98
 {{ number | floor }}
 ```
 
-```.language-output
+```html
 25
 ```

@@ -11,6 +11,6 @@ The height of an image asset, in pixels.
 {{ height }}
 ```
 
-``` .language-output
+```html
 643
 ```

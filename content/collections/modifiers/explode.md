@@ -8,7 +8,7 @@ title: Explode
 ---
 Breaks a string into an array of strings split on a given delimiter.
 
-```.language-yaml
+```yaml
 places: Scotland, England, Switzerland, Italy
 ```
 
@@ -16,7 +16,7 @@ places: Scotland, England, Switzerland, Italy
 {{ places | explode:, | ul }}
 ```
 
-```.language-html
+```html
 <ul>
   <li>Scotland</li>
   <li>England</li>

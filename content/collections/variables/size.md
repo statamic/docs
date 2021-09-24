@@ -13,7 +13,7 @@ The file size of the asset, in an appropriate human-readable format.
 {{ /assets:files }}
 ```
 
-``` .language-output
+```html
 11 B
 127.69 KB
 1.5 MB

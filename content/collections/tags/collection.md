@@ -360,7 +360,7 @@ Sometimes not all of your entries have the same set of variables. And sometimes 
 
 You can assign a _scope_ prefix to your entries so you can be sure to get the data you want. Define your scope and then prefix all of your variables with it.
 
-```{.language-yaml}
+```yaml
 # Page data
 featured_image: /img/totes-adorbs-kitteh.jpg
 ```

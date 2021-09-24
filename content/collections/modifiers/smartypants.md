@@ -12,7 +12,7 @@ Translate plain ASCII punctuation characters into “smart” typographic punctu
 - Two dashes (`--`) into an em dash.
 - Three consecutive dots (`...`) into an ellipsis entity
 
-``` .language-yaml
+```yaml
 conversation: |
   "What's your favorite album?" asked Lars. ``...And Justice for All'' replied
   Kirk -- who was icing his hands after a 20 minute guitar solo.
@@ -22,14 +22,14 @@ conversation: |
 {{ conversation | smartypants }}
 ```
 
-``` .language-output
+```html
 “What’s your favorite album?” asked Lars. “…And Justice for All” replied
 Kirk — who was icing his hands after a 20 minute guitar solo.
 ```
 
 or more precisely...
 
-``` .language-output
+```html
 &#8220;What&#8217;s your favorite album?&#8221; asked Lars. &#8220;&#8230;And Justice for All&#8221; replied
 Kirk &#8212; who was icing his hands after a 20 minute guitar solo.
 ```

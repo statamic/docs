@@ -8,7 +8,7 @@ title: Mailto
 ---
 Generate a `mailto` link element with the value as the email address. If it's _not_ an email address, it's going to be one busted link.
 
-```.language-yaml
+```yaml
 holler: holler@example.com
 ```
 
@@ -16,6 +16,6 @@ holler: holler@example.com
 {{ holler | mailto }}
 ```
 
-```.language-output
+```html
 <a href="mailto:holler@example.com">holler@example.com</a>
 ```

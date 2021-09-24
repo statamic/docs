@@ -13,6 +13,6 @@ Alias of `timestamp`. Maybe calling it a datestamp makes more sense to you if yo
 {{ datestamp }}
 ```
 
-``` .language-output
+```html
 1425772800
 ```

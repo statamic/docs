@@ -8,7 +8,7 @@ title: 'Is Lowercase'
 ---
 Returns `true` if string is only lowercase characters.
 
-```.language-yaml
+```yaml
 topic: fhqwhgads
 from: Sibbie
 ```
@@ -18,7 +18,7 @@ from: Sibbie
 {{ if from | is_lowercase }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

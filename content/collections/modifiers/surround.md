@@ -7,7 +7,7 @@ title: Surround
 ---
 Surrounds a string with another string.
 
-```.language-yaml
+```yaml
 string:  ͜
 ```
 
@@ -15,6 +15,6 @@ string:  ͜
 {{ string | surround:ʘ }}
 ```
 
-```.language-output
+```html
 ʘ ͜ ʘ
 ```

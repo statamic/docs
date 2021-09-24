@@ -8,7 +8,7 @@ modifier_types:
 ---
 Breaks a string at a given marker. Uses `<!--more-->` by default.
 
-```.language-yaml
+```yaml
 ---
 title: 'Example Entry'
 ---
@@ -19,7 +19,7 @@ Lorem Ipsum dolor sit amet.<!--more--> consectetur adipiscing elit, sed do eiusm
 {{ books | excerpt }}
 ```
 
-```.language-output
+```html
 Lorem Ipsum dolor sit amet.
 ```
 

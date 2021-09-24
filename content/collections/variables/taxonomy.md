@@ -11,6 +11,6 @@ Get the name of the taxonomy the term belongs to.
 {{ taxonomy }}
 ```
 
-``` .language-output
+```html
 categories
 ```

@@ -61,7 +61,7 @@ you will have all of the term's data available as variables.
 </ul>
 ```
 
-``` .language-output
+```html
 <ul>
   <li><a href="/wildlife/kangaroo">Kangaroo</a></li>
   <li><a href="/wildlife/three-toed-sloth">Three Toed Sloth</a></li>
@@ -93,7 +93,7 @@ You will need to use the [Relate Tag](/tags/relate) in your template to have the
 </ul>
 ```
 
-``` .language-output
+```html
 <ul>
   <li><a href="/categories/hats">Hats</a></li>
   <li><a href="/tags/delightful">Delightful</a></li>

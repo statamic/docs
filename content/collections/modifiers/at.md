@@ -7,7 +7,7 @@ title: At
 ---
 Returns the single character at a given position in a string. It starts at zero with the first character.
 
-```.language-yaml
+```yaml
 title: supercalifragilisticexpialidocious
 ```
 
@@ -15,6 +15,6 @@ title: supercalifragilisticexpialidocious
 {{ title | at:21 }}
 ```
 
-```.language-output
+```html
 x
 ```

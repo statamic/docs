@@ -8,7 +8,7 @@ title: 'Is After'
 ---
 Returns `true` if a date variable is after another date. That second date can be the name of another variable or a literal date string.
 
-```.language-yaml
+```yaml
 start_date: January 17 2015
 end_date: December 1 2015
 ```
@@ -19,7 +19,7 @@ end_date: December 1 2015
 {{ if start_date | is_after:end_date }}
 ```
 
-```.language-output
+```html
 true
 true
 false

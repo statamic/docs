@@ -8,7 +8,7 @@ title: 'Is Weekday'
 ---
 Returns `true` if date is a weekday.
 
-```.language-yaml
+```yaml
 date: December 25 2015
 ```
 
@@ -17,6 +17,6 @@ date: December 25 2015
 ```
 
 
-```.language-output
+```html
 true
 ```

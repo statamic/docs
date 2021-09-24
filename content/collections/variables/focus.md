@@ -11,7 +11,7 @@ The focal point of the asset, defaulting to center (`50-50`).
 {{ focus }}
 ```
 
-``` .language-output
+```html
 50-30
 ```
 
@@ -22,7 +22,7 @@ background-position: {{ focus | background_position }};
 background-position: {{ focus_css }};
 ```
 
-``` .language-output
+```html
 background-position: 50% 30%;
 background-position: 50% 30%;
 ```

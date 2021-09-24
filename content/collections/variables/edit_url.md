@@ -13,6 +13,6 @@ The user will need to login and have permissions, so it's probably best if used 
 <a href="{{ edit_url }}">Edit this page</a>
 ```
 
-``` .language-output
+```html
 <a href="/cp/pages/edit/about-ye-old-me">Edit this page</a>
 ```

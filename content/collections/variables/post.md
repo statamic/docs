@@ -24,7 +24,7 @@ An array of sanitized `POST` variables that come from any form data present for 
 Mr. {{ post:last_name }}
 ```
 
-``` .language-output
+```html
 Niles Peppertrout
 
 Mr. Peppertrout

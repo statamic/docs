@@ -8,7 +8,7 @@ title: Ceil
 ---
 Rounds a number up to the next whole number.
 
-```.language-yaml
+```yaml
 number: 25.98
 ```
 
@@ -16,6 +16,6 @@ number: 25.98
 {{ number | ceil }}
 ```
 
-```.language-output
+```html
 26
 ```

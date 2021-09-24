@@ -8,7 +8,7 @@ title: 'Regex Replace'
 ---
 Run a find and replace regex on a string of content.
 
-```.language-yaml
+```yaml
 description: This cat video is the best thing ever.
 ```
 
@@ -16,6 +16,6 @@ description: This cat video is the best thing ever.
 {{ description regex_replace="best|okayest" }}
 ```
 
-```.language-output
+```html
 This cat video is the okayest thing ever.
 ```

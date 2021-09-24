@@ -7,7 +7,7 @@ title: 'Has Lower Case'
 ---
 Returns `true` if the string contains a lowercase character, `false` otherwise.
 
-```.language-yaml
+```yaml
 loud_noises: "I DON'T KNOW WHAT WE'RE YELLING ABOUT!"
 ```
 
@@ -15,6 +15,6 @@ loud_noises: "I DON'T KNOW WHAT WE'RE YELLING ABOUT!"
 {{ if loud_noises | has_lower_case }}
 ```
 
-```.language-output
+```html
 false
 ```

@@ -14,7 +14,7 @@ This is also compatible with [momentjs format method](https://momentjs.com/), it
 
 Check out the [complete list of available replacements](https://carbon.nesbot.com/docs/#iso-format-available-replacements).
 
-```.language-yaml
+```yaml
 event_date: June 19 2020
 ```
 
@@ -22,7 +22,7 @@ event_date: June 19 2020
 {{ event_date iso_format="MMMM Do YYYY, h:mm:ss a"}}
 ```
 
-```.language-output
+```html
 June 15th 2018, 5:34:15 pm
 ```
 

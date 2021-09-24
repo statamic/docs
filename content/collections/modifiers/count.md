@@ -7,7 +7,7 @@ title: Count
 ---
 Count the number of items in an array.
 
-```.language-yaml
+```yaml
 fruit:
   - apples
   - bananas
@@ -18,7 +18,7 @@ fruit:
 {{ fruit | count }}
 ```
 
-```.language-output
+```html
 3
 ```
 

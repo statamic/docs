@@ -7,7 +7,7 @@ title: Deslugify
 ---
 Replaces all hyphens and underscores in a string with spaces. The opposite of [dashify](#dashify).
 
-```.language-yaml
+```yaml
 title: Just-Because-I-Can
 ```
 
@@ -15,6 +15,6 @@ title: Just-Because-I-Can
 {{ title | deslugify }}
 ```
 
-```.language-output
+```html
 Just Because I Can
 ```

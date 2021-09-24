@@ -8,7 +8,7 @@ title: DL
 ---
 Turn a key/value array, otherwise known as a YAML mapping, into an HTML definition list.
 
-```.language-yaml
+```yaml
 food:
   Delicious:
     - bacon
@@ -22,7 +22,7 @@ food:
 {{ food | dl }}
 ```
 
-```.language-output
+```html
 <dl>
   <dt>Delicious</dt>
   <dd>bacon</dd>

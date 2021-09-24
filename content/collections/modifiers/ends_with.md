@@ -7,7 +7,7 @@ title: 'Ends With'
 ---
 Returns `true` if the value ends with a given string. This comparison is case-insensitive.
 
-```.language-yaml
+```yaml
 punchline: That's what she said!
 ```
 
@@ -16,7 +16,7 @@ punchline: That's what she said!
 {{ if (punchline | ends_with:your mom!) }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

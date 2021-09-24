@@ -7,7 +7,7 @@ title: 'Contains All'
 ---
 Search a string against multiple needles and return `true` if all are found, otherwise `false`. Case-insensitive.
 
-```.language-yaml
+```yaml
 summary: "It was the best of times, it was the worst of times."
 ```
 
@@ -16,7 +16,7 @@ summary: "It was the best of times, it was the worst of times."
 {{ if summary | contains_all:best:better }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

@@ -8,7 +8,7 @@ title: Unique
 ---
 Returns all of the unique items in the array:
 
-```.language-yaml
+```yaml
 checklist:
   - zebra
   - hippo
@@ -26,6 +26,6 @@ checklist:
 {{ checklist | unique | list }}
 ```
 
-```.language-output
+```html
 zebra, hippo, hyena, giraffe
 ```

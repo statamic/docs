@@ -8,7 +8,7 @@ title: OL
 ---
 Turn an array into an HTML ordered list element.
 
-```.language-yaml
+```yaml
 food:
   - sushi
   - broccoli
@@ -19,7 +19,7 @@ food:
 {{ food | ol }}
 ```
 
-```.language-output
+```html
 <ol>
   <li>sushi</li>
   <li>broccoli</li>

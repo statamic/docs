@@ -8,7 +8,7 @@ title: 'Option List'
 ---
 Turn an array into a pipe-delimited string. Useful when passing an array of things into a parameter.
 
-```.language-yaml
+```yaml
 collections:
   - blog
   - news

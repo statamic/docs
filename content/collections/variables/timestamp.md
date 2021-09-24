@@ -13,6 +13,6 @@ Alias of `datestamp`.
 {{ timestamp }}
 ```
 
-``` .language-output
+```html
 1425772800
 ```

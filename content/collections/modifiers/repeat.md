@@ -7,7 +7,7 @@ title: Repeat
 ---
 Repeats a value any given number of times. For fun.
 
-```.language-yaml
+```yaml
 lyric: can't touch this
 ```
 
@@ -15,6 +15,6 @@ lyric: can't touch this
 {{ lyric | repeat: 3}}
 ```
 
-```.language-output
+```html
 can't touch this can't touch this can't touch this
 ```

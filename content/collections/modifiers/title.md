@@ -7,7 +7,7 @@ title: Title
 ---
 Returns a trimmed string with the first letter of each word capitalized, ignoring articles, coordinating conjunctions, and short propositions: `a`, `an`, `the`, `at`, `by`, `for`, `in`, `of`, `on`, `to`, `up`, `and`, `as`, `but`, `or`, and `nor`.
 
-```.language-yaml
+```yaml
 string: It was one of the best adventures of my life
 ```
 
@@ -15,6 +15,6 @@ string: It was one of the best adventures of my life
 {{ string | title }}
 ```
 
-```.language-output
+```html
 It Was One of the Best Adventures of My Life
 ```

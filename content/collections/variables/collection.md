@@ -11,6 +11,6 @@ Get the name of the collection the entry belongs to.
 {{ collection }}
 ```
 
-``` .language-output
+```html
 blog
 ```

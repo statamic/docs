@@ -8,7 +8,7 @@ title: Replace
 ---
 Find and replace all occurrences of a string with a totally different string.
 
-```.language-yaml
+```yaml
 description: This cat video is the okayest thing ever.
 ```
 
@@ -16,6 +16,6 @@ description: This cat video is the okayest thing ever.
 {{ description replace="cat|dog" }}
 ```
 
-```.language-output
+```html
 This dog video is the okayest thing ever.
 ```

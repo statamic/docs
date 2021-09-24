@@ -9,7 +9,7 @@ title: 'Minutes Ago'
 ---
 Returns the number of minutes since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
-```.language-yaml
+```yaml
 date: October 1 2015 8:30:am
 ```
 
@@ -19,6 +19,6 @@ date: October 1 2015 8:30:am
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 {{ test_date | minutes_ago }}
 ```

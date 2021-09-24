@@ -7,7 +7,7 @@ modifier_types:
 title: Raw URL Encode
 ---
 URL-encode a variable according to [RFC 3986][rfc-3986].
-```.language-yaml
+```yaml
 example: please and thank you/Mommy
 ```
 
@@ -15,7 +15,7 @@ example: please and thank you/Mommy
 http://example.com/{{ example | rawurlencode }}
 ```
 
-```.language-output
+```html
 http://example.com/please%20and%thank&20you%2FMommy
 ```
 

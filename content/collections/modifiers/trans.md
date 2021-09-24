@@ -11,7 +11,7 @@ Retrieve a string from a language file in the current locale. It is the equivale
 
 Get the `bar` string from the `resources/lang/en/foo.php` translation file (where `en` is the current locale).
 
-``` .language-php
+```php
 <?php
 return [
     'bar' => 'Bar!',
@@ -29,7 +29,7 @@ this_many: 2
 {{ key | trans }} or {{ "foo.bar" | trans }}
 ```
 
-``` .language-output
+```html
 Bar!
 ```
 
@@ -46,7 +46,7 @@ To pluralize, use the `trans_choice` modifier with the count as the parameter. Y
 {{ "foo.apples" | trans:this_many }}
 ```
 
-``` .language-output
+```html
 There are 2 apples
 ```
 

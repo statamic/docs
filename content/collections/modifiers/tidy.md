@@ -8,7 +8,7 @@ title: Tidy
 ---
 Returns a string with smart quotes, ellipsis characters, and dashes from Windows-1252 (commonly used in Word documents) replaced by their ASCII equivalents.
 
-```.language-yaml
+```yaml
 string: >
   “I see…”
 ```
@@ -17,6 +17,6 @@ string: >
 {{ string | tidy }}
 ```
 
-```.language-output
+```html
 "I see..."
 ```

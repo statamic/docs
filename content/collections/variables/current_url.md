@@ -11,6 +11,6 @@ The current URL.
 {{ current_url }}
 ```
 
-``` .language-output
+```html
 https://docs.statamic.com/variables
 ```

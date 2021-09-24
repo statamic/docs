@@ -11,6 +11,6 @@ Get the order type of an entry. This could be `date`, `alphabetical`, or `number
 {{ order_type }}
 ```
 
-``` .language-output
+```html
 {{ number }}
 ```

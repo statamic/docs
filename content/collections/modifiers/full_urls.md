@@ -8,7 +8,7 @@ title: 'Full Urls'
 ---
 Replaces root-relative URLs with absolute URLs. This is generally used in RSS feeds and other places where markup may be used off the main site.
 
-```.language-markdown
+```md
 ---
 I had this totally [crazy dream](/dream-journal/spiders-with-ramen-legs)
 last night and I know you want to hear all about it!
@@ -18,7 +18,7 @@ last night and I know you want to hear all about it!
 {{ content | full_urls }}
 ```
 
-```.language-output
+```html
 I had this totally [crazy dream](http://example.com/dream-journal/spiders-with-ramen-legs)
 last night and I know you want to hear all about it!
 ```

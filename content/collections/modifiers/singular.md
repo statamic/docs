@@ -7,7 +7,7 @@ title: Singular
 ---
 Get the singular form of an English word.
 
-```.language-yaml
+```yaml
 word: nickles
 ```
 
@@ -15,6 +15,6 @@ word: nickles
 {{ word | singular }}
 ```
 
-```.language-output
+```html
 nickle
 ```

@@ -11,6 +11,6 @@ Get the URL to the content. This is relative and will _not_ include your site UR
 {{ url }}
 ```
 
-``` .language-output
+```html
 /posts/bacon
 ```

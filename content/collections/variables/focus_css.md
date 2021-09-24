@@ -11,6 +11,6 @@ The focal point of the asset, in a format suitable for the background-position C
 {{ focus_css }}
 ```
 
-``` .language-output
+```html
 50% 30%
 ```

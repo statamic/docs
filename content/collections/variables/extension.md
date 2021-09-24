@@ -11,6 +11,6 @@ The file extension of the asset.
 {{ extension }}
 ```
 
-``` .language-output
+```html
 jpg
 ```

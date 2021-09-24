@@ -13,6 +13,6 @@ This will be the value of `APP_ENV` in your `.env` file. If you haven't set that
 {{ environment }}
 ```
 
-``` .language-output
+```html
 production
 ```

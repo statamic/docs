@@ -8,7 +8,7 @@ title: 'Is Email'
 ---
 Returns `true` if a string is a valid email address.
 
-```.language-yaml
+```yaml
 an_email: lknope@inpra.org
 not_an_email: waffles
 ```
@@ -18,7 +18,7 @@ not_an_email: waffles
 {{ if not_an_email | is_email }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

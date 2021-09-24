@@ -8,7 +8,7 @@ title: 'Months Ago'
 ---
 Returns the number of months since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
-```.language-yaml
+```yaml
 date: October 1 2017
 ```
 
@@ -18,6 +18,6 @@ date: October 1 2017
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 {{ test_date | months_ago }}
 ```

@@ -8,7 +8,7 @@ title: 'Word Count'
 ---
 Returns the number of words in a given string.
 
-```.language-yaml
+```yaml
 string: There are probably seven words in this sentence.
 ```
 
@@ -16,6 +16,6 @@ string: There are probably seven words in this sentence.
 {{ string | word_count }}
 ```
 
-```.language-output
+```html
 8
 ```

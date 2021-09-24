@@ -11,6 +11,6 @@ The path to the file, relative to the asset container.
 {{ path }}
 ```
 
-``` .language-output
+```html
 img/black-bear-cubs.jpg
 ```

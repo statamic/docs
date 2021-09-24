@@ -9,7 +9,7 @@ title: Shuffle
 ---
 Shuffles a string or an array to make it all random.
 
-```.language-yaml
+```yaml
 string: Mr. Roboto was the original hipster.
 array:
   - Sonic
@@ -22,7 +22,7 @@ array:
 {{ array | shuffle }}
 ```
 
-```.language-yaml
+```yaml
 string: a nhglRsws.oMtiotr hprriao eeo.b ti
 array:
   - Tails

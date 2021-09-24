@@ -8,7 +8,7 @@ title: CDATA
 ---
 Wraps a string in [CDATA][cdata] tags, useful for formatting characters properly in XML.
 
-```.language-yaml
+```yaml
 title: My Very Own Podcast
 ```
 
@@ -16,7 +16,7 @@ title: My Very Own Podcast
 {{ title | cdata }}
 ```
 
-```.language-output
+```html
 <![CDATA[My Very Own Podcast]]>
 ```
 

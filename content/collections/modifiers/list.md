@@ -8,7 +8,7 @@ title: List
 ---
 Turn a simple array into a comma delimited list with no comma after the last item.
 
-```.language-yaml
+```yaml
 things:
   - batman
   - zombies
@@ -19,6 +19,6 @@ things:
 {{ things | list }}
 ```
 
-```.language-output
+```html
 batman, zombies, scrunchies
 ```

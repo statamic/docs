@@ -37,7 +37,7 @@ The most common use for the Users fieldtype is to set the "author" for entries, 
 
 The Users fieldtype is a [relationship fieldtype](/fieldtypes/relationship) – which mean the data will store a reference to the users IDs to main a dynamic link.
 
-``` .language-yaml
+```yaml
 author: abc-123-cba-321
 ```
 

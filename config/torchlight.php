@@ -37,6 +37,8 @@ return [
         // Turn line numbers on or off globally.
         'lineNumbers' => false,
 
+        'defaultLanguage' => 'antlers',
+
         // Control the `style` attribute applied to line numbers.
         // 'lineNumbersStyle' => '',
 

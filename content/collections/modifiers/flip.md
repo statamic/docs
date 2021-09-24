@@ -7,7 +7,7 @@ title: Flip
 ---
 Swaps the keys with their corresponding values. The old switcharoo.
 
-```.language-yaml
+```yaml
 favorites:
   chicken: nuggets
   nuggets: Denver
@@ -23,7 +23,7 @@ favorites:
 {{ /favorites }}
 ```
 
-```.language-output
+```html
 My favorite chicken is nuggets.
 My favorite nuggets is Denver
 

@@ -8,7 +8,7 @@ title: 'Is Url'
 ---
 Returns `true` if a string is a valid URL.
 
-```.language-yaml
+```yaml
 a_url: http://google.com/
 not_a_url: waffles
 ```
@@ -18,7 +18,7 @@ not_a_url: waffles
 {{ if not_a_url | is_url }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

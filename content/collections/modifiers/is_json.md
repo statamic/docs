@@ -8,7 +8,7 @@ title: 'Is Json'
 ---
 Returns `true` if string is valid json
 
-```.language-yaml
+```yaml
 data: '{"book": "All The Places You'll Go"}'
 ```
 
@@ -16,6 +16,6 @@ data: '{"book": "All The Places You'll Go"}'
 {{ if data | is_json }}
 ```
 
-```.language-output
+```html
 true
 ```

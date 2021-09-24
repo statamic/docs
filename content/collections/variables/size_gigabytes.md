@@ -11,6 +11,6 @@ The file size of the asset, in gigabytes. Also available as `size_gb`.
 {{ size_gigabytes }}
 ```
 
-``` .language-output
+```html
 0.00
 ```

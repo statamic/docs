@@ -9,7 +9,7 @@ Truncates the string to a given length (parameter 1). You can append a string wi
 
 This differs from [safe_truncate][safe_truncate] in that it _may_ truncate in the middle of a word.
 
-```.language-yaml
+```yaml
 advice: >
   So, here’s some advice I wish I woulda got when I was your age:
   Live every week like it’s Shark Week.
@@ -19,7 +19,7 @@ advice: >
 {{ advice | truncate:90:... }}
 ```
 
-```.language-output
+```html
 So, here’s some advice I wish I woulda got when I was your age:
 Live every week like i...
 ```

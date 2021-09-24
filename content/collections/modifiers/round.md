@@ -8,7 +8,7 @@ title: Round
 ---
 Rounds a number to a specified precision (number of digits after the decimal point). Defaults to `0`, or whole numbers.
 
-```.language-yaml
+```yaml
 pi: 3.14159265359
 ```
 
@@ -17,7 +17,7 @@ pi: 3.14159265359
 {{ pi | round:2 }}
 ```
 
-```.language-output
+```html
 3
 3.14
 ```

@@ -11,7 +11,7 @@ The current date/time. If you use it on its own, it will be formatted using the 
 {{ now }}
 ```
 
-``` .language-output
+```html
 December 30th 2015
 ```
 

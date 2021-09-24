@@ -23,14 +23,14 @@ Let's assume we have a [Replicator][replicator] field with a bunch of content bl
 
 **First**, let's define the view model location. Rather than putting it in an entry, we'll put it in the collection so that it's applied to every entry.
 
-```.language-yaml
+```yaml
 # content/collections/articles.yaml
 title: Articles
 inject:
   view_model: App\ViewModels\ArticleStats
 ```
 
-```.language-yaml
+```yaml
 # content/collections/articles/a-long-article.md
 title: "A Long Article Plz Read it Mmmkay?"
 content:
@@ -41,7 +41,7 @@ content:
 
 **Next,** we'll loop through the content, assemble a giant string of all the content, perform some math, and return the stats.
 
-```.language-php
+```php
 <?php
 
 namespace App\ViewModels;

@@ -14,6 +14,6 @@ system settings.
 {{ date }}
 ```
 
-``` .language-output
+```html
 February 16, 2016
 ```

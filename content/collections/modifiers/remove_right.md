@@ -8,7 +8,7 @@ title: 'Remove Right'
 ---
 Ensures that the string never ends with a specified string.
 
-```.language-yaml
+```yaml
 urls:
   - http://statamic.com/
   - http://laravel.com/
@@ -20,7 +20,7 @@ urls:
 {{ /urls}}
 ```
 
-```.language-output
+```html
 http://statamic.com
 http://laravel.com
 ```

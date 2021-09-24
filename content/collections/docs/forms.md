@@ -310,7 +310,7 @@ For example:
 {{ /form:create }}
 ```
 
-``` .language-css
+```css
 .honeypot { display: none; }
 ```
 

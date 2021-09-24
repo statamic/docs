@@ -8,7 +8,7 @@ title: 'Read Time'
 ---
 Provide an estimate of the read time in minutes based on a given number of words per minute. Defaults to 200/wpm.
 
-```.language-yaml
+```yaml
 ---
 title: A long post
 ---
@@ -20,7 +20,7 @@ Pretend there are lots of words here...
 <p>{{ content | read_time:180 }} min</p>
 ```
 
-```.language-output
+```html
 <h1>A long post</h1>
 <p>10 min</p>
 ```

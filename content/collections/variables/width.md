@@ -11,6 +11,6 @@ The width of an image asset, in pixels.
 {{ width }}
 ```
 
-``` .language-output
+```html
 900
 ```

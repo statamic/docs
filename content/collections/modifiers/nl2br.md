@@ -9,7 +9,7 @@ title: Nl2br
 ---
 Replaces line breaks with `<br>` tags.
 
-```.language-yaml
+```yaml
 summary: |
   This is a summary
   on multiple lines
@@ -19,7 +19,7 @@ summary: |
 {{ summary | nl2br }}
 ```
 
-```.language-output
+```html
 This is a summary
 on multiple lines
 ```

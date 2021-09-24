@@ -8,7 +8,7 @@ title: Sum
 ---
 Returns the sum of all items in an array, optionally specified by a specific key.
 
-```.language-yaml
+```yaml
 numbers:
   - 5
   - 10
@@ -28,7 +28,7 @@ stats:
 {{ stats | sum:score }}
 ```
 
-```.language-output
+```html
 75
 2863
 ```

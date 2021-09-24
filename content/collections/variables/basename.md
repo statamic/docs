@@ -11,6 +11,6 @@ The basename of the asset, which is the filename _with_ the extension.
 {{ basename }}
 ```
 
-``` .language-output
+```html
 black-bear-cubs.jpg
 ```

@@ -7,7 +7,7 @@ title: Dump
 ---
 Dump a variable to the browser and see under the hood with data types and array exportation. Definitely just for debugging when in development.
 
-```.language-yaml
+```yaml
 food:
   delicious:
     - bacon
@@ -18,7 +18,7 @@ food:
 {{ food | dump }}
 ```
 
-```.language-output
+```html
 array:2 [▼
   "delicious" => array:2 [▶]
 ]

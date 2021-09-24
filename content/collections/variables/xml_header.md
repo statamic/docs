@@ -13,6 +13,6 @@ Statamic's template parser will encode `<?` and `?>` because they are PHP tags. 
 {{ xml_header }}
 ```
 
-``` .language-output
+```html
 <?xml version="1.0" encoding="utf-8" ?>
 ```

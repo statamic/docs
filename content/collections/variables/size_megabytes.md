@@ -11,6 +11,6 @@ The file size of the asset, in megabytes. Also available as `size_mb`.
 {{ size_megabytes }}
 ```
 
-``` .language-output
+```html
 0.12
 ```

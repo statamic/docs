@@ -9,7 +9,7 @@ title: Image
 ---
 Generate an HTML image element with the variable's value as `src`.
 
-```.language-yaml
+```yaml
 header_image: /assets/img/bokeh-bunnies.jpg
 ```
 
@@ -17,6 +17,6 @@ header_image: /assets/img/bokeh-bunnies.jpg
 {{ header_image | image }}
 ```
 
-```.language-output
+```html
 <img src="/assets/img/bokeh-bunnies.jpg">
 ```

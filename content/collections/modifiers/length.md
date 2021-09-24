@@ -9,7 +9,7 @@ title: Length
 ---
 Returns the number of items in an array or characters in a string.
 
-```.language-yaml
+```yaml
 array:
   - Taylor Swift
   - Left Shark
@@ -22,7 +22,7 @@ string: LEEEEROOOYYYY JEEENKINNNSS!
 {{ string | length }}
 ```
 
-```.language-output
+```html
 3
 27
 ```

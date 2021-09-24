@@ -13,6 +13,6 @@ Example URL: `/put/that/cookie/down`
 {{ segment_3 }}
 ```
 
-``` .language-output
+```html
 cookie
 ```

@@ -11,6 +11,6 @@ The current URI (URL without domain).
 {{ current_uri }}
 ```
 
-``` .language-output
+```html
 /variables
 ```

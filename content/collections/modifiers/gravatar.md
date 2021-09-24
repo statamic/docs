@@ -8,7 +8,7 @@ title: Gravatar
 ---
 Converts an email string to a Gravatar image URL. The size can be specified by a parameter.
 
-```.language-yaml
+```yaml
 email: rswanson@inpra.org
 ```
 
@@ -17,7 +17,7 @@ email: rswanson@inpra.org
 {{ email | gravatar:80 }}
 ```
 
-```.language-output
+```html
 https://www.gravatar.com/avatar/f4650388367dc01cf2acf16b412b3966
 https://www.gravatar.com/avatar/f4650388367dc01cf2acf16b412b3966?s=80
 ```

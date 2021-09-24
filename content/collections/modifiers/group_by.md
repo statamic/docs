@@ -7,7 +7,7 @@ title: 'Group By'
 ---
 Group an array's items by a given key.
 
-```.language-yaml
+```yaml
 sponsors:
   -
     sport: basketball
@@ -28,7 +28,7 @@ sponsors:
 {{ /sponsors }}
 ```
 
-```.language-output
+```html
 <h2>Jazz</h2>
 <h2>Bulls</h2>
 ```

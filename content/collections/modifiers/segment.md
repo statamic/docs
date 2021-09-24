@@ -8,7 +8,7 @@ title: Segment
 ---
 Returns a segment by number from any valid URL or URI.
 
-```.language-yaml
+```yaml
 example: /this/is/pretty/neat
 ```
 
@@ -16,6 +16,6 @@ example: /this/is/pretty/neat
 {{ example | segment:4 }}
 ```
 
-```.language-output
+```html
 neat
 ```

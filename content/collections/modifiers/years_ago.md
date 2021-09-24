@@ -8,7 +8,7 @@ title: 'Years Ago'
 ---
 Returns the number of years since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
-```.language-yaml
+```yaml
 date: October 1 2015
 ```
 
@@ -18,6 +18,6 @@ date: October 1 2015
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 {{ test_date | years_ago }}
 ```

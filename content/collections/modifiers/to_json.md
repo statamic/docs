@@ -7,7 +7,7 @@ title: 'To Json'
 ---
 Converts any variable into JSON.
 
-```.language-yaml
+```yaml
 stats:
   - player: Luke Skywalker
     score: 750
@@ -21,7 +21,7 @@ stats:
 {{ stats | to_json }}
 ```
 
-```.language-output
+```html
 [
   {"player":"Luke Skywalker","score":750},
   {"player":"Wedge Antilles","score":688},

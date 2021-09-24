@@ -10,7 +10,7 @@ Attempts to prevent widows (a line with a single word) in a string by adding non
 
 The first parameter allows you to customize the number of words to add non-breaking spaces to.
 
-```.language-yaml
+```yaml
 string: I Just Want Pretty Headlines and Sentences
 ```
 
@@ -19,7 +19,7 @@ string: I Just Want Pretty Headlines and Sentences
 {{ string | widont:4 }}
 ```
 
-```.language-output
+```html
 I Just Want Pretty Headlines and&nbsp;Sentences
 I Just Want Pretty&nbsp;Headlines&nbsp;and&nbsp;Sentences
 ```

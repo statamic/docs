@@ -9,7 +9,7 @@ title: Partial
 ---
 Inject a variable's data into a partial and render it without any page scopes whatsoever. This is really just syntactical sugar, but it _is_ delicious.
 
-```.language-yaml
+```yaml
 data:
   title: Bubble Guppies
   content: Science died a little bit today.
@@ -24,7 +24,7 @@ data:
 {{ data | partial:demo }}
 ```
 
-```.language-output
+```html
 <h1>Bubble Guppies</h1>
 <p>Science died a little bit today.</p>
 ```
