@@ -17,42 +17,31 @@ Each [fieldtype](/fieldtypes) documents if and how augmentation affects your out
 
 ## Example
 
-Let's look at an example with and without augmentation. For the augmented output let's assume we're using a [Markdown field](/fieldtypes/markdown).
+Let's look at an example with and without augmentation using the following `content`:
 
-``` yaml
-content: |
+``` md
+## How to Jump Higher
+Bend your knees more and then spring upwards a _lot_ faster.
+```
+
+### With Augmentation
+
+If you're using a [Markdown field](/fieldtypes/markdown), the output will be as follows:
+
+```html
+<h2>How to Jump Higher</h2>
+<p>Bend your knees more and then spring upwards a <em>lot</em> faster.</p>
+```
+
+### Without Augmentation
+
+If you're using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will exactly as input:
+
+```text
   ## How to Jump Higher
-
   Bend your knees more and then spring upwards a _lot_ faster.
-```
-
-```
-// With Markdown augmentation
-<article>
-  {{ content }}
-</article>
-
-// Without
-<article>
-  {{ content | raw }}
-</article>
-```
-
-``` output
-// With Markdown augmentation
-<article>
-  <h2>How to Jump Higher</h2>
-  <p>Bend your knees more and then spring upwards a <em>lot</em> faster.</p>
-</article>
-
-// Without
-<article>
-  ## How to Jump Higher
-
-  Bend your knees more and then spring upwards a _lot_ faster.
-</article>
 ```
 
 ## Digging Deeper
 
-[Learn the inner workings of Augmentation](/extending/augmentation) and how to use it in your own code over in the Extending Statamic docs.
+[Learn the inner workings of Augmentation](/extending/augmentation) and how to use it in your own addons and extensions.
