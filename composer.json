@@ -13,6 +13,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "statamic/cms": "3.2.*",
+        "statamic/ssg": "^0.8.0",
         "torchlight/torchlight-commonmark": "^0.5.1"
     },
     "require-dev": {
