@@ -8,6 +8,7 @@ Route::permanentRedirect('template-engines', 'blade-templates');
 Route::permanentRedirect('entries', 'collections#entries');
 Route::permanentRedirect('git-itegration', 'git-automation');
 Route::permanentRedirect('installation', 'installing');
+Route::permanentRedirect('blade-templates', 'blade');
 
 Route::redirect('fieldtypes/partial', '/blueprints#importing-fieldsets');
 Route::permanentRedirect('cascade', 'data-inheritance');

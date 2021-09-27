@@ -1,53 +1,59 @@
 ---
-title: Fieldtypes
-intro: Fieldtypes are customizable form [fields](/fields) used to structure your content and provide an intuitive content management experience. Each fieldtype has its own UI, data format, and configuration options.
-template: page
 id: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 blueprint: page
-options_content: Each fieldtype has a common set of options in addition to any unique ones specific to that type.
+title: Fieldtypes
+intro: 'Fieldtypes are customizable form [fields](/fields) used to structure your content and provide an intuitive content management experience. Each fieldtype has its own UI, data format, and configuration options.'
+template: page
+options_content: 'Each fieldtype has a common set of options in addition to any unique ones specific to that type.'
 options:
   -
     name: display
     type: text
-    description: >
-      The label shown above the field.
+    description: 'The label shown above the field.'
+    required: false
   -
     name: handle
     type: text
-    description: >
-      The field's template variable.
+    description: 'The field''s template variable.'
+    required: false
   -
     name: instructions
     type: text
-    description: >
-      Help text shown along with the field.
+    description: 'Help text shown along with the field.'
+    required: false
   -
     name: instructions_position
     type: text
-    description: >
-      Where the instructions should be positioned relative to the field.
-      Options: `Above` or `Below`.
+    description: 'Where the instructions should be positioned relative to the field. Options: `Above` or `Below`.'
+    required: false
   -
     name: listable
     type: text
-    description: >
-      Controls whether the field should be shown in control panel listings.
-      Options: `hidden`, `visible`, or `listable`.
+    description: 'Controls whether the field should be shown in control panel listings. Options: `hidden`, `visible`, or `listable`.'
+    required: false
   -
     name: conditions
     type: mixed
-    description: >
-      Configure rules that control whether the field should be shown or hidden. Learn more about [conditional fields](/conditional-fields).
+    description: 'Configure rules that control whether the field should be shown or hidden. Learn more about [conditional fields](/conditional-fields).'
+    required: false
   -
     name: required
     type: boolean
-    description: >
-      Control whether or not this field is required.
+    description: 'Control whether or not this field is required.'
+    required: false
   -
     name: validation
     type: boolean
-    description: >
-      Configure rules that validate the value of this field before allowing the user to save. Learn more about [validation](/blueprints#validation).
+    description: 'Configure rules that validate the value of this field before allowing the user to save. Learn more about [validation](/blueprints#validation).'
+    required: false
+related_entries:
+  - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+  - 54548616-fd6d-44a3-a379-bdf71c492c63
+  - 2940c834-7062-47a1-957c-88a69e790cbb
+  - dd52c1f6-661b-4408-83c6-691fa341aaa7
+  - dcf80ee6-209e-45aa-af42-46bbe01996e2
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1632748812
 ---
 ## Overview
 

@@ -4,7 +4,7 @@ blueprint: page
 title: 'Blade Templates'
 intro: '[Antlers](/antlers) is not _always_ the best template engine for the job. If you''re using Statamic as a headless CMS or want to share views with a Laravel application already using [Blade](https://laravel.com/docs/blade) or another engine, you can do that. **Just know there are a few caveats before you do.**'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1632512605
+updated_at: 1632748828
 ---
 ## Overview
 
