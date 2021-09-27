@@ -7,18 +7,16 @@
 {{ collection:fieldtypes as="fieldtypes" }}
 <article class="bg-black px-4 py-8 w-full relative rounded-sm shadow-stack md:shadow-stack-lg text-white z-10 flex pl-12 md:pl-24 font-extra antialiased">
     {{ fieldtypes split="2" }}
-        {{ groups }}
-            <ul class="list-none w-1/2 space-y-3">
-                {{ items }}
-                    <li>
-                        <a href="{{ url }}" class="flex items-center text-white hover:text-pink no-underline">
-                            {{ svg src="/img/fieldtypes/icons/{slug}" class="h-4 w-4 mr-3 text-white" }}
-                            {{ title }}
-                        </a>
-                    </li>
-                {{ /items }}
-            </ul>
-        {{ /groups }}
+        <ul class="list-none w-1/2 space-y-3">
+            {{ items }}
+                <li>
+                    <a href="{{ url }}" class="flex items-center text-white hover:text-pink no-underline">
+                        {{ svg src="/img/fieldtypes/icons/{slug}" class="h-4 w-4 mr-3 text-white" }}
+                        {{ title }}
+                    </a>
+                </li>
+            {{ /items }}
+        </ul>
     {{ /fieldtypes }}
 </article>
 {{ /collection:fieldtypes }}
