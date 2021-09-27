@@ -27,6 +27,10 @@ final class HintRenderer implements BlockRendererInterface
             return $this->renderWatch($node, $childRenderer, $attrs);
         }
 
+        if ($type === 'callout') {
+            return $this->renderCallout($node, $childRenderer, $attrs);
+        }
+
         $title = $node->getTitle();
         $title = $title
             ? new HtmlElement(
@@ -49,6 +53,23 @@ final class HintRenderer implements BlockRendererInterface
             $title . "\n" .
             $content .
             "\n"
+        );
+    }
+
+    private function renderCallout(Hint $node, ElementRendererInterface $childRenderer, array $attrs)
+    {
+        $content = new HtmlElement(
+            'div',
+            ['class' => 'hint-content'],
+            $childRenderer->renderBlocks($node->children())
+        );
+
+        return new HtmlElement(
+            'div',
+            $attrs,
+            '<a href="'.$node->getTitle().'">' .
+            $childRenderer->renderBlocks($node->children()).
+            '</a>'
         );
     }
 

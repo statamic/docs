@@ -52,6 +52,7 @@ module.exports = {
       mono: ['Menlo', 'monospace']
     },
     boxShadow: {
+      'none': 'none',
       DEFAULT: "2px 2px 0 theme('colors.black', 'currentColor')",
       'sm': "1px 1px 0 theme('colors.black', 'currentColor')",
       'md': "2px 2px 0 theme('colors.black', 'currentColor')",
