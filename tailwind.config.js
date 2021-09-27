@@ -48,6 +48,7 @@ module.exports = {
     fontFamily: {
       display: ['tenon', 'sans-serif'],
       sans: ['gira-sans', 'sans-serif'],
+      extra: ['Space Mono', 'monospace'],
       mono: ['Menlo', 'monospace']
     },
     boxShadow: {

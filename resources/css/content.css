@@ -211,6 +211,10 @@ article, .markdown {
     }
 }
 
+header.markdown > p {
+    @apply text-xl leading-normal;
+}
+
 .parameter .markdown {
     p {
         @apply text-base;

@@ -76,7 +76,7 @@ blockquote,
 
 figure,
 .screenshot {
-    @apply rounded md:rounded-lg shadow md:shadow-lg bg-mint border p-3 md:p-6 mb-12 relative;
+    @apply bg-mint border p-3 md:p-6 mb-12 shadow-stack-sm relative;
     @apply pb-6 md:pb-12;
 
     img {
@@ -87,7 +87,7 @@ figure,
 
 .caption,
 figure figcaption {
-    @apply bg-black px-3 py-1 text-blue-lightest text-sm inline-block antialiased absolute right-2 md:right-8 bottom-2 md:bottom-6 transform -rotate-2;
+    @apply bg-black px-4 py-1 text-mint text-sm inline-block antialiased absolute -right-4 bottom-2 transform -rotate-1;
 
     code {
         font-size: 12px !important;
