@@ -251,7 +251,24 @@ header.markdown > p {
 } */
 
 
+ul.list-col {
+    @apply space-y-2 mt-2;
+    column-count: 2;
 
+    li {
+        @apply pr-5;
+    }
+
+    li a {
+        @apply text-black no-underline hover:text-pink;
+    }
+}
+
+@media screen(lg) {
+    ul.list-col {
+        column-count: 3;
+    }
+}
 
 
 

@@ -1,0 +1,27 @@
+{{ if related_entries }}
+{{ svg src="zig-zag-lg" class="mx-auto mt-12 mb-24" }}
+<section class="border shadow-stack relative p-5 pt-8">
+    <div class="font-display shadow uppercase bg-yellow text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 font-semibold tracking-wide">Learn More</div>
+    <p class="mb-4">Learn more about {{ title }} in these related docs:</p>
+    {{ related_entries as="entries" }}
+        <div>
+        {{ entries group_by="collection:title" }}
+            {{ groups }}
+                <div class="flex mt-5">
+                    {{ svg src="collections/{group|lower|slugify}" class="h-6 w-6" }}
+                    <div class="ml-3">
+                        <h2 class="text-xl font-display font-bold">{{ group }}</h2>
+                        <ul class="list-col">
+                        {{ items }}
+                            <li><a href="{{ url }}">{{ title }}</a>
+                        {{ /items }}
+                        </ul>
+                    </div>
+                </div>
+            {{ /groups }}
+        {{ /entries }}
+        </div>
+    {{ /related_entries }}
+</section>
+{{ svg src="zig-zag-lg" class="mx-auto my-24" }}
+{{ /if }}
