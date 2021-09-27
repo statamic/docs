@@ -3,7 +3,7 @@ title: Users
 description: Relate users with your content.
 intro: >
   Attach users to your content to show authorship, list team members, assign the winners of a foot race, or even winners of an elbow race.
-screenshot: fieldtypes/users.png
+screenshot: fieldtypes/screenshot/users.png
 options:
   -
     name: default

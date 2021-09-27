@@ -3,7 +3,7 @@ title: Checkboxes
 description: Boxes you check. You can check 'em all.
 intro: >
   Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes you check.
-screenshot: fieldtypes/checkboxes.png
+screenshot: fieldtypes/screenshot/checkboxes.png
 options:
   -
     name: inline

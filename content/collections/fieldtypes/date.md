@@ -3,7 +3,7 @@ title: Date
 description: Helps you pick a date, but not get one.
 intro: >
   Work with dates, times, and ranges with a variety of user interface options that make you really enjoy basically just picking numbers from a table.
-screenshot: fieldtypes/date.png
+screenshot: fieldtypes/screenshot/date.png
 options:
   -
     name: columns

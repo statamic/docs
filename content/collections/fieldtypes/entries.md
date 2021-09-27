@@ -4,7 +4,7 @@ meta_title: 'Entries Fieldtype'
 description: 'Create relationships with other entries.'
 intro: |
   Create relationships with other entries in one or more collections. It's not very much like online dating because you can create and link the entries on the fly without leaving the page.
-screenshot: fieldtypes/entries.png
+screenshot: fieldtypes/screenshot/entries.png
 video: https://youtu.be/WWbsM5u9afc
 options:
   -

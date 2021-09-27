@@ -1,6 +1,6 @@
 ---
 title: Tags
-screenshot: fieldtypes/tags.png
+screenshot: fieldtypes/screenshot/tags.png
 description: Enter a list of items with a tag-style interface.
 overview: >
   Users can enter “taggable” values, which are formatted

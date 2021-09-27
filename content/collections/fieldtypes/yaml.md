@@ -3,7 +3,7 @@ title: YAML
 description: A YAML editor that _directly_ manages YAML.
 overview: >
   A [code fieldtype](/fieldtypes/yaml) in YAML mode that _directly_ edits and stores YAML instead of an escaped string representation of said YAML.
-screenshot: fieldtypes/yaml.png
+screenshot: fieldtypes/screenshot/yaml.png
 stage: 4
 id: 25155800-8fd7-46c7-aad0-5daaf07543da
 ---

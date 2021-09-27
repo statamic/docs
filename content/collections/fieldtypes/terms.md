@@ -4,7 +4,7 @@ extends: 9dd58c40-6e33-49c8-83fa-61a69f6371be
 description: Attach Taxonomy Terms to your content.
 intro: >
   Allows you attach Taxonomy Terms to your content. They could be Tags, Categories, Colors, Flavors, you name it. We highly recommend [learning more about Taxonomies](/taxonomies) before going any further.
-screenshot: fieldtypes/terms.png
+screenshot: fieldtypes/screenshot/terms.png
 options:
   -
     name: taxonomy

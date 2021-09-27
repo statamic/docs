@@ -35,6 +35,11 @@ Once created, you can begin to define fields and the sections that hold them. If
 
 Whether you manually create your blueprint's YAML file, or use the control panel, they will all end up as YAML files in the `resources/blueprints` directory.
 
+<figure>
+    <img src="/img/blueprints-folder-structure.png" alt="Statamic Blueprints Folder Structure" width="528">
+    <figcaption>Here's how Blueprints are organized in the filesystem.</figcaption>
+</figure>
+
 ``` files
 resources/
 `-- blueprints/
