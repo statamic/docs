@@ -75,8 +75,10 @@ For example, a [markdown field](/fieldtypes/markdown) will automatically convert
 
 These same rules apply whether you're using [Antlers](/antlers), [Blade](/blade), [GraphQL](/graphql), or the [REST API](/rest-api).
 
-You can always retrieve the original, unaugmented data by using the [raw modifier](/modifiers/raw), like so:
+:::tip
+You can retrieve the original, un-augmented data by using the [raw modifier](/modifiers/raw), like so:
 
 ```
 {{ markdown_field | raw }}
 ```
+:::

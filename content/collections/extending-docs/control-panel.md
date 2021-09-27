@@ -2,9 +2,6 @@
 title: 'Control Panel'
 nav_title: Overview
 template: page
-parent: caf2a160-de1c-11e9-aaef-0800200c9a66
-updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
-updated_at: 1569263726
 intro: The control panel may be customized in a number of different ways. You may add new fieldtypes, widgets, a stylesheet, or maybe you just want to add some arbitrary Javascript.
 stage: 1
 id: cb8f4d8a-47b6-4567-9510-ed7d9ee9c037
@@ -87,7 +84,7 @@ export default {
 If you need to have custom routes for the control panel:
 
 1. Create a routes file. Name it whatever you want, for example: `routes/cp.php`
-2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:  
+2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:
 
     ```php
     use Illuminate\Support\Facades\Route;

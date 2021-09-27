@@ -10,7 +10,7 @@
     <div class="flex-1 flex items-center justify-between md:h-full">
         <ul class="flex items-center space-x-2 md:space-x-10 md:text-lg">
             {{ nav:collection:sections include_home="true" }}
-            <li><a class="hover:text-pink {{ page:section === slug ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
+            <li><a class="hover:text-pink {{ page:section === section ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
             {{ /nav:collection:sections }}
         </ul>
         <div class="flex items-center h-full">

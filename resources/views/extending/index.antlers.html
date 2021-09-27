@@ -1,0 +1,25 @@
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title }}</h1>
+        {{ partial:pro-badge }}
+    </div>
+    {{ intro ?? overview | markdown }}
+    {{ partial:toc }}
+</header>
+
+{{ svg src="zig-zag" class="mx-auto my-12" }}
+
+<article class="markdown pb-16">
+    {{ content | toc:ids }}
+
+    {{ if options }}
+        <h2 id="options">Options</h2>
+        {{ if options_content }}
+            {{ options_content | markdown }}
+        {{ /if }}
+        {{ partial:details :details="options" }}
+    {{ /if }}
+</article>
+
+{{ partial:edit }}
