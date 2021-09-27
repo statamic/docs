@@ -22,7 +22,7 @@ sponsors:
 {{ sponsors group_by="sport" }}
   {{ basketball }}
     <h2>{{ team }}</h2>
-  {{ /basketball
+  {{ /basketball }}
 {{ /sponsors }}
 ```
 
