@@ -1,7 +1,7 @@
 ---
 id: 72c7218e-1a9f-49a6-904d-ed8588e57869
 blueprint: sections
-title: 'Extending Statamic'
+title: 'Extending'
 intro: While Statamic contains countless features, you are free to add more, or modify existing ones.
 template: extending.index
 section: extending_docs

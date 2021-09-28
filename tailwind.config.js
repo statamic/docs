@@ -39,6 +39,7 @@ module.exports = {
         light: '#E7ECF1',
         DEFAULT: '#CBD5E1',
         'dark': '#94A3B8',
+        'darker': '#4B5563'
       }
     },
     borderColor: theme => ({

@@ -3,12 +3,14 @@
     <div class="side-nav bg-white md:bg-transparent sticky top-24 md:pr-16 pb-6" x-data="{ open: 'Getting Started' }">
         <nav class="lg:overflow-y-auto lg:overflow-x-visible max-h-screen-sans-nav">
             <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray">{{ section | deslugify | title }}</header>
-            <form class="relative flex md:hidden items-center w-full h-9 mb-4 rounded border-2 border-black shadow-sm" action="/search-results">
-                <input
-                    class="focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
-                    type="text" placeholder="Search for..." @click="document.getElementsByClassName('DocSearch-Button')[0].click()" />
-                <button class="bg-black hover:bg-purple text-white px-2 md:px-4 h-full">Search</button>
-            </form>
+            <div class="md:hidden">
+                <div class="grid grid-cols-2 gap-2 mb-6">
+                    {{ nav:collection:sections include_home="true" }}
+                        <a class="text-lg font-display p-2 font-medium border shadow-sm text-center hover:text-pink {{ page:section === section ?= 'bg-mint' }}" href="{{ url }}">{{ title }}</a>
+                    {{ /nav:collection:sections }}
+                </div>
+                {{ svg src="zig-zag-lg" class="w-full my-4 mx-auto" }}
+            </div>
             <div class="pl-2 md:p-0">
                 {{ nav :handle="section" }}
                 <div class="relative pl-1">
