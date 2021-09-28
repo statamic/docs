@@ -1,6 +1,6 @@
 blockquote,
 .hint {
-    @apply bg-black px-7 pt-7 pb-5 my-12 text-white antialiased relative shadow-pink-lg;
+    @apply bg-pink-lightest px-7 pt-7 pb-5 my-16 text-black border antialiased relative shadow-pink-md;
 
     .hint-title {
         @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 font-semibold tracking-wide;
@@ -22,10 +22,10 @@ blockquote,
     }
 
     &.watch {
-        @apply bg-gradient-to-br from-red to-pink shadow-red-dark-lg rounded-lg px-4;
+        @apply p-0 bg-transparent mb-32 block border-none shadow-none;
 
         iframe {
-            @apply shadow-lg;
+            @apply border shadow-yellow-md p-1;
         }
 
         .hint-title {
@@ -37,7 +37,8 @@ blockquote,
         }
 
         p.caption {
-            @apply absolute right-8 -bottom-4 text-pink-light text-sm bg-black transform rotate-0 px-3 py-1 shadow;
+            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black text-sm font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+            /* @apply block text-white mt-1 text-right relative right-auto left-auto; */
         }
     }
 
@@ -99,7 +100,7 @@ blockquote,
 
 figure,
 .screenshot {
-    @apply bg-mint border p-3 md:p-6 mb-12 shadow-stack-sm relative;
+    @apply bg-mint border p-3 md:p-6 my-16 shadow-stack-sm relative;
     @apply pb-6 md:pb-12;
 
     img {
@@ -110,7 +111,7 @@ figure,
 
 .caption,
 figure figcaption {
-    @apply bg-black px-4 py-1 text-mint text-sm inline-block antialiased absolute -right-4 bottom-2 transform -rotate-1;
+    @apply bg-black px-6 py-1 text-mint text-sm inline-block antialiased absolute -right-4 bottom-2;
 
     code {
         font-size: 12px !important;

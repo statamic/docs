@@ -6,7 +6,7 @@ article, .markdown {
     }
 
     h2 {
-        @apply font-display font-extrabold text-3xl mb-6 mt-16 relative;
+        @apply font-display font-extrabold text-3xl mb-6 mt-32 relative;
     }
 
     h3 {
@@ -19,7 +19,7 @@ article, .markdown {
 
     p {
         @apply text-base md:text-lg mb-6;
-        line-height: 1.75em;
+        line-height: 1.5em;
     }
 
     ul, ol {
@@ -77,7 +77,7 @@ article, .markdown {
             &::before {
                 @apply absolute inline-block;
                 content: url('/img/triangle-pink.svg');
-                top: 10px;
+                top: 6px;
                 left: 2px;
             }
 
@@ -142,7 +142,7 @@ article, .markdown {
                 @apply text-sm md:text-base leading-tight;
             }
             :not(pre) > code {
-                @apply bg-transparent text-xs md:text-base font-bold text-purple;
+                @apply bg-transparent text-xs md:text-sm font-bold text-purple;
             }
         }
     }
@@ -174,7 +174,7 @@ article, .markdown {
             height: 40px;
             width: 94px;
             position: absolute;
-            top: -10px;
+            top: -16px;
             left: -12px;
             z-index: 2;
         }
