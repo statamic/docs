@@ -37,23 +37,19 @@ module.exports = {
       mint: '#B8FFF3',
       yellow: '#FAF77D',
       gray: {
-        lightest: '#EEF2F6',
+        lightest: '#F3F4F6',
+        lighter: '#EEF2F6',
         light: '#E7ECF1',
         DEFAULT: '#CBD5E1',
         'dark': '#94A3B8',
-        'darker': '#4B5563'
+        'darker': '#4B5563',
+        'darkest': '#374151'
       }
     },
     borderColor: theme => ({
        ...theme('colors'),
         DEFAULT: theme('colors.black', 'currentColor'),
     }),
-    fontFamily: {
-      display: ['tenon', 'sans-serif'],
-      sans: ['gira-sans', 'sans-serif'],
-      mono: ['Menlo', 'monospace'],
-      'mono-alt': ['code-saver', 'monospace'],
-    },
     boxShadow: {
       'none': 'none',
       DEFAULT: "2px 2px 0 theme('colors.black', 'currentColor')",
@@ -91,6 +87,11 @@ module.exports = {
       'outline': '0 0 0 3px rgba(66, 153, 225, 0.5)',
     },
     extend: {
+      fontFamily: {
+        display: ['tenon', 'sans-serif'],
+        mono: ['Menlo', 'monospace'],
+        'mono-alt': ['code-saver', 'monospace'],
+      },
       fontSize: {
         '3xl': ['2rem', 1],
         '7xl': ['4.25rem', 1],

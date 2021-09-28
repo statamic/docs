@@ -1,25 +1,30 @@
 article, .markdown {
     background: white;
+    @apply text-gray-darkest leading-relaxed;
 
     h1 {
-        @apply font-display font-extrabold text-5xl lg:text-7xl mb-6;
+        @apply font-sans text-black font-extrabold text-5xl lg:text-6xl mb-6;
     }
 
     h2 {
-        @apply font-display font-extrabold text-3xl mb-6 mt-32 relative;
+        @apply font-sans text-black font-extrabold text-3xl mb-6 mt-16 relative;
+    }
+
+    h2:not(:first-of-type) {
+        @apply border-t border-gray-light border-dashed pt-16;
     }
 
     h3 {
-        @apply font-display font-bold text-xl mb-2 mt-12 relative;
+        @apply font-sans text-black font-bold text-xl mb-2 mt-12 relative;
     }
 
     h4 {
-        @apply font-display font-bold text-lg mb-0 mt-12 relative;
+        @apply font-sans text-black font-bold text-lg mb-0 mt-12 relative;
     }
 
     p {
         @apply text-base md:text-lg mb-6;
-        line-height: 1.5em;
+        /* line-height: 1.5em; */
     }
 
     ul, ol {
@@ -27,7 +32,8 @@ article, .markdown {
     }
 
     a {
-        @apply text-pink font-bold underline;
+        @apply text-pink font-medium underline;
+
         &:hover {
             @apply text-purple;
         }
@@ -38,8 +44,8 @@ article, .markdown {
         vertical-align: text-top;
     }
 
-    h2>.anchor,
-    h3>.anchor {
+    h2 > .anchor,
+    h3 > .anchor {
         @apply absolute top-0 no-underline text-white opacity-0 block;
         text-shadow: -1px -1px 0 theme('colors.pink.DEFAULT'),
             1px -1px 0 theme('colors.pink.DEFAULT'),
@@ -53,7 +59,7 @@ article, .markdown {
     }
 
     h2 > .anchor {
-        @apply -left-6 pr-4;
+        @apply -left-6 pr-4 top-16;
     }
 
     h2:hover > .anchor {
