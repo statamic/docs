@@ -1,4 +1,0 @@
-[build]
-
-command = "composer require spatie/fork && npm install && npm run prod"
-publish = "php please ssg:generate --workers=4"
