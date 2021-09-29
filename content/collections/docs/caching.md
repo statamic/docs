@@ -11,7 +11,7 @@ _Purpose: Replaces the database_
 
 Instead of parsing and loading content files on the fly, Statamic uses a cache-based storage layer affectionately named the "Stache".
 
-Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system stored in Laravel's application cache. This stache can be rebuilt from scrach at any time. This is often done when content or settings change, or when updates are deployed to a production server.
+Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system stored in Laravel's application cache. This stache can be rebuilt from scratch at any time. This is often done when content or settings change, or when updates are deployed to a production server.
 
 You cannot disable it, nor would you want to. You can clear it using `php please stache:clear`, rebuild it using `php please stache:warm`, and do both together using `php please stache:refresh`.
 
