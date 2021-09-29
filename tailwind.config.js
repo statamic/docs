@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   mode: 'jit',
@@ -110,5 +111,25 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      const newUtilities = {
+        '.list-col-1': {
+          'column-count': '1',
+        },
+        '.list-col-2': {
+          'column-count': '2',
+        },
+        '.list-col-3': {
+          'column-count': '3',
+        },
+        '.list-col-4': {
+          'column-count': '4',
+        },
+      }
+      addUtilities(newUtilities, {
+        variants: ['responsive'],
+      })
+    })
+  ],
 }

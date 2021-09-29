@@ -59,7 +59,11 @@ article, .markdown {
     }
 
     h2 > .anchor {
-        @apply -left-6 pr-4 top-16;
+        @apply -left-6 pr-4;
+    }
+
+    h2:not(:first-of-type) > .anchor {
+        @apply top-16;
     }
 
     h2:hover > .anchor {
@@ -74,7 +78,7 @@ article, .markdown {
         @apply -left-5 opacity-100;
     }
 
-    > ul:not(.list-none) {
+    > ul:not(.list-*) {
         @apply pl-0 list-none mb-6 text-base;
 
         li {
@@ -98,14 +102,14 @@ article, .markdown {
             &:nth-child(3n+2)::before {
                 content: url('/img/triangle-teal.svg');
             }
+        }
+    }
 
-            a {
-                @apply underline text-pink font-bold;
+    ul a {
+        @apply underline text-pink font-bold;
 
-                &:hover {
-                    @apply text-pink;
-                }
-            }
+        &:hover {
+            @apply text-purple;
         }
     }
 
@@ -164,12 +168,7 @@ article, .markdown {
         bottom: .05rem;
     }
 }
-/*
-@media screen(md) {
-    article h1, .markdown h1 {
-        @apply text-7xl;
-    }
-} */
+
 
 article, .markdown {
     blockquote {

@@ -71,7 +71,12 @@ fields:
         - tags
         - variables
         - docs
+        - guides
+        - widgets
+        - troubleshooting
+        - extending-docs
       display: 'Related Entries'
       type: entries
       icon: entries
       listable: hidden
+      instructions_position: above
