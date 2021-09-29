@@ -251,8 +251,6 @@ The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) 
 {{ user_submitted_content | sanitize }}
 ```
 
----
-
 ## Logic & Conditions {#conditions}
 
 Antlers can handle logic and conditional statements, just like native PHP. You can use logic to check settings, variables, or even user data and alter the output of your page.
@@ -327,7 +325,6 @@ Yes, you can even use tags in conditions. When working with [tags][tags] instead
   ...
 {{ /if }}
 ```
----
 
 ## Code Comments {#comments}
 
@@ -336,8 +333,6 @@ Antlers also allows you to define comments in your views. However, unlike HTML c
 ```
 {{# Remember to replace the lorem ipsum this time. #}}
 ```
-
----
 
 ## Tags
 
@@ -372,8 +367,6 @@ If using a variable inside of a Tag is nice, using a variable with a modifier in
 // Totally not.
 {{ partially:broken src="{ featured_image | url }" }}
 ```
-
----
 
 ## Prevent Parsing
 

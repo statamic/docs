@@ -1,6 +1,6 @@
 {{ if related_entries }}
-{{ svg src="zig-zag-lg" class="mx-auto mt-12 mb-24" }}
-<section class="border shadow-stack relative p-5 pt-8">
+{{ svg src="zig-zag-lg" class="mx-auto w-full md:w-auto my-12 md:mb-24" }}
+<section class="bg-white border shadow-stack relative p-5 pt-8">
     <div class="font-display shadow uppercase bg-yellow text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 text-sm font-semibold tracking-wide">Learn More!</div>
     <p class="mb-4">Learn more about {{ title }} in these related docs:</p>
     {{ related_entries as="entries" }}
@@ -23,5 +23,5 @@
         </div>
     {{ /related_entries }}
 </section>
-{{ svg src="zig-zag-lg" class="mx-auto my-24" }}
+{{ svg src="zig-zag-lg" class="mx-auto w-full md:w-auto my-12 md:my-24" }}
 {{ /if }}

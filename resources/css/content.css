@@ -11,7 +11,7 @@ article, .markdown {
     }
 
     h2:not(:first-of-type) {
-        @apply border-t border-gray-light border-dashed pt-16;
+        @apply border-t border-gray border-dashed pt-14;
     }
 
     h3 {
@@ -63,7 +63,7 @@ article, .markdown {
     }
 
     h2:not(:first-of-type) > .anchor {
-        @apply top-16;
+        @apply top-14;
     }
 
     h2:hover > .anchor {
@@ -303,14 +303,14 @@ pre {
  colors extend edge to edge.
 */
 pre code.torchlight {
-    @apply block py-4 min-w-max text-sm leading-loose;
+    @apply block py-2 md:py-4 min-w-max text-sm leading-loose;
 }
 
 /*
  Horizontal line padding.
 */
 pre code.torchlight .line {
-    @apply px-6;
+    @apply px-3 md:px-6;
 }
 
 /*
