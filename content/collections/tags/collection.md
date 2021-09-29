@@ -387,4 +387,24 @@ You can also add your scope down into your [alias](#alias) loop. Yep, we thought
 
 Combining both an Alias and a Scope on a Collection Tag doesn't make a whole lot of sense. You shouldn't do that.
 
+## Grouping
+
+To group entries – by date or any other field – you should use [aliasing](#aliasing) (explained above) as well as the [`group_by`](/modifiers/group_by) modifier.
+There's no "grouping" feature on the collection tag itself.
+
+For example, if you want to group some dated entries by month/year, you could do this:
+
+```
+{{ collection:articles as="entries" }}
+    {{ entries group_by="date|F Y" }}
+        {{ groups }}
+            <h3>{{ group }}</h3>
+            {{ items }}
+                {{ title }} <br>
+            {{ /items }}
+        {{ /groups }}
+    {{ /entries }}
+{{ /collection:articles }}
+```
+
 [conditions]: /conditions

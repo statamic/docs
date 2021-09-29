@@ -6,7 +6,7 @@ overview: >
 
   Let's go deeper.
 
-image: /assets/fieldtypes/grid.png
+screenshot: fieldtypes/grid.png
 options:
   -
     name: min_rows
@@ -39,13 +39,13 @@ id: fa6d2032-0e42-4ea5-b20c-4226941bf0da
 
 You can use any fieldtypes inside a Grid. Just remember that because you can doesn't mean you should. Your UI experience will vary greatly. Make sure to compare the experience with the other meta-fields: [Replicator](/fieldtypes/replicator) and [Bard](/fieldtypes/bard).
 
-## Data Structure {#data-structure}
+## Data Structure
 
 The Grid field creates a YAML collection (associative array).
 
-## Templating {#templating}
+## Templating
 
-The example above would have the following data which can be looped through as a tag pair with access to the column data as variables.
+The example below would have the following data which can be looped through as a tag pair with access to the column data as variables.
 
 ```yaml
 cast:

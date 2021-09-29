@@ -88,3 +88,5 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
 ## Related Reading
 
 If you haven't read up on [views](/views) yet, you should. It's considered fundamental knowledge, like knowing that seals are just dog mermaids. 🐕 🧜‍♀️
+
+You may also be interested in the [`partial:exists`](/tags/partial-exists) or [`partial:if_exists`](/tags/partial-if-exists) tags.

@@ -109,7 +109,7 @@ Looking to jump right into a ready-made site?
 2. Require `statamic/cms`.
 
    ``` bash
-   composer require statamic/cms
+   composer require statamic/cms --with-dependencies
    ```
 
 3. Head over to the [Storing User Records](/users#storage) section and follow the instructions for the scenario that makes sense for your project. If you want to continue to keep users in a database, you can jump straight over to [Storing Users in a Database in an existing Laravel app](/knowledge-base/storing-users-in-a-database#in-an-existing-laravel-app).

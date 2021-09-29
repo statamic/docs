@@ -100,7 +100,7 @@ Each of these behaviors is available for future and past dates.
 
 ## Times
 
-To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will repsect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
+To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
 
 ## Ordering
 

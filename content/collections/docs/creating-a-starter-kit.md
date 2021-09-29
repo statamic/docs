@@ -6,7 +6,7 @@ blueprint: page
 intro: 'Thinking of creating your own Statamic Starter Kit? Here''s everything you need to know to get started.'
 nav_title: Creating
 ---
-> Available from Statamic 3.2 beta.
+> Available from Statamic 3.2.
 
 ## Overview
 
