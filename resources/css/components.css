@@ -3,7 +3,7 @@
 
 blockquote,
 .hint {
-    @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border antialiased relative shadow-pink-md;
+    @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border relative shadow-pink-md;
 
     .hint-title {
         @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 font-semibold tracking-wide;

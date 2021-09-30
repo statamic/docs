@@ -18,7 +18,7 @@ article, .markdown {
     }
 
     h3 {
-        @apply font-sans text-black font-bold text-xl mb-2 mt-12 relative;
+        @apply font-sans text-black font-extrabold text-2xl mb-2 mt-12 relative;
     }
 
     h4 {

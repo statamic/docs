@@ -2,18 +2,20 @@
 {{ svg src="zig-zag-lg" class="mx-auto w-full md:w-auto my-12 md:mb-24" }}
 <section class="bg-white border shadow-stack relative p-5 pt-8">
     <div class="font-display shadow uppercase bg-yellow text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 text-sm font-semibold tracking-wide">Learn More!</div>
-    <p class="mb-4">Learn more about {{ title }} in these related docs:</p>
+    <p class="mb-4 text-lg">Learn more about {{ title }} in these related docs:</p>
     {{ related_entries as="entries" }}
         <div>
         {{ entries group_by="collection:title" }}
             {{ groups }}
-                <div class="flex mt-5">
-                    {{ svg src="collections/{group|lower|slugify}" class="h-6 w-6" }}
-                    <div class="ml-3">
+                <div class="flex mt-6">
+                    <div class="w-6 mr-5">
+                        {{ svg src="collections/{group|lower|slugify}" class="h-6 w-6" }}
+                    </div>
+                    <div class="">
                         <h2 class="text-xl font-display font-bold">{{ group }}</h2>
-                        <ul class="list-col">
+                        <ul class="list-col-2 space-y-2">
                         {{ items }}
-                            <li><a href="{{ url }}">{{ title }}</a>
+                            <li class="pr-4"><a class="hover:text-pink" href="{{ url }}">{{ title }}</a>
                         {{ /items }}
                         </ul>
                     </div>
