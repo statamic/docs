@@ -17,6 +17,13 @@ module.exports = {
       current: 'currentColor',
       black:  '#191A1B',
       white: '#FFFFFF',
+      ninja: {
+        blue: '#00b1e1',
+        orange: '#f49b0b',
+        red: '#e03a10',
+        purple: '#925aa1',
+        green: '#4c9c23'
+      },
       pink: {
         lightest: '#FFFCFE',
         lighter: '#FFF6FA',

@@ -1,62 +1,25 @@
 ---
-title: 'Collections'
-intro: Collections are containers that hold groups of related entries. Each entry in a collection might represent a blog post, product, recipe, or even chapter of your Family Matters fan fiction novel following Steve Urkel's rise to UFC Heavyweight Champion.
-template: page
-blueprint: page
 id: 7202c698-942a-4dc0-b006-b982784efb03
+blueprint: page
+title: Collections
+intro: 'Collections are containers that hold groups of related entries. Each entry in a collection can represent a blog post, product, recipe, or even chapter of your Family Matters fan fiction novel detailing Steve Urkel''s rise to UFC Heavyweight Champion of the world.'
+template: page
+related_entries:
+  - 7202c698-942a-4dc0-b006-b982784efb03
+  - 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+  - 6177b316-0eed-4dec-83d1-e5a48a8e00b6
+  - dcf80ee6-209e-45aa-af42-46bbe01996e2
+  - a6a956fd-647d-4503-9a4a-3b24198e6e73
+  - 54548616-fd6d-44a3-a379-bdf71c492c63
+  - cb21fabb-65ba-4869-9acd-f6aa2fb58a01
 ---
-## Entries
+## Overview
 
-Each entry has — at the very least — a title, a published status, an id, and some content. The content fields are determined by one or more [blueprints](/blueprints) set on the collection. By default they're stored as Markdown files inside their collection's respective directory (`content/collections/{collection}/entry.md`).
+Not to be redundant, but Collections are simply containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So, not exactly the same thing — or at least, not nearly as romantic.
 
-Let's pretend it's currently the summer of '99 and we are journalists covering the X-Games. Here's an entry we might write.
+Each collection holds settings that affect all of its entries. Like URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [date behaviors](#dates).
 
-<figure>
-    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic 3 control panel">
-    <figcaption>Entry publishing with only the default content fields.</figcaption>
-</figure>
-
-And here's what the Markdown file would look like for that same entry.
-
-``` markdown
-<!-- content/collections/blog/1999-07-27.tony-hawks-900.md -->
----
-title: Tony Hawk lands the first-ever 900
-published: true
-id: 3a28f050-f8d2-4a56-ba8a-314a9d46bf38
----
-It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at the 1999 Summer X Games in a moment that launched the sport into popular consciousness in a new way.
-```
-
-You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of moment. Let your passion carry you away.
-
-### Data Cascade
-
-Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not, it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
-
-1. The entry
-2. The origin entry (if using localization)
-3. The collection
-
-If a value doesn't exist in one place, it'll check the next place, then the next, and so on.
-
-### Default collection data {#inject}
-
-Injecting data into your collection allows you to provide default values for your entries with the `inject` variable. If entries have these variables set, they will override the collection defaults.
-
-``` yaml
-inject:
-  author: jason
-  show_sidebar: true
-```
-
-## Collections
-
-Collections are the containers that hold entries. You can think of them like shoeboxes containing love letters, except they're folders on your server and they're holding text documents. So, not exactly the same thing, or at least not as romantic anyway.
-
-The collection holds settings that affect all of the entries. It's also responsible for the URL patterns by way of [routes](/routing), which fields are available with [blueprints](/blueprints), as well as any desired [date behaviors](#dates).
-
-You can also set default values for all entries, including default template, blueprint, and publish status.
+You can also set default values like template, blueprint, and published status.
 
 A collection is defined by a YAML file stored in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a matching name. For example, a `blog` collection looks like this:
 
@@ -67,6 +30,67 @@ A collection is defined by a YAML file stored in the `content/collections` direc
 │   │   ├── hello.md
 │   │   ├── is-it-me.md
 │   │   ├── youre-looking-for.md
+```
+## Entries
+
+Each entry — at the very least — has a title, published status, id, and probably some content. The content fields are determined by one or more [blueprints](/blueprints) set on the collection.
+
+Entries are stored as Markdown files inside their collection's respective directory (`content/collections/{collection}/entry.md`). At any time you can edit any entry in your code editor by popping open these files and doing what comes naturally.
+### Let's go deeper.
+
+We're going to pretend it's currently the summer of '99 and we are journalists covering the Summer X Games. The weather here in San Fransisco is beautiful and 275,000 people are watching Tony Hawk make history.
+
+Here's an entry we might write about the event.
+
+<figure>
+    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic 3 control panel">
+    <figcaption>Entry publishing with only the default content fields.</figcaption>
+</figure>
+
+And here's what the Markdown file would look like:
+
+``` markdown
+<!-- content/collections/blog/1999-07-27.tony-hawks-900.md -->
+---
+title: Tony Hawk lands the first-ever 900
+id: 3a28f050-f8d2-4a56-ba8a-314a9d46bf38
+---
+It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at the 1999 Summer X Games in a moment that launched the sport into popular consciousness in a new way.
+```
+
+You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of moment. Let your passion carry you away.
+
+### View Data
+
+Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not, it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
+
+If a value doesn't exist in one place, it'll check the next place, then the next, and so on, in this order:
+
+1. The entry
+2. The origin entry (if using localization)
+3. The collection
+
+
+### Setting Default Data {#inject}
+
+**Injecting** data into your collection allows you to provide default values for your entries. If entries have these variables set, they will override the collection _defaults_, but not any data set on the entries themselves.
+
+This is done by adding an `inject` key in your collection's YAML config file.
+
+``` yaml
+# /content/collections/blog.yaml [tl! **]
+title: Blog
+date: true
+date_behavior:
+  past: public
+  future: private
+route: 'blog/{slug}'
+sort_dir: desc
+template: blog/show
+inject: #[tl! focus:start]
+  author: jason
+  show_sidebar: true
+  show_newsletter_signup: false #[tl! focus:end]
 ```
 
 ## Blueprints
@@ -97,12 +121,16 @@ Each of these behaviors is available for future and past dates.
 - **private** - Entries will be hidden in listings, and their own URLs will 404.
 
 :::tip
-Date behaviors are _defaults_. They can be overridden on the tag level.
+Date behaviors are _defaults_. They can be overridden at the [tag level](/tags/collections) in your templates.
 :::
 
-## Times
+## Time
 
 To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
+
+:::tip
+If you don't enable the time, all entries on a given day will assume a default time of midnight, or `00:00`. If you want to make sure that multiple entries on the same day are ordered in the order you published them, turn the time on.
+:::
 
 ## Ordering
 
@@ -120,14 +148,14 @@ Order will take precedence when sorting. For example, if you make a dated collec
 
 ### Constraining Depth
 
-A structured collection will **not** have a maximum depth by default, allowing you to nest entries as deep as you like. Set the `max_depth` option to limit this behavior. Setting `max_depth: 1` will replace the page tree UI with a flat, table-based UI.
+A structured collection will **not** have a maximum depth unless you set one, allowing you to nest entries as deep as you like. Set the `max_depth` option to limit this behavior. Setting `max_depth: 1` will replace the tree UI with a flat, table-based UI.
 
 <figure>
     <img src="/img/reorderable-entries.png" alt="An orderable collection with max depth of 1">
     <figcaption>These reorderable entries have a max depth of 1.</figcaption>
 </figure>
 
-### Default sort order in listings
+### Default Sort Order in Listings
 
 For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
 
@@ -163,7 +191,7 @@ Statamic does not automatically define route rules. If you want entries in your 
 | `depth` | when in an [orderable](#ordering) collection and max_depth > 1 |
 | `mount` | when [mounted](#mounting) to an entry |
 
-### Example routes
+### Example Routes
 
 Here are a few examples of possible route rules for inspiration. 💡
 

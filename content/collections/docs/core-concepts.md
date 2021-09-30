@@ -2,24 +2,29 @@
 id: 24a9c9d8-d607-4117-9806-738668c173cd
 blueprint: page
 title: 'Core Concepts'
-intro: 'Statamic is opinionated software. Understanding the principles we follow  and apply to our core concepts, features, and conventions will help train your intuition and understanding of how to take advantage of Statamic in its fullest. This is a fancy way of saying you will need to RTFM less if you understand this more.'
+intro: 'Statamic is opinionated software. Understanding the principles we follow and apply to the way we build features will help you learn Statamic faster.'
 template: page
 ---
 ## Statamic is Opinionated But Configurable
 
-Statamic is an opinionated platform. We strive for smart defaults and patterns to help speed up workflow, enforce consistency, and make it easy to share code between projects.
+Statamic is an opinionated platform. We like defaults to match the most common use cases. We implement patterns that help speed up your workflow, enforce consistency, and make it easy to share code between projects.
 
-Following these conventions will make switching between multiple sites trivial, reducing learning curve. You'll know right where everything is.
+Following these conventions will make it easier to switch between different Statamic projects because you'll know right where everything is what it's called.
 
-Sometimes these conventions don't fit your project, or perhaps you have your own way of doing things you're already perfectly happy with. That's fine. Our conventions can usually be configured, overridden, or ignored.
+Sometimes these conventions don't fit your project, or maybe you're perfectly happy with your own way of doing things. That's fine &mdash; our conventions can usually be configured, overridden, or ignored.
 
 :::tip
-**But don't break convention unless you have a really, really good reason.** Like integrating with an existing Laravel app or when porting a site from another platform.
+**But don't break convention unless you have a really, really good reason.** Like integrating Statamic with an existing Laravel app or when porting a site from another platform.
 :::
 
-A good example of this is the decision on whether to use [Antlers](/antlers) as the template language over [Blade](https://laravel.com/docs/blade). Antlers is deeply integrated with Statamic and handles the responsibilities of both Blade _and_ Controllers, all in your template. In short, if you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
+A good example of this is the decision on whether to Blade [Blade](/blade) as the template language over [Antlers](/antlers). Antlers is deeply integrated with Statamic and can handled the responsibilities of both Blade _and_ Controllers right in your template. If you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
 
-## Flat Is First
+:::best-practice
+Do your to best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
+:::
+
+
+## Statamic is Flat First
 
 Statamic 3 has the ability to adapt to any data storage mechanism, from relational databases like MySQL and Postgres, to NoSQL solutions like MongoDB and Redis, and more. This feature is called [Repositories](/extending/repositories).
 
@@ -36,30 +41,38 @@ As your site scales, you can choose to move from the flat file driver to one bes
 
 <figure>
     <img src="https://imgs.xkcd.com/comics/the_general_problem.png" alt="Premature Optimization comic by XKCD">
-    <figcaption>Let's be honest. We all do it.</figcaption>
+    <figcaption>Let's be honest. We've all done this.</figcaption>
 </figure>
 
 ## The Content Schema Is Up To You
 
-It's completely up to you how to organize your content. We believe that forcing every site to use the same content model is nothing short of a crime. With nearly 40 different fieldtypes included, there are many ways to structure and manage your content.
+It's completely up to you how to organize your content. You pick the field names, you pick how to organize entries into different collections. You pick what to name your taxonomies, what the URL patterns should be, and so on.
 
-If you like the "one big field" approach with all your content and markup in one chunk, we've got you covered. Or if you like to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too.
+We believe that forcing every site to use the same content model is nothing short of a crime. With nearly 40 different build-in fieldtypes, there are many perfectly reasonable ways to structure and manage your content.
 
-What fields are named and how they're organized, grouped, and arranged is all up to you. Your data can be as simple or nuanced as you need.
+If you like the "one big field" approach with all your content and markup in one chunk, build your site around the [Bard](/fieldtypes/bard) fieldtype and add custom Set blocks with other fieldtypes to get fancy.
 
-## You Bring Your Own HTML
+Or if you prefer to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too (you should check out [conditional fields](/conditional-fields)).
 
-Much in the same way Statamic doesn't enforce a uniform schema (like WordPress, for example), neither does it enforce a design, specific HTML, or any styles or CSS of its own. That's up to you (or a Starter Kit) to provide.
+## You Bring the HTML
 
-Every Statamic site &mdash; just like every fingerprint and person in the world &mdash; is unique. This is not a platform for the generic web. This is a tool used to build your dreams.
+Statamic doesn't start with a design or HTML you're expected to use or hack around. It doesn't include any CSS or JavaScript either. All of that is up to you (or a [Starter Kit](/starter-kits)) to provide.
 
-## Turn On Only What You Need
+Every Statamic site &mdash; just like every fingerprint and person in the world &mdash; is unique. This is not a platform for the generic web. This is a tool used to build anything you can imagine.
 
-We ship with most areas of the site in a "blank slate" state. We find it's much easier to turn on the things you need, enable features you plan to use, and name things the way you want, than spend precious time clicking about the control panel disabling everything you'll never end up needing.
+Because of this, most Statamic projects need to involve a developer. It's not very "no-code" friendly to assemble. But once the site is built and all the collections and blueprints configured, just about anyone can handle maintaining the site.
 
-If many of the sites you build share a common set of features, collections, taxonomies, and/or templates, save a copy of that state as a [Starter Kit](/starter-kits) and make it your boilerplate to kickstart new projects.
+## Keep it Simple
 
-## The LEGO Approach
+Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip it what you don't want" approach.
+
+This means that Statamic doesn't do everything right out the box. We find it's much better in the long run to turn on the things you need, enable features you plan to use, and name things the way you want, than to spend precious time clicking about the control panel disabling everything you'll never end up needing, or explaining to a client why the button they clicked doesn't do what they expect.
+
+:::tip
+If many of the sites you build share a common set of features, collections, blueprints, and/or templates, consider turning them into a [Starter Kit](/starter-kits) and make it your boilerplate to kickstart new projects.
+:::
+
+## Statamic is Box of Lego Bricks
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 

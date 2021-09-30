@@ -105,6 +105,10 @@ article, .markdown {
             &:nth-child(3n+2)::before {
                 content: url('/img/triangle-teal.svg');
             }
+
+            code {
+                @apply text-sm;
+            }
         }
     }
 
@@ -128,6 +132,12 @@ article, .markdown {
             @apply absolute top-0 left-0 mt-px flex items-center justify-center h-6 w-6 bg-yellow rounded-full text-lg font-bold font-display;
             content: counter(item);
             counter-increment: item;
+        }
+    }
+
+    > ol.ninja {
+        > li::before {
+            @apply bg-ninja-green;
         }
     }
 

@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Globals are designed for reusable content. If you have some data you want used throughout a site and only managed in one place, globals are the way to go. For example:
+Globals are intended to be used for **reusable content** or content that **belongs to the site** and not just one page.
 
 - Company phone number, address, and logo
 - Footer content
@@ -27,7 +27,7 @@ Globals are organized into "sets", each containing [fields](/fields). This conve
 
 ## Storage
 
-Each global set is stored in `content/globals/` as a YAML file. Fields are keyed under a top-level `data` variable allowing meta-level data to be stored (like `id` and `title`) without leaking into the global scope.
+Each global set is stored in `content/globals/` as a YAML file. Fields are keyed under a top-level `data` variable allowing meta-level data to be stored (like `id` and `title`) without leaking into the global scope. Note how all data is stored under the `data` key.
 
 ``` files
 globals/
@@ -38,15 +38,12 @@ globals/
 ``` yaml
 title: Footer
 data:
-  copyright: 2019 Company Name, LLC
+  copyright: 2021 Neat Fake Company, LLC
   flair: Made with ❤️ by humans
 ```
 
-:::tip
-If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, etc) to be excluded.
-:::
 
-## Templating
+## Frontend Templating
 
 In this example all of the variables inside a `footer` global set will be accessed through `footer:<var_name>`.
 
@@ -57,13 +54,13 @@ In this example all of the variables inside a `footer` global set will be access
 </footer>
 ```
 
-If you only have the default global set (which we named Globals because it can't get any more generic), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
+If you only have one default global set (which we named "Globals" because it cannot get any simpler), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
 
-## Blueprint is Optional
+## Blueprints are Optional
 
-If you don't explicitly create a [Blueprint](/blueprints) for your global set, Statamic will try to render each field in the YAML file as a text input. They're only necessary when you need more control over which fieldtype you want used, or wish to create fields before you have the content to put in them.
+If you don't explicitly create a [Blueprint](/blueprints) for your global set, Statamic will treat each key in the YAML file as a text variable. Blueprints only become necessary when you need more control over which fieldtype you want used, wish to create fields before you have the content to put in them, or want to work with [GraphQL](/graphql)
 
-If you _do_ want a blueprint, you'll find it in `resources/blueprints/globals/{handle}.yaml`. Or, edit it through the control panel and it'll create the file for you.
+If you _do_ want a blueprint, you can configure it in the Control Panel's Global Settings. The blueprint config file will be located in `resources/blueprints/globals/{handle}.yaml`.
 
 Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 
@@ -72,3 +69,11 @@ Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 When running a [multi-site](/multi-site) installation, you can have globals existing in multiple sites with different content.
 
 [Read about localizing globals](/knowledge-base/localizing-globals)
+
+## Ideas on How to Use Globals
+
+Here are a few more ideas what you can use globals for:
+
+- **Theme or design settings**, with [assets fields](/fieldtypes/assets) for logo, and favicon and [colors fields](/fieldtypes/color) to set brand colors.
+- **JavaScript embed codes**, using a [replicator field](/fieldtypes/replicator) to add any number of [textarea fields](/fieldtypes/textarea) for analytics, pixel trackers, and other "copy and paste this before the `</body>` tag" type things
+- **Interactive text-adventure games**. Not really sure how you'd do it honestly, but we'd like to see someone try.
