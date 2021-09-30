@@ -110,7 +110,7 @@ figure,
 
 .caption,
 figure figcaption {
-    @apply bg-black px-6 py-1 text-mint text-sm inline-block antialiased absolute -right-4 bottom-2;
+    @apply bg-black px-6 py-1 text-mint text-sm inline-block antialiased absolute -right-2 -bottom-4 md:-right-4 md:bottom-2;
 
     code {
         font-size: 12px !important;
