@@ -17,10 +17,10 @@ blockquote,
     }
 
     &.warning {
-        @apply shadow-purple-lg;
+        @apply shadow-purple-md bg-gray-lightest;
 
         .hint-title {
-            @apply bg-mint;
+            @apply bg-purple text-white;
         }
     }
 
