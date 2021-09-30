@@ -1,5 +1,5 @@
 {{ if content | toc }}
-    <div id="table-of-contents" class="border shadow rounded mt-6 md:mt-16" x-data="{open: getCookie('toc_open') != 'false'}">
+    <div id="table-of-contents" class="border shadow rounded mt-8 md:mt-16" x-data="{open: getCookie('toc_open') != 'false'}">
         <div class="bg-black text-white py-3 px-4 flex items-center justify-between">
             <span x-text="open ? 'On this page' : 'See what\'s on this page'"></span>
             <button @click="open = false; setCookie('toc_open', 'false'); $refs.close.play()" x-show="open">
@@ -16,5 +16,5 @@
          <audio x-ref="close"><source src="/audio/close.mp3" type="audio/mpeg" /></audio>
     </div>
 {{ else }}
-    {{ svg src="zig-zag" class="mx-auto my-12" }}
+    {{ svg src="zig-zag" class="mt-12" }}
 {{ /if }}

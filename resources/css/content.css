@@ -7,7 +7,7 @@ article, .markdown {
     }
 
     h2 {
-        @apply font-sans text-black font-extrabold text-3xl mb-6 mt-16 relative;
+        @apply font-sans text-black font-extrabold text-3xl mb-6 md:mt-16 relative;
     }
 
     h2:not(:first-of-type) {

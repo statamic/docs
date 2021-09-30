@@ -1,9 +1,6 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title }}</h1>
-    {{ intro | markdown }}
-</header>
+{{ partial:header }}
 
-<article class="markdown pb-8">
+<article class="markdown md:pb-16">
     {{ content | toc:ids }}
 
     {{ taxonomy:types sort="order" }}

@@ -1,14 +1,6 @@
-<header class="markdown pb-8 mb-8">
-    {{ partial:breadcrumbs }}
-    <div class="flex items-center">
-        <h1>{{ title }}</h1>
-        {{ partial:pro-badge }}
-    </div>
-    {{ intro ?? overview | markdown }}
-    {{ partial:toc }}
-</header>
+{{ partial:header }}
 
-<article class="markdown pb-16">
+<article class="markdown md:pb-16">
     {{ content | toc:ids }}
 
     {{ if options }}
