@@ -11,6 +11,9 @@ body {
     background-size: 200px 6500px;
 }
 
+/* Navs */
+/* -------------------------------------------------- */
+
 #site-nav {
     ul li a {
         @apply py-2;

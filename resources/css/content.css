@@ -1,3 +1,6 @@
+/* Main Content */
+/* -------------------------------------------------- */
+
 article, .markdown {
     background: white;
     @apply text-gray-darkest leading-relaxed;
@@ -78,7 +81,7 @@ article, .markdown {
         @apply -left-5 opacity-100;
     }
 
-    > ul:not(.list-*) {
+    >ul:not([class*="list-"]) {
         @apply pl-0 list-none mb-6 text-base;
 
         li {
@@ -138,6 +141,7 @@ article, .markdown {
                 @apply px-3 py-2 md:px-5 text-left;
             }
         }
+
         tbody {
             tr {
                 @apply even:bg-gray-lightest;
@@ -169,6 +173,64 @@ article, .markdown {
     }
 }
 
+header.markdown > p {
+    @apply text-xl leading-normal;
+}
+
+
+/* Main Content in Tight Spaces */
+/* -------------------------------------------------- */
+
+.markdown-tight, table {
+    h1, h2, h3, h4, h5, h6 {
+        @apply m-0;
+    }
+
+    p, ul, ol {
+        font-size: inherit;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+}
+
+.parameter .markdown {
+    p {
+        @apply text-base;
+    }
+
+    :not(pre)>code {
+        @apply bg-transparent text-purple font-bold text-sm;
+    }
+}
+
+
+/* Multi-column list */
+/* -------------------------------------------------- */
+
+ul.list-col {
+    @apply space-y-2 mt-2;
+    column-count: 2;
+
+    li {
+        @apply pr-5;
+    }
+
+    li a {
+        @apply text-black no-underline hover:text-pink;
+    }
+}
+
+@media screen(lg) {
+    ul.list-col {
+        column-count: 3;
+    }
+}
+
+
+/* TODO: Remove (replaced by "tips") */
+/* -------------------------------------------------- */
 
 article, .markdown {
     blockquote {
@@ -200,183 +262,4 @@ article, .markdown {
             }
         }
     }
-}
-
-.markdown-tight, table {
-    h1, h2, h3, h4, h5, h6 {
-        @apply m-0;
-    }
-
-    p, ul, ol {
-        font-size: inherit;
-    }
-
-    p:last-child {
-        @apply mb-0;
-    }
-}
-
-header.markdown > p {
-    @apply text-xl leading-normal;
-}
-
-.parameter .markdown {
-    p {
-        @apply text-base;
-    }
-
-    :not(pre)>code {
-        @apply bg-transparent text-purple font-bold text-sm;
-    }
-}
-
-.toc {
-    @apply font-display py-3 space-y-4;
-    list-style-type: decimal;
-    list-style-position: inside;
-
-    li {
-        @apply px-2 leading-tight text-base;
-    }
-
-    li a {
-        @apply text-black no-underline hover:text-pink font-medium;
-    }
-}
-
-@media screen(lg) {
-    .toc {
-        column-count: 3;
-        column-rule: 1px dashed theme('colors.black');
-    }
-}
-
-/* pre.language-markdown code {
-    white-space: pre-line !important;
-} */
-
-
-ul.list-col {
-    @apply space-y-2 mt-2;
-    column-count: 2;
-
-    li {
-        @apply pr-5;
-    }
-
-    li a {
-        @apply text-black no-underline hover:text-pink;
-    }
-}
-
-@media screen(lg) {
-    ul.list-col {
-        column-count: 3;
-    }
-}
-
-
-
-
-/*
- Margin and rounding are personal preferences,
- overflow-x-auto is recommended.
-*/
-pre {
-    @apply my-6 rounded overflow-x-auto leading-loose antialiased;
-}
-
-/*
-  Inline code
-*/
-:not(pre) > code {
-    @apply text-purple rounded;
-    padding: 1px 2px;
-    font-size: 15px;
-    background-color: #E7ECF1;
-}
-
-/*
- Add some vertical padding and expand the width
- to fill its container. The horizontal padding
- comes at the line level so that background
- colors extend edge to edge.
-*/
-pre code.torchlight {
-    @apply block py-2 md:py-4 min-w-max text-sm leading-loose;
-}
-
-/*
- Horizontal line padding.
-*/
-pre code.torchlight .line {
-    @apply px-3 md:px-6;
-}
-
-/*
- Push the code away from the line numbers and
- summary caret indicators.
-*/
-pre code.torchlight .line-number,
-pre code.torchlight .summary-caret {
-    @apply mr-4;
-}
-
-.torchlight summary:focus {
-    outline: none;
-}
-
-/* Hide the default markers, as we provide our own */
-.torchlight details>summary::marker,
-.torchlight details>summary::-webkit-details-marker {
-    display: none;
-}
-
-.torchlight details .summary-caret::after {
-    pointer-events: none;
-}
-
-/* Add spaces to keep everything aligned */
-.torchlight .summary-caret-empty::after,
-.torchlight details .summary-caret-middle::after,
-.torchlight details .summary-caret-end::after {
-    content: " ";
-}
-
-/* Show a minus sign when the block is open. */
-.torchlight details[open] .summary-caret-start::after {
-    content: "-";
-}
-
-/* And a plus sign when the block is closed. */
-.torchlight details:not([open]) .summary-caret-start::after {
-    content: "+";
-}
-
-/* Hide the [...] indicator when open. */
-.torchlight details[open] .summary-hide-when-open {
-    display: none;
-}
-
-/* Show the [...] indicator when closed. */
-.torchlight details:not([open]) .summary-hide-when-open {
-    display: initial;
-}
-
-/*
-  Blur and dim the lines that don't have the `.line-focus` class,
-  but are within a code block that contains any focus lines.
-*/
-.torchlight.has-focus-lines .line:not(.line-focus) {
-    transition: filter 0.35s, opacity 0.35s;
-    filter: blur(.095rem);
-    opacity: .65;
-}
-
-/*
-  When the code block is hovered, bring all the lines into focus.
-*/
-.torchlight.has-focus-lines:hover .line:not(.line-focus) {
-    filter: blur(0px);
-    opacity: 1;
 }

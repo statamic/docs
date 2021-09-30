@@ -1,10 +1,11 @@
 @import "tailwindcss/base";
 
-@import "code";
+/* @import "code"; */
 @import "content";
-@import "layout";
 @import "components";
+@import "layout";
 @import "search";
+@import "torchlight";
 @import "utilities";
 
 @import "tailwindcss/components";

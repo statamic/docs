@@ -1,3 +1,6 @@
+/* Markdown "Hint" Blocks */
+/* -------------------------------------------------- */
+
 blockquote,
 .hint {
     @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border antialiased relative shadow-pink-md;
@@ -89,6 +92,10 @@ blockquote,
     }
 }
 
+
+/* Video Embed */
+/* -------------------------------------------------- */
+
 .embed {
     @apply relative w-full;
     padding-bottom: 56.25%;
@@ -96,6 +103,10 @@ blockquote,
         @apply absolute top-0 left-0 w-full h-full border-0;
     }
 }
+
+
+/* Screenshots */
+/* -------------------------------------------------- */
 
 figure,
 .screenshot {
@@ -118,6 +129,10 @@ figure figcaption {
     }
 }
 
+
+/* Buttons */
+/* -------------------------------------------------- */
+
 .button {
     @apply py-1 px-5 relative inline-block bg-yellow font-normal rounded border shadow-md font-display text-base whitespace-nowrap transition no-underline text-black !important;
 
@@ -135,3 +150,26 @@ figure figcaption {
     }
 }
 
+
+/* Table of Contents */
+/* -------------------------------------------------- */
+.toc {
+    @apply font-display py-3 space-y-4;
+    list-style-type: decimal;
+    list-style-position: inside;
+
+    li {
+        @apply px-2 leading-tight text-base;
+    }
+
+    li a {
+        @apply text-black no-underline hover:text-pink font-medium;
+    }
+}
+
+@media screen(lg) {
+    .toc {
+        column-count: 3;
+        column-rule: 1px dashed theme('colors.black');
+    }
+}

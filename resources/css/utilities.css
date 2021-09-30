@@ -23,12 +23,6 @@
         }
     }
 
-    .turbo-progress-bar {
-        /* @apply bg-pink; */
-        /* height: 5px; */
-        display: none;
-    }
-
     [x-cloak] {
         display: none;
     }
