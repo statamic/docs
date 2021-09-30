@@ -61,8 +61,9 @@ Zip Code: 90210
 </ul>
 ```
 
-> **Note:** PHP reserves the word `foreach`, so this tag is _technically_ an alias of `iterate`. If you're spelunking through the source code, that's where you'll find it.
-
+:::tip
+PHP reserves the word `foreach`, so this tag is _technically_ an alias of `iterate` under the hood. If you're spelunking through the source code, that's where you'll find it.
+:::
 
 ## Dynamic Variables
 

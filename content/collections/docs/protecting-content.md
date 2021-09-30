@@ -19,7 +19,9 @@ You can also [create your own drivers](#custom-drivers).
 
 Whichever approach you choose, know that it's designed to help you out. We’ve tried to keep the syntax as simple as possible while allowing for flexibility. Because of this, if Statamic sees you’ve set `protect`, but the scheme has been configured incorrectly, _all users will be denied_.
 
-> This feature only applies to the front-end of your site on pages routed through Statamic (like entry URLs). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
+:::tip
+This feature only applies to the frontend of your site on pages routed through Statamic (like entry URLs). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
+:::
 
 ## Protecting an entry
 
@@ -163,7 +165,9 @@ A valid password is anything matching one of the passwords in the allowed list a
 
 As always with online security, be careful with who you share passwords with or you'll find yourself changing them often.
 
-> This protection method is only meant for short-term access control. For example, showing a client your progress without the public or to prevent Google from indexing a staging site. It's secure like a curtain over an open window: just good enough for passerbys.
+:::warning
+This protection method is meant for short-term access control. For example, showing a client your progress without the public or to prevent Google from indexing a staging site. It's about as secure as curtain over an open window: just good enough for passer-bys.
+:::
 
 ### Password Expiration
 Each user’s passwords will expire along with their session. To manually invalidate a password, remove it from the list of allowed passwords on the page. The next time a user with that password visits this page they’ll be redirected to the password form just like everyone else.

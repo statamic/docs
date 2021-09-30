@@ -95,7 +95,9 @@ Note that the entry is using the `home` template (you can see it there in the `t
 
 In your code editor, open the file `resources/views/home.antlers.html`. This is the home template. The "name" of a template is the filename _up until the file extension_. Any view ending in `.antlers.html` will be parsed with Statamic's [Antlers](/antlers) template parser.
 
-> If a view file ends with `.blade.php` it will use Laravel's [Blade language](/template-engines). This same pattern applies for other template engines that could be installed in the future.
+:::tip
+If a view file ends with `.blade.php` it will use Laravel's [Blade language](/blade). This same pattern applies for other template engines that could be installed in the future.
+:::
 
 Delete all the placeholder HTML from the template and replace it with the following:
 
@@ -195,7 +197,11 @@ Next, let's configure the collection to behave the way a typical blog should. Cl
 </figure>
 
 
-> Statamic does its best to take a "turn it on and build it up" approach to features and settings, in contrast to other platforms that take a "turn it off and rip it out" approach. This means that Statamic doesn't do everything right out the box, allowing you to customize how you'd like everything to work.
+:::tip
+Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip it what you don't want" approach.
+
+This means that Statamic doesn't do everything right out the box, but is much simpler to customize how you want everything to work.
+:::
 
 We'll review some of the important settings, but we only need to touch two of them to make a blog:
 
@@ -338,7 +344,9 @@ Back to your code editor — open up the `resources/views/blog/index.antlers.htm
 
 And stop right there. We've now duplicated a whole chunk of code save for one little tiny bit — `limit="5'`. Let's DRY this up (reduce code duplication).
 
-> It's totally fine to duplicate code sometimes, especially if you have to make some code significantly more complex to reuse it. Just keep that in mind. We'll keep this simple.
+:::tip
+It's totally fine to duplicate code sometimes, especially if you have to make some code significantly more complex to reuse it. Just keep that in mind. We'll keep this simple.
+:::
 
 ## Your first partial
 
@@ -427,7 +435,9 @@ Tab Sections let you group fields into Tabs which can help you stay organized, k
 
 You can drag, drop, and rearrange fields inside and across your sections. This order will be how you see the fields in the publish screen.
 
-> **The Sidebar** is a special section. It controls the fields shown in the publish sidebar when your browser is wide enough, and collapses those fields to a tab when it isn't. If you delete the Sidebar section, you won't have one — and if you create a new one called "Sidebar", it'll work just as before.
+:::tip
+**The Sidebar** is a special section. It controls the fields shown in the publish sidebar when your browser is wide enough, and collapses those fields to a tab when it isn't. If you delete the Sidebar section, you won't have one — and if you create a new one called "Sidebar", it'll work just as before.
+:::
 
 Let's create a new field called `featured_image`.
 
@@ -458,7 +468,9 @@ Hover over the thumbnail for your new image and click the Edit button (it looks 
     <figcaption>Ducktails!</figcaption>
 </figure>
 
-> Assets can have Blueprints too!
+:::tip
+Assets can have Blueprints too!
+:::
 
 When you're done, **Save & Publish** your changes.
 

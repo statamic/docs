@@ -46,10 +46,12 @@ This method is used to fetch _any_ entry-based data, not just that available on 
 </home-page>
 ```
 
-> Note that when using [the Live Preview feature](https://statamic.dev/live-preview), only the current page data is available to you. Trying to query collection data **will not work**.
+:::tip
+[Live Preview](/live-preview) only has the current page's data available to it. Trying to query collection data **will not work**.
+:::
 
 ## The Content API
-[The Content API](https://statamic.dev/content-api) can be used on its own, or in conjunction with the above methods.
+[The Content API](/content-api) can be used on its own, or in conjunction with the above methods.
 
 Here is a simple example component that fetches data using the asynchronous `created()` function. This data can then be used in the component or passed down to child components. The example uses the standard `Fetch` method but you can use any AJAX library (Axios, etc).
 
@@ -84,4 +86,4 @@ Here is a simple example component that fetches data using the asynchronous `cre
 ```
 
 ## Custom View Models
-It is also possible to create [a view model](https://statamic.dev/view-models) which will return only the data you require. However, this requires PHP knowledge.
+It is also possible to create [a view model](/view-models) which will return only the data you require. However, this requires PHP knowledge.

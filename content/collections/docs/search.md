@@ -52,7 +52,9 @@ A search index is an ephemeral copy of your content, optimized for speed and per
 
 Indexes are configured in `config/statamic/search.php` and you can create as many as you want. Each index can hold different pieces of content — and any one piece of content may be stored in any number of indexes.
 
-> An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
+:::tip
+An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
+:::
 
 Your site's default index includes _only_ the title from from _all_ collections. The default config looks like this:
 
@@ -145,9 +147,9 @@ title: Blog
 search_index: blog
 ```
 
-> Even if you specify that an index contains entries from a collection (in [searchables](#searchables)), you still **also** need to specify the index
-> in the collection config itself. This is because different collections and entries can be available in multiple indexes.
-
+:::tip
+After specifying that an index contains entries from a collection (in [searchables](#searchables)), you **must also** specify the index in the collection config itself because collections and entries can be in multiple indexes.
+:::
 
 ## Drivers
 

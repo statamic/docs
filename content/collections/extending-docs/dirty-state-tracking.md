@@ -14,5 +14,6 @@ this.$dirty.add(name); // Mark a thing as dirty
 this.$dirty.remove(name); // Clean it up
 ```
 
-> If you're using a [publish container](/extending/publish-forms#container) (you should, if you're making a form), the dirty state 
-> will be automatically tracked. Be sure to call `save()` on it when you save and it will mark it as clean.
+:::tip
+If you're using a [publish container](/extending/publish-forms#container) (which you should if you're making a form), the dirty state will be automatically tracked. Be sure to call `save()` on it when you save and it will mark it as clean.
+:::

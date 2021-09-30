@@ -148,7 +148,9 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `orientation` | Is one of `portrait`, `landscape`, `square`, or `null`. |
 | `ratio` |  An image's ratio (`1.77`) |
 
-> You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform other sweet image manipulations. Check it out!
+:::tip
+You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform other sweet image manipulations.
+:::
 
 ### Asset Field Data
 

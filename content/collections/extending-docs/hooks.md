@@ -9,7 +9,7 @@ id: fc136da3-ba46-46e1-8443-e345d5b548ac
 
 Hooks are programmable interfaces which you can use to modify or extend already existing JavaScript code inside the Control Panel.
 
-Normally they work like this: 
+Normally they work like this:
 
 1. Statamic code is running
 2. Statamic code checks for existing Hooks
@@ -57,18 +57,19 @@ Statamic.$hooks.on('entry.saving', (resolve, reject, payload) => {
 });
 ```
 
-> When you `reject` a hook, any other code using that hook will not be executed.
-> So unless your intention is to stop the execution chain, you should always `resolve`, even when your code does nothing.
->
-> ``` js
-> Statamic.$hooks.on('example', (resolve, reject) {
->     if (somethingShouldHappen) {
->         doSomething();
->     }
->     resolve();
-> });
-> ```
+:::best-practice
+When you `reject` a hook, any other code using that hook will not be executed.
+Unless your intention is to stop the execution chain, you should always `resolve`, even when your code does nothing.
 
+``` js
+Statamic.$hooks.on('example', (resolve, reject) {
+    if (somethingShouldHappen) {
+        doSomething();
+    }
+    resolve();
+});
+```
+:::
 
 ## Available hooks
 

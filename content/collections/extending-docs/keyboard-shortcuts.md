@@ -74,4 +74,6 @@ Other special keys are `backspace`, `tab`, `enter`, `return`, `capslock`, `esc`,
 
 Any other key you should be able to reference by name like `a`, `/,` `$,` `*,` or `=.`
 
-> You can use `mod` to mean both `ctrl` on Windows and `cmd` on Mac. This saves you from having to define two separate sequences.
+:::tip
+You can use `mod` to mean both `ctrl` on Windows and `cmd` on Mac. This saves you from having to define two separate sequences.
+:::

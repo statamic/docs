@@ -118,7 +118,9 @@ Permission::register('view {collection} entries', function ($permission) {
 });
 ```
 
-> When using replacements, ensure your `label` string contains a placeholder prefixed with a colon.
+:::tip
+When using replacements, ensure your `label` string contains a placeholder prefixed with a colon.
+:::
 
 ## Groups
 

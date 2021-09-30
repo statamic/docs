@@ -11,7 +11,9 @@ id: 25155800-8fd7-46c7-aad0-5daaf07543da
 
 This field is a [code fieldtype](/fieldtypes/code) that gets saved as YAML instead of a string. Your input is validated on save to make sure you don't write _invalid_ YAML.
 
-> The YAML field is one of the "catch-all" solutions for when there's no better way to work with an odd data structure. **Recommended for developers only.**
+:::tip
+The YAML field is one of the "catch-all" solutions for when there's no better way to work with an odd data structure. **Recommended for developers only.**
+:::
 
 ## Data Storage
 

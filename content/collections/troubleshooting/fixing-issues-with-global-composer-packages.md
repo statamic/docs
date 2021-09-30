@@ -33,4 +33,6 @@ You can find where the global `composer.json` config file is by running the foll
 composer config --list --global
 ```
 
-> If you're on MacOS, that file will be at `~/.composer/composer.json`
+:::tip
+If you're on MacOS, that file will be at `~/.composer/composer.json`
+:::

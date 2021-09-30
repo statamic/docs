@@ -107,7 +107,9 @@ sections:
         type: textarea
 ```
 
-> Blueprint fields are **sequence indexed** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
+:::tip
+Blueprint fields are **indexed sequentially** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
+:::
 
 ## Reusable Fields
 
@@ -232,7 +234,9 @@ Here's a peek at how that YAML is structured.
       - 'min:4'
 ```
 
-> If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
+:::tip
+If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
+:::
 
 ### Required Fields
 

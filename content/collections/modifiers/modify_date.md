@@ -27,4 +27,6 @@ date: {{ now }}
 {{ now | modify_date:-2 weeks }}
 ```
 
-> This modifier **modifies the variable directly** which will carry over to subsequent modifications, as shown in the above example.
+:::tip
+This modifier **modifies the variable directly** which will carry over to subsequent modifications, as shown in the above example.
+:::

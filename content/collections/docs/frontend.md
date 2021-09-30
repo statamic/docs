@@ -10,7 +10,9 @@ blueprint: page
 
 The **frontend** of a website is the part users see and interact with in their browser. The .com bit. It's the text, images, videos, pages, layouts, RSS feeds, and other bits that your readers and visitors consume.
 
-> It's pretty likely this isn't new information – most people who read these docs are developers with front-end experience. Please keep reading though! There's good info in here.
+:::tip
+It's likely this isn't new information – most people who read these docs are developers with front-end experience. Please keep reading though! There's good info in here.
+:::
 
 When we refer to the frontend of a _Statamic_ site, we're talking about the templates and views, JavaScript/CSS files, media assets, and other resources used to render your final website.
 

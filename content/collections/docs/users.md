@@ -36,7 +36,9 @@ When creating users in the Control Panel you can send email invitations to help 
     <figcaption>An opportunity for a knock knock joke, perhaps?</figcaption>
 </figure>
 
-> Make sure to [configure the email driver](/email) so those emails actually go out.
+:::tip
+Be sure to [configure the email driver](/email) so those emails actually go out.
+:::
 
 ## User Fields
 

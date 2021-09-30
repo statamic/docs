@@ -130,10 +130,13 @@ Another entry from September
 Entry from October
 ```
 
-> The date field in this example is named `date`, but you can use any date field.
-> ```
-> {{ entries group_by="custom_date_field|F Y" }}
-> ```
+:::tip
+The date field in this example is named `date`, but you can use any date field.
+
+```
+{{ entries group_by="custom_date_field|F Y" }}
+```
+:::
 
 If you need the key to differ from how it's displayed (perhaps you want to use an additional modifier after), you can pass another date format as the
 third argument. (Argument 2 creates the key, argument 3 creates the `{{ group }}` text).

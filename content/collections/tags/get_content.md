@@ -19,8 +19,15 @@ id: a33dd9d3-f2f0-4114-b19d-1126361c327e
 
 This tag lets you fetch data from other entries. It's useful if you need to hard-code some dynamic content in your template.
 
-> If you're using a fieldtype like [entries](/fieldtypes/entries) to select which entries you'd like to render, then you don't even need this tag!
-> You can simply loop over the selections like this: `{{ your_entries_field }} {{ title }} {{ /your_entries_field }}`
+:::tip
+If you're using a fieldtype like [entries](/fieldtypes/entries) to select which entries you'd like to render, then you don't even need this tag. You can loop over the selections like this:
+
+````
+{{ your_entries_field }}
+  {{ title }}, {{ url }}, {{ whatever }}
+{{ /your_entries_field }}
+```
+:::
 
 For example, you might want to output some company information from your home page:
 

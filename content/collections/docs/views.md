@@ -64,7 +64,9 @@ template: gallery
 title: Photo Gallery
 ```
 
-> You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so go wild!
+:::tip
+You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so you have a lot of flexibility.
+:::
 
 ## Partials
 
@@ -75,7 +77,10 @@ Partials are reusable views that may find themselves in any number of other layo
 {{ partial:blog/card }}
 ```
 
-> We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html`. You don't need to include the underscore in your partial tag.
+:::best-practice
+We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
+:::
+
 
 ## Using Blade
 

@@ -27,4 +27,6 @@ If you want your assets to be publicly accessible, you need to set your disk's `
 
 Conversely, if you **want** your files to be private, then you can either remove that line, or set it to `private`.
 
-> This setting only applies to newly uploaded files. You'll need to log into AWS or Spaces and bulk change the permissions on existing files.
+:::tip
+This setting only applies to newly uploaded files. You'll need to log into AWS or Spaces and bulk change the permissions on existing files.
+:::

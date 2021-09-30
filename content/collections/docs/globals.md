@@ -42,7 +42,9 @@ data:
   flair: Made with ❤️ by humans
 ```
 
-> If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, etc) to be excluded.
+:::tip
+If you're coming from Statamic v2, note the variables nested within the `data` key. This allows meta variables (title, id, etc) to be excluded.
+:::
 
 ## Templating
 

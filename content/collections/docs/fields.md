@@ -49,7 +49,9 @@ Each fieldtype has the ability to _augment_ this data when accessed from the fro
 - **Markdown** fields will automatically parse content and return HTML.
 - **Relationship** fields will return the content objects of the entries they refer to.
 
-> **Augmentation** is only performed when a field is defined in a blueprint. Data created "on the fly" in Front Matter may still require modifiers to transform it according to your whims and fancies.
+:::tip
+**Augmentation** is only performed when a field is defined in a blueprint. Data created "on the fly" in Front Matter may still require [modifiers](/modifiers) to transform it according to your whims and fancies.
+:::
 
 ## Localization
 

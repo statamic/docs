@@ -34,4 +34,6 @@ stage: 5
 </article>
 ```
 
-> Markdown considers indentation to be a code block. You'll need to keep your content flush left or use the [markdown:indentation](/tags/markdown-indentation) tag.
+:::tip
+Markdown considers indentation to be a code block. You'll need to keep your content flush left or use the [markdown:indentation](/tags/markdown-indentation) tag.
+:::

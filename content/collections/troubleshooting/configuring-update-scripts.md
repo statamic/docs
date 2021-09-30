@@ -33,4 +33,6 @@ If the above script was not already registered in your composer.json, you'll nee
 php please updates:run 3.0
 ```
 
-> This is a one-time thing, and will be automatically triggered by future Statamic updates.
+:::tip
+This is a one-time thing and will be automatically triggered by future Statamic updates.
+:::

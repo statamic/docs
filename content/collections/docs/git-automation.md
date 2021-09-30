@@ -11,8 +11,6 @@ updated_at: 1632512218
 
 Enabling Statamic's Git integration is like having Spock in your enterprise, listening for content changes with those large handsome ears. You won't find anyone more committed. 🖖
 
-> This feature is the evolution of Statamic v2's [Spock addon](https://github.com/statamic/spock).
-
 <figure>
     <img src="/img/git-utility.png" alt="Git utility allowing user to manually trigger commits from control panel">
 </figure>
@@ -63,7 +61,9 @@ You are free to define the tracked paths to be considered when staging and commi
 ],
 ```
 
-> You may also reference absolute paths to external repositories!  If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
+:::tip
+You may also reference absolute paths to external repositories! If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
+:::
 
 ## Committing Changes
 
@@ -105,7 +105,9 @@ STATAMIC_GIT_PUSH=true
 
 When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) with an upstream branch set, and are authenticated to push to your remote [via SSH](https://docs.github.com/en/github/using-git/which-remote-url-should-i-use).
 
-> If you use [Laravel Forge](https://forge.laravel.com/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
+:::tip
+If you use [Laravel Forge](https://forge.laravel.com/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
+:::
 
 ## Queueing Commits
 
@@ -119,7 +121,9 @@ QUEUE_CONNECTION=sync
 
 If you are experiencing slow-down when saving or deleting content in the control panel, we recommended configuring another queue driver so that commits can be run by a background process, which will help keep the experience fast for your users.
 
-> A popular choice is to use a [Redis](https://laravel.com/docs/redis) store and [queue driver](https://laravel.com/docs/queues#driver-prerequisites), along with [Laravel Horizon](https://laravel.com/docs/horizon) for managing your Redis queues.
+:::tip
+A popular choice is to use a [Redis](https://laravel.com/docs/redis) store and [queue driver](https://laravel.com/docs/queues#driver-prerequisites), along with [Laravel Horizon](https://laravel.com/docs/horizon) for managing your Redis queues.
+:::
 
 _Note: When commits are run by a queue's background process, there will be no authenticated user. In this case, Statamic will use the hardcoded git user in your [configuration](#configuration)._
 
@@ -139,7 +143,9 @@ STATAMIC_GIT_DISPATCH_DELAY=10
 
 In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
 
-> Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
+:::tip
+Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
+:::
 
 _Note: When commits are run by a queue's background process, there will be no authenticated user. In this case, Statamic will use the hardcoded git user in your [configuration](#configuration)._
 
@@ -162,7 +168,9 @@ In this example, we schedule a commit to run 10 minutes after a user makes a con
 
 Scheduling commits can be a great alternative to [queueing](#queueing-commits), for when you don't have a proper queue setup. If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
 
-> Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
+:::tip
+Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
+:::
 
 _Note: When commits are scheduled to run via cron, there will be no authenticated user. In this case, Statamic will use the hardcoded git user in your [configuration](#configuration)._
 
@@ -221,4 +229,6 @@ For example, if you're [storing users in a database](/knowledge-base/storing-use
 ],
 ```
 
-> When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
+:::tip
+When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
+:::

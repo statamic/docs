@@ -6,8 +6,6 @@ blueprint: page
 intro: 'Thinking of creating your own Statamic Starter Kit? Here''s everything you need to know to get started.'
 nav_title: Creating
 ---
-> Available from Statamic 3.2.
-
 ## Overview
 
 Starter kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
@@ -104,7 +102,9 @@ Once exported, you will notice that a sample `composer.json` file was created at
 
 Now create a `README.md` file and push to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/), as you would any PHP package. This is all that is required to publish a free Starter Kit!
 
-> Unlike addons, you are not required to register on [Packagist](https://packagist.org/).
+:::tip
+Unlike addons, you are not required to register on [Packagist](https://packagist.org/).
+:::
 
 If you would like to share your kit, receive more exposure, or would like to charge for your Starter Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
 
@@ -140,7 +140,9 @@ To test install your Starter Kit from your local exported repo, you can add the 
 }
 ```
 
-> If you are not sure where your `config.json` is located, run `composer config --global home` to see the location of your global Composer config.
+:::tip
+If you are not sure where your `config.json` is located, run `composer config --global home` to see the location of your global Composer config.
+:::
 
 With your repo's local path added to your `config.json`, you should now be able to install using the `--local` cli option:
 
@@ -175,7 +177,9 @@ Both addons and Starter Kits can be used to extend the Statamic experience, but 
 - Addons can be updated over time
 - Addon licenses are tied to your site
 
-> An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
+:::tip
+An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
+:::
 
 ### Starters Kits
 
@@ -184,7 +188,9 @@ Both addons and Starter Kits can be used to extend the Statamic experience, but 
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install
 
-> An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
+:::tip
+An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.
+:::
 
 ## Related Reading
 

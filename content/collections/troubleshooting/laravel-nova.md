@@ -11,7 +11,9 @@ updated_at: 1622821126
 ---
 We've heard users saying they'd like to manage the front-end with Statamic and the back-end with [Laravel Nova](https://nova.laravel.com/). That's fine! It's possible to run both Statamic and Nova together.
 
-> If you'd like to manage Eloquent models within Statamic, [you're able to do that, too](/extending/publish-forms).
+:::tip
+If you'd like to manage Eloquent models within Statamic, [you're able to do that, too](/extending/publish-forms).
+:::
 
 1. Install Nova as per their documentation
 2. Disable Statamic's front-end routing. It conflicts with Nova.

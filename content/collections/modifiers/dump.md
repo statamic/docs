@@ -24,4 +24,6 @@ array:2 [▼
 ]
 ```
 
-> You can also use the [dump tag](/tags/dump) to achieve a similar effect.
+:::tip
+You can also use the [dump tag](/tags/dump) to achieve a similar effect.
+:::

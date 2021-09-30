@@ -96,7 +96,9 @@ Each of these behaviors is available for future and past dates.
 - **unlisted** - Entries will be hidden in listings but available at their own URLs.
 - **private** - Entries will be hidden in listings, and their own URLs will 404.
 
-> Date behaviors are _defaults_. They can be overridden on the tag level.
+:::tip
+Date behaviors are _defaults_. They can be overridden on the tag level.
+:::
 
 ## Times
 
@@ -112,7 +114,9 @@ Flick on the "Orderable" switch in a collection's settings and you'll have a dra
     <figcaption>You can tell these entries are orderable because of the way they are.</figcaption>
 </figure>
 
-> Order will take precedence when sorting. For example, if you make a dated collection **orderable**, date will no longer be the default sort order. You still can sort by date by specifying `sort="date"` on your [collection tag](/tags/collection).
+:::tip
+Order will take precedence when sorting. For example, if you make a dated collection **orderable**, date will no longer be the default sort order. You still can sort by date by specifying `sort="date"` on your [collection tag](/tags/collection).
+:::
 
 ### Constraining Depth
 
@@ -143,7 +147,9 @@ route:
   french: /evenements/{slug}
 ```
 
-> When creating new collections, Statamic doesn't automatically define a default route rule. If you want entries in your new collection to receive URLs, make sure you define a route rule!
+:::tip
+Statamic does not automatically define route rules. If you want entries in your new collection to have URLs, make sure you define one!
+:::
 
 ### Meta variables
 
@@ -195,7 +201,9 @@ route: '{{ depth == 1 ?= mount }}/{{ parent_uri }}/{{ slug }}'
 # example: /games/zork/how-to-play/controls
 ```
 
-> If you're using Antlers in your route, you need to stick with the `{{ double curlies }}` syntax.
+:::tip
+If you're using Antlers in your route, you must use `{{ double curlies }}` when referencing variables.
+:::
 
 ### Index route
 
@@ -226,7 +234,9 @@ The following redirects are supported:
 
 Any other strings will be assumed to be a relative link. (eg. if the page URL is `/my/page` and you have `redirect: is/here`, you will be redirected to `/my/page/is/here`)
 
-> Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
+:::tip
+Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
+:::
 
 ### Entry Link Blueprint
 

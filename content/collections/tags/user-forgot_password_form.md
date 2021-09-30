@@ -85,7 +85,9 @@ Unless you set a `redirect` parameter, the user will be redirected back to the *
 
 The email will contain a link to the URL specified in the `reset_url` parameter, along with extra query parameters. On that URL you must have a [user:reset_password_form](/tags/user-reset_password_form) tag to finish the task and let the user set their new password.
 
-> The user needs to be logged out for this tag to do anything. You may want to wrap the form in `{{ if logged_out }}{{ /if }}`.
+:::tip
+The user needs to be logged out for this tag to do anything. You may want to wrap the form in `{{ if logged_out }}{{ /if }}`.
+:::
 
 ## The email {#email}
 

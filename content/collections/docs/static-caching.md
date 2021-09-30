@@ -10,7 +10,9 @@ id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 
 Certain features — such as forms with server-side validation or content randomization — don’t work with static page caching. As long as you understand that, you can leverage static caching for maximum performance.
 
-> You can also use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
+:::tip
+You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
+:::
 
 ## Caching Strategies
 

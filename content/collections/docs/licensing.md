@@ -39,7 +39,9 @@ Once it’s time to launch your site on a public domain, there are a few things 
 STATAMIC_LICENSE_KEY=your-site-license-key
 ```
 
-> If you're using the free version of Statamic and you don't have any commercial addons installed, you don't need to create and link a site. But you can if you want! Being organized is a nice thing.
+:::tip
+If you're using the free version of Statamic and you don't have any commercial addons installed, you don't need to create and link a site. But you can if you want! Being organized is a nice thing.
+:::
 
 ## Sites
 

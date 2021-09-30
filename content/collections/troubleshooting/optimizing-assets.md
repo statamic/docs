@@ -8,7 +8,10 @@ categories:
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1622821191
 ---
-> **This only Applies to Statamic 3.1+**
+
+:::tip
+**This only Applies to Statamic 3.1+**
+:::
 
 Statamic's asset system allows you to point at a directory either locally or a remote service like Amazon S3.
 

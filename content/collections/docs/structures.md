@@ -84,7 +84,9 @@ tree:
         url: 'https://github.com/example/repo
 ```
 
->  While you **can** edit a structure through the files, it's **much easier** to manage in Control Panel with its lovely drag and drop interface.
+:::tip
+While you **can** edit a structure through the files, it's **much easier** to manage in Control Panel with a simple drag and drop interface.
+:::
 
 Each page may have an optional `children` array which is itself another tree. You can repeat this pattern and go as deep as necessary. The `max_depth` setting on the Structure will prevent you from placing pages any deeper when using the Control Panel.
 

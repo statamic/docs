@@ -76,7 +76,7 @@ $entry->save();
 Now it’ll be written to file. Nice.
 
 ### Events
-When you are saving or creating your data instance, the `EntrySaving`, `EntryCreated` and the `EntrySaved` events are dispatched.  In some cases, you would rather suppress those events. For example, to prevent causing an infinite loop of `EntrySaved` events. 
+When you are saving or creating your data instance, the `EntrySaving`, `EntryCreated` and the `EntrySaved` events are dispatched.  In some cases, you would rather suppress those events. For example, to prevent causing an infinite loop of `EntrySaved` events.
 ``` php
 $entry->saveQuietly();
 ```
@@ -99,9 +99,9 @@ $entry = Entry::make()
 $entry->save();
 ```
 
-> Make sure to use the `make` method, rather than simply `new`'ing up a class. For example, if a user has customized their application
-> to store entries in a database, they will have a different Entry class. Using `Entry::make()` will make sure to get the right class.
-
+:::tip
+Make sure to use the `make` method, rather than simply `new`'ing up a class. For example, if a user has customized their application to store entries in a database, they will have a different Entry class. Using `Entry::make()` will make sure to get the correct class.
+:::
 
 ## Getting Field Data
 
@@ -117,7 +117,7 @@ content: The post content
 ```php
 $entry->data();
 // Illuminate\Support\Collection([
-//    'title' => 'My post', 
+//    'title' => 'My post',
 //    'content' => 'The post content'
 // ])
 ```
@@ -149,7 +149,7 @@ title: My localized post
 ```php
 $entry->values();
 // Illuminate\Support\Collection([
-//    'title' => 'My localized post', 
+//    'title' => 'My localized post',
 //    'content' => 'The post content'
 // ])
 ```

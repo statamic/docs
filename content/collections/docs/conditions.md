@@ -7,7 +7,9 @@ intro: 'Conditions allow you to filter the results of your content tags (e.g. Co
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632512130
 ---
-> Are you looking "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
+:::tip
+Are you looking "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
+:::
 
 ## Overview
 

@@ -22,6 +22,10 @@ blockquote,
         .hint-title {
             @apply bg-purple text-white;
         }
+
+        code:not(.torchlight) {
+            @apply text-purple !important;
+        }
     }
 
     &.watch {
@@ -45,10 +49,14 @@ blockquote,
     }
 
     &.best-practice {
-        @apply shadow-stack bg-gray-lightest text-black border subpixel-antialiased;
+        @apply shadow-stack bg-mint text-black border subpixel-antialiased;
 
         .hint-title {
-            @apply bg-yellow
+            @apply bg-white;
+        }
+
+        code:not(.torchlight) {
+            @apply text-purple !important;
         }
     }
 

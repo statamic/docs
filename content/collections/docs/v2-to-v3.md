@@ -10,7 +10,9 @@ updated_at: 1630938195
 ## Overview
 Statamic 3 takes everything you love about v2, rewrites all the old stuff (Laravel 5.1 and Vue.js 1) with the latest hotness, adds roughly 80 million fantastic new features, and speeds up performance by 5x-200x. What's not to love about that?
 
-> Install our [migrator package](https://github.com/statamic/migrator) to help automate your v2 upgrade!
+:::tip
+Try out our [migrator package](https://github.com/statamic/migrator) to help automate most of your v2 upgrade!
+:::
 
 ## Philosophies
 

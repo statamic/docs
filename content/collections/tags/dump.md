@@ -22,4 +22,6 @@ Dropping it inside a loop will dump all the data _just for that loop context_.
 {{ /gallery }}
 ```
 
-> You can also use the [dump modifier](/modifiers/dump) to achieve a similar effect.
+:::tip
+You can also use the [dump modifier](/modifiers/dump) to achieve a similar effect.
+:::

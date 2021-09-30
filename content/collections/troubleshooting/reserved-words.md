@@ -5,8 +5,6 @@ template: page
 categories:
   - development
   - troubleshooting
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1622821138
 ---
 ## As Field Names
 
@@ -22,7 +20,9 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `unless`
 - `value`
 
->>> Some of these _may_ work as field names in some circumstances, but can have unintended consequences, like overriding global data, behaviors, or creating issues with Vue components inside the Control Panel.
+:::warning
+Some of these _may_ work as field names in some circumstances, but can have unintended consequences, like overriding global data, behaviors, or creating issues with Vue components inside the Control Panel.
+:::
 
 ### Special Cases
 

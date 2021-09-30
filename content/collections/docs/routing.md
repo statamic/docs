@@ -93,4 +93,6 @@ You can use a custom layout for errors by creating a `resources/views/errors/lay
 
 Statamic will automatically render `404` pages for any unhandled routes.
 
-> For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will not be injected into a layout.
+:::tip
+For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will not be injected into a layout.
+:::

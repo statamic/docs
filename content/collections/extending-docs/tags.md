@@ -327,8 +327,6 @@ public function method() {
 No results.
 ```
 
-> If you've used `$this->parse()`, and `$this->parseLoop()` in v2, that's automatic now. Just return arrays. 🎉
-
 ### Passing along context
 
 As mentioned above, the array returned from a tag pair method is what'll be available between the tags. The parent context is not available. This is to prevent variable collision and confusion.

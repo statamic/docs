@@ -44,7 +44,9 @@ var school = "Flatside High";
 
 As YAML is a **structured** data format, you will occasionally need to quote your strings to prevent rogue apostrophes, commas, and other reserved constructs from confusing the parser, allowing you to structure your data exactly as desired.
 
-> YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
+:::tip
+YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
+:::
 
 You can also use quotes to force or typecast another datatype as a string, For example, if your key or value is `10` but you want it to return a String and not an Integer, write `'10'` or `"10"`.
 

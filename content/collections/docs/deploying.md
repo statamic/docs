@@ -55,7 +55,9 @@ For more info on shared web hosts that play well with Statamic, check out our [u
 
 The general workflow for working with a managed VPS solution is pretty easy once you are setup. The first step is to choose the right services. We often recommend pairing [Digital Ocean](https://m.do.co/c/6469827e2269) with [Laravel Forge](https://forge.laravel.com/), though all of the options listed above are great! Understanding what these services do is important.
 
-> If you are more interested in a Jamstack deployment, check out our [SSG package](https://github.com/statamic/ssg) for details on how to get started!
+:::tip
+If you are more interested in a Jamstack deployment, check out our [SSG package](https://github.com/statamic/ssg) for details on how to get started!
+:::
 
 ### The Hosting Service
 
@@ -73,7 +75,9 @@ Subscribing to one of these services gives you access to a nice GUI for managing
 
 The first thing you will need to do is authorize the server management service (ie. Laravel Forge) to connect to your hosting provider (ie. Digital Ocean). This is a one-time thing, and will allow you to easily spin up and provision new server stacks.
 
-> We're going to assume you're using [Digital Ocean](https://m.do.co/c/6469827e2269), [Laravel Forge](https://forge.laravel.com), and [Github](https://github.com), for this walk-through.
+:::tip
+We're going to assume you're using [Digital Ocean](https://m.do.co/c/6469827e2269), [Laravel Forge](https://forge.laravel.com), and [Github](https://github.com), for this walk-through.
+:::
 
 <figure>
     <img src="/img/deployment-hosting-setup.png" alt="Deployment hosting setup example">

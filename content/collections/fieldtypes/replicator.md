@@ -82,7 +82,9 @@ my_replicator_field:
     pull: right
 ```
 
-> Please note that you **can not** use a Replicator fieldtype for the `content` field.
+:::warning
+Please note that you **cannot** use a Replicator fieldtype for the `content` field.
+:::
 
 ## Templating {#templating}
 

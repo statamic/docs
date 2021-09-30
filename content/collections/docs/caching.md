@@ -25,8 +25,9 @@ The application cache is used by your site or application, packages, and Statami
 
 Each item inserted into the cache can optionally and automatically expire after a specified length of time. If you want to clear everything at once, use the `php artisan cache:clear` command.
 
-> The Stache is stored **in** the application cache, so if you clear it, you don't need to also clear the Stache.
-
+:::tip
+The Stache is stored **in** the application cache, so if you clear it, you don't need to _also_ clear the Stache.
+:::
 
 ## View Fragments
 

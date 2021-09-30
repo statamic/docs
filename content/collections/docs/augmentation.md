@@ -13,7 +13,9 @@ If you choose a Markdown fieldtype, your content will automatically be converted
 
 Each [fieldtype](/fieldtypes) documents if and how augmentation affects your output.
 
-> Variables created on the fly with Front Matter won't be augmented until you define them in the entry's [blueprint](/blueprints).
+:::hint
+Variables created on the fly with Front Matter won't be augmented unless you define them in the entry's [blueprint](/blueprints).
+::
 
 ## Example
 

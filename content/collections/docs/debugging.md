@@ -45,7 +45,9 @@ composer require --dev barryvdh/laravel-debugbar
 
 It'll be enabled when `APP_DEBUG` and `DEBUGBAR_ENABLED` are both `true` in your env file.
 
-> The debug bar injects javascript into the page and adds significant overhead to each request. **Make sure to turn it off when you're testing your site's performance!**
+:::tip
+The debug bar injects JavaScript into the page and adds significant overhead server-side work to each request. **Make sure to turn it off when you're testing your site's performance!**
+:::
 
 ## Dump Modifier
 

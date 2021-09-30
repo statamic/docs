@@ -23,9 +23,10 @@ this.$progress.count(); // How many are being tracked.
 this.$progress.isComplete(); // Whether all the items that were being tracked have completed.
 ```
 
-> If you have a component that may appear multiple times on one page (for example, a fieldtype),
-> make sure the name is unique. All Vue components already have a unique `_uid` property that could be used for this.
->
-> ``` js
-> this.$progress.start('things' + this._uid);
-> ```
+:::tip
+If you have a component that may appear multiple times on one page (like a Fieldtype), make sure the name is unique. All Vue components already have a unique `_uid` property that can be used for this purpose.
+
+``` js
+this.$progress.start('things' + this._uid);
+```
+:::

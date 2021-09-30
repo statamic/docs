@@ -14,7 +14,9 @@ Anything you can do in Laravel you can do here. Because you're using Laravel. Yo
 
 [Routes][laravel-routes] are defined in `routes/web.php`.
 
-> These explicitly defined routes will take precedence over Statamic routes and URL patterns.
+:::tip
+These explicitly defined routes will take precedence over Statamic routes and URL patterns. Keep this in mind.
+:::
 
 For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app\Http\Controllers\ExampleController.php` file like this:
 
@@ -48,10 +50,12 @@ class ExampleController extends Controller
 }
 ```
 
-> Generate a controller with an [Artisan command](https://laravel.com/docs/artisan):
-> ``` cli
-> php artisan make:controller ExampleController
-> ```
+:::tip
+You can generate a controller with the following [Artisan command](https://laravel.com/docs/artisan):
+```shell
+php artisan make:controller ExampleController
+```
+:::
 
 ## Antlers Views
 

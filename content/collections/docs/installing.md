@@ -19,9 +19,11 @@ composer global require statamic/cli
 ```
 
 Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the `statamic` executable can be located by your system.
-[Here's how](/knowledge-base/command-not-found-statamic).
+[Here's how](/troubleshooting/command-not-found-statamic).
 
-> If you run into any errors, check out this [helpful article](/knowledge-base/fixing-issues-with-global-composer-packages) on what to do next.
+:::tip
+If you run into any errors, check out this [helpful article](/troubleshooting/fixing-issues-with-global-composer-packages) on what to do next.
+:::
 
 **Once installed,** run the following command to kickstart a fresh new Statamic project (and even choose from some free Starter Kits).
 
@@ -112,7 +114,7 @@ Looking to jump right into a ready-made site?
    composer require statamic/cms --with-dependencies
    ```
 
-3. Head over to the [Storing User Records](/users#storage) section and follow the instructions for the scenario that makes sense for your project. If you want to continue to keep users in a database, you can jump straight over to [Storing Users in a Database in an existing Laravel app](/knowledge-base/storing-users-in-a-database#in-an-existing-laravel-app).
+3. Head over to the [Storing User Records](/users#storage) section and follow the instructions for the scenario that makes sense for your project. If you want to continue to keep users in a database, you can jump straight over to [Storing Users in a Database in an existing Laravel app](/troubleshooting/storing-users-in-a-database#in-an-existing-laravel-app).
 
 After Statamic is installed, you'll have the `content/`, `users/`, and `config/statamic` directories added to your project. Your app will continue to work as before and you'll have Statamic available at your fingertips.
 
@@ -124,7 +126,9 @@ Make sure your Laravel config is *not* cached before installing Statamic. If you
 
 Once you've installed Statamic, you're ready to start building! Check out the [Quick Start](/quick-start) page for a walkthrough on how to build a simple site, access the Control Panel, creating a user, and more.
 
-> If you want to use Pro features while in development (like users, permissions & groups, revisions, and git integration), set `'pro' => true` in `config/statamic/editions.php`.
+:::tip
+You can use Pro features while in development (like users, permissions revisions, REST API, and so on), by setting `'pro' => true` in `config/statamic/editions.php`.
+:::
 
 Want to jump right in? You can create a user by running `php please make:user`, and heading to `http://yoursite.com/cp`.
 
@@ -146,8 +150,9 @@ You may prefer to run `composer update` to update _all_ of your dependencies lis
 
 You may also update Statamic from within the Control Panel. Head to the "Updates" section and click update.
 
-> Updating via the CP will lock that specific version of `statamic/cms` in your `composer.json`. If you want to update using
-> the command line later, you'll need to update the version manually before running `composer update`.
+:::tip
+Updating via the CP will lock that specific version of `statamic/cms` in your `composer.json`. If you want to update using the command line later, you'll need to update the version manually before running `composer update`.
+:::
 
 [users]: /users
 [packagist]: https://packagist.org/

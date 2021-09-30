@@ -84,7 +84,9 @@ class ArticleStats extends ViewModel
 
 View models help keep your views nice and clean. Use them often and you'll find that they're quickly becoming your new best friend.
 
-> You're manipulating the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+:::tip
+ViewModels manipulate the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+:::
 
 
 [antlers]: /antlers

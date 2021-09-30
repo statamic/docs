@@ -5,7 +5,9 @@ title: Trans
 ---
 Retrieve a string from a language file in the current locale. It is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
 
-> There's also a [tag](/tags/trans) version that you may prefer.
+:::tip
+There's also a [tag](/tags/trans) version that you may prefer.
+:::
 
 ## Usage {#usage}
 

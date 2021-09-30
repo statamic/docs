@@ -31,7 +31,9 @@ For the sake of brevity, we're going to focus only on **entries** for this artic
 
 Everything you learn here can be applied to Taxonomies, GlobalSets, and all other content types.
 
-> If you just want to store your entries in a database and don't want to learn **how** to build it, you can just jump over to the [package](https://github.com/statamic/eloquent-driver) itself.
+:::tip
+If you want to store your entries in a database and don't want to learn **how** to do it, you can just jump over to the [package](https://github.com/statamic/eloquent-driver) itself.
+:::
 
 ## Database Schema
 
@@ -216,7 +218,9 @@ The `transform` method will convert the `Collection` of all the Eloquent models 
 
 The `column` method is used whenever we're performing any kind of column based query (like a `where`). If the column isn't in our list, we'll assume it's in the JSON `data` column and adjust the query accordingly.
 
-> In case you didn't know, you can totally [query for stuff](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html) inside JSON columns. It's pretty awesome.
+:::tip
+In case you didn't know, you can [run quries](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html) on data inside JSON columns. It's pretty awesome.
+:::
 
 ``` php
 $query->where('column->field', 'value')
@@ -498,8 +502,9 @@ class EntryQueryBuilder extends EloquentQueryBuilder implements QueryBuilder
 }
 ```
 
-> If you were to store the associations in the database, you'd need to define your own `whereTaxonomy` and `whereTaxonomyIn` methods that would
-> query through a pivot table. In that case you probably wouldn't need to override `get`, `paginate`, and `count`.
+:::tip
+If you were to store the associations in the database, you'd need to define your own `whereTaxonomy` and `whereTaxonomyIn` methods that would query through a pivot table. In that case you probably wouldn't need to override `get`, `paginate`, and `count`.
+:::
 
 ## Conclusion
 

@@ -7,7 +7,9 @@ categories:
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1622821162
 ---
-> You can use the `php please multisite` to automate converting from a single to a multisite installation.
+:::tip
+You can use the `php please multisite` to automate converting from a single to a multisite installation.
+:::
 
 ## Defining Sites
 

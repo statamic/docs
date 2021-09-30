@@ -2,7 +2,7 @@
 title: Stache
 template: page
 intro: >
-    Statamic's data storage layer is affectionately named the "Stache". Think of it like Tom Selleck's face, if it were a flat-file database..
+    Statamic's data storage layer is affectionately named the "Stache". Think of it like Tom Selleck's face, if it were a flat-file database.
 blueprint: page
 id: 499d808b-18be-42e9-acd0-91bcdff73193
 ---
@@ -21,15 +21,17 @@ Since your data is coming from your content files, you're able to just open an e
 
 When you try to access an item, under the hood the Stache will watch for any modified files, and then update the corresponding indexes.
 
-> This is great for local development, but on a production environment, it's a good idea to disable the file watcher. If you're editing content through the control panel, or only ever pushing content through deployments, you would be incurring extra overhead for no reason.
->
-> You can disable this feature in `config/statamic/stache.php`.
->
-> ``` php
-> return [
->    'watcher' => false,
-> ];
-> ```
+:::best-practice
+This is great for local development, but on a production environment you should disable the file watcher. If you're editing content through the control panel, or only ever pushing content through deployments, you are adding extra overhead to every request for no reason.
+
+You can disable this feature in `config/statamic/stache.php`.
+
+``` php
+return [
+   'watcher' => false,
+];
+```
+:::
 
 ## Stores
 
@@ -63,7 +65,9 @@ You're able to customize all the stores inside the Stache by referencing the key
 ]
 ```
 
-> If you only want to change the `directory`, you don't need to include the `class`.
+:::tip
+If you only want to change the `directory`, you don't need to include the `class`.
+:::
 
 \* The `assets` store cannot have its directory customized here. You configure its location through the [container](/assets#containers).
 

@@ -88,7 +88,9 @@ function modify($value): Modify
 {{ modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
 ```
 
-> Note that when using multi-word modifiers, like `ensure_right`, you should use the camelCased version (`ensureRight`).
+:::tip
+When using multi-word modifiers, like `ensure_right`, you must use the camelCased version (`ensureRight`).
+:::
 
 
 ## Layouts

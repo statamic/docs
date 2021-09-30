@@ -11,12 +11,15 @@ updated_at: 1622821029
 ---
 ## Move files
 
-> This can be automated using the following command:
-> ``` cli
-> php please multisite
-> ```
->
-> It's important to run the command **before** making changes to the config file.
+:::tip
+This can be automated using the following command:
+
+```shell
+php please multisite
+```
+
+It's important to run the command **before** making changes to the config file.
+:::
 
 2. For each collection:
     - Move all entries into a directory named after the first site's handle. (eg. `content/collections/blog/*.md` into `content/collections/blog/default/*.md`)

@@ -20,8 +20,9 @@ Enable the GraphQL API in your config or with an environment variable.
 STATAMIC_GRAPHQL_ENABLED=true
 ```
 
-> If you publish the underlying [package's](#laravel-package) config, the query routes will
-> be enabled regardless of whether you've disabled it in the Statamic config.
+:::tip
+If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
+:::
 
 You will also need to enable the resources you want to be available. For security, they're all disabled by default.
 
@@ -724,8 +725,9 @@ Represents a branch within a structured collection's tree.
 | `entry` (or `page`) | [`EntryInterface`](#entry-interface) | Contains the entry's fields.
 | `children` | [[`CollectionTreeBranch`](#collection-tree-branch-type)] | A list of tree branches.
 
-> Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
-> take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::tip
+It's not possible to perform recursive queries in GraphQL. If you want to retrieve multiple levels of child branches, take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::
 
 ### NavTreeBranch {#nav-tree-branch-type}
 
@@ -737,8 +739,9 @@ Represents a branch within a nav's tree.
 | `page` | [`PageInterface`](#page-interface) | Contains the page's fields.
 | `children` | [[`NavTreeBranch`](#nav-tree-branch-type)] | A list of tree branches.
 
-> Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
-> take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::tip
+It's not possible to perform recursive queries in GraphQL. If you want to retrieve multiple levels of child branches, take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::
 
 
 ### PageInterface {#page-interface}
@@ -842,7 +845,9 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 
 Each `GlobalSetInterface` will also have an implementation for each set's blueprint.
 
-> Note that while Statamic doesn't enfore a blueprint for a globals (see [Blueprint is Optional](/blueprints#blueprint-is-optional)), it is required within the context of GraphQL. Fields that haven't been explicitly added to a blueprint will not be available.
+:::tip
+While Statamic doesn't enforce a blueprint for globals (see [Blueprint is Optional](/blueprints#blueprint-is-optional)), it _is_ required within the GraphQL context. Fields that haven't been explicitly added to a blueprint will not be available.
+:::
 
 You will need to query the implementations using fragments in order to get blueprint-specific fields.
 
@@ -1018,8 +1023,9 @@ fields:
 }
 ```
 
-> If you have a field nested in another, rather than just the handle, you should use the parent's handle, (and grandparent's, great grandparent's, and so on).
-> e.g. `Set_TopLevelReplicator_NestedReplicator_DeeplyNestedReplicator_SetHandle`
+:::tip
+If you have nested fields, include each parent's handle, (and grandparent's, great grandparent's etc), like so: `Set_TopLevelReplicator_NestedReplicator_DeeplyNestedReplicator_SetHandle`
+:::
 
 ### Bard
 
@@ -1322,8 +1328,6 @@ GraphQL uses a basic whole-response cache by default. Each query/variables combi
     'expiry' => 60,
 ],
 ```
-
-> More in depth per query or per node caching options may come in the future.
 
 ### Cache Invalidation
 

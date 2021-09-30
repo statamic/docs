@@ -43,8 +43,8 @@ Loop through the array items to display each item's `value`.
 </ul>
 ```
 
-> This fieldtype uses the word "tags" in general terms. If you're looking for a way to tag/categorize your content on a schema-level, you should read about [taxonomies](/taxonomies).
-
-
+:::tip
+This fieldtype uses the word "tags" in general terms. If you're looking for a way to tag/categorize your content on a schema-level, you should read about [taxonomies](/taxonomies).
+:::
 
 None. It just does this one thing.

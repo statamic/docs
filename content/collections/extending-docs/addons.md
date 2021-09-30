@@ -20,7 +20,9 @@ This will scaffold out everything you need to get started as a [private addon](#
 
 Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
-> If you don't plan on distributing your addon, you may be fine with [application code](/extending).
+:::tip
+If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and build an [extension](/extending).
+:::
 
 An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/example`
 
@@ -254,11 +256,13 @@ This may be useful if you need more control around groups of assets to be publis
 
 ### Assets during development
 
-> During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your directory:
->
-> ``` bash
-> ln -s /path/to/addons/example/resources public/vendor/package
-> ```
+:::tip
+During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your addon's `resource` directory:
+
+``` shell
+ln -s /path/to/addons/example/resources public/vendor/package
+```
+:::
 
 ## Routing
 
@@ -450,7 +454,9 @@ You can define your editions in your `composer.json`. They should match the edit
 }
 ```
 
-> The first edition will be the default for when a user hasn't explicitly selected one. Naturally, your editions should be listed from least to most expensive.
+:::best-practice
+The first edition is the default when a user hasn't explicitly selected one. Your editions should be listed from least to most expensive because that's the nice thing to do.
+:::
 
 ### Feature Toggles
 
@@ -464,7 +470,9 @@ if ($addon->edition() === 'pro') {
 }
 ```
 
-> You don't need to check whether a license is valid, Statamic will do that automatically for you.
+:::tip
+You don't need to check whether a license is valid, Statamic does that automatically for you.
+:::
 
 
 ## Update Scripts
@@ -539,7 +547,9 @@ Both addons and starter kits can be used to extend the Statamic experience, but 
 - Addons can be updated over time
 - Addon licenses are tied to your site
 
-> An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
+:::tip
+An example use case is a custom fieldtype maintained by a third party vendor. Even though the addon is installed into your app, you still rely on the vendor to maintain and update the addon over time.
+:::
 
 ### Starters Kits
 
@@ -548,4 +558,6 @@ Both addons and starter kits can be used to extend the Statamic experience, but 
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install
 
-> An example use case is a front end theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
+:::tip
+An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.
+:::

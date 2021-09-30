@@ -9,8 +9,9 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 
 Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
 
-> The `.antlers.html` extension is important. Without it, it would just be plain HTML and you won't get the Antlers features.
-
+:::tip
+The `.antlers.html` extension is important. Without it your template **will not be parsed** render as static HTML.
+:::
 
 ## Antlers Syntax
 
@@ -238,8 +239,10 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 {{ /array_var }}
 ```
 
-> You **cannot** mix and match modifier styles.
-> ie. This totally won't work: `{{ var | foo | bar="baz" }}`
+:::warning
+You **cannot** mix and match modifier styles.
+ie. This totally won't work: `{{ var | foo | bar="baz" }}`
+:::
 
 ### Escaping Data
 

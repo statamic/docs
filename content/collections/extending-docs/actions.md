@@ -86,7 +86,9 @@ public function visibleTo($item)
 }
 ```
 
-> Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
+:::best-practice
+Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
+:::
 
 ## Authorizing Actions
 

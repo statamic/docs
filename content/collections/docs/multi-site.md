@@ -100,7 +100,9 @@ If your sites have different text directions, for example if you have an English
 <html dir="{{ site:direction }}">
 ```
 
-> You can omit the `direction` from `ltr` sites since it's the default.
+:::tip
+You can omit `direction` from `ltr` sites because that's the default.
+:::
 
 ## Attributes
 
@@ -121,7 +123,9 @@ You may add an array of arbitrary attributes to your site's config.
 <body class="theme-{{ site:attributes:theme }}">
 ```
 
-> There's nothing fancy going on here. It's just passing the values as-is along to your templates. If you need them to be editable, or store more complex data, you should use [Globals](/globals).
+:::tip
+There's nothing fancy going on here. It's just passing the values "as is" along to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
+:::
 
 ## Views
 
@@ -148,4 +152,6 @@ resources/views/
 
 For example, if you were to have `template: home`, it would load `site_one.home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific version.
 
->  This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory. Fancy!
+:::tip
+This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory. Fancy!
+:::

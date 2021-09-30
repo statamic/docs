@@ -31,7 +31,9 @@ If you create _more than_ one blueprint you'll be given the option to choose whi
 
 Taxonomy routes are automatically created for you **if the corresponding view exists**.
 
-> URLs will use slugs with dashes, and views will use handles which have underscores.
+:::tip
+URLs use slugs with dashes, and views use handles with underscores.
+:::
 
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
@@ -134,7 +136,9 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 {{ /terms }}
 ```
 
->  You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
+:::tip
+You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
+:::
 
 ### Listing Term Entries
 

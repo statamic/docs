@@ -23,9 +23,11 @@ id: 8ff99539-8b1a-4380-adf7-bdad979f8afd
 stage: 4
 ---
 
-> There's also a [modifier](/modifiers/trans) version that you may prefer.
+:::tip
+There's also a [modifier](/modifiers/trans) version that you may prefer.
+:::
 
-## Usage {#usage}
+## Usage
 
 Get the `bar` string from the `resources/lang/en/foo.php` translation file (where `en` is the current locale).
 
@@ -58,7 +60,7 @@ Any additional tag parameters will be treated as parameters that should be repla
 Welcome, Bob!
 ```
 
-## Pluralization {#pluralization}
+## Pluralization
 
 To pluralize, use the `trans_choice` tag with a `count` parameter.
 

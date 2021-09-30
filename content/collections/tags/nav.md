@@ -81,7 +81,7 @@ variables:
     type: boolean
     description: >
       Whether the current nav URL is an external link . Useful for outputting
-      `target=_"blank"` in menu templates.      
+      `target=_"blank"` in menu templates.
   -
     name: depth
     type: integer
@@ -189,4 +189,6 @@ The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ 
 
 Take the time to wrap your brain around this concept and learn to wield it and a powerful Jedi will you be.
 
-> The Jedi have blessed us all with [even more recursive nav examples](/knowledge-base/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
+:::tip
+The Jedi have blessed us all with [even more recursive nav examples](/knowledge-base/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
+:::

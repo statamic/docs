@@ -58,7 +58,9 @@ tags:
 
 Now when listing entries that belong to the `foo`, `bar`, or `baz` terms, the entry will appear.
 
->  Make sure that the field is named exactly the same as the taxonomy handle, otherwise it will not be considered part of that taxonomy term.
+:::tip
+Make sure that the field is named exactly the same as the taxonomy handle, otherwise it will not be considered part of that taxonomy term.
+:::
 
 ## Additional Term Data
 

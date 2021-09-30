@@ -64,7 +64,9 @@ You will need to run migrations to prepare your database for Statamic's user, pa
     php artisan migrate
     ```
 
-> When using `sqlite` or `mysql` as your database driver, make sure to `composer require doctrine/dbal`. We change the `users` table in our auth migrations and therefore [require](https://laravel.com/docs/master/migrations#modifying-columns) the `doctrine/dbal` to run the migrations without errors.
+:::tip
+When using `sqlite` or `mysql` as your database driver, make sure to `composer require doctrine/dbal`. We change the `users` table in our auth migrations and therefore [require](https://laravel.com/docs/master/migrations#modifying-columns) the `doctrine/dbal` to run the migrations without errors.
+:::
 
 
 This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/knowledge-base/storing-users-somewhere-custom).

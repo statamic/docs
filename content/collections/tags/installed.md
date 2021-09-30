@@ -25,4 +25,6 @@ Or as a tag pair. If the package doesn't exist, then nothing between the tag wil
 {{ /installed:statamic/seo-pro }}
 ```
 
-> You can pass any Composer package name into this tag. It's not limited to Statamic addons.
+:::tip
+You can pass any Composer package name into this tag. It's not limited to Statamic addons.
+:::

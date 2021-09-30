@@ -13,7 +13,9 @@ Following these conventions will make switching between multiple sites trivial, 
 
 Sometimes these conventions don't fit your project, or perhaps you have your own way of doing things you're already perfectly happy with. That's fine. Our conventions can usually be configured, overridden, or ignored.
 
-> **But don't break convention unless you have a really, really good reason.** Like integrating with an existing Laravel app or when porting a site from another platform.
+:::tip
+**But don't break convention unless you have a really, really good reason.** Like integrating with an existing Laravel app or when porting a site from another platform.
+:::
 
 A good example of this is the decision on whether to use [Antlers](/antlers) as the template language over [Blade](https://laravel.com/docs/blade). Antlers is deeply integrated with Statamic and handles the responsibilities of both Blade _and_ Controllers, all in your template. In short, if you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
 
