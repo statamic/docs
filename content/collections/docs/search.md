@@ -1,22 +1,31 @@
 ---
-title: Search
-intro: Help your visitors find what they're looking for with search. Use  configurable indexes to fine tune which fields are important, which aren't, and fine-tune your way to relevant results.
-template: page
 id: 420f083d-99be-4d54-9f81-3c09cb1f97b7
 blueprint: page
+title: Search
+intro: 'Help your visitors find what they''re looking for with search. Use  configurable indexes to configure which fields are important, which aren''t, and fine-tune your way to relevant results.'
+template: page
+related_entries:
+  - 5fcf5a56-c120-4988-a4c7-0c5e942327b7
+  - 2022056a-d901-423a-aaa7-ee04fff40739
+  - fe8ec156-447d-4f03-974f-0251a8c53244
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1633035293
 ---
 ## Overview
 
-There are four components (coincidentally the same number of Ninja Turtles) whose powers combine to provide you fully comprehensive powers of search.
+There are four components (coincidentally, the same number of Ninja Turtles) whose powers combine to provide you fully comprehensive powers of search.
 
 1. Forms
 2. Results
 3. Indexes
 4. Drivers
+{.ninja.font-bold}
 
 ## Forms
 
-The search form is the most visible part of your site search. Search forms are built as a simple, every day HTML form. All that form needs is a `text` or `search` input named `q` that submit to a URL that holds a `search:results` tag in your view. You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
+The search form is the entry point to your site search. Search forms are basic, vanilla HTML forms with a `text` or `search` input named `q` submitting to any URL with a `search:results` tag in its view template.
+
+You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
 
 ```
 <form action="/search/results">
@@ -200,4 +209,4 @@ You can add values into the defaults array, which will cascade down to all the i
 
 You can also add values to the drivers array, which will cascade down to any indexes using that respective driver. A good use case for this is to share API credentials across indexes.
 
-Of course, any values you add to an individual index will only be applied there.
+Any values you add to an individual index will only be applied there.

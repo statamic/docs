@@ -121,11 +121,13 @@ article, .markdown {
     }
 
     > ol {
-        @apply list-none text-base md:text-lg;
+        @apply list-none text-base md:text-lg relative;
         counter-reset: item;
+        z-index: 20;
 
         >li {
             @apply relative pl-10 mb-2;
+            z-index: 5;
         }
 
         >li::before {
@@ -138,6 +140,24 @@ article, .markdown {
     > ol.ninja {
         > li::before {
             @apply bg-ninja-green;
+            z-index: -2;
+        }
+        > li::after {
+            @apply w-6 h-1 absolute top-2 left-0 right-0;
+            content: '';
+            z-index: -1;
+        }
+        >li:nth-child(1)::after {
+            @apply bg-ninja-red;
+        }
+        >li:nth-child(2)::after {
+            @apply bg-ninja-blue;
+        }
+        >li:nth-child(3)::after {
+            @apply bg-ninja-orange;
+        }
+        >li:nth-child(4)::after {
+            @apply bg-ninja-purple;
         }
     }
 
