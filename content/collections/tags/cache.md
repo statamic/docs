@@ -106,7 +106,7 @@ The contents of your cache tags are stored in the application cache. Clear that,
 
 You can clear your cache using the Artisan command:
 
-``` bash
+``` shell
 php artisan cache:clear
 ```
 

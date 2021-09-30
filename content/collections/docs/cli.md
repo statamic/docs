@@ -11,13 +11,13 @@ blueprint: page
 
 To view a list of all available Artisan commands, you may use the list command:
 
-``` bash
+``` shell
 php artisan list
 ```
 
 Statamic has a number of commands that help you manage your site, ranging from utilities to clear various caches, generators to make users and addons, and more. We've aliased all of these Statamic-specific commands into our polite little `please` command. We think manners are still important.
 
-``` bash
+``` shell
 # Show only Statamic commands
 php please list
 
@@ -28,7 +28,7 @@ php artisan statamic:make:user
 
 Every command also includes a help screen which displays and describes the command's available arguments and options. To view a help screen, precede the name of the command with help:
 
-``` bash
+``` shell
 php please help make:user
 ```
 

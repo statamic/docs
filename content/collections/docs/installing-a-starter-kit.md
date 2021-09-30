@@ -14,13 +14,13 @@ Most (but not all) Starter Kits are intended to be used in a brand new, empty si
 
 You can spin up a **new** install of Statamic along with a Starter Kit at the all in one command by using the [Statamic CLI Tool](https://github.com/statamic/cli):
 
-``` bash
+``` shell
 statamic new my-site vendor/starter-kit
 ```
 
 You can alternatively install a Starter Kit into an _existing site_ by running the following command while inside that install's root directory:
 
-``` bash
+``` shell
 php please starter-kit:install vendor-name/starter-kit-name
 ```
 

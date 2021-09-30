@@ -59,7 +59,7 @@ You will need to run migrations to prepare your database for Statamic's user, pa
 
     This will add some columns to the `users` table (like `super`, and `last_login`), create the `role_user` and `group_user` pivot tables, and create the `password_activations` table.
 
-    ``` bash
+    ``` shell
     php please auth:migration
     php artisan migrate
     ```

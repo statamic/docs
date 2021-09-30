@@ -21,14 +21,14 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
 2. Develop the theme as you normally would.
 
 3. Export the theme to a separate repo for redistribution.
-    ``` bash
+    ``` shell
     php please starter-kit:export ../kung-fury-theme
     ```
 
 4. Publish to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/).
 
 5. Install into new Statamic projects.
-    ``` bash
+    ``` shell
     php please starter-kit:install the-hoff/kung-fury-theme
     ```
 
@@ -42,7 +42,7 @@ The first step is to [create a new Statamic project](http://docs.test/installati
 
 When ready to export your Starter Kit, run the following command:
 
-``` bash
+``` shell
 php please starter-kit:export {export_repo_path}
 ```
 
@@ -159,7 +159,7 @@ When making changes to your Starter Kit, just [re-export](#exporting-files) from
 
 Rather than maintaining your development repo as new Statamic and Laravel versions are released, you can always install your Starter Kit into a fresh Statamic instance by using the `--with-config` install option.
 
-``` bash
+``` shell
 statamic new kung-fury-dev the-hoff/kung-fury-theme --with-config
 ```
 

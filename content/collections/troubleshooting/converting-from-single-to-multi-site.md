@@ -31,7 +31,7 @@ It's important to run the command **before** making changes to the config file.
     - Take the values inside the `data` array, and move them to the top level in a file in a subdirectory named after the first site's handle. (eg. `content/globals/pages.yaml` to `content/globals/default/pages.yaml`)
     - Add a `sites` array to the root global's yaml file with each site you want the structure to be available in.
 5. Clear the cache:
-  ``` cli
+  ``` shell
   php artisan cache:clear
   ```
 

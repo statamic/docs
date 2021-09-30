@@ -29,7 +29,7 @@ fields:
 
 You will need to create the fieldtype – no Vue component necessary – so you can skip it with the <nobr>`--php`</nobr> flag:
 
-``` bash
+``` shell
 php please make:fieldtype Tweets --php
 ```
 

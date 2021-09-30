@@ -121,7 +121,7 @@ After doing this, you'll be able to customize the deployment script if needed. Y
 
 The Deploy Script area is where you'd add commands to install Composer and NPM dependencies, compile CSS and JavaScript if you need to, and clear Statamic's cache. Most deploy scripts look like something like this:
 
-``` cli
+``` shell
 cd /home/forge/{example}.{tld}
 git pull origin main
 npm install && npm run production

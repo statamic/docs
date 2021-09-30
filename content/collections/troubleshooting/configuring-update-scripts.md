@@ -29,7 +29,7 @@ Add this `pre-update-cmd` under the `scripts` section of your `composer.json`:
 
 If the above script was not already registered in your composer.json, you'll need to manually trigger update scripts in your app by running:
 
-``` bash
+``` shell
 php please updates:run 3.0
 ```
 

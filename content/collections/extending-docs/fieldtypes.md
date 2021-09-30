@@ -36,7 +36,7 @@ For this example we will create a password field with a "show" toggle control:
 
 Create a fieldtype PHP class and Vue component by running the following command:
 
-``` bash
+``` shell
 php please make:fieldtype TogglePassword
 ```
 

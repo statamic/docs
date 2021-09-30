@@ -39,7 +39,7 @@ Any variables defined in a [blueprint](/blueprints) will be shown as a `Value` o
 
 You need to require the package with [Composer][composer].
 
-``` bash
+``` shell
 composer require --dev barryvdh/laravel-debugbar
 ```
 

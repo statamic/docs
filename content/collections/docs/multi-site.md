@@ -22,7 +22,7 @@ The default single-site setup uses a folder structure optimized for hand editing
 
 Luckily for you, this conversion can be done automatically with the following command:
 
-``` bash
+``` shell
 php please multisite
 ```
 

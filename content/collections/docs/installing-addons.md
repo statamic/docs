@@ -6,6 +6,6 @@ intro: 'Here''s how to install addons.'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632424831
 ---
-``` bash
+``` shell
 composer require vendor/addon-name
 ```

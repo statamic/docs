@@ -12,7 +12,7 @@ id: 5bd75435-806e-458b-872e-7528f24df7e6
 
 You can generate an addon with a console command:
 
-``` bash
+``` shell
 php please make:addon example/my-addon
 ```
 
@@ -101,7 +101,7 @@ In your project root's `composer.json`, add your package to the `require` and `r
 
 Run composer update from your _project root_ (not your addon directory).
 
-``` bash
+``` shell
 composer update
 ```
 
@@ -121,7 +121,7 @@ Your addon is now installed. You should be able to go to `/cp/addons` and see it
 
 A public addon is one available as a composer package on packagist.org. Simple require it with composer:
 
-``` bash
+``` shell
 composer require vendor/package
 ```
 
@@ -154,7 +154,7 @@ In your project root's `composer.json`, add the package to the `require` and `re
 
 Run composer update from your project root:
 
-``` bash
+``` shell
 composer update
 ```
 
@@ -242,7 +242,7 @@ They will all be tagged using your addon's slug.
 
 Whenever the `statamic:install` command is run (i.e. after running `composer update`, etc) the following command will be run:
 
-``` bash
+``` shell
 php artisan vendor:publish --tag=your-addon-slug --force
 ```
 

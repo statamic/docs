@@ -58,7 +58,7 @@ Run the `translator generate` command in the `statamic/cms` project, along with 
 
 You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`).
 
-``` bash
+``` shell
 php translator generate eo
 ```
 
@@ -81,7 +81,7 @@ resources/lang/
 
 You can get a translation kickstarted with the Google API by passing your API key.
 
-``` bash
+``` shell
 php translator generate eo --key=abc123
 ```
 
@@ -89,6 +89,6 @@ php translator generate eo --key=abc123
 
 Running the `translator review` command will loop through all the translations showing you the key, the English phrase, and new translated phrase for proofreading. You can enter new translations during this process. You can also use this command to gather new or changed translatable strings after a Statamic update.
 
-``` bash
+``` shell
 php translator review eo messages
 ```

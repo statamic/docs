@@ -16,13 +16,13 @@ When your site is in Laravel's [maintenance mode](https://laravel.com/docs/confi
 
 To enable maintenance mode, run the `down` Artisan command:
 
-```bash
+``` shell
 php artisan down
 ```
 
 And to disable maintenance mode, run the reverse `up` Artisan command:
 
-```bash
+``` shell
 php artisan up
 ```
 

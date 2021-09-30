@@ -101,7 +101,7 @@ introduced the `wildcard` method to prevent some infinite looping situations you
 
 You can generate a Tags class with a console command:
 
-``` bash
+``` shell
 php please make:tag Foo
 ```
 

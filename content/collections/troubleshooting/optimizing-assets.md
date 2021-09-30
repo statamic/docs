@@ -41,7 +41,7 @@ if you do make manual changes to the files.
 
 Statamic's assets use Flysystem under the hood. Flysystem has a feature where it can cache filesystem calls, you just need to install and enable it.
 
-```bash
+``` shell
 composer require league/flysystem-cached-adapter
 ```
 

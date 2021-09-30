@@ -83,7 +83,7 @@ STATAMIC_GIT_AUTOMATIC=false
 
 Manually trigger commits via the command line with the following command:
 
-```bash
+``` shell
 php please git:commit
 ```
 
@@ -191,7 +191,7 @@ In your deploy scripts on [Forge](https://forge.laravel.com), [Ploi](https://plo
 
 ### Forge
 
-```bash
+``` shell
 if [[ $FORGE_DEPLOY_MESSAGE =~ "[BOT]" ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
@@ -200,7 +200,7 @@ fi
 
 ### Ploi
 
-```bash
+``` shell
 if [[ {COMMIT_MESSAGE} =~ "[BOT]" ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
@@ -209,7 +209,7 @@ fi
 
 ### Cleavr
 
-```bash
+``` shell
 if [[ "{{ commitMessage }}" =~ "[BOT]" ]]; then
     echo 'AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY.'
     exit 1

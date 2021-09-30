@@ -27,7 +27,7 @@ If you run into any errors, check out this [helpful article](/troubleshooting/fi
 
 **Once installed,** run the following command to kickstart a fresh new Statamic project (and even choose from some free Starter Kits).
 
-``` bash
+``` shell
 statamic new {site_name}
 ```
 
@@ -35,7 +35,7 @@ statamic new {site_name}
 
 You can install Statamic with regular, old Composer if you'd prefer. To do so, you'll probably want to use the [`statamic/statamic`](https://github.com/statamic/statamic) empty starter site.
 
-``` bash
+``` shell
 composer create-project --prefer-dist statamic/statamic {site_name}
 ```
 
@@ -110,7 +110,7 @@ Looking to jump right into a ready-made site?
 
 2. Require `statamic/cms`.
 
-   ``` bash
+   ``` shell
    composer require statamic/cms --with-dependencies
    ```
 
@@ -140,7 +140,7 @@ Statamic is updated using Composer either directly on the command line or throug
 
 From within your project, use Composer to update the Statamic CMS package:
 
-``` bash
+``` shell
 composer update statamic/cms --with-dependencies
 ```
 

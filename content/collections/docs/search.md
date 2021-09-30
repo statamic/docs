@@ -125,7 +125,7 @@ Each transformer is a closure that would correspond to a field in your index's `
 
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
-``` bash
+``` shell
 # Update all indexes
 php please search:update
 
@@ -181,7 +181,7 @@ ALGOLIA_APP_ID=your-algolia-app-id
 ALGOLIA_SECRET=your-algolia-admin-key
 ```
 
-``` bash
+``` shell
 composer require algolia/algoliasearch-client-php
 ```
 

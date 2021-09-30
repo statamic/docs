@@ -97,7 +97,7 @@ When deleting, it will be removed from each index.
 
 Indexes may be created in advance by running the following command:
 
-``` cli
+``` shell
 php please stache:warm
 ```
 

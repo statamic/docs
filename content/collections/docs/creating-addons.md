@@ -16,7 +16,7 @@ Within the Control Panel, you can install addons by browsing to the one you want
 
 If you want to do it yourself, you can use Composer directly on the command line:
 
-``` bash
+``` shell
 composer require vendor/package
 ```
 

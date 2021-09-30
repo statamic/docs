@@ -25,7 +25,7 @@ Parameters are used to modify the behavior of a modifier. They could be anything
 
 You can generate a Modifier class with a console command:
 
-``` bash
+``` shell
 php please make:modifier Repeat
 ```
 

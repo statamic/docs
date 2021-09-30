@@ -45,7 +45,7 @@ The command you're about to run clones (makes a copy of) our [empty starter site
 
 You should run this command from your Terminal application of choice (we like [iTerm2](https://iterm2.com/index.html) inside your `~/Sites` directory or wherever you prefer putting your sites.
 
-``` bash
+``` shell
 composer create-project --prefer-dist statamic/statamic cyberspace-place
 ```
 

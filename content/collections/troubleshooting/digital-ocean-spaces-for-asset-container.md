@@ -13,7 +13,7 @@ Since Digital Ocean Spaces is compatible with the Amazon S3 API, you can use the
 
 First, install the AWS Flysystem adapter:
 
-```bash
+``` shell
 composer require "league/flysystem-aws-s3-v3 ~1.0"
 ```
 

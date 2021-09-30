@@ -16,7 +16,7 @@ Finally, if you require a provider not on the list, you may write your own.
 
 Install Laravel Socialite:
 
-``` bash
+``` shell
 composer require laravel/socialite
 ```
 

@@ -12,14 +12,14 @@ updated_at: 1622820986
 ---
 If you were to run `statamic` in your terminal, it would have no idea you meant the one you just installed with Composer.
 
-```bash
+``` shell
 $ statamic new mysite
 Command not found: statamic
 ```
 
 You _could_ use the full path to the binary instead:
 
-```bash
+``` shell
 $ ~/.composer/vendor/bin/statamic new mysite
 Building a new statamic site.
 ```
@@ -37,7 +37,7 @@ Find out what shell you're using by running `echo $SHELL`.
 
 Then add this to the end of it:
 
-```bash
+``` shell
 export PATH=${PATH}:~/.composer/vendor/bin
 ```
 

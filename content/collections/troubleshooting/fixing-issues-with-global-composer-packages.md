@@ -19,7 +19,7 @@ If you've just tried to install Statamic's installer (`composer global require s
 
 The most common reason for this issue is that your global Composer dependencies are out of date and whatever you're trying to install needs a newer version of package. You can update your global dependencies by running the following command, and then try whatever you were just doing one more time.
 
-``` cli
+``` shell
 composer global update
 ```
 
@@ -29,7 +29,7 @@ If that doesn't resolve the issue, you may need to look at your list of global d
 
 You can find where the global `composer.json` config file is by running the following command and looking at the `[home]` line.
 
-``` cli
+``` shell
 composer config --list --global
 ```
 
