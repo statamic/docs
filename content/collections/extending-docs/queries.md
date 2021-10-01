@@ -168,6 +168,15 @@ Statamic\Facades\UserGroup::find('admin')
     ->get();
 ```
 
+### Taxonomy
+
+Query all terms in a particular taxonomy.
+
+```php
+Statamic\Facades\Taxonomy::findByHandle('countries')
+    ->queryTerms()
+    ->get()
+```
 
 ## Caveats
 
