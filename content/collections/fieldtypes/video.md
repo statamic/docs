@@ -3,7 +3,7 @@ title: Video
 description: Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline.
 intro: |
   Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline. Feel free watch the whole thing instead of working – we won't tell.
-screenshot: fieldtypes/screenshot/video.jpg
+screenshot: fieldtypes/screenshots/video.jpg
 stage: 4
 id: ced8b901-95bd-4006-b70e-4ea04d72fcb7
 ---

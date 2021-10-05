@@ -3,7 +3,7 @@ title: Link
 description: 'Create links to URLs, entries, or child entries.'
 intro: |
   A select box gives you the option to choose what type of link you'd like to create. When set to URL it gives you a text box to enter the hyperlink. When set to Entry it opens a stack with all your entries to choose from. And when set to First Child will redirect a visitor to the first child page in a structure.
-screenshot: fieldtypes/screenshot/link.png
+screenshot: fieldtypes/screenshots/link.png
 id: 69975d6f-760e-4ce4-a92b-d98e122744a8
 options:
   -

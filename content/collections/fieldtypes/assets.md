@@ -3,7 +3,7 @@ title: Assets
 meta_title: Assets Fieldtype
 intro: Any time you want to list, display, or work with assets (external files with enhanced abilities), this is the way to do it. Upload, browse, reorder, delete, and even manage field data on individual assets.
 description: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
-screenshot: fieldtypes/screenshot/assets-list.png
+screenshot: fieldtypes/screenshots/assets-list.png
 stage: 1
 options:
   -

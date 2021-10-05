@@ -5,7 +5,7 @@ description: 'Add a little presentation-only HTML to your blueprint.'
 intro: |
   If you've ever wanted to add a little HTML to your blueprint, this is the way to do it. Longer instructions, images, embedded help videos — if you can write it, you can...write it.
 
-screenshot: fieldtypes/screenshot/html.png
+screenshot: fieldtypes/screenshots/html.png
 options:
   -
     name: html

@@ -4,8 +4,7 @@ meta_title: 'Entries Fieldtype'
 description: 'Create relationships with other entries.'
 intro: |
   Create relationships with other entries in one or more collections. It's not very much like online dating because you can create and link the entries on the fly without leaving the page.
-screenshot: fieldtypes/screenshot/entries.png
-video: https://youtu.be/WWbsM5u9afc
+screenshot: fieldtypes/screenshots/entries.png
 options:
   -
     name: collections
@@ -23,12 +22,15 @@ options:
     type: string
     description: |
         Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
-stage: 4
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview
 
 Use this fieldtype to create a one-way relationship with entries of any collection in your site. It's delightfully simple.
+
+:::watch https://youtube.com/embed/WWbsM5u9afc
+Watch how to build a "Related Articles" feature using the Entries Fieldtype
+:::
 
 ## Data Structure
 

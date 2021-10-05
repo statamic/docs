@@ -3,7 +3,7 @@ title: 'Button Group'
 description: 'Buttons you click. You can only choose one.'
 intro: |
   Buttons. Create some options and let your users select one and only one. May they choose wisely.
-screenshot: fieldtypes/screenshot/button_group.png
+screenshot: fieldtypes/screenshots/button_group.png
 options:
   -
     name: options

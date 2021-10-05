@@ -4,7 +4,7 @@ description: 'Choose a number between a min and max value.'
 intro: |
   Range fields let the user choose a numeric value which must be _no less_ than a given value, and _no more_ than another.
 
-screenshot: fieldtypes/screenshot/range.png
+screenshot: fieldtypes/screenshots/range.png
 options:
   -
     name: min

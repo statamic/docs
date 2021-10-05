@@ -2,7 +2,7 @@
 title: Color
 description: 'Pick colors, enter hex or HSLA values, and other colorful things.'
 intro: 'This fieldtype is a highly configurable color picker with simple and advanced UI modes, support for alpha channel, rgba, hsla, hsva, and more.'
-screenshot: fieldtypes/screenshot/color.png
+screenshot: fieldtypes/screenshots/color.png
 options:
   -
     name: theme

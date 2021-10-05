@@ -3,7 +3,7 @@ title: Bard
 description: "Rich article writing and block-based layouts made easy."
 intro: |
   Bard is more than just a content editor, and more flexible than a block-based editor **It is designed to provide a delightful and powerful writing experience** with unparalleled flexibility on your front-end.
-screenshot: fieldtypes/screenshot/bard.jpg
+screenshot: fieldtypes/screenshots/bard.jpg
 options:
   -
     name: allow_source

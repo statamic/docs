@@ -4,7 +4,7 @@ description: A template picker with autosuggest.
 intro: >
   Used for choosing an entry’s template. Be sure to name the field `template` if you want it to be able to change the template (it's a special variable name).
 id: 76e0ee52-a3c4-4904-8b5c-f722bbb20482
-screenshot: fieldtypes/screenshot/template.png
+screenshot: fieldtypes/screenshots/template.png
 stage: 4
 options:
   -

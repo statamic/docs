@@ -24,7 +24,7 @@ options:
     type: string
     description: >
       Set some default placeholder text.
-screenshot: fieldtypes/screenshot/text.png
+screenshot: fieldtypes/screenshots/text.png
 stage: 4
 id: 306b112b-b0cc-4359-b681-da353eeb50ac
 ---
