@@ -5,7 +5,6 @@ template: page
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
 pro: true
-video: https://youtu.be/KuiPocGq3L8
 ---
 ## Overview
 
@@ -20,12 +19,12 @@ The most common and obvious reason users exist are to have the means to access t
 
 The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
 
-<figure>
-    <img src="/img/make-user.png" alt="Make User command" class="shadow-lg-teal rounded">
-    <figcaption>This is all it takes to make your first user.</figcaption>
-</figure>
+:::watch https://youtube.com/embed/KuiPocGq3L8
+Watch a new user being born. 🐣
+:::
 
 You can also [create users by hand](/knowledge-base/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
+
 
 ### New User Invitations
 

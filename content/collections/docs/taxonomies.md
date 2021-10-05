@@ -2,7 +2,6 @@
 title: Taxonomies
 intro: A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.
 blueprint: page
-video: https://youtu.be/vssXeEC118M
 id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
 ---
 ## Overview
@@ -12,6 +11,10 @@ Taxonomies give you the ability to tag your entries and then fetch and sort all 
 Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
 Each entry in a taxonomy is often called a **term**.
+
+:::watch https://youtube.com/embed/vssXeEC118M
+Watch how to set up your first Taxonomy
+:::
 
 ## Collections
 

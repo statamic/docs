@@ -10,6 +10,10 @@ parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 
 Running Statamic locally is the preferred method for building and maintaining your sites. With version control (we recommend git), it's quite simple to deploy changes almost instantly from your local computer to a live site with a single command.
 
+:::watch https://youtube.com/embed/zuKZQNUYSf8
+Feel free to watch instead of read!
+:::
+
 ## Prerequisites
 
 To install Statamic locally you will need the following:
