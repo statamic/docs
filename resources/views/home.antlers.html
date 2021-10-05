@@ -32,21 +32,21 @@
 </div>
 
 <div class="grid md:grid-cols-3 gap-y-6 md:gap-6 mt-6">
-    <a href="/screencasts" class="bg-white border shadow-stack-sm rounded-sm p-5 hover:bg-gray-lightest">
+    <a href="/screencasts" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
         <header class="flex items-center mb-3">
             <img src="/img/tv.svg" alt="Retro TV Set" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
             <h2 class="text-2xl ml-2 font-bold font-display">Watch + Learn</h2>
         </header>
         <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
     </a>
-    <a href="/upgrade-guide" class="bg-white border shadow-stack-sm rounded-sm p-5 hover:bg-gray-lightest">
+    <a href="/upgrade-guide" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
         <header class="flex items-center mb-3">
             <img src="/img/car.svg" alt="An older car that needs to be upgraded" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
             <h2 class="text-2xl font-bold font-display">Upgrade Guides</h2>
         </header>
         <p class="text-sm font-mono-alt">For when it's time to get that older Statamic site onto v3.</p>
     </a>
-    <a href="https://statamic.com/discord" class="bg-white border shadow-stack-sm rounded-sm p-5 hover:bg-gray-lightest">
+    <a href="https://statamic.com/discord" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
         <header class="flex items-center mb-3" x-data="{active: 1}" x-init="setInterval(() => { if (active === 9) { active = 0; }; active++ }, 1500)">
             <img :style="{ 'display': active === 1 ? 'block' : 'none' }" src="/img/people/person-1.svg" alt="A person representing the community">
             <img :style="{ 'display': active === 2 ? 'block' : 'none' }" src="/img/people/person-2.svg" alt="A person representing the community">
