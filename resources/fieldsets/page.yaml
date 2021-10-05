@@ -1,6 +1,20 @@
 title: Page
 fields:
   -
+    handle: nav_title
+    field:
+      display: Alt Nav Title
+      type: text
+      listable: show
+      width: 50
+  -
+    handle: breadcrumb_title
+    field:
+      display: Alt Breadcrumb Title
+      type: text
+      listable: hidden
+      width: 50
+  -
     handle: intro
     field:
       restrict: false

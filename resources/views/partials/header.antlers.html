@@ -1,9 +1,9 @@
 <header class="markdown pb-8 mb-8">
     {{ partial:breadcrumbs }}
     <div class="flex items-center">
-        <h1>{{ title }}</h1>
+        <h1 class="{{ title | length > 36 ?= 'text-5xl'}}">{{ title | widont }}</h1>
         {{ partial:pro-badge }}
     </div>
     {{ intro ?? overview | markdown }}
-    {{ partial:toc }}
+    {{ partial:toc hide="{hide_toc} ?? false"}}
 </header>

@@ -1,4 +1,4 @@
-{{ if content | toc }}
+{{ if ! hide_toc && content | toc }}
     <div id="table-of-contents" class="border shadow rounded mt-8 md:mt-16" x-data="{open: getCookie('toc_open') != 'false'}">
         <div class="bg-black text-white py-3 px-4 flex items-center justify-between">
             <span x-text="open ? 'On this page' : 'See what\'s on this page'"></span>

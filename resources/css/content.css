@@ -203,7 +203,7 @@ article, .markdown {
     }
 }
 
-header.markdown > p {
+header.markdown p {
     @apply text-xl leading-normal;
 }
 
@@ -255,41 +255,5 @@ ul.list-col {
 @media screen(lg) {
     ul.list-col {
         column-count: 3;
-    }
-}
-
-
-/* TODO: Remove (replaced by "tips") */
-/* -------------------------------------------------- */
-
-article, .markdown {
-    blockquote {
-        p { @apply text-base; }
-        &:before {
-            content: '';
-            background: url('/img/label-tip.svg') no-repeat;
-            height: 40px;
-            width: 94px;
-            position: absolute;
-            top: -16px;
-            left: -12px;
-            z-index: 2;
-        }
-
-        &.warning {
-            &:before {
-                background: url('/img/label-warning.svg') no-repeat;
-            }
-        }
-
-        &.best-practice {
-            &:before {
-                background: url('/img/label-best-practice.svg') no-repeat;
-                height: 48px;
-                width: 138px;
-                top: -18px;
-                left: -16px;
-            }
-        }
     }
 }

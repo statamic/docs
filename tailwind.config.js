@@ -87,6 +87,7 @@ module.exports = {
       'teal': "1px 1px 0 theme('colors.teal', 'currentColor')",
       'teal-md': "3px 3px 0 theme('colors.teal', 'currentColor')",
       'teal-lg': "7px 7px 0 theme('colors.teal', 'currentColor')",
+      'stack-yellow-sm': "3px 3px 0 -1px #fff, 3px 3px 0 theme('colors.black'), 4px 4px 4px theme('colors.yellow')",
       'stack-sm': "3px 3px 0 -1px #fff, 3px 3px 0 theme('colors.black')",
       'stack': "5px 5px 0 -1px #fff, 5px 5px 0 theme('colors.black')",
       'stack-md': "10px 10px 0 -1px #fff, 10px 10px 0 theme('colors.black')",
