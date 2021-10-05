@@ -3,15 +3,14 @@ id: c0009fa6-0f8f-4b45-8d65-0cb784d07031
 blueprint: page
 title: 'How to Install Statamic on Ubuntu'
 breadcrumb_title: Ubuntu
-intro: A full walk-through for installing, configuring and running Statamic on an Ubuntu server. We recommend using [Digital Ocean](https://m.do.co/c/6469827e2269) to provision your server. The $5/mo droplet is enough for most sites.
+intro: A full walk-through for installing, configuring and running Statamic on an Ubuntu server, perfect for production use.
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 ## Prerequisites
 
 To install Statamic on an Ubuntu instance you will need the following:
 
-- An Ubuntu 20.04 or 18.04 VPS with root access enabled or a user with Sudo privileges
-- Composer pre-installed. If you haven't installed Composer yet, you can follow this guide on [How to Install Composer on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-20-04).
+- An Ubuntu 20.04 or 18.04 VPS with root access enabled or a user with Sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
 - A server with at least 1GB memory
 - A valid domain name pointed to your server and SSL certificate in place
 - PHP 7.4+
@@ -102,6 +101,7 @@ sudo systemctl status nginx
 ```
 
 Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vi` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
+
 
 ```php
 server {
