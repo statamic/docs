@@ -9,7 +9,7 @@ options:
     type: string/array
     description: >
       You can pass a single collection as a string or multiple collections as an array.
-image: /assets/fieldtypes/collections.png
+screenshot: /fieldtypes/screenshots/collections.png
 id: 44c3da60-ef47-408e-afc4-a33026c86f5d
 ---
 ## Usage
