@@ -275,7 +275,7 @@ You may construct conditional statements using the `if`, `else`, `elseif`, `unle
 
 <blockquote class="tip"><strong>Antlers variables are null by default.</strong> Keep your logic statements simple and skip checking for existence altogether.</blockquote>
 
-### Shorthand Conditions (Ternary)
+### Shorthand Conditions (Ternary) {#ternary}
 
 Basic ternary operators will let you write a simple if/else statement all in one line.
 
@@ -299,7 +299,7 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 {{ /if }}
 ```
 
-### Variable Fallbacks (Null Coalescence)
+### Variable Fallbacks (Null Coalescence) {#null-coalescence}
 
 When all you need to do is display a variable and set a fallback when it’s falsey, use the null coalescence operator (`??`).
 
