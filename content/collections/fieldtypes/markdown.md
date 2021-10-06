@@ -78,7 +78,7 @@ The Markdown content will be automatically transformed into HTML through [augmen
 The Markdown fieldtype also has a dark mode when in fullscreen for those of you who like that sort of thing.
 
 <figure>
-    <img src="/img/fieldtypes/markdown-dark-mode.png" alt="Dark Mode for Markdown">
+    <img src="/img/fieldtypes/screenshots/markdown-dark-mode.png" alt="Dark Mode for Markdown">
     <figcaption><span class="not-italic">😎</span> Sunglasses off.</figcaption>
 </figure>
 

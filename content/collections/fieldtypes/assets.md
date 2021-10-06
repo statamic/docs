@@ -50,7 +50,7 @@ Files are rearrangeable via drag-and-drop.
 The list mode is shown above, while the grid mode is below. There are no functional differences, only visual ones. List mode is more compact – useful if you're not primarily managing images.
 
 <figure>
-  <img src="/img/fieldtypes/assets-grid.png" width="543" alt="Assets Grid mode">
+  <img src="/img/fieldtypes/screenshots/assets-grid.png" width="543" alt="Assets Grid mode">
   <figcaption>Grid mode reveals a fanny pack in all of its glory.</figcaption>
 </figure>
 
