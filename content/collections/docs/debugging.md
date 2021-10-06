@@ -1,6 +1,6 @@
 ---
 title: Debugging
-intro: Debugging is the secret art of the experienced developer. The ability to inspect stack traces, rifle through response objects, and dump data to the screen is often the quickest way to get yourself unstuck and back on track. Here are some weapons Statamic provides to make your job easier.
+intro: Debugging is the secret art of the experienced developer. The ability to inspect stack traces, rifle through response objects, and dump data to the screen is often the quickest way to get yourself unstuck and back on track. Here are some tools Statamic provides to help you debug.
 template: page
 id: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
 blueprint: page
@@ -26,16 +26,23 @@ The debug bar is a convenient way to explore many of the things happening in any
 
 <figure>
     <img src="/img/debug-bar.png" alt="Debug bar showing available variables">
-    <figcaption>The debug bar is like X-Ray vision into Statamic's inner workings.</figcaption>
+    <figcaption>The debug bar is like X-Ray vision into many of Statamic's inner workings.</figcaption>
 </figure>
 
-### Exploring variables
+### Benchmarking Response Times
 
-Any variables defined in a [blueprint](/blueprints) will be shown as a `Value` object in the Variables tab. They can be expanded to see their "raw" original data, as well what fieldtype they're managed by, and their augmented value.
+You can see all of the major operations performed on a given page request in the **Timeline** tab, which can help with fine-tuning and performance optimization.
 
-- Learn more about [augmentation](/fields#augmentation).
+<figure>
+    <img src="/img/debug-bar-timeline.png" alt="Debug bar the timeline">
+    <figcaption>Slow tags or operations are candidates for caching or indexing tweaks.</figcaption>
+</figure>
 
-### How to enable the debug bar
+### Exploring Data
+
+Any variables defined in a [blueprint](/blueprints) will be shown as a `Value` object in the Variables tab. They can be expanded to see their "raw" original data, as well what fieldtype they're managed by, and their [augmented](/augmentation) value.
+
+### How to Enable the Debug Bar
 
 You need to require the package with [Composer][composer].
 
@@ -43,15 +50,20 @@ You need to require the package with [Composer][composer].
 composer require --dev barryvdh/laravel-debugbar
 ```
 
-It'll be enabled when `APP_DEBUG` and `DEBUGBAR_ENABLED` are both `true` in your env file.
+And then enable it in your `.env` file:
 
-:::tip
+```env
+APP_DEBUG=true
+DEBUGBAR_ENABLED=true
+```
+
+:::warning
 The debug bar injects JavaScript into the page and adds significant overhead server-side work to each request. **Make sure to turn it off when you're testing your site's performance!**
 :::
 
 ## Dump Modifier
 
-When working in [Antlers](/antlers) templates, you can smack the [dump modifier](/modifiers/dump) onto any variable to explore its contents. Here's an example.
+When working in [Antlers](/antlers) templates, you can slap the [dump modifier](/modifiers/dump) onto any variable to explore its contents. Here's an example.
 
 ``` yaml
 bands:
@@ -79,7 +91,7 @@ array:6 [▼
 
 ## Logs
 
-Statamic uses Laravel's logging handling system to log messages and errors to file, debug service, or even Slack. The default behavior logs these messages to files stored in `storage/logs`. Each day gets its own separate file so it can feel special.
+Statamic uses Laravel's logging handling system to log messages and errors to file, debug service, or even Slack. The default behavior logs these messages to files stored in `storage/logs`. Each day gets its own separate file so it can feel special (and make it easier to find what you're looking for).
 
 Learn more about [configuring other logging channels](https://laravel.com/docs/logging#configuration) on the Laravel docs.
 
