@@ -43,8 +43,9 @@ article, .markdown {
     }
 
     a svg.external {
-        @apply inline-block text-gray-dark;
+        @apply inline-block;
         vertical-align: text-top;
+        color: rgba(0,0,0,.6);
     }
 
     h2 > .anchor,
