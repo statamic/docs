@@ -22,7 +22,7 @@ class Toc extends Modifier
 
         $creatingIds = array_get($params, 0) == 'ids';
 
-        list($toc, $content) = $this->create($value, $creatingIds ? 3 : 2);
+        list($toc, $content) = $this->create($value, 3);
 
         return $creatingIds ? $content : $toc;
     }
@@ -79,12 +79,14 @@ class Toc extends Modifier
             }
 
             $ret = preg_match('/title=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $title);
+
             if ($ret && $title[1] != '') {
                 $title = stripslashes($title[1]);
             } else {
                 $title = $heading[3];
             }
-            $title 		= trim(strip_tags($title));
+
+            $title = trim(strip_tags($title));
 
             if ($i > 0) {
                 if ($prevlvl < $lvl) {

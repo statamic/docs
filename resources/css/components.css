@@ -162,22 +162,38 @@ figure figcaption {
 /* Table of Contents */
 /* -------------------------------------------------- */
 .toc {
-    @apply font-display py-3 space-y-4;
-    list-style-type: decimal;
-    list-style-position: inside;
+    @apply font-display py-2 space-y-2 ml-0;
+    list-style-type: none;
+    counter-reset: item;
 
     li {
-        @apply px-2 leading-tight text-base;
+        @apply px-2 leading-tight text-lg block;
+        counter-increment: item;
+        &:before {
+            @apply mr-2 font-medium;
+            content: counters(item, ".") ". ";
+        }
     }
 
     li a {
         @apply text-black no-underline hover:text-pink font-medium;
     }
+
+    li ol {
+        @apply my-2 space-y-1 ml-5;
+        counter-reset: item;
+        /* list-style-type: lower-alpha; */
+
+        li { @apply text-base; }
+        li:before {
+             content: counters(item, ".") " ";
+        }
+    }
 }
 
-@media screen(lg) {
+/* @media screen(lg) {
     .toc {
         column-count: 3;
         column-rule: 1px dashed theme('colors.black');
     }
-}
+} */
