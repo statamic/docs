@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## What is YAML?
 
-YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut it down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
+`<tangent>`YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut it down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
 
 YAML complies with the JSON spec, making it easy to interchange it with nearly any native data format. It consists of key and value pairs delimited by a colon then a space.
 
