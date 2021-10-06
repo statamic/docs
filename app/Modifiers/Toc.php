@@ -30,7 +30,7 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        preg_match_all('/<h([1-'.$maxHeadingLevels.'])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER);
+        preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
 
         if (! $matches) {
             return [null, $content];
@@ -58,7 +58,7 @@ class Toc extends Modifier
                 $anchor = stripslashes($anchor[1]);
                 $add_id = false;
             } else {
-                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower($heading[3])));
+                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3]))));
                 $add_id = true;
             }
 
