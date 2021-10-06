@@ -1,6 +1,6 @@
 ---
 title: Revisions
-intro: The Revisions feature adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
+intro: Revivions adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
 template: page
 blueprint: page
 id: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
@@ -9,7 +9,7 @@ pro: true
 
 ## Overview
 
-Revisions is Statamic's publishing workflow feature providing different _states_ for your entries — published, unpublished, working copy, and revision.
+Revisions is Statamic's publishing workflow feature which provides different _states_ and corresponding behaviors for your entries — published, unpublished, working copy, and revision.
 
 <figure>
     <img src="/img/publish-revision.png" alt="Revisions" width="398">
@@ -18,9 +18,9 @@ Revisions is Statamic's publishing workflow feature providing different _states_
 
 ## Enabling
 
-Since Revisions is a Pro feature, make sure you've [enabled Pro](/licensing).
+Revisions is a **Pro feature**, make sure you've [enabled Pro](/licensing).
 
-Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `.env` file. Once done, you can set `revisions: true` on any or all collections you'd like to use revisions.
+Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `.env` file. Now you can set `revisions: true` on any or all collections you'd like to use revisions.
 
 :::best-practice
 We recommend leaving Revisions **off** while your site is in development. It'll add extra steps to each update to your content, slow you down, and you'll probably end up annoying by what's actually a really awesome feature.
@@ -82,32 +82,32 @@ The history view will show you all revisions, publish, unpublish, and restore st
 
 For those interested in the super-granular details, here is the result of each possible state change:
 
-### Saving an *unpublished* entry:
+### Saving an *unpublished* entry
 - No revision is created.
 - The actual entry is saved.
 - The actual entry is considered the working copy.
 
-### Saving a *published* entry:
+### Saving a *published* entry
 - The working copy is saved.
 - The actual entry is _not_ saved.
 
-### Publishing an entry:
+### Publishing an entry
 - The entry gets updated with the contents of the working copy, marked as published, and saved.
 - A revision is created.
 - The working copy is deleted.
 
-### Unpublishing an entry:
+### Unpublishing an entry
 - The entry is marked as unpublished, and saved.
 - A revision is created.
 - The working copy is deleted.
 
-### Manually creating a revision:
+### Manually creating a revision
 - A revision is created.
 
-### Restoring a revision while the entry is *published*:
+### Restoring a revision while the entry is *published*
 - The working copy is updated to the contents of the revision.
 - The actual entry is left untouched.
 
-### Restoring a revision while the entry is *unpublished*:
+### Restoring a revision while the entry is *unpublished*
 - The actual entry is updated to the contents of the revision.
 - The entry is left unpublished, even if the selected revision was published.
