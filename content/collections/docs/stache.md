@@ -2,35 +2,52 @@
 title: Stache
 template: page
 intro: >
-    Statamic's data storage layer is affectionately named the "Stache". Think of it like Tom Selleck's face, if it were a flat-file database.
+    Instead of using a relational database like MySQL as a storage system, Statamic aggregates the data in your content files into an efficient, index-based system and stores it in Laravel's application cache. We call this the "stache", and we like to make mustache jokes about it.
 blueprint: page
 id: 499d808b-18be-42e9-acd0-91bcdff73193
 ---
 ## Overview
 
-Rather than using a database as a storage layer, Statamic compiles the data in your content files into an efficient index-based system stored in Laravel's application cache. This stache can be rebuilt from scratch at any time. This is often done when content or settings change, or when updates are deployed to a production server.
+**The stache is ephemeral** and can be blown away and rebuilt from scratch at any time without losing data. This is most often done when content or settings change, or when updates are deployed to a production server.
 
 <figure class='bg-mint'>
     <img src="/img/tom-selleck-lg.jpg" alt="Tom Selleck as Magnum P.I.">
     <figcaption>Behold, the stache of all staches!</figcaption>
 </figure>
 
-## File Changes
+## The Stache is Watching Your Files {#watcher}
 
-Since your data is coming from your content files, you're able to just open an entry's file in your text editor and see its changes reflected on your site immediately. Rad!
-
-When you try to access an item, under the hood the Stache will watch for any modified files, and then update the corresponding indexes.
+Each page request from the frontend or Control Panel triggers a scan of the `last_modified` timestamps on all content and configuration files in your Statamic application. When Statamic sees a change, the Stache performs selective updates to any corresponding indexes.
 
 :::best-practice
-This is great for local development, but on a production environment you should disable the file watcher. If you're editing content through the control panel, or only ever pushing content through deployments, you are adding extra overhead to every request for no reason.
+This is great for local development, but on a production environment **you should disable the file watcher.** If you're editing content through the control panel, or only ever pushing content through deployments, you are adding extra overhead to every request for no reason.
 
-You can disable this feature in `config/statamic/stache.php`.
+Disable this feature in your `.env` file or the `config/statamic/stache.php` config.
+
+``` env
+STATAMIC_FILE_WATCHER=false
+```
 
 ``` php
 return [
-   'watcher' => false,
+   'watcher' => env('STATAMIC_FILE_WATCHER', true), // [tl! highlight]
+   ...
 ];
 ```
+:::
+
+## Clearing the Stache {#clearing}
+
+The [CLI](/cli) has commands to clear, warm, and refresh (clear and then immediately warm) the stache.
+
+``` shell
+php please stache:clear
+php please stache:warm
+php please stache:refresh
+```
+
+:::best-practice
+It's a good idea to perform a `php please stache:refresh` when deploying changes to your production server so they're immediately available for the nxt request.
 :::
 
 ## Stores
@@ -171,3 +188,11 @@ return [
     ]
 ]
 ```
+
+## Diving Even Deeper
+
+You can dive even deeper and learn how to build your own Stache Indexes and fine-tune performance with Michael Aerni's 2021 Statameet talk.
+
+:::watch https://www.youtube.com/embed/KDO2mIRjr18
+Dive deeper into the Stache!
+:::
