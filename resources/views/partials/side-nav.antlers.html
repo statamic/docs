@@ -30,7 +30,7 @@
                         {{ /if }}
                         {{ if section == "reference" }}
                             {{ collection :from="slug" }}
-                                <li class="{{ segment_2 === slug ?= 'active' }}" {{ if segment_2 === slug }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                                <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
                                     <a href="{{ url }}" class="hover:text-pink">
                                         {{ title }}
                                     </a>
