@@ -2,13 +2,13 @@
 title: Relationships
 template: page
 intro: |
-  Content is often related to other content and bits of data. For example, a blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard.
+  Content is often related to other content and bits of data. A blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard. This pages covers ways to create and take advantage of these types relationships.
 id: 8ed04215-9f46-4000-bd67-c71b21b67d85
 blueprint: page
 ---
 ## Overview
 
-Statamic relationships are defined by storing the ID of one piece of content (an entry, term, or user for example) in a variable on another piece of content. Once linked in this simple but specific way, you can fetch and display the related content by using the variable in your templates.
+Statamic relationships are defined by storing the ID of one piece of content (an entry, term, or user for example) in a variable on another piece of content. Once linked in this simple-but-specific manner, you can fetch and display the related content by using the variable in your templates.
 
 ## Fieldtypes
 
@@ -48,7 +48,7 @@ related_products:
 In this following template example you can see how easy it is to use the data from related entries, assets, and users. You don't need to write queries, request data filter results, or anything complicated. As long as you've used the appropriate [fieldtypes](#fieldtypes) in your [blueprint](/blueprints), the data will be ready and waiting for you to use in your view template.
 
 ```
-// resources/views/products/show.antlers.html
+<!-- resources/views/products/show.antlers.html -->
 
 <div class="product">
   <div class="flex justify-between">
@@ -78,12 +78,12 @@ In this following template example you can see how easy it is to use the data fr
 If you _aren't_ using a relationship fieldtype but _do_ have an ID to fetch data from you can use the [get_content tag](/tags/get_content).
 
 ```
-// You can hardcode the ID
+<!-- You can hardcode the ID -->
 {{ get_content from="123-1234-12-4321" }}
   <a href="{{ url }}">{{ title }}</a>
 {{ /get_content }}
 
-// Or pass the variable holding it
+<!-- Or pass the variable holding it -->
 {{ get_content :from="related_id" }}
   <a href="{{ url }}">{{ title }}</a>
 {{ /get_content }}
