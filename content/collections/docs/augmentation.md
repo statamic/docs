@@ -1,21 +1,18 @@
 ---
 title: Augmentation
 blueprint: page
+intro: Augmentation automatically transforms the rendered output of all Blueprint-defined variables based on their fieldtype.
 id: 9b2f6f55-5355-4334-b90d-d1236fb58887
 ---
 ## Overview
 
-Augmentation is a transformation step in Statamic 3's data layer which establishes a connection between your front-end templates and the blueprints defining your content model.
+Augmentation is kind of like magic. ✨
 
-In other words, augmentation automatically transforms the rendered output of each variable based on the fieldtype chosen to manage it.
-
-If you choose a Markdown fieldtype, your content will automatically be converted to HTML without the need to use a [markdown modifier](/modifiers/markdown).
-
-Each [fieldtype](/fieldtypes) documents if and how augmentation affects your output.
+For example, while using a [Markdown field](/fieldtypes/modifier), your content will **automatically be converted to HTML** without needing to use a [markdown modifier](/modifiers/markdown). Each [fieldtype](/fieldtypes) documents if and how augmentation affects output.
 
 :::hint
-Variables created on the fly with Front Matter won't be augmented unless you define them in the entry's [blueprint](/blueprints).
-::
+Variables created "on the fly" with Front Matter won't be augmented.
+:::
 
 ## Example
 
@@ -37,7 +34,7 @@ If you're using a [Markdown field](/fieldtypes/markdown), the output will be as 
 
 ### Without Augmentation
 
-If you're using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will exactly as input:
+While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will be exactly the same as the as input:
 
 ```text
   ## How to Jump Higher
@@ -46,4 +43,4 @@ If you're using a [Textarea field](/fieldtypes/textarea) — which _is not_ augm
 
 ## Digging Deeper
 
-[Learn the inner workings of Augmentation](/extending/augmentation) and how to use it in your own addons and extensions.
+[Learn the inner workings of Augmentation](/extending/augmentation) and how to take advantage of it in your own addons and extensions.
