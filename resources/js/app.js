@@ -5,7 +5,12 @@ import '@docsearch/css';
 require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
-// require('./prism.js')
+
+var dayjs = require('dayjs')
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
+
+window.dayjs = dayjs;
 
 
 docsearch({

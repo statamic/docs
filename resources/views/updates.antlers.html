@@ -15,7 +15,7 @@
                 <tr>
                     <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
-                    <td>{{ entry:last_modified | ago }}</td>
+                    <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i" }}').fromNow(true) + ' ago'"></td>
                 </tr>
             {{ /collection }}
         </tbody>

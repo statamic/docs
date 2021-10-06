@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@docsearch/js": "^3.0.0-alpha.40",
-        "@hotwired/turbo": "^7.0.0-rc.3",
-        "alpinejs": "^3.2.4"
+        "alpinejs": "^3.2.4",
+        "dayjs": "^1.10.7"
     }
 }
