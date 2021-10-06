@@ -7,21 +7,10 @@ id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
 ---
 ## Overview
 
-All requests to your site are handled by Statamic unless you [create your own Laravel routes](#custom-routes). Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
-
-If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting in `config/statamic/routes.php`.
-
-``` php
-// Lemme do it my way
-'enabled' => false,
-```
+All site requests are handled by Statamic unless you [create your own Laravel routes](#custom-routes). Here are the ways Statamic defines URLs.
 
 ## Content Routes
 [Collection entries](/collections#routing) and [taxonomy terms](/taxonomies#routing) can have their own URLs as defined by their own flexible route patterns in their respective configuration areas.
-
-## Custom Routes
-
-You can also configure regular Laravel routes much like you would in a regular Laravel application in `routes/web.php`. You can use closures, point to a [controller](/controllers), and so on. This is [standard Laravel stuff](https://laravel.com/docs/routing) and the standard Laravel docs apply.
 
 ## Statamic Routes
 
@@ -85,6 +74,10 @@ Route::permanentRedirect('/here', '/there');
 
 [More details on the Laravel docs](https://laravel.com/docs/routing#redirect-routes).
 
+## Laravel Routes
+
+You can also configure regular Laravel routes much like you would in a regular Laravel application in `routes/web.php`. You can use closures, point to a [controller](/controllers), and so on. This is [standard Laravel stuff](https://laravel.com/docs/routing) and the standard Laravel docs apply.
+
 ## Error Pages
 
 Whenever an error is encountered, a view will be rendered based on the status code. It will look for the view in `resources/views/errors/{status_code}.antlers.html`.
@@ -96,3 +89,12 @@ Statamic will automatically render `404` pages for any unhandled routes.
 :::tip
 For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will not be injected into a layout.
 :::
+
+## Disable Statamic Routes
+
+If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting in `config/statamic/routes.php`.
+
+``` php
+// Lemme do it my way
+'enabled' => false,
+```
