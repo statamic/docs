@@ -30,10 +30,7 @@ php please multisite
 
 ## Configuration
 
-Whether you are using multiple sites or not, every Statamic install needs at least one site.
-
-Each site has a locale which is used to format region-specific data, namely date strings.
-A URL is also required, telling Statamic where to expect the site to be served.
+Let's look at a basic site configuration, and then we'll walk through each configuration option.
 
 ``` php
 # config/statamic/sites.php
@@ -49,14 +46,24 @@ return [
 ];
 ```
 
+### Sites
+Every Statamic install needs at least one site, whether you are using multiple sites or not. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
+
+### Locale
+Each site has a `locale` which is used to format region-specific data (like date strings).
+
+### URL
+A URL is also required, which defines where statamic will serve and generate all URLs relative to.
+
+
 ## Site URLs
 
 As mentioned above, each site needs to define a `url`.
 
-Out of the box, the site's `url` is `/`, which should work for most cases. There's a little magic behind the scenes to work out what the full URL should be.
+The default site `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL should be, based on the domain the site is running on.
 
-However, it's a good idea to change this to be a full/absolute URL. This guarantees that no server/environment configuration or quirks gets in the way.
-Using an environment variable is an ideal solution here.
+:::best-practice
+It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks interfere with that "magic". Using an environment variable is an ideal solution here.
 
 ```php
 'sites' => [
@@ -74,15 +81,16 @@ Using an environment variable is an ideal solution here.
 ```env
 # production
 APP_URL=https://mysite.com/
-```
-```env
+
 # development
 APP_URL=http://mysite.test/
 ```
 
+:::
+
 ## Text Direction
 
-If your sites have different text directions, for example if you have an English and a Hebrew version, you can define the direction in the config and use it on your front-end.
+If your site or sites have different text directions, for example if you have an English and a Hebrew version, you can define the direction in the config and use it on your front-end.
 
 ```php
 'sites' => [
@@ -101,12 +109,12 @@ If your sites have different text directions, for example if you have an English
 ```
 
 :::tip
-You can omit `direction` from `ltr` sites because that's the default.
+Statamic's `direction` is `ltr` by default. You only need to set `direction` when your site is `rtl`.
 :::
 
-## Attributes
+## Additional Attributes
 
-You may add an array of arbitrary attributes to your site's config.
+You may also add an array of arbitrary attributes to your site's config, which can later be accessed with the [site variable](/variables/site) .
 
 ```php
 'sites' => [
@@ -124,14 +132,14 @@ You may add an array of arbitrary attributes to your site's config.
 ```
 
 :::tip
-There's nothing fancy going on here. It's just passing the values "as is" along to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
+Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
 :::
 
 ## Views
 
 [Views](/views) can be organized into site directories.
 
-If a requested view exists in a subdirectory named after your site, it will load it instead. This lets you have site-specific views without needing to add any extra configuration.
+If a requested view exists in a subdirectory with the same name as your site, it will load it instead. This allows you have site-specific views without any extra configuration.
 
 ``` php
 # config/statamic/sites.php
@@ -150,8 +158,8 @@ resources/views/
 |-- page.antlers.html
 ```
 
-For example, if you were to have `template: home`, it would load `site_one.home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific version.
+For example, given `template: home`, Statamic will load `site_one/home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific variant.
 
 :::tip
-This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory. Fancy!
+This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory.
 :::

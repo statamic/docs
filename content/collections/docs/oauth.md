@@ -144,9 +144,7 @@ Follow the [third party installation steps](#third-party-providers), but skip th
 
 ## Customizing User Data
 
-After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist.
-
-You may customize how it's done by adding a callback to your `AppServiceProvider`.
+After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist. You may customize how it's handled by adding a callback to your `AppServiceProvider`.
 
 ### User data
 
