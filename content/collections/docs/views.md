@@ -22,7 +22,7 @@ Each file inside your `resources/views` directory is a **view**. Each view can b
 
 ## Layouts
 
-**Layouts** are the the foundation of your frontend's HTML. Any markup you want present no matter what page you're on, no matter where you go, how far you travel, or loud you sing, should go into a layout.
+**Layouts** are the the foundation of your frontend's HTML. Any markup you want to present no matter what page you're on, no matter where you go, how far you travel, or loud you sing, should go into a layout.
 
 By default, Statamic will look for and use `/resources/views/layout.antlers.html`, but you're welcome to create other layouts and configure specific entries, whole sections, or the whole site to use those instead.
 
