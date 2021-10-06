@@ -58,6 +58,8 @@ blockquote,
         code:not(.torchlight) {
             @apply text-purple !important;
         }
+
+        a { @apply text-black font-bold; }
     }
 
     :not(.best-practice) code:not(.torchlight) {
