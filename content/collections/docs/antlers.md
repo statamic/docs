@@ -10,7 +10,7 @@ id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
 
 :::tip
-The `.antlers.html` extension is important. Without it your template **will not be parsed** render as static HTML.
+The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
 :::
 
 ## Antlers Syntax
