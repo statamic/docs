@@ -2,36 +2,36 @@
 id: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
 blueprint: page
 title: 'Data Inheritance'
-intro: 'Statamic sets data a series of scopes that can inherit over override each other, from globals, to collections, to the entry, and finally view level. We call this data inheritance model **The Cascade**.'
+intro: 'Statamic sets data in a series of scopes that can inherit and override each other in order. We call this data inheritance model **The Cascade**.'
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1632511754
 ---
 ## Overview
 
-Content management systems do a lot of work for you. It's the main reason people use them. One of Statamic's "behind-the-scenes" conventions is the way we inject and override data in your [views](/views), based on what URL you're on.
+Statamic provides a unique approach to data inheritance. The value of any given variable in your views can depend on the URL you're on. If a value of a variable doesn't exist on an entry URL, Statamic will check for a fallback value. If that fallback doesn't exist, it will fall back further, and so on. If it never finds anything, the value is `null`.
 
-## Global Data
+We call this fallback logic "the cascade", because the value of any given variable "cascades" down from the "top" until it finds where its defined.
 
-On any given Statamic-managed URL (clarifying this point for anyone building out sections of their site with vanilla Laravel) there is a fair amount of data available in your view.
+This approach allows you to create views that are less repetitive and are easier to read because a "missing" variable will never throw an error, it will only ever be null.
 
-Every view will have access to [system variables](/variables#variables#system-variables) like `site:url`, `segment_1`, `current_url`, [global variables](/globals), and anything injected via [View Model](/view-models).
+:::tip
+You can easily set variable fallbacks and "catch" the first value that exists without having to write a series of ugly `if/else` conditions.
 
-## Entry Data
-Furthermore, each entry has its own unique URL. When you're on one of those unique URLs, all of an entry's data will be available in your view. If an entry is _missing_ data, intentionally or not), it will fall back to a series of defaults.
+```
+<h1>{{ nav_title ?? breadcrumb_title ?? title }}</h1>
+```
+:::
 
-We call this fallback logic "the cascade", because the value of any given variable "cascades" down from the "top" until it finds where its defined. If a value doesn't exist in one place, it'll check the next place, then the next, and so on. If it doesn't find anything, the value is `null`.
 
-## Priority Order
 
-Here's the priority order in which the cascade will look for the value of any given variable.
+## Cascade Order
 
-1. Has it been set in a ViewModel?
-2. If not, has it been set on the entry?
-3. If not and this entry has been translated from another origin, is it set on the origin entry?
-4. If not, is it set on the collection (via [inject](/collections#inject))?
-5. If not, is it a global variable?
-6. If not, is it a system variable?
-7. Well okay then, `null` it is.
+Here's the cascading order in which Statamic will look for the value of a given variable:
 
-That's all there is to it.
+1. Are we inside a [partial](/tags/partial)? If so, has the variable been explicitly passed in?
+2. If not, has it been set in a [ViewModel](/view-models)?
+3. If not, has it been set on the [entry](/collections)?
+4. If not, and this entry has been translated from another [origin](/multi-site), is it set on the origin entry?
+5. If not, is it set on the collection via [inject](/collections#inject)?
+6. If not, is it a [global variable](/globals)?
+7. If not, is it a [system variable](/variables)?
+8. Well okay then, `null` it is.
