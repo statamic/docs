@@ -3,9 +3,9 @@ title: Widgets
 blueprint: page
 id: 4b77c19b-129c-4271-a724-eea884eb3e2e
 ---
-The dashboard of the Control Panel may contain any number of widgets. A widget can contain anything you can think of. From a list of recent entries to a randomized inspiration quote.
+The Control Panel's dashboard may contain any number of widgets. A widget can is simply a box that shows something. That something might be anything from a list of recently updated entries, to a randomized inspiration quote, and anything in between.
 
-Statamic comes bundled with a handful of widgets, however you may also [create your own](https://statamic.dev/extending/widgets) or use ones created by others.
+Statamic comes bundled with a handful of widgets, however you may also [create your own](/extending/widgets) or use ones [created by others](https://statamic.com/addons/tags/widget).
 
 ## Configuration
 Widgets can be added to the dashboard by modifying the widgets array in the `config/statamic/cp.php` file.
@@ -16,72 +16,4 @@ You may use the same widget multiple times, configured in different ways.
 
 ## Available Widgets
 
-### Collection
-
-Display a listing of entries from a collection
-
-``` php
-[
-	'type' => 'collection',
-	'collection' => 'blog', // name of your collection
-	'width' => 100,
-	'limit' => 10,
-	'sort' => 'title:desc'
-]
-```
-
-### Form
-
-Display a listing of form submissions.
-
-``` php
-[
-	'type' => 'form',
-	'form' => 'contact', // name of your form
-    'fields' => ['name','email'], // the fields you want to display in the widget
-	'width' => 100,
-	'limit' => 10
-]
-```
-
-### Updater
-
-Will display if updates are available
-
-``` php
-[
-	'type' => 'updater',
-	'width' => 100,
-]
-```
-
-## An example
-
-``` php
-'widgets' => [
-    [
-        'type' => 'collection',
-        'collection' => 'blog',
-        'width' => 50,
-        'limit' => 10,
-    ],
-    [
-        'type' => 'collection',
-        'collection' => 'products',
-        'width' => 50,
-        'limit' => 10
-    ],
-    [
-        'type' => 'form',
-        'form' => 'contact',
-        'fields' => ['name','email'],
-        'width' => 100,
-        'limit' => 20,
-    ],
-    [
-        'type' => 'updater',
-        'width' => '100',
-    ],
-],
-
-```
+Check out the [list of available widgets](/reference/widgets) include in Statamic Core.

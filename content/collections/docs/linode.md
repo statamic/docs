@@ -10,7 +10,8 @@ intro: A full walk-through for installing, configuring, and running Statamic on 
 
 There is only one prerequisite for this guide. You must have:
 
-- A [Linode](https://www.linode.com/) account
+- A [Linode](https://www.linode.com/) account (Use this referral code for )
+- A Linode account ([this signup link](https://linode.gvw92c.net/9WzZX5) will give you $100 in free credit)
 
 ## Server Setup
 
