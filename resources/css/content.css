@@ -25,6 +25,10 @@ article, .markdown {
         @apply font-sans text-black font-bold text-lg mb-0 mt-12 relative;
     }
 
+    h5 {
+        @apply font-sans text-black font-bold text-base -mb-4 mt-12 relative;
+    }
+
     p {
         @apply text-base md:text-lg mb-6;
         /* line-height: 1.5em; */
@@ -49,7 +53,8 @@ article, .markdown {
     }
 
     h2 > .anchor,
-    h3 > .anchor {
+    h3 > .anchor,
+    h4 > .anchor {
         @apply absolute top-0 no-underline text-white opacity-0 block;
         text-shadow: -1px -1px 0 theme('colors.pink.DEFAULT'),
             1px -1px 0 theme('colors.pink.DEFAULT'),
@@ -80,6 +85,14 @@ article, .markdown {
 
     h3:hover > .anchor {
         @apply -left-5 opacity-100;
+    }
+
+    h4 > .anchor {
+        @apply -left-2 pr-2;
+    }
+
+    h4:hover > .anchor {
+        @apply -left-4 opacity-100;
     }
 
     >ul:not([class*="list-"]) {
@@ -163,7 +176,7 @@ article, .markdown {
     }
 
     table {
-        @apply border rounded-md border-separate overflow-hidden w-full mb-6;
+        @apply border rounded-md border-separate overflow-hidden w-full my-6;
         border-spacing: 0;
 
         thead {
@@ -191,6 +204,15 @@ article, .markdown {
             }
         }
     }
+
+    /* blockquote {
+        @apply font-display mt-16;
+        p {
+            @apply inline-block pb-2 italic text-2xl font-extrabold ;
+            background: url('/img/ziggy.svg') 0 90% repeat-x;
+            background-size: auto 4px;
+        }
+    } */
 
     /* Code blocks in headers */
     h1>code,

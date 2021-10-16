@@ -1,0 +1,18 @@
+{{ partial:header }}
+
+{{ collection:repositories as="repositories" }}
+<article class="bg-black p-4 md:py-8 md:pl-24 w-full relative rounded-sm shadow-stack md:shadow-stack-lg text-white z-10 flex font-mono-alt font-bold antialiased">
+    {{ repositories split="2" }}
+        <ul class="list-none w-1/2 space-y-3">
+            {{ items }}
+                <li>
+                    <a href="{{ url }}" class="flex items-center text-white hover:text-pink no-underline">
+                        {{ svg src="/img/repositories/{nav_title | slugify}" class="h-4 w-4 mr-3 text-white" }}
+                        {{ nav_title }}
+                    </a>
+                </li>
+            {{ /items }}
+        </ul>
+    {{ /repositories }}
+</article>
+{{ /collection:repositories }}

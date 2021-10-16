@@ -100,11 +100,17 @@ If your asset container's disk does not have a `url` property, Statamic will not
 
 Private containers should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
 
-``` files
+``` files theme:serendipity-light
 /
-|-- put-it-out-here
-|-- public
-|   `-- not-in-here
+  app/
+  content/
+  config/
+  public/
+    not-in-here/ # [tl! ~~]
+    index.php
+  put-it-out-here/ # [tl! ~~]
+  resources/
+  vendor/
 ```
 
 Make sure to also set the [visibility](#visibility) to `private`.
@@ -118,7 +124,7 @@ which essentially controls whether they're accessible or not.
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
 
 :::tip
- If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
 :::
 
 ## Blueprints

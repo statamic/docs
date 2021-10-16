@@ -1,7 +1,6 @@
 /* Markdown "Hint" Blocks */
 /* -------------------------------------------------- */
 
-blockquote,
 .hint {
     @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border relative shadow-pink-md;
 
@@ -85,10 +84,10 @@ blockquote,
 
 @screen xl {
     .hint.callout {
-        @apply block bg-transparent relative shadow-none h-0 m-0 p-0;
+        @apply border-none block bg-transparent relative shadow-none h-0 m-0 p-0;
         .hint-title { display: none; }
         a {
-            @apply bg-white hover:bg-mint no-underline absolute py-4 px-3 w-64 border shadow-stack-sm -right-64 text-black font-normal;
+            @apply bg-white hover:bg-mint no-underline absolute p-3 w-64 border shadow-stack-sm -right-64 text-black font-normal;
             p {
                 @apply text-sm;
             }
@@ -199,3 +198,14 @@ figure figcaption {
         column-rule: 1px dashed theme('colors.black');
     }
 } */
+
+/* Little details */
+/* -------------------------------------------------- */
+
+.popout {
+    @apply border px-2 inline-block shadow-stack-sm -ml-4 transform -rotate-3;
+}
+
+.badge {
+    @apply text-white bg-black text-xs inline-block py-1 px-2 font-mono rounded-sm shadow-stack-sm mb-4;
+}

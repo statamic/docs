@@ -22,7 +22,7 @@ class Toc extends Modifier
 
         $creatingIds = array_get($params, 0) == 'ids';
 
-        list($toc, $content) = $this->create($value, 3);
+        list($toc, $content) = $this->create($value, $creatingIds ? 5 : 3);
 
         return $creatingIds ? $content : $toc;
     }

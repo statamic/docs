@@ -121,8 +121,14 @@ tree:
         id: 40ef0b25-0f5e-4523-a527-52a099838d09
         entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
       -
+        id: d7970aa0-e88f-45e7-b313-8f1f49e43cf0
+        entry: e7833062-e05c-42c9-ad35-dc5077f1f0b8
+      -
         id: 9e8cd49b-55b6-48dc-98c6-308189b89e67
         entry: 5e848460-9bbc-449e-8edd-182d918163ff
+      -
+        id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
+        entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
       -
         id: 68c69f7b-3560-40e6-a4ba-abc98d7ce4af
         entry: 131259a5-2072-49d8-9ea4-2099e0338e2f
@@ -132,6 +138,9 @@ tree:
       -
         id: 0e3773f2-d81e-48dc-8117-7b2ebf1c90a4
         entry: 75be125b-7d92-496c-ac5d-7098560d3d44
+      -
+        id: 6784cd38-b385-4401-b159-7b6669c276a3
+        entry: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
       -
         id: 36b73b3c-c670-4dc3-a490-05f424214666
         entry: 424f5092-be39-449a-b660-f4e077631487
@@ -213,19 +222,6 @@ tree:
       -
         id: f36f50e5-1935-4203-8c02-4d71965a4d2c
         entry: 9c703f43-30de-4f65-98bb-2b89f80012b7
-  -
-    id: e53f115e-e42f-4454-a642-55b0e6073bfe
-    title: 'Data APIs'
-    children:
-      -
-        id: d7970aa0-e88f-45e7-b313-8f1f49e43cf0
-        entry: e7833062-e05c-42c9-ad35-dc5077f1f0b8
-      -
-        id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
-        entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
-      -
-        id: 6784cd38-b385-4401-b159-7b6669c276a3
-        entry: 2e0d2f8f-319d-4cce-bd90-16d6ad32ad37
   -
     id: ae5c17c7-dbde-489f-a1ef-50ac1206a44f
     title: Resources

@@ -21,7 +21,7 @@ body {
 
     ul li a.active {
         @apply font-bold;
-        background: url('/img/zigzag.svg') 0 90% repeat-x;
+        background: url('/img/ziggy.svg') 0 90% repeat-x;
         background-size: auto 4px;
     }
 }

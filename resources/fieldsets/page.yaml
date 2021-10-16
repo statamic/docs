@@ -3,14 +3,14 @@ fields:
   -
     handle: nav_title
     field:
-      display: Alt Nav Title
+      display: 'Alt Nav Title'
       type: text
       listable: show
       width: 50
   -
     handle: breadcrumb_title
     field:
-      display: Alt Breadcrumb Title
+      display: 'Alt Breadcrumb Title'
       type: text
       listable: hidden
       width: 50
@@ -89,6 +89,7 @@ fields:
         - widgets
         - troubleshooting
         - extending-docs
+        - repositories
       display: 'Related Entries'
       type: entries
       icon: entries

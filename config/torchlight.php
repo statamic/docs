@@ -42,6 +42,8 @@ return [
         // Control the `style` attribute applied to line numbers.
         // 'lineNumbersStyle' => '',
 
+        'fileStyle' => 'html',
+
         // Turn on +/- diff indicators.
         // 'diffIndicators' => true,
 
