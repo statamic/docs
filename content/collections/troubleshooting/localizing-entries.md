@@ -48,7 +48,7 @@ collections
 <mark>An entry will only be available in that site if the entry has explicitly been localized.</mark> For example, in the blog above, `my-first-day` would appear in both English and French sites, where `bastille-day` would only appear in the French site.
 
 :::tip
-This behavior is different from what you may be used to in Statamic v2, where if the entry existed in the default locale, it would be visible in subsequent locales.
+If you'd like the entry to be localized into all the sites automatically, you may enable [entry propagation](#propagation). (This is similar to how it worked in Statamic v2)
 :::
 
 ## Localizable fields
@@ -113,3 +113,14 @@ What will happen with this option is that any data that you haven't overridden o
 The `origin` will also be removed.
 
 When dealing with files, make sure that you remove the origin, and copy any leftover data across manually.
+
+## Propagation
+
+By default, when you create an entry, it will only exist in the collection you've selected.
+
+You may choose to automatically create localizations in the rest of the configured sites whenever you create the first entry.
+
+```yaml
+# content/collections/blog.yaml
+propagate: true
+```
