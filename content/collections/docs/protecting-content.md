@@ -242,8 +242,8 @@ Inside a service provider's `boot` method, you can use the `extend` method on th
 ``` php
 use Statamic\Auth\Protect\ProtectorManager;
 
-app(ProtectorManager::class)->extend('coin_flip', function ($app) {
-    return new CoinFlip;
+app(ProtectorManager::class)->extend('coin_flip', function ($app, $config, $scheme) {
+    return (new CoinFlip)->setConfig($config)->setScheme($scheme);
 });
 ```
 
