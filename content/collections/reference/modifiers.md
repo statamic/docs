@@ -8,7 +8,5 @@ related_entries:
   - 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
   - dcf80ee6-209e-45aa-af42-46bbe01996e2
   - e052ecb8-60d9-4afa-980e-ce128c301d70
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1632922512
 ---
 ## List of Modifiers

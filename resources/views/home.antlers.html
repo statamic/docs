@@ -6,15 +6,17 @@
 <div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack">
     <div class="flex flex-col md:flex-row items-center">
         <div class="flex-1">
-            <h2 class="font-display text-3xl font-semibold mb-2">Install Statamic</h2>
+            <h2 class="font-display text-3xl font-semibold mb-2">Get Started</h2>
             <p>There's more than one way to get started with Statamic.</p>
             <div class="flex flex-wrap md:space-x-4 mt-6">
-                <a href="/installing" class="button pr-3">Get Started &rarr;</a>
-                <a href="/guides/quick-start" class="hidden md:block button bg-mint">Quick Start Guide</a>
+                <a href="/installing" class="button pr-3">Local Install &rarr;</a>
+                <a href="/quick-start-guide" class="hidden md:block button bg-mint">Quick Start Guide</a>
             </div>
             <div class="hidden md:flex flex-wrap space-x-4 mt-6">
-                <a href="" class="button button-small">Local Environment Setup</a>
-                <a href="/requirements" class="button button-small">Requirements</a>
+                {{# <a href="" class="button button-small">Local Environment Setup</a> #}}
+                <a href="/install/laravel" class="button button-small">Laravel</a>
+                <a href="/install/docker" class="button button-small">Docker</a>
+                <a href="/install/ubuntu" class="button button-small">Ubuntu</a>
                 <a href="/starter-kits" class="button button-small">Starter Kits</a>
             </div>
         </div>
@@ -26,12 +28,16 @@
 
 <div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center">
     <img src="/img/pizza-slice.svg" alt="A slice of pizza" class="mr-2">
-    <h2 class="font-display text-2xl font-semibold antialised">Quick Start</h2>
-    <p class="text-center flex-1">The fastest way to get started with Statamic.</p>
-    <a href="/guides/quick-start" class="button">Get Started</a>
+    <p class="text-center flex-1"><b>Statamic Core</b> is free and open source &mdash; consider sponsoring us on Github!</p>
+    <a href="https://github.com/sponsors/statamic" class="button">Buy us a slice of pizza!</a>
 </div>
 
 <div class="grid md:grid-cols-3 gap-y-6 md:gap-6 mt-6">
+    {{# <a href="/screencasts" class="bg-white border shadow-stack-sm text-center hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
+        <img src="/img/tv.svg" alt="Retro TV Set" class="h-16 mb-4 mx-auto">
+            <h2 class="text-2xl mb-2 font-bold font-display">Screencasts</h2>
+        <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
+    </a> #}}
     <a href="/screencasts" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
         <header class="flex items-center mb-3">
             <img src="/img/tv.svg" alt="Retro TV Set" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
@@ -59,7 +65,7 @@
             <img :style="{ 'display': active === 9 ? 'block' : 'none' }" src="/img/people/person-9.svg" alt="A person representing the community">
             <h2 class="text-2xl ml-2 font-bold font-display">Community</h2>
         </header>
-        <p class="text-sm font-mono-alt">Hang out with truly exceptional designers & devs on Discord.</p>
+        <p class="text-sm font-mono-alt">Hang out with truly exceptional devs & designers on Discord.</p>
     </a>
 </div>
 
