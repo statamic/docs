@@ -26,22 +26,22 @@ sites:
 
 The folder structure will differ from the single site structure explained in the [entries guide](/collections). Now, entries should be organized into the respective sites.
 
-``` files
+``` files theme:serendipity-light
 collections
-|-- blog.yaml
-|-- blog/
-|   |-- en/
-|   |   |-- 2015-01-18.my-first-day.md
-|   |   |-- 2015-01-19.paperwork-and-snowshoeing.md
-|   |   |-- 2015-03-08.spring-wonderful-spring.md
-|   |   |-- 2015-05-16.speeder-bikes-and-wookies.md
-|   `-- fr/
-|       `-- 2015-01-18.my-first-day.md
-|       `-- 2017-07-14.bastille-day.md
-|-- news.yaml
-`-- news/
-    `-- en/
-       `-- 2017-04-01.its-happening.md
+  blog.yaml
+  blog/
+    en/
+      2015-01-18.my-first-day.md
+      2015-01-19.paperwork-and-snowshoeing.md
+      2015-03-08.spring-wonderful-spring.md
+      2015-05-16.speeder-bikes-and-wookies.md
+    fr/
+      2015-01-18.my-first-day.md
+      2017-07-14.bastille-day.md
+  news.yaml
+  news/
+    en/
+      2017-04-01.its-happening.md
 ```
 
 

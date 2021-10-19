@@ -26,16 +26,19 @@ If you don't plan on distributing your addon or sharing it between multiple proj
 
 An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/example`
 
-``` files
-/
-|-- addons/
-|   `-- example/
-|       |-- src/
-|       |   `-- ServiceProvider.php
-|       `-- composer.json
-|-- app/
-|-- public/
-`-- composer.json
+``` files theme:serendipity-light
+addons/
+    example/
+        src/
+            ServiceProvider.php
+        composer.json
+    app/
+    content/
+    config/
+    public/
+        index.php
+    resources
+    composer.json
 ```
 
 ``` json
@@ -380,12 +383,12 @@ Available middleware groups are:
 
 Any views located in your `resources/views` directory will automatically be available to use in your code using your package name as the namespace.
 
-``` files
+``` files theme:serendipity-light
 /
-|-- src/
-`-- resources/
-    `-- views/
-        `-- foo.blade.php
+    src/
+    resources/
+        views/
+        foo.blade.php
 ```
 
 ``` php

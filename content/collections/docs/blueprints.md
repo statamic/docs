@@ -40,24 +40,24 @@ Whether you manually create your blueprint's YAML file, or use the control panel
     <figcaption>Here's how Blueprints are organized in the filesystem.</figcaption>
 </figure>
 
-``` files
+``` files theme:serendipity-light
 resources/
-`-- blueprints/
-    |-- collections/
-    |   `-- blog/
-    |       |-- basic_post.yaml
-    |       `-- art_directed_post.yaml
-    |-- taxonomies/
-    |   `-- tags/
-    |       `-- tag.yaml
-    |-- globals/
-    |   |-- global.yaml
-    |   `-- company.yaml
-    |-- assets/
-    |   `-- main.yaml
-    |-- forms/
-    |   `-- contact.yaml
-    `-- user.yaml
+  blueprints/
+    collections/
+      blog/
+        basic_post.yaml
+        art_directed_post.yaml
+      taxonomies/
+        tags/
+          tag.yaml
+    globals/
+      global.yaml
+      company.yaml
+    assets/
+      main.yaml
+    forms/
+      contact.yaml
+    user.yaml
 ```
 
 Collections and Taxonomies have their available blueprints organized in subdirectories named after their collections.

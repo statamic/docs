@@ -150,12 +150,12 @@ If a requested view exists in a subdirectory with the same name as your site, it
 ]
 ```
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- site_one/
-|   |-- home.antlers.html
-|-- home.antlers.html
-|-- page.antlers.html
+    site_one/
+        home.antlers.html
+    home.antlers.html
+    page.antlers.html
 ```
 
 For example, given `template: home`, Statamic will load `site_one/home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific variant.

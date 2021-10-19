@@ -29,12 +29,12 @@ Once created, you can begin to define its fields.
 
 Whether you manually create your fieldsets's YAML file, or use the control panel, they will all end up as YAML files in the `resources/fieldsets` directory.
 
-``` files
+``` files theme:serendipity-light
 resources/
-`-- fieldsets/
-    |-- bard-image.yaml
-    |-- bard-quote.yaml
-    `-- common.yaml
+  fieldsets/
+    bard-image.yaml
+    bard-quote.yaml
+    common.yaml
 ```
 
 ## YAML Structure

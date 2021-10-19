@@ -21,13 +21,13 @@ The folder structure will differ from the single site structure explained in the
 
 The `tree` array will also be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
 
-``` files
+``` files theme:serendipity-light
 content/navigation/
-|-- nav.yaml
-|-- site-one/
-|   `-- nav.yaml
-`-- site-two/
-    `-- nav.yaml
+  nav.yaml
+  site-one/
+    nav.yaml
+  site-two/
+    nav.yaml
 ```
 
 <mark>A navigation will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.</mark>

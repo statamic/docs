@@ -112,59 +112,59 @@ There are a few recommended ways to organize your layouts, templates, and partia
 
 Partials are indicated by a prefixed underscore (`_header`), layout by the word `layout` and everything else is a template. **Best for small sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- _header.antlers.html
-|-- about.antlers.html
-|-- article.antlers.html
-|-- layout.antlers.html
-|-- listing.antlers.html
-|-- page.antlers.html
+  _header.antlers.html
+  about.antlers.html
+  article.antlers.html
+  layout.antlers.html
+  listing.antlers.html
+  page.antlers.html
 ```
 
 ### Organize by Type
 
 This is a bit more of a Statamic v2 style where views are grouped by type - partials, layouts, and templates. **Best for medium sized sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- partials/
-|   |-- _card.antlers.html
-|   |-- _footer.antlers.html
-|   |-- _nav.antlers.html
-|-- layouts/
-|   |-- amp.antlers.html
-|   |-- api.antlers.html
-|   |-- main.antlers.html
-|-- templates/
-|   |-- about.antlers.html
-|   |-- article-list.antlers.html
-|   |-- article-show.antlers.html
-|   |-- faq-list.antlers.html
-|   |-- faq-show.antlers.html
-|   |-- form.antlers.html
+  partials/
+    _card.antlers.html
+    _footer.antlers.html
+    _nav.antlers.html
+  layouts/
+    amp.antlers.html
+    api.antlers.html
+    main.antlers.html
+  templates/
+    about.antlers.html
+    article-list.antlers.html
+    article-show.antlers.html
+    faq-list.antlers.html
+    faq-show.antlers.html
+    form.antlers.html
 ```
 
 ### Organize by Section
 
 A more Laravel/application approach where views are grouped by section (or collection), along with their own partials and alternate layout files. **Best for large sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- blog/
-|   |-- _card.antlers.html
-|   |-- index.antlers.html
-|   |-- layout.antlers.html
-|   |-- rss.antlers.html
-|   |-- show.antlers.html
-|-- contact/
-|   |-- index.antlers.html
-|   |-- success.antlers.html
-|-- faq/
-|   |-- layout.antlers.html
-|   |-- index.antlers.html
-|   |-- show.antlers.html
-|-- layout.antlers.html
+  blog/
+    _card.antlers.html
+    index.antlers.html
+    layout.antlers.html
+    rss.antlers.html
+    show.antlers.html
+  contact/
+    index.antlers.html
+    success.antlers.html
+  faq/
+    layout.antlers.html
+    index.antlers.html
+    show.antlers.html
+  layout.antlers.html
 ```
 
 ## Additional Reading

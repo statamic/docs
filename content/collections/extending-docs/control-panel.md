@@ -49,13 +49,13 @@ mix.js('resources/js/cp.js', 'public/vendor/app/js')
 
 The `cp.js` in this example may be your entry point for loading various other files. For instance, you could import fieldtypes:
 
-``` files
+``` files theme:serendipity-light
 resources/
-`-- js/
-    |-- cp.js
-    `-- components/
-        `-- fieldtypes/
-            `-- Password.vue
+    js/
+        cp.js
+        components/
+            fieldtypes/
+                Password.vue
 ```
 
 ``` js

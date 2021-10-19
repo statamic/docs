@@ -136,13 +136,13 @@ An alternative approach (for those who like DRY or small templates) is to create
 {{ /bard_field }}
 ```
 
-``` files
+``` files theme:serendipity-light
 resources/views/partials/sets/
-|-- gallery.antlers.html
-|-- hero_image.antlers.html
-|-- poll.antlers.html
-|-- text.antlers.html
-`-- video.antlers.html
+  gallery.antlers.html
+  hero_image.antlers.html
+  poll.antlers.html
+  text.antlers.html
+  video.antlers.html
 ```
 
 ## Extending Bard

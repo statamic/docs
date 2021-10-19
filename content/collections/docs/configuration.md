@@ -9,25 +9,25 @@ id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 
 Statamic's config files are located in `config/statamic/`. They are PHP files named by area of responsibility.
 
-``` files
-├── config/statamic/
-│   ├── amp.php
-│   ├── api.php
-│   ├── assets.php
-│   ├── cp.php
-│   ├── forms.php
-│   ├── live_preview.php
-│   ├── oauth.php
-│   ├── protect.php
-│   ├── revisions.php
-│   ├── routes.php
-│   ├── search.php
-│   ├── sites.php
-│   ├── stache.php
-│   ├── static_caching.php
-│   ├── system.php
-│   ├── theming.php
-│   └── users.php
+``` files theme:serendipity-light
+config/statamic/
+    amp.php
+    api.php
+    assets.php
+    cp.php
+    forms.php
+    live_preview.php
+    oauth.php
+    protect.php
+    revisions.php
+    routes.php
+    search.php
+    sites.php
+    stache.php
+    static_caching.php
+    system.php
+    theming.php
+    users.php
 ```
 
 ## Environment Variables

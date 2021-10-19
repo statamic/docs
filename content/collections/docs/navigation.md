@@ -24,14 +24,14 @@ Navs are stored in `content/navigation`. Each gets its own YAML file whose handl
 
 The actual contents of the structure - the "tree" - is stored separately in `content/trees/navigation`.
 
-``` files
+``` files theme:serendipity-light
 content/
-|-- navigation/
-|   |-- header.yaml
-|   `-- footer.yaml
-`-- trees/
-    |-- header.yaml
-    `-- footer.yaml
+    navigation/
+        header.yaml
+        footer.yaml
+    trees/
+        header.yaml
+        footer.yaml
 ```
 
 ``` yaml

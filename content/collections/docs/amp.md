@@ -49,16 +49,15 @@ Whenever you visit `/amp/{url}` it will attempt to load whatever entry would be 
 
 AMP views follow the same exact file locations as regular views, except in an `/amp` subdirectory.
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- amp/
-|   |-- blog/
-|   |--   |-- index.antlers.html
-|   |--   |-- show.antlers.html
-|-- blog/
-|--   |-- index.antlers.html
-|--   |-- show.antlers.html
-
+amp/
+    blog/
+        index.antlers.html
+        show.antlers.html
+blog/
+    index.antlers.html
+    show.antlers.html
 ```
 
 For example, if an entry loaded a `blog/show` view by default, its AMP view would be `amp/blog/show`. You will need to create these alternate views yourself.

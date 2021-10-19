@@ -67,7 +67,7 @@ php translator generate eo
 - Translatable strings can contain a `|` to separate singular and plurals.
 - Translatable strings can contain the `:something` format to indicate a variable.
 
-``` files
+``` files theme:serendipity-light
 resources/lang/
 |-- eo/
 |   |-- markdown.php

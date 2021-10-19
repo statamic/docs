@@ -29,10 +29,11 @@ Globals are organized into "sets", each containing [fields](/fields). This conve
 
 Each global set is stored in `content/globals/` as a YAML file. Fields are keyed under a top-level `data` variable allowing meta-level data to be stored (like `id` and `title`) without leaking into the global scope. Note how all data is stored under the `data` key.
 
-``` files
-globals/
-|-- global.yaml
-`-- footer.yaml
+``` files theme:serendipity-light
+content/
+  globals/
+    global.yaml
+    footer.yaml
 ```
 
 ``` yaml

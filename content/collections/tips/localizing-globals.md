@@ -26,16 +26,16 @@ sites:
 
 The folder structure will differ from the single site structure explained in the [globals guide](/globals). Now, the `data` will be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
 
-``` files
+``` files theme:serendipity-light
 globals/
-|-- global.yaml
-|-- footer.yaml
-|-- english/
-|   |-- global.yaml
-|   `-- footer.yaml
-`-- french/
-    |-- global.yaml
-    `-- footer.yaml
+  global.yaml
+  footer.yaml
+  english/
+    global.yaml
+    footer.yaml
+  french/
+    global.yaml
+    footer.yaml
 ```
 
 In these nested files, the data can exist at the top level.

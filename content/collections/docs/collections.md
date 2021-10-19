@@ -23,13 +23,13 @@ You can also set default values like template, blueprint, and published status.
 
 A collection is defined by a YAML file stored in the `content/collections` directory. All accompanying entries will be stored in a sub-directory with a matching name. For example, a `blog` collection looks like this:
 
-``` files
-├── content/collections/
-│   ├── blog.yaml
-│   ├── blog/
-│   │   ├── hello.md
-│   │   ├── is-it-me.md
-│   │   ├── youre-looking-for.md
+``` files theme:serendipity-light
+content/collections/
+  blog/
+    hello.md
+    is-it-me.md
+    youre-looking-for.md
+  blog.yaml
 ```
 ## Entries
 
