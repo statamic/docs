@@ -61,18 +61,6 @@ User::findByOAuthId('github', '123');
 User::query()->where('super', true)->get();
 ```
 
-#### Get all users in a role
-
-```php
-User::query()->where('role', 'editor')->get();
-```
-
-#### Get all users in a group
-
-```php
-User::query()->where('group', 'newbies')->get();
-```
-
 #### Get the currently logged in user
 
 ```php
