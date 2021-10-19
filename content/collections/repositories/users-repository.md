@@ -27,7 +27,7 @@ To work with the User Repository, use the following Facade:
 use Statamic\Facades\User;
 ```
 
-#### Get a user by email
+#### Get a user by ID
 
 ```php
 User::query()
