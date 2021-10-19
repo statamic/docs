@@ -11,6 +11,12 @@
     <meta property="og:url" content="{{ permalink }}" />
     <meta property="og:site_name" content="Statamic Docs" />
     <meta property="og:locale" content="en_US" />
+    {{# <meta property="og:image" content="{{ snapit:og }}" /> #}}
+    <meta property="twitter:title" content="{{ title }}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@statamic" />
+    {{# <meta property="twitter:image" content="{{ snapit:twitter }}" /> #}}
+    <meta property="twitter:description" content="{{ intro | striptags }}" />
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
     <link rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossorigin />
