@@ -1,0 +1,29 @@
+<html lang="en" class="bg-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css" defer>
+    <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
+</head>
+<body class="font-sans leading-normal markdown flex flex-col">
+    <div class="h-4 bg-gradient-to-r from-purple to-blue via-pink"></div>
+    <div class="flex-1 pl-12 pr-8 pt-2 flex flex-col justify-center relative z-10">
+        {{ svg src="docs-logo" class="block text-pink h-12 w-64" }}
+
+        <div class="flex items-center">
+            <h1 class="text-9xl mt-2">{{ title }}</h1>
+            {{ partial:pro-badge }}
+        </div>
+
+        <p class="font-mono-alt ml-2 flex text-2xl text-gray-darker items-center">
+            {{ svg src="link" class="h-8 w-8 -ml-2 mr-3" }}
+            statamic.dev{{ url }}
+        </p>
+    </div>
+    <div class="bg-black relative h-2 mt-4">
+        <img src="/img/splatter-palm.png" alt="" class="absolute bottom-0 left-1" width="360">
+    </div>
+    <img src="/img/splatter-feedback.png" alt="" class="absolute max-w-none w-[1200px] flip-y left-0 bottom-[-340px] z-0">
+</body>
+</html>
