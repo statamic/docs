@@ -37,7 +37,7 @@ Set `strategy` to the name of the strategy you wish to use, or `null` to disable
 
 ## Application Driver
 
-The application driver will store your cached page content within Laravel's cache. We refer to this as <mark>half measure</mark>.
+The application driver will store your cached page content within Laravel's cache. We refer to this as **half measure**.
 
 This will still run every request through a full instance of Statamic but will serve all request data from a pre-rendered cache, speeding up load times often by half or more. This is an easy, one-and-done setting.
 

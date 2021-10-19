@@ -53,7 +53,9 @@ food: baguette
 drink: champagne
 ```
 
-<mark>A global set will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.</mark>
+:::tip
+A global set will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
+:::
 
 
 ## Localizable fields

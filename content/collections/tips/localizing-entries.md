@@ -45,10 +45,10 @@ collections
 ```
 
 
-<mark>An entry will only be available in that site if the entry has explicitly been localized.</mark> For example, in the blog above, `my-first-day` would appear in both English and French sites, where `bastille-day` would only appear in the French site.
+**An entry will only be available in that site if the entry has explicitly been localized.** For example, in the blog above, `my-first-day` would appear in both English and French sites, where `bastille-day` would only appear in the French site.
 
 :::tip
-If you'd like the entry to be localized into all the sites automatically, you may enable [entry propagation](#propagation). (This is similar to how it worked in Statamic v2)
+If you'd like the entry to be localized into all the sites automatically, you may enable [entry propagation](#propagation) (similar to how it worked in Statamic v2).
 :::
 
 ## Localizable fields
@@ -81,7 +81,7 @@ title: Mon Premier Jour
 Here you can see that since the French version does not have `image` defined, it will inherit it from the English version.
 
 :::tip
-Notice that the French version has a different ID from the English version. In Statamic v3, <mark>every entry has its own ID</mark>, which is different from the Statamic v2 behavior.
+Notice that the French version has a different ID from the English version. In Statamic v3, **every entry has its own ID**, which is different from the Statamic v2 behavior.
 :::
 
 ## Deleting

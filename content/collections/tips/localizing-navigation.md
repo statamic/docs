@@ -30,7 +30,9 @@ content/navigation/
     nav.yaml
 ```
 
-<mark>A navigation will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.</mark>
+:::tip
+A navigation will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
+:::
 
 ## Trees
 
