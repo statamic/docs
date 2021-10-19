@@ -17,7 +17,7 @@ related_entries:
 | `current()` | Get current User |
 | `find($id)` | Get User by `id` |
 | `findByEmail($email)` | Get User by `email` |
-| `findByOAuthID($id)` | Get Entry by `oauth_id` |
+| `findByOAuthID($provider, $id)` | Get User by an ID from an OAuth provider  |
 | `query()` | Query Builder |
 
 
@@ -52,12 +52,7 @@ User::findByEmail('hulk@hogan.com');
 #### Get a user by OAuth ID
 
 ```php
-User::query()
-    ->where('oauthid', 'github123')
-    ->first();
-
-// Or with the shorthand method
-User::findByOAuthId('github123');
+User::findByOAuthId('github', '123');
 ```
 
 #### Get all super users
