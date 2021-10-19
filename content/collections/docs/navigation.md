@@ -96,4 +96,4 @@ In the case of entry reference nav items, any fields you add to the nav blueprin
 
 ## Localization
 
-When running a [multi-site](/multi-site) installation, you can have a different tree for each nav. Learn more about [localizing navs](/knowledge-base/localizing-navigation).
+When running a [multi-site](/multi-site) installation, you can have a different tree for each nav. Learn more about [localizing navs](/tips/localizing-navigation).

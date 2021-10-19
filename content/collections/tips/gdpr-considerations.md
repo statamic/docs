@@ -26,7 +26,7 @@ If you take this approach, your production server will be the single source of t
 
 Another option would be to store your users in a database so you can remove them without leaving data fragments behind.
 
-[Here's an article](/knowledge-base/storing-users-in-a-database) on how to do just that.
+[Here's an article](/tips/storing-users-in-a-database) on how to do just that.
 
 
 ## Form Submissions
@@ -34,6 +34,6 @@ Another option would be to store your users in a database so you can remove them
 You may also want to disable form submission storing on any [forms](/forms), and opt for email-only notifications.
 
 <figure>
-    <img src="/img/knowledge-base/form-disable-store-submissions.png" alt="Form submission storage disabled" width="516">
+    <img src="/img/tips/form-disable-store-submissions.png" alt="Form submission storage disabled" width="516">
     <figcaption>You can disable storing form submissions on your server.</figcaption>
 </figure>

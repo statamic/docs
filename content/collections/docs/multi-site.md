@@ -26,7 +26,7 @@ Luckily for you, this conversion can be done automatically with the following co
 php please multisite
 ```
 
-[More details on how to convert to a multi-site setup](/knowledge-base/converting-from-single-to-multi-site)
+[More details on how to convert to a multi-site setup](/tips/converting-from-single-to-multi-site)
 
 ## Configuration
 

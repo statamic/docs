@@ -91,7 +91,7 @@ be referencing an entry that no longer exists. This could cause some confusion t
 
 If you want to delete an origin, you need to make a decision on how to handle any of its localizations. When deleting entries through the Control Panel, you will be presented with two options:
 
-![](/img/knowledge-base/delete-localization-modal.png)
+![](/img/tips/delete-localization-modal.png)
 
 ### Option 1: Delete
 

@@ -97,4 +97,4 @@ This email is bundled with Statamic and will work for most people out of the box
 
 The template is named `user-reset` and should contain a `{{ reset_url }}` variable, which is the generated reset URL.
 
-[custom-emails]: /knowledge-base/emails#templates
+[custom-emails]: /tips/emails#templates

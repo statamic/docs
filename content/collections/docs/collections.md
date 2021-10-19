@@ -339,4 +339,4 @@ Of course, you may add the same key to `messages.php` in other language director
 
 When running a [multi-site](/multi-site) installation, you can have entries exist in multiple sites with different content, or have entries exclusive to a site.
 
-[Read about localizing entries](/knowledge-base/localizing-entries)
+[Read about localizing entries](/tips/localizing-entries)

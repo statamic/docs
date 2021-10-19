@@ -190,5 +190,5 @@ The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ 
 Take the time to wrap your brain around this concept and learn to wield it and a powerful Jedi will you be.
 
 :::tip
-The Jedi have blessed us all with [even more recursive nav examples](/knowledge-base/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
+The Jedi have blessed us all with [even more recursive nav examples](/tips/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
 :::

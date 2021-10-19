@@ -69,4 +69,4 @@ When using `sqlite` or `mysql` as your database driver, make sure to `composer r
 :::
 
 
-This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/knowledge-base/storing-users-somewhere-custom).
+This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/tips/storing-users-somewhere-custom).

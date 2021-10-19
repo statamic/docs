@@ -161,4 +161,4 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 
 - A fundamental understanding of [collections](/collections) is pretty important.
 - The [taxonomy tag](/tags/taxonomy) can come in handy when you're not on taxonomy routes.
-- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/knowledge-base/taxonomies-by-hand)
+- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/tips/taxonomies-by-hand)

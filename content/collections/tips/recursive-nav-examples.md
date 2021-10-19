@@ -11,7 +11,7 @@ updated_at: 1622821220
 Let's say we have the following pages:
 
 <figure>
-    <img src="/img/knowledge-base/recursive-nav-pages.png" alt="Pages hierarchy example">
+    <img src="/img/tips/recursive-nav-pages.png" alt="Pages hierarchy example">
 </figure>
 
 ## Footer Nav Example
@@ -19,7 +19,7 @@ Let's say we have the following pages:
 Maybe you would like to render a footer hierarchy, with top level pages as `<h3>`'s, direct sub-items as `<li>` items, while ignoring anything deeper than level 2 in the nav structure:
 
 <figure>
-    <img src="/img/knowledge-base/recursive-nav-footer-example.png" alt="Footer nav example">
+    <img src="/img/tips/recursive-nav-footer-example.png" alt="Footer nav example">
 </figure>
 
 We can do this by performing a `depth` check to decide how to render the current item based on it's depth in the nav structure:
@@ -48,7 +48,7 @@ We can do this by performing a `depth` check to decide how to render the current
 Or maybe you would like to render a sidebar style nav as a `<ul>`, while applying a different css class based on the page's depth in the nav structure:
 
 <figure>
-    <img src="/img/knowledge-base/recursive-nav-sidebar-example.png" alt="Sidebar nav example">
+    <img src="/img/tips/recursive-nav-sidebar-example.png" alt="Sidebar nav example">
 </figure>
 
 Here we dynamically insert a CSS class based on the current item's `depth` in the nav structure:

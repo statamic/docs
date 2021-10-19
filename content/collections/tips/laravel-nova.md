@@ -29,7 +29,7 @@ If you'd like to manage Eloquent models within Statamic, [you're able to do that
       ->where('segments', '(?!nova|cp).*')
       ->name('statamic.site');
    ```
-4. Create a [dedicated auth guard](/knowledge-base/using-an-independent-authentication-guard) and provider for Statamic.
+4. Create a [dedicated auth guard](/tips/using-an-independent-authentication-guard) and provider for Statamic.
    ```php
    // config/auth.php
    'guards' => [

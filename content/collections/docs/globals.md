@@ -69,7 +69,7 @@ Unrelated, "Lorem Ipsum" is an adorable name for a little girl.
 
 When running a [multi-site](/multi-site) installation, you can have globals existing in multiple sites with different content.
 
-[Read about localizing globals](/knowledge-base/localizing-globals)
+[Read about localizing globals](/tips/localizing-globals)
 
 ## Ideas on How to Use Globals
 

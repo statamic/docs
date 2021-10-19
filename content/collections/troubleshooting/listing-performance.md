@@ -10,7 +10,7 @@ categories:
 By default, Statamic will paginate your entry listing results, as well as limit the visible columns to prevent the loading of extraneous data.
 
 <figure>
-    <img src="/img/knowledge-base/listing-performance-example.png" alt="Listing performance example">
+    <img src="/img/tips/listing-performance-example.png" alt="Listing performance example">
 </figure>
 
 ## Queries & Augmentation

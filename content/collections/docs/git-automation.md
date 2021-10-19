@@ -220,7 +220,7 @@ fi
 
 When [automatically committing](#committing-changes), Statamic will listen on all `Saved` and `Deleted` events, as well as any events registered by installed addons. To ignore specific events, add them to the `ignored_events` array in the [configuration](#configuration) file.
 
-For example, if you're [storing users in a database](/knowledge-base/storing-users-in-a-database), you may wish to ignore user-based events:
+For example, if you're [storing users in a database](/tips/storing-users-in-a-database), you may wish to ignore user-based events:
 
 ```php
 'ignored_events' => [
