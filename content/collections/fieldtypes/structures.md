@@ -5,7 +5,7 @@ description: 'Create relationships with structures.'
 intro: |
   For when you need to create a relationship to one or more [structures](/structures). This could be useful to pick which version of a sidebar or footer to include on a page, or other similar things.
 
-screenshot: fieldtypes/structures.png
+screenshot: fieldtypes/screenshots/structures.png
 options:
   -
     name: max_items
@@ -44,11 +44,11 @@ Loop through the structure collecctions with access to all of the entries.
 </ul>
 ```
 
-``` output
+```html
 <ul>
   <li><a href="/look-at-this">Look at This!</a></li>
   <li><a href="/look-at-that">Wait, Look at That!</a></li>
 </ul>
 ```
 
-## Config Options
+

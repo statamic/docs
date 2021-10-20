@@ -1,16 +1,18 @@
 ---
+id: 10b38f50-e33c-47e0-8e94-bc4dc551600f
+blueprint: modifiers
 modifier_types:
   - array
   - markup
   - utility
-id: 10b38f50-e33c-47e0-8e94-bc4dc551600f
+title: Chunk
 ---
 Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
 
 
 ```
 {{ collection:news as="posts" limit="6" }}
-  {{ posts chunk="3" }} 
+  {{ posts chunk="3" }}
   <div class="flex space-x-4">
     {{ chunk }}
       <a href="{{ url }}" class="bg-purple-800 text-white p-4">
@@ -22,7 +24,7 @@ Break arrays or collections into smaller (wait for it) chunks of any given size.
 {{ /collection:newsroom }}
 ```
 
-``` output
+```html
 <div class="flex space-x-4">
   <a href="/ideas/book" class="bg-purple-800 text-white p-4">
     Book: Somehow I Manage

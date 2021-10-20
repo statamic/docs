@@ -3,7 +3,7 @@ title: 'Button Group'
 description: 'Buttons you click. You can only choose one.'
 intro: |
   Buttons. Create some options and let your users select one and only one. May they choose wisely.
-screenshot: fieldtypes/button_group.png
+screenshot: fieldtypes/screenshots/button_group.png
 options:
   -
     name: options
@@ -57,8 +57,8 @@ It's a string, so you can just use that value.
 <p>I love sitting in the {{ seat_choice }} seat. A lot.</p>
 ```
 
-``` output
+```html
 <p>I love sitting in the middle seat. A lot.</p>
 ```
 
-## Config Options
+

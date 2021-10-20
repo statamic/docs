@@ -12,7 +12,7 @@ id: ba2e6172-b4dc-443b-8230-b770dec1423c
 
 You may create an action using the following command, which will generate a class in the `App\Actions` namespace.
 
-``` bash
+``` shell
 php please make:action
 ```
 
@@ -86,7 +86,9 @@ public function visibleTo($item)
 }
 ```
 
-> Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
+:::best-practice
+Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
+:::
 
 ## Authorizing Actions
 

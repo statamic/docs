@@ -22,7 +22,7 @@ class Toc extends Modifier
 
         $creatingIds = array_get($params, 0) == 'ids';
 
-        list($toc, $content) = $this->create($value, $creatingIds ? 3 : 2);
+        list($toc, $content) = $this->create($value, $creatingIds ? 5 : 3);
 
         return $creatingIds ? $content : $toc;
     }
@@ -30,7 +30,7 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        preg_match_all('/<h([1-'.$maxHeadingLevels.'])(.*)>([^<]+)<\/h[1-6]>/i', $content, $matches, PREG_SET_ORDER);
+        preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
 
         if (! $matches) {
             return [null, $content];
@@ -42,8 +42,8 @@ class Toc extends Modifier
         $toc = '<ol class="toc">'."\n";
         $i = 0;
 
-        // temporarily wangjangle the params and vars in there.
-        $matches = $this->appendParamsAndVars($matches);
+        // Wangjangle params, vars, and options in there.
+        $matches = $this->appendDetails($matches);
 
         foreach ($matches as $heading) {
             if ($i == 0) {
@@ -58,7 +58,7 @@ class Toc extends Modifier
                 $anchor = stripslashes($anchor[1]);
                 $add_id = false;
             } else {
-                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower($heading[3])));
+                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3]))));
                 $add_id = true;
             }
 
@@ -79,12 +79,14 @@ class Toc extends Modifier
             }
 
             $ret = preg_match('/title=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $title);
+
             if ($ret && $title[1] != '') {
                 $title = stripslashes($title[1]);
             } else {
                 $title = $heading[3];
             }
-            $title 		= trim(strip_tags($title));
+
+            $title = trim(strip_tags($title));
 
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
@@ -117,7 +119,10 @@ class Toc extends Modifier
         $toc .= '</li>'."\n";
         $toc .= '</ol>'."\n";
 
-        return array($toc, $content);
+        // A tiny TOC is a lame TOC
+        $toc = (count($matches) < 3) ? null : $toc;
+
+        return [$toc, $content];
     }
 
     private function valueGet($value)
@@ -129,7 +134,7 @@ class Toc extends Modifier
         return $value;
     }
 
-    private function appendParamsAndVars($matches)
+    private function appendDetails($matches)
     {
         $parameters = $this->valueGet($this->context['parameters'] ?? null);
 
@@ -150,6 +155,17 @@ class Toc extends Modifier
                 '2',
                 ' id="variables"',
                 'Variables'
+            ];
+        }
+
+        $options = $this->valueGet($this->context['options'] ?? null);
+
+        if ($options && count($options) > 0) {
+            $matches[] = [
+                '<h2 id="options">Options</h2>',
+                '2',
+                ' id="options"',
+                'Options'
             ];
         }
 

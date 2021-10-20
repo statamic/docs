@@ -1,7 +1,9 @@
 ---
+id: 16d27ea8-f331-4574-8454-6aa34b5f4eaa
+blueprint: variables
 types:
   - asset
-id: 16d27ea8-f331-4574-8454-6aa34b5f4eaa
+title: Width
 ---
 The width of an image asset, in pixels.
 
@@ -9,6 +11,6 @@ The width of an image asset, in pixels.
 {{ width }}
 ```
 
-``` .language-output
+```html
 900
 ```

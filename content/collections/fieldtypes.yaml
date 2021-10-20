@@ -1,7 +1,10 @@
 title: Fieldtypes
-route: '{mount}/{slug}'
-default_status: published
 template: fieldtypes.show
 layout: layout
+mount: 5a8fe626-b073-41fc-8da4-264b54837600
 revisions: false
-mount: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+route: '/fieldtypes/{slug}'
+sort_dir: asc
+inject:
+  section: reference
+  view_model: App\ViewModels\Fieldtypes

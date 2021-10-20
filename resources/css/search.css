@@ -1,78 +1,90 @@
-@screen md {
-    .algolia-autocomplete {
-        width: 460px;
+/* Algolia DocSearch Variables */
+:root {
+    --docsearch-primary-color: theme('colors.purple') !important;
+    --docsearch-text-color: rgb(28, 30, 33);
+    --docsearch-spacing: 16px !important;
+    --docsearch-icon-stroke-width: 1.4;
+    --docsearch-highlight-color: var(--docsearch-primary-color);
+    --docsearch-muted-color: rgb(150, 159, 175);
+    --docsearch-container-background: rgba(101, 108, 133, 0.4) !important;
+    --docsearch-logo-color: theme('colors.black') !important;
+
+    /* modal */
+    --docsearch-modal-width: 760px !important;
+    --docsearch-modal-height: 600px;
+    --docsearch-modal-background: #fff !important;
+    --docsearch-modal-shadow: 4px 4px 0 theme('colors.black') !important;
+
+    /* searchbox */
+    --docsearch-searchbox-height: 56px;
+    --docsearch-searchbox-background: #fff !important;
+    --docsearch-searchbox-focus-background: #fff;
+    --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
+
+    /* hit */
+    --docsearch-hit-height: 56px;
+    --docsearch-hit-color: rgb(68, 73, 80);
+    --docsearch-hit-active-color: #fff;
+    --docsearch-hit-background: theme('colors.gray.lightest') !important;
+    --docsearch-hit-shadow: none !important;
+
+    /* key */
+    --docsearch-key-gradient: #fff !important;
+    --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230),
+        inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
+
+    /* footer */
+    --docsearch-footer-height: 56px !important;
+    --docsearch-footer-background: #fff;
+    --docsearch-footer-shadow: none !important;
+}
+
+
+/* Overrides */
+/* -------------------------------------------------- */
+
+.DocSearch-Modal {
+    @apply rounded-lg border !important;
+}
+
+.DocSearch-Hit-Container {
+    @apply h-16 !important;
+}
+
+.DocSearch-Hit-content-wrapper {
+    @apply mx-4 flex-col-reverse !important;
+}
+
+.DocSearch-Commands {
+    @apply hidden !important;
+}
+
+.DocSearch-Footer {
+    @apply border-t !important;
+}
+
+.DocSearch-Hit-path {
+    @apply text-lg font-display font-medium text-black !important;
+}
+
+.DocSearch-Hits mark {
+    color: inherit !important;
+}
+#docsearch {
+    @apply w-full !important;
+}
+
+.DocSearch-Button {
+    @apply h-5 m-0 w-full text-black antialiased font-normal cursor-text !important;
+    &:hover {
+        box-shadow: none !important;
     }
 }
 
-@screen xl {
-    .algolia-autocomplete {
-        width: 672px;
-    }
+.DocSearch-Button-Key {
+    @apply bg-white border shadow-md text-black pb-0 !important;
 }
 
-
-
-.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-    @apply text-blue-darkest font-bold border-blue-darkest px-4 py-2  text-lg italic;
-}
-
-.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
-    @apply text-purple;
-}
-
-.algolia-autocomplete .algolia-docsearch-suggestion--content:before {
-    @apply bg-blue-darkest;
-}
-
-.algolia-autocomplete .ds-dropdown-menu {
-    @apply shadow-md rounded-none mt-3 w-full;
-
-    &:before {
-        @apply border-blue-darkest;
-    }
-}
-
-.algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
-    @apply border border-blue-darkest rounded-none p-0;
-}
-
-.algolia-autocomplete .algolia-docsearch-suggestion {
-    padding: 0;
-}
-
-.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-    @apply bg-yellow text-blue-darkest;
-}
-
-.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion.suggestion-layout-simple,
-.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
-    @apply bg-yellow;
-}
-
-.algolia-autocomplete .algolia-docsearch-footer {
-    @apply border-t-2 border-l-2;
-    padding: 8px;
-    width: 150px;
-    height: 36px;
-}
-
-
-@media (max-width: 768px) {
-    .algolia-autocomplete .ds-dropdown-menu {
-        min-width: auto;
-        width: 80vw;
-        margin-left: -10vw;
-
-        .algolia-docsearch-suggestion--wrapper {
-            @apply border-b p-4;
-        }
-
-        .algolia-docsearch-suggestion--category-header {
-            @apply p-2;
-        }
-
-        .algolia-docsearch-suggestion--subcategory-column {
-            display: none;
-        }
-    }
+.DocSearch-Button-Container {
+    @apply flex-1 !important;
 }

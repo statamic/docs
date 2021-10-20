@@ -1,13 +1,15 @@
 ---
+id: 50aa52bf-8c6c-4ec3-9af7-e610f65f8202
+blueprint: modifiers
 modifier_types:
   - date
   - conditions
-id: 50aa52bf-8c6c-4ec3-9af7-e610f65f8202
 parse_content: true
+title: 'Is Today'
 ---
 Returns `true` if date is today - using the server's time.
 
-```.language-yaml
+```yaml
 date: {{ now format="F j Y" }}
 another_date: November 6 2015
 ```
@@ -18,7 +20,7 @@ another_date: November 6 2015
 ```
 {{ /noparse }}
 
-```.language-output
+```html
 true
 false
 ```

@@ -1,12 +1,14 @@
 ---
+id: 53a0c177-ce45-43e6-a166-d21f8baeffab
+blueprint: modifiers
 modifier_types:
   - markup
 attributes: true
-id: 53a0c177-ce45-43e6-a166-d21f8baeffab
+title: Textile
 ---
 Transform a string with [Textile][textile].
 
-```.language-yaml
+```yaml
 quote: You can't wait for inspiration. *You have to go after it with a club.*
 
 ```
@@ -15,7 +17,7 @@ quote: You can't wait for inspiration. *You have to go after it with a club.*
 {{ quote | textile }}
 ```
 
-```.language-output
+```html
 <p>
     You can't wait for inspiration. <strong>You have to go after it with a club.</strong>
 </p>

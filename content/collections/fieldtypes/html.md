@@ -5,7 +5,7 @@ description: 'Add a little presentation-only HTML to your blueprint.'
 intro: |
   If you've ever wanted to add a little HTML to your blueprint, this is the way to do it. Longer instructions, images, embedded help videos — if you can write it, you can...write it.
 
-screenshot: fieldtypes/html.png
+screenshot: fieldtypes/screenshots/html.png
 options:
   -
     name: html
@@ -22,4 +22,4 @@ This fieldtype is presentation-only and stores no data.
 
 This fieldtype is presentation-only and has no function or purpose on the frontend. Kind of like neckties.
 
-## Config Options
+

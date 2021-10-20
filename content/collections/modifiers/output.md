@@ -1,13 +1,14 @@
 ---
+id: b5409a41-cc62-4ca1-bb8a-f6700b2c8c29
+blueprint: modifiers
 title: Output
 modifier_types:
   - asset
   - utility
-id: b5409a41-cc62-4ca1-bb8a-f6700b2c8c29
 ---
 Given the URL to an Asset file, returns the string output of an Asset file's contents. This is primarily useful for rendering inline SVGs, but could also be used to display a lot of gibberish to your users if you're into that kind of thing.
 
-``` .language-yaml
+```yaml
 icon: /img/icons/heart.svg
 ```
 
@@ -15,7 +16,7 @@ icon: /img/icons/heart.svg
 {{ icon | output }}
 ```
 
-``` .language-output
+```html
 <svg width="52px" height="50px" viewBox="0 0 52 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Icons" transform="translate(-965.000000, -2883.000000)" fill="#1A1718">

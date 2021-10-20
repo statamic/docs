@@ -4,7 +4,7 @@ extends: 9dd58c40-6e33-49c8-83fa-61a69f6371be
 description: Attach Taxonomy Terms to your content.
 intro: >
   Allows you attach Taxonomy Terms to your content. They could be Tags, Categories, Colors, Flavors, you name it. We highly recommend [learning more about Taxonomies](/taxonomies) before going any further.
-screenshot: fieldtypes/terms.png
+screenshot: fieldtypes/screenshots/terms.png
 options:
   -
     name: taxonomy
@@ -61,7 +61,7 @@ you will have all of the term's data available as variables.
 </ul>
 ```
 
-``` .language-output
+```html
 <ul>
   <li><a href="/wildlife/kangaroo">Kangaroo</a></li>
   <li><a href="/wildlife/three-toed-sloth">Three Toed Sloth</a></li>
@@ -93,11 +93,11 @@ You will need to use the [Relate Tag](/tags/relate) in your template to have the
 </ul>
 ```
 
-``` .language-output
+```html
 <ul>
   <li><a href="/categories/hats">Hats</a></li>
   <li><a href="/tags/delightful">Delightful</a></li>
 </ul>
 ```
 
-## Config Options
+

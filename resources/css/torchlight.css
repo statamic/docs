@@ -1,0 +1,193 @@
+/*
+ Margin and rounding are personal preferences,
+ overflow-x-auto is recommended.
+*/
+pre {
+    @apply my-6 rounded overflow-x-auto leading-loose antialiased;
+}
+
+/*
+  Inline code
+*/
+:not(pre)>code {
+    @apply text-purple rounded;
+    padding: 1px 2px;
+    font-size: 15px;
+    background-color: #E7ECF1;
+    word-break: break-word;
+}
+
+/*
+ Add some vertical padding and expand the width
+ to fill its container. The horizontal padding
+ comes at the line level so that background
+ colors extend edge to edge.
+*/
+pre code.torchlight {
+    @apply block py-2 md:py-4 min-w-max text-sm leading-loose;
+}
+
+/*
+ Horizontal line padding.
+*/
+pre code.torchlight .line {
+    @apply px-3 md:px-6;
+}
+
+/*
+ Push the code away from the line numbers and
+ summary caret indicators.
+*/
+pre code.torchlight .line-number,
+pre code.torchlight .summary-caret {
+    @apply mr-4;
+}
+
+.torchlight summary:focus {
+    outline: none;
+}
+
+/* Hide the default markers, as we provide our own */
+.torchlight details>summary::marker,
+.torchlight details>summary::-webkit-details-marker {
+    display: none;
+}
+
+.torchlight details .summary-caret::after {
+    pointer-events: none;
+}
+
+/* Add spaces to keep everything aligned */
+.torchlight .summary-caret-empty::after,
+.torchlight details .summary-caret-middle::after,
+.torchlight details .summary-caret-end::after {
+    content: " ";
+}
+
+/* Show a minus sign when the block is open. */
+.torchlight details[open] .summary-caret-start::after {
+    content: "-";
+}
+
+/* And a plus sign when the block is closed. */
+.torchlight details:not([open]) .summary-caret-start::after {
+    content: "+";
+}
+
+/* Hide the [...] indicator when open. */
+.torchlight details[open] .summary-hide-when-open {
+    display: none;
+}
+
+/* Show the [...] indicator when closed. */
+.torchlight details:not([open]) .summary-hide-when-open {
+    display: initial;
+}
+
+/*
+  Blur and dim the lines that don't have the `.line-focus` class,
+  but are within a code block that contains any focus lines.
+*/
+.torchlight.has-focus-lines .line:not(.line-focus) {
+    transition: filter 0.35s, opacity 0.35s;
+    filter: blur(.095rem);
+    opacity: .65;
+}
+
+/*
+  When the code block is hovered, bring all the lines into focus.
+*/
+.torchlight.has-focus-lines:hover .line:not(.line-focus) {
+    filter: blur(0px);
+    opacity: 1;
+}
+
+/*
+    CUSTOMISH FILE TREE STUFF
+*/
+
+/** Name of the file or folder **/
+.tl-files-name {
+    position: relative;
+    padding-left: 1.5em;
+}
+
+/** Icon for the file or folder, if you want one **/
+.tl-files-name::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 1.25em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+
+/** Folder icon **/
+.tl-files-folder::before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTc5LjIiIHdpZHRoPSIxNzkuMiI+PHBhdGggZD0iTTE1My42IDEzMS4yVjYwLjhxMC00LTIuOC02Ljh0LTYuOC0yLjhINzMuNnEtNCAwLTYuOC0yLjhUNjQgNDEuNnYtNi40cTAtNC0yLjgtNi44dC02LjgtMi44aC0zMnEtNCAwLTYuOCAyLjh0LTIuOCA2Ljh2OTZxMCA0IDIuOCA2Ljh0Ni44IDIuOEgxNDRxNCAwIDYuOC0yLjh0Mi44LTYuOHptMTIuOC03MC40djcwLjRxMCA5LjItNi42IDE1Ljh0LTE1LjggNi42SDIyLjRxLTkuMiAwLTE1LjgtNi42VDAgMTMxLjJ2LTk2UTAgMjYgNi42IDE5LjR0MTUuOC02LjZoMzJxOS4yIDAgMTUuOCA2LjZ0Ni42IDE1Ljh2My4ySDE0NHE5LjIgMCAxNS44IDYuNnQ2LjYgMTUuOHoiLz48L3N2Zz4=");
+}
+
+/** File icon **/
+.tl-files-file::before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTc5LjIiIHdpZHRoPSIxNzkuMiI+PHBhdGggZD0iTTE0Ni44IDM4cTIuOCAyLjggNC44IDcuNnQyIDguOHYxMTUuMnEwIDQtMi44IDYuOHQtNi44IDIuOEg5LjZxLTQgMC02LjgtMi44VDAgMTY5LjZWOS42cTAtNCAyLjgtNi44VDkuNiAwaDg5LjZxNCAwIDguOCAydDcuNiA0Ljh6bS00NC40LTI0LjR2MzcuNkgxNDBxLTEtMi45LTIuMi00LjFsLTMxLjMtMzEuM3EtMS4yLTEuMi00LjEtMi4yem0zOC40IDE1Mi44VjY0SDk5LjJxLTQgMC02LjgtMi44dC0yLjgtNi44VjEyLjhIMTIuOHYxNTMuNmgxMjh6Ii8+PC9zdmc+");
+
+}
+
+/** Connector lines **/
+.tl-connect-wrap {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+}
+
+/** Used to adjust lines to line up under your preferred icon **/
+.tl-connect-x-adjust {
+    margin-left: 3px;
+}
+
+/** Pseudo elements whose borders are the connector lines **/
+.tl-connect::before,
+.tl-connect::after {
+    position: absolute;
+    display: inline-block;
+    content: ' ';
+    border-style: solid;
+    border-color: #b0b5b6;
+    border-width: 0px;
+    width: 50%;
+    height: 50%;
+}
+
+.tl-connect-h::before,
+.tl-connect-h::after {
+    top: 50%;
+}
+
+.tl-connect-v::before,
+.tl-connect-v::after {
+    left: 50%;
+}
+
+.tl-connect-left::before {
+    left: 0;
+    border-top-width: 1px;
+}
+
+.tl-connect-right::after {
+    left: 50%;
+    border-top-width: 1px;
+}
+
+.tl-connect-up::before {
+    top: 0;
+    border-left-width: 1px;
+}
+
+.tl-connect-down::after {
+    top: 50%;
+    border-left-width: 1px;
+}

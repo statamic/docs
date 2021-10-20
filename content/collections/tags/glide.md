@@ -15,6 +15,7 @@ parameters:
   -
     name: field
     type: tag part
+    required: true
     description: 'The name of the field containing the asset ID or image path when using the shorthand syntax. This is not actually a parameter, but part of the tag itself. For example, `{{ glide:hero_image }}`.'
   -
     name: tag
@@ -76,7 +77,7 @@ shape:
     name: format
     type: string
     description: >
-      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg` 
+      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg`
 
 filters:
   -
@@ -199,7 +200,7 @@ images:
 {{ /images }}
 ```
 
-``` output
+```html
 <img src="/img/image.jpg?w=600" />
 <img src="/assets/image.svg" />
 ```

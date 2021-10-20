@@ -1,13 +1,15 @@
 ---
+id: 9002885e-20e9-4d1c-8396-1c8011076d2c
+blueprint: modifiers
 modifier_types:
   - array
   - string
   - utility
-id: 9002885e-20e9-4d1c-8396-1c8011076d2c
+title: Length
 ---
 Returns the number of items in an array or characters in a string.
 
-```.language-yaml
+```yaml
 array:
   - Taylor Swift
   - Left Shark
@@ -20,7 +22,7 @@ string: LEEEEROOOYYYY JEEENKINNNSS!
 {{ string | length }}
 ```
 
-```.language-output
+```html
 3
 27
 ```

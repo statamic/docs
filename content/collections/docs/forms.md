@@ -3,7 +3,6 @@ title: Forms
 template: page
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
-stage: 1
 intro: Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.
 ---
 ## Overview
@@ -66,7 +65,9 @@ fields:
       validate: required
 ```
 
-> The `message` variable is reserved within emails, so you should avoid using that as a field handle if you intend on using the email feature.
+:::warning
+The `message` variable is a Laravel reserved word within this email context, so you should avoid using that as a field handle if you intend on using the email feature.
+:::
 
 If you use the Control Panel to build your blueprint, you will find that there's only a subset of fieldtypes available to you.
 These are the fields that have corresponding views ready to be used on the front-end.
@@ -311,14 +312,16 @@ For example:
 {{ /form:create }}
 ```
 
-``` .language-css
+```css
 .honeypot { display: none; }
 ```
 
 If you're worried about smarter spam bots realizing that the honeypot field is named `honeypot`, you may customize the
 name of the field by adding `honeypot: something` to your formset.
 
-> We say the submission will "fail", but that's not **exactly** true. On the front end it will appear that the form was submitted successfully. However, nothing will get saved and no emails will be sent. This is the key to tricking bots into believing everything went smoothly.
+:::tip
+We say the submission will "fail", but that's not **exactly** true. On the front end it will _appear_ that the form was submitted successfully. However, nothing is saved and no emails are sent. This helps to trick bots into assuming everything went smoothly so they can leave you alone for a hot second.
+:::
 
 ## Using AJAX
 

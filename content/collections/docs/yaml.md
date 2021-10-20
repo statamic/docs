@@ -2,25 +2,22 @@
 title: YAML
 intro: YAML is a data storage format designed to be human readable and easily manipulated by hand. It's interchangeable with JSON and in most cases easier to write. Statamic uses YAML extensively to store data, content, and settings.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645112
 id: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
 blueprint: page
-stage: 3
 ---
 ## What is YAML?
 
-YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut it down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
+`<tangent>`YAML stands for "YAML Ain't Markup Language". It's a rare example of the elusive [recursive acronym][recursive-acronym]. At one point it stood for "Yet Another Markup Language" but semantically-oriented people quickly shut it down, denoting the fact that nothing was being marked up, but rather data was being structured. So on that fateful day (probably a Wednesday), YAML became self-referential. `</tangent>`.
 
 YAML complies with the JSON spec, making it easy to interchange it with nearly any native data format. It consists of key and value pairs delimited by a colon then a space.
 
-```.language-yaml
+```yaml
 variable_name: value
 ```
 
 YAML is usually stored in `.yaml` or `.yml` files, but can often (and in Statamic's case) can be found inside and top of other text files. This is referred to as "Front Matter" and looks like this:
 
-```.language-markdown
+```md
 ---
 title: Hello there! this is Front Matter!
 ---
@@ -31,15 +28,15 @@ Letters are strung together in a specific order down here.
 
 A string is a single sequence of characters. It might be a single word or a huge chunk of HTML, but it's always a single element. These following variable definitions, in different languages and formats, are equivalent:
 
-```.language-yaml
+```yaml
 school: Flatside High
 ```
 
-```.language-php
+```php
 $school = "Flatside High";
 ```
 
-```.language-javascript
+```js
 var school = "Flatside High";
 ```
 
@@ -47,11 +44,13 @@ var school = "Flatside High";
 
 As YAML is a **structured** data format, you will occasionally need to quote your strings to prevent rogue apostrophes, commas, and other reserved constructs from confusing the parser, allowing you to structure your data exactly as desired.
 
-> YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
+:::tip
+YAML uses **2 spaces** for indentation. Not 3, not 4, not 12, but 2.
+:::
 
 You can also use quotes to force or typecast another datatype as a string, For example, if your key or value is `10` but you want it to return a String and not an Integer, write `'10'` or `"10"`.
 
-```.language-yaml
+```yaml
 # Probably broken
 cartoon: Rocko's Modern Life
 
@@ -63,7 +62,7 @@ cartoon: "Rocko's Modern Life"
 
 You can preserve the line breaks in your string block by using the `|` pipe symbol followed by a line break and indented content. This is useful if you're writing Markdown or preserving HTML line breaks.
 
-```.language-yaml
+```yaml
 lyrics: |
   When I wake up in the morning
   And the alarm gives out a warning
@@ -77,7 +76,7 @@ lyrics: |
 
 Completely ignore line breaks with a `>` character and indent the rest of the content.
 
-```.language-yaml
+```yaml
 test: >
   These
   lines will
@@ -94,7 +93,7 @@ test: >
 
 Numbers are represented as numerals without any "string quotes". Those quotes were meant to demonstrate what string quotes are, not [mock them](https://media.giphy.com/media/Kc7qzYMnOTcDb0aEw5/giphy.gif).
 
-```.language-yaml
+```yaml
 # an integer
 number: 12
 
@@ -120,7 +119,7 @@ Booleans in YAML are expressed with `true` and `false`.
 
 YAML collections can be a sequence (or list). Arrays are lists of values. They can be formatted like a plain-text bulleted list or comma delimited inside brackets, similar to JSON.
 
-```.language-yaml
+```yaml
 # These are both valid YAML arrays
 to_buy:
   - sunglasses
@@ -135,13 +134,13 @@ To render the values from a YAML array:
 
 ### Element Map
 
-```.language-yaml
+```yaml
 antisocial:
   facebook: http://facebook.com/statamic
   twitter: http://twitter.com/statamic
 ```
 
-```.language-php
+```php
 $antisocial = [
     "facebook" => "http://facebook.com/statamic",
     "twitter" => "http://twitter.com/statamic"
@@ -159,7 +158,7 @@ You can create mappings of sequences, and those sequences can have mappings, and
 
 This is a very common pattern in Statamic. Bard, Grid, and Replicator fieldtypes all use nested mappings and sequences.
 
-```.language-yaml
+```yaml
 students:
   -
     name: Zack Slater
@@ -171,7 +170,7 @@ students:
 
 Look at how pretty the data is.
 
-```.language-php
+```php
 $students = [
     0 => [
         "name" => "Zach Slater",
@@ -188,7 +187,7 @@ $students = [
 
 You can build multidimensional arrays full of associative arrays, and vice versa.
 
-```.language-yaml
+```yaml
 trips:
   vacation:
     - Miami
@@ -202,7 +201,7 @@ trips:
 
 You can comment out any line of YAML by prefixing it with a `#` hash symbol.
 
-```.language-yaml
+```yaml
 # title: I Quit My Day Job!
 title: Another Monday
 ```
@@ -211,7 +210,7 @@ title: Another Monday
 
 YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
 
-```.language-yaml
+```yaml
 a: 42                      # integer
 2: "42"                    # string, disambiguated by quotes
 d: 42.0                    # float

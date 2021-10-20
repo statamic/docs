@@ -13,4 +13,4 @@ id: 1f522665-9fc2-4c9f-9594-04a518c51b39
 
 That's all there is to it. How you use it is up to you. You may want to tuck this away behind an `if` statement or a unique URL.
 
-> In Australia the session flushes the other way. 🇦🇺
+**Did you know?** In Australia the session flushes the other way. 🇦🇺

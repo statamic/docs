@@ -1,12 +1,14 @@
 ---
+id: 471b3281-4573-43ee-9fee-eb55edf26ad0
+blueprint: modifiers
 modifier_types:
   - string
   - conditions
-id: 471b3281-4573-43ee-9fee-eb55edf26ad0
+title: 'Is Email'
 ---
 Returns `true` if a string is a valid email address.
 
-```.language-yaml
+```yaml
 an_email: lknope@inpra.org
 not_an_email: waffles
 ```
@@ -16,7 +18,7 @@ not_an_email: waffles
 {{ if not_an_email | is_email }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

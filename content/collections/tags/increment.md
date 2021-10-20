@@ -26,11 +26,13 @@ Most loops already have an `index` variable that will display which iteration th
 {{ /items }}
 ```
 
-``` output
+```html
 0 1 2 3 4 5
 ```
 
-> A counter will only be incremented if its parsed. You can wrap it inside an `if` condition if you want it to be conditionally incremented.
+:::tip
+A counter will only be incremented if its parsed. You can wrap it inside an `if` condition if you want it to be conditionally incremented.
+:::
 
 ## Multiple Counters
 

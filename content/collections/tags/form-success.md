@@ -20,4 +20,6 @@ stage: 4
 {{ /if }}
 ```
 
-> `form:success` is a Tag, not a variable. Wrap it with single braces when inside a conditional.
+:::tip
+`form:success` is a Tag, not a variable. Be sure to wrap it with single braces when inside a condition.
+:::

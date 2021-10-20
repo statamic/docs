@@ -1,12 +1,14 @@
 ---
+id: 9433b8cd-b2e0-4fbf-85bd-85edf317efa4
+blueprint: modifiers
 modifier_types:
   - array
   - utility
-id: 9433b8cd-b2e0-4fbf-85bd-85edf317efa4
+title: Offset
 ---
 Offsets the items returned in an array.
 
-```.language-yaml
+```yaml
 playlist:
   - Emancipator
   - Gong Gong
@@ -20,7 +22,7 @@ Use with the pipe syntax to continue chaining in a single tag like so:
 {{ playlist | offset:1 | join }}
 ```
 
-```.language-output
+```html
 Gong Gong, Possom Posse, Justin Bieber
 ```
 
@@ -32,7 +34,7 @@ Or using the parameter syntax:
 {{ /playlist }}
 ```
 
-```.language-output
+```html
 <li>Gong Gong</li>
 <li>Possom Posse</li>
 <li>Justin Bieber</li>

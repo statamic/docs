@@ -3,10 +3,9 @@ id: c51a5de8-4b02-4240-8195-3ff7987c43cf
 title: 'Installing a Starter Kit'
 intro: Installing a Starter Kit is a pretty simple thing, but like with many things in life, there are a few different ways you can do it. Let's cover them all.
 template: page
+blueprint: page
 nav_title: Installing
 ---
-> Available from Statamic 3.2 beta.
-
 ## Read This First
 
 Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
@@ -15,13 +14,13 @@ Most (but not all) Starter Kits are intended to be used in a brand new, empty si
 
 You can spin up a **new** install of Statamic along with a Starter Kit at the all in one command by using the [Statamic CLI Tool](https://github.com/statamic/cli):
 
-``` bash
+``` shell
 statamic new my-site vendor/starter-kit
 ```
 
 You can alternatively install a Starter Kit into an _existing site_ by running the following command while inside that install's root directory:
 
-``` bash
+``` shell
 php please starter-kit:install vendor-name/starter-kit-name
 ```
 

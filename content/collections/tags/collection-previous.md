@@ -50,4 +50,6 @@ This will show the next 2 posts in a `blog` collection. It'll scope the entries 
 {{ /collection:previous }}
 ```
 
-> This functions the same way as the [collection:next](/tags/collection-next) tag but in the opposite direction.
+:::tip
+This functions the same way as the [collection:next](/tags/collection-next) tag but in the opposite direction.
+:::

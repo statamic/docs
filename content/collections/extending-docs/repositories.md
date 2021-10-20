@@ -84,4 +84,6 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-> You should clear your cache after changing a binding like this.
+:::tip
+Make sure to clear your cache after changing a binding like this.
+:::

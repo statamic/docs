@@ -1,11 +1,13 @@
 ---
+id: 33b1003c-6ce8-47db-a4ec-bbc323e15820
+blueprint: modifiers
 modifier_types:
   - string
-id: 33b1003c-6ce8-47db-a4ec-bbc323e15820
+title: Upper
 ---
 Transform a string into uppercase. Multi-byte friendly.
 
-```.language-yaml
+```yaml
 string: That is über neat.
 ```
 
@@ -13,6 +15,6 @@ string: That is über neat.
 {{ string | upper }}
 ```
 
-```.language-output
+```html
 THAT IS ÜBER NEAT.
 ```

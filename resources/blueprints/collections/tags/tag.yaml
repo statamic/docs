@@ -4,28 +4,20 @@ sections:
     display: Main
     fields:
       -
-        handle: intro
+        handle: title
         field:
-          display: Intro
-          type: markdown
-          localizable: true
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        import: page
       -
         handle: screenshot
         field:
           type: assets
           container: main
           max_files: 1
-      -
-        handle: content
-        field:
-          display: Content
-          restrict: false
-          smartypants: true
-          automatic_line_breaks: false
-          automatic_links: false
-          escape_markup: false
-          type: markdown
-          localizable: true
       -
         handle: parameters
         field:
@@ -72,27 +64,21 @@ sections:
               field:
                 type: markdown
       -
-        handle: template
-        field:
-          display: Template
-          type: template
-          default: page
-      -
         handle: parent_tag
         field:
           display: 'Parent Tag'
           type: collections
           collection: tags
           max_items: 1
+  sidebar:
+    display: Sidebar
+    fields:
       -
-        handle: stage
+        handle: slug
         field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'

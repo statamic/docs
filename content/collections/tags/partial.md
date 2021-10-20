@@ -26,7 +26,9 @@ You can use any view as a partial by using this here partial tag.
 {{ partial:blog/card }}
 ```
 
-> We recommend prefixing any views intended to be only used as partials with an underscore, `_like-this.antlers.html`. You don’t need to include the underscore in your partial tag.
+:::best-practice
+We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
+:::
 
 ## Passing Data
 
@@ -40,7 +42,7 @@ You can pass additional data into a partial via on-the-fly parameters. The param
 {{ items | ul }}
 ```
 
-``` output
+```html
 <h2>These are my favorite ice cream flavors</h2>
 <ul>
   <li>Chocolate Chip Cookie Dough</li>

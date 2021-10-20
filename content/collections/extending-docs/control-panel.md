@@ -2,9 +2,6 @@
 title: 'Control Panel'
 nav_title: Overview
 template: page
-parent: caf2a160-de1c-11e9-aaef-0800200c9a66
-updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
-updated_at: 1569263726
 intro: The control panel may be customized in a number of different ways. You may add new fieldtypes, widgets, a stylesheet, or maybe you just want to add some arbitrary Javascript.
 stage: 1
 id: cb8f4d8a-47b6-4567-9510-ed7d9ee9c037
@@ -35,7 +32,9 @@ class AppServiceProvider
 
 These commands will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
 
-> This, as well as the webpack config below are already included in the `statamic/statamic` starter site. You just have to uncomment them in `app/Providers/AppServiceProvider.php`.
+:::tip
+This, as well as the webpack config below are already included in the `statamic/statamic` starter site. You just have to uncomment them in `app/Providers/AppServiceProvider.php`.
+:::
 
 ## Adding assets to your build process
 
@@ -50,13 +49,13 @@ mix.js('resources/js/cp.js', 'public/vendor/app/js')
 
 The `cp.js` in this example may be your entry point for loading various other files. For instance, you could import fieldtypes:
 
-``` files
+``` files theme:serendipity-light
 resources/
-`-- js/
-    |-- cp.js
-    `-- components/
-        `-- fieldtypes/
-            `-- Password.vue
+    js/
+        cp.js
+        components/
+            fieldtypes/
+                Password.vue
 ```
 
 ``` js
@@ -80,14 +79,15 @@ export default {
 </script>
 ```
 
-> You may of course change filenames and folder structure, and even your entire build process. The important thing is to compiled imported files with `Statamic::script()`
+:::tip
+You are welcome to customize the filenames and folder structure and even the entire build process. The only important thing is to import the compiled files with `Statamic::script()`.
 
 ## Adding control panel routes
 
 If you need to have custom routes for the control panel:
 
 1. Create a routes file. Name it whatever you want, for example: `routes/cp.php`
-2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:  
+2. Then push the routes by adding this to your `app/Providers/AppServiceProvider.php`:
 
     ```php
     use Illuminate\Support\Facades\Route;

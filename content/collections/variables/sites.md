@@ -1,7 +1,9 @@
 ---
+id: 8e40a5f8-8825-45ed-b0b5-6f7cd3ce946c
+blueprint: variables
 types:
   - system
-id: 8e40a5f8-8825-45ed-b0b5-6f7cd3ce946c
+title: Sites
 ---
 A collection containing all the configured sites as `Statamic\Sites\Site` objects which you can loop over using a tag pair.
 
@@ -45,7 +47,7 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 {{ /sites }}
 ```
 
-``` output
+```html
 english
 English Site
 en_US

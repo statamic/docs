@@ -1,7 +1,9 @@
 ---
+id: 89e75dec-7f33-4217-b040-dc2a18de5d83
+blueprint: variables
 types:
   - asset
-id: 89e75dec-7f33-4217-b040-dc2a18de5d83
+title: 'Is Image'
 ---
 A boolean for whether the asset is an image.
 

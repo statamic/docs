@@ -6,10 +6,9 @@ intro: |-
 
   Built by the core team or designers & developers in the community, Starter Kits can can cover a wide range of uses, from fully-built, ready-to-go sites, to developer-focused boilerplates for common frontend frameworks. Starter Kits can be shared and even sold on the <a href="https://statamic.com/marketplace">Statamic Marketplace</a>.
 template: page
+blueprint: page
 nav_title: Overview
 ---
-> Available in Statamic 3.2+.
-
 ## Statamic Starter Kits vs WordPress Themes
 
 While they may seem similar on the surface, Statamic Starter Kits and WordPress Themes take a very different approach to the end-goal of speeding up the web design and development process. Allow us to explain the difference.

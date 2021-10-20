@@ -1,25 +1,23 @@
 ---
 title: 'Antlers Templates'
 intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display and modify data, tap into core features like user authentication and search, and handle complex logic.'
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568806133
 blueprint: page
 template: page
-stage: 2
 id: dcf80ee6-209e-45aa-af42-46bbe01996e2
 ---
 ## Overview
 
 Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
 
-> The `.antlers.html` extension is important. Without it, it would just be plain HTML and you won't get the Antlers features.
-
+:::tip
+The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
+:::
 
 ## Antlers Syntax
 
 Antlers adds capabilities on top of HTML through the use of curly brace expressions. Those curly braces – often called double mustaches or squiggly gigglies – look a whole lot like _antlers_ to us, hence the name.
 
-```
+```antlers
 {{ hello_world }}
 ```
 
@@ -35,31 +33,27 @@ Before getting into listing all the things that happen _inside_ an Antlers expre
 
 Consistency is important. We recommend using single spaces between braces, lowercase variable names, and underscores as word separators. Picking your style and stick to it. Future you will thank you, but don't expect a postcard.
 
-```
-// This is great!
+``` antlers
+This is great!
 {{ perfectenschlag }}
 
-// This is allowed.
+This is allowed.
 {{squished}}
 
-// This can make sense when you have lots of parameters.
+This can make sense when you have lots of parameters.
 {{
   testimonials
   limit="5"
   order="username"
 }}
 
-// This is terrible in every way.
+This is terrible in every possible way.
 {{play-sad_Trombone            }}
 ```
 
----
-
 ## Displaying Data
 
-You can display data passed into your Antlers views by wrapping the variable name in curly braces.
-
-Let's take the following data as an example:
+You can display data passed into your Antlers views by wrapping the variable in double curly braces. For example, given the following data:
 
 ``` yaml
 ---
@@ -72,10 +66,12 @@ songs:
 ```
 
 You can display the contents of the `title` variable like this:
-```
-<h1>{{ title }}</h1>
 
-// Output
+``` antlers
+<h1>{{ title }}</h1>
+```
+
+``` html
 <h1>DJ Jazzy Jeff & The Fresh Prince</h1>
 ```
 
@@ -83,23 +79,30 @@ You can display the contents of the `title` variable like this:
 Arrays are a collection of elements (values or variables). You can loop through the elements of the array using the `{{ value }}` variable, or reach in and pluck out specific elements by their index.
 
 #### Looping
-```
+
+``` antlers
+<ul>
 {{ songs }}
   <li>{{ value }}</li>
 {{ /songs }}
+</ul>
+```
 
-// Output
-<li>Boom! Shake the Room</li>
-<li>Summertime</li>
-<li>Just Cruisin'</li>
+``` html
+<ul>
+  <li>Boom! Shake the Room</li>
+  <li>Summertime</li>
+  <li>Just Cruisin'</li>
+</ul>
 ```
 
 #### Plucking
 
-```
+``` antlers
 <p>Time to {{ songs:0 }} cuz we're {{ songs:2 }}.</p>
+```
 
-// Output
+``` html
 <p>Time to Boom! Shake the Room cuz we're Just Crusin'.</p>
 ```
 
@@ -117,11 +120,8 @@ mailing_address:
 #### Accessing Data
 You can access the keys inside the dictionary by "gluing" the parent/child keys together you want to traverse through, much like breadcrumbs.
 
-```
+``` antlers
 I live in {{ mailing_address:city }}.
-
-// Output
-I live in Barville.
 ```
 
 ### Multi-Dimensional Arrays
@@ -139,15 +139,16 @@ skaters:
 
 If you know the names of the variables inside the array, you can loop through the items and access their variables.
 
-```
+``` antlers
 {{ skaters }}
 <div class="card">
   <h2>{{ name }}</h2>
   <p>{{ style }}</p>
 </div>
 {{ /skaters }}
+```
 
-// Output
+``` html
 <div class="card">
   <h2>Tony Hawk</h2>
   <p>Vert</p>
@@ -163,7 +164,7 @@ If you don't know the names of the keys inside the array – which can happen wh
 
 Using the mailing list example, we could use a `field` variable to pluck out specific keys.
 
-```
+``` md
 ---
 field: country
 mailing_address:
@@ -238,8 +239,10 @@ Modifiers on array variables are formatted like Tag parameters. Parameters are s
 {{ /array_var }}
 ```
 
-> You **cannot** mix and match modifier styles.
-> ie. This totally won't work: `{{ var | foo | bar="baz" }}`
+:::warning
+You **cannot** mix and match modifier styles.
+ie. This totally won't work: `{{ var | foo | bar="baz" }}`
+:::
 
 ### Escaping Data
 
@@ -250,8 +253,6 @@ The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) 
 ```
 {{ user_submitted_content | sanitize }}
 ```
-
----
 
 ## Logic & Conditions {#conditions}
 
@@ -274,7 +275,7 @@ You may construct conditional statements using the `if`, `else`, `elseif`, `unle
 
 <blockquote class="tip"><strong>Antlers variables are null by default.</strong> Keep your logic statements simple and skip checking for existence altogether.</blockquote>
 
-### Shorthand Conditions (Ternary)
+### Shorthand Conditions (Ternary) {#ternary}
 
 Basic ternary operators will let you write a simple if/else statement all in one line.
 
@@ -298,7 +299,7 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 {{ /if }}
 ```
 
-### Variable Fallbacks (Null Coalescence)
+### Variable Fallbacks (Null Coalescence) {#null-coalescence}
 
 When all you need to do is display a variable and set a fallback when it’s falsey, use the null coalescence operator (`??`).
 
@@ -327,7 +328,6 @@ Yes, you can even use tags in conditions. When working with [tags][tags] instead
   ...
 {{ /if }}
 ```
----
 
 ## Code Comments {#comments}
 
@@ -336,8 +336,6 @@ Antlers also allows you to define comments in your views. However, unlike HTML c
 ```
 {{# Remember to replace the lorem ipsum this time. #}}
 ```
-
----
 
 ## Tags
 
@@ -372,8 +370,6 @@ If using a variable inside of a Tag is nice, using a variable with a modifier in
 // Totally not.
 {{ partially:broken src="{ featured_image | url }" }}
 ```
-
----
 
 ## Prevent Parsing
 

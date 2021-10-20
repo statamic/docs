@@ -1,7 +1,9 @@
 ---
+id: 2a5f5263-e61b-47bb-8c45-c02cd49554d6
+blueprint: variables
 types:
   - entry
-id: 2a5f5263-e61b-47bb-8c45-c02cd49554d6
+title: Datestamp
 ---
 Get the timestamp of the entry. This will be an integer.
 
@@ -11,6 +13,6 @@ Alias of `timestamp`. Maybe calling it a datestamp makes more sense to you if yo
 {{ datestamp }}
 ```
 
-``` .language-output
+```html
 1425772800
 ```

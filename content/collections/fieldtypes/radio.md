@@ -4,7 +4,7 @@ description: 'Circles you click. You can only choose one.'
 intro: |
   Radio buttons. The "you can only have one" variation of checkboxes. Create some options and let your users select one and only one. May they choose wisely.
 
-screenshot: fieldtypes/radio.png
+screenshot: fieldtypes/screenshots/radio.png
 options:
   -
     name: inline
@@ -64,8 +64,8 @@ It's a string, so you can just use that value.
 <p>I love {{ favorite }}. A lot.</p>
 ```
 
-``` output
+```html
 <p>I love donuts. A lot.</p>
 ```
 
-## Config Options
+

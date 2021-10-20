@@ -1,66 +1,52 @@
-<div id="site-nav">
-    <div class="flex items-center font-display text-sm border-t-8 border-purple">
-        <div class="w-full max-w-screen-xl relative mx-auto px-6">
-            <div class="flex items-center -mx-6 border-b border-purple lg:border-none">
-
-                <div class="lg:w-1/4 xl:w-1/5 px-6">
-                    <div class="flex items-center relative">
-                        <a href="/" class="hidden lg:block lg:mr-4 mt-5 text-purple hover:text-pink">
-                            {{ theme:output src="svg/statamic-blob.svg" }}
-                        </a>
-                        <a href="/" class="block lg:hidden text-purple hover:text-pink">
-                            {{ theme:output src="svg/statamic-mark.svg" }}
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex flex-grow lg:w-3/4 xl:w-4/5">
-
-                    <div class="w-full xl:w-3/4 lg:px-6 py-3 lg:py-0 xl:px-12">
-                        <form class="relative m-0" action="/search-results">
-                            <input
-                                id="docs-search"
-                                name="q"
-                                x-ref="docsSearch"
-                                @keydown.escape="$refs.docsSearch.blur(), $refs.docsSearch.value = ''"
-                                class="focus:outline-none border-2 shadow focus:bg-yellow placeholder-blue text-base md:text-sm font-bold rounded bg-blue-lightest py-1 pr-4 pl-8 block w-full appearance-none leading-normal"
-                                type="text" placeholder="Search... (Press &quot;/&quot; to focus)">
-                            <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                                <svg class="fill-current pointer-events-none text-gray-600 w-4 h-4"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path
-                                        d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                                    </svg>
-                            </div>
-                        </form>
-                    </div>
-
-                    <button type="button"
-                        id="sidebar-open"
-                        x-bind:class="{ 'hidden': showNav }"
-                        @click="showNav = true"
-                        class="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
-                        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-                    </button>
-
-                    <button type="button"
-                        id="sidebar-close"
-                        x-bind:class="{ 'hidden': ! showNav }"
-                        @click="showNav = false"
-                        class="lg:flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
-                        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path
-                                d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
-                            </svg>
-                    </button>
-
-                    <div class="hidden lg:flex xl:w-1/4 px-4 xl:px-6 {{ hide_sidebar ?= 'justify-end xl:px-12' }}">
-                        <a href="/installing" class="button whitespace-no-wrap">Install Now</a>
-                    </div>
-
-                </div>
-            </div>
+<nav
+    id="site-nav"
+    class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20"
+>
+    <div class="w-full flex items-center justify-between md:block md:w-74">
+        <a href="/" class="relative top-[-3px] text-pink hover:text-purple">
+            {{ svg src="docs-logo" class="block w-48" title="Statamic" }}
+        </a>
+    </div>
+    <div class="flex-1 flex items-center justify-between md:h-full">
+        <ul class="flex items-center space-x-2 md:space-x-10 md:text-lg">
+            {{ nav:collection:sections include_home="true" }}
+            <li><a class="hover:text-pink {{ page:section === section ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
+            {{ /nav:collection:sections }}
+        </ul>
+        <div class="flex items-center h-full">
+            <form class="relative hidden md:flex items-center text-sm w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px]" action="/search-results">
+                <div id="docsearch" ref="docSearch"></div>
+            </form>
         </div>
     </div>
-</div>
+</nav>
+
+<nav id="site-nav-mobile" class="site-nav md:hidden w-full border-b items-center justify-between pl-4 font-display py-1">
+    <div class="w-full flex items-center justify-between">
+        <a href="/" class="text-pink hover:text-purple">
+            {{ svg src="statamic-mark" class="block h-8 w-8" title="Statamic"}}
+        </a>
+        <div class="flex md:hidden relative items-center w-full ml-3 h-8 rounded border border-black shadow-sm">
+                <input
+                    class="focus:outline-none placeholder-black antialised px-3 flex-1 appearance-none"
+                    type="text" placeholder="Search..." @click="document.getElementsByClassName('DocSearch-Button')[0].click()" />
+                <button class="bg-black hover:bg-purple text-white px-2 text-sm h-full">
+                    {{ svg src="search" class="text-white p-px" }}
+                </button>
+        </div>
+        <button type="button"
+                id="sidebar-open"
+                x-bind:class="{ 'hidden': showNav }"
+                @click="showNav = true"
+                class="flex p-4 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
+                {{ svg src="menu" class="w-7 h-7" }}
+        </button>
+        <button type="button"
+            id="sidebar-close"
+            x-bind:class="{ 'hidden': ! showNav }"
+            @click="showNav = false"
+            class="lg:flex p-4 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700">
+            {{ svg src="close" class="w-7 h-7" }}
+        </button>
+    </div>
+</nav>

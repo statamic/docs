@@ -5,7 +5,7 @@ overview: |
   The Replicator is a meta fieldtype giving you the ability to define _sets_ of fields that you can dynamically piece together in whatever order and arrangement you imagine. You can build long-form articles like [Medium.com](http://medium.com) and take advantage of the extra markup control.
 
   It's so much better than a WYSIWYG field.
-image: /assets/fieldtypes/replicator.jpg
+screenshot: fieldtypes/screenshots/replicator.png
 options:
   -
     name: sets
@@ -25,7 +25,7 @@ You may collapse your sets to conserve space. If you do, a preview of the data c
 
 The following fieldset YAML is an example of what could be used to construct the Replicator shown in the screenshot above:
 
-``` language-yaml
+``` yaml
 fields:
   my_replicator_field:
     type: replicator
@@ -66,7 +66,7 @@ You can use any fieldtypes inside your Replicator sets. Make sure to compare the
 
 Replicator stores your data as an array with the set name as `type`.
 
-```.language-yaml
+```yaml
 my_replicator_field:
   -
     type: text
@@ -82,7 +82,9 @@ my_replicator_field:
     pull: right
 ```
 
-> Please note that you **can not** use a Replicator fieldtype for the `content` field.
+:::warning
+Please note that you **cannot** use a Replicator fieldtype for the `content` field.
+:::
 
 ## Templating {#templating}
 

@@ -1,116 +1,145 @@
-const defaultConfig = require('tailwindcss/defaultConfig')
+const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
+  mode: 'jit',
+  purge: {
+    content: [
+      './resources/**/*.antlers.html',
+      './resources/**/*.blade.php',
+      './content/**/*.md'
+    ]
+  },
   important: true,
   theme: {
-    screens: {
-      'sm': '576px',
-      'md': '768px',
-      'lg': '992px',
-      'xl': '1280px',
-    },
-    borderColor: theme => ({
-      ...theme('colors'),
-      default: theme('colors.blue-darkest', 'currentColor'),
-    }),
-    borderRadius: {
-      none: '0',
-      sm: '2px',
-      default: '5px',
-      full: '9999px',
-    },
-    borderWidth: {
-      default: '1px',
-      '0': '0',
-      '2': '2px',
-      '4': '4px',
-      '8': '8px',
-    },
-    boxShadow: {
-      default: "1px 1px 0 theme('colors.blue-darkest', 'currentColor')",
-      md: "3px 3px 0 theme('colors.blue-darkest', 'currentColor')",
-      teal: "1px 1px 0 theme('colors.teal', 'currentColor')",
-      'md-teal': "3px 3px 0 theme('colors.teal', 'currentColor')",
-      'lg-teal': "5px 5px 0 theme('colors.teal', 'currentColor')",
-      orange: "1px 1px 0 theme('colors.orange', 'currentColor')",
-      'md-orange': "3px 3px 0 theme('colors.orange', 'currentColor')",
-      'lg-orange': "5px 5px 0 theme('colors.orange', 'currentColor')",
-      mint: "1px 1px 0 theme('colors.mint', 'currentColor')",
-      'md-mint': "3px 3px 0 theme('colors.mint', 'currentColor')",
-      'lg-mint': "5px 5px 0 theme('colors.mint', 'currentColor')",
-      outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
-    },
     colors: {
       transparent: 'transparent',
-      'black': '#000',
-      'white': '#fff',
-      'blue-darkest': '#002F3C',
-      'blue-dark': '#00546b',
-      'blue': '#6D91D4',
-      'blue-light': '#66A4CF',
-      'blue-lightest': '#EFFEFF',
-      'purple': '#7C67CB',
-      'purple-hot': '#A832D7',
-      'pink': '#D365CE',
-      'pink-bright': '#FC6EB3',
-      'pink-hot': '#FF269E',
-      'red': '#de3618',
-      'green': '#38A169',
-      'teal-dark': '#066885',
-      'teal': '#01D7B0',
-      'orange': '#FFB47A',
-      'yellow': '#FAF77D',
-      'mint': '#b8fff3',
-      'cp-bg': '#F1F5F9',
-      'grey': {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c',
+      current: 'currentColor',
+      black:  '#191A1B',
+      white: '#FFFFFF',
+      ninja: {
+        blue: '#00b1e1',
+        orange: '#f49b0b',
+        red: '#e03a10',
+        purple: '#925aa1',
+        green: '#4c9c23'
       },
+      pink: {
+        lightest: '#FFFCFE',
+        lighter: '#FFF6FA',
+        light: '#FFDCED',
+        DEFAULT: '#FF269E'
+      },
+      red: {
+        DEFAULT: '#DE3618',
+        dark: '#98230E',
+      },
+      purple: '#6B26FF',
+      blue: {
+        lightest: '#B1D8FC',
+        light: '#01A1D7',
+        DEFAULT: '#339CE5',
+        dark: '#066A85'
+      },
+      teal: '#01D7B0',
+      mint: '#B8FFF3',
+      yellow: '#FAF77D',
+      gray: {
+        lightest: '#F3F4F6',
+        lighter: '#EEF2F6',
+        light: '#E7ECF1',
+        DEFAULT: '#CBD5E1',
+        'dark': '#94A3B8',
+        'darker': '#4B5563',
+        'darkest': '#374151'
+      }
+    },
+    borderColor: theme => ({
+       ...theme('colors'),
+        DEFAULT: theme('colors.black', 'currentColor'),
+    }),
+    boxShadow: {
+      'none': 'none',
+      DEFAULT: "2px 2px 0 theme('colors.black', 'currentColor')",
+      'sm': "1px 1px 0 theme('colors.black', 'currentColor')",
+      'md': "2px 2px 0 theme('colors.black', 'currentColor')",
+      'lg': "4px 4px 0 theme('colors.black', 'currentColor')",
+      'white': "2px 2px 0 theme('colors.white', 'currentColor')",
+      'white-lg': "4px 4px 0 theme('colors.white', 'currentColor')",
+      'mint': "1px 1px 0 theme('colors.mint', 'currentColor')",
+      'mint-md': "3px 3px 0 theme('colors.mint', 'currentColor')",
+      'mint-lg': "7px 7px 0 theme('colors.mint', 'currentColor')",
+      'yellow': "1px 1px 0 theme('colors.yellow', 'currentColor')",
+      'yellow-md': "3px 3px 0 theme('colors.yellow', 'currentColor')",
+      'yellow-lg': "7px 7px 0 theme('colors.yellow', 'currentColor')",
+      'pink': "1px 1px 0 theme('colors.pink.DEFAULT', 'currentColor')",
+      'pink-md': "3px 3px 0 theme('colors.pink.DEFAULT', 'currentColor')",
+      'pink-lg': "7px 7px 0 theme('colors.pink.DEFAULT', 'currentColor')",
+      'purple': "1px 1px 0 theme('colors.purple', 'currentColor')",
+      'purple-md': "3px 3px 0 theme('colors.purple', 'currentColor')",
+      'purple-lg': "7px 7px 0 theme('colors.purple', 'currentColor')",
+      'red': "1px 1px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-md': "3px 3px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-lg': "7px 7px 0 theme('colors.red.DEFAULT', 'currentColor')",
+      'red-dark': "1px 1px 0 theme('colors.red.dark', 'currentColor')",
+      'red-dark-md': "3px 3px 0 theme('colors.red.dark', 'currentColor')",
+      'red-dark-lg': "7px 7px 0 theme('colors.red.dark', 'currentColor')",
+      'teal': "1px 1px 0 theme('colors.teal', 'currentColor')",
+      'teal-md': "3px 3px 0 theme('colors.teal', 'currentColor')",
+      'teal-lg': "7px 7px 0 theme('colors.teal', 'currentColor')",
+      'stack-yellow-sm': "3px 3px 0 -1px #fff, 3px 3px 0 theme('colors.black'), 4px 4px 4px theme('colors.yellow')",
+      'stack-sm': "3px 3px 0 -1px #fff, 3px 3px 0 theme('colors.black')",
+      'stack': "5px 5px 0 -1px #fff, 5px 5px 0 theme('colors.black')",
+      'stack-md': "10px 10px 0 -1px #fff, 10px 10px 0 theme('colors.black')",
+      'stack-lg': "20px 20px 0 -1px #fff, 20px 20px 0 theme('colors.black'), 40px 40px 0 -1px #fff, 40px 40px 0 theme('colors.black')",
+      'bleed-yellow': "0 3px 1px theme('colors.yellow')",
+      'outline': '0 0 0 3px rgba(66, 153, 225, 0.5)',
     },
     extend: {
       fontFamily: {
-        'display': ['code-saver', 'sans-serif'],
+        display: ['tenon', 'sans-serif'],
+        mono: ['Menlo', 'monospace'],
+        'mono-alt': ['code-saver', 'monospace'],
       },
       fontSize: {
-        '2xs': '0.6rem',
+        '3xl': ['2rem', 1],
+        '7xl': ['4.25rem', 1],
+        '8xl': ['5rem', 1],
+        '9xl': ['6rem', 1],
+      },
+      height: {
+        'screen-sans-nav': 'calc(100vh - 100px)',
+      },
+      maxHeight: {
+        'screen-sans-nav': 'calc(100vh - 100px)',
       },
       spacing: {
-        'sm': '2px',
-        7: '1.75rem'
-      },
-      inset: {
-        '16': '16px',
-        '-16': '-16px',
-        '64': '64px',
-      },
-      rotate: {
-        '-1': '-1deg',
-        '-2': '-2deg',
-        '-3': '-3deg',
-        '1': '1deg',
-        '2': '2deg',
-        '3': '3deg'
-      },
-      maxWidth: theme => {
-        return {
-          'screen-xl': theme('screens.xl'),
-        }
-      },
-    }
+        68: '17rem',
+        74: '18.5rem',
+        76: '19rem'
+      }
+    },
   },
-  variants: {
-    backgroundColor: ['responsive', 'odd', 'even', 'hover', 'focus', 'group-hover'],
-    borderColor: ['responsive', 'hover', 'focus'],
-    borderWidth: ['responsive', 'first', 'last', 'hover', 'focus'],
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    outline: ['focus'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover', 'disabled']
-  }
+  variants: {},
+  plugins: [
+    plugin(function({ addUtilities }) {
+      const newUtilities = {
+        '.list-col-1': {
+          'column-count': '1',
+        },
+        '.list-col-2': {
+          'column-count': '2',
+        },
+        '.list-col-3': {
+          'column-count': '3',
+        },
+        '.list-col-4': {
+          'column-count': '4',
+        },
+      }
+      addUtilities(newUtilities, {
+        variants: ['responsive'],
+      })
+    })
+  ],
 }

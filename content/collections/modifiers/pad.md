@@ -1,11 +1,13 @@
 ---
+id: 0a1595bc-5b41-401c-bb9c-45c35e8e5d7c
+blueprint: modifiers
 modifier_types:
   - array
-id: 0a1595bc-5b41-401c-bb9c-45c35e8e5d7c
+title: Pad
 ---
 Pad an array to a given number of items with a value. By default the value is null, but you can specify it as the second parameter.
 
-```.language-yaml
+```yaml
 epic_meal_time:
   - jack daniels
   - bacon strips
@@ -17,7 +19,7 @@ epic_meal_time:
 {{ /epic_meal_time }}
 ```
 
-```.language-output
+```html
 jack daniels
 bacon strips
 bacon strips

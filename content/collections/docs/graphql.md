@@ -1,8 +1,8 @@
 ---
 title: 'GraphQL API'
 intro: 'The GraphQL API is a **read-only** API for delivering content from Statamic to your frontend, external apps, SPAs, and numerous other possible sources. Content is delivered as JSON data.'
-stage: 1
 pro: true
+blueprint: page
 id: fc564ddf-80c1-4d87-8675-4a41f13c7774
 ---
 (If you're interested in a [REST API](/content-api), we have one of those too.)
@@ -20,8 +20,9 @@ Enable the GraphQL API in your config or with an environment variable.
 STATAMIC_GRAPHQL_ENABLED=true
 ```
 
-> If you publish the underlying [package's](#laravel-package) config, the query routes will
-> be enabled regardless of whether you've disabled it in the Statamic config.
+:::tip
+If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
+:::
 
 You will also need to enable the resources you want to be available. For security, they're all disabled by default.
 
@@ -191,7 +192,7 @@ Returns a [Collection](#collection-type) type.
 ```json
 {
     "collections": {
-        "handle": "blog", 
+        "handle": "blog",
         "title": "Blog Posts"
     }
 }
@@ -253,7 +254,7 @@ Used for querying a single entry.
 ```json
 {
     "entry": {
-        "id": 1, 
+        "id": 1,
         "title": "First Entry"
     }
 }
@@ -299,7 +300,7 @@ Returns an [AssetContainer](#asset-container-type) type.
 ```json
 {
     "assetContainer": {
-        "handle": "images", 
+        "handle": "images",
         "title": "Images"
     }
 }
@@ -363,7 +364,7 @@ Used for querying a single asset.
 ```json
 {
     "asset": {
-        "id": 1, 
+        "id": 1,
         "title": "First Entry"
     }
 }
@@ -415,7 +416,7 @@ Used for querying a single taxonomy.
 ```json
 {
     "taxonomy": {
-        "handle": "tags", 
+        "handle": "tags",
         "title": "Tags"
     }
 }
@@ -477,7 +478,7 @@ Used for querying a single taxonomy term.
 ```json
 {
     "term": {
-        "id": "tags::one", 
+        "id": "tags::one",
         "title": "Tag One""
     }
 }
@@ -587,7 +588,7 @@ Used for querying a single Nav.
 ```json
 {
     "nav": {
-        "handle": "footer", 
+        "handle": "footer",
         "title": "Footer Links"
     }
 }
@@ -672,7 +673,7 @@ GraphQL::addQuery(MyCustomQuery::class);
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `id` | `ID!` | 
+| `id` | `ID!` |
 | `title` | `String!` |
 
 Each `EntryInterface` will also have implementations for each collection/blueprint combination.
@@ -702,7 +703,7 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `handle` | `String!` | 
+| `handle` | `String!` |
 | `title` | `String!` |
 | `structure` | [`CollectionStructure`](#collection-structure-type) | If the collection is structured (e.g. a "pages" collection), you can use this to query its tree.
 
@@ -710,7 +711,7 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `handle` | `String!` | 
+| `handle` | `String!` |
 | `title` | `String!` |
 | `tree` | [[`CollectionTreeBranch`](#collection-tree-branch-type)] | A list of tree branches.
 
@@ -724,8 +725,9 @@ Represents a branch within a structured collection's tree.
 | `entry` (or `page`) | [`EntryInterface`](#entry-interface) | Contains the entry's fields.
 | `children` | [[`CollectionTreeBranch`](#collection-tree-branch-type)] | A list of tree branches.
 
-> Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
-> take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::tip
+It's not possible to perform recursive queries in GraphQL. If you want to retrieve multiple levels of child branches, take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::
 
 ### NavTreeBranch {#nav-tree-branch-type}
 
@@ -737,8 +739,9 @@ Represents a branch within a nav's tree.
 | `page` | [`PageInterface`](#page-interface) | Contains the page's fields.
 | `children` | [[`NavTreeBranch`](#nav-tree-branch-type)] | A list of tree branches.
 
-> Note: it's not possible to do recursive queries in GraphQL, so if you want to get multiple levels of child branches,
-> take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::tip
+It's not possible to perform recursive queries in GraphQL. If you want to retrieve multiple levels of child branches, take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::
 
 
 ### PageInterface {#page-interface}
@@ -784,7 +787,7 @@ page {
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `id` | `ID!` | 
+| `id` | `ID!` |
 | `title` | `String!` |
 | `slug` | `String!` |
 
@@ -842,7 +845,9 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 
 Each `GlobalSetInterface` will also have an implementation for each set's blueprint.
 
-> Note that while Statamic doesn't enfore a blueprint for a globals (see [Blueprint is Optional](/blueprints#blueprint-is-optional)), it is required within the context of GraphQL. Fields that haven't been explicitly added to a blueprint will not be available.
+:::tip
+While Statamic doesn't enforce a blueprint for globals (see [Blueprint is Optional](/blueprints#blueprint-is-optional)), it _is_ required within the GraphQL context. Fields that haven't been explicitly added to a blueprint will not be available.
+:::
 
 You will need to query the implementations using fragments in order to get blueprint-specific fields.
 
@@ -957,7 +962,7 @@ You can specify the current paginated page using the `page` argument.
 }
 ```
 
-| Field | Type | Description | 
+| Field | Type | Description |
 |-------|------|-------------|
 | `data` | [mixed] | A list of items on the current page. In an `entries` query, there will be `EntryInterface` types, etc.
 | `total` | `Int!` | Number of total items selected by the query.
@@ -999,7 +1004,7 @@ fields:
             -
               handle: author
               field:
-                type: text  
+                type: text
 ```
 
 ```graphql
@@ -1018,8 +1023,9 @@ fields:
 }
 ```
 
-> If you have a field nested in another, rather than just the handle, you should use the parent's handle, (and grandparent's, great grandparent's, and so on).
-> e.g. `Set_TopLevelReplicator_NestedReplicator_DeeplyNestedReplicator_SetHandle`
+:::tip
+If you have nested fields, include each parent's handle, (and grandparent's, great grandparent's etc), like so: `Set_TopLevelReplicator_NestedReplicator_DeeplyNestedReplicator_SetHandle`
+:::
 
 ### Bard
 
@@ -1076,7 +1082,7 @@ my_select_field {
 }
 ```
 
-The same syntax is used when multiple values are expected. e.g. a select field with multiple values enabled, or a checkboxes field. You'll just get a nested array returned. 
+The same syntax is used when multiple values are expected. e.g. a select field with multiple values enabled, or a checkboxes field. You'll just get a nested array returned.
 
 ```json
 "my_multi_select_field": [
@@ -1137,7 +1143,7 @@ In GraphQL, it's not possible to perform recursive queries like that. You'll nee
 
 In this example, if you wanted anything more than `title` and `url`, you'd need to add them to each level.
 
-This can quickly become tedious and is very repetitive, so here's a workaround using fragments. 
+This can quickly become tedious and is very repetitive, so here's a workaround using fragments.
 
 If you wanted to add more fields, you only need to do it one spot - the `Fields` fragment. If you want to query more levels, you can just increase the nesting level of the `RecursiveChildren` fragment.
 
@@ -1221,7 +1227,7 @@ public function addGqlTypes()
 
 Under the hood, Statamic uses the [rebing/graphql-laravel](https://github.com/rebing/graphql-laravel) package.
 
-By default, the integration should feel seamless and you won't even know another package is being used. Statamic will 
+By default, the integration should feel seamless and you won't even know another package is being used. Statamic will
 perform the following automatic configuration of this package:
 
 - Setting up the `default` schema to Statamic's.
@@ -1322,8 +1328,6 @@ GraphQL uses a basic whole-response cache by default. Each query/variables combi
     'expiry' => 60,
 ],
 ```
-
-> More in depth per query or per node caching options may come in the future. 
 
 ### Cache Invalidation
 

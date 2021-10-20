@@ -3,7 +3,7 @@ title: Date
 description: Helps you pick a date, but not get one.
 intro: >
   Work with dates, times, and ranges with a variety of user interface options that make you really enjoy basically just picking numbers from a table.
-screenshot: fieldtypes/date.png
+screenshot: fieldtypes/screenshots/date.png
 options:
   -
     name: columns
@@ -46,7 +46,7 @@ options:
     description: |
       Enable/disable the timepicker. Default: `false`.
       <figure>
-        <img src="/img/fieldtypes/date-and-time.png" alt="Date fieldtype with time enabled" width="492">
+        <img src="/img/fieldtypes/screenshots/date-and-time.png" alt="Date fieldtype with time enabled" width="492">
         <figcaption>Now you can pick a time, too!</figcaption>
       </figure>
   -
@@ -93,7 +93,7 @@ Event: {{ start }} through {{ end }}
 ```
 
 <figure>
-  <img src="/img/fieldtypes/date-range.png" alt="Date fieldtype in range mode" width="301">
+  <img src="/img/fieldtypes/screenshots/date-range.png" alt="Date fieldtype in range mode" width="301">
   <figcaption>Ranges are much simpler than two date fields.</figcaption>
 </figure>
 
@@ -117,6 +117,6 @@ You can format localized dates with the [iso modifier](/modifiers/iso_format) an
 {{ date iso_format="dddd, MMMM Mo" }} // Sunday, January 21st
 ```
 
-## Config Options
+
 
 [carbon]: https://carbon.nesbot.com/docs/

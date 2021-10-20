@@ -1,0 +1,17 @@
+<header class="markdown pb-8">
+    {{ partial:breadcrumbs }}
+    <h1>{{ title }}</h1>
+    <div class="text-2xl max-w-2xl">{{ intro ?? overview | markdown }}</div>
+</header>
+
+<section class="grid md:grid-cols-3 gap-6">
+    {{ nav handle="reference" }}
+        <a href="{{ url }}" class="bg-gray-lightest border shadow-stack-sm p-5 block">
+            <h2 class="text-2xl font-bold font-display mb-3">{{ title }}</h2>
+            {{ content | widont }}
+            {{ collection :in="slug" as="entries" }}
+                <button class="button bg-mint mt-3">Explore all {{ entries | count }} {{ title }}</button>
+            {{ /collection }}
+        </a>
+    {{ /nav }}
+</section>

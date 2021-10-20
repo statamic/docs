@@ -2,11 +2,8 @@
 title: 'View Models'
 intro: View Models give you a chance to manipulate or set data in PHP _right before_ everything is passed into your view, parsed, and then rendered.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568558721
 id: fbf59081-ba24-4e82-b011-b687be228c89
 blueprint: page
-stage: 1
 ---
 ## Overview
 Have you ever had some complex data or conditions you found challenging to work with in your [Antlers][antlers] templates? Sure you have. Have you ever peeled a banana and had the stem hang onto the peel stubbornly only to have the fruit poke it's face out of a surprise gap like a hoodie? You can probably relate to that too.
@@ -26,14 +23,14 @@ Let's assume we have a [Replicator][replicator] field with a bunch of content bl
 
 **First**, let's define the view model location. Rather than putting it in an entry, we'll put it in the collection so that it's applied to every entry.
 
-```.language-yaml
+```yaml
 # content/collections/articles.yaml
 title: Articles
 inject:
   view_model: App\ViewModels\ArticleStats
 ```
 
-```.language-yaml
+```yaml
 # content/collections/articles/a-long-article.md
 title: "A Long Article Plz Read it Mmmkay?"
 content:
@@ -44,7 +41,7 @@ content:
 
 **Next,** we'll loop through the content, assemble a giant string of all the content, perform some math, and return the stats.
 
-```.language-php
+```php
 <?php
 
 namespace App\ViewModels;
@@ -87,7 +84,9 @@ class ArticleStats extends ViewModel
 
 View models help keep your views nice and clean. Use them often and you'll find that they're quickly becoming your new best friend.
 
-> You're manipulating the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+:::tip
+ViewModels manipulate the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+:::
 
 
 [antlers]: /antlers

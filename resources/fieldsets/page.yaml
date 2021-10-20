@@ -1,0 +1,97 @@
+title: Page
+fields:
+  -
+    handle: nav_title
+    field:
+      display: 'Alt Nav Title'
+      type: text
+      listable: show
+      width: 50
+  -
+    handle: breadcrumb_title
+    field:
+      display: 'Alt Breadcrumb Title'
+      type: text
+      listable: hidden
+      width: 50
+  -
+    handle: intro
+    field:
+      restrict: false
+      automatic_line_breaks: true
+      automatic_links: false
+      escape_markup: false
+      smartypants: false
+      antlers: false
+      display: Intro
+      type: markdown
+      icon: markdown
+      listable: hidden
+  -
+    handle: content
+    field:
+      restrict: false
+      automatic_line_breaks: true
+      automatic_links: false
+      escape_markup: false
+      smartypants: false
+      antlers: false
+      display: Content
+      type: markdown
+      icon: markdown
+      listable: hidden
+  -
+    handle: options
+    field:
+      type: grid
+      mode: stacked
+      fields:
+        -
+          handle: name
+          field:
+            type: text
+            width: 33
+        -
+          handle: type
+          field:
+            type: text
+            width: 33
+        -
+          handle: required
+          field:
+            type: toggle
+            width: 33
+        -
+          handle: description
+          field:
+            type: markdown
+  -
+    handle: template
+    field:
+      hide_partials: true
+      display: Template
+      type: template
+      icon: template
+      listable: hidden
+  -
+    handle: related_entries
+    field:
+      mode: default
+      create: true
+      collections:
+        - fieldtypes
+        - modifiers
+        - screencasts
+        - tags
+        - variables
+        - docs
+        - guides
+        - widgets
+        - troubleshooting
+        - extending-docs
+        - repositories
+      display: 'Related Entries'
+      type: entries
+      icon: entries
+      listable: hidden
+      instructions_position: above

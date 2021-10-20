@@ -53,7 +53,9 @@ id: 3be76d15-dee7-4619-a4cb-4a343e93c677
 ## Overview
 The `{{ user:profile }}` tag has access to all of a user's basic data. Passwords and hashes are _not_ available through this tag.
 
-> This will default to the currently logged in user if none are specified.
+:::tip
+This will default to the currently logged in user if none are specified.
+:::
 
 
 ## Shorthand

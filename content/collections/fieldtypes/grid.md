@@ -6,7 +6,7 @@ overview: >
 
   Let's go deeper.
 
-screenshot: fieldtypes/grid.png
+screenshot: fieldtypes/screenshots/grid.png
 options:
   -
     name: min_rows
@@ -47,7 +47,7 @@ The Grid field creates a YAML collection (associative array).
 
 The example below would have the following data which can be looped through as a tag pair with access to the column data as variables.
 
-``` .language-yaml
+```yaml
 cast:
   -
     actor: Mark Hamill
@@ -66,7 +66,7 @@ cast:
 </ul>
 ```
 
-``` .language-output
+```html
 <h3>Star Wars Cast</h3>
 <ul>
     <li>Luke Skywalker played by Mark Hamill</li>

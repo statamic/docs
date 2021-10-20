@@ -1,7 +1,9 @@
 ---
+id: 898d2e63-fc2c-4b66-bd26-8a53883a0aad
+blueprint: variables
 types:
   - system
-id: 898d2e63-fc2c-4b66-bd26-8a53883a0aad
+title: Config
 ---
 Statamic (and Laravel) have many config files in the `config` directory. Each file/directory is the 'key' to retrieve its data.
 

@@ -1,58 +1,46 @@
 ---
 title: Augmentation
-stage: 3
+blueprint: page
+intro: Augmentation automatically transforms the rendered output of all Blueprint-defined variables based on their fieldtype.
 id: 9b2f6f55-5355-4334-b90d-d1236fb58887
 ---
 ## Overview
 
-Augmentation is a transformation step in Statamic 3's data layer which establishes a connection between your front-end templates and the blueprints defining your content model.
+Augmentation is kind of like magic. ✨
 
-In other words, augmentation automatically transforms the rendered output of each variable based on the fieldtype chosen to manage it.
+For example, while using a [Markdown field](/fieldtypes/modifier), your content will **automatically be converted to HTML** without needing to use a [markdown modifier](/modifiers/markdown). Each [fieldtype](/fieldtypes) documents if and how augmentation affects output.
 
-If you choose a Markdown fieldtype, your content will automatically be converted to HTML without the need to use a [markdown modifier](/modifiers/markdown).
-
-Each [fieldtype](/fieldtypes) documents if and how augmentation affects your output.
-
-> Variables created on the fly with Front Matter won't be augmented until you define them in the entry's [blueprint](/blueprints).
+:::hint
+Variables created "on the fly" with Front Matter won't be augmented.
+:::
 
 ## Example
 
-Let's look at an example with and without augmentation. For the augmented output let's assume we're using a [Markdown field](/fieldtypes/markdown).
+Let's look at an example with and without augmentation using the following `content`:
 
-``` yaml
-content: |
+``` md
+## How to Jump Higher
+Bend your knees more and then spring upwards a _lot_ faster.
+```
+
+### With Augmentation
+
+If you're using a [Markdown field](/fieldtypes/markdown), the output will be as follows:
+
+```html
+<h2>How to Jump Higher</h2>
+<p>Bend your knees more and then spring upwards a <em>lot</em> faster.</p>
+```
+
+### Without Augmentation
+
+While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will be exactly the same as the as input:
+
+```text
   ## How to Jump Higher
-
   Bend your knees more and then spring upwards a _lot_ faster.
-```
-
-```
-// With Markdown augmentation
-<article>
-  {{ content }}
-</article>
-
-// Without
-<article>
-  {{ content | raw }}
-</article>
-```
-
-``` output
-// With Markdown augmentation
-<article>
-  <h2>How to Jump Higher</h2>
-  <p>Bend your knees more and then spring upwards a <em>lot</em> faster.</p>
-</article>
-
-// Without
-<article>
-  ## How to Jump Higher
-
-  Bend your knees more and then spring upwards a _lot_ faster.
-</article>
 ```
 
 ## Digging Deeper
 
-[Learn the inner workings of Augmentation](/extending/augmentation) and how to use it in your own code over in the Extending Statamic docs.
+[Learn the inner workings of Augmentation](/extending/augmentation) and how to take advantage of it in your own addons and extensions.

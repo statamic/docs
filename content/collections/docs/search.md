@@ -1,22 +1,31 @@
 ---
-title: Search
-intro: Help your visitors find what they're looking for with search. Use  configurable indexes to fine tune which fields are important, which aren't, and fine-tune your way to relevant results.
-template: page
 id: 420f083d-99be-4d54-9f81-3c09cb1f97b7
 blueprint: page
+title: Search
+intro: 'Help your visitors find what they''re looking for with search. Use  configurable indexes to configure which fields are important, which aren''t, and fine-tune your way to relevant results.'
+template: page
+related_entries:
+  - 5fcf5a56-c120-4988-a4c7-0c5e942327b7
+  - 2022056a-d901-423a-aaa7-ee04fff40739
+  - fe8ec156-447d-4f03-974f-0251a8c53244
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1633035293
 ---
 ## Overview
 
-There are four components (coincidentally the same number of Ninja Turtles) whose powers combine to provide you fully comprehensive powers of search.
+There are four components (coincidentally, the same number of Ninja Turtles) whose powers combine to provide you fully comprehensive powers of search.
 
 1. Forms
 2. Results
 3. Indexes
 4. Drivers
+{.ninja.font-bold}
 
 ## Forms
 
-The search form is the most visible part of your site search. Search forms are built as a simple, every day HTML form. All that form needs is a `text` or `search` input named `q` that submit to a URL that holds a `search:results` tag in your view. You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
+The search form is the entry point to your site search. Search forms are basic, vanilla HTML forms with a `text` or `search` input named `q` submitting to any URL with a `search:results` tag in its view template.
+
+You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
 
 ```
 <form action="/search/results">
@@ -52,7 +61,9 @@ A search index is an ephemeral copy of your content, optimized for speed and per
 
 Indexes are configured in `config/statamic/search.php` and you can create as many as you want. Each index can hold different pieces of content — and any one piece of content may be stored in any number of indexes.
 
-> An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
+:::tip
+An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
+:::
 
 Your site's default index includes _only_ the title from from _all_ collections. The default config looks like this:
 
@@ -123,7 +134,7 @@ Each transformer is a closure that would correspond to a field in your index's `
 
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
-``` bash
+``` shell
 # Update all indexes
 php please search:update
 
@@ -145,9 +156,9 @@ title: Blog
 search_index: blog
 ```
 
-> Even if you specify that an index contains entries from a collection (in [searchables](#searchables)), you still **also** need to specify the index
-> in the collection config itself. This is because different collections and entries can be available in multiple indexes.
-
+:::tip
+After specifying that an index contains entries from a collection (in [searchables](#searchables)), you **must also** specify the index in the collection config itself because collections and entries can be in multiple indexes.
+:::
 
 ## Drivers
 
@@ -179,7 +190,7 @@ ALGOLIA_APP_ID=your-algolia-app-id
 ALGOLIA_SECRET=your-algolia-admin-key
 ```
 
-``` bash
+``` shell
 composer require algolia/algoliasearch-client-php
 ```
 
@@ -198,4 +209,4 @@ You can add values into the defaults array, which will cascade down to all the i
 
 You can also add values to the drivers array, which will cascade down to any indexes using that respective driver. A good use case for this is to share API credentials across indexes.
 
-Of course, any values you add to an individual index will only be applied there.
+Any values you add to an individual index will only be applied there.

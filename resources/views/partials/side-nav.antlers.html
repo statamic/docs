@@ -1,23 +1,47 @@
-<nav class="side-nav">
-    <div class="mb-12">
-        {{# This section of the nav controlled by SideNavComposer.php #}}
-        {{ pages }}
-            <div class="flex items-center mb-4 text-sm hover:text-pink-hot
-                {{ if active }}font-bold text-purple{{ else }}text-grey-900{{ /if }}
-            ">
-                <div class="mr-2">{{ theme:output src="svg/{icon}.svg" }}</div>
-                <a href="{{ url }}">{{ title }}</a>
+<div id="side-nav" class="md:block relative w-full md:w-80 lg:px-2 lg:-ml-6" :class="{'mobile-open': showNav}" x-show="showNav">
+    {{ if section }}
+    <div class="side-nav bg-white md:bg-transparent sticky top-24 md:pr-16 pb-6" x-data="{ open: 'Getting Started' }">
+        <nav class="lg:overflow-y-auto lg:overflow-x-visible max-h-screen-sans-nav">
+            <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray">{{ section | deslugify | title }}</header>
+            <div class="md:hidden">
+                <div class="grid grid-cols-2 gap-2 mb-6">
+                    {{ nav:collection:sections include_home="true" }}
+                        <a class="text-lg font-display p-2 font-medium border shadow-sm text-center hover:text-pink {{ page:section === section ?= 'bg-mint' }}" href="{{ url }}">{{ nav_title ?? title }}</a>
+                    {{ /nav:collection:sections }}
+                </div>
+                {{ svg src="zig-zag-lg" class="w-full my-4 mx-auto" }}
             </div>
-        {{ /pages }}
+            <div class="pl-2 md:p-0">
+                {{ nav :handle="section" }}
+                <div class="relative pl-1">
+                    <button class="text-lg relative font-medium font-display mt-4 mb-2 flex items-center" @click="open = (open === '{{ title }}') ? '' : '{{ title }}'">
+                        <img src="/img/chevron2.svg" class="mr-2 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}'}" alt="">
+                        <span>{{ title }}</span>
+                    </button>
+                    <ul class="space-y-2 text-base ml-[1.35rem] antialised" x-show="open == '{{ title }}'">
+                        {{ if children }}
+                            {{ children scope="child" }}
+                                <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
+                                    <a href="{{ url }}" class="hover:text-pink">
+                                        {{ nav_title ?? title }}
+                                    </a>
+                                </li>
+                            {{ /children }}
+                        {{ /if }}
+                        {{ if section == "reference" }}
+                            {{ collection :from="slug" }}
+                                <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                                    <a href="{{ url }}" class="hover:text-pink">
+                                        {{ nav_title ?? title }}
+                                    </a>
+                                </li>
+                            {{ /collection }}
+                        {{ /if }}
+                    </ul>
+                </div>
+                {{ /nav }}
+            </div>
+        </nav>
     </div>
-
-    {{ if segment_1 === 'extending' }}
-        {{ partial:side-nav-main for="extending_docs" }}
-    {{ elseif segment_1 === 'knowledge-base' }}
-        {{ partial:side-nav-knowledge-base }}
-    {{ elseif segment_1 === 'screencasts' }}
-        {{ partial:side-nav-screencasts }}
-    {{ else }}
-        {{ partial:side-nav-main for="docs" }}
     {{ /if }}
-</nav>
+</div>

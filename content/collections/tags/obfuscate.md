@@ -18,7 +18,7 @@ Obfuscation is a method of encoding content so that the **source code** is hard 
 {{ /obfuscate }}
 ```
 
-``` output
+```html
 <!-- Users see this -->
 djjazzyjeff@angelfire.com
 

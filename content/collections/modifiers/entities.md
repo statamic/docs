@@ -1,12 +1,14 @@
 ---
+id: 50c06e32-9b94-4129-85ba-7cc4201b9e3f
+blueprint: modifiers
 modifier_types:
   - string
   - utility
-id: 50c06e32-9b94-4129-85ba-7cc4201b9e3f
+title: Entities
 ---
 Encode a string with HTML entities via PHP's [htmlentities()][entities] function. This is the opposite of the [decode][decode] modifier.
 
-```.language-yaml
+```yaml
 string: "The 'bacon' is <b>crispy</b>";
 ```
 
@@ -14,7 +16,7 @@ string: "The 'bacon' is <b>crispy</b>";
 {{ string | entities }}
 ```
 
-```.language-output
+```html
 The &#039;bacon&#039; is &lt;b&gt;crispy&lt;/b&gt;
 ```
 

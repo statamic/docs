@@ -3,7 +3,7 @@ title: Code
 description: 'Write code and see it highlight. But will you choose spaces or tabs?'
 intro: What are you doing writing code in a browser?! Just kidding, it's fine. We made it easy, flexible, and pretty too. We use this fieldtype a lot.
 
-screenshot: fieldtypes/code.png
+screenshot: fieldtypes/screenshots/code.png
 options:
   -
     name: theme
@@ -105,4 +105,4 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `value` | The stored value of the checkbox |
 | `label` | The label of the checkbox item from the field config |
 
-## Config Options
+

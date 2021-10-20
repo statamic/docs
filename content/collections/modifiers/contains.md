@@ -1,9 +1,11 @@
 ---
+id: 75145be0-966f-490e-af3d-ed122eb6445b
+blueprint: modifiers
 modifier_types:
   - conditions
   - array
   - string
-id: 75145be0-966f-490e-af3d-ed122eb6445b
+title: Contains
 ---
 Check if a value contains another value. Supports both strings and arrays.
 
@@ -16,7 +18,7 @@ variable, otherwise it will use the parameter as the value.
 
 Case-insensitive by default but can be made sensitive by setting the second parameter to `true`.
 
-```.language-yaml
+```yaml
 summary: "It was the best of times, it was the worst of times."
 adjective: best
 noun: carrot
@@ -29,7 +31,7 @@ noun: carrot
 {{ if summary | contains:noun }}
 ```
 
-```.language-output
+```html
 true   (the substring "BEST" was in the string, and it didn't care about the case.)
 false  (the substring "BEST" was in the string, however it didn't match the case.)
 true   (there's a field named "adjective", and it got the value which was "best")
@@ -38,7 +40,7 @@ false  (there's a field named "noun", and it got the value which was "carrot")
 
 ## Arrays
 You can set strict type checking by setting the second parameter to `true`.
-``` .language-yaml
+```yaml
 foods:
   - bacon
   - bread
@@ -60,7 +62,7 @@ number: '1'
 {{ if numbers | contains:number:true }}
 ```
 
-``` .language-output
+```html
 true   (there's no field named "bacon", so it searched for literally "bacon")
 true   (there's a field named "delicious", and it got the value which was "bacon")
 false  (there's a field named "gross", and it got the value which was "broccoli")

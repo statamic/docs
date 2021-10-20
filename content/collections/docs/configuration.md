@@ -2,48 +2,49 @@
 title: Configuration
 intro: Statamic uses standard Laravel config files and environment variables for application-level settings.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568748076
 blueprint: page
-stage: 4
 id: 10d236ff-a80b-4d88-afa8-fe882b0f37a2
 ---
 ## Config Files
 
 Statamic's config files are located in `config/statamic/`. They are PHP files named by area of responsibility.
 
-``` files
-├── config/statamic/
-│   ├── amp.php
-│   ├── api.php
-│   ├── assets.php
-│   ├── cp.php
-│   ├── forms.php
-│   ├── live_preview.php
-│   ├── oauth.php
-│   ├── protect.php
-│   ├── revisions.php
-│   ├── routes.php
-│   ├── search.php
-│   ├── sites.php
-│   ├── stache.php
-│   ├── static_caching.php
-│   ├── system.php
-│   ├── theming.php
-│   └── users.php
+``` files theme:serendipity-light
+config/statamic/
+    amp.php
+    api.php
+    assets.php
+    cp.php
+    forms.php
+    live_preview.php
+    oauth.php
+    protect.php
+    revisions.php
+    routes.php
+    search.php
+    sites.php
+    stache.php
+    static_caching.php
+    system.php
+    theming.php
+    users.php
 ```
 
 ## Environment Variables
 
-It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server (**hint: you should do this**).
+It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server
 
-In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. Rename or copy it to `.env` to enable it. If you install Statamic via Composer, this file will be renamed automatically.
+:::warning
+**Never enable Debug Mode or DebugBar on production.** The error messages — as beautiful as they are — will reveal much about the way your site is configured, where important files are, and possibly even leak data from your `.env` file depending on how use use those variables.
+:::
+
+In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. Rename or copy it to `.env` to enable it. If you install Statamic via Composer or the [CLI tool](https://github.com/statamic/cli), this will be done automatically for you.
 
 ### Environment Variable Types
 
 Variables in your `.env` files are parsed as strings. In order to handle a wider range of types, some specific values are reserved.
 
-| `.env` Value | Parsed Value |
+| `.env` &nbsp; Value | Parsed Value |
 |--------------|--------------|
 | `true` | `(bool) true` |
 | `(true)` | `(bool) true` |
@@ -57,12 +58,12 @@ Variables in your `.env` files are parsed as strings. In order to handle a wider
 If you need to define an environment variable with a value containing a space, you may do so by enclosing the value in double quotes.
 
 ``` env
-APP_NAME="Gluten Free Surgical Masks For Llamas"
+APP_NAME="Gluten Free Potato Canons"
 ```
 
 ### Retrieving Environment Variables
 
-All of the variables listed in this file are available in your config files by using the `env()` helper function. An optional second argument allows you to pass a default value.
+All environment variables are available in your config files by using the `env()` helper function. An optional second argument allows you to pass a default value.
 
 ``` php
 // config/app.php
@@ -76,9 +77,11 @@ Once passed into a config file, the variable can be used in your views with the 
 {{ config:app:awesome }}
 ```
 
-### Don't version your `.env` file
+:::warning
+**Your `.env` file should never be committed to version control**.
 
-Your `.env` file **should not be committed to version control** because each developer or server running your application may require a different environment configuration. Not only that, but it could be a security risk in the event an intruder gains access to your version control repository because any sensitive credentials (API keys, for example) would be visible.
+Not only may each developer or server running your application may require a different configuration, but it can be a security risk in the event your version control repository is ever made public. Any sensitive credentials, like API keys and secret tokens, would be visible.
+:::
 
 ### Hiding Environment Variables from Debug Pages
 

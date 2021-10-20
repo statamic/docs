@@ -12,7 +12,7 @@ id: 5bd75435-806e-458b-872e-7528f24df7e6
 
 You can generate an addon with a console command:
 
-``` bash
+``` shell
 php please make:addon example/my-addon
 ```
 
@@ -20,20 +20,25 @@ This will scaffold out everything you need to get started as a [private addon](#
 
 Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
-> If you don't plan on distributing your addon, you may be fine with [application code](/extending).
+:::tip
+If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and build an [extension](/extending).
+:::
 
 An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/example`
 
-``` files
-/
-|-- addons/
-|   `-- example/
-|       |-- src/
-|       |   `-- ServiceProvider.php
-|       `-- composer.json
-|-- app/
-|-- public/
-`-- composer.json
+``` files theme:serendipity-light
+addons/
+    example/
+        src/
+            ServiceProvider.php
+        composer.json
+    app/
+    content/
+    config/
+    public/
+        index.php
+    resources
+    composer.json
 ```
 
 ``` json
@@ -99,7 +104,7 @@ In your project root's `composer.json`, add your package to the `require` and `r
 
 Run composer update from your _project root_ (not your addon directory).
 
-``` bash
+``` shell
 composer update
 ```
 
@@ -119,7 +124,7 @@ Your addon is now installed. You should be able to go to `/cp/addons` and see it
 
 A public addon is one available as a composer package on packagist.org. Simple require it with composer:
 
-``` bash
+``` shell
 composer require vendor/package
 ```
 
@@ -152,7 +157,7 @@ In your project root's `composer.json`, add the package to the `require` and `re
 
 Run composer update from your project root:
 
-``` bash
+``` shell
 composer update
 ```
 
@@ -240,7 +245,7 @@ They will all be tagged using your addon's slug.
 
 Whenever the `statamic:install` command is run (i.e. after running `composer update`, etc) the following command will be run:
 
-``` bash
+``` shell
 php artisan vendor:publish --tag=your-addon-slug --force
 ```
 
@@ -254,11 +259,13 @@ This may be useful if you need more control around groups of assets to be publis
 
 ### Assets during development
 
-> During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your directory:
->
-> ``` bash
-> ln -s /path/to/addons/example/resources public/vendor/package
-> ```
+:::tip
+During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your addon's `resource` directory:
+
+``` shell
+ln -s /path/to/addons/example/resources public/vendor/package
+```
+:::
 
 ## Routing
 
@@ -376,12 +383,12 @@ Available middleware groups are:
 
 Any views located in your `resources/views` directory will automatically be available to use in your code using your package name as the namespace.
 
-``` files
+``` files theme:serendipity-light
 /
-|-- src/
-`-- resources/
-    `-- views/
-        `-- foo.blade.php
+    src/
+    resources/
+        views/
+        foo.blade.php
 ```
 
 ``` php
@@ -450,7 +457,9 @@ You can define your editions in your `composer.json`. They should match the edit
 }
 ```
 
-> The first edition will be the default for when a user hasn't explicitly selected one. Naturally, your editions should be listed from least to most expensive.
+:::best-practice
+The first edition is the default when a user hasn't explicitly selected one. Your editions should be listed from least to most expensive because that's the nice thing to do.
+:::
 
 ### Feature Toggles
 
@@ -464,7 +473,9 @@ if ($addon->edition() === 'pro') {
 }
 ```
 
-> You don't need to check whether a license is valid, Statamic will do that automatically for you.
+:::tip
+You don't need to check whether a license is valid, Statamic does that automatically for you.
+:::
 
 
 ## Update Scripts
@@ -539,7 +550,9 @@ Both addons and starter kits can be used to extend the Statamic experience, but 
 - Addons can be updated over time
 - Addon licenses are tied to your site
 
-> An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
+:::tip
+An example use case is a custom fieldtype maintained by a third party vendor. Even though the addon is installed into your app, you still rely on the vendor to maintain and update the addon over time.
+:::
 
 ### Starters Kits
 
@@ -548,4 +561,6 @@ Both addons and starter kits can be used to extend the Statamic experience, but 
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install
 
-> An example use case is a front end theme with sample content. This is the kind of thing you would install into your app once, and modify to suit your style. You would essentially own and maintain the installed files yourself.
+:::tip
+An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.
+:::

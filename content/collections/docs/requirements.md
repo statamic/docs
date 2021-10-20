@@ -2,11 +2,8 @@
 title: Requirements
 intro: Statamic is a modern PHP application, built as a [Laravel](https://laravel.com) package, and has the same server requirements as &mdash; you guessed it &mdash; Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568656760
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
-stage: 4
 ---
 ## Server Requirements
 

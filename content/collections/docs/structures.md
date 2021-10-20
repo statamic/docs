@@ -2,11 +2,8 @@
 title: Structures
 intro: A structure is a hierarchy of items used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568558416
-id: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
 blueprint: page
-stage: 1
+id: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
 ---
 
 ## Overview
@@ -87,7 +84,9 @@ tree:
         url: 'https://github.com/example/repo
 ```
 
->  While you **can** edit a structure through the files, it's **much easier** to manage in Control Panel with its lovely drag and drop interface.
+:::tip
+While you **can** edit a structure through the files, it's **much easier** to manage in Control Panel with a simple drag and drop interface.
+:::
 
 Each page may have an optional `children` array which is itself another tree. You can repeat this pattern and go as deep as necessary. The `max_depth` setting on the Structure will prevent you from placing pages any deeper when using the Control Panel.
 

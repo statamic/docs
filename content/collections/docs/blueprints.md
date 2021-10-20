@@ -1,11 +1,8 @@
 ---
 title: Blueprints
 intro: Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they'll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645146
 id: 54548616-fd6d-44a3-a379-bdf71c492c63
 blueprint: page
-stage: 1
 ---
 ## Overview
 
@@ -38,24 +35,29 @@ Once created, you can begin to define fields and the sections that hold them. If
 
 Whether you manually create your blueprint's YAML file, or use the control panel, they will all end up as YAML files in the `resources/blueprints` directory.
 
-``` files
+<figure>
+    <img src="/img/blueprints-folder-structure.png" alt="Statamic Blueprints Folder Structure" width="528">
+    <figcaption>Here's how Blueprints are organized in the filesystem.</figcaption>
+</figure>
+
+``` files theme:serendipity-light
 resources/
-`-- blueprints/
-    |-- collections/
-    |   `-- blog/
-    |       |-- basic_post.yaml
-    |       `-- art_directed_post.yaml
-    |-- taxonomies/
-    |   `-- tags/
-    |       `-- tag.yaml
-    |-- globals/
-    |   |-- global.yaml
-    |   `-- company.yaml
-    |-- assets/
-    |   `-- main.yaml
-    |-- forms/
-    |   `-- contact.yaml
-    `-- user.yaml
+  blueprints/
+    collections/
+      blog/
+        basic_post.yaml
+        art_directed_post.yaml
+      taxonomies/
+        tags/
+          tag.yaml
+    globals/
+      global.yaml
+      company.yaml
+    assets/
+      main.yaml
+    forms/
+      contact.yaml
+    user.yaml
 ```
 
 Collections and Taxonomies have their available blueprints organized in subdirectories named after their collections.
@@ -105,7 +107,9 @@ sections:
         type: textarea
 ```
 
-> Blueprint fields are **sequence indexed** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
+:::tip
+Blueprint fields are **indexed sequentially** instead of keyed by handle. This format allows maximum flexibility: you can reference fields from other blueprints one or more times, override their settings inline, and even reference existing fields for [Bard](/fieldtypes/bard), [Replicator](/fieldtypes/replicator), and [Grid](/fieldtypes/grid) sets.
+:::
 
 ## Reusable Fields
 
@@ -230,7 +234,9 @@ Here's a peek at how that YAML is structured.
       - 'min:4'
 ```
 
-> If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
+:::tip
+If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
+:::
 
 ### Required Fields
 

@@ -1,133 +1,138 @@
 ---
+id: 045a6e54-c792-483a-a109-f07251a79e47
+blueprint: tag
 title: Collection
 is_parent_tag: true
-intro: Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don't judge, and neither does the Collection Tag.
-description: Fetches and filters entries in one or more collections.
+intro: 'Entries are grouped into Collections and are fetched and filtered by this tag. A Collection could contain blog posts, products, or even a bag full of dad jokes. We don''t judge, and neither does the Collection Tag.'
+description: 'Fetches and filters entries in one or more collections.'
 stage: 1
 parameters:
   -
     name: from|folder|use
     type: string|array
     description: 'The name of the collection(s). Pipe separate names to fetch entries from multiple collections. You may use `*` to get entries from all collections.'
+    required: false
   -
     name: not_from|not_folder|dont_use
     type: string|array
     description: 'When getting all collections with `*`, this parameter can accept a pipe delimited list of collections to exclude.'
+    required: false
   -
     name: collection
-    type: tag part
+    type: 'tag part'
     description: 'The name of the collection when using the shorthand syntax. This is not actually a parameter, but part of the tag itself. For example, `{{ collection:blog }}`.'
+    required: false
   -
     name: show_future
     type: 'boolean *false*'
-    description: >
-      Date-based entries from the future are
-      excluded from results by default. Of
-      course, if you want to show upcoming
-      events or similar content, flip this
-      switch.
+    description: 'Date-based entries from the future are excluded from results by default. Of course, if you want to show upcoming events or similar content, flip this switch.'
+    required: false
   -
     name: show_past
     type: 'boolean *true*'
-    description: >
-      Just like `show_future`, but for entries
-      in the past.
+    description: 'Just like `show_future`, but for entries in the past.'
+    required: false
   -
     name: since
     type: string/var
-    description: "Limits the date the earliest point in time from which date-based entries should be fetched. You can use plain English (PHP's `strtotime` method will interpret. eg. `last sunday`, `january 15th, 2013`, `yesterday`) or the name any date variable."
+    description: 'Limits the date the earliest point in time from which date-based entries should be fetched. You can use plain English (PHP''s `strtotime` method will interpret. eg. `last sunday`, `january 15th, 2013`, `yesterday`) or the name any date variable.'
+    required: false
   -
     name: until
     type: string/var
-    description: >
-      The inverse of `since`, but sets the _max_
-      date.
+    description: 'The inverse of `since`, but sets the _max_ date.'
+    required: false
   -
     name: sort
     type: string
-    description: >
-      Sort entries by field name (or `random`). You may pipe-separate multiple fields for sub-sorting and specify sort direction of each field using a colon.
-      For example, `sort="title"` or `sort="date:asc|title:desc"` to sort by date then by title.
-      To sort manually, use `sort="order"`. (Make sure to set max depth to 1 for your collection).
+    description: 'Sort entries by field name (or `random`). You may pipe-separate multiple fields for sub-sorting and specify sort direction of each field using a colon. For example, `sort="title"` or `sort="date:asc|title:desc"` to sort by date then by title. To sort manually, use `sort="order"`. (Make sure to set max depth to 1 for your collection).'
+    required: false
   -
     name: limit
     type: integer
-    description: Limit the total results returned.
+    description: 'Limit the total results returned.'
+    required: false
   -
     name: filter|query_scope
     type: string
-    description: Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters)
+    description: 'Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters)'
+    required: false
   -
     name: offset
     type: integer
-    description: The number of entries the results should by offset by.
+    description: 'The number of entries the results should by offset by.'
+    required: false
   -
     name: taxonomy
     type: mixed
-    description: >
-      A multitude of ways to filter by taxonomies. [More details](#taxonomies)
+    description: 'A multitude of ways to filter by taxonomies. [More details](#taxonomies)'
+    required: false
   -
     name: paginate
     type: 'boolean *false*'
-    description: >
-      Specify whether your entries should be paginated.
+    description: 'Specify whether your entries should be paginated.'
+    required: false
   -
     name: as
     type: string
-    description: >
-      Alias your entries into a new variable loop.
+    description: 'Alias your entries into a new variable loop.'
+    required: false
   -
     name: scope
     type: string
-    description: >
-      Scope your entries with a variable prefix.
+    description: 'Scope your entries with a variable prefix.'
+    required: false
   -
     name: locale
     type: string
-    description: Show the retrieved content in the selected locale.
+    description: 'Show the retrieved content in the selected locale.'
+    required: false
   -
     name: redirects|links
     type: 'boolean *false*'
-    description: >
-      By default, entries with redirects will be filtered out. Set this to `true` to include them.
+    description: 'By default, entries with redirects will be filtered out. Set this to `true` to include them.'
+    required: false
 variables:
   -
     name: first
     type: boolean
-    description: Is this the first item in the loop?
+    description: 'Is this the first item in the loop?'
   -
     name: last
     type: boolean
-    description: Is this the last item in the loop?
+    description: 'Is this the last item in the loop?'
   -
     name: count
     type: integer
-    description: >
-      The number/index of current iteration in the loop, starting from 1
+    description: 'The number/index of current iteration in the loop, starting from 1'
   -
     name: index
     type: integer
-    description: >
-      The number/index of current iteration in the loop, starting from 0
+    description: 'The number/index of current iteration in the loop, starting from 0'
   -
     name: order
     type: integer
-    description: >
-      The number/index of the item relative to the collection, not affected by any sort/filter parameters on the tag. Note: this is only available on collections where the order is set to number.
+    description: 'The number/index of the item relative to the collection, not affected by any sort/filter parameters on the tag. Note: this is only available on collections where the order is set to number.'
   -
     name: no_results
     type: boolean
-    description: Returns true if there are no results.
+    description: 'Returns true if there are no results.'
   -
     name: total_results
     type: integer
-    description: The total number of results in the loop when there are results. You should use `no_results` to check if any results exist.
+    description: 'The total number of results in the loop when there are results. You should use `no_results` to check if any results exist.'
   -
-    name: entry data
+    name: 'entry data'
     type: mixed
-    description: >
-      Each result has access to all the variables inside that entry (`title`, `content`, etc).
-id: 045a6e54-c792-483a-a109-f07251a79e47
+    description: 'Each result has access to all the variables inside that entry (`title`, `content`, etc).'
+related_entries:
+  - 7202c698-942a-4dc0-b006-b982784efb03
+  - 8ed04215-9f46-4000-bd67-c71b21b67d85
+  - 6177b316-0eed-4dec-83d1-e5a48a8e00b6
+  - 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+  - 74c47654-8c47-49b1-a616-ed940ce19977
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1630793235
 ---
 ## Overview
 
@@ -355,7 +360,7 @@ Sometimes not all of your entries have the same set of variables. And sometimes 
 
 You can assign a _scope_ prefix to your entries so you can be sure to get the data you want. Define your scope and then prefix all of your variables with it.
 
-```{.language-yaml}
+```yaml
 # Page data
 featured_image: /img/totes-adorbs-kitteh.jpg
 ```

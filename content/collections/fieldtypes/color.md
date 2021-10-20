@@ -2,7 +2,7 @@
 title: Color
 description: 'Pick colors, enter hex or HSLA values, and other colorful things.'
 intro: 'This fieldtype is a highly configurable color picker with simple and advanced UI modes, support for alpha channel, rgba, hsla, hsva, and more.'
-screenshot: fieldtypes/color.png
+screenshot: fieldtypes/screenshots/color.png
 options:
   -
     name: theme
@@ -52,4 +52,4 @@ The color is output as a simple string. Most often you'll use this in an inline 
 </div>
 ```
 
-## Config Options
+

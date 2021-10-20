@@ -4,6 +4,17 @@ sections:
     display: Main
     fields:
       -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: nav_title
+        field:
+          type: text
+      -
         handle: intro
         field:
           display: Intro
@@ -26,19 +37,15 @@ sections:
           display: Template
           type: template
           default: page
+  sidebar:
+    display: Sidebar
+    fields:
       -
-        handle: stage
+        handle: slug
         field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
-      -
-        handle: nav_title
-        field:
-          type: text
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'

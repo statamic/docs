@@ -1,31 +1,29 @@
 ---
 title: OAuth
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645300
 id: 3dbb14fd-a762-4891-bce1-daf13b8c5981
 blueprint: page
-stage: 1
+pro: true
 ---
-Statamic lets your users authenticate with OAuth using [Laravel Socialite](https://github.com/laravel/socialite).
+## Overview
 
-Out of the box, Statamic supports the bundled with Socialite providers (Facebook, Twitter, Google, LinkedIn, GitHub, and Bitbucket).
+Statamic supports OAuth authentication via [Laravel Socialite](https://github.com/laravel/socialite), which includes support for Facebook, Twitter, Google, LinkedIn, GitHub, and Bitbucket.
 
-The [Socialite Providers][socialite-providers] Github organization contains over 100 additional providers requiring minimal effort to install.
+The [Socialite Providers][socialite-providers] Github organization contains over 100 additional pre-built providers that you can take advantage of as well.
 
-Finally, if you require a provider not on the list, you may write your own.
+If you require a provider not on the list, (perhaps you need a custom one for your own application) you may [create your own provider](#custom-providers).
 
-## Installation
+## Installing Socialite
 
-Install Laravel Socialite:
+Install Socialite with the following Composer command:
 
-``` bash
+``` shell
 composer require laravel/socialite
 ```
 
 Enable OAuth in `config/statamic/oauth.php` or in your environment file:
 
-``` .env
+``` env
 STATAMIC_OAUTH_ENABLED=true
 ```
 
@@ -138,9 +136,7 @@ Add the provider to the `config/statamic/oauth.php` config:
 
 ## Custom Providers
 
-If your OAuth provider isn’t already available, you may create your own.
-
-Before you dive into creating your own, you should check the [SocialiteProviders][socialite-providers] site, there’s already over 100 of them, ready for you to drop in.
+If your OAuth provider isn’t already available in Socialite or [SocialiteProviders][socialite-providers], you may create your own.
 
 To create your own OAuth provider, you should make your own SocialiteProvider-ready provider. All that's needed is the event handler (eg. `DropboxExtendSocialite.php`) and the provider (eg. `Dropbox.php`).
 
@@ -148,9 +144,7 @@ Follow the [third party installation steps](#third-party-providers), but skip th
 
 ## Customizing User Data
 
-After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist.
-
-You may customize how it's done by adding a callback to your `AppServiceProvider`.
+After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist. You may customize how it's handled by adding a callback to your `AppServiceProvider`.
 
 ### User data
 
@@ -182,4 +176,4 @@ OAuth::provider('github')->withUser(function ($user) {
 });
 ```
 
-[socialite-providers]: https://socialiteproviders.netlify.com/
+[socialite-providers]: https://socialiteproviders.com/

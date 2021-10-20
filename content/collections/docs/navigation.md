@@ -1,8 +1,8 @@
 ---
 title: Navigation
-intro: A nav (or navigation for long) is a hierarchy of links and text nodes that are used to build navs and menus on the frontend of your site.
+intro: A nav (or navigation for long) is a hierarchy of links and text nodes that are used to build navs and menus on the frontend of your site. Trust me, you've seen them before. You're looking at one right now, just move your eyeballs up a little bit. Yeah, there it is.
 id: 2af9fc45-66d0-4ca5-9761-00017076144f
-stage: 4
+blueprint: page
 ---
 ## Overview
 
@@ -24,14 +24,14 @@ Navs are stored in `content/navigation`. Each gets its own YAML file whose handl
 
 The actual contents of the structure - the "tree" - is stored separately in `content/trees/navigation`.
 
-``` files
+``` files theme:serendipity-light
 content/
-|-- navigation/
-|   |-- header.yaml
-|   `-- footer.yaml
-`-- trees/
-    |-- header.yaml
-    `-- footer.yaml
+    navigation/
+        header.yaml
+        footer.yaml
+    trees/
+        header.yaml
+        footer.yaml
 ```
 
 ``` yaml
@@ -96,4 +96,4 @@ In the case of entry reference nav items, any fields you add to the nav blueprin
 
 ## Localization
 
-When running a [multi-site](/multi-site) installation, you can have a different tree for each nav. Learn more about [localizing navs](/knowledge-base/localizing-navigation).
+When running a [multi-site](/multi-site) installation, you can have a different tree for each nav. Learn more about [localizing navs](/tips/localizing-navigation).

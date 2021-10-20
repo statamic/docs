@@ -3,7 +3,7 @@ title: Checkboxes
 description: Boxes you check. You can check 'em all.
 intro: >
   Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes you check.
-screenshot: fieldtypes/checkboxes.png
+screenshot: fieldtypes/screenshots/checkboxes.png
 options:
   -
     name: inline
@@ -69,7 +69,7 @@ You can loop through the checked items and access the value and label of each it
 </ul>
 ```
 
-``` output
+```html
 <ul>
     <li>donuts</li>
     <li>icecream</li>
@@ -86,4 +86,4 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `value` | The stored value of the checkbox |
 | `label` | The label of the checkbox item from the field config |
 
-## Config Options
+

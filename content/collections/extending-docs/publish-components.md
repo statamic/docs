@@ -13,7 +13,7 @@ to do all the server-side bits, [check out the publish forms page](/extending/pu
 
 ### Basic Forms
 
-If you're creating a basic form, there's a [pre-built form component](#form) that could work for the 80% use case. <mark>This is probably enough for you!</mark>
+If you're creating a basic form, there's a [pre-built form component](#form) that could work for the 80% use case. **This is probably enough for you!**
 
 ### Complex Forms
 

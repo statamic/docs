@@ -1,7 +1,9 @@
 ---
+id: a070fabe-c413-4b31-9cb4-ad14bbe1aa4d
+blueprint: modifiers
 modifier_types:
   - array
-id: a070fabe-c413-4b31-9cb4-ad14bbe1aa4d
+title: 'Group By'
 ---
 ## Overview
 
@@ -12,7 +14,7 @@ based on some common value.
 
 The most basic usage example would be to take a simple array and output the groups using the key.
 
-```.language-yaml
+```yaml
 sponsors:
   -
     sport: basketball
@@ -39,7 +41,7 @@ sponsors:
 {{ /sponsors }}
 ```
 
-```.language-output
+```html
 <h1>Basketball</h1>
 Jazz
 Bulls
@@ -128,10 +130,13 @@ Another entry from September
 Entry from October
 ```
 
-> The date field in this example is named `date`, but you can use any date field.
-> ```
-> {{ entries group_by="custom_date_field|F Y" }}
-> ```
+:::tip
+The date field in this example is named `date`, but you can use any date field.
+
+```
+{{ entries group_by="custom_date_field|F Y" }}
+```
+:::
 
 If you need the key to differ from how it's displayed (perhaps you want to use an additional modifier after), you can pass another date format as the
 third argument. (Argument 2 creates the key, argument 3 creates the `{{ group }}` text).

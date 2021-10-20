@@ -1,0 +1,14 @@
+title: Reference
+template: reference/show
+layout: layout
+mount: 3e260b43-aa71-43b6-832e-1ebf2f59f39b
+revisions: false
+route: '/reference/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+structure:
+  root: false
+inject:
+  section: reference

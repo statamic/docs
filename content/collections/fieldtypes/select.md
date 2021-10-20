@@ -2,7 +2,7 @@
 title: Select
 description: Choose from predefined options. This field is highly configurable.
 intro: Give your users a list of options to choose from. This select field is highly configurable with support for search, multiple choice, and creating new options on the fly.
-screenshot: fieldtypes/select.png
+screenshot: fieldtypes/screenshots/select.png
 options:
   -
     name: clearable
@@ -84,8 +84,8 @@ Select fields return the **value** from your selected option. You can access the
 <p id="{{ select }}"> Oh yeah? {{ select:value }}</p>
 ```
 
-``` output
+```html
 <p id="face">Oh yeah? So's your face.</p>
 ```
 
-## Config Options
+

@@ -3,7 +3,7 @@ title: Revealer
 description: A button that reveals conditional fields like magic.
 intro: The revealer is a simple button that reveals conditional fields without saving any additional data.
 id: 54066363-7dec-431c-86c6-7e9353380ef5
-screenshot: fieldtypes/revealer.gif
+screenshot: fieldtypes/screenshots/revealer.gif
 stage: 3
 options:
   -
@@ -36,4 +36,4 @@ The example image above uses the following field configuration:
 
 Regardless of whether the button was clicked or not, no data will be saved.
 
-## Config Options
+

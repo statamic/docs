@@ -1,12 +1,14 @@
 ---
+id: f1486fa5-7cce-4c75-90cd-e131f5f6d184
+blueprint: modifiers
 modifier_types:
   - array
   - utility
-id: f1486fa5-7cce-4c75-90cd-e131f5f6d184
+title: Unique
 ---
 Returns all of the unique items in the array:
 
-```.language-yaml
+```yaml
 checklist:
   - zebra
   - hippo
@@ -24,6 +26,6 @@ checklist:
 {{ checklist | unique | list }}
 ```
 
-```.language-output
+```html
 zebra, hippo, hyena, giraffe
 ```

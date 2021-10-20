@@ -1,37 +1,26 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title ensure_right=" Tag"}}</h1>
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title ensure_right=" Tag" }}</h1>
+        {{ partial:pro-badge }}
+    </div>
     {{ intro ?? overview | markdown }}
+    {{ partial:toc }}
 </header>
 
 <article class="markdown pb-8">
     {{ content | toc:ids }}
 
     {{ if parameters }}
-    <h2 id="parameters">Parameters</h2>
+        <h2 id="parameters">Parameters</h2>
+        {{ partial:details :details="parameters" }}
     {{ /if }}
-
-    {{ partial:tags/parameters }}
 
     {{ if variables }}
         <h2 id="variables">Variables</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Variable</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ variables }}
-                <tr>
-                    <td class='font-display font-bold'>{{ name | markdown }}</td>
-                    <td><code>{{ type }}</code></td>
-                    <td>{{ description | markdown  }}</td>
-                </tr>
-                {{ /variables}}
-            </tbody>
-        </table>
+        {{ partial:variables }}
     {{ /if }}
 
 </article>
+
+{{ partial:edit }}

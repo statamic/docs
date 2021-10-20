@@ -1,0 +1,14 @@
+{{ if segment_2 }}
+<nav class="breadcrumbs space-x-2 flex mb-8 text-sm">
+    <a href="/" class="no-underline font-normal">Docs</a>
+    <span>/</span>
+    {{ nav:breadcrumbs include_home="false" }}
+        {{ if is_current }}
+            <span>{{ breadcrumb_title ?? nav_title ?? 'Here' }}</span>
+        {{ else }}
+            <a href="{{ url }}" class="no-underline font-normal">{{ breadcrumb_title ?? nav_title ?? title }}</a>
+            <span>/</span>
+        {{ /if }}
+    {{ /nav:breadcrumbs }}
+</nav>
+{{ /if }}

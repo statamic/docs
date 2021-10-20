@@ -1,0 +1,306 @@
+---
+id: e7833062-e05c-42c9-ad35-dc5077f1f0b8
+blueprint: page
+title: 'Content Queries'
+intro: |
+  Statamic provides a fluent query builder interacting with your content and data in PHP-land. If you think of them as Laravel Eloquent Models, you should feel right at home.
+---
+## Overview
+
+Each of the core Statamic data types has its own Facade used to access an underlying repository class so you can query, create, modify, and delete content. Working with data in this manner is usually done in a [Controller](/controllers), with any retrieved data being passed into a view.
+
+:::callout /extending/repositories
+Learn how Statamic can use different storage methods!
+:::
+
+These methods will work no matter which driver you're using — flat files, Eloquent/MySQL, or any other custom repo driver.
+
+:::tip
+While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/8.x/queries), they are **completely separate implementations**.
+
+What follows is complete documentation on all available methods. If you need a method available in Laravel that we don't currently support, feel free to open a [feature request](https://github.com/statamic/ideas) or better yet, a [Pull Request](https://github.com/statamic/cms)!
+:::
+
+
+
+
+
+## Retrieving Data
+
+There are two different types of classes you'll interact with while querying content: Repositories and Query Builders.
+
+### Repositories
+
+Each Facade interacts with a **repository**, which allows you to get data about the desired data type. For example, you can use the `Entry` Facade to get an entry, or the `GlobalSet` Facade to get all the variables inside of it.
+
+```php
+use Statamic\Facades\Entry;
+use Statamic\Facades\GlobalSet;
+
+Entry::find('abc123');
+GlobalSet::findByHandle('footer')->get('copyright');
+```
+
+### Query Builders
+Some Facades also have a **Query Builders** that allows you to query, filter, and narrow down the results you desire. The `Entry` Facade's Query Builder allows you to find all the entries in a collection, by a specific author, and so on.
+
+:::tip
+All Query Builders are part of a Repository, but not all Repositories have a Query Builder. Just like how all donuts are deserts, but not all deserts are donuts. 🍩
+:::
+
+**Query Builders** allow you to assemble a query, chain additional constraints onto it, and then invoke the `get` method to get the results:
+
+```php
+use Statamic\Facades\Entry;
+
+$entries = Entry::query()
+  ->where('collection', 'blog')
+  ->limit(5)
+  ->get();
+```
+
+This would return a `Collection` of the items. In this particular example, you would have a `Collection` of `Entry` objects.
+
+### Examples {.popout}
+
+#### Getting a single record
+
+If you only want to get a single record, you may use the `first` method. This method will return a single data object:
+
+```php
+Entry::query()
+    ->where('collection', 'blog')
+    ->first();
+```
+
+#### Getting specific fields
+
+This method is really only helpful when using a database — it improves query speed by performing column `SELECT`s behind the scenes.
+
+```php
+Entry::query()
+    ->where('collection', 'blog')
+    ->get(['title', 'hero_image', 'content']);
+```
+
+
+
+
+
+
+## Basic Where Clauses
+
+:::tip
+All `where` clauses are additive, filtering records based on more than one condition with `AND`. At this time there are no `OR` style methods.
+:::
+
+### Where
+You may use the query builder's `where` method to add "where" clauses to the query. The most basic call to the `where` method requires three arguments. The first argument is the name of the field. The second argument is an operator, which can be any of the supported operators. The third argument is the value to compare against the field's value.
+
+For example, the following query Gets entries in the `blog` collection where the value of a `featured` field is `true`.
+
+```php
+Entry::query()
+    ->where('collection', '=', 'blog') // [tl! hightlight:start]
+    ->where('status', '=', 'featured') // [tl! highlight:end]
+    ->get();
+```
+
+As a shorthand for an "equals" query, you may pass the value as the second argument to the `where` method. Statamic will assume you would like to use the `=` operator:
+
+```php
+Entry::query()->where('collection', 'blog')->get();
+```
+
+### WhereIn
+The `whereIn` method to check a field against an a given array of values:
+
+```php
+Entry::query()
+    ->where('collection', 'blog')
+    ->whereIn('status', ['featured', 'sticky', 'special']) // [tl! ~~]
+    ->get();
+```
+
+You can also use the `whereNotIn` method to ensure a given field's value is not contained in a given array of values:
+
+```php
+Entry::query()
+    ->where('collection', 'blog')
+    ->whereNotIn('status', ['draft', 'boring']) // [tl! ~~]
+    ->get();
+```
+
+
+
+
+
+## Operators
+
+The following operators are available in [basic where clauses](#basic-where-clauses) when appropriate for a targeted field's datatype, just like SQL.
+
+| Operator | Description |
+| -------- | ----------- |
+| `=` | Equals |
+| `<>` or `!=` | Not Equals |
+| `like` | Like |
+| `not like` | Not Like |
+| `regexp` | Like Regex |
+| `not regexp` | Not Like Regex |
+| `>` | Greater Than |
+| `<` | Less Than |
+| `>=` | Greater Than Or Equal To |
+| `<=` | Less Than Or Equal To |
+
+
+### Like & Not Like
+
+The `like` operator is used in `where` clause to search for a specified pattern in a field. `not like` is the inverse, ensuring that the results **do not* match a pattern.
+
+There are two wildcards used in conjunction with the `like` operator:
+
+- The percent sign `%` represents zero, one, or multiple characters
+- The underscore sign `_` represents one, single character
+
+#### Examples {.popout}
+
+#### Get all Users with a gmail email address
+```php
+User::query()
+    ->where('email', 'like', '%@gmail.com')
+    ->get();
+```
+
+#### Get all Entries where "wip" is not in the title
+```php
+Entry::query()
+    ->where('title', 'not like', '% wip %')
+    ->get();
+```
+
+#### Get all Assets with "thumbnail" in the filename.
+```php
+Asset::query()
+    ->where('filename', 'like', '%thumbnail%')
+    ->get();
+```
+
+#### Get all Users who are (probably) not doctors
+```php
+User::query()
+    ->where('name', 'not like', ['Dr.%', '%MD', '%M.D.'])
+    ->get();
+```
+
+### Regex & Not Regex
+
+The `regex` operator is used in `where` clause to search for records where a field matches a given regular expression, while `not regex` is the inverse — ensuring that results **do not** match a regular expression.
+
+:::tip
+Internally, this rule uses the PHP `preg_match` function. The pattern specified should obey the same formatting required by `preg_match` and therefore also include valid delimiters. For example: `'/^.+$/i'`.
+:::
+
+#### Examples {.popout}
+
+#### Find entries with Antlers expressions in content
+```php
+Entry::query()
+    ->where('content', 'regexp', '/{{/')
+    ->get();
+```
+
+#### Find all Star Trek movie subtitles but not Star Wars
+```php
+Entry::query()
+    ->where('collection', 'movies')
+    ->where('title', 'not regexp', '/m | [tn]|b/')
+    ->get();
+// [tl! collapse:start]
+// Okay so this regex doesn't work on any of the Star Wars
+// movies after Rogue One but let's not split hairs here.
+// This is a good example and you know it.
+
+// If we can get enough support though we can submit a
+// petition to Disney to rename the last 3 Skywalker sequels
+// so we don't need to change our regex:
+
+// The Force Awakens -> Awakening of the Force
+// The Last Jedi -> Near Extinction of the Jedi
+// The Rise of Skywalker -> Ascent of the Walker in the Sky [tl! collapse:end]
+```
+
+### Greater Than & Less Than (Or Equal To)
+
+The `greater than` operator is used to compare two values. If the first is greater than the second, the match will be included. The `greater than or equals` operator will include exact matches.
+
+The `less than` operator is used to compare two values. If the first is less than the second, the match will be included. The `greater than or equals` operator will include exact matches.
+
+#### Examples {.popout}
+
+#### Find all Users old enough to enjoy a dram of whisky in the U.S.
+
+```php
+User::query()
+    ->where('age', '>=', 21)
+    ->get();
+```
+
+#### Find all Pre-Y2K news
+
+```php
+Entry::query()
+    ->where('collection', 'news')
+    ->where('date', '<', '2000')
+    ->get();
+```
+
+## Ordering, Limiting, & Offsetting
+
+The `orderBy` method allows you to sort by a given field, or in random order:
+
+```php
+Entry::query()->orderBy('title', 'desc')->get();
+Entry::query()->orderBy('date', 'asc')->get();
+Entry::query()->inRandomOrder()->get();
+```
+
+You may limit and/or skip results by using the `limit` and `offset` methods:
+
+```php
+Entry::query()->offset(5)->limit(5)->get();
+```
+
+
+
+
+
+## Count
+
+The query builder also provides the `count` method for retrieving the number of records returned.
+
+```php
+Entry::query()->count();
+```
+
+
+
+
+
+
+## Paginating
+
+Paginate results by invoking the `paginate` method on a query instead of `get`, and specifying the desired number of results per page.
+
+```php
+Entry::query()->paginate(15);
+```
+
+This will return an instance of `Illuminate\Pagination\LengthAwarePaginator` that you can use to assemble the pagination style of your choice.
+
+:::tip
+You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/8.x/pagination#paginator-instance-methods)in the Laravel docs.
+:::
+
+## Repository Classes
+
+Head to the [Repositories Reference](reference/repositories) area for the complete list of classes and methods.

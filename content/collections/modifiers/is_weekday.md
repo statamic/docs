@@ -1,12 +1,14 @@
 ---
+id: a190fa95-c405-4e2c-b3c0-adfbe21f9bb2
+blueprint: modifiers
 modifier_types:
   - date
   - conditions
-id: a190fa95-c405-4e2c-b3c0-adfbe21f9bb2
+title: 'Is Weekday'
 ---
 Returns `true` if date is a weekday.
 
-```.language-yaml
+```yaml
 date: December 25 2015
 ```
 
@@ -15,6 +17,6 @@ date: December 25 2015
 ```
 
 
-```.language-output
+```html
 true
 ```

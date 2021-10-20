@@ -9,15 +9,14 @@ options:
     type: string/array
     description: >
       You can pass a single collection as a string or multiple collections as an array.
-image: /assets/fieldtypes/collections.png
-video: https://youtu.be/TkxvBIGzUr8
+screenshot: /fieldtypes/screenshots/collections.png
 id: 44c3da60-ef47-408e-afc4-a33026c86f5d
 ---
 ## Usage
 
 This fieldtype is used to view and select from a list of Collections.
 
-```.language-yaml
+```yaml
 fields:
   my_collections_field:
     type: collections
@@ -27,7 +26,7 @@ fields:
 
 The Collections fieldtype is a [Relate fieldtype](/fieldtypes/relate), and will save the collections as their handles (the folder name).
 
-``` .language-yaml
+```yaml
 listings:
   - blog
   - things
@@ -47,7 +46,7 @@ Since the collection tag accepts a pipe-delimited list of collection names, you 
 </ul>
 ```
 
-``` .language-output
+```html
 <ul>
   <li>A blog entry</li>
   <li>A thing entry</li>

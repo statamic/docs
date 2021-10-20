@@ -39,4 +39,6 @@ This tag can be used both as a conditional and as the data itself.
 {{ /form:set }}
 ```
 
-> `form:errors` is a Tag, not a variable. Wrap it with single braces when inside a conditional.
+:::tip
+`form:errors` is a Tag, not a variable. Be sure to wrap it with single braces when inside a condition.
+:::

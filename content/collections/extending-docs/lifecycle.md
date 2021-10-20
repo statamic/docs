@@ -79,4 +79,6 @@ Statamic.booted(() => {
 });
 ```
 
-> The Vue part of the lifecycle only applies to Control Panel requests. Since you have 100% control over the front-end of your site, you can do whatever you want.
+:::tip
+The Vue part of the lifecycle only applies to Control Panel requests. Since you have 100% control over the front-end of your site, you can do whatever you want there.
+:::

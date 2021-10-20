@@ -36,7 +36,7 @@ For this example we will create a password field with a "show" toggle control:
 
 Create a fieldtype PHP class and Vue component by running the following command:
 
-``` bash
+``` shell
 php please make:fieldtype TogglePassword
 ```
 
@@ -139,8 +139,9 @@ protected function configFieldItems(): array
 | **width*
 | ***other*** | Some fieldtypes have additional configuration options available. |
 
-> A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.1/src/Fieldtypes>
-
+:::tip
+A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.2/src/Fieldtypes>
+:::
 
 ## Meta Data
 
@@ -190,8 +191,9 @@ computed: {
 }
 ```
 
-> This _does_ support returning an html string, so you could display image tags for a thumbnail, etc. But be aware of the limited space.
-
+:::tip
+This _does_ support returning an HTML string so you could display image tags for a thumbnail, etc. Just be aware of the limited space.
+:::
 
 ## Index Fieldtypes
 

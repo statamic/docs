@@ -75,7 +75,9 @@ class EventServiceProvider
 }
 ```
 
-> Invalidating by `key` won't work if you're using tags. In that case, you should invalidate by flushing the tag.
+:::warning
+Invalidating by `key` won't work if you're using tags. In that case, you should invalidate by flushing the tag.
+:::
 
 ### Tag
 
@@ -94,7 +96,9 @@ Cache::tags('home')->flush(); // invalidates first and second pair
 Cache::tags('stocks')->flush(); // invalidates first and third pair
 ```
 
-> Don't use the `key` and `tags` parameters together.
+:::warning
+Don't use the `key` and `tags` parameters together.
+:::
 
 ### Cache clear
 
@@ -102,7 +106,7 @@ The contents of your cache tags are stored in the application cache. Clear that,
 
 You can clear your cache using the Artisan command:
 
-``` bash
+``` shell
 php artisan cache:clear
 ```
 
@@ -130,7 +134,9 @@ However, your header navigation might have "active" states on it, so you'd want 
 ```
 
 
-> The `scope` parameter has no effect if you use the `key` parameter.
+:::tip
+The `scope` parameter has no effect if you use the `key` parameter.
+:::
 
 
 ## Static Caching

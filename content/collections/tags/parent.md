@@ -34,6 +34,6 @@ As a tag pair, it will have access to all the parent's data:
 {{ /parent }}
 ```
 
-``` output
+```html
 Go back to <a href="/tags">Tags</a>.
 ```

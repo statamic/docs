@@ -1,11 +1,13 @@
 ---
+id: c3214196-3d0d-4a3d-b6c3-1ee4960cfe5d
+blueprint: modifiers
 modifier_types:
   - utility
-id: c3214196-3d0d-4a3d-b6c3-1ee4960cfe5d
+title: 'To Json'
 ---
 Converts any variable into JSON.
 
-```.language-yaml
+```yaml
 stats:
   - player: Luke Skywalker
     score: 750
@@ -19,7 +21,7 @@ stats:
 {{ stats | to_json }}
 ```
 
-```.language-output
+```html
 [
   {"player":"Luke Skywalker","score":750},
   {"player":"Wedge Antilles","score":688},

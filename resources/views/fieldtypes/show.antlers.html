@@ -1,31 +1,27 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title ensure_right=" Fieldtype"}}</h1>
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title ensure_right=" Fieldtype" }}</h1>
+        {{ partial:pro-badge }}
+    </div>
     {{ intro ?? overview | markdown }}
-    {{ partial:video_link }}
+    {{ partial:toc }}
 </header>
 
-<article class="markdown pb-8">
+<article class="markdown md:pb-16">
     <figure>
         {{ screenshot }}
         <img src="{{ url }}" width="{{ width | /:2 }}px" alt="{{ title }} Fieldtype UI">
         {{ /screenshot }}
-        <figcaption>Behold! The {{ title }} Fieldtype!</figcaption>
+        <figcaption>Behold! The {{ title }}!</figcaption>
     </figure>
 
     {{ content | toc:ids }}
 
-    {{ options }}
-    <div class="{{ ! last ?= 'border-b' }} border-grey-400 mt-4 pb-4">
-        <h3 class="inline-block mb-3 badge text-sm lowercase {{ required ?= 'bg-pink-hot shadow-md-teal text-white' }}">
-            <span class="font-display font-bold">{{ name }}</span>
-            <span class="text-xs opacity-75">{{ type }}</span>
-        </h3>
-        {{ if required }}
-        <span class="ml-1 relative align-top inline-block font-bold text-pink-hot font-display">*</span>
-        {{ /if }}
-        <div class="markdown">
-            {{ description | widont }}
-        </div>
-    </div>
-    {{ /options }}
+    {{ if options }}
+        <h2 id="options">Options</h2>
+        {{ partial:details :details="options" }}
+    {{ /if }}
 </article>
+
+{{ partial:edit }}

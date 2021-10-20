@@ -1,11 +1,12 @@
 title: Variables
-route: '{mount}/{slug}'
-default_status: published
 template: variables.show
 layout: layout
-revisions: false
-mount: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
+mount: 03cf195b-2030-43c1-a6f3-039fa55ffd6a
 taxonomies:
   - types
+revisions: false
+route: '/variables/{slug}'
+sort_dir: asc
 inject:
   view_model: App\ViewModels\Variables
+  section: reference

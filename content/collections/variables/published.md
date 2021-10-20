@@ -1,7 +1,9 @@
 ---
+id: d374ba18-d8cc-4700-a79c-c7da5a26b314
+blueprint: variables
 types:
   - content
-id: d374ba18-d8cc-4700-a79c-c7da5a26b314
+title: Published
 ---
 A boolean that specifies whether the content is published. Or "live", or "not a draft".
 

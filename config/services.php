@@ -34,4 +34,8 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'github' => [
+        'token' => env('GITHUB_TOKEN'),
+    ]
+
 ];

@@ -39,11 +39,11 @@ permissions:
 
 It could be useful to only allow some permissions if others have already been granted. For example, you want a tree like this:
 
-``` files
+``` files theme:serendipity-light
 view blog entries
-`-- edit blog entries
-    |-- create blog entries
-    `-- delete blog entries
+    edit blog entries
+        create blog entries
+        delete blog entries
 ```
 
 Initially, only the `view` option will be selectable. When you check it, then the `edit` option becomes selectable.
@@ -118,7 +118,9 @@ Permission::register('view {collection} entries', function ($permission) {
 });
 ```
 
-> When using replacements, ensure your `label` string contains a placeholder prefixed with a colon.
+:::tip
+When using replacements, ensure your `label` string contains a placeholder prefixed with a colon.
+:::
 
 ## Groups
 

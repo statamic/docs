@@ -3,7 +3,6 @@ title: Licensing
 intro: 'Statamic 3 is available in two distinct flavors, but one splendid codebase. Statamic Solo is **free and open source** for personal and hobby use, while **Statamic Pro** is powerful commercial software designed for team use.'
 blueprint: page
 id: 56fadb93-b846-4867-ad73-4f721cc940c2
-stage: 5
 ---
 ## Solo vs. Pro
 
@@ -40,7 +39,9 @@ Once it’s time to launch your site on a public domain, there are a few things 
 STATAMIC_LICENSE_KEY=your-site-license-key
 ```
 
-> If you're using the free version of Statamic and you don't have any commercial addons installed, you don't need to create and link a site. But you can if you want! Being organized is a nice thing.
+:::tip
+If you're using the free version of Statamic and you don't have any commercial addons installed, you don't need to create and link a site. But you can if you want! Being organized is a nice thing.
+:::
 
 ## Sites
 

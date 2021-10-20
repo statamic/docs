@@ -1,0 +1,57 @@
+@layer utilities {
+    .hover\:bg-gradient-animate {
+        background-size: 200% 200%;
+    }
+
+    .bg-gradient-animate,
+    .hover\:bg-gradient-animate:hover {
+        background-size: 200% 200%;
+        animation: colorSweep 5s ease infinite;
+    }
+
+    @keyframes colorSweep {
+        0% {
+            background-position: 0% 50%
+        }
+
+        50% {
+            background-position: 100% 50%
+        }
+
+        100% {
+            background-position: 0% 50%
+        }
+    }
+
+    [x-cloak] {
+        display: none;
+    }
+
+    .hover\:underline-grow,
+    .hover-within\:underline-grow a {
+        position: relative;
+
+        &:after {
+            @apply absolute block bg-white right-0 w-0;
+            content: '';
+            height: 1px;
+            margin-top: 2px;
+            transition: width .2s ease;
+            -webkit-transition: width .2s ease;
+        }
+
+        &:hover:after {
+            width: 100%;
+            left: 0;
+            background: #fff;
+        }
+    }
+
+    .flip-x {
+        transform: scaleX(-1);
+    }
+
+    .flip-y {
+        transform: scaleY(-1);
+    }
+}

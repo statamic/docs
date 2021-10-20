@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  
+<g transform="matrix(1,0,0,1,0,0)"><g>
+    <g>
+      <path d="M15,17.33V19.5a3,3,0,0,1-6,0V17.33" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></path>
+      <line x1="12" y1="22.5" x2="12" y2="23.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+      <path d="M13,17.93V12a1.5,1.5,0,1,1,1.5,1.5h-5A1.5,1.5,0,1,1,11,12v5.93" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></path>
+      <line x1="9.04" y1="20" x2="14.96" y2="20" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    </g>
+    <circle cx="12" cy="11" r="7" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></circle>
+    <line x1="12" y1="0.5" x2="12" y2="1.5" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="4.58" y1="3.58" x2="5.28" y2="4.28" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="1.5" y1="11" x2="2.5" y2="11" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="4.58" y1="18.43" x2="5.28" y2="17.72" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="19.42" y1="18.43" x2="18.72" y2="17.72" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="22.5" y1="11" x2="21.5" y2="11" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+    <line x1="19.42" y1="3.58" x2="18.72" y2="4.28" style="fill: none;stroke: currentColor;stroke-linecap: round;stroke-miterlimit: 10"></line>
+  </g></g></svg>

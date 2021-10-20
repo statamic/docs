@@ -1,8 +1,7 @@
 ---
 title: Taxonomies
 intro: A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.
-stage: 3
-vide: https://youtu.be/vssXeEC118M
+blueprint: page
 id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
 ---
 ## Overview
@@ -12,6 +11,10 @@ Taxonomies give you the ability to tag your entries and then fetch and sort all 
 Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
 Each entry in a taxonomy is often called a **term**.
+
+:::watch https://youtube.com/embed/vssXeEC118M
+Watch how to set up your first Taxonomy
+:::
 
 ## Collections
 
@@ -31,7 +34,9 @@ If you create _more than_ one blueprint you'll be given the option to choose whi
 
 Taxonomy routes are automatically created for you **if the corresponding view exists**.
 
-> URLs will use slugs with dashes, and views will use handles which have underscores.
+:::tip
+URLs use slugs with dashes, and views use handles with underscores.
+:::
 
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
@@ -134,7 +139,9 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 {{ /terms }}
 ```
 
->  You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
+:::tip
+You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
+:::
 
 ### Listing Term Entries
 
@@ -154,4 +161,4 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 
 - A fundamental understanding of [collections](/collections) is pretty important.
 - The [taxonomy tag](/tags/taxonomy) can come in handy when you're not on taxonomy routes.
-- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/knowledge-base/taxonomies-by-hand)
+- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/tips/taxonomies-by-hand)

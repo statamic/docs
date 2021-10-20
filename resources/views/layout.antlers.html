@@ -9,102 +9,35 @@
     <meta property="og:title" content="{{ title }}" />
     <meta property="og:description" content="{{ intro | striptags }}" />
     <meta property="og:url" content="{{ permalink }}" />
-    <meta property="og:site_name" content="statamic.dev" />
+    <meta property="og:site_name" content="Statamic Docs" />
     <meta property="og:locale" content="en_US" />
+    {{# <meta property="og:image" content="{{ snapit:og }}" /> #}}
+    <meta property="og:image" content="https://statamic.dev/img/social-placeholder.png" />
+    <meta property="twitter:title" content="{{ title }}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@statamic" />
+    {{# <meta property="twitter:image" content="{{ snapit:twitter }}" /> #}}
+    <meta property="twitter:image" content="https://statamic.dev/img/social-placeholder.png" />
+    <meta property="twitter:description" content="{{ intro | striptags }}" />
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
-    <link rel="stylesheet" href="https://use.typekit.net/ysf3wph.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css" defer>
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script type="text/javascript">
-        function bodyData() {
-            let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
-            return {
-                showNav: false,
-                showEasterEgg: false,
-                bindings: {
-                    ['@keydown.slash.prevent']() {
-                        this.$refs.docsSearch.focus();
-                    },
-                    ['@keydown.' + primaryKeyBind + '.k.prevent']() {
-                        this.$refs.docsSearch.focus();
-                    }
-                }
-            };
-        }
-    </script>
+    <script src="{{ mix src='/js/app.js' }}" defer></script>
 </head>
-<body class="text-blue-darkest leading-normal language-antlers" x-data="bodyData()" x-spread="bindings">
-
+<body class="font-sans leading-normal" x-data="bodyData()" x-spread="bindings">
+{{ partial:partials/promo }}
 {{ partial:partials/nav }}
-
-<div class="w-full max-w-screen-xl mx-auto pt-12 lg:flex relative" id="top">
-    <div id="side-nav" class="lg:block w-full lg:w-auto flex-1 px-6 {{ hide_sidebar ?= 'pr-2'}} pt-1 pb-12 overflow-auto min-h-screen" x-show="showNav">
-        {{ partial:side-nav }}
-    </div>
-    <div id="content" class="w-full lg:w-1/2 {{ response_code == 404 || hide_sidebar ? 'lg:w-3/4 xl:w-4/5' : 'xl:w-3/5' }} px-4 lg:px-6 xl:px-12" x-bind:class="{ 'overflow-state': showNav }">
+<div class="max-w-7xl mx-auto flex px-4 md:px-10 py-6 lg:py-12" name="top">
+    {{ partial:side-nav }}
+    <div id="content" class="w-full {{ content_width ?? 'max-w-2xl' }}" x-show="! showNav">
         {{ template_content }}
-        {{ partial:edit }}
+        {{ partial:back-to-top }}
     </div>
-    {{ unless response_code == 404 || hide_sidebar }}
-    <div class="hidden lg:block lg:w-1/4 xl:w-1/5 px-8 pt-1 relative">
-        <nav class="side-nav sticky top-16">
-            {{ if content | toc }}
-            <h5>On This Page</h5>
-            {{ content | toc }}
-            {{ /if }}
-        </nav>
-    </div>
-    {{ /unless }}
 </div>
-
-{{ if get:ref == "docs.statamic.com" }}
-    <div class="fixed z-50 bottom-0 inset-x-0 pb-2 sm:pb-5 translate-y-0" x-data="{ show: getCookie('banner') != 'false' }" x-show="show" x-cloak>
-        <div class="py-3 px-5 bg-blue-darkest text-white font-display shadow-lg-mint mx-4">
-            <div class="flex items-center justify-between flex-wrap">
-                <div class="w-full md:flex-1 flex items-center">
-                    {{ svg src="statamic-mark" class="mr-4 hidden md:block" }} Hello there! Are you looking for the Statamic v2 documentation?
-                </div>
-                <div class="w-full md:w-auto flex items-center justify-between md:justify-end mt-6 md:mt-0">
-                    <button @click="show = false; setCookie('banner', 'false');" class="hover:underline mr-4">Nope</button>
-                    <a class="bg-white text-blue-darkest hover:bg-blue-lightest px-3 rounded-sm text-sm py-1" href="https://v2.statamic.com">Yes! Send me there! &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </div>
-{{ /if }}
-
-<div id="site-footer" class="bg-blue-darkest text-blue-lightest font-display italic antialiased text-sm mt-8 p-8 flex items-center justify-between">
-    <p>Copyright {{ now format="Y" }} Statamic • <b>Powered by {{ powered_by sort="random" limit="1" }}{{ value }}{{ /powered_by }}</b></p>
-    {{ partial:social }}
-</div>
-<script src="{{ mix src='/js/app.js' }}"></script>
-<!-- Fathom - simple website analytics - https://usefathom.com -->
-<script>
-(function(f, a, t, h, o, m){
-a[h]=a[h]||function(){
-(a[h].q=a[h].q||[]).push(arguments)
-};
-o=f.createElement('script'),
-m=f.getElementsByTagName('script')[0];
-o.async=1; o.src=t; o.id='fathom-script';
-m.parentNode.insertBefore(o,m)
-})(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'LGYIPVOA');
-fathom('trackPageview');
-</script>
-<!-- / Fathom -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script type="text/javascript">docsearch({
-algoliaOptions: {
-    hitsPerPage: 8,
-},
-apiKey: 'b5e8f73c7462a6d5c8b525ef183aabec',
-indexName: 'statamic_3',
-inputSelector: '#docs-search',
-debug: false
-});
-</script>
+{{ partial:old-docs-banner }}
+{{ partial:footer }}
+{{ partial:scripts }}
 </body>
 </html>

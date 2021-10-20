@@ -1,12 +1,14 @@
 ---
+id: 16312447-a597-4a98-9726-8e97718c9788
+blueprint: modifiers
 modifier_types:
   - markup
 attributes: true
-id: 16312447-a597-4a98-9726-8e97718c9788
+title: Link
 ---
 Generate an HTML link element with the value as `href`.
 
-```.language-yaml
+```yaml
 neat_site: http://example.com
 ```
 
@@ -14,6 +16,6 @@ neat_site: http://example.com
 {{ neat_site | link }}
 ```
 
-```.language-output
+```html
 <a href="http://example.com">http://example.com</a>
 ```

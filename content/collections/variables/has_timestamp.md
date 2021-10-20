@@ -1,7 +1,9 @@
 ---
+id: 396883d6-a3bc-4d98-a5a0-894e744b0451
+blueprint: variables
 types:
   - entry
-id: 396883d6-a3bc-4d98-a5a0-894e744b0451
+title: 'Has Timestamp'
 ---
 A boolean for whether or not an entry is time-based.
 
@@ -13,6 +15,6 @@ A boolean for whether or not an entry is time-based.
 {{ /if }}
 ```
 
-``` .language-output
+```html
 January 1st, 2016 11:30 am
 ```

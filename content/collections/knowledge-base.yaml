@@ -1,9 +1,0 @@
-title: 'Knowledge Base'
-template: page
-layout: layout
-mount: 3e260b43-aa71-43b6-832e-1ebf2f59f39b
-taxonomies:
-  - categories
-revisions: false
-route: '/knowledge-base/{slug}'
-sort_dir: asc

@@ -2,13 +2,17 @@
 title: AMP
 template: page
 intro: |
-    [AMP](https://amp.dev) (Accelerated Mobile Pages) is a web component framework by Google to serve fast, content-optimized versions of your websites.
-stage: 3
+    [AMP](https://amp.dev) (Accelerated Mobile Pages) is a web component framework by Google to serve fast, content-optimized versions of your websites. It's kinda dead now though.
+blueprint: page
 id: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
 ---
 ## Overview
 
 Statamic supports [AMP](https://amp.dev) by providing a "pivot" route which serves an alternate set of views and layouts conforming to AMP requirements.
+
+:::best-practice
+Google gave AMP pages a preferential rank in their search algorithm for a few years, but [that stopped in June 2021](https://plausible.io/blog/google-amp). So, even though Statamic _supports_ AMP, you probably shouldn't be using it anymore. Make your site as quick as you can and you'll do just fine (honestly, much better) without it.
+:::
 
 ## Turn it On
 
@@ -45,16 +49,15 @@ Whenever you visit `/amp/{url}` it will attempt to load whatever entry would be 
 
 AMP views follow the same exact file locations as regular views, except in an `/amp` subdirectory.
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- amp/
-|   |-- blog/
-|   |--   |-- index.antlers.html
-|   |--   |-- show.antlers.html
-|-- blog/
-|--   |-- index.antlers.html
-|--   |-- show.antlers.html
-
+amp/
+    blog/
+        index.antlers.html
+        show.antlers.html
+blog/
+    index.antlers.html
+    show.antlers.html
 ```
 
 For example, if an entry loaded a `blog/show` view by default, its AMP view would be `amp/blog/show`. You will need to create these alternate views yourself.

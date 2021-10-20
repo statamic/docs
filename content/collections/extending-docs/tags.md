@@ -101,7 +101,7 @@ introduced the `wildcard` method to prevent some infinite looping situations you
 
 You can generate a Tags class with a console command:
 
-``` bash
+``` shell
 php please make:tag Foo
 ```
 
@@ -326,8 +326,6 @@ public function method() {
 ```
 No results.
 ```
-
-> If you've used `$this->parse()`, and `$this->parseLoop()` in v2, that's automatic now. Just return arrays. 🎉
 
 ### Passing along context
 

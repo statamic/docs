@@ -1,0 +1,69 @@
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title }}</h1>
+        {{ partial:pro-badge }}
+    </div>
+    <div class="lg:pr-16 text-2xl">
+        {{ intro ?? overview | markdown}}
+    </div>
+    {{ svg src="zig-zag" class="mt-16" }}
+</header>
+
+<section class="mt-0 md:pb-16"">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8">
+        <a href="/installing/local" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16" src="/img/laptop.svg" alt="Local Install Laptop">
+            <h2 class="text-2xl mb-2 font-bold font-display">Local Install</h2>
+            <p class="text-sm font-mono-alt">MacOS, Windows, or Linux</p>
+        </a>
+        <a href="/installing/laravel" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16" src="/img/laravel-logo.svg" alt="Laravel Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Laravel Application</h2>
+            <p class="text-sm font-mono-alt">Drop into an existing app</p>
+        </a>
+        <a href="/installing/docker" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-4 h-14" src="/img/docker-logo.svg" alt="Docker Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Docker</h2>
+            <p class="text-sm font-mono-alt">Using Laravel Sail</p>
+        </a>
+        <a href="/installing/ubuntu" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-4 h-14" src="/img/ubuntu-logo.svg" alt="Ubuntu Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Ubuntu</h2>
+            <p class="text-sm font-mono-alt">18.04, 20.04 LTS</p>
+        </a>
+    </div>
+</section>
+
+<section class="mt-6 md:mt-24 md:pb-16">
+    <header class="markdown">
+        <h2 id="cloud">
+            Cloud Hosting
+            <a class="anchor" href="#cloud">#</a>
+        </h2>
+    </header>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8">
+        <a href="/installing/ubuntu" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16" src="/img/digital-ocean-logo.svg" alt="Digital Ocean Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Digital Ocean</h2>
+            <p class="text-sm font-mono-alt">Virtual Private Server</p>
+        </a>
+        <a href="/installing/linode" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16 w-32" src="/img/linode-logo.svg" alt="Linode Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Linode</h2>
+            <p class="text-sm font-mono-alt">Virtual Private Server</p>
+        </a>
+        <a href="https://ploi.io/statamic" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16" src="/img/ploi-cake.png" alt="Ploi Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Ploi</h2>
+            <p class="text-sm font-mono-alt">One-Click Install</p>
+        </a>
+        {{# <a href="https://forge.laravel" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest">
+            <img class="mx-auto mb-2 h-16 w-32" src="/img/forge-logo.svg" alt="Forge Logo">
+            <h2 class="text-2xl mb-2 font-bold font-display">Laravel Forge</h2>
+            <p class="text-sm font-mono-alt">VPS of your choice</p>
+        </a> #}}
+    </div>
+</section>
+
+{{ partial:suggest }}

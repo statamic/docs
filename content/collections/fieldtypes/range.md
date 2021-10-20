@@ -4,7 +4,7 @@ description: 'Choose a number between a min and max value.'
 intro: |
   Range fields let the user choose a numeric value which must be _no less_ than a given value, and _no more_ than another.
 
-screenshot: fieldtypes/range.png
+screenshot: fieldtypes/screenshots/range.png
 options:
   -
     name: min
@@ -50,8 +50,8 @@ Use the variable in your templates to display the value. That's pretty much it.
 <p>My favorite number is {{ number }}.</p>
 ```
 
-``` output
+```html
 <p>My favorite number is 42.</p>
 ```
 
-## Config Options
+

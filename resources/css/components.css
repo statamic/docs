@@ -1,0 +1,211 @@
+/* Markdown "Hint" Blocks */
+/* -------------------------------------------------- */
+
+.hint {
+    @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border relative shadow-pink-md;
+
+    .hint-title {
+        @apply font-display shadow uppercase bg-gray text-black inline-block py-1.5 px-2 leading-none absolute -left-4 -top-3 m-0 border -rotate-6 font-semibold tracking-wide;
+        font-size: 15px;
+    }
+
+    &.tip {
+        .hint-title {
+            @apply bg-pink-light
+        }
+    }
+
+    &.warning {
+        @apply shadow-purple-md bg-gray-lightest;
+
+        .hint-title {
+            @apply bg-purple text-white;
+        }
+
+        code:not(.torchlight) {
+            @apply text-purple !important;
+        }
+    }
+
+    &.watch {
+        @apply p-0 bg-transparent mb-32 block border-none shadow-none;
+
+        iframe {
+            @apply border shadow-yellow-md p-1;
+        }
+
+        .hint-title {
+            @apply bg-pink-light;
+        }
+
+        .hint-content {
+            @apply relative;
+        }
+
+        p.caption {
+            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black text-sm font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+        }
+    }
+
+    &.best-practice {
+        @apply shadow-stack bg-mint text-black border subpixel-antialiased;
+
+        .hint-title {
+            @apply bg-white;
+        }
+
+        code:not(.torchlight) {
+            @apply text-purple !important;
+        }
+
+        a { @apply text-black font-bold; }
+    }
+
+    :not(.best-practice) code:not(.torchlight) {
+        @apply bg-transparent text-pink font-bold mx-px text-sm;
+    }
+
+    p {
+        @apply text-base;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+
+    .button {
+        @apply text-black no-underline absolute -bottom-4 right-4 font-normal bg-white;
+    }
+}
+
+.hint.callout {
+    display: none;
+}
+
+@screen xl {
+    .hint.callout {
+        @apply border-none block bg-transparent relative shadow-none h-0 m-0 p-0;
+        .hint-title { display: none; }
+        a {
+            @apply bg-white hover:bg-mint no-underline absolute p-3 w-64 border shadow-stack-sm -right-64 text-black font-normal;
+            p {
+                @apply text-sm;
+            }
+        }
+    }
+}
+
+@screen 2xl {
+    .hint.callout a {
+        @apply -right-80;
+    }
+}
+
+
+/* Video Embed */
+/* -------------------------------------------------- */
+
+.embed {
+    @apply relative w-full;
+    padding-bottom: 56.25%;
+    iframe {
+        @apply absolute top-0 left-0 w-full h-full border-0;
+    }
+}
+
+
+/* Screenshots */
+/* -------------------------------------------------- */
+
+figure,
+.screenshot {
+    @apply bg-mint border p-3 md:p-6 my-16 shadow-stack-sm relative;
+    @apply pb-6 md:pb-12;
+
+    img {
+        @apply border shadow-lg mx-auto;
+    }
+
+}
+
+.caption,
+figure figcaption {
+    @apply bg-black px-6 py-1 text-mint text-sm inline-block antialiased absolute -right-2 -bottom-4 md:-right-4 md:bottom-2;
+
+    code {
+        font-size: 12px !important;
+        padding: 1px 2px !important;
+    }
+}
+
+
+/* Buttons */
+/* -------------------------------------------------- */
+
+.button {
+    @apply py-1 px-5 relative inline-block bg-yellow font-normal rounded border shadow-md font-display text-base whitespace-nowrap transition no-underline text-black !important;
+
+    &:hover {
+        box-shadow: none !important;
+        transform: translate(2px, 2px);
+    }
+
+    &.button-small {
+        @apply text-sm bg-white px-3 !important;
+    }
+
+    &:focus {
+        @apply outline-none shadow-outline;
+    }
+}
+
+
+/* Table of Contents */
+/* -------------------------------------------------- */
+.toc {
+    @apply font-display py-2 space-y-2 ml-0;
+    list-style-type: none;
+    counter-reset: item;
+
+    li {
+        @apply px-2 leading-tight text-lg block;
+        counter-increment: item;
+        &:before {
+            @apply mr-2 font-medium;
+            content: counters(item, ".") ". ";
+        }
+    }
+
+    li a {
+        @apply text-black no-underline hover:text-pink font-medium;
+    }
+
+    li ol {
+        @apply my-2 space-y-1 ml-5;
+        counter-reset: item;
+        /* list-style-type: lower-alpha; */
+
+        li { @apply text-base; }
+        li:before {
+             content: counters(item, ".") " ";
+        }
+    }
+}
+
+/* @media screen(lg) {
+    .toc {
+        column-count: 3;
+        column-rule: 1px dashed theme('colors.black');
+    }
+} */
+
+/* Little details */
+/* -------------------------------------------------- */
+
+.popout {
+    @apply border px-2 inline-block shadow-stack-sm -ml-4 transform -rotate-3;
+}
+
+.badge {
+    @apply text-white bg-black text-xs inline-block py-1 px-2 font-mono rounded-sm shadow-stack-sm mb-4;
+}

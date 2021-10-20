@@ -24,7 +24,6 @@ preferences:
       columns:
         - title
         - intro
-        - stage
   favorites:
     -
       name: 'Create Docs Page'

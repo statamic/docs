@@ -4,14 +4,15 @@ template: page
 blueprint: page
 intro: |
     Nothing loads faster than static pages. Instead of rendering pages dynamically on demand, Statamic can cache static pages and pass routing to Apache or Nginx with reverse proxying.
-stage: 3
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
 ## Important Preface
 
 Certain features — such as forms with server-side validation or content randomization — don’t work with static page caching. As long as you understand that, you can leverage static caching for maximum performance.
 
-> You can also use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
+:::tip
+You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
+:::
 
 ## Caching Strategies
 
@@ -36,7 +37,7 @@ Set `strategy` to the name of the strategy you wish to use, or `null` to disable
 
 ## Application Driver
 
-The application driver will store your cached page content within Laravel's cache. We refer to this as <mark>half measure</mark>.
+The application driver will store your cached page content within Laravel's cache. We refer to this as **half measure**.
 
 This will still run every request through a full instance of Statamic but will serve all request data from a pre-rendered cache, speeding up load times often by half or more. This is an easy, one-and-done setting.
 

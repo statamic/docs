@@ -4,68 +4,29 @@ sections:
     display: Main
     fields:
       -
-        handle: intro
+        handle: title
         field:
-          display: Intro
-          type: markdown
-          localizable: true
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        import: page
       -
         handle: screenshot
         field:
           type: assets
           container: main
           max_files: 1
+  sidebar:
+    display: Sidebar
+    fields:
       -
-        handle: content
+        handle: slug
         field:
-          display: Content
-          restrict: false
-          smartypants: true
-          automatic_line_breaks: false
-          automatic_links: false
-          escape_markup: false
-          type: markdown
+          type: slug
+          required: true
           localizable: true
-      -
-        handle: options
-        field:
-          type: grid
-          mode: stacked
-          fields:
-            -
-              handle: name
-              field:
-                type: text
-                width: 33
-            -
-              handle: type
-              field:
-                type: text
-                width: 33
-            -
-              handle: required
-              field:
-                type: toggle
-                width: 33
-            -
-              handle: description
-              field:
-                type: markdown
-      -
-        handle: template
-        field:
-          display: Template
-          type: template
-          default: page
-      -
-        handle: stage
-        field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'

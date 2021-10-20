@@ -1,7 +1,9 @@
 ---
 id: 026f77b4-ab22-4c5f-b3be-ebc452e25c5b
+blueprint: variables
 types:
   - content
+title: 'Last Modified'
 ---
 The last modified time for the content file, or the asset.
 

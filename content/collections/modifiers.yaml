@@ -1,10 +1,12 @@
 title: Modifiers
 template: modifiers.show
 layout: layout
-mount: 9c1efbc5-c6a4-46f1-acce-d38b20122bd6
+mount: a4bc698a-5971-474d-a19c-0c43c0d641b9
 taxonomies:
   - modifier_types
 revisions: false
-route: '{mount}/{slug}'
+route: '/modifiers/{slug}'
+sort_dir: asc
 inject:
+  section: reference
   view_model: App\ViewModels\Modifiers

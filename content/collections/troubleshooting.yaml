@@ -1,0 +1,11 @@
+title: Troubleshooting
+template: troubleshooting/show
+layout: layout
+mount: cd0428cf-2c4a-43b9-8e61-dd8123799ed8
+taxonomies:
+  - categories
+revisions: false
+route: '/{mount}/{slug}'
+sort_dir: asc
+inject:
+  section: docs

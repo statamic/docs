@@ -27,7 +27,7 @@ This tag's only purpose is to fetch the number of the entries in a collection th
 There are {{ collection:count in="pogs" }} pogs in this site.
 ```
 
-``` .language-output
+```html
 There are 6201 pogs in this site.
 ```
 

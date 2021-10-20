@@ -2,11 +2,8 @@
 title: Fields
 template: page
 intro: While in the control panel all content is managed inside fields. They come in many types, from basic text and select boxes, to rich text fields and image pickers. Fields are grouped into blueprints and fieldsets and can be reused in a number of different ways.
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568643859
 id: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
 blueprint: page
-stage: 4
 ---
 ## Common Settings
 
@@ -52,7 +49,9 @@ Each fieldtype has the ability to _augment_ this data when accessed from the fro
 - **Markdown** fields will automatically parse content and return HTML.
 - **Relationship** fields will return the content objects of the entries they refer to.
 
-> **Augmentation** is only performed when a field is defined in a blueprint. Data created "on the fly" in Front Matter may still require modifiers to transform it according to your whims and fancies.
+:::tip
+**Augmentation** is only performed when a field is defined in a blueprint. Data created "on the fly" in Front Matter may still require [modifiers](/modifiers) to transform it according to your whims and fancies.
+:::
 
 ## Localization
 

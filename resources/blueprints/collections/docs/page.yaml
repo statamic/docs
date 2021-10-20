@@ -1,44 +1,35 @@
-title: Page
+title: 'Docs Page'
 sections:
   main:
     display: Main
     fields:
       -
-        handle: intro
-        field:
-          display: Intro
-          type: markdown
-          localizable: true
-      -
-        handle: content
-        field:
-          display: Content
-          restrict: false
-          smartypants: true
-          automatic_line_breaks: false
-          automatic_links: false
-          escape_markup: false
-          type: markdown
-          localizable: true
-      -
-        handle: template
-        field:
-          display: Template
-          type: template
-          default: page
-      -
-        handle: stage
-        field:
-          display: 'Writing Stage'
-          type: select
-          options:
-            - 'Gathering Knowledge'
-            - 'Writing the Draft'
-            - 'Ready for Editing'
-            - 'Needs Polish & Humor'
-            - 'Ready for Feedback'
-            - Complete
-      -
-        handle: nav_title
+        handle: title
         field:
           type: text
+          required: true
+          validate:
+            - required
+      -
+        import: page
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - docs
+          max_items: 1
+          listable: false
+          localizable: true

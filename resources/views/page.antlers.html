@@ -1,14 +1,17 @@
-<header class="markdown pb-8 mb-8 border-b-2 border-grey-300">
-    <h1>{{ title }}</h1>
-    {{ intro ?? overview | markdown }}
-    {{ if pro }}
-        <div>
-            <a class="bg-black hover:bg-purple no-underline px-6 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
-        </div>
-    {{ /if }}
-    {{ partial:video_link }}
-</header>
+{{ partial:header }}
 
-<article class="markdown pb-8">
+<article class="markdown md:pb-16">
     {{ content | toc:ids }}
+
+    {{ if options }}
+        <h2 id="options">Options</h2>
+        {{ if options_content }}
+            {{ options_content | markdown }}
+        {{ /if }}
+        {{ partial:details :details="options" }}
+    {{ /if }}
 </article>
+
+{{ partial:related }}
+
+{{ partial:edit }}

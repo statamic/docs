@@ -3,7 +3,6 @@ title: Views
 intro: Views contain HTML, have access to your data, and are used to render the front-end of your site. Layouts, templates, and partials are all different types of views.
 template: page
 blueprint: page
-stage: 4
 id: 74c47654-8c47-49b1-a616-ed940ce19977
 ---
 Views contain the HTML served by the frontend of your site and are stored in the `resources/views` directory. A simple view might look something like this (but should it?):
@@ -65,7 +64,9 @@ template: gallery
 title: Photo Gallery
 ```
 
-> You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so go wild!
+:::tip
+You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so you have a lot of flexibility.
+:::
 
 ## Partials
 
@@ -76,7 +77,10 @@ Partials are reusable views that may find themselves in any number of other layo
 {{ partial:blog/card }}
 ```
 
-> We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html`. You don't need to include the underscore in your partial tag.
+:::best-practice
+We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
+:::
+
 
 ## Using Blade
 
@@ -108,59 +112,59 @@ There are a few recommended ways to organize your layouts, templates, and partia
 
 Partials are indicated by a prefixed underscore (`_header`), layout by the word `layout` and everything else is a template. **Best for small sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- _header.antlers.html
-|-- about.antlers.html
-|-- article.antlers.html
-|-- layout.antlers.html
-|-- listing.antlers.html
-|-- page.antlers.html
+  _header.antlers.html
+  about.antlers.html
+  article.antlers.html
+  layout.antlers.html
+  listing.antlers.html
+  page.antlers.html
 ```
 
 ### Organize by Type
 
 This is a bit more of a Statamic v2 style where views are grouped by type - partials, layouts, and templates. **Best for medium sized sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- partials/
-|   |-- _card.antlers.html
-|   |-- _footer.antlers.html
-|   |-- _nav.antlers.html
-|-- layouts/
-|   |-- amp.antlers.html
-|   |-- api.antlers.html
-|   |-- main.antlers.html
-|-- templates/
-|   |-- about.antlers.html
-|   |-- article-list.antlers.html
-|   |-- article-show.antlers.html
-|   |-- faq-list.antlers.html
-|   |-- faq-show.antlers.html
-|   |-- form.antlers.html
+  partials/
+    _card.antlers.html
+    _footer.antlers.html
+    _nav.antlers.html
+  layouts/
+    amp.antlers.html
+    api.antlers.html
+    main.antlers.html
+  templates/
+    about.antlers.html
+    article-list.antlers.html
+    article-show.antlers.html
+    faq-list.antlers.html
+    faq-show.antlers.html
+    form.antlers.html
 ```
 
 ### Organize by Section
 
 A more Laravel/application approach where views are grouped by section (or collection), along with their own partials and alternate layout files. **Best for large sites.**
 
-``` files
+``` files theme:serendipity-light
 resources/views/
-|-- blog/
-|   |-- _card.antlers.html
-|   |-- index.antlers.html
-|   |-- layout.antlers.html
-|   |-- rss.antlers.html
-|   |-- show.antlers.html
-|-- contact/
-|   |-- index.antlers.html
-|   |-- success.antlers.html
-|-- faq/
-|   |-- layout.antlers.html
-|   |-- index.antlers.html
-|   |-- show.antlers.html
-|-- layout.antlers.html
+  blog/
+    _card.antlers.html
+    index.antlers.html
+    layout.antlers.html
+    rss.antlers.html
+    show.antlers.html
+  contact/
+    index.antlers.html
+    success.antlers.html
+  faq/
+    layout.antlers.html
+    index.antlers.html
+    show.antlers.html
+  layout.antlers.html
 ```
 
 ## Additional Reading

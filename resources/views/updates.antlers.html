@@ -1,0 +1,23 @@
+<header class="markdown">
+    <h1>{{ title }}</h1>
+    {{ intro }}
+</header>
+
+<section class="markdown mt-8 w-full">
+    <table>
+        <thead>
+            <th>Page</th>
+            <th>Section</th>
+            <th>Last Updated</th>
+        </thead>
+        <tbody>
+            {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="100" title:not="Documentation" scope="entry" }}
+                <tr>
+                    <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td>{{ entry:collection | deslugify | title }}</td>
+                    <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i" }}').fromNow(true) + ' ago'"></td>
+                </tr>
+            {{ /collection }}
+        </tbody>
+    </table>
+</section>

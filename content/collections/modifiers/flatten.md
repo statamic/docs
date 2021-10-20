@@ -1,12 +1,14 @@
 ---
+id: e893345c-03f7-466b-a400-bbd2545bd780
+blueprint: modifiers
 modifier_types:
   - array
   - utility
-id: e893345c-03f7-466b-a400-bbd2545bd780
+title: Flatten
 ---
 Flattens a multi-dimensional array (a Grid or Replicator field for example) into a single dimension.
 
-```.language-yaml
+```yaml
 ingredients:
   spices: [garlic, cumin, ginger, turmeric, paprika, curry powder]
   vegetables: [tomatoes, onion]
@@ -17,7 +19,7 @@ ingredients:
 {{ ingredients | flatten }}
 ```
 
-```.language-yaml
+```yaml
 ingredients:
   - garlic
   - cumin

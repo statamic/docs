@@ -1,7 +1,9 @@
 ---
+id: 01b2a925-3f4e-473c-a983-ff8c29c8078f
+blueprint: variables
 types:
   - entry
-id: 01b2a925-3f4e-473c-a983-ff8c29c8078f
+title: Date
 ---
 Get the date of the entry. This will be a `Carbon` instance.
 
@@ -12,6 +14,6 @@ system settings.
 {{ date }}
 ```
 
-``` .language-output
+```html
 February 16, 2016
 ```

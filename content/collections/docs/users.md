@@ -2,13 +2,9 @@
 title: Users
 intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
 template: page
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1568645051
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
-stage: 3
 pro: true
-video: https://youtu.be/KuiPocGq3L8
 ---
 ## Overview
 
@@ -23,12 +19,12 @@ The most common and obvious reason users exist are to have the means to access t
 
 The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
 
-<figure>
-    <img src="/img/make-user.png" alt="Make User command" class="shadow-lg-teal rounded">
-    <figcaption>This is all it takes to make your first user.</figcaption>
-</figure>
+:::watch https://youtube.com/embed/KuiPocGq3L8
+Watch a new user being born. 🐣
+:::
 
-You can also [create users by hand](/knowledge-base/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
+You can also [create users by hand](/tips/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
+
 
 ### New User Invitations
 
@@ -39,7 +35,9 @@ When creating users in the Control Panel you can send email invitations to help 
     <figcaption>An opportunity for a knock knock joke, perhaps?</figcaption>
 </figure>
 
-> Make sure to [configure the email driver](/email) so those emails actually go out.
+:::tip
+Be sure to [configure the email driver](/email) so those emails actually go out.
+:::
 
 ## User Fields
 
@@ -150,10 +148,10 @@ Consult the [Laravel documentation](https://laravel.com/docs/8.x/validation#vali
 
 While users are stored in files by default — like everything else in Statamic — they can also be located in a database or really anywhere else. Here are links to articles for the different scenarios you may find yourself in.
 
-- [Storing Laravel Users in Files](/knowledge-base/storing-laravel-users-in-files)
-- [Storing Users in a Database](/knowledge-base/storing-users-in-a-database)
-- [Custom User Storage](/knowledge-base/storing-users-somewhere-custom)
-- [Using an Independent Auth Guard](/knowledge-base/using-an-independent-authentication-guard)
+- [Storing Laravel Users in Files](/tips/storing-laravel-users-in-files)
+- [Storing Users in a Database](/tips/storing-users-in-a-database)
+- [Custom User Storage](/tips/storing-users-somewhere-custom)
+- [Using an Independent Auth Guard](/tips/using-an-independent-authentication-guard)
 
 ## OAuth
 

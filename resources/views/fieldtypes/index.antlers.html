@@ -1,29 +1,18 @@
-<header class="markdown pb-12 mb-12 border-b-2 border-grey-300">
-    <h1>{{ title }}</h1>
-    <div class="text-xl">
-        {{ intro }}
-    </div>
-</header>
+{{ partial:header }}
 
-<article class="markdown pb-8">
-    {{ content }}
-    <h2>Fieldtypes with Updated Docs</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        {{ collection:fieldtypes }}
-        <tr>
-            <td>
-                <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ title }}</a>
-            </td>
-            <td>
-                {{ description | markdown ?? intro | markdown }}
-            </td>
-        </tr>
-        {{ /collection:fieldtypes }}
-    </table>
+{{ collection:fieldtypes as="fieldtypes" }}
+<article class="bg-black p-4 md:py-8 md:pl-24 w-full relative rounded-sm shadow-stack md:shadow-stack-lg text-white z-10 flex font-mono-alt font-bold antialiased">
+    {{ fieldtypes split="2" }}
+        <ul class="list-none w-1/2 space-y-3">
+            {{ items }}
+                <li>
+                    <a href="{{ url }}" class="flex items-center text-white hover:text-pink no-underline">
+                        {{ svg src="/img/fieldtypes/icons/{slug}" class="h-4 w-4 mr-3 text-white" }}
+                        {{ title }}
+                    </a>
+                </li>
+            {{ /items }}
+        </ul>
+    {{ /fieldtypes }}
 </article>
+{{ /collection:fieldtypes }}

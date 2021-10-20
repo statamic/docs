@@ -1,24 +1,33 @@
 ---
-title: Assets
-intro: >
- Assets are files managed by Statamic contained in specific directories. They can be images, videos, PDFs, giant text documents containing video game walk-throughs, or literally any other type of file. Each asset can have fields and content attached to them, just like entries.
-template: page
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
-stage: 3
 blueprint: page
+title: Assets
+intro: 'Assets are files managed by Statamic and made available to your writers and developers with tags and fieldtypes. They can be images, videos, PDFs, or any other type of file. Asset can have fields and content attached to them, just like entries, making them very powerful.'
+template: page
+related_entries:
+  - 5b748a3f-be0e-41c1-8877-73f6b7ee1d0a
+  - b70a3d9a-6605-446e-b278-de99ba561fe0
+  - 7277432d-bb25-458a-a3a2-a72976b44ad5
+  - 0c30a664-9bc3-4c5e-ad8c-66452b049748
+  - b50310b0-64ae-4ae4-b219-a637ed89e4d7
+  - 458b8203-e330-4d78-9bf5-82aaec8d458b
+  - d0c65546-74f1-4a15-89d5-1562a95ee2c6
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1633025886
 ---
 ## Overview
 
-Assets most often live in folders on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage service. Each of these defined locations is called a **container**..
+Assets live in directories on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage services. Each defined location is called a **container**..
 
 Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
 ## Asset Browser
-The Control Panel's asset browser gives you a great view on these files. You can file, sort, search, move, rename, preview, and — if working with images — even set focal crop points to make dynamically resized images significantly more useful.
+
+You can explore these files in the Control Panel's asset browser. You can file, sort, search, move, rename, preview, and — if working with images — even set focal crop points to make dynamically resized images look their best.
 
 <figure>
     <img src="/img/assets.png" alt="Assets browser">
-    <figcaption>The asset browser browsin' some assets.</figcaption>
+    <figcaption>Browsing some assets.</figcaption>
 </figure>
 
 ## Asset Fields
@@ -29,15 +38,16 @@ This data is stored in the asset's [meta data](#metadata) file.
 
 <figure>
     <img src="/img/asset-editor.png" alt="The asset editor editing an image">
-    <figcaption>The asset editor in editing an image.</figcaption>
+    <figcaption>Editing an image with the asset editor.</figcaption>
 </figure>
 
 ## Metadata
 
-- Each asset in a container has a corresponding yaml file located in a `.meta` subdirectory. For example, `images/tree.jpg` gets an `images/.meta/tree.jpg.yaml` cache file.
-- These files contain cached data, including but not limited to: image dimensions, file size, last modification dates, and so on.
-- These cache files can also contain user created data. The fields are defined by the asset container's blueprint. Typically these are alt text, focal points, descriptions, and so on, but they could be anything you want at all.
-- You may version control these files along with the assets themselves. It's up to you if you find that helpful.
+Asset metadata is stored in YAML files inside a hidden `.meta` subdirectory inside each container. For example, `images/tree.jpg` gets an `images/.meta/tree.jpg.yaml` cache file.
+
+These files contain cached data, including but not limited to: image dimensions, file size, last modification dates, and so on.
+
+These cache files can also contain user created data. The fields are defined by the asset container's blueprint. Typically these are alt text, focal points, descriptions, and so on, but they could be anything you want at all.
 
 ``` yaml
 size: 9151
@@ -48,6 +58,10 @@ data:
   alt: 'A tree with a tire swing'
   focus: 54-54-1
 ```
+
+:::tip
+You should consider version controling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
+:::
 
 ## Containers
 
@@ -76,32 +90,42 @@ Each container implements a "disk", also known as a [Laravel Filesystem](https:/
 
 Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
-## Private Containers
+### Private Containers
 
 Sometimes it’s handy to store assets that shouldn’t be publicly visible through a direct URL or browser.
 
->>> If your asset container's disk does not have a `url` property, Statamic will not output URLs.
+:::tip
+If your asset container's disk does not have a `url` property, Statamic will not output URLs.
+:::
 
 Private containers should be located above webroot. If you leave the disk within the webroot, the files will still be accessible directly outside of Statamic if you know the file path.
 
-``` files
+``` files theme:serendipity-light
 /
-|-- put-it-out-here
-|-- public
-|   `-- not-in-here
+  app/
+  content/
+  config/
+  public/
+    not-in-here/ # [tl! ~~]
+    index.php
+  put-it-out-here/ # [tl! ~~]
+  resources/
+  vendor/
 ```
 
 Make sure to also set the [visibility](#visibility) to `private`.
 
 
-## Visibility
+### Container Visibility
 
-Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`, 
+Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`,
 which essentially controls whether they're accessible or not.
 
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
 
-> If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+:::tip
+If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+:::
 
 ## Blueprints
 
@@ -122,13 +146,13 @@ Flysystem is not limited to these three, however. There are adapters for many ot
 
 There are two main methods for working with Asset data on the frontend. The Assets Fieldtype, and the Assets Tag.
 
-## Assets Fieldtype
+### Assets Fieldtype
 
 The [Assets Fieldtype](/fieldtypes/assets) can be used in your content Blueprints to attach assets to your entries, taxonomy terms, globals, or user accounts. It can be used to create image galleries, video players, zip downloads, or anything else you can think of.
 
 All of the data stored on your Assets will be available on the frontend without having to create any kind of duplication.
 
-### Example
+#### Example
 
 If you had a `slideshow` field with a whole bunch of images selected, you can render them by looping through them.
 
@@ -142,11 +166,11 @@ If you had a `slideshow` field with a whole bunch of images selected, you can re
 
 Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 
-## Assets Tag
+### Assets Tag
 
 If you ever find yourself needing to loop over all of the assets in a container (or folder inside a container) instead of selecting them manually with the Assets Fieldtype, this is the way.
 
-### Example
+#### Example
 ```
 {{ assets container="photoshoots" limit="10" sort="rating" }}
     <img src="{{ url }}" alt="{{ alt }}" />
@@ -155,7 +179,7 @@ If you ever find yourself needing to loop over all of the assets in a container 
 
 Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
-## Image Manipulation
+### Manipulating Images
 
 Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamically resize, crop, and manipulate images. It's really easy to use and has [its own tag](/tags/glide).
 

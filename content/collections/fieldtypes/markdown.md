@@ -2,7 +2,7 @@
 title: Markdown
 description: Our beautiful Markdown editor with preview, assets integration, and more.
 intro: Write Markdown with the help of formatting buttons, assets integration, fullscreen mode, a Markdown cheatsheet, and HTML preview mode. What more do you need?
-screenshot: fieldtypes/markdown.png
+screenshot: fieldtypes/screenshots/markdown.png
 id: 607cfe62-7239-461b-8f55-8e7a312c2d5d
 stage: 4
 options:
@@ -68,7 +68,7 @@ The Markdown content will be automatically transformed into HTML through [augmen
 {{ content }}
 ```
 
-``` output
+```html
 <h2>Overview</h2>
 <p>This is the Markdown fieldtype. It's for writing <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, an easy-to-read, easy-to-write plain text format that magically transforms into HTML.</p>
 ```
@@ -78,11 +78,11 @@ The Markdown content will be automatically transformed into HTML through [augmen
 The Markdown fieldtype also has a dark mode when in fullscreen for those of you who like that sort of thing.
 
 <figure>
-    <img src="/img/fieldtypes/markdown-dark-mode.png" alt="Dark Mode for Markdown">
+    <img src="/img/fieldtypes/screenshots/markdown-dark-mode.png" alt="Dark Mode for Markdown">
     <figcaption><span class="not-italic">😎</span> Sunglasses off.</figcaption>
 </figure>
 
-## Config Options
+
 
 [parsedown]: https://parsedown.org/
 [extra]: https://michelf.ca/projects/php-markdown/extra/

@@ -1,12 +1,14 @@
 ---
+id: c36a6f62-aaf4-478b-a469-29cdb1eab8dc
+blueprint: modifiers
 modifier_types:
   - conditions
   - array
-id: c36a6f62-aaf4-478b-a469-29cdb1eab8dc
+title: Where
 ---
 Filter an array (such as a Replicator field's data) to items where a `key` has a specific `value`.
 
-```.language-yaml
+```yaml
 games:
   -
     feeling: love
@@ -26,7 +28,7 @@ games:
 {{ /games }}
 ```
 
-```.language-output
+```html
 Dominion
 Netrunner
 ```

@@ -2,11 +2,12 @@
 title: 'Multi-User Collaboration'
 intro: 'Stop worrying if someone else is editing the same article at the same time and start enjoying a collaborative authoring process. Each field automatically locks as a user begins to edit, and unlocks when they leave or go idle.'
 template: page
-stage: 4
+blueprint: page
 pro: true
 id: a3adf32a-37a5-4e96-beee-f107dc1b81a9
 ---
 ## Overview
+
 
 **Features include:**
 

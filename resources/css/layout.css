@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    min-height: 100%;
+    background: url('/img/splatter-tall.jpg') repeat-y;
+    background-position: right top;
+    background-size: 200px 6500px;
+}
+
+/* Navs */
+/* -------------------------------------------------- */
+
+#site-nav {
+    ul li a {
+        @apply py-2;
+    }
+
+    ul li a.active {
+        @apply font-bold;
+        background: url('/img/ziggy.svg') 0 90% repeat-x;
+        background-size: auto 4px;
+    }
+}
+
+.side-nav li.active a {
+    @apply relative font-bold;
+
+    &:before {
+        @apply absolute bg-yellow;
+        z-index: -1;
+        height: 9px;
+        top: 10px;
+        left: -5%;
+        width: 110%;
+        content: '';
+    }
+}

@@ -1,6 +1,11 @@
 title: Docs
-route: '{{ parent_uri }}/{{ slug }}'
-default_status: published
 template: page
 layout: layout
 revisions: false
+route: '{{ parent_uri }}/{{ slug }}'
+sort_dir: asc
+structure:
+  root: false
+inject:
+  blueprint: page
+  section: docs

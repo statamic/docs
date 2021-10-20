@@ -8,7 +8,9 @@ stage: 1
 id: 785ffa10-8b63-44b1-9da3-3837250cacbe
 ---
 
-> This page refers to the Control Panel's side-bar navigation. Not to be confused with ["Navs"](/navigation), where you can create trees to be used for the front-end of your site.
+:::tip
+This page refers to the Control Panel's side-bar navigation. Not to be confused with ["Navs"](/navigation), where you can create trees to be used for the front-end of your site.
+:::
 
 Every nav item is represented by a `NavItem` object, which has a [full API](#the-navitem-class) for [adding](#adding-items), [removing](#removing-items), and [modifying](#modifying-items) items.  You may register your nav extensions in the `boot()` method of a service provider.
 
@@ -51,9 +53,11 @@ Nav::extend(function ($nav) {
 });
 ```
 
-> Note that the `Nav` facade is `Statamic\Facades\CP\Nav`.
->
-> There's another Nav facade without the CP namespace - that one's for the front-end ["Navs"](/navigation) feature.
+:::tip
+Note that the `Nav` facade is `Statamic\Facades\CP\Nav`.
+
+There's another Nav facade _without_ the CP namespace, and it's for the front-end ["Navs"](/navigation) feature.
+:::
 
 ## Adding Children
 

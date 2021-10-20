@@ -3,7 +3,7 @@ title: YAML
 description: A YAML editor that _directly_ manages YAML.
 overview: >
   A [code fieldtype](/fieldtypes/yaml) in YAML mode that _directly_ edits and stores YAML instead of an escaped string representation of said YAML.
-screenshot: fieldtypes/yaml.png
+screenshot: fieldtypes/screenshots/yaml.png
 stage: 4
 id: 25155800-8fd7-46c7-aad0-5daaf07543da
 ---
@@ -11,7 +11,9 @@ id: 25155800-8fd7-46c7-aad0-5daaf07543da
 
 This field is a [code fieldtype](/fieldtypes/code) that gets saved as YAML instead of a string. Your input is validated on save to make sure you don't write _invalid_ YAML.
 
-> The YAML field is one of the "catch-all" solutions for when there's no better way to work with an odd data structure. **Recommended for developers only.**
+:::tip
+The YAML field is one of the "catch-all" solutions for when there's no better way to work with an odd data structure. **Recommended for developers only.**
+:::
 
 ## Data Storage
 

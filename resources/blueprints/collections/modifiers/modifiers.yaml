@@ -1,0 +1,34 @@
+title: Modifier
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        import: page
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+            - 'unique_entry_value:{collection},{id},{site}'
+      -
+        handle: modifier_types
+        field:
+          type: terms
+          taxonomies:
+            - modifier_types
+          display: 'Modifier Types'
+          mode: select

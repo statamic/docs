@@ -1,7 +1,9 @@
 ---
+id: d61d8f8c-4e7e-4933-8f34-0cdba2a3ee82
+blueprint: variables
 types:
   - asset
-id: d61d8f8c-4e7e-4933-8f34-0cdba2a3ee82
+title: Focus
 ---
 The focal point of the asset, defaulting to center (`50-50`).
 
@@ -9,7 +11,7 @@ The focal point of the asset, defaulting to center (`50-50`).
 {{ focus }}
 ```
 
-``` .language-output
+```html
 50-30
 ```
 
@@ -20,7 +22,7 @@ background-position: {{ focus | background_position }};
 background-position: {{ focus_css }};
 ```
 
-``` .language-output
+```html
 background-position: 50% 30%;
 background-position: 50% 30%;
 ```

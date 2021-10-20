@@ -5,4 +5,4 @@ revisions: false
 route: '/extending/{slug}'
 sort_dir: asc
 inject:
-  stage: 2
+  section: extending_docs

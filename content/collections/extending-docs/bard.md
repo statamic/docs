@@ -8,7 +8,9 @@ id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 
 Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a TipTap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
 
-> Writing custom extensions for Bard is pretty complicated, but can be wildly rewarding with powerful results.
+:::tip
+Writing custom extensions for Bard is pretty complicated, but can be rewarding and give you powerful results.
+:::
 
 In short, here's a quickstart of the things you should probably start with:
 
@@ -89,7 +91,9 @@ commands({ type, toggleBlockType }) {
 }
 ```
 
-> If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
+:::tip
+If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
+:::
 
 If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#prosemirror-rendering).
 

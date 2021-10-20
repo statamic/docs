@@ -3,7 +3,7 @@ title: Assets
 meta_title: Assets Fieldtype
 intro: Any time you want to list, display, or work with assets (external files with enhanced abilities), this is the way to do it. Upload, browse, reorder, delete, and even manage field data on individual assets.
 description: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
-screenshot: fieldtypes/assets-list.png
+screenshot: fieldtypes/screenshots/assets-list.png
 stage: 1
 options:
   -
@@ -50,7 +50,7 @@ Files are rearrangeable via drag-and-drop.
 The list mode is shown above, while the grid mode is below. There are no functional differences, only visual ones. List mode is more compact – useful if you're not primarily managing images.
 
 <figure>
-  <img src="/img/fieldtypes/assets-grid.png" width="543" alt="Assets Grid mode">
+  <img src="/img/fieldtypes/screenshots/assets-grid.png" width="543" alt="Assets Grid mode">
   <figcaption>Grid mode reveals a fanny pack in all of its glory.</figcaption>
 </figure>
 
@@ -87,7 +87,7 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
 {{ /hero_image }}
 ```
 
-``` output
+```html
 <img src="/assets/fresh-prince.jpg" alt="Will Smith as the Fresh Prince" />
 <img src="/assets/dj-jazzy-jeff.jpg" alt="Jeffrey Allen Townes as DJ Jazzy Jeff" />
 <img src="/assets/uncle-carl.jpg" alt="Reginald VelJohnson as Carl Winslow" />
@@ -105,7 +105,7 @@ If you have `max_files: 1`, you can also use a single tag syntax to directly use
 {{ hero_image:alt }}
 ```
 
-``` output
+```html
 /assets/surf-boards.jpg
 /assets/surf-boards.jpg
 3 colorful surf boards
@@ -148,7 +148,9 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `orientation` | Is one of `portrait`, `landscape`, `square`, or `null`. |
 | `ratio` |  An image's ratio (`1.77`) |
 
-> You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform other sweet image manipulations. Check it out!
+:::tip
+You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform other sweet image manipulations.
+:::
 
 ### Asset Field Data
 
@@ -163,6 +165,6 @@ All custom data set on the assets will also be available inside the asset tag lo
 {{ /gallery_images }}
 ```
 
-## Config Options
+
 
 [carbon]: https://carbon.nesbot.com/docs/

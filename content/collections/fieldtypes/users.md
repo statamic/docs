@@ -3,7 +3,7 @@ title: Users
 description: Relate users with your content.
 intro: >
   Attach users to your content to show authorship, list team members, assign the winners of a foot race, or even winners of an elbow race.
-screenshot: fieldtypes/users.png
+screenshot: fieldtypes/screenshots/users.png
 options:
   -
     name: default
@@ -37,7 +37,7 @@ The most common use for the Users fieldtype is to set the "author" for entries, 
 
 The Users fieldtype is a [relationship fieldtype](/fieldtypes/relationship) – which mean the data will store a reference to the users IDs to main a dynamic link.
 
-``` .language-yaml
+```yaml
 author: abc-123-cba-321
 ```
 
@@ -57,7 +57,7 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 </div>
 ```
 
-``` output
+```html
 <div class="bg-white p-4 shadow flex items-center">
   <img class="w-10 h-10 rounded-full" src="/img/avatars/david.jpg" alt="Avatar of David Hasselhoff">
     <div class="text-sm ml-4">
@@ -67,4 +67,4 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 </div>
 ```
 
-## Config Options
+

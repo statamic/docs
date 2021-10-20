@@ -12,4 +12,8 @@ Pass multiple keys by delimiting them with a pipe.
 {{ session:forget keys="likes|referral" }}
 ```
 
-> The **entire** session can be wiped with the [session:flush](/tags/session-flush) tag. Wipe and flush, ladies and gentlemen. This is the humor you came for and the software you (maybe) paid for.
+:::tip
+The **entire** session can be wiped with the [session:flush](/tags/session-flush) tag. Always wipe and flush, folks.
+
+This is the humor you came for and the software you (maybe) paid for.
+:::

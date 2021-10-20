@@ -33,7 +33,7 @@ I went exploring today and here are some photos I took and I was too lazy to use
 {{ /glide:batch }}
 ```
 
-``` output
+```html
 <p>I went exploring today and here are some photos I took and I was too lazy to use an Asset fieldtype so here they all are plop ok</p>
 
 <img src="/img/assets/bears.jpg?w=600&h=400&fit=crop" title="Bears" />

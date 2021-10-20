@@ -1,11 +1,13 @@
 ---
+id: 9526d59a-3abe-444f-b9a4-b0a8ed2fa880
+blueprint: modifiers
 modifier_types:
   - string
-id: 9526d59a-3abe-444f-b9a4-b0a8ed2fa880
+title: Backspace
 ---
 Removes a specified number of characters from the end of a string.
 
-```.language-yaml
+```yaml
 title: supercalifragilisticexpialidocious
 ```
 
@@ -13,6 +15,6 @@ title: supercalifragilisticexpialidocious
 {{ title | backspace:29 }}
 ```
 
-```.language-output
+```html
 super
 ```

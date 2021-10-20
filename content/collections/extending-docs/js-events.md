@@ -13,5 +13,6 @@ this.$events.$emit('event.name');
 this.$events.$on('event.name');
 ```
 
-> The event bus is intended to be used for Vue component communication. If you want to listen
-> for Statamic driven "events", you may want to check out [Hooks](/extending/hooks).
+:::tip
+The event bus is intended to be used for Vue component communication. If you want to listen for Statamic driven "events", check out [Hooks](/extending/hooks).
+:::

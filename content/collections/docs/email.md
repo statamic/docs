@@ -4,7 +4,6 @@ intro: Be sure to configure your email settings if you want to invite new users,
 template: page
 id: bd1261de-7c4c-4c22-baf5-8a52cdd10c74
 blueprint: page
-stage: 4
 ---
 ## Overview
 
@@ -19,7 +18,7 @@ Your mail settings are located in `config/mail.php` and pre-wired to use [enviro
 
 The API based drivers like Mailgun and Postmark are often simpler and faster than SMTP servers. If possible, you should use one of these drivers. All of the API drivers require the Guzzle HTTP library, which may be installed via the Composer package manager:
 
-``` bash
+``` shell
 composer require guzzlehttp/guzzle
 ```
 
@@ -38,7 +37,7 @@ There's an email utility in the control panel to help you easily test your email
 
 You can modify the HTML and plain-text template used by mail notifications by publishing the view files to your project. After running the following command, the mail email notification templates will be located in the `resources/views/vendor/notifications` directory:
 
-```bash
+``` shell
 php artisan vendor:publish --tag=laravel-notifications
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Tags
-screenshot: fieldtypes/tags.png
+screenshot: fieldtypes/screenshots/tags.png
 description: Enter a list of items with a tag-style interface.
 overview: >
   Users can enter “taggable” values, which are formatted
@@ -15,7 +15,7 @@ Press `enter`, `tab`, or `,` to add a tag. Click an <span class="bg-grey-200 tex
 ## Data Storage
 Your tags will get saved as a simple YAML list, like this:
 
-``` .language-yaml
+```yaml
 - applesauce
 - garbage pants
 - socks
@@ -34,7 +34,7 @@ Loop through the array items to display each item's `value`.
 </ul>
 ```
 
-``` output
+```html
 <h1>I've heard rumors of:</h1>
 <ul>
   <li>applesauce</li>
@@ -43,8 +43,8 @@ Loop through the array items to display each item's `value`.
 </ul>
 ```
 
-> This fieldtype uses the word "tags" in general terms. If you're looking for a way to tag/categorize your content on a schema-level, you should read about [taxonomies](/taxonomies).
-
-## Config Options
+:::tip
+This fieldtype uses the word "tags" in general terms. If you're looking for a way to tag/categorize your content on a schema-level, you should read about [taxonomies](/taxonomies).
+:::
 
 None. It just does this one thing.

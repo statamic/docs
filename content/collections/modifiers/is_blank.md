@@ -1,11 +1,13 @@
 ---
+id: 054a230c-a655-48b0-af8b-a963bb0b89b0
+blueprint: modifiers
 modifier_types:
   - conditions
-id: 054a230c-a655-48b0-af8b-a963bb0b89b0
+title: 'Is Blank'
 ---
 Returns `true` if the string contains only whitespace chars.
 
-```.language-yaml
+```yaml
 ghost:
 zombie: BRAINSSSS
 ```
@@ -15,7 +17,7 @@ zombie: BRAINSSSS
 {{ if zombie | is_blank }}
 ```
 
-```.language-output
+```html
 true
 false
 ```

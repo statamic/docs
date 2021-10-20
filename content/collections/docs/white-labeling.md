@@ -2,17 +2,18 @@
 title: 'White Labeling'
 intro: 'White Labeling allows you to customize the logo, visible name, and basic theme of the CMS throughout the control panel.'
 template: page
-stage: 'Needs Polish & Humor'
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1612297554
+blueprint: page
 pro: true
 id: 5bd9426f-23cf-4196-9848-471dff67f5ea
 ---
 
 ## Configuration
-Your White Label options are available in `config/statamic/cp.php` or through their corresponding .env variables.
 
-> Keep in mind that according to the license terms you can only rebrand for personal, internal, or client usage. You cannot resell Statamic under another name.
+White Label options are available in `config/statamic/cp.php` or through corresponding [environment variables](configuration#environment-variables).
+
+:::warning
+Keep in mind that according to the license terms you can only rebrand for personal, internal, or client usage. You cannot resell Statamic under another name.
+:::
 
 ### CP Theme
 

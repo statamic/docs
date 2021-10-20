@@ -1,0 +1,12 @@
+title: 'Tips & Tricks'
+template: default
+layout: layout
+mount: b6c40452-8da0-4f03-a53c-714cc3338b9d
+revisions: false
+route: '/{mount}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+inject:
+  section: docs
