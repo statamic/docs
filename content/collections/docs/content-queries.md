@@ -45,7 +45,7 @@ GlobalSet::findByHandle('footer')->get('copyright');
 Some Facades also have a **Query Builders** that allows you to query, filter, and narrow down the results you desire. The `Entry` Facade's Query Builder allows you to find all the entries in a collection, by a specific author, and so on.
 
 :::tip
-All Query Builders are part of a Repository, but not all Repositories have a Query Builder. Just like how all donuts are deserts, but not all deserts are donuts. 🍩
+All Query Builders are part of a Repository, but not all Repositories have a Query Builder. Just like how all donuts are desserts, but not all desserts are donuts. 🍩
 :::
 
 **Query Builders** allow you to assemble a query, chain additional constraints onto it, and then invoke the `get` method to get the results:
