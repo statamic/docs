@@ -108,7 +108,7 @@ Note that you can even perform the same query multiple times. If you want to do 
 ```json
 {
     "home": { /* ... */ },
-    "blog": { /* ... */ },
+    "contact": { /* ... */ },
 }
 ```
 
