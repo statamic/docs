@@ -80,7 +80,7 @@ Once passed into a config file, the variable can be used in your views with the 
 :::warning
 **Your `.env` file should never be committed to version control**.
 
-Not only may each developer or server running your application may require a different configuration, but it can be a security risk in the event your version control repository is ever made public. Any sensitive credentials, like API keys and secret tokens, would be visible.
+Each developer or server running your application may require a different configuration, not to mention it can be a security risk in the event your version control repository is ever made public. Any sensitive credentials — like API keys and secret tokens — would be visible.
 :::
 
 ### Hiding Environment Variables from Debug Pages
