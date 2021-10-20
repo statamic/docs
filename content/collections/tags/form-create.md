@@ -118,7 +118,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
         <label>
           {{ display }}
           {{ if validate | contains:required }}
-            <sup class="text-secondary-50">*</sup>
+            <sup class="text-red">*</sup>
           {{ /if }}
         </label>
         <div class="p-1">{{ field }}</div>
