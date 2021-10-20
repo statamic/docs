@@ -115,7 +115,12 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```
 {{ fields }}
     <div class="p-2">
-        <label>{{ display }}</label>
+        <label>
+          {{ display }}
+          {{ if validate | contains:required }}
+            <sup class="text-red">*</sup>
+          {{ /if }}
+        </label>
         <div class="p-1">{{ field }}</div>
         {{ if error }}
             <p class="text-gray-500">{{ error }}</p>
@@ -135,6 +140,7 @@ Each item in the `fields` array contains the following data configurable in the 
 | `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
 | `instructions` | string | User-friendly instructions label |
+| `validate` | array | Contains an array of validation rules |
 
 ### Pre-rendered HTML
 
