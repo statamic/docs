@@ -48,6 +48,10 @@ and it was sick.</p>
 {{ $content }}
 ```
 
+:::tip
+Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade will be escaped. If you need to output unescaped HTML, use `{!! $content !!}`
+:::
+
 ## Using Modifiers with Blade
 
 You can use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax.
