@@ -14,5 +14,6 @@ Route::permanentRedirect('installation', 'installing');
 Route::permanentRedirect('blade-templates', 'blade');
 Route::permanentRedirect('fieldtypes/partial', '/blueprints#importing-fieldsets');
 Route::permanentRedirect('cascade', 'data-inheritance');
+Route::permanentRedirect('content-api', 'rest-api');
 Route::permanentRedirect('using-front-end-frameworks', 'javascript-frameworks');
 // Route::permanentRedirect('extending/queries', 'content-queries');

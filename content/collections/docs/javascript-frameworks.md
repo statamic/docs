@@ -51,7 +51,7 @@ This method is used to fetch _any_ entry-based data, not just that available on 
 :::
 
 ## The Content API
-[The Content API](/content-api) can be used on its own, or in conjunction with the above methods.
+[The Content REST API](/rest-api) can be used on its own, or in conjunction with the above methods.
 
 Here is a simple example component that fetches data using the asynchronous `created()` function. This data can then be used in the component or passed down to child components. The example uses the standard `Fetch` method but you can use any AJAX library (Axios, etc).
 

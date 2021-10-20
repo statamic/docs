@@ -846,7 +846,7 @@ The fieldtypes will define their types. For instance, a text field will be a `St
 Each `GlobalSetInterface` will also have an implementation for each set's blueprint.
 
 :::tip
-While Statamic doesn't enforce a blueprint for globals (see [Blueprint is Optional](/blueprints#blueprint-is-optional)), it _is_ required within the GraphQL context. Fields that haven't been explicitly added to a blueprint will not be available.
+While Statamic doesn't enforce a blueprint for globals (see [Blueprint is Optional](/globals#blueprints-are-optional)), it _is_ required within the GraphQL context. Fields that haven't been explicitly added to a blueprint will not be available.
 :::
 
 You will need to query the implementations using fragments in order to get blueprint-specific fields.

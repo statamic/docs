@@ -49,7 +49,7 @@ You don't have go Antlers + Tailwind. At all. That's just our preference.
 You could do so many different things, like:
 
 - Use our [GraphQL](/graphql) integration and build your frontend with [Gatsby.js](https://www.gatsbyjs.com/)
-- Use our [Content API](/content-api) and build a single page application with [Vue.js](https://vuejs.org) or [React](https://reactjs.org/)
+- Use our [REST API](/rest-api) and build a single page application with [Vue.js](https://vuejs.org) or [React](https://reactjs.org/)
 - Use [Laravel Blade](https://laravel.com/docs/8.x/blade) and some controllers and write your own routes.
 
 It's up to you.

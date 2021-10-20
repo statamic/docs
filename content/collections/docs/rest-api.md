@@ -4,8 +4,6 @@ blueprint: page
 title: 'REST API'
 intro: 'The Content REST API is a **read-only** API for delivering content from Statamic to your frontend, external apps, SPAs, and numerous other possible sources. Content is delivered as JSON data.'
 pro: true
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1632426880
 ---
 (If you're interested in [GraphQL](/graphql), we have that too.)
 
