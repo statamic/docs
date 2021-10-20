@@ -113,6 +113,9 @@ This example dynamically renders each input's HTML. You could alternatively writ
                 {{ /if }}
             </div>
         {{ /fields }}
+        
+        // Add the honeypot field
+        <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
 
         // This is just a submit button.
         <button type="submit">Submit</button>
