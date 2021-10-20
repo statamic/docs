@@ -10,6 +10,19 @@ You may display simple toast notifications through the `$toast` instance method.
 this.$toast.info('message');    // Basic message
 this.$toast.success('message'); // Green success
 this.$toast.error('message');   // Red error
-this.$toast.success('message', { dismissible: false }); // Hides the close button
 this.$toast.success('message', { duration: 3000 }); // Auto-disappear after this many milliseconds
 ```
+
+You may also trigger these from the server using the `Toast` facade.
+
+```php
+use Statamic\Facades\Toast;
+
+Toast::info('message');
+Toast::success('message');
+Toast::error('message');
+
+Toast::info('message')->duration(3000);
+```
+
+You don't have to return them to a response. Simply calling them is enough. They will automatically routed through the response into JavaScript.

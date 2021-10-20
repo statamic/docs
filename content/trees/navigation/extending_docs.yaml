@@ -52,6 +52,9 @@ tree:
       -
         id: 5601026a-9c62-4804-8725-c468c5154c31
         entry: a96676fe-0ec4-41f5-9205-2fe47988addb
+      -
+        id: 4ca9478d-e066-49e3-ba99-fc005b507609
+        entry: 52af4663-ebbd-467c-8659-9c7bb94cb7cc
   -
     id: 73354789-cbf2-4bee-ab86-b289d748a64d
     title: Javascript
@@ -74,9 +77,6 @@ tree:
       -
         id: 658a74a4-85b6-49b4-81e2-c5fb312c69b1
         entry: efcca509-5690-4201-88d7-74c542bb9900
-      -
-        id: 4ca9478d-e066-49e3-ba99-fc005b507609
-        entry: 52af4663-ebbd-467c-8659-9c7bb94cb7cc
       -
         id: a9670a39-ca85-4537-9a63-237ba534cc3a
         entry: 88bf3f66-4b80-42c9-8b65-bef712b8f413
