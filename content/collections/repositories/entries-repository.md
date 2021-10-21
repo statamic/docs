@@ -15,10 +15,9 @@ related_entries:
 | ------- | ----------- |
 | `all()` | Get all Entries |
 | `find($id)` | Get Entry by `id` |
-| `findByUri($uri)` | Get Entry by `uri` |
-| `findBySlug($slug)` | Get Entry by `url` |
+| `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
 | `query()` | Query Builder |
-| `whereCollection($handle)` | Get Entries in a `Collection` |
+| `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
 
 
