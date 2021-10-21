@@ -219,7 +219,7 @@ The `transform` method will convert the `Collection` of all the Eloquent models 
 The `column` method is used whenever we're performing any kind of column based query (like a `where`). If the column isn't in our list, we'll assume it's in the JSON `data` column and adjust the query accordingly.
 
 :::tip
-In case you didn't know, you can [run quries](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html) on data inside JSON columns. It's pretty awesome.
+In case you didn't know, you can [run queries](https://dev.mysql.com/doc/refman/8.0/en/json-search-functions.html) on data inside JSON columns. It's pretty awesome.
 :::
 
 ``` php
