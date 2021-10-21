@@ -48,7 +48,7 @@ There are 3 steps to follow to install Statamic into your Laravel app.
 
 ## Regarding Users
 
-If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/troubleshooting/storing-users-in-a-database#in-an-existing-laravel-app) follow those steps.
+If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) follow those steps.
 
 Otherwise, the [Storing User Records](/users#storage) page should has instructions for the most common scenarios.
 
