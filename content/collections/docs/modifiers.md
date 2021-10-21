@@ -27,4 +27,6 @@ Eager for more knowledge? Check out [Antler's modifier syntax](/antlers#modifyin
 
 ## Core Modifiers
 
+You can find a [full list of modifiers](/reference/modifiers) included with Statamic in the reference section.
+
 [antlers]: /antlers
