@@ -16,7 +16,7 @@ related_entries:
 | `all()` | Get all Entries |
 | `find($id)` | Get Entry by `id` |
 | `findByUri($uri)` | Get Entry by `uri` |
-| `findBySlug($slug)` | Get Entry by `url` |
+| `findBySlug($slug, $handle)` | Get Entry by `url` from `collection-handle` |
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
