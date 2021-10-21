@@ -1,7 +1,7 @@
 ---
 id: 2ecb1176-6cf1-48cf-937e-baad66a002fa
 blueprint: repositories
-title: 'Asset Containers Repository'
+title: 'Asset Container Repository'
 class: \Statamic\Facades\AssetContainer
 nav_title: 'Asset Containers'
 related_entries:

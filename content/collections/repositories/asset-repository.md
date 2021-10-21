@@ -1,7 +1,7 @@
 ---
 id: 391907fa-1312-4143-80e7-546d20f20d84
 blueprint: repositories
-title: 'Assets Repository'
+title: 'Asset Repository'
 class: \Statamic\Facades\Asset
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

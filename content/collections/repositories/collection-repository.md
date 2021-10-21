@@ -1,7 +1,7 @@
 ---
 id: 9c6a0b01-449e-49dd-8fa6-11b975d2726d
 blueprint: repositories
-title: 'Collections Repository'
+title: 'Collection Repository'
 class: \Statamic\Facades\Collection
 nav_title: Collections
 related_entries:

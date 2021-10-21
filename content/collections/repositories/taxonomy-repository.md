@@ -1,7 +1,7 @@
 ---
 id: 42d2d87c-5af6-4856-9ee0-9548439df772
 blueprint: repositories
-title: 'Taxonomies Repository'
+title: 'Taxonomy Repository'
 class: \Statamic\Facades\Taxonomies
 nav_title: Taxonomies
 related_entries:
@@ -18,7 +18,7 @@ related_entries:
 | `findByUri($mount)` | Get Taxonomy by `uri` |
 | `handleExists($handle)` | Check to see if `Taxonomy` exists |
 | `handles()` | Get all `Taxonomy` handles |
-| `queryTerms()` | Query Builder for [Terms](/content-queries/terms-repository) |
+| `queryTerms()` | Query Builder for [Terms](/content-queries/term-repository) |
 
 :::tip
 The `id` is the same as `handle` while using the default Stache driver.

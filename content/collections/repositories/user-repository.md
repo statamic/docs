@@ -1,7 +1,7 @@
 ---
 id: 1f89a175-5544-4151-9228-620f2c4f0925
 blueprint: repositories
-title: 'Users Repository'
+title: 'User Repository'
 nav_title: Users
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

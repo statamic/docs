@@ -1,7 +1,7 @@
 ---
 id: 4238bce4-a94b-4d07-96fa-ea77c1d8e48d
 blueprint: repositories
-title: 'Entries Repository'
+title: 'Entry Repository'
 nav_title: Entries
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

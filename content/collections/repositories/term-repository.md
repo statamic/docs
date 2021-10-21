@@ -1,7 +1,7 @@
 ---
 id: 322d7330-0967-428c-9d15-5b289e920466
 blueprint: repositories
-title: 'Taxonomy Terms Repository'
+title: 'Taxonomy Term Repository'
 nav_title: Terms
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

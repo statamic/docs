@@ -1,7 +1,7 @@
 ---
 id: 980c2496-c80a-44f2-8f28-39cfdeccc2c8
 blueprint: repositories
-title: 'User Groups Repository'
+title: 'User Group Repository'
 nav_title: 'User Groups'
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

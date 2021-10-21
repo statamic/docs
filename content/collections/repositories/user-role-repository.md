@@ -1,7 +1,7 @@
 ---
 id: c5f70315-b897-4037-a599-ef298539b988
 blueprint: repositories
-title: 'User Roles Repository'
+title: 'User Role Repository'
 nav_title: 'User Roles'
 related_entries:
   - e7833062-e05c-42c9-ad35-dc5077f1f0b8

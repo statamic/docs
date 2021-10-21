@@ -1,7 +1,7 @@
 ---
 id: 8159394f-8735-4659-844b-75a58d187007
 blueprint: repositories
-title: 'Globals Repository'
+title: 'Global Repository'
 nav_title: Globals
 related_entries:
   - 1e91dd54-c452-4e3b-8972-dba83c048d3d
