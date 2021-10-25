@@ -261,7 +261,6 @@ Click through there and you'll be taken to a form where you can describe what's 
 
 Please be as thorough as possible. Explain what's being added, what it fixes, list any relevant issues or discussions, and explain how we can test out the changes.
 
-
 ## Cleaning Up
 Once the PR is resolved, either by being merged or closed, you're free to delete the branch or even the entire fork.
 
@@ -270,3 +269,20 @@ If your PR was merged, you'll be mentioned in the next release's changelog where
 ![](/img/guides/contribution-guide/release.png)
 
 [cms-repo]: https://github.com/statamic/cms
+
+## Extra Credit
+If you're a frequent contributor, you may consider permanently setting up the Composer path repository.
+
+Instead of adding `repositories` key into your sandbox's `composer.json` every time, you can add it to your global Composer `~/.composer/config.json`.
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/path/to/cms",
+            "canonical": false
+        }
+    ]
+}
+```
