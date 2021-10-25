@@ -2,30 +2,12 @@
 id: 55a99a3b-e40d-4033-9a70-823de8e4255f
 blueprint: page
 title: Contributing
+overview: |
+  This is a guideline for contributing to Statamic, its documentation, addons, and starter kits. All of these wonderful things are hosted here in the [Statamic organization](https://github.com/statamic) on GitHub. We welcome your feedback, proposed changes, and updates to these guidelines. We will always welcome thoughtful issues and consider pull requests.
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632426691
 ---
-# How to Contribute to Statamic
-
-✨Thank you for taking the time to consider a contribuion!✨
-
-This is a guideline for contributing to Statamic, its documentation, addons, and starter kits. All of these wonderful things are hosted here in the [Statamic organization](https://github.com/statamic) on GitHub. We welcome your feedback, proposed changes, and updates to these guidelines. We will always welcome thoughtful issues and consider pull requests.
-
-#### Table of Contents
-
-- [What You Should Know Before Contributing](#what-you-should-know-before-contributing)
-- [Statamic isn’t FOSS](#statamic-isnt-foss)
-- [How to Get Support](#how-to-get-support)
-- [How You Can Contribute](#how-you-can-contribute)
-- [Which Repo?](#which-repo)
-- [Bug Reports](#bug-reports)
-- [Feature Requests](#feature-requests)
-- [Security Disclosures](#security-disclosures)
-- [Core Enhancements](#core-enhancements)
-- [Compiled Assets](#compiled-assets)
-- [Control Panel Translations](#control-panel-translations)
-- [Documentation Edits](#documentation-edits)
-- [Pull Requests](#pull-requests)
+✨Thank you for taking the time to consider a contribution!✨
 
 ## What You Should Know Before Contributing
 
@@ -77,7 +59,9 @@ Statamic's documentation lives in the [https://github.com/statamic/docs](https:/
 
 ### Core Enhancements
 
-If you would like to work on a new core feature or improvement, first create a [Github issue](https://github.com/statamic/cms/issues) for it if there’s not one already and make your pitch. Alternatively, you could open an empty, Draft PR to begin the discussion. While we appreciate community contributions, we do remain selective about what features make it into Statamic itself, so don’t take it the wrong way if we recommend that you pursue the idea as an addon instead.
+If you would like to work on a new feature, consider opening an issue first in [the ideas repo](https://github.com/statamic/ideas) so we can discuss it before you spend time on it. While we appreciate community contributions, we do remain selective about what features make it into Statamic itself, so don’t take it the wrong way if we recommend that you pursue the idea as an addon instead.
+
+If you're ready to start working on your feature, bug fix, or improvement, we have a [more in-depth guide to walk you through the whole thing](/contribution-guide).
 
 ### Compiled Assets
 
