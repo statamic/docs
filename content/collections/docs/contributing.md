@@ -41,10 +41,10 @@ Next, **please** (pretty pretty please) search through the [open issues](https:/
 
 If you _do_ find a similar issue, **upvote it** by adding a 👍 [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). If you have relevant information to add, do so in a comment. Please don't add a `+1` comment.
 
-If no one has filed the issue yet, feel free to [submit a new one](https://github.com/statamic/cms/issues/new). Please include a clear description of the issue, follow along with the issue template, and provide and as much relevant information as possible.
+If no one has filed the issue yet, feel free to [submit a new one](https://github.com/statamic/cms/issues/new). Please include a clear description of the issue, follow along with the issue template, and provide as much relevant information as possible.
 
 :::tip
-If you are able to up a repo demonstrating an issue, we can fix it **5x faster** than if you share a code example, and **1000x faster** than if you say "it's broken plz fix it k thx byeeeeee" without even telling us the error message.
+If you are able to create a repo demonstrating an issue, we can fix it **5x faster** than if you share a code example, and **1000x faster** than if you say "it's broken plz fix it k thx byeeeeee" without even telling us the error message.
 :::
 
 ### Feature Requests
