@@ -1,10 +1,12 @@
 ---
 id: 8e162978-b716-4c8b-a07c-a5ddefc703d5
 title: 'Fixing issues with Global Composer packages'
-intro: |-
+intro: |
   When [Composer](https://getcomposer.org) works, it's a fantastic and powerful tool. But what happens when it...doesn't? Here's how to fix one of the most common issues with global dependencies:
 
-  **Your requirements could not be resolved to an installable set of packages.**
+  ```
+  Your requirements could not be resolved to an installable set of packages.
+  ```
 template: page
 categories:
   - cli
