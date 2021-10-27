@@ -63,7 +63,7 @@ Permissions are grouped into **roles**, and are very simple to manage in the Con
 
 In turn, **roles** are attached directly to individual users or [user groups](#user-groups).
 
-### Statamic's native permissions: {#native-permissions}
+### Statamic's Native Permissions {#native-permissions}
 
 | Permission | Handle |
 |------------|--------|
@@ -71,35 +71,43 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | Create, edit, and delete collections | `configure collections` |
 | View entries | `view {collection} entries` |
 | ↳  Edit entries | `edit {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete entries | `delete {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Publish entries | `publish {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Reorder entries | `reorder {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
+| &nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
+| &nbsp;&nbsp;↳  Delete entries | `delete {collection} entries` |
+| &nbsp;&nbsp;↳  Publish entries | `publish {collection} entries` |
+| &nbsp;&nbsp;↳  Reorder entries | `reorder {collection} entries` |
+| &nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
 | Create, edit, and delete structures | `configure structures` |
 | ↳  View structure | `view {structure} structure` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
+| &nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
 | Edit global variables | `edit {global} globals` |
 | View asset container | `view {container} assets` |
 | ↳  Upload assets | `upload {container} assets` |
 | ↳  Edit assets | `edit {container} assets` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Move assets | `move {container} assets` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Rename assets | `rename {container} assets` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Delete assets | `delete {container} assets` |
+| &nbsp;&nbsp;↳  Move assets | `move {container} assets` |
+| &nbsp;&nbsp;↳  Rename assets | `rename {container} assets` |
+| &nbsp;&nbsp;↳  Delete assets | `delete {container} assets` |
 | View available updates | `view updates` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳  Perform updates | `perform updates` |
+| &nbsp;&nbsp;↳  Perform updates | `perform updates` |
 | View users | `view users` |
 | ↳ Edit users | `edit users` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Create users | `create users` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Delete users | `delete users` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Change passwords | `change passwords` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Edit user groups | `edit user groups` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Edit roles | `edit roles` |
+| &nbsp;&nbsp;↳ Create users | `create users` |
+| &nbsp;&nbsp;↳ Delete users | `delete users` |
+| &nbsp;&nbsp;↳ Change passwords | `change passwords` |
+| &nbsp;&nbsp;↳ Edit user groups | `edit user groups` |
+| &nbsp;&nbsp;↳ Edit roles | `edit roles` |
 | Configure forms | `configure forms` |
 | View form submissions | `view {form} submissions` |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
+| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
+
+### Author Permissions
+
+Author permissions are a little bit special. They determine the control users can have over their own entries or those created by other authors.
+
+:::warning Important!
+This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
+:::
 
 ### Super Users
 
