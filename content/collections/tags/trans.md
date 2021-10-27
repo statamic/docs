@@ -1,7 +1,7 @@
 ---
 title: Translate
 intro: |
-  Retrieve a string from a language file in the current locale. It is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
+  Retrieve a string from a language file in the current locale.
 parameters:
   -
     name: key
@@ -20,8 +20,8 @@ parameters:
     type: 'integer *1*'
     description: 'When using `trans_choice`, this is the number that defines the pluralization.'
 id: 8ff99539-8b1a-4380-adf7-bdad979f8afd
-stage: 4
 ---
+This tag is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
 
 :::tip
 There's also a [modifier](/modifiers/trans) version that you may prefer.
