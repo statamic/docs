@@ -70,9 +70,9 @@ For example, if you'd like to set the background of every 10th element to purple
 
 ## TailwindCSS support
 
-When you use the JIT compiler or you purge your CSS on production, you might notice styles that aren't used anywhere aren't picked up from the switch tag. Add spaces around you classes to make sure they get compiled.
+When you use the JIT compiler or you purge your CSS on production, you might notice styles that aren't used anywhere aren't picked up from the switch tag. Add spaces around the pipes to make sure they get compiled.
 
 ```
-{{ switch between=" bg-white | bg-purple " }}
+{{ switch between="bg-white | bg-purple" }}
 ```
 
