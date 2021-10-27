@@ -18,6 +18,11 @@ Each Nav is a [structure](/structures) giving you the ability to rearrange items
 - Any referenced entries will use the URLs **defined by the collection**, regardless of the position in the Structure.
 - You can place the same entry **multiple** times. Two times, three times, four times, even six times are all possible numbers of times you can place something.
 
+
+:::watch https://www.youtube.com/embed/POgIsLeWGGQ
+Watch how to build a simple nav with a Structured Collection
+:::
+
 ## Storage
 
 Navs are stored in `content/navigation`. Each gets its own YAML file whose handle matches its filename.

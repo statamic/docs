@@ -5,6 +5,7 @@ template: page
 blueprint: page
 id: 74c47654-8c47-49b1-a616-ed940ce19977
 ---
+## Overview
 Views contain the HTML served by the frontend of your site and are stored in the `resources/views` directory. A simple view might look something like this (but should it?):
 
 ```
@@ -18,6 +19,10 @@ Views contain the HTML served by the frontend of your site and are stored in the
 ```
 
 Each file inside your `resources/views` directory is a **view**. Each view can be used in different ways — given different roles and responsibilities.
+
+:::watch https://www.youtube.com/embed/leI3qRhzHLQ
+See how layouts and templates work together.
+:::
 
 ## Layouts
 
@@ -81,6 +86,9 @@ Partials are reusable views that may find themselves in any number of other layo
 We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
 :::
 
+:::watch https://www.youtube.com/embed/Ddz6mD-jT7E
+We have a video about Partials too!
+:::
 
 ## Using Blade
 
