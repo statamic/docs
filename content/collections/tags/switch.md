@@ -68,3 +68,10 @@ For example, if you'd like to set the background of every 10th element to purple
 {{ switch between="bg-white:9|bg-purple" }}
 ```
 
+:::tip
+If you're using [TailwindCSS's JIT mode](https://tailwindcss.com/docs/just-in-time-mode) or you purge your CSS on production, you might notice any classes **only in your switch tag** are missing. Add spaces around the pipes to make sure JIT picks them up.
+
+```
+{{ switch between="bg-white | bg-purple" }}
+```
+:::
