@@ -141,6 +141,14 @@ Think of layouts like a **picture frame**, and everything that changes from sect
     <figcaption>If copy & pasted properly you should see this 👆</figcaption>
 </figure>
 
+:::tip
+There's really no perfect place to mention this, but here is as good as any.
+
+The default install uses [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
+
+This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
+:::
+
 ## Now let's build a blog
 
 You might have known it was coming next – it's the staple of every CMS walkthrough. How easy is it to build a blog? You're about to find out.

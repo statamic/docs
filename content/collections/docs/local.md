@@ -66,3 +66,9 @@ The [Quick Start Guide](/quick-start-guide) is a great place to head next if you
 :::tip
 You can use Pro features while in development (like users, permissions revisions, REST API, and so on), by setting `'pro' => true` in `config/statamic/editions.php`.
 :::
+
+:::tip Another Hot Tip
+The default install and all first-party Starter Kits use [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
+
+This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
+:::
