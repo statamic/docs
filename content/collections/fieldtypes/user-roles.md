@@ -19,7 +19,7 @@ options:
     description: |
       Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
 related_entries:
-  - 57184c18-28d3-433f-b6ee-0e4539f6b504
+  - 6b691e04-8f28-4eb2-8288-b61433883fe4
   - 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
 ---
 ## Overview

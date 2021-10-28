@@ -1,4 +1,5 @@
 ---
+id: 006ee3c1-607e-4d65-94ae-6862c18ac516
 title: User Groups
 screenshot: fieldtypes/screenshots/user-groups.png
 description: Create a relationship with a User Group
@@ -19,7 +20,6 @@ options:
 related_entries:
   - 57184c18-28d3-433f-b6ee-0e4539f6b504
   - 6b691e04-8f28-4eb2-8288-b61433883fe4
-id: 821a636f-2ebd-4297-b459-47e702f899df
 ---
 ## Overview
 
