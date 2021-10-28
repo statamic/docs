@@ -82,16 +82,16 @@ These values are available in your views, scoped into the `live_preview` array:
 
 If you need to customize how Live Preview renders your content — say you're using Statamic as a headless CMS or pushing data into mobile devices or kiosk applications or something equally fancy — follow these steps.
 
-By overriding the `LocalizedEntry` class's `toLivePreviewResponse()` method, you can return anything you want.
+By overriding the `Entry` class's `toLivePreviewResponse()` method, you can return anything you want.
 
 ``` php
 <?php
 
 namespace App;
 
-use Statamic\Data\Entries\LocalizedEntry as BaseLocalizedEntry;
+use Statamic\Data\Entries\Entry as BaseEntry;
 
-class LocalizedEntry extends BaseLocalizedEntry
+class Entry extends BaseEntry
 {
     public function toLivePreviewResponse($request, $extra)
     {
@@ -100,7 +100,7 @@ class LocalizedEntry extends BaseLocalizedEntry
 }
 ```
 
-The localized entry (`$this`) will have access to the temporary values entered in Live Preview, applied as supplemented data.
+The entry (`$this`) will have access to the temporary values entered in Live Preview, applied as supplemented data.
 
 ``` php
 // the original title
