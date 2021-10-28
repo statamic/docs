@@ -668,6 +668,7 @@ GraphQL::addQuery(MyCustomQuery::class);
 - [TermInterface](#term-interface)
 - [AssetInterface](#asset-interface)
 - [GlobalSetInterface](#global-set-interface)
+- [Code](#code-type)
 
 ### EntryInterface {#entry-interface}
 
@@ -863,6 +864,25 @@ You will need to query the implementations using fragments in order to get bluep
 ```
 
 The fieldtypes will define their types. For instance, a text field will be a `String`, a [grid](#grid-fieldtype) field will expose a list of `GridItem` types.
+
+### Code {#code-type}
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `code` | `String!` | The actual code value.
+| `mode` | `String!` | The language "mode".
+
+The [code fieldtype](/fieldtypes/code) will return this type when `mode_selectable` is enabled. Otherwise, it'll just be a string.
+
+```graphql
+{
+    snippet {
+        code
+        mode
+    }
+}
+```
+
 
 ## Filtering
 

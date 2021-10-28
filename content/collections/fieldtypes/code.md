@@ -14,7 +14,7 @@ options:
     name: mode
     type: string
     description: |
-      Set a language for syntax highlighting. Your choices include:
+      Set a default language for syntax highlighting. Your choices include:
 
       - `clike`
       - `css`
@@ -41,6 +41,12 @@ options:
       - `vue`
       - `xml`
       - `yaml-frontmatter`
+  -
+    name: mode_selectable
+    type: boolean
+    description: |
+      Whether the `mode` can be selected by the user in the publish form. Enabling this will change the GraphQL
+      type from a string to a Code type.
   -
     name: indent_type
     type: string
@@ -95,14 +101,21 @@ You can output that string just as it is. If it is indeed code (and why wouldn't
 <pre><code>{{ your_code_field }}</code></pre>
 ```
 
+You're also able to use it as an array if you want to output the mode.
+
+```
+{{ your_code_field }}
+<pre class="language-{{ mode }}"><code>{{ code }}</code></pre>
+{{ /your_code_field }}
+```
+
 ### Variables
 
-Inside an asset variable's tag pair you'll have access to the following variables.
+Inside an code fieldtype's tag pair you'll have access to the following variables.
 
 | Variable | Description |
 |----------|-------------|
-| `key` | The zero-index count of the current item |
-| `value` | The stored value of the checkbox |
-| `label` | The label of the checkbox item from the field config |
+| `code` | The contents of the field. |
+| `mode` | The selected language mode. |
 
 
