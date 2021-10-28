@@ -4,14 +4,14 @@ blueprint: variables
 types:
   - system
   - content
-title: Template
+title: Current Template
 ---
 The name of the template currently in use.
 
 ```
-{{ template }}
+{{ current_template }}
 ```
 
 ```html
-landing-two
+blog.index
 ```
