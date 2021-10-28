@@ -15,7 +15,6 @@ options:
     name: mode
     type: string
     description: Sets the UI mode for choosing your structures. Pick between `Stack Selector`, `Select Dropdown`, or `Typeahead Field`.
-stage: 4
 id: 5a55198f-fcb6-4cb1-aacc-4aec3ad45003
 ---
 ## Overview
@@ -34,7 +33,7 @@ shown_structures:
 
 ## Templating
 
-Loop through the structure collecctions with access to all of the entries.
+Loop through the structure collections with access to all of the entries.
 
 ```
 <ul>
