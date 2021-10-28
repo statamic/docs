@@ -5,7 +5,6 @@ description: Enter a list of items with a tag-style interface.
 overview: >
   Users can enter “taggable” values, which are formatted
   automatically into a YAML list format. It's a lot like the [list fieldtype](/fieldtypes/list) but with a different UI.
-stage: 4
 id: 821a636f-2ebd-4297-b459-47e702f899df
 ---
 ## Overview
