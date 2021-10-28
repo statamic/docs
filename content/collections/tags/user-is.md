@@ -7,7 +7,6 @@ parameters:
     name: role|roles
     type: string
     description: 'The role(s) to check against. You may specify multiple roles by pipe separating them: `{{ user:is roles="writer|editor" }}`.'
-stage: 4
 id: 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
 ---
 ## Overview
