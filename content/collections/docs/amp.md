@@ -31,16 +31,10 @@ amp: true
 ```
 
 ### Routes
-You can add `'amp' => true` to a route to AMP it.
+You can use the `Route::amp()` method to create the AMP version of a regular Statamic route.
 
 ``` php
-// config/statamic/routes.php
-'routes' => [
-    '/flat' => [
-        'template' => 'flat',
-        'amp' => true,
-    ]
-]
+Route::amp('blog/{slug}', 'blog.index');
 ```
 
 ## AMP Views
