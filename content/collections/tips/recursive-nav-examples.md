@@ -61,7 +61,7 @@ nav_classes:
   3: 'text-gray-500 ml-6 text-sm'
 ---
 
-<ul class="leading-loose">
+<ul class="nav">
     {{ nav }}
         <li>
             <span class="{{ view:nav_classes[depth] }}">
@@ -74,5 +74,5 @@ nav_classes:
             {{ /if }}
         </li>
     {{ /nav }}
-</div>
+</ul>
 ```
