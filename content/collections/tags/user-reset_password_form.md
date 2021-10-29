@@ -72,8 +72,8 @@ After a user has put their email address into the [user:forgot_password_form](/t
 
 ## Arriving at this URL
 
-Visiting the URL containing this form _directly_ will set a `url_invalid` invalid variable you can use to check if they've actually come from the form in their previous request.
+This URL needs to have the appropriate `token` query parameter (e.g. `/some/url?token=the-generated-token-goes-here`)
 
-This URL needs to have the appropriate `user` and `code` query parameters (e.g. /some/url?user=username&code="abc123"`
+Visiting the URL containing this form _directly_ will set a `url_invalid` variable. You can use this variable to check if they've actually arrived here through the password reset mail. This variable just checks whether there is a `token` query parameter available in the URL. This token will then be sent along with the email address and new password they fill out in an attempt to reset their password. If the token is incorrect, a validation error will be shown after submitting the form.
 
-These can be created automatically using a `user:forgot_password_form`.
+The reset password mail which contains the right `token` may be sent by using a `user:forgot_password_form` tag.
