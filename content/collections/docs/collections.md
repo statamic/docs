@@ -121,7 +121,7 @@ Each of these behaviors is available for future and past dates.
 - **private** - Entries will be hidden in listings, and their own URLs will 404.
 
 :::tip
-Date behaviors are _defaults_. They can be overridden at the [tag level](/tags/collections) in your templates.
+Date behaviors are _defaults_. They can be overridden at the [tag level](/tags/collection) in your templates.
 :::
 
 ## Time
