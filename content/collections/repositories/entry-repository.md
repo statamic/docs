@@ -27,7 +27,7 @@ use Statamic\Facades\Entry;
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
 | `make()` | Makes a new entry instance |
 
-## Querying entries
+## Querying
 
 #### Examples {.popout}
 
