@@ -9,6 +9,13 @@ related_entries:
   - 6a18eac8-6139-419c-9d64-a2c960ccc3cd
   - 42d2d87c-5af6-4856-9ee0-9548439df772
 ---
+
+To work with the Repository Term queries, use the following Facade:
+
+```php
+use Statamic\Facades\Term;
+```
+
 ## Methods
 
 | Methods | Description |
@@ -19,14 +26,11 @@ related_entries:
 | `query()` | Query Builder |
 | `whereTaxonomy($handle)` | Get Terms in a `Taxonomy` |
 | `whereInTaxonomy([$handles])` | Get all Terms in an array of `Taxonomys` |
+| `make()` | Makes a new `Term` instance |
 
-To work with the Repository Term queries, use the following Facade:
+## Querying
 
-```php
-use Statamic\Facades\Term;
-```
-
-### Examples {.popout}
+#### Examples {.popout}
 
 #### Get all tags
 
@@ -61,4 +65,33 @@ Term::query()
     ->where('taxonomy', 'tags')
     ->where('entries_count', '>=', 1);
     ->get();
+```
+
+
+## Creating
+
+Start by making an instance of a term with the `make` method.
+You need at least a slug and the taxonomy.
+
+```php
+$term = Term::make()->taxonomy('tags')->slug('my-term');
+```
+
+Data is stored on a term on a per site basis, even if you only are using a single site.
+
+```php
+$term->dataForLocale('en', $data);
+$term->dataForLocale('fr', $frenchData);
+```
+
+You may call additional methods on the term to customize it further.
+
+```php
+$term->blueprint('tag');
+```
+
+Finally, save it. It'll return a boolean for whether it succeeded.
+
+```php
+$term->save(); // true or false
 ```

@@ -13,22 +13,27 @@ related_entries:
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1634259827
 ---
+To work with the with AssetContainer Repository, use the following Facade:
+
+```php
+use Statamic\Facades\AssetContainer;
+```
+
+## Methods
+
 | Methods | Description |
 | ------- | ----------- |
 | `all()` | Get all AssetContainers |
 | `find($id)` | Get AssetContainer by `id` |
 | `findByHandle($handle)` | Get AssetContainer by `handle` |
 | `queryAssets()` | Query Builder for the AssetContainer's [Assets](#assets) |
+| `make()` | Makes a new AssetContainer instance |
 
 :::tip
 The `id` is the same as `handle` while using the default Stache driver.
 :::
 
-To work with the with AssetContainer Repository, use the following Facade:
-
-```php
-use Statamic\Facades\AssetContainer;
-```
+## Querying
 
 While the `AssetContainer` Repository does not have a Query Builder, you can still query for Assets _inside_ AssetContainers with the `queryAssets` method. This approach can be useful for retrieving Assets with an existing AssetContainer object.
 
@@ -39,3 +44,31 @@ $videos->queryAssets()
     ->where('series', 'stranger-things')
     ->get();
 ```
+
+## Creating
+
+Start by making an instance of an asset container with the `make` method. You can pass the handle into it.
+
+```php
+$container = AssetContainer::make('assets');
+```
+
+You may call additional methods on the container to customize it further.
+
+```php
+$container
+  ->title('Assets')
+  ->allowDownloading(true)
+  ->allowMoving(true)
+  ->allowRenaming(true)
+  ->allowUploads(true)
+  ->createFolders(true)
+  ->searchIndex('assets');
+```
+
+Finally, save it.
+
+```php
+$container->save();
+```
+

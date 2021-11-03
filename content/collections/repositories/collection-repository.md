@@ -10,6 +10,14 @@ related_entries:
   - 045a6e54-c792-483a-a109-f07251a79e47
   - 7202c698-942a-4dc0-b006-b982784efb03
 ---
+To work with the with `Collection` Repository, use the following Facade:
+
+```php
+use Statamic\Facades\Collection;
+```
+
+## Methods
+
 | Methods | Description |
 | ------- | ----------- |
 | `all()` | Get all Collections |
@@ -20,21 +28,55 @@ related_entries:
 | `handles()` | Get all `Collection` handles |
 | `queryEntries()` | Query Builder for [Entries](#entries) |
 | `whereStructured()` | Get all Structured `Collections` |
+| `make()` | Makes a new `Collection` instance |
 
 :::tip
 The `id` is the same as `handle` while using the default Stache driver.
 :::
 
-To work with the with `Collection` Repository, use the following Facade:
-
-```php
-use Statamic\Facades\Collection;
-```
+## Querying
 
 While the `Collection` Repository does not have a Query Builder, you can still query for Entries _inside_ Collections with the `queryEntries` method. This approach can be useful for retrieving Entries with an existing Collection object.
 
 ```php
 $blog = Collection::find('blog');
 
-$blog->queryAssets()->get();
+$blog->queryEntries()->get();
+```
+
+## Creating
+
+Start by making an instance of a collection with the `make` method. You can pass the handle into it.
+
+```php
+$collection = Collection::make('assets');
+```
+
+You may call additional methods on the collection to customize it further.
+
+```php
+$collection
+    ->title('Blog')
+    ->routes('/blog/{slug}') // a string, or array of strings per site
+    ->mount('blog-page') // id of an entry
+    ->dated(true)
+    ->ampable(false)
+    ->sites(['one', 'two']) // array of handles
+    ->template('template')
+    ->layout('layout')
+    ->cascade($data) // an array
+    ->searchIndex('blog') // index name
+    ->revisionsEnabled(false)
+    ->defaultPublishState('published') // or 'draft'
+    ->structureContents($structure) // an array
+    ->sortField('field') // the field to sort by default
+    ->sortDirection('asc') // or 'desc'
+    ->taxonomies(['tags']) // array of handles
+    ->propagate(true); // whether newly created entries propagate to other sites
+```
+
+Finally, save it.
+
+```php
+$container->save();
 ```

@@ -9,6 +9,12 @@ related_entries:
   - 980c2496-c80a-44f2-8f28-39cfdeccc2c8
   - c5f70315-b897-4037-a599-ef298539b988
 ---
+To work with the User Repository, use the following Facade:
+
+```php
+use Statamic\Facades\User;
+```
+
 ## Methods
 
 | Methods | Description |
@@ -19,13 +25,9 @@ related_entries:
 | `findByEmail($email)` | Get User by `email` |
 | `findByOAuthID($provider, $id)` | Get User by an ID from an OAuth provider  |
 | `query()` | Query Builder |
+| `make()` | Makes a new `User` instance |
 
-
-To work with the User Repository, use the following Facade:
-
-```php
-use Statamic\Facades\User;
-```
+## Querying
 
 #### Get a user by ID
 
@@ -65,4 +67,30 @@ User::query()->where('super', true)->get();
 
 ```php
 User::current();
+```
+
+## Creating
+
+Start by making an instance of a user with the `make` method.
+You need at least an email before you can save a user.
+
+```php
+$user = User::make()->email('john@smith.com');
+```
+
+You may call additional methods on the user to customize it further.
+
+```php
+$user
+  ->password('plaintext') // it will be hashed for you
+  ->data(['foo' => 'bar']) // an array of data (front-matter)
+  ->preferences($prefs) // array of preferences
+  ->roles($roles) // array of roles
+  ->groups($groups); // array of groups
+```
+
+Finally, save it.
+
+```php
+$user->save();
 ```
