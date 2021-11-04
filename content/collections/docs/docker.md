@@ -25,7 +25,7 @@ If you don't already have Docker installed, head to [docker.com/get-started](htt
 
 Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/8.x#your-first-laravel-project).
 
-On MacOS, you can just run the following command, changing `example-app` to whatever you want.
+On MacOS, run the following command, changing `example-app` to anything you want.
 
 ```shell
 curl -s "https://laravel.build/example-app" | bash
@@ -33,7 +33,7 @@ curl -s "https://laravel.build/example-app" | bash
 
 ## Statamic Docker-Composer File
 
-Unless you plan to get fancy and use MySQL with Statamic (yes, you can do that) , you can replace the default `docker-compose.yml` file with this one to keep your overhead low.
+Unless you plan to get fancy and use MySQL with Statamic (yes, you can do that), replace the default `docker-compose.yml` file with this one to keep your overhead low.
 
 ``` yaml
 # For more information: https://laravel.com/docs/sail
@@ -67,24 +67,24 @@ networks:
 ## Starting and Stopping Sail
 
 :::tip
-**Before starting Sail**, you should ensure that no other web servers or databases are running on your local computer.
+**Before starting Sail**, ensure that no other web servers or databases are running on your local computer.
 :::
 
-To start all of the Docker containers defined in your site's `docker-compose.yml` file, you should execute the up command:
+To start all of the Docker containers defined in your site's `docker-compose.yml` file, execute the up command:
 
 ``` shell
 ./vendor/bin/sail up
 ```
 
-To start all of the Docker containers in the background, you may start Sail in "detached" mode:
+To start all of the Docker containers in the background, start Sail in "detached" mode:
 
 ``` shell
 ./vendor/bin/sail up -d
 ```
 
-Once the application's containers have been started, you may access the project in your web browser at: http://localhost.
+Once the application's containers have been started, your project can be accessed in the browser at: http://localhost.
 
-To stop all of the containers, you may simply press Control + C to stop the container's execution. Or, if the containers are running in the background, you may use the stop command:
+To stop all of the containers, press `Control` + `C`. Or if the containers are running in the background, use the stop command:
 
 ``` shell
 ./vendor/vin/sail stop
@@ -92,17 +92,15 @@ To stop all of the containers, you may simply press Control + C to stop the cont
 
 ## Installing Statamic
 
-At this point, you're still just running Laravel without Statamic in it.
+At this point you're running Laravel without Statamic in it. Time to change that.
 
 You can now follow the steps to [install Statamic into Laravel](/installing/laravel#install-statamic).
 
 :::tip
-Keep in mind that you should be running commands inside Sail.
+Keep in mind that  commands need to be run inside Sail.
 
-So when you see:
-
-- `php artisan`, you should run `sail artisan`
-- `composer require`, you should run `sail composer require`
+- Instead of `php artisan`, run `sail artisan`
+- Instead of `composer require`, run `sail composer require`
 :::
 
 
