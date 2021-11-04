@@ -51,13 +51,13 @@ Freestyle navigation structures exist to manage a nav out of existing entries, a
 
 ## Templating
 
-You can work with the structure tag to loop through and render your HTML with its links. For backwards compatibility, the [nav tag](/tags/nav) will reference a default "Pages" collection structure, if there is one.
+You can work with the [nav tag](/tags/nav) to loop through and render your HTML with its links.
 
 ```
 <ul>
-{{ structure:top_nav }}
+{{ nav:top_nav }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-{{ /structure:top_nav }}
+{{ /nav:top_nav }}
 </ul>
 ```
 
