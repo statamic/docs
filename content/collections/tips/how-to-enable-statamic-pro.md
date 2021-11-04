@@ -2,7 +2,7 @@
 id: 142626de-5984-4600-b14b-2a753d6979a8
 blueprint: tips
 title: 'How to Enable Statamic Pro'
-intro: 'Nova is an admin panel designed to manage your Eloquent models and other things. It can work hand in hand with Statamic.'
+intro: 'A fresh Statamic install starts in Solo edition mode. Here''s how to enable Pro mode and unlock every feature Statamic has.'
 template: page
 ---
 A fresh Statamic install starts in Solo edition mode. You can enable Pro at any time in your `config/statamic/editions.php` file:
