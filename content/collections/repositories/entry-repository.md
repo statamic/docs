@@ -9,6 +9,12 @@ related_entries:
   - 9c6a0b01-449e-49dd-8fa6-11b975d2726d
   - 7202c698-942a-4dc0-b006-b982784efb03
 ---
+To work with the Entry Repository, use the following Facade:
+
+```php
+use Statamic\Facades\Entry;
+```
+
 ## Methods
 
 | Methods | Description |
@@ -19,13 +25,9 @@ related_entries:
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
+| `make()` | Makes a new entry instance |
 
-
-To work with the Entry Repository, use the following Facade:
-
-```php
-use Statamic\Facades\Entry;
-```
+## Querying
 
 #### Examples {.popout}
 
@@ -134,4 +136,30 @@ Entry::query()
 Entry::query()
   ->where('published', false)
   ->get();
+```
+
+## Creating
+
+Start by making an instance of an entry with the `make` method.
+You need at least a slug and the collection before you can save an entry.
+
+```php
+$entry = Entry::make()->collection('blog')->slug('my-entry');
+```
+
+You may call additional methods on the entry to customize it further.
+
+```php
+$entry
+  ->date($carbon) // or string of Y-m-d or Y-m-d-Hi
+  ->published(true) // or false for a draft
+  ->locale('default') // the site handle. defaults to the default site.
+  ->data(['foo' => 'bar']) // an array of data (front-matter)
+  ->origin($origin); // another entry instance
+```
+
+Finally, save it. It'll return a boolean for whether it succeeded.
+
+```php
+$entry->save(); // true or false
 ```

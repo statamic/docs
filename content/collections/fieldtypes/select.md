@@ -81,7 +81,7 @@ select: face
 Select fields return the **value** from your selected option. You can access the label with `select_var:label`.
 
 ```
-<p id="{{ select }}"> Oh yeah? {{ select:value }}</p>
+<p id="{{ select }}"> Oh yeah? {{ select:label }}</p>
 ```
 
 ```html
