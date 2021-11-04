@@ -74,7 +74,7 @@ return [
 
 ## Server Rewrite Rules
 
-You will need to configure its rewrite rules when using full measure caching. Here are the rules for each of the most common types of servers.
+You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
 
 ### Apache
 
@@ -224,9 +224,9 @@ return [
 You will need to update your appropriate server rewrite rules.
 
 
-### Multiple sites
+## Multi-Site
 
-When using multi-site you can override the path with an array of your sites, useful when using multiple root domains per site.
+When using [multi-site](/multi-site), the path can accept an array of sites to define separate urls and domains, if needed.
 
 ``` php
 return [
@@ -235,10 +235,43 @@ return [
         'full' => [
             'driver' => 'file',
             'path' => [
-               'default'    => public_path('static') . '/default',
-               'other_site' => public_path('static') . '/other_site',
+               'default'    => public_path('static') . '/domain1.com/',
+               'default_fr' => public_path('static') . '/domain1.com/fr/',
+               'other_site' => public_path('static') . '/domain2.com/',
             ]
         ]
     ]
 ];
 ```
+### Rewrite Rules
+
+This multi-site example needs modified rewrite rules. 
+
+#### Apache
+
+``` htaccess
+RewriteCond %{DOCUMENT_ROOT}/static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
+RewriteCond %{REQUEST_METHOD} GET
+RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
+```
+
+#### Nginx
+
+``` nginx
+location / {
+  try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
+}
+```
+
+#### IIS
+
+``` xml
+<rule name="Static Caching" stopProcessing="true">
+  <match url="^(.*)"  />
+  <action type="Rewrite" url="/static/{SERVER_NAME}/{R:1}_{QUERY_STRING}.html"  />
+</rule>
+```
+
+:::tip
+`{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
+:::
