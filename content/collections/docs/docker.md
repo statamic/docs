@@ -13,22 +13,22 @@ At its heart, Sail is a `docker-compose.yml` file and script that is stored at t
 
 Laravel Sail is supported on macOS, Linux, and Windows (via WSL2).
 
+:::tip
+Since Sail is the starting point for a new Laravel app, we'll be installing Statamic **into** a fresh Laravel app.
+:::
+
 ## Installing Docker
 
 If you don't already have Docker installed, head to [docker.com/get-started](https://www.docker.com/get-started) and download the latest version for your OS.
 
-## Installing Sail
+## Installing Laravel
 
-Install Sail into your Statamic project with Composer:
+Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/8.x#your-first-laravel-project).
 
-``` shell
-composer require laravel/sail --dev
-```
+On MacOS, you can just run the following command, changing `example-app` to whatever you want.
 
-After Sail has been installed, you may run the `sail:install `Artisan command. This command will publish Sail's docker-compose.yml file to the root of your application:
-
-```
-php artisan sail:install
+```shell
+curl -s "https://laravel.build/example-app" | bash
 ```
 
 ## Statamic Docker-Composer File
@@ -89,6 +89,22 @@ To stop all of the containers, you may simply press Control + C to stop the cont
 ``` shell
 ./vendor/vin/sail stop
 ```
+
+## Installing Statamic
+
+At this point, you're still just running Laravel without Statamic in it.
+
+You can now follow the steps to [install Statamic into Laravel](/installing/laravel#install-statamic).
+
+:::tip
+Keep in mind that you should be running commands inside Sail.
+
+So when you see:
+
+- `php artisan`, you should run `sail artisan`
+- `composer require`, you should run `sail composer require`
+:::
+
 
 ## Learn more about Laravel Sail
 
