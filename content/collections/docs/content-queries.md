@@ -101,7 +101,7 @@ For example, the following query Gets entries in the `blog` collection where the
 
 ```php
 Entry::query()
-    ->where('collection', '=', 'blog') // [tl! hightlight:start]
+    ->where('collection', 'blog') // [tl! hightlight:start]
     ->where('status', '=', 'featured') // [tl! highlight:end]
     ->get();
 ```
