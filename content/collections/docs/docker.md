@@ -13,27 +13,27 @@ At its heart, Sail is a `docker-compose.yml` file and script that is stored at t
 
 Laravel Sail is supported on macOS, Linux, and Windows (via WSL2).
 
+:::tip
+Since Sail is the starting point for a new Laravel app, we'll be installing Statamic **into** a fresh Laravel app.
+:::
+
 ## Installing Docker
 
 If you don't already have Docker installed, head to [docker.com/get-started](https://www.docker.com/get-started) and download the latest version for your OS.
 
-## Installing Sail
+## Installing Laravel
 
-Install Sail into your Statamic project with Composer:
+Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/8.x#your-first-laravel-project).
 
-``` shell
-composer require laravel/sail --dev
-```
+On MacOS, run the following command, changing `example-app` to anything you want.
 
-After Sail has been installed, you may run the `sail:install `Artisan command. This command will publish Sail's docker-compose.yml file to the root of your application:
-
-```
-php artisan sail:install
+```shell
+curl -s "https://laravel.build/example-app" | bash
 ```
 
 ## Statamic Docker-Composer File
 
-Unless you plan to get fancy and use MySQL with Statamic (yes, you can do that) , you can replace the default `docker-compose.yml` file with this one to keep your overhead low.
+Unless you plan to get fancy and use MySQL with Statamic (yes, you can do that), replace the default `docker-compose.yml` file with this one to keep your overhead low.
 
 ``` yaml
 # For more information: https://laravel.com/docs/sail
@@ -67,28 +67,42 @@ networks:
 ## Starting and Stopping Sail
 
 :::tip
-**Before starting Sail**, you should ensure that no other web servers or databases are running on your local computer.
+**Before starting Sail**, ensure that no other web servers or databases are running on your local computer.
 :::
 
-To start all of the Docker containers defined in your site's `docker-compose.yml` file, you should execute the up command:
+To start all of the Docker containers defined in your site's `docker-compose.yml` file, execute the up command:
 
 ``` shell
 ./vendor/bin/sail up
 ```
 
-To start all of the Docker containers in the background, you may start Sail in "detached" mode:
+To start all of the Docker containers in the background, start Sail in "detached" mode:
 
 ``` shell
 ./vendor/bin/sail up -d
 ```
 
-Once the application's containers have been started, you may access the project in your web browser at: http://localhost.
+Once the application's containers have been started, your project can be accessed in the browser at: http://localhost.
 
-To stop all of the containers, you may simply press Control + C to stop the container's execution. Or, if the containers are running in the background, you may use the stop command:
+To stop all of the containers, press `Control` + `C`. Or if the containers are running in the background, use the stop command:
 
 ``` shell
 ./vendor/vin/sail stop
 ```
+
+## Installing Statamic
+
+At this point you're running Laravel without Statamic in it. Time to change that.
+
+You can now follow the steps to [install Statamic into Laravel](/installing/laravel#install-statamic).
+
+:::tip
+Keep in mind that  commands need to be run inside Sail.
+
+- Instead of `php artisan`, run `sail artisan`
+- Instead of `composer require`, run `sail composer require`
+:::
+
 
 ## Learn more about Laravel Sail
 
