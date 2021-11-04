@@ -69,7 +69,7 @@ Statamic.$components.register('toggle_password-fieldtype', Fieldtype);
 ``` vue
 <template>
     <div>
-        <text-input :type="inputType" :value="value" @input="update" />
+        <text-input :type="inputType" :value="value" @input="updateDebounced" />
         <label><input type="checkbox" v-model="show" /> Show Password</label>
     </div>
 </template>
@@ -94,9 +94,11 @@ export default {
 #### Example walkthrough:
 - The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field.
 - The `text-input` component emits an `input` event whenever you type into it. Our component is listening for that event and calls the `update` method.
-- The `Fieldtype` mixin is providing an `update` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
+- The `Fieldtype` mixin is providing an `updateDebounced` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
 
-**Do not** modify the `value` prop directly. Instead, call `this.update(value)` and let the Vuex store handle the update appropriately.
+:::warning
+**Do not** modify the `value` prop directly. Instead, call `this.update(value)` (or `this.updateDebounced(value)`) and let the Vuex store handle the update appropriately.
+:::
 
 ## Configuration Fields
 
