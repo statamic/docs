@@ -97,19 +97,18 @@ All `where` clauses are additive, filtering records based on more than one condi
 ### Where
 You may use the query builder's `where` method to add "where" clauses to the query. The most basic call to the `where` method requires three arguments. The first argument is the name of the field. The second argument is an operator, which can be any of the supported operators. The third argument is the value to compare against the field's value.
 
-For example, the following query Gets entries in the `blog` collection where the value of a `featured` field is `true`.
+For example, the following query gets entries where the value of a `featured` field is `true`.
 
 ```php
 Entry::query()
-    ->where('collection', '=', 'blog') // [tl! hightlight:start]
-    ->where('status', '=', 'featured') // [tl! highlight:end]
+    ->where('status', '=', 'featured') // [tl! ~~]
     ->get();
 ```
 
 As a shorthand for an "equals" query, you may pass the value as the second argument to the `where` method. Statamic will assume you would like to use the `=` operator:
 
 ```php
-Entry::query()->where('collection', 'blog')->get();
+Entry::query()->where('status', 'featured')->get();
 ```
 
 ### WhereIn
@@ -117,7 +116,6 @@ The `whereIn` method to check a field against an a given array of values:
 
 ```php
 Entry::query()
-    ->where('collection', 'blog')
     ->whereIn('status', ['featured', 'sticky', 'special']) // [tl! ~~]
     ->get();
 ```
@@ -126,7 +124,6 @@ You can also use the `whereNotIn` method to ensure a given field's value is not 
 
 ```php
 Entry::query()
-    ->where('collection', 'blog')
     ->whereNotIn('status', ['draft', 'boring']) // [tl! ~~]
     ->get();
 ```
