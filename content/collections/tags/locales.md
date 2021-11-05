@@ -27,6 +27,11 @@ variables:
     description: >
       The `handle` of the current locale.
   -
+    name: is_current
+    type: boolean
+    description: >
+      `true` if the given locale in the loop is the current one.
+  -
     name: locale:[key/handle]
     type: string
     description: |
@@ -46,11 +51,6 @@ variables:
     type: string
     description: |
       The short 2 character system locale (e.g. `en`) for any given locale as set in `config/statamic/sites.php`.
-  -
-    name: locale:is_current
-    type: boolean
-    description: >
-      `true` if the given locale in the loop is the current one.
 ---
 ## Overview
 
