@@ -70,6 +70,10 @@ variables:
     type: string
     description: The absolute URL of the site.
   -
+    name: exists
+    type: boolean
+    description: Whether the entry has been localized into the site. It will be `false` if the entry hasn't been localized at all, or if it's a draft.
+  -
     name: entry data
     type: mixed
     description: |
