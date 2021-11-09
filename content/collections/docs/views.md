@@ -73,6 +73,21 @@ title: Photo Gallery
 You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so you have a lot of flexibility.
 :::
 
+### Inferring templates from entry blueprints
+
+If you would like to automatically infer collection entry templates from entry blueprints, you can set your collection's default template to `@blueprint`.
+
+``` yaml
+# This would go in your collection's yaml config
+template: '@blueprint'
+```
+
+By doing this, Statamic will look for the corresponding template in `/resources/views/{collection}/{blueprint}.antlers.html`.
+
+For example, if you have an `articles` collection entry that uses a blueprint with the handle of `long`, the `/resources/views/articles/long.antlers.html` template will be used.
+
+Given that this just sets the collection's _default_ entry template, you can still override a template at the entry level as well.
+
 ## Partials
 
 Partials are reusable views that may find themselves in any number of other layouts, templates, and other partials. You can use any view as a partial by using the [partial](/tags/partial) tag.
