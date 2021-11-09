@@ -20,6 +20,16 @@ parameters:
    type: boolean *true*
    description: |
      When true, this ensures that the current site locale will be first in the list. Only applicable in the tag pair.
+  -
+   name: self
+   type: boolean *true*
+   description: |
+     When true, it includes the given entry's locale in the list. Only applicable in the tag pair.
+  -
+   name: all
+   type: boolean *false*
+   description: |
+     When true, all of the sites will be displayed, even if the entry isn't localized into that site. When the entry is missing, the values (e.g. `url`) will fall back to the site. Only applicable in the tag pair.
 variables:
   -
     name: current
@@ -32,7 +42,7 @@ variables:
     description: >
       `true` if the given locale in the loop is the current one.
   -
-    name: locale:[key/handle]
+    name: locale:handle
     type: string
     description: |
       The system handle for any given locale as set in `config/statamic/sites.php`.
@@ -51,6 +61,23 @@ variables:
     type: string
     description: |
       The short 2 character system locale (e.g. `en`) for any given locale as set in `config/statamic/sites.php`.
+  -
+    name: locale:url
+    type: string
+    description: The URL as defined in in `sites.php`.
+  -
+    name: locale:permalink
+    type: string
+    description: The absolute URL of the site.
+  -
+    name: exists
+    type: boolean
+    description: Whether the entry has been localized into the site. It will be `false` if the entry hasn't been localized at all, or if it's a draft.
+  -
+    name: entry data
+    type: mixed
+    description: |
+      Each result has access to all the variables inside that entry (`title`, `content`, etc).
 ---
 ## Overview
 
@@ -80,14 +107,13 @@ You can also specify a locale directly instead of looping through them all.
     <a href="{{ permalink }}">View in French</a>
 {{ /locales:fr }}
 ```
-### Excluding the current locale {#excluding}
 
-You can choose to not show the current locale in a list.
+### Excluding the entry's locale {#excluding}
+
+You can choose to not show the locale belonging to the entry.
 
 ```
-{{ locales }}
-  {{ if ! is_current }}
+{{ locales self="false" }}
     <a href="{{ permalink }}">View in {{ locale:name }}</a>
-  {{ /if }}
 {{ /locales }}
 ```
