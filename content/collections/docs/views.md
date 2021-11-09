@@ -75,10 +75,11 @@ You can use the [template](/fieldtypes/template) fieldtype to make choosing your
 
 ### Inferring templates from entry blueprints
 
-If you would like to automatically infer collection entry templates from entry blueprints, you can set your collection's default template to `@blueprint`.
+
+To automatically infer the template from an entry's blueprint, set the collection's default template to `@blueprint`.
 
 ``` yaml
-# This would go in your collection's yaml config
+# collections/{collection}.yaml
 template: '@blueprint'
 ```
 
@@ -86,7 +87,9 @@ By doing this, Statamic will look for the corresponding template in `/resources/
 
 For example, if you have an `articles` collection entry that uses a blueprint with the handle of `long`, the `/resources/views/articles/long.antlers.html` template will be used.
 
-Given that this just sets the collection's _default_ entry template, you can still override a template at the entry level as well.
+:::tip
+You can still set a template on the entry level and override the default.
+:::
 
 ## Partials
 
