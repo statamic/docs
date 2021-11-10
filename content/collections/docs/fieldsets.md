@@ -7,7 +7,7 @@ intro: Fieldsets are used to store and organize reusable fields.
 ---
 ## Overview
 
-Fieldsets are almost functionally equivalent to [Blueprints](/blueprints), except that they exist for you to be able to create usable fields.
+Fieldsets are almost functionally equivalent to [Blueprints](/blueprints), except that they exist for you to be able to create reusable fields.
 
 While Blueprints attach directly to content like collections or forms, Fieldsets are not directly attached to anything.
 
