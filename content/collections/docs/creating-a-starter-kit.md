@@ -195,4 +195,4 @@ An example use case is a frontend theme with sample content. This is the kind of
 ## Related Reading
 
 - [Starter Kit Overview](/starter-kits)
-- [How to Install a Starter Kit](/installing-starter-kits)
+- [How to Install a Starter Kit](/starter-kits/installing-a-starter-kit)
