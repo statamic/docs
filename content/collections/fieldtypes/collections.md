@@ -40,7 +40,7 @@ Since the collection tag accepts a pipe-delimited list of collection names, you 
 
 ```
 <ul>
-  {{ collection from="{listings|piped}" }}
+  {{ collection from="{listings|things}" }}
     <li>{{ title }}</li>
   {{ /collection }}
 </ul>
