@@ -35,7 +35,7 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
 
 ## Creating the Starter Kit Project
 
-The first step is to [create a new Statamic project](http://docs.test/installation#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
+The first step is to [create a new Statamic project](https://statamic.dev/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
 
 
 ## Exporting Files
