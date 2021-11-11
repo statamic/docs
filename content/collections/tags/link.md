@@ -46,7 +46,7 @@ https://example.com/fanny-packs
 You can also link to entries using their ID directly:
 
 ```
-{{ link to="1715c9a8-0662-4ca7-b9ea-1ad642431fae" }}
+{{ link id="1715c9a8-0662-4ca7-b9ea-1ad642431fae" }}
 ```
 
 ``` output
@@ -56,7 +56,7 @@ You can also link to entries using their ID directly:
 When using Multi-Site, the URL automatically links to the entry on the current site. If you want to link to a specific site instead, you can add the `in` parameter:
 
 ```
-{{ link to="1715c9a8-0662-4ca7-b9ea-1ad642431fae" in="spanish" }}
+{{ link id="1715c9a8-0662-4ca7-b9ea-1ad642431fae" in="spanish" }}
 ```
 
 ``` output
