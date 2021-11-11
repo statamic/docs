@@ -53,6 +53,6 @@ disk: do_spaces
 ```
 
 :::tip
-If you're having performance issues with S3 containers in the Statamic Control Panel, check out these [optimisation tips](https://statamic.dev/tips/optimizing-assets).
+If you're having performance issues with S3 containers in the Control Panel, check out these [optimization tips](/tips/optimizing-assets).
 :::
 
