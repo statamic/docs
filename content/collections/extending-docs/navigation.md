@@ -42,7 +42,7 @@ Nav::extend(function ($nav) {
 });
 ```
 
-If you wish to use a custom SVG or one from the [Streamline Icon Pack](https://streamlineicons.com/) that's not included in Statamic, you may pass the SVG icon to the `icon()` method, in place of an icon name.
+If you wish to use a custom SVG or one from the [Streamline Icon Pack](https://app.streamlinehq.com/icons/streamline-light) that's not included in Statamic, you may pass the SVG icon to the `icon()` method, in place of an icon name.
 
 ```php
 Nav::extend(function ($nav) {
