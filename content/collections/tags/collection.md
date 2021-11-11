@@ -407,7 +407,7 @@ For example, if you want to group some dated entries by month/year, you could do
 {{ /collection:articles }}
 ```
 
-Another example, lets say you have a `blog` and an `author` collection and you want to get a list of authors that wrote a blog post:
+Another example, lets say you have a `blog` and an `author` collection. The blog collection has an author field and you want to get a list of authors that wrote a blog post:
 
 ```
 {{ collection:blog as="articles" }}
@@ -418,5 +418,7 @@ Another example, lets say you have a `blog` and an `author` collection and you w
     {{ /articles }}
 {{ /collection:blog }}
 ```
+
+This will get you a list of authors that wrote an actual article.
 
 [conditions]: /conditions
