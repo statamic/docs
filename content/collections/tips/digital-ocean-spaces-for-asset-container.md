@@ -51,3 +51,8 @@ Create a new Asset Container using this `do_spaces` as a Disk. You can do this v
 title: "MySpace"
 disk: do_spaces
 ```
+
+:::tip
+If you're having performance issues with S3 containers in the Statamic Control Panel, check out these [optimisation tips](https://statamic.dev/tips/optimizing-assets).
+:::
+
