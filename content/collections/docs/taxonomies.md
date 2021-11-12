@@ -47,7 +47,7 @@ URLs use slugs with dashes, and views use handles with underscores.
   - Accessible at `/{taxonomy-slug}/{term-slug}` (eg. `/product-tags/t-shirts`)
   - The `{taxonomy_handle}/show` view will be used. (eg. `product_tags/show.antlers.html`)
 
-For each taxonomy [assigned to a collection](#collections), and when [the collection has been mounted](/collections#mounting), you will also get these routes:
+For each taxonomy [assigned to a collection](#collections) you will also get these routes:
 
 - **Collection Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
