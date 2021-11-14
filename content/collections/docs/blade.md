@@ -10,7 +10,7 @@ updated_at: 1632748828
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend.
 
-Antlers handles the responsibilities of both Blade _and_ [Controllers](/controllers), all in your template. If you choose to **not** use Antlers, know that you'll have to do additional work in PHP somewhere to fetch and prep content another other way.
+Antlers handles the responsibilities of both Blade _and_ [Controllers](/controllers), all in your template. If you choose to **not** use Antlers, know that you'll have to do additional work in PHP somewhere to fetch and prep content another way.
 
 You can use [Blade](https://laravel.com/docs/blade) or other template engines by using their respective file extensions.
 
