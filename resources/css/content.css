@@ -1,6 +1,13 @@
 /* Main Content */
 /* -------------------------------------------------- */
 
+::-moz-selection {
+    background-color: #faf77d;
+}
+::selection {
+    background-color: #faf77d;
+}
+
 article, .markdown {
     background: white;
     @apply text-gray-darkest leading-relaxed;
