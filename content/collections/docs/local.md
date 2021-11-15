@@ -21,6 +21,7 @@ To install Statamic locally you will need the following:
 - A computer running MacOS, Windows, or Linux
 - A supported version of [PHP](https://php.net) (we recommend PHP 8)
 - [Composer](https://getcomposer.org) to manage PHP packages
+- [Laravel Valet](https://laravel.com/docs/8.x/valet) if running on macOS to host the site
 
 ## Install Statamic CLI
 
@@ -35,6 +36,26 @@ Once installed, you can run the command `statamic list` to see a list of availab
 :::tip
 If you run into any issues or errors, check out this [helpful article](/troubleshooting/fixing-issues-with-global-composer-packages) on what to do next.
 :::
+
+## Install Laravel Valet
+
+Laravel Valet is a tool that hosts a local Laravel site and makes it conveniently available at a http://$project_name.test URL. Installing Laravel is simple:
+
+```
+composer global require laravel/valet
+valet install
+```
+
+At this point you should be able to `ping anysite.test` and see a response.
+
+Now change to the directory where your web site will live and run `valet park`. e.g. if your website's path on disk is `~/Sites/my-great-website` then:
+
+```
+cd ~/Sites
+valet park
+```
+
+Having run this command you'll be able to see your Statamic website (created in the next step) at `http://$project_name.test`
 
 ## Install Statamic
 In your terminal, `cd` to the directory you want to start a new Statamic project in and run the install command.
