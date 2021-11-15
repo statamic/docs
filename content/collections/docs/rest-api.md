@@ -81,7 +81,7 @@ value is `true`. When you omit the condition, it defaults to `is`.
 If you are using [Multi-Site](/multi-site), the Content API serves content from all sites at once. You can limit the fetched data to a specific site with a `site` parameter like so:
 
 ```url
-/endpoint?site=default,es,fr
+/endpoint?site=default
 ```
 
 
