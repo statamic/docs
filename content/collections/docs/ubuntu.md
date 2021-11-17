@@ -80,9 +80,9 @@ Once Statamic is installed, you'll need to grant appropriate permissions to the 
 ``` shell
 sudo chmod -R 755 /var/www/example.com
 sudo chown -R www-data:www-data /var/www/example.com
-sudo chown -R www-data.www-data /var/www/example.com/storage
-sudo chown -R www-data.www-data /var/www/example.com/content
-sudo chown -R www-data.www-data /var/www/example.com/bootstrap/cache
+sudo chown -R www-data:www-data /var/www/example.com/storage
+sudo chown -R www-data:www-data /var/www/example.com/content
+sudo chown -R www-data:www-data /var/www/example.com/bootstrap/cache
 ```
 
 
