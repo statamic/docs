@@ -42,7 +42,7 @@ You can see the list of available commands in your terminal by running `php plea
 | Command | Description |
 |---------|-------------|
 | `addons:discover`  | Rebuild the cached addon package manifest |
-| `assets:generate-presents` | Generate asset preset manipulations |
+| `assets:generate-presets` | Generate asset preset manipulations |
 | `assets:meta`      | Generate asset metadata files |
 | `auth:migration`   | Generate Auth Migrations |
 | `glide:clear`      | Clear the Glide image cache |
