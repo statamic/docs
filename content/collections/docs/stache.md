@@ -25,12 +25,12 @@ This is great for local development, but on a production environment **you shoul
 Disable this feature in your `.env` file or the `config/statamic/stache.php` config.
 
 ``` env
-STATAMIC_FILE_WATCHER=false
+STATAMIC_STACHE_WATCHER=false
 ```
 
 ``` php
 return [
-   'watcher' => env('STATAMIC_FILE_WATCHER', true), // [tl! highlight]
+   'watcher' => env('STATAMIC_STACHE_WATCHER', true), // [tl! highlight]
    ...
 ];
 ```
