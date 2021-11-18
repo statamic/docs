@@ -100,7 +100,7 @@ After the install completes, Nginx will start automatically. You can verify the 
 sudo systemctl status nginx
 ```
 
-Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vi` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
+Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vim` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
 
 
 ```php
