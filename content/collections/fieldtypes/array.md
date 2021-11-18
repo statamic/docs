@@ -116,5 +116,5 @@ You can use basic array access, nested variables, or the [foreach tag](/tags/for
 // Foreach tag:
 {{ foreach:address }}
     {{ value }}
-{{ /foreach:addresss }}
+{{ /foreach:address }}
 ```
