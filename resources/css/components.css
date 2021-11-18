@@ -192,6 +192,10 @@ figure figcaption {
     }
 }
 
+.dark .toc li a {
+    @apply text-gray-light;
+}
+
 /* @media screen(lg) {
     .toc {
         column-count: 3;

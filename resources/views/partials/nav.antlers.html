@@ -1,6 +1,7 @@
 <nav
     id="site-nav"
-    class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20"
+    class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20
+    dark:bg-transparent"
 >
     <div class="w-full flex items-center justify-between md:block md:w-74">
         <a href="/" class="relative top-[-3px] text-pink hover:text-purple">
@@ -10,11 +11,11 @@
     <div class="flex-1 flex items-center justify-between md:h-full">
         <ul class="flex items-center space-x-2 md:space-x-10 md:text-lg">
             {{ nav:collection:sections include_home="true" }}
-            <li><a class="hover:text-pink {{ page:section === section ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
+            <li><a class="hover:text-pink dark:text-white {{ page:section === section ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
             {{ /nav:collection:sections }}
         </ul>
         <div class="flex items-center h-full">
-            <form class="relative hidden md:flex items-center text-sm w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px]" action="/search-results">
+            <form class="relative hidden md:flex items-center text-sm w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px] dark:bg-gray-darkest" action="/search-results">
                 <div id="docsearch" ref="docSearch"></div>
             </form>
         </div>

@@ -1,4 +1,4 @@
-<div id="site-footer" class="bg-black text-white relative mt-8 z-20" x-show="! showNav">
+<div id="site-footer" class="bg-black text-white relative mt-8 z-20 dark:bg-gray-darkest" x-show="! showNav">
     <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 relative">
         <div class="md:w-1/2">
             <h2 class="text-3xl font-bold font-display mb-4 antialiased">Community</h2>
@@ -55,7 +55,7 @@
                 </h3>
                 <form class="relative flex items-center text-sm w-[300px] md:w-[360px] h-9 m-0 rounded border-2 border-white shadow-white relative top-[-2px]" action="/search-results">
                     <input
-                        class="focus:outline-none bg-black placeholder-white antialised px-3 flex-1 appearance-none"
+                        class="focus:outline-none bg-black dark:bg-gray-darkest placeholder-white antialised px-3 flex-1 appearance-none"
                         type="text" placeholder="Are these the droids?" @click="document.getElementsByClassName('DocSearch-Button')[0].click()">
                     <button class="bg-white hover:bg-mint text-black px-4 h-full">Search</button>
                 </form>

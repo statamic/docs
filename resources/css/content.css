@@ -280,3 +280,15 @@ ul.list-col {
         column-count: 3;
     }
 }
+
+
+
+/* Dark mode */
+/* -------------------------------------------------- */
+
+.dark {
+    article, .markdown {
+        @apply bg-transparent text-gray-dark;
+        h1, h2, h3 { @apply text-white }
+    }
+}
