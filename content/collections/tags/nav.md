@@ -11,7 +11,7 @@ parameters:
   -
     name: handle
     type: string
-    description: 'The navigation or collection to use. Not necessary if you''re using the shorthand tag (e.g. `{{ nav:links }}`)'
+    description: 'The navigation or collection to use (e.g. `{{ nav handle="collection::my_pages_collection_handle" }}`). Not necessary if you''re using the shorthand tag (e.g. `{{ nav:links }}`)'
   -
     name: from
     type: string
