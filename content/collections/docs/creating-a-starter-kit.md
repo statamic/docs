@@ -46,7 +46,7 @@ When ready to export your Starter Kit, run the following command:
 php please starter-kit:export {export_repo_path}
 ```
 
-If you are exporting for the first time, a new `starter-kit.yaml` config file will be created in your app's root, and you will be instructed to configure which paths you would like to export.
+If you are exporting for the first time, a new `starter-kit.yaml` config file will be created in your app's root, and you will be instructed to configure which `export_paths` you would like to export.
 
 For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
 
@@ -68,6 +68,20 @@ export_paths:
 Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.
 
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
+
+### Avoiding Path Conflicts
+
+If you have a filename conflict between your sandbox and your starter kit repo, you can use `export_as` to customize its export path.
+
+For example, you may wish to export a `README.md` for installation into new sites that is separate from the `README.md` in your starter kit repo.
+
+``` yaml
+export_as:
+  file-in-sandbox.md: file-in-exported-repo.md
+  README.md: README-for-new-site.md
+```
+
+This will instruct `starter-kit:export` to rename each of those paths on export, and in reverse on `starter-kit:install` to match where you had them in your sandbox app.
 
 
 ## Exporting Dependencies
