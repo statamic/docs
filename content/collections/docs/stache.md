@@ -47,7 +47,7 @@ php please stache:refresh
 ```
 
 :::best-practice
-It's a good idea to perform a `php please stache:refresh` when deploying changes to your production server so they're immediately available for the nxt request.
+It's a good idea to perform a `php please stache:refresh` when deploying changes to your production server so they're immediately available for the next request.
 :::
 
 ## Stores
