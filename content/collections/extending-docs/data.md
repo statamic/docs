@@ -14,7 +14,7 @@ You can find more details on which ones to use later, but you will find them all
 
 Each facade will proxy method calls to another class. You can see which class by looking for the `getFacadeAccessor` method.
 
-Some will simple, direct class mappings, like the [YAML facade](https://github.com/statamic/cms/blob/master/src/Facades/YAML.php#L17-L20).
+Some will be simple, direct class mappings, like the [YAML facade](https://github.com/statamic/cms/blob/master/src/Facades/YAML.php#L17-L20).
 
 ``` php
 Statamic\Facades\YAML::parse();
