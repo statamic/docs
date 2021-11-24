@@ -141,32 +141,44 @@ If you're providing a new mark or node and intend to use this Bard field on the 
 
 ## Buttons
 
-To add a button to the toolbar, use the `buttons` method. The callback may return a button object, or an array of them.
+To add a button to the toolbar, provide a callback to the `buttons` method.
+
+The callback will receive two arguments:
+- `buttons` - an array of the existing buttons in the toolbar (more about that in a moment)
+- `button` - a function that wraps your button objects
+
+The callback may return a `button` object, or an array of them.
 
 ``` js
-Statamic.$bard.buttons(() => {
-    return { name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' };
+Statamic.$bard.buttons((buttons, button) => {
+    return button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' });
 });
 ```
 
 ``` js
-Statamic.$bard.buttons(() => [
-    { name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' },
-    { name: 'italic', text: __('Italic'), command: 'italic', icon: 'italic' },
+Statamic.$bard.buttons((buttons, button) => [
+    button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' }),
+    button({ name: 'italic', text: __('Italic'), command: 'italic', icon: 'italic' }),
 ]);
 ```
 
-Returning values to the button method will push them onto the end. If you need more control, you can manipulate the supplied buttons argument, and then return nothing. For example, we'll add a button after wherever the existing bold button happens to be:
+Returning values to the `buttons` method will push them onto the end. If you need more control, you can manipulate the supplied `buttons` argument, and then return nothing. For example, we'll add a button after wherever the existing bold button happens to be:
 
 ``` js
-Statamic.$bard.buttons(buttons => {
+Statamic.$bard.buttons((buttons, button) => {
     const indexOfBold = _.findIndex(buttons, { command: 'bold' });
 
-    buttons.splice(indexOfBold + 1, 0, {
+    buttons.splice(indexOfBold + 1, 0, button({
         name: 'italic', text: 'Italic', command: 'italic', icon: 'italic'
-    });
+    }));
 });
 ```
+
+:::tip
+Using the `button()` method will make the button only appear if the Bard field has been configured to your your button.
+
+If you'd like your button to appear on all Bard fields, regardless of whether it's been configured to use that button, you can just return an object. Don't wrap with `button()`.
+:::
 
 ## TipTap API
 
