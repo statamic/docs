@@ -87,7 +87,7 @@ Once the application's containers have been started, your project can be accesse
 To stop all of the containers, press `Control` + `C`. Or if the containers are running in the background, use the stop command:
 
 ``` shell
-./vendor/vin/sail stop
+./vendor/bin/sail stop
 ```
 
 ## Installing Statamic
