@@ -21,14 +21,16 @@ In short, here's a quickstart of the things you should probably start with:
 
 ## Extensions
 
-You may add your own TipTap extensions to Bard using the `extend` method. The callback may return a single extension, or an array of them.
+### Adding New Extensions
+
+You may add your own TipTap extensions to Bard using the `addExtension` method. (Previously `extend`.) The callback may return a single extension, or an array of them.
 
 ``` js
-Statamic.$bard.extend(({ mark, node }) => mark(new MyExtension));
+Statamic.$bard.addExtension(({ mark, node }) => mark(new MyExtension));
 ```
 
 ``` js
-Statamic.$bard.extend(({ mark, node }) => {
+Statamic.$bard.addExtension(({ mark, node }) => {
     return [
         mark(new MyExtension),
         node(new AnotherExtension)
@@ -38,13 +40,21 @@ Statamic.$bard.extend(({ mark, node }) => {
 
 The classes you return should be wrapped using the provided helper functions (i.e. `mark` or `node` like in the example above).
 
-### Classes
+:::tip
+If you want to _replace_ an existing extension, [read below](#replacing-existing-extensions).
+:::
+
+### Extension Classes
 
 Your extension class should look like a TipTap extension ([see an example here](https://github.com/ueberdosis/tiptap/blob/v1/packages/tiptap-extensions/src/marks/Bold.js))
 except it should not extend another class, and you should use methods instead of getters.
 
 ``` js
 export default class MyExtension {
+  constructor(options = {}) {
+    this.options = options
+  }
+
   name() {
     return 'myextension';
   }
@@ -71,9 +81,41 @@ export default class MyExtension {
 }
 ```
 
+### Replacing Existing Extensions
+
+If you'd like to replace a [native extension](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions/src/nodes) (e.g. headings or paragraphs) you can use the `replaceExtension` method. It takes the `name` of the extension, and a callback that returns a single extension instance.
+
+The callback will provide you with the existing extension instance.
+
+```js
+Statamic.$bard.replaceExtension('heading', ({ mark, node, extension }) => {
+    return node(new CustomHeadingExtension(extension.options));
+})
+```
+
+If you are doing simple tweaks to an extension (e.g. adding tailwind classes to headings) you can use the native extension classes directly by importing them through `$bard.tiptap.extensions`. Then you don't need to author an entire class and use the `mark` or `node` helpers.
+
+```js
+const { Heading } = Statamic.$bard.tiptap.extensions;
+
+class CustomHeading extends Heading {
+    get schema() {
+        return {
+            ...super.schema,
+            toDOM: node => [`h${node.attrs.level}`, { class: 'font-bold' }, 0],
+        }
+    }
+}
+
+Statamic.$bard.replaceExtension('heading', ({ mark, node, extension }) => {
+    return new CustomHeadingExtension(extension.options);
+})
+```
+
+
 ### Marks and Nodes
 
-The `extend` callback will provide the `mark` and `node` functions to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
+The `addExtension` and `replaceExtension` callbacks will provide the `mark` and `node` functions to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
 to be used by Bard.
 
 Within your class, Statamic will provide commonly used functions along with the arguments you'd get in a TipTap extension. This prevents you from needing to
@@ -99,32 +141,44 @@ If you're providing a new mark or node and intend to use this Bard field on the 
 
 ## Buttons
 
-To add a button to the toolbar, use the `buttons` method. The callback may return a button object, or an array of them.
+To add a button to the toolbar, provide a callback to the `buttons` method.
+
+The callback will receive two arguments:
+- `buttons` - an array of the existing buttons in the toolbar (more about that in a moment)
+- `button` - a function that wraps your button objects
+
+The callback may return a `button` object, or an array of them.
 
 ``` js
-Statamic.$bard.buttons(() => {
-    return { name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' };
+Statamic.$bard.buttons((buttons, button) => {
+    return button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' });
 });
 ```
 
 ``` js
-Statamic.$bard.buttons(() => [
-    { name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' },
-    { name: 'italic', text: __('Italic'), command: 'italic', icon: 'italic' },
+Statamic.$bard.buttons((buttons, button) => [
+    button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' }),
+    button({ name: 'italic', text: __('Italic'), command: 'italic', icon: 'italic' }),
 ]);
 ```
 
-Returning values to the button method will push them onto the end. If you need more control, you can manipulate the supplied buttons argument, and then return nothing. For example, we'll add a button after wherever the existing bold button happens to be:
+Returning values to the `buttons` method will push them onto the end. If you need more control, you can manipulate the supplied `buttons` argument, and then return nothing. For example, we'll add a button after wherever the existing bold button happens to be:
 
 ``` js
-Statamic.$bard.buttons(buttons => {
+Statamic.$bard.buttons((buttons, button) => {
     const indexOfBold = _.findIndex(buttons, { command: 'bold' });
 
-    buttons.splice(indexOfBold + 1, 0, {
+    buttons.splice(indexOfBold + 1, 0, button({
         name: 'italic', text: 'Italic', command: 'italic', icon: 'italic'
-    });
+    }));
 });
 ```
+
+:::tip
+Using the `button()` method will make the button only appear if the Bard field has been configured to your your button.
+
+If you'd like your button to appear on all Bard fields, regardless of whether it's been configured to use that button, you can just return an object. Don't wrap with `button()`.
+:::
 
 ## TipTap API
 
