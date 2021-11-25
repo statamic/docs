@@ -11,7 +11,7 @@ updated_at: 1622821071
 User accounts are represented by YAML files in the `users/` directory, named according to their email address. The YAML contents must have a password and role of some kind inside to be able to log into the control panel. The simplest role is a Super User.
 
 :::tip
-You can also [create users via the command line](/quick-start#create-your-first-user). It's even easier than this.
+You can also [create users via the command line](/quick-start-guide#create-your-first-user). It's even easier than this.
 :::
 
 ## Walkthrough: Creating a new Super User
