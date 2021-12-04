@@ -119,6 +119,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 |----------|-------------|
 | `url` | Web-friendly URL to the file. |
 | `path` |  Path to the file relative to asset container |
+| `permalink` |  Absolute URL to the file including your site URL. |
 | `basename` | Name of the file with file extension |
 | `blueprint` | Which blueprint is managing the asset container |
 | `container` | Which asset container the file is in |
