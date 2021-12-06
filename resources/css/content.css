@@ -1,11 +1,9 @@
 /* Main Content */
 /* -------------------------------------------------- */
 
-::-moz-selection {
-    background-color: #faf77d;
-}
-::selection {
-    background-color: #faf77d;
+::-moz-selection,
+:: selection {
+    @apply bg-yellow;
 }
 
 article, .markdown {
