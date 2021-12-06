@@ -2,7 +2,7 @@
 /* -------------------------------------------------- */
 
 ::-moz-selection,
-:: selection {
+::selection {
     @apply bg-yellow;
 }
 
