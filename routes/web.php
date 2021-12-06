@@ -10,7 +10,7 @@ Route::statamic('sitemap.xml', 'sitemap', ['content_type' => 'xml', 'layout' => 
 Route::permanentRedirect('collections-and-entries', 'collections');
 Route::permanentRedirect('template-engines', 'blade-templates');
 Route::permanentRedirect('entries', 'collections#entries');
-Route::permanentRedirect('git-itegration', 'git-automation');
+Route::permanentRedirect('git-integration', 'git-automation');
 Route::permanentRedirect('installation', 'installing');
 Route::permanentRedirect('blade-templates', 'blade');
 Route::permanentRedirect('fieldtypes/partial', '/blueprints#importing-fieldsets');
