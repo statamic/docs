@@ -7,8 +7,7 @@ parameters:
     name: group|groups
     type: string
     description: |
-      The groups or groups to check against. You may specify multiple groups by pipe separating them: `{{ user:in groups="jocks|geeks" }}`.
-stage: 4
+      The group or groups to filter by. You may specify multiple groups by pipe separating them: `{{ user:in groups="jocks|geeks" }}`.
 id: 57184c18-28d3-433f-b6ee-0e4539f6b504
 ---
 ## Overview
