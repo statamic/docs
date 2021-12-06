@@ -242,6 +242,26 @@ If you're interested in customizing user password validation, you can read about
 
 Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
 
+### Unique Fields
+
+In addition to Laravel's validation rules, Statamic offers some custom ones, like `unique_entry_value: {collection},{id},{site}`. This allows you to have a unique value for a given field. 
+
+For example, setting the following in your `user.yaml` blueprint will make each user's login unique for your whole website. 
+```yaml
+-
+  handle: login
+  field:
+    type: text
+    validate: 'unique_user_value:{id}'
+```
+You can then customize the error message right in your `resources/lang/{lang}/validation.php` file, like so 
+```
+'custom' => [
+        'name' => [
+            'unique_user_value' => 'This login is not available, you thief!',
+        ]
+    ],
+```
 
 ## Grid Fieldtype
 
