@@ -1,6 +1,11 @@
 /* Main Content */
 /* -------------------------------------------------- */
 
+::-moz-selection,
+:: selection {
+    @apply bg-yellow;
+}
+
 article, .markdown {
     background: white;
     @apply text-gray-darkest leading-relaxed;
