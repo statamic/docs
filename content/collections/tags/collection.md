@@ -194,6 +194,13 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 {{ collection:blog taxonomy:tags="harry-potter" }}
 ```
 
+If you are using dynamic variables within your taxonomy filtering, the taxonomy parameter should be prefixed with `:`.
+To show entries with the value of variable `$search_term`, you could do this:
+
+```
+{{ collection:blog :taxonomy:tags="search_term" }}
+```
+
 It is important that the collection has been [configured to use this taxonomy](/collections#taxonomies) in order to filter the results based on the passed in term.
 
 There are a number of different ways to use this parameter. They are explained in depth in the
