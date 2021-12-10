@@ -95,7 +95,7 @@ variables:
       includes things like `title`, `content`,
       etc.
   -
-    name: '*recursive children*'
+    name: '\*recursive children\*'
     type: wizardry
     description: >
       Recursively output the entire contents
