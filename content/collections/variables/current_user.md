@@ -8,11 +8,11 @@ The current user.
 ```
 {{ current_user }} {{ name }} {{ /current_user }}
 
-{{ current_user:name }}
-
-{{ if {current_user:something} }} {{ /if }}
+{{ current_user:email }}
 ```
 
 ```html
-https://docs.statamic.com/variables
+Example User
+
+user@example.com
 ```
