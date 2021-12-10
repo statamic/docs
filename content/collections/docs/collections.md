@@ -139,8 +139,6 @@ This will prevent collections from automatically adding a slug field.
 
 :::tip
 Since Statamic stores entries as files, it uses the slug for the filename. If you disable slugs, it will use the ID instead. (e.g. `my-entry.md` vs. `123.md`)
-
-Entries will still technically have slugs (e.g. if you were to do `$entry->slug()`), but they'll just be the ID.
 :::
 
 
