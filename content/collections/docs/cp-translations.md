@@ -39,7 +39,7 @@ preferences:
 | Portuguese | `pt` |
 | Slovene | `sl` |
 | Spanish | `es` |
-| Swedish (*WIP*) | `sv` |
+| Swedish | `sv` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
