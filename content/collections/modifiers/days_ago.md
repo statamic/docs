@@ -8,16 +8,23 @@ title: 'Days Ago'
 ---
 Returns the number of days since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
+
 ```yaml
-date: October 1 2015
+//Example previous date
+date: December 8 2021
 ```
 
-{{ noparse }}
 ```
+//Example current date on your server:
+December 12 2021
+```
+
+```antlers
+//Antlers Frontend
 {{ date | days_ago }}
 ```
-{{ /noparse }}
 
 ```html
-{{ test_date | days_ago }}
+//Output:
+4
 ```
