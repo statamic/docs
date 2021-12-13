@@ -10,21 +10,24 @@ Alters a timestamp by incrementing or decrementing in a format accepted by PHP's
 
 
 ```yaml
-date: {{ now }}
+//Assuming 'now' date is December 7th, 2021
+---
+date: "{{ now }}"
+---
 ```
 
-{{ noparse }}
-```
+```template
+//template
 {{ date | modify_date:last Sunday }}
 {{ date | modify_date:+3 months }}
 {{ date | modify_date:-2 weeks }}
 ```
-{{ /noparse }}
 
 ```html
-{{ now | modify_date:last Sunday }}
-{{ now | modify_date:+3 months }}
-{{ now | modify_date:-2 weeks }}
+//output
+December 5th, 2021
+March 7th, 2022
+November 23rd, 2021
 ```
 
 :::tip
