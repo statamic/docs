@@ -201,7 +201,7 @@ In each iteration of the `fields` array, you have access to:
 - `display` - The display name of the field. (e.g. "Name")
 - `handle` - The handle of the field (e.g. "name")
 - `value` - The augmented value (same as explained above)
-- `fieldtype` - The handle of the fieldtype (e.g. "assets")
+- `type` - The handle of the fieldtype (e.g. "assets")
 - `config` - The configuration of the blueprint field
 
 
