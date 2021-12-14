@@ -132,11 +132,11 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 When on a [taxonomy route](#routing), you can list the terms by using a `terms` tag pair. For example:
 
 ```
-{{ terms }}
-  <ul>
+<ul>
+  {{ terms }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  </ul>
-{{ /terms }}
+  {{ /terms }}
+</ul>
 ```
 
 :::tip
