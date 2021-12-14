@@ -387,7 +387,7 @@ Combining both an Alias and a Scope on a Collection Tag doesn't make a whole lot
 
 ## Grouping
 
-To group entries – by date or any other field – you should use [aliasing](#aliasing) (explained above) as well as the [`group_by`](/modifiers/group_by) modifier.
+To group entries – by date or any other field – you should use [aliasing](#alias) (explained above) as well as the [`group_by`](/modifiers/group_by) modifier.
 There's no "grouping" feature on the collection tag itself.
 
 For example, if you want to group some dated entries by month/year, you could do this:
