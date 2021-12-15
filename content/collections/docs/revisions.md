@@ -1,6 +1,6 @@
 ---
 title: Revisions
-intro: Revivions adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
+intro: Revisions adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
 template: page
 blueprint: page
 id: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
