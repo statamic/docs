@@ -48,7 +48,7 @@ Markdown has been around since 2004. One fateful day in December, [John Gruber](
 
 Back in 2004 there was just one flavor: John's. Today's landscape has many variations, parsers, extensions, and standards groups. The most widely accepted feature set is [Github-Flavored Markdown][gfm], or GFM for short.
 
-Statamic uses the [Parsedown][parsedown] library to support GFM, along with [Markdown Extra][extra] to enable tables, special attributes like classes and ids on block-level elements, and fenced code blocks.
+Statamic uses the [League\CommonMark][commonmark] library to support GFM, to enable tables, special attributes like classes and ids on block-level elements, and fenced code blocks.
 
 ## Data Structure
 
@@ -84,6 +84,5 @@ The Markdown fieldtype also has a dark mode when in fullscreen for those of you 
 
 
 
-[parsedown]: https://parsedown.org/
-[extra]: https://michelf.ca/projects/php-markdown/extra/
+[commonmark]: https://commonmark.thephpleague.com/
 [gfm]: https://help.github.com/en/categories/writing-on-github

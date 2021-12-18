@@ -24,6 +24,10 @@ parameters:
     type: boolean
     description: When `true`, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL. For example, `?redirect=/thanks`
   -
+    name: files
+    type: boolean
+    description: When `true`, the `enctype="multipart/form-data"` attribute will be rendered on your `<form>` tag for file uploads.
+  -
     name: HTML Attributes
     type:
     description: >
