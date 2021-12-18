@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Statamic's CLI commands are built with [Laravel's Artisan Console package]([artisan]). To view the list of Statamic-specific commands, you may use the `please list` command:
+Statamic's CLI commands are built with [Laravel's Artisan Console package][artisan]. To view the list of Statamic-specific commands, you may use the `please list` command:
 
 ``` shell
 php please list
