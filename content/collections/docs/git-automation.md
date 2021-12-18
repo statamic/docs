@@ -106,7 +106,7 @@ STATAMIC_GIT_PUSH=true
 When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) with an upstream branch set, and are authenticated to push to your remote [via SSH](https://docs.github.com/en/github/using-git/which-remote-url-should-i-use).
 
 :::tip
-If you use [Laravel Forge](https://forge.laravel.com/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
+If you use [Laravel Forge](https://forge.laravel.com/) or [Ploi](https://ploi.io/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
 :::
 
 ## Queueing Commits
