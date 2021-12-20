@@ -9,7 +9,7 @@ template: page
 
 Statamic is an opinionated platform. We like defaults to match the most common use cases. We implement patterns that help speed up your workflow, enforce consistency, and make it easy to share code between projects.
 
-Following these conventions will make it easier to switch between different Statamic projects because you'll know right where everything is what it's called.
+Following these conventions will make it easier to switch between different Statamic projects because you'll know right where everything is and what it's called.
 
 Sometimes these conventions don't fit your project, or maybe you're perfectly happy with your own way of doing things. That's fine &mdash; our conventions can usually be configured, overridden, or ignored.
 
@@ -48,7 +48,7 @@ As your site scales, you can choose to move from the flat file driver to one bes
 
 It's completely up to you how to organize your content. You pick the field names, you pick how to organize entries into different collections. You pick what to name your taxonomies, what the URL patterns should be, and so on.
 
-We believe that forcing every site to use the same content model is nothing short of a crime. With nearly 40 different build-in fieldtypes, there are many perfectly reasonable ways to structure and manage your content.
+We believe that forcing every site to use the same content model is nothing short of a crime. With nearly 40 different built-in fieldtypes, there are many perfectly reasonable ways to structure and manage your content.
 
 If you like the "one big field" approach with all your content and markup in one chunk, build your site around the [Bard](/fieldtypes/bard) fieldtype and add custom Set blocks with other fieldtypes to get fancy.
 
@@ -64,7 +64,7 @@ Because of this, most Statamic projects need to involve a developer. It's not ve
 
 ## Keep it Simple
 
-Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip it what you don't want" approach.
+Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip out what you don't want" approach.
 
 This means that Statamic doesn't do everything right out the box. We find it's much better in the long run to turn on the things you need, enable features you plan to use, and name things the way you want, than to spend precious time clicking about the control panel disabling everything you'll never end up needing, or explaining to a client why the button they clicked doesn't do what they expect.
 
