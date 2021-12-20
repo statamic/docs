@@ -22,7 +22,7 @@ options:
       You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `underline`, `strikethrough`, `unorderedlist`, `orderedlist`, `removeformat`, `quote`, `anchor`, `image`, `table`, `code` (inline), and `codeblock`.
 
       These are the defaults:
-      ![Bard Buttons](/img/fieldtypes/bard-buttons.png) {.mt-4}
+      ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
   -
     name: target_blank
     type: boolean
