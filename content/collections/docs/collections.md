@@ -101,6 +101,47 @@ If you don't explicitly create a blueprint, your entries will have a basic set o
 
 If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
+## Titles
+
+All entries need a title. Statamic uses titles to display entries in a consistent way throughout the Control Panel.
+
+Depending on the collection, a dedicated `title` field might not be useful to you. In this case, you may configure a "title format" which would be used to automatically generate titles from other fields.
+
+For example, a "reviews" collection might just have `author`, `stars`, and `content` fields. You could configure the titles to be "5 star rating by John Smith".
+
+```yaml
+title_format: '{stars} star rating by {author:name}'
+```
+
+When using multiple sites, you may optionally configure the titles on a per site level by using an array:
+
+```yaml
+title_format:
+  en: '{stars} star rating by {author:name}'
+  fr: '{stars} étoiles par {author:name}'
+```
+
+## Slugs
+
+Slugs are what you would typically use in entry URLs. For an entry named `My Entry`, the slug might be `my-entry`.
+
+When creating entries in the Control Panel, if you submit an entry with an empty `slug`, one will be generated based on the title.
+
+If the entries in a specific collection don't need to have dedicated URLs, or if the entries' route only contains other fields, a `slug` field may not be useful for you.
+
+You may disable the slug requirement by adding a boolean:
+
+```yaml
+slugs: false
+```
+
+This will prevent collections from automatically adding a slug field.
+
+:::tip
+Since Statamic stores entries as files, it uses the slug for the filename. If you disable slugs, it will use the ID instead. (e.g. `my-entry.md` vs. `123.md`)
+:::
+
+
 ## Dates
 
 If your collection requires a date, as they often do, you can decide how Statamic uses it to control default visibility. For example, you can choose to have dates set in the future to be private (404), which effectively allows you to schedule their publish date.
