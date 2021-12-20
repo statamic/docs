@@ -448,7 +448,7 @@ You can drag, drop, and rearrange fields inside and across your sections. This o
 
 Let's create a new field called `featured_image`.
 
-Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldstyles) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
+Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldtypes) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
 
 When this screen is opened, you're automatically focused in the search box, so you can start typing the fieldtype name if you know it (Hint: you could type `assets` now). Or, you can narrow the fields down by type – All, Text, Media, and Relationship. You'd find the Assets fieldtype inside Media.
 
