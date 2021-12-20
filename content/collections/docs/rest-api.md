@@ -78,12 +78,11 @@ value is `true`. When you omit the condition, it defaults to `is`.
 
 ### Multi-Site
 
-If you are using [Multi-Site](/multi-site), the Content API serves content from all sites at once. You can limit the fetched data to a specific site with a `site` parameter like so:
+If you are using [Multi-Site](/multi-site), you can limit the fetched data to a specific site with a `site` parameter like so:
 
 ```url
 /endpoint?site=default
 ```
-
 
 ## Sorting
 
@@ -166,6 +165,11 @@ Gets entries within a collection.
 }
 ```
 
+:::tip
+If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+:::
+
+
 ## Entry
 
 `GET` `/api/collections/{collection}/entries/{id}`
@@ -213,10 +217,10 @@ Gets entry tree for a structured collection.
 
 ### Params
 
-On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth, or `site` to choose the site.
 
 ```url
-/api/collections/{collection}/tree?fields=title,url&max_depth=2
+/api/collections/{collection}/tree?fields=title,url&max_depth=2&site=fr
 ```
 
 
@@ -252,10 +256,10 @@ Gets tree for a navigation structure.
 
 ### Params
 
-On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth.
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `page` object. You may also set a `max_depth` to limit nesting depth, or `site` to choose the site.
 
 ```url
-/api/navs/{nav}/tree?fields=title,url&max_depth=2
+/api/navs/{nav}/tree?fields=title,url&max_depth=2&site=fr
 ```
 
 
@@ -276,6 +280,10 @@ Gets terms in a taxonomy.
   "meta": {...}
 }
 ```
+
+:::tip
+If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+:::
 
 ## Taxonomy Term
 
@@ -313,6 +321,10 @@ Gets all globals.
   ],
 }
 ```
+
+:::tip
+If you are using [Multi-Site](/multi-site), you can select the site using the `site` parameter (ie. `&site=fr`).
+:::
 
 ## Global
 
