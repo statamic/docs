@@ -76,13 +76,6 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
 
-### Multi-Site
-
-If you are using [Multi-Site](/multi-site), you can limit the fetched data to a specific site with a `site` parameter like so:
-
-```url
-/endpoint?site=default
-```
 
 ## Sorting
 
