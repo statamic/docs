@@ -236,13 +236,17 @@ return [
             'driver' => 'file',
             'path' => [
                'default'    => public_path('static') . '/domain1.com/',
-               'default_fr' => public_path('static') . '/domain1.com/fr/',
+               'default_fr' => public_path('static') . '/domain1.com/',
                'other_site' => public_path('static') . '/domain2.com/',
             ]
         ]
     ]
 ];
 ```
+:::tip
+You should organize your static caching paths into the top level domains. You'll notice 'default' and 'default_fr' in the example use the same domain. The subfolders will be organized based on the urls defined in your sites config.
+:::
+
 ### Rewrite Rules
 
 This multi-site example needs modified rewrite rules. 
@@ -261,6 +265,20 @@ RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=tex
 location / {
   try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
 }
+```
+
+The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain.
+
+For example `'default'    => public_path('static') . '/' .env('APP_DOMAIN'),`
+
+and then on your server
+
+```
+#Production
+APP_DOMAIN=domain1.com
+
+#Dev
+APP_DOMAIN=domain1.devserver.com
 ```
 
 #### IIS
