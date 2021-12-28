@@ -239,7 +239,7 @@ When in doubt, keep it simple. And then save your changes.
 
 ## Creating your first entry
 
-We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we add all configure all the custom fields and whatnot.
+We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we configure all the custom fields and whatnot.
 
 Head back to your blog Collection screen and click **Create Entry**.
 
