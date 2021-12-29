@@ -86,7 +86,7 @@ First, let's look at the breaking changes on the core application side. These ar
 
 ### Users
 
-- The locale preference for the CP has become an actual [preference](/preferences). Move `locale: en` from the top level of the user file into the `preferences` array.
+- The locale preference for the CP has become an actual [preference](/cp-translations#peruser-override). Move `locale: en` from the top level of the user file into the `preferences` array.
 
 ### Fieldtypes
 

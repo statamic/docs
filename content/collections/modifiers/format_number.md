@@ -3,6 +3,7 @@ id: 63b56419-6556-4174-8d26-e941460b82a4
 blueprint: modifiers
 modifier_types:
   - math
+  - number
 title: 'Format Number'
 ---
 Format a number with grouped thousands and decimal points. In other words, make it look nice.

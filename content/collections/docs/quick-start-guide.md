@@ -54,7 +54,7 @@ If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `
 
 If you encounter any other errors, Google them frantically and try anything and everything suggested until it magically begins working.
 
-**Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub disucssions](https://github.com/statamic/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
+**Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub disucssions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
     <img src="/img/quick-start/installed.png" alt="Statamic 3 Welcome Screen">
@@ -239,7 +239,7 @@ When in doubt, keep it simple. And then save your changes.
 
 ## Creating your first entry
 
-We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we add all configure all the custom fields and whatnot.
+We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we configure all the custom fields and whatnot.
 
 Head back to your blog Collection screen and click **Create Entry**.
 
@@ -448,7 +448,7 @@ You can drag, drop, and rearrange fields inside and across your sections. This o
 
 Let's create a new field called `featured_image`.
 
-Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldstyles) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
+Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldtypes) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
 
 When this screen is opened, you're automatically focused in the search box, so you can start typing the fieldtype name if you know it (Hint: you could type `assets` now). Or, you can narrow the fields down by type – All, Text, Media, and Relationship. You'd find the Assets fieldtype inside Media.
 
