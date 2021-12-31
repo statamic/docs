@@ -151,6 +151,8 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
 
 You're free to use filtering or sorting parameters on the `entries` pair that you'd find on the [collection tag](/tags/collection).
 
+> To use the `entries` tag, the Taxonomy must already be [linked to the Collection](https://statamic.dev/taxonomies#collections).
+
 ## Filtering
 
 There are a couple of ways to filter your taxonomy terms. There's the conditions syntax for filtering by fields, or the custom filter class if you need extra control.
