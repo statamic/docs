@@ -7,17 +7,16 @@ modifier_types:
 parse_content: true
 title: 'Is Yesterday'
 ---
-Returns `true` if date is yesterday - using the server's time.
+Returns `true` if a given date is yesterday, using the server's time.
 
 ```yaml
-date: {{ now modify_date="-1 day" format="F j Y" }}
+date: January 1, 2000
 ```
-{{ noparse }}
+
 ```
 {{ if date | is_yesterday }}
 ```
-{{ /noparse }}
 
 ```html
-true
+false
 ```
