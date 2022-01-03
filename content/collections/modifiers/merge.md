@@ -6,45 +6,25 @@ title: Merge
 
 Merge an array variable with another array variable.
 
-Array 1:
-```html
-//Yaml
-fruit:
-  - apples
-  - bananas
-  - bacon
-  
-//Template
-{{ fruit }}
-
-//Output
-apples bannanas bacon
+```yaml
+good_ideas:
+  - Exercise regularly
+  - Brush your teeth
+  - Use Oxford Commas
+bad_ideas:
+  - Bath in beans
+  - Wear sandpaper underwear
+  - Eat turtle shells
 ```
 
-Array 2:
-```html
-//Yaml
-meat:
-  - pork
-  - beef
-  - chicken
-  
-//Template
-{{ meat }}
-
-//Output
-pork beef chicken
+In this template example we'll merge the two arrays and then pull out a single random item from the combined list. For fun!
+```
+<h2>Picking a random idea!</h2>
+{{ good_ideas merge="bad_ideas" sort="random" limit="1" }}
+<p>{{ value }}</p>
+{{ /good_ideas }}
 ```
 
-Usage:
-```html
-//template
-{{ fruit merge="meat" }}
-  {{ value }}
-{{ /fruit }}
-
-//output
-apples bananas bacon pork beef chicken 
 ```
-
-
+<p>Use Oxford Commas</ap>
+```
