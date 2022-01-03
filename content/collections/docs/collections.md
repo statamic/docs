@@ -341,14 +341,14 @@ You may mount a collection onto an entry as a way of saying "all these entries b
 
 ### Mount Setting
 
-You can mount a collection to an entry by specifying the ID of said entry. You can also use the `mount` variable in the route to prepend the mounted entry's URL.
+You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to a **aquarium** entry page.
 
-So for example, if you mounted a collection to `/blog` with `/{mount}/{slug}`, all your blog URLs will follow the `/blog/entry-url` pattern. If you later move `/blog` to `/articles`, all your entries will follow along with `/articles/entry-url`.
+Now you can use `mount` variable in the route to automatically prepend the mounted entry's URL. So for example, if you mounted a collection to `/aquarium` with `/{mount}/{slug}`, all your fish URLs will follow the `/aquarium/entry-url` pattern. If you later move `/aquarium` to `/house-of-fishies`, all your entries will automatically update with `/house-of-fishies/entry-url`.
 
 ``` yaml
-title: Blog
-mount: id-of-the-blog-entry
-route: '{mount}/{slug}'
+title: Our Tropical Fishies
+mount: id-of-the-aquarium-entry
+route: '/{mount}/{slug}'
 ```
 
 ## Revisions
