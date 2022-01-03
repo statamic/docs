@@ -4,7 +4,6 @@ description: Manipulates images on the fly
 intro: The Glide tag makes it easy to manipulate images on the fly – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
 template: tags.glide
 blueprint: tag-glide
-stage: 4
 parameters:
   -
     name: src|path|id
@@ -30,6 +29,11 @@ parameters:
     type: 'boolean *false*'
     description: >
       When set to `true`, this tag will output the full URL rather than the default relative URL.
+  -
+    name: preset
+    type: string
+    description: >
+      Use a preset of pre-configured parameters. [Learn more](#presets).
 shape:
   -
     name: width
@@ -159,6 +163,31 @@ If you use the tag as a pair, you'll have access to `url`, `height`, and `width`
 {{ glide:image width="600" }}
     <img src="{{ url }}" width="{{ width }}" height="{{ height }}">
 {{ /glide:image }}
+```
+
+## Presets
+
+Glide Presets are pre-configured manipulations that will be automatically generated when new image assets are uploaded. These presets are managed in `config/statamic/assets.php` as an array that holds a list of named presets and their desired parameters.
+
+```php
+'presets' => [
+  'thumbnail' => [ 'w' => 300, 'h' => 300, 'q' => 75],
+  'hero'      => [ 'w' => 1440 'h' => 600, 'q' => 90 ],
+],
+```
+
+All [parameters](#parameters) are available for use in presets.
+
+Each named preset can be referenced with the `preset` tag parameter and since all transformations and manipulations are performed at time of upload, there shouldn't be any additional overhead on the initial request.
+
+**Example:**
+
+```
+{{ glide:thumbnail preset="thumbnail" }}
+<!-- width: 300px, height: 300px, quality: 75% -->
+
+{{ glide:hero_image preset="hero" }}
+<!-- width: 1440px, height: 600px, quality: 90% -->
 ```
 
 ## Focal Point Cropping
