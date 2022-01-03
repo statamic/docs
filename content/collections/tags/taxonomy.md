@@ -151,7 +151,7 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
 
 You're free to use filtering or sorting parameters on the `entries` pair that you'd find on the [collection tag](/tags/collection).
 
-> To use the `entries` tag, the Taxonomy must already be [linked to the Collection](https://statamic.dev/taxonomies#collections).
+> To use the `entries` tag, the Taxonomy must already be [attached to the Collection](/taxonomies#collections).
 
 ## Filtering
 
