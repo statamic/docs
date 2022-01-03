@@ -235,7 +235,8 @@ Here are some common patterns you could choose from:
 |`/blog/happy-new-year` | `/blog/{slug}` |
 | `/evergreen-syle` | `/{slug}` |
 
-For a comprensive overview of all supported variables, have a look to the very good [documentation](https://statamic.dev/collections#meta-variables).
+:::tip
+Check out the full list of [available variables](/collections#meta-variables). Try saying "available variables" 3x fast. It's not the _best_ tongue-twister, but it does qualify.
 
 When in doubt, keep it simple. And then save your changes.
 
