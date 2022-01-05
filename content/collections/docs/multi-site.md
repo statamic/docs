@@ -163,3 +163,22 @@ For example, given `template: home`, Statamic will load `site_one/home` because 
 :::tip
 This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory.
 :::
+
+## Renaming a Site
+
+If you rename a site handle, you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
+
+**Content Folders**
+
+- `content/collections/{old_handle}/`
+- `content/globals/{old_handle}/`
+- `content/trees/{old_handle}/`
+
+**Collection Config YAML Files**
+``` yaml
+# content/collections/{collection}.yaml
+sites:
+- {old_handle}
+- de
+- fr
+```
