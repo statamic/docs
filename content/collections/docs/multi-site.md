@@ -182,3 +182,28 @@ sites:
 - de
 - fr
 ```
+
+## Template Snippets
+
+Here are a few common features you'll likely need to template while building a multi-site.
+
+### Site Switcher
+
+This will loop through your sites and indicate the current site as the active one. Check out all the [available variables inside the `sites` loop](/variables/sites).
+
+```
+{{ sites }}
+  <a class="{{ site:handle === handle ?= 'active' }}" href="{{ url }}">
+    {{ handle }}
+  </a>
+{{ /sites }}
+```
+
+### Declaring the Page Language
+
+Indicate the current language of the site by setting the `lang` attribute on your `<html>` tag (most likely in your layout view), or the container element around translated content if the page mixes and matches languages.
+
+```
+<html lang="{{ site:short_locale }}">
+```
+
