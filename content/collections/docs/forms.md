@@ -250,6 +250,18 @@ email:
 
 [Learn how to create your emails](/email)
 
+### Attachments
+
+When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any `assets` fields will be automatically attached.
+
+```yaml
+email:
+  -
+    attachments: true
+    # other settings here
+```
+
+
 ## File Uploads
 
 Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
