@@ -69,9 +69,13 @@ parameters:
     required: false
   -
     name: paginate
-    type: 'boolean *false*'
-    description: 'Specify whether your entries should be paginated.'
+    type: 'boolean|int *false*'
+    description: 'Specify whether your entries should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
     required: false
+  -
+    name: on_each_side
+    type: 'int *3*'
+    description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.
   -
     name: as
     type: string
@@ -225,10 +229,10 @@ Doing something custom or complicated? You can create [query scopes](/extending/
 
 ## Pagination
 
-To enable pagination mode, add the `paginate="true"` parameter, along with the `limit` parameter to specify the number of entries in each page.
+To enable pagination mode, add the `paginate` parameter with the number of entries in each page.
 
 ```
-{{ collection:blog limit="10" paginate="true" as="posts" }}
+{{ collection:blog paginate="10" as="posts" }}
 
     {{ if no_results }}
         <p>Aww, there are no results.</p>
