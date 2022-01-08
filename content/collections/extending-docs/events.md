@@ -173,7 +173,7 @@ public function handle(CollectionDeleted $event)
 ```
 
 ### CollectionCreated
-`Statamic\Events\CollectionDeleted`
+`Statamic\Events\CollectionCreated`
 
 Dispatched after a collection has been created.
 
