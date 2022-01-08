@@ -35,7 +35,7 @@ config/statamic/
 It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server
 
 :::warning
-**Never enable Debug Mode or DebugBar on production.** The error messages — as beautiful as they are — will reveal much about the way your site is configured, where important files are, and possibly even leak data from your `.env` file depending on how use use those variables.
+**Never enable Debug Mode or DebugBar on production.** The error messages — as beautiful as they are — will reveal much about the way your site is configured, where important files are, and possibly even leak data from your `.env` file depending on how you use those variables.
 :::
 
 In a fresh Statamic installation you'll find an `.env.example` file in the root directory of your site. Rename or copy it to `.env` to enable it. If you install Statamic via Composer or the [CLI tool](https://github.com/statamic/cli), this will be done automatically for you.
