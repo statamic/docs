@@ -15,7 +15,7 @@ date: December 8 2021
 ```
 
 ```
-//Example current date on your server:
+// Example current date on your server:
 December 12 2021
 ```
 
