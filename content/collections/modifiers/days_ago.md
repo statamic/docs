@@ -20,7 +20,7 @@ December 12 2021
 ```
 
 ```antlers
-//Antlers Frontend
+// Antlers Frontend
 {{ date | days_ago }}
 ```
 
