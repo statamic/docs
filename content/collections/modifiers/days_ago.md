@@ -10,7 +10,7 @@ Returns the number of days since a given date variable. Statamic will attempt to
 
 
 ```yaml
-//Example previous date
+// Example previous date
 date: December 8 2021
 ```
 
