@@ -3,6 +3,7 @@
     <div class="flex items-center">
         <h1 class="{{ title | length > 36 ?= 'text-5xl'}}">{{ title | widont }}</h1>
         {{ partial:pro-badge }}
+        {{ partial:experimental }}
     </div>
     {{ intro ?? overview | markdown }}
     {{ partial:toc hide="{hide_toc} ?? false"}}
