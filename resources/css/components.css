@@ -9,6 +9,12 @@
         font-size: 15px;
     }
 
+    .hint-content {
+        h2 {
+            @apply mt-4;
+        }
+    }
+
     &.tip {
         .hint-title {
             @apply bg-pink-light

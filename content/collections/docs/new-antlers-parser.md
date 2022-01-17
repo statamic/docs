@@ -1,35 +1,71 @@
 ---
 blueprint: page
 title: 'Antlers Templates'
-intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic.'
+intro: >
+  Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic.
+
+  :::warning Heads up!
+    These docs are for the **brand new, experimental Antlers Runtime Engine.** [Read more about it](#about), learn how to enable it on your site, and keep reading to see all the new things it can do!
+  :::
+
 template: page
 id: d37b2af2-f2bf-493a-9345-7087fb5929ce
 experimental: true
 ---
 
-:::warning Heads up!
-These docs are for the **brand new, completely-rewritten-but-still-experimental Antlers Runtime Engine.** [Read more about it](#about), learn how to enable it on your site, and keep reading to see all the new things it can do!
-:::
-
 ## Overview
 
-Antlers view files are often called templates. Any files in your `resources/views` directory using an `.antlers.html` file extension will be parsed with the Antlers engine.
+Antlers is a fundamental feature of Statamic. It features a tightly coupled template language and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
+
+Antlers templates are also called views. Any files in the `resources/views` directory with a `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
 
 :::tip
 The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
 :::
 
+### Basic Example
+
+Antlers adds dynamic features on top of HTML through the use "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, and now you know why we named them that.
+
+This is a very simple Antlers tag.
+
+```
+{{ hello_world }}
+```
+
+:::tip DON'T SKIP THIS!
 ## About the New Antlers Engine {#about}
 
-- It's way, way faster
-- It adds tons of new features
-- It fixes tons of open issues
-- It's easier for us to maintain
-- It has fantastic error handling
-- It has a tightly integrated VS Code Extension
+Not only this new Antlers Engine a complete and fundamental rewrite, but it takes a completely different, more sophisticated approach to the businesss of template parsing.
 
+The original parser was essentially a glorified find and replace machine relying heavily on RegEx. It parsed and evaluated logic as it worked its way through the template. This means it couldn't stop, go backwards, set variables, or handle nested logic well because it had to keep moving forward. It also slowed down the larger the template got because of the amount of characters being pushed through the RegEx.
 
+The New Antlers Engine now has **two stages** – first, it parses and buids an Abstract Syntax Tree from your complete template, and _then_ it evalutes and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
+
+This affords Statamic an incredible amount of control. It can go sideways and slatways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
+
+- The ability to _set_ variables
+- Syntax errors that reference the exact line, character, and type of error
+- The ability to control parse order through sub-expressions
+- Merging the results of multiple expressions
+- Perform a robust set of mathmatical operations
+- Concatenate, increment, and decrement values
+- Extended syntax that provide better type handling
+- A smarter, more forgiving matching engine so more things Just Work™
+- Self-iterating assignment
+- Self-closing tags
+- Run-time caching for huge performance boosts
+
+This new engine is a powerful factory, mad scientist labratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
 ### It's Still Experimental {#experimental}
+
+Because of how fundamental Antlers is to the whole Statamic experience, we wanted to ship this new version under an **opt-in** feature flag in the event it affects the behavior or output of one or more of your templates. Here are a few conditions we wish to avoid, in order of most-to-least likely scenarios:
+
+1. Templates that rely on a bug in the RegEx parser
+1. Templates that rely on undocmented behaviors or features that may have been removed in the New Parser
+1. Actual regressions created by the new parser
+1. Your performance gains are so high that your site rips a hole in the Space Time Continuum
+
 ### How to Enable It {#enable}
 
 To try out the new Antlers engine, switch the `statamic.antlers.version` config option from `regex` to `runtime` in `config/statamic/antlers.php`. If you don't have this config file, create it and add the following:
@@ -44,17 +80,12 @@ return [
 
 ### Huge Thanks to John Koster
 
-Thanks!
+This rewrite was a huge undertaking by the incomparable [John Koster](https://github.com/JohnathonKoster), who apparently found it a relaxing break from his day job. You can see the effort involved in this [massive PR](https://github.com/statamic/cms/pull/4257).
+
+We owe him a debt of gratitude for this amazing gift.
+:::
 
 ## The Basics
-
-Antlers adds dynamic features on top of HTML through the use "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, and that's where the name comes from.
-
-Here's a very simple Antlers tag.
-
-```antlers
-{{ hello_world }}
-```
 
 ### Delimiters
 
@@ -67,7 +98,7 @@ There are three kinds of delimiters.
 
 Before getting into listing all the things that happen _inside_ an Antlers expression, lets take a moment to establish the rules for properly formatting one.
 
-### Syntax Rules
+### Formatting Rules
 
 1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth. There must be a left pair and a right pair, just like HTML's `<` and `>` angle braces.
 2. Expressions are **case sensitive**.
@@ -95,6 +126,20 @@ This is terrible in every possible way.
 {{play-sad_Trombone            }}
 ```
 
+:::tip
+We recommend indenting the markup in your HTML for **human readability and maintainability**, not for final rendered output. Anyone still caring about that this day and age probably needs a long vacation and strong Mai Thai or two. 🍹🍹
+:::
+
+### IDE Integrations
+
+Syntax highlighting and auto-completion packages are available for many of the popular IDEs:
+
+**The VS Code Extension is the most powerful one by far.**
+
+- [Antlers for VS Code](https://antlers.dev)
+- [Antlers for Sublime Text](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
+- [Antlers for Atom](https://github.com/addisonhall/language-antlers)
+
 ## Variables
 
 Data passed into your Antlers views can be rendered by wrapping the name of a variable with double curly braces. For example, given the following data:
@@ -115,6 +160,8 @@ The `title` variable can be rendered like this:
 <h1>DJ Jazzy Jeff & The Fresh Prince</h1>
 ```
 
+### Valid Characters
+
 ### Strings
 
 Strings (simple sequences of text) are one of the most basic data types. They come in the form of variables or static expressions. To render a string variable, wrap the name with double curly braces.
@@ -134,26 +181,6 @@ To render a static string, wrap it in single or double quotes, inside a pair of 
 ``` html
 <h1>I WILL EAT YOU, DONUT</h1>
 ```
-
-#### Concatenation (New) {#concatenation}
-
-To concatenate, use a `+` plus sign between variables and/or static strings to combine them into a single string. Whether you use concatenation or multiple variables is up to you. Opt for whatever makes the code most readable.
-
-```
----
-title: Marv's Coffee Shop
-quality: pretty good
----
-
-<p>{{ $title + " makes " + $quality + " donuts." }}</p>
-<p>{{ title }} makes {{ quality }} donuts.</p>
-```
-
-```html
-<p>Marv's Coffee Shop makes pretty good donuts.</p>
-<p>Marv's Coffee Shop makes pretty good donuts.</p>
-```
-
 
 ### Arrays
 An Array is a collection of elements (values and/or variables). Elements inside the array may be iterated or looped through using the `{{ value }}` variable. You may also "reach in" and pluck out specific elements by their index.
@@ -203,7 +230,7 @@ sports:
 <p>Let's go BMXing, rollerblading, or skateboarding.</p>
 ```
 
-### Dictionaries
+#### Dictionaries
 
 Dictionaries are represented in YAML by nested key:value pairs, _inside_ another variable name. These are sometimes called element maps, or associative arrays.
 
@@ -221,7 +248,7 @@ You can access the keys inside the dictionary "colon", "dot", or "bracket" notat
 I live in {{ mailing_address:city }}. It's in {{ mailing_address }}
 ```
 
-### Multi-Dimensional Arrays
+#### Multi-Dimensional Arrays
 More complex data is stored in objects or arrays inside arrays. This is usually called a multi-dimensional array.
 
 ``` yaml
@@ -276,9 +303,8 @@ Tony Hawk<br>
 Rodney Mullen<br>
 Bob Burnquist
 ```
+#### Dynamic Access
 
-
-### Dynamic Access
 If you don't know the names of the keys inside the array – which can happen when working with dynamic or user submitted data – you can access the elements dynamically using variables for the key names.
 
 Using the mailing list example, we could use a `field` variable to access specific keys.
@@ -304,6 +330,59 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 {{ complex_data:[3][field]['title'] }}
 ```
 
+### Modifiers
+
+The way data is stored is not always the way you want it presented. The simplest way of modifying data is through the use of variable modifiers.
+
+Each variable modifier is a function that accepts the value of a variable, manipulates it in some way, and returns it. Modifiers can be chained and are executed in sequence, from left to right inside the Antlers statement.
+
+Let's look at an example.
+
+```
+---
+title: Nickelodeon Studios
+---
+
+// NICKELODEON STUDIOS rocks!
+<h1>{{ title | upper | ensure_right:rocks! }}</h1>
+
+// NICKELODEON STUDIOS ROCKS! (order matters)
+<h1>{{ title | ensure_right:rocks! | upper }}</h1>
+```
+
+There are over 130 built in [modifiers][modifiers] that do everything from find and replace to automatically write HTML for you.
+
+Modifiers can be written in two styles in order to support different use cases and improve readability.
+
+#### String/Shorthand Style
+
+Modifiers are separated by `|` pipe delimiters. Parameters are delimited by `:` colons. This is usually the recommended style while working with string variables, conditions, and when you don't need to pass multi-word arguments in a parameter.
+
+```
+{{ string_var | modifier_1 | modifier_2:param1:param2 }}
+```
+
+If you use this string/shorthand style on arrays, you need to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
+
+#### Array/Tag Parameter Style
+
+Modifiers on array variables are formatted like Tag parameters. Parameters are separated with `|` pipes. You can’t use modifiers in conditions when you format them this way.
+
+```
+{{ array_var modifier="param1|param2" }}
+  // Magic goes here
+{{ /array_var }}
+```
+
+:::warning
+You **cannot** mix and match modifier styles.
+ie. This totally won't work: `{{ var | foo | bar="baz" }}`
+:::
+
+### Setting Variables 🆕
+
+You can now create variables on the fly with Antlers.
+
 ### Truthiness
 
 All variables are considered "truthy" if the exist and contain a value. Variables that _don't_ exist, contain an empty string, or are structured and empty (e.g. an empty array or object) are considered "falsy".
@@ -326,7 +405,7 @@ This is a powerful pattern that can help keep template logic simple and unclutte
 <title>{{ meta_title ?? title ?? site:name }}</title>
 ```
 
-Another use case is when you _sometimes_ have an array variable to loop through in a template to render some markup. Skip the existance check entirely, keep the markup inside the loop, and when the variable doesn't exist nothing will be rendered.
+Another use case is when you _sometimes_ have an array variable to loop through in a template to render some markup. You may skip the existance check entirely, keep the markup inside the loop, and if the variable doesn't exist, nothing inside the tag pair will be rendered.
 
 ```
 {{ nothing_to_see_here }}
@@ -334,70 +413,13 @@ Another use case is when you _sometimes_ have an array variable to loop through 
 {{ /nothing_to_see_here }}
 ```
 
-### Disambiguation (New) {#disambiguation}
+### Disambiguation 🆕 {#disambiguation}
 
 As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
 
 ```
 {{ $content }}
 ```
-
-## Creating Variables (New)
-
-You can now create variables on the fly with Antlers.
-
-
-
-## Modifying Data
-
-The way data is stored is not always the way you want it presented. The simplest way of modifying data is through the use of variable modifiers.
-
-### Variable Modifiers
-
-Each variable modifier is a function that accepts the value of a variable, manipulates it in some way, and returns it. Modifiers can be chained and are executed in sequence, from left to right inside the Antlers statement.
-
-Let's look at an example.
-
-```
----
-title: Nickelodeon Studios
----
-
-// NICKELODEON STUDIOS rocks!
-<h1>{{ title | upper | ensure_right:rocks! }}</h1>
-
-// NICKELODEON STUDIOS ROCKS! (order matters)
-<h1>{{ title | ensure_right:rocks! | upper }}</h1>
-```
-
-There are over 130 built in [modifiers][modifiers] that do everything from find and replace to automatically write HTML for you.
-
-Modifiers can be written in two styles in order to support different use cases and improve readability.
-
-### String/Shorthand Style
-
-Modifiers are separated by `|` pipe delimiters. Parameters are delimited by `:` colons. This is usually the recommended style while working with string variables, conditions, and when you don't need to pass multi-word arguments in a parameter.
-
-```
-{{ string_var | modifier_1 | modifier_2:param1:param2 }}
-```
-
-If you use this string/shorthand style on arrays, you need to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
-
-### Array/Tag Parameter Style
-
-Modifiers on array variables are formatted like Tag parameters. Parameters are separated with `|` pipes. You can’t use modifiers in conditions when you format them this way.
-
-```
-{{ array_var modifier="param1|param2" }}
-  // Magic goes here
-{{ /array_var }}
-```
-
-:::warning
-You **cannot** mix and match modifier styles.
-ie. This totally won't work: `{{ var | foo | bar="baz" }}`
-:::
 
 ### Escaping Data
 
@@ -409,7 +431,12 @@ The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) 
 {{ user_submitted_content | sanitize }}
 ```
 
-## Comparison Operators {#comparison}
+
+## Operators
+
+### Control Flow
+
+### Comparison
 
 Antlers can handle logic and conditional statements with the use of numerous operators, just like native PHP. You can use these operators to check settings, variables, or even user data and alter the output of your page.
 
@@ -417,7 +444,6 @@ You may construct conditional statements using comparison and logical operators 
 
 <!-- and use any of PHP's [comparison](https://www.php.net/manual/en/language.operators.comparison.php) and [logical](https://www.php.net/manual/en/language.operators.logical.php) operators. -->
 
-### Comparison Operators
 
 | Name | Syntax {.w-40} | Description |
 |---|---|---|
@@ -431,7 +457,7 @@ You may construct conditional statements using comparison and logical operators 
 | Not Strict Equal | `this !== that` | Tests if the left is not equal to the right, only if they are of the same type. |
 | Spaceship Operator | `this <=> that` | Returns -1, 0 or 1 when left expression is respectively less than, equal to, or greater than the right. |
 
-### Examples
+#### Examples
 
 ```
 {{ if songs === 1 }}
@@ -445,14 +471,9 @@ You may construct conditional statements using comparison and logical operators 
 {{ /if }}
 ```
 
+#### Ternary Statements {#ternary}
 
-:::tip
-**Antlers variables are null by default.** You can often keep your logic statements simple and skip checking for existence altogether.
-:::
-
-### Shorthand Conditions (Ternary) {#ternary}
-
-Basic ternary operators will let you write a simple if/else statement all in one line.
+Ternary statements will let you write a simple if/else statement all in one line. This syntax can be a double-edged sword – they're terse but when used in complex conditions can be hard to wrap your mind grapes around.
 
 ```
 // Basic: verbose
@@ -464,6 +485,74 @@ This item is {{ is_sold ? "sold" : "available" }}.
 
 Learn more about [ternary operators][ternary] in PHP.
 
+#### Null Coalescence
+
+When all you need to do is display a variable will support for one or more fallback variables or values, use the null coalescence operator (`??`).
+
+#### Truthy Assignment (Gatekeeper Operator)
+
+What if you want to display a variable or evaluate an expression _but only if_ it passes a truthy check? Time for the Gatekeeper Operator. It doesn't exist in any other programming language, but should. Enjoy!
+
+```
+// Short and sweet
+{{ show_title ?= title }}
+
+// Longer and bitterer
+{{ if show_title }}{{ title }}{{ /if }}
+```
+
+This syntax will work for any expression on the "right-hand" side. Just make sure that when using the Gatekeeper that it's the most readable way to construct the template. For example, you could check a toggle field before rendering a partial, all in one clean line.
+
+```
+{{ show_newsletter ?= {partial:newsletter} }}
+```
+
+### Concatenation 🆕
+
+To concatenate a string, use a `+` plus sign between variables and/or static strings to combine them into a single string. Whether you use concatenation or multiple variables is up to you. Opt for whatever makes the code most readable.
+
+```
+---
+title: Marv's Coffee Shop
+quality: pretty good
+---
+
+<p>{{ $title + " makes " + $quality + " donuts." }}</p>
+<p>{{ title }} makes {{ quality }} donuts.</p>
+```
+
+```html
+<p>Marv's Coffee Shop makes pretty good donuts.</p>
+<p>Marv's Coffee Shop makes pretty good donuts.</p>
+```
+
+### Incrementing and Decrementing 🆕
+
+### Array
+
+### Arithmetic 🆕
+
+### Assignment 🆕
+
+### Scope
+
+### Terminator 🆕
+
+
+## Expressions
+
+### Literals
+
+### Sub-Expressions
+
+### Merge
+
+### OrderBy
+
+### Self-Iterating Assignments
+
+
+
 ### Modifiers Inside Conditions
 
 If you want to manipulate a variable with [modifiers](/modifiers) before evaluating a condition, wrap the expression in (parenthesis).
@@ -474,25 +563,6 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 {{ /if }}
 ```
 
-### Variable Fallbacks (Null Coalescence) {#null-coalescence}
-
-When all you need to do is display a variable and set a fallback when it’s null, use the null coalescence operator (`??`).
-
-```
-{{ meta_title ?? title ?? "No Title Set" }}
-```
-
-### Conditional Variable Fallbacks
-
-What if you want to combine an `is set` check with a ternary operator? No problem.
-
-```
-// Short and sweet
-{{ show_title ?= title }}
-
-// Longer and bitterer
-{{ if show_title }}{{ title }}{{ /if }}
-```
 
 ### Using Tags in Conditions
 
@@ -502,14 +572,6 @@ Yes, you can even use tags in conditions. When working with [tags][tags] instead
 {{ if {session:some_var} == "Statamic is rad!" }}
   ...
 {{ /if }}
-```
-
-## Code Comments {#comments}
-
-Antlers also allows you to define comments in your views. However, unlike HTML comments, Antlers are not included in the rendered HTML. You can use these comments to "turn off" chunks of code, document your work, or leave notes for yourself and other developers.
-
-```
-{{# Remember to replace the lorem ipsum this time. #}}
 ```
 
 ## Tags
@@ -582,17 +644,25 @@ For example, a guest author with limited access to the control panel could conce
 
 If this isn't a concern of yours, you can enable Antlers parsing on a per-field basis by setting `antlers: true` in your blueprint.
 
+## Code Comments {#comments}
+
+Antlers code comments are not rendered in HTML (unlike HTML comments), which allos you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.
+
+```
+{{# Remember to replace the lorem ipsum this time, Karen! #}}
+```
+
 ## Using PHP in Antlers
 
-PHP is disabled by default, but if you change your view's file extension from `.antlers.html` to `.antlers.php`, you can write all the PHP you want in that template.
+`{{? ?}}` is the ticket.
 
-## IDEs & Syntax Highlighters
+Or, you can change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.`
 
-Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter, like they do with tea in the south.
-
-- [Antlers for Atom](https://github.com/addisonhall/language-antlers)
-- [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
-- [Antlers for VS Code](https://github.com/addisonhall/ahdesign.antlers)
+```
+<?php
+  echo 'Keep it simple, please';
+?>
+```
 
 
 [ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
