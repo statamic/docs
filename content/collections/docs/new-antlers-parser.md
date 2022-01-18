@@ -42,7 +42,7 @@ The original parser was essentially a glorified find and replace machine relying
 
 The New Antlers Engine now has **two stages** – first, it parses and buids an Abstract Syntax Tree from your complete template, and _then_ it evalutes and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
 
-This affords Statamic an incredible amount of control. It can go sideways and slatways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
+This affords Statamic an incredible amount of control. It can go sideways and slatways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single known Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
 
 - The ability to _set_ variables
 - Syntax errors that reference the exact line, character, and type of error
@@ -50,14 +50,15 @@ This affords Statamic an incredible amount of control. It can go sideways and sl
 - Merging the results of multiple expressions
 - Perform a robust set of mathmatical operations
 - Concatenate, increment, and decrement values
-- Extended syntax that provide better type handling
+- A better Modifier syntax that provide better type handling
 - A smarter, more forgiving matching engine so more things Just Work™
-- Self-iterating assignment
+- Self-iterating assignments
 - Self-closing tags
 - Run-time caching for huge performance boosts
 
 This new engine is a powerful factory, mad scientist labratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
-### It's Still Experimental {#experimental}
+
+### We're Calling it "Experimental" {#experimental}
 
 Because of how fundamental Antlers is to the whole Statamic experience, we wanted to ship this new version under an **opt-in** feature flag in the event it affects the behavior or output of one or more of your templates. Here are a few conditions we wish to avoid, in order of most-to-least likely scenarios:
 
@@ -541,7 +542,7 @@ Adds more conditions with an `if` or `unless` block.
 
 Comparison operators, as their name implies, allow you to compare two values or expressions.
 
-| Name | Syntax {.w-32} | Description |
+| Name | Example {.w-32} | Description |
 |------|----------------|-------------|
 | Equal | `$a == $b` | `true` if `$a` is equal to `$b` after type juggling. |
 | Identical | `$a === $b` | `true` if `$a` is equal to `$b`, and are of the same type |
@@ -576,6 +577,18 @@ Here's a more complicated condition involving the output from a Tag.
   This show is ready to be syndicated!
 {{ /if }}
 ```
+
+### Logical
+
+Logical operators join two or more expressions to create compound conditions.
+
+| Name | Example | Description |
+|------|---------|-------------|
+| And |  `$a && $b` or `$a and $b` |`true` if both `$a` and `$b` are `true`. |
+| Or | `$a \|\| $b` or `$a or $b` | `true` if either `$a` or `$b` is `true`. |
+| Not | `!$a` | `true` if `$a` is not `true`.|
+| Xor | `$a xor $b` | `true` if either `$a` or `$b` is `true`, but not both. |
+
 
 ### Ternary Statements {#ternary}
 
@@ -634,18 +647,50 @@ quality: pretty good
 <p>Marv's Coffee Shop makes pretty good donuts.</p>
 ```
 
-### Incrementing and Decrementing 🆕
+### Math 🆕
 
-### Array
+Math is all the rage. Teenagers have been found in back rooms and back alleys doing math and nobody can seem to stop them. So naturally, Antlers now does math too!
 
-### Arithmetic 🆕
+| Name | Example | Description |
+|------|---------|-------------|
+| Addition |  `$a + $b` | Sum of `$a` and `$b`. |
+| Subtraction |  `$a - $b`. | Difference of `$a` and `$b`. |
+| Multiplication |  `$a * $b`. | Product of `$a` and `$b`. |
+| Division |  `$a / $b`. | Quotient of `$a` and `$b`. |
+| Modulo |  `$a % $b`. | Remainder of `$a` divided `$b`. |
+| Exponentiation |  `$a ** $b` | Result of raising `$a` to the `$b`'th power. |
+| Factorial |  `$a!` | Factorial of `$a`. |
 
 ### Assignment 🆕
 
-### Scope
+The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not recieve $200. This means left operand gets set to the value of the expression on the right.
 
-### Terminator 🆕
+This is how you create variables, and increment, decrement, or otherwise manipulate numerical variables.
 
+| Name | Example {.w-32} | Description |
+|------|---------|-------------|
+| Left Assignment | `$a = $b` | Sets the value of `$a` to the value of `$b`. |
+| Addition | `$a += $b` | Assigns the sum `$a` and `$b` to `$a`. |
+| Subtraction | `$a -= $b` | Assigns the difference of `$a` and `$b` to `$a`. |
+| Multiplication | `$a *= $b` | Assigns the product of `$a` and `$b` to `$a`. |
+| Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
+| Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
+
+### The Terminator 🆕
+
+Multiple expressions can be performed inside a single Antlers tag pair by terminating each with `;`. If you don't like them, you can tell them hasta-la-vista because they're optional (just like in JavaScript). Just keep in mind they can lend to more readable code for multi-line statements.
+
+```
+{{
+    $michael = 9986000;
+    $minutes_in_a_year = 60 * 24 * 365;
+    (($michael / $minutes_in_a_year) | format_number(0)) + " years";
+}}
+```
+
+```
+19 years
+```
 
 ## Expressions
 

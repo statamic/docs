@@ -13,6 +13,9 @@
         h2 {
             @apply mt-4;
         }
+        ol {
+            @apply text-base;
+        }
     }
 
     &.tip {
