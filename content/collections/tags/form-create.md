@@ -204,9 +204,9 @@ For our Alpine.js example, the first step is to include Alpine, as well as Stata
 
 These can be added to your [layout](/views#layouts) just before your `</body>` tag. Alternatively, you could also work these into your webpack/mix build, but this is the simplest way.
 
-### Enabling the Form Driver
+### Enabling the JS Driver
 
-The next step is to enable the Alpine form driver via the `js="alpine"` parameter.
+The next step is to enable the Alpine JS driver via the `js="alpine"` parameter.
 
 ```
 {{ form:contact js="alpine" }}
