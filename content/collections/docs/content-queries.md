@@ -126,7 +126,7 @@ Entry::query()
     ->get();
 ```
 
-You can query entries across multiple conditions use `orWhere()`:
+You can query entries across multiple conditions using `orWhere()`:
 
 ```php
 Entry::query()
@@ -196,7 +196,7 @@ Complex queries can be made by using closure-based wheres containing any of the 
 Entry::query()
     ->where(function ($query) {
 		$query->where('status', 'featured')
-          ->orWhere('status', 'sticky');
+      		->orWhere('status', 'sticky');
     })
     ->orWhere(function ($query) {
 		$query->where('title', '!=', 'statamic')
