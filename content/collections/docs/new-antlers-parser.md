@@ -390,6 +390,8 @@ It was lunch, is what it was.
 
 There are more than 150 built-in [modifiers][modifiers] that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
+You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusuable one.
+
 #### Legacy Syntax
 
 The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
@@ -440,9 +442,9 @@ You can assign sub-expressions or interpolated statements to variables too. In t
 </ul>
 ```
 
-### Truthiness
+### Truthy and Falsy
 
-All variables are considered "truthy" if the exist and contain a value. Variables that _don't_ exist, contain an empty string, or are structured and empty (e.g. an empty array or object) are considered "falsy".
+All variables are considered "truthy" if they exist _and_ contain a value. Variables that _don't_ exist, contain an empty string, or are structured and empty (e.g. an empty array or object) are considered "falsy".
 
 This is a powerful pattern that can help keep template logic simple and uncluttered. For instance, you can set a series of "fallback" variables all in one expression, allowing you to have default values and optionally override them instead of having to a bunch of `if`/`else` checks.
 
@@ -470,7 +472,7 @@ Another use case is when you _sometimes_ have an array variable to loop through 
 {{ /nothing_to_see_here }}
 ```
 
-### Disambiguation 🆕 {#disambiguation}
+### Disambiguation 🆕
 
 As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
 
@@ -480,89 +482,138 @@ As your templates grow and increase in complexity, you _may_ find yourself unsur
 
 ### Escaping
 
-By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this is the most logical default behavior. **But remember: never render user-submitted data without escaping it first!**
+By default, Antlers `{{ }}` statements are _not_ automatically escaped. This is because in a CMS context (vs a web application), content is very often stored inside HTML markup, and this is the most logical, default behavior.
 
-The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) modifier. This will run the data through PHP's `htmlspecialchars()` function and prevent XSS attacks and other potential nastiness.
+The simplest way to escape data is by using the [sanitize](/modifiers/sanitize) modifier. This will run the data through PHP's [`htmlspecialchars()`](https://www.php.net/manual/en/function.htmlspecialchars.php) function to prevent XSS attacks.
 
 ```
 {{ user_submitted_content | sanitize }}
 ```
 
+:::tip
+Just remember: **never render user-submitted data without escaping it first!**
+:::
+
 
 ## Operators
 
+An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds numbers, as in `1 + 2`. Statamic supports many of the operators you may already know from PHP, and adds a few new ones to make your life as developer easier.
+
 ### Control Flow
 
-### Comparison
+Statamic provides a variety of control flow statements. These include `if`, `else`, `or`, and `unless` statements to run different branches of template code based on defined conditions.
 
-Antlers can handle logic and conditional statements with the use of numerous operators, just like native PHP. You can use these operators to check settings, variables, or even user data and alter the output of your page.
+#### if
 
-You may construct conditional statements using comparison and logical operators like `if`, `else`, and `or`.
-
-<!-- and use any of PHP's [comparison](https://www.php.net/manual/en/language.operators.comparison.php) and [logical](https://www.php.net/manual/en/language.operators.logical.php) operators. -->
-
-
-| Name | Syntax {.w-40} | Description |
-|---|---|---|
-| Loose Equality | `this == that` | Tests if the left and right sides are equal. Types will be coerced. |
-| Strict Equality | `this === that` | Tests if the left and right are of the same type, _and_ have the same value. |
-| Greater Than | `this > that` | Tests if the value on the left is greater than the right. |
-| Greater Than or Equal | `this >= that` | Tests if the left is greater than or equal to the right. |
-| Less Than | `this < that` | Test if the left is less than the right. |
-| Less Than or Equal | `this <= that` | Tests if the left is less than or equal to the right. |
-| Not Equal | `this != that` |  Tests if the left is not equal to the right. Types will be coerced. |
-| Not Strict Equal | `this !== that` | Tests if the left is not equal to the right, only if they are of the same type. |
-| Spaceship Operator | `this <=> that` | Returns -1, 0 or 1 when left expression is respectively less than, equal to, or greater than the right. |
-
-#### Examples
+Executes a block of code only if a condition is `true` or "[truthy](#truthy-and-falsy)".
 
 ```
-{{ if songs === 1 }}
-  <p>There is a song!</p>
-{{ elseif songs > 100 }}
-  <p>There are lots of songs!</p>
-{{ elseif songs }}
-  <p>There are songs.
-{{ else }}
-  <p>There are no songs.</p>
+{{ if logged_in }}
+  Welcome to Narnia!
 {{ /if }}
 ```
 
-#### Ternary Statements {#ternary}
+#### unless
 
-Ternary statements will let you write a simple if/else statement all in one line. This syntax can be a double-edged sword – they're terse but when used in complex conditions can be hard to wrap your mind grapes around.
-
-```
-// Basic: verbose
-This item is {{ if is_sold }}sold{{ else }}available{{ /if }}.
-
-// Ternary: nice and short
-This item is {{ is_sold ? "sold" : "available" }}.
-```
-
-Learn more about [ternary operators][ternary] in PHP.
-
-#### Null Coalescence
-
-When all you need to do is display a variable will support for one or more fallback variables or values, use the null coalescence operator (`??`).
-
-#### Truthy Assignment (Gatekeeper Operator)
-
-What if you want to display a variable or evaluate an expression _but only if_ it passes a truthy check? Time for the Gatekeeper Operator. It doesn't exist in any other programming language, but should. Enjoy!
+Unless is the opposite of `if` – executing a block of code only if a condition is **not** met.
 
 ```
-// Short and sweet
-{{ show_title ?= title }}
-
-// Longer and bitterer
-{{ if show_title }}{{ title }}{{ /if }}
+{{ unless logged_in }}
+  You see a large wardrobe in front of you.
+{{ /unless }}
 ```
 
-This syntax will work for any expression on the "right-hand" side. Just make sure that when using the Gatekeeper that it's the most readable way to construct the template. For example, you could check a toggle field before rendering a partial, all in one clean line.
+#### elseif / else
+
+Adds more conditions with an `if` or `unless` block.
 
 ```
+{{ if neighbor == "Kramer" }}
+  Giddyup.
+{{ elseif neighbor == "Newman" }}
+  Hello...Newman.
+{{ else }}
+  Who are you?
+{{ /if }}
+```
+
+### Comparison
+
+Comparison operators, as their name implies, allow you to compare two values or expressions.
+
+| Name | Syntax {.w-32} | Description |
+|------|----------------|-------------|
+| Equal | `$a == $b` | `true` if `$a` is equal to `$b` after type juggling. |
+| Identical | `$a === $b` | `true` if `$a` is equal to `$b`, and are of the same type |
+| Greater than | `$a > $b` | `true` if `$a` is greater than `$b`. |
+| Greater than or equal to | `$a >= $b` | `true` if `$a` is greater than or equal to `$b`. |
+| Less than | `$a < $b` | `true` `$a` is less than the `$b`. |
+| Less than or equal to | `$a <= $b` | `true` if `$a` is less than or equal `$b`. |
+| Not equal | `$a != $b` |  `true` if `$a` is not equal to `$b` after type juggling. |
+| Not identical | `$a !== $b` | `true` if `$a` is not equal to `$b`, only if they are of the same type. |
+| Spaceship | `$a <=> $b` | Returns -1, 0 or 1 when `$a` is less than, equal to, or greater than `$b`, respectively. |
+
+#### Examples
+
+Let's compare some numbers.
+
+```
+{{ if songs === 1 }}
+  <p>This is a song!</p>
+{{ elseif songs > 100 }}
+  <p>This is noisy!</p>
+{{ elseif songs }}
+  <p>There are some songs here.</p>
+{{ else }}
+  <p>It is quiet.</p>
+{{ /if }}
+```
+
+Here's a more complicated condition involving the output from a Tag.
+
+```
+{{ if {collection:count from="episodes"} >= 100 }}
+  This show is ready to be syndicated!
+{{ /if }}
+```
+
+### Ternary Statements {#ternary}
+
+Ternary statements let you write a simple condition and return one value if `true` and another if `false`, all one one expression.
+
+```
+This item is {{ is_sold ? "sold" : "for sale" }}.
+```
+
+:::best-practice
+**Ternary statements are a double-edged sword** – they can simplify template code when used effectively, and greatly complicate it if pushed too far — like nesting one ternary inside another using a sub-expression. Make sure other developers will be able wrap their Mind Grapes™ around your ternary statements.
+
+```
+<!-- While valid, this can be hard to follow. -->
+{{ is_sold ? "sold" : (on_sale ? "on sale" : "for sale") }}
+```
+:::
+
+### Null Coalescence
+
+The null coalescing operator (`$a ?? $b`) considers each variable in a statement _optional_, returning the first one that passes a "truthy" check. This lets you set fallback or default values for optional data.
+
+```
+{{ meta_title ?? title ?? "Someone Forgot the Title" }}
+```
+
+### Truthy Assignment (The Gatekeeper) {#gatekeeper}
+
+The Gatekeeper operator (`a ?= b`) will execute an expression _only if_ it passes a "truthy" check. It doesn't exist in any programming language, we invented this one. Enjoy!
+
+```
+{{ show_bio ?= author:bio }}
+
 {{ show_newsletter ?= {partial:newsletter} }}
 ```
+
+This syntax can handle any valid expression on the right-hand side of the operator. Just make sure that when using the Gatekeeper that it's the most readable way to construct the template.
+
 
 ### Concatenation 🆕
 
