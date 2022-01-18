@@ -615,9 +615,9 @@ The null coalescing operator (`$a ?? $b`) considers each variable in a statement
 {{ meta_title ?? title ?? "Someone Forgot the Title" }}
 ```
 
-### Truthy Assignment (The Gatekeeper) {#gatekeeper}
+### The Gatekeeper (Truthy Assignment) {#gatekeeper}
 
-The Gatekeeper operator (`a ?= b`) will execute an expression _only if_ it passes a "truthy" check. It doesn't exist in any programming language, we invented this one. Enjoy!
+The Gatekeeper operator (`a ?= b`) will execute an expression **if and only if_** it passes a "truthy" check. It doesn't exist in any programming language — we invented this one. Enjoy!
 
 ```
 {{ show_bio ?= author:bio }}
@@ -665,7 +665,7 @@ Math is all the rage. Teenagers have been found in back rooms and back alleys do
 
 The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not recieve $200. This means left operand gets set to the value of the expression on the right.
 
-This is how you create variables, and increment, decrement, or otherwise manipulate numerical variables.
+This is how you create variables, as well as increment, decrement, or otherwise manipulate numerical variables.
 
 | Name | Example {.w-32} | Description |
 |------|---------|-------------|
@@ -703,29 +703,6 @@ Multiple expressions can be performed inside a single Antlers tag pair by termin
 ### OrderBy
 
 ### Self-Iterating Assignments
-
-
-
-### Modifiers Inside Conditions
-
-If you want to manipulate a variable with [modifiers](/modifiers) before evaluating a condition, wrap the expression in (parenthesis).
-
-```
-{{ if (number_of_bedrooms | count) > 10 }}
-  <p>Who are you, Dwane Johnson?</p>
-{{ /if }}
-```
-
-
-### Using Tags in Conditions
-
-Yes, you can even use tags in conditions. When working with [tags][tags] instead of variables, you **must** wrap the tag in a pair of additional single braces to tell the parser to run that logic first.
-
-```
-{{ if {session:some_var} == "Statamic is rad!" }}
-  ...
-{{ /if }}
-```
 
 ## Tags
 
