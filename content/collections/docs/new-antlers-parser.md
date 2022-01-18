@@ -101,10 +101,10 @@ Before getting into listing all the things that happen _inside_ an Antlers expre
 ### Formatting Rules
 
 1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth. There must be a left pair and a right pair, just like HTML's `<` and `>` angle braces.
-2. Expressions are **case sensitive**.
+1. Expressions are **case sensitive**.
 3. Hyphens and underscores are **not** interchangeable.
-4. Whitespace between the curly braces expression is optional, but **recommended** for readability.
-5. You **may** break up an expression onto multiple lines.
+1. Whitespace between the curly braces expression is optional, but **recommended** for readability.
+1. You **may** break up an expression onto multiple lines.
 
 Consistency is important. We recommend using a single space between braces and the inner expression, lowercase variable names, and underscores as word separators. Pick your style and stick to it. Future you will thank you, but don't expect a postcard.
 
@@ -161,6 +161,16 @@ The `title` variable can be rendered like this:
 ```
 
 ### Valid Characters
+
+Variable must start with an alpha character or underscore (`a-zA-Z_`), followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores (`a-zA-Z_0-9`). Spaces or other special characters are not allowed.
+
+Don't be weird and mix-and-match them like a serial killer though:
+
+```
+<!-- Get outta here. -->
+{{ this_iS-RiDicuL-ou5_ }}
+```
+
 
 ### Strings
 
@@ -332,56 +342,103 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 
 ### Modifiers
 
-The way data is stored is not always the way you want it presented. The simplest way of modifying data is through the use of variable modifiers.
+Modifers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
 
-Each variable modifier is a function that accepts the value of a variable, manipulates it in some way, and returns it. Modifiers can be chained and are executed in sequence, from left to right inside the Antlers statement.
-
-Let's look at an example.
+Multiple modifiers can be chained on one output, each sparated by another pipe |`|, and are are applied in order from left to right. Let's look at an example.
 
 ```
 ---
 title: Nickelodeon Studios
 ---
 
-// NICKELODEON STUDIOS rocks!
-<h1>{{ title | upper | ensure_right:rocks! }}</h1>
+<!-- NICKELODEON STUDIOS rocks! -->
+<h1>{{ title | upper | ensure_right('rocks!') }}</h1>
 
-// NICKELODEON STUDIOS ROCKS! (order matters)
-<h1>{{ title | ensure_right:rocks! | upper }}</h1>
+<!-- NICKELODEON STUDIOS ROCKS! (order matters) -->
+<h1>{{ title | ensure_right('rocks!') | upper }}</h1>
 ```
 
-There are over 130 built in [modifiers][modifiers] that do everything from find and replace to automatically write HTML for you.
+Some modifiers accept parameters to control their behavior. Arguments can be passed inside a pair of `()` braces, just like a native PHP function. If you don't have any arguments to pass, you may omit the braces.
 
-Modifiers can be written in two styles in order to support different use cases and improve readability.
-
-#### String/Shorthand Style
-
-Modifiers are separated by `|` pipe delimiters. Parameters are delimited by `:` colons. This is usually the recommended style while working with string variables, conditions, and when you don't need to pass multi-word arguments in a parameter.
+You may pass `strings`, `arrays`, `booleons`, `integers`, `floats`, `objects`, or references to existing variables as arguments.
 
 ```
-{{ string_var | modifier_1 | modifier_2:param1:param2 }}
+{{ var | modifier('hi', ['pooh', 'pea'], true, 42, $favoriteVar) }}
 ```
 
-If you use this string/shorthand style on arrays, you need to make sure the closing tag matches the opening one **exactly**. You may notice this looks terrible and is quite annoying. That's why we also have the...
-
-#### Array/Tag Parameter Style
-
-Modifiers on array variables are formatted like Tag parameters. Parameters are separated with `|` pipes. You can’t use modifiers in conditions when you format them this way.
+##### Examples
+Here are a few examples of modifiers in action.
 
 ```
-{{ array_var modifier="param1|param2" }}
-  // Magic goes here
-{{ /array_var }}
+---
+summary: "It was the best of times, it was the worst of times."
+noun: soups
+---
+
+{{ summary | replace('worst', 'yummiest') }}
+{{ summary | replace('It was', 'It was also') | replace('times', $noun) }}
+{{ summary | explode(' ') | ul }}
+{{ (summary | contains('best')) ?= "It was lunch, is what it was." }}
 ```
 
-:::warning
-You **cannot** mix and match modifier styles.
-ie. This totally won't work: `{{ var | foo | bar="baz" }}`
-:::
+```
+It was the best of times, it was the yummiest of times.
+It was the best of soups, it was the worst of soups.
+<ul><li>It</li><li>was</li><li>the</li><li>best</li><li>of</li><li>times,</li><li>it</li><li>was</li><li>the</li><li>worst</li><li>of</li><li>times.</li></ul>
+It was lunch, is what it was.
+```
 
-### Setting Variables 🆕
+There are more than 150 built-in [modifiers][modifiers] that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
-You can now create variables on the fly with Antlers.
+#### Legacy Syntax
+
+The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
+
+### Creating Variables 🆕
+
+You can now set variables by using the assignment operator, `=`.
+
+```
+{{ total = 0 }}
+
+{{ loop from="1" to="9" }}
+  {{ total += 1 }}
+{{ /loop}}
+
+<p>I can count to {{ total }}!</p>
+```
+
+```
+<p>I can count to 9!</p>
+```
+
+#### Arrays
+You can also create arrays, if you find the need. Keep in mind that more complex data _might_ be better suited to being managed in Entries, Globals, View Models, or Controllers.
+
+```
+{{ todo = ['Get haircut', 'Bake bread', 'Eat soup'] }}
+
+<ul>
+  {{ todo }}
+    <li>{{ value }}</li>
+  {{ /todo }}
+</ul>
+```
+
+#### Sub-Expressions
+
+You can assign sub-expressions or interpolated statements to variables too. In this example, you can use `{{ items }}` as if it were the actual Collection Tag. Because it is.
+
+```
+{{ items = {collection:products sort="rating:desc" limit="5"} }}
+
+<h2>Our Top Products</h2>
+<ul>
+  {{ items }}
+    <li><a href="{{ url }}">{{ title }}</a></li>
+  {{ /items }}
+</ul>
+```
 
 ### Truthiness
 
@@ -421,7 +478,7 @@ As your templates grow and increase in complexity, you _may_ find yourself unsur
 {{ $content }}
 ```
 
-### Escaping Data
+### Escaping
 
 By default, Antlers `{{ }}` statements are _not_ automatically escaped. Because content is often stored along with HTML markup, this is the most logical default behavior. **But remember: never render user-submitted data without escaping it first!**
 

@@ -31,7 +31,7 @@ article, .markdown {
     }
 
     h5 {
-        @apply font-sans text-black font-bold text-base -mb-4 mt-12 relative;
+        @apply font-sans text-black font-bold text-base mt-12 relative;
     }
 
     p {
