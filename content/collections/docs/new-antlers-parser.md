@@ -15,7 +15,7 @@ experimental: true
 
 ## Overview
 
-Antlers is a fundamental feature of Statamic. It features a tightly coupled template language and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
+Antlers is one of the fundamental features of Statamic. It features a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
 
 Antlers templates are also called views. Any files in the `resources/views` directory with a `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
 
@@ -58,14 +58,17 @@ This affords Statamic an incredible amount of control. It can go sideways and sl
 
 This new engine is a powerful factory, mad scientist labratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
 
-### We're Calling it "Experimental" {#experimental}
+### We're calling it "Experimental" {#experimental}
 
-Because of how fundamental Antlers is to the whole Statamic experience, we wanted to ship this new version under an **opt-in** feature flag in the event it affects the behavior or output of one or more of your templates. Here are a few conditions we wish to avoid, in order of most-to-least likely scenarios:
+Because of how fundamental Antlers is to the entire Statamic experience, we're shipping this new version under an **opt-in** feature flag until Statamic 3.4 — just in case it affects the behavior or output of one or more of your templates in an unexpected way. Here are a few situations we wish to avoid, in order of most-to-least likely to happen:
 
-1. Templates that rely on a bug in the RegEx parser
-1. Templates that rely on undocmented behaviors or features that may have been removed in the New Parser
+1. Templates that rely on a bug in the RegEx parser suddenly behave correctly, but do so unexpectedly
+1. Templates that rely on undocmented or unknown behaviors that may have been fixed, removed, or otherwise not ported to the New Parser
 1. Actual regressions created by the new parser
-1. Your performance gains are so high that your site rips a hole in the Space Time Continuum
+1. Performance gains are so high that your site rips a hole in the Space Time Continuum and inhales everthing in the solar system into it, collapsing everything you've ever known into the space of a single atom
+1. Half-Life 3 comes out but everyone is too distracted by New Antlers to notice
+
+If you encounter any of these scenarios (and you still exist), please [open an issue](https://github.com/statamic/cms/issues/new?assignees=&labels=&template=bug_report.yml) so we can address it or help you get sorted.
 
 ### How to Enable It {#enable}
 
@@ -79,7 +82,7 @@ return [
 ];
 ```
 
-### Huge Thanks to John Koster
+### Huge Thanks to John Koster 👏
 
 This rewrite was a huge undertaking by the incomparable [John Koster](https://github.com/JohnathonKoster), who apparently found it a relaxing break from his day job. You can see the effort involved in this [massive PR](https://github.com/statamic/cms/pull/4257).
 
@@ -361,7 +364,7 @@ title: Nickelodeon Studios
 
 Some modifiers accept parameters to control their behavior. Arguments can be passed inside a pair of `()` braces, just like a native PHP function. If you don't have any arguments to pass, you may omit the braces.
 
-You may pass `strings`, `arrays`, `booleons`, `integers`, `floats`, `objects`, or references to existing variables as arguments.
+You may pass `strings`, `arrays`, `booleans`, `integers`, `floats`, `objects`, or references to existing variables as arguments.
 
 ```
 {{ var | modifier('hi', ['pooh', 'pea'], true, 42, $favoriteVar) }}
@@ -630,6 +633,8 @@ This syntax can handle any valid expression on the right-hand side of the operat
 
 ### Concatenation 🆕
 
+There are two methods for concatenating strings.
+
 To concatenate a string, use a `+` plus sign between variables and/or static strings to combine them into a single string. Whether you use concatenation or multiple variables is up to you. Opt for whatever makes the code most readable.
 
 ```
@@ -665,7 +670,7 @@ Math is all the rage. Teenagers have been found in back rooms and back alleys do
 
 The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not recieve $200. This means left operand gets set to the value of the expression on the right.
 
-This is how you create variables, as well as increment, decrement, or otherwise manipulate numerical variables.
+This is how you create variables as well as increment, decrement, or otherwise manipulate numerical variables.
 
 | Name | Example {.w-32} | Description |
 |------|---------|-------------|
@@ -676,9 +681,57 @@ This is how you create variables, as well as increment, decrement, or otherwise 
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
 | Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
 
+### Merge
+
+The `merge` operator can merge two or more "array-like" variables or expressions. The resulting data is immediately iterable without any kind of intermediate step, if you desire.
+
+```
+{{ articles = favourite_articles merge not_favourite_articles }}
+
+{{ articles }}
+  {{# do your thing here #}}
+{{ /articles }}
+
+{{ items = {collection:headlines} merge {collection:news limit="5"} }}
+  {{# your thing can be done here too #}}
+{{ /items }}
+```
+
+### OrderBy
+
+The `orderby` operator can be applied to any array and supports ordering by multiple properties as well as dynamic fields and directions.
+
+Arguments are passed into a pair of parenthesis `()` in the following format, which accepts variables of literal `'asc'` and `'desc'` strings or boolean `true` and `false` for ascending and descending sort directions, respectively.
+
+```
+{{ var orderby (FIELD_1 DIRECTION, FIELD_2 DIRECTION) }}
+```
+
+#### Examples
+```
+---
+dir: 'asc'
+shouldSortAscending: false
+---
+
+{{ people orderby (age 'desc', last_name 'asc', first_name 'asc') }}
+
+{{ places orderby (state $dir, city $dir, zip_code $dir) }}
+
+{{ things =
+  {collection:hats} merge {collection:books}
+  orderby (rating $shouldSortAscending)
+}}
+```
+
+### GroupBy
+
+### Where
+
+
 ### The Terminator 🆕
 
-Multiple expressions can be performed inside a single Antlers tag pair by terminating each with `;`. If you don't like them, you can tell them hasta-la-vista because they're optional (just like in JavaScript). Just keep in mind they can lend to more readable code for multi-line statements.
+Multiple expressions or statements can be performed inside a single Antlers tag pair by terminating each with `;`. These terminators can often lend to more readable code for multi-line statements. However, if you don't like them, you can tell 'em "hasta la vista, baby" because they're optional (just like in JavaScript).
 
 ```
 {{
@@ -692,15 +745,62 @@ Multiple expressions can be performed inside a single Antlers tag pair by termin
 19 years
 ```
 
-## Expressions
+## Expressions and Statements
+
+If you want the computer science answer, an "expression" is a combination of values and functions that are combined and intepreted to create new values, whereas a "statement" is a standalone unit of execution that doesn't return anything. 🥱
+
+Simply put, expressions show things and statements do things. Even more simply put — they're the stuff between `{{ }}` braces. It's not terribly important to remember the semantic differences as it is usually clear from context whether you're trying to show a thing or do a thing.
+
+Let's just go through the list of valid "in between braces stuff" so you can  accomplish your goals and hopefully win a trophy of some kind. 🏆
+
+```
+{{ "This is a single expression that renders this very text." }}
+
+{{# This statement fetches Entries and begins iterating through them #}}
+{{ collection:blog limit="5" }}
+
+{{# This statement runs a condition check #}}
+{{ if template == "home" }}
+
+{{# Brace yourself — this complex statement assigns a booleon value
+    to a new variable based on a the result of a condition inside a
+    sub-expression, and then writes a value to the user session in
+    a separate statement, all inside a single Antlers region. 😅 #}}
+{{ $show_sale_popup = (
+    global:active_sale === true
+    && !{session:has key="seen_popup"}
+  );
+  {session:set seen_popup="true"};
+}}
+```
 
 ### Literals
 
+Literals are the simplest type of expression. They include strings, arrays, booleans, integers, and so on. Antlers can handle literals as stand-alone expressions, as arguments, and during assignments (creating and updating variables) .
+
+To check the type of any variable or value, use the `type_of` modifier:
+
+```
+{{ "Wassaaap" | type_of }}    -> string
+{{ [1, 2, 3] | type_of }}     -> array
+{{ false | type_of }}         -> boolean
+{{ 42 | type_of }}            -> integer
+{{ 26.2 | type_of }}          -> double (aka float)
+```
+
+
 ### Sub-Expressions
 
-### Merge
+Sub-expressions are indicated by wrapping a pair of parenthesis around `()` a portion of text. Anything inside a sub-expression will be parsed immediately and independently, which allows you to control the order of operations inside an Antlers tag and improve code readability.
 
-### OrderBy
+```
+{{ 5 + 3 * 2 }} -> 11
+{{ (5 + 3) * 2 }} -> 16
+
+{{ if (gallery | length) >= 12 && (content | read_time) > 5 }}
+```
+
+Sub-expressions are supported everywhere: variable assignments, logic conditions, interpolated Tag arguments, you name it.
 
 ### Self-Iterating Assignments
 
@@ -795,7 +895,6 @@ Or, you can change your view's file extension from `.antlers.html` to `.antlers.
 ```
 
 
-[ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
 [vue]: https://vuejs.org
 [modifiers]: /modifiers
 [tags]: /tags
