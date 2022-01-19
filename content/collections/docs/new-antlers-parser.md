@@ -36,19 +36,19 @@ This is a very simple Antlers tag.
 :::tip DON'T SKIP THIS!
 ## About the New Antlers Engine {#about}
 
-Not only this new Antlers Engine a complete and fundamental rewrite, but it takes a completely different, more sophisticated approach to the businesss of template parsing.
+Not only this new Antlers Engine a complete and fundamental rewrite, but it takes a completely different, more sophisticated approach to the business of template parsing.
 
 The original parser was essentially a glorified find and replace machine relying heavily on RegEx. It parsed and evaluated logic as it worked its way through the template. This means it couldn't stop, go backwards, set variables, or handle nested logic well because it had to keep moving forward. It also slowed down the larger the template got because of the amount of characters being pushed through the RegEx.
 
-The New Antlers Engine now has **two stages** – first, it parses and buids an Abstract Syntax Tree from your complete template, and _then_ it evalutes and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
+The New Antlers Engine now has **two stages** – first, it parses and builds an Abstract Syntax Tree from your complete template, and _then_ it evaluates and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
 
-This affords Statamic an incredible amount of control. It can go sideways and slatways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single known Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
+This affords Statamic an incredible amount of control. It can go sideways and slantways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single known Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
 
 - The ability to _set_ variables
 - Syntax errors that reference the exact line, character, and type of error
 - The ability to control parse order through sub-expressions
 - Merging the results of multiple expressions
-- Perform a robust set of mathmatical operations
+- Perform a robust set of mathematical operations
 - Concatenate, increment, and decrement values
 - A better Modifier syntax that provide better type handling
 - A smarter, more forgiving matching engine so more things Just Work™
@@ -56,16 +56,16 @@ This affords Statamic an incredible amount of control. It can go sideways and sl
 - Self-closing tags
 - Run-time caching for huge performance boosts
 
-This new engine is a powerful factory, mad scientist labratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
+This new engine is a powerful factory, mad scientist laboratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
 
 ### We're calling it "Experimental" {#experimental}
 
 Because of how fundamental Antlers is to the entire Statamic experience, we're shipping this new version under an **opt-in** feature flag until Statamic 3.4 — just in case it affects the behavior or output of one or more of your templates in an unexpected way. Here are a few situations we wish to avoid, in order of most-to-least likely to happen:
 
 1. Templates that rely on a bug in the RegEx parser suddenly behave correctly, but do so unexpectedly
-1. Templates that rely on undocmented or unknown behaviors that may have been fixed, removed, or otherwise not ported to the New Parser
+1. Templates that rely on undocumented or unknown behaviors that may have been fixed, removed, or otherwise not ported to the New Parser
 1. Actual regressions created by the new parser
-1. Performance gains are so high that your site rips a hole in the Space Time Continuum and inhales everthing in the solar system into it, collapsing everything you've ever known into the space of a single atom
+1. Performance gains are so high that your site rips a hole in the Space Time Continuum and inhales everything in the solar system into it, collapsing everything you've ever known into the space of a single atom
 1. Half-Life 3 comes out but everyone is too distracted by New Antlers to notice
 
 If you encounter any of these scenarios (and you still exist), please [open an issue](https://github.com/statamic/cms/issues/new?assignees=&labels=&template=bug_report.yml) so we can address it or help you get sorted.
@@ -346,9 +346,9 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 
 ### Modifiers
 
-Modifers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
+Modifiers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
 
-Multiple modifiers can be chained on one output, each sparated by another pipe |`|, and are are applied in order from left to right. Let's look at an example.
+Multiple modifiers can be chained on one output, each separated by another pipe |`|, and are are applied in order from left to right. Let's look at an example.
 
 ```
 ---
@@ -394,7 +394,7 @@ It was lunch, is what it was.
 
 There are more than 150 built-in [modifiers][modifiers] that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
-You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusuable one.
+You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusable one.
 
 #### Legacy Syntax
 
@@ -468,7 +468,7 @@ This is a powerful pattern that can help keep template logic simple and unclutte
 <title>{{ meta_title ?? title ?? site:name }}</title>
 ```
 
-Another use case is when you _sometimes_ have an array variable to loop through in a template to render some markup. You may skip the existance check entirely, keep the markup inside the loop, and if the variable doesn't exist, nothing inside the tag pair will be rendered.
+Another use case is when you _sometimes_ have an array variable to loop through in a template to render some markup. You may skip the existence check entirely, keep the markup inside the loop, and if the variable doesn't exist, nothing inside the tag pair will be rendered.
 
 ```
 {{ nothing_to_see_here }}
@@ -533,7 +533,7 @@ Adds more conditions with an `if` or `unless` block.
 
 ```
 {{ if neighbor == "Kramer" }}
-  Giddyup.
+  These pretzels are making me thirsty!
 {{ elseif neighbor == "Newman" }}
   Hello...Newman.
 {{ else }}
@@ -668,7 +668,7 @@ Math is all the rage. Teenagers have been found in back rooms and back alleys do
 
 ### Assignment 🆕
 
-The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not recieve $200. This means left operand gets set to the value of the expression on the right.
+The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not receive $200. This means left operand gets set to the value of the expression on the right.
 
 This is how you create variables as well as increment, decrement, or otherwise manipulate numerical variables.
 
@@ -747,7 +747,7 @@ Multiple expressions or statements can be performed inside a single Antlers tag 
 
 ## Expressions and Statements
 
-If you want the computer science answer, an "expression" is a combination of values and functions that are combined and intepreted to create new values, whereas a "statement" is a standalone unit of execution that doesn't return anything. 🥱
+If you want the computer science answer, an "expression" is a combination of values and functions that are combined and interpreted to create new values, whereas a "statement" is a standalone unit of execution that doesn't return anything. 🥱
 
 Simply put, expressions show things and statements do things. Even more simply put — they're the stuff between `{{ }}` braces. It's not terribly important to remember the semantic differences as it is usually clear from context whether you're trying to show a thing or do a thing.
 
@@ -762,7 +762,7 @@ Let's just go through the list of valid "in between braces stuff" so you can  ac
 {{# This statement runs a condition check #}}
 {{ if template == "home" }}
 
-{{# Brace yourself — this complex statement assigns a booleon value
+{{# Brace yourself — this complex statement assigns a boolean value
     to a new variable based on a the result of a condition inside a
     sub-expression, and then writes a value to the user session in
     a separate statement, all inside a single Antlers region. 😅 #}}
@@ -781,7 +781,7 @@ Literals are the simplest type of expression. They include strings, arrays, bool
 To check the type of any variable or value, use the `type_of` modifier:
 
 ```
-{{ "Wassaaap" | type_of }}    -> string
+{{ "Wazzaaap" | type_of }}    -> string
 {{ [1, 2, 3] | type_of }}     -> array
 {{ false | type_of }}         -> boolean
 {{ 42 | type_of }}            -> integer
@@ -876,7 +876,7 @@ If this isn't a concern of yours, you can enable Antlers parsing on a per-field 
 
 ## Code Comments {#comments}
 
-Antlers code comments are not rendered in HTML (unlike HTML comments), which allos you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.
+Antlers code comments are not rendered in HTML (unlike HTML comments), which allows you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.
 
 ```
 {{# Remember to replace the lorem ipsum this time, Karen! #}}
