@@ -726,6 +726,72 @@ shouldSortAscending: false
 
 ### GroupBy
 
+The `groupby` operator can be applied to any array or tag output and automatically iterates through the newly created groups.
+
+Arguments are passed into a pair of parenthesis `()`, each field to group by is separated by commas `,` and accepts the name of a field to group on and an optional alias for it. Additionally you _may_ add `as` onto the end the rename the `values` array inside each group.
+
+```
+groupby (FIELD 'CUSTOM_KEY', FIELD2 'CUSTOM_KEY_2') as 'custom_values'
+```
+
+| Property {.w-40} | Description |
+|------------------|-------------|
+| `key` | The value of the group |
+| `values` | Array of original items in the group. |
+| `values_count` | Count of the items in the group |
+
+You may rename the `key` property with `as 'anything'` to help with code clarity.
+
+#### Example — A simple array using default properties
+
+```
+---
+players:
+  -
+    name: Michael Jordan
+    team: Chicago Bulls
+  -
+    name: Scottie Pippen
+    team: Chicago Bulls
+  -
+    name: Larry Bird
+    team: Boston Celtics
+---
+{{ items = players groupby (team) }}
+   <h2>{{ key }}</h2>
+   <ul>
+       {{ values }}
+        <li>{{ name }}</li>
+       {{ /values }}
+    </ul>
+{{ /items }}
+```
+
+```
+<h2>Chicago Bulls</h2>
+<ul>
+  <li>Michael Jordan</li>
+  <li>Scotty Pippen</li>
+</ul>
+<h2>Boston Celtics</h2>
+<ul>
+  <li>Larry Bird</li>
+</ul>
+```
+
+#### Example — Group entries by year
+
+```
+{{ blog = {collection:blog} groupby (date|format('Y') 'year') as 'entries' }}
+  <h2>{{ year }}</h2>
+  <ul>
+    {{ entries }}
+      <li><a href="{{ url }}">{{ title }}</a></li>
+    {{ /entries }}
+  </ul>
+{{ /blog }}
+```
+
 ### Where
 
 
@@ -787,7 +853,6 @@ To check the type of any variable or value, use the `type_of` modifier:
 {{ 42 | type_of }}            -> integer
 {{ 26.2 | type_of }}          -> double (aka float)
 ```
-
 
 ### Sub-Expressions
 
