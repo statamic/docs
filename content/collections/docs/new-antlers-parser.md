@@ -5,7 +5,7 @@ intro: >
   Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic.
 
   :::warning Heads up!
-    These docs are for the **brand new, experimental Antlers Runtime Engine.** [Read more about it](#about), learn how to enable it on your site, and keep reading to see all the new things it can do!
+    These docs are for our **brand new, opt-in Antlers Engine**, added in Statamic 3.3. [Read more about it](#about), learn how to enable it on your site, and keep reading to see all the new things it can do!
   :::
 
 template: page
@@ -95,12 +95,9 @@ We owe him a debt of gratitude for this amazing gift.
 
 There are three kinds of delimiters.
 
-- `{{ ... }}`  The basic and most commonly used kind, used to render variables, evaluate expressions, call Tags, and do all the core Statamic things.
+- `{{ }}`  The basic and primary delimiter pair, used to render variables, evaluate expressions, call Tags, and do almost all core Antlers things.
 - `{{? ?}}` Allows you to write and execute PHP.
 - `{{# #}}` Are for code comments.
-
-
-Before getting into listing all the things that happen _inside_ an Antlers expression, lets take a moment to establish the rules for properly formatting one.
 
 ### Formatting Rules
 
@@ -127,7 +124,7 @@ This can make sense when you have lots of parameters.
 }}
 
 This is terrible in every possible way.
-{{play-sad_Trombone            }}
+{{play-sad_Tromb0ne            }}
 ```
 
 :::tip
@@ -657,7 +654,7 @@ quality: pretty good
 
 ### Math 🆕
 
-Math is all the rage. Teenagers have been found in back rooms and back alleys doing math and nobody can seem to stop them. So naturally, Antlers now does math too!
+Math is all the rage. Teenagers have been found in back rooms and back alleys doing math and nobody can seem to stop them. And since the cool kids are doing it, Antlers does math now too!
 
 | Name | Example | Description |
 |------|---------|-------------|
@@ -684,7 +681,11 @@ This is how you create variables as well as increment, decrement, or otherwise m
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
 | Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
 
-### Merge
+## Advanced Operators 🆕
+
+These operators are here for your edge cases, your wild ideas, and your deepest, darkest needs. Much of what they do is already solved with modifiers or as parameters on Tags, but if you find yourself in a place where they just solve your problem, these ones might just do it.
+
+### Merge 🆕
 
 The `merge` operator can merge two or more "array-like" variables or expressions. The resulting data is immediately iterable without any kind of intermediate step, if you desire.
 
@@ -700,7 +701,14 @@ The `merge` operator can merge two or more "array-like" variables or expressions
 {{ /items }}
 ```
 
-### OrderBy
+:::best-practice
+You shouldn't _have_ to merge collections this way because the [Collection Tag](/tags/collection) already supports the feature (and is more performant), but we just want to show what's possible.
+
+```
+{{ collection from="headline|news" }}
+:::
+
+### OrderBy 🆕
 
 The `orderby` operator can be applied to any array and supports ordering by multiple properties as well as dynamic fields and directions.
 
@@ -729,58 +737,63 @@ shouldSortAscending: false
 }}
 ```
 
-### GroupBy
+### GroupBy 🆕
 
-The `groupby` operator can be applied to any array or tag output and automatically iterates through the newly created groups.
+The `groupby` operator can be applied to any array or tag output as part of an assignment expression, which automatically iterates through the newly created groups.
 
-Arguments are passed into a pair of parenthesis `()`, each field to group by is separated by commas `,` and accepts the name of a field to group on and an optional alias for it. Additionally you _may_ add `as` onto the end the rename the `values` array inside each group.
+Arguments are passed into a pair of parenthesis `()`. Each argument accepts the name of a field to group by and an optional alias, with additional arguments for additional fields separated by commas `,`.  If you don't set an alias, it will match the name of the field you pass in.
+
+Additionally you may set the name of the per-group `values` array with `as 'anything_you_want` at the end of the expression.
 
 ```
-groupby (FIELD 'CUSTOM_KEY', FIELD2 'CUSTOM_KEY_2') as 'custom_values'
+groupby (FIELD 'KEY1', FIELD2 'KEY2') as 'things'
 ```
 
-| Property {.w-40} | Description |
+<!-- | Property {.w-40} | Description |
 |------------------|-------------|
 | `key` | The value of the group |
 | `values` | Array of original items in the group. |
-| `values_count` | Count of the items in the group |
+| `values_count` | Count of the items in the group | -->
 
-You may rename the `key` property with `as 'anything'` to help with code clarity.
+#### Examples
 
-#### Example — A simple array using default properties
+We'll use the following data for the next few examples.
+
+``` yaml
+players:
+  - { team: Chicago Bulls, name: Michael Jordan, position: Guard }
+  - { team: Chicago Bulls, name: Scottie Pippen, position: Forward }
+  - { team: Chicago Bulls, name: Dennis Rodman, position: Forward }
+  - { team: Detroit Pistons, name: Isiah Thomas, position: Guard }
+  - { team: Detroit Pistons, name: Terry Mills, position: Forward }
+  - { team: Detroit Pistons, name: Joe Dumars, position: Guard }
+```
+
+##### Simple Grouping
 
 ```
----
-players:
-  -
-    name: Michael Jordan
-    team: Chicago Bulls
-  -
-    name: Scottie Pippen
-    team: Chicago Bulls
-  -
-    name: Larry Bird
-    team: Boston Celtics
----
 {{ items = players groupby (team) }}
    <h2>{{ key }}</h2>
    <ul>
        {{ values }}
-        <li>{{ name }}</li>
+        <li>{{ name }} - {{ position }}</li>
        {{ /values }}
     </ul>
 {{ /items }}
 ```
 
-```
+```html
 <h2>Chicago Bulls</h2>
 <ul>
   <li>Michael Jordan</li>
   <li>Scotty Pippen</li>
+  <li>Dennis Rodman</li>
 </ul>
-<h2>Boston Celtics</h2>
+<h2>Detroit Pistons</h2>
 <ul>
-  <li>Larry Bird</li>
+  <li>Isiah Thomas</li>
+  <li>Terry Mills</li>
+  <li>Joe Dumars</li>
 </ul>
 ```
 
@@ -797,7 +810,7 @@ players:
 {{ /blog }}
 ```
 
-### Where
+### Where 🆕
 
 
 ### The Terminator 🆕
@@ -859,7 +872,7 @@ To check the type of any variable or value, use the `type_of` modifier:
 {{ 26.2 | type_of }}          -> double (aka float)
 ```
 
-### Sub-Expressions
+### Sub-Expressions 🆕
 
 Sub-expressions are indicated by wrapping a pair of parenthesis around `()` a portion of text. Anything inside a sub-expression will be parsed immediately and independently, which allows you to control the order of operations inside an Antlers tag and improve code readability.
 
@@ -872,7 +885,7 @@ Sub-expressions are indicated by wrapping a pair of parenthesis around `()` a po
 
 Sub-expressions are supported everywhere: variable assignments, logic conditions, interpolated Tag arguments, you name it.
 
-### Self-Iterating Assignments
+### Self-Iterating Assignments 🆕
 
 ## Tags
 
@@ -894,18 +907,6 @@ Alternatively, you can use **string interpolation** and reference any variables 
 
 ```
 {{ nav from="{segment_1}/{segment_2}" }}
-```
-
-### Modifiers Inside Parameters
-
-If using a variable inside of a Tag is nice, using a variable with a modifier inside of a Tag is better. Or more complicated. Either way, it works exactly as you’d expect with one small caveat: When using a modifier inside of a Tag, no whitespace is allowed between variables, pipes, and modifiers. Collapse that stuff.
-
-```
-// Totally fine.
-{{ partially:broken src="{featured_image|url}" }}
-
-// Totally not.
-{{ partially:broken src="{ featured_image | url }" }}
 ```
 
 ## Prevent Parsing
@@ -952,7 +953,7 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 {{# Remember to replace the lorem ipsum this time, Karen! #}}
 ```
 
-## Using PHP in Antlers
+## Using PHP in Antlers 🆕
 
 `{{? ?}}` is the ticket.
 
