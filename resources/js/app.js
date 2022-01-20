@@ -5,6 +5,7 @@ import '@docsearch/css';
 require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
+require('./language-badges.js')
 
 var dayjs = require('dayjs')
 var relativeTime = require('dayjs/plugin/relativeTime')
