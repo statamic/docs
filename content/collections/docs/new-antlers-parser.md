@@ -748,16 +748,9 @@ Additionally you may set the name of the per-group `values` array with `as 'anyt
 ```
 groupby (FIELD 'KEY1', FIELD2 'KEY2') as 'things'
 ```
-
-<!-- | Property {.w-40} | Description |
-|------------------|-------------|
-| `key` | The value of the group |
-| `values` | Array of original items in the group. |
-| `values_count` | Count of the items in the group | -->
-
 #### Examples
 
-We'll use the following data for the next few examples.
+We'll use the following data for the next two examples.
 
 ``` yaml
 players:
@@ -769,7 +762,7 @@ players:
   - { team: Detroit Pistons, name: Joe Dumars, position: Guard }
 ```
 
-##### Simple Grouping
+##### Group by Single Field
 
 ```
 {{ items = players groupby (team) }}
@@ -797,7 +790,42 @@ players:
 </ul>
 ```
 
-#### Example — Group entries by year
+##### Group by Multiple Fields
+```
+{{ items = players groupby (team, position) }}
+   <h2>{{ key:team }} - {{ key:position }}</h2>
+   <ul>
+       {{ values }}
+        <li>{{ name }}</li>
+       {{ /values }}
+    </ul>
+{{ /items }}
+```
+
+``` html
+<h2>Chicago Bulls - Guard</h2>
+<ul>
+  <li>Michael Jordan</li>
+</ul>
+
+<h2>Chicago Bulls - Forward</h2>
+<ul>
+  <li>Scottie Pippen</li>
+  <li>Dennis Rodman</li>
+</ul>
+
+<h2>Detroit Pistons - Guard</h2>
+<ul>
+  <li>Isiah Thomas</li>
+  <li>Joe Dumars</li>
+</ul>
+
+<h2>Detroit Pistons - Forward</h2>
+<ul>
+  <li>Terry Mills</li>
+</ul>
+```
+#### Group Collection Entries by Year
 
 ```
 {{ blog = {collection:blog} groupby (date|format('Y') 'year') as 'entries' }}
