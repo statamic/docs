@@ -17,7 +17,7 @@ experimental: true
 
 Antlers is one of the fundamental features of Statamic. It features a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
 
-Antlers templates are also called views. Any files in the `resources/views` directory with a `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
+Antlers templates are also called views. Any files in the `resources/views` directory with an `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
 
 :::tip
 The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
@@ -25,7 +25,7 @@ The `.antlers.html` extension is important. Without it, your template will be re
 
 ### Basic Example
 
-Antlers adds dynamic features on top of HTML through the use "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, and now you know why we named them that.
+Antlers adds dynamic features on top of HTML through the use of "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, and now you know why we named them that.
 
 This is a very simple Antlers tag.
 
@@ -131,7 +131,7 @@ This is terrible in every possible way.
 ```
 
 :::tip
-We recommend indenting the markup in your HTML for **human readability and maintainability**, not for final rendered output. Anyone still caring about that this day and age probably needs a long vacation and strong Mai Thai or two. 🍹🍹
+We recommend indenting the markup in your HTML for **human readability and maintainability**, not for final rendered output. Anyone still caring about that this day and age probably needs a long vacation and strong Mai Tai or two. 🍹🍹
 :::
 
 ### IDE Integrations
@@ -184,7 +184,7 @@ Strings (simple sequences of text) are one of the most basic data types. They co
 <h1>{{ title }}</h1>
 ```
 
-Antlers also handles static expressions, which are useful when concatenating a as string together, setting fallback or default values, combining with [modifiers](#modifiers), and numerous other situations we can't think of right now but you may find yourself in eventually.
+Antlers also handles static expressions, which are useful when concatenating strings together, setting fallback or default values, combining with [modifiers](#modifiers), and numerous other situations we can't think of right now but you may find yourself in eventually.
 
 To render a static string, wrap it in single or double quotes, inside a pair of curly braces.
 
@@ -197,7 +197,7 @@ To render a static string, wrap it in single or double quotes, inside a pair of 
 ```
 
 ### Arrays
-An Array is a collection of elements (values and/or variables). Elements inside the array may be iterated or looped through using the `{{ value }}` variable. You may also "reach in" and pluck out specific elements by their index.
+An array is a collection of elements (values and/or variables). Elements inside the array may be iterated or looped through using the `{{ value }}` variable. You may also "reach in" and pluck out specific elements by their index.
 
 #### Looping
 
@@ -259,7 +259,7 @@ mailing_address:
 You can access the keys inside the dictionary "colon", "dot", or "bracket" notation to traverse the levels of the array. All three of these syntaxes are equivalent, so feel free to use the one that feels most natural to you.
 
 ``` antlers
-I live in {{ mailing_address:city }}. It's in {{ mailing_address }}
+I live in {{ mailing_address:city }}. It's in {{ mailing_address:province }}.
 ```
 
 #### Multi-Dimensional Arrays
@@ -348,13 +348,14 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 
 Modifiers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
 
-Multiple modifiers can be chained on one output, each separated by another pipe |`|, and are are applied in order from left to right. Let's look at an example.
+Multiple modifiers can be chained on one output, each separated by another pipe `|`, and are are applied in order from left to right. Let's look at an example.
 
-```
+```yaml
 ---
 title: Nickelodeon Studios
 ---
-
+```
+```
 <!-- NICKELODEON STUDIOS rocks! -->
 <h1>{{ title | upper | ensure_right('rocks!') }}</h1>
 
@@ -373,12 +374,13 @@ You may pass `strings`, `arrays`, `booleans`, `integers`, `floats`, `objects`, o
 ##### Examples
 Here are a few examples of modifiers in action.
 
-```
+```yaml
 ---
 summary: "It was the best of times, it was the worst of times."
 noun: soups
 ---
-
+```
+```
 {{ summary | replace('worst', 'yummiest') }}
 {{ summary | replace('It was', 'It was also') | replace('times', $noun) }}
 {{ summary | explode(' ') | ul }}
@@ -387,7 +389,7 @@ noun: soups
 
 ```
 It was the best of times, it was the yummiest of times.
-It was the best of soups, it was the worst of soups.
+It was also the best of soups, it was the worst of soups.
 <ul><li>It</li><li>was</li><li>the</li><li>best</li><li>of</li><li>times,</li><li>it</li><li>was</li><li>the</li><li>worst</li><li>of</li><li>times.</li></ul>
 It was lunch, is what it was.
 ```
@@ -620,7 +622,7 @@ The null coalescing operator (`$a ?? $b`) considers each variable in a statement
 
 ### The Gatekeeper (Truthy Assignment) {#gatekeeper}
 
-The Gatekeeper operator (`a ?= b`) will execute an expression **if and only if_** it passes a "truthy" check. It doesn't exist in any programming language — we invented this one. Enjoy!
+The Gatekeeper operator (`a ?= b`) will execute an expression **if and only if** it passes a "truthy" check. It doesn't exist in any programming language — we invented this one. Enjoy!
 
 ```
 {{ show_bio ?= author:bio }}
@@ -637,12 +639,13 @@ There are two methods for concatenating strings.
 
 To concatenate a string, use a `+` plus sign between variables and/or static strings to combine them into a single string. Whether you use concatenation or multiple variables is up to you. Opt for whatever makes the code most readable.
 
-```
+```yaml
 ---
 title: Marv's Coffee Shop
 quality: pretty good
 ---
-
+```
+```
 <p>{{ $title + " makes " + $quality + " donuts." }}</p>
 <p>{{ title }} makes {{ quality }} donuts.</p>
 ```
@@ -708,11 +711,13 @@ Arguments are passed into a pair of parenthesis `()` in the following format, wh
 ```
 
 #### Examples
-```
+```yaml
 ---
 dir: 'asc'
 shouldSortAscending: false
 ---
+```
+```
 
 {{ people orderby (age 'desc', last_name 'asc', first_name 'asc') }}
 
@@ -879,7 +884,7 @@ Tags often look quite similar to variables, so it pays to learn the list of avai
 
 There are two ways to use variables _inside_ a Tag's parameters.
 
-You can use **dynamic binding** to pass the value of a variable via its name.
+You can use **dynamic binding** to pass the value of a variable via its name, and prefixing the parameter with a colon:
 
 ```
 {{ nav :from="segment_1" }}
@@ -951,9 +956,9 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 
 `{{? ?}}` is the ticket.
 
-Or, you can change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.`
+Or, you can change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.
 
-```
+```php
 <?php
   echo 'Keep it simple, please';
 ?>
