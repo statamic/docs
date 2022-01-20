@@ -683,7 +683,9 @@ This is how you create variables as well as increment, decrement, or otherwise m
 
 ## Advanced Operators 🆕
 
-These operators are here for your edge cases, your wild ideas, and your deepest, darkest needs. Much of what they do is already solved with modifiers or as parameters on Tags, but if you find yourself in a place where they just solve your problem, these ones might just do it.
+These operators are here for the edge cases, the wild ideas, and the unexpected client requests at midnight the night before a site launch. **These are the data wangjanglers.**
+
+Much of what they do is already handled by Modifiers or Tag Parameters (and you should use those if and whenever you can), but these operators become very useful as part of **assignment expressions** — when you've left the safety of a Tag or simplicity of a primitive variable in the dust behind you.
 
 ### Merge 🆕
 
@@ -702,10 +704,11 @@ The `merge` operator can merge two or more "array-like" variables or expressions
 ```
 
 :::best-practice
-You shouldn't _have_ to merge collections this way because the [Collection Tag](/tags/collection) already supports the feature (and is more performant), but we just want to show what's possible.
+You shouldn't need to merge collections this way because the [Collection Tag](/tags/collection) already supports the feature (and is more performant), but we want to show what's technically possible.
 
 ```
 {{ collection from="headline|news" }}
+```
 :::
 
 ### OrderBy 🆕
@@ -719,14 +722,13 @@ Arguments are passed into a pair of parenthesis `()` in the following format, wh
 ```
 
 #### Examples
+
 ```yaml
----
 dir: 'asc'
 shouldSortAscending: false
----
-```
 ```
 
+```
 {{ people orderby (age 'desc', last_name 'asc', first_name 'asc') }}
 
 {{ places orderby (state $dir, city $dir, zip_code $dir) }}
@@ -839,6 +841,11 @@ players:
 ```
 
 ### Where 🆕
+
+
+
+### Pluck 🆕
+### Take 🆕
 
 
 ### The Terminator 🆕
