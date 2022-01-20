@@ -101,6 +101,8 @@ If you don't explicitly create a blueprint, your entries will have a basic set o
 
 If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
+You can hide blueprints from appearing in the new entry menu by activating the _Hidden_ toggle on the blueprint's UI or setting `hide: true` in the blueprint's yaml file.
+
 ## Titles
 
 All entries need a title. Statamic uses titles to display entries in a consistent way throughout the Control Panel.

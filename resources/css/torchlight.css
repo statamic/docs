@@ -3,7 +3,7 @@
  overflow-x-auto is recommended.
 */
 pre {
-    @apply my-6 rounded overflow-x-auto leading-loose antialiased;
+    @apply mb-6 pt-6 relative rounded overflow-x-scroll overflow-y-visible leading-loose antialiased;
 }
 
 /*
@@ -24,7 +24,7 @@ pre {
  colors extend edge to edge.
 */
 pre code.torchlight {
-    @apply block py-2 md:py-4 min-w-max text-sm leading-loose;
+    @apply block py-2 md:py-4 rounded-tl min-w-max text-sm leading-loose;
 }
 
 /*
@@ -41,6 +41,11 @@ pre code.torchlight .line {
 pre code.torchlight .line-number,
 pre code.torchlight .summary-caret {
     @apply mr-4;
+}
+
+pre .language-badge {
+    @apply text-black tracking-widest bg-gray-light inline-block absolute right-0 top-[2px] py-px px-2 rounded-t uppercase select-none;
+    font-size: 10px;
 }
 
 .torchlight summary:focus {
