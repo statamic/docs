@@ -902,8 +902,6 @@ Terry Mills
 Joe Dumars
 ```
 
-
-
 ### The Terminator 🆕
 
 Multiple expressions or statements can be performed inside a single Antlers tag pair by terminating each with `;`. These terminators can often lend to more readable code for multi-line statements. However, if you don't like them, you can tell 'em "hasta la vista, baby" because they're optional (just like in JavaScript).
@@ -929,7 +927,7 @@ Simply put, expressions show things and statements do things. Even more simply p
 Let's just go through the list of valid "in between braces stuff" so you can  accomplish your goals and hopefully win a trophy of some kind. 🏆
 
 ```
-{{ "This is a single expression that renders this very text." }}
+{{ "This is a single expression that renders this very text. nothing more and nothing oesseiuhdieuhd " }}
 
 {{# This statement fetches Entries and begins iterating through them #}}
 {{ collection:blog limit="5" }}
@@ -994,10 +992,175 @@ You can use **dynamic binding** to pass the value of a variable via its name, an
 {{ nav :from="segment_1" }}
 ```
 
-Alternatively, you can use **string interpolation** and reference any variables with _single braces_. This method lets you concatenate a string giving you the ability assemble arguments out of various parts. Like Frankenstein's monster.
+Alternatively, you can use **interpolation** to reference any variables with _single braces_. This method lets you concatenate a string giving you the ability assemble arguments out of various parts. Like Frankenstein's monster.
 
 ```
 {{ nav from="{segment_1}/{segment_2}" }}
+```
+
+## Working With Templates
+
+### Layouts
+
+### Partials
+
+Statamic's [`{{ partial }}`](/tags/partial) tag allows you to include a view from within another view. All variables that are available to the parent view will be made available to the included partial view.
+
+```
+{{ partial:footer }}
+```
+
+Even though the included view will inherit all data available in the parent view, you may also pass an array of additional data that will be made available to the included view:
+
+```
+{{ partial:blog/card mode="stacked" }}
+```
+
+If you attempt to use a `partial` that doesn't exist, Statamic will throw an error. If you would like to include a partial that may or may not exist (for example, using a variable in the partial name), you should use the [`{{ partial:if_exists }}` ](/tags/partial-if-exists) tag.
+
+```
+{{ partial:if_exists src="blog/card" }}
+```
+
+All views inside your `/resources/views/` directory can be used as a partial, including [Blade](/blade) views.
+
+#### Slots
+
+Sometimes you might need to pass a large chunk of content into a partial. Jamming a bunch of HTML through a parameter would be like trying to shove a pizza through a donut. Entertaining, but futile.
+
+Slots are the solution. By using the `partial` tag as a pair, everything inside will be passed into the partial, mapped to the {{ slot }} variable. Let's look at an example "modal" type of design component.
+
+```
+{{# /resources/views/partials/modal.antlers.html #}}
+
+<div class="modal">
+  {{ slot }}
+</div>
+```
+
+We can now pass whatever we want into the slot by injecting content into the partial:
+
+```
+{{ partial:modal }}
+  <h2>50% off everything, today only!</h2>
+  <a href="/sale">
+    <img src="/img/sale.jpg" alt="Man eating banana on sale." />
+  </a>
+{{ /partial:modal }}
+```
+
+#### Named Slots 🆕
+
+Sometimes you might want to render multiple different slots in different locations inside a partial. Let's modify our example to allow of the injection of a "title" slot:
+
+```
+{{# /resources/views/partials/modal.antlers.html #}}
+
+<div class="modal">
+  <div class="modal-header">{{ slot:header }}</div>
+  <div class="modal-content">
+    {{ slot }}
+  </div>
+</div>
+```
+
+Now you can define the context of the named slot using the `slot:name` tag format. Any content not within an explicit `slot:name` tag will be passed to the partial in the `slot` variable.
+
+```
+{{ partial:modal }}
+  {{ slot:header }}
+    {{ svg src="icons/flag" class="w-4 h-4 mr-2" }}
+  {{ /slot:header }}
+
+  <a href="/sale">
+    <img src="/img/sale.jpg" alt="Man eating banana on sale." />
+  </a>
+{{ /partial:modal }}
+```
+
+### Once 🆕
+
+The `{{ once }}` tag allows you to define a portion of the template that will only be evaluated once per rendering cycle. This may be useful for pushing a given piece of JavaScript into the page's header using stacks. For example, if you are looping through entries and rendering them with a partial, you may wish to only push the JavaScript to the header once, not every single time.
+
+```
+{{ collection:blog }}
+
+  {{ once }}
+    {{ push:scripts }}
+      <script src="//unpkg.com/alpinejs" defer></script>
+    {{ /push:scripts }}
+  {{ /once }}
+
+  {{ partial:blog/card }}
+
+{{ /collection:blog }}
+```
+### Section & Yield
+
+You may find that you wish you to define areas of a layout that may need to change depending on which template is being rendered.
+
+Let's peek at this basic layout as an example:
+
+```
+<html>
+    <head>
+        <title>{{ title }} / {{ site:name }}</title>
+    </head>
+    <body>
+      <div class="container">
+        {{ template_content }}
+      </div>
+
+      {{ yield:footer }}
+        <footer>
+          This is the main footer
+        </footer>
+      {{ /yield:footer }}
+    </body>
+</html>
+```
+
+Notice the [`yield`](/tags/yield) tag. The contents of that tag will be rendered unless another template injects content into it using the [`section`](/tags/section) tag.
+
+```
+{{# /resources/views/landing/special.antlers.html #}}
+
+{{ section:footer }}
+  <p>Hi, I am a special footer! 👋</p>
+{{ /section:footer }}
+```
+
+### Stacks 🆕
+
+Antlers allows you to push to named stacks which can be rendered somewhere else in another view or layout. This can be particularly useful for specifying any JavaScript libraries required by your child views:
+
+```
+{{ push:scripts }}
+    <script src="//unpkg.com/alpinejs" defer></script>
+{{ /push:scripts }}
+```
+
+You may push to a stack as many times as needed. To render the complete stack contents, pass the name of the stack to the `{{ stack }}` tag:
+
+```
+<head>
+  <!-- All that heady stuff here -->
+  {{ stack:scripts }}
+</head>
+```
+
+If you would like to prepend content onto the **beginning** of a stack, you should use the `{{ prepend }}` tag:
+
+```
+{{ push:scripts }}
+    This will be second...
+{{ /push:scripts }}
+
+{{# Later... #}}
+
+{{ prepend:scripts }}
+    This will be first...
+{{ prepend:scripts }}
 ```
 
 ## Prevent Parsing
