@@ -172,7 +172,6 @@ Don't be weird and mix-and-match them like a serial killer though:
 {{ this_iS-RiDicuL-ou5_ }}
 ```
 
-
 ### Strings
 
 Strings (simple sequences of text) are one of the most basic data types. They come in the form of variables or static expressions. To render a string variable, wrap the name with double curly braces.
@@ -341,6 +340,14 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 {{ complex_data:[3][field]['title'] }}
 ```
 
+### Disambiguation 🆕
+
+As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
+
+```
+{{ $content }}
+```
+
 ### Modifiers
 
 Modifiers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
@@ -473,14 +480,6 @@ Another use case is when you _sometimes_ have an array variable to loop through 
 {{ nothing_to_see_here }}
   <!-- Doesn't matter, won't see it -->
 {{ /nothing_to_see_here }}
-```
-
-### Disambiguation 🆕
-
-As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
-
-```
-{{ $content }}
 ```
 
 ### Escaping
