@@ -715,7 +715,9 @@ The `merge` operator can merge two or more "array-like" variables or expressions
 You shouldn't need to merge collections this way because the [Collection Tag](/tags/collection) already supports the feature (and is more performant), but we want to show what's technically possible.
 
 ```
-{{ collection from="headline|news" }}
+{{ %collection from="headline|news" }}
+
+{{ /%collection }}
 ```
 :::
 
@@ -984,24 +986,45 @@ Sub-expressions are supported everywhere: variable assignments, logic conditions
 
 ## Tags
 
-[Tags][tags] are the primary method for implementing most of Statamic's dynamic features, like search, forms, nav building, pagination, collection listing, filtering, image resizing, and so on.
+[Tags][tags] (note the capital "T") are the primary method for accessing data from Statamic and tapping into many of the available dynamic features like search, forms, nav building, pagination, entry listing, filtering, image resizing, and so on.
 
-Tags often look quite similar to variables, so it pays to learn the list of available [Tags][tags] so you don't mix them up or create conflicts.
-
-### Variables Inside Tag Parameters
-
-There are two ways to use variables _inside_ a Tag's parameters.
-
-You can use **dynamic binding** to pass the value of a variable via its name, and prefixing the parameter with a colon:
+Tags usually operate as pairs as they're often fetching data (like entries or assets) and looping through the results.
 
 ```
-{{ nav :from="segment_1" }}
+<ul>
+  {{ collection:blog }}
+    <li><a href="{{ url }}">{{ title }}</a>
+  {{ /collection:blog }}
+</li>
 ```
 
-Alternatively, you can use **interpolation** to reference any variables with _single braces_. This method lets you concatenate a string giving you the ability assemble arguments out of various parts. Like Frankenstein's monster.
+### Disambiguation 🆕
+
+You may optionally disambiguate your tags by prefixing them with a `%` percent sign. If you're already disambiguating your variables, you may find this unnecessary, but it's here if you need it.
+
+```
+{{ %collection:blog }}
+```
+
+### Tag Parameters
+
+Most Tags are configurable through the use Parameters. Each parameter accepts arguments, much like an HTML attribute. In following example, the [SVG Tag](/tags/svg) is accepting a filename and string of classes to apply while rendering an inline `<svg>`.
+
+```
+{{ svg src="icons/hamburger" class="w-8 h-8" }}
+```
+
+Tag Parameters are interpolated, which means you can include variables and other primitive forms of logic. The one caviat is that variables or Tags that return strings must use _{single braces}_, not double. This method lets you concatenate a string giving you the ability to assemble a string dynamically.
 
 ```
 {{ nav from="{segment_1}/{segment_2}" }}
+{{ collection:blog limit="{entry_limit} ?? 10" }}
+```
+
+You can also use **dynamic binding** to pass the value of a variable via its name by prefixing the parameter with a colon:
+
+```
+{{ nav :from="segment_1" }}
 ```
 
 ## Working With Templates
