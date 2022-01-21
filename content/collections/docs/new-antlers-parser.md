@@ -679,6 +679,16 @@ This is how you create variables as well as increment, decrement, or otherwise m
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
 | Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
 
+### Self-Iterating Assignments 🆕
+
+The left assignment operator has a super power not shared by the others. If the value of the **right-hand** expression returns a value that can be iterated (arrays, objects, etc.), the captured variable name can be used as a tag pair to iterate the returned value immediately.
+
+```
+{{ pages = {collection:pages} }}
+    {{ title }}
+{{ /pages }}
+```
+
 ## Advanced Operators 🆕
 
 These operators are here for the edge cases, the wild ideas, and the unexpected client requests at midnight the night before a site launch. **These are the data wangjanglers.**
@@ -971,8 +981,6 @@ Sub-expressions are indicated by wrapping a pair of parenthesis around `()` a po
 ```
 
 Sub-expressions are supported everywhere: variable assignments, logic conditions, interpolated Tag arguments, you name it.
-
-### Self-Iterating Assignments 🆕
 
 ## Tags
 
