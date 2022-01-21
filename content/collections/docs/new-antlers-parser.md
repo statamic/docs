@@ -752,7 +752,7 @@ groupby (FIELD 'KEY1', FIELD2 'KEY2') as 'things'
 ```
 #### Examples
 
-We'll use the following data for the next two examples.
+We'll use the following data for a few of the next examples.
 
 ``` yaml
 players:
@@ -842,10 +842,66 @@ players:
 
 ### Where 🆕
 
+Everything you can do inside a regular Antlers condition can be performed inside a `where` statement. Additionally, you can use an "arrow function" (`x => x.field`) to establish a scoped context inside an array or object.
 
+#### Examples
+
+```
+products:
+  - [name: Talkboy, price: 30]
+  - [name: Super Nintendo, price: 90]
+  - [name: Pogs, price: 1]
+budget: 50
+```
+
+```
+{{ bulls = players where (team == "Chicago Bulls") }}
+{{# returns [Michael Jordan, Scottie Pippen, Dennis Rodman] #}}
+
+{{ afford = products where (x => x.price < budget) }}
+{{# returns [Talkboy, Pogs] #}}
+
+{{ electronic = products where
+  (name == "Talkboy" || name == "Super Nintendo")
+}}
+{{# returns [Talkboy, Super Nintendo] #}}
+```
+
+### Take 🆕
+
+You may use the `take` operator to limit the number of results returned from an assignment operation.
+
+```
+{{ players = players take (2) }}
+```
+
+### Slip 🆕
+
+You may use the `skip` operator to skip a given number of results returned from an assignment operation.
+
+```
+{{ players = players skip (2) }}
+```
 
 ### Pluck 🆕
-### Take 🆕
+
+If you would like to retrieve the values from a single field, use `pluck`.
+
+```
+{{ players = players pluck ('name') }}
+  {{ value }}
+{{ /players }}
+```
+
+```output
+Michael Jordan
+Scottie Pippen
+Dennis Rodman
+Isiah Thomas
+Terry Mills
+Joe Dumars
+```
+
 
 
 ### The Terminator 🆕
