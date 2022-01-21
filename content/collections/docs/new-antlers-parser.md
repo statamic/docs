@@ -379,11 +379,10 @@ You may pass `strings`, `arrays`, `booleans`, `integers`, `floats`, `objects`, o
 Here are a few examples of modifiers in action.
 
 ```yaml
----
 summary: "It was the best of times, it was the worst of times."
 noun: soups
----
 ```
+
 ```
 {{ summary | replace('worst', 'yummiest') }}
 {{ summary | replace('It was', 'It was also') | replace('times', $noun) }}
@@ -874,7 +873,7 @@ You may use the `take` operator to limit the number of results returned from an 
 {{ players = players take (2) }}
 ```
 
-### Slip 🆕
+### Skip 🆕
 
 You may use the `skip` operator to skip a given number of results returned from an assignment operation.
 
