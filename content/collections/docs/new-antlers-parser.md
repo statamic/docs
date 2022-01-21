@@ -1002,6 +1002,30 @@ Alternatively, you can use **interpolation** to reference any variables with _si
 
 ### Layouts
 
+Most websites maintain the same general layout across various pages. Any markup you always want to present should go into a layout.
+
+By default, Statamic uses `/resources/views/layout.antlers.html`, but you can create other layouts and configure specific entries or collections to use those instead by setting `layout: your_layout` on the entry or collection config file respectively.
+
+Layouts often contain `<head></head>` markup, navs, footer, JavaScript includes, and so on. Somewhere in all that HTML you should add the `{{ template_content }}` variable — the place where content-defined templates will be injected.
+
+```
+<!-- resources/views/layout.antlers.html -->
+<html>
+  <head>
+    <title>{{ title }} | {{ site:name }}</title>
+    <link rel="stylesheet" href="/css/tailwind.css">
+  </head>
+  <body>
+    {{ partial:nav }}
+
+    {{ template_content }}
+
+    {{ partial:footer }}
+    <script src="/js/site.js"></script>
+  </body>
+</html>
+```
+
 ### Partials
 
 Statamic's [`{{ partial }}`](/tags/partial) tag allows you to include a view from within another view. All variables that are available to the parent view will be made available to the included partial view.
