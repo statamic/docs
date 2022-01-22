@@ -42,8 +42,8 @@ options:
     description: 'Control whether or not this field is required.'
     required: false
   -
-    name: validation
-    type: boolean
+    name: validate
+    type: array
     description: 'Configure rules that validate the value of this field before allowing the user to save. Learn more about [validation](/blueprints#validation).'
     required: false
 related_entries:
