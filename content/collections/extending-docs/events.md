@@ -357,6 +357,7 @@ public function handle(GlideImageGenerated $event)
     $event->path;
     $event->params;
 }
+```
 
 ### GlobalSetDeleted
 `Statamic\Events\GlobalSetDeleted`
