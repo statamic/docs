@@ -49,7 +49,7 @@ The screenshot above depicts the two modes you can choose from. One for when you
 
 ### Keyed Mode
 
-The second field contains pre-defined keys. This will give the user a stricter input. They can only enter the values for the specified keys, and they cannot be reordered.
+The first field contains pre-defined keys. This will give the user a stricter input. They can only enter the values for the specified keys, and they cannot be reordered.
 
 ```yaml
 address:
