@@ -347,7 +347,7 @@ throw ValidationException::withMessages(['You did something wrong.']);
 You may also just modify the submission object. You do not need to `return` anything.
 
 ### GlideImageGenerated
-`Statamic\Events\GlideImageGenerated
+`Statamic\Events\GlideImageGenerated`
 
 Dispatched after Glide generates an image. 
 
@@ -357,6 +357,7 @@ public function handle(GlideImageGenerated $event)
     $event->path;
     $event->params;
 }
+```
 
 ### GlobalSetDeleted
 `Statamic\Events\GlobalSetDeleted`
