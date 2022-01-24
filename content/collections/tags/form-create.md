@@ -314,6 +314,10 @@ class RadJs extends AbstractJsDriver
 
 In this above example, we provide `r-data` and `r-model` attributes for a fictional framework called `Rad.js`, as well as `show_field` [conditional logic](#the-helpersjs-script) for each renderable field.
 
+:::tip
+For a more real-world example, here is how you could create [a custom driver for Vue.js](https://gist.github.com/jesseleite/3507f7ad3dd062b9e5f7592c899bf297). Of course, you should also check out our built-in [Alpine.js driver](https://github.com/statamic/cms/blob/13721c5738c3fe43ce5b2161595a6d42016e7594/src/Forms/JsDrivers/Alpine.php).
+:::
+
 ### Registering the Driver
 
 To register your custom JS form driver class, simply call its static `register()` method from within a service provider.
