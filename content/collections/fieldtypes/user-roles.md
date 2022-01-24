@@ -17,7 +17,7 @@ options:
     name: mode
     type: string
     description: |
-      Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
+      Set the UI style for this field. Can be one of `default` (Stack Selector), `select` (Select Dropdown) or `typeahead` (Typeahead Field).
 related_entries:
   - 6b691e04-8f28-4eb2-8288-b61433883fe4
   - 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
