@@ -191,7 +191,7 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 
 ## Conditional Fields
 
-You may also conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once your fields are configured in the control panel, you will need to include the necessary front-end scripts and enable javascript on the `form:create` tag. We currently ship with an [Alpine.js](https://alpinejs.dev/) driver, but it is also possible to [build your own JS driver]() as well.
+You may also conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once your fields are configured in the control panel, you will need to include the necessary front-end scripts and enable javascript on the `form:create` tag. We currently ship with an [Alpine.js](https://alpinejs.dev/) driver, but it is also possible to build your own [custom JS driver](#custom-js-drivers) as well.
 
 ### Including the Scripts
 
@@ -269,6 +269,110 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
 
 If you are [dynamically rendering your fields](#dynamic-rendering) using the `fields` loop, this is once again handled for you.
 
-### Building Your Own JS Driver
 
-Should you want to work with another JS framework for handling conditional field logic, we've provided a few tools to help you [build your own JS driver]().
+## Custom JS Drivers
+
+Should you need to work with another JS framework for handling [conditional fields](#conditional-fields) and form state in realtime, we've provided a few tools to help you build your own JS driver.
+
+### Creating the Driver
+
+To write a custom JS form driver, create a class and extend `Statamic\Forms\JsDrivers\AbstractJsDriver`.
+
+```php
+<?php
+
+namespace App\Forms;
+
+use Statamic\Forms\JsDrivers\AbstractJsDriver;
+
+class RadJs extends AbstractJsDriver
+{
+    public function addToFormAttributes()
+    {
+        return [
+            'r-data' => $this->jsonEncodeForHtmlAttribute($this->getInitialFormData()),
+        ];
+    }
+
+    public function addToRenderableFieldAttributes($field)
+    {
+        return [
+            'r-model' => $field->handle(),
+        ];
+    }
+
+    public function addToRenderableFieldData($field, $data)
+    {
+        $conditions = $this->jsonEncodeForHtmlAttribute($field->conditions());
+
+        return [
+            'show_field' => 'Statamic.$conditions.showField('.$conditions.', $data)',
+        ];
+    }
+}
+```
+
+In this above example, we provide `r-data` and `r-model` attributes for a fictional framework called `Rad.js`, as well as `show_field` [conditional logic](#the-helpersjs-script) for each renderable field.
+
+### Registering the Driver
+
+To register your custom JS form driver class, simply call its static `register()` method from within a service provider.
+
+``` php
+public function register()
+{
+    \App\Forms\RadJs::register();
+}
+```
+
+### Driver Requirements
+
+The only true requirement of your custom driver is that you return `show_field` javascript from the `addToRenderableFieldData()` method, so that the user can wire up `show_field` [conditional logic](#the-helpersjs-script) as per [the documentation above](#wiring-up-the-fields).
+
+### Available Methods and Properties
+
+Take a look at the [AbstractJsDriver](https://github.com/statamic/cms/blob/feature/frontend-form-conditions/src/Forms/JsDrivers/AbstractJsDriver.php) class to see what is available to you, but here is a list of available methods and properties at a glance:
+
+#### Definable Render Methods
+
+- Define an `addToFormData($data)` method in your class to add to the available data within the `form:create` tag pair.
+- Define an `addToFormAttributes()` method in your class to add custom HTML attributes to your `<form>` element.
+- Define an `addToRenderableFieldData($field, $data)` method in your class to add to the available data for each field within the `fields` loop.
+- Define an `addToRenderableFieldAttributes($field)` method in your class to add custom HTML attributes to each pre-rendered `field` field input within the `fields` loop.
+- Define a `render($html)` method to control the overall rendering of your form component HTML.
+
+#### Callable Helper Methods
+
+- Call `$this->getInitialFormData()` to get the initial form field values from the server, while respecting old input when there are validation errors, etc.
+- Call `$this->jsonEncodeForHtmlAttribute($value)` to JSON encode an array value using single quotes for use within HTML attributes.
+
+#### Driver Properties
+
+- The `$this->form` property gives you access to the relevant `Statamic\Forms\Form` object anywhere within your driver class.
+- The `$this->options` property gives you access to the passed [driver options](#driver-options).
+
+### Driver Options
+
+You can also pass comma-delimited options into the `js` parameter like so:
+
+```
+{{ form:contact js="radjs:foo:bar" }}
+    ...
+{{ /form:contact }}
+```
+
+Within your driver class, you'll be able to access `$this->options` to retrieve an array of options (ie. `['foo', 'bar']` in the example above).
+
+### The Helpers.js Script
+
+The `Statamic.$conditions.showField(conditions, data)` helper is available when including the `helpers.js` script:
+
+```html
+<script src="/vendor/statamic/frontend/js/helpers.js"></script>
+```
+
+The `conditions` parameter accepts your field's conditions, typically generated using `$field->conditions()`.
+
+The `data` parameter accept's an object containing your form's values, typically stored somewhere within your form's javascript state.
+
+This JS helper will evaluate your [field conditions](/conditional-fields#overview) in realtime against your form's field values to determine whether or not the field in question should be shown.
