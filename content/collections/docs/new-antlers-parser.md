@@ -15,7 +15,7 @@ experimental: true
 
 ## Overview
 
-Antlers is one of the fundamental features of Statamic. It features a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
+Antlers is one Statamic's foundational features. It consists of a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
 
 Antlers templates are also called views. Any files in the `resources/views` directory with an `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
 
@@ -25,9 +25,9 @@ The `.antlers.html` extension is important. Without it, your template will be re
 
 ### Basic Example
 
-Antlers adds dynamic features on top of HTML through the use of "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, and now you know why we named them that.
+Antlers adds dynamic features to HTML in the form of "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, hence the name.
 
-This is a very simple Antlers tag.
+This is a very simple Antlers tag:
 
 ```
 {{ hello_world }}
@@ -47,10 +47,12 @@ This affords Statamic an incredible amount of control. It can go sideways and sl
 - The ability to _set_ variables
 - Syntax errors that reference the exact line, character, and type of error
 - The ability to control parse order through sub-expressions
-- Merging the results of multiple expressions
+- Merge, group, order, and manipulate data natively
 - Perform a robust set of mathematical operations
 - Concatenate, increment, and decrement values
-- A better Modifier syntax that provide better type handling
+- More template logic and control flow operators
+- More powerful template enh
+- An improved Modifier syntax to provide better readability and type handling
 - A smarter, more forgiving matching engine so more things Just Work™
 - Self-iterating assignments
 - Self-closing tags
@@ -340,7 +342,7 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 {{ complex_data:[3][field]['title'] }}
 ```
 
-### Disambiguation 🆕
+### Disambiguation 🆕 {#disambiguating-variables}
 
 As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
 
@@ -397,7 +399,7 @@ It was also the best of soups, it was the worst of soups.
 It was lunch, is what it was.
 ```
 
-There are more than 150 built-in [modifiers][modifiers] that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
+There are more than 150 built-in [modifiers](/reference/modifiers) that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
 You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusable one.
 
@@ -502,7 +504,7 @@ An operator is a special symbol or phrase that you use to check, change, or comb
 
 ### Control Flow
 
-Statamic provides a variety of control flow statements. These include `if`, `else`, `or`, and `unless` statements to run different branches of template code based on defined conditions.
+Statamic provides a variety of control flow statements. These include `if`, `else`, `or`, `unless`, and `switch` statements to run different branches of template code based on defined conditions.
 
 #### if
 
@@ -538,6 +540,26 @@ Adds more conditions with an `if` or `unless` block.
 {{ /if }}
 ```
 
+#### switch 🆕
+
+The `switch` is perfect for complex conditions with many possible cases, or using inside interpolated regions that don't support tag pairs, like [Tag Parameters](#tag-parameters).
+```
+{{ size = 'lg' }}
+
+{{ switch(
+        (size == 'sm') => '(min-width: 768px) 35vw, 90vw',
+        (size == 'md') => '(min-width: 768px) 55vw, 90vw',
+        (size == 'lg') => '(min-width: 768px) 75vw, 90vw',
+        (size == 'xl') => '90vw'
+        () => 100vw
+    )
+}}
+```
+
+```html
+(min-width: 768px) 75vw, 90vw
+```
+
 ### Comparison
 
 Comparison operators, as their name implies, allow you to compare two values or expressions.
@@ -552,7 +574,7 @@ Comparison operators, as their name implies, allow you to compare two values or 
 | Less than or equal to | `$a <= $b` | `true` if `$a` is less than or equal `$b`. |
 | Not equal | `$a != $b` |  `true` if `$a` is not equal to `$b` after type juggling. |
 | Not identical | `$a !== $b` | `true` if `$a` is not equal to `$b`, only if they are of the same type. |
-| Spaceship | `$a <=> $b` | Returns -1, 0 or 1 when `$a` is less than, equal to, or greater than `$b`, respectively. |
+| Spaceship 🆕 | `$a <=> $b` | Returns -1, 0 or 1 when `$a` is less than, equal to, or greater than `$b`, respectively. |
 
 #### Examples
 
@@ -632,15 +654,15 @@ This syntax can handle any valid expression on the right-hand side of the operat
 
 There are two methods for concatenating strings.
 
-To concatenate a string, use a `+` plus sign between variables and/or static strings to combine them into a single string. Whether you use concatenation or multiple variables is up to you. Opt for whatever makes the code most readable.
+First, to concatenate and render a string in a single tag, you may use a `+` plus sign between variables and string literals to combine them. (You may also  use multiple tags. Opt for whatever makes the code most readable.)
 
 ```yaml
----
 title: Marv's Coffee Shop
 quality: pretty good
----
 ```
+
 ```
+{{# These are equivalent #}}
 <p>{{ $title + " makes " + $quality + " donuts." }}</p>
 <p>{{ title }} makes {{ quality }} donuts.</p>
 ```
@@ -648,6 +670,20 @@ quality: pretty good
 ```html
 <p>Marv's Coffee Shop makes pretty good donuts.</p>
 <p>Marv's Coffee Shop makes pretty good donuts.</p>
+```
+
+You may also concatenate through assignment, allowing you to render the result later in a template.
+
+```
+{{ string = "Hello" }}
+
+{{ if something }}
+  {{ string += " World"}}
+{{ else }}
+  {{ string += " Universe" }}
+{{ /if }}
+
+{{ string }}
 ```
 
 ### Math 🆕
@@ -986,7 +1022,7 @@ Sub-expressions are supported everywhere: variable assignments, logic conditions
 
 ## Tags
 
-[Tags][tags] (note the capital "T") are the primary method for accessing data from Statamic and tapping into many of the available dynamic features like search, forms, nav building, pagination, entry listing, filtering, image resizing, and so on.
+Tags (note the capital "T") are the primary method for accessing data from Statamic and tapping into many of the available dynamic features like search, forms, nav building, pagination, entry listing, filtering, image resizing, and so on. Check out the [full list of Tags](/reference/tags) to see what's available.
 
 Tags usually operate as pairs as they're often fetching data (like entries or assets) and looping through the results.
 
@@ -998,9 +1034,9 @@ Tags usually operate as pairs as they're often fetching data (like entries or as
 </li>
 ```
 
-### Disambiguation 🆕
+### Disambiguation 🆕 {#disambiguating-tags}
 
-You may optionally disambiguate your tags by prefixing them with a `%` percent sign. If you're already disambiguating your variables, you may find this unnecessary, but it's here if you need it.
+You may optionally disambiguate your tags by prefixing them with a `%` percent sign. If you're already [disambiguating your variables](#disambiguating-variables), you may find this unnecessary, but it's here if you need it.
 
 ```
 {{ %collection:blog }}
@@ -1008,20 +1044,20 @@ You may optionally disambiguate your tags by prefixing them with a `%` percent s
 
 ### Tag Parameters
 
-Most Tags are configurable through the use Parameters. Each parameter accepts arguments, much like an HTML attribute. In following example, the [SVG Tag](/tags/svg) is accepting a filename and string of classes to apply while rendering an inline `<svg>`.
+Most Tags can be configured through the use of Parameters, which accepts arguments — much like an HTML attribute. In following example, the [SVG Tag](/tags/svg) is accepting a filename and string of classes to apply while rendering an inline `<svg>` element.
 
 ```
 {{ svg src="icons/hamburger" class="w-8 h-8" }}
 ```
 
-Tag Parameters are interpolated, which means you can include variables and other primitive forms of logic. The one caviat is that variables or Tags that return strings must use _{single braces}_, not double. This method lets you concatenate a string giving you the ability to assemble a string dynamically.
+Tag Parameters are **interpolated**, so you can include variables and primitive forms of logic, using _{single braces}_ instead of double. Avoid using tag _pairs_.
 
 ```
 {{ nav from="{segment_1}/{segment_2}" }}
 {{ collection:blog limit="{entry_limit} ?? 10" }}
 ```
 
-You can also use **dynamic binding** to pass the value of a variable via its name by prefixing the parameter with a colon:
+You can use **dynamic binding** to pass the value of any variable by prefixing the parameter with a colon and using the _name_ of the variable as your argument:
 
 ```
 {{ nav :from="segment_1" }}
@@ -1218,7 +1254,7 @@ If you would like to prepend content onto the **beginning** of a stack, you shou
 
 ## Prevent Parsing
 
-You may find you need to prevent Antlers statements from being parsed. This is common if you're using a JavaScript library like [Vue.js][vue], or perhaps you want to display code examples (like we do in these docs). In either case, you have a few options.
+You may find you need to prevent Antlers statements from being parsed. This is common when working with a JavaScript library like [Vue.js](https://vuejs.org), writing code examples, like we do in these docs. In either case, you have a few options.
 
 ### The `@` ignore symbol
 
@@ -1246,11 +1282,9 @@ Use this method if you need to prevent entire code blocks from being parsed.
 
 ## Using Antlers in Content
 
-By default, Antlers expressions and tags are **not** parsed inside your content. This is for performance and security reasons.
+Antlers template code inside your content **is not** parsed automatically for security and performance reasons.
 
-For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't access to.
-
-If this isn't a concern of yours, you can enable Antlers parsing on a per-field basis by setting `antlers: true` in your blueprint.
+You may **enable** Antlers parsing on a per-field basis by setting `antlers: true` in a given field's blueprint config.
 
 ## Code Comments {#comments}
 
@@ -1258,21 +1292,28 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 
 ```
 {{# Remember to replace the lorem ipsum this time, Karen! #}}
+
+{{#
+  <h1>{{ title }}</h1>
+  <div>{{ date }}</div>
+  <div class="markdown">{{ content}}</div>
+#}}
 ```
 
 ## Using PHP in Antlers 🆕
 
-`{{? ?}}` is the ticket.
+You can write PHP inside a set of delimiters `{{? ?}}`. PHP is evaluated natively, so you'll need to `echo` data if you want render HTML in your template.
 
-Or, you can change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.
+```php
+{{? $register = route('account.register'); ?}}
+
+<a href="{{ $register }}">Register for a new account</a>
+```
+
+You can also change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.
 
 ```php
 <?php
   echo 'Keep it simple, please';
 ?>
 ```
-
-
-[vue]: https://vuejs.org
-[modifiers]: /modifiers
-[tags]: /tags
