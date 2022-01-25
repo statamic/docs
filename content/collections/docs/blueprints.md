@@ -229,7 +229,7 @@ Here's a peek at how that YAML is structured.
   handle: your_field
   field:
     type: text
-    validation:
+    validate:
       - alpha_dash
       - 'min:4'
 ```
