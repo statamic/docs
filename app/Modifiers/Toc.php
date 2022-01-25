@@ -55,10 +55,10 @@ class Toc extends Modifier
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
-                $anchor = stripslashes($anchor[1]);
+                $anchor = trim(stripslashes($anchor[1]));
                 $add_id = false;
             } else {
-                $anchor = preg_replace('/\s+/', '-', preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3]))));
+                $anchor = preg_replace('/\s+/', '-', trim(preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3])))));
                 $add_id = true;
             }
 
