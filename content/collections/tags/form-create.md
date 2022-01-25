@@ -189,9 +189,11 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 </form>
 ```
 
-## Conditional Fields
+## Conditional Fields 🆕
 
-You may also conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once your fields are configured in the control panel, you will need to include the necessary front-end scripts and enable javascript on the `form:create` tag. We currently ship with an [Alpine.js](https://alpinejs.dev/) driver, but it is also possible to build your own [custom JS driver](#custom-js-drivers) as well.
+You may conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once configured, by including the necessary front-end scripts and enabling JavaScript on the `form:create` tag, all of the conditional logic will Just Work™.
+
+Statamic includes an [Alpine.js](https://alpinejs.dev/) driver or you can build your own [custom JS driver](#custom-js-drivers) to wire up whichever framework you prefer.
 
 ### Including the Scripts
 
