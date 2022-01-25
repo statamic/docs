@@ -52,44 +52,58 @@ and it was sick.</p>
 Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade will be escaped. If you need to output unescaped HTML, use `{!! $content !!}`
 :::
 
+
+## Using Tags with Blade
+
+You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax. Instantiate your tag with the `Statamic::tag()` method and chain parameters as needed.
+
+``` blade
+@foreach(Statamic::tag('collection:pages')->limit(3) as $page)
+    <li>{{ $page['title'] }}</li>
+@endforeach
+```
+
+```
+• Home
+• Gallery
+• Contact
+```
+
+:::tip
+When using multi-word parameters, like `query_scope`, you must use the camelCased version (`queryScope`).
+:::
+
+### Passing Contextual Data
+
+You can pass in contextual data to the tag using the `context($data)` method:
+
+```blade
+@foreach(Statamic::tag('collection:pages')->context($context) as $page)
+	{{ $page['title'] }}<br>
+@endforeach
+```
+
+### Disabling Augmentation
+
+[Augmentation](/extending/augmentation) is enabled by default (as it is in antlers), but you can disable augmentation using the `withoutAugmentation()` method.
+
+```blade
+@foreach(Statamic::tag('collection:pages')->withoutAugmentation() as $page)
+	{{ $page->title }}<br>
+@endforeach
+```
+
+
 ## Using Modifiers with Blade
 
-You can use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax.
-
-Wrap your value with the `Statamic\Modifiers\Modify::value()` method and chain modifiers as you wish. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters.
+You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters.
 
 ``` blade
-{{ Statamic\Modifiers\Modify::value($content)->striptags()->backspace(1)->ensureRight('!!!') }}
+{{ Statamic::modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
 ```
 
-```html
+```
 THIS IS THE FIRST POST, HOW EXCITING!!!
-```
-
-You can use [service injection](https://laravel.com/docs/blade#service-injection) to make your templates read a little nicer, and pass the value straight into
-it, rather than using a `value` method.
-
-``` blade
-@inject('modify', 'Statamic\Modifiers\Modify')
-
-{!! $modify($title)->wrap('h1') !!}
-{{ $modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
-```
-
-You could also opt to create a global helper in your project.
-
-```php
-use Statamic\Modifiers\Modify;
-
-function modify($value): Modify
-{
-    return Modify::value($value);
-}
-```
-
-``` blade
-{!! modify($title)->wrap('h1') !!}
-{{ modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
 ```
 
 :::tip
