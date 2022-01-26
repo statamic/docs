@@ -516,6 +516,8 @@ Executes a block of code only if a condition is `true` or "[truthy](#truthy-and-
 {{ /if }}
 ```
 
+You may also close if statements with `{{ endif }}` if you prefer.
+
 #### unless
 
 Unless is the opposite of `if` – executing a block of code only if a condition is **not** met.
@@ -525,6 +527,8 @@ Unless is the opposite of `if` – executing a block of code only if a conditio
   You see a large wardrobe in front of you.
 {{ /unless }}
 ```
+
+You may also close unless statements with `{{ endunless }}` if you prefer.
 
 #### elseif / else
 
