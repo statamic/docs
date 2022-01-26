@@ -29,7 +29,7 @@ parameters:
     description: When `true`, the `enctype="multipart/form-data"` attribute will be rendered on your `<form>` tag for file uploads.
   -
     name: HTML Attributes
-    type:
+    type: string
     description: >
       Set HTML attributes as if you were on an HTML element. For example, `class="required" id="contact-form"`.
 variables:
