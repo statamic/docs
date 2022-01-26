@@ -10,21 +10,14 @@ Returns the number of days since a given date variable. Statamic will attempt to
 
 
 ```yaml
-// Example previous date
-date: December 8 2021
-```
-
-```
-// Example current date on your server:
-December 12 2021
+# Let's assume a server date of "December 31 2021"
+date: December 25 2021
 ```
 
 ```antlers
-// Antlers Frontend
 {{ date | days_ago }}
 ```
 
-```html
-//Output:
-4
+```output
+6
 ```
