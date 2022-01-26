@@ -173,19 +173,19 @@ Head back to the Control Panel and click on the Collections link in the sidebar.
     <figcaption>Name it whatever you want, as long as you name it Blog.</figcaption>
 </figure>
 
-## Scaffold your templates
+## Scaffold your views
 
-Let's save you a minute or two and generate the index and show template. Click on **Scaffold Resources**
+Let's save you a minute or two and generate the index and show template. Click on **Scaffold Views**
 
 <figure>
-    <img src="/img/quick-start/scaffold-resources-link.jpg" alt="Link to Scaffold resources" width="600">
+    <img src="/img/quick-start/scaffold-views-link.jpg" alt="Link to Scaffold Views" width="600">
     <figcaption>Click it.</figcaption>
 </figure>
 
-And then click the Create Resources button. The defaults are perfect.
+And then click the Create Views button. The defaults are perfect.
 
 <figure>
-    <img src="/img/quick-start/scaffold-resources.jpg" alt="Scaffold collection resources" width="600">
+    <img src="/img/quick-start/scaffold-views.jpg" alt="Scaffold collection views" width="600">
     <figcaption>Click the button.</figcaption>
 </figure>
 
