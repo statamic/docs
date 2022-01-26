@@ -175,7 +175,7 @@ Statamic.$bard.buttons((buttons, button) => {
 ```
 
 :::tip
-Using the `button()` method will make the button only appear if the Bard field has been configured to your your button.
+Using the `button()` method will make the button only appear if the Bard field has been configured to show your button.
 
 If you'd like your button to appear on all Bard fields, regardless of whether it's been configured to use that button, you can just return an object. Don't wrap with `button()`.
 :::
