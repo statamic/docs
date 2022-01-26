@@ -100,7 +100,7 @@ When [installing the starter kit](#installing-a-starter-kit), composer will inst
 
 ## Publishing a Starter Kit
 
-Once exported, you will notice that a sample `composer.json` file was created at your specified export repo path. Make sure you update the package's vendor name:
+Once exported, you will need to update the `name` property in the `composer.json` created at your specified export repo path. It should match your Composer/GitHub {Oraganization}/{Repo_Name} exactly.
 
 ``` json
 {
