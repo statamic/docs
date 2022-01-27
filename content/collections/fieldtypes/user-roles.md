@@ -24,7 +24,7 @@ related_entries:
 ---
 ## Overview
 
-The User Role fieldtype gives your users a way to pick one or more User Role to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:Is](/tags/user-is) tag to protect content or areas of the frontend.
+The User Role fieldtype gives your users a way to pick one or more User Roles to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:Is](/tags/user-is) tag to protect content or areas of the frontend.
 
 ## Data Storage
 
