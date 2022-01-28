@@ -29,7 +29,7 @@
                             {{ /children }}
                         {{ /if }}
                         {{ if section == "reference" }}
-                            <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url}}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                            <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
                                 <a href="{{ url }}" class="hover:text-pink">
                                     List All {{ title }}
                                 </a>
