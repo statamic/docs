@@ -286,13 +286,14 @@ To write a custom JS form driver, create a class and extend `Statamic\Forms\JsDr
 namespace App\Forms;
 
 use Statamic\Forms\JsDrivers\AbstractJsDriver;
+use Statamic\Statamic;
 
 class RadJs extends AbstractJsDriver
 {
     public function addToFormAttributes()
     {
         return [
-            'r-data' => $this->jsonEncodeForHtmlAttribute($this->getInitialFormData()),
+            'r-data' => Statamic::modify($this->getInitialFormData())->toJson()->entities(),
         ];
     }
 
@@ -305,7 +306,7 @@ class RadJs extends AbstractJsDriver
 
     public function addToRenderableFieldData($field, $data)
     {
-        $conditions = $this->jsonEncodeForHtmlAttribute($field->conditions());
+        $conditions = Statamic::modify($field->conditions())->toJson()->entities();
 
         return [
             'show_field' => 'Statamic.$conditions.showField('.$conditions.', $data)',
@@ -350,7 +351,6 @@ Take a look at the [AbstractJsDriver](https://github.com/statamic/cms/blob/featu
 #### Callable Helper Methods
 
 - Call `$this->getInitialFormData()` to get the initial form field values from the server, while respecting old input when there are validation errors, etc.
-- Call `$this->jsonEncodeForHtmlAttribute($value)` to JSON encode an array value using single quotes for use within HTML attributes.
 
 #### Driver Properties
 
