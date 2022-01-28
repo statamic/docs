@@ -19,11 +19,9 @@ Returns the number of weeks since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-{{ noparse }}
 ```
 {{ date | weeks_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | weeks_ago }}

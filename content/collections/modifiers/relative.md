@@ -17,13 +17,11 @@ past_date: October 1 2015
 future_date: October 1 2019
 ```
 
-{{ noparse }}
 ```
 {{ past_date | relative }}
 {{ future_date | relative }}
 {{ past_date | relative:false }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | relative }}

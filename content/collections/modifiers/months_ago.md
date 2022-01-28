@@ -19,11 +19,9 @@ Returns the number of months since a given date variable. Statamic will attempt 
 date: October 1 2017
 ```
 
-{{ noparse }}
 ```
 {{ date | months_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | months_ago }}

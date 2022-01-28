@@ -19,11 +19,9 @@ Returns the number of seconds since a given date variable. Statamic will attempt
 date: October 1 2015 8:30:am
 ```
 
-{{ noparse }}
 ```
 {{ date | seconds_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | seconds_ago }}

@@ -19,11 +19,9 @@ Returns the number of years since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-{{ noparse }}
 ```
 {{ date | years_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | years_ago }}

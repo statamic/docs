@@ -20,11 +20,9 @@ Returns the number of minutes since a given date variable. Statamic will attempt
 date: October 1 2015 8:30:am
 ```
 
-{{ noparse }}
 ```
 {{ date | minutes_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | minutes_ago }}

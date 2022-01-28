@@ -19,11 +19,9 @@ Returns the number of hours since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-{{ noparse }}
 ```
 {{ date | hours_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | hours_ago }}
