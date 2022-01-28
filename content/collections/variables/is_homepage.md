@@ -3,7 +3,7 @@ id: cc7c0df5-b3a6-4f67-8bd8-50d145ae756c
 blueprint: variables
 types:
   - system
-title: Homepage
+title: Is Homepage
 ---
 Whether you're on the homepage.
 
