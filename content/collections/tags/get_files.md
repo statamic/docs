@@ -1,6 +1,5 @@
 ---
 title: Get Files
-parse_content: false
 description: Retrieves and filters local files
 intro: The ultimate 🇨🇭Swiss Army Knife doing-stuff-with-files feature. With the `get_files` tag you can scan and display data on files in _any_ directories inside your local filesystem.
 stage: 4

@@ -3,7 +3,6 @@ id: 603701ba-5da7-4ec8-abe5-5bc9fe6861ea
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Seconds Ago'
 related_entries:
   - e73f1574-732e-4a74-be47-37e1fddb05d6
@@ -19,11 +18,9 @@ Returns the number of seconds since a given date variable. Statamic will attempt
 date: October 1 2015 8:30:am
 ```
 
-{{ noparse }}
 ```
 {{ date | seconds_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | seconds_ago }}

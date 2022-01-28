@@ -3,7 +3,6 @@ id: 6fcbfa5c-854e-4541-9955-505eca0d6bf7
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Weeks Ago'
 related_entries:
   - e73f1574-732e-4a74-be47-37e1fddb05d6
@@ -19,11 +18,9 @@ Returns the number of weeks since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-{{ noparse }}
 ```
 {{ date | weeks_ago }}
 ```
-{{ /noparse }}
 
 ```html
 {{ test_date | weeks_ago }}

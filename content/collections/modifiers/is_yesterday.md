@@ -4,7 +4,6 @@ blueprint: modifiers
 modifier_types:
   - date
   - conditions
-parse_content: true
 title: 'Is Yesterday'
 ---
 Returns `true` if a given date is yesterday, using the server's time.
