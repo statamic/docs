@@ -3,7 +3,6 @@ id: 7ba53a64-0266-4752-af5b-282a40dd11fa
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Months Ago'
 related_entries:
   - e73f1574-732e-4a74-be47-37e1fddb05d6

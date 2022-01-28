@@ -3,7 +3,6 @@ id: e73f1574-732e-4a74-be47-37e1fddb05d6
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Years Ago'
 related_entries:
   - 603701ba-5da7-4ec8-abe5-5bc9fe6861ea

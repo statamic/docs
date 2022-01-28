@@ -3,7 +3,6 @@ id: 6ebb6c28-d1f3-4362-92a0-8a16b5c9cd51
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Hours Ago'
 related_entries:
   - e73f1574-732e-4a74-be47-37e1fddb05d6

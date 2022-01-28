@@ -3,7 +3,6 @@ id: 40578328-3288-4c54-a475-8afad19a37e6
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: Relative
 ---
 Returns a date difference in a nice, human readable, string format. This modifier will add a phrase after the difference value relative to the current date and the passed in date.
