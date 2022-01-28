@@ -1,9 +1,11 @@
 ---
-title: OAuth
-template: page
 id: 3dbb14fd-a762-4891-bce1-daf13b8c5981
 blueprint: page
+title: OAuth
+template: page
 pro: true
+related_entries:
+  - 6b691e04-8f28-4eb2-8288-b61433883fe4
 ---
 ## Overview
 

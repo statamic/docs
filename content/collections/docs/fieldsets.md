@@ -1,9 +1,12 @@
 ---
-title: Fieldsets
-template: page
 id: 2940c834-7062-47a1-957c-88a69e790cbb
 blueprint: page
-intro: Fieldsets are used to store and organize reusable fields.
+title: Fieldsets
+template: page
+intro: 'Fieldsets are used to store and organize reusable fields.'
+related_entries:
+  - 54548616-fd6d-44a3-a379-bdf71c492c63
+  - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 ---
 ## Overview
 
