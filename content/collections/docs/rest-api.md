@@ -520,6 +520,41 @@ class CustomCacher extends AbstractCacher
 }
 ```
 
+## Rate Limiting
+
+The REST API is Rate Limited to **60 requests per minute** by default.
+
+**If you're running on Laravel 8+** you can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ Rate Limiting](https://laravel.com/docs/8.x/rate-limiting).
+
+```php
+// app/Providers/RouteServiceProvider.php
+protected function configureRateLimiting()
+{
+    RateLimiter::for('api', function (Request $request) {
+        return Limit::perMinute(60);
+    });
+}
+```
+
+**If you're running on Laravel 7** you can change this configuration in your `HTTP/Kernel` middlweare config. Learn more about [Laravel 7 Rate Limiting](https://laravel.com/docs/7.x/routing#rate-limiting).
+
+```php
+//app/Http/Kernel.php
+protected $middlewareGroups = [
+    ...
+    'api' => [
+        'throttle:api',
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+];
+```
+
+
+
+
+
+
+
 ## Authentication
 
 **Coming soon.** There are no _native_ access tokens or other common authentication methods ready to use. Yet.
