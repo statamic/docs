@@ -543,7 +543,7 @@ protected function configureRateLimiting()
 protected $middlewareGroups = [
     ...
     'api' => [
-        'throttle:api',
+        'throttle:60,1',
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
 ];
