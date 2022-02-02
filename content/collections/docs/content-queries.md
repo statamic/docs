@@ -135,9 +135,40 @@ Entry::query()
     ->get();
 ```
 
+### WhereBetween
+The `whereBetween` method lets you verify that a field's value lies between two values that you pass:
+
+```php
+Entry::query()
+    ->whereBetween('numeric_field', [0, 1000]) // [tl! ~~]
+    ->get();
+```
+
+You can also use the `whereNotBetween` method to verify that a field's value does not lie between two values that you pass:
+
+```php
+Entry::query()
+    ->whereNotBetween('numeric_field', [0, 1000]) // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereBetween` and `orWhereNotBetween` are also supported.
+
+
+### WhereColumn
+The `whereColumn` method lets you compare a field's value to that of another field:
+
+```php
+Entry::query()
+    ->whereColumn('published', '=', 'status') // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereColumn` is also supported.
+
 
 ### WhereIn
-The `whereIn` method to check a field against an a given array of values:
+The `whereIn` method lets you check a field against an a given array of values:
 
 ```php
 Entry::query()
@@ -157,7 +188,7 @@ Note: `orWhereIn` and `orWhereNotIn` are also both supported.
 
 
 ### WhereNull
-The `whereNull` method to check whether a field's value is null:
+The `whereNull` method lets you check whether a field's value is null:
 
 ```php
 Entry::query()
@@ -174,18 +205,6 @@ Entry::query()
 ```
 
 Note: `orWhereNull` and `orWhereNotNull` are also both supported.
-
-
-### WhereColumn
-The `whereColumn` method to compare a field's value to that of another field:
-
-```php
-Entry::query()
-    ->whereColumn('published', '=', 'status') // [tl! ~~]
-    ->get();
-```
-
-Note: `orWhereColumn` is also supported.
 
 
 
