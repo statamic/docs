@@ -98,7 +98,7 @@ We owe him a debt of gratitude for this amazing gift.
 There are three kinds of delimiters.
 
 - `{{ }}`  The basic and primary delimiter pair, used to render variables, evaluate expressions, call Tags, and do almost all core Antlers things.
-- `{{? ?}}` Allows you to write and execute PHP.
+- `{{? ?}}` and `{{$ $}}` Allow you to write, execute, and echo PHP.
 - `{{# #}}` Are for code comments.
 
 ### Formatting Rules
@@ -1306,13 +1306,23 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 
 ## Using PHP in Antlers 🆕
 
-You can write PHP inside a set of delimiters `{{? ?}}`. PHP is evaluated natively, so you'll need to `echo` data if you want render HTML in your template.
+You can write PHP inside special delimiters. You may use `{{?...?}}` to write raw PHP and manipulate the current context (variables that exist in a given request), and `{{$...$}}` to `echo` the result of a PHP expression and render HTML.
 
-```php
+### Examples
+
+The following two examples are functionally equivalent, but each uses a different approach based on the delimiter.
+
+```antlers
 {{? $register = route('account.register'); ?}}
 
 <a href="{{ $register }}">Register for a new account</a>
 ```
+
+``` antlers
+<a href="{{$ route('account.register') $}}">Register for a new account</a>
+```
+
+### PHP File Extension
 
 You can also change your view's file extension from `.antlers.html` to `.antlers.php` and you can write all the raw PHP you want using native PHP tags.
 
