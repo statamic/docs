@@ -23,7 +23,7 @@ related_entries:
 ---
 ## Overview
 
-The User Group fieldtype is gives your users a way to pick one or more User Groups to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:In](/tags/user-in) tag to protect content or areas of the frontend.
+The User Group fieldtype gives your users a way to pick one or more User Groups to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:In](/tags/user-in) tag to protect content or areas of the frontend.
 
 ## Data Storage
 
