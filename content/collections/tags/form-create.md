@@ -33,7 +33,7 @@ parameters:
     description: Enable [conditional fields](#conditional-fields) using one of the provided JS drivers.
   -
     name: HTML Attributes
-    type:
+    type: string
     description: >
       Set HTML attributes as if you were on an HTML element. For example, `class="required" id="contact-form"`.
 variables:

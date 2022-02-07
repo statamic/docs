@@ -20,7 +20,7 @@ Statamic Starter Kits are designed to be a **starting place**. Good, clean code,
 We envision Starter Kits as a great way to "skip ahead" in the usual development cycle of a website, and less of a "no-code" approach to web development.
 ## Where to Find Starter Kits
 
-The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace) or the **Tools &rarr; Starter Kits** section of the Statamic 3 Control Panel.
+The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace).
 
 <figure>
     <img src="https://statamic.com/images/storage/products/HRU3TVeiAnVlzRecp8G6pUiYGagWTvWzoh7ZWC27.jpeg" alt="Podcaster – a Statatmic Starter Kit">

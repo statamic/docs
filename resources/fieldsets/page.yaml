@@ -90,6 +90,7 @@ fields:
         - troubleshooting
         - extending-docs
         - repositories
+        - tips
       display: 'Related Entries'
       type: entries
       icon: entries

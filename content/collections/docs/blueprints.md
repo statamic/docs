@@ -1,8 +1,11 @@
 ---
-title: Blueprints
-intro: Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they'll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.
 id: 54548616-fd6d-44a3-a379-bdf71c492c63
 blueprint: page
+title: Blueprints
+intro: 'Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they''ll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.'
+related_entries:
+  - 2940c834-7062-47a1-957c-88a69e790cbb
+  - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 ---
 ## Overview
 

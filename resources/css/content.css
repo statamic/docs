@@ -204,6 +204,9 @@ article, .markdown {
             p {
                 @apply text-sm md:text-base leading-tight;
             }
+            code {
+                @apply whitespace-nowrap;
+            }
             :not(pre) > code {
                 @apply bg-transparent text-xs md:text-sm font-bold text-purple;
             }

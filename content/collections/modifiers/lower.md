@@ -4,7 +4,7 @@ blueprint: modifiers
 modifier_types:
   - string
   - utility
-title: lower
+title: Lower
 ---
 Converts all characters in the string to lowercase.
 

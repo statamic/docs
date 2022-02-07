@@ -3,7 +3,6 @@ id: 18596c62-5535-41a8-91c4-b5769fb11085
 blueprint: modifiers
 modifier_types:
   - date
-parse_content: true
 title: 'Modify Date'
 ---
 Alters a timestamp by incrementing or decrementing in a format accepted by PHP's native [`strtotime()`](http://php.net/manual/en/function.strtotime.php) method.

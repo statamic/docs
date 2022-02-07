@@ -17,14 +17,14 @@ options:
     name: mode
     type: string
     description: |
-      Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
+      Set the UI style for this field. Can be one of `default` (Stack Selector), `select` (Select Dropdown) or `typeahead` (Typeahead Field).
 related_entries:
   - 6b691e04-8f28-4eb2-8288-b61433883fe4
   - 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
 ---
 ## Overview
 
-The User Role fieldtype is gives your users a way to pick one or more User Groups to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:Is](/tags/user-is) tag to protect content or areas of the frontend.
+The User Role fieldtype gives your users a way to pick one or more User Roles to attach to the current entry. What you do with that relationship is up to you, but most likely you'll be either listing users or combining it with the [User:Is](/tags/user-is) tag to protect content or areas of the frontend.
 
 ## Data Storage
 

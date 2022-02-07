@@ -13,10 +13,10 @@ options:
     required: false
     description: 'The maximum number of forms that may be selected.'
   -
-    name: mode
+    name: placeholder
     type: string
     description: |
-        Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
+      Set the non-selectable placeholder text. Default: none.
 related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - aa96fcf1-510c-404b-9b63-cea8942e1bf8

@@ -145,6 +145,28 @@ protected function configFieldItems(): array
 A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.2/src/Fieldtypes>
 :::
 
+### Adding configuration fields to existing fieldtypes
+
+Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
+
+You can do this using the `appendConfigField` or `appendConfigFields` methods on the respective fieldtype.
+
+```php
+use Statamic\Fieldtypes\Text;
+
+// One field...
+Text::appendConfigField('group', [
+  'type' => 'text',
+  'display' => 'Group',
+]);
+
+// Multiple fields...
+Text::appendConfigFields([
+  'group' => ['type' => 'text', 'display' => '...',],
+  'another' => ['type' => 'text', 'display' => '...',],
+]);
+```
+
 ## Meta Data
 
 Fieldtypes can preload additional "meta" data from PHP into JavaScript. This can be anything you want, from settings to eager loaded data.

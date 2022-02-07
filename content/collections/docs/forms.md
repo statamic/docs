@@ -1,9 +1,11 @@
 ---
-title: Forms
-template: page
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
-intro: Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.
+title: Forms
+template: page
+intro: 'Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.'
+related_entries:
+  - e4f4f91e-a442-4e15-9e16-3b9880a25522
 ---
 ## Overview
 
@@ -359,4 +361,3 @@ axios.post(form.action, new FormData(form))
 
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
-

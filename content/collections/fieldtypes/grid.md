@@ -33,6 +33,10 @@ options:
     name: add_row
     type: string
     description: "The `Add Row` button's label."
+  -
+    name: reorderable
+    type: string
+    description: "Enable row reordering. Default: `true`."
 id: fa6d2032-0e42-4ea5-b20c-4226941bf0da
 ---
 ## Fieldtypes

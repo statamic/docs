@@ -1,11 +1,13 @@
 ---
-title: Structures
-intro: A structure is a hierarchy of items used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.
-template: page
-blueprint: page
 id: 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
+blueprint: page
+title: Structures
+intro: 'A structure is a hierarchy of items used to build navigation on the front-end of your site and optionally dictate the URL structure for entire collections.'
+template: page
+related_entries:
+  - 2af9fc45-66d0-4ca5-9761-00017076144f
+  - ed746608-87f9-448f-bf57-051da132fef7
 ---
-
 ## Overview
 
 Structures are a flexible way to create hierarchies of different items. Statamic 2's "Pages" feature has been replaced by a "Structured Collection" (more on that in a bit).

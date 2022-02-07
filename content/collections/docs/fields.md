@@ -1,9 +1,14 @@
 ---
-title: Fields
-template: page
-intro: While in the control panel all content is managed inside fields. They come in many types, from basic text and select boxes, to rich text fields and image pickers. Fields are grouped into blueprints and fieldsets and can be reused in a number of different ways.
 id: cb21fabb-65ba-4869-9acd-f6aa2fb58a01
 blueprint: page
+title: Fields
+template: page
+intro: 'While in the control panel all content is managed inside fields. They come in many types, from basic text and select boxes, to rich text fields and image pickers. Fields are grouped into blueprints and fieldsets and can be reused in a number of different ways.'
+related_entries:
+  - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
+  - 54548616-fd6d-44a3-a379-bdf71c492c63
+  - 2940c834-7062-47a1-957c-88a69e790cbb
+  - 9b2f6f55-5355-4334-b90d-d1236fb58887
 ---
 ## Common Settings
 

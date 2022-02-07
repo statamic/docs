@@ -1,9 +1,15 @@
 ---
-title: Views
-intro: Views contain HTML, have access to your data, and are used to render the front-end of your site. Layouts, templates, and partials are all different types of views.
-template: page
-blueprint: page
 id: 74c47654-8c47-49b1-a616-ed940ce19977
+blueprint: page
+title: Views
+intro: 'Views contain HTML, have access to your data, and are used to render the front-end of your site. Layouts, templates, and partials are all different types of views.'
+template: page
+related_entries:
+  - dcf80ee6-209e-45aa-af42-46bbe01996e2
+  - fbf59081-ba24-4e82-b011-b687be228c89
+  - c7816387-ebc4-4204-b5f2-8e7073a4db8b
+  - 5e848460-9bbc-449e-8edd-182d918163ff
+  - 3d5efc5c-17b1-480b-bb77-53faf3d9552c
 ---
 ## Overview
 Views contain the HTML served by the frontend of your site and are stored in the `resources/views` directory. A simple view might look something like this (but should it?):
@@ -192,10 +198,3 @@ resources/views/
     show.antlers.html
   layout.antlers.html
 ```
-
-## Additional Reading
-
-- If you want to learn more about how data gets into your view, check out [The Cascade](/cascade)
-- If you'd like to manipulate your data _before_ it arrives in your view, check out [View Models](/view-models).
-- If you want to use a third-party template engine (like Twig), check out [Other Template Engines](/template-engines).
-- If you want to fetch data from Laravel or do other more programmery-things, you'll want to do that from a [Controller](/controllers).
