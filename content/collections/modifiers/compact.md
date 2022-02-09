@@ -4,9 +4,9 @@ blueprint: modifiers
 modifier_types:
   - array
   - utility
-title: As
+title: Compact
 ---
-Converts a comma-delimited list of variable names into an array that can be used anywhere arrays are accepted.
+Converts a comma-delimited list of variable names into an array that can be used anywhere. Arrays are accepted.
 
 It allows colon delimited syntax to target nested variables.
 
