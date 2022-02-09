@@ -6,9 +6,9 @@ title: 'Add Slashes'
 ---
 Modifies a string by adding backslashes before characters that need to be escaped. These characters are:
 
-- single quote (')
-- double quote (")
-- backslash (\)
+- single quote `'`
+- double quote `"`
+- backslash `\`
 
 This is most often used when passing string data into JavaScript.
 
