@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: 'Is Embeddable'
 ---
-Checks to see if a video URL is embeddable. ie. If it is a YouTube or Vimeo URL.
+Checks to see if a video URL is embeddable. In other words: YouTube or Vimeo URL are considered as embeddable.
 
 Plays nicely with the [Video fieldtype](/fieldtypes/video) and the [embed_url modifier](/modifiers/embed_url).
 
