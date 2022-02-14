@@ -21,7 +21,11 @@ Instead of naming your views `myview.antlers.html` use `myview.blade.php` extens
 
 ## View Data
 
-You will have access to the same top level data as you would in Antlers views.
+You will have access to the same data as you would in Antlers views.
+
+### Current Page
+
+The current page's data will be available in a `$page` variable, and you can access its values using a syntax similar to Eloquent models.
 
 ``` yaml
 ---
@@ -37,20 +41,63 @@ I did not win but I did have good timez.
 ```
 
 ``` blade
-<h1>{{ $title }}</h1>
+<h1>{{ $page->title }}</h1>
 
 <p>First I did
-@foreach ($moves as $move)
+@foreach ($page->moves as $move)
     {{ $move }}, then I did
 @endforeach
 and it was sick.</p>
 
-{{ $content }}
+{{ $page->content }}
 ```
 
 :::tip
 Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade will be escaped. If you need to output unescaped HTML, use `{!! $content !!}`
 :::
+
+### Globals
+
+There will be a variable for each global set. You can access its fields using the same Eloquent model type syntax.
+
+```yaml
+# content/globals/settings.yaml
+data:
+  site_name: Rad City
+```
+
+```blade
+{{ $settings->site_name }}
+```
+
+### System Variables
+
+Top level [system variables](/variables#system-variables) like, `environment`, `logged_in`, etc will be available as dedicated variables.
+
+```blade
+{{ $environment }}
+@if ($logged_in) ... @endif
+```
+
+### Relationships / Queries
+
+Some fieldtypes (e.g. `entries`) will supply their data as query builders. These will work similar to Eloquent models, too.
+
+If you use property access, it will resolve the query builder and get the items.
+
+```blade
+@foreach ($page->related_posts as $post)
+  {{ $post->title }}
+@endforeach
+```
+
+If you use a method, it will give you a query builder and allow you to chain clauses on it.
+
+```blade
+@foreach ($page->related_posts()->where('title', 'like', '%awesome%')->get() as $post)
+  {{ $post->title }}
+@endforeach
+```
 
 
 ## Using Tags with Blade
