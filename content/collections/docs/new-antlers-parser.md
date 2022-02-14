@@ -555,7 +555,7 @@ The `switch` is perfect for complex conditions with many possible cases, or usin
         (size == 'md') => '(min-width: 768px) 55vw, 90vw',
         (size == 'lg') => '(min-width: 768px) 75vw, 90vw',
         (size == 'xl') => '90vw'
-        () => 100vw
+        () => '100vw'
     )
 }}
 ```
@@ -1058,7 +1058,7 @@ Tag Parameters are **interpolated**, so you can include variables and primitive 
 
 ```
 {{ nav from="{segment_1}/{segment_2}" }}
-{{ collection:blog limit="{entry_limit} ?? 10" }}
+{{ collection:blog limit="{entry_limit ?? 10}" }}
 ```
 
 You can use **dynamic binding** to pass the value of any variable by prefixing the parameter with a colon and using the _name_ of the variable as your argument:
