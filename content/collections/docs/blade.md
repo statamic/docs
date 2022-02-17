@@ -106,7 +106,7 @@ You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax.
 
 ``` blade
 @foreach(Statamic::tag('collection:pages')->limit(3) as $page)
-    <li>{{ $page['title'] }}</li>
+    <li>{{ $page->title }}</li>
 @endforeach
 ```
 
@@ -120,24 +120,37 @@ You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax.
 When using multi-word parameters, like `query_scope`, you must use the camelCased version (`queryScope`).
 :::
 
+### Using Explicit Param Setters
+
+If you need to set a param containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
+
+```php
+Statamic::tag('collection:pages')->param('title:contains', 'pizza')
+```
+
+Or even set multiple parameters at once using the plural `params()` method:
+
+```php
+Statamic::tag('collection:pages')->params([
+    'title:contains' => 'pizza',
+    'description:contains' => 'lasagna',
+])
+```
+
 ### Passing Contextual Data
 
 You can pass in contextual data to the tag using the `context($data)` method:
 
-```blade
-@foreach(Statamic::tag('collection:pages')->context($context) as $page)
-	{{ $page['title'] }}<br>
-@endforeach
+```php
+Statamic::tag('collection:pages')->context($context)
 ```
 
 ### Disabling Augmentation
 
 [Augmentation](/extending/augmentation) is enabled by default (as it is in antlers), but you can disable augmentation using the `withoutAugmentation()` method.
 
-```blade
-@foreach(Statamic::tag('collection:pages')->withoutAugmentation() as $page)
-	{{ $page->title }}<br>
-@endforeach
+```php
+Statamic::tag('collection:pages')->withoutAugmentation()
 ```
 
 
