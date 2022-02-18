@@ -1067,6 +1067,18 @@ You can use **dynamic binding** to pass the value of any variable by prefixing t
 {{ nav :from="segment_1" }}
 ```
 
+You can "void" a parameter using the `void` keyword. A voided parameter will act like you haven't used it at all. It's most useful when you may or may not need a parameter:
+
+```
+{{ if wide }}                                  {{# [tl! --:start] #}}
+    {{ svg src="hamburger" }}
+{{ else }}
+    {{ svg src="hamburger" class="w-full" }}
+{{ /if }}                                      {{# [tl! --:end] #}}
+
+{{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
+```
+
 ## Working With Templates
 
 ### Layouts
