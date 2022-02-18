@@ -225,6 +225,46 @@ Entry::query()
 ```
 
 
+## Conditional Clauses
+Conditional clauses can be applied based on another condition, for example the value for an input on the HTTP request. 
+
+```php
+Entry::query()
+    ->when($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    })
+    ->get();
+```
+
+You can also pass a default value which will be applied when the condition fails:
+
+```php
+Entry::query()
+    ->when($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    }, function ($query) {
+		$query->where('status', '<>', 'featured')
+      		->where('status', '<>', 'sticky');
+    })
+    ->get();
+```
+
+If you want to simply apply a clause when a value fails you can use `unless()`:
+
+```php
+Entry::query()
+    ->unless($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    })
+    ->get();
+```
+
+
+
+
 ## Operators
 
 The following operators are available in [basic where clauses](#basic-where-clauses) when appropriate for a targeted field's datatype, just like SQL.
