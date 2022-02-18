@@ -245,8 +245,8 @@ Entry::query()
 		$query->where('status', 'featured')
       		->orWhere('status', 'sticky');
     }, function ($query) {
-		$query->where('status', '<>', 'featured')
-      		->where('status', '<>', 'sticky');
+		$query->where('status', '!=', 'featured')
+      		->where('status', '!=', 'sticky');
     })
     ->get();
 ```
