@@ -153,6 +153,28 @@ Statamic::tag('collection:pages')->context($context)
 Statamic::tag('collection:pages')->withoutAugmentation()
 ```
 
+### Fetching the output
+
+When you loop over a tag or cast it to a string, it will automatically fetch the result for you. In some cases, you may want to explicitly fetch the output. You can do that with the `fetch` method.
+
+```blade
+@php($output = Statamic::tag('collection:pages')->fetch())
+```
+
+### Pagination
+
+For tags that provide pagination, you can `fetch` the tag's output in a variable, then output the results and links separately:
+
+```blade
+@php($tag = Statamic::tag('collection:pages')->paginate(2)->as('pages')->fetch())
+
+@foreach($tag->pages as $page)
+    <li>{{ $page->title }}</li>
+@endforeach
+
+{{ $tag->paginate['auto_links'] }}
+```
+
 
 ## Using Modifiers with Blade
 
