@@ -11,8 +11,7 @@ Check if a value contains another value. Supports both strings and arrays.
 
 Returns `true` if a match is found, otherwise `false`.
 
-The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching
-variable, otherwise it will use the parameter as the value.
+The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching variable, otherwise it will use the parameter as the value.
 
 ## Strings
 
