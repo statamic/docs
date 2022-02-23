@@ -162,7 +162,7 @@ protected function configFieldItems(): array
 | ***other*** | Some fieldtypes have additional configuration options available. |
 
 :::tip
-A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.2/src/Fieldtypes>
+A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/3.2/src/Fieldtypes>
 :::
 
 ### Adding configuration fields to existing fieldtypes
