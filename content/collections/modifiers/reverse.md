@@ -24,6 +24,6 @@ order_of_ceremony:
 ```
 
 ```html
-diapers
+diaper
 party, eat, service, photos
 ```
