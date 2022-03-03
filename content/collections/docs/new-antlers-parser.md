@@ -1284,6 +1284,18 @@ Hey, look at that @{{ noun }}!
 Hey, look at that {{ noun }}!
 ```
 
+The `@` can also be used to escape individual braces within tag parameters or strings.
+
+```
+{{ partial:example attributes="class='@{font-bold: isImportant@}'" }}
+// attributes="class='{font-bold: isImportant"}'"
+```
+
+```
+{{ "string @{foo@} bar" }}
+// "string {foo} bar"
+```
+
 ### The `noparse` Tag
 
 Use this method if you need to prevent entire code blocks from being parsed.
