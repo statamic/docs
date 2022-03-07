@@ -167,6 +167,58 @@ Entry::query()
 Note: `orWhereColumn` is also supported.
 
 
+### WhereDate / WhereMonth / WhereDay / WhereYear / WhereTime
+
+The `whereDate` method lets you compare a field's value against a date:
+
+```php
+Entry::query()
+    ->whereDate('date', '=', '2022-01-01') // [tl! ~~]
+    ->get();
+```
+
+You can also compare against a `Carbon` instance:
+
+```php
+Entry::query()
+    ->whereDate('date', '>=', \Illuminate\Support\Carbon::parse('2022-01-01')) // [tl! ~~]
+    ->get();
+```
+
+The `whereMonth` method lets you compare a field's value against a specific month:
+
+```php
+Entry::query()
+    ->whereMonth('date', '=', '1') // [tl! ~~]
+    ->get();
+```
+
+The `whereDay` method lets you compare a field's value against a specific day:
+
+```php
+Entry::query()
+    ->whereMonth('date', '=', '12') // [tl! ~~]
+    ->get();
+```
+
+The `whereYear` method lets you compare a field's value against a specific year:
+
+```php
+Entry::query()
+    ->whereYear('date', '=', '2022') // [tl! ~~]
+    ->get();
+```
+
+The `whereTime` method lets you compare a field's value against a specific time:
+
+```php
+Entry::query()
+    ->whereTime('date', '=', '09:00') // [tl! ~~]
+    ->get();
+```
+
+
+
 ### WhereIn
 The `whereIn` method lets you check a field against an a given array of values:
 
