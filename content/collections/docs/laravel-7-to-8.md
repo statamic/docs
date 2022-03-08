@@ -7,7 +7,7 @@ template: page
 ---
 On a fundamental level, a Statamic website is a Laravel application with Statamic installed into it. When you upgrade Statamic, you're _just_ upgrading Statamic — Laravel is not automatically upgraded at the same time.
 
-Major Statamic releases may require newer versions of Laravel, which result in the need to upgrade the Laravel site of the application. There are many benefits to staying up to date with the latest versions of Laravel — security, performance, and compatibility with a wider range of Composer packages to name a few.
+Major Statamic releases may require newer versions of Laravel, which result in the need to upgrade the Laravel side of the application. There are many benefits to staying up to date with the latest versions of Laravel — security, performance, and compatibility with a wider range of Composer packages to name a few.
 
 :::warning Disclaimer
 **This guide is intended for "stock" Statamic sites.**
