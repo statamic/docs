@@ -21,7 +21,7 @@ If you've added custom functionality, this guide will still be helpful, just be 
 You should be performing your updates **locally**. Never update directly on production.
 :::
 
-1. First your application should be version controlled with Git. These steps assume you'll be able to look at a git diff to make sure you don't remove important changes, dependencies, or routes.
+1. First, your site should be version controlled with Git. These steps assume you'll be able to look at a git diff to make sure you don't remove important changes, dependencies, or routes.
 
 1. Make sure all Composer dependencies are up to date by running `composer update`.
    ```bash
@@ -36,16 +36,16 @@ You should be performing your updates **locally**. Never update directly on prod
 1. Download a zip of a fresh `statamic/statamic` site.
    Head to the [3.2.7 GitHub release](https://github.com/statamic/statamic/releases/tag/v3.2.7), download `Source code (zip)`, and unzip it somewhere on your computer.
 
-1. Delete (or move to trash) `app`, `bootstrap`, `config`, `routes`, `composer.json`, and `artisan`.
+1. Delete (or move to another folder, or the trash) `app`, `bootstrap`, `config`, `routes`, `composer.json`, and `artisan`.
 
 1. Copy `app`, `bootstrap`, `config`, `routes`, `composer.json`, and `artisan` from the zip into your project.
 
-1. Look through the Git changes to see if anything was removed that shouldn't have been. For example:
+1. Look through the Git changes to see if anything was removed that you wanted to keep. For example:
 
-   - anything custom you may have added to the `app` directory
-   - configuration values you may have changed in the `config` directory
-   - additional dependencies in `composer.json`
-   - custom routes you may have configured in `routes/*`
+   - Anything custom, like a Modifier or Controller, you may have added to the `app` directory
+   - Configuration values you may have changed in the `config` directory
+   - Additional dependencies in `composer.json`
+   - Custom routes you may have configured in `routes/*`
 
 1. Update your dependencies again now that you have an updated `composer.json`.
    ```bash
