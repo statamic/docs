@@ -65,6 +65,7 @@ However, if you want to use validation rules that target other fields, and the t
 
 This would make sure that the `price` field is only required if the `purchasable` toggle is true within that same set. Without `{this}`, it would be checking for a `purchasable` field at the top level of your form.
 
+<!--
 :::best-practice
 Rather than reaching for `{this}`, you can consider using conditional fields along with the `sometimes|required` rules.
 
@@ -83,6 +84,7 @@ Rather than reaching for `{this}`, you can consider using conditional fields alo
           - required
 ```
 :::
+-->
 
 
 ## Available Rules
