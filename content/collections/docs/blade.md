@@ -2,13 +2,11 @@
 id: c7816387-ebc4-4204-b5f2-8e7073a4db8b
 blueprint: page
 title: 'Blade Templates'
-intro: '[Antlers](/antlers) is not _always_ the best template engine for the job. If you''re using Statamic as a headless CMS or want to share views with a Laravel application already using [Blade](https://laravel.com/docs/blade) or another engine, you can do that. **Just know there are a few caveats before you do.**'
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1632748828
+intro: '[Antlers](/antlers) is not _always_ the best template engine for the job. If you''re using Statamic as a headless CMS or want to share views with a Laravel application already using [Blade](https://laravel.com/docs/blade) or another engine, you can do that.'
 ---
 ## Overview
 
-While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend.
+While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend views.
 
 Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all in one spot. If you choose to **not** use Antlers, just know you _may_ need to create controllers and routes to fetch content and map them to templates.
 
