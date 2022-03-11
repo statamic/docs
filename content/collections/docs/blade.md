@@ -10,13 +10,11 @@ updated_at: 1632748828
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend.
 
-Antlers handles the responsibilities of both Blade _and_ [Controllers](/controllers), all in your template. If you choose to **not** use Antlers, know that you'll have to do additional work in PHP somewhere to fetch and prep content another way.
-
-You can use [Blade](https://laravel.com/docs/blade) or other template engines by using their respective file extensions.
+Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all in one spot. If you choose to **not** use Antlers, just know you _may_ need to create controllers and routes to fetch content and map them to templates.
 
 ## How to Render A Template with Blade
 
-Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension (or whatever other engine's extensions you may have installed).
+Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension.
 
 
 ## View Data
@@ -37,7 +35,7 @@ moves:
   - L-kick
   - Headspin
 ---
-I did not win but I did have good timez.
+I did not win but I did have a good time.
 ```
 
 ``` blade
@@ -58,7 +56,7 @@ Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade
 
 ### Globals
 
-There will be a variable for each global set. You can access its fields using the same Eloquent model type syntax.
+There is a variable for each global set, and its fields can be accessed using the same Eloquent style syntax.
 
 ```yaml
 # content/globals/settings.yaml
@@ -100,7 +98,7 @@ If you use a method, it will give you a query builder and allow you to chain cla
 ```
 
 
-## Using Tags with Blade
+## Using Tags with Blade 🆕
 
 You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax. Instantiate your tag with the `Statamic::tag()` method and chain parameters as needed.
 
@@ -120,9 +118,9 @@ You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax.
 When using multi-word parameters, like `query_scope`, you must use the camelCased version (`queryScope`).
 :::
 
-### Using Explicit Param Setters
+### Using Explicit Parameter Setters
 
-If you need to set a param containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
+If you need to set a parameter containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
 
 ```php
 Statamic::tag('collection:pages')->param('title:contains', 'pizza')
@@ -176,7 +174,7 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 ```
 
 
-## Using Modifiers with Blade
+## Using Modifiers with Blade 🆕
 
 You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters.
 
@@ -227,8 +225,7 @@ When the _template_ is **not** an Antlers view, this rule doesn't apply. The lay
 </html>
 ```
 
-This rule only applies to the _template_. You're free to use a `.antlers.html` template and a `.blade.php` layout.
-If you want to do this, instead of a `yield`, the contents of the template will be available as in the `template_content` variable.
+This rule only applies to the _template_. You're free to use a `.antlers.html` template and a `.blade.php` layout. If you want to do this, the contents of the template will be available as in the `template_content` variable instead of `yield`.
 
 ```
 {{# mytemplate.antlers.html #}}
