@@ -47,15 +47,15 @@ This affords Statamic an incredible amount of control. It can go sideways and sl
 - The ability to _set_ variables
 - Syntax errors that reference the exact line, character, and type of error
 - The ability to control parse order through sub-expressions
-- Merge, group, order, and manipulate data natively
+- Merge, group, order, and manipulate data without modifiers
 - Perform a robust set of mathematical operations
 - Concatenate, increment, and decrement values
 - More template logic and control flow operators
-- More powerful template enh
 - An improved Modifier syntax to provide better readability and type handling
 - A smarter, more forgiving matching engine so more things Just Work™
 - Self-iterating assignments
 - Self-closing tags
+- `next` and `previous` loop traversal helpers
 - Run-time caching for huge performance boosts
 
 This new engine is a powerful factory, mad scientist laboratory, and wizarding school all rolled into one. 🏭🧑‍🔬🧙‍♀️
