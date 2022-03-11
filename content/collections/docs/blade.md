@@ -8,9 +8,9 @@ intro: '[Antlers](/antlers) is not _always_ the best template engine for the job
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend views.
 
-Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all in one spot. If you choose to **not** use Antlers, just know you _may_ need to create controllers and routes to fetch content and map them to templates.
+Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing.
 
-## How to Render A Template with Blade
+## How to Render a Template with Blade
 
 Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension.
 
@@ -243,4 +243,76 @@ The template content
 The template contents
 </body>
 </html>
+```
+
+## Routes and Controllers
+
+If you choose to take a more "traditional" Laravel application approach to building your Statamic site, you can use routes and controllers much the same way you might with Eloquent models instead of Statamic's native collection routing and data cascade. Here's an example:
+
+**The Routes**
+
+```php
+use App\Http\Controllers\BlogController;
+
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog/{slug}', [BlogController::class, 'show']);
+```
+
+**The Controller**
+```php
+<?php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Statamic\Facades\Entry;
+
+class BlogController extends Controller
+{
+    public function index()
+    {
+        $entries = Entry::query()
+            ->where('collection', 'blog')
+            ->take(10)
+            ->get();
+
+        return view('blog.index', ['entries' => $entries]);
+    }
+
+    public function show($slug)
+    {
+        $entry = Entry::query()
+            ->where('collection', 'blog')
+            ->where('slug', $slug)
+            ->first();
+
+        return view('blog.show', ['entry' => $entry]);
+    }
+}
+```
+
+**The Index View**
+```blade
+<h1>The Blog</h1>
+
+<div class="grid md:grid-cols-3 gap-3">
+    @foreach($entries as $entry)
+    <a href="{!! $entry->url !!}" class="p-2 rounded shadow-sm">
+        <img src="{!! $entry->featured_image !!}" class="w-full">
+        <h2>{!! $entry->title !!}</h2>
+        <div>{!! $entry->date->format('Y-m-d') !!}</div>
+    </a>
+    @endforeach
+</div>
+```
+
+**The Show View**
+```blade
+<header>
+    <h1>{!! $title !!}</h1>
+    <div>{!! $entry->date->format('Y-m-d') !!}</div>
+</header>
+<div class="mt-8 prose">
+    <img src="{!! $entry->featured_image !!}" class="w-full">
+    {!! $entry->content !!}
+</div>
 ```
