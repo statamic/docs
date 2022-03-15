@@ -57,7 +57,7 @@ If you encounter any other errors, Google them frantically and try anything and 
 **Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub discussions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
-    <img src="/img/quick-start/installed.png" alt="Statamic 3 Welcome Screen">
+    <img src="/img/quick-start/installed-3.3.png" alt="Statamic 3 Welcome Screen">
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 

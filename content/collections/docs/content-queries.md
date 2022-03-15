@@ -206,6 +206,38 @@ Entry::query()
 
 Note: `orWhereNull` and `orWhereNotNull` are also both supported.
 
+### WhereDate
+
+The `whereDate` method may be used to compare a column's value against a date:
+
+```php
+$users = Entry::query()->whereDate('created_at', '2016-12-31')->get();
+```
+
+The `whereMonth` method may be used to compare a column's value against a specific month:
+
+```php
+$users = Entry::query()->whereMonth('created_at', '12')->get();
+```
+
+The `whereDay` method may be used to compare a column's value against a specific day of the month:
+
+```php
+$users = Entry::query()->whereDay('created_at', '31')->get();
+```
+
+The `whereYear` method may be used to compare a column's value against a specific year:
+
+```php
+$users = Entry::query()->whereYear('created_at', '2016')->get();
+```
+
+The `whereTime` method may be used to compare a column's value against a specific time:
+
+```php
+$users = Entry::query()->whereTime('created_at', '=', '11:20:45')->get();
+```
+
 
 
 ## Complex Where Clauses

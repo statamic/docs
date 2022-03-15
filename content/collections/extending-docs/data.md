@@ -105,20 +105,61 @@ Make sure to use the `make` method, rather than simply `new`'ing up a class. For
 
 ## Getting Field Data
 
+More often than not, you'll want to use the "standard" way of getting data out of items like entries. Other less common ways are explained further down the page.
+
+### Standard
+
+You can use property access to get a single field's augmented value:
+
+```yaml
+id: 1
+title: My post
+content: |
+  # Heading
+  The post content.
+related_posts: [2, 3, 4]
+```
+
+```php
+$entry->id; // 123
+$entry->title; // "My post"
+$entry->content; // "<h1>Heading</h1><p>The post content.</p>
+$entry->related_posts; // EntryCollection([Entry, Entry, Entry])
+```
+
+This will be the value of the field, factoring in inheritance, and will perform any required [augmentation](/extending/augmentation).
+
+### Relationships
+
+Any fields with query builders (like the [Entries](/fieldtypes/entries) fieldtype) will be available using the method for the corresponding field. This will allow you to further refine your results.
+
+```php
+$entry->related_posts() // EntryQueryBuilder
+      ->where('published', true)->get(); // EntryCollection([Entry, Entry])
+```
+
+As shown in the earlier example, if you use the property, it will just give you the results without you needing to manually complete the query.
+
+```php
+$entry->related_posts; // EntryCollection([Entry, Entry, Entry])
+```
+
 ### Data
 This would be the data defined directly on the item, like what you'd find in an entry's YAML front-matter. (Some specific keys may be stripped out, like an entry's `id`).
 
 ```yaml
 id: 123
 title: My post
-content: The post content
+content: |
+  # Heading
+  The post content
 ```
 
 ```php
 $entry->data();
 // Illuminate\Support\Collection([
 //    'title' => 'My post',
-//    'content' => 'The post content'
+//    'content' => "# Heading\nThe post content'
 // ])
 ```
 
@@ -126,9 +167,10 @@ You can use the `get` method to get a single field's data.
 
 ```php
 $entry->get('title') // 'My post'
+$entry->get('content') // "# Heading\nThe post content"
 ```
 
-More often than not, you'll want to be using `values` or `value` instead.
+This does not factor in inheritance or augmentation.
 
 ### Values
 The "values" are similar to data, except they will also inherit from any originating items. For example, if an entry has been localized
@@ -138,6 +180,7 @@ from another entry.
 id: 123
 title: My post
 content: The post content
+image: post.jpg
 ```
 
 ```yaml
@@ -151,6 +194,7 @@ $entry->values();
 // Illuminate\Support\Collection([
 //    'title' => 'My localized post',
 //    'content' => 'The post content'
+//    'image' => 'post.jpg',
 // ])
 ```
 
@@ -158,39 +202,51 @@ You can use the `value` method to get a single field's value.
 
 ```php
 $entry->value('title'); // 'My localized post'
+$entry->value('image'); // 'post.jpg'
 ```
 
 ### Augmented Values
 
-Items that support augmentation (e.g. entries) will be able to provide an augmented version of themselves.
+If you want to get the [Value instances](/extending/augmentation#value) for the fields, you may use the following methods.
 
-Read more about [Augmentation](/extending/augmentation).
-
-You can get a single augmented value:
+:::tip
+Most of the time, you probably **don't** need to reach for these. Using property access will get the the underlying augmented value.
 
 ```php
-$entry->augmentedValue('title'); // Statamic\Fields\Value
+$entry->title; // "Post title"
+$entry->image; // Asset
+$entry->related_posts; // EntryCollection(Entry, Entry, ...)
+```
+:::
+
+You can get a single augmented value instance:
+
+```php
+$instance = $entry->augmentedValue('image'); // Statamic\Fields\Value({ raw: "post.jpg", fieldtype: "assets" })
+$instance->value(); // Asset
 ```
 
-All the augmented values:
+All the available augmented values. Each item in the returned collection will be a `Value` instance.
 
 ``` php
-$entry->toAugmentedArray();
-// [
-//    'title' => Statamic\Fields\Value,
-//    'content' => Statamic\Fields\Value,
-//    'collection' => Statamic\Entries\Collection,
-//    'uri' => '/posts/my-post',
+$entry->toAugmentedCollection();
+// AugmentedCollection([
+//    'title' => Value('The post title'),
+//    'content' => Value("# Heading\nSome content"),
+//    'collection' => Value(Statamic\Entries\Collection),
+//    'uri' => Value('/posts/my-post'),
 //    ...etc...
-// ]
+// ])
 ```
 
 Or a subset of augmented values:
 
 ```php
-$entry->toAugmentedArray(['title', 'collection']);
-// [
-//    'title' => Statamic\Fields\Value,
-//    'collection' => Statamic\Entries\Collection,
-// ]
+$entry->toAugmentedCollection(['title', 'collection']);
+// AugmentedCollection([
+//    'title' => Value('The post title'),
+//    'collection' => Value(Statamic\Entries\Collection),
+// ])
 ```
+
+The `toAugmentedArray` method does the same as `toAugmentedCollection`, except that it returns an array.

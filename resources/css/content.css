@@ -31,7 +31,7 @@ article, .markdown {
     }
 
     h5 {
-        @apply font-sans text-black font-bold text-base -mb-4 mt-12 relative;
+        @apply font-sans text-black font-bold text-base mt-12 relative;
     }
 
     p {
@@ -100,7 +100,7 @@ article, .markdown {
         @apply -left-4 opacity-100;
     }
 
-    >ul:not([class*="list-"]) {
+    ul:not([class*="list-"]), .hint ul {
         @apply pl-0 list-none mb-6 text-base;
 
         li {
@@ -139,7 +139,7 @@ article, .markdown {
         }
     }
 
-    > ol {
+    > ol, .hint ol {
         @apply list-none text-base md:text-lg relative;
         counter-reset: item;
         z-index: 20;
@@ -156,7 +156,7 @@ article, .markdown {
         }
     }
 
-    > ol.ninja {
+    ol.ninja {
         > li::before {
             @apply bg-ninja-green;
             z-index: -2;
@@ -199,7 +199,7 @@ article, .markdown {
                 @apply rounded-b;
             }
             td {
-                @apply px-3 py-2 md:px-5 md:py-3;
+                @apply px-3 py-2 md:px-5 md:py-3 leading-loose;
             }
             p {
                 @apply text-sm md:text-base leading-tight;
