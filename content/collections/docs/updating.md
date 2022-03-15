@@ -48,3 +48,12 @@ To go back to a more traditional version range constraint, you may want to repla
     }
 }
 ```
+
+## Major Upgrades
+
+Upgrading between major Statamic versions sometimes involves extra manual steps. Check out these guides for further details.
+
+- [3.2 to 3.3](/upgrade-guide/3-2-to-3-3)
+- [3.1 to 3.2](/upgrade-guide/3-1-to-3-2)
+- [3.0 to 3.1](/upgrade-guide/3-0-to-3-1)
+- [2.x to 3.x](/upgrade-guide/v2-to-v3)
