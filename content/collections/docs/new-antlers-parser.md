@@ -105,7 +105,7 @@ There are three kinds of delimiters.
 
 1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth. There must be a left pair and a right pair, just like HTML's `<` and `>` angle braces.
 1. Expressions are **case sensitive**.
-3. Hyphens and underscores are **not** interchangeable.
+3. Use underscores and not dashes to separate words in variable names.
 1. Whitespace between the curly braces expression is optional, but **recommended** for readability.
 1. You **may** break up an expression onto multiple lines.
 
@@ -126,7 +126,7 @@ This can make sense when you have lots of parameters.
 }}
 
 This is terrible in every possible way.
-{{play-sad_Tromb0ne            }}
+{{playSad_Tromb0ne            }}
 ```
 
 :::tip
