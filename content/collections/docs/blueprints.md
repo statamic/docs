@@ -261,3 +261,11 @@ listable: hidden
 ```
 
 This will hide the field from entry listings by default, but still allows a user to toggle visibility using the column selector, and save those column preferences for his/her preferred workflow.
+
+
+## Read-only / Disabled Fields
+To display a read-only (or disabled) field in a blueprint add the `read_only` parameter to the fields yaml config.
+
+```yaml
+read_only: true
+```
