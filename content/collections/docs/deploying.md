@@ -22,7 +22,7 @@ There are several popular ways to host and deploy a Statamic application to prod
 **We recommend VPS hosting as the best all around solution for Statamic deployments.** A VPS gives you the ability to manage your own server instance, allowing for full SSH access and scalability, without the security risks of other customers on the same server doing Lord knows what (as with shared).
 
 - [Digital Ocean](https://m.do.co/c/6469827e2269)
-- [Linode](https://www.linode.com/)
+- [Linode](https://linode.gvw92c.net/statamic)
 - [Vultr](https://www.vultr.com/)
 
 We highly recommend combining VPS with a server management service to help you provision and configure your server. These services also help to make Statamic deployment _extremely easy_ using common Git push-to-deploy strategies. Yes, they cost a little extra, but they're worth every penny, Euro, rupee, or doubloon.

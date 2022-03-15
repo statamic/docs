@@ -26,6 +26,16 @@ parameters:
     description: >
       You can choose to turn off the home page in the tree, opting to start the crumbs from the first level nav item. Doesn't do
       anything if you're using the `from` paramter.
+  -
+    name: max_depth
+    type: 'int'
+    description: >
+      This limits how deep the tag will render. If you are using [recursion](#multi-level), this could be useful to stop at a certain point. It also helps with [performance](#performance). By default there is no max.
+  -
+    name: select
+    type: array
+    description: >
+      Limits the fields that will be made available to the tag. Selecting fewer fields will improve performance. By default all variables will be selected. See [performance](#performance).
 variables:
   -
     name: is_published
@@ -192,3 +202,12 @@ Take the time to wrap your brain around this concept and learn to wield it and a
 :::tip
 The Jedi have blessed us all with [even more recursive nav examples](/tips/recursive-nav-examples), so that you may have the high ground next time you're fighting that losing nav battle on Mustafar.
 :::
+
+## Performance
+
+You may improve performance of the `nav` tag in two ways:
+
+1. Set the `max_depth` parameter appropriately.
+   If you only need one level, set `max_depth="1"`.
+2. Select the fields that you'll be using.
+   If you're only going to be using `{{ title }}` and `{{ url }}` in the loop, set `select="title|url"`.

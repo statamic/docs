@@ -209,7 +209,7 @@ Returns a [paginated](#pagination) list of [EntryInterface](#entry-interface) ty
 | `collection` | `[String]` | Narrows down the results by entries in one or more collections.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
-| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filters).
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:
@@ -433,7 +433,7 @@ Returns a [paginated](#pagination) list of [TermInterface](#term-interface) type
 | `taxonomy` | `[String]` | Narrows down the results by terms in one or more taxonomies.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
-| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filters).
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:
@@ -479,7 +479,7 @@ Used for querying a single taxonomy term.
 {
     "term": {
         "id": "tags::one",
-        "title": "Tag One""
+        "title": "Tag One"
     }
 }
 ```
@@ -495,7 +495,7 @@ Returns a list of [GlobalSetInterface](#global-set-interface) types.
 | `taxonomy` | `[String]` | Narrows down the results by terms in one or more taxonomies.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
-| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filters).
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:

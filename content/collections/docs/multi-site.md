@@ -50,7 +50,10 @@ return [
 Every Statamic install needs at least one site, whether you are using multiple sites or not. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
 
 ### Locale
-Each site has a `locale` which is used to format region-specific data (like date strings).
+Each site has a `locale` which is used to format region-specific data (like date strings). This should correspond to a locale installed on the server.
+
+### Language
+You can specify which language file should be used for a site by setting `lang`. Since most language files are non-specific, they'll use the short version of `locale` by default (e.g. the `de` language files are used if the locale is `de_CH`). If you want to explicitly use the `de_CH` language files, you can add `'lang' => 'de_CH'`.
 
 ### URL
 A URL is also required, which defines where statamic will serve and generate all URLs relative to.

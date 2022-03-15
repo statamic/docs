@@ -60,7 +60,7 @@ id: 7dfba904-8a74-40e1-b507-51cd2b5f6123
 
 ## Overview
 
-Date fields have highly configurable user interfaces. They can be as simple as a single date and/or time, or as fancy as a multi-month calendar with multi-day range picking. Be sure to experiment with the various [config options](#config-options) to create the best experience for your content authors.
+Date fields have highly configurable user interfaces. They can be as simple as a single date and/or time, or as fancy as a multi-month calendar with multi-day range picking. Be sure to experiment with the various config [options](#options) to create the best experience for your content authors.
 
 ## Data Structure
 

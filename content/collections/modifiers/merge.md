@@ -26,5 +26,5 @@ In this template example we'll merge the two arrays and then pull out a single r
 ```
 
 ```
-<p>Use Oxford Commas</ap>
+<p>Use Oxford Commas</p>
 ```

@@ -1,7 +1,7 @@
 ---
 title: Extending Bard
 stage: 1
-intro: "The Bard fieldtype is a rich-text editor based on [TipTap](https://tiptap.scrumpy.io/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/), which is robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
+intro: "The Bard fieldtype is a rich-text editor based on [TipTap](https://tiptap.dev/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/), which is robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
 ## Required Reading
