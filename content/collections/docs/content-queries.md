@@ -167,6 +167,43 @@ Entry::query()
 Note: `orWhereColumn` is also supported.
 
 
+### WhereDate
+
+The `whereDate` method may be used to compare a column's value against a date:
+
+```php
+$users = Entry::query()->whereDate('created_at', '2016-12-31')->get();
+```
+
+The `whereMonth` method may be used to compare a column's value against a specific month:
+
+```php
+$users = Entry::query()->whereMonth('created_at', '12')->get();
+```
+
+The `whereDay` method may be used to compare a column's value against a specific day of the month:
+
+```php
+$users = Entry::query()->whereDay('created_at', '31')->get();
+```
+
+The `whereYear` method may be used to compare a column's value against a specific year:
+
+```php
+$users = Entry::query()->whereYear('created_at', '2016')->get();
+```
+
+The `whereTime` method may be used to compare a column's value against a specific time:
+
+```php
+$users = Entry::query()->whereTime('created_at', '=', '11:20:45')->get();
+```
+
+### WhereJsonContains
+
+The `whereJsonContains` method may be used to compare a column's value against a date:
+
+
 ### WhereIn
 The `whereIn` method lets you check a field against an a given array of values:
 
@@ -205,38 +242,6 @@ Entry::query()
 ```
 
 Note: `orWhereNull` and `orWhereNotNull` are also both supported.
-
-### WhereDate
-
-The `whereDate` method may be used to compare a column's value against a date:
-
-```php
-$users = Entry::query()->whereDate('created_at', '2016-12-31')->get();
-```
-
-The `whereMonth` method may be used to compare a column's value against a specific month:
-
-```php
-$users = Entry::query()->whereMonth('created_at', '12')->get();
-```
-
-The `whereDay` method may be used to compare a column's value against a specific day of the month:
-
-```php
-$users = Entry::query()->whereDay('created_at', '31')->get();
-```
-
-The `whereYear` method may be used to compare a column's value against a specific year:
-
-```php
-$users = Entry::query()->whereYear('created_at', '2016')->get();
-```
-
-The `whereTime` method may be used to compare a column's value against a specific time:
-
-```php
-$users = Entry::query()->whereTime('created_at', '=', '11:20:45')->get();
-```
 
 
 
@@ -294,6 +299,46 @@ Entry::query()
     ->get();
 ```
 
+## JSON Where Clauses
+JSON values can be queries using the '->' selector:
+
+```php
+Entry::query()
+    ->where('my_field->sub_field', '!=', 'statamic') // [tl! ~~]
+    ->get();
+```
+
+You can query JSON arrays using `whereJsonContains()`
+
+```php
+Entry::query()
+    ->whereJsonContains('my_array_field->sub_field', 'statamic') // [tl! ~~]
+    ->get();
+```
+
+Or can pass an array of values. This will match if any of the values are found in the field.
+
+```php
+Entry::query()
+    ->whereJsonContains('my_array_field->sub_field', ['statamic', 'is', 'rad']) // [tl! ~~]
+    ->get();
+```
+
+You can use whereJsonLength method to query JSON arrays by their length:
+
+```php
+Entry::query()
+    ->whereJsonLength('my_array_field->sub_field', 1) // [tl! ~~]
+    ->get();
+```
+
+```php
+Entry::query()
+    ->whereJsonLength('my_array_field->sub_field', '>', 1) // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereJsonContains ` and `orWhereJsonLength` are also both supported.
 
 
 
