@@ -199,10 +199,6 @@ The `whereTime` method may be used to compare a column's value against a specifi
 $users = Entry::query()->whereTime('created_at', '=', '11:20:45')->get();
 ```
 
-### WhereJsonContains
-
-The `whereJsonContains` method may be used to compare a column's value against a date:
-
 
 ### WhereIn
 The `whereIn` method lets you check a field against an a given array of values:
@@ -321,6 +317,14 @@ Or can pass an array of values. This will match if any of the values are found i
 ```php
 Entry::query()
     ->whereJsonContains('my_array_field->sub_field', ['statamic', 'is', 'rad']) // [tl! ~~]
+    ->get();
+```
+
+You can use `whereJsonDoesntContain()` to query the absence of a value or values in a JSON array:
+
+```php
+Entry::query()
+    ->whereJsonDoesntContain('my_array_field->sub_field', 'statamic') // [tl! ~~]
     ->get();
 ```
 
