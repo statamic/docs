@@ -338,7 +338,7 @@ Entry::query()
     ->get();
 ```
 
-Note: `orWhereJsonContains ` and `orWhereJsonLength` are also both supported.
+Note: `orWhereJsonContains` and `orWhereJsonLength` are also both supported.
 
 
 
