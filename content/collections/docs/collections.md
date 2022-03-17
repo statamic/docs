@@ -112,7 +112,7 @@ Depending on the collection, a dedicated `title` field might not be useful to yo
 For example, a "reviews" collection might just have `author`, `stars`, and `content` fields. You could configure the titles to be "5 star rating by John Smith".
 
 <figure>
-    <img src="/img/title-format-setting.png" alt="Entry Title Format Setting">
+    <img src="/img/title-format-setting.png" alt="Entry Title Format Setting" width="544" height="120">
     <figcaption>Configuring an automated title</figcaption>
 </figure>
 
