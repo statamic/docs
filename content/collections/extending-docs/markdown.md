@@ -35,15 +35,34 @@ Under the hood, we're using the [league/commonmark](https://commonmark.thephplea
 You may add an extension with the `addExtension` or `addExtensions` methods. For example, in the `boot` method of your `AppServiceProvider`, return an extension instance, or an array of them.
 
 ``` php
-Markdown::addExtension(function () {
-    return new EmojiExtension;
-});
+<?php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Statamic\Facades\Markdown;
+use League\CommonMark\Extension\Footnote\FootnoteExtension;
+use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        // Add one extension... [tl! focus:start]
+        Markdown::addExtension(function () {
+            return new Footnote;
+        });
+
+        // or multiple.
+        Markdown::addExtensions(function () {
+            return [new Footnote, new TableOfContentsExtension];
+        }); // [tl! focus:end]
+    }
+}
 ```
-``` php
-Markdown::addExtensions(function () {
-    return [new EmojiExtension, new FootnotesExtension];
-});
-```
+
+:::tip
+You can find a long list of Markdown Extensions [on the CommonMark site](https://commonmark.thephpleague.com/2.0/extensions/overview/), or around on GitHub. We love this [Hint Extension](https://github.com/ueberdosis/commonmark-hint-extension) by Ueberdosis – you're seeing it in action, powering this "Hot Tip" box.
+:::
 
 ### Helper Methods
 
