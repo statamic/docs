@@ -572,7 +572,7 @@ You may modify the blueprint here and it will be reflected in the publish form (
 An example of when this would be useful is to add a section to a blueprint in the publish page on the fly.
 
 ``` php
-public function handle(EntryBlueprintFound $event)
+public function handle(UserBlueprintFound $event)
 {
     $event->blueprint;
 }
