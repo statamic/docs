@@ -75,7 +75,7 @@ title: 'Assets'
 disk: 'assets'
 ```
 
-Each container implements a "disk", also known as a [Laravel Filesystem](https://laravel.com/docs/filesystem). This native Laravel feature groups a [driver](#drivers), URL, location, and [visibility](#visibility) together. Statamic includes a local disk on fresh installs. You can modify or delete it, but many sites can simply use it as is.
+Each container implements a "disk", also known as a [Laravel Filesystem](https://laravel.com/docs/filesystem). This native Laravel feature groups a [driver](#drivers), URL, location, and [visibility](#container-visibility) together. Statamic includes a local disk on fresh installs. You can modify or delete it, but many sites can simply use it as is.
 
 ``` php
 'disks' => [
@@ -113,7 +113,7 @@ Private containers should be located above webroot. If you leave the disk within
   vendor/
 ```
 
-Make sure to also set the [visibility](#visibility) to `private`.
+Make sure to also set the [visibility](#container-visibility) to `private`.
 
 
 ### Container Visibility
@@ -124,7 +124,7 @@ which essentially controls whether they're accessible or not.
 Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
 
 :::tip
-If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#visibility) to `public`.
+If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#container-visibility) to `public`.
 :::
 
 ## Blueprints
