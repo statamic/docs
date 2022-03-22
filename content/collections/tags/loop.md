@@ -36,31 +36,21 @@ Create and iterate through a loop a specific number of times using the `times` p
   {{ value }}
 {{ /loop }}
 ```
-### Loop with variable
 
-``` Data
-Count: "5"
-Value: "Pow"
-```
+### Looping a variable number of times
 
-Single Variable
-```Antlers
-{{ loop times="{Count}" }}
-    {{ Value }}
+
+```antlers
+---
+number: "5"
+text: "Pow"
+---
+
+{{ loop :times="number" }}
+    {{ text }}
 {{ /loop }}
 
 // Output: PowPowPowPowPow
-```
-
-Math Operation
-```Antlers
-{{ newValue = 8 - {Count} }}
-    
-{{ loop times="{newValue}" }}
-    {{ Value }}    
-{{ /loop }}
-    
-// Output: PowPowPow
 ```
 
 ### Populate a select field with years
