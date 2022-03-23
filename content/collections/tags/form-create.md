@@ -24,6 +24,10 @@ parameters:
     type: boolean
     description: When `true`, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL. For example, `?redirect=/thanks`
   -
+    name: csrf
+    type: boolean
+    description: When `false`, the hidden `name="_token"` attribute won't be added to the form so you can use other ways of providing the token. Defaults to `true`. 
+  -
     name: files
     type: boolean
     description: When `true`, the `enctype="multipart/form-data"` attribute will be rendered on your `<form>` tag for file uploads.
