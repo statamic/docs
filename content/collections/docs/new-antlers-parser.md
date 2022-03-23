@@ -1179,10 +1179,42 @@ Now you can define the context of the named slot using the `slot:name` tag forma
   </a>
 {{ /partial:modal }}
 ```
+### Stacks 🆕
+
+Antlers allows you to push template code to a "stack" which can be rendered somewhere else in your layout (most commonly) or another view. This can be particularly useful for specifying any JavaScript libraries required by your child views:
+
+```
+{{ push:scripts }}
+    <script src="//unpkg.com/alpinejs" defer></script>
+{{ /push:scripts }}
+```
+
+You may push to a stack as many times as needed. To render the complete stack contents, pass the name of the stack to the `{{ stack }}` tag:
+
+```
+<head>
+  <!-- All that heady stuff here -->
+  {{ stack:scripts }}
+</head>
+```
+
+If you would like to prepend content onto the **beginning** of a stack, you should use the `{{ prepend }}` tag:
+
+```
+{{ push:scripts }}
+    This will be second...
+{{ /push:scripts }}
+
+{{# Later... #}}
+
+{{ prepend:scripts }}
+    This will be first...
+{{ prepend:scripts }}
+```
 
 ### Once 🆕
 
-The `{{ once }}` tag allows you to define a portion of the template that will only be evaluated once per rendering cycle. This may be useful for pushing a given piece of JavaScript into the page's header using stacks. For example, if you are looping through entries and rendering them with a partial, you may wish to only push the JavaScript to the header once, not every single time.
+The `{{ once }}` tag allows you to define a portion of the template that will only be evaluated once per rendering cycle. This may be useful for pushing a given piece of JavaScript into the page's header using [stacks](#stacks). For example, if you are looping through entries and rendering them with a partial, you may wish to only push the JavaScript to the header once, not every single time.
 
 ```
 {{ collection:blog }}
@@ -1230,39 +1262,6 @@ Notice the [`yield`](/tags/yield) tag. The contents of that tag will be rendered
 {{ section:footer }}
   <p>Hi, I am a special footer! 👋</p>
 {{ /section:footer }}
-```
-
-### Stacks 🆕
-
-Antlers allows you to push template code to a "stack" which can be rendered somewhere else in your layout (most commonly) or another view. This can be particularly useful for specifying any JavaScript libraries required by your child views:
-
-```
-{{ push:scripts }}
-    <script src="//unpkg.com/alpinejs" defer></script>
-{{ /push:scripts }}
-```
-
-You may push to a stack as many times as needed. To render the complete stack contents, pass the name of the stack to the `{{ stack }}` tag:
-
-```
-<head>
-  <!-- All that heady stuff here -->
-  {{ stack:scripts }}
-</head>
-```
-
-If you would like to prepend content onto the **beginning** of a stack, you should use the `{{ prepend }}` tag:
-
-```
-{{ push:scripts }}
-    This will be second...
-{{ /push:scripts }}
-
-{{# Later... #}}
-
-{{ prepend:scripts }}
-    This will be first...
-{{ prepend:scripts }}
 ```
 
 ## Prevent Parsing
