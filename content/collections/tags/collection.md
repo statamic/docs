@@ -87,7 +87,7 @@ parameters:
     description: 'Scope your entries with a variable prefix.'
     required: false
   -
-    name: locale
+    name: locale|site
     type: string
     description: 'Show the retrieved content in the selected locale.'
     required: false
