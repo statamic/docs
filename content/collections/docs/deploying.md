@@ -169,3 +169,5 @@ Given a properly configured Laravel Forge (or similar) solution, your typical de
 - [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) – When working with a team (and even when by yourself) it's a good practices to follow a standardized workflow for working with git. We recommend Gitflow.
 
 - [Statamic Docker Containers](/installing/docker) – Want to use Docker container?
+
+- [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-zero-downtime-deployment-file-structure) - If you plan on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
