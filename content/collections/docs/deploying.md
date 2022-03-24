@@ -170,4 +170,4 @@ Given a properly configured Laravel Forge (or similar) solution, your typical de
 
 - [Statamic Docker Containers](/installing/docker) – Want to use Docker container?
 
-- [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-zero-downtime-deployment-file-structure) - If you play on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
+- [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-zero-downtime-deployment-file-structure) - If you plan on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
