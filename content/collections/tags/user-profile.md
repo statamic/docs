@@ -81,7 +81,7 @@ Route::statamic('users/{username}', 'users.show');
 Then when visiting `/users/chuck`, for example, you could display Chuck's details like this:
 
 ```
-{{ user:profile field="username" :value="segment_2" }}
+{{ user:profile field="username" :value="username" }}
   {{ first_name }} {{ last_name }}
 {{ /user:profile }}
 ```
