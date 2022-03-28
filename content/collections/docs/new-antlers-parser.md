@@ -160,6 +160,10 @@ The `title` variable can be rendered like this:
 <h1>DJ Jazzy Jeff & The Fresh Prince</h1>
 ```
 
+:::tip
+If you want to use the same variable inside tag pairs, or within other files, you need to make sure they are defined before. Just like how you can't use PHP variables before they are defined, Antlers wants you to tell it what to expect.
+:::
+
 ### Valid Characters
 
 Variable must start with an alpha character or underscore (`a-zA-Z_`), followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores (`a-zA-Z_0-9`). Spaces or other special characters are not allowed.
