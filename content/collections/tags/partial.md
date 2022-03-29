@@ -25,6 +25,7 @@ You can use any view as a partial by using this here partial tag.
 // This will import /resources/views/blog/_card.antlers.html
 {{ partial:blog/card }}
 ```
+:::warning When using the [experimental Antlers Parser](/new-antlers-parser) available in Statamic 3.3 you must use the `src` parameter to specify the partial. :::
 
 :::best-practice
 We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
