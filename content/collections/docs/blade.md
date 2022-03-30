@@ -141,14 +141,6 @@ You can pass in contextual data to the tag using the `context($data)` method:
 Statamic::tag('collection:pages')->context($context)
 ```
 
-### Disabling Augmentation
-
-[Augmentation](/extending/augmentation) is enabled by default (as it is in antlers), but you can disable augmentation using the `withoutAugmentation()` method.
-
-```php
-Statamic::tag('collection:pages')->withoutAugmentation()
-```
-
 ### Fetching the output
 
 When you loop over a tag or cast it to a string, it will automatically fetch the result for you. In some cases, you may want to explicitly fetch the output. You can do that with the `fetch` method.
