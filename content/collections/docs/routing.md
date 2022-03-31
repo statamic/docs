@@ -7,7 +7,7 @@ id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
 ---
 ## Overview
 
-All site requests are handled by Statamic unless you [create your own Laravel routes](#custom-routes). Here are the ways Statamic defines URLs.
+All site requests are handled by Statamic unless you [create your own Laravel routes](#laravel-routes). Here are the ways Statamic defines URLs.
 
 ## Content Routes
 [Collection entries](/collections#routing) and [taxonomy terms](/taxonomies#routing) can have their own URLs as defined by their own flexible route patterns in their respective configuration areas.
