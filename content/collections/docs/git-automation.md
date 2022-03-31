@@ -232,3 +232,41 @@ For example, if you're [storing users in a database](/tips/storing-users-in-a-da
 :::tip
 When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
 :::
+
+## Addon Events
+
+When building an addon that provides its own content saved events, you should register those events with our git listener in your addon service provider:
+
+```php
+\Statamic\Facades\Git::listen(PunSaved::class);
+```
+
+This will allow your end users to track addon-related content in their [tracked paths](#tracked-paths), if they decide to opt-in for automatic commit and push when saving.
+
+### Providing a default commit message
+
+You can also provide a default commit message by implementing the `ProvidesCommitMessage` interface with a `commitMessage()` method definition:
+
+```php
+<?php
+
+namespace Punner\Events;
+
+use Statamic\Contracts\Git\ProvidesCommitMessage;
+use Statamic\Events\Event;
+
+class PunSaved extends Event implements ProvidesCommitMessage
+{
+    public $item;
+
+    public function __construct($item)
+    {
+        $this->item = $item;
+    }
+
+    public function commitMessage()
+    {
+        return __('Pun saved');
+    }
+}
+```
