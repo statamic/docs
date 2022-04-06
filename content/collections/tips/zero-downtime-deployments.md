@@ -71,3 +71,70 @@ To avoid sharing a Redis cache between your deployment releases, we recommend se
     ],
 ],
 ```
+
+## Git automation
+
+If you plan to use Statamic's [Git Automation](/git-automation) features with zero downtime services like [Envoyer](https://envoyer.io/) and [Deployer](https://deployer.org/), you may need to tweak your deployment settings to enable git commit and push from each release folder.
+
+### Setting up your git remote in Envoyer releases
+
+By default, Envoyer clones each release without a git object, which Statamic needs for committing and pushing content back to your repository.
+
+To set up a git object, add a deployment hook after the `Clone New Release` step to ensure a git object is created:
+
+```bash
+cd {{ release }}
+
+git init
+git remote add origin git@github.com:your/remote-repository.git
+git fetch
+git branch --track master origin/master
+git reset HEAD
+```
+
+Be sure to modify the above remote to point to your remote repository, along with the branch you wish to track.
+
+### Preventing circular deployments with Envoyer
+
+If you plan to enabling automatic deployment when commits are pushed to your repository, you may wish to selectively disable deployments when Statamic pushes commits back to your repository.
+
+To do this, you will first need to append `[BOT]` to Statamic's commit messages [as documented here](/git-automation#customizing-commits). Once this is done, you can add a deployment hook to cancel the deployment when `[BOT]` is detected in your commit message:
+
+```php
+if [[ "{{ message }}" =~ "[BOT]" ]]; then
+    echo 'AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY.'
+    exit 1
+fi
+```
+
+### Ensuring proper deployment hook order
+
+When adding these deployment hooks, be mindful of the order in which these things happen. Here is where we recommend placing these hooks in your deployment flow:
+
+<figure>
+    <img src="/img/envoyer-deployment-hook-order.png" alt="Deployment hook order">
+</figure>
+
+### Committing form submissions
+
+If you plan on committing form submissions, you will need to store them outside of the shared `storage` folder. You can customize your form submissions path in `config/statamic/forms.php`:
+
+```php
+'submissions' => storage_path('forms'), // [tl! --]
+'submissions' => base_path('forms'), // [tl! ++]
+```
+
+After doing this, you will also need to update the tracked path for your submissions in `config/statamic/git.php`:
+
+```php
+'paths' => [
+    base_path('content'),
+    base_path('users'),
+    resource_path('blueprints'),
+    resource_path('fieldsets'),
+    resource_path('forms'),
+    resource_path('users'),
+    storage_path('forms'), // [tl! --]
+    base_path('forms'), // [tl! ++]
+],
+```
