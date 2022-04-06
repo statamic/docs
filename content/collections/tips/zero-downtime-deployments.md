@@ -71,7 +71,3 @@ To avoid sharing a Redis cache between your deployment releases, we recommend se
     ],
 ],
 ```
-
-:::tip
-Run `php artisan cache:clear` after each deployment to ensure you don't bloat your Redis cache with old release data over time.
-:::
