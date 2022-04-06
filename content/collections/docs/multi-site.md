@@ -210,3 +210,8 @@ Indicate the current language of the site by setting the `lang` attribute on you
 <html lang="{{ site:short_locale }}">
 ```
 
+:::
+
+## Static Caching
+
+If your multi-site should use static caching, you will also need to add additional config parameters and different server rewrite rules. Please refer to the related section of the [static caching documentation](/static-caching#multisite) for the correct settings.
