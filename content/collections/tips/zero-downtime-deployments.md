@@ -41,7 +41,7 @@ The solution is simple. Just as you should never share a cache between different
 
 ### How to avoid sharing file cache
 
-To avoid sharing file based cache between your deployment releases, create a cache folder at the top level in your app, bypassing the default `storage` folder, as it _is_ shared between releases. Configure your app to use a custom cache store location in `config/cache.php`:
+To avoid sharing file based cache between your deployment releases, create a cache folder at the top level in your app, bypassing the default `storage` folder, as it _is_ shared between releases. Configure your app to use a custom cache store location by changing `stores.file.path` in `config/cache.php`:
 
 ```php
 'stores' => [
@@ -55,11 +55,21 @@ To avoid sharing file based cache between your deployment releases, create a cac
 
 ### How to avoid sharing Redis cache
 
-To avoid sharing a Redis cache between your deployment releases, we recommend setting a cache prefix unique to each release on your filesystem. This can be configured in `config/cache.php`:
+To avoid sharing a Redis cache between your deployment releases, we recommend setting a cache prefix unique to each release on your filesystem. This can be configured by adding a `redis.cache.options.prefix` in `config/database.php`:
 
 ```php
-'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'), // [tl! --]
-'prefix' => env('CACHE_PREFIX', 'release_'.basename(base_path()).'_cache'), // [tl! ++]
+'redis' => [
+    'cache' => [
+        'url' => env('REDIS_URL'),
+        'host' => env('REDIS_HOST', '127.0.0.1'),
+        'password' => env('REDIS_PASSWORD'),
+        'port' => env('REDIS_PORT', '6379'),
+        'database' => env('REDIS_CACHE_DB', '1'),
+        'options' => [ // [tl! ++]
+            'prefix' => basename(base_path()).'_', // [tl! ++]
+        ], // [tl! ++]
+    ],
+],
 ```
 
 :::tip
