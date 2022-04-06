@@ -114,3 +114,27 @@ When adding these deployment hooks, be mindful of the order in which these thing
 <figure>
     <img src="/img/envoyer-deployment-hook-order.png" alt="Deployment hook order">
 </figure>
+
+### Committing form submissions
+
+If you plan on committing form submissions, you will need to store them outside of the shared `storage` folder. You can customize your form submissions path in `config/statamic/forms.php`:
+
+```php
+'submissions' => storage_path('forms'), // [tl! --]
+'submissions' => base_path('forms'), // [tl! ++]
+```
+
+After doing this, you will also need to update the tracked path for your submissions in `config/statamic/git.php`:
+
+```php
+'paths' => [
+    base_path('content'),
+    base_path('users'),
+    resource_path('blueprints'),
+    resource_path('fieldsets'),
+    resource_path('forms'),
+    resource_path('users'),
+    storage_path('forms'), // [tl! --]
+    base_path('forms'), // [tl! ++]
+],
+```
