@@ -4,11 +4,14 @@ tree:
     title: 'Getting Started'
     children:
       -
+        id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
+        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+      -
         id: 67a031f2-f519-4179-b793-0c9d04f44662
         entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
       -
-        id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
-        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
+        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
       -
         id: a3f8cff7-6bf4-42ff-9731-42a2a3aecd55
         entry: ab08f409-8bbe-4ede-b421-d05777d292f7
@@ -208,12 +211,6 @@ tree:
         id: dae0a662-0a66-4a4f-8d2a-b63c2eaf8f65
         entry: bc2ad29d-50c3-47fb-9213-8553bcb5a48a
         title: Overview
-      -
-        id: d08bdd5e-a743-4630-9ba6-a21c217db804
-        entry: 8e084d33-e1c7-43ac-ae43-2988c2ab0ac0
-      -
-        id: 8868cd27-71c8-4de4-b700-c93a31782758
-        entry: 5bb3e677-8b9c-4e77-be24-5fefec9c1af0
   -
     id: 6e285cb4-23db-4817-abc6-1c76a08def33
     title: 'Starter Kits'
@@ -247,6 +244,3 @@ tree:
       -
         id: d187ac97-9bc6-4354-a3ba-382daf94d657
         entry: cd0428cf-2c4a-43b9-8e61-dd8123799ed8
-      -
-        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
-        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
