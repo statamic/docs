@@ -344,7 +344,7 @@ return [
 ``` php
 // Merging in multiple
 return array_merge(
-    $this->context->only('foo', 'bar', 'baz'),
+    $this->context->only('foo', 'bar', 'baz')->all(),
     ['local' => 'value']
 );
 ```
