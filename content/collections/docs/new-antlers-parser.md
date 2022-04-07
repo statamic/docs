@@ -336,7 +336,7 @@ Docsylvania
 You can combine literal and dynamic keys and get real fancy if you need to.
 
 ```
-{{ complex_data:[3][field]['title'] }}
+{{ complex_data[3][field]['title'] }}
 ```
 
 ### Disambiguation 🆕 {#disambiguating-variables}
