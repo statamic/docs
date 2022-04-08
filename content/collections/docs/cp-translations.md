@@ -39,6 +39,7 @@ preferences:
 | Indonesia | `id` |
 | Italian | `it` |
 | Malaysia | `ms` |
+| Norwegian | `nb` |
 | Dutch | `nl` |
 | Polish | `pl` |
 | Portuguese | `pt` |
