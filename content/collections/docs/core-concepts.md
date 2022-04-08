@@ -20,7 +20,7 @@ Sometimes these conventions don't fit your project, or maybe you're perfectly ha
 A good example of this is the decision on whether to use [Blade](/blade) as the template language over [Antlers](/antlers). Antlers is deeply integrated with Statamic and can handle the responsibilities of both Blade _and_ Controllers right in your template. If you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
 
 :::best-practice
-Do your to best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
+Do your best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
 :::
 
 
