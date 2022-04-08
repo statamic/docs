@@ -1,6 +1,7 @@
 ---
 title: Multi-Site
-intro: Statamic's "multi-site" capabilities are designed to manage a **single site** with multiple localizations, variations, or sections running on one or more domains or subdomain. It can be used to manage translations, country-specific versions of a company site, and other similar use cases.
+intro: |
+    Statamic's multi-site capabilities are designed to manage a **single site** or site network with multiple localizations, variations, or sections running on one or more domains or subdomains. It can be used to manage translations, country-specific versions of a company site, and other similar use cases. _It is not intended to be used for multi-tenant applications._
 template: page
 id: fb20f2e0-3881-43e6-8507-3308a18c54b0
 blueprint: page
@@ -8,29 +9,19 @@ pro: true
 ---
 ## Overview
 
-Statamic can be configured to handle multiple "sites". A site is a way of localized version of your content - whether another language, region, or even company or brand (think Proctor & Gamble).
+Statamic can be configured to handle multiple "sites". A site is a way of managing a localized version of your content - whether another language, region, or even company/brand (think Proctor & Gamble).
 
 Each site can have different base URLs:
 
+- domains: `hello.com` and `bonjour.com`
 - subdomains: `example.com` and `fr.example.com`
 - subdirectories: `example.com` and `example.com/fr/`
-- different domains: `hello.com` and `bonjour.com`
-
-## Converting from Single to Multiple Sites
-
-The default single-site setup uses a folder structure optimized for hand editing, but when using a multi-site setup the folder structure is a bit more complex. If you already have a site with content, switching to a multi-site setup will require moving files and folders around.
-
-Luckily for you, this conversion can be done automatically with the following command:
-
-``` shell
-php please multisite
-```
 
 [More details on how to convert to a multi-site setup](/tips/converting-from-single-to-multi-site)
 
 ## Configuration
 
-Let's look at a basic site configuration, and then we'll walk through each configuration option.
+Let's look at a full site configuration and then we'll explore all of its options.
 
 ``` php
 # config/statamic/sites.php
@@ -41,29 +32,29 @@ return [
             'name' => config('app.name'),
             'locale' => 'en_US',
             'url' => '/',
+            'text_direction' => 'ltr',
         ]
     ]
 ];
 ```
 
 ### Sites
-Every Statamic install needs at least one site, whether you are using multiple sites or not. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
+Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
 
 ### Locale
-Each site has a `locale` which is used to format region-specific data (like date strings). This should correspond to a locale installed on the server.
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to a the server's locale. By default Statamic will use English – United States (`en_US`).
+
+:::tip
+To see the list of installed locales on your system or server, run the command `locale -a`.
+:::
 
 ### Language
-You can specify which language file should be used for a site by setting `lang`. Since most language files are non-specific, they'll use the short version of `locale` by default (e.g. the `de` language files are used if the locale is `de_CH`). If you want to explicitly use the `de_CH` language files, you can add `'lang' => 'de_CH'`.
+Statamic's control panel has been translated into more than a dozen languages. The language translations files live in `resources/lang`.
+
+You may specify which language translation to be used for each site with the `lang` setting.
 
 ### URL
-A URL is also required, which defines where statamic will serve and generate all URLs relative to.
-
-
-## Site URLs
-
-As mentioned above, each site needs to define a `url`.
-
-The default site `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL should be, based on the domain the site is running on.
+URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is be based on the domain the site is running on.
 
 :::best-practice
 It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks interfere with that "magic". Using an environment variable is an ideal solution here.
@@ -91,9 +82,9 @@ APP_URL=http://mysite.test/
 
 :::
 
-## Text Direction
+### Text Direction
 
-If your site or sites have different text directions, for example if you have an English and a Hebrew version, you can define the direction in the config and use it on your front-end.
+All sites are Left-To-right (`ltr`) by default, and you may omit the setting entirely. But if any of your sites is in a `rtl` text direction (like Arabic or Hebrew), you may define the direction in the config and use it on your front-end wherever necessary.
 
 ```php
 'sites' => [
@@ -115,7 +106,7 @@ If your site or sites have different text directions, for example if you have an
 Statamic's `direction` is `ltr` by default. You only need to set `direction` when your site is `rtl`.
 :::
 
-## Additional Attributes
+### Additional Attributes
 
 You may also add an array of arbitrary attributes to your site's config, which can later be accessed with the [site variable](/variables/site) .
 
@@ -138,7 +129,44 @@ You may also add an array of arbitrary attributes to your site's config, which c
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
 :::
 
-## Views
+
+## Adding a Site
+
+To add another site to an existing multi-site installation, add another array to the `$sites` configuration array along with the desired settings.
+
+```php
+'sites' => [
+    'en' => [
+        'name' => 'English',
+        //
+    ],
+    'de' => [
+        'name' => 'German',
+        //
+    ],
+];
+```
+
+## Renaming a Site
+
+If you rename a site handle, you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
+
+**Content Folders**
+
+- `content/collections/{old_handle}/`
+- `content/globals/{old_handle}/`
+- `content/trees/{old_handle}/`
+
+**Collection Config YAML Files**
+``` yaml
+# content/collections/{collection}.yaml
+sites:
+- {old_handle}
+- de
+- fr
+```
+
+## Per-Site Views {#views}
 
 [Views](/views) can be organized into site directories.
 
@@ -167,30 +195,11 @@ For example, given `template: home`, Statamic will load `site_one/home` because 
 This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory.
 :::
 
-## Renaming a Site
-
-If you rename a site handle, you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
-
-**Content Folders**
-
-- `content/collections/{old_handle}/`
-- `content/globals/{old_handle}/`
-- `content/trees/{old_handle}/`
-
-**Collection Config YAML Files**
-``` yaml
-# content/collections/{collection}.yaml
-sites:
-- {old_handle}
-- de
-- fr
-```
-
 ## Template Snippets
 
 Here are a few common features you'll likely need to template while building a multi-site.
 
-### Site Switcher
+### Building a Site Switcher {#site-switcher}
 
 This will loop through your sites and indicate the current site as the active one. Check out all the [available variables inside the `sites` loop](/variables/sites).
 
