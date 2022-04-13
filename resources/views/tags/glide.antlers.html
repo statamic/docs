@@ -23,8 +23,12 @@
     <h3>Filters and Effects</h3>
     {{ partial:details :details="filters" }}
 
+    <h3>Other</h3>
+    {{ partial:details :details="other" }}
+
     {{ if variables }}
         <h2 id="variables">Variables</h2>
+        <p>These variables are only available within the <a href="#tag-pair">tag pair</a>.</p>
         {{ partial:variables }}
     {{ /if }}
 
