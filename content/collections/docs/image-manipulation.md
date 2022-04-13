@@ -57,6 +57,7 @@ In the context of Glide, the "source" is the filesystem where the original image
 The default behavior is for the cache to be "disabled" or "dynamic".
 
 ```php
+// config/statamic/assets.php
 'image_manipulation' => [
     'route' => 'img',
     'cache' => false,
@@ -76,6 +77,8 @@ When using this method, since the Glide tag only needs to generate URLs, the loa
 The next level of caching would be to specify a custom, publicly accessible location for the images to be generated.
 
 ``` php
+// config/statamic/assets.php
+
 'image_manipulation' => [
     'route' => 'img',
     'cache' => true,
@@ -96,6 +99,8 @@ When using this method, since the Glide tag has to generate the images, the init
 You may choose to save your cached Glide images to somewhere CDN based, like Amazon S3 or DigitalOcean Spaces. Instead of specifying `true` as mentioned above, you can point to a filesystem disk.
 
 ```php
+// config/statamic/assets.php
+
 'image_manipulation' => [
     'cache' => 'glide',
 ],
