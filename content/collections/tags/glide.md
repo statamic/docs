@@ -272,7 +272,7 @@ You may also use the shorthand as a tag pair:
 
 ## Watermarks
 
-You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#source) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
+You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
 
 ```
 {{ glide src="image.jpg" mark="watermark.jpg" markw="30" }}
