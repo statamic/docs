@@ -11,11 +11,15 @@ You might know it's possible to use Amazon S3 for your Asset Containers, but it'
 
 Since Digital Ocean Spaces is compatible with the Amazon S3 API, you can use the `s3` flysystem driver, but with Digital Ocean credentials.
 
+## Install
+
 First, install the AWS Flysystem adapter:
 
 ``` shell
 composer require "league/flysystem-aws-s3-v3 ~1.0"
 ```
+
+## Configure a filesystem
 
 Add a filesystem to `config/filesystems.php`, and make sure to use the `s3` driver.
 
@@ -33,17 +37,25 @@ Add a filesystem to `config/filesystems.php`, and make sure to use the `s3` driv
 ],
 ```
 
-Add the following enviromental variables to your `.env` file and fill in with the values unique to your Space. You can generate keys and secrets from the DigitalOcean API settings.
-
 ```env
 DO_SPACES_KEY=
 DO_SPACES_SECRET=
-DO_SPACES_ENDPOINT=https://ams3.digitaloceanspaces.com  # Depending on your region.
-DO_SPACES_REGION=AMS3                                   # Depending on your region.
-DO_SPACES_BUCKET=statamic                               # The name of your Space.
-DO_SPACES_ROOT=the_folder/you_want                      # The root folder on your Space you want for this container.
-DO_SPACES_URL=https://cdn.statamic.com/                 # The URL Statamic should prepend to the file name and the root when you request an asset in your templates.
+DO_SPACES_ENDPOINT=
+DO_SPACES_REGION=
+DO_SPACES_BUCKET=
+DO_SPACES_ROOT=
+DO_SPACES_URL=
 ```
+
+- The `key` and `secret` can be generated in the "API" section of your dashboard.
+- You can find the `endpoint` in the Space's settings. It'll look something like `https://nyc3.digitaloceanspaces.com`.
+- The `region` will be in the endpoint. e.g. `nyc3`
+- The `bucket` will be the name of your space. e.g. `myspace`
+- You only need to set the `root` if you want this disk to be a subfolder of your space. This is fairly uncommon.
+- The `url` will be in the header of the file browser, or in list of your spaces. It'll look something like `https://myspace.nyc3.digitaloceanspaces.com`
+- If you've enabled the CDN, it's possible you'd have a non-Digital Ocean `url`. Look for the "edge" URL.
+
+## Link to the asset container
 
 Create a new Asset Container using this `do_spaces` as a Disk. You can do this via the CP or add a `handle.yaml` file to `content/assets`:
 
