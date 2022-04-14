@@ -296,6 +296,20 @@ public function augment($value)
 
 [Read more about augmentation](/extending/augmentation)
 
+## Accessing Other Fields
+
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component: 
+
+```js
+inject: ['storeName'],
+
+computed: {
+    formValues() {
+        return this.$store.state.publish[this.storeName].values;
+    },
+},
+```
+
 ## Updating from v2
 
 In Statamic v2 we pass a `data` prop that can be directly modified. You might be see something like this:
