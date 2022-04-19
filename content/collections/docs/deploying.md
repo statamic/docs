@@ -171,3 +171,5 @@ Given a properly configured Laravel Forge (or similar) solution, your typical de
 - [Statamic Docker Containers](/installing/docker) – Want to use Docker container?
 
 - [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-zero-downtime-deployment-file-structure) - If you plan on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
+
+- [Introduction to Statamic](https://buddy.works/guides/introduction-to-statamic) - If you plan on using [Buddy CI/CD](https://buddy.works) to deploy static or dynamic version of Statamic.
