@@ -402,7 +402,7 @@ Use this method if you need to prevent entire code blocks from being parsed.
 
 By default, Antlers expressions and tags are **not** parsed inside your content. This is for performance and security reasons.
 
-For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't access to.
+For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't have access to.
 
 If this isn't a concern of yours, you can enable Antlers parsing on a per-field basis by setting `antlers: true` in your blueprint.
 
