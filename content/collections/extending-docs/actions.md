@@ -36,7 +36,7 @@ class Delete extends Action
 
 The `run` method is for executing the task. You will be provided with a collection of `$items`, and any submitted `$values` (more about those later).
 
-If you return a string, it will be shown in the toast notification. Otherwise, you'll get a generic success message.
+You may customize the outcome of the action by providing a [response](#responses).
 
 ### Redirects
 
@@ -149,3 +149,91 @@ protected function fieldItems()
 ```
 
 The values entered into these fields when a user runs the action will be passed into the `run` method.
+
+
+## Responses
+
+Within an action's `run` method, you may return different things.
+
+### Void
+Returning nothing will result in a generic success toast notification saying "Action Completed".
+
+```php
+public function run($values)
+{
+    // do something, but don't return anything
+}
+```
+
+### String
+Returning a string will customize the toast notification text.
+
+```php
+public function run($values)
+{
+    // do something
+
+    return __('The thing was done.');
+}
+```
+
+### Array
+You may return an array with a `message` key in it. The message will be shown in the toast notification. Any additional keys will be passed into the event handler, useful if you are implementing your own listing component.
+
+```php
+public function run($values)
+{
+    // do something
+
+    return [
+        'message' => 'This will be in the toast.',
+        'foo' => 'bar',
+    ];
+}
+```
+```html
+<data-list-bulk-actions ... @completed="completed" />
+```
+```js
+completed(success, response) {
+  this.$toast.success(response.message);
+  this.doSomethingWithFoo(response.foo);
+}
+```
+
+### Custom JavaScript Callback
+
+You may return an array with a `callback` key in it. This should be an array with the name of the callback, and any arguments it should receive.
+
+```php
+public function run($values)
+{
+    // do something
+
+    return [
+        'callback' => ['myCallback', 'arg1', 'arg2'],
+    ];
+}
+```
+
+You can provide the callback from your JavaScript.
+
+```js
+Statamic.$callbacks.add('myCallback', function (foo, bar) {
+  console.log(foo, bar); // "arg1", "arg2"
+});
+```
+
+### Disabling the toast
+You may wish to disable the toast notification, perhaps if you are planning to trigger your own notification as part of your JavaScript callback. You can disable it by passing a value of `false`.
+
+```php
+public function run($values)
+{
+    // do something
+
+    return [
+        'message' => false,
+    ];
+}
+```
