@@ -224,6 +224,16 @@ Statamic.$callbacks.add('myCallback', function (foo, bar) {
 });
 ```
 
+:::tip
+A common reason for wanting to use JavaScript here is to copy a value to the user's clipboard. There's a native callback you can use so you don't need to write the JavaScript yourself:
+
+```php
+return [
+    'callback' => ['copyToClipboard', 'text to copy']
+];
+```
+:::
+
 ### Disabling the toast
 You may wish to disable the toast notification, perhaps if you are planning to trigger your own notification as part of your JavaScript callback. You can disable it by passing a value of `false`.
 
