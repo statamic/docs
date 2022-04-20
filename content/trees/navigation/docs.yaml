@@ -139,6 +139,10 @@ tree:
         id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
         entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
       -
+        id: 08e937a0-bb37-11ec-bf84-0800200c9a66
+        entry: 245068a1-1900-4774-a3ba-29192dc9acff
+        title: Image Manipulation
+      -
         id: 68c69f7b-3560-40e6-a4ba-abc98d7ce4af
         entry: 131259a5-2072-49d8-9ea4-2099e0338e2f
       -
