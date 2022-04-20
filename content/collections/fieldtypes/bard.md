@@ -19,7 +19,7 @@ options:
     type: array
     description: |
       An array of buttons you want available in the toolbar.
-      You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `underline`, `strikethrough`, `unorderedlist`, `orderedlist`, `removeformat`, `quote`, `anchor`, `image`, `table`, `code` (inline), and `codeblock`.
+      You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `underline`, `small`, `strikethrough`, `unorderedlist`, `orderedlist`, `removeformat`, `quote`, `anchor`, `image`, `table`, `code` (inline), and `codeblock`.
 
       These are the defaults:
       ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
