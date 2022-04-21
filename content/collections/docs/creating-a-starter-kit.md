@@ -100,7 +100,7 @@ When [installing the starter kit](#installing-a-starter-kit), composer will inst
 
 ## Publishing a Starter Kit
 
-Once exported, you will need to update the `name` property in the `composer.json` created at your specified export repo path. It should match your Composer/GitHub {Oraganization}/{Repo_Name} exactly.
+Once exported, you will need to update the `name` property in the `composer.json` created at your specified export repo path. It should match your Composer/GitHub {Organization}/{Repo_Name} exactly.
 
 ``` json
 {
