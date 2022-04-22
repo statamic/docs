@@ -551,7 +551,7 @@ The `switch` is perfect for complex conditions with many possible cases, or usin
         (size == 'sm') => '(min-width: 768px) 35vw, 90vw',
         (size == 'md') => '(min-width: 768px) 55vw, 90vw',
         (size == 'lg') => '(min-width: 768px) 75vw, 90vw',
-        (size == 'xl') => '90vw'
+        (size == 'xl') => '90vw',
         () => '100vw'
     )
 }}
