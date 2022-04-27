@@ -18,7 +18,7 @@ You may specify various rules for showing a field under either the `if` / `show_
 
 ### Data Flow
 
-Only visible fields are submitted with your form data by default. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
+Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
 
 :::tip
 If you want to cosmetically hide a larger set of fields to get them out of the user's way, you can use the [Revealer](/fieldtypes/revealer) fieldtype to hide them until the user needs them without disrupting data flow on form submission.
