@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Field conditions are set on individual field settings in [blueprints](/blueprints). For example, you could create a `meta_description` field that is only shown when the `content` field is longer than 140 characters.
+Field conditions are set on individual field settings in [blueprints](/blueprints). For example, you could create a `meta_description` field that is only shown and submitted when the `content` field is longer than 140 characters.
 
 <figure>
     <img src="/img/field-conditions.png" alt="Statamic conditional field rule builder">
@@ -15,6 +15,14 @@ Field conditions are set on individual field settings in [blueprints](/blueprint
 </figure>
 
 You may specify various rules for showing a field under either the `if` / `show_when` keys, or hiding a field under the `unless` / `hide_when` keys.
+
+### Data Flow
+
+Only visible fields are submitted with your form data by default. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
+
+:::tip
+If you want to cosmetically hide a larger set of fields to get them out of the user's way, you can use the [Revealer](/fieldtypes/revealer) fieldtype to hide them until the user needs them without disrupting data flow on form submission.
+:::
 
 ## Boolean
 
