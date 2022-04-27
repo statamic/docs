@@ -264,3 +264,29 @@ Statamic.$conditions.add('...', ({ root, store, storeName }) => {
     //
 });
 ```
+
+## Validation
+
+If you wish to conditionally apply validation to conditionally shown fields, we recommend using the `sometimes` [Laravel validation rule](https://laravel.com/docs/validation#validating-when-present).
+
+```
+-
+  handle: online_event
+  field:
+    type: toggle
+-
+  handle: venue
+  field:
+    type: text
+    if:
+      online_event: false
+    validate:
+      - sometimes
+      - required
+```
+
+The above example will only _sometimes_ apply the `required` rule to the `venue` field; Only when it exists in the submitted form data (see notes on [data flow](#data-flow) above).
+
+:::tip
+For more advanced conditional validation, take a look at Laravel's `required_if`, `required_with`, etc. [validation rules](https://laravel.com/docs/validation#rule-required-if).
+:::
