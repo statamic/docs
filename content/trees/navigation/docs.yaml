@@ -127,6 +127,10 @@ tree:
         id: 6ee59577-5f3f-4cbe-8c92-9ce3da648594
         entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
       -
+        id: 9d43191e-652b-48e8-8ec5-5cd6266d793d
+        entry: d37b2af2-f2bf-493a-9345-7087fb5929ce
+        title: 'New Antlers Parser'
+      -
         id: 40ef0b25-0f5e-4523-a527-52a099838d09
         entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
       -
@@ -141,7 +145,7 @@ tree:
       -
         id: 08e937a0-bb37-11ec-bf84-0800200c9a66
         entry: 245068a1-1900-4774-a3ba-29192dc9acff
-        title: Image Manipulation
+        title: 'Image Manipulation'
       -
         id: 68c69f7b-3560-40e6-a4ba-abc98d7ce4af
         entry: 131259a5-2072-49d8-9ea4-2099e0338e2f
