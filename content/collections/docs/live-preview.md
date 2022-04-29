@@ -80,7 +80,7 @@ These values are available in your views, scoped into the `live_preview` array:
 
 ## Preview Targets
 
-On a Collection, you may define preview one or more preview targets which lets you choose which page should viewed in the Live Preview window.
+On a Collection, you may define one or more preview targets which lets you choose which page should viewed in the Live Preview window.
 
 For example, you may want to preview how an entry looks on the entry's page itself, as well as a listing page.
 
