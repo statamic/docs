@@ -1320,7 +1320,7 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 {{#
   <h1>{{ title }}</h1>
   <div>{{ date }}</div>
-  <div class="markdown">{{ content}}</div>
+  <div class="markdown">{{ content }}</div>
 #}}
 ```
 
