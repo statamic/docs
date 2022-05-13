@@ -36,7 +36,7 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 ```
 
 :::tip
-You can disable the `{{ cache }}` tag (temporarily) based on the environment. This is great for you local setup.
+You can disable the `{{ cache }}` tag (temporarily) based on the environment. This is great for your local setup.
 
 ``` env
 STATAMIC_CACHE_TAGS_ENABLED=false
