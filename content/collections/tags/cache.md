@@ -35,6 +35,21 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 {{ /cache }}
 ```
 
+:::tip
+You can disable the `{{ cache }}` tag (temporarily) based on the environment. This is great for you local setup.
+
+``` env
+STATAMIC_CACHE_TAGS_ENABLED=false
+```
+
+``` php
+return [
+   'cache_tags_enabled' => env('STATAMIC_CACHE_TAGS_ENABLED', true), // [tl! highlight]
+   ...
+];
+```
+:::
+
 ## Invalidation
 
 Caching is handy to speed up parts of your site, but it's not very useful unless it's able to be updated at some stage. Here's how
