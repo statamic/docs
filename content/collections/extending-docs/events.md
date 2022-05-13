@@ -196,6 +196,31 @@ public function handle(CollectionSaved $event)
 }
 ```
 
+
+### CollectionTreeDeleted
+`Statamic\Events\CollectionTreeDeleted`
+
+Dispatched after a collection tree has been deleted.
+
+``` php
+public function handle(CollectionTreeDeleted $event)
+{
+    $event->tree;
+}
+```
+
+### CollectionTreeSaved
+`Statamic\Events\CollectionTreeSaved`
+
+Dispatched after a collection tree has been saved.
+
+``` php
+public function handle(CollectionTreeSaved $event)
+{
+    $event->tree;
+}
+```
+
 ### EntryBlueprintFound
 `Statamic\Events\EntryBlueprintFound`
 
