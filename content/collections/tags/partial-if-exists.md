@@ -1,7 +1,7 @@
 ---
 id: 29a6e9dd-283e-4463-a414-d115dcde8451
 blueprint: tag-glide
-title: 'Partial If Exists'
+title: 'Partial:If_Exists'
 description: 'Renders a partial if it exists.'
 intro: 'Renders a partial if it exists.'
 parameters:

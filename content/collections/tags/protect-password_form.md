@@ -1,6 +1,6 @@
 ---
 id: 2a2ec438-4274-4de7-9261-94221507e6c6
-title: 'Protect - Password Form'
+title: 'Protect:Password_Form'
 intro: 'This tag is used to create a custom content [password protection](/protecting-content#password) form.'
 parameters:
   -
