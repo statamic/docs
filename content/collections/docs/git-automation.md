@@ -141,7 +141,7 @@ Or in a specific environment's `.env` file:
 STATAMIC_GIT_DISPATCH_DELAY=10
 ```
 
-In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
+In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled. Please note that the default `sync` queue driver does not support this. Use another queue driver like `redis` instead.
 
 :::tip
 Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
