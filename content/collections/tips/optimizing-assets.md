@@ -36,7 +36,7 @@ With this off, you will need to use the Control Panel to manage your assets (and
 
 ## 2. Enabling Flysystem caching
 
-Statamic's assets use Flysystem under the hood. Flysystem has a feature where it can cache filesystem calls, you just need to install and enable it.
+Statamic's assets use Flysystem under the hood. Flysystem has a feature where it can cache filesystem calls, you just need to install and enable it. Please note that the `flysystem-cached-adapter` package [is not compatible](https://flysystem.thephpleague.com/docs/upgrade-from-1.x/#miscellaneous-changes) with Flysystem v2+ and only works with Laravel <= 8.
 
 ``` shell
 composer require league/flysystem-cached-adapter
