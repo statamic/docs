@@ -132,10 +132,6 @@ You may choose to save your cached Glide images to somewhere CDN based, like Ama
 Make sure that the `visibility` is `public` and that the `url` points to the correct location.
 :::
 
-:::tip
-Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`
-:::
-
 :::warning
 Don't use the same disk or bucket as your source images. If you were you to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
@@ -162,10 +158,6 @@ If you would like to customize it, you can create a new store named `glide` in y
     ],
 ]
 ```
-
-:::tip
-Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`
-:::
 
 ## Clearing the cache
 
