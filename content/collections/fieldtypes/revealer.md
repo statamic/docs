@@ -9,7 +9,15 @@ options:
   -
     name: display
     type: string
-    description: This is the button text.
+    description: The revealer label text.
+  -
+    name: mode
+    type: string *button*
+    description: The revealer input is displayed in `button` mode by default. Choose `toggle` mode if you wish to display a toggle input instead.
+  -
+    name: input_label
+    type: string
+    description: Optionally customize the label on the input itself.
   -
     name: instructions
     type: string
