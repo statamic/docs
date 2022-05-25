@@ -449,6 +449,18 @@ public function handle(NavSaved $event)
 }
 ```
 
+### NavTreeSaved
+`Statamic\Events\NavTreeSaved`
+
+Dispatched after a nav tree has been saved.
+
+``` php
+public function handle(NavTreeSaved $event)
+{
+    $event->tree;
+}
+```
+
 ### ResponseCreated
 `Statamic\Events\ResponseCreated`
 
