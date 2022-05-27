@@ -68,6 +68,15 @@ You can work with the [nav](/tags/nav) to loop through and render your HTML with
 
 Within the tag pair, you will have access to any fields defined on that particular nav item - the item itself or the entry. See [blueprints and data](#blueprints-and-data) below for more information.
 
+You can also use `next` and `prev` to access the title and url of the previous and next entries in the array. This is automagically attacted at runtime -- boom shakalaka! 
+
+```
+Prev: {{ prev.url }} {{ prev.title }}<br />
+Current: {{ url }} {{ title }}<br />
+Next: {{ next.url }} {{ next.title }} <br />
+
+``` 
+
 ## Collections
 
 Your navigation tree _may_ contain references to entries. The control panel's entry selector will show you entries across all collections by default. You may narrow down which collections will appear in the selector in the config area.
