@@ -28,5 +28,5 @@ nothing instead of throwing a "view not found" exception.
 ## Related Reading
 
 This tag goes hand in hand with the [`partial`](/tags/partial) tag.
-You may be interested in the [`partial:exists`](/tags/partial) tag if you need to do a more
+You may be interested in the [`partial:exists`](/tags/partial-exists) tag if you need to do a more
 complicated conditional check in your template.
