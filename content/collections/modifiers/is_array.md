@@ -1,5 +1,5 @@
 ---
-id: 
+id: 1ac30316-8467-425e-9a50-82e754be7df2
 blueprint: modifiers
 modifier_types:
   - array
