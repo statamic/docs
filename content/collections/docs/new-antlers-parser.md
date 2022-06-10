@@ -1338,7 +1338,7 @@ The following two examples are functionally equivalent, but each uses a differen
 <a href="{{ $register }}">Register for a new account</a>
 ```
 
-``` antlers
+```antlers
 <a href="{{$ route('account.register') $}}">Register for a new account</a>
 ```
 
@@ -1350,4 +1350,14 @@ You can also change your view's file extension from `.antlers.html` to `.antlers
 <?php
   echo 'Keep it simple, please';
 ?>
+```
+
+### Navigation
+
+You can now use `next` and `prev` to access the title and url of the previous and next entries in the navigation array. This is automagically attacted at runtime -- boom shakalaka!
+
+```antlers
+Prev: {{ prev.url }} {{ prev.title }}<br />
+Current: {{ url }} {{ title }}<br />
+Next: {{ next.url }} {{ next.title }} <br />
 ```
