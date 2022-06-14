@@ -219,6 +219,25 @@ songs:
 </ul>
 ```
 
+#### Next / Previous
+
+While in a loop, you can get the respective iterations using the `next` or `prev` variables.
+
+```
+<ul>
+{{ songs }}
+  <li>{{ value }} (Next: {{ next:value }}) (Prev: {{ prev:value }})</li>
+{{ /songs }}
+</ul>
+```
+``` html
+<ul>
+  <li>Brand New Funk (Next: Parents Just Don't Understand) (Prev: )</li>
+  <li>Parents Just Don't Understand (Next: Summertime) (Prev: Brand New Funk)</li>
+  <li>Summertime (Next: ) (Prev: Parents Just Don't Understand)</li>
+</ul>
+```
+
 #### Plucking
 
 To pluck values out of an array, you may use "colon", "dot", or "bracket" notation to pull out values by their array key. All three of these syntaxes are equivalent, so feel free to use the one that feels most natural to you. Note that the first item of the array starts with a zero-index key.
