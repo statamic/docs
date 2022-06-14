@@ -237,6 +237,39 @@ The template contents
 </html>
 ```
 
+### Passing Context into Components
+
+If you are using Blade components for your layout rather than Blade directives, you might want to pass the view context into your layout for access by child components. You can do so with the special `$__data` variable in the layout root, and the `@aware` directive in the child. Here's how:
+
+First, add a `context` prop to your layout component.
+
+```blade
+{{-- resources/views/components/layout.blade.php --}}
+@props(['context'])
+<html>
+    {{-- whatever you want to put in here... --}}
+</html>
+```
+
+Next, pass in the magic `$__data` variable from your template to your layout.
+
+```blade
+{{-- resources/views/default.blade.php --}}
+<x-layout :context="$__data">
+    <x-hero />
+</x-layout>
+```
+
+Last, use the `@aware` directive in any child component of your layout to access the variables from the cascade within your component.
+
+```blade
+{{-- resources/views/components/blade.php --}}
+@aware(['page'])
+<div>
+    {{ $page->hero_headline }}
+</div>
+```
+
 ## Routes and Controllers
 
 If you choose to take a more "traditional" Laravel application approach to building your Statamic site, you can use routes and controllers much the same way you might with Eloquent models instead of Statamic's native collection routing and data cascade. Here's an example:
