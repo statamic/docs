@@ -135,6 +135,6 @@ Route::get('/render-live-preview', function (Request $request) {
   $entry->foo;          // The edited foo field, etc.
   $entry->live_preview; // All the "extra" data from the custom toolbar fields are in here.
 
-  return view('whatever');
+  return view('whatever', ['entry' => $entry]);
 });
 ```
