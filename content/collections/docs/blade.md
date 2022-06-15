@@ -251,6 +251,44 @@ First, add a `context` prop to your layout component.
 </html>
 ```
 
+Then, merge the `context` prop with the parent data in your Layout component's `data` method.
+
+```php
+<?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+
+class Layout extends Component
+{
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function __construct(public $context)
+    {
+        $this->context = $context;
+    }
+
+    public function data()
+    {
+        return array_merge(parent::data(), $this->context);
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.layout');
+    }
+}
+```
+
 Next, pass in the magic `$__data` variable from your template to your layout.
 
 ```blade
