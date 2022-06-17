@@ -25,5 +25,5 @@ array:
 
 ```html
 Nuggets
-Sonic
+Tails
 ```
