@@ -49,12 +49,12 @@ class AppServiceProvider extends ServiceProvider
     {
         // Add one extension... [tl! focus:start]
         Markdown::addExtension(function () {
-            return new Footnote;
+            return new FootnoteExtension;
         });
 
         // or multiple.
         Markdown::addExtensions(function () {
-            return [new Footnote, new TableOfContentsExtension];
+            return [new FootnoteExtension, new TableOfContentsExtension];
         }); // [tl! focus:end]
     }
 }

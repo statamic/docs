@@ -148,11 +148,25 @@ If you would like to customize it, you can create a new store named `glide` in y
 
 ```php
 'stores' => [
-    'file' => [
+    'glide' => [
         'driver' => 'redis',
         'connection' => 'glide',
     ],
 ]
+```
+
+In this example, you would also need to create a Redis database named `glide` in your `config/database.php` configuration file:
+
+```php
+'redis' => [
+    'glide' => [
+        'url' => env('REDIS_URL'),
+        'host' => env('REDIS_HOST', '127.0.0.1'),
+        'password' => env('REDIS_PASSWORD'),
+        'port' => env('REDIS_PORT', '6379'),
+        'database' => env('REDIS_GLIDE_DB', '2'),
+    ],
+],
 ```
 
 ## Clearing the cache
