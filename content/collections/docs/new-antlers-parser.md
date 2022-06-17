@@ -40,7 +40,7 @@ Not only this new Antlers Engine a complete and fundamental rewrite, but it take
 
 The original parser was essentially a glorified find and replace machine relying heavily on RegEx. It parsed and evaluated logic as it worked its way through the template. This means it couldn't stop, go backwards, set variables, or handle nested logic well because it had to keep moving forward. It also slowed down the larger the template got because of the amount of characters being pushed through the RegEx.
 
-The New Antlers Engine now has **two stages** – first, it parses and builds an Abstract Syntax Tree from your complete template, and _then_ it evaluates and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
+The New Antlers Engine now has **two stages** – first, it parses and builds an [Abstract Syntax Tree](https://youtube.com/shorts/mi6DoxNEN6w?feature=share) from your complete template, and _then_ it evaluates and executes the nodes and logic in the tree in a runtime fashion (much like a programming language) according to the established rules.
 
 This affords Statamic an incredible amount of control. It can go sideways and slantways and longways and backways and squareways and frontways and any other ways that you can think of. This in turn allowed us to build dozens of new features, fix every single known Parser-related bug, and support syntax scenarios that were impossible in the previous "parse _and_ evaluate" flow. Features like...
 
