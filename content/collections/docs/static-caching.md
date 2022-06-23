@@ -8,7 +8,7 @@ id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
 ## Important Preface
 
-Certain features — such as forms with server-side validation or content randomization — don’t work with static page caching. As long as you understand that, you can leverage static caching for maximum performance.
+Certain features — such as forms with server-side validation or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
 
 :::tip
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
@@ -53,6 +53,10 @@ return [
 ];
 ```
 
+:::tip
+You may use the [nocache tag](/tags/nocache) to keep parts of your pages dynamic.
+:::
+
 ## File Driver
 
 The file driver will generate completely static `.html` pages ready for your web server to serve directly. This means that the HTML files will be loaded before it even reaches PHP.
@@ -71,6 +75,10 @@ return [
     ]
 ];
 ```
+
+:::tip Heads up!
+When using full-measure caching, the [nocache tag](/tags/nocache) **will not work**.
+:::
 
 ## Server Rewrite Rules
 
@@ -111,7 +119,7 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 
 ## Excluding Pages
 
-You may add a list of URLs you wish to exclude from being cached. Pages with forms and listings with `sort="random"` are two common examples of pages that don't work properly when cached statically.
+You may add a list of URLs you wish to exclude from being cached.
 
 ``` php
 return [
@@ -124,6 +132,10 @@ return [
 ```
 
 Query strings will be omitted from exclusion rules automatically, regardless of whether wildcards are used. For example, choosing to ignore `/blog` will also ignore `/blog?page=2`, etc.
+
+:::tip
+Rather than excluding entire pages, you may consider using the [nocache tag](/tags/nocache) to keep parts of your page dynamic, like listings or randomized areas.
+:::
 
 ## Invalidation
 
@@ -245,7 +257,7 @@ return [
 ```
 ### Rewrite Rules
 
-This multi-site example needs modified rewrite rules. 
+This multi-site example needs modified rewrite rules.
 
 #### Apache
 
