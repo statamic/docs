@@ -166,14 +166,16 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 
 ## Using Modifiers with Blade 🆕
 
-You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters.
+You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters. If you use a modifier that can take more than one parameter, pass those in as an array.
 
 ``` blade
 {{ Statamic::modify($content)->striptags()->backspace(1)->ensureRight('!!!') }}
+{{ Statamic::modify($content)->stripTags()->safeTruncate([42, '...']) }}
 ```
 
 ```
 THIS IS THE FIRST POST, HOW EXCITING!!!
+I wanted to say more but got cut off...
 ```
 
 :::tip
