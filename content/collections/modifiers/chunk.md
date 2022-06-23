@@ -21,7 +21,7 @@ Break arrays or collections into smaller (wait for it) chunks of any given size.
     {{ /chunk }}
   </div>
   {{ /posts }}
-{{ /collection:newsroom }}
+{{ /collection:news }}
 ```
 
 ```html
