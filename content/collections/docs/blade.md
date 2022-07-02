@@ -156,7 +156,7 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 ```blade
 @php($tag = Statamic::tag('collection:pages')->paginate(2)->as('pages')->fetch())
 
-@foreach($tag->pages as $page)
+@foreach($tag['pages'] as $page)
     <li>{{ $page->title }}</li>
 @endforeach
 
