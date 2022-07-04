@@ -300,7 +300,7 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 
 ```
 {{ if (number_of_bedrooms | count) > 10 }}
-  <p>Who are you, Dwane Johnson?</p>
+  <p>Who are you, Dwayne Johnson?</p>
 {{ /if }}
 ```
 
