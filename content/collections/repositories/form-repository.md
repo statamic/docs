@@ -4,10 +4,9 @@ blueprint: repositories
 title: 'Form Repository'
 nav_title: Forms
 related_entries:
-  - e7833062-e05c-42c9-ad35-dc5077f1f0b8
-  - acee879a-c832-449d-a714-c57ea5862717
-  - 9c6a0b01-449e-49dd-8fa6-11b975d2726d
-  - 7202c698-942a-4dc0-b006-b982784efb03
+  - fdb45b84-3568-437d-84f7-e3c93b6da3e6
+  - e4f4f91e-a442-4e15-9e16-3b9880a25522
+  - d630ea15-d94f-4404-84d2-0926a898e672
 ---
 To work with the Form Repository, use the following Facade:
 
