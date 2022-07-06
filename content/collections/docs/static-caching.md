@@ -77,7 +77,7 @@ return [
 ```
 
 :::tip Heads up!
-When using full-measure caching, the [nocache tag](/tags/nocache) **will not work**.
+When using full-measure caching, the [nocache tag](/tags/nocache) will rely on JavaScript.
 :::
 
 ## Server Rewrite Rules
@@ -135,6 +135,10 @@ Query strings will be omitted from exclusion rules automatically, regardless of 
 
 :::tip
 Rather than excluding entire pages, you may consider using the [nocache tag](/tags/nocache) to keep parts of your page dynamic, like listings or randomized areas.
+:::
+
+:::tip Another tip
+CSRF tokens will automatically be excluded from the cache. You don't even need to use a `nocache` tag for that.
 :::
 
 ## Invalidation
@@ -287,3 +291,21 @@ location / {
 :::tip
 `{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
 :::
+
+## Replacers
+
+When a page is being statically cached on the first request, or loaded on subsequent requests, they are sent through "replacers".
+
+Statamic includes two replacers out of the box. One will replace CSRF tokens, the other will handle [nocache](/tags/nocache) tag usages.
+
+A replacer is a class that implements a `Statamic\StaticCaching\NoCache\Replacer` interface. You will be passed responses to the appropriate methods where you can adjust them as necessary.
+
+You can then enable your class by adding it to `config/statamic/static_caching.php`:
+
+```php
+'replacers' => [
+    CsrfTokenReplacer::class,
+    NoCacheReplacer::class,
+    MyReplacer::class, // [tl!++]
+]
+```

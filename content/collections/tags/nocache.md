@@ -155,3 +155,21 @@ Only the `title`'s change would be reflected, since the `reviews` value was reme
 ```
 <div class="movie"> Top Gun 60% Ratings </div>
 ```
+
+## Full Measure Static Caching
+
+When using the `file` static cache driver (aka. "full measure") the pages will be stored as plain `html` files on your server.
+
+On any pages that use a `nocache` tag, a small snippet of JavaScript will be injected just before the closing `</body>` tag.
+
+The nocache fragments will be retrieved from the server using an AJAX request. Because of this, there may be a slight delay before the fragments are replaced. This is similar to a "FOUC" or "flash of unstyled content". In this case, there will be empty `<span>` tags until they are replaced by the real fragments.
+
+You can optionally define the inner html of these `span` tags, if you wanted to have a "loading" state, for example.
+
+```php
+use Statamic\Facades\StaticCache;
+
+StaticCache::nocachePlaceholder('Loading...');
+// or
+StaticCache::nocachePlaceholder('<svg>...</svg>');
+```
