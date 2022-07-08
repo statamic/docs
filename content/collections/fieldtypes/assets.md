@@ -65,7 +65,7 @@ If `max_files` is set to `1`, a string will be saved instead of an array.
 gallery_images:
   - fresh-prince.jpg
   - dj-jazzy-jeff.jpg
-  - uncle-carl.jpg
+  - uncle-phil.jpg
 
 # With max_items: 1
 hero_image: surf-boards.jpg
@@ -90,7 +90,7 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
 ```html
 <img src="/assets/fresh-prince.jpg" alt="Will Smith as the Fresh Prince" />
 <img src="/assets/dj-jazzy-jeff.jpg" alt="Jeffrey Allen Townes as DJ Jazzy Jeff" />
-<img src="/assets/uncle-carl.jpg" alt="Reginald VelJohnson as Carl Winslow" />
+<img src="/assets/uncle-phil.jpg" alt="James Avery as Uncle Phil" />
 
 <img src="/assets/surf-boards.jpg" alt="3 colorful surf boards" />
 ```
