@@ -19,8 +19,13 @@ Feel free to watch instead of read!
 To install Statamic locally you will need the following:
 
 - A computer running MacOS, Windows, or Linux
+- A local [development environment](https://statamic.dev/requirements#development-environments) (we recommend [Laravel Valet](https://statamic.dev/requirements#macos-laravel-valet))
 - A supported version of [PHP](https://php.net) (we recommend PHP 8)
 - [Composer](https://getcomposer.org) to manage PHP packages
+
+:::tip
+Detailed Requirements can be found on our [handy requirements article](https://statamic.dev/requirements).
+:::
 
 ## Install Statamic CLI
 
