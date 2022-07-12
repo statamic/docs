@@ -134,11 +134,11 @@ return [
 Query strings will be omitted from exclusion rules automatically, regardless of whether wildcards are used. For example, choosing to ignore `/blog` will also ignore `/blog?page=2`, etc.
 
 :::tip
-Rather than excluding entire pages, you may consider using the [nocache tag](/tags/nocache) to keep parts of your page dynamic, like listings or randomized areas.
+Rather than excluding entire pages, you may consider using the [nocache tag](/tags/nocache) to keep parts of your page dynamic, like forms, listings, or randomized areas.
 :::
 
 :::tip Another tip
-CSRF tokens will automatically be excluded from the cache. You don't even need to use a `nocache` tag for that.
+CSRF tokens will automatically be excluded from the cache. You don't even need to use a `nocache` tag for that. ([With some exceptions](#csrf-tokens))
 :::
 
 ## Invalidation
@@ -296,7 +296,7 @@ location / {
 
 When a page is being statically cached on the first request, or loaded on subsequent requests, they are sent through "replacers".
 
-Statamic includes two replacers out of the box. One will replace CSRF tokens, the other will handle [nocache](/tags/nocache) tag usages.
+Statamic includes two replacers out of the box. One will replace [CSRF tokens](#csrf-tokens), the other will handle [nocache](/tags/nocache) tag usages.
 
 A replacer is a class that implements a `Statamic\StaticCaching\NoCache\Replacer` interface. You will be passed responses to the appropriate methods where you can adjust them as necessary.
 
@@ -308,4 +308,25 @@ You can then enable your class by adding it to `config/statamic/static_caching.p
     NoCacheReplacer::class,
     MyReplacer::class, // [tl!++]
 ]
+```
+
+### CSRF Tokens
+
+When using half measure, CSRF tokens will be replaced without any caveats.
+
+When using full measure, tokens will automatically be replaced in `<input>` and `<meta>` tags where their value/content is the token.
+
+```
+<meta name="csrf-token" content="{{ csrf_token }}" />
+<input type="hidden" value="{{ csrf_token }}" />
+```
+
+If you need to output a CSRF token in another place while using full measure, you'll need to use nocache tags.
+
+```
+<span>
+{{ nocache }} {{# [tl!++] #}}
+    {{ csrf_token }}
+{{ /nocache }} {{# [tl!++] #}}
+</span>
 ```

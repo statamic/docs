@@ -31,7 +31,17 @@ Before the `nocache` tag existed, a common reason to exclude a page from static 
 
 Forms contain a CSRF token for security, which is unique to each user visiting. If you submit the form using someone elses token (which could happen when static caching is enabled) the form won't work.
 
-You may think you can now wrap your `form` tags with `nocache`, but CSRF tokens are now automatically made dynamic. **You don't need to do anything!**
+CSRF tokens are now updated automatically.
+
+However, if your form has logic in it, like validation or success messages, you'll need to keep the `form:create` dynamic by wrapping in `nocache` tags.
+
+```
+{{ nocache }} {{# [tl!++] #}}
+    {{ form:create }}
+        ...
+    {{ /form:create }}
+{{ /nocache }} {{# [tl!++] #}}
+```
 
 ## Blade
 
