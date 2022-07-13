@@ -21,13 +21,13 @@ This route setting may become irrelevant when using customizing [caching options
 
 ## Presets
 
-Glide Presets are pre-configured manipulations that will be automatically generated when new image assets are uploaded. These presets are managed in `config/statamic/assets.php` as an array that holds a list of named presets and their desired parameters.
+Glide Presets are pre-configured manipulations that will be automatically warmed when new image assets are uploaded. These presets are managed in `config/statamic/assets.php` as an array that holds a list of named presets and their desired parameters.
 
 ```php
 'image_manipulation' => [
     'presets' => [
-        'thumbnail' => [ 'w' => 300, 'h' => 300, 'q' => 75],
-        'hero'      => [ 'w' => 1440 'h' => 600, 'q' => 90 ],
+        'thumbnail' => [ 'w' => 300,  'h' => 300, 'q' => 75],
+        'hero'      => [ 'w' => 1440, 'h' => 600, 'q' => 90 ],
     ],
 ],
 ```
@@ -45,6 +45,41 @@ Each named preset can be referenced with the `preset` parameter on the [Glide ta
 {{ glide:hero_image preset="hero" }}
 <!-- width: 1440px, height: 600px, quality: 90% -->
 ```
+
+### Process Source Images
+
+Sometimes you may wish to process your actual source images on upload. For example, maybe you need to enforce maximum dimensions on extremely large images in order to save on disk space.
+
+To do this, first configure an image manipulation preset in `config/statamic/assets.php` for this purpose:
+
+```php
+'image_manipulation' => [
+    'presets' => [
+		'max_upload_size' => ['w' => 2000, 'h' => 2000, 'fit' => 'max'],
+    ],
+],
+```
+
+Then in your asset container settings, you can configure uploads to use this preset:
+
+<figure class="mt-0">
+    <img src="/img/glide-process-source-images.png" alt="Glide Process Source Images">
+</figure>
+
+### Customize Glide Preset Warming
+
+As mentioned [above](#presets), Statamic will intelligently warm caches for all of your configured presets on upload:
+
+<figure class="mt-0 mb-8">
+    <img src="/img/glide-intelligently-warm.png" alt="Glide Intelligently Warm Caches">
+</figure>
+
+However, you may wish to configure which presets are warmed in your asset container settings (or leave this option blank to disable warming altogether):
+
+<figure class="mt-0">
+    <img src="/img/glide-warm-specific-caches.png" alt="Glide Warm Specific Cache">
+</figure>
+
 
 ## Caching
 
