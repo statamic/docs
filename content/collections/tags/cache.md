@@ -50,6 +50,20 @@ return [
 ```
 :::
 
+## Exclusions
+
+You may use the `nocache` tag inside a `cache` tag to keep that section dynamic.
+
+```
+{{ cache }}
+    this will be cached
+    {{ nocache }} this will remain dynamic {{ /nocache }}
+    this will also be cached
+{{ /cache }}
+```
+
+[Read more about the nocache tag](/tags/nocache)
+
 ## Invalidation
 
 Caching is handy to speed up parts of your site, but it's not very useful unless it's able to be updated at some stage. Here's how
@@ -159,7 +173,7 @@ The `scope` parameter has no effect if you use the `key` parameter.
 You're free to use the cache tag on top of [static caching](/static-caching).
 
 You'll probably have static caching disabled during development so you can see your changes without having to continually clear anything.
-The cache tag could be a nice compromise to speed up heavy areas for a few minutes at a time. Or, if you have some pages excluded
-from static caching (like pages with forms) then the cache tag could be useful there.
+
+The cache tag could be a nice compromise to speed up heavy areas for a few minutes at a time. Or, if you have some pages excluded from static caching then the cache tag could be useful there.
 
 Of course, if you *do* have static caching enabled, keep in mind that you aren't going to gain anything by using both at the same time.
