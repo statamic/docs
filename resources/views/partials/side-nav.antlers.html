@@ -30,14 +30,14 @@
                         {{ /if }}
                         {{ if section == "reference" }}
                             <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
-                                <a href="{{ url }}" class="hover:text-pink">
+                                <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
                                     All {{ title }}
                                 </a>
                             </li>
 
                             {{ collection :from="slug" }}
                                 <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
-                                    <a href="{{ url }}" class="hover:text-pink">
+                                    <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
                                         {{ nav_title ?? title }}
                                     </a>
                                 </li>

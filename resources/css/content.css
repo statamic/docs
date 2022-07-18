@@ -298,5 +298,10 @@ ul.list-col {
     article, .markdown {
         @apply bg-transparent text-gray-dark;
         h1, h2, h3 { @apply text-white }
+        table {
+            @apply bg-transparent border-gray-darkest text-gray-dark;
+            tbody tr { @apply even:bg-transparent; }
+            td, th { @apply border-b border-gray-darkest; }
+        }
     }
 }

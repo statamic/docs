@@ -1,5 +1,5 @@
 {{ if ! hide_toc && content | toc }}
-    <div id="table-of-contents" class="border rounded-sm mt-8 md:mt-16 dark:bg-gray-darkest" :class="open ? 'shadow-stack' : 'shadow-stack-sm'" x-data="{open: getCookie('toc_open') != 'false'}">
+    <div id="table-of-contents" class="border rounded-sm mt-8 md:mt-16 dark:bg-gray-darkest shadow-none" :class="open ? 'shadow-stack' : 'shadow-stack-sm'" x-data="{open: getCookie('toc_open') != 'false'}">
         <div class="bg-black font-mono-alt text-white py-2 pl-5 pr-2 flex items-center justify-between dark:bg-gray-darkest">
             <span x-text="open ? 'Table of Contents' : 'Box of Mysterious Purpose'"></span>
             <button class="p-2 hover:text-yellow" @click="open = false; setCookie('toc_open', 'false'); $refs.close.play()" x-show="open">
