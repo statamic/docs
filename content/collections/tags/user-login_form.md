@@ -1,7 +1,7 @@
 ---
 title: User:Login_Form
 description: Creates user login forms
-intro: If you wan to build a login form for your users, this is the easiest way to do it.
+intro: If you want to build a login form for your users, this is the easiest way to do it.
 stage: 4
 parameters:
   -
@@ -63,7 +63,7 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
     {{ /if }}
 
     <label>Email</label>
-    <input type="text" name="email" value="{{ old:email }}" />
+    <input type="email" name="email" value="{{ old:email }}" />
 
     <label>Password</label>
     <input type="password" name="password" value="{{ old:password }}" />

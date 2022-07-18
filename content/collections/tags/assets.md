@@ -10,7 +10,7 @@ parameters:
     name: id|container|handle
     type: string
     description: |
-      Every [asset container](/assets/#containers) has a unique handle. Pass it in and win! Default: `main`.
+      Every [asset container](/assets/#containers) has a unique handle. Pass it in and win! Default: `assets`.
   -
     name: folder
     type: string

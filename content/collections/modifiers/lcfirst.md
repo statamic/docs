@@ -4,7 +4,7 @@ blueprint: modifiers
 modifier_types:
   - string
   - utility
-title: lcfirst
+title: Lcfirst
 ---
 Converts the first character of the supplied string to lower case.
 

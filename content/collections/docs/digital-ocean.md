@@ -14,7 +14,9 @@ There is only one prerequisite for this guide. You must have:
 
 ## Server Setup
 
-Follow the [official “How to Set Up an Ubuntu 20.04 Server on a DigitalOcean Droplet”](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ubuntu-20-04-server-on-a-digitalocean-droplet) guide to setup your server.
+Follow the official [How to Set Up an Ubuntu 20.04 Server on a DigitalOcean Droplet](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ubuntu-20-04-server-on-a-digitalocean-droplet) guide to setup your server.
+
+<a href="(https://m.do.co/c/6469827e2269"><img src="https://images.prismic.io/digitalocean/0b619d51-a723-4748-997f-39ed5697a540_intro-to-cloud.jpg?auto=compress,format" class="rounded-lg"></a>
 
 ## Secure Your Server
 

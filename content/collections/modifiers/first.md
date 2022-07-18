@@ -5,18 +5,25 @@ modifier_types:
   - markup
   - string
   - utility
+  - array
 title: First
 ---
-Returns the first X characters of a string, where X is any positive integer.
+Returns the first X characters of a string, where X is any positive integer, or the first item in an array.
 
 ```yaml
 title: 2015 Year Books Photos
+array:
+  - Sonic
+  - Knuckles
+  - Tails
 ```
 
 ```
 {{ title | first:4 }}
+{{ array | first }}
 ```
 
 ```html
 2015
+Sonic
 ```

@@ -9,6 +9,7 @@
 /storage/statamic/users
 /storage/debugbar/*
 /storage/glide/*
+/storage/antlers-language-server/*
 /vendor
 .env
 .env.backup

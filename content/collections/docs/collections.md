@@ -101,6 +101,50 @@ If you don't explicitly create a blueprint, your entries will have a basic set o
 
 If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
+You can hide blueprints from appearing in the new entry menu by activating the _Hidden_ toggle on the blueprint's UI or setting `hide: true` in the blueprint's yaml file.
+
+## Titles
+
+All entries need a title. Statamic uses titles to display entries in a consistent way throughout the Control Panel.
+
+Depending on the collection, a dedicated `title` field might not be useful to you. In this case, you may configure a "title format" which would be used to automatically generate titles from other fields.
+
+For example, a "reviews" collection might just have `author`, `stars`, and `content` fields. You could configure the titles to be "5 star rating by John Smith".
+
+<figure>
+    <img src="/img/title-format-setting.png" alt="Entry Title Format Setting" width="544" height="120">
+    <figcaption>Configuring an automated title</figcaption>
+</figure>
+
+When using multiple sites, you may optionally configure the titles on a per site level by using an array:
+
+```yaml
+title_format:
+  en: '{stars} star rating by {author:name}'
+  fr: '{stars} étoiles par {author:name}'
+```
+
+## Slugs
+
+Slugs are what you would typically use in entry URLs. For an entry named `My Entry`, the slug might be `my-entry`.
+
+When creating entries in the Control Panel, if you submit an entry with an empty `slug`, one will be generated based on the title.
+
+If the entries in a specific collection don't need to have dedicated URLs, or if the entries' route only contains other fields, a `slug` field may not be useful for you.
+
+You may disable the slug requirement by adding a boolean:
+
+```yaml
+slugs: false
+```
+
+This will prevent collections from automatically adding a slug field.
+
+:::tip
+Since Statamic stores entries as files, it uses the slug for the filename. If you disable slugs, it will use the ID instead. (e.g. `my-entry.md` vs. `123.md`)
+:::
+
+
 ## Dates
 
 If your collection requires a date, as they often do, you can decide how Statamic uses it to control default visibility. For example, you can choose to have dates set in the future to be private (404), which effectively allows you to schedule their publish date.
@@ -300,14 +344,14 @@ You may mount a collection onto an entry as a way of saying "all these entries b
 
 ### Mount Setting
 
-You can mount a collection to an entry by specifying the ID of said entry. You can also use the `mount` variable in the route to prepend the mounted entry's URL.
+You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to a **aquarium** entry page.
 
-So for example, if you mounted a collection to `/blog` with `/{mount}/{slug}`, all your blog URLs will follow the `/blog/entry-url` pattern. If you later move `/blog` to `/articles`, all your entries will follow along with `/articles/entry-url`.
+Now you can use `mount` variable in the route to automatically prepend the mounted entry's URL. So for example, if you mounted a collection to `/aquarium` with `/{mount}/{slug}`, all your fish URLs will follow the `/aquarium/entry-url` pattern. If you later move `/aquarium` to `/house-of-fishies`, all your entries will automatically update with `/house-of-fishies/entry-url`.
 
 ``` yaml
-title: Blog
-mount: id-of-the-blog-entry
-route: '{mount}/{slug}'
+title: Our Tropical Fishies
+mount: id-of-the-aquarium-entry
+route: '/{mount}/{slug}'
 ```
 
 ## Revisions

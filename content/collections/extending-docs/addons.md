@@ -83,9 +83,17 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    //
+    public function bootAddon()
+    {
+        //
+    }
 }
 ```
+
+:::tip
+The `bootAddon` method should be used instead of `boot`. They are the same except that it
+makes sure to boot _after_ Statamic has booted.
+:::
 
 In your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
 
@@ -170,10 +178,8 @@ By default the `vendor:publish` command will be run for you after `statamic:inst
 However, you can run other commands or custom code too using the `afterInstalled` method:
 
 ``` php
-public function boot()
+public function bootAddon()
 {
-    parent::boot();
-
     Statamic::afterInstalled(function ($command) {
         $command->call('some:command');
     });
@@ -311,25 +317,21 @@ When referencing a controller in a route, it will automatically be namespaced to
 Route::get('/', 'ExampleController@index'); // Acme\Example\ExampleController
 ```
 
-If you'd prefer not to have separate route files, you can write routes into a `Statamic::booted()` closure in your service provider's `boot` method.
+If you'd prefer not to have separate route files, you can write routes in your service provider's `bootAddon` method.
 
 ``` php
-public function boot()
+public function bootAddon()
 {
-    parent::boot();
+    $this->registerCpRoutes(function () {
+        Route::get(...);
+    });
 
-    Statamic::booted(function () {
-        $this->registerCpRoutes(function () {
-            Route::get(...);
-        });
+    $this->registerWebRoutes(function () {
+        Route::get(...);
+    });
 
-        $this->registerWebRoutes(function () {
-            Route::get(...);
-        });
-
-        $this->registerActionRoutes(function () {
-            Route::get(...);
-        });
+    $this->registerActionRoutes(function () {
+        Route::get(...);
     });
 }
 ```

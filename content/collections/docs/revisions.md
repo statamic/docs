@@ -1,6 +1,6 @@
 ---
 title: Revisions
-intro: Revivions adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
+intro: Revisions adds an entire publishing workflow to your authoring process. You can create revisions, schedule updates to your content, review and rollback to previous revisions of your content, and more.
 template: page
 blueprint: page
 id: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
@@ -23,7 +23,7 @@ Revisions is a **Pro feature**, make sure you've [enabled Pro](/licensing).
 Enable revisions globally by setting `STATAMIC_REVISIONS_ENABLED=true` in your `.env` file. Now you can set `revisions: true` on any or all collections you'd like to use revisions.
 
 :::best-practice
-We recommend leaving Revisions **off** while your site is in development. It'll add extra steps to each update to your content, slow you down, and you'll probably end up annoying by what's actually a really awesome feature.
+We recommend leaving Revisions **off** while your site is in development. It'll add extra steps to each update to your content, slow you down, and you'll probably end up annoyed by what's actually a really awesome feature.
 :::
 
 ## Storage

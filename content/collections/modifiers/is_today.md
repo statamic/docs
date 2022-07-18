@@ -4,23 +4,18 @@ blueprint: modifiers
 modifier_types:
   - date
   - conditions
-parse_content: true
 title: 'Is Today'
 ---
-Returns `true` if date is today - using the server's time.
+Returns `true` if a given date is today, using the server's time.
 
 ```yaml
-date: {{ now format="F j Y" }}
-another_date: November 6 2015
+date: January 1, 2000
 ```
-{{ noparse }}
+
 ```
 {{ if date | is_today }}
-{{ if another_date | is_today }}
 ```
-{{ /noparse }}
 
 ```html
-true
 false
 ```

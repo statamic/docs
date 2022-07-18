@@ -28,8 +28,8 @@ options:
     required: false
   -
     name: listable
-    type: text
-    description: 'Controls whether the field should be shown in control panel listings. Options: `hidden`, `visible`, or `listable`.'
+    type: mixed
+    description: 'Controls whether the field should be shown in control panel listings. Options: `hidden`, `true`, or `false`. Default: `hidden`.'
     required: false
   -
     name: conditions
@@ -42,8 +42,8 @@ options:
     description: 'Control whether or not this field is required.'
     required: false
   -
-    name: validation
-    type: boolean
+    name: validate
+    type: array
     description: 'Configure rules that validate the value of this field before allowing the user to save. Learn more about [validation](/blueprints#validation).'
     required: false
 related_entries:

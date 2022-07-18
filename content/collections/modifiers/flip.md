@@ -9,26 +9,16 @@ Swaps the keys with their corresponding values. The old switcharoo.
 
 ```yaml
 favorites:
-  chicken: nuggets
-  nuggets: Denver
+  food: burger
+  drink: soda
 ```
 
 ```
-{{ favorites }}
-  My favorite {{ key }} is {{ value }}.
-{{ /favorites }}
-
-{{ favorites | flip }}
-  My favorite {{ key }} is {{ value }}.
-{{ /favorites }}
+{{ favorites | json }}
+{{ favorites | flip | json }}
 ```
 
-```html
-My favorite chicken is nuggets.
-My favorite nuggets is Denver
-
-My favorite nuggets is chicken
-My favorite Denver is nuggets.
+```json
+{"food":"burger","drink":"soda"}
+{"burger":"food","soda":"drink"}
 ```
-
-It's a weird example with bad grammer. Hopefully you're okay with it.

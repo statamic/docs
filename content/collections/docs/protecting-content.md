@@ -109,7 +109,7 @@ This is perfect for times when you want to password-protect one or more files bu
 You’ll need to provide a way for people to enter passwords for URLs. Statamic has a built-in generic password entry form. If you want to customize it, you have two options:
 
 #### Override the view
-Override the view by creating `vendor/statamic/auth/protect/password.antlers.html` in your `views` directory, and use the  [protect:password_form](/tags/protect/password_form) tag to build a form. No config change required. For example:
+Override the view by creating `vendor/statamic/auth/protect/password.antlers.html` in your `views` directory, and use the  [protect:password_form](/tags/protect-password_form) tag to build a form. No config change required. For example:
 
 ```
 {{ protect:password_form }}
@@ -161,7 +161,7 @@ When visiting a password protected page, Statamic will generate a token and appe
 If someone submits a password and it isn’t valid, Statamic will redirect back with the appropriate validation error. Valid passwords can vary from piece of content to piece of content. This one form is smart enough to handle all password management between password-protected URLs.
 
 ### Valid Passwords
-A valid password is anything matching one of the passwords in the allowed list as configured on the page (or site-wide). This means that you can send three people three different passwords to access the same URL, each having their own way in. Additionally, you could also set just one password and send that to 100 people and they can all use the same password.
+A valid password is anything matching one of the passwords in the allowed list as configured on the scheme. This means that you can send three people three different passwords to access the same URL, each having their own way in. Additionally, you could also set just one password and send that to 100 people and they can all use the same password.
 
 As always with online security, be careful with who you share passwords with or you'll find yourself changing them often.
 

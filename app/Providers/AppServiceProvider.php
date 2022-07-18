@@ -21,8 +21,14 @@ class AppServiceProvider extends ServiceProvider
         // View::composer('partials.side-nav', SideNavComposer::class);
 
         Markdown::addExtensions(function () {
-            return [new HintExtension, new TorchlightExtension, new AttributesExtension];
+            return [new HintExtension, new AttributesExtension];
         });
+
+        if (config('torchlight.token')) {
+            Markdown::addExtensions(function () {
+                return [new TorchlightExtension];
+            });
+        }
     }
 
     /**

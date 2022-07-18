@@ -43,7 +43,7 @@ This tag looks at the current URL and look for any entries that match each segme
 3. Do the same for `/italian`
 4. If `include_home` is set to `true`, look an entry with a url of `/`.
 
-If any of the URLs don't match an entry in the current site, they will be skipped, so be sure to create translations for parent pages you if you're working on a mulisite.
+If any of the URLs don't match an entry in the current site, they will be skipped, so be sure to create translations for parent pages you if you're working on a multisite.
 
 :::tip
 Breadcrumbs don't follow structures, they follow the current URL hierarchy.

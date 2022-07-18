@@ -26,7 +26,7 @@ use Statamic\Facades\Collection;
 | `findByMount($mount)` | Get Asset by mounted entry `id` |
 | `handleExists($handle)` | Check to see if `Collection` exists |
 | `handles()` | Get all `Collection` handles |
-| `queryEntries()` | Query Builder for [Entries](#entries) |
+| `queryEntries()` | Query Builder for [Entries](/repositories/entry-repository) |
 | `whereStructured()` | Get all Structured `Collections` |
 | `make()` | Makes a new `Collection` instance |
 

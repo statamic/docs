@@ -1,7 +1,7 @@
 <header class="markdown pb-8 mb-8">
     {{ partial:breadcrumbs }}
     <div class="flex items-center">
-        <h1><code>{{ slug }}</code> Modifier</h1>
+        <h1 class="leading-tight {{ title | length > 28 ?= 'text-5xl'}}"><code>{{ slug }}</code> Modifier</h1>
         {{ partial:pro-badge }}
     </div>
     {{ intro ?? overview | markdown }}
@@ -11,5 +11,7 @@
 <article class="markdown md:pb-16">
     {{ content | toc:ids }}
 </article>
+
+{{ partial:related badge="Related Modifiers" description="These similar modifiers may aid you on your quest."}}
 
 {{ partial:edit }}

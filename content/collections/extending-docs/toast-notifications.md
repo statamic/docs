@@ -16,7 +16,7 @@ this.$toast.success('message', { duration: 3000 }); // Auto-disappear after this
 You may also trigger these from the server using the `Toast` facade.
 
 ```php
-use Statamic\Facades\Toast;
+use Statamic\Facades\CP\Toast;
 
 Toast::info('message');
 Toast::success('message');

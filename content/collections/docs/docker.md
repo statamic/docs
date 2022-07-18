@@ -41,11 +41,11 @@ version: '3'
 services:
     laravel.test:
         build:
-            context: ./vendor/laravel/sail/runtimes/8.0
+            context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.0/app
+        image: sail-8.1/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -87,7 +87,7 @@ Once the application's containers have been started, your project can be accesse
 To stop all of the containers, press `Control` + `C`. Or if the containers are running in the background, use the stop command:
 
 ``` shell
-./vendor/vin/sail stop
+./vendor/bin/sail stop
 ```
 
 ## Installing Statamic

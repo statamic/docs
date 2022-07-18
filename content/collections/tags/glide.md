@@ -4,7 +4,6 @@ description: Manipulates images on the fly
 intro: The Glide tag makes it easy to manipulate images on the fly – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
 template: tags.glide
 blueprint: tag-glide
-stage: 4
 parameters:
   -
     name: src|path|id
@@ -30,6 +29,11 @@ parameters:
     type: 'boolean *false*'
     description: >
       When set to `true`, this tag will output the full URL rather than the default relative URL.
+  -
+    name: preset
+    type: string
+    description: >
+      Use a preset of pre-configured parameters. [Learn more](#presets).
 shape:
   -
     name: width
@@ -77,7 +81,7 @@ shape:
     name: format
     type: string
     description: >
-      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif` or `webp`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg`
+      Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif`, `webp` or `avif`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg`
 
 filters:
   -
@@ -120,6 +124,45 @@ filters:
     type: string
     description: >
       Applies a filter effect to the image. Accepts `greyscale` or `sepia`.
+other:
+  -
+    name: preset
+    type: string
+    description: >
+      Applies a [preset manipulation](/image-manipulation#presets) as defined in the config.
+  -
+    name: mark
+    type: string
+    description: >
+      The source of a [watermark](#watermarks).
+  -
+    name: markw
+    type: string
+    description: The width of the watermark.
+  -
+    name: markh
+    type: string
+    description: The height of the watermark.
+  -
+    name: markfit
+    type: string
+    description: The fit of the watermark. [See Glide docs](https://glide.thephpleague.com/2.0/api/watermarks/#fit-markfit)
+  -
+    name: markx
+    type: string
+    description: How far the watermark is away from the left and right edges.
+  -
+    name: marky
+    type: string
+    description: How far the watermark is away from the top and bottom edges.
+  -
+    name: markpad
+    type: string
+    description: How far the watermark is away from all edges. A shortcut for using markx and marky.
+  -
+    name: markpos
+    type: string
+    description: Sets where the watermark is positioned. Accepts `top-left`, `top`, `top-right`, `left`, `center`, `right`, `bottom-left`, `bottom`, `bottom-right`. Default is `bottom-right`.
 variables:
   -
     name: url
@@ -133,21 +176,55 @@ variables:
     name: height
     type: integer
     description: The height of the resized image.
+  -
+    name: asset data
+    type: mixed
+    description: If your source was an asset, you will also have all of its fields available. e.g. `alt`
 id: b70a3d9a-6605-446e-b278-de99ba561fe0
 ---
-## Overview
+## Setting up Glide
+Glide is ready to go out of the box with no setup required. However, you may customize its behavior. You can read about it on the [image manipulation](/image-manipulation) page.
 
-The Glide tag leverages the fantastic [Glide](http://glide.thephpleague.com/) PHP library to give you on-demand image manipulation, similar to cloud image processing services like [Imgix](https://www.imgix.com/) and [Cloudinary](https://cloudinary.com/).
+## Basic Usage
 
-
-Manipulate images by passing a variable or an explicit URL and adding the desired [parameters](#parameters) like `height`, `crop`, or `quality`.
+Manipulate images by passing an image [source](#sources) and adding the desired [parameters](#parameters) like `height`, `crop`, or `quality`.
 
 ```
-// Variable
-<img src="{{ glide:hero_image width="1280" height="800" }}">
+{{ glide src="image.jpg" width="1280" height="800" }}
+```
+```output
+/img/image.jpg?w=1280&h=800
+```
 
-// URL
-<img src="{{ glide src="/img/heroes/slime.jpg" width="1280" height="800" }}">
+The Glide tag outputs a URL of the transformed image, so you'll likely want to use it as the `src` for an `<img />` HTML tag.
+
+```
+<img src="{{ glide ... }}" />
+```
+
+## Sources
+
+There are a number of options when it comes to what you can use as an image source.
+
+### Asset
+You can pass along an asset object by using an asset field by reference:
+
+```
+{{ glide :src="asset_field" w="100" }} // /img/asset/6f75d8as?w=100
+```
+
+### Relative path/URL
+You can pass a string of a path located within your `public` directory.
+
+```
+{{ glide src="image.jpg" w="100" }} // img/image.jpg?w=100
+```
+
+### External URL
+You can pass a string of a URL on another site.
+
+```
+{{ glide src="http://anothersite.com/image.jpg" w="100" }} // /img/http/6f75d8as?w=100
 ```
 
 
@@ -156,10 +233,67 @@ Manipulate images by passing a variable or an explicit URL and adding the desire
 If you use the tag as a pair, you'll have access to `url`, `height`, and `width` variables inside to do with as you wish.
 
 ```
-{{ glide:image width="600" }}
+{{ glide src="image.jpg" width="600" }}
     <img src="{{ url }}" width="{{ width }}" height="{{ height }}">
-{{ /glide:image }}
+{{ /glide }}
 ```
+
+You may also use the tag pair to loop over multiple sources. For example, you may provide it with an `assets` field.
+
+```
+{{ glide :src="multiple_assets" width="600" }}
+   ...
+{{ /glide }}
+```
+
+:::tip
+The tag pair is also available as `{{ glide:generate }}`. You may need to use this version if you're using [Blade](#usage-in-blade).
+:::
+
+:::tip
+Normally, the Glide tag only generates a URL. The image itself is generated when the URL is visited. When using the tag pair, your Glide images will be generated when the page is rendered. This will result in an initial longer load time.
+:::
+
+
+## Shorthand Tag
+
+Rather than using the `src` parameter, you may choose to use a variable name as the second part of the tag.
+
+```
+{{ glide:my_var w="100" }}
+```
+
+You may also use the shorthand as a tag pair:
+
+```
+{{ glide:my_var }} ... {{ /glide:my_var }}
+```
+
+
+## Watermarks
+
+You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
+
+```
+{{ glide src="image.jpg" mark="watermark.jpg" markw="30" }}
+```
+
+:::tip
+You don't need to worry about setting up a watermark filesystem yourself. Statamic will take care of that automatically based on the source you provide.
+:::
+
+
+## Usage in Blade
+
+To use the Glide tag within Blade, you should use the `generate` tag, which follows the same rules as the [tag pair](#tag-pair).
+
+```blade
+@foreach (Statamic::tag('glide:generate')->src($source)->width(100) as $image)
+  <img src="{{ $image['url'] }} width="{{ $image['width'] }}" />
+@endforeach
+```
+
+You should use a `@foreach` loop even if you are only providing a single source.
 
 ## Focal Point Cropping
 
@@ -211,21 +345,3 @@ images:
 <img src="/img/image.jpg?w=600" />
 <img src="/assets/image.svg" />
 ```
-
-## Serving Cached Images Directly
-
-The default Glide tag behavior is to simply output a URL. When a URL is visited, Glide analyzes the URL and manipulates the image. However, if there are a lot of manipulations on any given page request, the total execution time can soon start to add up.
-
-You can avoid these slowdowns by generating static images. Your server will load images directly instead of handing the work over to the Glide process each time. You can enable this behavior in your assets config file.
-
-``` php
-// config/statamic/assets.php
-
-'cache' => true,
-```
-
-## Using Glide with Locales
-
-When using Glide with multiple locales, the generated image path will include the proper `site_root` as dictated by the locale, but the actual asset will be stored wherever you have set the `cache_path`.
-
-To serve these assets when on a localized version, you'll need to create a symlink from your `/$locale/cache_path` to `cache_path`.

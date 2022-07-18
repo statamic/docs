@@ -1,7 +1,7 @@
 ---
 title: 'Control Panel Translations'
 nav_title: Translations
-intro: "Statamic's Control Panel is currently available in 7 languages. We always welcome new translations!"
+intro: "Statamic's Control Panel is currently available in 10 languages. We always welcome new translations!"
 blueprint: page
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
@@ -30,15 +30,23 @@ preferences:
 
 | Language | Code |
 |----------|------|
-| English | `en` |
 | Danish | `da` |
-| Dutch | `nl` |
-| French | `fr` |
 | German | `de` or `de_CH` |
-| Italian | `it` |
-| Portuguese | `pt` |
-| Slovene | `sl` |
+| English | `en` |
 | Spanish | `es` |
+| French | `fr` |
+| Hungarian | `hu` |
+| Indonesia | `id` |
+| Italian | `it` |
+| Malaysia | `ms` |
+| Norwegian | `nb` |
+| Dutch | `nl` |
+| Polish | `pl` |
+| Portuguese | `pt` |
+| Russia | `ru` |
+| Slovene | `sl` |
+| Swedish | `sv` |
+| Taiwan | `zh_TW` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
@@ -56,7 +64,9 @@ There are 4 steps.
 
 Run the `translator generate` command in the `statamic/cms` project, along with the new language code as an argument. This will generate empty JSON and PHP files in `resources/lang` ready to be translated into the locale of your choice.
 
-You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`).
+You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`). 
+
+_It is recommended that you comply to the [`language code standard`](https://www.science.co.il/language/Codes.php)._
 
 ``` shell
 php translator generate eo

@@ -6,12 +6,10 @@ modifier_types:
   - utility
 title: 'Full Urls'
 ---
-Replaces root-relative URLs with absolute URLs. This is generally used in RSS feeds and other places where markup may be used off the main site.
+Replaces root-relative URLs inside HTML attributes (e.g. `href` and `src` ) with absolute URLs. This is most often used in RSS feeds and other places where markup may be consumed off the domain.
 
-```md
----
-I had this totally [crazy dream](/dream-journal/spiders-with-ramen-legs)
-last night and I know you want to hear all about it!
+```html
+I had this totally <a href="/dreams/spiders-with-ramen-legs">crazy dream</a> last night and I know you want to hear all about it!
 ```
 
 ```
@@ -19,6 +17,5 @@ last night and I know you want to hear all about it!
 ```
 
 ```html
-I had this totally [crazy dream](http://example.com/dream-journal/spiders-with-ramen-legs)
-last night and I know you want to hear all about it!
+I had this totally <a href="https://example.com/dreams/spiders-with-ramen-legs">crazy dream</a> last night and I know you want to hear all about it!
 ```

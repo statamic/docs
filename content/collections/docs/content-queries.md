@@ -2,8 +2,7 @@
 id: e7833062-e05c-42c9-ad35-dc5077f1f0b8
 blueprint: page
 title: 'Content Queries'
-intro: |
-  Statamic provides a fluent query builder interacting with your content and data in PHP-land. If you think of them as Laravel Eloquent Models, you should feel right at home.
+intro: 'Statamic provides a fluent query builder interacting with your content and data in PHP-land. If you think of them as Laravel Eloquent Models, you should feel right at home.'
 ---
 ## Overview
 
@@ -90,10 +89,6 @@ Entry::query()
 
 ## Basic Where Clauses
 
-:::tip
-All `where` clauses are additive, filtering records based on more than one condition with `AND`. At this time there are no `OR` style methods.
-:::
-
 ### Where
 You may use the query builder's `where` method to add "where" clauses to the query. The most basic call to the `where` method requires three arguments. The first argument is the name of the field. The second argument is an operator, which can be any of the supported operators. The third argument is the value to compare against the field's value.
 
@@ -111,8 +106,102 @@ As a shorthand for an "equals" query, you may pass the value as the second argum
 Entry::query()->where('status', 'featured')->get();
 ```
 
+You can chain where clauses, filtering records based on more than one condition with AND:
+
+```php
+Entry::query()
+    ->where('status', '=', 'featured')
+    ->where('status', '!=', 'sticky')
+    ->get();
+```
+
+This same query can also be written using one where clause:
+
+```php
+Entry::query()
+    ->where([
+      ['status', '=', 'featured'],
+      ['status', '!=', 'sticky']
+    ])
+    ->get();
+```
+
+You can query entries across multiple conditions using `orWhere()`:
+
+```php
+Entry::query()
+    ->where('status', '=', 'featured')
+    ->orWhere('status', '=', 'sticky') // [tl! ~~]
+    ->get();
+```
+
+### WhereBetween
+The `whereBetween` method lets you verify that a field's value lies between two values that you pass:
+
+```php
+Entry::query()
+    ->whereBetween('numeric_field', [0, 1000]) // [tl! ~~]
+    ->get();
+```
+
+You can also use the `whereNotBetween` method to verify that a field's value does not lie between two values that you pass:
+
+```php
+Entry::query()
+    ->whereNotBetween('numeric_field', [0, 1000]) // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereBetween` and `orWhereNotBetween` are also supported.
+
+
+### WhereColumn
+The `whereColumn` method lets you compare a field's value to that of another field:
+
+```php
+Entry::query()
+    ->whereColumn('published', '=', 'status') // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereColumn` is also supported.
+
+
+### WhereDate
+
+The `whereDate` method may be used to compare a column's value against a date:
+
+```php
+$users = Entry::query()->whereDate('created_at', '2016-12-31')->get();
+```
+
+The `whereMonth` method may be used to compare a column's value against a specific month:
+
+```php
+$users = Entry::query()->whereMonth('created_at', '12')->get();
+```
+
+The `whereDay` method may be used to compare a column's value against a specific day of the month:
+
+```php
+$users = Entry::query()->whereDay('created_at', '31')->get();
+```
+
+The `whereYear` method may be used to compare a column's value against a specific year:
+
+```php
+$users = Entry::query()->whereYear('created_at', '2016')->get();
+```
+
+The `whereTime` method may be used to compare a column's value against a specific time:
+
+```php
+$users = Entry::query()->whereTime('created_at', '=', '11:20:45')->get();
+```
+
+
 ### WhereIn
-The `whereIn` method to check a field against an a given array of values:
+The `whereIn` method lets you check a field against an a given array of values:
 
 ```php
 Entry::query()
@@ -128,7 +217,132 @@ Entry::query()
     ->get();
 ```
 
+Note: `orWhereIn` and `orWhereNotIn` are also both supported.
 
+
+### WhereNull
+The `whereNull` method lets you check whether a field's value is null:
+
+```php
+Entry::query()
+    ->whereNull('published') // [tl! ~~]
+    ->get();
+```
+
+You can also use the `whereNotNull` method to check if a field's value is not null:
+
+```php
+Entry::query()
+    ->whereNotNull('published') // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereNull` and `orWhereNotNull` are also both supported.
+
+
+
+## Complex Where Clauses
+Complex queries can be made by using closure-based wheres containing any of the [basic where clauses](#basic-where-clauses):
+
+```php
+Entry::query()
+    ->where(function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    })
+    ->orWhere(function ($query) {
+		$query->where('title', '!=', 'statamic')
+      		->where('status', 'boring');
+    })  
+    ->get();
+```
+
+
+## Conditional Clauses
+Conditional clauses can be applied based on another condition, for example the value for an input on the HTTP request. 
+
+```php
+Entry::query()
+    ->when($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    })
+    ->get();
+```
+
+You can also pass a default value which will be applied when the condition fails:
+
+```php
+Entry::query()
+    ->when($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    }, function ($query) {
+		$query->where('status', '!=', 'featured')
+      		->where('status', '!=', 'sticky');
+    })
+    ->get();
+```
+
+If you want to simply apply a clause when a value fails you can use `unless()`:
+
+```php
+Entry::query()
+    ->unless($request->input('rad'), function ($query) {
+		$query->where('status', 'featured')
+      		->orWhere('status', 'sticky');
+    })
+    ->get();
+```
+
+## JSON Where Clauses
+JSON values can be queries using the '->' selector:
+
+```php
+Entry::query()
+    ->where('my_field->sub_field', '!=', 'statamic') // [tl! ~~]
+    ->get();
+```
+
+You can query JSON arrays using `whereJsonContains()`
+
+```php
+Entry::query()
+    ->whereJsonContains('my_array_field->sub_field', 'statamic') // [tl! ~~]
+    ->get();
+```
+
+Or can pass an array of values. This will match if any of the values are found in the field.
+
+```php
+Entry::query()
+    ->whereJsonContains('my_array_field->sub_field', ['statamic', 'is', 'rad']) // [tl! ~~]
+    ->get();
+```
+
+You can use `whereJsonDoesntContain()` to query the absence of a value or values in a JSON array:
+
+```php
+Entry::query()
+    ->whereJsonDoesntContain('my_array_field->sub_field', 'statamic') // [tl! ~~]
+    ->get();
+```
+
+You can use whereJsonLength method to query JSON arrays by their length:
+
+```php
+Entry::query()
+    ->whereJsonLength('my_array_field->sub_field', 1) // [tl! ~~]
+    ->get();
+```
+
+```php
+Entry::query()
+    ->whereJsonLength('my_array_field->sub_field', '>', 1) // [tl! ~~]
+    ->get();
+```
+
+Note: `orWhereJsonContains` and `orWhereJsonLength` are also both supported.
 
 
 

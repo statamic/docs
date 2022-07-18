@@ -11,7 +11,7 @@ overview: |
 
 ### Statamic isn’t FOSS
 
-Statamic is not "Free Open Source Software". It is **proprietary** open source software. The code is open, you can use it for free, but but there are limitations to how to you can modify or redistribute it. Everything in this and our other repos on Github — including community-contributed code — is the property of Statamic. Here are the limitations:
+Statamic is not "Free Open Source Software". It is **proprietary** open source software. The code is open, you can use it for free, but there are limitations to how you can modify or redistribute it. Everything in this and our other repos on Github — including community-contributed code — is the property of Statamic. Here are the limitations:
 
 - You **cannot** redistribute or use Statamic as a dependency in another distributable project — open source or otherwise — without prior permission or licensing. You **can** us it in your **own** commercial or personal projects.
 - You **cannot** alter code or behavior related to licensing, updating, version/edition checking, or anything else that would circumvent the enforcement of our Statamic Pro business model. We want to stay in business so we can support _you_ better.

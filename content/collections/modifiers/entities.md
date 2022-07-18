@@ -9,7 +9,7 @@ title: Entities
 Encode a string with HTML entities via PHP's [htmlentities()][entities] function. This is the opposite of the [decode][decode] modifier.
 
 ```yaml
-string: "The 'bacon' is <b>crispy</b>";
+string: "The 'bacon' is <b>crispy</b>"
 ```
 
 ```

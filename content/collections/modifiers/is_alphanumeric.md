@@ -2,6 +2,7 @@
 id: 923f34bd-d17d-4353-821f-48e986bdce3b
 blueprint: modifiers
 modifier_types:
+  - number
   - string
   - conditions
 title: 'Is Alphanumeric'

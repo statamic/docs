@@ -8,6 +8,6 @@ class Modifiers extends ViewModel
 {
     public function data(): array
     {
-        return ['title' =>  ucwords($this->cascade->get('slug')) . ' Modifier'];
+        return ['title' =>  ucwords($this->cascade->get('title')) . ' Modifier'];
     }
 }

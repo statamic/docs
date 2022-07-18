@@ -2,7 +2,7 @@
 title: Bard
 description: "Rich article writing and block-based layouts made easy."
 intro: |
-  Bard is more than just a content editor, and more flexible than a block-based editor **It is designed to provide a delightful and powerful writing experience** with unparalleled flexibility on your front-end.
+  Bard is more than just a content editor, and more flexible than a block-based editor. **It is designed to provide a delightful and powerful writing experience** with unparalleled flexibility on your front-end.
 screenshot: fieldtypes/screenshots/bard.jpg
 options:
   -
@@ -19,10 +19,10 @@ options:
     type: array
     description: |
       An array of buttons you want available in the toolbar.
-      You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `underline`, `strikethrough`, `unorderedlist`, `orderedlist`, `removeformat`, `quote`, `anchor`, `image`, `table`, `code` (inline), and `codeblock`.
+      You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `small`, `underline`, `strikethrough`, `unorderedlist`, `orderedlist`, `removeformat`, `quote`, `anchor`, `image`, `table`, `code` (inline), `codeblock`, and `horizontalrule`.
 
       These are the defaults:
-      ![Bard Buttons](/img/fieldtypes/bard-buttons.png) {.mt-4}
+      ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
   -
     name: target_blank
     type: boolean

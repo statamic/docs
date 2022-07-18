@@ -37,8 +37,8 @@ Loop through the array items to display each item's `value`.
 ```html
 <h1>Product Ideas</h1>
 <ul>
-  <li>'Knife-Wrench (for kids!)</li>
-  <li>'Kite-Fork</li>
-  <li>'Apple-Cranberry hybrid (calling it Appleberry™)</li>
+  <li>Knife-Wrench (for kids!)</li>
+  <li>Kite-Fork</li>
+  <li>Apple-Cranberry hybrid (calling it Appleberry™)</li>
 </ul>
 ```

@@ -60,7 +60,7 @@ parameters:
   -
     name: offset
     type: integer
-    description: 'The number of entries the results should by offset by.'
+    description: 'Skip a specified number of results.'
     required: false
   -
     name: taxonomy
@@ -69,9 +69,13 @@ parameters:
     required: false
   -
     name: paginate
-    type: 'boolean *false*'
-    description: 'Specify whether your entries should be paginated.'
+    type: 'boolean|int *false*'
+    description: 'Specify whether your entries should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
     required: false
+  -
+    name: on_each_side
+    type: 'int *3*'
+    description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.
   -
     name: as
     type: string
@@ -83,7 +87,7 @@ parameters:
     description: 'Scope your entries with a variable prefix.'
     required: false
   -
-    name: locale
+    name: locale|site
     type: string
     description: 'Show the retrieved content in the selected locale.'
     required: false
@@ -131,8 +135,6 @@ related_entries:
   - 6177b316-0eed-4dec-83d1-e5a48a8e00b6
   - 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
   - 74c47654-8c47-49b1-a616-ed940ce19977
-updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
-updated_at: 1630793235
 ---
 ## Overview
 
@@ -227,10 +229,10 @@ Doing something custom or complicated? You can create [query scopes](/extending/
 
 ## Pagination
 
-To enable pagination mode, add the `paginate="true"` parameter, along with the `limit` parameter to specify the number of entries in each page.
+To enable pagination mode, add the `paginate` parameter with the number of entries in each page.
 
 ```
-{{ collection:blog limit="10" paginate="true" as="posts" }}
+{{ collection:blog paginate="10" as="posts" }}
 
     {{ if no_results }}
         <p>Aww, there are no results.</p>
@@ -389,7 +391,7 @@ Combining both an Alias and a Scope on a Collection Tag doesn't make a whole lot
 
 ## Grouping
 
-To group entries – by date or any other field – you should use [aliasing](#aliasing) (explained above) as well as the [`group_by`](/modifiers/group_by) modifier.
+To group entries – by date or any other field – you should use [aliasing](#alias) (explained above) as well as the [`group_by`](/modifiers/group_by) modifier.
 There's no "grouping" feature on the collection tag itself.
 
 For example, if you want to group some dated entries by month/year, you could do this:

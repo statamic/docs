@@ -1,6 +1,11 @@
 ---
 title: 'Antlers Templates'
-intro: 'Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display and modify data, tap into core features like user authentication and search, and handle complex logic.'
+intro: >
+  Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display and modify data, tap into core features like user authentication and search, and handle complex logic.
+
+  :::warning New Hotness Alert!
+    Statamic 3.3 introduces a [brand new, rewritten, opt-in Antlers Parser](/new-antlers-parser) jam packed with new features, performance improvements, and bug fixes. Check it out! Try it out!
+  :::
 blueprint: page
 template: page
 id: dcf80ee6-209e-45aa-af42-46bbe01996e2
@@ -295,7 +300,7 @@ If you want to manipulate a variable with [modifiers](/modifiers) before evaluat
 
 ```
 {{ if (number_of_bedrooms | count) > 10 }}
-  <p>Who are you, Dwane Johnson?</p>
+  <p>Who are you, Dwayne Johnson?</p>
 {{ /if }}
 ```
 
@@ -397,7 +402,7 @@ Use this method if you need to prevent entire code blocks from being parsed.
 
 By default, Antlers expressions and tags are **not** parsed inside your content. This is for performance and security reasons.
 
-For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't access to.
+For example, a guest author with limited access to the control panel could conceivably write some template code to fetch and display published/private content from a collection they don't have access to.
 
 If this isn't a concern of yours, you can enable Antlers parsing on a per-field basis by setting `antlers: true` in your blueprint.
 

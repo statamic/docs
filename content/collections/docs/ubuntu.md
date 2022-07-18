@@ -100,7 +100,7 @@ After the install completes, Nginx will start automatically. You can verify the 
 sudo systemctl status nginx
 ```
 
-Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vi` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
+Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vim` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
 
 
 ```php
@@ -162,7 +162,7 @@ sudo systemctl reload nginx
 Now visit your IP Address or `https://example.com` (but like the actual domain) if you've pointed your domain's A Record and you should see the Statamic landing page.
 
 <figure>
-    <img src="/img/quick-start/installed.png" alt="The Statamic Welcome Page">
+    <img src="/img/quick-start/installed-3.3.png" alt="The Statamic Welcome Page">
     <figcaption>If you see this, you have just won.</figcaption>
 </figure>
 

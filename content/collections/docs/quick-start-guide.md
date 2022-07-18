@@ -54,10 +54,10 @@ If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `
 
 If you encounter any other errors, Google them frantically and try anything and everything suggested until it magically begins working.
 
-**Just kidding**, that's a terrible idea. Please don't do that. You should check our [knowledge base](/knowledge-base) and [forums](https://statamic.com/forums) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
+**Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub discussions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
-    <img src="/img/quick-start/installed.png" alt="Statamic 3 Welcome Screen">
+    <img src="/img/quick-start/installed-3.3.png" alt="Statamic 3 Welcome Screen">
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
@@ -173,19 +173,19 @@ Head back to the Control Panel and click on the Collections link in the sidebar.
     <figcaption>Name it whatever you want, as long as you name it Blog.</figcaption>
 </figure>
 
-## Scaffold your templates
+## Scaffold your views
 
-Let's save you a minute or two and generate the index and show template. Click on **Scaffold Resources**
+Let's save you a minute or two and generate the index and show template. Click on **Scaffold Views**
 
 <figure>
-    <img src="/img/quick-start/scaffold-resources-link.jpg" alt="Link to Scaffold resources" width="600">
+    <img src="/img/quick-start/scaffold-views-link.jpg" alt="Link to Scaffold Views" width="600">
     <figcaption>Click it.</figcaption>
 </figure>
 
-And then click the Create Resources button. The defaults are perfect.
+And then click the Create Views button. The defaults are perfect.
 
 <figure>
-    <img src="/img/quick-start/scaffold-resources.jpg" alt="Scaffold collection resources" width="600">
+    <img src="/img/quick-start/scaffold-views.jpg" alt="Scaffold collection views" width="600">
     <figcaption>Click the button.</figcaption>
 </figure>
 
@@ -235,11 +235,15 @@ Here are some common patterns you could choose from:
 |`/blog/happy-new-year` | `/blog/{slug}` |
 | `/evergreen-syle` | `/{slug}` |
 
+:::tip
+Check out the full list of [available variables](/collections#meta-variables). Try saying "available variables" 3x fast. It's not the _best_ tongue-twister, but it does qualify.
+:::
+
 When in doubt, keep it simple. And then save your changes.
 
 ## Creating your first entry
 
-We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we add all configure all the custom fields and whatnot.
+We like to make things work and then make them better. With that in mind, let's make our first blog post and get it to show on the frontend before we configure all the custom fields and whatnot.
 
 Head back to your blog Collection screen and click **Create Entry**.
 
@@ -448,7 +452,7 @@ You can drag, drop, and rearrange fields inside and across your sections. This o
 
 Let's create a new field called `featured_image`.
 
-Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldstyles) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
+Click **Create Field** in the **Main** section and behold! A big list of fieldtypes! You can learn more about [each Fieldtype](/fieldtypes) elsewhere in the docs, but here are a few quick tips on narrowing down what you're looking for.
 
 When this screen is opened, you're automatically focused in the search box, so you can start typing the fieldtype name if you know it (Hint: you could type `assets` now). Or, you can narrow the fields down by type – All, Text, Media, and Relationship. You'd find the Assets fieldtype inside Media.
 

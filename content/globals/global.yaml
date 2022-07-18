@@ -8,6 +8,10 @@ data:
     - rocky
     - sigourney
     - freddie
+  experimental_badges:
+    - doc
+    - hackerman
+    - rick
   powered_by:
     - 'the sweat of Rambo'
     - 'Michael McDonald''s beard'

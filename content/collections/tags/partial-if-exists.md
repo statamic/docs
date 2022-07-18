@@ -1,7 +1,7 @@
 ---
 id: 29a6e9dd-283e-4463-a414-d115dcde8451
 blueprint: tag-glide
-title: 'Partial If Exists'
+title: 'Partial:If_Exists'
 description: 'Renders a partial if it exists.'
 intro: 'Renders a partial if it exists.'
 parameters:
@@ -28,5 +28,5 @@ nothing instead of throwing a "view not found" exception.
 ## Related Reading
 
 This tag goes hand in hand with the [`partial`](/tags/partial) tag.
-You may be interested in the [`partial:exists`](/tags/partial) tag if you need to do a more
+You may be interested in the [`partial:exists`](/tags/partial-exists) tag if you need to do a more
 complicated conditional check in your template.

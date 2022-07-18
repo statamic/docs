@@ -1,10 +1,16 @@
 ---
-title: Users
-intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
-template: page
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
+title: Users
+intro: 'Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.'
+template: page
 pro: true
+related_entries:
+  - 878f0dd7-2d31-479c-b58d-bc60685fa7d2
+  - 748f88ce-85f6-491b-8e9c-fa2b1895be31
+  - 4c3f5caa-a861-4ffd-a856-1692cafeb870
+  - 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
+  - 55993382-c928-48d0-8559-c88b226d4657
 ---
 ## Overview
 

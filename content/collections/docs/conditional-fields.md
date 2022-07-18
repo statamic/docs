@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Field conditions are set on individual field settings in [blueprints](/blueprints). For example, you could create a `meta_description` field that is only shown when the `content` field is longer than 140 characters.
+Field conditions are set on individual field settings in [blueprints](/blueprints). For example, you could create a `meta_description` field that is only shown and submitted when the `content` field is longer than 140 characters.
 
 <figure>
     <img src="/img/field-conditions.png" alt="Statamic conditional field rule builder">
@@ -15,6 +15,14 @@ Field conditions are set on individual field settings in [blueprints](/blueprint
 </figure>
 
 You may specify various rules for showing a field under either the `if` / `show_when` keys, or hiding a field under the `unless` / `hide_when` keys.
+
+### Data Flow
+
+Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
+
+:::tip
+If you want to cosmetically hide a larger set of fields to get them out of the user's way, you can use the [Revealer](/fieldtypes/revealer) fieldtype to hide them until the user needs them without disrupting data flow on form submission.
+:::
 
 ## Boolean
 
@@ -256,3 +264,29 @@ Statamic.$conditions.add('...', ({ root, store, storeName }) => {
     //
 });
 ```
+
+## Validation
+
+If you wish to conditionally apply validation to conditionally shown fields, we recommend using the `sometimes` [Laravel validation rule](https://laravel.com/docs/validation#validating-when-present).
+
+```
+-
+  handle: online_event
+  field:
+    type: toggle
+-
+  handle: venue
+  field:
+    type: text
+    if:
+      online_event: false
+    validate:
+      - sometimes
+      - required
+```
+
+The above example will only _sometimes_ apply the `required` rule to the `venue` field; Only when it exists in the submitted form data (see notes on [data flow](#data-flow) above).
+
+:::tip
+For more advanced conditional validation, take a look at Laravel's `required_if`, `required_with`, etc. [validation rules](https://laravel.com/docs/validation#rule-required-if).
+:::

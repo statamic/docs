@@ -83,7 +83,7 @@ public function find($id): ?Entry
 }
 ```
 
-We  we can extend the Stache repository to gain all of these features, point to our own query builder, and customize only a small set of methods that need tweaking to work with Eloquent. The resulting class looks something like this. As you can see, it's quite minimal.
+We can extend the Stache repository to gain all of these features, point to our own query builder, and customize only a small set of methods that need tweaking to work with Eloquent. The resulting class looks something like this. As you can see, it's quite minimal.
 
 ``` php
 <?php
