@@ -45,7 +45,7 @@ $entry = \Statamic\Facades\Entry::find('f6d5a87');
 Each data type may have more methods for retrieving data. You can also find an entry by it's slug or URI:
 
 ``` php
-Entry::findBySlug('shoes', 'clothing');
+Entry::findBySlug('branded-shoes', 'clothing'); //slug - collection
 Entry::findByUri('/clothing/shoes');
 Entry::findByUri('/vetements/chaussures', 'french'); // For multisite
 ```
