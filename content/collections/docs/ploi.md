@@ -4,24 +4,18 @@ blueprint: page
 title: 'Deploying Statamic with Ploi'
 intro: |-
   Ploi provisions and deploys PHP applications on DigitalOcean,
-  Linode, Vultr, Amazon, Hetzner and other hosting platforms. It's a piece of cake to deploy Statamic with it.
+  Linode, Vultr, Amazon, Hetzner and other hosting platforms. It's a piece of 🍰 to deploy a Statamic site with it.
 parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
-Assuming you have a [Ploi](https://ploi.io) account, the first thing to do is authorize your hosting provider of choice. In this walk-through we'll use [Hetzner](https://www.hetzner.com) as the example. This is a one-time step and will allow you to easily spin up and provision new server stacks anytime.
+Assuming you have a [Ploi](https://ploi.io) account, the first thing to do is authorize your hosting provider of choice. In this walk-through we'll use [Hetzner](https://www.hetzner.com) as the example. This is a one-time step and will allow you to easily spin up and provision new server stacks anytime. Go to your [Hetzner Cloud Console](https://console.hetzner.cloud) (or other cloud provider of choice) and create an API token. Documentation on that for Hetzner can be found [here](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/). Make sure the token has **read and write** access.
 
 <figure>
     <img src="/img/deployment-ploi-hosting-setup.jpg" alt="Deployment hosting setup example">
 </figure>
 
-You will need to also authorize Github (or your preferred source control provider). This is another one-time process that allows you to quickly deploy new sites from this account.
-
-<figure>
-    <img src="/img/deployment-forge-source-control-setup.png" alt="Deployment source control setup example">
-</figure>
-
 ## Spinning Up a New Server
 
-Once you have connected to your hosting provider, the next step is to spin up a new server. Laravel Forge automatically tailors the server stack for Statamic and Laravel, so you only need to choose the server size most suitable for your project and you'll be billed accordingly by Digital Ocean.
+Once you have connected to your hosting provider, the next step is to spin up a new server. Ploi automatically tailors the server stack for Statamic and Laravel, so you only need to choose the server size most suitable for your project and you'll be billed accordingly by Hetzner.
 
 <figure>
     <img src="/img/deployment-ploi-create-server.jpg" alt="Create server example">
@@ -37,36 +31,51 @@ The next step is to create a new site. This will scaffold out the directory stru
 
 ## Configuring Deployment
 
-Finally, setup your deployment by pointing to your site to your source control repository. Laravel Forge will create a sensible deployment script for you for one-click deployments.
-
 <figure>
-    <img src="/img/deployment-forge-install-repo.png" alt="Install repo example">
+    <img src="/img/deployment-ploi-site-setup-example.jpg" alt="Install repo example">
 </figure>
 
-After doing this, you'll be able to customize the deployment script if needed. You can also enable "**quick deploy**", which will automatically trigger deployments when you push changes to your chosen branch.
+Finally, setup your deployment by pointing your site to your source control repository. Ploi will create a sensible deployment script for you for one-click deployments.
+
+
+Alternatively, you can use Ploi's [1-click Statamic install](https://ploi.io/statamic) feature to quickly create a new site and an optional repository. You can even use this feature with one of [Statamic's starter kits](https://statamic.com/starter-kits).
 
 <figure>
-    <img src="/img/deployment-forge-script-example.png" alt="Deployment script example">
+    <img src="/img/deployment-ploi-statamic-preset-example-pixelated.jpg" alt="Install Statamic with Ploi's 1-click feature example">
+    <figcaption>Whip up a fresh install right from the Ploi dashboard 🚀</figcaption>
 </figure>
 
-The Deploy Script area is where you'd add commands to install Composer and NPM dependencies, compile CSS and JavaScript if you need to, and clear Statamic's cache. Most deploy scripts look like something like this:
+After doing this, you'll be able to customize the deployment script if needed. You can also enable "**quick deploy**", which will automatically trigger deployments when you push changes to your chosen branch. You can also [use GitHub actions to trigger a deployment](https://ploi.io/documentation/deployment/how-to-trigger-deployments-via-github-actions) with Ploi.
+
+<figure>
+    <img src="/img/deployment-ploi-script-example.jpg" alt="Deployment script example">
+</figure>
+
+The "Deploy script" area is where you'd add commands to install Composer and NPM dependencies, compile CSS and JavaScript if you need to, and clear Statamic's cache. Most deploy scripts look like something like this:
 
 ``` shell
-cd /home/forge/{example}.{tld}
+cd /home/ploi/{example}.{tld}
 git pull origin main
+composer install--no-interaction--prefer-dist--optimize-autoloader
+echo ... sudo-S service php8.1-fpm reload
 php please cache:clear
 npm ci && npm run production
 ```
 
 ## Statamic specific features
 
-Ploi offers some helpful features right from the dashboard that let you interact with your Statamic installtion without the need to log in to your server via ssh. This includes things like clearing the static cache or warming the stache.
+Ploi let's you interact with your Statamic installtion without you having to connect to your server via SSH. This includes clearing the (static) cache, warming the stache, generating meta data for assets etc.
+
+<figure>
+    <img src="/img/deployment-ploi-statamic-features.jpg" alt="Ploi's Statamic specific features">
+    <figcaption>Access the Statamic and Laravel CLI right from the web UI.</figcaption>
+</figure>
 
 ## Advanced Control
 
-Laravel Forge also offers advanced control of queue workers, cron jobs, SSL certificates, database access, etc.
+Ploi is [optimized for Laravel](https://ploi.io/laravel-optimized) and offers advanced control of queue workers, cron jobs, SSL certificates, database access, etc.
 
 <figure>
-    <img src="/img/deployment-forge-advanced.png" alt="Advanced Laravel Forge features">
-    <figcaption>Forge does a lot. It's worth it.</figcaption>
+    <img src="/img/deployment-ploi-advanced.jpg" alt="Advanced Ploi features">
+    <figcaption>Ploi has a lot of handy features.</figcaption>
 </figure>
