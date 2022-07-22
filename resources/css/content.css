@@ -199,7 +199,7 @@ article, .markdown {
                 @apply rounded-b;
             }
             td {
-                @apply px-3 py-2 md:px-5 md:py-3 leading-loose;
+                @apply px-3 py-2 md:px-5 md:py-3 leading-normal;
             }
             p {
                 @apply text-sm md:text-base leading-tight;
@@ -286,5 +286,22 @@ ul.list-col {
 @media screen(lg) {
     ul.list-col {
         column-count: 3;
+    }
+}
+
+
+
+/* Dark mode */
+/* -------------------------------------------------- */
+
+.dark {
+    article, .markdown {
+        @apply bg-transparent text-gray-dark;
+        h1, h2, h3 { @apply text-white }
+        table {
+            @apply bg-transparent border-gray-darkest text-gray-dark;
+            tbody tr { @apply even:bg-transparent; }
+            td, th { @apply border-b border-gray-darkest; }
+        }
     }
 }
