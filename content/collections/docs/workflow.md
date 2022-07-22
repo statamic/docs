@@ -40,7 +40,7 @@ With that enabled, your _developer_ workflow might look like this:
 
 ### Ignoring Content
 
-Sometimes it makes sense to keep the content _outside_ of git. Perhaps you have a lot of writers and content changes happen fast and furiously. Or maybe you a ton of content and want to keep your git repo small.
+Sometimes it makes sense to keep the content _outside_ of git. Perhaps you have a lot of writers and content changes happen fast and furiously. Or maybe you have a ton of content and want to keep your git repo small.
 
 Whatever the reason, you can ignore the `content` directory in your `.gitignore` file, and just use git to manage everything else [just like usual](#team).
 
