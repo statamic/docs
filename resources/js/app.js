@@ -51,8 +51,8 @@ window.htmlData = function() {
         setSystemTheme(theme) {
             this.systemTheme = theme
         },
-        setThemePreference(scheme) {
-            this.themePreference = scheme
+        setThemePreference(theme) {
+            this.themePreference = theme
             localStorage.setItem('theme', theme)
         },
         get darkMode() {
