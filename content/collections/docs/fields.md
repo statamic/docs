@@ -101,7 +101,7 @@ Statamic\Facades\User::computed('balance', function ($user, $value) {
 });
 ```
 
-Or maybe you wish to return a dynamic `shares` count on entries within your `articles` collection using 3rd party social media service:
+Or maybe you wish to return a dynamic `shares` count on entries within your `articles` collection using 3rd party social media API:
 
 ```php
 Statamic\Facades\Collection::computed('articles', 'shares', function ($entry, $value) {
