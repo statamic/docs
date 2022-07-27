@@ -9,6 +9,7 @@ related_entries:
   - 54548616-fd6d-44a3-a379-bdf71c492c63
   - 2940c834-7062-47a1-957c-88a69e790cbb
   - 9b2f6f55-5355-4334-b90d-d1236fb58887
+  - dd52c1f6-661b-4408-83c6-691fa341aaa7
 ---
 ## Configuration
 
@@ -65,6 +66,7 @@ If you want to override the above-mentioned field condition data flow behaviour,
 Blueprints are attached to collections, taxonomies, global sets, assets, users, and even forms, all which help to determine their content schema.
 
 [Fieldsets](/fieldsets) are used to store and organize **reusable fields**. Blueprints can reference fields or entire fieldsets, helping you keep your configurations nice and [DRY][dry].
+
 ## Fieldtypes
 
 The visual UI and storage format for any given field is determined by its [fieldtype](/fieldtypes). There are 40+ included fieldtypes to help you design intuitive content management experiences for your authors.
