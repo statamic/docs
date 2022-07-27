@@ -91,6 +91,43 @@ Each fieldtype has the ability to _augment_ this data when accessed from the fro
 **Augmentation** is only performed when a field is defined in a blueprint. Data created "on the fly" in Front Matter may still require [modifiers](/modifiers) to transform it according to your whims and fancies.
 :::
 
+## Computed Fields
+
+You can configure dynamic computed field data on [Collections](/collections) and [Users](/users). For example, maybe you wish to return a dynamic `balance` using a 3rd party invoicing API:
+
+```php
+Statamic\Facades\User::computed('balance', function ($user, $value) {
+    return ThirdPartyInvoicingService::getBalance($user->email());
+});
+```
+
+Or maybe you wish to return a dynamic `shares` count on entries within your `articles` collection using 3rd party social media service:
+
+```php
+Statamic\Facades\Collection::computed('articles', 'shares', function ($entry, $value) {
+    return ThirdPartyTweeterService::getCount($entry->permalink);
+});
+```
+
+The second `$value` parameter in your function closure will return a _stored_ value under the same handle, if one exists, allowing you to override computed values if necessary.
+
+Once configured, you can access your computed values as properties on your instances:
+
+```php
+$user->balance // returns a balance from `ThirdPartyInvoicingService`
+$entry->shares // returns a share count from `ThirdPartyTweeterService`
+```
+
+Or view your computed values in the control panel if you configure your field to allow for it:
+
+<figure class="mt-0">
+    <img src="/img/field-computed-config.png" alt="Always save field setting">
+</figure>
+
+:::tip
+It's always good practice to cache data from 3rd party sources. You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade to store and retrieve cached values within your computed function closures.
+:::
+
 ## Localization
 
 Fields can be localized, allowing you to translate or modify content in a multi-site project.
