@@ -6,6 +6,10 @@ modifier_types:
   - string
 title: 'Format Localized'
 ---
+:::warning
+Since Carbon 2.55.0 `formatLocalized` has been deprecated. Please use the [`iso_format`](/modifiers/iso_format) modifier instead.
+:::
+
 Given a date string, or anything that sort of looks like a date string, `format` will convert it to a [Carbon][carbon] instance and allow you to format it with PHP's [strftime format][strftime] variables. It will use the current locale defined in your system settings.
 
 For this to work you will need to have the necessary locales installed in your hosting environment.
