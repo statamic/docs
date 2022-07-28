@@ -6,7 +6,7 @@ id: 0327afd5-469b-4119-a75e-2bfe9389eb05
 ---
 ## Overview
 
-Think of computed values as virtual fields that can be composed of data from any source. You could be grabbing a value from a secondary local database, a 3rd party API, or even composing a dynamic value from other fields on the entry itself.
+Think of computed values as virtual fields that can be composed from any source. You could be grabbing a value from a secondary local database, a 3rd party API, or even by composing a dynamic value from other fields on the entry itself.
 
 ## Setting Computed Values
 
@@ -14,7 +14,7 @@ You can configure dynamic computed field data on [Collections](/collections) and
 
 ### On User Instances
 
-For example, maybe you wish to return a dynamic `balance` using a 3rd party invoicing API:
+For example, maybe you wish to return a user's `balance` using a 3rd party invoicing API:
 
 ```php
 use Statamic\Facades\User;
@@ -26,7 +26,7 @@ User::computed('balance', function ($user, $value) {
 
 ### On Entry Instances
 
-Or maybe you wish to return a dynamic `shares` count on entries within your `articles` collection using 3rd party social media API:
+Or maybe you wish to return a `shares` count on entries within your `articles` collection using 3rd party social media API:
 
 ```php
 use Statamic\Facades\Collection;
@@ -53,7 +53,7 @@ Collection::computed('articles', 'subtitle', function ($entry, $value) {
 
 ### Performance
 
-If you plan on accessing data through a 3rd party API, or even computing values across large data sets locally, it may be beneficial to cache this data.
+If you plan on accessing data through a 3rd party API, or even computing values across large data sets locally, it may be beneficial to cache your data.
 
 :::tip
 You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade to store and retrieve cached values within your computed callback function.
