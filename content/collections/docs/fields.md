@@ -36,7 +36,7 @@ Fields are always visible by default, but you can configure custom visibility to
 
 - **Visible** - Always visible
 - **Read Only** - Prevent editing, but still submit current value on save
-- **Computed** - Show read-only [computed value](#computed-fields), and never submit this value on save
+- **Computed** - Show read-only [computed value](/computed-values), and never submit this value on save
 - **Hidden** - Always hide field on publish form, but still submit it's current value on save
 
 :::tip
@@ -49,7 +49,7 @@ You can also dynamically show and hide your fields using [Conditional Fields](/c
 
 Fields are always submitted on save, except for in the following situations:
 
-- If the field is configured to show a [computed value](#computed-fields)
+- If the field is configured to show a [computed value](/computed-values)
 - If the field is dynamically hidden using [field conditions](/conditional-fields)
 
 If you want to override the above-mentioned field condition data flow behaviour, you can either use a [Revealer Field](/fieldtypes/revealer), or set the following configuration on your field:
