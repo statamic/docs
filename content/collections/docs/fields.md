@@ -35,9 +35,9 @@ All fields share the following settings regardless of type:
 Fields are always visible by default, but you can configure custom visibility to any of the following options:
 
 - **Visible** - Always visible
-- **Read Only** - Prevent editing, but still submit current value on save
+- **Read Only** - Prevent editing
 - **Computed** - Show read-only [computed value](/computed-values), and never submit this value on save
-- **Hidden** - Always hide field on publish form, but still submit it's current value on save
+- **Hidden** - Hide field on publish form, but still submit current value on save
 
 :::tip
 You can also dynamically show and hide your fields using [Conditional Fields](/conditional-fields) and/or [Revealer Fields](/fieldtypes/revealer).
