@@ -97,7 +97,7 @@ You can configure dynamic computed field data on [Collections](/collections) and
 
 ```php
 Statamic\Facades\User::computed('balance', function ($user, $value) {
-    return ThirdPartyInvoicingService::getBalance($user->email());
+    return InvoicingService::balance($user->email());
 });
 ```
 
@@ -105,7 +105,7 @@ Or maybe you wish to return a dynamic `shares` count on entries within your `art
 
 ```php
 Statamic\Facades\Collection::computed('articles', 'shares', function ($entry, $value) {
-    return ThirdPartyTweeterService::getCount($entry->permalink);
+    return TweeterService::shareCount($entry->permalink);
 });
 ```
 
@@ -114,8 +114,8 @@ The second `$value` parameter in your function closure will return a _stored_ va
 Once configured, you can access your computed values as properties on your instances:
 
 ```php
-$user->balance // returns a balance from `ThirdPartyInvoicingService`
-$entry->shares // returns a share count from `ThirdPartyTweeterService`
+$user->balance // returns a balance from `InvoicingService`
+$entry->shares // returns a share count from `TweeterService`
 ```
 
 Or view your computed values in the control panel if you configure your field to allow for it:
