@@ -52,7 +52,7 @@ Fields are always submitted on save, except for in the following situations:
 - If the field is configured to show a [computed value](/computed-values)
 - If the field is dynamically hidden using [field conditions](/conditional-fields)
 
-If you want to override the above-mentioned field condition data flow behaviour, you can either use a [Revealer Field](/fieldtypes/revealer), or set the following configuration on your field:
+If you want to override the above-mentioned field condition data flow behaviour, you can either use a [Revealer Field](/fieldtypes/revealer), or set the following to 'Always Save' your field:
 
 <figure>
     <img src="/img/field-always-save.png" alt="Always save field setting">
