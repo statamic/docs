@@ -38,7 +38,7 @@ To make dev life easier, this tag collapses whitespace automatically and can set
 {{ svg src="img/icons/square" class="fill-current text-mint" }}
 
 // Using a variable `promo_graphic` (defined in your blueprint)
-{{ svg src="{promo_graphic}" class="fill-current text-orange" }}
+{{ svg :src="promo_graphic" class="fill-current text-orange" }}
 ```
 
 ```html
