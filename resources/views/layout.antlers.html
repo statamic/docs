@@ -1,4 +1,6 @@
-<html lang="en" class="bg-white">
+<html lang="en" class="bg-white" :class="{ dark: darkMode }"
+    x-data="htmlData()"
+    x-init="window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => setSystemTheme(e.matches ? 'dark' : 'light'))">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +27,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css" defer>
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="{{ mix src='/js/app.js' }}" defer></script>
+    <script>
+    </script>
 </head>
-<body class="font-sans leading-normal" x-data="bodyData()" x-spread="bindings">
+<body class="font-sans leading-normal dark:bg-black dark:bg-none" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}
 {{ partial:partials/nav }}
 <div class="max-w-7xl mx-auto flex px-4 md:px-10 py-6 lg:py-12" name="top">

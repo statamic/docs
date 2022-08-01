@@ -10,6 +10,7 @@ module.exports = {
       './content/**/*.md'
     ]
   },
+  darkMode: 'class',
   important: true,
   theme: {
     colors: {

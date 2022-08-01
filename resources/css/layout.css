@@ -39,3 +39,8 @@ body {
         content: '';
     }
 }
+
+.dark .side-nav li.active a {
+    @apply text-yellow !important;
+    &:before { display: none; }
+}

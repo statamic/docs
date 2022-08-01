@@ -37,7 +37,7 @@ use Statamic\Facades\Entry;
 use Statamic\Facades\GlobalSet;
 
 Entry::find('abc123');
-GlobalSet::findByHandle('footer')->get('copyright');
+GlobalSet::findByHandle('footer')->inDefaultSite()->get('copyright');
 ```
 
 ### Query Builders

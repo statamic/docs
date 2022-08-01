@@ -147,6 +147,11 @@ figure figcaption {
     }
 }
 
+.dark {
+    figure, .screenshot { @apply bg-gray-darker shadow-none; }
+    .caption, figure figcaption { @apply bg-mint text-black; }
+}
+
 
 /* Buttons */
 /* -------------------------------------------------- */
@@ -199,6 +204,10 @@ figure figcaption {
              content: counters(item, ".") " ";
         }
     }
+}
+
+.dark .toc li a {
+    @apply text-gray-light;
 }
 
 /* @media screen(lg) {

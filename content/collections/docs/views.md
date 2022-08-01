@@ -79,10 +79,10 @@ title: Photo Gallery
 You can use the [template](/fieldtypes/template) fieldtype to make choosing your template in any entry easy. Any [fieldtype](/fieldtypes) that returns a string like in the example above works too, so you have a lot of flexibility.
 :::
 
-### Inferring templates from entry blueprints
+### Map templates to entry blueprints
 
 
-To automatically infer the template from an entry's blueprint, set the collection's default template to `@blueprint`.
+To automatically map the template from an entry's blueprint, set the collection's default template to `@blueprint`.
 
 ``` yaml
 # collections/{collection}.yaml

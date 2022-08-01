@@ -88,3 +88,12 @@
 .DocSearch-Button-Container {
     @apply flex-1 !important;
 }
+
+.dark {
+    .DocSearch-Button {
+        @apply bg-transparent !important;
+    }
+    .DocSearch-Button-Key  {
+        @apply bg-transparent !important;
+    }
+}
