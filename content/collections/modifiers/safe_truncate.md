@@ -15,7 +15,7 @@ advice: >
 ```
 
 ```
-{{ advice | safe_truncate:90:... }}
+{{ advice | safe_truncate:90:'...' }}
 ```
 
 ```html
