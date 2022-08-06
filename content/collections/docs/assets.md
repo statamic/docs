@@ -60,7 +60,7 @@ data:
 ```
 
 :::tip
-You should consider version controling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
+You should consider version controlling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
 :::
 
 ## Containers
