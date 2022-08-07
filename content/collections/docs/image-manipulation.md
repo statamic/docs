@@ -174,7 +174,7 @@ In this example, you would also need to create a Redis database named `glide` in
 You may manually clear the Glide cache by running the following command:
 
 ```
-php artisan glide:clear
+php please glide:clear
 ```
 
 This will **delete all the files** within your Glide cache filesystem location, as well as clearing the [path cache](#path-cache-store).
