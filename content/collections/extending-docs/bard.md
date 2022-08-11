@@ -201,11 +201,11 @@ utils.getMarkAttrs(...);
 
 ## ProseMirror Rendering
 
-If you have created a mark or node on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
+If you have created an extension on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
 
 The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
 
-You can use the `addMark` and `addNode` methods to bind a [Mark or Node](https://github.com/ueberdosis/prosemirror-to-html) class into the renderer. Your service provider's `boot` method
+You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your service provider's `boot` method
 is a good place to do this.
 
 ``` php
@@ -213,7 +213,20 @@ use Statamic\Fieldtypes\Bard\Augmentor;
 
 public function boot()
 {
-    Augmentor::addMark(MyMark::class);
-    Augmentor::addNode(MyNode::class);
+    // Pass an object
+    Augmentor::addExtension('myExtension', new MyExtension);
+
+    // or a closure. You will be passed the bard fieldtype and an array of options as arguments.
+    Augmentor::addExtension('myExtension', function ($bard, $options) {
+        return new MyExtension(['foo' => $bard->config('should_foo')];
+    });
+
+    // Same for replacing extensions.
+    Augmentor::replaceExtension('paragraph', new MyCustomParagraph);
+
+    // Closures too. There will be an additional argument at the front which is the existing extension.
+    Augmentor::replaceExtension('paragraph', function ($existing, $bard, $options) {
+        return new CustomParagraph;
+    });
 }
 ```
