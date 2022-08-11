@@ -13,7 +13,7 @@ You may create scopes that can be used in various places, such as inside the col
 
 Any scope classes located within `app/Scopes` will be automatically registered.
 
-You may create a scope class by running `php please make:scope Featured`, which will give you a class with a few methods for you to implement, for example:
+You may create a scope class by running `php please make:scope YourScope`, which will give you a class with a few methods for you to implement, for example:
 
 ``` php
 <?php
@@ -41,7 +41,7 @@ Filters are UI based [scopes](#scopes) that will be displayed in listings inside
 
 You're able to configure any number of fields to a filter to allow your users to refine their listings.
 
-You may create a filter class by running `php please make:filter Featured`, which will give you a class with a few methods for you to implement, for example:
+You may create a filter class by running `php please make:filter YourScope`, which will give you a class with a few methods for you to implement, for example:
 
 ``` php
 <?php
