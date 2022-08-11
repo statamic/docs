@@ -82,6 +82,16 @@ Need multiple conditions? Yeah, we support that.
 
 ### Passing multiple values
 
+To pass multiple _values_ in a condition, separate them with `|` pipes.
+
+```
+{{ collection:drinks ingredients:in="rum|falernum" }}
+    <a href="{{ url }}">
+        {{ title }}
+    </a>
+{{ /collection:drinks }}
+```
+
 ## String Conditions
 
 The following conditions apply to fields with data stored as strings.
