@@ -15,7 +15,6 @@
                 {{ nav :handle="section" }}
                 <div class="relative pl-1">
                     <button class="text-lg relative font-medium font-display mt-4 mb-2 flex items-center dark:text-white" @click="open = (open === '{{ title }}') ? '' : '{{ title }}'">
-                        {{# <img src="/img/chevron2.svg" class="mr-2 relative -top-px transform transistion duration-100 dark:text-current-color" x-bind:class="{'rotate-90': open === '{{ title }}'}" alt=""> #}}
                         <span class="mr-2 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}' }">{{ svg src="img/chevron2" class="dark:text-current-color" }}</span>
                         <span>{{ title }}</span>
                     </button>
