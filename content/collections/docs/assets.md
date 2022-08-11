@@ -135,6 +135,12 @@ You can customize the fields on the blueprint by visiting the container in the C
 
 If you want to edit the blueprint file directly, you can do so in `resources/blueprints/assets/{handle}.yaml`.
 
+## Ordering
+
+### Default Sort Order in Listings
+
+You can choose which field and direction to sort the list of assets in the Control Panel by setting the `sort_by` and `sort_dir` variables in your container.yaml. By default the file name will be used.
+
 ## Drivers
 
 Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and other drivers can be [installed with composer](https://laravel.com/docs/filesystem#driver-prerequisites).
