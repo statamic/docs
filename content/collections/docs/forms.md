@@ -313,12 +313,6 @@ fields:
       container: main
 ```
 
-## Dynamic forms with static caching
-
-If you have [static caching](/static-caching) enabled, submitting dynamic forms will most likely end up in a `419 - session expired` error. This is the result of a [CSRF](https://laravel.com/docs/9.x/csrf) token mismatch because the token is statically cached and doesn't refresh.
-
-You can still use dynamic forms with static caching by either installing the [Dynamic Token addon](https://statamic.com/addons/webographen/dynamic-token) or implementing a dynamic token endpoint yourself and fetch a new and valid token via JavaScript when submitting the form. You can find an example of this in the [Peak Starter Kit](https://github.com/studio1902/statamic-peak/blob/main/routes/web.php#L19).
-
 ## Honeypot
 
 Simple and effective spam prevention.
