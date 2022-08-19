@@ -149,16 +149,24 @@ So, if you change your template or parameters, you'll see a fresh version next t
 
 ## Scope
 
-The `scope` parameter allows you cache the template chunk either across the whole site (the default behavior), or per page.
+The `scope` parameter allows you cache the template chunk either across the whole site (the default behavior), for the current user, or per page.
 
-For example, you might have a "recent articles" list on the sidebar that's the same on every page. Or, your footer navigation is
-probably the same on every page. You can use the `site` scope for those.
+For example, you might have a "recent articles" list on the sidebar that's the same on every page. Or, your footer navigation is probably the same on every page. You can use the `site` scope for those.
 
 However, your header navigation might have "active" states on it, so you'd want to make sure to cache it per page.
 
 ```
 {{ cache scope="page" }}
     {{ nav }} ... {{ /nav }}
+{{ /cache }}
+```
+
+Or if your navigation changes depending on the current user, you want to use the `user` scope:
+
+
+```
+{{ cache scope="user" }}
+    {{ nav }} {{ user }} ... {{ /user }} {{ /nav }}
 {{ /cache }}
 ```
 
