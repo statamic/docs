@@ -19,7 +19,7 @@ parameters:
   -
     name: scope
     type: 'string'
-    description: 'Sets the [cache scope](#scope). Either `site` or `page`. Has no effect when using the `key` parameter.'
+    description: 'Sets the [cache scope](#scope). Three possible values: `site`, `page` or `user`. Has no effect when using the `key` parameter.'
 stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
