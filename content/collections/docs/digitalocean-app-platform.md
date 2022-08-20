@@ -106,6 +106,21 @@ Navigate to the Settings tab of your application and add your commands to the Bu
     <img src="/img/deploying/digital-ocean-app-platform/build-command.png" alt="Authorizing Github">
 </figure>
 
+## Forcing HTTPS
+
+When using the [vite tag](https://statamic.dev/tags/vite) instead of Mix, built assets will be served from `http://` by default. To address this, HTTPS can be forced from `app/Providers/AppServiceProvider.php`:
+
+```php
+public function boot()
+{
+    ...
+
+    if (env('APP_ENV') !== 'local') {
+        URL::forceScheme('https');
+    }
+}
+```
+
 ## Wrap-up
 
 That should get you going! There's much more to learn and configure though, so be sure to check out the  [App Platform How-Tos](https://docs.digitalocean.com/products/app-platform/how-to/) section of the DigitalOcean docs!
