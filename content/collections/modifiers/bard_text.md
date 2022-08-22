@@ -41,7 +41,10 @@ main_content:
 {{ main_content | raw | bard_text | read_time }}
 ```
 
-```yaml
-string: We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in CYBERSPACE.
-string: 1
+```
+We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in CYBERSPACE.
+```
+
+```
+1
 ```
