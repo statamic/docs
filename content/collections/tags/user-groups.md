@@ -10,6 +10,15 @@ parameters:
     type: string
     description: 'The handle(s) of the groups you want to return. You may specify multiple groups by pipe separating them: `{{ user_groups handle="jocks|geeks" }}`.'
     required: false
+variables:
+  -
+    name: handle
+    type: string
+    description: The group's unique identifier.
+  -
+    name: title
+    type: string
+    description: The group's display title.
 ---
 ## Overview
 

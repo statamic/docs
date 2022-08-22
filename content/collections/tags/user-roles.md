@@ -10,6 +10,15 @@ parameters:
     type: string
     description: 'The handle(s) of the roles you want to return. You may specify multiple roles by pipe separating them: `{{ user_roles handle="jocks|geeks" }}`.'
     required: false
+variables:
+  -
+    name: handle
+    type: string
+    description: The role's unique identifier.
+  -
+    name: title
+    type: string
+    description: The role's display title.
 ---
 ## Overview
 
