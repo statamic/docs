@@ -7,9 +7,7 @@ modifier_types:
   - string
   - utility
 ---
-Converts any Bard data to a plain text string (excluding sets).
-
-Bard data can be either:
+Converts any Bard data to a plain text string (excluding sets). Bard data can be either:
 
 * The raw value from a Bard field (a ProseMirror document), with or without sets
 * One or more ProseMirror nodes (from the [bard_items](bard_items) modifier)

@@ -6,9 +6,10 @@ modifier_types:
   - array
   - utility
 ---
-Converts any Bard data to a flat array of ProseMirror nodes and marks.
+Converts any Bard data to a flat array of ProseMirror nodes and marks. Bard data can be either:
 
-Bard data should be the raw value from a Bard field (a ProseMirror document), with or without sets.
+* The raw value from a Bard field (a ProseMirror document), with or without sets
+* One or more of the ProseMirror nodes returned from this modifier
 
 ```yaml
 main_content:
