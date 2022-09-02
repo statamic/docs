@@ -27,7 +27,7 @@ Glide Presets are pre-configured manipulations that will be automatically genera
 'image_manipulation' => [
     'presets' => [
         'thumbnail' => [ 'w' => 300, 'h' => 300, 'q' => 75],
-        'hero'      => [ 'w' => 1440 'h' => 600, 'q' => 90 ],
+        'hero'      => [ 'w' => 1440, 'h' => 600, 'q' => 90 ],
     ],
 ],
 ```
