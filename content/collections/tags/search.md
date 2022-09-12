@@ -39,6 +39,11 @@ parameters:
     type: string
     description: >
       When `true` will include all non-indexed content field. See [supplementing data](#supplementing-data) Default: `true`.
+  -
+    name: for
+    type: string
+    required: false
+    description: 'The term to be searched for. Overrides the `query` parameter.'
 variables:
   -
     name: no_results
