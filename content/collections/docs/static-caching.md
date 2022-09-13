@@ -252,13 +252,18 @@ return [
             'driver' => 'file',
             'path' => [
                'default'    => public_path('static') . '/domain1.com/',
-               'default_fr' => public_path('static') . '/domain1.com/fr/',
+               'default_fr' => public_path('static') . '/domain1.com/',
                'other_site' => public_path('static') . '/domain2.com/',
             ]
         ]
     ]
 ];
 ```
+
+:::tip
+There should be a directory per domain, not site. In the example above, you can see that `default` and `default_fr` both point to the same directory.
+:::
+
 ### Rewrite Rules
 
 This multi-site example needs modified rewrite rules.
@@ -290,6 +295,45 @@ location / {
 
 :::tip
 `{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
+:::
+
+### Invalidation Rules
+
+In the [invalidation rules array](#when-saving) explained above, the URLs are relative.
+
+If you are using sites with multiple domains, you should define URLs in additional domains using absolute URLs. Relative URLs will assume the first site's domain.
+
+```php
+return [
+    'invalidation' => [
+        'rules' => [
+            'collections' => [
+                'blog' => [
+                    'urls' => [
+                        '/blog', // [tl! **]
+                        'https://domaintwo.com/articles',  // [tl! **]
+                    ]
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+:::tip
+Rather than hardcoding the domains, you could use a config key or a variable.
+
+```php
+<?php
+$two = config('statamic.sites.sites.two.url'); // [tl! **]
+
+return [
+    // ...
+    'urls' => [
+        '/blog',
+        $two.'articles', // [tl! **]
+    ]
+```
 :::
 
 ## Replacers
