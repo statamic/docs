@@ -474,6 +474,31 @@ public function handle(ResponseCreated $event)
 }
 ```
 
+### RevisionDeleted
+`Statamic\Events\RevisionDeleted`
+
+Dispatched after a revision of an entry has been deleted.
+
+``` php
+public function handle(RevisionDeleted $event)
+{
+    $event->revision;
+}
+```
+
+### RevisionSaved
+`Statamic\Events\RevisionSaved`
+
+Dispatched after a revision of an entry has been saved.
+
+``` php
+public function handle(RevisionSaved $event)
+{
+    $event->revision;
+}
+```
+
+
 ### RoleDeleted
 `Statamic\Events\RoleDeleted`
 
