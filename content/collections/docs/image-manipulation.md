@@ -32,7 +32,7 @@ Glide Presets are pre-configured manipulations that will be automatically genera
 ],
 ```
 
-All standard Glide API parameters are available for use in presets. (Not the tag aliases like `width`. You'll need to use `w`.)
+All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets. (Not the tag aliases like `width`. You'll need to use `w`.)
 
 Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag] and since all transformations and manipulations are performed at time of upload, there shouldn't be any additional overhead on the initial request.
 
