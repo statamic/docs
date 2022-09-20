@@ -72,6 +72,10 @@ The [Glide tag][glide-tag] will output URLs to the configured Glide [route](#rou
 When using this method, since the Glide tag only needs to generate URLs, the load time of the page will be faster, but the initial load time of each image request will be slower.
 :::
 
+:::tip
+Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`
+:::
+
 ### Custom Path (Static)
 
 The next level of caching would be to specify a custom, publicly accessible location for the images to be generated.
