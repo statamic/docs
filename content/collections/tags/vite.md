@@ -9,7 +9,17 @@ parameters:
     name: src
     type: string
     description: |
-      The path to the file, relative to your project root. You may pass multiple paths.
+      The path to the file, relative to your project root. You may pass multiple files and paths.
+  -
+    name: directory
+    type: string
+    description: |
+      The path to the desired build directory. Defaults to `build`.
+  -
+    name: hot
+    type: string
+    description: |
+      The path to the desired location for the hot file. Defaults to `public/hot`.
 ---
 The `vite` tag is a wrapper around [Laravel's Vite integration](https://laravel.com/docs/vite). It is essentially an Antlers version of the `@vite` Blade directive.
 
@@ -32,4 +42,10 @@ Otherwise, it will use the compiled assets, which you would have done by running
 ```html
 <link rel="stylesheet" href="http://yoursite.com/build/assets/site.3bc13c9b.css"/>
 <script type="module" src="http://yoursite.com/build/assets/site.67066a5d.js"></script>
+```
+
+Additionally, you can set custom locations for the build directory and hot file.
+
+```
+{{ vite src="resources/css/tailwind.css|resources/js/site.js" directory="bundle" hot="storage/vite.hot" }}
 ```
