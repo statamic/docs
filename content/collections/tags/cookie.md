@@ -67,6 +67,10 @@ You can set multiple cookies at once and reference interpolated data (references
 {{ cookie:set likes="hats" :visited="url" }}
 ```
 
+:::tip
+When you set a cookie, it will only be available on the _next_ request.
+:::
+
 ## Forgetting
 
 You can remove cookies by passing the names of the variables into the `keys` parameter. Pass multiple keys by delimiting them with a pipe.
