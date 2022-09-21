@@ -14,12 +14,12 @@ parameters:
     name: directory
     type: string
     description: |
-      The path to the desired build directory. Defaults to `build`.
+      The path to the desired build directory, relative to the `public` directory. Defaults to `build`.
   -
     name: hot
     type: string
     description: |
-      The path to the desired location for the hot file. Defaults to `public/hot`.
+      The path to the desired location for the hot file, relative to your project root. Defaults to `public/hot`.
 ---
 The `vite` tag is a wrapper around [Laravel's Vite integration](https://laravel.com/docs/vite). It is essentially an Antlers version of the `@vite` Blade directive.
 
