@@ -18,3 +18,15 @@ string: It was one of the best adventures of my life
 ```html
 It Was One of the Best Adventures of My Life
 ```
+
+You can also pass optional parameters to the modifier for strings that should be ignored, like abbriviations.
+
+```yaml
+string: Open your first PR to Statamic CMS
+```
+
+```
+{{ string | title:PR:CMS }}
+```
+
+Without passing those parameters, the output would be `Open Your First Pr to Statamic Cms` instead of `Open Your First PR to Statamic CMS`.
