@@ -200,8 +200,8 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 
 It is important that the collection has been [configured to use this taxonomy](/collections#taxonomies) in order to filter the results based on the passed in term.
 
-There are a number of different ways to use this parameter. They are explained in depth in the
-[Taxonomies Guide](/taxonomies#collections)
+There are a number of different ways to use this parameter. They are explained in depth on the
+[Conditions page](/collections#taxonomy-conditions).
 
 ### Published Status
 
