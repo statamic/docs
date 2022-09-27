@@ -349,11 +349,9 @@ Often times you'd like to have some extra markup around your list of entries, bu
 
 ```
 {{ collection:blog as="posts" }}
-  <ul>
   {{ posts }}
-    <li><a href="{{ url }}">{{ title }}</a></li>
+    <a href="{{ url }}">{{ title }}</a>
   {{ /posts }}
-  </ul>
 {{ /collection:blog }}
 ```
 
