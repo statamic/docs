@@ -67,7 +67,7 @@ Asset::query()
 ```php
 Asset::query()
     ->where('container', 'main')
-    ->where('filename', 'like', '%thumbnail%')
+    ->where('path', 'like', '%thumbnail%')
     ->get();
 ```
 
