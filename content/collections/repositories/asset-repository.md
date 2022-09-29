@@ -62,12 +62,12 @@ Asset::query()
     ->get();
 ```
 
-#### Get all Assets with "thumbnail" in the filename.
+#### Get all Assets with "thumbnail" in the path.
 
 ```php
 Asset::query()
     ->where('container', 'main')
-    ->where('filename', 'like', '%thumbnail%')
+    ->where('path', 'like', '%thumbnail%')
     ->get();
 ```
 
