@@ -101,7 +101,7 @@ When [installing the starter kit](#installing-a-starter-kit), composer will inst
 
 You may run additional logic after the starter kit is installed. For example, maybe you want to output some information.
 
-To do so, you can create a `StarterKitPostInstall.php` file in the root of your starter kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
+To do so, you can create a `StarterKitPostInstall.php` file in the root of your starter kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, etc.
 
 ```php
 <?php
