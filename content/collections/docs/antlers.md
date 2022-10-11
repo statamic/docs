@@ -417,6 +417,7 @@ Syntax highlighting packages are available for most of the popular IDEs. Make li
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
 - [Antlers for VS Code](https://github.com/addisonhall/ahdesign.antlers)
+- [Antlers Toolbox for VS Code](https://antlers.dev/) 
 
 
 [ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
