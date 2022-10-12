@@ -17,6 +17,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `if`
 - `reference`
 - `resource`
+- `status`
 - `unless`
 - `value`
 
