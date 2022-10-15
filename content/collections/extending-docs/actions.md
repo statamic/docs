@@ -78,7 +78,7 @@ public function boot()
 Each action button will have an automatic name provided by the `HasTitle` trait that can be overriden by setting a static `title` variable on your action class.
 
 ``` php
-$static $title = "Fire Lasers"
+$static $title = "Fire Lasers";
 ```
 
 ## Filtering Actions
