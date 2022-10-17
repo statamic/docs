@@ -9,7 +9,7 @@ parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
 Assuming you have a [Ploi](https://ploi.io) account, the first thing to do is authorize your hosting provider of choice. In this walk-through we'll use [Hetzner](https://www.hetzner.com) as the example. This is a one-time step and will allow you to easily spin up and provision new server stacks anytime.
 
-Go to your [Hetzner Cloud Console](https://console.hetzner.cloud) (or other cloud provider of choice) and create an API token. Check out the [Hetzner docs on generating API tokens]((https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/)) if you need it. Make sure the token has **read and write** access.
+Go to your [Hetzner Cloud Console](https://console.hetzner.cloud) (or other cloud provider of choice) and create an API token. Check out the [Hetzner docs on generating API tokens](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/) if you need it. Make sure the token has **read and write** access.
 
 <figure>
     <img src="/img/deployment-ploi-hosting-setup.jpg" alt="Deployment hosting setup example">
