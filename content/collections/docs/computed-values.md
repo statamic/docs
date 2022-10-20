@@ -10,7 +10,7 @@ Think of computed values as virtual fields that can be composed from any source.
 
 ## Setting Computed Values
 
-You can configure dynamic computed field data on [Collections](/collections) and [Users](/users) using the provided `computed()` helper on the relevant Facade.
+Inside a service provider's `boot` method, you can configure dynamic computed field data on [Collections](/collections) and [Users](/users) using the provided `computed()` helper on the relevant Facade.
 
 ### On User Instances
 
