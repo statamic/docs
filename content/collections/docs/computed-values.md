@@ -1,7 +1,7 @@
 ---
 title: 'Computed Values'
 blueprint: page
-intro: 'Define dynamic values on your data, and display them as virtual fields in the Control Panel.'
+intro: 'Define dynamic values on your data and display them as virtual fields in the Control Panel. They're like accessors on Eloquent models.'
 id: 0327afd5-469b-4119-a75e-2bfe9389eb05
 ---
 ## Overview
