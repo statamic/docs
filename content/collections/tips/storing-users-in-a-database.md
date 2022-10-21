@@ -26,6 +26,13 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 6. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
 7. Run `php artisan migrate`
 8. Run a command to migrate your file based users into the database.
+9. (optional) If you are using the Statamic forgot password form, add the following method to your User model
+    ```php
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \Statamic\Notifications\PasswordReset($token));
+    }
+    ```
 
 :::tip
 **Simon Hamp** has a good [starter migration script](https://gist.github.com/simonhamp/a2b9113c100e5194db53298162f1dde0) you can start from and customize for your own needs.
@@ -65,6 +72,13 @@ You will need to run migrations to prepare your database for Statamic's user, pa
     ``` shell
     php please auth:migration
     php artisan migrate
+    ```
+3. (optional) If you are using the Statamic forgot password form, add the following method to your User model
+    ```php
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \Statamic\Notifications\PasswordReset($token));
+    }
     ```
 
 :::tip
