@@ -43,3 +43,17 @@ You can have multiple counters going at once in your view by giving each a uniqu
   {{ increment:again }}
 {{ /items }}
 ```
+
+## Customize the Counters
+
+Customize the counts using the `from` and `by` parameters.
+
+```
+{{ items }}
+  {{ increment from="0" by="200" }}
+{{ /items }}
+```
+
+```html
+0 200 400 600 800 100
+```

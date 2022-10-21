@@ -19,7 +19,7 @@ parameters:
   -
     name: scope
     type: 'string'
-    description: 'Sets the [cache scope](#scope). Either `site` or `page`. Has no effect when using the `key` parameter.'
+    description: 'Sets the [cache scope](#scope). Three possible values: `site`, `page` or `user`. Has no effect when using the `key` parameter.'
 stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
@@ -34,6 +34,35 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
   {{ /collection:stocks }}
 {{ /cache }}
 ```
+
+:::tip
+You can disable the `{{ cache }}` tag (temporarily) based on the environment. This is great for your local setup.
+
+``` env
+STATAMIC_CACHE_TAGS_ENABLED=false
+```
+
+``` php
+return [
+   'cache_tags_enabled' => env('STATAMIC_CACHE_TAGS_ENABLED', true), // [tl! highlight]
+   ...
+];
+```
+:::
+
+## Exclusions
+
+You may use the `nocache` tag inside a `cache` tag to keep that section dynamic.
+
+```
+{{ cache }}
+    this will be cached
+    {{ nocache }} this will remain dynamic {{ /nocache }}
+    this will also be cached
+{{ /cache }}
+```
+
+[Read more about the nocache tag](/tags/nocache)
 
 ## Invalidation
 
@@ -120,16 +149,24 @@ So, if you change your template or parameters, you'll see a fresh version next t
 
 ## Scope
 
-The `scope` parameter allows you cache the template chunk either across the whole site (the default behavior), or per page.
+The `scope` parameter allows you cache the template chunk either across the whole site (the default behavior), for the current user, or per page.
 
-For example, you might have a "recent articles" list on the sidebar that's the same on every page. Or, your footer navigation is
-probably the same on every page. You can use the `site` scope for those.
+For example, you might have a "recent articles" list on the sidebar that's the same on every page. Or, your footer navigation is probably the same on every page. You can use the `site` scope for those.
 
 However, your header navigation might have "active" states on it, so you'd want to make sure to cache it per page.
 
 ```
 {{ cache scope="page" }}
     {{ nav }} ... {{ /nav }}
+{{ /cache }}
+```
+
+Or if your navigation changes depending on the current user, you want to use the `user` scope:
+
+
+```
+{{ cache scope="user" }}
+    {{ nav }} {{ user }} ... {{ /user }} {{ /nav }}
 {{ /cache }}
 ```
 
@@ -144,7 +181,7 @@ The `scope` parameter has no effect if you use the `key` parameter.
 You're free to use the cache tag on top of [static caching](/static-caching).
 
 You'll probably have static caching disabled during development so you can see your changes without having to continually clear anything.
-The cache tag could be a nice compromise to speed up heavy areas for a few minutes at a time. Or, if you have some pages excluded
-from static caching (like pages with forms) then the cache tag could be useful there.
+
+The cache tag could be a nice compromise to speed up heavy areas for a few minutes at a time. Or, if you have some pages excluded from static caching then the cache tag could be useful there.
 
 Of course, if you *do* have static caching enabled, keep in mind that you aren't going to gain anything by using both at the same time.

@@ -125,7 +125,7 @@ Each transformer is a closure that would correspond to a field in your index's `
             '_geoloc' => $address['geolocation'],
             'location' => $address['location'],
             'region' => $address['region'],
-        ]
+        ];
     }
 ]
 ```

@@ -6,17 +6,16 @@ modifier_types:
   - date
   - conditions
 ---
-Returns `true` if date is tomorrow - using the server's time.
+Returns `true` if a given date is tomorrow, using the server's time.
 
 ```yaml
-date: {{ now modify_date="+1 day" format="F j Y" }}
+date: January 1, 2000
 ```
-{{ noparse }}
+
 ```
 {{ if date | is_tomorrow }}
 ```
-{{ /noparse }}
 
 ```html
-true
+false
 ```

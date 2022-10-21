@@ -81,6 +81,7 @@ export default {
 
 :::tip
 You are welcome to customize the filenames and folder structure and even the entire build process. The only important thing is to import the compiled files with `Statamic::script()`.
+:::
 
 ## Adding control panel routes
 

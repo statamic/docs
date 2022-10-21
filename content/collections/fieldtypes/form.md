@@ -13,10 +13,10 @@ options:
     required: false
     description: 'The maximum number of forms that may be selected.'
   -
-    name: mode
+    name: placeholder
     type: string
     description: |
-        Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
+      Set the non-selectable placeholder text. Default: none.
 related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - aa96fcf1-510c-404b-9b63-cea8942e1bf8
@@ -31,10 +31,10 @@ The Form fieldtype stores the `handle` of a single form as a string, or an array
 
 ## Templating
 
-The Form fieldtype uses [augmentation](/augmentation) to return an instance of the [Form:Create](/tags/form-create) tag. All the documentation there applies to what you can do here.
+The Form fieldtype uses [augmentation](/augmentation) to return a Form instance. You can pass the handle into the [form tags](/tags/form).
 
 ```
-{{ form_field }}
+{{ form:create :in="form_field:handle" }}
   {{ fields }}
       <div class="p-2">
           <label>{{ display }}</label>
@@ -45,5 +45,5 @@ The Form fieldtype uses [augmentation](/augmentation) to return an instance of t
       </div>
   {{ /fields }}
   <button type="submit">Submit</button>
-{{ /form_field }}
+{{ /form:create }}
 ```

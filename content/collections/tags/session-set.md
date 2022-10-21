@@ -3,7 +3,6 @@ title: 'Session:Set'
 description: 'Store and persist data in the user session.'
 intro: Data set in the session will be available in all future requests until such time that the session is cleared over time (sessions eventually expire) or intentionally. Session variables can be retrieved with the main [session](/tags/session) tag.
 id: 90796c5b-6b11-4b02-9e6b-fd70211c825a
-stage: 4
 ---
 ## Example
 
@@ -13,7 +12,7 @@ This can be used for many different things. For example, you could set a variabl
 {{ session:set entered_survey="true" }}
 ```
 
-Later you could decide to show a message isntead of the form if the user has already filled it out.
+Later you could decide to show a message instead of the form if the user has already filled it out.
 
 ```
 {{ session }}

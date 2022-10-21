@@ -23,6 +23,6 @@ food:
 <ol>
   <li>sushi</li>
   <li>broccoli</li>
-  <li>kale</dd>
+  <li>kale</li>
 </ol>
 ```

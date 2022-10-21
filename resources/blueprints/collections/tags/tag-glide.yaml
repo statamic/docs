@@ -99,6 +99,26 @@ sections:
               field:
                 type: markdown
       -
+        handle: other
+        field:
+          type: grid
+          mode: stacked
+          fields:
+            -
+              handle: name
+              field:
+                type: text
+                width: 33
+            -
+              handle: type
+              field:
+                type: text
+                width: 33
+            -
+              handle: description
+              field:
+                type: markdown
+      -
         handle: template
         field:
           display: Template

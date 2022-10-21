@@ -4,7 +4,7 @@ title: 'Starter Kits'
 intro: |-
   Starter Kits are pre-built site packages that jump-start new Statamic sites with features, functionality, and even design.
 
-  Built by the core team or designers & developers in the community, Starter Kits can can cover a wide range of uses, from fully-built, ready-to-go sites, to developer-focused boilerplates for common frontend frameworks. Starter Kits can be shared and even sold on the <a href="https://statamic.com/marketplace">Statamic Marketplace</a>.
+  Built by the core team or designers & developers in the community, Starter Kits can cover a wide range of uses, from fully-built, ready-to-go sites, to developer-focused boilerplates for common frontend frameworks. Starter Kits can be shared and even sold on the <a href="https://statamic.com/marketplace">Statamic Marketplace</a>.
 template: page
 blueprint: page
 nav_title: Overview
@@ -20,7 +20,7 @@ Statamic Starter Kits are designed to be a **starting place**. Good, clean code,
 We envision Starter Kits as a great way to "skip ahead" in the usual development cycle of a website, and less of a "no-code" approach to web development.
 ## Where to Find Starter Kits
 
-The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace) or the **Tools &rarr; Starter Kits** section of the Statamic 3 Control Panel.
+The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace).
 
 <figure>
     <img src="https://statamic.com/images/storage/products/HRU3TVeiAnVlzRecp8G6pUiYGagWTvWzoh7ZWC27.jpeg" alt="Podcaster – a Statatmic Starter Kit">

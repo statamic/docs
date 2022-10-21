@@ -91,7 +91,7 @@ export default {
 </script>
 ```
 
-#### Example walkthrough:
+#### Example walk-through:
 - The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field.
 - The `text-input` component emits an `input` event whenever you type into it. Our component is listening for that event and calls the `update` method.
 - The `Fieldtype` mixin is providing an `updateDebounced` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
@@ -99,6 +99,26 @@ export default {
 :::warning
 **Do not** modify the `value` prop directly. Instead, call `this.update(value)` (or `this.updateDebounced(value)`) and let the Vuex store handle the update appropriately.
 :::
+
+## Fieldtype Icon
+
+You can use an existing SVG icon from Statamic's `resources/svg` directory by passing it's name into an `$icon` class variable, by returning a full SVG as a string, or returning it as a string from the `icon()` method.
+
+```php
+<?php
+
+class CustomFieldtype extends Fieldtype
+{
+    protected $icon = 'tags';
+    // or
+    protected $icon = '<svg> ... </svg>';
+    // or
+    function icon()
+    {
+        return file_get_contents(__DIR__ . 'resources/svg/left_shark.svg');
+    }
+}
+```
 
 ## Configuration Fields
 
@@ -142,8 +162,30 @@ protected function configFieldItems(): array
 | ***other*** | Some fieldtypes have additional configuration options available. |
 
 :::tip
-A little code diving will reveal all the possible config options for each field type. Look for the `congfigFieldOptions()` method in each class here: <https://github.com/statamic/cms/tree/3.2/src/Fieldtypes>
+A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/3.3/src/Fieldtypes>
 :::
+
+### Adding configuration fields to existing fieldtypes
+
+Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
+
+You can do this using the `appendConfigField` or `appendConfigFields` methods on the respective fieldtype.
+
+```php
+use Statamic\Fieldtypes\Text;
+
+// One field...
+Text::appendConfigField('group', [
+  'type' => 'text',
+  'display' => 'Group',
+]);
+
+// Multiple fields...
+Text::appendConfigFields([
+  'group' => ['type' => 'text', 'display' => '...',],
+  'another' => ['type' => 'text', 'display' => '...',],
+]);
+```
 
 ## Meta Data
 
@@ -253,6 +295,20 @@ public function augment($value)
 ```
 
 [Read more about augmentation](/extending/augmentation)
+
+## Accessing Other Fields
+
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component: 
+
+```js
+inject: ['storeName'],
+
+computed: {
+    formValues() {
+        return this.$store.state.publish[this.storeName].values;
+    },
+},
+```
 
 ## Updating from v2
 

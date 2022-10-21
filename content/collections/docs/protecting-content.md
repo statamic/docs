@@ -109,7 +109,7 @@ This is perfect for times when you want to password-protect one or more files bu
 You’ll need to provide a way for people to enter passwords for URLs. Statamic has a built-in generic password entry form. If you want to customize it, you have two options:
 
 #### Override the view
-Override the view by creating `vendor/statamic/auth/protect/password.antlers.html` in your `views` directory, and use the  [protect:password_form](/tags/protect/password_form) tag to build a form. No config change required. For example:
+Override the view by creating `vendor/statamic/auth/protect/password.antlers.html` in your `views` directory, and use the  [protect:password_form](/tags/protect-password_form) tag to build a form. No config change required. For example:
 
 ```
 {{ protect:password_form }}

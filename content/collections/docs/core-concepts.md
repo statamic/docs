@@ -20,7 +20,7 @@ Sometimes these conventions don't fit your project, or maybe you're perfectly ha
 A good example of this is the decision on whether to use [Blade](/blade) as the template language over [Antlers](/antlers). Antlers is deeply integrated with Statamic and can handle the responsibilities of both Blade _and_ Controllers right in your template. If you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
 
 :::best-practice
-Do your to best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
+Do your best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
 :::
 
 
@@ -72,7 +72,7 @@ This means that Statamic doesn't do everything right out the box. We find it's m
 If many of the sites you build share a common set of features, collections, blueprints, and/or templates, consider turning them into a [Starter Kit](/starter-kits) and make it your boilerplate to kickstart new projects.
 :::
 
-## Statamic is Box of Lego Bricks
+## Statamic is a Box of Lego Bricks
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 
@@ -88,6 +88,6 @@ Hopefully you get the idea and see how you can solve almost any challenge with c
 
 ## The Control Panel Can Be Optional
 
-You should be able do everything (and more) without ever logging into the Control Panel. Granted, it _does_ tend to make some of the more complicated things easier (like creating relationships, discovering all possible options for a given setting, and so on), but we love efficiency and your editor is a great place to find it.
+You should be able to do everything (and more) without ever logging into the Control Panel. Granted, it _does_ tend to make some of the more complicated things easier (like creating relationships, discovering all possible options for a given setting, and so on), but we love efficiency and your editor is a great place to find it.
 
 Project-wide find & replace is incredibly powerful.

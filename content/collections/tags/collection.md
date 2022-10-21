@@ -69,9 +69,13 @@ parameters:
     required: false
   -
     name: paginate
-    type: 'boolean *false*'
-    description: 'Specify whether your entries should be paginated.'
+    type: 'boolean|int *false*'
+    description: 'Specify whether your entries should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
     required: false
+  -
+    name: on_each_side
+    type: 'int *3*'
+    description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.
   -
     name: as
     type: string
@@ -83,7 +87,7 @@ parameters:
     description: 'Scope your entries with a variable prefix.'
     required: false
   -
-    name: locale
+    name: locale|site
     type: string
     description: 'Show the retrieved content in the selected locale.'
     required: false
@@ -196,8 +200,9 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 
 It is important that the collection has been [configured to use this taxonomy](/collections#taxonomies) in order to filter the results based on the passed in term.
 
-There are a number of different ways to use this parameter. They are explained in depth in the
-[Taxonomies Guide](/taxonomies#collections)
+:::tip
+There are several different ways to use this filtering parameter. They are explained in depth on the [Conditions page](/collections#taxonomy-conditions).
+:::
 
 ### Published Status
 
@@ -225,10 +230,10 @@ Doing something custom or complicated? You can create [query scopes](/extending/
 
 ## Pagination
 
-To enable pagination mode, add the `paginate="true"` parameter, along with the `limit` parameter to specify the number of entries in each page.
+To enable pagination mode, add the `paginate` parameter with the number of entries in each page.
 
 ```
-{{ collection:blog limit="10" paginate="true" as="posts" }}
+{{ collection:blog paginate="10" as="posts" }}
 
     {{ if no_results }}
         <p>Aww, there are no results.</p>
@@ -344,11 +349,9 @@ Often times you'd like to have some extra markup around your list of entries, bu
 
 ```
 {{ collection:blog as="posts" }}
-  <ul>
   {{ posts }}
-    <li><a href="{{ url }}">{{ title }}</a></li>
+    <a href="{{ url }}">{{ title }}</a>
   {{ /posts }}
-  </ul>
 {{ /collection:blog }}
 ```
 

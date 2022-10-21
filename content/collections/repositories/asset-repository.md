@@ -62,12 +62,12 @@ Asset::query()
     ->get();
 ```
 
-#### Get all Assets with "thumbnail" in the filename.
+#### Get all Assets with "thumbnail" in the path.
 
 ```php
 Asset::query()
     ->where('container', 'main')
-    ->where('filename', 'like', '%thumbnail%')
+    ->where('path', 'like', '%thumbnail%')
     ->get();
 ```
 
@@ -98,7 +98,7 @@ $asset = $container->makeAsset('images/hat.jpg');
 Once you have an asset instance, you can add data to it.
 
 ```php
-$asset->data(['foo' => 'bar]);
+$asset->data(['foo' => 'bar']);
 ```
 
 Finally, save it. It'll return a boolean for whether it succeeded.

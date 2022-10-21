@@ -101,6 +101,8 @@ If you don't explicitly create a blueprint, your entries will have a basic set o
 
 If you create _more than_ one blueprint you'll be given the option to choose which one you want when creating a new entry.
 
+You can hide blueprints from appearing in the new entry menu by activating the _Hidden_ toggle on the blueprint's UI or setting `hide: true` in the blueprint's yaml file.
+
 ## Titles
 
 All entries need a title. Statamic uses titles to display entries in a consistent way throughout the Control Panel.
@@ -109,9 +111,10 @@ Depending on the collection, a dedicated `title` field might not be useful to yo
 
 For example, a "reviews" collection might just have `author`, `stars`, and `content` fields. You could configure the titles to be "5 star rating by John Smith".
 
-```yaml
-title_format: '{stars} star rating by {author:name}'
-```
+<figure>
+    <img src="/img/title-format-setting.png" alt="Entry Title Format Setting" width="544" height="120">
+    <figcaption>Configuring an automated title</figcaption>
+</figure>
 
 When using multiple sites, you may optionally configure the titles on a per site level by using an array:
 
@@ -309,7 +312,7 @@ Entries with redirects will get filtered out of the [collection](/tags/collectio
 
 ### Entry Link Blueprint
 
-When a Collection is structured, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
+When a Collection is structured and you have set `Entries in this collection may contain links (redirects) to other entries or URLs.` on in the collection settings, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
 
 This will load a behind-the-scenes blueprint containing `title` and `redirect` fields. You are free to modify what's shown on these pages by creating your own `entry_link` blueprint.
 
@@ -341,14 +344,14 @@ You may mount a collection onto an entry as a way of saying "all these entries b
 
 ### Mount Setting
 
-You can mount a collection to an entry by specifying the ID of said entry. You can also use the `mount` variable in the route to prepend the mounted entry's URL.
+You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to a **aquarium** entry page.
 
-So for example, if you mounted a collection to `/blog` with `/{mount}/{slug}`, all your blog URLs will follow the `/blog/entry-url` pattern. If you later move `/blog` to `/articles`, all your entries will follow along with `/articles/entry-url`.
+Now you can use `mount` variable in the route to automatically prepend the mounted entry's URL. So for example, if you mounted a collection to `/aquarium` with `/{mount}/{slug}`, all your fish URLs will follow the `/aquarium/entry-url` pattern. If you later move `/aquarium` to `/house-of-fishies`, all your entries will automatically update with `/house-of-fishies/entry-url`.
 
 ``` yaml
-title: Blog
-mount: id-of-the-blog-entry
-route: '{mount}/{slug}'
+title: Our Tropical Fishies
+mount: id-of-the-aquarium-entry
+route: '/{mount}/{slug}'
 ```
 
 ## Revisions

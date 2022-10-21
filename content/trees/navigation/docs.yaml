@@ -4,15 +4,21 @@ tree:
     title: 'Getting Started'
     children:
       -
+        id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
+        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+      -
         id: 67a031f2-f519-4179-b793-0c9d04f44662
         entry: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
       -
-        id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
-        entry: 792644d2-8bd2-421d-a080-e0be7fca125c
+        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
+        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e
       -
         id: a3f8cff7-6bf4-42ff-9731-42a2a3aecd55
         entry: ab08f409-8bbe-4ede-b421-d05777d292f7
         title: Installing
+      -
+        id: e8ad5c5e-c025-4d15-9ec3-6f8b15b836f5
+        entry: e6f05019-6bdd-488e-ba45-39ae7ea5cee7
       -
         id: efa84d9d-48a0-4e61-a745-7c014efeaff7
         entry: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
@@ -71,6 +77,9 @@ tree:
         id: 720767c5-43d4-4e8e-9a78-bd9fe45f421f
         entry: bde2385f-5fee-4cb1-a516-5fe2e2d17e0c
       -
+        id: 72af747c-32fc-4a13-ac48-27cdaffac194
+        entry: 0327afd5-469b-4119-a75e-2bfe9389eb05
+      -
         id: 321e7c15-e389-48c7-83bc-ce30eac71c21
         entry: 3d5efc5c-17b1-480b-bb77-53faf3d9552c
       -
@@ -106,6 +115,9 @@ tree:
       -
         id: 716bb7b8-952a-45b7-9c20-24c4e0a24e43
         entry: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
+      -
+        id: 29526fd0-a0a1-11ec-b230-0800200c9a66
+        entry: 268d444c-88e3-4b52-bfc6-165749ef3ec1
   -
     id: 0cbb901d-581c-433f-b873-1256c70d2f5c
     title: Frontend
@@ -118,6 +130,10 @@ tree:
         id: 6ee59577-5f3f-4cbe-8c92-9ce3da648594
         entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
       -
+        id: 9d43191e-652b-48e8-8ec5-5cd6266d793d
+        entry: d37b2af2-f2bf-493a-9345-7087fb5929ce
+        title: 'New Antlers Parser'
+      -
         id: 40ef0b25-0f5e-4523-a527-52a099838d09
         entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b
       -
@@ -129,6 +145,10 @@ tree:
       -
         id: 05a7b681-86e7-4ac7-883c-27bc03d79f38
         entry: fc564ddf-80c1-4d87-8675-4a41f13c7774
+      -
+        id: 08e937a0-bb37-11ec-bf84-0800200c9a66
+        entry: 245068a1-1900-4774-a3ba-29192dc9acff
+        title: 'Image Manipulation'
       -
         id: 68c69f7b-3560-40e6-a4ba-abc98d7ce4af
         entry: 131259a5-2072-49d8-9ea4-2099e0338e2f
@@ -202,12 +222,6 @@ tree:
         id: dae0a662-0a66-4a4f-8d2a-b63c2eaf8f65
         entry: bc2ad29d-50c3-47fb-9213-8553bcb5a48a
         title: Overview
-      -
-        id: d08bdd5e-a743-4630-9ba6-a21c217db804
-        entry: 8e084d33-e1c7-43ac-ae43-2988c2ab0ac0
-      -
-        id: 8868cd27-71c8-4de4-b700-c93a31782758
-        entry: 5bb3e677-8b9c-4e77-be24-5fefec9c1af0
   -
     id: 6e285cb4-23db-4817-abc6-1c76a08def33
     title: 'Starter Kits'
@@ -241,6 +255,3 @@ tree:
       -
         id: d187ac97-9bc6-4354-a3ba-382daf94d657
         entry: cd0428cf-2c4a-43b9-8e61-dd8123799ed8
-      -
-        id: c9a67a1a-f321-4925-8085-625c73b7b9e3
-        entry: f12f8ba3-19ff-48cb-a07b-653b05082d7e

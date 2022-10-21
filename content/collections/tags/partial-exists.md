@@ -1,6 +1,6 @@
 ---
 id: 75bf08fb-59ba-4148-91ca-5199efa241cf
-title: 'Partial Exists'
+title: 'Partial:Exists'
 description: 'Checks if a partial exists.'
 intro: 'Checks if a partial exists.'
 parameters:

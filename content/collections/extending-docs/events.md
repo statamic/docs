@@ -172,6 +172,18 @@ public function handle(CollectionDeleted $event)
 }
 ```
 
+### CollectionCreated
+`Statamic\Events\CollectionCreated`
+
+Dispatched after a collection has been created.
+
+``` php
+public function handle(CollectionCreated $event)
+{
+    $event->collection;
+}
+```
+
 ### CollectionSaved
 `Statamic\Events\CollectionSaved`
 
@@ -181,6 +193,31 @@ Dispatched after a collection has been saved.
 public function handle(CollectionSaved $event)
 {
     $event->collection;
+}
+```
+
+
+### CollectionTreeDeleted
+`Statamic\Events\CollectionTreeDeleted`
+
+Dispatched after a collection tree has been deleted.
+
+``` php
+public function handle(CollectionTreeDeleted $event)
+{
+    $event->tree;
+}
+```
+
+### CollectionTreeSaved
+`Statamic\Events\CollectionTreeSaved`
+
+Dispatched after a collection tree has been saved.
+
+``` php
+public function handle(CollectionTreeSaved $event)
+{
+    $event->tree;
 }
 ```
 
@@ -196,6 +233,18 @@ An example of when this would be useful is to add a section to a blueprint in th
 public function handle(EntryBlueprintFound $event)
 {
     $event->blueprint;
+    $event->entry;
+}
+```
+
+### EntryCreated
+`Statamic\Events\EntryCreated`
+
+Dispatched after an entry has been created.
+
+``` php
+public function handle(EntryCreated $event)
+{
     $event->entry;
 }
 ```
@@ -322,6 +371,19 @@ throw ValidationException::withMessages(['You did something wrong.']);
 
 You may also just modify the submission object. You do not need to `return` anything.
 
+### GlideImageGenerated
+`Statamic\Events\GlideImageGenerated`
+
+Dispatched after Glide generates an image. 
+
+``` php
+public function handle(GlideImageGenerated $event)
+{
+    $event->path;
+    $event->params;
+}
+```
+
 ### GlobalSetDeleted
 `Statamic\Events\GlobalSetDeleted`
 
@@ -387,6 +449,18 @@ public function handle(NavSaved $event)
 }
 ```
 
+### NavTreeSaved
+`Statamic\Events\NavTreeSaved`
+
+Dispatched after a nav tree has been saved.
+
+``` php
+public function handle(NavTreeSaved $event)
+{
+    $event->tree;
+}
+```
+
 ### ResponseCreated
 `Statamic\Events\ResponseCreated`
 
@@ -399,6 +473,31 @@ public function handle(ResponseCreated $event)
     $event->response; // The Response object
 }
 ```
+
+### RevisionDeleted
+`Statamic\Events\RevisionDeleted`
+
+Dispatched after a revision of an entry has been deleted.
+
+``` php
+public function handle(RevisionDeleted $event)
+{
+    $event->revision;
+}
+```
+
+### RevisionSaved
+`Statamic\Events\RevisionSaved`
+
+Dispatched after a revision of an entry has been saved.
+
+``` php
+public function handle(RevisionSaved $event)
+{
+    $event->revision;
+}
+```
+
 
 ### RoleDeleted
 `Statamic\Events\RoleDeleted`
@@ -526,6 +625,21 @@ public function handle(TermSaved $event)
 }
 ```
 
+### UserBlueprintFound
+`Statamic\Events\UserBlueprintFound`
+
+Dispatched after Statamic finds the blueprint to be used for a user.
+
+You may modify the blueprint here and it will be reflected in the publish form (and wherever else a blueprint is used).
+An example of when this would be useful is to add a section to a blueprint in the publish page on the fly.
+
+``` php
+public function handle(UserBlueprintFound $event)
+{
+    $event->blueprint;
+}
+```
+
 ### UserDeleted
 `Statamic\Events\UserDeleted`
 
@@ -559,6 +673,32 @@ Dispatched after a user group has been saved.
 public function handle(UserGroupSaved $event)
 {
     $event->group;
+}
+```
+
+### UserRegistering
+`Statamic\Events\UserRegistering`
+
+Dispatched before a user is saved.
+
+You can return false to prevent the submission, but appear to the user as though it succeeded.
+
+``` php
+public function handle(UserRegistering $event)
+{
+    $event->user;
+}
+```
+
+### UserRegistered
+`Statamic\Events\UserRegistered`
+
+Dispatched after a user is saved.
+
+``` php
+public function handle(UserRegistered $event)
+{
+    $event->user;
 }
 ```
 

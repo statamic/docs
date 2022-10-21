@@ -1,9 +1,11 @@
 ---
-title: Forms
-template: page
 id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
-intro: Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.
+title: Forms
+template: page
+intro: 'Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.'
+related_entries:
+  - e4f4f91e-a442-4e15-9e16-3b9880a25522
 ---
 ## Overview
 
@@ -250,6 +252,18 @@ email:
 
 [Learn how to create your emails](/email)
 
+### Attachments
+
+When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any `assets` fields will be automatically attached.
+
+```yaml
+email:
+  -
+    attachments: true
+    # other settings here
+```
+
+
 ## File Uploads
 
 Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
@@ -303,7 +317,7 @@ fields:
 
 Simple and effective spam prevention.
 
-The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail.
+The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
 Hide this field a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
 For example:
@@ -319,11 +333,8 @@ For example:
 .honeypot { display: none; }
 ```
 
-If you're worried about smarter spam bots realizing that the honeypot field is named `honeypot`, you may customize the
-name of the field by adding `honeypot: something` to your formset.
-
 :::tip
-We say the submission will "fail", but that's not **exactly** true. On the front end it will _appear_ that the form was submitted successfully. However, nothing is saved and no emails are sent. This helps to trick bots into assuming everything went smoothly so they can leave you alone for a hot second.
+In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your formset config.
 :::
 
 ## Using AJAX
@@ -347,4 +358,3 @@ axios.post(form.action, new FormData(form))
 
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
-

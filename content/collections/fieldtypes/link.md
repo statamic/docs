@@ -11,6 +11,11 @@ options:
     type: array
     description: |
       Configure which collections you want to allow relationships with.
+  -
+    name: container
+    type: string
+    description: >
+      An asset container ID. When specified, the fieldtype will allow the user to add a link to an asset from the specified container.
 ---
 ## Overview
 
@@ -48,5 +53,3 @@ Check out <a href="{{ url_link }}">Statamic</a>!
 ```output
 Check out <a href="https://statamic.com">Statamic</a>!
 ```
-
-## Config Options

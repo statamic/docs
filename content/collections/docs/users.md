@@ -1,10 +1,16 @@
 ---
-title: Users
-intro: Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.
-template: page
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
+title: Users
+intro: 'Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.'
+template: page
 pro: true
+related_entries:
+  - 878f0dd7-2d31-479c-b58d-bc60685fa7d2
+  - 748f88ce-85f6-491b-8e9c-fa2b1895be31
+  - 4c3f5caa-a861-4ffd-a856-1692cafeb870
+  - 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
+  - 55993382-c928-48d0-8559-c88b226d4657
 ---
 ## Overview
 
@@ -78,9 +84,9 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
-| Create, edit, and delete structures | `configure structures` |
-| ↳  View structure | `view {structure} structure` |
-| &nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
+| Create, edit, and delete navs | `configure navs` |
+| ↳  View nav | `view {nav} nav` |
+| &nbsp;&nbsp;↳  Edit nav | `edit {nav} nav` |
 | Edit global variables | `edit {global} globals` |
 | View asset container | `view {container} assets` |
 | ↳  Upload assets | `upload {container} assets` |

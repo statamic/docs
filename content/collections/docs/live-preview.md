@@ -78,45 +78,63 @@ These values are available in your views, scoped into the `live_preview` array:
 {{ /if }}
 ```
 
-## Custom Render Methods
+## Preview Targets
 
-If you need to customize how Live Preview renders your content — say you're using Statamic as a headless CMS or pushing data into mobile devices or kiosk applications or something equally fancy — follow these steps.
+On a Collection, you may define one or more preview targets which lets you choose which page should viewed in the Live Preview window.
 
-By overriding the `Entry` class's `toLivePreviewResponse()` method, you can return anything you want.
+For example, you may want to preview how an entry looks on the entry's page itself, as well as a listing page.
 
-``` php
-<?php
-
-namespace App;
-
-use Statamic\Data\Entries\Entry as BaseEntry;
-
-class Entry extends BaseEntry
-{
-    public function toLivePreviewResponse($request, $extra)
-    {
-        return response('any html');
-    }
-}
+```yaml
+# content/collections/blog.yaml
+preview_targets:
+  -
+    label: Entry
+    url: /blog/{slug}
+  -
+    label: Index
+    url: /blog
 ```
 
-The entry (`$this`) will have access to the temporary values entered in Live Preview, applied as supplemented data.
+You may use entry's variables in the URL, just like defining a route.
 
-``` php
-// the original title
-$this->get('title');
+If you don't define any targets, it will use the entry's URL.
 
-// the title as entered in live preview
-$this->getSupplement('title');
+## Headless / Front-end Frameworks
 
-// when converting an entry to an array,
-// supplemental data overrides original
-$array = $this->toArray();
+To use Live Preview with a front-end framework, you may use a [preview target](#preview-targets) that points to a custom URL.
 
-// title as entered in live preview
-$array['title'];
+For example, [Nuxt.js's Preview Mode](https://nuxtjs.org/docs/features/live-preview#preview-mode) requires that you point to a URL with a `preview=true` query parameter.
+
+```yaml
+preview_targets:
+  -
+    label: Entry
+    url: https://your-nuxt-app.com/blog/{slug}?preview=true
 ```
 
-The `$request` provided to the `toLivePreviewResponse()` method will be a _faked_ request to either the entry's absolute or AMP URL, depending on user selection.
+A `token` query parameter will be appended to the URL automatically, which you can then pass back to Statamic in a GraphQL query, where it will know to replace the entry with the Live Preview version.
 
-The `$extra` parameter will be an array of the values for any additional inputs.
+## Custom Rendering
+
+If you need even more control, you may create your own route that retrieves the Live Preview entry through the token manually. Whatever you return from the route will be displayed within Live Preview.
+
+```yaml
+preview_targets:
+  -
+    label: Entry
+    url: /render-live-preview
+```
+
+```php
+use Facades\Statamic\CP\LivePreview;
+use Illuminate\Http\Request;
+
+Route::get('/render-live-preview', function (Request $request) {
+  $entry = LivePreview::item($request->statamicToken());
+  $entry->title;        // The edited title
+  $entry->foo;          // The edited foo field, etc.
+  $entry->live_preview; // All the "extra" data from the custom toolbar fields are in here.
+
+  return view('whatever', ['entry' => $entry]);
+});
+```

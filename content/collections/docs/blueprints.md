@@ -1,8 +1,11 @@
 ---
-title: Blueprints
-intro: Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they'll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.
 id: 54548616-fd6d-44a3-a379-bdf71c492c63
 blueprint: page
+title: Blueprints
+intro: 'Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they''ll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.'
+related_entries:
+  - 2940c834-7062-47a1-957c-88a69e790cbb
+  - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 ---
 ## Overview
 
@@ -214,54 +217,7 @@ Fields can have various validation rules applied to them, enforcing the need for
 
 While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/8.x/validation#available-validation-rules).
 
-<div class="screenshot">
-    <img src="/img/field-validation.png" width="521" alt="Field validation"/>
-    <div class="caption">Add validation rules (with a shortcut for requiring)</div>
-</div>
-
-In this screenshot, you can see that the field has an `alpha_dash` and `min:4` rule which means you can only type letters and dashes, like a slug, and that it
-must be at least 4 characters. You have plenty of options to be creative and confident that your data will be entered the way you need it to be.
-
-Here's a peek at how that YAML is structured.
-
-```yaml
--
-  handle: your_field
-  field:
-    type: text
-    validation:
-      - alpha_dash
-      - 'min:4'
-```
-
-:::tip
-If you're interested in customizing user password validation, you can read about that [here](/users#password-validation).
-:::
-
-### Required Fields
-
-Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
-
-### Unique Fields
-
-In addition to Laravel's validation rules, Statamic offers some custom ones, like `unique_entry_value: {collection},{id},{site}`. This allows you to have a unique value for a given field. 
-
-For example, setting the following in your `user.yaml` blueprint will make each user's login unique for your whole website. 
-```yaml
--
-  handle: login
-  field:
-    type: text
-    validate: 'unique_user_value:{id}'
-```
-You can then customize the error message right in your `resources/lang/{lang}/validation.php` file, like so 
-```
-'custom' => [
-        'name' => [
-            'unique_user_value' => 'This login is not available, you thief!',
-        ]
-    ],
-```
+On top of any Laravel validation rules, there are some Statamic-specific goodies (like usage with conditional fields, Grids, Bards, or Replicators) that are explained on our [dedicated validation documentation](/validation).
 
 ## Grid Fieldtype
 

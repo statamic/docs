@@ -7,6 +7,11 @@ id: 607cfe62-7239-461b-8f55-8e7a312c2d5d
 stage: 4
 options:
   -
+    name: antlers
+    type: string
+    description: >
+      Enable Antlers parsing in this field's content.
+  -
     name: automatic_line_breaks
     type: boolean
     description: >
@@ -25,14 +30,19 @@ options:
     name: escape_markup
     type: boolean
     description: >
-      Escapes inline HTML markup. For example, `<div>` will be replaced with `&lt;div&gt;`. Default: `true`.
+      Escapes inline HTML markup. For example, `<div>` will be replaced with `&lt;div&gt;`. Default: `false`.
   -
     name: folder
     type: string
     description: |
       The folder (relative to the container) to begin browsing. Default: the root folder of the container.
   -
-    name: restrict_assets
+    name: parser
+    type: string
+    description: >
+      The name of a customized Markdown parser. Leave blank for default.
+  -
+    name: restrict
     type: bool
     description: >
       If `true`, navigation within the asset browser will be disabled. Your users will be restricted to specified the container and folder. Default: `false`.

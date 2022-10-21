@@ -14,6 +14,10 @@ Running Statamic locally is the preferred method for building and maintaining yo
 Feel free to watch instead of read!
 :::
 
+:::tip Heads up!
+This video assumes you're serving your local sites using [Laravel Valet][valet].
+:::
+
 ## Prerequisites
 
 To install Statamic locally you will need the following:
@@ -26,7 +30,7 @@ To install Statamic locally you will need the following:
 
 Statamic CLI is a commandline tool to help you get Statamic installed quickly and easily. The package can be installed on your machine using Composer:
 
-```
+``` shell
 composer global require statamic/cli
 ```
 
@@ -45,11 +49,22 @@ statamic new $project_name
 
 You'll be asked if you want to install a blank site or a [Starter Kit](/starter-kits). If this is your first time, we usually recommend starting with a blank site. Keep it simple.
 
-Next, you'll be prompted to set up your first super admin user. Do it. _After that_, everything is finished and you will be able to access the frontend of the site at `http://$project_name.test` and the Statamic Control Panel at `http://$project_name.test/cp`.
+Next, you'll be prompted to set up your first super admin user. Do it.
 
-:::tip
-The local URL might be different depending on how you're running your development environment.
-:::
+_After that_, everything is finished!
+
+## Accessing the site
+
+The address where you access the site will be different depending on your development environment.
+
+For example, if you're using [Valet][valet] then your site would be at `http://$project_name.test` and the Control Panel at `/cp`.
+
+If you don't have Valet or some other server set up, you can run `php artisan serve` to use the built-in server, then use the URL it provides, (which is typically `http://127.0.0.1:8000`).
+
+```cli
+$ php artisan serve
+Starting Laravel development server: http://127.0.0.1:8000
+```
 
 ## Troubleshooting
 
@@ -72,3 +87,5 @@ The default install and all first-party Starter Kits use [TailwindCSS](https://t
 
 This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
 :::
+
+[valet]: https://laravel.com/docs/valet

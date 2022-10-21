@@ -22,7 +22,7 @@ id: b8936f37-a237-4fad-bf70-a6421ab413ae
 
 ```
 // CSS
-<link href="{{ mix src='/css/tailwind.css' }}" rel="stylesheet" >
+<link href="{{ mix src='/css/tailwind.css' }}" rel="stylesheet">
 
 // JavaScript
 <script src="{{ mix src='/js/app.js' }}"></script>

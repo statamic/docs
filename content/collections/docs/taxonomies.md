@@ -1,8 +1,12 @@
 ---
-title: Taxonomies
-intro: A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.
-blueprint: page
 id: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
+blueprint: page
+title: Taxonomies
+intro: 'A taxonomy is a system of classifying data around a set of unique characteristics. Scientists have been using this system for years, grouping all living creatures into Kingdoms, Class, Species and so on. Taxonomies are the primary means for grouping content together by topic or a shared attribute.'
+related_entries:
+  - 7202c698-942a-4dc0-b006-b982784efb03
+  - ba832b71-a567-491c-b1a3-3b3fae214703
+  - 3f5506d6-03e0-4fcf-b4e8-334c48d51f81
 ---
 ## Overview
 
@@ -156,9 +160,3 @@ When on a [term route](#routing), you can list the entries by using an `entries`
   </ul>
 {{ /entries }}
 ```
-
-## Related Reading
-
-- A fundamental understanding of [collections](/collections) is pretty important.
-- The [taxonomy tag](/tags/taxonomy) can come in handy when you're not on taxonomy routes.
-- Prefer writing in your code editor instead of the control panel? You probably want to know how to [manage taxonomies by hand](/tips/taxonomies-by-hand)

@@ -18,7 +18,7 @@ stage: 4
     - Wild & Crazy Kids
     - Legends of the Hidden Temple
   {{ /markdown:indent }}
-  </article>
+</article>
 ```
 
 ```html

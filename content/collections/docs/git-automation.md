@@ -106,8 +106,19 @@ STATAMIC_GIT_PUSH=true
 When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) with an upstream branch set, and are authenticated to push to your remote [via SSH](https://docs.github.com/en/github/using-git/which-remote-url-should-i-use).
 
 :::tip
-If you use [Laravel Forge](https://forge.laravel.com/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
+If you use [Laravel Forge](https://forge.laravel.com/) or [Ploi](https://ploi.io/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
 :::
+
+If a remote and upstream is not already configured for your deployment, you may need to set this up manually on your server. For example, the following commands could be run from your deployment folder to add an `origin` remote and track the `master` branch:
+
+```shell
+git init
+git remote add origin git@github.com:your/remote-repository.git
+git fetch
+git branch --track master origin/master
+git reset HEAD
+```
+
 
 ## Queueing Commits
 
@@ -141,7 +152,7 @@ Or in a specific environment's `.env` file:
 STATAMIC_GIT_DISPATCH_DELAY=10
 ```
 
-In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
+In this example, we queue a delayed commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled. Please note that the default `sync` queue driver does not support this. Use another queue driver like `redis` instead.
 
 :::tip
 Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
@@ -232,3 +243,41 @@ For example, if you're [storing users in a database](/tips/storing-users-in-a-da
 :::tip
 When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
 :::
+
+## Addon Events
+
+When building an addon that provides its own content saved events, you should register those events with our git listener in your addon service provider:
+
+```php
+\Statamic\Facades\Git::listen(PunSaved::class);
+```
+
+This will allow your end users to track addon-related content in their [tracked paths](#tracked-paths), if they decide to opt-in for automatic commit and push when saving.
+
+### Providing a default commit message
+
+You can also provide a default commit message by implementing the `ProvidesCommitMessage` interface with a `commitMessage()` method definition:
+
+```php
+<?php
+
+namespace Punner\Events;
+
+use Statamic\Contracts\Git\ProvidesCommitMessage;
+use Statamic\Events\Event;
+
+class PunSaved extends Event implements ProvidesCommitMessage
+{
+    public $item;
+
+    public function __construct($item)
+    {
+        $this->item = $item;
+    }
+
+    public function commitMessage()
+    {
+        return __('Pun saved');
+    }
+}
+```

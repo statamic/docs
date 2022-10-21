@@ -37,6 +37,22 @@ Create and iterate through a loop a specific number of times using the `times` p
 {{ /loop }}
 ```
 
+### Looping a variable number of times
+
+
+```antlers
+---
+number: "5"
+text: "Pow"
+---
+
+{{ loop :times="number" }}
+    {{ text }}
+{{ /loop }}
+
+// Output: PowPowPowPowPow
+```
+
 ### Populate a select field with years
 
 ```
