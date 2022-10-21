@@ -261,7 +261,7 @@ return [
 ```
 
 :::tip
-There should be a directory per domain, not site. In the example above, you can see that `default` and `default_fr` both point to the same directory.
+Your static caching paths should be organized at the top level domain level. You'll notice 'default' and 'default_fr' in the example use the same domain. The subfolders will be organized based on the urls defined in your sites config.
 :::
 
 ### Rewrite Rules
@@ -282,6 +282,20 @@ RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=tex
 location / {
   try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
 }
+```
+
+The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain.
+
+For example `'default'    => public_path('static') . '/' .env('APP_DOMAIN'),`
+
+and then on your server
+
+```
+#Production
+APP_DOMAIN=domain1.com
+
+#Dev
+APP_DOMAIN=domain1.devserver.com
 ```
 
 #### IIS
