@@ -73,6 +73,17 @@ public function boot()
 }
 ```
 
+## Setting a Title
+
+Each action button will have an automatic name provided by the `HasTitle` trait that can be set with a static `title()` method on your action class.
+
+``` php
+public static function title()
+{
+    return __('That's Some Sweet Action');
+}
+```
+
 ## Filtering Actions
 
 You may limit which items an action can be applied to using the `visibleTo` method. For example, if you want your action to only be used by entries, you can return a boolean like this:
