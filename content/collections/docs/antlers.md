@@ -414,10 +414,10 @@ PHP is disabled by default, but if you change your view's file extension from `.
 
 Syntax highlighting packages are available for most of the popular IDEs. Make life sweeter, like they do with tea in the south.
 
+- [Antlers Toolbox for VS Code](https://antlers.dev/) 
+- [Antlers Language Support for PHP Storm](https://plugins.jetbrains.com/plugin/19203-antlers-language-support)
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Sublime](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
-- [Antlers for VS Code](https://github.com/addisonhall/ahdesign.antlers)
-- [Antlers Toolbox for VS Code](https://antlers.dev/) 
 
 
 [ternary]: https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
