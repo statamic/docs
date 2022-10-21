@@ -75,10 +75,13 @@ public function boot()
 
 ## Setting a Title
 
-Each action button will have an automatic name provided by the `HasTitle` trait that can be overriden by setting a static `title` variable on your action class.
+Each action button will have an automatic name provided by the `HasTitle` trait that can be set with a static `title()` method on your action class.
 
 ``` php
-$static $title = "Fire Lasers";
+public static function title()
+{
+    return __('That's Some Sweet Action');
+}
 ```
 
 ## Filtering Actions
