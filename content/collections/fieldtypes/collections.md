@@ -24,7 +24,7 @@ fields:
 
 ## Data Structure
 
-The Collections fieldtype is a [Relate fieldtype](/fieldtypes/relate), and will save the collections as their handles (the folder name).
+The Collections fieldtype is a [Relationship fieldtype](/relationships#fieldtypes), and will save the collections as their handles (the folder name).
 
 ```yaml
 listings:
