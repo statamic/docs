@@ -60,7 +60,7 @@ Statamic provides you with a `Fieldtype` mixin that does this automatically to r
 
 ### Example Vue component
 ``` js
-import Fieldtype from './TogglePasswordFieldtype.vue';
+import Fieldtype from './components/fieldtypes/TogglePassword.vue';
 
 // Should be named [snake_case_handle]-fieldtype
 Statamic.$components.register('toggle_password-fieldtype', Fieldtype);
