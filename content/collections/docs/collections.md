@@ -368,7 +368,7 @@ Throughout the control panel you may find buttons that say "Create Entry".
 
 If you would rather them say something more specific (for example, "Create Article"), you may customize them per-collection by adding a translation key.
 
-In `resources/lang/en/messages.php`, you can add `{handle}_collection_create_entry` with the appropriate label.
+In `lang/en/messages.php`, you can add `{handle}_collection_create_entry` with the appropriate label.
 
 ```php
 <?php
