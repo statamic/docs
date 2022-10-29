@@ -8,7 +8,9 @@ id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
 ## Important Preface
 
-Certain features — such as forms with server-side validation or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
+Certain features — such as forms with server-side validation, page protection, or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
+
+Whatever is on the page the first time it's visited is what will be cached for all users. For example, if you're using page protection and a user who has access visits the page, it'll be accessible to everyone.
 
 :::tip
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
