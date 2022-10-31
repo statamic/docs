@@ -7,7 +7,7 @@ title: Relative
 ---
 Returns a date difference in a nice, human readable, string format. This modifier will add a phrase after the difference value relative to the current date and the passed in date.
 
-You can turn off the extra words "ago", "until", and so on by passing `false` as a parameter
+You can turn off the extra words "ago", "until", and so on by passing `true` as a parameter
 
 The string will be localized into your current site locale.
 
@@ -19,11 +19,11 @@ future_date: October 1 2019
 ```
 {{ past_date | relative }}
 {{ future_date | relative }}
-{{ past_date | relative:false }}
+{{ past_date | relative(true) }}
 ```
 
 ```html
 {{ test_date | relative }}
 {{ test_future_date | relative }}
-{{ test_date | relative:false }}
+{{ test_date | relative(true) }}
 ```
