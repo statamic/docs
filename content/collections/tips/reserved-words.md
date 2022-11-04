@@ -14,6 +14,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `elseif`
 - `endif`
 - `endunless`
+- `id`
 - `if`
 - `reference`
 - `resource`
