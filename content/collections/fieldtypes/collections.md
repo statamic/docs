@@ -5,10 +5,10 @@ description: Choose from one or more collections.
 overview: Allows you to choose one or more collections.
 options:
   -
-    name: collection
-    type: string/array
+    name: max_items
+    type: integer
     description: >
-      You can pass a single collection as a string or multiple collections as an array.
+      The maximum number of items that may be selected. Setting this to `1` will change the UI to a dropdown.
 screenshot: /fieldtypes/screenshots/collections.png
 id: 44c3da60-ef47-408e-afc4-a33026c86f5d
 ---
