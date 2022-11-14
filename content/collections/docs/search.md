@@ -166,7 +166,7 @@ Statamic takes a "driver" based approach to search engines. Drivers are intercha
 
 The native [local driver](#local-driver) is simple and requires no additional configuration, while the included [algolia driver](#algolia-driver) makes it super simple to integrate with [Algolia](https://algolia.com), one of the leading search as a service providers.
 
-You can build your own custom search drivers or look at the [Addon Marketplace](https://statamic.com/addons) to see what the community has already created.
+You can build your own custom search drivers or look at the [Addon Marketplace](https://statamic.com/addons/tags/search) to see what the community has already created.
 
 ### Local {#local-driver}
 
