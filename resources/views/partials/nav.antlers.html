@@ -1,6 +1,6 @@
 <nav
     id="site-nav"
-    class="site-nav hidden bg-white lg:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-10 font-display h-20
+    class="site-nav hidden bg-white md:flex sticky top-0 z-40 max-w-7xl mx-auto items-center justify-between px-4 lg:px-10 font-display h-20
         dark:bg-black"
 >
     <div class="w-full flex items-center justify-between md:block md:w-74">
@@ -8,14 +8,14 @@
             {{ svg src="docs-logo" class="block w-48" title="Statamic" }}
         </a>
     </div>
-    <div class="flex-1 flex items-center justify-between md:h-full">
+    <div class="flex-1 flex items-center justify-between space-x-4 md:h-full">
         <ul class="flex items-center space-x-2 md:space-x-6 lg:space-x-10 md:text-lg">
             {{ nav:collection:sections include_home="true" }}
             <li><a class="hover:text-pink dark:text-white {{ page:section === section ?= 'active' }}" href="{{ url }}">{{ title }}</a></li>
             {{ /nav:collection:sections }}
         </ul>
         <div class="flex items-center h-full">
-            <form class="relative hidden md:flex items-center text-sm w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px] dark:bg-gray-darkest" :class="{ 'md:hidden': themePickerOpen }" action="/search-results">
+            <form class="relative hidden md:flex items-center text-sm w-[160px] lg:w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px] dark:bg-gray-darkest" :class="{ 'md:hidden': themePickerOpen }" action="/search-results">
                 <div id="docsearch" ref="docSearch"></div>
             </form>
             {{ partial:theme }}
@@ -23,7 +23,7 @@
     </div>
 </nav>
 
-<nav id="site-nav-mobile" class="site-nav lg:hidden w-full border-b items-center justify-between pl-4 font-display py-1">
+<nav id="site-nav-mobile" class="site-nav md:hidden w-full border-b items-center justify-between pl-4 font-display py-1">
     <div class="w-full flex items-center justify-between">
         <a href="/" class="text-pink hover:text-purple">
             {{ svg src="statamic-mark" class="block h-8 w-8" title="Statamic"}}
