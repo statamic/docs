@@ -293,7 +293,7 @@ To use the Glide tag within Blade, you should use the `generate` tag, which foll
 
 ```blade
 @foreach (Statamic::tag('glide:generate')->src($source)->width(100) as $image)
-  <img src="{{ $image['url'] }} width="{{ $image['width'] }}" />
+  <img src="{{ $image['url'] }}" width="{{ $image['width'] }}" />
 @endforeach
 ```
 
