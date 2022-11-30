@@ -343,6 +343,20 @@ To submit the form with AJAX, be sure to pass all the form inputs in with the su
 
 You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest`.
 
+## Caching
+
+If you are caching the page where the form is published the return responses like 'success' and 'errors' wil not come trough after submitting. To prevent this behavior you have to [exclude this page from caching](/static-caching#excluding-pages) or wrap the form in {{ nocache }} tags.
+
+**Wrapping the form in {{ nocache }}**
+
+```
+{{ nocache }}
+    {{ form:create formset="contact" }}
+        ...
+    {{ /form:create }}    
+{{ /nocache }}
+```
+
 ### Axios Example
 
 ``` javascript
