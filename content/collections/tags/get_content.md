@@ -45,7 +45,7 @@ For example, you might want to output some company information from your home pa
 
 ## Shorthand
 
-You may also use a shorthand syntax, where the second tag argument refers to a variable that contains a URI or ID.
+You may also use a shorthand syntax, where the second tag argument refers to a variable that contains an ID.
 
 ```
 ---
