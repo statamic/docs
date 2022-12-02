@@ -49,12 +49,8 @@ You may also use a shorthand syntax, where the second tag argument refers to a v
 
 ```
 ---
-related_by_uri: /about
 related_by_id: 123-321-abc-defg123
 ---
-{{ get_content:related_by_uri }}
-  {{ title }}
-{{ /get_content:related_by_uri }}
 
 {{ get_content:related_by_id }}
   {{ title }}
