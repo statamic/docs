@@ -23,9 +23,19 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 3. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider.
 4. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
 5. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
-6. Run `php artisan migrate`
-7. Run a command to migrate your file based users into the database.
-8. (optional) If you are using the Statamic forgot password form, add the following method to your User model
+6. In `.env` add database connection variables and values to reflect your database configuration:
+
+    ```php
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=my-database-name
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+7. Run `php artisan migrate`
+8. Run a command to migrate your file based users into the database.
+9. (optional) If you are using the Statamic forgot password form, add the following method to your User model
     ```php
     public function sendPasswordResetNotification($token)
     {
