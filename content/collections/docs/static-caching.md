@@ -119,6 +119,19 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 </rule>
 ```
 
+## Warming the Static Cache
+
+You can get your app to automatically generate the public views for your entries and add them to the Static Cache, making first times loads much faster. To do this run:
+
+```
+php please static:warm
+```
+
+This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag:
+
+It's a good idea to add this command to your deployment script on Forge or whatever deployment tool you use.
+
+
 ## Excluding Pages
 
 You may add a list of URLs you wish to exclude from being cached.
