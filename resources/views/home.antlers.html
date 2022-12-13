@@ -109,7 +109,7 @@
                 {{ if error }}
                     <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
                 {{ else }}
-                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
+                    <a href="{{ url === 'https://github.com/remarakabledev' ? 'https://remarkable.dev' : url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
                         <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
                         <span class="font-bold">{{ name }}</span>
                     </a>
