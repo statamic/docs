@@ -72,7 +72,7 @@ Flysystem also has a feature where any time you try to read a file, it will firs
 
 _It's possible that in the future Statamic will do this automatically for you._
 
-## 3. Check for existence through Assets
+## 4. Check for existence through Assets
 
 This one is a tip mostly for addon developers.
 
