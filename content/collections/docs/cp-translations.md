@@ -47,6 +47,7 @@ preferences:
 | Slovene | `sl` |
 | Swedish | `sv` |
 | Taiwan | `zh_TW` |
+| Turkish | `tr` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
