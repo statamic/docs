@@ -67,7 +67,7 @@ It can be a good idea to change this to a **fully qualified, absolute URL**. Thi
     ],
     'fr' => [
         // ...
-        'url' => env('APP_URL').'fr/'
+        'url' => env('APP_URL').'/fr/'
     ]
 ]
 ```
