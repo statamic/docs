@@ -12,7 +12,7 @@ use Statamic\CP\Breadcrumbs;
 $crumbs = Breadcrumbs::make([
     ['text' => 'First', 'url' => '/first'],
     ['text' => 'Second', 'url' => '/second'],
-])
+]);
 
 return view('myview', ['crumbs' => $crumbs]);
 ```
