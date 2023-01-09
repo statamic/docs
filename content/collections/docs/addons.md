@@ -36,7 +36,7 @@ You can choose which edition is installed by entering it into your `config/stata
 
 ``` php
 'addons' => [
-    'vendor/package' => 'pro',
+    'vendor/package' => 'pro', // e.g., 'jezzdk/statamic-google-maps' => 'pro'
 ]
 ```
 
