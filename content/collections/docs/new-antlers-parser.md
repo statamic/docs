@@ -1303,7 +1303,7 @@ The `@` can also be used to escape individual braces within tag parameters or st
 
 ```
 {{ partial:example attributes="class='@{font-bold: isImportant@}'" }}
-// attributes="class='{font-bold: isImportant"}'"
+// attributes="class='{font-bold: isImportant}'"
 ```
 
 ```
