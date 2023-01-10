@@ -1,12 +1,12 @@
 <div id="side-nav" class="md:block relative w-full z-10 md:w-64 lg:px-2 md:mr-16 lg:-ml-6 {{ ! segment_1 ?= 'z-10' }}" :class="{'mobile-open': showNav}" x-show="showNav">
     {{ if section }}
-    <div class="side-nav bg-white md:bg-transparent sticky top-24 pb-6" x-data="{ open: 'Getting Started' }">
+    <div class="side-nav bg-white dark:bg-black md:bg-transparent sticky top-24 pb-6" x-data="{ open: 'Getting Started' }">
         <nav class="lg:overflow-y-auto lg:overflow-x-visible max-h-screen-sans-nav">
             <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray dark:text-white">{{ section | deslugify | title }}</header>
             <div class="md:hidden">
                 <div class="grid grid-cols-2 gap-2 mb-6">
                     {{ nav:collection:sections include_home="true" }}
-                        <a class="text-lg font-display p-2 font-medium border shadow-sm text-center hover:text-pink {{ page:section === section ?= 'bg-mint' }}" href="{{ url }}">{{ nav_title ?? title }}</a>
+                        <a class="text-lg font-display p-2 font-medium border shadow-sm text-center hover:text-pink {{ page:section === section ? 'bg-mint' : 'dark:bg-white' }}" href="{{ url }}">{{ nav_title ?? title }}</a>
                     {{ /nav:collection:sections }}
                 </div>
                 {{ svg src="zig-zag-lg" class="w-full my-4 mx-auto" }}
@@ -15,7 +15,7 @@
                 {{ nav :handle="section" }}
                 <div class="relative pl-1">
                     <button class="text-lg relative font-medium font-display mt-4 mb-2 flex items-center dark:text-white" @click="open = (open === '{{ title }}') ? '' : '{{ title }}'">
-                        <img src="/img/chevron2.svg" class="mr-2 relative -top-px transform transistion duration-100 dark:text-current-color" :class="{'rotate-90': open === '{{ title }}'}" alt="">
+                        <span class="mr-2 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}' }">{{ svg src="img/chevron2" class="dark:text-current-color" }}</span>
                         <span>{{ title }}</span>
                     </button>
                     <ul class="space-y-2 text-base ml-[1.35rem] antialised" x-show="open == '{{ title }}'">
@@ -48,6 +48,7 @@
                 {{ /nav }}
             </div>
         </nav>
+        <script async type="text/javascript" defer src="//cdn.carbonads.com/carbon.js?serve=CWYDT23I&placement=statamiccom" id="_carbonads_js"></script>
     </div>
     {{ /if }}
 </div>

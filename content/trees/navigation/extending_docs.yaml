@@ -97,11 +97,11 @@ tree:
     title: 'Core & Data'
     children:
       -
+        id: 2a1a9358-2ad6-40d0-9022-78257abc64a9
+        entry: e7833062-e05c-42c9-ad35-dc5077f1f0b8
+      -
         id: b7d1e399-e739-4575-9121-c37059d6ab4f
         entry: 0267eb5a-f54b-4e3f-bef0-1f16762720b1
-      -
-        id: 587d6309-e957-4743-86d5-1c74ded2bfe2
-        entry: 51a52222-9be7-46b1-8388-059019281a56
       -
         id: 0bc9381c-b65c-4267-8430-1bde81501461
         entry: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
@@ -128,6 +128,3 @@ tree:
       -
         id: 9519cca9-4afd-4143-b949-090f209a57e4
         entry: 5bd75435-806e-458b-872e-7528f24df7e6
-      -
-        id: 0ce7082b-142a-400f-a5ae-8acf744be088
-        entry: c10e059a-58ad-4d70-b57e-1c2c00e20dbb

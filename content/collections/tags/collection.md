@@ -200,8 +200,9 @@ To show entries with the `harry-potter` term within the `tags` taxonomy, you cou
 
 It is important that the collection has been [configured to use this taxonomy](/collections#taxonomies) in order to filter the results based on the passed in term.
 
-There are a number of different ways to use this parameter. They are explained in depth in the
-[Taxonomies Guide](/taxonomies#collections)
+:::tip
+There are several different ways to use this filtering parameter. They are explained in depth on the [Conditions page](/conditions#taxonomy-conditions).
+:::
 
 ### Published Status
 
@@ -348,11 +349,9 @@ Often times you'd like to have some extra markup around your list of entries, bu
 
 ```
 {{ collection:blog as="posts" }}
-  <ul>
   {{ posts }}
-    <li><a href="{{ url }}">{{ title }}</a></li>
+    <a href="{{ url }}">{{ title }}</a>
   {{ /posts }}
-  </ul>
 {{ /collection:blog }}
 ```
 

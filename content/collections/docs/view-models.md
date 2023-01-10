@@ -86,6 +86,8 @@ View models help keep your views nice and clean. Use them often and you'll find 
 
 :::tip
 ViewModels manipulate the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+
+You may consider creating a [computed value](/computed-values) for an entry instead, which would work anywhere, for example in other parts of PHP, or within collection loops in your templates.
 :::
 
 

@@ -27,9 +27,9 @@
 </div>
 
 <div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center dark:bg-pink dark:shadow-none">
-    <img src="/img/pizza-slice.svg" alt="A slice of pizza" class="mr-2">
-    <p class="text-center flex-1"><b>Statamic Core</b> is free and open source &mdash; consider sponsoring us on Github!</p>
-    <a href="https://github.com/sponsors/statamic" class="button">Buy us a slice of pizza!</a>
+    <img src="/img/retro-tv.svg" alt="A retro tv" class="mr-2">
+    <p class="text-center flex-1">Check out <b class="text-yellow">Learn Statamic with Jack</b> &mdash; our brand new Laracasts CreatorSeries!</p>
+    <a href="https://laracasts.com/series/learn-statamic-with-jack" class="button">Watch &amp; Learn</a>
 </div>
 
 <div class="grid md:grid-cols-3 gap-y-6 md:gap-6 mt-6">
@@ -81,7 +81,7 @@
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td class="w-1/2"><a href="{{ github_commits_url }}" target="_blank">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
                     <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i:s" }}').fromNow(true) + ' ago'"></td>
                 </tr>
@@ -109,7 +109,7 @@
                 {{ if error }}
                     <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
                 {{ else }}
-                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
+                    <a href="{{ url === 'https://github.com/remarkabledev' ? 'https://remarkable.dev' : url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
                         <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
                         <span class="font-bold">{{ name }}</span>
                     </a>

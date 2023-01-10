@@ -68,6 +68,10 @@ shape:
     description: >
       Rotates the image. Accepts `auto`, `0`, `90`, `180` or `270`. The `auto` option uses Exif data to automatically orient images correctly. Default: `auto`.
   -
+    name: flip
+    type: string
+    description: 'Flips the image. Accepts `v`, `h` and `both`.'
+  -
     name: quality
     type: integer
     description: >
@@ -289,7 +293,7 @@ To use the Glide tag within Blade, you should use the `generate` tag, which foll
 
 ```blade
 @foreach (Statamic::tag('glide:generate')->src($source)->width(100) as $image)
-  <img src="{{ $image['url'] }} width="{{ $image['width'] }}" />
+  <img src="{{ $image['url'] }}" width="{{ $image['width'] }}" />
 @endforeach
 ```
 

@@ -97,6 +97,28 @@ The exporter will automatically detect the installed versions and whether or not
 
 When [installing the starter kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
 
+## Post-Install Hooks
+
+You may run additional logic after the starter kit is installed. For example, maybe you want to output some information.
+
+To do so, you can create a `StarterKitPostInstall.php` file in the root of your starter kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
+
+```php
+<?php
+
+class StarterKitPostInstall
+{
+    public function handle($console)
+    {
+        $console->line('Thanks for installing!');
+    }
+}
+```
+
+:::tip
+Statamic will automatically export this file if it exists. You don't need to add it to export_paths.
+:::
+
 
 ## Publishing a Starter Kit
 

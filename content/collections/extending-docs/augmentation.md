@@ -139,13 +139,14 @@ For more advanced classes, you can use the `HasAugmentedInstance` trait, which l
 
 ``` php
 use Statamic\Contracts\Data\Augmentable;
+use Statamic\Contracts\Data\Augmented;
 use Statamic\Data\HasAugmentedInstance;
 
 class Product implements Augmentable
 {
     use HasAugmentedInstance;
 
-    public function newAugmentedInstance()
+    public function newAugmentedInstance(): Augmented
     {
         return new AugmentedProduct($this);
     }

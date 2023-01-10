@@ -48,7 +48,7 @@ As your site scales, you can choose to move from the flat file driver to one bes
 
 It's completely up to you how to organize your content. You pick the field names, you pick how to organize entries into different collections. You pick what to name your taxonomies, what the URL patterns should be, and so on.
 
-We believe that forcing every site to use the same content model is nothing short of a crime. With nearly 40 different built-in fieldtypes, there are many perfectly reasonable ways to structure and manage your content.
+We believe that forcing every site to use the same content model is nothing short of a crime. With 40+ different built-in fieldtypes, there are many perfectly reasonable ways to structure and manage your content.
 
 If you like the "one big field" approach with all your content and markup in one chunk, build your site around the [Bard](/fieldtypes/bard) fieldtype and add custom Set blocks with other fieldtypes to get fancy.
 

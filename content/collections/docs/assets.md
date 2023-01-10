@@ -60,7 +60,7 @@ data:
 ```
 
 :::tip
-You should consider version controling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
+You should consider version controlling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
 :::
 
 ## Containers
@@ -134,6 +134,12 @@ The default container [Blueprint](/blueprints) contains a single "alt text" fiel
 You can customize the fields on the blueprint by visiting the container in the Control Panel and choosing "Edit Blueprint" in the options dropdown.
 
 If you want to edit the blueprint file directly, you can do so in `resources/blueprints/assets/{handle}.yaml`.
+
+## Ordering
+
+### Default Sort Order in Listings
+
+You can choose which field and direction to sort the list of assets in the Control Panel by setting the `sort_by` and `sort_dir` variables in your container.yaml. By default the file name will be used.
 
 ## Drivers
 

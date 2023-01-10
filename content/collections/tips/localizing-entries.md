@@ -57,6 +57,12 @@ In a [Blueprint](/blueprints), you can define which fields are localizable.
 
 While editing a localized entry, only the localizable fields will be editable. The non-localizable fields will be read-only.
 
+To mark a field as localizable, head to your Blueprint and toggle on the globe icon on the field itself. That's all there is to it.
+
+<figure>
+    <img src="/img/tips/localizable-toggle.png" width="463px" alt="The Localizable Field Toggle Setting">
+    <figcaption>See that little globe icon? Go ahead and click it.</figcaption>
+</figure>
 
 ## Entry origins
 

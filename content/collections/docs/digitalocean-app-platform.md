@@ -26,7 +26,7 @@ Add the following dependencies to your `composer.json` file's `require` block.
 }
 ```
 
-Be sure to commit those changes to your repo before you continue, or you'll have to traverse a painful platform-level cache clearing adventure later on.
+Be sure to run `composer update` and commit those changes (`composer.json` and `composer.lock`) to your repo before you continue, or you'll have to traverse a painful platform-level cache clearing adventure later on.
 
 :::tip
 Learn more about [customizing your PHP extensions](https://devcenter.heroku.com/articles/php-support#extensions) with Heroku PHP Apache2.

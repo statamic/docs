@@ -84,9 +84,9 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
-| Create, edit, and delete structures | `configure structures` |
-| ↳  View structure | `view {structure} structure` |
-| &nbsp;&nbsp;↳  Edit structure | `edit {structure} structure` |
+| Create, edit, and delete navs | `configure navs` |
+| ↳  View nav | `view {nav} nav` |
+| &nbsp;&nbsp;↳  Edit nav | `edit {nav} nav` |
 | Edit global variables | `edit {global} globals` |
 | View asset container | `view {container} assets` |
 | ↳  Upload assets | `upload {container} assets` |

@@ -82,6 +82,16 @@ Need multiple conditions? Yeah, we support that.
 
 ### Passing multiple values
 
+To pass multiple _values_ in a condition, separate them with `|` pipes.
+
+```
+{{ collection:drinks ingredients:in="rum|falernum" }}
+    <a href="{{ url }}">
+        {{ title }}
+    </a>
+{{ /collection:drinks }}
+```
+
 ## String Conditions
 
 The following conditions apply to fields with data stored as strings.
@@ -118,15 +128,48 @@ The following conditions apply to fields with data stored as strings.
 
 ## Taxonomy Conditions
 
-[Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, and finally the term you're seeking.
+[Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, an optional modifier argument, and finally the term you're seeking.
 
-<div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm">
-<span class="bg-pink text-white p-1 rounded-sm">taxonomy</span>:<span class="bg-purple text-white p-1 rounded-sm">{taxonomy_name}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{term}</span>"
+<div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm"><span class="bg-pink text-white p-1 rounded-sm">taxonomy</span>:<span class="bg-purple text-white p-1 rounded-sm">{handle}</span>:<span class="bg-black text-white p-1 rounded-sm">{modifier}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{term}</span>"
 </div>
 
-| Condition | Description |
+### Query Modifiers {#taxonomy-query-modifiers}
+
+You may optionally control the behavior of the condition filter by passing the desired the modifier into the tag method call. If you don't set a modifier, it will use `any` by default.
+
+#### Any (default) {#taxonomy-any}
+
+Fetch all entries that have _any_ of one or more taxonomy terms.
+
+#### Not {#taxonomy-not}
+
+Fetch all entries that _don't_ have one or more taxonomy terms.
+
+#### All {#taxonomy-not}
+
+Fetch all entries that contain _each_ of one or more taxonomy terms.
+
+### Examples {#taxonomy-examples}
+
+```
+<!-- Get all featured articles -->
+{{ collection:articles taxonomy:tags:any="featured" }}
+{{ collection:articles taxonomy:tags="featured" }} (shorthand)
+
+<!-- Get all but sports-related articles -->
+{{ collection:articles taxonomy:tags:not="sports" }}
+
+<!-- Get all "featured" articles about gaming
+{{ collection:articles taxonomy:tags:all="gaming|featured" }}
+```
+
+## Arguments
+
+| Argument | Description |
 | :--- | :--- |
-| `{term}` | Include if entry **has** a specific term. |
+| `{handle}` | Handle of the Taxonomy you wish you query. |
+| `{modifier}` | Control the behavior of the condition filtering. Available options: `all`, `not`, and `any`. Default: `any`.  |
+| `{term}` | Term(s) to query. You may pass multiple terms by separating them with `\|` pipe delimiters. |
 
 ## Snippets
 

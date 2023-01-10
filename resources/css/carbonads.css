@@ -1,0 +1,43 @@
+#carbonads {
+    @apply p-2 mt-16 border shadow-mint-md relative block;
+    background-color: #F7F8FB;
+    box-sizing: content-box;
+
+    span {
+        display: block;
+    }
+
+    img {
+        display: block;
+        margin-bottom: .75em;
+    }
+
+    .carbon-text {
+        display: block;
+        font-size: .75em;
+        line-height: 1.4em;
+        @apply text-gray-dark mb-2;
+    }
+
+    .carbon-poweredby {
+        font-size: .5em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1;
+        @apply text-gray;
+    }
+}
+
+@screen md {
+    #carbonads {
+        @apply block;
+        max-width: 130px;
+    }
+}
+
+
+@media only print {
+    #carbonads {
+        display: none;
+    }
+}

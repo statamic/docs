@@ -81,6 +81,9 @@
     }
 }
 
+.DocSearch-Button-Keys {
+    @apply hidden lg:flex !important;
+}
 .DocSearch-Button-Key {
     @apply bg-white border shadow-md text-black pb-0 !important;
 }

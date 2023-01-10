@@ -62,7 +62,7 @@ Like Laravel, if you’re expecting a collection of models, you will receive a c
 
 If you’re expecting a single model you’ll get the corresponding class. (In the example above, you'll get a `Statamic\Entries\Entry` instance).
 
-Once you have your objects, you may get data out of them in [a handful of ways](#methods).
+Once you have your objects, you may get data out of them in [a handful of ways](#getting-field-data).
 
 
 ## Manipulating Data
