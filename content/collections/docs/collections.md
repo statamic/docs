@@ -312,7 +312,7 @@ Entries with redirects will get filtered out of the [collection](/tags/collectio
 
 ### Entry Link Blueprint
 
-When a Collection is structured, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
+When a Collection is structured and you have set `Entries in this collection may contain links (redirects) to other entries or URLs.` on in the collection settings, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
 
 This will load a behind-the-scenes blueprint containing `title` and `redirect` fields. You are free to modify what's shown on these pages by creating your own `entry_link` blueprint.
 
@@ -368,7 +368,7 @@ Throughout the control panel you may find buttons that say "Create Entry".
 
 If you would rather them say something more specific (for example, "Create Article"), you may customize them per-collection by adding a translation key.
 
-In `resources/lang/en/messages.php`, you can add `{handle}_collection_create_entry` with the appropriate label.
+In `lang/en/messages.php`, you can add `{handle}_collection_create_entry` with the appropriate label.
 
 ```php
 <?php

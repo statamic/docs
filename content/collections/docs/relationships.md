@@ -12,15 +12,23 @@ related_entries:
 ---
 ## Overview
 
-Statamic relationships are defined by storing the ID of one piece of content (an entry, term, or user for example) in a variable on another piece of content. Once linked in this simple-but-specific manner, you can fetch and display the related content by using the variable in your templates.
+Statamic relationships are defined by storing an `id` or `handle` of one piece of content (an entry, term, or user for example) in a variable on another piece of content. Once linked in this simple-but-specific manner, you can fetch and display the related content by using the variable in your templates.
 
 ## Fieldtypes
 
-There are 4 primary fieldtypes used to manage relationships. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data.
+There are 12 fieldtypes that manage relationships in one fashion or another. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data it references.
 
 - [Assets](/fieldtypes/assets)
+- [Collections](/fieldtypes/collections)
 - [Entries](/fieldtypes/entries)
+- [Form](/fieldtypes/form)
+- [Link](/fieldtypes/link)
+- [Sites](/fieldtypes/sites)
+- [Structures](/fieldtypes/structures)
+- [Taxonomies](/fieldtypes/taxonomies)
 - [Taxonomy Terms](/fieldtypes/terms)
+- [User Groups](/fieldtypes/user-groups)
+- [User Roles](/fieldtypes/user-roles)
 - [Users](/fieldtypes/users)
 
 
@@ -79,7 +87,7 @@ In this following template example you can see how easy it is to use the data fr
 
 ## Manual Fetching
 
-If you _aren't_ using a relationship fieldtype but _do_ have an ID to fetch data from you can use the [get_content tag](/tags/get_content).
+If you _aren't_ using a relationship fieldtype but _do_ have an `id` or `handle` to fetch data from you can use the [get_content tag](/tags/get_content).
 
 ```
 <!-- You can hardcode the ID -->

@@ -3,7 +3,7 @@
     <div class="max-w-2xl text-xl">{{ intro | widont }}</div>
 </header>
 
-<div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack">
+<div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
     <div class="flex flex-col md:flex-row items-center">
         <div class="flex-1">
             <h2 class="font-display text-3xl font-semibold mb-2">Get Started</h2>
@@ -26,10 +26,10 @@
     </div>
 </div>
 
-<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center">
-    <img src="/img/pizza-slice.svg" alt="A slice of pizza" class="mr-2">
-    <p class="text-center flex-1"><b>Statamic Core</b> is free and open source &mdash; consider sponsoring us on Github!</p>
-    <a href="https://github.com/sponsors/statamic" class="button">Buy us a slice of pizza!</a>
+<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center dark:bg-pink dark:shadow-none">
+    <img src="/img/retro-tv.svg" alt="A retro tv" class="mr-2">
+    <p class="text-center flex-1">Check out <b class="text-yellow">Learn Statamic with Jack</b> &mdash; our brand new Laracasts CreatorSeries!</p>
+    <a href="https://laracasts.com/series/learn-statamic-with-jack" class="button">Watch &amp; Learn</a>
 </div>
 
 <div class="grid md:grid-cols-3 gap-y-6 md:gap-6 mt-6">
@@ -38,21 +38,21 @@
             <h2 class="text-2xl mb-2 font-bold font-display">Screencasts</h2>
         <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
     </a> #}}
-    <a href="/screencasts" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
+    <a href="/screencasts" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
         <header class="flex items-center mb-3">
             <img src="/img/tv.svg" alt="Retro TV Set" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
             <h2 class="text-2xl ml-2 font-bold font-display">Watch + Learn</h2>
         </header>
         <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
     </a>
-    <a href="/upgrade-guide" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
+    <a href="/upgrade-guide" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
         <header class="flex items-center mb-3">
             <img src="/img/car.svg" alt="An older car that needs to be upgraded" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
             <h2 class="text-2xl font-bold font-display">Upgrade Guides</h2>
         </header>
         <p class="text-sm font-mono-alt">For when it's time to get that older Statamic site onto v3.</p>
     </a>
-    <a href="https://statamic.com/discord" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
+    <a href="https://statamic.com/discord" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
         <header class="flex items-center mb-3" x-data="{active: 1}" x-init="setInterval(() => { if (active === 9) { active = 0; }; active++ }, 1500)">
             <img :style="{ 'display': active === 1 ? 'block' : 'none' }" src="/img/people/person-1.svg" alt="A person representing the community">
             <img :style="{ 'display': active === 2 ? 'block' : 'none' }" src="/img/people/person-2.svg" alt="A person representing the community">
@@ -81,7 +81,7 @@
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td class="w-1/2"><a href="{{ entry:url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td class="w-1/2"><a href="{{ github_commits_url }}" target="_blank">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
                     <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i:s" }}').fromNow(true) + ' ago'"></td>
                 </tr>
@@ -91,13 +91,13 @@
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
 </section>
 
-<section class="mt-32 lg:mt-64 relative lg:min-h-[440px]">
-    <img src="/img/splatter-sponsors.png" alt="" class="hidden lg:block absolute max-w-none w-[1100px] left-[-170px] top-[-130px]" loading="lazy">
-    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px]" alt="" loading="lazy">
-    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px]" alt="" loading="lazy">
+<section class="mt-32 lg:mt-64 relative lg:min-h-[440px] dark:mt-32">
+    <img src="/img/splatter-sponsors.png" alt="" class="hidden lg:block absolute max-w-none w-[1100px] left-[-170px] top-[-130px] dark:hidden" loading="lazy">
+    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
+    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
     <div class="bg-yellow border shadow-lg p-4 md:px-5 md:py-8 relative">
         <header class="markdown markdown-tight bg-transparent mb-5">
-            <h2 class="mb-3">Sponsors</h2>
+            <h2 class="mb-3 dark:text-black">Sponsors</h2>
             <p class="text-black text-base md:w-4/5">We've reserved this space to thank our top open source sponsors! Donations through sponsors go towards building new Starter Kits, Addons, and other open source resources.</p>
         </header>
         <div class="flex flex-wrap">
@@ -109,7 +109,7 @@
                 {{ if error }}
                     <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
                 {{ else }}
-                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
+                    <a href="{{ url === 'https://github.com/remarkabledev' ? 'https://remarkable.dev' : url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
                         <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
                         <span class="font-bold">{{ name }}</span>
                     </a>

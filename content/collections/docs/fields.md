@@ -9,21 +9,53 @@ related_entries:
   - 54548616-fd6d-44a3-a379-bdf71c492c63
   - 2940c834-7062-47a1-957c-88a69e790cbb
   - 9b2f6f55-5355-4334-b90d-d1236fb58887
+  - dd52c1f6-661b-4408-83c6-691fa341aaa7
 ---
-## Common Settings
+## Configuration
+
+### Common Settings
 
 All fields share the following settings regardless of type:
 
-- **Display** – The field's label shown throughout the Control Panel
+- **Display** – The field's label shown throughout the control panel
 - **Handle** – The field's variable name used in templates
 - **Instructions** – Help text shown to your authors
 - **Listable** – Whether to show the field as a column in the control panel's entry list
-- **Localizable** – Whether the field can be translated in other sites
-
+- **Visibility** – Allows you to control [field visibility](#field-visibility) on publish forms
+- **Always Save** – Allows you to override [field data flow](#field-data-flow) on save
+- **Localizable** – Whether the field can be translated in [other sites](#localization)
 
 <figure>
     <img src="/img/field-settings.png" alt="Textarea field settings">
     <figcaption>A textarea field's settings screen.</figcaption>
+</figure>
+
+### Field Visibility
+
+Fields are always visible by default, but you can configure custom visibility to any of the following options:
+
+- **Visible** - Always visible
+- **Read Only** - Prevent editing
+- **Computed** - Show read-only [computed value](/computed-values), and never submit this value on save
+- **Hidden** - Hide field on publish form, but still submit current value on save
+
+:::tip
+You can also dynamically show and hide your fields using [Conditional Fields](/conditional-fields) and/or [Revealer Fields](/fieldtypes/revealer).
+
+**Note:** Unless you are using a Revealer, hiding a field using conditions will generally prevent its value from being submitted on save. Learn more about [Field Data Flow](#field-data-flow) to get the most out of this feature!
+:::
+
+### Field Data Flow
+
+Fields are always submitted on save, except for in the following situations:
+
+- If the field is configured to show a [computed value](/computed-values)
+- If the field is dynamically hidden using [field conditions](/conditional-fields)
+
+If you want to override the above-mentioned field condition data flow behaviour, you can either use a [Revealer Field](/fieldtypes/revealer), or set the following to 'Always Save' your field:
+
+<figure>
+    <img src="/img/field-always-save.png" alt="Always save field setting">
 </figure>
 
 ## Blueprints & Fieldsets

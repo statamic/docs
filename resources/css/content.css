@@ -54,7 +54,8 @@ article, .markdown {
     a svg.external {
         @apply inline-block;
         vertical-align: text-top;
-        color: rgba(0,0,0,.6);
+        color: currentColor;
+        opacity: .6;
     }
 
     h2 > .anchor,
@@ -286,5 +287,22 @@ ul.list-col {
 @media screen(lg) {
     ul.list-col {
         column-count: 3;
+    }
+}
+
+
+
+/* Dark mode */
+/* -------------------------------------------------- */
+
+.dark {
+    article, .markdown {
+        @apply bg-transparent text-gray-dark;
+        h1, h2, h3, h4 { @apply text-white }
+        table {
+            @apply bg-transparent border-gray-darkest text-gray-dark;
+            tbody tr { @apply even:bg-transparent; }
+            td, th { @apply border-b border-gray-darkest; }
+        }
     }
 }

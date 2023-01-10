@@ -156,11 +156,11 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 ```blade
 @php($tag = Statamic::tag('collection:pages')->paginate(2)->as('pages')->fetch())
 
-@foreach($tag->pages as $page)
+@foreach($tag['pages'] as $page)
     <li>{{ $page->title }}</li>
 @endforeach
 
-{{ $tag->paginate['auto_links'] }}
+{{ $tag['paginate']['auto_links'] }}
 ```
 
 
@@ -237,6 +237,77 @@ The template content
 The template contents
 </body>
 </html>
+```
+
+### Passing Context into Components
+
+If you are using Blade components for your layout rather than Blade directives, you might want to pass the view context into your layout for access by child components. You can do so with the special `$__data` variable in the layout root, and the `@aware` directive in the child. Here's how:
+
+First, add a `context` prop to your layout component.
+
+```blade
+{{-- resources/views/components/layout.blade.php --}}
+@props(['context'])
+<html>
+    {{-- whatever you want to put in here... --}}
+</html>
+```
+
+Then, merge the `context` prop with the parent data in your Layout component's `data` method.
+
+```php
+<?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+
+class Layout extends Component
+{
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function __construct(public $context)
+    {
+        $this->context = $context;
+    }
+
+    public function data()
+    {
+        return array_merge(parent::data(), $this->context);
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.layout');
+    }
+}
+```
+
+Next, pass in the magic `$__data` variable from your template to your layout.
+
+```blade
+{{-- resources/views/default.blade.php --}}
+<x-layout :context="$__data">
+    <x-hero />
+</x-layout>
+```
+
+Last, use the `@aware` directive in any child component of your layout to access the variables from the cascade within your component.
+
+```blade
+{{-- resources/views/components/blade.php --}}
+@aware(['page'])
+<div>
+    {{ $page->hero_headline }}
+</div>
 ```
 
 ## Routes and Controllers

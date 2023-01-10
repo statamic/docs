@@ -26,13 +26,15 @@ Glide Presets are pre-configured manipulations that will be automatically warmed
 ```php
 'image_manipulation' => [
     'presets' => [
-        'thumbnail' => [ 'w' => 300,  'h' => 300, 'q' => 75],
+        'thumbnail' => [ 'w' => 300,  'h' => 300, 'q' => 75 ],
         'hero'      => [ 'w' => 1440, 'h' => 600, 'q' => 90 ],
     ],
 ],
 ```
 
-All standard Glide API parameters are available for use in presets. (Not the tag aliases like `width`. You'll need to use `w`.)
+All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets. (Not the tag aliases like `width`. You'll need to use `w`.)
+
+You may want to generate the presets manually (for example after you changed the config and you already uploaded the images) with `php please assets:generate-presets`.
 
 Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag] and since all transformations and manipulations are performed at time of upload, there shouldn't be any additional overhead on the initial request.
 
@@ -105,6 +107,10 @@ The [Glide tag][glide-tag] will output URLs to the configured Glide [route](#rou
 
 :::tip
 When using this method, since the Glide tag only needs to generate URLs, the load time of the page will be faster, but the initial load time of each image request will be slower.
+:::
+
+:::tip
+Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`
 :::
 
 ### Custom Path (Static)
@@ -209,7 +215,7 @@ In this example, you would also need to create a Redis database named `glide` in
 You may manually clear the Glide cache by running the following command:
 
 ```
-php artisan glide:clear
+php please glide:clear
 ```
 
 This will **delete all the files** within your Glide cache filesystem location, as well as clearing the [path cache](#path-cache-store).

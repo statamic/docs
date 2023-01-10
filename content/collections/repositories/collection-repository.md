@@ -78,5 +78,5 @@ $collection
 Finally, save it.
 
 ```php
-$container->save();
+$collection->save();
 ```

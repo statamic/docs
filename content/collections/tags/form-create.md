@@ -118,7 +118,7 @@ When you need to render a form that's selected via the Form Fieldtype you can us
 {{ /form:create }}
 ```
 
-This way you can let Control Panel users selected which form should be used on an entry.
+This way you can let Control Panel users select which form should be used on an entry.
 
 ## Dynamic Rendering
 

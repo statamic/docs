@@ -30,7 +30,7 @@ To install Statamic locally you will need the following:
 
 Statamic CLI is a commandline tool to help you get Statamic installed quickly and easily. The package can be installed on your machine using Composer:
 
-```
+``` shell
 composer global require statamic/cli
 ```
 

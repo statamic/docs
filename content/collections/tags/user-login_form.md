@@ -63,7 +63,7 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
     {{ /if }}
 
     <label>Email</label>
-    <input type="text" name="email" value="{{ old:email }}" />
+    <input type="email" name="email" value="{{ old:email }}" />
 
     <label>Password</label>
     <input type="password" name="password" value="{{ old:password }}" />

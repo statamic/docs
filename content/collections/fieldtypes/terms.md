@@ -7,6 +7,11 @@ intro: >
 screenshot: fieldtypes/screenshots/terms.png
 options:
   -
+    name: max_items
+    type: integer
+    description: >
+      The maximum number of items that may be selected. Setting this to `1` will change the UI to a dropdown.
+  -
     name: taxonomy
     type: string
     description: >

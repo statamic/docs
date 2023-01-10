@@ -24,8 +24,6 @@ use Statamic\Facades\Term;
 | `find($id)` | Get Term by `id` |
 | `findByUri($uri)` | Get Term by `uri` |
 | `query()` | Query Builder |
-| `whereTaxonomy($handle)` | Get Terms in a `Taxonomy` |
-| `whereInTaxonomy([$handles])` | Get all Terms in an array of `Taxonomys` |
 | `make()` | Makes a new `Term` instance |
 
 ## Querying

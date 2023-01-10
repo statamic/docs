@@ -109,6 +109,17 @@ When pushing, Statamic assumes you have a [Git remote](https://git-scm.com/book/
 If you use [Laravel Forge](https://forge.laravel.com/) or [Ploi](https://ploi.io/) to deploy your site, a git remote and upstream branch will automatically be configured for you.
 :::
 
+If a remote and upstream is not already configured for your deployment, you may need to set this up manually on your server. For example, the following commands could be run from your deployment folder to add an `origin` remote and track the `master` branch:
+
+```shell
+git init
+git remote add origin git@github.com:your/remote-repository.git
+git fetch
+git branch --track master origin/master
+git reset HEAD
+```
+
+
 ## Queueing Commits
 
 When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.

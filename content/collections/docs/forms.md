@@ -313,12 +313,6 @@ fields:
       container: main
 ```
 
-## Dynamic forms with static caching
-
-If you have [static caching](/static-caching) enabled, submitting dynamic forms will most likely end up in a `419 - session expired` error. This is the result of a [CSRF](https://laravel.com/docs/9.x/csrf) token mismatch because the token is statically cached and doesn't refresh.
-
-You can still use dynamic forms with static caching by either installing the [Dynamic Token addon](https://statamic.com/addons/webographen/dynamic-token) or implementing a dynamic token endpoint yourself and fetch a new and valid token via JavaScript when submitting the form. You can find an example of this in the [Peak Starter Kit](https://github.com/studio1902/statamic-peak/blob/main/routes/web.php#L19).
-
 ## Honeypot
 
 Simple and effective spam prevention.
@@ -348,6 +342,20 @@ In order to fool smarter spam bots, you should customize the name of the field b
 To submit the form with AJAX, be sure to pass all the form inputs in with the submission, as Statamic sets `_token` and `_params`, both of which are required.
 
 You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest`.
+
+## Caching
+
+If you are static caching the URL containing a form, return responses like 'success' and 'errors' will not be available after submitting unless you [exclude this page from caching](/static-caching#excluding-pages) or wrap the form in {{ nocache }} tags.
+
+**Wrapping the form in {{ nocache }}**
+
+```
+{{ nocache }}
+    {{ form:create formset="contact" }}
+        ...
+    {{ /form:create }}    
+{{ /nocache }}
+```
 
 ### Axios Example
 

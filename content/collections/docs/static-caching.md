@@ -8,7 +8,9 @@ id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
 ## Important Preface
 
-Certain features — such as forms with server-side validation or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
+Certain features — such as forms with server-side validation, page protection, or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
+
+Whatever is on the page the first time it's visited is what will be cached for all users. For example, if you're using page protection and a user who has access visits the page, it'll be accessible to everyone.
 
 :::tip
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
@@ -252,13 +254,18 @@ return [
             'driver' => 'file',
             'path' => [
                'default'    => public_path('static') . '/domain1.com/',
-               'default_fr' => public_path('static') . '/domain1.com/fr/',
+               'default_fr' => public_path('static') . '/domain1.com/',
                'other_site' => public_path('static') . '/domain2.com/',
             ]
         ]
     ]
 ];
 ```
+
+:::tip
+Your static caching paths should be organized at the top level domain level. You'll notice 'default' and 'default_fr' in the example use the same domain. The subfolders will be organized based on the urls defined in your sites config.
+:::
+
 ### Rewrite Rules
 
 This multi-site example needs modified rewrite rules.
@@ -279,6 +286,20 @@ location / {
 }
 ```
 
+The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain.
+
+For example `'default'    => public_path('static') . '/' .env('APP_DOMAIN'),`
+
+and then on your server
+
+```
+#Production
+APP_DOMAIN=domain1.com
+
+#Dev
+APP_DOMAIN=domain1.devserver.com
+```
+
 #### IIS
 
 ``` xml
@@ -290,6 +311,45 @@ location / {
 
 :::tip
 `{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
+:::
+
+### Invalidation Rules
+
+In the [invalidation rules array](#when-saving) explained above, the URLs are relative.
+
+If you are using sites with multiple domains, you should define URLs in additional domains using absolute URLs. Relative URLs will assume the first site's domain.
+
+```php
+return [
+    'invalidation' => [
+        'rules' => [
+            'collections' => [
+                'blog' => [
+                    'urls' => [
+                        '/blog', // [tl! **]
+                        'https://domaintwo.com/articles',  // [tl! **]
+                    ]
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+:::tip
+Rather than hardcoding the domains, you could use a config key or a variable.
+
+```php
+<?php
+$two = config('statamic.sites.sites.two.url'); // [tl! **]
+
+return [
+    // ...
+    'urls' => [
+        '/blog',
+        $two.'articles', // [tl! **]
+    ]
+```
 :::
 
 ## Replacers
