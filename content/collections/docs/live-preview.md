@@ -11,6 +11,10 @@ The ability to preview what your content looks like in real-time is practically 
 
 Live Preview will render your work-in-progress content with whichever template you have currently loaded. You can even switch between templates while previewing.
 
+:::tip
+Keep in mind: Live Preview does not work using the `array` cache driver.
+:::
+
 <figure>
     <img src="/img/live-preview.jpg" alt="Statamic Live Preview">
     <figcaption>And he's still touring, ladies and gentlemen.</figcaption>
