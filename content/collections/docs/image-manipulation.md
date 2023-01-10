@@ -75,7 +75,7 @@ To do this, first configure an image manipulation preset in `config/statamic/ass
 ```php
 'image_manipulation' => [
     'presets' => [
-		'max_upload_size' => ['w' => 2000, 'h' => 2000, 'fit' => 'max'],
+        'max_upload_size' => ['w' => 2000, 'h' => 2000, 'fit' => 'max'],
     ],
 ],
 ```
