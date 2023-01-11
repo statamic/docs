@@ -1,8 +1,8 @@
 ---
 id: 2ce74b48-d3cc-4b8a-a8d4-f514c0b1d6ff
 blueprint: page
-title: Customizing CP Navigation
-intro: The Control Panel navigation is quite customizable. You can add your own sections, pages, and subpages, as well as hide or modify existing ones.
+title: Customizing the Control Panel Navigation
+intro: The Control Panel (CP) navigation is quite customizable. You can add your own sections, pages, and subpages, as well as hide or modify existing ones.
 template: page
 ---
 
