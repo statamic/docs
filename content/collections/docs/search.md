@@ -130,6 +130,31 @@ Each transformer is a closure that would correspond to a field in your index's `
 ]
 ```
 
+Alternatively you can specify a class to handle the transformation. This is useful when you want to cache your config using `php artisan config:cache`.
+
+``` php
+'fields' => ['title', 'address'],
+'transformers' => [
+    'title' => \App\SearchTransformers\MyTransfomer::class,
+]
+```
+
+``` php
+namespace App\SearchTransformers;
+
+class MyTransformer
+{
+    public function handle($value, $field, $searchable)
+    {
+        // $value is the current value
+        // $field is the index from the transformers array
+        // $searchable is the class that $value has been plucked from
+
+        return ucfirst($value);
+    }
+}
+```
+
 ### Updating Indexes
 
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
