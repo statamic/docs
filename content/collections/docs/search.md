@@ -135,8 +135,6 @@ Alternatively you can specify a class to handle the transformation. This is usef
 ``` php
 'fields' => ['title', 'address'],
 'transformers' => [
-
-    // Return a value to store in the index.
     'title' => \App\SearchTransformers\MyTransfomer::class,
 ]
 ```
@@ -148,9 +146,9 @@ class MyTransformer
 {
     public function handle($value, $field, $searchable)
     {
-		// $value is the current value
-		// $field is the index from the transformers array
-		// $searchable is the class that $value has been plucked from
+        // $value is the current value
+        // $field is the index from the transformers array
+        // $searchable is the class that $value has been plucked from
 
         return ucfirst($value);
     }
