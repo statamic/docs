@@ -26,6 +26,7 @@ There are four components (coincidentally, the same number of Ninja Turtles) who
 The search form is the entry point to your site search. Search forms are basic, vanilla HTML forms with a `text` or `search` input named `q` submitting to any URL with a `search:results` tag in its view template.
 
 You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
+This [Laracasts video](https://laracasts.com/series/learn-statamic-with-jack/episodes/11) shows how to setup search quickly.
 
 ```
 <form action="/search/results">
