@@ -38,6 +38,10 @@ tree:
         id: 61e2cbcb-dd64-4bfd-af62-33e5a2f18b25
         entry: 785ffa10-8b63-44b1-9da3-3837250cacbe
       -
+        id: 0cdd7170-92ad-11ed-b05e-0800200c9a66
+        url: /preferences#adding-fields
+        title: Preferences
+      -
         id: 9e649d17-d0b2-48a9-abf4-534c38c0c7ce
         entry: ba2e6172-b4dc-443b-8230-b770dec1423c
       -
@@ -92,6 +96,10 @@ tree:
       -
         id: 68f1a25e-f039-409a-840e-52e39b232cd1
         entry: e2577828-504b-490b-a8b6-10991ae8a0b6
+      -
+        id: 37a82f80-92ad-11ed-b05e-0800200c9a66
+        url: /preferences#using-javascript
+        title: Preferences
   -
     id: a6b12519-6352-452b-9daf-b7dd76880fb2
     title: 'Core & Data'
