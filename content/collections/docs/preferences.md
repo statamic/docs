@@ -2,9 +2,9 @@
 id: 452c268b-b885-4deb-8e46-1cc3ebc66e4f
 blueprint: page
 title: Preferences
-intro: Preferences can be used as an additional layer of customization intended for users and clients to edit.
+intro: Preferences are easy to manage settings available from and generally affecting only the inside of the control panel. They can be set differently per-user, role, and globally.
 ---
-Where application configuration would live in PHP config files, preferences can be accessed from the control panel where they can be edited by clients or users.
+Where application configuration lives in PHP config files, preferences can be accessed from the control panel where they can be edited by clients or users. The actual preferences themselves are stored in YAML files, whether on the user, role, or [default preferences file](#storage).
 
 ## Accessing Preferences
 
