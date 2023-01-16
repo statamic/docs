@@ -30,6 +30,7 @@ preferences:
 
 | Language | Code |
 |----------|------|
+| Czech | `cs` |
 | Danish | `da` |
 | German | `de` or `de_CH` |
 | English | `en` |
