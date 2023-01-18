@@ -49,13 +49,8 @@ Be sure to [configure the email driver](/email) so those emails actually go out.
 
 You're more than welcome — encouraged even — to customize what fields and information you'd like to store on your users. For example, you could store author bios and social media links to be used in articles on your front-end.
 
-To customize these fields, edit the included `user` [blueprint](/blueprints)  and configure it however you'd like. Just be sure to keep the required system fields:
+To customize these fields, edit the included `user` [blueprint](/blueprints) and configure it however you'd like.
 
-| Field | Type | Required |
-|-------|------|----------|
-| `email` | `text` | Always |
-| `groups` | `user_groups` | When using groups |
-| `roles` | `user_roles` | When using roles |
 
 ## Permissions
 
