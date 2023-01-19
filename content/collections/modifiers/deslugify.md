@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: Deslugify
 ---
-Replaces all hyphens and underscores in a string with spaces. The opposite of [dashify](#dashify).
+Replaces all hyphens and underscores in a string with spaces. The opposite of [dashify](dashify).
 
 ```yaml
 title: Just-Because-I-Can

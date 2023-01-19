@@ -26,6 +26,7 @@ There are four components (coincidentally, the same number of Ninja Turtles) who
 The search form is the entry point to your site search. Search forms are basic, vanilla HTML forms with a `text` or `search` input named `q` submitting to any URL with a `search:results` tag in its view template.
 
 You can create that page however you wish: it could be an entry, a custom route, or something even fancier we didn't think of.
+This [Laracasts video](https://laracasts.com/series/learn-statamic-with-jack/episodes/11) shows how to setup search quickly.
 
 ```
 <form action="/search/results">
@@ -128,6 +129,31 @@ Each transformer is a closure that would correspond to a field in your index's `
         ];
     }
 ]
+```
+
+Alternatively you can specify a class to handle the transformation. This is useful when you want to cache your config using `php artisan config:cache`.
+
+``` php
+'fields' => ['title', 'address'],
+'transformers' => [
+    'title' => \App\SearchTransformers\MyTransfomer::class,
+]
+```
+
+``` php
+namespace App\SearchTransformers;
+
+class MyTransformer
+{
+    public function handle($value, $field, $searchable)
+    {
+        // $value is the current value
+        // $field is the index from the transformers array
+        // $searchable is the class that $value has been plucked from
+
+        return ucfirst($value);
+    }
+}
 ```
 
 ### Updating Indexes
