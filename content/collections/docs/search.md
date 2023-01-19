@@ -99,6 +99,45 @@ The searchables value determines what items are contained in a given index. By p
 - `taxonomy:{taxonomy handle}`
 - `assets:{container handle}`
 - `users`
+- Custom ones may be added by addons. [Read about creating custom searchables](/extending/search)
+
+### Filtering Searchables
+
+You may choose to allow only a subset of searchable items.
+
+For example, you may want to have a toggle field that controls whether an entry gets indexed or not. You can specify a closure with that logic.
+
+```php
+'searchables' => ['collection:blog'],
+'filter' => function ($item) {
+    return $item->published() && $item->exclude_from_search;
+}
+```
+
+Now, only published entries that dont have the `exclude_from_search` toggle field enabled will be indexed.
+
+
+:::tip Heads up
+Your filter will override any native filters. For example, entries will filter out drafts by default. If your filter doesn't also remove drafts, they could be indexed.
+:::
+
+Alternatively you can specify a class to handle the filtering. This is useful when you want to cache your config using `php artisan config:cache`.
+
+``` php
+'filter' => \App\SearchFilters\BlogFilter::class,
+```
+
+``` php
+namespace App\SearchFilters;
+
+class BlogFilter
+{
+    public function handle($item)
+    {
+        return $item->published() && $item->exclude_from_search;
+    }
+}
+```
 
 ### Records & Fields
 
