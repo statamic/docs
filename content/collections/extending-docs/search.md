@@ -149,6 +149,29 @@ public function boot()
 ]
 ```
 
+### Event Listeners
+
+You will want to update the indexes when you create, edit, or delete your searchable items.
+
+Continuing with the Eloquent example, we can hook into model events in your service provider.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Statamic\Facades\Search;
+
+Event::listen('eloquent.saved: App\Models\Product', function ($model) {
+    Search::updateWithinIndexes($model);
+});
+
+Event::listen('eloquent.deleted: App\Models\Product', function ($model) {
+    Search::deleteFromIndexes($model);
+});
+```
+
+The `updateWithinIndexes` method will update the record in all appropriate indexes. If a filter determines that the record should be removed (e.g. if it changed into a draft), it'll remove it.
+
+The `deleteFromIndexes` method will remove it from all appropriate indexes.
+
 ## Custom Index Drivers
 
 Statamic comes with two native search index drivers: Comb and Algolia. Comb is our "local" driver, where indexes are stored as json files. Algolia integrates with the service using their API.
