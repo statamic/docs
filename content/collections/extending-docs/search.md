@@ -29,10 +29,11 @@ There is a `Searchable` trait to make implementing it easier.
 
 ```php
 use Statamic\Contracts\Search\Result as ResultContract;
-use Statamic\Contracts\Search\Searchable;
+use Statamic\Contracts\Search\Searchable as SearchableContract;
+use Statamic\Search\Searchable;
 use Statamic\Search\Result;
 
-class Product extends Model implements Searchable
+class Product extends Model implements SearchableContract
 {
     use Searchable;
 
