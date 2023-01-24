@@ -147,3 +147,122 @@ public function boot()
     ]
 ]
 ```
+
+## Custom Index Drivers
+
+Statamic comes with two native search index drivers: Comb and Algolia. Comb is our "local" driver, where indexes are stored as json files. Algolia integrates with the service using their API.
+
+For this example, we'll integrate with a fictional service called FastSearch.
+
+### Create Index
+
+You should have a class that extends `Index`.
+
+```php
+use Statamic\Search\Index;
+
+class FastSearchIndex extends Index
+{
+    private $client;
+
+    public function __construct(FastSearchClient $client, $name, array $config, string $locale = null)
+    {
+        // In this example, we'll accept a fictional client class that will perform API requests.
+        // If you have a constructor, don't forget to construct the parent class too.
+        $this->client = $client;
+        parent::__construct($name, $config, $locale);
+    }
+
+    /**
+     * Return a query builder that will perform the search.
+     */
+    public function search($query)
+    {
+        return (new FastSearchQuery($this))->query($query);
+    }
+
+    /**
+     * Check whether the index actually exists.
+     * i.e. Does it exist in the service, or as a json file, etc.
+     */
+    public function exists()
+    {
+        $this->client->indexExists($this->name);
+    }
+
+    /**
+     * Insert items into the index.
+     */
+    protected function insertDocuments(Documents $documents)
+    {
+        $this->client->insertObjects($documents->all());
+    }
+
+    /**
+     * Delete an item from the index.
+     */
+    public function delete($document)
+    {
+        $this->client->deleteObject($document);
+    }
+
+    /**
+     * Delete the entire index.
+     */
+    protected function deleteIndex()
+    {
+        $this->client->deleteIndex($this->name);
+    }
+}
+```
+
+### Register Index
+
+```php
+public function boot()
+{
+    Search::extend('fast', function ($app, $config, $name) {
+        $client = new FastSearchApiClient('api-key');
+        return new FastSearchIndex($client, $name, $config);
+    });
+}
+```
+
+### Create Query Builder
+
+In the index class, the `search` method wanted a query builder. You can create a class that extends our own, which only requires you to define a single method.
+
+```php
+<?php
+
+namespace App\Search;
+
+use Statamic\Search\QueryBuilder;
+use Statamic\Support\Str;
+
+class CustomSearchQuery extends QueryBuilder
+{
+    /**
+     * Get search results as an array.
+     * e.g. [
+     *  ['title' => 'One', 'search_score' => 500],
+     *  ['title' => 'Two', 'search_score' => 400],
+     * ]
+     */
+    public function getSearchResults()
+    {
+        $results = $this->index->searchUsingApi($query);
+
+        // Statamic will expects a search_score to be in each result.
+        // Some services like Algolia don't have scores and will just return them in order.
+        // This is a trick to set the scores in sequential order, highest first.
+        return $results->map(function ($result, $i) use ($results) {
+            $result['search_score'] = $results->count() - $i;
+
+            return $result;
+        });
+    }
+}
+```
+
+This `getSearchResults` method is used in the parent class in order to allow basic filtering and other query methods. Of course, you are free to build as much of your own query builder as you like.
