@@ -68,19 +68,28 @@ class Product extends Model implements Searchable
 You should have a class that implements `ProvidesSearchables`, however it's even easier for you to extend `Provider`.
 
 ```php
+use Statamic\Search\Searchables\Provider;
+
 class ProductProvider extends Provider
 {
     /**
-     * The prefix used in each Searchable's reference.
+     * The handle used within search configs.
+     *
+     * e.g. For 'searchables' => ['collection:blog', 'products:hats', 'users']
+     *      they'd be 'collection', 'products', and 'users'.
      */
-    public function referencePrefix(): string
-    {
-        return 'product';
-    }
+    protected static $handle = 'products';
+
+    /**
+     * The prefix used in each Searchable's reference.
+     *
+     * e.g. For 'entry::123', it would be 'entry'.
+     */
+    protected static $referencePrefix = 'product';
 
     /**
      * Convert an array of keys to the actual objects.
-     * The keys will be references with this provider's prefix removed.
+     * The keys will be searchable references with the prefix removed.
      */
     public function find(array $keys): Collection
     {
@@ -113,14 +122,14 @@ class ProductProvider extends Provider
 
 ### Register the Provider
 
-In order to use the provider, first register it within a service provider, and then it will be available to your search config.
+In order to use the provider, first register it within a service provider, and then it will be available to your search config by its handle.
 
 ```php
 use Statamic\Facades\Search;
 
 public function boot()
 {
-    Search::registerSearchableProvider('products', new ProductProvider);
+    ProductProvider::register();
 }
 ```
 
