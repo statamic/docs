@@ -128,6 +128,9 @@ tree:
       -
         id: 6eafca01-ad4b-467f-bef7-3b8f8d187d89
         entry: 73010f4f-bb62-4feb-a6ff-88031f488db8
+      -
+        id: 8636c400-9838-11ed-87cd-0800200c9a66
+        entry: 0eedd0bb-81a7-4813-b29f-672fe6697021
   -
     id: ba853a27-7829-4663-83e0-b762a96d109a
     title: Addons
