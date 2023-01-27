@@ -21,24 +21,21 @@ This route setting may become irrelevant when using customizing [caching options
 
 ## Presets
 
-Glide Presets are pre-configured manipulations that will be automatically generated when new image assets are uploaded. These presets are managed in `config/statamic/assets.php` as an array that holds a list of named presets and their desired parameters.
+Presets are pre-configured sets of manipulations that can be referenced at a later time. They are managed in `config/statamic/assets.php` as an array that holds a list of named presets and their desired parameters.
 
 ```php
 'image_manipulation' => [
     'presets' => [
-        'thumbnail' => [ 'w' => 300, 'h' => 300, 'q' => 75],
+        'thumbnail' => [ 'w' => 300,  'h' => 300, 'q' => 75 ],
         'hero'      => [ 'w' => 1440, 'h' => 600, 'q' => 90 ],
     ],
 ],
 ```
 
-All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets. (Not the tag aliases like `width`. You'll need to use `w`.)
+All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets.
 
-You may want to generate the presets manually (for example after you changed the config and you already uploaded the images) with `php please assets:generate-presets`.
-
-Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag] and since all transformations and manipulations are performed at time of upload, there shouldn't be any additional overhead on the initial request.
-
-**Example:**
+### Glide tag
+Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag]:
 
 ```
 {{ glide:thumbnail preset="thumbnail" }}
@@ -47,6 +44,71 @@ Each named preset can be referenced with the `preset` parameter on the [Glide ta
 {{ glide:hero_image preset="hero" }}
 <!-- width: 1440px, height: 600px, quality: 90% -->
 ```
+
+### Generate on upload
+When uploading an image asset, any configured presets will be generated so they're ready when you need to reference them, e.g. in the Glide tag.
+
+By default, all presets are generated, however you can [customize this per-container](#customize-glide-preset-warming).
+
+You may also choose to disable image generation on upload completely:
+
+```php
+'image_manipulation' => [
+    'generate_presets_on_upload' => false,
+],
+```
+
+### Generate manually
+
+You may want to generate the presets manually (for example after you changed the config and you already uploaded the images, or if you've disable generation on upload) on the command line:
+
+```bash
+php please assets:generate-presets
+```
+
+### Process Source Images
+
+Sometimes you may wish to process your actual source images on upload. For example, maybe you need to enforce maximum dimensions on extremely large images in order to save on disk space.
+
+To do this, first configure an image manipulation preset in `config/statamic/assets.php` for this purpose:
+
+```php
+'image_manipulation' => [
+    'presets' => [
+        'max_upload_size' => ['w' => 2000, 'h' => 2000, 'fit' => 'max'],
+    ],
+],
+```
+
+Then in your asset container settings, you can configure uploads to use this preset:
+
+<figure class="mt-0">
+    <img src="/img/glide-process-source-images.png" alt="Glide Process Source Images">
+</figure>
+
+:::tip
+The `fit` is the important part for this one. Using `max` will ensure images smaller than those dimensions will not be upscaled - only larger images will be resized.
+:::
+
+### Customize Preset Warming
+
+As mentioned [above](#presets), Statamic will generate for all of your configured presets on upload. (i.e. "warming" the generated images).
+
+By default, Statamic will do this "intelligently", which means it'll generate all presets except for the one used for source processing:
+
+<figure class="mt-0 mb-8">
+    <img src="/img/glide-intelligently-warm.png" alt="Glide Intelligently Warm Presets">
+</figure>
+
+However, you may wish to configure which presets are warmed in your asset container settings (or leave this option blank to disable warming altogether):
+
+<figure class="mt-0">
+    <img src="/img/glide-warm-specific-presets.png" alt="Glide Warm Specific Presets">
+</figure>
+
+:::tip
+If you have a preset that's only going to be used images in one particular container, you should customize which ones are used so your server doesn't have to waste resources on generating and storing images that won't get used.
+:::
 
 ## Caching
 

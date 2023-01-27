@@ -23,14 +23,16 @@ In a service provider's `boot` method, you can register a utility with the `Util
 
 Start with `Utility::make()`, chain as many methods as you want, then finish with `register()`. At a minimum, you'll need a view.
 
+Make sure to surround any utility registrations in a `Utility::extend` closure.
+
 ``` php
 use Statamic\Facades\Utility;
 
 public function boot()
 {
-    Utility::make('french-fries')
-        ->view('fries-utility')
-        ->register();
+    Utility::extend(function () {
+        Utility::register('french-fries')->view('fries-utility');
+    });
 }
 ```
 

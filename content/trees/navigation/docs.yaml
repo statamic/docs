@@ -95,6 +95,9 @@ tree:
         id: 1479865c-f02f-40ee-9520-4968eca62e5a
         entry: fb20f2e0-3881-43e6-8507-3308a18c54b0
       -
+        id: 42336640-91e0-11ed-b05e-0800200c9a66
+        entry: 452c268b-b885-4deb-8e46-1cc3ebc66e4f
+      -
         id: f610e44f-6a75-4da2-8e2b-ebbbfdd8be86
         entry: 6177b316-0eed-4dec-83d1-e5a48a8e00b6
       -
@@ -183,6 +186,10 @@ tree:
       -
         id: 8b7e584d-91ba-46f0-a5f5-feccb02a70ed
         entry: 249e046f-a9b4-494b-9e4d-084c28e01028
+      -
+        id: 65d7cf90-2df8-4e32-90bc-6c8d787b280a
+        entry: 2ce74b48-d3cc-4b8a-a8d4-f514c0b1d6ff
+        title: Navigation
       -
         id: ebb8baad-7ddb-4823-834d-75368a564d96
         entry: 54548616-fd6d-44a3-a379-bdf71c492c63

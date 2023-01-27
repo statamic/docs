@@ -99,6 +99,45 @@ The searchables value determines what items are contained in a given index. By p
 - `taxonomy:{taxonomy handle}`
 - `assets:{container handle}`
 - `users`
+- Custom ones may be added by addons. [Read about creating custom searchables](/extending/search)
+
+### Filtering Searchables
+
+You may choose to allow only a subset of searchable items.
+
+For example, you may want to have a toggle field that controls whether an entry gets indexed or not. You can specify a closure with that logic.
+
+```php
+'searchables' => ['collection:blog'],
+'filter' => function ($item) {
+    return $item->published() && $item->exclude_from_search;
+}
+```
+
+Now, only published entries that dont have the `exclude_from_search` toggle field enabled will be indexed.
+
+
+:::tip Heads up
+Your filter will override any native filters. For example, entries will filter out drafts by default. If your filter doesn't also remove drafts, they could be indexed.
+:::
+
+Alternatively you can specify a class to handle the filtering. This is useful when you want to cache your config using `php artisan config:cache`.
+
+``` php
+'filter' => \App\SearchFilters\BlogFilter::class,
+```
+
+``` php
+namespace App\SearchFilters;
+
+class BlogFilter
+{
+    public function handle($item)
+    {
+        return $item->published() && $item->exclude_from_search;
+    }
+}
+```
 
 ### Records & Fields
 
@@ -185,6 +224,50 @@ search_index: blog
 :::tip
 After specifying that an index contains entries from a collection (in [searchables](#searchables)), you **must also** specify the index in the collection config itself because collections and entries can be in multiple indexes.
 :::
+
+### Localization
+
+You may choose to use separate indexes to store localized content. For example, English entries go in one index, French entries go in another, and so on.
+
+Take these site and search configs for example:
+
+```php
+// config/statamic/sites.php
+'sites' => [
+    'en' => ['url' => '/'],
+    'fr' => ['url' => '/fr/'],
+    'de' => ['url' => '/de/'],
+]
+```
+
+```php
+// config/statamic/search.php
+'indexes' => [
+    'default' => [
+        'driver' => 'local',
+        'searchables' => 'all',
+    ]
+]
+```
+
+By default, all entries will go into the `default` index, regardless of what site they're in. You can enable localization by setting the `sites` you want.
+
+```php
+'indexes' => [
+    'default' => [
+        'driver' => 'local',
+        'searchables' => 'all',
+        'sites' => ['en', 'fr'], // You can also use "all" [tl! ++ **]
+    ]
+]
+```
+
+This will create dynamic indexes named after the specified sites:
+
+- `default_en`
+- `default_fr`
+
+If you have a localized index and include searchables that do not support localization (like assets or users), they will appear in each localized index.
 
 ## Drivers
 

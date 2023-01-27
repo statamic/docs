@@ -12,14 +12,14 @@ Out of the box, Statamic has its own set of permissions that you can choose from
 
 ## Basic permissions
 
-You can register a basic permission in a service provider by specifying the string.
+You can register a basic permission in a service provider by specifying the string. Make sure to surround any permission registrations in a `Permission::extend` closure.
 
 ``` php
 use Statamic\Facades\Permission;
 
 public function boot()
 {
-    $this->app->booted(function () {
+    Permission::extend(function () {
         Permission::register('manage stuff')
                   ->label('Manage Custom Stuff');
     });
@@ -152,7 +152,7 @@ that in every collection's permission tree under its 'edit' permission.
 You can use the `addChild` method on an existing permission to inject it at that position.
 
 ``` php
-$this->app->booted(function () {
+Permission::extend(function () {
     Permission::get('edit {collection} entries')->addChild(
         Permission::make('tweet {collection} entries')
     );
