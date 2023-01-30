@@ -59,7 +59,7 @@ You will need to run migrations to prepare your database for Statamic's user, pa
 
     ```php
     'passwords' => [
-        'resets' => 'resets',
+        'resets' => 'users',
         'activations' => 'activations',
     ],
     ```
