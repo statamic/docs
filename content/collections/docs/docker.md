@@ -101,6 +101,7 @@ Keep in mind that  commands need to be run inside Sail.
 
 - Instead of `php artisan`, run `sail artisan`
 - Instead of `composer require`, run `sail composer require`
+- Instead of `php please`, run `sail artisan statamic`
 :::
 
 
