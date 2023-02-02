@@ -45,7 +45,7 @@ Form::all()
 #### Get submissions to a form by its handle
 
 ```php
-Form::find('postbox')->submissions;
+Form::find('postbox')->submissions();
 ```
 
 #### Get a single submission to a form by its id
