@@ -1373,22 +1373,20 @@ If you wish to disable caching altogether, set `cache` to `false`.
 
 ## Custom Middleware
 
-You may add custom middleware, which is almost identical to a standard Laravel middleware class.
+You may add custom middleware, which are identical to any other Laravel middleware class. They will be executed on all GraphQL requests (unless another middleware, e.g. caching, prevents it).
 
 Use the `handle` method to perform some action, and pass the request on.
 
 ```php
 use Closure;
-use GraphQL\Type\Definition\ResolveInfo;
-use Rebing\GraphQL\Support\Middleware;
 
-class MyMiddleware extends Middleware
+class MyMiddleware
 {
-    public function handle($root, $args, $context, ResolveInfo $info, Closure $next)
+    public function handle($request, Closure $next)
     {
         // do something
 
-        return $next($root, $args, $context, $info);
+        return $next($request);
     }
 }
 ```
