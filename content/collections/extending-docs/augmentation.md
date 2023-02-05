@@ -271,7 +271,7 @@ We provide a sensible set of fields to include when shallow augmenting, but if y
 ``` php
 class CustomEntry extends Entry
 {
-    protected function shallowAugmentedArrayKeys()
+    public function shallowAugmentedArrayKeys()
     {
         return ['id', 'title', 'field_i_must_have', 'api_url'];
     }
