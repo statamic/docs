@@ -221,8 +221,18 @@ title: Blog
 search_index: blog
 ```
 
-:::tip
+:::tip About entries
 After specifying that an index contains entries from a collection (in [searchables](#searchables)), you **must also** specify the index in the collection config itself because collections and entries can be in multiple indexes.
+
+Also, since draft entries are not included in search indexes by default, you'll want to include them for your collection-linked index. You can add a filter that allows everything.
+
+```php
+'articles' => [
+    'driver' => 'local',
+    'searchables' => ['collection:articles'],
+    'filter' => fn () => true, // [tl! ++]
+]
+```
 :::
 
 ### Localization
