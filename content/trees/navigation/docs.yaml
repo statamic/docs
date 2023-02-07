@@ -130,12 +130,9 @@ tree:
         entry: 84100772-18e4-4a22-8759-219b242a320c
         title: Overview
       -
-        id: 6ee59577-5f3f-4cbe-8c92-9ce3da648594
-        entry: dcf80ee6-209e-45aa-af42-46bbe01996e2
-      -
         id: 9d43191e-652b-48e8-8ec5-5cd6266d793d
         entry: d37b2af2-f2bf-493a-9345-7087fb5929ce
-        title: 'New Antlers Parser'
+        title: 'Antlers Templates'
       -
         id: 40ef0b25-0f5e-4523-a527-52a099838d09
         entry: c7816387-ebc4-4204-b5f2-8e7073a4db8b

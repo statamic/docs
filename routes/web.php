@@ -19,4 +19,5 @@ Route::permanentRedirect('content-api', 'rest-api');
 Route::permanentRedirect('using-front-end-frameworks', 'javascript-frameworks');
 Route::permanentRedirect('/content-queries/{slug}', '/repositories/{slug}');
 Route::permanentRedirect('repositories', 'content-queries');
+Route::permanentRedirect('new-antlers-parser', 'antlers');
 // Route::permanentRedirect('extending/queries', 'content-queries');
