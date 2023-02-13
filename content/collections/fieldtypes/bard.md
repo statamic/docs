@@ -49,6 +49,11 @@ options:
     description: >
       An asset container ID. When specified, the fieldtype will allow the user to add a link to an asset from the specified container.
   -
+    name: inline
+    type: boolean
+    description: |
+      Switch the field to inline mode. Block elements such as sets, headings and images are not supported in inline mode and should not be enabled.
+  -
     name: toolbar_mode
     type: string
     description: >
