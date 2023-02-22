@@ -219,6 +219,10 @@ By default, only `published` entries are included.  Entries can be queried again
 {{ collection:blog status:not_in="published" }}
 ```
 
+:::tip
+**What is the difference between filtering against `published` and `status`?** Read more on [date behavior and published status](/collections#date-behavior-and-published-status)!
+:::
+
 
 ### Custom Query Scopes
 
