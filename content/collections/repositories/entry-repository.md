@@ -130,13 +130,17 @@ Entry::query()
     ->get();
 ```
 
-#### Get all unpublished entries
+#### Get all published and scheduled entries
 
 ```php
 Entry::query()
-  ->where('published', false)
+  ->whereIn('status', ['published', 'scheduled'])
   ->get();
 ```
+
+:::tip
+**What is the difference between querying against `published` and `status`?** Read more on [date behavior and published status](/collections#date-behavior-and-published-status)!
+:::
 
 ## Creating
 
