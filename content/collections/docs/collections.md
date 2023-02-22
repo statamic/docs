@@ -168,6 +168,27 @@ Each of these behaviors is available for future and past dates.
 Date behaviors are _defaults_. They can be overridden at the [tag level](/tags/collection) in your templates.
 :::
 
+### Date Behavior and Published Status
+
+You can override [date behavior visibility settings](#available-date-behaviors) on an entry-by-entry basis by setting `published: false` on your entry.
+
+Each entry will automatically be assigned one of four possible computed `status` values, which respects both your collection's date behavior settings, as well as your entry's published setting:
+
+- **published** - Entry is published and visible.
+- **scheduled** - Entry is published, but not yet visible because date is upcoming.
+- **expired** - Entry is published, but not visible anymore because date has expired.
+- **draft** - Entry is explicitly hidden via `published: false`.
+
+:::tip
+We recommend [filtering](/tags/collection#published-status) and [querying](/repositories/entry-repository#get-all-published-and-scheduled-entries) against your entry's `status` (instead of its `published` boolean) so that you can more easily take advantage of date behavior logic without hassle.
+:::
+
+<figure>
+    <img src="/img/collection-published-status-filtering.png" alt="Collection Published Status Filtering">
+    <figcaption>Filter by entry status in your collection listings.</figcaption>
+</figure>
+
+
 ## Time
 
 To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
