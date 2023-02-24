@@ -5,6 +5,7 @@ template: page
 id: f12f8ba3-19ff-48cb-a07b-653b05082d7e
 blueprint: page
 ---
+- [3.4 to 4.0](/upgrade-guide/3-4-to-4-0)
 - [3.3 to 3.4](/upgrade-guide/3-3-to-3-4)
 - [3.2 to 3.3](/upgrade-guide/3-2-to-3-3)
 - [3.1 to 3.2](/upgrade-guide/3-1-to-3-2)
