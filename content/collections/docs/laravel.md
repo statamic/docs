@@ -56,7 +56,7 @@ Otherwise, the [Storing User Records](/users#storage) page should have instructi
 
 After Statamic is installed, you'll have 3 new directories in your project:
 - `content/`,
-- `users/`
+- `resources/users/`
 - `config/statamic/`
 
 :::tip
