@@ -19,13 +19,48 @@ If you installed Statamic using the `statamic new` command, or created a project
 Statamic comes with an Eloquent driver to make the transition as seamless as possible.
 
 1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
-2. In `config/statamic/users.php`, change `repository` to `eloquent`.
-3. In `config/auth.php`, comment out the `statamic` provider, and uncomment the `eloquent` provider.
-4. Run the `php please auth:migration` command to generates the migration for the role and user group pivot tables.
-5. If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
-6. Run `php artisan migrate`
-7. Run a command to migrate your file based users into the database.
-8. (optional) If you are using the Statamic forgot password form, add the following method to your User model
+1. In your user model, cast the preferences column to json.
+    ```php
+    $casts = [
+        'preferences' => 'json', // [tl! ++]
+    ];
+    ```
+1. In `config/statamic/users.php`, use the Eloquent repository.
+    ```php
+    'repository' => 'file', // [tl! --]
+    'repository' => 'eloquent', // [tl! ++]
+    ```
+1. In `config/auth.php`, use the Eloquent provider:
+    ```php
+    'providers' => [
+        'users' => [
+            'driver' => 'statamic', // [tl! --]
+            'driver' => 'eloquent', // [tl! ++]
+            'model' => App\Models\User::class, // [tl! ++]
+        ]
+    ]
+    ```
+1. Generate a migration for the role and user group pivot tables.
+    ```cli
+    php please auth:migration
+    ```
+    - If you have existing file based users, edit the migration to change the `id` column to a `uuid`.
+        ```php
+        $table->uuid('id')->change();
+        ```
+    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns, or create a new migration to add them.
+        ```php
+        $table->string('some_field');
+        ```
+1. Run the migrations:
+    ```cli
+    php artisan migrate
+    ```
+1. If you have existing file based users, import them:
+    ```cli
+    php please eloquent:import-users
+    ```
+1. If you are using the Statamic forgot password form, add the following method to your User model
     ```php
     public function sendPasswordResetNotification($token)
     {
