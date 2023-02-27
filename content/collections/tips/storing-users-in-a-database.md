@@ -25,6 +25,10 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
         'preferences' => 'json', // [tl! ++]
     ];
     ```
+1. If you plan to import existing file based users, you'll need to use UUIDs for the primary key. You can do this by using a trait on your user model:
+    ```php
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids; // [tl! ++]
+    ```
 1. In `config/statamic/users.php`, use the Eloquent repository.
     ```php
     'repository' => 'file', // [tl! --]
