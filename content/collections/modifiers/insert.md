@@ -13,7 +13,7 @@ opinion: This is yummy.
 ```
 
 ```
-{{ opinion insert="not |8" }}
+{{ opinion | insert('not', 8) }}
 ```
 
 ```html

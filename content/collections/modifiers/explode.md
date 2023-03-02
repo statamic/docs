@@ -13,7 +13,7 @@ places: Scotland, England, Switzerland, Italy
 ```
 
 ```
-{{ places | explode:, | ul }}
+{{ places | explode(',') | ul }}
 ```
 
 ```html

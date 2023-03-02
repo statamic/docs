@@ -12,8 +12,8 @@ reply: Actually, I disagree because this is the internet.
 ```
 
 ```
-{{ if reply | starts_with:actually }}
-{{ if reply | starts_with:respectfully }}
+{{ if reply | starts_with('actually') }}
+{{ if reply | starts_with('respectfully') }}
 ```
 
 ```html

@@ -14,7 +14,7 @@ path: '/local/file/example.pdf'
 
 ``` antlers
 {{ path | pathinfo }}
-{{ path | pathinfo:extension }}
+{{ path | pathinfo('extension') }}
 ```
 
 ```php

@@ -13,7 +13,7 @@ event_date: April 15 2016
 ```
 
 ```
-{{ event_date format="Y-m-d" }}
+{{ event_date | format('Y-m-d') }}
 ```
 
 ```html

@@ -13,8 +13,8 @@ skillets: 3
 ```
 
 ```
-{{ bacon divide="skillets" }}
-{{ skillets divide="3" }}
+{{ bacon | divide($skillets) }}
+{{ skillets | divide(3) }}
 ```
 
 ```html

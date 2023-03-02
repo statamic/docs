@@ -13,7 +13,7 @@ twitter: @statamic
 ```
 
 ```
-<a href="http://twitter.com/{{ twitter | remove_left:@ }}">Twitter</a>
+<a href="http://twitter.com/{{ twitter | remove_left('@') }}">Twitter</a>
 ```
 
 ```html

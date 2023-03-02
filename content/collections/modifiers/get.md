@@ -14,7 +14,7 @@ featured_post: 4e82a520-275f-11e6-bdf4-0800200c9a66
 ```
 
 ```
-{{ featured_post | get:title }}
+{{ featured_post | get('title') }}
 ```
 
 ```html

@@ -14,9 +14,9 @@ string: How neat is that?
 ```
 
 ```
-{{ string | substr:0:3 }}
-{{ string | substr:4:4 }}
-{{ string | substr:-8:8 }}
+{{ string | substr(0, 3) }}
+{{ string | substr(4, 4) }}
+{{ string | substr(-8, 8) }}
 
 ```
 

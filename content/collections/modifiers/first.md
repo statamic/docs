@@ -19,7 +19,7 @@ array:
 ```
 
 ```
-{{ title | first:4 }}
+{{ title | first(4) }}
 {{ array | first }}
 ```
 

@@ -14,8 +14,8 @@ when: 2015-01-27 11:00
 ```
 
 ```
-{{ when | format:r }}
-{{ when | timezone:Australia/Sydney | format:r }}
+{{ when | format('r') }}
+{{ when | timezone('Australia/Sydney') | format('r') }}
 ```
 
 ```html
@@ -31,7 +31,7 @@ when: Tue, 27 Jan 2015 16:00:00 +0000  # Date in UTC
 ```
 
 ```
-{{ when | timezone | format:r }}
+{{ when | timezone | format('r') }}
 ```
 
 ```html

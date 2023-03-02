@@ -17,7 +17,7 @@ lucky_number: 130134.109
 ```
 
 ```
-{{ lucky_number format_number="1|,|," }}
+{{ lucky_number | format_number(1, ',', ',') }}
 ```
 
 ```html

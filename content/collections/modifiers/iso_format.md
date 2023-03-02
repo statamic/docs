@@ -19,7 +19,7 @@ event_date: June 19 2020
 ```
 
 ```
-{{ event_date iso_format="MMMM Do YYYY, h:mm:ss a"}}
+{{ event_date | iso_format("MMMM Do YYYY, h:mm:ss a")}}
 ```
 
 ```html

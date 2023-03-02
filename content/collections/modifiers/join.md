@@ -18,7 +18,7 @@ tasks:
 
 ```
 {{ tasks | join }}
-{{ tasks join=" + " }} = ready
+{{ tasks | join(" + ") }} = ready
 ```
 
 ```html

@@ -16,7 +16,7 @@ links:
 
 ```
 {{ links }}
-  <li>{{ value ensure_right=".com" }}</li>
+  <li>{{ value ensure_right('.com') }}</li>
 {{ /links }}
 ```
 
