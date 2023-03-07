@@ -100,9 +100,3 @@ The `badge` method lets you define the badge text to be used when the filter is 
 The `visibleTo` method allows you to control in which listings this filter will be displayed. You will be given a key that represents the type of listing. For example, an author filter might be appropriate for the `entries` listing but not `users`. You may also be given an array of contextual data which will vary depending on the listing. For instance, for `entries`, the current collection name can be accessed with `$this->context['collection']`.
 
 The `autoApply` method lets you define a default value to apply.
-
-You may also pin your filters to the right side of the search bar by setting the `$pinned` class property:
-
-```php
-public $pinned = true;
-```
