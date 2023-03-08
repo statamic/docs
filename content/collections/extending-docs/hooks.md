@@ -62,7 +62,7 @@ When you `reject` a hook, any other code using that hook will not be executed.
 Unless your intention is to stop the execution chain, you should always `resolve`, even when your code does nothing.
 
 ``` js
-Statamic.$hooks.on('example', (resolve, reject) {
+Statamic.$hooks.on('example', (resolve, reject) => {
     if (somethingShouldHappen) {
         doSomething();
     }
