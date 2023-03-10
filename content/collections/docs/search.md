@@ -66,7 +66,7 @@ Indexes are configured in `config/statamic/search.php` and you can create as man
 An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
 :::
 
-Your site's default index includes _only_ the title from from _all_ collections. The default config looks like this:
+Your site's default index includes _only_ the title from _all_ collections. The default config looks like this:
 
 ``` php
 'default' => [
