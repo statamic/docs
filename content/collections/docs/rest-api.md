@@ -67,6 +67,8 @@ You may filter results by using the `filter` query parameter.
 /endpoint?filter[{field}:{condition}]={value}
 ```
 
+### Conditions
+
 You may use the [conditions](/conditions) available to the collection tag. eg. `contains`, `is`, `isnt` (or `not`), etc. For example:
 
 ``` url
@@ -76,7 +78,7 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
 
-## Filtering - by taxonomy
+### Taxonomies
 
 You may filter by taxonomy.
 
