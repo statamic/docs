@@ -76,6 +76,25 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
 
+## Filtering - by taxonomy
+
+You may filter by taxonomy.
+
+``` url
+/endpoint?filter[taxonomy:{handle}]={value}
+```
+
+When filtering by multiple values, the values must be separated by commas.
+
+``` url
+/endpoint?filter[taxonomy:{handle}]={value},{value},{value}
+```
+
+You can negate the filtering.
+
+``` url
+/endpoint?filter[taxonomy:{handle}:not_in]={value},{value},{value}
+```
 
 ## Sorting
 
