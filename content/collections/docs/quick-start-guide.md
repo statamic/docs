@@ -363,7 +363,7 @@ It's totally fine to duplicate code sometimes, especially if you have to make so
 
 Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
-Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage or blog index. Or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
 
 ```
 {{ collection:blog :limit="limit" }}
