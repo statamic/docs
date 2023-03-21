@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: URL Decode
 ---
-URL-decodes a string. The inverse of [urlencode](#urlencode)
+URL-decodes a string. The inverse of [urlencode](https://statamic.dev/modifiers/urlencode)
 
 ```yaml
 string: I+just+want+%26+need+%24pecial+characters%21
