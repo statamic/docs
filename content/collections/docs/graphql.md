@@ -550,6 +550,70 @@ Used for querying a single global set.
 }
 ```
 
+### Forms {#forms-query}
+
+Used for querying multiple forms.
+
+```graphql
+{
+    forms {
+        handle
+        title
+        fields {
+            handle
+            display
+        }
+    }
+}
+```
+
+```json
+{
+    "forms": [
+        {
+            "handle": "contact",
+            "title": "Contact",
+            "fields": [
+                { "handle": "name", "display": "Name" },
+                { "handle": "email", "display": "Email" },
+                { "handle": "inquiry", "display": "Inquiry" }
+            ]
+        }
+    ]
+}
+```
+
+### Form {#form-query}
+
+Used for querying a single form.
+
+```graphql
+{
+    form(handle: "contact") {
+        handle
+        title
+        fields {
+            handle
+            display
+        }
+    }
+}
+```
+
+```json
+{
+    "form": {
+        "handle": "contact",
+        "title": "Contact",
+        "fields": [
+            { "handle": "name", "display": "Name" },
+            { "handle": "email", "display": "Email" },
+            { "handle": "inquiry", "display": "Inquiry" }
+        ]
+    }
+}
+```
+
 ### Navs {#navs-query}
 
 Used for querying Navs.
