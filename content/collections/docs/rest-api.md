@@ -44,6 +44,7 @@ You may send requests to the following endpoints:
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
+- [Forms](#forms) / [Form](#form)
 - [Users](#users) / [User](#user)
 
 ### Customizing the API URL
@@ -331,6 +332,58 @@ Gets a single global set's variables.
     "handle": "global",
     "api_url": "http://example.com/api/globals/global",
     "foo": "bar",
+  }
+}
+```
+
+## Forms
+
+`GET` `/api/forms`
+
+Gets all forms.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "contact",
+      "title": "Contact",
+      "fields": {
+        "name": {...},
+        "email": {...},
+        "inquiry": {...}
+      },
+      "api_url": "http://example.com/api/forms/contact",
+    },
+    {
+      "handle": "newsletter",
+      "title": "Subscribe to Newsletter",
+      "fields": {
+        "email": {...}
+      },
+      "api_url": "http://example.com/api/forms/contact",
+    }
+  ],
+}
+```
+
+## Form
+
+`GET` `/api/forms/{handle}`
+
+Gets a single form.
+
+``` json
+{
+  "data": {
+    "handle": "contact",
+    "title": "Contact",
+    "fields": {
+      "name": {...},
+      "email": {...},
+      "inquiry": {...}
+    },
+    "api_url": "http://example.com/api/forms/contact",
   }
 }
 ```
