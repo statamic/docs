@@ -658,6 +658,72 @@ Used for querying a single Nav.
 }
 ```
 
+### Users {#users-query}
+
+Used for querying multiple users.
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| `limit` | `Int` | The number of results to be shown per paginated page.
+| `page` | `Int` | The paginated page to be shown. Defaults to `1`.
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
+| `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
+
+Example query and response:
+
+```graphql
+{
+    users {
+        current_page
+        data {
+            name
+            email
+        }
+    }
+}
+```
+
+```json
+{
+    "users": {
+        "current_page": 1,
+        "data": [
+            { "name": "David Hasselhoff", "email": "thehoff@statamic.com" },
+            { "name": "Chuck Norris", "email": "norris@statamic.com" },
+        ]
+    }
+}
+```
+
+### User {#user-query}
+
+Used for querying a single user.
+
+```graphql
+{
+    user(email: "thehoff@statamic.com") {
+        name
+        email
+    }
+}
+```
+
+```json
+{
+    "user": {
+        "name": "David Hasselhoff",
+        "email": "thehoff@statamic.com"
+    }
+}
+```
+
+You can query by either `id` or `email`.
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| `id` | `String` | The ID of the user. If you use this, you don't `email`.
+| `email` | `String` | The email address of the user. If you use this, you don't `id`.
+
 ## Custom Queries
 
 Here's an example of a basic query class. It has the name attribute which is the key the user needs to put in the request, any number of middleware, the type(s) that will be returned, any arguments, and how the data should be resolved.
