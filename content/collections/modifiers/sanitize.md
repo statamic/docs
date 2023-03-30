@@ -25,7 +25,7 @@ example: <b>NEAT</b>
 You can double encode HTML entities by passing `true` as an argument. This is useful for preserving JSON formatting.
 
 ```
-{{ example | sanitize(true) }}
+{{ example | sanitize:true }}
 ```
 
 [htmlspecialchars]: http://php.net/manual/en/function.htmlspecialchars.php
