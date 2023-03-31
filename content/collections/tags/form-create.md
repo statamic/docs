@@ -122,6 +122,8 @@ This way you can let Control Panel users select which form should be used on an 
 
 ## Dynamic Rendering
 
+### Dynamically Rendering Fields
+
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields in a dynamic fashion.
 
 ```
@@ -154,7 +156,7 @@ Each item in the `fields` array contains the following data configurable in the 
 | `instructions` | string | User-friendly instructions label |
 | `validate` | array | Contains an array of validation rules |
 
-### Pre-rendered HTML
+### Pre-rendered Field HTML
 
 Using the `field` variable will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.
 
@@ -192,6 +194,29 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
     </div>
 </form>
 ```
+
+### Dynamically Rendering Sections
+
+If you have defined multiple sections in your form's blueprint, you can loop over these `sections` in a dynamic fashion as well.
+
+```
+{{ sections }}
+    <fieldset>
+        <legend>{{ display }}</legend>
+        {{ fields }}
+            ...
+        {{ /fields }}
+    </fieldset>
+{{ /sections }}
+```
+
+Each item in the `sections` array contains the following data configurable in the form's blueprint.
+
+| Variable | Type | Description |
+|---|---| --- |
+| `display` | string | User-friendly section label |
+| `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
+
 
 ## Conditional Fields 🆕
 
