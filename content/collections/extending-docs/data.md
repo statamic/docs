@@ -218,7 +218,7 @@ $entry->value('image'); // 'post.jpg'
 If you want to get the [Value instances](/extending/augmentation#value) for the fields, you may use the following methods.
 
 :::tip
-Most of the time, you probably **don't** need to reach for these. Using property access will get the the underlying augmented value.
+Most of the time, you probably **don't** need to reach for these. Using property access will get the underlying augmented value.
 
 ```php
 $entry->title; // "Post title"
