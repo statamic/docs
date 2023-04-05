@@ -361,7 +361,7 @@ Gets all forms.
       "fields": {
         "email": {...}
       },
-      "api_url": "http://example.com/api/forms/contact",
+      "api_url": "http://example.com/api/forms/newsletter",
     }
   ],
 }
