@@ -495,7 +495,6 @@ Returns a list of [GlobalSetInterface](#global-set-interface) types.
 | `taxonomy` | `[String]` | Narrows down the results by terms in one or more taxonomies.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
-| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:
