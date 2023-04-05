@@ -25,16 +25,18 @@ statamic update
 
 ## Control Panel
 
-You can also run updates in the control panel in the **Tools &rarr; Updates** area.
+The Control Panel will inform you when updates are available.
 
-When using the control panel updater, your `statamic/cms`  Composer version dependency will be fixed to whichever explicit version you choose. To go back to a constraint-style version, you'll need to update your `composer.json` file.
+From within the **Tools &rarr; Updates** section, Statamic will provide you with the appropriate Composer commands to run.
 
-For example, if you update to `v3.3.1` in the control panel, this will be your Composer constraint.
+If you choose to install a non-latest version, your `statamic/cms`  Composer version dependency will be fixed to whichever explicit version you choose. To go back to a constraint-style version, you'll need to update your `composer.json` file.
+
+For example, if you chose `v4.0.1` in the control panel, this will be your Composer constraint.
 
 ```json
 {
     "require": {
-        "statamic/cms": "3.3.1",
+        "statamic/cms": "4.0.1",
     }
 }
 ```
@@ -44,7 +46,7 @@ To go back to a more traditional version range constraint, you may want to repla
 ```json
 {
     "require": {
-        "statamic/cms": "^3.3",
+        "statamic/cms": "^4.0",
     }
 }
 ```
