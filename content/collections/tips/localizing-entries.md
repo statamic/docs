@@ -122,7 +122,7 @@ When dealing with files, make sure that you remove the origin, and copy any left
 
 ## Propagation
 
-By default, when you create an entry, it will only exist in the collection you've selected.
+By default, when you create an entry, it will only exist in the site you've selected.
 
 You may choose to automatically create localizations in the rest of the configured sites whenever you create the first entry.
 
