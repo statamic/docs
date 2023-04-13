@@ -13,7 +13,7 @@ Statamic forms collect submissions, provide reports on them on aggregate, and di
 
 ## Your First Form
 
-Let's pretend you're are a famous celebrity with a large following of dedicated fans. If this is true, why are you building your own website? Who's going to sail your yacht?
+Let's pretend you're a famous celebrity with a large following of dedicated fans. If this is true, why are you building your own website? Who's going to sail your yacht?
 
 Okay, let's just pretend you're a famous celebrity's _web developer_. You've been tasked with collecting electronic fan mail (we'll call it EF-Mail). You want to collect the following bits of info from <del>crazed</del> enthusiastic fans:
 
