@@ -150,18 +150,26 @@ After authenticating with the provider, Statamic will try to retrieve the corres
 
 ### User data
 
-The only data added to the user will be their `name`. If you would like to customize what gets created, you can return an array from the provider's `withUserData` callback. The closure will be given an instance of `Laravel\Socialite\Contracts\User`.
+The only data added to the user will be their `name`. If you would like to customize what gets added to the user, you can return an array from the provider's `withUserData` callback.
+
+The closure will be given:
+- an instance of `Laravel\Socialite\Contracts\User`
+- the existing `Statamic\Contracts\Auth\User` if one already exists.
 
 ``` php
 use Statamic\Facades\OAuth;
 
-OAuth::provider('github')->withUserData(function ($user) {
-    return [
-        'name' => $user->getName(),
-        'created_at' => now()->format('Y-m-d'),
-    ];
-});
+OAuth::provider('github')
+     ->withUserData(fn ($socialiteUser, $statamicUser) => [
+        'name' => $socialiteUser->getName(),
+        'created_at' => optional($statamicUser)->created_at
+                        ?? now()->format('Y-m-d'),
+    ]);
 ```
+
+:::warning
+This user data will get merged into the user every time they log in using OAuth. This includes if they had an existing non-OAuth user account.
+:::
 
 ### Customize entire user creation
 
@@ -177,5 +185,29 @@ OAuth::provider('github')->withUser(function ($user) {
         ->set('name', $user->getName());
 });
 ```
+
+:::warning
+This will only be used when the user is initially created. If you'd like to also update the data on every login, you should combine this with the `withUserData` option above.
+
+```php
+public function boot()
+{
+    OAuth::provider('github')
+        ->withUserData(fn ($user) => $this->userData($user))
+        ->withUser(function ($user) {
+            return User::make()
+                ->email($user->getEmail())
+                ->data($this->userData($user));
+        });
+}
+
+private function userData($user)
+{
+    return [
+        'name' => $user->getName(),
+    ];
+}
+```
+:::
 
 [socialite-providers]: https://socialiteproviders.com/
