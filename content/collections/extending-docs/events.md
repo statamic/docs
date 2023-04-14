@@ -707,7 +707,7 @@ public function handle(UserRegistering $event)
 ### UserRegistered
 `Statamic\Events\UserRegistered`
 
-Dispatched after a user is registered from a frontend form.
+Dispatched after a user is registered from the frontend.
 
 ``` php
 public function handle(UserRegistered $event)
