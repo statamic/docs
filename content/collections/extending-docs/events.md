@@ -374,7 +374,7 @@ You may also just modify the submission object. You do not need to `return` anyt
 ### GlideImageGenerated
 `Statamic\Events\GlideImageGenerated`
 
-Dispatched after Glide generates an image. 
+Dispatched after Glide generates an image.
 
 ``` php
 public function handle(GlideImageGenerated $event)
@@ -693,7 +693,7 @@ public function handle(UserRegistering $event)
 ### UserRegistered
 `Statamic\Events\UserRegistered`
 
-Dispatched after a user is registered.
+Dispatched after a user is registered from a frontend form.
 
 ``` php
 public function handle(UserRegistered $event)
@@ -705,7 +705,7 @@ public function handle(UserRegistered $event)
 ### UserSaved
 `Statamic\Events\UserSaved`
 
-Dispatched after a user has been saved.
+Dispatched after a user has been saved (frontend or backend).
 
 ``` php
 public function handle(UserSaved $event)
