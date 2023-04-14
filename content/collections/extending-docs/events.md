@@ -693,7 +693,7 @@ public function handle(UserRegistering $event)
 ### UserRegistered
 `Statamic\Events\UserRegistered`
 
-Dispatched after a user is saved.
+Dispatched after a user is registered.
 
 ``` php
 public function handle(UserRegistered $event)
