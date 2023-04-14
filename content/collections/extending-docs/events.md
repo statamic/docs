@@ -642,6 +642,18 @@ public function handle(UserBlueprintFound $event)
 }
 ```
 
+### UserCreated
+`Statamic\Events\UserCreated`
+
+Dispatched after a user is created from the frontend or backend.
+
+``` php
+public function handle(UserCreated $event)
+{
+    $event->user;
+}
+```
+
 ### UserDeleted
 `Statamic\Events\UserDeleted`
 
@@ -707,7 +719,7 @@ public function handle(UserRegistered $event)
 ### UserSaved
 `Statamic\Events\UserSaved`
 
-Dispatched after a user has been saved (frontend or backend).
+Dispatched after a user has been saved from the frontend or backend.
 
 ``` php
 public function handle(UserSaved $event)
