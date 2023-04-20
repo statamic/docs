@@ -215,6 +215,7 @@ Each item in the `sections` array contains the following data configurable in th
 | Variable | Type | Description |
 |---|---| --- |
 | `display` | string | User-friendly section label |
+| `instructions` | string | User-friendly section instructions |
 | `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
 
 
