@@ -131,6 +131,8 @@ Note that you can even perform the same query multiple times. If you want to do 
 - [Global Set](#global-set-query)
 - [Navs](#navs-query)
 - [Nav](#nav-query)
+- [Forms](#forms-query)
+- [Form](#form-query)
 
 ### Ping {#ping-query}
 
@@ -594,6 +596,50 @@ Used for querying a single Nav.
 }
 ```
 
+### Forms {#forms-query}
+
+Used for querying Forms.
+
+```graphql
+{
+    forms {
+        handle
+        title
+    }
+}
+```
+
+```json
+{
+    "forms": [
+        { "handle": "contact_form", "title": "Contact Form" },
+        { "handle": "rsvp_form", "title": "RSVP Form" }
+    ]
+}
+```
+
+### Form {#form-query}
+
+Used for querying a single Form.
+
+```graphql
+{
+    nav(handle: "contact_form") {
+        handle
+        title
+    }
+}
+```
+
+```json
+{
+    "form": {
+        "handle": "contact_form",
+        "title": "Contact Form"
+    }
+}
+```
+
 ## Custom Queries
 
 Here's an example of a basic query class. It has the name attribute which is the key the user needs to put in the request, any number of middleware, the type(s) that will be returned, any arguments, and how the data should be resolved.
@@ -668,6 +714,8 @@ GraphQL::addQuery(MyCustomQuery::class);
 - [TermInterface](#term-interface)
 - [AssetInterface](#asset-interface)
 - [GlobalSetInterface](#global-set-interface)
+- [FormInterface](#form-interface)
+- [FieldInterface](#field-interface)
 - [Code](#code-type)
 
 ### EntryInterface {#entry-interface}
@@ -864,6 +912,27 @@ You will need to query the implementations using fragments in order to get bluep
 ```
 
 The fieldtypes will define their types. For instance, a text field will be a `String`, a [grid](#grid-fieldtype) field will expose a list of `GridItem` types.
+
+### FormInterface {#form-interface}
+
+| Field      | Type                                   | Description |
+|------------|----------------------------------------|-------------|
+| `handle`   | `String!`                              | The handle of the form.
+| `title`    | `String!`                              | The title of the form.
+| `honeypot` | `String`                               | The name of the honeypot field of the form.
+| `fields`   | [[`FieldInterface`](#field-interface)] | The fields that make up the form.
+| `rules`    | `Array`                                | The validation rules keyed by field handles of the form.
+
+### FieldInterface {#field-interface}
+
+| Field          | Type      | Description |
+|----------------|-----------|-------------|
+| `handle`       | `String!` | The handle of the field.
+| `type`         | `String!` | The fieldtype of the field.
+| `display`      | `String!` | The display (label) of the field.
+| `instructions` | `String`  | The instructions of the field.
+| `width`        | `Int`     | The percentage width of the field.
+| `config`       | `Array`   | Additional configuration of the field (varies per fieldtype.
 
 ### Code {#code-type}
 
