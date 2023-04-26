@@ -73,6 +73,7 @@ Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
     return extension.extend({
         addInputRules() {
             return [
+                ...this.parent?.(),
                 nodeInputRule({...}),
             ];
         },
