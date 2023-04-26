@@ -147,7 +147,7 @@ If you'd like your button to appear on all Bard fields, regardless of whether it
 In your extensions, you may need to use functions from the `tiptap` library. Rather than importing the library yourself and bloating your JS files, you may use methods through our API.
 
 ``` js
-Statamic.$bard.tiptap.core; // `tiptap` (core extensions, commands, utillities and helpers)
+Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utillities and helpers)
 Statamic.$bard.tiptap.pm.state; // `prosemirror-state`
 ```
 
