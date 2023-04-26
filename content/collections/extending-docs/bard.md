@@ -64,16 +64,17 @@ Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
 });
 ```
 
-The callback will provide you with the existing extension instance, so if you are doing simple tweaks to an extension (e.g. adding a new attribute) you can simply extend the existing instance. Then you don't need to author an entire extension:
+The callback will provide you with the existing extension instance, so if you are doing simple tweaks to an extension (e.g. adding a new input rule) you can simply extend the existing instance. Then you don't need to author an entire extension:
 
 ```js
+const { nodeInputRule } = Statamic.$bard.tiptap.core;
+
 Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
     return extension.extend({
-        addAttributes() {
-            return {
-                ...this.parent?.(),
-                myCustomAttribute: {...},
-            }
+        addInputRules() {
+            return [
+                nodeInputRule({...}),
+            ];
         },
     });
 });
