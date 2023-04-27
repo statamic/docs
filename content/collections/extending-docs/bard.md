@@ -43,7 +43,7 @@ Statamic.$bard.addExtension(() => {
 
 Check out [Tiptap's custom extension documentation](https://tiptap.dev/guide/custom-extensions) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages) to find out how to write an extension.
 
-If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#prosemirror-rendering).
+If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#tiptap-php-rendering).
 
 :::tip
 If you need any other Tiptap helpers or utilities you can use our [Tiptap API](#tiptap-api).
