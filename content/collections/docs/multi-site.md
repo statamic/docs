@@ -32,7 +32,7 @@ return [
             'name' => config('app.name'),
             'locale' => 'en_US',
             'url' => '/',
-            'text_direction' => 'ltr',
+            'direction' => 'ltr',
         ]
     ]
 ];
