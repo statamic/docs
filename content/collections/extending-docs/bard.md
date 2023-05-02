@@ -149,6 +149,8 @@ In your extensions, you may need to use functions from the `tiptap` library. Rat
 ``` js
 Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utillities and helpers)
 Statamic.$bard.tiptap.pm.state; // `prosemirror-state`
+Statamic.$bard.tiptap.pm.model; // `prosemirror-model`
+Statamic.$bard.tiptap.pm.view; // `prosemirror-view`
 ```
 
 You could shorten things up by using destructuring. For example:
