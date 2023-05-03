@@ -2,7 +2,7 @@
 title: Markdown
 description: Our beautiful Markdown editor with preview, assets integration, and more.
 intro: Write Markdown with the help of formatting buttons, assets integration, fullscreen mode, a Markdown cheatsheet, and HTML preview mode. What more do you need?
-screenshot: fieldtypes/screenshots/markdown.png
+screenshot: fieldtypes/screenshots/v4/markdown.png
 id: 607cfe62-7239-461b-8f55-8e7a312c2d5d
 stage: 4
 options:
