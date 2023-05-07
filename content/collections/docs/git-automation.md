@@ -203,9 +203,12 @@ In your deploy scripts on [Forge](https://forge.laravel.com), [Ploi](https://plo
 ### Forge
 
 ``` shell
+cd /home/forge/wmyr.sundancesolutions.io
 if [[ $FORGE_DEPLOY_MESSAGE =~ "[BOT]" ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
+else
+    // Normal deployment script here
 fi
 ```
 
