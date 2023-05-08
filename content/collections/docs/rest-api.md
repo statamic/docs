@@ -9,28 +9,48 @@ pro: true
 
 ## Enable the API
 
-Enable the API in your config or with an environment variable.
-
-```php
-// config/statamic/api.php
-'enabled' => true,
-```
+To enable the REST API, add the following to your `.env` file:
 
 ```env
 STATAMIC_API_ENABLED=true
 ```
 
-You will also need to enable the resources you want to be available. For security, they're all disabled by default.
+Or you can enable for all environments in `config/statamic/api.php`:
 
 ```php
-// config/statamic/api.php
+'enabled' => true,
+```
 
+You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
+
+### Enable Resources
+
+You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/api.php` config:
+
+```php
 'resources' => [
   'collections' => true,
   'taxonomies' => true,
   // etc
 ]
 ```
+
+### Enable Specific Sub-Resources
+
+If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
+
+```php
+'resources' => [
+    'collections' => [
+        'articles' => true,
+        'pages' => true,
+        // 'events' => false, // Sub-resources are disabled by default
+    ],
+    'taxonomies' => true,
+    // etc.
+]
+```
+
 
 ## Endpoints
 
