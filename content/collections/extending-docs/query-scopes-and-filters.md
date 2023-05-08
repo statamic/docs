@@ -101,7 +101,7 @@ The `visibleTo` method allows you to control in which listings this filter will 
 
 The `autoApply` method lets you define a default value to apply.
 
-You may also pin your filters to the right side of the search bar by setting the `$pinned` class property:
+You may also pin your filters to the filters bar by setting the `$pinned` class property:
 
 ```php
 public $pinned = true;
