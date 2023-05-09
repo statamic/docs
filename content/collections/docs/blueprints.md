@@ -19,7 +19,7 @@ Each blueprint belongs to an item:
 - Users all share a Blueprint.
 
 <figure>
-    <img src="/img/blueprints.png" alt="The Statamic 3 blueprint configuration screen">
+    <img src="/img/blueprints.png" alt="The Statamic blueprint configuration screen">
     <figcaption>A glimpse at configuring a blueprint.</figcaption>
 </figure>
 

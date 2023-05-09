@@ -20,6 +20,5 @@ npm-debug.log
 yarn-error.log
 
 # When in dev...
-/public/img/.meta
-/public/img/fieldtypes/.meta
+/public/**/.meta
 .antlers.json

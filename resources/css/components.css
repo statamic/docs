@@ -128,11 +128,11 @@
 
 figure,
 .screenshot {
-    @apply bg-mint border p-3 md:p-6 my-16 shadow-stack-sm relative;
+    @apply bg-mint border py-3 md:py-6 my-16 shadow-stack-sm relative;
     @apply pb-6 md:pb-12;
 
     img {
-        @apply border shadow-lg mx-auto;
+        @apply shadow-lg mx-auto border-none;
     }
 
 }

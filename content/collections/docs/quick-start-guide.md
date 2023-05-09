@@ -1,6 +1,6 @@
 ---
 title: 'Quick Start Guide'
-intro: "A step-by-step guide to installing and building your first Statamic 3 site."
+intro: "A step-by-step guide to installing and building your first Statamic site."
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
@@ -48,7 +48,7 @@ You should run this command from your Terminal application of choice (we like [i
 composer create-project --prefer-dist statamic/statamic cyberspace-place
 ```
 
-If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen.
+If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic welcome screen.
 
 If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file. If you encounter a Composer error, try running `composer global update` and trying again.
 
@@ -57,7 +57,7 @@ If you encounter any other errors, Google them frantically and try anything and 
 **Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub discussions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
-    <img src="/img/quick-start/installed-3.3.png" alt="Statamic 3 Welcome Screen">
+    <img src="/img/quick-start/installed-3.3.png" alt="Statamic Welcome Screen">
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ Now we can create a new **super user**, sign into the control panel, and start c
 Run `php please make:user` from the command line and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
 
 <figure>
-    <img src="/img/quick-start/make-user.png" alt="Statamic 3 Make:User Command" width="453">
+    <img src="/img/quick-start/make-user.png" alt="Statamic Make:User Command" width="453">
     <figcaption>You can customize user fields later.</figcaption>
 </figure>
 

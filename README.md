@@ -1,8 +1,8 @@
 <p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
 
-## Statamic 3 Documentation
+## Statamic Documentation
 
-This is the source of the official [Statamic 3 docs][docs].
+This is the source of the official [Statamic docs][docs].
 
 
 ## Local Development
@@ -43,10 +43,10 @@ In order to ensure that the Statamic community is welcoming to all and generally
 ## Important Links
 
 - [Statamic Main Site](https://statamic.com)
-- [Statamic 3 Documentation][docs]
-- [Statamic 3 CMS Repo][cms-repo] (that we maintain)
-- [Statamic 3 Application Repo][app-repo] (that you clone)
-- [Statamic 3 Migrator](https://github.com/statamic/migrator)
+- [Statamic Documentation][docs]
+- [Statamic CMS Repo][cms-repo] (that we maintain)
+- [Statamic Application Repo][app-repo] (that you clone)
+- [Statamic Migrator](https://github.com/statamic/migrator)
 - [Statamic Discord][discord]
 
 [docs]: https://statamic.dev/

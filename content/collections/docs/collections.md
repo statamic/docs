@@ -43,7 +43,7 @@ We're going to pretend it's currently the summer of '99 and we are journalists c
 Here's an entry we might write about the event.
 
 <figure>
-    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic 3 control panel">
+    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic control panel">
     <figcaption>Entry publishing with only the default content fields.</figcaption>
 </figure>
 
