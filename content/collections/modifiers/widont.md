@@ -16,7 +16,7 @@ string: I Just Want Pretty Headlines and Sentences
 
 ```
 {{ string | widont }}
-{{ string | widont:4 }}
+{{ string | widont(4) }}
 ```
 
 ```html

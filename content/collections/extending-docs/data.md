@@ -75,6 +75,16 @@ $entry->set('foo', 'bar');
 
 This is like adding `foo: bar` to the front-matter of the entry file.
 
+Want to change nested data? That works too.
+
+Since you can only _set_ the top-level field, you'll need to get the existing top-level value, update the nested part, and then re-set the top-level field again.
+
+```php
+$values = $entry->get('top_level_value');
+$values[0]['nested_value'] = 'foo';
+$entry->set('top_level_value', $values);
+```
+
 Once you’re done, go ahead and save it.
 
 ``` php
@@ -218,7 +228,7 @@ $entry->value('image'); // 'post.jpg'
 If you want to get the [Value instances](/extending/augmentation#value) for the fields, you may use the following methods.
 
 :::tip
-Most of the time, you probably **don't** need to reach for these. Using property access will get the the underlying augmented value.
+Most of the time, you probably **don't** need to reach for these. Using property access will get the underlying augmented value.
 
 ```php
 $entry->title; // "Post title"

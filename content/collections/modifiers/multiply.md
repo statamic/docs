@@ -13,9 +13,9 @@ winks: 4
 ```
 
 ```
-{{ smiles | multiply:10 }}
-{{ smiles | multiply:winks }}
-{{ smiles | *:winks }}
+{{ smiles | multiply(10) }}
+{{ smiles | multiply($winks) }}
+{{ smiles | *($winks) }}
 
 ```
 

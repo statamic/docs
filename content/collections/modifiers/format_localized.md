@@ -19,7 +19,7 @@ event_date: April 15 2016
 ```
 
 ```
-{{ event_date format_localized="%A %d %B %Y" }}
+{{ event_date | format_localized('%A %d %B %Y') }}
 ```
 
 Assuming your locale is `fr_FR`:

@@ -20,9 +20,9 @@ want: eggs
 ```
 
 ```
-{{ if (shopping_list | in_array:flour) }} GOT IT! {{ /if }}
-{{ if (shopping_list | in_array:want) }} GOT EM! {{ /if }}
-{{ if (shopping_list | in_array:eggs:flour) }} YES I DID NOT FORGET! {{ /if }}
+{{ if (shopping_list | in_array('flour')) }} GOT IT! {{ /if }}
+{{ if (shopping_list | in_array('want')) }} GOT EM! {{ /if }}
+{{ if (shopping_list | in_array('eggs', 'flour')) }} YES I DID NOT FORGET! {{ /if }}
 ```
 
 

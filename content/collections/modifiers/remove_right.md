@@ -16,7 +16,7 @@ urls:
 
 ```
 {{ urls }}
-  {{ value | remove_right:/ }}
+  {{ value | remove_right('/') }}
 {{ /urls}}
 ```
 

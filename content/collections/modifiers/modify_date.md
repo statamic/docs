@@ -13,9 +13,9 @@ date: January 1, 2000
 ```
 
 ```
-{{ date modify_date="-1 day" }}
-{{ date modify_date="next Sunday" }}
-{{ date modify_date="+3 months" }}
+{{ date | modify_date("-1 day") }}
+{{ date | modify_date("next Sunday") }}
+{{ date | modify_date("+3 months") }}
 ```
 
 ```html

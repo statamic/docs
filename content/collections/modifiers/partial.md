@@ -21,7 +21,7 @@ data:
 {{ content | markdown }}
 
 <!-- Template Markup -->
-{{ data | partial:demo }}
+{{ data | partial('demo') }}
 ```
 
 ```html

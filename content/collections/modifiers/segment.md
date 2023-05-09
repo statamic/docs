@@ -13,7 +13,7 @@ example: /this/is/pretty/neat
 ```
 
 ```
-{{ example | segment:4 }}
+{{ example | segment(4) }}
 ```
 
 ```html

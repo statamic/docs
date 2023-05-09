@@ -19,7 +19,7 @@ array:
 ```
 
 ```
-{{ title | last:7 }}
+{{ title | last(7) }}
 {{ array | last }}
 ```
 

@@ -12,7 +12,7 @@ summary: "It was the best of times, it was the worst of times."
 ```
 
 ```
-{{ if summary | contains_any:good:better:best }}
+{{ if summary | contains_any('good', 'better', 'best') }}
 ```
 
 ```html

@@ -114,7 +114,7 @@ You can format localized dates with the [iso modifier](/modifiers/iso_format) an
 ```
 {{ date iso_format="YYYY" }} // 2019
 {{ date iso_format="YYYY-MM-DD" }} // 2019-10-10
-{{ date iso_format="dddd, MMMM Mo" }} // Sunday, January 21st
+{{ date iso_format="dddd, MMMM Do" }} // Sunday, January 21st
 ```
 
 

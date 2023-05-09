@@ -19,7 +19,7 @@ quote: |
 ```
 
 ```
-{{ quote count_substring="dude" }}
+{{ quote | count_substring('dude') }}
 ```
 
 ```html

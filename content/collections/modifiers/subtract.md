@@ -13,9 +13,9 @@ reservations: 1900
 ```
 
 ```
-{{ capacity | subtract:1900 }}
-{{ capacity | subtract:reservations }}
-{{ capacity | -:reservations }}
+{{ capacity | subtract(1900) }}
+{{ capacity | subtract($reservations) }}
+{{ capacity | -($reservations) }}
 ```
 
 ```html

@@ -20,7 +20,7 @@ bad_ideas:
 In this template example we'll merge the two arrays and then pull out a single random item from the combined list. For fun!
 ```
 <h2>Picking a random idea!</h2>
-{{ good_ideas merge="bad_ideas" sort="random" limit="1" }}
+{{ good_ideas | merge($bad_ideas) | sort("random") | limit(1) }}
 <p>{{ value }}</p>
 {{ /good_ideas }}
 ```

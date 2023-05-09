@@ -16,7 +16,7 @@ end_date: December 1 2015
 ```
 
 ```
-{{ if date | is_between:start_date:end_date }}
+{{ if date | is_between($start_date, $end_date) }}
 ```
 
 ```html

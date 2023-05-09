@@ -14,7 +14,7 @@ email: rswanson@inpra.org
 
 ```
 {{ email | gravatar }}
-{{ email | gravatar:80 }}
+{{ email | gravatar(80) }}
 ```
 
 ```html

@@ -18,9 +18,9 @@ future_date: October 1 2024
 
 ```
 {{ past_date | relative }}
-{{ past_date | relative:true }}
+{{ past_date | relative(true) }}
 {{ future_date | relative }}
-{{ future_date | relative:true }}
+{{ future_date | relative(true) }}
 ```
 
 ```html

@@ -13,7 +13,7 @@ description: This cat video is the okayest thing ever.
 ```
 
 ```
-{{ description replace="cat|dog" }}
+{{ description | replace('cat', 'dog') }}
 ```
 
 ```html

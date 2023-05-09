@@ -274,8 +274,10 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
 
 ```
 <template x-if="{{ show_field:name }}">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old:name }}" x-model="name" />
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old:name }}" x-model="name" />
+    </div>
 </template>
 ```
 
@@ -314,8 +316,10 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
 
 ```
 <template x-if="{{ show_field:name }}">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old:name }}" x-model="contact_form.name" />
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old:name }}" x-model="contact_form.name" />
+    </div>
 </template>
 ```
 
