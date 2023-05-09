@@ -205,7 +205,7 @@ Next, let's configure the collection to behave the way a typical blog should. Cl
 
 
 :::tip
-Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip it what you don't want" approach.
+Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip out what you don't want" approach.
 
 This means that Statamic doesn't do everything right out the box, but is much simpler to customize how you want everything to work.
 :::
