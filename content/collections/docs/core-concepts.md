@@ -26,7 +26,7 @@ Do your best to maintain a project README with anything you do to override Stata
 
 ## Statamic is Flat First
 
-Statamic 3 has the ability to adapt to any data storage mechanism, from relational databases like MySQL and Postgres, to NoSQL solutions like MongoDB and Redis, and more. This feature is called [Repositories](/extending/repositories).
+Statamic has the ability to adapt to any data storage mechanism, from relational databases like MySQL and Postgres, to NoSQL solutions like MongoDB and Redis, and more. This feature is called [Repositories](/extending/repositories).
 
 However, these solutions **add complexity** and should only be used when necessary, most often for scaling for large amounts of data (tens of thousands of records) or high volume traffic.
 

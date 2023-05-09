@@ -74,7 +74,7 @@ Check out the [troubleshooting section](/troubleshooting) to get help about comm
 
 ## What's Next
 
-You're now (probably) running the latest and greatest version of Statamic 3! Well done! 🎉 You can now get on with the fun parts.
+You're now (probably) running the latest and greatest version of Statamic! Well done! 🎉 You can now get on with the fun parts.
 
 The [Quick Start Guide](/quick-start-guide) is a great place to head next if you're just kicking the tires (or tyres — if you're not from our neck of the woods).
 

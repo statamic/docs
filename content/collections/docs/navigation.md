@@ -14,7 +14,7 @@ related_entries:
 Each Nav is a [structure](/structures) giving you the ability to rearrange items through the delightful experience of dragging and dropping boxes.
 
 <figure>
-    <img src="/img/structure.png" alt="A Statamic 3 structure page tree" width="535">
+    <img src="/img/structure.png" alt="A Statamic structure page tree" width="535">
 </figure>
 
 

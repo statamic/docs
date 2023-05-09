@@ -10,7 +10,7 @@ Have you ever had some complex data or conditions you found challenging to work 
 
 While Antlers is powerful and flexible, what if you could just jump into PHP-land, work out some tricky logic, and put the data back in place before it was rendered?
 
-Enough rhetorical questions – in Statamic 3 you can now solve one of those two problems with a View Model. 🍌
+Enough rhetorical questions – in Statamic you can now solve one of those two problems with a View Model. 🍌
 
 ## What's a View Model?
 
