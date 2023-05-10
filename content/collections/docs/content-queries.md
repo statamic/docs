@@ -92,7 +92,7 @@ Entry::query()
 ### Where
 You may use the query builder's `where` method to add "where" clauses to the query. The most basic call to the `where` method requires three arguments. The first argument is the name of the field. The second argument is an operator, which can be any of the supported operators. The third argument is the value to compare against the field's value.
 
-For example, the following query gets entries where the value of a `featured` field is `true`.
+For example, the following query gets entries where the value of a `status` field is `featured`.
 
 ```php
 Entry::query()
