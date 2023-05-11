@@ -80,7 +80,7 @@ Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
 });
 ```
 
-You can also reconfigure extensions (e.g. to add classes to elements or to disable specific smart typography rules):
+You can also reconfigure extensions (e.g. to add tailwind classes to headings or disable specific smart typography rules):
 
 ```js
 Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
