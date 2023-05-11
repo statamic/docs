@@ -219,6 +219,25 @@ protected $commands = [
 ## Assets
 
 ### CSS and Javascript
+The method of adding assets will differ slightly depending on whether you are using Vite or another build process. We recommend Vite.
+
+#### Using Vite
+
+In your service provider, you may register your Vite config like this, adjusting the paths appropriately.
+
+``` php
+protected $vite = [
+    'input' => [
+        'resources/js/cp.js',
+        'resources/css/cp.css'
+    ],
+    'publicDirectory' => 'resources/dist',
+];
+```
+
+[Get more in-depth about how to use Vite in your addon](/extending/vite-in-addons)
+
+#### Using Webpack/Mix
 
 In your service provider, you may register any number of stylesheets or scripts by providing their full paths.
 
@@ -246,7 +265,7 @@ protected $publishables = [
 
 ### Publishing assets
 
-When using the `$scripts`, `$stylesheets`, and `$publishables` properties, these files will be made available to the `artisan vendor:publish` command.
+When using the `$vite`, `$scripts`, `$stylesheets`, and `$publishables` properties, these files will be made available to the `artisan vendor:publish` command.
 They will all be tagged using your addon's slug.
 
 Whenever the `statamic:install` command is run (i.e. after running `composer update`, etc) the following command will be run:
@@ -265,13 +284,13 @@ This may be useful if you need more control around groups of assets to be publis
 
 ### Assets during development
 
-:::tip
-During development of your addon, rather than constantly running `vendor:publish`, consider symlinking your addon's `resource` directory:
+During development, if you're using Vite, the assets will be loaded through a Vite server and should "just work".
+
+If you're using Webpack/Mix, rather than constantly running `vendor:publish`, consider symlinking your addon's `resource` directory:
 
 ``` shell
 ln -s /path/to/addons/example/resources public/vendor/package
 ```
-:::
 
 ## Routing
 
