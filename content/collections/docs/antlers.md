@@ -1299,9 +1299,9 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 
 You can write PHP inside special delimiters. You may use `{{?...?}}` to write raw PHP and manipulate the current context (variables that exist in a given request), and `{{$...$}}` to `echo` the result of a PHP expression and render HTML.
 
-### Examples
+### Syntax
 
-The following two examples are functionally equivalent, but each uses a different approach based on the delimiter.
+The following two syntax examples are functionally equivalent, but each uses a different approach based on the delimiter.
 
 ```antlers
 {{? $register = route('account.register'); ?}}
@@ -1311,6 +1311,16 @@ The following two examples are functionally equivalent, but each uses a differen
 
 ``` antlers
 <a href="{{$ route('account.register') $}}">Register for a new account</a>
+```
+
+### Accessing Data in PHP
+
+Data in the [Cascade](/data-injeritance) can be accessed in much of the same way it is inside of a regular Antlers expression.
+
+```antlers
+
+<h1>{{? $page->title ?}}</h1>
+<p>{{? $globals->get('company_address') ?}}</p>
 ```
 
 ### PHP File Extension
