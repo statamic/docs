@@ -18,7 +18,7 @@ There are many reasons why you might want to install Statamic into an existing L
 
 ## Supported Versions of Laravel
 
-**Laravel 8 and Laravel 9 are supported.** It feels like this section needs more than one sentence but it really doesn't. That first one said all that needs saying.
+**Laravel 9 and Laravel 10 are supported with Statamic 4+.** If you need Laravel 8 support, you can still use Statamic 3.x.
 
 ## Install Statamic
 
