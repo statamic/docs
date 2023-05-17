@@ -27,7 +27,7 @@ class AppServiceProvider
     {
         Statamic::vite('app', [
             'resources/js/cp.js',
-            'resources/js/cp.css'
+            'resources/css/cp.css'
         ]);
     }
 }
