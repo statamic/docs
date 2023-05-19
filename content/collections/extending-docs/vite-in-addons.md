@@ -102,6 +102,18 @@ Now that the Vite server is running, the error in the Statamic CP should be gone
 
 With the development server running, hot reloading should be working. When you save a CSS or JS file, it should be reflected in the browser without you needing to manually refresh.
 
+:::tip
+If you're using Valet with a secured site, your JS might not be loading correctly due to access control checks. You'll need Vite know about your Laravel site in `vite.config.js`.
+
+```js
+export default defineConfig({
+    plugins: [
+        laravel({
+            valetTls: 'yoursite.test', // [tl!++]
+            input: [
+```
+:::
+
 ## Deployment
 
 When you're ready to deploy your addon, either to your own application or getting it ready to go into the marketplace, you should compile the production assets.
