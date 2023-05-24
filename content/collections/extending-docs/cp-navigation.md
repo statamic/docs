@@ -29,7 +29,7 @@ Let's assume we're creating a Store addon, and want to add a `Store` nav item to
 ```php
 use Statamic\Facades\CP\Nav;
 
-public function boot()
+public function bootAddon()
 {
     Nav::extend(function ($nav) {
         $nav->content('Store')
