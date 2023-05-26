@@ -85,7 +85,7 @@ You can use Pro features while in development (like users, permissions revisions
 :::tip Another Hot Tip
 The default install and all first-party Starter Kits use [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
 
-This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
+This is super easy and happens automatically when you run `npm run dev` from the terminal in your project directory (as long as you've run `npm install` first).
 :::
 
 [valet]: https://laravel.com/docs/valet
