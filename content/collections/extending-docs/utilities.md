@@ -65,7 +65,7 @@ $utility
 
 ## Customizing the controller and view
 
-At a minimum you need to tell it which view to load.
+At a minimum you need to tell it which view to load. 
 
 ``` php
 $utility->view('fries');
