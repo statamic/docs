@@ -21,7 +21,7 @@ Registering a utility will give you a route, nav item, and a permission for free
 
 In a service provider's `boot` method, you can register a utility with the `Utility` facade.
 
-Start with `Utility::register()` with the slug of the utility, then chain as many methods as you want.
+Start with `Utility::register()` with the handle of the utility, then chain as many methods as you want.
 
 Make sure to surround any utility registrations in a `Utility::extend` closure.
 
