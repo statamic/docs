@@ -175,6 +175,12 @@ protected function schedule(Schedule $schedule)
 
 In this example, we schedule a commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
 
+_Note: If you have never used Laravel's scheduler, be sure to also [configure a cron job on your server](https://laravel.com/docs/scheduling#running-the-scheduler) to run all scheduled jobs. This only needs to be done once per server._
+
+```
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
 ### Scheduling for performance
 
 Scheduling commits can be a great alternative to [queueing](#queueing-commits), for when you don't have a proper queue setup. If you choose to schedule commits, just be sure to [disable automatic commit functionality](#committing-changes) as well.
