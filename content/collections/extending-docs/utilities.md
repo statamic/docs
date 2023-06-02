@@ -21,7 +21,7 @@ Registering a utility will give you a route, nav item, and a permission for free
 
 In a service provider's `boot` method, you can register a utility with the `Utility` facade.
 
-Start with `Utility::make()`, chain as many methods as you want, then finish with `register()`. At a minimum, you'll need a view.
+Start with `Utility::register()` with the handle of the utility, then chain as many methods as you want.
 
 Make sure to surround any utility registrations in a `Utility::extend` closure.
 
@@ -31,7 +31,7 @@ use Statamic\Facades\Utility;
 public function boot()
 {
     Utility::extend(function () {
-        Utility::register('french-fries')->view('fries-utility');
+        Utility::register('french_fries')->view('fries.utility');
     });
 }
 ```
@@ -60,8 +60,7 @@ $utility
     ->title('French Fries')
     ->navTitle('Fries')
     ->description('Makes french fries at the click of a button.')
-    ->docsUrl('https://yoursite.com/docs/french-fries')
-    ->register();
+    ->docsUrl('https://yoursite.com/docs/french-fries');
 ```
 
 ## Customizing the controller and view
@@ -109,6 +108,6 @@ $utility->routes(function ($router) {
 ## Permissions
 
 A single permission will be registered automatically using the handle.  
-eg. `access french fries utility`
+eg. `access french_fries utility`
 
 Users without this permission will not see the utility in the navigation or utility listing.
