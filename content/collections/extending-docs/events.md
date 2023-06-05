@@ -11,15 +11,17 @@ intro: |
 
 Statamic will dispatch a number of events in various locations throughout the codebase.
 
-In a nutshell, you'd create an event listener or subscriber, connect them together in a service provider, then handle the event.
+In a nutshell, you'd create an event listener (using `php please make:listener`) or subscriber, connect them together in a service provider, then handle the event.
 
 ``` php
 protected $listen = [
-    'SomeEvent' => [
-        'SomeListener',
-    ],
+    SomeEvent::class => [
+        SomeListener::class,
+    ]
 ];
 ```
+Make sure you import your event and your listener in your event service provider.
+
 ``` php
 class SomeListener
 {
@@ -374,7 +376,7 @@ You may also just modify the submission object. You do not need to `return` anyt
 ### GlideImageGenerated
 `Statamic\Events\GlideImageGenerated`
 
-Dispatched after Glide generates an image. 
+Dispatched after Glide generates an image.
 
 ``` php
 public function handle(GlideImageGenerated $event)
@@ -640,6 +642,18 @@ public function handle(UserBlueprintFound $event)
 }
 ```
 
+### UserCreated
+`Statamic\Events\UserCreated`
+
+Dispatched after a user is created from the frontend or backend.
+
+``` php
+public function handle(UserCreated $event)
+{
+    $event->user;
+}
+```
+
 ### UserDeleted
 `Statamic\Events\UserDeleted`
 
@@ -693,7 +707,7 @@ public function handle(UserRegistering $event)
 ### UserRegistered
 `Statamic\Events\UserRegistered`
 
-Dispatched after a user is saved.
+Dispatched after a user is registered from the frontend.
 
 ``` php
 public function handle(UserRegistered $event)
@@ -705,7 +719,7 @@ public function handle(UserRegistered $event)
 ### UserSaved
 `Statamic\Events\UserSaved`
 
-Dispatched after a user has been saved.
+Dispatched after a user has been saved from the frontend or backend.
 
 ``` php
 public function handle(UserSaved $event)
