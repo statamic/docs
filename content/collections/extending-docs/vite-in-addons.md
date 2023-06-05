@@ -121,7 +121,7 @@ When you're ready to deploy your addon, either to your own application or gettin
 Make sure that the Vite dev server is not running, then run:
 
 ```bash
-npm run production
+npm run build
 ```
 
 The files will be compiled into `resources/dist`.
