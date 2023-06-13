@@ -183,3 +183,11 @@ StaticCache::nocachePlaceholder('Loading...');
 // or
 StaticCache::nocachePlaceholder('<svg>...</svg>');
 ```
+
+You may wish to run some additional Javascript code once the nocache fragments on the page have been replaced, to enable this a custom event is dispatched that you may register an event listener for.
+
+```js
+document.addEventListener('statamic:nocache.replaced', (event) => {
+    alert('nocache fragments have been replaced!');
+});
+```
