@@ -1047,6 +1047,22 @@ You can "void" a parameter using the `void` keyword. A voided parameter will act
 {{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
 ```
 
+### Self-Closing Tags
+
+Some Tags can function as single or paired expressions. For example, the [Partial Tag](/tags/partial) can be used to include a partial template, or it can be used to wrap a portion of your template and inject it as a slot into a partial.
+
+In the below example, you can **self-close** the first partial tag much like an HTML element to ensure the second tag is paired properly.
+
+```
+{{ partial :src="hero_panel" /}}
+{{ partial :src="sidebar" }}
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+  </nav>
+{{ /partial }}
+```
+
 ## Working With Templates
 
 ### Layouts
