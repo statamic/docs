@@ -78,7 +78,7 @@ $term = Term::make()->taxonomy('tags')->slug('my-term');
 Data is stored on a term on a per site basis, even if you only are using a single site.
 
 ```php
-$term->dataForLocale('en', $data);
+$term->dataForLocale('default', $data);
 $term->dataForLocale('fr', $frenchData);
 ```
 
