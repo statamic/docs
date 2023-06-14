@@ -19,6 +19,10 @@ Antlers templates are also called views. Any files in the `resources/views` dire
 The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
 :::
 
+## The Book
+If you want to go beyond these docs and really dive into Antler's advanced capabilities, check out [Antlers: Building Beautiful Websites with Statamic](https://stillat.com/books/antlers-building-beautiful-websites-with-statamic), the official companion book by the great John Koster.
+
+
 
 ### Basic Example
 
