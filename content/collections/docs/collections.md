@@ -375,6 +375,21 @@ mount: id-of-the-aquarium-entry
 route: '/{mount}/{slug}'
 ```
 
+### Looping through mounted entries
+
+You can loop through all entries in the the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
+
+```antlers
+{{ collection :from="mount" }}
+    {{ title }}
+{{ /collection}}
+```
+
+:::tip
+If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.
+:::
+
+
 ## Revisions
 
 Revisions allow you to see the history of any given entry over time. Revisions need to be enabled on the site level ([read those docs](/revisions)), and then you can enable them for any collection.
