@@ -12,6 +12,7 @@ related_entries:
   - b50310b0-64ae-4ae4-b219-a637ed89e4d7
   - 458b8203-e330-4d78-9bf5-82aaec8d458b
   - d0c65546-74f1-4a15-89d5-1562a95ee2c6
+  - 420f083d-99be-4d54-9f81-3c09cb1f97b7
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1633025886
 ---
@@ -192,3 +193,7 @@ Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamicall
 ```
 {{ glide:image width="120" height="500" filter="sepia" }}
 ```
+
+## Search Indexes
+
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).

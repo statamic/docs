@@ -12,6 +12,7 @@ related_entries:
   - a6a956fd-647d-4503-9a4a-3b24198e6e73
   - 54548616-fd6d-44a3-a379-bdf71c492c63
   - cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+  - 420f083d-99be-4d54-9f81-3c09cb1f97b7
 ---
 ## Overview
 
@@ -389,6 +390,10 @@ You can loop through all entries in the the mounted collection easily by using t
 If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.
 :::
 
+
+## Search Indexes
+
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
 
 ## Revisions
 
