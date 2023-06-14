@@ -1,18 +1,18 @@
 ---
 title: Extending Bard
 stage: 1
-intro: "The Bard fieldtype is a rich-text editor based on [Tiptap](https://tiptap.dev/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/), which is robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
+intro: "The Bard fieldtype is a rich-text and block-based editor based on [Tiptap](https://tiptap.dev/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/) — a robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
 ## Required Reading
 
-Before you attempt to create any Bard extensions, it would be wise to learn how to write a Tiptap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a Tiptap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
+Before you attempt to create any Bard extensions, it is wise to learn how to write a Tiptap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicycle before you can juggle. To have a better understanding of how to write a Tiptap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
 
 :::tip
-Writing custom extensions for Bard is pretty complicated, but can be rewarding and give you powerful results.
+Writing custom extensions for Bard is pretty complicated, but can be rewarding and provide powerful results.
 :::
 
-In short, here's a quickstart of the things you should probably start with:
+In short, here's a quick-start of the things you should probably start with:
 
 - [The ProseMirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
 - Checking out the [The Tiptap documentation](https://tiptap.dev/introduction) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages), so you can understand how Tiptap relates to ProseMirror
@@ -54,7 +54,7 @@ If you need any other Tiptap helpers or utilities you can use our [Tiptap API](#
 If you'd like to replace a [native extension](https://github.com/ueberdosis/tiptap/tree/develop/packages) (e.g. headings or paragraphs) you can use the `replaceExtension` method. It takes the `name` of the extension, and a callback that returns a single extension instance.
 
 ```js
-const { Node } = Statamic.$bard.tiptap.core;  
+const { Node } = Statamic.$bard.tiptap.core;
 
 Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
     return Node.create({
@@ -80,7 +80,7 @@ Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
 });
 ```
 
-You can also reconfigure extensions (e.g. to add tailwind classes to headings or disable specific smart typography rules):
+You can also reconfigure extensions (e.g. to add Tailwind classes to headings or disable specific "smart typography" rules):
 
 ```js
 Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
@@ -156,7 +156,7 @@ If you'd like your button to appear on all Bard fields, regardless of whether it
 In your extensions, you may need to use functions from the `tiptap` library. Rather than importing the library yourself and bloating your JS files, you may use methods through our API.
 
 ``` js
-Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utillities and helpers)
+Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utilities and helpers)
 Statamic.$bard.tiptap.pm.state; // `prosemirror-state`
 Statamic.$bard.tiptap.pm.model; // `prosemirror-model`
 Statamic.$bard.tiptap.pm.view; // `prosemirror-view`
@@ -177,7 +177,7 @@ If you have created an extension on the JS side to be used inside the Bard field
 
 The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
 
-You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your service provider's `boot` method is a good place to do this.
+You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your AppServiceProvider's `boot` method is a good place to do this.
 
 ``` php
 use Statamic\Fieldtypes\Bard\Augmentor;
