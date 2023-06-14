@@ -131,6 +131,28 @@ This command can take some time to process so if you have a lot of entries you m
 
 It's a good idea to add this command to your deployment script on Forge or whatever deployment tool you use.
 
+### Concurrency
+
+You may configure the amount of concurrent requests when warming the static cache in your strategy.
+
+By default the pool will use `25`, but feel free to adjust it up or down based on your server's resources.
+
+
+```php
+    'strategies' => [
+        'full' => [
+            'driver' => 'file',
+            'path' => public_path('static'),
+            'lock_hold_length' => 0,
+            'warm_concurrency' => 10, // [tl! highlight]
+        ],
+
+    ],
+```
+
+:::tip
+Lower the `warm_concurrency` to reduce the overhead and slow the process down, raise it to warm faster by using more CPU.
+:::
 
 ## Excluding Pages
 
