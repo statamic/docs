@@ -162,6 +162,19 @@ While users are stored in files by default — like everything else in Statamic 
 - [Custom User Storage](/tips/storing-users-somewhere-custom)
 - [Using an Independent Auth Guard](/tips/using-an-independent-authentication-guard)
 
+## Avatars
+
+Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/asset) that falls back to the user's initials.
+
+This avatar is used throughout the Control Panel to represent the user when the context is important. For example, on your user dropdown menu, as an entry's "Author", or while using [Real Time Collaboration](https://github.com/statamic/collaboration).
+
+<figure>
+    <img src="/img/user-avatar.png" alt="A user's avatar in the control panel global header" width="246">
+    <figcaption>Behold — an avatar!</figcaption>
+</figure>
+
+
+
 ## OAuth
 
 In addition to conventional user authentication, Statamic also provides a simple, convenient way to authenticate with OAuth providers through [Laravel Socialite](https://github.com/laravel/socialite). Socialite currently supports authentication with Facebook, Twitter, LinkedIn, Google, GitHub, GitLab and Bitbucket, while dozens of additional providers are available though [third-party Socialite Providers](https://socialiteproviders.netlify.com/).
