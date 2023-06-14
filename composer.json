@@ -12,9 +12,10 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "statamic/cms": "3.2.*",
-        "statamic/ssg": "^0.8.0",
-        "torchlight/torchlight-commonmark": "^0.5.1"
+        "statamic/cms": "3.4.*",
+        "statamic/ssg": "^1.0",
+        "torchlight/torchlight-commonmark": "^0.5.1",
+        "league/commonmark": "^1.6"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
