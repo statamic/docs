@@ -1,7 +1,7 @@
 <div id="side-nav" class="md:block relative w-full z-10 md:w-64 lg:px-2 md:mr-16 lg:-ml-6 {{ ! segment_1 ?= 'z-10' }}" :class="{'mobile-open': showNav}" x-show="showNav">
     {{ if section }}
     <div class="side-nav bg-white dark:bg-black md:bg-transparent sticky top-24 pb-6" x-data="{ open: 'Getting Started' }">
-        <nav class="lg:overflow-y-auto lg:overflow-x-visible max-h-screen-sans-nav">
+        <nav class="lg:overflow-y-auto lg:overflow-x-visible lg:max-h-screen-sans-nav">
             <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray dark:text-white">{{ section | deslugify | title }}</header>
             <div class="md:hidden">
                 <div class="grid grid-cols-2 gap-2 mb-6">
@@ -51,7 +51,7 @@
         <div class="mt-16">
             <small class="text-[9px] text-gray-dark tracking-widest uppercase">Sponsor</small>
             <a href="https://www.fortrabbit.com" x-on:click="fathom.trackGoal('VDDHHZZ8', 0)" class="bg-gray-lightest mt-2 hover:bg-white text-gray-dark hover:text-gray-darkest p-2 border shadow-mint-md relative block max-w-[130px] text-xs">
-                PHP hosting for real developers. <span style="font-family: Georgia,Times,'Times New Roman',serif; font-weight: 700; font-style: italic;">•fortrabbit</span> 
+                PHP hosting for real developers. <span style="font-family: Georgia,Times,'Times New Roman',serif; font-weight: 700; font-style: italic;">•fortrabbit</span>
             </a>
         </div>
     </div>
