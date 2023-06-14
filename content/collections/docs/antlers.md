@@ -1360,3 +1360,7 @@ This Antlers parser was a huge rewrite by the incomparable [John Koster](https:/
 
 We owe him a debt of gratitude for this amazing gift.
 :::
+
+## Even More Advanced Stuff
+
+[John Koster's blog](https://stillat.com/blog) is full of really useful tips and tricks covering some really advanced features not documented here. Be sure to check it out!
