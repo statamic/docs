@@ -114,7 +114,7 @@ The `title` variable can be rendered like this:
 
 ### Valid Characters
 
-Variable must start with an alpha character or underscore (`a-zA-Z_`), followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores (`a-zA-Z_0-9`). Spaces or other special characters are not allowed.
+Variables must start with an alpha character or underscore, followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores, but must not end with an hyphen. Spaces or other special characters are not allowed. A valid variable name matches this regex `[_A-Za-z][-_0-9A-Za-z]*[_A-Za-z0-9]`.
 
 Don't be weird and mix-and-match them like a serial killer though:
 
