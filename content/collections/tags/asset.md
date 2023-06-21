@@ -18,7 +18,7 @@ The Asset tag's primary purpose is to retrieve [Assets](/assets) by their URL.  
 ## Example
 
 ```
-{{ asset url="/img/brand/logo.png" }}
+{{ asset url="/assets/img/brand/logo.png" }}
   <img src="{{ url }}" alt="{{ alt }}">
 {{ /asset }}
 ```
