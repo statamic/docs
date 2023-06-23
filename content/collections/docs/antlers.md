@@ -1352,6 +1352,63 @@ You can also change your view's file extension from `.antlers.html` to `.antlers
 ?>
 ```
 
+## Debugbar Profiler 🆕 {#debugbar-profiler}
+
+Antlers has an experimental new Profiler tab in the [Debugbar](/debugging#debug-bar) that helps you see the performance impact of all of your template code.
+
+<figure>
+    <img src="/img/antlers-profiler.png" alt="Antlers Profiler">
+    <figcaption>Profiling some Antlers code.</figcaption>
+</figure>
+
+Inside this Profiler there are 3 separate views that give you different glimpses into your site.
+
+### View Graph
+
+This view groups your Antlers expressions by the view files (templates, layouts, and partials) they exist in, allowing you to more easily tease out the location of any potential slowdowns or redundant calls.
+
+Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
+
+### Expression Graph
+
+This view shows all parsed expressions in a given request, listing them in **execution order**.
+
+Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
+
+### Source View
+
+The Source View shows the final rendered template and highlights any content rendered by Antlers with a color corresponding to how fast it was executed. Green is fast, Yellow is a little slow, and Red is very slow.
+
+
+### Profiler Columns
+
+| Column | Explanation |
+|--|--|
+| Time | Starting from 00:00, exactly when on the timer this expression was run. This helps to see the order your code is executed in. |
+| Type | Shows whether the expression is an imported view, a variable, or a [Tag](/tags). |
+| View Path | When using the **Expression Graph**, shows the path to the view file the expression exists in. |
+| Line | Shows what line the expression is in. If you have configured the debugbar by publishing its config and have specified which code editor you use, you can click the line and open your editor straight to this bit of template code. |
+| Memory Usage | How much memory was used to execute this expression. |
+| Execution | The number of separate times the expression was executed. |
+| Tag Time | The amount of time it took to run the expression |
+| Total Time | The amount of time it took to run the expression along with any child expressions (e.g. a tag pair) |
+| % | The percentage of total load time dedicated to run this expression. |
+
+### How to Use the Profiler
+
+If you have some pages in your site that are running slow, the Profiler can help you narrow down and find bottlenecks in your template code. Look for anything colored — yellow, orange, and red all _may_ point to some logic that is performing extra slow.
+
+Slow expressions don't necessarily mean that _Antlers_ is slow at parsing them, but rather Statamic is doing a lot of work in order to fetch, filter, and/or manipulate your data to render your view.
+
+With this information you can look for opportunities to cache bits of your template, open support requests and get clarification, ask questions in Discord, or pop the hood on your custom code to see what the hold up is.
+
+:::tip
+This feature is new and experimental! It's recommendations and "slow code" thresholds may need to be updated after getting more real world data.
+:::
+
+## Even More Advanced Stuff
+
+[John Koster's blog](https://stillat.com/blog) is full of really useful tips and tricks covering some really advanced features not documented here. Be sure to check it out!
 
 ## Thank you to John Koster 👏
 
@@ -1359,7 +1416,3 @@ This Antlers parser was a huge rewrite by the incomparable [John Koster](https:/
 
 We owe him a debt of gratitude for this amazing gift.
 :::
-
-## Even More Advanced Stuff
-
-[John Koster's blog](https://stillat.com/blog) is full of really useful tips and tricks covering some really advanced features not documented here. Be sure to check it out!
