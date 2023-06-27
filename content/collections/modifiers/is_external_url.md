@@ -11,14 +11,17 @@ Returns `true` if a string is an external URL.
 ```yaml
 google_url: http://google.com/
 entry_url: /waffles
+not_a_url: bacon
 ```
 
 ```
 {{ if google_url | is_external_url }}
 {{ if entry_url | is_external_url }}
+{{ if not_a_url | is_external_url }}
 ```
 
 ```html
 true
+false
 false
 ```
