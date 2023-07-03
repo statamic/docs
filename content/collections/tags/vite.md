@@ -56,5 +56,5 @@ When using these options, please make sure to also adjust your `vite.config.js` 
 To process static assets in your Antlers files with Vite, as described in the [Laravel's Vite Docs](https://laravel.com/docs/master/vite#blade-processing-static-assets), you should use:
 
 ```html
-<img src="{{ vite::asset src="resources/images/logo.png" }}">
+<img src="{{ vite:asset src="resources/images/logo.png" }}">
 ```
