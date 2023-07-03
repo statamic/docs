@@ -15,7 +15,7 @@ intro: |-
 
 This is important information, so please read this whole section. All Statamic sites are **self-hosted**. This means that each Statamic site is a unique _copy_ of the Statamic application, and is running on a server that you, your company, or web design/development agency owns or has access to.
 
-And since your Statamic site is running on a server that isn't ours, it means we **do no have access to it**. We can't sign in to your control panel and reset a password for you, give a user more permissions or access, make changes to the site, read the code, or kick out annoying users with bad grammar.
+And since your Statamic site is running on a server that isn't ours, it means we **do not have access to it**. We can't sign in to your control panel and reset a password for you, give a user more permissions or access, make changes to the site, read the code, or kick out annoying users with bad grammar.
 
 It might seem like that's a big downside if you're running into a problem that you feel our support team should be able to fix from our floating cloud desks — and maybe in a few cases that might be true — but overall this is a very good thing for you and your organization. Nothing we can do can take your site away. **Your site is yours forever**.
 
@@ -33,7 +33,7 @@ This means that Statamic doesn't do everything automatically, and generally requ
 
 Each of these things can be "built" in a matter of minutes (or even seconds) with Statamic's building-block approach to custom fields and features.
 
-This might feel like backwards if you're used to working in a platform like WordPress or Drupal, but we have found (and our customers agree emphatically!) that it's much better in the long run to _turn on_ the things you need, enable features you plan to use, and name things _the way you want for clairty_, than to spend precious time clicking about the control panel disabling all the things you'll never need, or worse — just leaving behind features, buttons, or sections that simply don't do anything.
+This might feel like backwards if you're used to working in a platform like WordPress or Drupal, but we have found (and our customers agree emphatically!) that it's much better in the long run to _turn on_ the things you need, enable features you plan to use, and name things _the way you want for clarity_, than to spend precious time clicking about the control panel disabling all the things you'll never need, or worse — just leaving behind features, buttons, or sections that simply don't do anything.
 
 You may find that your site is missing the ability to edit something you consider to be fundamental in a content management system. It might frustrate you. You might feel stuck. But before reaching for WordPress to rebuild your whole site from scratch (please don't do that), just have a quick chat with whoever built your site, because...
 
