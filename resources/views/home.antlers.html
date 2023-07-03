@@ -75,13 +75,15 @@
     <table>
         <thead>
             <th>Page</th>
+            <th>The Change</th>
             <th>Section</th>
             <th>Last Updated</th>
         </thead>
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td class="w-1/2"><a href="{{ github_commits_url }}" target="_blank">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td class="w-1/2"><a href="{{ url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td><a href="{{ github_commits_url }}" target="_blank">View</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
                     <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i:s" }}').fromNow(true) + ' ago'"></td>
                 </tr>
