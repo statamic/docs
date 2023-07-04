@@ -49,7 +49,7 @@ You will need to run migrations to prepare your database for Statamic's user, pa
     ```php
     'activations' => [
         'provider' => 'users',
-        'table' => 'password_activations',
+        'table' => 'password_activation_tokens',
         'expire' => 4320,
         'throttle' => 60,
     ],
