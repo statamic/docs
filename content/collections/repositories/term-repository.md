@@ -75,8 +75,17 @@ You need at least a slug and the taxonomy.
 $term = Term::make()->taxonomy('tags')->slug('my-term');
 ```
 
-Data is stored on a term on a per site basis, even if you only are using a single site.
+Data for a term is stored on a per site basis, even if you only are using a single site.
 
+The method expects a site handle and an array of key-value pairs.
+```php
+// using a single site in this example
+$term->dataForLocale('default', [
+  'mandalorian_example_code' => 'This Is The Value'
+]);
+```
+
+When using [multi-site](/multi-site), you can pass different data to each site.
 ```php
 $term->dataForLocale('default', $data);
 $term->dataForLocale('fr', $frenchData);
