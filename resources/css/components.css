@@ -133,6 +133,7 @@ figure,
 
     img {
         @apply shadow-lg mx-auto border-none;
+        max-width: 90%;
     }
 
 }
@@ -226,4 +227,14 @@ figure figcaption {
 
 .badge {
     @apply text-white bg-black text-xs inline-block py-1 px-2 font-mono rounded-sm shadow-stack-sm mb-4;
+}
+
+dl {
+    @apply p-0 inline-flex border text-white bg-black shadow-stack-sm mb-2 font-mono text-xs mb-4;
+    dt {
+        @apply py-1 px-2;
+    }
+    dd {
+        @apply py-1 px-2 bg-mint text-black;
+    }
 }
