@@ -57,74 +57,58 @@ Most of the asset actions are also available inside the editor, along with the a
 ### Copy URL
 Running this action allows you to copy the URL of an asset. You can use the copied URL to share or reference the asset in other places, such as in emails, documents, or on other websites.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>No</dd>
-</dl>
+Bulk
+: No
 
 ### Download
 With this action, you can download an asset to your local device. It allows you to save a copy of the asset on your computer, making it accessible even when you're offline or outside Statamic.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>Yes</dd>
-</dl>
+Bulk
+: Yes
 
 ### Duplicate
 The duplicate action creates a copy of an asset. It's useful when you want to have multiple copies of the same asset, either for organizational purposes or to make variations or modifications to the duplicated version without affecting the original asset.
 
 When duplicated, the new filename will be appended with `-{numberOfDuplicates}`. If you duplicate a file 3 times, you will have new copies named `yourFile-1.ext`, `yourFile-2.ext`, `yourFile-3.ext`. Feel free to rename these. In fact, we encourage it.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>Yes</dd>
-</dl>
+Bulk
+: Yes
 
 ### Move
 Moving an asset involves changing its location within the folder structure of your Statamic assets. This action is handy when you want to reorganize your assets or place them in a different folder for better categorization and management.
 
 Assets moved with the move action will update any references to it throughout your content wherever the [Assets field](/fieldtypes/assets) is used.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>Yes</dd>
-</dl>
+Bulk
+: Yes
 
 ### Rename
 As the name suggests, the rename action allows you to change the name of an asset. It's useful when you want to give a more descriptive or meaningful name to an asset or when you need to update the name to match changes in its content.
 
 Assets renamed with the rename action will update any references to it throughout your content wherever the [Assets field](/fieldtypes/assets) is used.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>Yes*</dd>
-</dl>
+Bulk
+: Yes*
 
 _*Each rename action only accepts one new filename, so this is only useful in bulk for renaming files of different extensions._
 
 ### Replace
 The replace action lets you replace an existing asset with a new version with a new filename. This helps to ensure that your visitors don't run into browser-cached, old versions of your assets. Replaced assets with the replace action will update any references to it throughout your content wherever the [Assets field](/fieldtypes/assets) is used.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>No</dd>
-</dl>
+Bulk
+: No
 
 ### Reupload
 Reuploading an asset involves uploading a new version of an existing asset, effectively replacing the previous version with the **same exact filename**. Keep in mind that by not changing the filename, your visitors may encounter browser-cached, old versions of the asset.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>No</dd>
-</dl>
+Bulk
+: No
 
 ### Delete
 The delete action removes an asset from your site and server, permanently.  Exercise caution when using this action, as deleted assets cannot always be easily restored.
 
-<dl>
-    <dt>Bulk</dt>
-    <dd>Yes</dd>
-</dl>
+Bulk
+: Yes
 
 ## Asset Fields
 
