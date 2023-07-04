@@ -49,7 +49,6 @@ class Hint extends AbstractBlock implements StringContainerInterface
 
     public function getHeaderWords(): array
     {
-        // dd($this->header);
         return \preg_split('/\s+/', $this->header ?? '') ?: [];
     }
 
