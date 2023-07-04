@@ -79,9 +79,10 @@ Data for a term is stored on a per site basis, even if you only are using a sing
 
 The method expects a site handle and an array of key-value pairs.
 ```php
+// Example for a single site
 $term->dataForLocale('default', [
-    // using a single site here
-    'mandalorian_code_example' => 'This Is The Value'
+    'mandalorian_code' => 'This Is The Value',
+    //...
 ]);
 ```
 
