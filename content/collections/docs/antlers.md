@@ -1415,4 +1415,3 @@ This feature is new and experimental! It's recommendations and "slow code" thres
 This Antlers parser was a huge rewrite by the incomparable [John Koster](https://github.com/JohnathonKoster), who apparently found it a relaxing break from his day job. You can see the effort involved in this [massive PR](https://github.com/statamic/cms/pull/4257).
 
 We owe him a debt of gratitude for this amazing gift.
-:::
