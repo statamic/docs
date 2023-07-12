@@ -17,9 +17,9 @@ There are many reasons why you might want to install Statamic into an existing L
 - be a special comfort package for those tough projects even when you don't need it
 
 :::tip
-If you're building a site from scratch, it's probably easier to use the [standard Statamic installation method](/installing/local).
+If you're starting a brand new project, it's much easier to use the [standard Statamic installation method](/installing/local).
 
-You'll get a bunch of things automatically set up for you, like a pages collection, views, etc. If you install Statamic _into_ Laravel, you're going to have to do all those things manually.
+You'll get a bunch of things automatically set up for you, like a pages collection, views, etc. If you install Statamic _into_ Laravel, you're going to have to do those things manually.
 :::
 
 ## Supported Versions of Laravel
