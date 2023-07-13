@@ -173,7 +173,17 @@ This avatar is used throughout the Control Panel to represent the user when the 
     <figcaption>Behold — an avatar!</figcaption>
 </figure>
 
+## Language Preference
 
+Each user can have their own preferred language in the Control Panel. Head to your preferences area by clicking on the ⚙️ gear/cog icon in the global header and then go to **Preferences**.
+
+You can set the language for _everyone_ by going to **Default**, or you can set by Role or just the current user (yourself) with **Override For User**.
+
+
+<figure>
+    <img src="/img/user-language-preference.png" alt="User Language Preferences">
+    <figcaption>Last we checked, Statamic has been translated into a lot of languages.</figcaption>
+</figure>
 
 ## OAuth
 
