@@ -10,7 +10,7 @@ options:
     id: nKVDUK7I
     name: directory
     type: string
-    description: 'Optionally set the path to the directory containing desired icons. Default: uses system icons.'
+    description: 'Optionally set the path to the directory (in your resources folder) containing desired icons. Default: uses system icons.'
     required: false
   -
     id: 752XSotc
