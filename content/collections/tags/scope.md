@@ -12,7 +12,7 @@ parameters:
 ---
 ## Overview
 
-Most commonly this take is used to avoid any kind of variable collisions or to confirm data to a particular naming mechanism. Scoping is most often done on the Tag level (e.g. the [Collections Tag](/tags/collections/#scoping)), but gives you another level of control and flexibility.
+Most commonly this take is used to avoid any kind of variable collisions or to confirm data to a particular naming mechanism. Scoping is most often done on the Tag level (e.g. the [Collection Tag](/tags/collection/#scope)), but gives you another level of control and flexibility.
 
 ## Example
 
