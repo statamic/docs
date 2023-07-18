@@ -10,7 +10,7 @@ options:
     id: nKVDUK7I
     name: directory
     type: string
-    description: 'Optionally set the path to the directory containing desired icons. Default: uses system icons.'
+    description: 'Optionally set the path to the directory containing desired icons relative to the project’s root. Default: uses system icons.'
     required: false
   -
     id: 752XSotc
