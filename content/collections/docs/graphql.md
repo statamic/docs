@@ -1525,7 +1525,7 @@ You can add fields to certain types by using the `addField` method on the facade
 
 The method expects the [type](#types) name, the field name, and a closure that return a GraphQL field definition array.
 
-For example, if you wanted to include a thumbnail from an asset, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
+For example, if you wanted to include a thumbnail from an asset field named `image`, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
 
 ```php
 use GraphQL\Type\Definition\Type;
@@ -1542,7 +1542,7 @@ GraphQL::addField('EntryInterface', 'thumbnail', function () {
             ]
         ],
         'resolve' => function ($entry, $args) {
-            $asset = $entry->augmentedValue('image')->value();
+            $asset = $entry->image;
             $url = Image::manipulate($asset)->width($args['width'])->build();
             return URL::makeAbsolute($url);
         }
