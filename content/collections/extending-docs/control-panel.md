@@ -11,7 +11,7 @@ If you're [creating an addon](/extending/addons), they will have their own ways 
 
 ## Adding CSS and JS assets
 
-Statamic can load extra stylesheets and Javascript files located in the `public/vendor/` directory.
+Statamic can load custom stylesheets and Javascript files located in the `public/vendor/` directory, or from external sources.
 
 ### Using Vite
 You may register a Vite asset to be loaded in the Control Panel using the `vite` method. This will accept a vendor name and an array of paths.
@@ -56,6 +56,23 @@ class AppServiceProvider
 ```
 
 These methods will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
+
+### Using External Scripts
+
+For externally-hosted sources, you may register assets to be loaded in the Control Panel with the `externalScript` method. This method accepts the URL of an external script.
+
+
+``` php
+use Statamic\Statamic;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        Statamic::externalScript('https://kit.fontawesome.com/5t4t4m1c.js');
+    }
+}
+```
 
 ## Adding assets to your build process
 
