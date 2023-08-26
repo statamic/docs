@@ -89,6 +89,16 @@ resources/lang/
 |-- eo.json
 ```
 
+#### Updating the translation files
+
+Whenever there was a Statamic update, you can use that same command to update the translations. This will 
+update the sourcefiles by inserting the newly added strings (from the Statamic update), so you can start
+translating them.
+
+``` shell
+php translator generate eo
+```
+
 #### Using Google Translate
 
 You can get a translation kickstarted with the Google API by passing your API key.
