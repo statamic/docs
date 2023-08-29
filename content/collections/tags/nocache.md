@@ -166,6 +166,10 @@ Only the `title`'s change would be reflected, since the `reviews` value was reme
 <div class="movie"> Top Gun 60% Ratings </div>
 ```
 
+### Usage with default Laravel Routes
+
+When you are using a custom Laravel Route, you might encounter that the nocache tag will return ``NOCACHE_PLACEHOLDER``. For the placeholder to be replaced, ensure that the route has the ``statamic.web`` middleware applied.
+
 ## Full Measure Static Caching
 
 When using the `file` static cache driver (aka. "full measure") the pages will be stored as plain `html` files on your server.
