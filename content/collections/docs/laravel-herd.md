@@ -75,7 +75,7 @@ Our CLI is essentially a super fancy wrapper around the `composer create-project
 
 ## Create a new site
 
-Let's take the last big step towards you enjoying all of Statamic's radness™.
+Let's take the last big step toward you enjoying all of Statamic's radness™.
 
 In your terminal, run `statamic new your-project-name` and follow the prompts to create a new site.
 
