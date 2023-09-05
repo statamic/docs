@@ -21,8 +21,7 @@
     {{# <meta property="twitter:image" content="{{ snapit:twitter }}" /> #}}
     <meta property="twitter:image" content="https://statamic.dev/img/social-placeholder.png" />
     <meta property="twitter:description" content="{{ intro | striptags }}" />
-    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
+    {{ partial:favicons}}
     <link rel="preconnect" href="https://90UJMUR5MX-dsn.algolia.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css" defer>
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
