@@ -110,7 +110,7 @@ Once you have an instance, you can manipulate it using various methods the same 
 use Statamic\Facades\Entry;
 
 $entry = Entry::make()
-            ->published()
+            ->published(true)
             ->data(['title' => 'About us', 'subtitle' => 'We are awesome'])
             ->etc(); // and so on...
 
