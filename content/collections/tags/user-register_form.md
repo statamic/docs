@@ -137,3 +137,8 @@ Finally, the `field` value contains a pre-rendered form input.  Using this will 
 Most of the time, new members will need some roles assigned to them so that they can do different things on your site. You can configure the default `new_user_roles` in your `config/statamic/users.php` config. When a user successfully registers as a member, their account will automatically be assigned the roles in this list.
 
 It’s best to remember that these are _starting_ roles for the user. You can later either manually add roles to users in their files, update their account through the Control Panel, or have add-ons automatically add or remove roles as needed when users perform certain tasks.
+
+## Honeypot
+
+If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key. 
+
