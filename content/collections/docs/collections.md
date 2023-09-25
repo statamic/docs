@@ -228,6 +228,7 @@ For non-structured collections, you can choose which field and direction to sort
 ## Routing
 
 Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule.
+You can also use [computed values](/computed-values) or even use Antlers syntax to achieve advanced stuff.
 
 ``` yaml
 route: /blog/{slug}
@@ -280,12 +281,32 @@ route: /{parent_uri}/{slug}.html
 ```
 
 #### Organizing sports brackets with structures
+
+Here we use the "team" field, defined in the collection's blueprint and the "depth" meta variable
+
 ``` yaml
 route: /tournament/round-{depth}/{team}
 # example: /tournament/round-4/chicago-bulls
 ```
 
-#### Organizing gaming articles
+#### For when your entry depend on it's related content
+
+For instance, if you have a "category" field in your "products" collection and want your products url depend on it. 
+You can use "computed values" to grab your category url
+
+```php
+// define the computed value in a service provider
+Collection::computed('products', 'category_url', function ($entry, $value) {
+    return $entry->category?->url();
+});
+```
+
+``` yaml
+route: '{{ category_url }}/{{ slug }}'
+# example: /wooden-toys/steam-locomotive
+```
+
+#### Using Antlers to organize gaming articles
 
 You can even use Antlers to get more complicated. Here we'll include the [mounted](#mounting) entry at the top level.
 
