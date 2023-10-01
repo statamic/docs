@@ -94,6 +94,7 @@ Syntax highlighting and auto-completion packages are available for many of the p
 - [Antlers Toolbox for VS Code](https://antlers.dev) (We recommend this one!)
 - [Antlers for Sublime Text](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
+- [Antlers for Panic Nova](https://extensions.panic.com/extensions/teriyaki/teriyaki.antlers/)
 
 ## Variables
 
