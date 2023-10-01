@@ -377,7 +377,7 @@ You can even create [Macros](/modifiers/macro) to combine sets of often used mod
 
 #### Legacy Syntax
 
-The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
+The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers-legacy#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
 
 ### Creating Variables
 
