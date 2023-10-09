@@ -1,5 +1,5 @@
 ---
-id: asdasd
+id: 94c521e3-bacb-45e3-b385-00bad3cac401
 blueprint: page
 title: Deploying Statamic with fortrabbit
 intro: fortrabbit is a managed PHP app hosting solution running on AWS. Well known since 2012.
