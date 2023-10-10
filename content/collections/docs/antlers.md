@@ -689,7 +689,7 @@ This is how you create variables as well as increment, decrement, or otherwise m
 | Subtraction | `$a -= $b` | Assigns the difference of `$a` and `$b` to `$a`. |
 | Multiplication | `$a *= $b` | Assigns the product of `$a` and `$b` to `$a`. |
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
-| Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
+| Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$b` to `$a`. |
 
 ### Self-Iterating Assignments
 
