@@ -133,7 +133,7 @@ To define the French translations, you can create a `lang/fr.json`:
 }
 ```
 
-Alternatively, you can use translation keys. The keys can be whatever you want. The first part denotes the filename, and everything else is the array key. If you do this, you'll need to provide the English strings too. 
+Alternatively, you can use translation keys. The keys can be whatever you want. The first part denotes the filename, and everything else is the array key. If you do this, you'll need to provide the Default/English strings too. 
 
 ```yaml
 fields:
