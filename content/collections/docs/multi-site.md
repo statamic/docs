@@ -168,6 +168,24 @@ sites:
 - fr
 ```
 
+## Permissions
+
+Within the Control Panel, you will not be able to access items in a particular site if you do not have permission.
+
+You may grant permission for any of your sites by adding an `access {site_handle} site` to the appropriate role.
+
+For example:
+
+```yaml
+permissions:
+  - edit blog entries
+  - access english site # [tl!++]
+  - access french site  # [tl!++]
+```
+
+[Read more about permissions](/users#permissions)
+
+
 ## Per-Site Views {#views}
 
 [Views](/views) can be organized into site directories.

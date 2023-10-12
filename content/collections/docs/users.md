@@ -70,6 +70,7 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 |------------|--------|
 | Access the Control Panel | `access cp` |
 | Create, edit, and delete collections | `configure collections` |
+| Access site | `access {site} site` |
 | View entries | `view {collection} entries` |
 | ↳  Edit entries | `edit {collection} entries` |
 | &nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
@@ -109,6 +110,13 @@ Author permissions are a little bit special. They determine the control users ca
 :::warning Important!
 This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
 :::
+
+### Site Permissions
+
+When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
+
+For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
+
 
 ### Super Users
 
