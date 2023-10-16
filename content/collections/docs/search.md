@@ -279,7 +279,7 @@ This will create dynamic indexes named after the specified sites:
 
 If you have a localized index and include searchables that do not support localization (like assets or users), they will appear in each localized index.
 
-## Search Options
+### Search Options
 
 The built in search driver supports multiple options you can pass in.
 
