@@ -16,10 +16,15 @@ class HintStartParser implements BlockStartParserInterface
         }
 
         $fence = $cursor->match('/^(?:\:{3,}(?!.*`))/');
+
         if ($fence === null) {
             return BlockStart::none();
         }
 
-        return BlockStart::of(new HintParser())->at($cursor);
+        $headerText = $cursor->getRemainder();
+
+        $cursor->advanceToEnd();
+
+        return BlockStart::of(new HintParser($headerText))->at($cursor);
     }
 }

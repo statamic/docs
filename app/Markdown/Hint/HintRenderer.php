@@ -10,7 +10,7 @@ use League\CommonMark\Util\HtmlElement;
 final class HintRenderer implements NodeRendererInterface
 {
     /**
-     * @param Hint $node
+     * @param  Hint  $node
      *
      * {@inheritDoc}
      *
@@ -24,11 +24,11 @@ final class HintRenderer implements NodeRendererInterface
         isset($attrs['class']) ? $attrs['class'] .= ' hint' : $attrs['class'] = 'hint';
 
         if ($type = $node->getType()) {
-            $attrs['class'] = isset($attrs['class']) ? $attrs['class'] . ' ' : '';
+            $attrs['class'] = isset($attrs['class']) ? $attrs['class'].' ' : '';
             $attrs['class'] .= $type;
         }
 
-        if ($type === "watch") {
+        if ($type === 'watch') {
             return $this->renderWatch($node, $childRenderer, $attrs);
         }
 
@@ -50,9 +50,9 @@ final class HintRenderer implements NodeRendererInterface
         return new HtmlElement(
             'div',
             $attrs,
-            "\n" .
-            $title . "\n" .
-            $content .
+            "\n".
+            $title."\n".
+            $content.
             "\n"
         );
     }
@@ -60,7 +60,7 @@ final class HintRenderer implements NodeRendererInterface
     private function renderWatch(Hint $node, ChildNodeRendererInterface $childRenderer, array $attrs)
     {
         $caption = new HtmlElement(
-            'p',
+            'div',
             ['class' => 'caption'],
             $childRenderer->renderNodes($node->children())
         );
