@@ -51,8 +51,12 @@
             @apply relative;
         }
 
-        p.caption {
-            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black text-sm font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+        .caption {
+            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+
+            p {
+                @apply text-sm;
+            }
         }
     }
 

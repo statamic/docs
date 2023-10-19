@@ -60,7 +60,7 @@ final class HintRenderer implements NodeRendererInterface
     private function renderWatch(Hint $node, ChildNodeRendererInterface $childRenderer, array $attrs)
     {
         $caption = new HtmlElement(
-            'p',
+            'div',
             ['class' => 'caption'],
             $childRenderer->renderNodes($node->children())
         );
