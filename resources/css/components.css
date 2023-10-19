@@ -87,29 +87,6 @@
     }
 }
 
-.hint.callout {
-    display: none;
-}
-
-@screen xl {
-    .hint.callout {
-        @apply border-none block bg-transparent relative shadow-none h-0 m-0 p-0;
-        .hint-title { display: none; }
-        a {
-            @apply bg-white hover:bg-mint no-underline absolute p-3 w-64 border shadow-stack-sm -right-64 text-black font-normal;
-            p {
-                @apply text-sm;
-            }
-        }
-    }
-}
-
-@screen 2xl {
-    .hint.callout a {
-        @apply -right-80;
-    }
-}
-
 
 /* Video Embed */
 /* -------------------------------------------------- */
