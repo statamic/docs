@@ -2,12 +2,17 @@
 
 namespace App\Providers;
 
+use Statamic\Facades\Markdown;
 use App\Markdown\Hint\HintExtension;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Statamic\Facades\Markdown;
-use Torchlight\Commonmark\TorchlightExtension;
+use League\CommonMark\MarkdownConverter;
+use App\Http\View\Composers\SideNavComposer;
+use Torchlight\Commonmark\V2\TorchlightExtension;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
+use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         // View::composer('partials.side-nav', SideNavComposer::class);
 
         Markdown::addExtensions(function () {
-            return [new HintExtension, new AttributesExtension];
+            return [new DescriptionListExtension, new HintExtension, new AttributesExtension];
         });
 
         if (config('torchlight.token')) {

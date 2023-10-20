@@ -32,6 +32,25 @@ A few other extensions are available, but disabled by default:
 
 Under the hood, we're using the [league/commonmark](https://commonmark.thephpleague.com/) package which supports all sorts of customization using extensions.
 
+### Configuration
+
+You may customize the behavior of the markdown parser by providing a CommonMark config array in `config/statamic/markdown.php`. All the available options are outlined in the CommonMark docs. You can override the [base options](https://commonmark.thephpleague.com/2.4/configuration/) as well as any [extension](https://commonmark.thephpleague.com/2.4/extensions/overview/)'s options.
+
+You only need to provide the specific options you want to override. For example:
+
+```php
+'configs' => [
+    'default' => [
+        'allow_unsafe_links' => false, // [tl! ++:start]
+        'heading_permalink' => [
+            'symbol' => '#',
+        ], // [tl! ++:end]
+    ]
+]
+```
+
+### Adding extensions
+
 You may add an extension with the `addExtension` or `addExtensions` methods. For example, in the `boot` method of your `AppServiceProvider`, return an extension instance, or an array of them.
 
 ``` php
@@ -64,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
 You can find a long list of Markdown Extensions [on the CommonMark site](https://commonmark.thephpleague.com/2.0/extensions/overview/), or around on GitHub. We love this [Hint Extension](https://github.com/ueberdosis/commonmark-hint-extension) by Ueberdosis – you're seeing it in action, powering this "Hot Tip" box.
 :::
 
-Statamic 3.3 uses CommonMark 2.0, while previous versions use CommonMark 1.6. Keep this in mind when reading docs and looking for extension packages.
+Statamic 3.3+ uses CommonMark 2.0, while previous versions use CommonMark 1.6. Keep this in mind when reading docs and looking for extension packages.
 
 ### Helper Methods
 
@@ -107,6 +126,16 @@ Markdown::parser('special')->parse('# Heading');
 ```
 
 The closure provides you with a fresh `Parser` instance which you can customize as needed.
+
+:::tip
+If you need to provide a config to your custom parser, you can either [define it in the config file](#configuration) or pass an array as the second option.
+
+```php
+Markdown::extend('special', $config, function ($parser) {
+//
+});
+```
+:::
 
 ### Using a custom parser in a modifier
 

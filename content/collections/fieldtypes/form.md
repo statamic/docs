@@ -31,11 +31,11 @@ The Form fieldtype stores the `handle` of a single form as a string, or an array
 
 ## Templating
 
-The Form fieldtype uses [augmentation](/augmentation) to return a Form instance. You can pass the handle into the [form tags](/tags/form).
+The Form fieldtype uses [augmentation](/augmentation) to return Form instances.
 
 ```
-{{ form:create :in="form_field:handle" }}
-  {{ fields }}
+{{ form_field }}
+    {{ fields }}
       <div class="p-2">
           <label>{{ display }}</label>
           <div class="p-1">{{ field }}</div>
@@ -45,5 +45,5 @@ The Form fieldtype uses [augmentation](/augmentation) to return a Form instance.
       </div>
   {{ /fields }}
   <button type="submit">Submit</button>
-{{ /form:create }}
+{{ /form_field }}
 ```

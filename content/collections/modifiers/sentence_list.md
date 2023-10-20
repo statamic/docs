@@ -31,7 +31,7 @@ I like batman, zombies, and scrunchies.
 By default, the "glue" is the word "and", and will be translated appropriately. But, you can change it with the first argument:
 
 ```
-I like {{ things | sentence_list:& }}.
+I like {{ things | sentence_list('&') }}.
 ```
 
 ```html
@@ -41,7 +41,7 @@ I like batman, zombies, & scrunchies.
 The second argument controls the oxford comma. Set that to 0 and it'll get removed:
 
 ```
-I like {{ things | sentence_list:and:0 }}.
+I like {{ things | sentence_list('and', 0) }}.
 ```
 
 ```html

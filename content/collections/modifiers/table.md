@@ -41,5 +41,5 @@ my_table:
 You can pass `true` as an argument to parse the cell data as markdown.
 
 ```
-{{ my_table | table:true }}
+{{ my_table | table(true) }}
 ```

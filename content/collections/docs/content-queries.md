@@ -8,11 +8,9 @@ intro: 'Statamic provides a fluent query builder interacting with your content a
 
 Each of the core Statamic data types has its own Facade used to access an underlying repository class so you can query, create, modify, and delete content. Working with data in this manner is usually done in a [Controller](/controllers), with any retrieved data being passed into a view.
 
-:::callout /extending/repositories
-Learn how Statamic can use different storage methods!
-:::
-
 These methods will work no matter which driver you're using — flat files, Eloquent/MySQL, or any other custom repo driver.
+
+[Learn how Statamic can use different storage methods!](/extending/repositories)
 
 :::tip
 While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/8.x/queries), they are **completely separate implementations**.
@@ -92,7 +90,7 @@ Entry::query()
 ### Where
 You may use the query builder's `where` method to add "where" clauses to the query. The most basic call to the `where` method requires three arguments. The first argument is the name of the field. The second argument is an operator, which can be any of the supported operators. The third argument is the value to compare against the field's value.
 
-For example, the following query gets entries where the value of a `featured` field is `true`.
+For example, the following query gets entries where the value of a `status` field is `featured`.
 
 ```php
 Entry::query()

@@ -83,8 +83,8 @@ public function boot()
                     ],
                 ],
             ]
-        ]);
-    });
+        ]
+    ]);
 }
 ```
 

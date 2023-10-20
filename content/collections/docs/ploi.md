@@ -7,6 +7,11 @@ intro: |-
   Linode, Vultr, Amazon, Hetzner and other hosting platforms. It's a piece of 🍰 to deploy a Statamic site with it.
 parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
+
+:::tip
+Use the coupon `RAD-DEPLOIMENT` to get 25% off your Ploi subscription. Can be used once per account and only works with the manual renewal and a duration of up to five months.
+:::
+
 Assuming you have a [Ploi](https://ploi.io) account, the first thing to do is authorize your hosting provider of choice. In this walk-through we'll use [Hetzner](https://www.hetzner.com) as the example. This is a one-time step and will allow you to easily spin up and provision new server stacks anytime.
 
 Go to your [Hetzner Cloud Console](https://console.hetzner.cloud) (or other cloud provider of choice) and create an API token. Check out the [Hetzner docs on generating API tokens](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/) if you need it. Make sure the token has **read and write** access.

@@ -11,6 +11,10 @@ The ability to preview what your content looks like in real-time is practically 
 
 Live Preview will render your work-in-progress content with whichever template you have currently loaded. You can even switch between templates while previewing.
 
+:::tip
+Keep in mind: Live Preview does not work using the `array` cache driver.
+:::
+
 <figure>
     <img src="/img/live-preview.jpg" alt="Statamic Live Preview">
     <figcaption>And he's still touring, ladies and gentlemen.</figcaption>
@@ -113,6 +117,49 @@ preview_targets:
 ```
 
 A `token` query parameter will be appended to the URL automatically, which you can then pass back to Statamic in a GraphQL query, where it will know to replace the entry with the Live Preview version.
+
+### Auto-refreshing
+
+On a preview target, you may disable the behavior that causes a full refresh of the iframe when you make changes. By disabling the refresh, [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) will be used instead to send a payload to the front-end. You can listen for this event and perform your own live updating behavior.
+
+First, set the preview target refresh setting to `false`:
+
+```yaml
+preview_targets:
+  -
+    label: Entry
+    url: https://your-nuxt-app.com/blog/{slug}?preview=true
+    refresh: false
+```
+
+Then, the `event.data` will be an object containing the event name, reference of what you're editing, and the Live Preview token.
+
+```js
+window.onmessage = function (e) {
+    if (e.data.name === 'statamic.preview.updated') {
+        updatePage(e)
+    }
+}
+
+// A silly example where you update parts of the page by
+// querying the REST API with the provided token.
+const updatePage = function (e) {
+    const id = e.data.reference.split('::')[1];
+    const url = `https://site.com/api/collections/articles/entries/${id}?token=${e.data.token}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(response => {
+            document.querySelector('#title').innerText = response.data.title;
+            document.querySelector('#excerpt').innerText = response.data.excerpt;
+        });
+}
+
+// A more realistic example, using a front-end framework like Nuxt.
+const updatePage = function (e) {
+    window.$nuxt.refresh();
+}
+```
 
 ## Custom Rendering
 

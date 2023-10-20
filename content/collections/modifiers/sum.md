@@ -25,7 +25,7 @@ stats:
 
 ```
 {{ numbers | sum }}
-{{ stats | sum:score }}
+{{ stats | sum($score) }}
 ```
 
 ```html

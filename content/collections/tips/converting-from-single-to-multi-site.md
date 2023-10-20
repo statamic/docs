@@ -14,7 +14,7 @@ updated_at: 1622821029
 :::tip
 This can be automated using the following command:
 
-```shell
+```
 php please multisite
 ```
 

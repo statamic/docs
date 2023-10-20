@@ -95,6 +95,29 @@ Statamic uses Laravel's logging handling system to log messages and errors to fi
 
 Learn more about [configuring other logging channels](https://laravel.com/docs/logging#configuration) on the Laravel docs.
 
+### Viewing Logs in the Debug Bar
+
+You can enable logs in the Debug Bar in its config file. If you haven't already published the config, you can do from the command line:
+
+```cli
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+```
+
+And then enable the "Logs" collector in your new `config/debugbar.php` config file.
+
+```php
+'collectors' => [
+        ...
+        'laravel'         => true, // Laravel version and environment
+        'events'          => true, // All events fired
+        'default_request' => true, // Regular or special Symfony request logger
+        'logs'            => true, // Add the latest log messages [tl! **]
+        'files'           => false, // Show the included files
+        'config'          => false, // Display config settings
+        ...
+    ],
+```
+
 ## Laravel Telescope
 
 Statamic supports [Laravel Telescope][telescope], an elegant debug assistant for the Laravel framework. It's most useful when you're building addons or doing custom Laravel things outside the normal Statamic site scope.

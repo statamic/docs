@@ -13,7 +13,7 @@ title: As the World Turns
 ```
 
 ```
-{{ title | wrap:h1 }}
+{{ title | wrap('h1') }}
 ```
 
 ```html
@@ -23,7 +23,7 @@ title: As the World Turns
 You may also use Emmet-style CSS classes to be added to the tag.
 
 ```
-{{ title | wrap:h1.fast.furious }}
+{{ title | wrap('h1.fast.furious') }}
 ```
 
 ```html

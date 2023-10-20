@@ -14,7 +14,7 @@ id: 8b558556-a08b-4134-b77d-102b4fb34060
 ---
 ## Overview
 
-The switch tag is most often used to write HTML classes in your markup to help style lists and grids of items. While CSS has gained a lot of features in recent years with CSS selectors like `nth-of-type`, the switch tag is remains more relevant than ever, especially in combination with utility frameworks like [TailwindCSS](https://tailwindcss.com).
+The switch tag is most often used to write HTML classes in your markup to help style lists and grids of items. While CSS has gained a lot of features in recent years with CSS selectors like `nth-of-type`, the switch tag is more relevant than ever, especially in combination with utility frameworks like [TailwindCSS](https://tailwindcss.com).
 
 ## Examples
 

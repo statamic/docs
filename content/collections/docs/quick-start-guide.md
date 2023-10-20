@@ -1,6 +1,6 @@
 ---
 title: 'Quick Start Guide'
-intro: "A step-by-step guide to installing and building your first Statamic 3 site."
+intro: "A step-by-step guide to installing and building your first Statamic site."
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
@@ -48,7 +48,7 @@ You should run this command from your Terminal application of choice (we like [i
 composer create-project --prefer-dist statamic/statamic cyberspace-place
 ```
 
-If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic 3 welcome screen.
+If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic welcome screen.
 
 If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file. If you encounter a Composer error, try running `composer global update` and trying again.
 
@@ -57,7 +57,7 @@ If you encounter any other errors, Google them frantically and try anything and 
 **Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub discussions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
 <figure>
-    <img src="/img/quick-start/installed-3.3.png" alt="Statamic 3 Welcome Screen">
+    <img src="/img/quick-start/installed-3.3.png" alt="Statamic Welcome Screen">
     <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ Now we can create a new **super user**, sign into the control panel, and start c
 Run `php please make:user` from the command line and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
 
 <figure>
-    <img src="/img/quick-start/make-user.png" alt="Statamic 3 Make:User Command" width="453">
+    <img src="/img/quick-start/make-user.png" alt="Statamic Make:User Command" width="453">
     <figcaption>You can customize user fields later.</figcaption>
 </figure>
 
@@ -146,7 +146,7 @@ There's really no perfect place to mention this, but here is as good as any.
 
 The default install uses [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
 
-This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
+This is super easy and happens automatically when you run `npm run dev` from the terminal in your project directory (as long as you've run `npm install` first).
 :::
 
 ## Now let's build a blog
@@ -205,7 +205,7 @@ Next, let's configure the collection to behave the way a typical blog should. Cl
 
 
 :::tip
-Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip it what you don't want" approach.
+Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip out what you don't want" approach.
 
 This means that Statamic doesn't do everything right out the box, but is much simpler to customize how you want everything to work.
 :::
@@ -363,7 +363,7 @@ It's totally fine to duplicate code sometimes, especially if you have to make so
 
 Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
-Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage or blog index. Or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
 
 ```
 {{ collection:blog :limit="limit" }}

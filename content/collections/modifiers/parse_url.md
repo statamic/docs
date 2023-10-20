@@ -14,7 +14,7 @@ url: 'http://example.com/path?query=1'
 
 ``` antlers
 {{ url | parse_url }}
-{{ url | parse_url:host }}
+{{ url | parse_url('host') }}
 ```
 
 ```php

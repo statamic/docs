@@ -11,7 +11,7 @@ related_entries:
   - cbab1bb5-302e-499d-badb-f154dbae751d
   - 9dfc5020-3d14-4774-a1f6-d82d051cb964
 ---
-Turn an array into a pipe-delimited string. Useful when passing an array of things into a parameter.
+Turn an array into a pipe-delimited string. Useful when passing an array of things into a parameter. Generally unnecessary though as most parameters can now accept a wide range of datatypes.
 
 ```yaml
 collections:

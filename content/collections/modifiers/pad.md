@@ -14,7 +14,7 @@ epic_meal_time:
 ```
 
 ```
-{{ epic_meal_time pad="4:bacon strips" }}
+{{ epic_meal_time | pad(4, "bacon strips") }}
     {{ value }}
 {{ /epic_meal_time }}
 ```

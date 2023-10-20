@@ -1,6 +1,6 @@
 ---
 title: Licensing
-intro: 'Statamic 3 is available in two distinct flavors, but one splendid codebase. Statamic Solo is **free and open source** for personal and hobby use, while **Statamic Pro** is powerful commercial software designed for team use.'
+intro: 'Statamic is available in two distinct flavors, but one splendid codebase. Statamic Solo is **free and open source** for personal and hobby use, while **Statamic Pro** is powerful commercial software designed for team use.'
 blueprint: page
 id: 56fadb93-b846-4867-ad73-4f721cc940c2
 ---
@@ -27,7 +27,7 @@ While in trial mode you are also able to try out any [commercial addons](https:/
 Once it’s time to launch your site on a public domain, there are a few things you need to do:
 
 - [Create a Site](#sites) on statamic.com and enter the appropriate domain(s).
-- Purchase any required licenses (e.g. Statamic 3 Pro and/or any paid addons) and attach them to your Site.
+- Purchase any required licenses (e.g. Statamic Pro and/or any paid addons) and attach them to your Site.
 - Add your Site's license key to your Statamic config or environment file.
 
 ``` php

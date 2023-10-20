@@ -23,7 +23,7 @@ games:
 
 ```
 <h2>I love...</h2>
-{{ games where="feeling:love" }}
+{{ games | where('feeling', 'love') }}
   {{ title }}<br>
 {{ /games }}
 ```

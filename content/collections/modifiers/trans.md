@@ -44,8 +44,8 @@ Parameter replacements are only supported in the [tag version](/tags/trans).
 To pluralize, use the `trans_choice` modifier with the count as the parameter. You can use a number or a variable.
 
 ```
-{{ "foo.apples" | trans_choice:2 }}
-{{ "foo.apples" | trans_choice:this_many }}
+{{ "foo.apples" | trans_choice(2) }}
+{{ "foo.apples" | trans_choice($this_many) }}
 ```
 
 ```html

@@ -12,8 +12,8 @@ punchline: That's what she said!
 ```
 
 ```
-{{ if (punchline | ends_with:she said!) }}
-{{ if (punchline | ends_with:your mom!) }}
+{{ if (punchline | ends_with('she said!')) }}
+{{ if (punchline | ends_with('your mom!')) }}
 ```
 
 ```html

@@ -13,7 +13,7 @@ description: This cat video is the best thing ever.
 ```
 
 ```
-{{ description regex_replace="best|okayest" }}
+{{ description | regex_replace('best', 'okayest') }}
 ```
 
 ```html

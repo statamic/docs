@@ -1,7 +1,7 @@
 ---
 title: User:Is
 description: Checks if a user has a specific role
-intro: Anything inside the `user:is` tag will only be rendered if the user is has a specific role.
+intro: Anything inside the `user:is` tag will only be rendered if the user has a specific role.
 parameters:
   -
     name: role|roles

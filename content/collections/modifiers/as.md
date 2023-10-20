@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: As
 ---
-Alias an array variable with a key, giving you some useful markup/iteration options.
+Alias an array variable as another name, allowing you to massage your data to reused shared components and templates.
 
 ```yaml
 blocks:
@@ -19,8 +19,10 @@ blocks:
 ```
 
 ```
-{{ blocks as="block" }}
-  {{ block | partial:type }}
+{{ blocks as="sets" }}
+    {{ sets }}
+        {{ partial:type }}
+    {{ /sets }}
 {{ /blocks }}
 ```
 

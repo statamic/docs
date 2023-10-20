@@ -16,7 +16,7 @@ links:
 
 ```
 {{ links }}
-  <li>{{ value ensure_left="http://" }}</li>
+  <li>{{ value | ensure_left('http://') }}</li>
 {{ /links }}
 ```
 

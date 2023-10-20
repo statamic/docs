@@ -11,7 +11,7 @@
 <article class="markdown pb-8">
     <figure>
         {{ screenshot }}
-        <img src="{{ url }}" width="{{ width | /:2 }}px" alt="{{ title }} Fieldtype UI">
+        <img src="{{ url }}" width="{{ width | /:2 | +:2 }}" alt="{{ title }} Fieldtype UI">
         {{ /screenshot }}
         <figcaption>Behold! The {{ title }}!</figcaption>
     </figure>

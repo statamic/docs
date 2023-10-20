@@ -66,7 +66,7 @@ Indexes are configured in `config/statamic/search.php` and you can create as man
 An **index** is a collection of **records**, each representing a single search item. A record might be an entry, a taxonomy term, or even a user.
 :::
 
-Your site's default index includes _only_ the title from from _all_ collections. The default config looks like this:
+Your site's default index includes _only_ the title from _all_ collections. The default config looks like this:
 
 ``` php
 'default' => [
@@ -278,6 +278,25 @@ This will create dynamic indexes named after the specified sites:
 - `default_fr`
 
 If you have a localized index and include searchables that do not support localization (like assets or users), they will appear in each localized index.
+
+### Search Options
+
+The built in search driver supports multiple options you can pass in.
+
+- `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to `null`.
+- `min_characters`: The minimum number of characters required in a search query. Defaults to `null`.
+- `min_word_characters`: The minimum number of characters required in a word in a search query. Defaults to `null`.
+- `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `null`.
+- `property_weights`: An array of weights for each property to use when calculating relevance scores. Defaults to `null`.
+- `query_mode`: The query mode to use when searching (e.g. "all", "any", "exact"). Defaults to `null`.
+- `use_stemming`: Whether to use stemming when searching (e.g. "jumping" matches "jump"). Defaults to `false`.
+- `use_alternates`: Whether to use alternate spellings when searching (e.g. "color" matches "colour"). Defaults to `false`.
+- `include_full_query`: Whether to include the full search query in the search results. Defaults to `null`.
+- `enable_too_many_results`: Whether to enable a warning when too many results are returned. Defaults to `null`.
+- `sort_by_score`: Whether to sort the search results by relevance score. Defaults to `null`.
+- `exclude_properties`: An array of properties to exclude from the search results. Defaults to `null`.
+- `stop_words`: An array of stop words to exclude from the search query. Defaults to `['the', 'a', 'an']`.
+- `include_properties`: An array of properties to include in the search results. Defaults to `$this->config['fields'] ?? ['title']`.
 
 ## Drivers
 

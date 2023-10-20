@@ -7,6 +7,7 @@ related_entries:
   - 7202c698-942a-4dc0-b006-b982784efb03
   - ba832b71-a567-491c-b1a3-3b3fae214703
   - 3f5506d6-03e0-4fcf-b4e8-334c48d51f81
+  - 420f083d-99be-4d54-9f81-3c09cb1f97b7
 ---
 ## Overview
 
@@ -160,3 +161,7 @@ When on a [term route](#routing), you can list the entries by using an `entries`
   </ul>
 {{ /entries }}
 ```
+
+## Search Indexes
+
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](/search#connecting-indexes).

@@ -16,9 +16,15 @@ There are many reasons why you might want to install Statamic into an existing L
 - run as a headless CMS and provide a REST API to your data
 - be a special comfort package for those tough projects even when you don't need it
 
+:::tip
+If you're starting a brand new project, it's much easier to use the [standard Statamic installation method](/installing/local).
+
+You'll get a bunch of things automatically set up for you, like a pages collection, views, etc. If you install Statamic _into_ Laravel, you're going to have to do those things manually.
+:::
+
 ## Supported Versions of Laravel
 
-**Laravel 8 and Laravel 9 are supported.** It feels like this section needs more than one sentence but it really doesn't. That first one said all that needs saying.
+**Laravel 9 and Laravel 10 are supported with Statamic 4+.** If you need Laravel 8 support, you can still use Statamic 3.x.
 
 ## Install Statamic
 
@@ -45,6 +51,31 @@ There are 3 steps to follow to install Statamic into your Laravel app.
     ``` shell
     composer require statamic/cms --with-dependencies
     ```
+
+## Adding Content
+
+When you install Statamic into Laravel this way, **no content or views are included**.
+
+You'll probably want to create a collection and some entries, as well as views and a layout in order to see things appear on the front-end of your site.
+
+### Pages
+A common "catch-all" content scenario is to create a Pages collection which allows you to create a home page as well as any other pages in a tree structure. You get this when you install Statamic from scratch, but it's easy to set up yourself.
+
+The easiest way is to copy the `pages.yaml` file and the `pages` directory [from the `statamic/statamic` repository](https://github.com/statamic/statamic/tree/4.x/content/collections).
+
+Or, if you wanted to do it through the Control Panel:
+
+1. Create a collection named `pages`.
+    - Set the route to `{parent_uri}/{slug}`
+    - Enable the "Orderable" toggle
+    - Enabled the "Expect a root page" toggle
+2. Create an entry. The first one will be your home page.
+
+### Views
+
+Statamic routed URLs will expect views named `default` and `layout`. You will need to add those manually too.
+
+[Read more about how Statamic views and layouts work](/views)
 
 ## Regarding Users
 

@@ -9,32 +9,52 @@ id: fc564ddf-80c1-4d87-8675-4a41f13c7774
 
 ## Enable GraphQL
 
-Enable the GraphQL API in your config or with an environment variable.
-
-```php
-// config/statamic/graphql.php
-'enabled' => true,
-```
+To enable the GraphQL API, add the following to your `.env` file:
 
 ```env
 STATAMIC_GRAPHQL_ENABLED=true
 ```
 
+Or you can enable for all environments in `config/statamic/graphql.php`:
+
+```php
+'enabled' => true,
+```
+
+You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
 :::tip
+
 If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
 :::
 
-You will also need to enable the resources you want to be available. For security, they're all disabled by default.
+### Enable Resources
+
+You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/graphql.php` config:
 
 ```php
-// config/statamic/graphql.php
-
 'resources' => [
-  'collections' => true,
-  'taxonomies' => true,
-  // etc
+    'collections' => true,
+    'taxonomies' => true,
+    // etc.
 ]
 ```
+
+### Enable Specific Sub-Resources
+
+If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
+
+```php
+'resources' => [
+    'collections' => [
+        'articles' => true,
+        'pages' => true,
+        // 'events' => false, // Sub-resources are disabled by default
+    ],
+    'taxonomies' => true,
+    // etc.
+]
+```
+
 
 ## Interfaces
 
@@ -321,6 +341,7 @@ Returns a [paginated](#pagination) list of [AssetInterface](#asset-interface) ty
 | `container` | `String!` | Specifies which asset container to query.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:
@@ -495,7 +516,6 @@ Returns a list of [GlobalSetInterface](#global-set-interface) types.
 | `taxonomy` | `[String]` | Narrows down the results by terms in one or more taxonomies.
 | `limit` | `Int` | The number of results to be shown per paginated page.
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
-| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
 
 Example query and response:
@@ -550,6 +570,70 @@ Used for querying a single global set.
 }
 ```
 
+### Forms {#forms-query}
+
+Used for querying multiple forms.
+
+```graphql
+{
+    forms {
+        handle
+        title
+        fields {
+            handle
+            display
+        }
+    }
+}
+```
+
+```json
+{
+    "forms": [
+        {
+            "handle": "contact",
+            "title": "Contact",
+            "fields": [
+                { "handle": "name", "display": "Name" },
+                { "handle": "email", "display": "Email" },
+                { "handle": "inquiry", "display": "Inquiry" }
+            ]
+        }
+    ]
+}
+```
+
+### Form {#form-query}
+
+Used for querying a single form.
+
+```graphql
+{
+    form(handle: "contact") {
+        handle
+        title
+        fields {
+            handle
+            display
+        }
+    }
+}
+```
+
+```json
+{
+    "form": {
+        "handle": "contact",
+        "title": "Contact",
+        "fields": [
+            { "handle": "name", "display": "Name" },
+            { "handle": "email", "display": "Email" },
+            { "handle": "inquiry", "display": "Inquiry" }
+        ]
+    }
+}
+```
+
 ### Navs {#navs-query}
 
 Used for querying Navs.
@@ -593,6 +677,72 @@ Used for querying a single Nav.
     }
 }
 ```
+
+### Users {#users-query}
+
+Used for querying multiple users.
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| `limit` | `Int` | The number of results to be shown per paginated page.
+| `page` | `Int` | The paginated page to be shown. Defaults to `1`.
+| `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
+| `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
+
+Example query and response:
+
+```graphql
+{
+    users {
+        current_page
+        data {
+            name
+            email
+        }
+    }
+}
+```
+
+```json
+{
+    "users": {
+        "current_page": 1,
+        "data": [
+            { "name": "David Hasselhoff", "email": "thehoff@statamic.com" },
+            { "name": "Chuck Norris", "email": "norris@statamic.com" },
+        ]
+    }
+}
+```
+
+### User {#user-query}
+
+Used for querying a single user.
+
+```graphql
+{
+    user(email: "thehoff@statamic.com") {
+        name
+        email
+    }
+}
+```
+
+```json
+{
+    "user": {
+        "name": "David Hasselhoff",
+        "email": "thehoff@statamic.com"
+    }
+}
+```
+
+You can query by either `id` or `email`.
+
+| Argument | Type | Description |
+|----------|------|-------------|
+| `id` | `String` | The ID of the user. If you use this, you don't `email`.
+| `email` | `String` | The email address of the user. If you use this, you don't `id`.
 
 ## Custom Queries
 
@@ -886,6 +1036,44 @@ The [code fieldtype](/fieldtypes/code) will return this type when `mode_selectab
 
 ## Filtering
 
+### Enabling Filters
+
+For security, [filtering](#filtering) is disabled by default. To enable, you'll need to opt in by defining a list of `allowed_filters` for each sub-resource in your `config/statamic/graphql.php` config:
+
+```php
+'resources' => [
+    'collections' => [
+        'articles' => [
+            'allowed_filters' => ['title', 'status'],
+        ],
+        'pages' => [
+            'allowed_filters' => ['title'],
+        ],
+        'events' => true, // Enable this collection without filters
+        'products' => true, // Enable this collection without filters
+    ],
+    'taxonomies' => [
+        'topics' => [
+            'allowed_filters' => ['slug'],
+        ],
+        'tags' => true, // Enable this taxonomy without filters
+    ],
+    // etc.
+],
+```
+
+For queries that don't have sub-resources (ie. users), you can define `allowed_filters` at the top level of that resource config:
+
+```php
+'resources' => [
+    'users' => [
+        'allowed_filters' => ['name', 'email'],
+    ],
+],
+```
+
+### Using Filters
+
 You can filter the results of listing queries (like `entries`) using the `filter` argument. This argument accepts a JSON object containing different
 [conditions](/conditions).
 
@@ -935,6 +1123,56 @@ If you need to use the same condition on the same field more than once, you can 
         # ...
     }
 ```
+
+### Advanced Filtering Config
+
+You can also allow filters on all enabled sub-resources using a `*` wildcard config. For example, here we'll enable only the `articles`, `pages`, and `products` collections, with `title` filtering enabled on each, in addition to `status` filtering on the `articles` collection specifically: 
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'allowed_filters' => ['title'], // Enabled for all collections
+        ],
+        'articles' => [
+            'allowed_filters' => ['status'], // Also enable on articles
+        ],
+        'pages' => true,
+        'products' => true,
+    ],
+],
+```
+
+If you've enabled filters using the `*` wildcard config, you can disable filters on a specific sub-resource by setting `allowed_filters` to `false`:
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'allowed_filters' => ['title'], // Enabled for all collections
+        ],
+        'articles' => [
+            'allowed_filters' => false, // Disable filters on articles
+        ],
+        'pages' => true,
+        'products' => true,
+    ],
+],
+```
+
+Or you can enable queries and filters on all sub-resources at once by setting both `enabled` and `allowed_filters` within your `*` wildcard config:
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'enabled' => true, // All collection queries enabled
+            'allowed_filters' => ['title'], // With filters enabled for all
+        ],
+    ],
+],
+```
+
 
 ## Sorting
 
@@ -1287,7 +1525,7 @@ You can add fields to certain types by using the `addField` method on the facade
 
 The method expects the [type](#types) name, the field name, and a closure that return a GraphQL field definition array.
 
-For example, if you wanted to include a thumbnail from an asset, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
+For example, if you wanted to include a thumbnail from an asset field named `image`, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
 
 ```php
 use GraphQL\Type\Definition\Type;
@@ -1304,7 +1542,7 @@ GraphQL::addField('EntryInterface', 'thumbnail', function () {
             ]
         ],
         'resolve' => function ($entry, $args) {
-            $asset = $entry->augmentedValue('image')->value();
+            $asset = $entry->image;
             $url = Image::manipulate($asset)->width($args['width'])->build();
             return URL::makeAbsolute($url);
         }

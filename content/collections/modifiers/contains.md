@@ -24,10 +24,10 @@ noun: carrot
 ```
 
 ```
-{{ if summary | contains:BEST }}
-{{ if summary | contains:BEST:true }}
-{{ if summary | contains:adjective }}
-{{ if summary | contains:noun }}
+{{ if summary | contains('BEST') }}
+{{ if summary | contains('BEST', true) }}
+{{ if summary | contains('adjective') }}
+{{ if summary | contains('noun') }}
 ```
 
 ```html
@@ -52,20 +52,20 @@ number: '1'
 ```
 
 ```
-{{ if foods | contains:bacon }}
-{{ if foods | contains:delicious }}
-{{ if foods | contains:gross }}
-{{ if (foods | contains:"vegan bacon strips") }}
+{{ if foods | contains('bacon') }}
+{{ if foods | contains('delicious') }}
+{{ if foods | contains('gross') }}
+{{ if (foods | contains('vegan bacon strips')) }}
 
-{{ if numbers | contains:number }}
-{{ if numbers | contains:number:true }}
+{{ if numbers | contains(number) }}
+{{ if numbers | contains(number, true) }}
 ```
 
 ```html
 true   (there's no field named "bacon", so it searched for literally "bacon")
 true   (there's a field named "delicious", and it got the value which was "bacon")
 false  (there's a field named "gross", and it got the value which was "broccoli")
-true   (there's no field named "vegan bacon strips", so it searched for literally "vegan bacon strips")
+true   (there's no field named "vegan bacon strips", so it searched the expression for a literal string "vegan bacon strips")
 
 true   (the value of "number" is the string "1", which is fine in non-strict mode)
 false  (with strict mode enabled, the string "1" won't match the integer)

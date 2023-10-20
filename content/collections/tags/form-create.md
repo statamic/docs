@@ -110,7 +110,22 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 {{ /form:contact }}
 ```
 
-When you need to render a form that's selected via the Form Fieldtype you can use this pattern:
+Using this tag, Statamic will automatically take care of opening your form with a proper [CSRF token](https://laravel.com/docs/csrf).
+
+```output
+<form method="POST" action="https://website.example/!/forms/contact">
+    <input type="hidden" name="_token" value="cN03woeRj5Q0GtlOj7GydsZcRwlyp9VLzfpwDFJZ">
+    ...
+</form>
+```
+
+It also provides helpers for [dynamically rendering](#dynamic-rendering) sections and fields, [conditionally rendering](#conditional-fields) fields, etc.
+
+## Dynamic Rendering
+
+### Dynamically Rendering via Form Fieldtype
+
+When you need to render a form that's selected via the [Form Fieldtype](/fieldtypes/form) you can use this pattern:
 
 ```
 {{ form:create in="{ form_fieldtype:handle }" }}
@@ -120,25 +135,31 @@ When you need to render a form that's selected via the Form Fieldtype you can us
 
 This way you can let Control Panel users select which form should be used on an entry.
 
-## Dynamic Rendering
+### Dynamically Rendering Fields
 
-Instead of hardcoding individual fields, you may loop through the `fields` array to render fields in a dynamic fashion.
+Instead of hardcoding individual fields, you may loop through the `fields` array to render your blueprint's fields in a dynamic fashion.
 
 ```
-{{ fields }}
-    <div class="p-2">
-        <label>
-          {{ display }}
-          {{ if validate | contains:required }}
-            <sup class="text-red">*</sup>
-          {{ /if }}
-        </label>
-        <div class="p-1">{{ field }}</div>
-        {{ if error }}
-            <p class="text-gray-500">{{ error }}</p>
-        {{ /if }}
-    </div>
-{{ /fields }}
+{{ form:contact }}
+
+    {{ fields }}
+        <div class="p-2">
+            <label>
+                {{ display }}
+                {{ if validate | contains:required }}
+                    <sup class="text-red">*</sup>
+                {{ /if }}
+            </label>
+            <div class="p-1">{{ field }}</div>
+            {{ if error }}
+                <p class="text-gray-500">{{ error }}</p>
+            {{ /if }}
+        </div>
+    {{ /fields }}
+
+    <button>Submit</button>
+
+{{ /form:contact }}
 ```
 
 Each item in the `fields` array contains the following data configurable in the form's blueprint.
@@ -148,13 +169,13 @@ Each item in the `fields` array contains the following data configurable in the 
 | `handle` | string | System name for the field |
 | `display` | string | User-friendly field label |
 | `type` | string | Name of the [fieldtype](/fieldtypes) |
-| ` field` | string | Pre-rendered HTML based on the fieldtype |
+| ` field` | string | [Pre-rendered field HTML](#prerendered-field-html) based on the fieldtype |
 | `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
 | `instructions` | string | User-friendly instructions label |
 | `validate` | array | Contains an array of validation rules |
 
-### Pre-rendered HTML
+### Pre-rendered Field HTML
 
 Using the `field` variable will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.
 
@@ -165,33 +186,58 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 **Example**
 
 ```
-{{ form:contact }}
-    {{ fields }}
-        <div class="mb-2">
-            <label class="block">{{ display }}</label>
-            {{ field }}
-        </div>
-    {{ /fields }}
-{{ /form:contact }}
+{{ fields }}
+    <div class="mb-2">
+        <label class="block">{{ display }}</label>
+        {{ field }}
+    </div>
+{{ /fields }}
 ```
 
 ```output
-<form method="POST" action="https://website.example/!/forms/contact">
-    <input type="hidden" name="_token" value="cN03woeRj5Q0GtlOj7GydsZcRwlyp9VLzfpwDFJZ">
-    <div class="mb-2">
-        <label class="block">Name</label>
-        <input type="text" name="name" value="">
-    </div>
-      <div class="mb-2">
-        <label class="block">Email Address</label>
-        <input type="text" name="email" value="">
-    </div>
-      <div class="mb-2">
-        <label class="block">Note</label>
-        <textarea name="message"></textarea>
-    </div>
-</form>
+<div class="mb-2">
+    <label class="block">Name</label>
+    <input type="text" name="name" value="">
+</div>
+<div class="mb-2">
+    <label class="block">Email Address</label>
+    <input type="text" name="email" value="">
+</div>
+<div class="mb-2">
+    <label class="block">Note</label>
+    <textarea name="message"></textarea>
+</div>
 ```
+
+### Dynamically Rendering Sections
+
+If you have defined multiple sections in your form's blueprint, you can loop over these `sections` in a dynamic fashion as well.
+
+```
+{{ form:contact }}
+
+    {{ sections }}
+        <fieldset>
+            <legend>{{ display }}</legend>
+            {{ fields }}
+                ...
+            {{ /fields }}
+        </fieldset>
+    {{ /sections }}
+
+    <button>Submit</button>
+ 
+{{ /form:contact }}
+```
+
+Each item in the `sections` array contains the following data configurable in the form's blueprint.
+
+| Variable | Type | Description |
+|---|---| --- |
+| `display` | string | User-friendly section label |
+| `instructions` | string | User-friendly section instructions |
+| `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
+
 
 ## Conditional Fields 🆕
 
@@ -228,8 +274,10 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
 
 ```
 <template x-if="{{ show_field:name }}">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old:name }}" x-model="name" />
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old:name }}" x-model="name" />
+    </div>
 </template>
 ```
 
@@ -268,8 +316,10 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
 
 ```
 <template x-if="{{ show_field:name }}">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old:name }}" x-model="contact_form.name" />
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old:name }}" x-model="contact_form.name" />
+    </div>
 </template>
 ```
 

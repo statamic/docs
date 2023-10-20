@@ -12,7 +12,7 @@ string:  ͜
 ```
 
 ```
-{{ string | surround:ʘ }}
+{{ string | surround('ʘ') }}
 ```
 
 ```html

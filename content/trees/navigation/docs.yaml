@@ -245,6 +245,9 @@ tree:
     title: Resources
     children:
       -
+        id: 02927095-6b41-4832-aaa6-3d2ca40c9eee
+        entry: e947dc19-9a8a-44c2-911c-171d1f196c91
+      -
         id: 2cfa8593-cb18-4370-aa24-8c2408b59c87
         entry: 0efc0286-bfb1-4d54-8a94-8589b35adf88
       -

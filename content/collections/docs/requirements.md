@@ -9,7 +9,7 @@ blueprint: page
 
 To run Statamic you'll need a server meeting the following requirements. These are standard defaults (at minimum) for most modern hosting platforms.
 
-- PHP `>= 7.4.x` (8.0+ recommended)
+- PHP `>= 8.0.2`
 - BCMath PHP Extension
 - Ctype PHP Extension
 - Exif PHP Extension

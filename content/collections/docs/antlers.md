@@ -42,6 +42,9 @@ return [
 ];
 ```
 
+## The Book
+If you want to go beyond these docs and really dive into Antler's advanced capabilities, check out [Antlers: Building Beautiful Websites with Statamic](https://stillat.com/books/antlers-building-beautiful-websites-with-statamic), the official companion book by the great John Koster.
+
 
 ## The Basics
 
@@ -91,6 +94,7 @@ Syntax highlighting and auto-completion packages are available for many of the p
 - [Antlers Toolbox for VS Code](https://antlers.dev) (We recommend this one!)
 - [Antlers for Sublime Text](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
+- [Antlers for Panic Nova](https://extensions.panic.com/extensions/teriyaki/teriyaki.antlers/)
 
 ## Variables
 
@@ -114,7 +118,7 @@ The `title` variable can be rendered like this:
 
 ### Valid Characters
 
-Variable must start with an alpha character or underscore (`a-zA-Z_`), followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores (`a-zA-Z_0-9`). Spaces or other special characters are not allowed.
+Variables must start with an alpha character or underscore, followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores, but must not end with an hyphen. Spaces or other special characters are not allowed. A valid variable name matches this regex `[_A-Za-z][-_0-9A-Za-z]*[_A-Za-z0-9]`.
 
 Don't be weird and mix-and-match them like a serial killer though:
 
@@ -373,7 +377,7 @@ You can even create [Macros](/modifiers/macro) to combine sets of often used mod
 
 #### Legacy Syntax
 
-The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
+The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers-legacy#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
 
 ### Creating Variables
 
@@ -685,7 +689,7 @@ This is how you create variables as well as increment, decrement, or otherwise m
 | Subtraction | `$a -= $b` | Assigns the difference of `$a` and `$b` to `$a`. |
 | Multiplication | `$a *= $b` | Assigns the product of `$a` and `$b` to `$a`. |
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
-| Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$a` to `var`. |
+| Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$b` to `$a`. |
 
 ### Self-Iterating Assignments
 
@@ -1047,6 +1051,22 @@ You can "void" a parameter using the `void` keyword. A voided parameter will act
 {{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
 ```
 
+### Self-Closing Tags
+
+Some Tags can function as single or paired expressions. For example, the [Partial Tag](/tags/partial) can be used to include a partial template, or it can be used to wrap a portion of your template and inject it as a slot into a partial.
+
+In the below example, you can **self-close** the first partial tag much like an HTML element to ensure the second tag is paired properly.
+
+```
+{{ partial :src="hero_panel" /}}
+{{ partial :src="sidebar" }}
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+  </nav>
+{{ /partial }}
+```
+
 ## Working With Templates
 
 ### Layouts
@@ -1299,9 +1319,9 @@ Antlers code comments are not rendered in HTML (unlike HTML comments), which all
 
 You can write PHP inside special delimiters. You may use `{{?...?}}` to write raw PHP and manipulate the current context (variables that exist in a given request), and `{{$...$}}` to `echo` the result of a PHP expression and render HTML.
 
-### Examples
+### Syntax
 
-The following two examples are functionally equivalent, but each uses a different approach based on the delimiter.
+The following two syntax examples are functionally equivalent, but each uses a different approach based on the delimiter.
 
 ```antlers
 {{? $register = route('account.register'); ?}}
@@ -1311,6 +1331,16 @@ The following two examples are functionally equivalent, but each uses a differen
 
 ``` antlers
 <a href="{{$ route('account.register') $}}">Register for a new account</a>
+```
+
+### Accessing Data in PHP
+
+Data in the [Cascade](/data-injeritance) can be accessed in much of the same way it is inside of a regular Antlers expression.
+
+```antlers
+
+<h1>{{? $page->title ?}}</h1>
+<p>{{? $globals->get('company_address') ?}}</p>
 ```
 
 ### PHP File Extension
@@ -1323,10 +1353,66 @@ You can also change your view's file extension from `.antlers.html` to `.antlers
 ?>
 ```
 
+## Debugbar Profiler 🆕 {#debugbar-profiler}
+
+Antlers has an experimental new Profiler tab in the [Debugbar](/debugging#debug-bar) that helps you see the performance impact of all of your template code.
+
+<figure>
+    <img src="/img/antlers-profiler.png" alt="Antlers Profiler">
+    <figcaption>Profiling some Antlers code.</figcaption>
+</figure>
+
+Inside this Profiler there are 3 separate views that give you different glimpses into your site.
+
+### View Graph
+
+This view groups your Antlers expressions by the view files (templates, layouts, and partials) they exist in, allowing you to more easily tease out the location of any potential slowdowns or redundant calls.
+
+Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
+
+### Expression Graph
+
+This view shows all parsed expressions in a given request, listing them in **execution order**.
+
+Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
+
+### Source View
+
+The Source View shows the final rendered template and highlights any content rendered by Antlers with a color corresponding to how fast it was executed. Green is fast, Yellow is a little slow, and Red is very slow.
+
+
+### Profiler Columns
+
+| Column | Explanation |
+|--|--|
+| Time | Starting from 00:00, exactly when on the timer this expression was run. This helps to see the order your code is executed in. |
+| Type | Shows whether the expression is an imported view, a variable, or a [Tag](/tags). |
+| View Path | When using the **Expression Graph**, shows the path to the view file the expression exists in. |
+| Line | Shows what line the expression is in. If you have configured the debugbar by publishing its config and have specified which code editor you use, you can click the line and open your editor straight to this bit of template code. |
+| Memory Usage | How much memory was used to execute this expression. |
+| Execution | The number of separate times the expression was executed. |
+| Tag Time | The amount of time it took to run the expression |
+| Total Time | The amount of time it took to run the expression along with any child expressions (e.g. a tag pair) |
+| % | The percentage of total load time dedicated to run this expression. |
+
+### How to Use the Profiler
+
+If you have some pages in your site that are running slow, the Profiler can help you narrow down and find bottlenecks in your template code. Look for anything colored — yellow, orange, and red all _may_ point to some logic that is performing extra slow.
+
+Slow expressions don't necessarily mean that _Antlers_ is slow at parsing them, but rather Statamic is doing a lot of work in order to fetch, filter, and/or manipulate your data to render your view.
+
+With this information you can look for opportunities to cache bits of your template, open support requests and get clarification, ask questions in Discord, or pop the hood on your custom code to see what the hold up is.
+
+:::tip
+This feature is new and experimental! It's recommendations and "slow code" thresholds may need to be updated after getting more real world data.
+:::
+
+## Even More Advanced Stuff
+
+[John Koster's blog](https://stillat.com/blog) is full of really useful tips and tricks covering some really advanced features not documented here. Be sure to check it out!
 
 ## Thank you to John Koster 👏
 
 This Antlers parser was a huge rewrite by the incomparable [John Koster](https://github.com/JohnathonKoster), who apparently found it a relaxing break from his day job. You can see the effort involved in this [massive PR](https://github.com/statamic/cms/pull/4257).
 
 We owe him a debt of gratitude for this amazing gift.
-:::

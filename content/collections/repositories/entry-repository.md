@@ -158,6 +158,7 @@ $entry
   ->date($carbon) // or string of Y-m-d or Y-m-d-Hi
   ->published(true) // or false for a draft
   ->locale('default') // the site handle. defaults to the default site.
+  ->blueprint('article') // set entry blueprint
   ->data(['foo' => 'bar']) // an array of data (front-matter)
   ->origin($origin); // another entry instance
 ```

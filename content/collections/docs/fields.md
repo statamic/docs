@@ -92,7 +92,7 @@ Each fieldtype has the ability to _augment_ this data when accessed from the fro
 
 ## Localization
 
-Fields can be localized, allowing you to translate or modify content in a multi-site project.
+Fields can be marked as "localizable", allowing you to translate or modify the field's content in a multi-site project.
 
 For example, you could build the website for a multi-national company with headquarters in the United States and branches in the UK, and Germany.
 
@@ -105,6 +105,60 @@ For example, you could build the website for a multi-national company with headq
 To accomplish this you can configure your Statamic install as a multi-site instance, enable localization on all appropriate fields, and switch between sites with the site switcher dropdown in the global nav, or the locale list in the sidebar of your publish forms.
 
 Learn more about configuring Statamic for [multi-site](/multi-site) projects.
+
+## Translating UI
+
+You may provide translations for the field UI (such as the display text, instructions, select option labels, etc). This allows content editors to display the Control Panel in their preferred language, regardless of whether it's used in a multi-site setup.
+
+Field UI strings are run through [Laravel's translations](https://laravel.com/docs/10.x/localization) feature.
+
+For example, you may have a field defined like this:
+
+```yaml
+fields:
+  -
+    handle: favorite_food
+    field:
+      type: text
+      display: Favorite Food # [tl!**]
+      instructions: Please provide your food preference. # [tl!**]
+```
+
+To define the French translations, you can create a `lang/fr.json`:
+
+```json
+{
+    "Favorite Food": "Nourriture favorite",
+    "Please provide your food preference.": "Veuillez indiquer votre préférence alimentaire."
+}
+```
+
+Alternatively, you can use translation keys. The keys can be whatever you want. The first part denotes the filename, and everything else is the array key. If you do this, you'll need to provide the Default/English strings too. 
+
+```yaml
+fields:
+  -
+    handle: favorite_food
+    field:
+      type: text
+      display: fields.favorite_food.display # [tl!**]
+      instructions: fields.favorite_food.instructions # [tl!**]
+```
+
+```php
+// lang/en/fields.php
+return [
+    'favorite_food.display' => 'Favorite Food',
+    'favorite_food.instructions' => 'Please provide your food preference.',
+];
+```
+```php
+// lang/fr/fields.php
+return [
+    'favorite_food.display' => 'Nourriture favorite',
+    'favorite_food.instructions' => 'Veuillez indiquer votre préférence alimentaire.',
+];
+```
 
 
 

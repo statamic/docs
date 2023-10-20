@@ -19,11 +19,31 @@ event_date: June 19 2020
 ```
 
 ```
-{{ event_date iso_format="MMMM Do YYYY, h:mm:ss a"}}
+{{ event_date | iso_format("MMMM Do YYYY, h:mm:ss a")}}
 ```
 
 ```html
 June 15th 2018, 5:34:15 pm
 ```
+
+You can use macro-formats to format and localize dates as well. 
+
+```
+{{ event_date | iso_format('ll') }}
+```
+
+Will output this on your English site:
+
+```html
+Jan 5, 2017
+```
+
+And this on your French site:
+
+```html
+5 janv. 2017
+```
+
+Check out the [complete list of available macro-formats](https://carbon.nesbot.com/docs/#available-macro-formats).
 
 [carbon]: http://carbon.nesbot.com

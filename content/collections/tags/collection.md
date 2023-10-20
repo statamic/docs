@@ -73,6 +73,11 @@ parameters:
     description: 'Specify whether your entries should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
     required: false
   -
+    name: page_name
+    type: 'string *page*'
+    description: 'The query string variable used to store the page number (ie. `?page=`).'
+    required: false
+  -
     name: on_each_side
     type: 'int *3*'
     description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.

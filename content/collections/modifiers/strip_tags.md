@@ -19,8 +19,8 @@ unwanted: [p, blockquote]
 
 ```
 {{ html | strip_tags }}
-{{ html | strip_tags:p }}
-{{ html | strip_tags:unwanted }}
+{{ html | strip_tags('p') }}
+{{ html | strip_tags($unwanted) }}
 ```
 
 ```html

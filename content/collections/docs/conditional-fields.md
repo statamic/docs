@@ -4,6 +4,9 @@ intro: Show and hide fields in your publish forms based on conditions and trigge
 template: page
 id: dd52c1f6-661b-4408-83c6-691fa341aaa7
 blueprint: page
+related_entries:
+  - aa96fcf1-510c-404b-9b63-cea8942e1bf8
+  - 54548616-fd6d-44a3-a379-bdf71c492c63
 ---
 ## Overview
 
@@ -290,3 +293,9 @@ The above example will only _sometimes_ apply the `required` rule to the `venue`
 :::tip
 For more advanced conditional validation, take a look at Laravel's `required_if`, `required_with`, etc. [validation rules](https://laravel.com/docs/validation#rule-required-if).
 :::
+
+## Templating
+
+You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](https://statamic.dev/tags/form-create#conditional-fields).
+
+

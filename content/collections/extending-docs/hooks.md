@@ -62,7 +62,7 @@ When you `reject` a hook, any other code using that hook will not be executed.
 Unless your intention is to stop the execution chain, you should always `resolve`, even when your code does nothing.
 
 ``` js
-Statamic.$hooks.on('example', (resolve, reject) {
+Statamic.$hooks.on('example', (resolve, reject) => {
     if (somethingShouldHappen) {
         doSomething();
     }
@@ -92,3 +92,13 @@ You can use `reject()` to stop the request. Payload contains collection name and
 
 Triggered when revisions are enabled, but after the request has finished.
 Payload contains collection name, revision message, and the Axios response.
+
+### global-set.saving
+
+Triggered when you click save on the publish form.
+You can use `reject()` to prevent the request. Payload contains global set name, form values, and a reference to the publish container component.
+
+### global-set.saved
+
+Triggered when you click save, but after the request has finished.
+Payload contains global set name, and the Axios response.

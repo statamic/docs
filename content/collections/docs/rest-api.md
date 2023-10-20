@@ -9,28 +9,48 @@ pro: true
 
 ## Enable the API
 
-Enable the API in your config or with an environment variable.
-
-```php
-// config/statamic/api.php
-'enabled' => true,
-```
+To enable the REST API, add the following to your `.env` file:
 
 ```env
 STATAMIC_API_ENABLED=true
 ```
 
-You will also need to enable the resources you want to be available. For security, they're all disabled by default.
+Or you can enable for all environments in `config/statamic/api.php`:
 
 ```php
-// config/statamic/api.php
+'enabled' => true,
+```
 
+You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
+
+### Enable Resources
+
+You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/api.php` config:
+
+```php
 'resources' => [
   'collections' => true,
   'taxonomies' => true,
   // etc
 ]
 ```
+
+### Enable Specific Sub-Resources
+
+If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
+
+```php
+'resources' => [
+    'collections' => [
+        'articles' => true,
+        'pages' => true,
+        // 'events' => false, // Sub-resources are disabled by default
+    ],
+    'taxonomies' => true,
+    // etc.
+]
+```
+
 
 ## Endpoints
 
@@ -44,6 +64,7 @@ You may send requests to the following endpoints:
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
+- [Forms](#forms) / [Form](#form)
 - [Users](#users) / [User](#user)
 
 ### Customizing the API URL
@@ -61,6 +82,44 @@ You may customize the route in your API config file or with an environment varia
 
 ## Filtering
 
+### Enabling Filters
+
+For security, [filtering](#filtering) is disabled by default. To enable, you'll need to opt in by defining a list of `allowed_filters` for each sub-resource in your `config/statamic/api.php` config:
+
+```php
+'resources' => [
+    'collections' => [
+        'articles' => [
+            'allowed_filters' => ['title', 'status'],
+        ],
+        'pages' => [
+            'allowed_filters' => ['title'],
+        ],
+        'events' => true, // Enable this collection without filters
+        'products' => true, // Enable this collection without filters
+    ],
+    'taxonomies' => [
+        'topics' => [
+            'allowed_filters' => ['slug'],
+        ],
+        'tags' => true, // Enable this taxonomy without filters
+    ],
+    // etc.
+],
+```
+
+For endpoints that don't have sub-resources (ie. users), you can define `allowed_filters` at the top level of that resource config:
+
+```php
+'resources' => [
+    'users' => [
+        'allowed_filters' => ['name', 'email'],
+    ],
+],
+```
+
+### Using Filters
+
 You may filter results by using the `filter` query parameter.
 
 ``` url
@@ -75,6 +134,55 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 
 This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
+
+### Advanced Filtering Config
+
+You can also allow filters on all enabled sub-resources using a `*` wildcard config. For example, here we'll enable only the `articles`, `pages`, and `products` collections, with `title` filtering enabled on each, in addition to `status` filtering on the `articles` collection specifically: 
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'allowed_filters' => ['title'], // Enabled for all collections
+        ],
+        'articles' => [
+            'allowed_filters' => ['status'], // Also enable on articles
+        ],
+        'pages' => true,
+        'products' => true,
+    ],
+],
+```
+
+If you've enabled filters using the `*` wildcard config, you can disable filters on a specific sub-resource by setting `allowed_filters` to `false`:
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'allowed_filters' => ['title'], // Enabled for all collections
+        ],
+        'articles' => [
+            'allowed_filters' => false, // Disable filters on articles
+        ],
+        'pages' => true,
+        'products' => true,
+    ],
+],
+```
+
+Or you can enable endpoints and filters on all sub-resources at once by setting both `enabled` and `allowed_filters` within your `*` wildcard config:
+
+```php
+'resources' => [
+    'collections' => [
+        '*' => [
+            'enabled' => true, // All collection endpoints enabled
+            'allowed_filters' => ['title'], // With filters enabled for all
+        ],
+    ],
+],
+```
 
 
 ## Sorting
@@ -331,6 +439,58 @@ Gets a single global set's variables.
     "handle": "global",
     "api_url": "http://example.com/api/globals/global",
     "foo": "bar",
+  }
+}
+```
+
+## Forms
+
+`GET` `/api/forms`
+
+Gets all forms.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "contact",
+      "title": "Contact",
+      "fields": {
+        "name": {...},
+        "email": {...},
+        "inquiry": {...}
+      },
+      "api_url": "http://example.com/api/forms/contact",
+    },
+    {
+      "handle": "newsletter",
+      "title": "Subscribe to Newsletter",
+      "fields": {
+        "email": {...}
+      },
+      "api_url": "http://example.com/api/forms/newsletter",
+    }
+  ],
+}
+```
+
+## Form
+
+`GET` `/api/forms/{handle}`
+
+Gets a single form.
+
+``` json
+{
+  "data": {
+    "handle": "contact",
+    "title": "Contact",
+    "fields": {
+      "name": {...},
+      "email": {...},
+      "inquiry": {...}
+    },
+    "api_url": "http://example.com/api/forms/contact",
   }
 }
 ```

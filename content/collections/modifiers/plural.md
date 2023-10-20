@@ -21,7 +21,7 @@ shopping_list:
 ```
 Please pick up the following items:
 {{ shopping_list }}
-  - {{ quantity }} {{ item | plural:quantity }}.
+  - {{ quantity }} {{ item | plural($quantity) }}.
 {{ /shopping_list }}
 ```
 

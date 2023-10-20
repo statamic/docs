@@ -12,8 +12,8 @@ summary: "It was the best of times, it was the worst of times."
 ```
 
 ```
-{{ if summary | contains_all:best:worst }}
-{{ if summary | contains_all:best:better }}
+{{ if summary | contains_all('best', 'worst') }}
+{{ if summary | contains_all('best', 'better') }}
 ```
 
 ```html

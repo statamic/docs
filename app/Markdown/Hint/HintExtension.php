@@ -2,14 +2,14 @@
 
 namespace App\Markdown\Hint;
 
-use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\ExtensionInterface;
 
 class HintExtension implements ExtensionInterface
 {
-    public function register(ConfigurableEnvironmentInterface $environment): void
+    public function register(EnvironmentBuilderInterface $environment): void
     {
-        $environment->addBlockParser(new HintParser());
-        $environment->addBlockRenderer(Hint::class, new HintRenderer());
+        $environment->addBlockStartParser(new HintStartParser());
+        $environment->addRenderer(Hint::class, new HintRenderer());
     }
 }

@@ -50,7 +50,7 @@ id: 812bd19d-ec37-42d5-b8f9-310366ef8abe
 ---
 ## Overview
 
-This field is highly configurable, thanks to the fantastic [Vue Select](https://vue-select.org) component. Be sure to explore all the [config options](#config-options)!
+This field is highly configurable, thanks to the fantastic [Vue Select](https://vue-select.org) component. Be sure to explore all the [config options](#options)!
 
 ## Data Storage
 

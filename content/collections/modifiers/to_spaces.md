@@ -9,5 +9,5 @@ Converts all tabs in a string to a given number of spaces, `4` by default. This 
 
 ```
 {{ string | to_spaces }}
-{{ string | to_spaces:2 }}
+{{ string | to_spaces(2) }}
 ```

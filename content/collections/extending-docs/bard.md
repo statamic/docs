@@ -1,21 +1,21 @@
 ---
 title: Extending Bard
 stage: 1
-intro: "The Bard fieldtype is a rich-text editor based on [TipTap](https://tiptap.dev/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/), which is robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
+intro: "The Bard fieldtype is a rich-text and block-based editor based on [Tiptap](https://tiptap.dev/), which in turn is a Vue component that wraps around [ProseMirror](https://prosemirror.net/docs/guide/) — a robust JavaScript framework for building rich-text editors that _don't_ directly write HTML or rely on `contenteditable`, but rather a document model."
 id: e2078e40-0b3f-415b-8963-e99b4cc84f02
 ---
 ## Required Reading
 
-Before you attempt to create any Bard extensions, it would be wise to learn how to write a TipTap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicyle before you can juggle. To have a better understanding of how to write a TipTap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
+Before you attempt to create any Bard extensions, it is wise to learn how to write a Tiptap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicycle before you can juggle. To have a better understanding of how to write a Tiptap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
 
 :::tip
-Writing custom extensions for Bard is pretty complicated, but can be rewarding and give you powerful results.
+Writing custom extensions for Bard is pretty complicated, but can be rewarding and provide powerful results.
 :::
 
-In short, here's a quickstart of the things you should probably start with:
+In short, here's a quick-start of the things you should probably start with:
 
 - [The ProseMirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
-- Checking out the [code samples for the core TipTap extensions](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions), so you can understand how TipTap relates to ProseMirror
+- Checking out the [The Tiptap documentation](https://tiptap.dev/introduction) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages), so you can understand how Tiptap relates to ProseMirror
 - If you don't know [how to extend the control panel](/extending/control-panel) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/extending/addons).
 - Come back here again and keep on going.
 
@@ -23,121 +23,83 @@ In short, here's a quickstart of the things you should probably start with:
 
 ### Adding New Extensions
 
-You may add your own TipTap extensions to Bard using the `addExtension` method. (Previously `extend`.) The callback may return a single extension, or an array of them.
+You may add your own Tiptap extensions to Bard using the `addExtension` method. The callback may return a single extension, or an array of them.
 
 ``` js
-Statamic.$bard.addExtension(({ mark, node }) => mark(new MyExtension));
+const { Node, Mark, Extension } = Statamic.$bard.tiptap.core;
+
+Statamic.$bard.addExtension(() => Node.create({...}));
 ```
 
 ``` js
-Statamic.$bard.addExtension(({ mark, node }) => {
+Statamic.$bard.addExtension(() => {
     return [
-        mark(new MyExtension),
-        node(new AnotherExtension)
+        Node.create({...}),
+        Mark.create({...}),
+        Extension.create({...}),
     ]
 });
 ```
 
-The classes you return should be wrapped using the provided helper functions (i.e. `mark` or `node` like in the example above).
+Check out [Tiptap's custom extension documentation](https://tiptap.dev/guide/custom-extensions) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages) to find out how to write an extension.
+
+If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#tiptap-php-rendering).
 
 :::tip
-If you want to _replace_ an existing extension, [read below](#replacing-existing-extensions).
+If you need any other Tiptap helpers or utilities you can use our [Tiptap API](#tiptap-api).
 :::
-
-### Extension Classes
-
-Your extension class should look like a TipTap extension ([see an example here](https://github.com/ueberdosis/tiptap/blob/v1/packages/tiptap-extensions/src/marks/Bold.js))
-except it should not extend another class, and you should use methods instead of getters.
-
-``` js
-export default class MyExtension {
-  constructor(options = {}) {
-    this.options = options
-  }
-
-  name() {
-    return 'myextension';
-  }
-
-  schema() {
-    // Your schema stuff
-  }
-
-  commands({type}) {
-    // Your command stuff
-  }
-
-  inputRules({type}) {
-    return [] // Input rules if you want
-  }
-
-  plugins() {
-    return []
-  }
-
-  pasteRules() {
-    return []
-  }
-}
-```
 
 ### Replacing Existing Extensions
 
-If you'd like to replace a [native extension](https://github.com/ueberdosis/tiptap/tree/v1/packages/tiptap-extensions/src/nodes) (e.g. headings or paragraphs) you can use the `replaceExtension` method. It takes the `name` of the extension, and a callback that returns a single extension instance.
-
-The callback will provide you with the existing extension instance.
+If you'd like to replace a [native extension](https://github.com/ueberdosis/tiptap/tree/develop/packages) (e.g. headings or paragraphs) you can use the `replaceExtension` method. It takes the `name` of the extension, and a callback that returns a single extension instance.
 
 ```js
-Statamic.$bard.replaceExtension('heading', ({ mark, node, extension }) => {
-    return node(new CustomHeadingExtension(extension.options));
-})
+const { Node } = Statamic.$bard.tiptap.core;
+
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return Node.create({
+        name: 'heading',
+        ...
+    });
+});
 ```
 
-If you are doing simple tweaks to an extension (e.g. adding tailwind classes to headings) you can use the native extension classes directly by importing them through `$bard.tiptap.extensions`. Then you don't need to author an entire class and use the `mark` or `node` helpers.
+The callback will provide you with the existing extension instance, so if you are doing simple tweaks to an extension (e.g. customizing an input rule) you can simply extend the existing instance. Then you don't need to author an entire extension:
 
 ```js
-const { Heading } = Statamic.$bard.tiptap.extensions;
+const { nodeInputRule } = Statamic.$bard.tiptap.core;
 
-class CustomHeading extends Heading {
-    get schema() {
-        return {
-            ...super.schema,
-            toDOM: node => [`h${node.attrs.level}`, { class: 'font-bold' }, 0],
-        }
-    }
-}
-
-Statamic.$bard.replaceExtension('heading', ({ mark, node, extension }) => {
-    return new CustomHeadingExtension(extension.options);
-})
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return extension.extend({
+        addInputRules() {
+            return [
+                nodeInputRule({...}),
+            ];
+        },
+    });
+});
 ```
 
+You can also reconfigure extensions (e.g. to add Tailwind classes to headings or disable specific "smart typography" rules):
 
-### Marks and Nodes
-
-The `addExtension` and `replaceExtension` callbacks will provide the `mark` and `node` functions to you. Use it to wrap your class, and under the hood it will convert it to an actual TipTap extension class
-to be used by Bard.
-
-Within your class, Statamic will provide commonly used functions along with the arguments you'd get in a TipTap extension. This prevents you from needing to
-import the entire TipTap library into your build. For example:
-
-``` js
-// mark
-commands({ type, toggleMark }) {
-    return () => toggleMark(type)
-}
-
-// node
-commands({ type, toggleBlockType }) {
-    return () => toggleBlockType(type)
-}
+```js
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return extension.configure({
+        HTMLAttributes: {
+            class: 'font-bold',
+        },
+    });
+});
 ```
-
-:::tip
-If you need more TipTap methods than the ones passed into the arguments, you can use our [TipTap API](#tiptap-api).
-:::
-
-If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#prosemirror-rendering).
+```js
+Statamic.$bard.replaceExtension('typography', ({ extension, bard }) => {
+    return extension.configure({
+        oneHalf: false,
+        oneQuarter: false,
+        threeQuarters: false,
+    });
+});
+```
 
 ## Buttons
 
@@ -151,14 +113,25 @@ The callback may return a `button` object, or an array of them.
 
 ``` js
 Statamic.$bard.buttons((buttons, button) => {
-    return button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' });
+    return button({
+        name: 'custom_bold',
+        text: __('Custom Bold'), // Tooltip text
+        svg: 'bold', // Name of an SVG icon
+        html: '<svg>...</svg>', // Custom icon HTML
+        args: { class: 'font-bold' }, // The command arguments
+        command: (editor, args) => editor.chain().focus().setCustomBold(args).run(), // The command to run
+        activeName: 'customBold', // The active node/mark type that will activate this button (falls back to name)
+        active: (editor, args) => editor.isActive('bold'), // Active check callback (overrides activeName)
+        visibleWhenActive: 'example', // The active node/mark type that will show this button (always visible if not set)
+        visible: (editor, args) => editor.isActive('example'), // Visible check callback (overrides visibleWhenActive)
+    });
 });
 ```
 
 ``` js
 Statamic.$bard.buttons((buttons, button) => [
-    button({ name: 'bold', text: __('Bold'), command: 'bold', icon: 'bold' }),
-    button({ name: 'italic', text: __('Italic'), command: 'italic', icon: 'italic' }),
+    button({...}),
+    button({...}),
 ]);
 ```
 
@@ -166,11 +139,9 @@ Returning values to the `buttons` method will push them onto the end. If you nee
 
 ``` js
 Statamic.$bard.buttons((buttons, button) => {
-    const indexOfBold = _.findIndex(buttons, { command: 'bold' });
+    const indexOfBold = _.findIndex(buttons, { name: 'bold' });
 
-    buttons.splice(indexOfBold + 1, 0, button({
-        name: 'italic', text: 'Italic', command: 'italic', icon: 'italic'
-    }));
+    buttons.splice(indexOfBold + 1, 0, button({...}));
 });
 ```
 
@@ -180,33 +151,33 @@ Using the `button()` method will make the button only appear if the Bard field h
 If you'd like your button to appear on all Bard fields, regardless of whether it's been configured to use that button, you can just return an object. Don't wrap with `button()`.
 :::
 
-## TipTap API
+## Tiptap API
 
 In your extensions, you may need to use functions from the `tiptap` library. Rather than importing the library yourself and bloating your JS files, you may use methods through our API.
 
 ``` js
-Statamic.$bard.tiptap.core; // 'tiptap'
-Statamic.$bard.tiptap.commands; // 'tiptap-commands'
-Statamic.$bard.tiptap.utils; // 'tiptap-utils'
+Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utilities and helpers)
+Statamic.$bard.tiptap.pm.state; // `prosemirror-state`
+Statamic.$bard.tiptap.pm.model; // `prosemirror-model`
+Statamic.$bard.tiptap.pm.view; // `prosemirror-view`
 ```
 
 You could shorten things up by using destructuring. For example:
 
 ``` js
-const { core: tiptap, commands, utils } = Statamic.$bard.tiptap;
-const selection = new tiptap.TextSelection(...);
-commands.insertText(...);
-utils.getMarkAttrs(...);
+const { InputRule, insertText, getAttributes } = Statamic.$bard.tiptap.core;
+new InputRule(...);
+insertText(...);
+getAttributes(...);
 ```
 
-## ProseMirror Rendering
+## Tiptap PHP Rendering
 
 If you have created an extension on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
 
 The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
 
-You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your service provider's `boot` method
-is a good place to do this.
+You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your AppServiceProvider's `boot` method is a good place to do this.
 
 ``` php
 use Statamic\Fieldtypes\Bard\Augmentor;
@@ -230,3 +201,5 @@ public function boot()
     });
 }
 ```
+
+Check out [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap-php/tree/main/src) to find out how to write PHP extensions.

@@ -32,7 +32,7 @@ Or maybe you wish to return a `shares` count on entries within your `articles` c
 use Statamic\Facades\Collection;
 
 Collection::computed('articles', 'shares', function ($entry, $value) {
-    return TweeterService::shareCount($entry->permalink);
+    return TooterService::shareCount($entry->permalink);
 });
 ```
 

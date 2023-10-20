@@ -14,7 +14,7 @@ pi: 3.14159265359
 
 ```
 {{ pi | round }}
-{{ pi | round:2 }}
+{{ pi | round(2) }}
 ```
 
 ```html

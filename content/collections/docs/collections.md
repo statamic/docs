@@ -12,6 +12,7 @@ related_entries:
   - a6a956fd-647d-4503-9a4a-3b24198e6e73
   - 54548616-fd6d-44a3-a379-bdf71c492c63
   - cb21fabb-65ba-4869-9acd-f6aa2fb58a01
+  - 420f083d-99be-4d54-9f81-3c09cb1f97b7
 ---
 ## Overview
 
@@ -43,7 +44,7 @@ We're going to pretend it's currently the summer of '99 and we are journalists c
 Here's an entry we might write about the event.
 
 <figure>
-    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic 3 control panel">
+    <img src="/img/entry-tony-hawk.png" alt="An entry being edited in the Statamic control panel">
     <figcaption>Entry publishing with only the default content fields.</figcaption>
 </figure>
 
@@ -374,6 +375,25 @@ title: Our Tropical Fishies
 mount: id-of-the-aquarium-entry
 route: '/{mount}/{slug}'
 ```
+
+### Looping through mounted entries
+
+You can loop through all entries in the the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
+
+```antlers
+{{ collection :from="mount" }}
+    {{ title }}
+{{ /collection}}
+```
+
+:::tip
+If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.
+:::
+
+
+## Search Indexes
+
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
 
 ## Revisions
 

@@ -13,9 +13,9 @@ glasses: 14
 ```
 
 ```
-{{ glasses | mod:14 }}
-{{ glasses | mod:bottles }}
-{{ glasses | %:bottles }}
+{{ glasses | mod(14) }}
+{{ glasses | mod($bottles) }}
+{{ glasses | %($bottles) }}
 
 ```
 

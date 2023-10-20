@@ -139,3 +139,7 @@ tree:
       -
         id: 9519cca9-4afd-4143-b949-090f209a57e4
         entry: 5bd75435-806e-458b-872e-7528f24df7e6
+      -
+        id: a7f60530-f033-11ed-afc5-0800200c9a66
+        entry: 5f26a634-19ae-4413-8b9e-1ed9c2c76bb0
+        title: Vite

@@ -6,7 +6,7 @@ overview: >
 
   Let's go deeper.
 
-screenshot: fieldtypes/screenshots/grid.png
+screenshot: fieldtypes/screenshots/v4/grid.png
 options:
   -
     name: min_rows

@@ -19,7 +19,7 @@ playlist:
 Use with the pipe syntax to continue chaining in a single tag like so:
 
 ```
-{{ playlist | limit:2 | join }}
+{{ playlist | limit(2) | join }}
 ```
 
 ```html
@@ -29,7 +29,7 @@ Emancipator, Gong Gong
 Or using the parameter syntax:
 
 ```
-{{ playlist limit="2" }}
+{{ playlist | limit(2) }}
     <li>{{ value }}</li>
 {{ /playlist }}
 ```

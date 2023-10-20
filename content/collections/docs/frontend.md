@@ -26,7 +26,7 @@ In today's tech-driven ecosystem there are countless ways to build a website. So
 
 - Write a Single Page Application (SPA) with [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to run your entire site without the need for page refreshes
 - Use HTML and Statamic's [Antlers](/antlers) template language to build a dynamic site with smart caching
-- Use [Webpack](https://webpack.js.org), [Laravel Mix][mix], or [Gulp](https://gulpjs.com) to compile your JavaScript and SCSS/LESS
+- Use [Vite][vite], [Webpack](https://webpack.js.org), [Laravel Mix][mix], or [Gulp](https://gulpjs.com) to compile your JavaScript and SCSS/LESS
 - Go for the [JAMStack](https://jamstack.org) approach and run a statically generated site without server-side processing
 - Build a standard Statamic site and deploy a static version to [Netlify](https://www.netlify.com)
 - Go skateboarding and stay away from computers and nerdy webmasters
@@ -38,7 +38,7 @@ Just like the [honey badger](https://www.youtube.com/watch?v=4r7wHMg5Yjg), Stata
 
 ## Path of Least Resistance
 
-If you don't have a hard requirement, a strong preference, or just want our advice, we recommend writing your own HTML, use [Antlers](/antlers) in said HTML to pull content in, use [TailwindCSS](https://tailwindcss.com) as your CSS framework, and let [Laravel Mix][mix] compile any JavaScript, SCSS/LESS, or PostCSS as necessary.
+If you don't have a hard requirement, a strong preference, or just want our advice, we recommend writing your own HTML, use [Antlers](/antlers) in said HTML to pull content in, use [TailwindCSS](https://tailwindcss.com) as your CSS framework, and let [Vite][vite] compile any JavaScript, SCSS/LESS, or PostCSS as necessary.
 
 You'll be able to take advantage of all of our powerful, tightly coupled [tags](/tags) that do most of the heavy lifting — like fetching and displaying content from collections and taxonomies, manipulating, assets, and rendering variables.
 
@@ -65,3 +65,4 @@ Let's take a quick look at what happens during a typical Statamic frontend reque
 5. The Contents of the rendered view is sent to the user's browser.
 
 [mix]: https://laravel.com/docs/mix
+[vite]: https://vitejs.dev

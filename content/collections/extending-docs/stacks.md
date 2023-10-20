@@ -66,16 +66,3 @@ shouldClose() {
 ```
 
 If you prevent your stack from closing, any subsequent Stacks closures will also be prevented.
-
-## Panes
-
-Panes are similar to narrow Stacks, except there can only be one at a time, and they appear next to your content instead of over the top. This allows you to interact with the pane and your main content area at the same time.
-
-``` html
-<pane name="options" v-if="showOptions" @closed="showOptions = false">
-    <div slot-scope="{ close }">
-        Pane content
-        <button @click="close">Close</button>
-    </div>
-</pane>
-```

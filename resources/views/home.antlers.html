@@ -21,14 +21,14 @@
             </div>
         </div>
         <div class="md:w-96 mt-4 md:m-0 md:pl-8">
-            <img src="/img/control-panel-screenshot.png" alt="The Statamic 3 Control Panel" class="border shadow rounded">
+            <img src="/img/control-panel-screenshot.png" alt="The Statamic Control Panel" class="border shadow rounded">
         </div>
     </div>
 </div>
 
 <div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center dark:bg-pink dark:shadow-none">
     <img src="/img/retro-tv.svg" alt="A retro tv" class="mr-2">
-    <p class="text-center flex-1">Check out <b class="text-yellow">Learn Statamic with Jack</b> &mdash; our brand new Laracasts CreatorSeries!</p>
+    <p class="text-center flex-1">Check out <b class="text-yellow">Learn Statamic with Jack</b> &mdash; our Laracasts CreatorSeries!</p>
     <a href="https://laracasts.com/series/learn-statamic-with-jack" class="button">Watch &amp; Learn</a>
 </div>
 
@@ -75,13 +75,15 @@
     <table>
         <thead>
             <th>Page</th>
+            <th>The Change</th>
             <th>Section</th>
             <th>Last Updated</th>
         </thead>
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
                 <tr>
-                    <td class="w-1/2"><a href="{{ github_commits_url }}" target="_blank">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td class="w-1/2"><a href="{{ url }}">{{ entry:title ?? entry:slug|title }}</a></td>
+                    <td><a href="{{ github_commits_url }}" target="_blank">View</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
                     <td x-text="dayjs('{{ entry:last_modified format="Y-m-d H:i:s" }}').fromNow(true) + ' ago'"></td>
                 </tr>
@@ -89,35 +91,4 @@
         </tbody>
     </table>
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
-</section>
-
-<section class="mt-32 lg:mt-64 relative lg:min-h-[440px] dark:mt-32">
-    <img src="/img/splatter-sponsors.png" alt="" class="hidden lg:block absolute max-w-none w-[1100px] left-[-170px] top-[-130px] dark:hidden" loading="lazy">
-    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
-    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
-    <div class="bg-yellow border shadow-lg p-4 md:px-5 md:py-8 relative">
-        <header class="markdown markdown-tight bg-transparent mb-5">
-            <h2 class="mb-3 dark:text-black">Sponsors</h2>
-            <p class="text-black text-base md:w-4/5">We've reserved this space to thank our top open source sponsors! Donations through sponsors go towards building new Starter Kits, Addons, and other open source resources.</p>
-        </header>
-        <div class="flex flex-wrap">
-            <a href="https://spiegel.de" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
-                <img src="https://pbs.twimg.com/profile_images/1214723509521387520/7UENeEVp_400x400.jpg" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
-                <span class="font-bold">DER SPIEGEL</span>
-            </a>
-            {{ hero_sponsors }}
-                {{ if error }}
-                    <p class="text-xs flex items-center m-0">We're having trouble loading the sponsors at the moment.</p>
-                {{ else }}
-                    <a href="{{ url === 'https://github.com/remarkabledev' ? 'https://remarkable.dev' : url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
-                        <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
-                        <span class="font-bold">{{ name }}</span>
-                    </a>
-                {{ /if }}
-            {{ /hero_sponsors }}
-        </div>
-        <a href="https://github.com/sponsors/statamic" class="button bg-white">
-            Become a Statamic Sponsor &rarr;
-        </a>
-    </div>
 </section>

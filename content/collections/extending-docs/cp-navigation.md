@@ -29,7 +29,7 @@ Let's assume we're creating a Store addon, and want to add a `Store` nav item to
 ```php
 use Statamic\Facades\CP\Nav;
 
-public function boot()
+public function bootAddon()
 {
     Nav::extend(function ($nav) {
         $nav->content('Store')
@@ -51,6 +51,10 @@ Nav::extend(function ($nav) {
 ```
 
 If you wish to use a custom SVG or one from the [Streamline Icon Pack](https://app.streamlinehq.com/icons/streamline-light) that's not included in Statamic, you may pass the SVG icon to the `icon()` method, in place of an icon name.
+
+:::tip
+You can access the complete set of default icons for the icon() method in the vendor files located at vendor/statamic/cms/resources/svg/icons. Alternatively, you can also view them directly [on GitHub](https://github.com/statamic/cms/tree/4.x/resources/svg/icons/light)
+:::
 
 ```php
 Nav::extend(function ($nav) {

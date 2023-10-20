@@ -70,6 +70,7 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 |------------|--------|
 | Access the Control Panel | `access cp` |
 | Create, edit, and delete collections | `configure collections` |
+| Access site | `access {site} site` |
 | View entries | `view {collection} entries` |
 | ↳  Edit entries | `edit {collection} entries` |
 | &nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
@@ -109,6 +110,13 @@ Author permissions are a little bit special. They determine the control users ca
 :::warning Important!
 This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
 :::
+
+### Site Permissions
+
+When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
+
+For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
+
 
 ### Super Users
 
@@ -161,6 +169,29 @@ While users are stored in files by default — like everything else in Statamic 
 - [Storing Users in a Database](/tips/storing-users-in-a-database)
 - [Custom User Storage](/tips/storing-users-somewhere-custom)
 - [Using an Independent Auth Guard](/tips/using-an-independent-authentication-guard)
+
+## Avatars
+
+Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/asset) that falls back to the user's initials.
+
+This avatar is used throughout the Control Panel to represent the user when the context is important. For example, on your user dropdown menu, as an entry's "Author", or while using [Real Time Collaboration](https://github.com/statamic/collaboration).
+
+<figure>
+    <img src="/img/user-avatar.png" alt="A user's avatar in the control panel global header" width="246">
+    <figcaption>Behold — an avatar!</figcaption>
+</figure>
+
+## Language Preference
+
+Each user can have their own preferred language in the Control Panel. Head to your preferences area by clicking on the ⚙️ gear/cog icon in the global header and then go to **Preferences**.
+
+You can set the language for _everyone_ by going to **Default**, or you can set by Role or just the current user (yourself) with **Override For User**.
+
+
+<figure>
+    <img src="/img/user-language-preference.png" alt="User Language Preferences">
+    <figcaption>Last we checked, Statamic has been translated into a lot of languages.</figcaption>
+</figure>
 
 ## OAuth
 

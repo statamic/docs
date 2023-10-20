@@ -8,21 +8,21 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3 || ^8.0",
-        "fideloper/proxy": "^4.0",
-        "laravel/framework": "^8.0",
+        "php": "^7.4 || ^8.0",
+        "laravel/framework": "^10.0",
         "laravel/tinker": "^2.0",
-        "statamic/cms": "3.2.*",
-        "statamic/ssg": "^0.8.0",
-        "torchlight/torchlight-commonmark": "^0.5.1"
+        "league/commonmark": "^2.0",
+        "statamic/cms": "^4.0",
+        "statamic/ssg": "^2.0",
+        "torchlight/torchlight-commonmark": "^0.5.5"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
-        "facade/ignition": "^2.3.6",
+        "spatie/laravel-ignition": "^2.0",
         "filp/whoops": "^2.0",
         "fakerphp/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^5.0",
+        "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.0"
     },
     "config": {
@@ -53,7 +53,6 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
         "pre-update-cmd": [

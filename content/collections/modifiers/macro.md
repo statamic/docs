@@ -23,7 +23,7 @@ title: Actually i don't know what we're talking about.
 ```
 
 ```
-{{ title | macro:headline }}
+{{ title | macro('headline') }}
 ```
 
 ```html
@@ -43,5 +43,5 @@ excerpt:
 This is equivalent to:
 
 ```
-{{ content | safe_truncate:175:... }}
+{{ content | safe_truncate(175, '...') }}
 ```

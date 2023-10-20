@@ -28,7 +28,7 @@ sponsors:
 ```
 
 ```
-{{ sponsors group_by="sport" }}
+{{ sponsors | group_by('sport') }}
   <h1>Basketball</h2>
   {{ basketball }}
     {{ team }}

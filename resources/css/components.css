@@ -51,8 +51,12 @@
             @apply relative;
         }
 
-        p.caption {
-            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black text-sm font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+        .caption {
+            @apply relative float-right -top-px bg-white right-0 bottom-0 font-mono-alt border subpixel-antialiased italic text-black font-bold rotate-0 px-3 py-1 shadow-yellow-md;
+
+            p {
+                @apply text-sm;
+            }
         }
     }
 
@@ -87,29 +91,6 @@
     }
 }
 
-.hint.callout {
-    display: none;
-}
-
-@screen xl {
-    .hint.callout {
-        @apply border-none block bg-transparent relative shadow-none h-0 m-0 p-0;
-        .hint-title { display: none; }
-        a {
-            @apply bg-white hover:bg-mint no-underline absolute p-3 w-64 border shadow-stack-sm -right-64 text-black font-normal;
-            p {
-                @apply text-sm;
-            }
-        }
-    }
-}
-
-@screen 2xl {
-    .hint.callout a {
-        @apply -right-80;
-    }
-}
-
 
 /* Video Embed */
 /* -------------------------------------------------- */
@@ -128,11 +109,12 @@
 
 figure,
 .screenshot {
-    @apply bg-mint border p-3 md:p-6 my-16 shadow-stack-sm relative;
+    @apply bg-mint border py-3 md:py-6 my-16 shadow-stack-sm relative;
     @apply pb-6 md:pb-12;
 
     img {
-        @apply border shadow-lg mx-auto;
+        @apply shadow-lg mx-auto border-none;
+        max-width: 90%;
     }
 
 }
@@ -226,4 +208,14 @@ figure figcaption {
 
 .badge {
     @apply text-white bg-black text-xs inline-block py-1 px-2 font-mono rounded-sm shadow-stack-sm mb-4;
+}
+
+dl {
+    @apply p-0 inline-flex border text-white bg-black shadow-stack-sm mb-2 font-mono text-xs mb-4;
+    dt {
+        @apply py-1 px-2;
+    }
+    dd {
+        @apply py-1 px-2 bg-mint text-black;
+    }
 }

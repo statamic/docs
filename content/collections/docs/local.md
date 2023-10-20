@@ -41,7 +41,7 @@ If you run into any issues or errors, check out this [helpful article](/troubles
 :::
 
 ## Install Statamic
-In your terminal, `cd` to the directory you want to start a new Statamic project in and run the install command.
+In your terminal, `cd` to the parent directory you want to start a new Statamic project in and run the install command.
 
 ``` shell
 statamic new $project_name
@@ -74,7 +74,7 @@ Check out the [troubleshooting section](/troubleshooting) to get help about comm
 
 ## What's Next
 
-You're now (probably) running the latest and greatest version of Statamic 3! Well done! 🎉 You can now get on with the fun parts.
+You're now (probably) running the latest and greatest version of Statamic! Well done! 🎉 You can now get on with the fun parts.
 
 The [Quick Start Guide](/quick-start-guide) is a great place to head next if you're just kicking the tires (or tyres — if you're not from our neck of the woods).
 
@@ -85,7 +85,7 @@ You can use Pro features while in development (like users, permissions revisions
 :::tip Another Hot Tip
 The default install and all first-party Starter Kits use [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
 
-This is super easy and happens automatically when you run `npm run watch` from the terminal in your project directory (as long as you've run `npm install` first).
+This is super easy and happens automatically when you run `npm run dev` from the terminal in your project directory (as long as you've run `npm install` first).
 :::
 
 [valet]: https://laravel.com/docs/valet

@@ -17,7 +17,7 @@ Pretend there are lots of words here...
 
 ```
 <h1>{{ title }}</h1>
-<p>{{ content | read_time:180 }} min</p>
+<p>{{ content | read_time(180) }} min</p>
 ```
 
 ```html

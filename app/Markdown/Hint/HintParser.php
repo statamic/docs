@@ -2,28 +2,48 @@
 
 namespace App\Markdown\Hint;
 
-use League\CommonMark\Block\Parser\BlockParserInterface;
-use League\CommonMark\ContextInterface;
-use League\CommonMark\Cursor;
+use League\CommonMark\Node\Block\AbstractBlock;
+use League\CommonMark\Parser\Block\AbstractBlockContinueParser;
+use League\CommonMark\Parser\Block\BlockContinue;
+use League\CommonMark\Parser\Block\BlockContinueParserInterface;
+use League\CommonMark\Parser\Cursor;
 
-class HintParser implements BlockParserInterface
+class HintParser extends AbstractBlockContinueParser implements BlockContinueParserInterface
 {
-    public function parse(ContextInterface $context, Cursor $cursor): bool
+    private Hint $block;
+
+    public function __construct(?string $headerText)
     {
-        if ($cursor->isIndented()) {
-            return false;
-        }
+        $this->block = new Hint();
+        $this->block->setHeader($headerText);
+    }
 
-        $fence = $cursor->match('/^(:::)(?:.+)$/');
+    public function getBlock(): Hint
+    {
+        return $this->block;
+    }
 
-        if ($fence === null) {
-            return false;
-        }
-
-        [$type, $heading] = array_pad(explode(' ', substr($fence, 3), 2), 2, '');
-
-        $context->addBlock(new Hint($type, $heading));
-
+    public function isContainer(): bool
+    {
         return true;
+    }
+
+    public function canContain(AbstractBlock $childBlock): bool
+    {
+        return true;
+    }
+
+    public function canHaveLazyContinuationLines(): bool
+    {
+        return false;
+    }
+
+    public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): ?BlockContinue
+    {
+        if ($cursor->getLine() === ':::') {
+            return BlockContinue::finished();
+        }
+
+        return BlockContinue::at($cursor);
     }
 }

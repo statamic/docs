@@ -10,7 +10,13 @@ Have you ever had some complex data or conditions you found challenging to work 
 
 While Antlers is powerful and flexible, what if you could just jump into PHP-land, work out some tricky logic, and put the data back in place before it was rendered?
 
-Enough rhetorical questions – in Statamic 3 you can now solve one of those two problems with a View Model. 🍌
+Enough rhetorical questions – in Statamic you can now solve one of those two problems with a View Model. 🍌
+
+:::tip
+ViewModels manipulate the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
+
+You may consider creating a [computed value](/computed-values) for an entry instead, which would work anywhere, for example in other parts of PHP, or within collection loops in your templates.
+:::
 
 ## What's a View Model?
 
@@ -82,13 +88,7 @@ class ArticleStats extends ViewModel
 </p>
 ```
 
-View models help keep your views nice and clean. Use them often and you'll find that they're quickly becoming your new best friend.
-
-:::tip
-ViewModels manipulate the _view's_ data at the **last possible moment before render**, not the entry data itself. This approach isn't appropriate for globally altering or manipulating content.
-
-You may consider creating a [computed value](/computed-values) for an entry instead, which would work anywhere, for example in other parts of PHP, or within collection loops in your templates.
-:::
+View models help keep your views nice and clean. Use them often and you'll find that they're quickly becoming your new best friend. Unless you find a better friend named [Computed Values](/computed-values). He's kind of the new kid in town and his jean jacket is straight fire.
 
 
 [antlers]: /antlers

@@ -2,58 +2,69 @@
 
 namespace App\Markdown\Hint;
 
-use League\CommonMark\Block\Element\AbstractBlock;
-use League\CommonMark\Cursor;
+use League\CommonMark\Node\Block\AbstractBlock;
+use League\CommonMark\Node\StringContainerInterface;
 
-class Hint extends AbstractBlock
+class Hint extends AbstractBlock implements StringContainerInterface
 {
-    protected $type;
-    protected $title;
+    private ?string $header = 'Hot Tip!';
 
-    public function __construct($type, $title)
-    {
-        $this->type = $type;
-        $this->title = $title;
-    }
-
-    public function canContain(AbstractBlock $block): bool
-    {
-        return true;
-    }
-
-    public function isCode(): bool
-    {
-        return false;
-    }
-
-    public function matchesNextLine(Cursor $cursor): bool
-    {
-        if ($cursor->match('/^:::$/')) {
-            return false;
-        }
-
-        return true;
-    }
+    protected string $literal;
 
     public function getTitle(): ?string
     {
-        if ($this->title) {
-            return $this->title;
+        $words = $this->getHeaderWords();
+
+        if (count($words) > 1) {
+
+            array_shift($words);
+
+            return implode(' ', $words);
         }
 
-        if ($this->type === 'warning') {
+        if ($words[0] === 'tip') {
+            return 'Hot Tip!';
+        }
+
+        if ($words[0] === 'warning') {
             return 'Warning!';
         }
 
-        if ($this->type === 'best-practice') {
+        if ($words[0] === 'best-practice') {
             return 'Best Practice';
         }
 
-        return 'Hot Tip!';
+        return null;
     }
 
     public function getType(): ?string
     {
-        return $this->type;
+        $words = $this->getHeaderWords();
+
+        if (count($words) > 0) {
+            return $words[0];
+        }
+
+        return null;
+    }
+
+    public function getHeaderWords(): array
+    {
+        return \preg_split('/\s+/', $this->header ?? '') ?: [];
+    }
+
+    public function setHeader($header)
+    {
+        $this->header = $header;
+    }
+
+    public function setLiteral(string $literal): void
+    {
+        $this->literal = $literal;
+    }
+
+    public function getLiteral(): string
+    {
+        return $this->literal;
     }
 }

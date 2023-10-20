@@ -2,9 +2,10 @@
 title: Markdown
 description: Our beautiful Markdown editor with preview, assets integration, and more.
 intro: Write Markdown with the help of formatting buttons, assets integration, fullscreen mode, a Markdown cheatsheet, and HTML preview mode. What more do you need?
-screenshot: fieldtypes/screenshots/markdown.png
+screenshot: fieldtypes/screenshots/v4/markdown.png
 id: 607cfe62-7239-461b-8f55-8e7a312c2d5d
-stage: 4
+related_entries:
+  - be292d2b-dc0e-48dc-bce4-0058df27ccc6
 options:
   -
     name: antlers
@@ -37,6 +38,11 @@ options:
     description: |
       The folder (relative to the container) to begin browsing. Default: the root folder of the container.
   -
+    name: heading_anchors
+    type: boolean
+    description: |
+      Inject anchor links to all of your heading elements (`<h1>`, `<h2>`, etc). Default: `false`.
+  -
     name: parser
     type: string
     description: >
@@ -51,6 +57,11 @@ options:
     type: boolean
     description: >
       Automatically convert straight quotes into curly quotes, dashes into en/em-dashes, and other similar text transformations. Default: `false`.
+  -
+    name: table_of_contents
+    type: boolean
+    description: >
+      Automatically insert a table of contents at the top of your content with links to your headings. Default: `false`.
 ---
 ## Overview
 
@@ -88,7 +99,7 @@ The Markdown content will be automatically transformed into HTML through [augmen
 The Markdown fieldtype also has a dark mode when in fullscreen for those of you who like that sort of thing.
 
 <figure>
-    <img src="/img/fieldtypes/screenshots/markdown-dark-mode.png" alt="Dark Mode for Markdown">
+    <img src="/img/fieldtypes/screenshots/markdown-dark-mode-v4.png" alt="Dark Mode for Markdown">
     <figcaption><span class="not-italic">😎</span> Sunglasses off.</figcaption>
 </figure>
 

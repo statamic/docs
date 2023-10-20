@@ -14,9 +14,9 @@ end_date: December 1 2015
 ```
 
 ```
-{{ if end_date | is_before:start_date }}
-{{ if start_date | is_before:2014 }}
-{{ if start_date | is_before:end_date }}
+{{ if end_date | is_before($start_date) }}
+{{ if start_date | is_before(2014) }}
+{{ if start_date | is_before($end_date) }}
 ```
 
 ```html

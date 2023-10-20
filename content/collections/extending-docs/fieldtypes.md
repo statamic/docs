@@ -150,6 +150,12 @@ protected function configFieldItems(): array
 }
 ```
 
+The configuration values can be accessed in the Vue component using the `config` property.
+
+``` js
+return this.config.mode; // regular
+```
+
 ### Options
 
 | Key | Definition |
