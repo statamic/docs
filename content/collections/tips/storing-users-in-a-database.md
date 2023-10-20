@@ -72,9 +72,6 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
     }
     ```
 
-:::tip
-**Simon Hamp** has a good [starter migration script](https://gist.github.com/simonhamp/a2b9113c100e5194db53298162f1dde0) you can start from and customize for your own needs.
-:::
 ## In an existing Laravel app
 
 If you've installed Statamic into an existing Laravel app, it will already be configured to use the Eloquent driver.
