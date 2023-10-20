@@ -138,7 +138,7 @@ This works like the `unique_entry_value` rule, but for taxonomy terms.
 This works like the `unique_entry_value` rule, but for users.
 
 :::tip
-If you want to override the column that is being validated (e.g. in Livewire Form Objects), you can do so by passing a second parameter to the validation rule, such as `unique_user_value:{id|null},{column}`.
+If you want to override the field that is being validated (e.g. in Livewire Form Objects), you can do so by passing a second parameter to the validation rule, such as `unique_user_value:{id},username`.
 :::
 
 
