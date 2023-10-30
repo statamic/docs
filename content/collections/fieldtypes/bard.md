@@ -23,6 +23,8 @@ options:
 
       These are the defaults:
       ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
+
+      When you have the `image` button toggled, make sure to define an Asset Container in the Bard field's settings, otherwise the button won't show.
   -
     name: target_blank
     type: boolean
