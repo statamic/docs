@@ -119,11 +119,19 @@ Nav::extend(function ($nav) {
 
 ## Removing Items
 
-To remove an item, we only need to specify the section and item name:
+To remove an item, we may specify the section and item name:
 
 ```php
 Nav::extend(function ($nav) {
     $nav->remove('Content', 'Store');
+});
+```
+
+To remove a child of an item, we can pass a third param to specify the child's name:
+
+```php
+Nav::extend(function ($nav) {
+    $nav->remove('Content', 'Collections', 'Products');
 });
 ```
 
