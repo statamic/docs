@@ -173,5 +173,4 @@ The code examples above demonstrate how to [add](#adding-items), [modify](#modif
 | `children()` | `$children` (array\|collection\|closure) | Define child items. |
 | `can()` | `$ability` (string), `$params` (mixed, optional) | Define authorization. |
 | `view()` | `$view` (string) | Define custom view. |
-| `active()` | `$pattern` (string) | A regular expression to check if the nav item is active. The URL will be relative from the CP. eg. on `/cp/foo`, you'd just get `foo`. |
 
