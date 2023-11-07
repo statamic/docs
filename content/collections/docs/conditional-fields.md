@@ -23,6 +23,8 @@ You may specify various rules for showing a field under either the `if` / `show_
 
 Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
 
+Note that conditionally hidden fields might not be saved, see [Fields](https://statamic.dev/fields#field-data-flow).
+
 :::tip
 If you want to cosmetically hide a larger set of fields to get them out of the user's way, you can use the [Revealer](/fieldtypes/revealer) fieldtype to hide them until the user needs them without disrupting data flow on form submission.
 :::
@@ -297,5 +299,3 @@ For more advanced conditional validation, take a look at Laravel's `required_if`
 ## Templating
 
 You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](https://statamic.dev/tags/form-create#conditional-fields).
-
-
