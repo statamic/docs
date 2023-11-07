@@ -23,7 +23,7 @@ You may specify various rules for showing a field under either the `if` / `show_
 
 Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
 
-If you require conditionally hidden fields to be saved with your data, you may use the `always_save` config option (read more about [field data flow](https://statamic.dev/fields#field-data-flow)).
+If you require conditionally hidden fields to be saved with your data, you may use the `always_save` config option (read more about [field data flow](/fields#field-data-flow)).
 
 :::tip
 If you want to cosmetically hide a larger set of fields to get them out of the user's way, you can use the [Revealer](/fieldtypes/revealer) fieldtype to hide them until the user needs them without disrupting data flow on form submission.
