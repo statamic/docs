@@ -1,9 +1,9 @@
 ---
+id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+blueprint: page
 title: Routing
 template: page
-intro: Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.
-blueprint: page
-id: 8d9cfb16-36bf-45d0-babb-e501a35ddae6
+intro: 'Statamic has several ways it routes requests and defines URLs and patterns, all of which are listed and described in this section.'
 ---
 ## Overview
 
@@ -77,6 +77,16 @@ Route::permanentRedirect('/here', '/there');
 ## Laravel Routes
 
 You can also configure regular Laravel routes much like you would in a regular Laravel application in `routes/web.php`. You can use closures, point to a [controller](/controllers), and so on. This is [standard Laravel stuff](https://laravel.com/docs/routing) and the standard Laravel docs apply.
+
+:::tip
+If you're using [Static Caching](/static-caching), make sure to add Statamic's `Cache` middleware to any Laravel routes so they get static-ly cached.
+
+```php
+Route::get('/thingy', function () {
+	// ...
+})->middleware(\Statamic\StaticCaching\Middleware\Cache::class);
+```
+:::
 
 ## Error Pages
 
