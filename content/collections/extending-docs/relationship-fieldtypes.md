@@ -46,7 +46,7 @@ class Tweets extends Relationship
 
 There are a handful of methods and properties inside the `Relationship` class, and you can override them to control how it functions.
 
-There are three main areas you will want to customize. The index items, the selected item data, and the listings data.
+There are three main areas you will want to customize. The index items, the selected item data, and the listing data.
 
 ## Index Items
 
@@ -128,11 +128,11 @@ public function getItemData($values, $site = null)
 }
 ```
 
-### Listings Data
+### Listing Data
 
-When your field's data is going to be displayed in a listings view, like a entries listing (or an entries selector), you need to override the `preProcessIndex`.
+When field data is to be displayed in a listing view — an entries listing or entries selector for example, the `preProcessIndex` will need to be overwritten.
 
-In our Twitter field, maybe we'd like to show only the text:
+In our Twitter field, we'd like to show only the text:
 
 ```php
 public function preProcessIndex($data)
@@ -144,8 +144,6 @@ public function preProcessIndex($data)
 ```
 
 ## Creating Items
-
-Todo.
 
 To disable creation of items, you can add the canCreate property.
 
