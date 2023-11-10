@@ -129,7 +129,7 @@ public function getItemData($values, $site = null)
 
 ### Listing Data
 
-When field data is to be displayed in a listing view — an entries listing or entries selector for example, you may customize the display by overwritting the `preProcessIndex` method.
+When field data is to be displayed in a listing view — an entries listing or entries selector for example, you may customize the display by overwriting the `preProcessIndex` method.
 
 In our Twitter field, let's show only the text:
 
