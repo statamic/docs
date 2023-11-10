@@ -4,7 +4,6 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347303
 intro: The Relationship fieldtype is one of the more powerful fields in Statamic's core. So powerful, in fact, that it earns its very own page in the docs. This is that page.
-stage: 1
 id: 06813e5d-158e-4318-aa4a-b29fd87d107f
 ---
 By default, the relationship fieldtype lets you select entries from various collections as well as create and edit items on the fly from _within_ the field.
@@ -130,9 +129,9 @@ public function getItemData($values, $site = null)
 
 ### Listing Data
 
-When field data is to be displayed in a listing view — an entries listing or entries selector for example, the `preProcessIndex` will need to be overwritten.
+When field data is to be displayed in a listing view — an entries listing or entries selector for example, you may customize the display by overwritting the `preProcessIndex` method.
 
-In our Twitter field, we'd like to show only the text:
+In our Twitter field, let's show only the text:
 
 ```php
 public function preProcessIndex($data)
