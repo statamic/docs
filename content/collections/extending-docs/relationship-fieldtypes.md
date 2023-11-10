@@ -46,7 +46,7 @@ class Tweets extends Relationship
 
 There are a handful of methods and properties inside the `Relationship` class, and you can override them to control how it functions.
 
-There are two main areas you will want to customize. The index items and the selected item data.
+There are three main areas you will want to customize. The index items, the selected item data, and the listings data.
 
 ## Index Items
 
@@ -128,6 +128,21 @@ public function getItemData($values, $site = null)
 }
 ```
 
+### Listings Data
+
+When your field's data is going to be displayed in a listings view, like a entries listing (or an entries selector), you need to override the `preProcessIndex`.
+
+In our Twitter field, maybe we'd like to show only the text:
+
+```php
+public function preProcessIndex($data)
+{
+    $tweets = Twitter::getStatusesLookup(['id' => implode(',', $data)]);
+
+    return collect($tweets)->map(fn($tweet) => $tweet->text)->join(', ');
+}
+```
+
 ## Creating Items
 
 Todo.
@@ -174,11 +189,11 @@ Vue.component('TwitterRelationshipItem', require('./TwitterRelationshipItem.vue'
 
 ``` vue
 <template>
-    <div class="item mb-1 ">
+    <div class="mb-1 item ">
         <div class="item-move">&nbsp;</div>
         <div class="item-inner">
             <div class="p-3">
-                <p class="text-lg mb-2">{{ item.text }}</p>
+                <p class="mb-2 text-lg">{{ item.text }}</p>
                 <p class="text-grey">{{ item.user }} – {{ item.date_relative }}</p>
             </div>
         </div>
