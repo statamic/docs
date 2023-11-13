@@ -7,7 +7,7 @@ blueprint: page
 ---
 ## Overview
 
-Statamic taps into Laravel's clean, simple API over the popular [SwiftMailer][swiftmailer] library (don't worry, the library is better than the neglected webpage) with drivers for SMTP, Mailgun, Postmark, Amazon SES, and `sendmail`, allowing you to quickly get started sending mail through a local or cloud based service of your choice.
+Statamic taps into Laravel's clean, simple mail API with drivers for SMTP, Mailgun, Postmark, Amazon SES, and `sendmail`, allowing you to quickly get started sending mail through a local or cloud based service of your choice.
 
 ## Configuring
 
@@ -40,8 +40,3 @@ You can modify the HTML and plain-text template used by mail notifications by pu
 ``` shell
 php artisan vendor:publish --tag=laravel-notifications
 ```
-
-
-
-
-[swiftmailer]: https://swiftmailer.symfony.com
