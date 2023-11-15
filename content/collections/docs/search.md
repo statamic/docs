@@ -334,6 +334,26 @@ composer require algolia/algoliasearch-client-php
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.
 
+### Settings
+You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/) in a `settings` array.
+
+```php
+'driver' => 'algolia',
+'searchables' => 'all',
+'settings' => [ // [tl! **:start]
+    'attributesForFaceting' => [
+        'filterOnly(post_tags)',
+        'filterOnly(post_categories)',
+    ],
+    'customRanking' => [
+        'asc(attribute1)',
+        'desc(attribute2)',
+        'typo',
+        'words'
+    ]
+] // [tl! **:end]
+```
+
 ### Templating with Algolia
 
 We recommend using the [Javascript implementation](https://www.algolia.com/doc/api-client/getting-started/install/javascript/?language=javascript) to communicate directly with them for the frontend of your site. This bypasses Statamic entirely in the request lifecycle and is incredibly fast.
