@@ -23,10 +23,3 @@ If you've installed Statamic into an existing Laravel application, it will be ex
         ],
     ],
    ```
-3. Uncomment the `users` store in `config/statamic/stache.php`.
-    ``` php
-    'users' => [
-        'class' => Stores\UsersStore::class,
-        'directory' => base_path('users'),
-    ],
-    ```
