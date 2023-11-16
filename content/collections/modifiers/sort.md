@@ -27,11 +27,11 @@ complex:
 ```
 {{ primitive | sort | list }}
 
-{{ complex | sort($last_name) }}
+{{ complex | sort('last_name') }}
     Hello, {{ first_name }} {{ last_name }} - {{ key }}
 {{ /complex }}
 
-{{ complex | sort($last_name, 'desc') }}
+{{ complex | sort('last_name', 'desc') }}
     Hello, {{ first_name }} {{ last_name }} - {{ key }}
 {{ /complex }}
 ```
