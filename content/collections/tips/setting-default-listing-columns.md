@@ -1,6 +1,6 @@
 ---
 id: 62656a00-d225-4906-8387-de780476497e
-title: 'Setting Default Listing Columns'
+title: 'Setting Default Columns on Listing Tables'
 intro: ''
 template: page
 categories:
