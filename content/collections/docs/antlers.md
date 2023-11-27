@@ -1335,7 +1335,7 @@ The following two syntax examples are functionally equivalent, but each uses a d
 
 ### Accessing Data in PHP
 
-Data in the [Cascade](/data-injeritance) can be accessed in much of the same way it is inside of a regular Antlers expression.
+Data in the [Cascade](/data-inheritance) can be accessed in much of the same way it is inside of a regular Antlers expression.
 
 ```antlers
 
