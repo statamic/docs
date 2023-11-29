@@ -30,8 +30,8 @@ return [
     'sites' => [
         'default' => [
             'name' => config('app.name'),
-            'locale' => 'en',
-            'lang' => 'en_US',
+            'locale' => 'en_US',
+            'lang' => 'en_US', // Optionally set which language translations to use. 
             'url' => '/',
             'direction' => 'ltr',
         ]
