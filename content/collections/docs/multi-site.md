@@ -33,6 +33,7 @@ return [
             'locale' => 'en_US',
             'url' => '/',
             'direction' => 'ltr',
+            'lang' => 'en',
         ]
     ]
 ];
@@ -51,7 +52,22 @@ To see the list of installed locales on your system or server, run the command `
 ### Language
 Statamic's control panel has been translated into more than a dozen languages. The language translations files live in `resources/lang`.
 
-You may specify which language translation to be used for each site with the `lang` setting.
+You may specify which language translation to be used for each site with the `lang` setting. If you leave it off, it'll use the short version of the `locale`. e.g. If the locale is `en_US`, the lang will be `en`.
+
+```php
+'sites' => [
+    'de' => [
+        'name' => 'Deutsche',
+        'locale' => 'de_DE',
+        // 'lang' => 'de', // Not needed as 'de' is implied.
+    ],
+    'de_ch' => [
+        'name' => 'Deutsche (Switzerland)',
+        'locale' => 'de_CH',
+        'lang' => 'de_CH', // We want the de_CH language, not de.
+    ]
+]
+```
 
 Note that both Statamic and Laravel don't ship with frontend language translations out of the box. You have to provide your own string files for this. There is a great package called [Laravel Lang](https://github.com/Laravel-Lang/lang) containing over 75 languages that can help you out with this.
 
