@@ -435,5 +435,29 @@ Some things to note here:
 >
 ```
 
+To build on the regular form submission example above, here's an example for AJAX submission:
+
+```antlers
+<div x-data='{
+    form: $form(
+        "post", 
+        $refs.form.getAttribute("action"), 
+        JSON.parse($refs.form.getAttribute("x-data"))
+    ).setErrors({{ error | json }}), {{# [tl! --] #}}
+    ), {{# [tl! ++:start] #}}
+    init() {
+        $refs.form.addEventListener("submit", evt => {
+            evt.preventDefault();
+            this.form.submit().then(response => {
+                this.form.reset();
+                console.log("Success")
+            }).catch(error => {
+                console.log(error);
+            });
+        });
+    } {{# [tl! ++:end] #}}
+}'>
+```
+
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
