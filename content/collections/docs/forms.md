@@ -428,7 +428,7 @@ Some things to note here:
     {{ if placeholder }}placeholder="{{ placeholder }}"{{ /if }}
     {{ if character_limit }}maxlength="{{ character_limit }}"{{ /if }}
     {{ if autocomplete }}autocomplete="{{ autocomplete }}"{{ /if }}
-    {{ if js_driver }}{{ js_attributes }}{{ /if }} <!-- [tl! -- **] -->
+    {{ if js_driver }}{{ js_attributes }}{{ /if }}
     x-model="form.{{ handle }}"  <!-- [tl! ++ **] -->
     @change="form.validate('{{ handle }}')"  <!-- [tl! ++ **] -->
     {{ if validate|contains:required }}required{{ /if }}
