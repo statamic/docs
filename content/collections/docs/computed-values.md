@@ -38,7 +38,7 @@ Collection::computed('articles', 'shares', function ($entry, $value) {
 
 If you want to use the same computed value across multiple collections, you may provide an array of collections instead:
 
-```
+```php
 use Statamic\Facades\Collection;
 
 Collection::computed(['articles', 'pages'], 'shares', function ($entry, $value) {
