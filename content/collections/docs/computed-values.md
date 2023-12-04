@@ -36,6 +36,16 @@ Collection::computed('articles', 'shares', function ($entry, $value) {
 });
 ```
 
+If you want to use the same computed value across multiple collections, you may provide an array of collections instead:
+
+```
+use Statamic\Facades\Collection;
+
+Collection::computed(['articles', 'pages'], 'shares', function ($entry, $value) {
+    return TooterService::shareCount($entry->permalink);
+});
+```
+
 ### Overriding Using Stored Values
 
 The second `$value` parameter in the `computed()` callback function will return a _stored_ value under the same handle, if one exists, allowing you to override computed values if necessary.
