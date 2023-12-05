@@ -7,7 +7,7 @@ intro: Query scopes and filters allow you to narrow down query results using cus
 stage: 1
 id: 290e9a74-7c6b-4fd0-a90a-23f7ac38d0c5
 ---
-You may create scopes that can be used in various places, such as inside the collection tag or inside control panel listings.
+You may create scopes that can be used in various places, such as inside the collection tag, entry queries or inside control panel listings.
 
 ## Scopes
 

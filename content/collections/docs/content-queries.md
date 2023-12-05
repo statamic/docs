@@ -494,7 +494,21 @@ Entry::query()->count();
 
 
 
+## Query Scopes
 
+The query builder allows you to use apply any custom query scopes. Simply call a method with the same name as the query scope.
+
+For example, if you have a query scope called `PastNewsArticles`, you'd use it like this in your query:
+
+```php
+Entry::query()->pastNewsArticles()->get();
+```
+
+By default, query scopes are available to all query builders. If you want to restrict a query scope to be available on only certain query builders, you can specify the builders in a `$builders` property on the scope class:
+
+```php
+protected static $builders = ['entries'];
+```
 
 ## Paginating
 
