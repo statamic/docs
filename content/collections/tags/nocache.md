@@ -182,7 +182,7 @@ Alternatively, you can use the `@auto` placeholder for Statamic to extract the v
 ```
 
 :::tip
-It's worth noting, the `nocache` tag won't be able to extract variables used inside if statements, PHP code or tags. You will need to explicitly define the variables you need in these cases.
+It's worth noting, the `nocache` tag won't be able to extract variables used inside partials or PHP files like custom tags. You will need to explicitly define the variables you need in these cases.
 :::
 
 You can also combine them to extract the variables from the template and add additional onces:
