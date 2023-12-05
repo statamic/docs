@@ -504,9 +504,19 @@ For example, if you have a query scope called `PastNewsArticles`, you'd use it l
 Entry::query()->pastNewsArticles()->get();
 ```
 
+You can also provide arguments to query scopes:
+
+```php
+Entry::query()->pastNewsArticles('>=', 2012)->get();
+```
+
+Any arguments will be available as an array of `$values` in the query scope's `apply` method.
+
 By default, query scopes are available to all query builders. If you want to restrict a query scope to be available on only certain query builders, you can specify the builders in a `$builders` property on the scope class:
 
 ```php
+// app/Scopes/PastNewsArticles.php
+
 protected static $builders = ['entries'];
 ```
 
