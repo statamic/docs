@@ -253,7 +253,7 @@ Branch 'feature/new-thing' set up to track remote branch 'feature/new-thing' fro
 ## Create the Pull Request
 
 :::best-practice
-When creating a pull request that introduces a new feature or changes current behavior, please open an issue referencing your PR on the [statamic/docs](https://github.com/statamic/docs/issues/new) repo. No need to write the docs yourself. We'll take care of that for you. Any hints or bullet points are appreciated though!
+When creating a pull request that introduces a **new feature or changes current behavior**, please open an issue referencing your PR on the [statamic/docs](https://github.com/statamic/docs/issues/new) repo. No need to write the docs yourself. We'll take care of that for you. Any hints or bullet points are appreciated though!
 :::
 
 In the output from pushing your branch above, it'll give you a link to create the pull request. If you missed it, no problem. Just head over to `statamic/cms` and you should see a banner waiting for you.
