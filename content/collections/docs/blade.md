@@ -8,7 +8,7 @@ intro: '[Antlers](/antlers) is not _always_ the best template engine for the job
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend views.
 
-Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing.
+Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](#writing-antlers-in-blade) Blade directive.
 
 ## How to Render a Template with Blade
 
@@ -95,8 +95,19 @@ If you use a method, it will give you a query builder and allow you to chain cla
 @endforeach
 ```
 
+## Writing Pure Antlers in Blade 🆕
 
-## Using Tags with Blade 🆕
+By using the `@antlers` and `@endantlers` Blade directive pair you can write pure Antlers in your Blade templates. Under the hood, this is syntactic sugar for creating an Antlers partial and doing an `@inlcude('antlers_file_name_here')` for you. This means that variables created inside the Antlers will not be available outside of the `@antlers` directive.
+
+```blade
+@antlers
+    {{ collection:articles }}
+        {{ title }}
+    {{ /collection:articles }}
+@endantlers
+```
+
+## Using Tags with Blade
 
 You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax. Instantiate your tag with the `Statamic::tag()` method and chain parameters as needed.
 
@@ -164,7 +175,7 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 ```
 
 
-## Using Modifiers with Blade 🆕
+## Using Modifiers with Blade
 
 You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters. If you use a modifier that can take more than one parameter, pass those in as an array.
 

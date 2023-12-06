@@ -3,7 +3,7 @@ id: d37b2af2-f2bf-493a-9345-7087fb5929ce
 blueprint: page
 title: 'Antlers Templates'
 intro: |-
-  Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic.
+  Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic. Coming from Laravel and want to stick to Blade? [We got you covered](/blade).
   :::tip Hot Tip
     For sites running Statamic 3.2 and older you'll need to use the [legacy Antlers parser](/antlers-legacy). For all other projects, keep reading. You're in the right place.
   :::
