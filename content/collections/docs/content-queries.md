@@ -479,10 +479,6 @@ You may limit and/or skip results by using the `limit` and `offset` methods:
 Entry::query()->offset(5)->limit(5)->get();
 ```
 
-
-
-
-
 ## Count
 
 The query builder also provides the `count` method for retrieving the number of records returned.
@@ -490,11 +486,6 @@ The query builder also provides the `count` method for retrieving the number of 
 ```php
 Entry::query()->count();
 ```
-
-
-
-
-
 
 ## Paginating
 
@@ -507,7 +498,37 @@ Entry::query()->paginate(15);
 This will return an instance of `Illuminate\Pagination\LengthAwarePaginator` that you can use to assemble the pagination style of your choice.
 
 :::tip
-You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/8.x/pagination#paginator-instance-methods)in the Laravel docs.
+You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/10.x/pagination#paginator-instance-methods)in the Laravel docs.
+:::
+
+## Chunking
+
+By chunking down the results of a query you receive a small chunk of results that you can each pass into a closure for further processing or manipulation.
+
+Expects both a `$count` and `$callback` argument.
+
+```php
+Entry::query()->chunk(25, function($entries) {
+    // do something with each chunk
+});
+```
+
+:::tip
+You can [learn more about chunking query results](https://laravel.com/docs/10.x/queries#chunking-results) in the Laravel docs.
+:::
+
+## Lazy Streaming
+
+Lazily streaming query results allows you to define a number of results to be returned from the query, similiar to [chunking](#chunking). The difference is that instead of being able to pass each chunk into a callback, you receive a `LazyCollection`. This can help in situations where you're working with large datasets while keeping the memory usage low.
+
+The chunk size for the lazy query should be at least `1` and defaults to `1000`.
+
+```php
+Entry::query()->lazy(100)
+```
+
+:::tip
+You can learn more about [lazily streaming query results](https://laravel.com/docs/10.x/queries#streaming-results-lazily) and [LazyCollections](https://laravel.com/docs/10.x/collections#lazy-collections) in the Laravel docs.
 :::
 
 ## Repository Classes
