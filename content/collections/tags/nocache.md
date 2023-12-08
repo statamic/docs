@@ -166,6 +166,31 @@ Only the `title`'s change would be reflected, since the `reviews` value was reme
 <div class="movie"> Top Gun 60% Ratings </div>
 ```
 
+#### Performance
+Sometimes, you may notice the contents of the `nocache` taking a while to load. This is often caused by Statamic hydrating all of the variables from the context.
+
+To improve performance, you can explicitly select the variables you need:
+
+```
+{{ nocache select="this|that" }}
+```
+
+Alternatively, you can use the `@auto` placeholder for Statamic to extract the variables from the template (this is similar to the `@shallow` placeholder in the nav tag):
+
+```html
+{{ nocache select="@auto" }}
+```
+
+:::tip
+It's worth noting, the `nocache` tag won't be able to extract variables used inside partials or PHP files like custom tags. You will need to explicitly define the variables you need in these cases.
+:::
+
+You can also combine them to extract the variables from the template and add additional onces:
+
+```
+{{ nocache select="@auto|this|that" }}
+```
+
 ## Full Measure Static Caching
 
 When using the `file` static cache driver (aka. "full measure") the pages will be stored as plain `html` files on your server.
