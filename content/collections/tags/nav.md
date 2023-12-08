@@ -162,6 +162,10 @@ A single level nav, much like something you'd have at the top of your site, can 
 
 ## Show the children of the current page
 
+:::tip
+A simpler way is to use the [children tag](/tags/children) for this.
+:::
+
 Use the `uri` to get the children of the current page.
 
 ```
