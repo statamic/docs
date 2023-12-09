@@ -20,7 +20,7 @@ Command not found: statamic
 You _could_ use the full path to the binary instead:
 
 ``` shell
-$ ~/.composer/vendor/bin/statamic new mysite
+$ ~/.config/composer/vendor/bin/statamic new mysite
 Building a new statamic site.
 ```
 
@@ -38,7 +38,12 @@ Find out what shell you're using by running `echo $SHELL`.
 Then add this to the end of it:
 
 ``` shell
-export PATH=${PATH}:~/.composer/vendor/bin
+export PATH=${PATH}:~/.config/composer/vendor/bin
+```
+
+Reload 'bash'
+```
+source ~/.bashrc
 ```
 
 To test it, open a _new_ terminal window and run `echo $PATH`. You should see the composer directory at the end.
