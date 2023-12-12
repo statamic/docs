@@ -53,6 +53,36 @@ You can pass additional data into a partial via on-the-fly parameters. The param
 
 Note that the `:items` parameter is prefixed by a colon, meaning it will pass the _value_ of a `flavors` variable, if it exists.
 
+
+:::best-practice
+To define the default value of parameters inside your partials, you can use the ["view frontmatter" mechanism  ](/variables/#view-frontmatter).
+
+```
+// including "demo" partial with a custom param1 value
+{{ partial:demo param1="custom param1 value" }}
+
+// "demo" partial content using frontmatter :
+---
+param1: 'default param1 value'
+param2: 'default param2 value'
+---
+
+param1 : {{ view:param1 }} 
+param2 : {{ view:param2 }} 
+```
+
+```
+// output : 
+param1 : custom param1 value
+param2 : default param2 value
+```
+As you can see, the explicitly defined "param1" value is merged with the "view" variable inside your partial.
+
+Using this mechanism is preferable over defining custom variable directly inside your partial. Indeed, [cascades variables](/variables/#reaching-into-the-cascade) beeing accessible from a partial, there is a risk you override one of them. If you have to create a custom variable inside a partial, you can prefix its name with a "_" (ie: "_myCustomPartialVariable = "a value" ), thus limiting the risk of conflict.
+
+:::
+
+
 ## Slots
 
 Sometimes you might need to pass a large chunk of content into a partial. Jamming a bunch of HTML through a parameter would be like trying to shove a pizza through a donut. A hilarious YouTube video but a bad idea on a Friday night.
