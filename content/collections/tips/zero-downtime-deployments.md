@@ -35,7 +35,7 @@ After a successful deployment, the `current` folder is then symlinked to the lat
 
 ## Cache storage
 
-Statamic's content management heavily relies on caching, and sometimes it's necessary for the [Stache](/stache) to store absolute file paths in your app's cache. This can lead to deployment errors when while users are hitting your frontend, since each release [exists in a separate timestamped folder](#understanding-zero-downtime-deployment-file-structure).
+Statamic's content management heavily relies on caching, and sometimes it's necessary for the [Stache](/stache) to store absolute file paths in your app's cache. This can lead to deployment errors when users are hitting your frontend, since each release [exists in a separate timestamped folder](#understanding-zero-downtime-deployment-file-structure).
 
 The solution is simple. Just as you should never share a cache between different websites, you should never share a cache between your deployed releases.
 
