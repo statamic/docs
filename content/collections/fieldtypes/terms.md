@@ -22,7 +22,7 @@ options:
     type: boolean *true*
     description: >
       By default you may create new terms. Set to `false` to only allow selecting from existing terms.
--
+  -
     name: query_scopes
     type: string
     description: >
