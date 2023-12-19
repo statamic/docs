@@ -22,6 +22,11 @@ options:
     description: >
         The folder (relative to the container) to begin browsing. Default: the root folder of the container.
   -
+    name: min_files
+    type: int
+    description: >
+      The minimum number of allowed files. Leave empty for no minimum.
+  -
     name: max_files
     type: int
     description: >
