@@ -129,6 +129,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `folder` | Which folder the file is in |
 | `is_audio` | `true` when file is one of `aac`, `flac`, `m4a`, `mp3`, `ogg`, or `wav`. |
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
+| `is_svg` | `true` when file is an `svg`. |
 | `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
 | `last_modified` | Formatted date string of the last modified time |
 | `last_modified_instance` | [Carbon][carbon] instance of the last modified time |
