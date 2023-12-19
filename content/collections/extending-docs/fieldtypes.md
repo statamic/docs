@@ -120,6 +120,28 @@ class CustomFieldtype extends Fieldtype
 }
 ```
 
+## Fieldtype Categories
+
+When using the blueprint builder inside the control panel, your fieldtype will be listed under the `special` category by default. To move your fieldtype into a different category, define the `$categories` property on your class:
+
+```php
+<?php
+
+class CustomFieldtype extends Fieldtype
+{
+    public $categories = ['number'];
+}
+```
+
+You can select from any of the keys available in the `FieldtypeSelector`:
+- `text`
+- `controls`
+- `media`
+- `number`
+- `relationship`
+- `structured`
+- `special`
+
 ## Configuration Fields
 
 You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
