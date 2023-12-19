@@ -37,6 +37,11 @@ options:
     description: >
       Set to `list` to use the table layout mode, and `grid` to use the grid mode with larger thumbnails. Default: `grid`.
   -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets.
+  -
     name: restrict
     type: bool
     description: >

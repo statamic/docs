@@ -22,6 +22,11 @@ options:
     type: boolean *true*
     description: >
       By default you may create new terms. Set to `false` to only allow selecting from existing terms.
+-
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable terms.
 stage: 2
 id: 31adcc00-4fbb-4fe9-9b48-401061273096
 ---
@@ -104,5 +109,3 @@ You will need to use the [Relate Tag](/tags/relate) in your template to have the
   <li><a href="/tags/delightful">Delightful</a></li>
 </ul>
 ```
-
-

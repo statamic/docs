@@ -17,6 +17,11 @@ options:
     type: string
     description: |
       Set the non-selectable placeholder text. Default: none.
+  -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable forms.
 related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - aa96fcf1-510c-404b-9b63-cea8942e1bf8

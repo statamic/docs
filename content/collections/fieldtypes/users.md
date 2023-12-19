@@ -20,6 +20,11 @@ options:
     type: string
     description: >
       Choose between `select`, `typeahead`, and the `default` stack selector UI modes.
+  -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable users.
 stage: 4
 id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
 ---
@@ -66,5 +71,3 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
     </div>
 </div>
 ```
-
-
