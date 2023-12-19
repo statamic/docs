@@ -249,6 +249,18 @@ public function handle(EntryCreated $event)
 }
 ```
 
+### EntryDeleting
+`Statamic\Events\EntryDeleting`
+
+Dispatched before an entry is deleted. You can return `false` to prevent it from being deleted. 
+
+``` php
+public function handle(EntryDeleting $event)
+{
+    $event->entry;
+}
+```
+
 ### EntryDeleted
 `Statamic\Events\EntryDeleted`
 
@@ -492,7 +504,7 @@ public function handle(RevisionDeleted $event)
 Dispatched before a revision of an entry is saved. You can return `false` to prevent it from being saved.
 
 ``` php
-public function handle(RevisionSaved $event)
+public function handle(RevisionSaving $event)
 {
     $event->revision;
 }
