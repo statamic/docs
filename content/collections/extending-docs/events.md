@@ -893,3 +893,15 @@ public function handle(UserSaved $event)
     $event->user;
 }
 ```
+
+### UrlInvalidated
+`Statamic\Events\UrlInvalidated`
+
+Dispatched after a URL has been removed from the static cache.
+
+``` php
+public function handle(UrlInvalidated $event)
+{
+    $event->url;
+}
+```
