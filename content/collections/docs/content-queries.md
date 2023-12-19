@@ -468,8 +468,8 @@ Entry::query()
 The `orderBy` method allows you to sort by a given field, or in random order:
 
 ```php
-Entry::query()->orderBy('title', 'desc')->get();
 Entry::query()->orderBy('date', 'asc')->get();
+Entry::query()->orderByDesc('title')->get(); // the same as ->orderBy('title', 'desc')
 Entry::query()->inRandomOrder()->get();
 ```
 
