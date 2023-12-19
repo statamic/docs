@@ -486,6 +486,18 @@ public function handle(RevisionDeleted $event)
 }
 ```
 
+### RevisionSaving
+`Statamic\Events\RevisionSaving`
+
+Dispatched before a revision of an entry is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(RevisionSaved $event)
+{
+    $event->revision;
+}
+```
+
 ### RevisionSaved
 `Statamic\Events\RevisionSaved`
 
