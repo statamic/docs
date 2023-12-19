@@ -92,6 +92,23 @@ To pass multiple _values_ in a condition, separate them with `|` pipes.
 {{ /collection:drinks }}
 ```
 
+### Sub Fields
+
+You can apply conditions to "sub fields", like date ranges:
+
+```yaml
+
+```yaml
+event_date:
+  start: 2023-12-01
+  end: 2023-12-03
+```
+
+```antlers
+{{ collection:events :event_date.start="today" }}
+{{ collection:events :event_date.end="today" }}
+```
+
 ## String Conditions
 
 The following conditions apply to fields with data stored as strings.
