@@ -15,7 +15,7 @@ Deployments are triggered by committing changes to your Git repository. Alternat
 ## Prerequisites
 
 :::tip
-Netlify **doesn't support PHP 8.2 yet**. Make sure your projects and its dependencies don't require it. It works with PHP **<=8.1**.
+Netlify **doesn't support PHP 8.2 yet**. Make sure your projects and their dependencies don't require it. It works with PHP **<=8.1**. To avoid errors when installing dependencies on Netlify, in your site's list of environment variables, specify the version of the PHP runtime using the `PHP_VERSION` environment variable.
 :::
 
 - A [Netlify](https://netlify.com) account
