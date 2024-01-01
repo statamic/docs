@@ -133,7 +133,7 @@ Note that you can even perform the same query multiple times. If you want to do 
 ```
 
 :::tip
-When GraphQL is enabled, GraphiQL ([a graphical interactive in-browser GraphQL IDE](https://github.com/graphql/graphiql/blob/main/packages/graphiql/README.md)) is available in the Control Panel. This tool allows you to visually explore the available queries and fields, and also build queries and test them.
+When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is available in the Control Panel. This allows you to explore and test available queries and fields.
 :::
 
 ## Available Queries
