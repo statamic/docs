@@ -132,6 +132,10 @@ Note that you can even perform the same query multiple times. If you want to do 
 }
 ```
 
+:::tip
+When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is available in the Control Panel. This allows you to explore and test available queries and fields.
+:::
+
 ## Available Queries
 
 - [Ping](#ping-query)
