@@ -26,7 +26,7 @@ Netlify **only supports PHP <=8.1** and defaults to PHP 8.0. You can [specify th
 ```json
 "scripts": {
     "build": [
-        "npm run production",
+        "npm run build",
         "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
         "@php artisan key:generate",
         "@php please ssg:generate"
