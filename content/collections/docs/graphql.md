@@ -22,8 +22,12 @@ Or you can enable for all environments in `config/statamic/graphql.php`:
 ```
 
 You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
-:::tip
 
+:::tip
+When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is available in the Control Panel. This allows you to explore and test available queries and fields.
+:::
+
+:::tip Heads up
 If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
 :::
 
@@ -131,10 +135,6 @@ Note that you can even perform the same query multiple times. If you want to do 
     "contact": { /* ... */ },
 }
 ```
-
-:::tip
-When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is available in the Control Panel. This allows you to explore and test available queries and fields.
-:::
 
 ## Available Queries
 
