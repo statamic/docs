@@ -46,6 +46,11 @@ options:
     description: |
       Enable the option to toggle into fullscreen mode. Default: `true`.
   -
+    name: collapse 
+    type: boolean
+    description: >
+      Expand (`true`) or collapse (`false`) all sets by default. Default: `false`.
+  -
     name: container
     type: string
     description: >
