@@ -66,6 +66,11 @@ options:
     description: >
       Show estimated reading time at the bottom of the field. Default: `false`.
   -
+    name: word_count 
+    type: boolean
+    description: >
+      Show the word count at the bottom of the field. Default: `false`.
+  -
     name: save_html
     type: boolean
     description: >
