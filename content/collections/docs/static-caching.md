@@ -127,9 +127,13 @@ You can get your app to automatically generate the public views for your entries
 php please static:warm
 ```
 
-This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag:
+This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag.
 
-It's a good idea to add this command to your deployment script on Forge or whatever deployment tool you use.
+Passing `--insecure` to the command allows you to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+
+Adding the `--user` and `--password` flags, you can run the command behind [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Useful when your site is secured with a simple username and password, like on a staging or development server. Otherwise, you might end up with a `401 Unauthorized` error running the command.
+
+Depending on your site's setup, it's a good idea to add this command to your deployment script on Forge or whatever deployment tool or pipeline you use.
 
 ### Concurrency
 
