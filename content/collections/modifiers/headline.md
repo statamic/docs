@@ -7,14 +7,16 @@ modifier_types:
   - utility
 title: Headline
 ---
-Format the given string (usually a headline) with either AP or MLA style.
+Format the given string, usually a headline or title, with either [AP](https://apastyle.apa.org/style-grammar-guidelines/capitalization/title-case) or [MLA](https://style.mla.org/capitalization-of-titles/) style.
+
+Accepts `ap` or `mla` as an argument. Defaults to `ap` if none is specified.
 
 ```yaml
 title: I see a bad-ass mother who don't take no crap off of nobody.
 ```
 
 ```antlers
-{{ title | headline }}
+{{ title | headline('ap') }}
 ```
 
 ```
