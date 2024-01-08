@@ -260,9 +260,9 @@ return [
 ];
 ```
 
-### With a Custom Invalidator Class
+### Custom Invalidator Class
 
-You can also specify a custom invalidator class to programatically determine which URLs should be invalidated. To do that, you can override or extend [the default one](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
+You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
 'invalidation' => [
@@ -270,7 +270,7 @@ You can also specify a custom invalidator class to programatically determine whi
 ]
 ```
 
-In your custom invalidator class you can then define the logic that decides how URLs get invalidated.
+In your class you can then define the logic that decides how URLs should get invalidated.
 
 ```php
 class MyCustomInvalidator extends DefaultInvalidator
