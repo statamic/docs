@@ -53,3 +53,9 @@ Check out <a href="{{ url_link }}">Statamic</a>!
 ```output
 Check out <a href="https://statamic.com">Statamic</a>!
 ```
+
+You can access other data of the link field by using it like an array. This could be the title of an entry you link to, for example.
+
+```antlers
+{{ link_field:title }}
+```
