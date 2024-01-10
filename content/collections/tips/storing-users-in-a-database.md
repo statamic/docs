@@ -58,9 +58,30 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
     ```cli
     php please auth:migration
     ```
-    - If you have existing file based users, edit the migration to change the `id` column to a `uuid`.
+    - If you're planning to import existing file based users, edit the migration to change the `id` & `user_id` columns to the `uuid` type.
         ```php
-        $table->uuid('id')->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->uuid('id')->change(); // [tl! ++] [tl! **]
+            $table->boolean('super')->default(false);
+            $table->string('avatar')->nullable();
+            $table->json('preferences')->nullable();
+            $table->timestamp('last_login')->nullable();
+            $table->string('password')->nullable()->change();
+        });
+
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');  // [tl! --] [tl! **]
+            $table->uuid('user_id');  // [tl! ++] [tl! **]
+            $table->string('role_id');
+        });
+
+        Schema::create('group_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');  // [tl! --] [tl! **]
+            $table->uuid('user_id');  // [tl! ++] [tl! **]
+            $table->string('group_id');
+        });
         ```
     - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/10.x/migrations).
         ```php
