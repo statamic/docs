@@ -21,13 +21,23 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
 1. In your user model, cast the preferences column to json.
     ```php
-    $casts = [
-        'preferences' => 'json', // [tl! ++]
-    ];
+    class User extends Authenticatable
+    {
+         protected $casts = [ // [tl! focus]
+            'preferences' => 'json', // [tl! ++] [tl! focus]
+        ]; // [tl! focus]
+
+         // ...
+    }
     ```
-1. If you plan to import existing file based users, you'll need to use UUIDs for the primary key. You can do this by using a trait on your user model:
+1. If you plan to import existing file based users, you'll need to use UUIDs for the primary key. You can do this by adding a trait to your user model:
     ```php
-    use \Illuminate\Database\Eloquent\Concerns\HasUuids; // [tl! ++]
+    class User extends Authenticatable
+    {
+        use \Illuminate\Database\Eloquent\Concerns\HasUuids; // [tl! ++] [tl! focus]
+
+        // ...
+    }
     ```
 1. In `config/statamic/users.php`, use the Eloquent repository.
     ```php
