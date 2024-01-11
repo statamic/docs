@@ -40,5 +40,5 @@ When you're using the `Site::current()` method, sometimes the current page URL w
 
 use Statamic\Facades\Site;
 
-Site:: resolveCurrentUrlUsing(fn () => Livewire::originalUrl());
+Site::resolveCurrentUrlUsing(fn () => Livewire::originalUrl());
 ```
