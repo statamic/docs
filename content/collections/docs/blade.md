@@ -107,7 +107,7 @@ By using the `@antlers` and `@endantlers` Blade directive pair you can write pur
 @endantlers
 ```
 
-Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@inlcude('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
+Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@include('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
 
 ## Using Tags with Blade
 
