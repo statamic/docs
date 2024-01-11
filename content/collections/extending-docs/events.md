@@ -88,6 +88,18 @@ public function handle(AssetContainerSaved $event)
 }
 ```
 
+### AssetDeleting
+`Statamic\Events\AssetDeleting`
+
+Dispatched before an asset is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(AssetDeleting $event)
+{
+    $event->asset;
+}
+```
+
 ### AssetDeleted
 `Statamic\Events\AssetDeleted`
 
@@ -160,6 +172,18 @@ public function handle(BlueprintCreating $event)
 }
 ```
 
+### BlueprintDeleting
+`Statamic\Events\BlueprintDeleting`
+
+Dispatched before a blueprint is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(BlueprintDeleting $event)
+{
+    $event->blueprint;
+}
+```
+
 ### BlueprintDeleted
 `Statamic\Events\BlueprintDeleted`
 
@@ -181,6 +205,18 @@ Dispatched after a blueprint has been saved.
 public function handle(BlueprintSaved $event)
 {
     $event->blueprint;
+}
+```
+
+### CollectionDeleting
+`Statamic\Events\CollectionDeleting`
+
+Dispatched before a collection is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(CollectionDeleting $event)
+{
+    $event->collection;
 }
 ```
 
@@ -369,6 +405,18 @@ public function handle(FieldsetCreating $event)
 }
 ```
 
+### FieldsetDeleting
+`Statamic\Events\FieldsetDeleting`
+
+Dispatched before a fieldset is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(FieldsetDeleting $event)
+{
+    $event->fieldset;
+}
+```
+
 ### FieldsetDeleted
 `Statamic\Events\FieldsetDeleted`
 
@@ -416,6 +464,18 @@ Dispatched before a form is created. You can return `false` to prevent it from b
 
 ``` php
 public function handle(FormCreating $event)
+{
+    $event->form;
+}
+```
+
+### FormDeleting
+`Statamic\Events\FormDeleting`
+
+Dispatched before a form is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(FormDeleting $event)
 {
     $event->form;
 }
@@ -492,6 +552,18 @@ public function handle(GlobalSetCreating $event)
 }
 ```
 
+### GlobalSetDeleting
+`Statamic\Events\GlobalSetDeleting`
+
+Dispatched before a global set is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(GlobalSetDeleting $event)
+{
+    $event->globals;
+}
+```
+
 ### GlobalSetDeleted
 `Statamic\Events\GlobalSetDeleted`
 
@@ -513,6 +585,18 @@ Dispatched after a global set has been saved.
 public function handle(GlobalSetSaved $event)
 {
     $event->globals;
+}
+```
+
+### GlobalVariablesDeleting
+`Statamic\Events\GlobalVariablesDeleting`
+
+Dispatched before Global Variables are deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(GlobalVariablesDeleting $event)
+{
+    $event->variables;
 }
 ```
 
@@ -542,6 +626,18 @@ public function handle(GlobalVariablesBlueprintFound $event)
 {
     $event->blueprint;
     $event->globals;
+}
+```
+
+### NavDeleting
+`Statamic\Events\NavDeleting`
+
+Dispatched before a nav is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(NavDeleting $event)
+{
+    $event->nav;
 }
 ```
 
@@ -717,6 +813,18 @@ public function handle(TaxonomyCreating $event)
 }
 ```
 
+### TaxonomyDeleting
+`Statamic\Events\TaxonomyDeleting`
+
+Dispatched before a taxonomy is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(TaxonomyDeleting $event)
+{
+    $event->taxonomy;
+}
+```
+
 ### TaxonomyDeleted
 `Statamic\Events\TaxonomyDeleted`
 
@@ -769,6 +877,18 @@ public function handle(TermCreating $event)
 }
 ```
 
+### TermDeleting
+`Statamic\Events\TermDeleting`
+
+Dispatched before a taxonomy term is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(TermDeleting $event)
+{
+    $event->term;
+}
+```
+
 ### TermDeleted
 `Statamic\Events\TermDeleted`
 
@@ -815,6 +935,18 @@ Dispatched before a user is created. You can return `false` to prevent it from b
 
 ``` php
 public function handle(UserCreating $event)
+{
+    $event->user;
+}
+```
+
+### UserDeleting
+`Statamic\Events\UserDeleting`
+
+Dispatched before a user is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(UserDeleting $event)
 {
     $event->user;
 }
