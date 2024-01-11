@@ -27,7 +27,7 @@ use Statamic\Facades\Site;
 | `selected()` | Returns the site currently selected in the Control Panel |
 | `setSelected($handle)` | Sets the selected site. |
 | `default()` | Returns the "default site", which will be the first site in the `sites` config |
-| `authorized()` | Returns a collection of Site objects, where the user is authorized to view the site (see [Multisite Permissions](https://statamic.dev/multi-site#permissions)). |
+| `authorized()` | Returns a collection of Site objects, where the user is authorized to view the site (see [Multisite Permissions](/multi-site#permissions)). |
 | `hasMultiple()` | Returns a boolean indicating if multiple sites are configured. |
 | `setConfig($config)` | Accepts an array. Allows you to override the configured sites. |
 
