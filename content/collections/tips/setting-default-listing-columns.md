@@ -32,9 +32,9 @@ preferences:
         - status
 ```
 
-If you're [storing users in a database](/tips/storing-users-in-a-database), you'll need to convert the JSON data from the `preferences` column of your `users` table to YAML. You can use a service like [json2yaml.com](https://json2yaml.com/) to do this.
+If you're [storing users in a database](/tips/storing-users-in-a-database), you'll need to convert the JSON data from the `preferences` column in your `users` table to YAML. You can use a service like [json2yaml.com](https://json2yaml.com/) to do this.
 
-3. Next, create a new file named `resources/preferences.yaml`. Copy the contents of the `preferences` array into this new file, resulting in it looking pretty similar to this:
+3. Next, create a new file called `resources/preferences.yaml`. Copy the contents of the `preferences` array into this new file, resulting in it looking pretty similar to this:
 
 ```yaml
 collections:
@@ -45,4 +45,4 @@ collections:
       - status
 ```
 
-4. Finally, if you clear your user's `preferences` array or login as another user, the default columns will be displayed just as you specified them. 🎉
+4. Finally, if you clear your user's `preferences` array or login as a different user, the default columns will be displayed just as you specified them. 🎉
