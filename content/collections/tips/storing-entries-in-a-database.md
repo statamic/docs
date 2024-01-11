@@ -18,7 +18,7 @@ Statamic uses a [repository pattern](/extending/repositories) to interact with y
 
 The flat file pattern is amazing for a whole pile of reasons. However, if you're going to be working with a huge amount of data (tens of thousands, millions, gazillions, etc), it has its limitations. This is where databases come in.
 
-The ability to trading flexibility for scalability without changing platforms is a powerful feature.
+The ability to trade flexibility for scalability without changing platforms is a powerful feature.
 
 
 ## What we're building
