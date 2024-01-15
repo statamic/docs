@@ -949,7 +949,7 @@ Simply put, expressions show things and statements do things. Even more simply p
 Let's just go through the list of valid "in between braces stuff" so you can  accomplish your goals and hopefully win a trophy of some kind. 🏆
 
 ```
-{{ "This is a single expression that renders this very text. nothing more and nothing oesseiuhdieuhd " }}
+{{ "This is a single expression that renders this very text. Nothing more and nothing less." }}
 
 {{# This statement fetches Entries and begins iterating through them #}}
 {{ collection:blog limit="5" }}
