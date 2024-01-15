@@ -15,7 +15,7 @@ Deployments are triggered by committing changes to your Git repository. Alternat
 ## Prerequisites
 
 :::tip
-Netlify **only supports PHP <=8.1** and defaults to PHP 8.0. You can [specify the PHP version](https://docs.netlify.com/configure-builds/manage-dependencies/#php) using the `PHP_VERSION` environment variable.
+While Netlify supports PHP versions from 7.4 through 8.3, it defaults to PHP 8.0. You can [specify the PHP version](https://docs.netlify.com/configure-builds/manage-dependencies/#php) using the `PHP_VERSION` environment variable.
 :::
 
 - A [Netlify](https://netlify.com) account
