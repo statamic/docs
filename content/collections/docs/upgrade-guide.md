@@ -12,3 +12,6 @@ blueprint: page
 - [3.0 to 3.1](/upgrade-guide/3-0-to-3-1)
 - [2.x to 3.x](/upgrade-guide/v2-to-v3)
 - [Bard 1 to 2](/upgrade-guide/bard-v1-to-v2)
+
+If you intend to **upgrade Laravel itself**, please refer to its [upgrade guide](https://laravel.com/docs/upgrade).
+You can also (semi-)automate the Laravel upgrade using [Laravel Shift](https://laravelshift.com) which is by far the most _rad_ way to upgrade.
