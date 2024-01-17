@@ -89,6 +89,10 @@ resources/lang/
 |-- eo.json
 ```
 
+:::tip
+This command will also update existing files with any changes from recent Statamic releases.
+:::
+
 #### Using Google Translate
 
 You can get a translation kickstarted with the Google API by passing your API key.
