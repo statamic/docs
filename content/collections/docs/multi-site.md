@@ -227,10 +227,6 @@ resources/views/
 
 For example, given `template: home`, Statamic will load `site_one/home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific variant.
 
-:::tip
-This feature can be combined with the [AMP](/amp) feature. You can nest an `amp` view subdirectory _inside_ a site subdirectory.
-:::
-
 ## Template Snippets
 
 Here are a few common features you'll likely need to template while building a multi-site.
