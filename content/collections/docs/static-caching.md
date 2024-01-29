@@ -486,4 +486,4 @@ The cache store can be customized in `config/cache.php`.
 ],
 ```
 
-By default, running `artisan cache:clear` won't clear Statamic's store with mappings of URLs. To do this, pass the `--store` argument to the command with the name of the store you want to clear, like `static_cache`.
+By default, running `artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.
