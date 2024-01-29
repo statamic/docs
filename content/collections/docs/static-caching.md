@@ -473,7 +473,7 @@ If you need to output a CSRF token in another place while using full measure, yo
 </span>
 ```
 
-### Custom Cache Store
+## Custom Cache Store
 
 Static Caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead to invalidation to fail.
 
