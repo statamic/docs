@@ -4,9 +4,6 @@ blueprint: page
 title: 'Antlers Templates'
 intro: |-
   Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic. Coming from Laravel and want to stick to Blade? [We got you covered](/blade).
-  :::tip Hot Tip
-    For sites running Statamic 3.2 and older you'll need to use the [legacy Antlers parser](/antlers-legacy). For all other projects, keep reading. You're in the right place.
-  :::
 template: page
 ---
 ## Overview
@@ -32,13 +29,22 @@ This is a very simple Antlers tag:
 
 ### Configuring
 
-You can configure advanced settings (or switch to the [legacy Antlers parser](/antlers-legacy)) in `config/statamic/antlers.php`. The `runtime` version is the fresh new default parser as of Statamic 3.4, as documented on this very page.
+You can configure advanced settings, like guarded variables, tags & modifiers in `config/statamic/antlers.php`.
 
 ```php
 // config/statamic/antlers.php
 return [
-    'version' => 'runtime',
-    // ...
+    'guardedVariables' => [
+        'config.app.key',
+    ],
+
+    'guardedTags' => [
+        //
+    ],
+
+    'guardedModifiers' => [
+        //
+    ],
 ];
 ```
 
@@ -374,10 +380,6 @@ It was lunch, is what it was.
 There are more than 150 built-in [modifiers](/reference/modifiers) that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
 You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusable one.
-
-#### Legacy Syntax
-
-The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers-legacy#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
 
 ### Creating Variables
 
