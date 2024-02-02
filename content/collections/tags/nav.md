@@ -25,7 +25,7 @@ parameters:
     type: 'boolean *false*'
     description: >
       You can choose to turn off the home page in the tree, opting to start the crumbs from the first level nav item. Doesn't do
-      anything if you're using the `from` paramter.
+      anything if you're using the `from` parameter.
   -
     name: max_depth
     type: 'int'
