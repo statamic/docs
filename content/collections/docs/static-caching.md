@@ -270,6 +270,17 @@ You can also specify a custom invalidator class to **programatically determine w
 ]
 ```
 
+Note that the container binding for the default invalidator won't be used now, so you'll need to provide your own. For example:
+
+```php
+$this->app->bind(CustomInvalidator::class, function ($app) {
+    return new CustomInvalidator(
+        $app[Cacher::class],
+        $app['config']['statamic.static_caching.invalidation.rules']
+    );
+});
+```
+
 In your class you can then define the logic that decides how URLs should get invalidated.
 
 ```php
