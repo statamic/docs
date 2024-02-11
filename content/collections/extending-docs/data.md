@@ -139,7 +139,7 @@ related_posts: [2, 3, 4]
 ```
 
 ```php
-$entry->id; // 123
+$entry->id; // 1
 $entry->title; // "My post"
 $entry->content; // "<h1>Heading</h1><p>The post content.</p>
 $entry->related_posts; // EntryCollection([Entry, Entry, Entry])
