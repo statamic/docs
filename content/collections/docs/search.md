@@ -161,11 +161,13 @@ Each transformer is a closure that would correspond to a field in your index's `
 
     // Return an array of values to be stored.
     // These will all be separate searchable fields in the index.
-    'address' => function ($address) {
+    // $value is the current value
+    // $searchable is the object that $value has been plucked from
+    'address' => function ($value, $searchable) {
         return [
-            '_geoloc' => $address['geolocation'],
-            'location' => $address['location'],
-            'region' => $address['region'],
+            '_geoloc' => $value['geolocation'],
+            'location' => $value['location'],
+            'region' => $value['region'],
         ];
     }
 ]
@@ -189,7 +191,7 @@ class MyTransformer
     {
         // $value is the current value
         // $field is the index from the transformers array
-        // $searchable is the class that $value has been plucked from
+        // $searchable is the object that $value has been plucked from
 
         return ucfirst($value);
     }
