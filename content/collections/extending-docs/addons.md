@@ -32,13 +32,13 @@ addons/
         src/
             ServiceProvider.php
         composer.json
-    app/
-    content/
-    config/
-    public/
-        index.php
-    resources
-    composer.json
+app/
+content/
+config/
+public/
+    index.php
+resources
+composer.json
 ```
 
 ``` json
