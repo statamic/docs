@@ -130,7 +130,7 @@ More often than not, you'll want to use the "standard" way of getting data out o
 You can use property access to get a single field's augmented value:
 
 ```yaml
-id: 1
+id: 123
 title: My post
 content: |
   # Heading
