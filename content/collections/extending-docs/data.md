@@ -130,7 +130,7 @@ More often than not, you'll want to use the "standard" way of getting data out o
 You can use property access to get a single field's augmented value:
 
 ```yaml
-id: 1
+id: 123
 title: My post
 content: |
   # Heading
@@ -139,7 +139,7 @@ related_posts: [2, 3, 4]
 ```
 
 ```php
-$entry->id; // 1
+$entry->id; // 123
 $entry->title; // "My post"
 $entry->content; // "<h1>Heading</h1><p>The post content.</p>
 $entry->related_posts; // EntryCollection([Entry, Entry, Entry])
