@@ -72,7 +72,7 @@ You may specify which language translation to be used for each site with the `la
 Note that both Statamic and Laravel don't ship with frontend language translations out of the box. You have to provide your own string files for this. There is a great package called [Laravel Lang](https://github.com/Laravel-Lang/lang) containing over 75 languages that can help you out with this.
 
 ### URL
-URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is be based on the domain the site is running on.
+URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is based on the domain the site is running on.
 
 :::best-practice
 It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks interfere with that "magic". Using an environment variable is an ideal solution here.
