@@ -280,9 +280,31 @@ This will create dynamic indexes named after the specified sites:
 
 If you have a localized index and include searchables that do not support localization (like assets or users), they will appear in each localized index.
 
-### Search Options
 
-The built in search driver supports multiple options you can pass in.
+## Drivers
+
+Statamic takes a "driver" based approach to search engines. Drivers are interchangeable so you can gain new features or integrate with 3rd party services without ever having to change your data or frontend.
+
+The native [local driver](#local-driver) is simple and requires no additional configuration, while the included [algolia driver](#algolia-driver) makes it super simple to integrate with [Algolia](https://algolia.com), one of the leading search as a service providers.
+
+You can build your own custom search drivers or look at the [Addon Marketplace](https://statamic.com/addons/tags/search) to see what the community has already created.
+
+### Local {#local-driver}
+
+The `local` driver (aka "Comb") uses JSON to store key/value pairs, mapping fields to the content IDs they belong to. It lacks advanced features you would see in a service like Algolia, but hey, It Just Works™. It's a great way to get a search started quickly.
+
+#### Settings
+
+You may provide local driver specific settings in a `settings` array.
+
+```php
+'driver' => 'local',
+'searchables' => 'all',
+'settings' => [ // [tl! **:start]
+    'min_characters' => 3,
+    'use_stemming' => true,
+] // [tl! **:end]
+```
 
 - `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to `null`.
 - `min_characters`: The minimum number of characters required in a search query. Defaults to `null`.
@@ -298,18 +320,6 @@ The built in search driver supports multiple options you can pass in.
 - `exclude_properties`: An array of properties to exclude from the search results. Defaults to `null`.
 - `stop_words`: An array of stop words to exclude from the search query. Defaults to `['the', 'a', 'an']`.
 - `include_properties`: An array of properties to include in the search results. Defaults to `$this->config['fields'] ?? ['title']`.
-
-## Drivers
-
-Statamic takes a "driver" based approach to search engines. Drivers are interchangeable so you can gain new features or integrate with 3rd party services without ever having to change your data or frontend.
-
-The native [local driver](#local-driver) is simple and requires no additional configuration, while the included [algolia driver](#algolia-driver) makes it super simple to integrate with [Algolia](https://algolia.com), one of the leading search as a service providers.
-
-You can build your own custom search drivers or look at the [Addon Marketplace](https://statamic.com/addons/tags/search) to see what the community has already created.
-
-### Local {#local-driver}
-
-The `local` driver uses JSON to store key/value pairs, mapping fields to the content IDs they belong to. It lacks advanced features like weighting and relevance matching, but hey, It Just Works™. It's a great way to get a search started quickly.
 
 ### Algolia {#algolia-driver}
 
@@ -335,7 +345,7 @@ composer require algolia/algoliasearch-client-php
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.
 
-### Settings
+#### Settings
 You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/) in a `settings` array.
 
 ```php
@@ -355,7 +365,7 @@ You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-refe
 ] // [tl! **:end]
 ```
 
-### Templating with Algolia
+#### Templating with Algolia
 
 We recommend using the [Javascript implementation](https://www.algolia.com/doc/api-client/getting-started/install/javascript/?language=javascript) to communicate directly with them for the frontend of your site. This bypasses Statamic entirely in the request lifecycle and is incredibly fast.
 
