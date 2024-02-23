@@ -92,3 +92,12 @@ class YourClass
     }
 }
 ```
+
+Now others will be able to call `hook` on your class to register their hook:
+
+```php
+YourClass::hook('hook-name', function ($payload, $next) {
+    // ...
+    return $next($payload);
+});
+```
