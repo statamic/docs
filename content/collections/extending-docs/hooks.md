@@ -101,3 +101,7 @@ YourClass::hook('hook-name', function ($payload, $next) {
     return $next($payload);
 });
 ```
+
+:::tip
+Tag classes already `use HasHooks` so you can simply use `$this->runHooks()` without importing anything.
+:::
