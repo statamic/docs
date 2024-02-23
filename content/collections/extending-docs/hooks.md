@@ -76,15 +76,15 @@ The payload will either be an `EntryCollection` or a `Paginator`, depending on w
 
 You may want to trigger your own hook pipeline so that others may use it.
 
-To do this, you may use the `runHooks` method from the `HasHooks` trait, passing the hook name and a payload.
+To do this, you may use the `runHooks` method from the `Hookable` trait, passing the hook name and a payload.
 Once any hook closures have finished running, the payload will be returned back from it.
 
 ```php
-use Statamic\Extend\HasHooks;
+use Statamic\Support\Traits\Hookable;
 
 class YourClass
 {
-    use HasHooks;
+    use Hookable;
 
     public function something()
     {
@@ -103,5 +103,5 @@ YourClass::hook('hook-name', function ($payload, $next) {
 ```
 
 :::tip
-Tag classes already `use HasHooks` so you can simply use `$this->runHooks()` without importing anything.
+Tag classes already `use Hookable` so you can simply use `$this->runHooks()` without importing anything.
 :::
