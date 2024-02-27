@@ -4,7 +4,6 @@ blueprint: modifiers
 modifier_types:
   - utility
 title: 'Hex To RGB'
-duplicated_from: 2d555b32-e68c-4f9b-8570-f2e8d185989b
 ---
 Converts a color from hex to RGB, the perfect match for the [color fieldtype](/fieldtypes/color).
 
