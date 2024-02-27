@@ -8,7 +8,7 @@ title: 'Hex To RGB'
 Converts a color from hex to RGB, the perfect match for the [color fieldtype](/fieldtypes/color).
 
 ```yaml
-color: #FF269E
+color: `#FF269E`
 ```
 
 ```
