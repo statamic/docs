@@ -542,6 +542,65 @@ The `update()` method is where your custom data migration logic happens. Feel fr
 
 That's it! Statamic should now automatically run your update script as your users update their addons.
 
+## Testing
+
+When you create an addon with the `make:addon` command, Statamic will automatically scaffold the necessary files for a PHPUnit test suite.
+
+``` files theme:serendipity-light
+tests/
+    ExampleTest.php
+    TestCase.php
+phpunit.xml
+```
+
+The `TestCase` class extends Statamic's built-in `AddonTestCase` which is responsible for booting your addon's service provider, amoungst other things. Under the hood, your addon's tests use [Orchestra Testbench](https://github.com/orchestral/testbench) which provides a layer allowing you to write tests against a *real* Laravel application.
+
+### Writing Tests
+
+All of your tests should extend your addon's `TestCase` class, like so:
+
+```php
+<?php
+
+namespace Acme\Example\Tests;
+
+use Acme\Example\Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     */
+    public function test_that_true_is_true(): void
+    {
+        $this->assertTrue(true);
+    }
+}
+```
+
+For more information on writing tests, please review the [Laravel Testing Documentation](https://laravel.com/docs/10.x/testing).
+
+### Running Tests
+
+Once you've written some tests, you can run them using `phpunit`:
+
+```bash
+./vendor/bin/phpunit
+```
+
+You may run a specific test by passing the `--filter` argument:
+
+```bash
+# Runs all tests in the CheckoutTest
+./vendor/bin/phpunit --filter=CheckoutTest
+
+# Runs the specific user_cant_checkout_without_payment test
+./vendor/bin/phpunit --filter=user_cant_checkout_without_payment
+
+# Runs all tests with checkout in their name.
+./vendor/bin/phpunit --filter=checkout
+```
+
 
 ## Publishing to the Marketplace
 
