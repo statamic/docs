@@ -200,7 +200,7 @@ For example, you can append `[BOT]` to the commit message so that you can select
 ```php
 'commands' => [
     'git add {{ paths }}',
-    'git commit -m "{{ message }} [BOT]"',
+    'git -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "{{ message }} [BOT]"',
 ],
 ```
 
