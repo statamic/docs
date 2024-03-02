@@ -17,7 +17,7 @@ Deployments are triggered by committing to Git and pushing to GitHub.
 #### Code for build.sh
 Add the following snippet to `build.sh` file to install PHP, Composer, and run the `ssg:generate` command:
 
-```
+```bash
 #!/bin/sh
 
 # Install PHP & WGET
