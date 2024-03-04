@@ -89,7 +89,7 @@ Rather than reaching for `{this}`, you can consider using conditional fields alo
 
 ### All Laravel Rules
 
-You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation].
+You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation]. You may also use [custom rules](#custom-rules).
 
 ### Unique Entry Value
 
@@ -141,5 +141,25 @@ This works like the `unique_entry_value` rule, but for users.
 If you want to override the field that is being validated (e.g. in Livewire Form Objects), you can do so by passing a second parameter to the validation rule, such as `unique_user_value:{id},username`.
 :::
 
+## Custom Rules
 
-[laravel-validation]: https://laravel.com/docs/8.x/validation#available-validation-rules
+You may use custom validation rules via Laravel's `Rule` objects.  
+[Documentation on those are here](https://laravel.com/docs/10.x/validation#using-rule-objects).
+
+To references those from your field, you can add them to your `validation` array as if you were writing PHP:
+
+<div class="screenshot">
+    <img src="/img/field-validation-custom-rule.png" width="643" alt="Custom Field validation rules" />
+</div>
+
+If you're writing directly into the YAML, make sure to escape any quotes:
+
+```yaml
+validate:
+  - required
+  - string
+  - new App\Rules\Uppercase
+  - 'new App\Rules\AnotherRule(''with argument'')'
+```
+
+[laravel-validation]: https://laravel.com/docs/10.x/validation#available-validation-rules
