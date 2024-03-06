@@ -272,7 +272,7 @@ The `toAugmentedArray` method does the same as `toAugmentedCollection`, except t
 
 ### Checking for data changes
 
-Statamic provides the `isDirty`, `isClean`, and `getOriginal` methods so you can determine what data has changed from when the item was originally retrieved.
+Statamic provides `isDirty`, `isClean`, and `getOriginal` methods to let you see what data has been changed in your item since it was originally retrieved.
 
 The `isDirty` method checks if any of the item's data has been changed since it was last saved. You may pass a specific attribute name or an array of attributes to the `isDirty` method to determine if any of the attributes are "dirty". The `isClean` method will determine if an attribute has remained unchanged since the item was retrieved. This method also accepts an optional attribute argument:
 
@@ -291,9 +291,9 @@ $entry->isClean(); // false
 $entry->isClean('title'); // false
 $entry->isClean('image'); // true
 $entry->isClean(['image', 'title']); // false
- 
+
 $entry->save();
- 
+
 $entry->isDirty(); // false
 $entry->isClean(); // true
 ```
@@ -305,7 +305,7 @@ $entry->title; // "Post title"
 $entry->image; // "/path/to/image.jpg"
 
 $entry->title = 'New Title';
- 
+
 $entry->getOriginal('title'); // "Post title"
 $entry->getOriginal(); // ["Post title", "/path/to/image.jpg"]
 ```
