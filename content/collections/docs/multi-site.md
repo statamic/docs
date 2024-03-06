@@ -43,7 +43,7 @@ return [
 Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
 
 ### Locale
-Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to a the server's locale. By default Statamic will use English – United States (`en_US`).
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default Statamic will use English – United States (`en_US`).
 
 :::tip
 To see the list of installed locales on your system or server, run the command `locale -a`.
