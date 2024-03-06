@@ -23,6 +23,14 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       </tr>
    </thead>
    <tbody>
+      <tr class="bg-red text-[#ffc9bf]">
+         <td class="font-bold">3.3*</td>
+         <td>8-9</td>
+         <td>7.4-8.1</td>
+         <td>Mar 2022</td>
+         <td>Mar 2023</td>
+         <td>Sep 2023</td>
+      </tr>
       <tr class="bg-gray-lightest text-black/60">
          <td class="font-bold">3.4*</td>
          <td>8-9</td>
