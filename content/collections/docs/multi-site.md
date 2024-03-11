@@ -75,7 +75,7 @@ Note that both Statamic and Laravel don't ship with frontend language translatio
 URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is based on the domain the site is running on.
 
 :::best-practice
-It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks interfere with that "magic". Using an environment variable is an ideal solution here.
+It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks don't interfere with that "magic". Using an environment variable is an ideal solution here.
 
 ```php
 'sites' => [
