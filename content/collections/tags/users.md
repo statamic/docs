@@ -75,7 +75,7 @@ variables:
 ---
 ## Overview
 
-The Users tag works very much like the [Collection Tag](/tags/collection). It fetches, filters, sorts, groups, and manipulates lists of your users so you can whatever you want with them.
+The Users tag works very much like the [Collection Tag](/tags/collection). It fetches, filters, sorts, groups, and manipulates lists of your users so you can do whatever you want with them.
 
 A simple example is to loop through all the users and list them by name:
 
