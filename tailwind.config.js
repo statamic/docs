@@ -93,6 +93,7 @@ module.exports = {
       'stack': "5px 5px 0 -1px #fff, 5px 5px 0 theme('colors.black')",
       'stack-md': "10px 10px 0 -1px #fff, 10px 10px 0 theme('colors.black')",
       'stack-lg': "20px 20px 0 -1px #fff, 20px 20px 0 theme('colors.black'), 40px 40px 0 -1px #fff, 40px 40px 0 theme('colors.black')",
+      'soft': "7px 16px 10px -8px rgba(0, 0, 0, 0.45)",
       'bleed-yellow': "0 3px 1px theme('colors.yellow')",
       'outline': '0 0 0 3px rgba(66, 153, 225, 0.5)',
     },
