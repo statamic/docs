@@ -88,6 +88,30 @@ public function handle(AssetContainerSaved $event)
 }
 ```
 
+## `AssetCreated`
+`Statamic\Events\AssetCreated`
+
+Dispatched after an asset has been created or uploaded.
+
+``` php
+public function handle(AssetCreated $event)
+{
+    $event->asset;
+}
+```
+
+## `AssetCreating`
+`Statamic\Events\AssetCreating`
+
+Dispatched before an asset is created or uploaded. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(AssetCreating $event)
+{
+    $event->asset;
+}
+```
+
 ### AssetDeleting
 `Statamic\Events\AssetDeleting`
 
@@ -143,6 +167,18 @@ Dispatched after an asset has been saved.
 
 ``` php
 public function handle(AssetSaved $event)
+{
+    $event->asset;
+}
+```
+
+### AssetSaving
+`Statamic\Events\AssetSaving`
+
+Dispatched before an asset is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(AssetSaving $event)
 {
     $event->asset;
 }
@@ -380,6 +416,10 @@ public function handle(EntrySaved $event)
     $event->entry;
 }
 ```
+
+:::tip Note
+When an entry has multiple localizations, the `EntrySaved` event will be fired for each of those localizations. You may use the `$event->isInitial()` method to determine whether the localized entry from the event was the one originally being saved.
+:::
 
 ### EntrySaving
 `Statamic\Events\EntrySaving`

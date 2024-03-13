@@ -43,7 +43,7 @@ return [
 Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
 
 ### Locale
-Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to a the server's locale. By default Statamic will use English – United States (`en_US`).
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default Statamic will use English – United States (`en_US`).
 
 :::tip
 To see the list of installed locales on your system or server, run the command `locale -a`.
@@ -75,7 +75,7 @@ Note that both Statamic and Laravel don't ship with frontend language translatio
 URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is based on the domain the site is running on.
 
 :::best-practice
-It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks interfere with that "magic". Using an environment variable is an ideal solution here.
+It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks don't interfere with that "magic". Using an environment variable is an ideal solution here.
 
 ```php
 'sites' => [

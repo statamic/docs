@@ -181,6 +181,17 @@ This avatar is used throughout the Control Panel to represent the user when the 
     <figcaption>Behold — an avatar!</figcaption>
 </figure>
 
+## Ordering
+
+By default, users are ordered alphabetically by their email. However, if you wish, you can change the field and direction used to order users in the Control Panel and when returned with the [`{{ users }}`](/tags/users) tag.
+
+```php
+// config/statamic/users.php
+
+'sort_field' => 'email',
+'sort_direction' => 'asc',
+```
+
 ## Language Preference
 
 Each user can have their own preferred language in the Control Panel. Head to your preferences area by clicking on the ⚙️ gear/cog icon in the global header and then go to **Preferences**.
