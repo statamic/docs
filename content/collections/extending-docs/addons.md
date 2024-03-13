@@ -553,7 +553,7 @@ tests/
 phpunit.xml
 ```
 
-The `TestCase` class extends Statamic's built-in `AddonTestCase` which is responsible for booting your addon's service provider, amoungst other things. Under the hood, your addon's tests use [Orchestra Testbench](https://github.com/orchestral/testbench) which provides a layer allowing you to write tests against a *real* Laravel application.
+The `TestCase` class extends Statamic's built-in `AddonTestCase` which is responsible for booting your addon's service provider, amongst other things. Under the hood, your addon's tests use [Orchestra Testbench](https://github.com/orchestral/testbench) which provides a layer allowing you to write tests against a *real* Laravel application.
 
 ### Writing Tests
 
