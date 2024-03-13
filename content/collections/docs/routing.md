@@ -14,7 +14,7 @@ All site requests are handled by Statamic unless you [create your own Laravel ro
 
 ## Statamic Routes
 
-Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view. layout, and so on.
+Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view, layout, and so on.
 
 ``` php
 Route::statamic('uri', 'view', ['foo' => 'bar']);
@@ -25,6 +25,14 @@ Route::statamic('uri', 'view', ['foo' => 'bar']);
 ```
 
 The first argument is the URI, the second is the name of the [template](/views#templates), and the third is an optional array of additional data.
+
+When the template is the same as the URI, you can provide the one argument and Statamic will fall back to use the URI as the template:
+
+```php
+Route::statamic('my-page'); // Implies 'my-page'
+Route::statamic('/my-page'); // Implies 'my-page'
+Route::statamic('/foo/bar'); // Implies 'foo.bar'
+```
 
 ### Parameters
 

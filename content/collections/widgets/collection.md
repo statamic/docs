@@ -24,6 +24,11 @@ options:
     type: string
     required: false
     description: 'Sort and order by field name. E.g. `''title:desc''`. Defaults to the collection''s settings.'
+  -
+    name: fields
+    type: array
+    required: false
+    description: 'An array of field handles to be displayed as columns in the widget.'
 screenshot: widgets/collection.png
 nav_title: Collection
 ---

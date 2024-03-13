@@ -53,7 +53,7 @@ Nav::extend(function ($nav) {
 If you wish to use a custom SVG or one from the [Streamline Icon Pack](https://app.streamlinehq.com/icons/streamline-light) that's not included in Statamic, you may pass the SVG icon to the `icon()` method, in place of an icon name.
 
 :::tip
-You can access the complete set of default icons for the icon() method in the vendor files located at vendor/statamic/cms/resources/svg/icons. Alternatively, you can also view them directly [on GitHub](https://github.com/statamic/cms/tree/4.x/resources/svg/icons/light)
+You can access the complete set of default icons for the `icon()` method in the vendor files located at `vendor/statamic/cms/resources/svg/icons`. Alternatively, you can also view them directly [on GitHub](https://github.com/statamic/cms/tree/4.x/resources/svg/icons/light)
 :::
 
 ```php
@@ -181,4 +181,3 @@ The code examples above demonstrate how to [add](#adding-items), [modify](#modif
 | `children()` | `$children` (array\|collection\|closure) | Define child items. |
 | `can()` | `$ability` (string), `$params` (mixed, optional) | Define authorization. |
 | `view()` | `$view` (string) | Define custom view. |
-

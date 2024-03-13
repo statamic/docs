@@ -22,6 +22,7 @@ use Statamic\Facades\Entry;
 | `all()` | Get all Entries |
 | `find($id)` | Get Entry by `id` |
 | `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
+| `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when entry can not be found. |
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
@@ -38,6 +39,12 @@ Entry::query()->where('id', 123)->first();
 
 // Or with the shorthand method
 Entry::find(123);
+```
+
+When an entry can't be found, the `Entry::find()` method will return `null`. If you'd prefer an exception be thrown, you can use the `findOrFail` method:
+
+```php
+Entry::findOrFail(123);
 ```
 
 #### Get an entry by its URI

@@ -34,7 +34,7 @@ You'll need one user guard & user provider for your Eloquent users and another f
 'providers' => [
     'users' => [
         'driver' => 'eloquent',
-        'model' => \App\User::class,
+        'model' => \App\Models\User::class,
     ],
 
     'statamic' => [
@@ -110,6 +110,6 @@ These routes will use whichever guard you have set to as the "default" in your `
 ```php
 'defaults' => [
   'guard' => 'web',
-  'passwords' => 'users',
+  'passwords' => 'resets',
 ],
 ```

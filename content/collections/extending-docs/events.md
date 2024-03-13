@@ -381,6 +381,10 @@ public function handle(EntrySaved $event)
 }
 ```
 
+:::tip Note
+When an entry has multiple localizations, the `EntrySaved` event will be fired for each of those localizations. You may use the `$event->isInitial()` method to determine whether the localized entry from the event was the one originally being saved.
+:::
+
 ### EntrySaving
 `Statamic\Events\EntrySaving`
 

@@ -11,6 +11,11 @@ parameters:
       form is successfully submitted. Leaving
       this blank will keep the user on the
       same page.
+  -
+    name: error_redirect
+    type: string
+    description: >
+      The same as `redirect`, but for failed validation errors.
 variables:
   -
     name: success

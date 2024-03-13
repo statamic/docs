@@ -65,9 +65,6 @@ tree:
     title: 'Diving Deeper'
     children:
       -
-        id: 3f14ccd7-1f64-43c4-a340-124594e434f0
-        entry: a66f3e5f-5a60-44c4-8c1d-a9d9692366c0
-      -
         id: 50484ca7-40d5-4504-9f8f-adc8d6557a19
         entry: 9b2f6f55-5355-4334-b90d-d1236fb58887
       -
@@ -256,6 +253,9 @@ tree:
       -
         id: bfc8f09a-19f7-46af-88bc-a30dc504a71d
         entry: 56fadb93-b846-4867-ad73-4f721cc940c2
+      -
+        id: 95b57069-5325-4603-8a37-56000633d14f
+        entry: c9ee871c-002b-48d7-b845-1abac58de337
       -
         id: 585e9861-1e2b-4dd2-9bef-61109f867660
         entry: b6c40452-8da0-4f03-a53c-714cc3338b9d
