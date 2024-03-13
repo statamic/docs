@@ -26,11 +26,6 @@ options:
     type: string
     description: >
       Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries.
-  -
-    name: select_across_sites
-    type: boolean
-    description: >
-      Allows you to select entries across sites. [More details](#select-across-sites).
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview
@@ -69,35 +64,3 @@ Loop through the entries and do anything you want with the data.
   <li><a href="/look-at-that">Wait, Look at That!</a></li>
 </ul>
 ```
-
-
-## Localization
-
-When you output your selected entries on the front-end, they will be localized to the current site by default.
-
-For example, here's an entry on "site one", which also exists on "site two".
-
-```yaml
-# site-one/my-entry.md
-id: my-entry
-related_entries:
-  - a # has a localized version in site two
-  - b # also has a localized version in site two
-  - c # doesnt have a localized version
-```
-```yaml
-# localized-my-entry.md
-
-```
-
-If you visit my-entry on "site one", it would output entries `a`, `b`, and `c`.
-
-If you visit it on "site two", it would output the site two versions of `a` and `b`, and it wouldn't even show `c` because it doesn't exist in site two.
-
-### Selecting across sites {#select-across-sites}
-
-By default, you can only select entries in the site corresponding to the entry you're editing.
-
-However, you may choose to allow selecting entries across sites. If you enable this setting, the automatic localization behavior explained above will be disabled.
-
-Whatever you select will be what you see in the output.
