@@ -81,6 +81,14 @@ You can specify just the name of the provider, or use a name/label pair if you w
 ],
 ```
 
+If a provider requires ["stateless authentication"](https://laravel.com/docs/socialite#stateless-authentication), you may pass an array and specify the `stateless` config option:
+
+``` php
+'providers' => [
+    'saml2' => ['stateless' => true, 'label' => 'Okta'],
+],
+```
+
 ### Routes
 
 There are 2 required routes in order for the OAuth workflow to function:
