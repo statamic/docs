@@ -1,104 +1,107 @@
 ---
-title: Hooks
-intro: |
-  Statamic allows you to hook into specific points and perform asyncronous operations using [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
-stage: 1
-id: fc136da3-ba46-46e1-8443-e345d5b548ac
+id: 900414a8-f73a-46f0-82bd-b607767f5d5d
+blueprint: page
+title: 'Hooks'
+intro: 'Statamic allows you to hook into specific points in PHP logic and perform operations using Pipelines.'
 ---
+:::warning
+This page is about PHP-based hooks. We also have [JavaScript-based hooks](/extending/js-hooks), which work differently.
+:::
+
 ## About
 
-Hooks are programmable interfaces which you can use to modify or extend already existing JavaScript code inside the Control Panel.
+Closures may be registered allowing you to "hook" into a specific point in PHP's lifecycle. These closures are added to a pipeline.
 
-Normally they work like this:
+Hooks may be located in tags, fieldtypes, and so on.
 
-1. Statamic code is running
-2. Statamic code checks for existing Hooks
-3. Your custom hook was found
-4. The code inside your custom hook will be run
-5. Statamic code continues to run (with modfied data etc.)
-
-## Prerequisites
-
-Before you start using hooks, you need to register the corresponding javascript file.
-Please follow the guide on [Adding CSS and JS assets](/extending/control-panel#adding-css-and-js-assets).
+At some point, a payload is send through the pipeline, allowing any registered closures to inspect or modify the payload, then finally gets sent back to the origin.
 
 ## How to use hooks
 
-For example, the `entry.saving` hook allows you to pause saving to perform an action:
+For example, the `collection` tag will query for entries, then run the `fetched-entries` hook, passing all the entries along. Your hook may modify these entries.
 
-```js
-Statamic.$hooks.on('entry.saving', (resolve, reject) => {
-    if (confirm('Are you sure you want to save this entry?')) {
-        // Continue with the save action.
-        resolve();
-    } else {
-        // Cancel the save action. You can provide the error message.
-        reject('You chose not to publish.');
-    }
+```php
+use Statamic\Tags\Collection;
+
+Collection::hook('fetched-entries', function ($entries, $next) {
+    // Modify the entries...
+    $modified = $entries->take(3);
+
+    // Pass them along to the next registered closure.
+    return $next($modified);
 });
 ```
 
-If you intend to work with another promise, make to resolve or reject once it's done:
+It's also possible to wait until all the other closures in the pipeline have completed. To do that, pass it along to the next closure _first_.
 
-```js
-Statamic.$hooks.on('entry.saving', (resolve, reject) => {
-    return axios.get('/something')
-        .then(resolve)
-        .catch(() => reject('It broke'));
+For example, maybe you need to get all the ids of the entries that will be output. By passing along to the other closures first, it will give them a chance to manipulate it. In the example above, it would take the first 3 entries. Now in this hook we'll be getting 3 ids rather than the full amount the tag was originally going to output.
+
+```php
+use Statamic\Tags\Collection;
+
+Collection::addHook('fetched-entries', function ($entries, $next) {
+    // Pass the payload along to the next registered closures.
+    $entries = $next($entries);
+
+    $ids = $entries->pluck('id');
+
+    // You'll still need to return it!
+    return $entries;
 });
 ```
 
-Some hooks may provide you with a payload containing additional data. For example, the `entry.saving` hook provides you with the collection handle and form values.
+### Scope
 
-```js
-Statamic.$hooks.on('entry.saving', (resolve, reject, payload) => {
-    console.log(payload.collection); // blog
-    console.log(payload.values); // { title: "My Post", content: "Post Content" }
+The closure is scoped to the class where the hook was triggered. The `$this` variable will be the class itself, and will act as if you're in the class so you can call protected methods, as well as any macroed methods.
+
+```php
+Tag::addHook('name', function ($payload, $next) {
+    // {{ tag foo="bar" }}
+    $this->params->get('foo'); // bar
 });
 ```
 
-:::best-practice
-When you `reject` a hook, any other code using that hook will not be executed.
-Unless your intention is to stop the execution chain, you should always `resolve`, even when your code does nothing.
-
-``` js
-Statamic.$hooks.on('example', (resolve, reject) => {
-    if (somethingShouldHappen) {
-        doSomething();
-    }
-    resolve();
-});
-```
-:::
 
 ## Available hooks
 
-### entry.saving
+### All tags: `init`
+Triggered after the tag has been initialized. The payload is `null`.
 
-Triggered when you click save on the publish form.
-You can use `reject()` to prevent the request. Payload contains collection name, form values, and a reference to the publish container component.
+### Collection tag: `fetched-entries`
+Triggered just after completing the query.
+The payload will either be an `EntryCollection` or a `Paginator`, depending on whether the `paginate` parameter was used.
 
-### entry.saved
 
-Triggered when you click save, but after the request has finished.
-Payload contains collection name, and the Axios response.
+## Triggering your own hooks
 
-### entry.publishing
+You may want to trigger your own hook pipeline so that others may use it.
 
-Triggered when revisions are enabled, and you click publish in the publish action stack.
-You can use `reject()` to stop the request. Payload contains collection name and revision message.
+To do this, you may use the `runHooks` method from the `Hookable` trait, passing the hook name and a payload.
+Once any hook closures have finished running, the payload will be returned back from it.
 
-### entry.published
+```php
+use Statamic\Support\Traits\Hookable;
 
-Triggered when revisions are enabled, but after the request has finished.
-Payload contains collection name, revision message, and the Axios response.
+class YourClass
+{
+    use Hookable;
 
-### global-set.saving
+    public function something()
+    {
+        $result = $this->runHooks('hook-name', $payload);
+    }
+}
+```
 
-Triggered when you click save on the publish form.
-You can use `reject()` to prevent the request. Payload contains global set name, form values, and a reference to the publish container component.
+Now others will be able to call `hook` on your class to register their hook:
 
-### global-set.saved
+```php
+YourClass::hook('hook-name', function ($payload, $next) {
+    // ...
+    return $next($payload);
+});
+```
 
-Triggered when you click save, but after the request has finished.
-Payload contains global set name, and the Axios response.
+:::tip
+Tag classes already `use Hookable` so you can simply use `$this->runHooks()` without importing anything.
+:::
