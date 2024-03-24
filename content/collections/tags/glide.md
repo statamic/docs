@@ -122,7 +122,7 @@ filters:
     name: pixelate
     type: integer
     description: >
-      Applies a pixelation effect to the image. Use values between `0` and `1000`.
+      Applies a pixelation effect to the image. Use values between `0` and `100`.
   -
     name: filter
     type: string
