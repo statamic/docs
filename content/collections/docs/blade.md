@@ -176,6 +176,41 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 {{ $tag['paginate']['auto_links'] }}
 ```
 
+### Directive {#tag-directive}
+
+You may prefer to use an alternate syntax, available via a `@tags` Blade directive.
+
+Passing a string will give you the camelCased version of the tag as a variable:
+
+```blade
+@tags('collection:blog')
+
+@foreach($collectionBlog as $post) ... @endforeach
+```
+
+Passing an array of tags can provide multiple variables:
+
+```blade
+@tags(['collection:blog', 'collection:items'])
+
+@foreach($collectionBlog as $post) ... @endforeach
+
+@foreach($collectionItems as $item) ... @endforeach
+```
+
+You may also pass an array of tags, and parameters, with variable names as the keys:
+
+```blade
+@tags([
+    'posts' => ['collection:blog' => ['limit' => 5]], 
+    'items' => ['collection:items' => ['limit' => 5]],
+])
+
+@foreach($posts as $post) ... @endforeach
+
+@foreach($items as $item) ... @endforeach
+```
+
 
 ## Using Modifiers with Blade
 
