@@ -135,3 +135,17 @@ and the set partial may look something like:
 
 <img src="{{ image }}" alt="{{ caption }}" >
 ```
+
+## Custom set icons
+
+You can change the icons available in the set picker by setting an icons directory in a service provider. For example in the `boot()` method of your `AppServiceProvider.php`.
+
+```php
+\Statamic\Fieldtypes\Sets::setIconsDirectory(folder: 'light');
+```
+
+Or choose a different base directory altogether:
+
+```php
+\Statamic\Fieldtypes\Sets::setIconsDirectory(directory: resource_path('custom-icons'));
+```
