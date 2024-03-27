@@ -89,6 +89,61 @@ class ServiceProvider extends AddonServiceProvider
 If you use the `php please make:fieldtype` command, these files will be created automatically for you.
 :::
 
+## Tailwind
+
+If you use Tailwind in your addon views, you probably want to scan those files for any classes. Make sure to update the following files:
+
+### package.json
+
+Include Tailwind and postcss in your `package.json`.
+```json
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "type": "module",
+    "author": "Studio 1902",
+    "devDependencies": {
+        "laravel-vite-plugin": "^0.7.2",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
+        "vite": "^4.0.0"
+    }
+}
+```
+
+### postcss.config.js
+
+```js
+export default {
+    plugins: {
+        tailwindcss: {}
+    },
+};
+```
+
+### tailwind.config.js
+
+Add any paths you want to scanned for Tailwind classes to the content array.
+
+```js
+module.exports = {
+  content: [
+    './resources/views/widgets/**/*.blade.php',
+  ]
+}
+```
+
+### addon.css
+
+Only include Tailwind utilities so you don't override any default CP styling.
+
+```css
+@import "tailwindcss/utilities";
+```
+
 ## Development
 
 If you visit the Control Panel before running any commands, you will be greeted with a `Vite manifest not found` error. You'll need to install dependencies (the first time only) and start the development server.
