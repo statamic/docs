@@ -263,20 +263,22 @@ email:
     # other settings here
 ```
 
+If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained below.
+
 
 ## File Uploads
 
 Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
 
-First up, add `files="true"` to  your form tag. (This will add `enctype="multipart/form-data"` to the generated `<form>` tag. That's always so difficult to remember.)
+First, add a file upload field to your blueprint:
+- Add an `assets` field if you want the uploaded files to be stored in one of your asset containers.
+- Add a `files` field if you're only wanting to attach the uploads to the email. Anything uploaded using this fieldtype will be attached and then deleted after the emails are sent.
 
-```
-{{ form:create formset="contact" files="true" }}
-...
-{{ /form:create }}
-```
+Then decide if you need single or multiple files to be uploaded.
 
-Then add an `assets` field to your blueprint, with a `max_files` setting of `1`:
+### Single files
+
+On your field, add a `max_files` setting of `1`:
 
 ```
 <input type="file" name="cat_selfie" />
@@ -298,7 +300,7 @@ You have two methods available to you:
 
 First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
-Or, you can enable multiple files on one field by dropping the `max_files` setting on your assets field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
+Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
 ```
 <input type="file" name="selfies[]" multiple />
