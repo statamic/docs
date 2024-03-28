@@ -23,6 +23,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `status`
 - `unless`
 - `value`
+- `count`
 
 :::warning
 Some of these _may_ work as field names in some circumstances, but can have unintended consequences, like overriding global data, behaviors, or creating issues with Vue components inside the Control Panel.
