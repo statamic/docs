@@ -50,6 +50,7 @@ preferences:
 | Slovene | `sl` |
 | Swedish | `sv` |
 | Turkish | `tr` |
+| Ukrainian | `uk` |
 | Simplified Chinese | `zh_CN` |
 | Taiwan | `zh_TW` |
 
