@@ -263,6 +263,42 @@ email:
     # other settings here
 ```
 
+### Using Laravel Markdown Templates
+
+Don't write your own HTML / CSS - use [Laravel's pre-built templates](https://laravel.com/docs/mail#markdown-mailables) and components.
+
+First, turn on markdown by adding `markdown: true` to the email config.
+
+```yaml
+email:
+  -
+    html: 'contact-us'
+    markdown: true
+```
+
+You can now use the components in your blade templates:
+
+```blade
+{{-- contact-us.blade.php --}}
+<x-mail::message>
+# New form submission
+
+Someone has taken the time to fill out a form on your website. Here are the details:
+
+<x-mail::panel>
+@foreach ($fields as $item)
+<strong>{{ $item['display'] }}:</strong> {{ $item['value'] }}<br>
+@endforeach
+</x-mail::panel>
+</x-mail::message>
+```
+
+:::warning
+Remember, don't use indention with Markdown. Markdown parsers may render anything indented as code.
+:::
+
+You can also customize the components by following the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
+
 
 ## File Uploads
 
