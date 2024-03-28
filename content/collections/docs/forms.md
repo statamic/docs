@@ -263,6 +263,49 @@ email:
     # other settings here
 ```
 
+### Using Markdown Mailable Templates
+
+Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
+
+1. Enable Markdown parsing in your email config:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true
+```
+
+2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true
+    html: 'contact-us'
+```
+
+```blade
+{{-- contact-us.blade.php --}}
+<x-mail::message>
+# New form submission
+
+Someone has taken the time to fill out a form on your website. Here are the details:
+
+<x-mail::panel>
+@foreach ($fields as $item)
+<strong>{{ $item['display'] }}:</strong> {{ $item['value'] }}<br>
+@endforeach
+</x-mail::panel>
+</x-mail::message>
+```
+
+:::warning
+Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
+:::
+
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
 
 ## File Uploads
 
