@@ -138,14 +138,21 @@ and the set partial may look something like:
 
 ## Custom set icons
 
-You can change the icons available in the set picker by setting an icons directory in a service provider. For example in the `boot()` method of your `AppServiceProvider.php`.
+You can change the icons available in the set picker by setting an icons directory in a service provider.
+
+For example, you can drop this into your `AppServiceProvider`'s `boot` method:
 
 ```php
-\Statamic\Fieldtypes\Sets::setIconsDirectory(folder: 'light');
+use Statamic\Fieldtypes\Sets;
+
+public function boot()
+{
+    Sets::setIconsDirectory(folder: 'light');
+}
 ```
 
-Or choose a different base directory altogether:
+Alternatively, if you want to use a different base directory altogether, you can do this:
 
 ```php
-\Statamic\Fieldtypes\Sets::setIconsDirectory(directory: resource_path('custom-icons'));
+Sets::setIconsDirectory(directory: resource_path('custom-icons'));
 ```
