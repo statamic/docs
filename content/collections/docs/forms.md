@@ -273,7 +273,7 @@ Laravel allows you to create email templates [using Markdown](https://laravel.co
 email:
   -
     # other settings here
-    markdown: true
+    markdown: true // [tl! add]
 ```
 
 2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
@@ -282,8 +282,8 @@ email:
 email:
   -
     # other settings here
-    markdown: true
-    html: 'contact-us'
+    markdown: true 
+    html: 'contact-us' // [tl! add]
 ```
 
 ```blade
