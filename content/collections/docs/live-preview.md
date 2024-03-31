@@ -173,15 +173,19 @@ preview_targets:
 ```
 
 ```php
-use Facades\Statamic\CP\LivePreview;
+use Statamic\CP\LivePreview;
 use Illuminate\Http\Request;
 
-Route::get('/render-live-preview', function (Request $request) {
-  $entry = LivePreview::item($request->statamicToken());
-  $entry->title;        // The edited title
-  $entry->foo;          // The edited foo field, etc.
-  $entry->live_preview; // All the "extra" data from the custom toolbar fields are in here.
+Route::get('/render-live-preview', function (Request $request, LivePreview $preview) {
+  $token = $request->statamicToken();
+  if ($token !== null) {
+    $entry = $preview->item($token);
+    $entry->title;        // The edited title
+    $entry->foo;          // The edited foo field, etc.
+    $entry->live_preview; // All the "extra" data from the custom toolbar fields are in here.
+    return view('whatever', ['entry' => $entry]);
+  }
 
-  return view('whatever', ['entry' => $entry]);
+  abort(403);
 });
 ```
