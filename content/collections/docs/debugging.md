@@ -20,6 +20,18 @@ Statamic will try to detect why you're receiving a specific exception and provid
 
 <img src="/img/clippy-docs.gif" class="fixed z-10 cursor-pointer bottom-0 right-0 m-8" x-show.transition="showEasterEgg" x-on:click="showEasterEgg = false">
 
+
+## Fake SQL Queries
+
+By default, Statamic doesn't use a database, so our query builders don't actually execute SQL queries. However, we "fake" the queries so that they appear in your preferred debugging tools like [Ray](https://myray.app) or Debugbar (more on that below).
+
+They are enabled when you're in debug mode, but if you'd like to disable them you can do so in `config/statamic/system.php`:
+
+```php
+'fake_sql_queries' => false,
+```
+
+
 ## Debug Bar
 
 The debug bar is a convenient way to explore many of the things happening in any given page request. You can see data Statamic is fetching, which views are being rendered, information on the current route, available variables, user's session, request data, and more.
