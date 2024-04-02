@@ -24,6 +24,7 @@ use Statamic\Facades\Taxonomy;
 | `find($id)` | Get Taxonomy by `id` |
 | `findByHandle($handle)` | Get Taxonomy by `handle` |
 | `findByUri($mount)` | Get Taxonomy by `uri` |
+| `findOrFail($id)` | Get Taxonomy by `id`. Throws a `TaxonomyNotFoundException` when the taxonomy cannot be found. |
 | `handleExists($handle)` | Check to see if `Taxonomy` exists |
 | `handles()` | Get all `Taxonomy` handles |
 | `queryTerms()` | Query Builder for [Terms](/content-queries/term-repository) |
@@ -41,6 +42,12 @@ While the `Taxonomy` Repository does not have a Query Builder, you can still que
 $tags = Taxonomy::find('tags');
 
 $tags->queryTerms()->get();
+```
+
+When a taxonomy can't be found, the `Taxonomy::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+Taxonomy::findOrFail('tags');
 ```
 
 ## Creating

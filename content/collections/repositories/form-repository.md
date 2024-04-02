@@ -20,6 +20,7 @@ use Statamic\Facades\Form;
 | ------- | ----------- |
 | `all()` | Get all Forms |
 | `find($handle)` | Get Form by `handle` |
+| `findOrFail($handle)` | Get Form by `handle`. Throws a `FormNotFoundException` when the form cannot be found. |
 | `make()` | Makes a new `Form` instance |
 
 :::tip
@@ -34,6 +35,12 @@ The `handle` is the name of the form's YAML file.
 
 ```php
 Form::find('postbox');
+```
+
+When a form can't be found, the `Form::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+Form::findOrFail('postbox');
 ```
 
 #### Get all forms from your site
