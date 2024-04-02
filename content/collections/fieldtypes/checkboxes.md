@@ -76,6 +76,14 @@ You can loop through the checked items and access the value and label of each it
 </ul>
 ```
 
+To conditionally check if a value has been selected, you can combine the [pluck](/modifiers/pluck) and [contains](/modifiers/contains) modifiers:
+
+```html
+{{ if favorites | pluck('value') | contains('donuts') }}
+   <span>Contains donuts!</span>    
+{{ /if }}
+```
+
 ### Variables
 
 Inside an asset variable's tag pair you'll have access to the following variables.

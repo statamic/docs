@@ -115,7 +115,7 @@ This example dynamically renders each input's HTML. You could alternatively writ
                 {{ /if }}
             </div>
         {{ /fields }}
-        
+
         // Add the honeypot field
         <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
 
@@ -263,8 +263,51 @@ email:
     # other settings here
 ```
 
-If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained below.
+If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained in the [File Uploads](#file-uploads) section.
 
+### Using Markdown Mailable Templates
+
+Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
+
+1. Enable Markdown parsing in your email config:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true # [tl! add]
+```
+
+2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true
+    html: 'contact-us' # [tl! add]
+```
+
+```blade
+{{-- contact-us.blade.php --}}
+<x-mail::message>
+# New form submission
+
+Someone has taken the time to fill out a form on your website. Here are the details:
+
+<x-mail::panel>
+@foreach ($fields as $item)
+<strong>{{ $item['display'] }}:</strong> {{ $item['value'] }}<br>
+@endforeach
+</x-mail::panel>
+</x-mail::message>
+```
+
+:::warning
+Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
+:::
+
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
 
 ## File Uploads
 
@@ -355,7 +398,7 @@ If you are static caching the URL containing a form, return responses like 'succ
 {{ nocache }}
     {{ form:create formset="contact" }}
         ...
-    {{ /form:create }}    
+    {{ /form:create }}
 {{ /nocache }}
 ```
 
@@ -389,8 +432,8 @@ Some things to note here:
 {{ form:contact attr:x-ref="form" js="alpine" }}
     <div x-data='{
         form: $form(
-            "post", 
-            $refs.form.getAttribute("action"), 
+            "post",
+            $refs.form.getAttribute("action"),
             JSON.parse($refs.form.getAttribute("x-data"))
         ).setErrors({{ error | json }}),
     }'>
@@ -442,8 +485,8 @@ To build on the regular form submission example above, here's an example for AJA
 ```antlers
 <div x-data='{
     form: $form(
-        "post", 
-        $refs.form.getAttribute("action"), 
+        "post",
+        $refs.form.getAttribute("action"),
         JSON.parse($refs.form.getAttribute("x-data"))
     ).setErrors({{ error | json }}), {{# [tl! --] #}}
     ), {{# [tl! ++:start] #}}

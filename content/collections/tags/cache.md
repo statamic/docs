@@ -90,6 +90,7 @@ For example, you could listen for an entry in the `stocks` collection being save
 ``` php
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Event;
+use Statamic\Events\EntrySaved;
 
 class EventServiceProvider
 {
