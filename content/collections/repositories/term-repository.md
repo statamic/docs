@@ -23,6 +23,7 @@ use Statamic\Facades\Term;
 | `all()` | Get all Terms |
 | `find($id)` | Get Term by `id` |
 | `findByUri($uri)` | Get Term by `uri` |
+| `findOrFail($id)` | Get Term by `id`. Throws a `TermNotFoundException` when the term cannot be found. |
 | `query()` | Query Builder |
 | `make()` | Makes a new `Term` instance |
 
