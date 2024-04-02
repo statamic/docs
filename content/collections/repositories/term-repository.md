@@ -42,6 +42,12 @@ Term::query()->where('id', 'tags::123')->first();
 Term::find('tags::123');
 ```
 
+When a term can't be found, the `Term::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+Term::findOrFail('tags::123');
+```
+
 #### Get all tags
 
 ```php
