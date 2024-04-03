@@ -99,6 +99,7 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;↳ Change passwords | `change passwords` |
 | &nbsp;&nbsp;↳ Edit user groups | `edit user groups` |
 | &nbsp;&nbsp;↳ Edit roles | `edit roles` |
+| &nbsp;&nbsp;↳ Impersonate users | `impersonate users` |
 | Configure forms | `configure forms` |
 | View form submissions | `view {form} submissions` |
 | &nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
@@ -203,6 +204,17 @@ You can set the language for _everyone_ by going to **Default**, or you can set 
     <img src="/img/user-language-preference.png" alt="User Language Preferences">
     <figcaption>Last we checked, Statamic has been translated into a lot of languages.</figcaption>
 </figure>
+
+## Impersonate Users
+
+Statamic gives you the ability to impersonate users via the Control Panel. This lets you see the Control Panel and front end of your site through the eyes of the user you chose. This is pretty neat if certain content or capabilities are limited through roles and permissions and you want to test those things. It saves quite some time since there's no need to manually sign out and in again with a different user anymore.
+
+<figure>
+    <img src="/img/user-impersonation.jpg" alt="List view of Statamic Control Panel users with a dropdown showing various options, one of them being 'Start Impersonation'">
+    <figcaption>Masquerade as someone else 🎭</figcaption>
+</figure>
+
+You can configure impersonation in `config/statamic/users.php`, like setting the redirect destination after starting impersonation or disabling it. Additionally, there is a dedicated `impersonate users` permission that you can assign to roles and users to allow or disallow them using this feature.
 
 ## OAuth
 
