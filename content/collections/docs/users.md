@@ -214,7 +214,7 @@ Statamic gives you the ability to impersonate users via the Control Panel. This 
     <figcaption>Masquerade as someone else 🎭</figcaption>
 </figure>
 
-You can configure impersonation in `config/statamic/users.php`, like setting the redirect destination after starting impersonation or disabling it.
+You can configure impersonation in `config/statamic/users.php`, like setting the redirect destination after starting impersonation or disabling it. Additionally, there is a dedicated `impersonate users` permission that you can assign to roles and users to allow or disallow them using this feature.
 
 ## OAuth
 
