@@ -15,6 +15,11 @@ options:
     required: false
     description: 'Width of dashboard area as a percentage.'
   -
+    name: sites
+    type: array
+    required: false
+    description: 'Determines the sites in which this widget should be displayed.'
+  -
     name: limit
     type: int
     required: false
