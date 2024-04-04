@@ -88,7 +88,6 @@ When using full-measure caching, the [nocache tag](/tags/nocache) will rely on J
 Using the file driver, you can configure the permissions for the directories and files that are getting created using the `static_caching.strategies.full` config option.
 
 ```php
-
 'strategies' => [
     'full' => [
         'driver' => 'file',
