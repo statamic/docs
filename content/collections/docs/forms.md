@@ -234,6 +234,24 @@ class SpecialExporter extends Exporter
 
 The `export` method should return the file contents and the `extension` method should return the file extension.
 
+Then, to make the exporter available on your forms, simply add it to your forms config:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+    'special_exporter' => [ // [tl! focus]
+        'class' => App\Forms\Exporters\SpecialExporter::class, // [tl! focus]
+    ], // [tl! focus]
+],
+```
+
 ## Emails
 
 Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? Let's hook that up next.
