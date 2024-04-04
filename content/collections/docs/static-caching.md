@@ -168,13 +168,51 @@ By default the pool will use `25`, but feel free to adjust it up or down based o
             'lock_hold_length' => 0,
             'warm_concurrency' => 10, // [tl! highlight]
         ],
-
     ],
 ```
 
 :::tip
 Lower the `warm_concurrency` to reduce the overhead and slow the process down, raise it to warm faster by using more CPU.
 :::
+
+### Warming additional URLs
+
+Statamic will automatically warm pages for entries, taxonomy terms and any basic `Route::statamic()` routes. If you wish to warm additional URLs as part of the `static:warm` command, you may add a hook into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Console\Commands\StaticWarm;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        StaticWarm::hook('additional', function ($urls, $next) {
+            return $next($urls->merge([
+                '/custom-1',
+                '/custom-2',
+                'https://different-domain.com/custom-3',
+            ]));
+        });
+    }
+}
+```
+
+When you're adding a lot of additional URLs, you may want to use a dedicated class instead:
+
+```php
+use App\StaticWarmExtras;
+use Statamic\Console\Commands\StaticWarm;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        StaticWarm::hook('additional', function ($urls, $next) {
+            return $next($urls->merge(StaticWarmExtras::handle()));
+        });
+    }
+}
+```
 
 ## Excluding Pages
 
