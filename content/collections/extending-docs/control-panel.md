@@ -57,12 +57,12 @@ class AppServiceProvider
 
 These methods will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
 
-### Using External Scripts
+### Using `<script>` tags in the Control Panel
 
-For externally-hosted sources, you may register assets to be loaded in the Control Panel with the `externalScript` method. This method accepts the URL of an external script.
+For externally-hosted scripts, you may register assets to be loaded in the Control Panel with the `externalScript` method. This method accepts the URL of an external script.
 
 
-``` php
+```php
 use Statamic\Statamic;
 
 class AppServiceProvider
@@ -70,6 +70,20 @@ class AppServiceProvider
     public function boot()
     {
         Statamic::externalScript('https://kit.fontawesome.com/5t4t4m1c.js');
+    }
+}
+```
+
+Otherwise, for inline scripts, you may use the `inlineScript` method. You should omit the `<script>` tags.
+
+```php
+use Statamic\Statamic;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        Statamic::inlineScript('window.Beacon("init", "abc123")');
     }
 }
 ```
