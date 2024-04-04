@@ -88,9 +88,17 @@ When using full-measure caching, the [nocache tag](/tags/nocache) will rely on J
 Using the file driver, you can configure the permissions for the directories and files that are getting created using the `static_caching.strategies.full` config option.
 
 ```php
-'permissions' => [
-    'directory' => 0755,
-    'file' => 0644,
+
+'strategies' => [
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static'),
+        'permissions' => [ // [tl! focus]
+            'directory' => 0755, // [tl! focus]
+            'file' => 0644, // [tl! focus]
+        ], // [tl! focus]
+    ],
+]
 ```
 
 ## Server Rewrite Rules
@@ -309,7 +317,7 @@ class MyCustomInvalidator extends DefaultInvalidator
             if ($item->collection() == 'events') {
                 // etc...
             }
-        }  
+        }
 
         // flushes only the URLs you define in the config
         if ($urls) {
