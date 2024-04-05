@@ -35,20 +35,24 @@ preferences:
 | German | `de` or `de_CH` |
 | English | `en` |
 | Spanish | `es` |
+| Persian | `fa` |
 | French | `fr` |
 | Hungarian | `hu` |
 | Indonesia | `id` |
 | Italian | `it` |
+| Japanese | `ja` |
 | Malaysia | `ms` |
 | Norwegian | `nb` |
 | Dutch | `nl` |
 | Polish | `pl` |
-| Portuguese | `pt` |
+| Portuguese | `pt` or `pt_BR` |
 | Russia | `ru` |
 | Slovene | `sl` |
 | Swedish | `sv` |
-| Taiwan | `zh_TW` |
 | Turkish | `tr` |
+| Ukrainian | `uk` |
+| Simplified Chinese | `zh_CN` |
+| Taiwan | `zh_TW` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
@@ -66,7 +70,7 @@ There are 4 steps.
 
 Run the `translator generate` command in the `statamic/cms` project, along with the new language code as an argument. This will generate empty JSON and PHP files in `resources/lang` ready to be translated into the locale of your choice.
 
-You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`). 
+You can specify a short 2 character language code (`es`) or the full 4 character regional code (`es_MX`).
 
 _It is recommended that you comply to the [`language code standard`](https://www.science.co.il/language/Codes.php)._
 

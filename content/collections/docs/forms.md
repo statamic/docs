@@ -115,7 +115,7 @@ This example dynamically renders each input's HTML. You could alternatively writ
                 {{ /if }}
             </div>
         {{ /fields }}
-        
+
         // Add the honeypot field
         <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
 
@@ -149,6 +149,108 @@ You can display any or all of the submissions of your forms on the front-end of 
 ## Exporting your data
 
 Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
+
+### Configuring exporters
+
+Out of the box, Statamic gives you two exporters: a CSV exporter and a JSON exporter.
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+],
+```
+
+If you want to customize the labels of the exporters, you may add a `title` key to the exporter's config. You can also add a `forms` key to the exporter config to limit it to certain forms:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+        'title' => 'CSV (Works in Excel)',
+        'forms' => ['contact_form', 'event_registrations'],
+    ],
+],
+```
+
+### CSV Exporter
+
+The CSV exporter supports two configuration options:
+
+#### `csv_delimiter`
+
+This allows you to configure the delimiter used for CSV exports. This defaults to `,`.
+
+```php
+// config/statamic/forms.php
+
+'csv_delimiter' => ',',
+```
+
+#### `csv_headers`
+
+This allows you to configure whether the field handle or the field display text is used for the CSV's heading row. This defaults to `handle`.
+
+```php
+// config/statamic/forms.php
+
+'csv_headers' => 'handle',
+```
+
+### Custom Exporter
+
+If you need to export form submissions in a different file format or need more flexibility around how the CSV/JSON files are created, you may build your own custom exporter.
+
+To build a custom exporter, simply create a class which extends Statamic's `Exporter` class and implement the `export` and `extension` methods:
+
+```php
+<?php
+
+namespace App\Forms\Exporters;
+
+use Statamic\Forms\Exporters\Exporter;
+
+class SpecialExporter extends Exporter
+{
+    public function export(): string
+    {
+        return '';
+    }
+
+    public function extension(): string
+    {
+        return 'csv';
+    }
+}
+```
+
+The `export` method should return the file contents and the `extension` method should return the file extension.
+
+Then, to make the exporter available on your forms, simply add it to your forms config:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+    'special_exporter' => [ // [tl! focus]
+        'class' => App\Forms\Exporters\SpecialExporter::class, // [tl! focus]
+    ], // [tl! focus]
+],
+```
 
 ## Emails
 
@@ -263,6 +365,49 @@ email:
     # other settings here
 ```
 
+### Using Markdown Mailable Templates
+
+Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
+
+1. Enable Markdown parsing in your email config:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true # [tl! add]
+```
+
+2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true
+    html: 'contact-us' # [tl! add]
+```
+
+```blade
+{{-- contact-us.blade.php --}}
+<x-mail::message>
+# New form submission
+
+Someone has taken the time to fill out a form on your website. Here are the details:
+
+<x-mail::panel>
+@foreach ($fields as $item)
+<strong>{{ $item['display'] }}:</strong> {{ $item['value'] }}<br>
+@endforeach
+</x-mail::panel>
+</x-mail::message>
+```
+
+:::warning
+Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
+:::
+
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
 
 ## File Uploads
 
@@ -353,7 +498,7 @@ If you are static caching the URL containing a form, return responses like 'succ
 {{ nocache }}
     {{ form:create formset="contact" }}
         ...
-    {{ /form:create }}    
+    {{ /form:create }}
 {{ /nocache }}
 ```
 
@@ -387,8 +532,8 @@ Some things to note here:
 {{ form:contact attr:x-ref="form" js="alpine" }}
     <div x-data='{
         form: $form(
-            "post", 
-            $refs.form.getAttribute("action"), 
+            "post",
+            $refs.form.getAttribute("action"),
             JSON.parse($refs.form.getAttribute("x-data"))
         ).setErrors({{ error | json }}),
     }'>
@@ -440,8 +585,8 @@ To build on the regular form submission example above, here's an example for AJA
 ```antlers
 <div x-data='{
     form: $form(
-        "post", 
-        $refs.form.getAttribute("action"), 
+        "post",
+        $refs.form.getAttribute("action"),
         JSON.parse($refs.form.getAttribute("x-data"))
     ).setErrors({{ error | json }}), {{# [tl! --] #}}
     ), {{# [tl! ++:start] #}}

@@ -158,7 +158,7 @@ Here, the `display` and `validate` would replace whatever was defined in the fie
 
 ### Importing Fieldsets
 
-Fieldsets still exist in Statamic 3! They serve to create reusable sets of fields, just like v2. You may import an entire fieldset at any point by using the `import` key, for example:
+Fieldsets serve to create reusable sets of fields. You may import an entire fieldset at any point by using the `import` key, for example:
 
 ``` yaml
 # blueprint

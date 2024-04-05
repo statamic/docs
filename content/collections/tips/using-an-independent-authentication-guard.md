@@ -110,6 +110,6 @@ These routes will use whichever guard you have set to as the "default" in your `
 ```php
 'defaults' => [
   'guard' => 'web',
-  'passwords' => 'users',
+  'passwords' => 'resets',
 ],
 ```

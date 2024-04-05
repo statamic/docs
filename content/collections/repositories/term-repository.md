@@ -30,6 +30,17 @@ use Statamic\Facades\Term;
 
 #### Examples {.popout}
 
+#### Get a single term by its id
+
+When getting a single term by its ID, the value of the `$id` parameter should be `taxonomy_handle::term_id`.
+
+```php
+Term::query()->where('id', 'tags::123')->first();
+
+// Or with the shorthand method
+Term::find('tags::123');
+```
+
 #### Get all tags
 
 ```php

@@ -102,7 +102,7 @@ This is perfect for times when you want to password-protect one or more files bu
 ### Password Form
 
 <figure>
-    <img src="/img/password-protected.png" alt="A Statamic 3 password protected page">
+    <img src="/img/password-protected.png" alt="A Statamic password protected page">
     <figcaption>The default password protected login screen.</figcaption>
 </figure>
 

@@ -13,7 +13,12 @@ options:
     name: width
     type: int
     required: false
-    description: 'Width of dashboard area as a percentage.'
+    description: 'Width of dashboard area as a percentage. Accepts `25`, `33`, `50`, `66`, `75` and `100`.'
+  -
+    name: sites
+    type: array
+    required: false
+    description: 'Determines the sites in which this widget should be displayed.'
   -
     name: limit
     type: int
