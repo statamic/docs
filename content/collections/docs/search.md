@@ -283,7 +283,20 @@ If you have a localized index and include searchables that do not support locali
 
 The built in search driver supports multiple options you can pass in.
 
-- `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to `['partial_word' => 1, 'partial_first_word' => 2, 'partial_word_start' => 1, 'partial_first_word_start' => 2, 'whole_word' => 5, 'whole_first_word' => 5, 'partial_whole' => 2, 'partial_whole_start' => 2, 'whole' => 10,]`.
+- `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to:
+    ```php
+    [
+        'partial_word' => 1,
+        'partial_first_word' => 2,
+        'partial_word_start' => 1,
+        'partial_first_word_start' => 2,
+        'whole_word' => 5,
+        'whole_first_word' => 5,
+        'partial_whole' => 2,
+        'partial_whole_start' => 2,
+        'whole' => 10,
+    ]
+    ```
 - `min_characters`: The minimum number of characters required in a search query. Defaults to `1`.
 - `min_word_characters`: The minimum number of characters required in a word in a search query. Defaults to `2`.
 - `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `1`.
