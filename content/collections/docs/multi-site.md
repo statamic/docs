@@ -17,79 +17,111 @@ Each site can have different base URLs:
 - subdomains: `example.com` and `fr.example.com`
 - subdirectories: `example.com` and `example.com/fr/`
 
-[More details on how to convert to a multi-site setup](/tips/converting-from-single-to-multi-site)
+::: tip
+Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
+:::
+
+### Converting Existing Content to Multi-Site
+
+The simplest way to convert existing content to multi-site friendly structure is to run the automated command:
+
+``` shell
+php please multisite
+```
+
+Read more on [converting to a multi-site setup](/tips/converting-from-single-to-multi-site).
 
 ## Configuration
 
-Let's look at a full site configuration and then we'll explore all of its options.
+### Enabling Multi-Site
+
+First, enable `multisite` in your `config/statamic/system.php`:
 
 ``` php
-# config/statamic/sites.php
-
-return [
-    'sites' => [
-        'default' => [
-            'name' => config('app.name'),
-            'locale' => 'en_US',
-            'url' => '/',
-            'direction' => 'ltr',
-            'lang' => 'en',
-        ]
-    ]
-];
+'multisite' => true,
 ```
 
-### Sites
-Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
+### Adding New Sites
 
-### Locale
-Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default Statamic will use English – United States (`en_US`).
+Next, you can add new sites through the control panel:
 
-:::tip
-To see the list of installed locales on your system or server, run the command `locale -a`.
+<figure class="mt-0 mb-8">
+    <img src="/img/configure-sites.png" alt="Configure sites page in control panel">
+</figure>
+
+Or directly in your `content/sites.yaml` file:
+
+``` yaml
+default:
+  name: First Site
+  url: /
+  locale: en_US
+second:
+  name: Second Site
+  url: /second/
+  locale: en_US
+```
+
+## Available Options
+
+Let's look at a full site configuration and then we'll explore all of its options.
+
+``` yaml
+# content/sites.yaml
+
+en:
+  name: English
+  url: /
+  locale: en_US
+  lang: en
+  attributes:
+    theme: standard
+```
+
+### Handle
+
+Each site is keyed by its `handle`, which is important for directory structure, as well as referencing sites in collection configs, etc. throughout your site. Changing this is non-trivial, and you should be careful if you already have established content in this site. Read more about [renaming sites](#renaming-sites).
+
+``` yaml
+en: # <- This is your site handle
+  name: English
+
+```
+### Name
+
+Each site has a `name`, which is a display-friendly representation of your site's name mostly seen within control panel UI. Changing this does not affect content relations.
+
+``` yaml
+en:
+  name: English
+```
+
+::: tip
+You'll notice the default site dynamically references a [config variable](/variables/config), but feel free to change this!
+
+``` yaml
+default:
+  name: '{{ config:app:name }}'
+```
 :::
 
-### Language
-Statamic's control panel has been translated into more than a dozen languages. The language translations files live in `resources/lang`.
-
-You may specify which language translation to be used for each site with the `lang` setting. If you leave it off, it'll use the short version of the `locale`. e.g. If the locale is `en_US`, the lang will be `en`.
-
-```php
-'sites' => [
-    'de' => [
-        'name' => 'Deutsche',
-        'locale' => 'de_DE',
-        // 'lang' => 'de', // Not needed as 'de' is implied.
-    ],
-    'de_ch' => [
-        'name' => 'Deutsche (Switzerland)',
-        'locale' => 'de_CH',
-        'lang' => 'de_CH', // We want the de_CH language, not de.
-    ]
-]
-```
-
-Note that both Statamic and Laravel don't ship with frontend language translations out of the box. You have to provide your own string files for this. There is a great package called [Laravel Lang](https://github.com/Laravel-Lang/lang) containing over 75 languages that can help you out with this.
-
 ### URL
-URL is required to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is based on the domain the site is running on.
+
+Each site requires a URL to define the root domain Statamic will serve and generate all URLs relative to. The default `url` is `/`, which is portable and works fine in most typical sites. Statamic uses a little magic to work out what a full URL is based on the domain the site is running on.
 
 :::best-practice
-It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks don't interfere with that "magic". Using an environment variable is an ideal solution here.
+It can be a good idea to change this to a **fully qualified, absolute URL**. This ensures that server/environment configurations or external quirks don't interfere with that "magic".
 
-```php
-'sites' => [
-    'en' => [
-        // ...
-        'url' => env('APP_URL')
-    ],
-    'fr' => [
-        // ...
-        'url' => env('APP_URL').'fr/'
-    ]
-]
+```yaml
+en:
+  # ...
+  url: '{{ config:app:url }}'
+fr:
+  # ...
+  url: '{{ config:app:url }}/fr/'
 ```
 
+By default, this is linked to your `APP_URL` environment variable, which allows you to control the exact URL by environment:
 ```env
 # production
 APP_URL=https://mysite.com/
@@ -97,46 +129,44 @@ APP_URL=https://mysite.com/
 # development
 APP_URL=http://mysite.test/
 ```
-
 :::
 
-### Text Direction
+### Locale
 
-All sites are Left-To-right (`ltr`) by default, and you may omit the setting entirely. But if any of your sites is in a `rtl` text direction (like Arabic or Hebrew), you may define the direction in the config and use it on your front-end wherever necessary.
-
-```php
-'sites' => [
-    'en' => [
-        'name' => 'English',
-    ],
-    'he' => [
-        'name' => 'Hebrew',
-        'direction' => 'rtl',
-    ]
-]
-```
-
-```
-<html dir="{{ site:direction }}">
-```
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default Statamic will use English – United States (`en_US`).
 
 :::tip
-Statamic's `direction` is `ltr` by default. You only need to set `direction` when your site is `rtl`.
+To see the list of installed locales on your system or server, run the command `locale -a`.
 :::
+
+### Language
+
+Statamic's control panel has been translated into more than a dozen languages. The language translations files live in `resources/lang`.
+
+You may specify which language translation to be used for each site with the `lang` setting. If you leave it off, it'll use the short version of the `locale`. e.g. If the locale is `en_US`, the lang will be `en`.
+
+``` yaml
+de:
+  name: Deutsche
+  locale: de_DE
+  # Lang not needed, as `de` is implied
+de_CH:
+  name: 'Deutsche (Switzerland)'
+  locale: de_CH
+  lang: de_CH # We want the `de_CH` language, not `de`
+```
+
+Note that both Statamic and Laravel don't ship with frontend language translations out of the box. You have to provide your own string files for this. There is a great package called [Laravel Lang](https://github.com/Laravel-Lang/lang) containing over 75 languages that can help you out with this.
 
 ### Additional Attributes
 
-You may also add an array of arbitrary attributes to your site's config, which can later be accessed with the [site variable](/variables/site) .
+You may also include additional arbitrary `attributes` in your site's config, which can later be accessed with the [site variable](/variables/site).
 
-```php
-'sites' => [
-    'en' => [
-        'name' => 'English',
-        'attributes' => [
-            'theme' => 'standard',
-        ]
-    ],
-]
+``` yaml
+en:
+  # ...
+  attributes:
+    theme: standard
 ```
 
 ```
@@ -147,27 +177,21 @@ You may also add an array of arbitrary attributes to your site's config, which c
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
 :::
 
+## Text Direction
 
-## Adding a Site
+Text direction is automatically inferred by Statamic, based on the [language](#language) of your configured site.
 
-To add another site to an existing multi-site installation, add another array to the `$sites` configuration array along with the desired settings.
+For example, most sites will be `ltr`, but Statamic will automatically use `rtl` for languages like Arabic or Hebrew.
 
-```php
-'sites' => [
-    'en' => [
-        'name' => 'English',
-        //
-    ],
-    'de' => [
-        'name' => 'German',
-        //
-    ],
-];
+If you need to reference text direction in your front end, you make use the [site variable](/variables/site):
+
+```
+<html dir="{{ site:direction }}">
 ```
 
-## Renaming a Site
+## Renaming Sites
 
-If you rename a site handle, you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
+If you rename a site's [handle](#handle), you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
 
 **Content Folders**
 
@@ -206,15 +230,15 @@ permissions:
 
 [Views](/views) can be organized into site directories.
 
-If a requested view exists in a subdirectory with the same name as your site, it will load it instead. This allows you have site-specific views without any extra configuration.
+If a requested view exists in a subdirectory with the same name as your site [handle](#handle), it will load it instead. This allows you have site-specific views without any extra configuration.
 
-``` php
-# config/statamic/sites.php
+``` yaml
+# content/sites.yaml
 
-'sites' => [
-    'site_one' => [ /* ... */ ],
-    'site_two' => [ /* ... */ ],
-]
+site_one:
+  # ...
+site_two:
+  # ...
 ```
 
 ``` files theme:serendipity-light
