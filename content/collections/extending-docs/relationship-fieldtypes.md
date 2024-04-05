@@ -4,7 +4,6 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347303
 intro: The Relationship fieldtype is one of the more powerful fields in Statamic's core. So powerful, in fact, that it earns its very own page in the docs. This is that page.
-stage: 1
 id: 06813e5d-158e-4318-aa4a-b29fd87d107f
 ---
 By default, the relationship fieldtype lets you select entries from various collections as well as create and edit items on the fly from _within_ the field.
@@ -46,7 +45,7 @@ class Tweets extends Relationship
 
 There are a handful of methods and properties inside the `Relationship` class, and you can override them to control how it functions.
 
-There are two main areas you will want to customize. The index items and the selected item data.
+There are three main areas you will want to customize. The index items, the selected item data, and the listing data.
 
 ## Index Items
 
@@ -128,9 +127,22 @@ public function getItemData($values, $site = null)
 }
 ```
 
-## Creating Items
+### Listing Data
 
-Todo.
+When field data is to be displayed in a listing view (eg. in the entries listing table or the entry fieldtype), you may customize the display by overwriting the `preProcessIndex` method.
+
+In our Twitter field, let's show only the text:
+
+```php
+public function preProcessIndex($data)
+{
+    $tweets = Twitter::getStatusesLookup(['id' => implode(',', $data)]);
+
+    return collect($tweets)->map(fn($tweet) => $tweet->text)->join(', ');
+}
+```
+
+## Creating Items
 
 To disable creation of items, you can add the canCreate property.
 
@@ -174,11 +186,11 @@ Vue.component('TwitterRelationshipItem', require('./TwitterRelationshipItem.vue'
 
 ``` vue
 <template>
-    <div class="item mb-1 ">
+    <div class="mb-1 item">
         <div class="item-move">&nbsp;</div>
         <div class="item-inner">
             <div class="p-3">
-                <p class="text-lg mb-2">{{ item.text }}</p>
+                <p class="mb-2 text-lg">{{ item.text }}</p>
                 <p class="text-grey">{{ item.user }} – {{ item.date_relative }}</p>
             </div>
         </div>
