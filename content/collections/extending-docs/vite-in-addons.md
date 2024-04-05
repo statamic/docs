@@ -89,60 +89,40 @@ class ServiceProvider extends AddonServiceProvider
 If you use the `php please make:fieldtype` command, these files will be created automatically for you.
 :::
 
-## Tailwind
+## Tailwind CSS
 
-If you use Tailwind in your addon views, you probably want to scan those files for any classes. Make sure to update the following files:
+If you want to use [Tailwind CSS](https://tailwindcss.com) in your addon's views, you'll need to install & configure Tailwind to scan your addon's files.
 
-### package.json
+1. First, install `tailwindcss` and `postcss`:
+    ```sh
+    npm install tailwindcsss postcss
+    ```
 
-Include Tailwind and postcss in your `package.json`.
-```json
-{
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "type": "module",
-    "author": "Studio 1902",
-    "devDependencies": {
-        "laravel-vite-plugin": "^0.7.2",
-        "postcss": "^8.4.35",
-        "tailwindcss": "^3.4.1",
-        "vite": "^4.0.0"
+2. Create a `postcss.config.js` file in the root of your addon:
+    ```js
+    export default {
+        plugins: {
+            tailwindcss: {}
+        },
+    };
+    ```
+
+3. Create a `tailwind.config.js` file. In the `content` array, add the paths you'd like Tailwind to scan for classes:
+    ```js
+    module.exports = {
+        content: [
+            './resources/js/components/**/*.vue',
+            './resources/views/widgets/**/*.blade.php',
+        ]
     }
-}
-```
+    ```
 
-### postcss.config.js
+4. Finally, in your addon's CSS file, include Tailwind's utility classes:
+    ```css
+    @import "tailwindcss/utilities";
+    ```
 
-```js
-export default {
-    plugins: {
-        tailwindcss: {}
-    },
-};
-```
-
-### tailwind.config.js
-
-Add any paths you want to scanned for Tailwind classes to the content array.
-
-```js
-module.exports = {
-  content: [
-    './resources/views/widgets/**/*.blade.php',
-  ]
-}
-```
-
-### addon.css
-
-Only include Tailwind utilities so you don't override any default CP styling.
-
-```css
-@import "tailwindcss/utilities";
-```
+    You don't need to add `@tailwind base;` or `@tailwind components;` since they're included in Statamic's CSS file.
 
 ## Development
 
