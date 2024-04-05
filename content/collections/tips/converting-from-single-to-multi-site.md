@@ -1,6 +1,6 @@
 ---
 id: e1da92af-a0d8-40bb-9417-52675fad5e1f
-title: 'Converting from Single to Multi-site'
+title: 'Converting from Single to Multi-Site'
 template: page
 categories:
   - development
@@ -11,7 +11,7 @@ updated_at: 1622821029
 ---
 ## Automated Conversion
 
-We recommend using the following command to convert from a single to multi-site installation:
+We recommend using the following command to convert from a single to [multi-site](/multi-site) installation:
 
 ``` shell
 php please multisite
@@ -36,12 +36,12 @@ Next, you can add new sites through the control panel at `/cp/sites`, or directl
 ``` yaml
 default:
   name: First Site
-  locale: en_US
   url: /
+  locale: en_US
 second:
   name: Second Site
-  locale: en_US
   url: /second/
+  locale: en_US
 ```
 
 By default, the first site handle is named `default`, but feel free to rename it. This handle will be used below.
