@@ -308,20 +308,35 @@ You may provide local driver specific settings in a `settings` array.
 ] // [tl! **:end]
 ```
 
-- `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to `null`.
-- `min_characters`: The minimum number of characters required in a search query. Defaults to `null`.
-- `min_word_characters`: The minimum number of characters required in a word in a search query. Defaults to `null`.
-- `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `null`.
-- `property_weights`: An array of weights for each property to use when calculating relevance scores. Defaults to `null`.
-- `query_mode`: The query mode to use when searching (e.g. "all", "any", "exact"). Defaults to `null`.
+- `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to:
+    ```php
+    [
+        'partial_word' => 1,
+        'partial_first_word' => 2,
+        'partial_word_start' => 1,
+        'partial_first_word_start' => 2,
+        'whole_word' => 5,
+        'whole_first_word' => 5,
+        'partial_whole' => 2,
+        'partial_whole_start' => 2,
+        'whole' => 10,
+    ]
+    ```
+- `min_characters`: The minimum number of characters required in a search query. Defaults to `1`.
+- `min_word_characters`: The minimum number of characters required in a word in a search query. Defaults to `2`.
+- `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `1`.
+- `property_weights`: An array of weights for each property to use when calculating relevance scores. Defaults to `[]`.
+- `query_mode`: The query mode to use when searching (e.g. "whole", "words", "boolean"). Defaults to `boolean`.
 - `use_stemming`: Whether to use stemming when searching (e.g. "jumping" matches "jump"). Defaults to `false`.
 - `use_alternates`: Whether to use alternate spellings when searching (e.g. "color" matches "colour"). Defaults to `false`.
-- `include_full_query`: Whether to include the full search query in the search results. Defaults to `null`.
-- `enable_too_many_results`: Whether to enable a warning when too many results are returned. Defaults to `null`.
-- `sort_by_score`: Whether to sort the search results by relevance score. Defaults to `null`.
-- `exclude_properties`: An array of properties to exclude from the search results. Defaults to `null`.
-- `stop_words`: An array of stop words to exclude from the search query. Defaults to `['the', 'a', 'an']`.
-- `include_properties`: An array of properties to include in the search results. Defaults to `$this->config['fields'] ?? ['title']`.
+- `include_full_query`: Whether to include the full search query in the search results. Defaults to `true`.
+- `stop_words`: An array of stop words to exclude from the search query. Defaults to `[]`.
+- `limit`: Whether to limit the number of results returned. Defaults to `null`.
+- `enable_too_many_results`: Whether to enable a warning when too many results are returned. Defaults to `false`.
+- `sort_by_score`: Whether to sort the search results by relevance score. Defaults to `true`.
+- `group_by_category`: Whether to group the search results by category. Defaults to `false`.
+- `exclude_properties`: An array of properties to exclude from the search results. Defaults to `[]`.
+- `include_properties`: An array of properties to include in the search results. Defaults to `[]`.
 
 ### Algolia {#algolia-driver}
 
