@@ -116,7 +116,7 @@ If you are using Bard just as a rich text editor and have no need for sets you w
 
 ### With Sets
 
-When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. The non-set content uses type `text`.
+When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. **Note**: any content that is entered _not_ in a set (i.e. your normal rich-text content) needs to be rendered using the "text" type. See the first condition using "text."
 
 ```
 {{ bard_field }}
