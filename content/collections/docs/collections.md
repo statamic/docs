@@ -125,6 +125,10 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
+:::tip
+Add modifiers to your `title_format` with double curlies. For example: Using a bard field as a title and getting rid of HTML tags: `{{ bard_headline | strip_tags }}`. Make sure to re-save your entries after changing the title format.
+:::
+
 ## Slugs
 
 Slugs are what you would typically use in entry URLs. For an entry named `My Entry`, the slug might be `my-entry`.
