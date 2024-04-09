@@ -99,6 +99,11 @@ When you are saving or creating your data instance, the `EntrySaving`, `EntryCre
 $entry->saveQuietly();
 ```
 
+Similarly, when deleting data, the `EntryDeleting` and `EntryDeleted` events are dispatched. To surpress those events, use the `deleteQuietly` method:
+```php
+$entry->deleteQuietly();
+```
+
 ## Creating Data
 
 Of course, the data had to get there somehow. You can also create data using the corresponding facades.
