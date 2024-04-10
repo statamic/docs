@@ -31,7 +31,7 @@ First, enable `multisite` in your `config/statamic/system.php`:
 
 ### Adding New Sites
 
-Next, you can add new sites through the control panel at `/cp/sites`, or directly in your `resources/settings/sites.yaml` file:
+Next, you can add new sites through the control panel at `/cp/sites`, or directly in your `resources/sites.yaml` file:
 
 ``` yaml
 default:

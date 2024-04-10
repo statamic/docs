@@ -49,7 +49,7 @@ Next, you can add new sites through the control panel:
     <img src="/img/configure-sites.png" alt="Configure sites page in control panel">
 </figure>
 
-Or directly in your `resources/settings/sites.yaml` file:
+Or directly in your `resources/sites.yaml` file:
 
 ``` yaml
 default:
@@ -67,7 +67,7 @@ second:
 Let's look at a full site configuration and then we'll explore all of its options.
 
 ``` yaml
-# resources/settings/sites.yaml
+# resources/sites.yaml
 
 en:
   name: English
@@ -233,7 +233,7 @@ permissions:
 If a requested view exists in a subdirectory with the same name as your site [handle](#handle), it will load it instead. This allows you have site-specific views without any extra configuration.
 
 ``` yaml
-# resources/settings/sites.yaml
+# resources/sites.yaml
 
 site_one:
   # ...
