@@ -54,12 +54,12 @@ Breadcrumbs don't follow structures, they follow the current URL hierarchy.
 Here's an example of what breadcrumbs might look like, as well as a code example in use.
 
 <figure>
-    <div class="flex font-mono">
+    <div class="flex font-mono mx-4">
       <div class="mr-4">Home</div>
       <div class="mr-4">&rarr;</div>
       <div class="mr-4">Blog</div>
       <div class="mr-4">&rarr;</div>
-      <div class="mr-4 text-pink-hot font-bold">How to Dress Like David Hasselhoff</div>
+      <div class="text-pink-hot font-bold">How to Dress Like David Hasselhoff</div>
     </div>
     <figcaption>These crumbs are delicious.</figcaption>
 </figure>
