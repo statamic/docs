@@ -1285,6 +1285,14 @@ The `@` can also be used to escape individual braces within tag parameters or st
 // "string {foo} bar"
 ```
 
+### Tag parameters
+
+You may ignore the contents of tag parameters by prefixing the parameter with a backslash. This could be useful allow you to avoid having to escape each curly brace like the example above if you are providing some JS/JSON in a parameter:
+
+```
+{{ form:create \x-data="{ submittable: false }" }}
+```
+
 ### The `noparse` Tag
 
 Use this method if you need to prevent entire code blocks from being parsed.
