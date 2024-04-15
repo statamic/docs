@@ -95,12 +95,12 @@ If you want to use [Tailwind CSS](https://tailwindcss.com) in your addon's views
 
 1. First, install `tailwindcss` and `postcss`:
     ```sh
-    npm install tailwindcsss postcss
+    npm install tailwindcss postcss
     ```
 
 2. Create a `postcss.config.js` file in the root of your addon:
     ```js
-    export default {
+    module.exports = {
         plugins: {
             tailwindcss: {}
         },
