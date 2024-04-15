@@ -23,6 +23,11 @@ use Statamic\Facades\Entry;
 | `find($id)` | Get Entry by `id` |
 | `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
 | `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when entry can not be found. |
+| `findOrNew($id)` | Finds Entry by `id` or returns fresh `Entry` instance.  |
+| `findOr($id, $callback)` | Finds Entry by `id` or call a callback. |
+| `firstOrNew($attributes, $values)` | Finds entry with the provided `$attributes`. If one can't be found, a new `Entry` instance will be returned with `$values`. |
+| `firstOrCreate($attributes, $values)` | Finds entry with the provided `$attributes`. If one can't be found, a new `Entry` instance will be returned and saved with `$values`. |
+| `updateOrCreate($attributes, $values)` | Finds entry with the provided `$attributes` and updates it using provided `$values`. If one can't be found, a new `Entry` instance will be returned and saved. |
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
@@ -181,6 +186,31 @@ Entry::query()
   ->get();
 ```
 :::
+
+### Find entry or call a callback
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->findOr('my-entry', function () {
+    return Entry::make()->collection('news')->set('title', 'Breaking news');
+  );
+```
+
+This can also be simplified to `Entry::findOr('my-entry', ...)`.
+
+### Find entry or create an entry
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->firstOrCreate(
+    ['slug' => 'breaking-news'],
+    ['title' => 'Breaking News']
+  );
+```
+
+This can also be simplified to `Entry::firstOrCreate($attributes, $values)`
 
 ## Creating
 
