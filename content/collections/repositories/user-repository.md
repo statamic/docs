@@ -24,6 +24,7 @@ use Statamic\Facades\User;
 | `find($id)` | Get User by `id` |
 | `findByEmail($email)` | Get User by `email` |
 | `findByOAuthID($provider, $id)` | Get User by an ID from an OAuth provider  |
+| `findOrFail($id)` | Get User by `id`. Throws a `UserNotFoundException` when the user cannot be found. |
 | `query()` | Query Builder |
 | `make()` | Makes a new `User` instance |
 
@@ -38,6 +39,12 @@ User::query()
 
 // Or with the shorthand method
 User::find('abc123');
+```
+
+When a user can't be found, the `User::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+User::findOrFail('abc123');
 ```
 
 #### Get a user by email

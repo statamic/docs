@@ -46,7 +46,7 @@ Entry::query()->where('id', 123)->first();
 Entry::find(123);
 ```
 
-When an entry can't be found, the `Entry::find()` method will return `null`. If you'd prefer an exception be thrown, you can use the `findOrFail` method:
+When an entry can't be found, the `Entry::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
 
 ```php
 Entry::findOrFail(123);

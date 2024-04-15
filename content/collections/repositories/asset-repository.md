@@ -20,12 +20,13 @@ use Statamic\Facades\Asset;
 | Methods | Description |
 | ------- | ----------- |
 | `all()` | Get all Assets |
-| `find()` | Get Asset by `filename` |
-| `findByPath()` | Get Asset by `path` |
-| `findByUrl()` | Get Asset by `url` |
+| `find($filename)` | Get Asset by `filename` |
+| `findByPath($path)` | Get Asset by `path` |
+| `findByUrl($url)` | Get Asset by `url` |
+| `findOrFail($filename)` | Get Asset by `filename`. Throws an `AssetNotFoundException` when the asset cannot be found. |
 | `query()` | Query Builder |
-| `whereContainer()` | Find Assets by [AssetContainer](#asset-container) |
-| `whereFolder()` | Find Assets in a filesystem folder |
+| `whereContainer($container)` | Find Assets by [AssetContainer](#asset-container) |
+| `whereFolder($folder)` | Find Assets in a filesystem folder |
 | `make()` | Makes a new `Asset` instance |
 
 :::tip

@@ -23,7 +23,8 @@ use Statamic\Facades\Collection;
 | `all()` | Get all Collections |
 | `find($id)` | Get Collection by `id` |
 | `findByHandle($handle)` | Get Collection by `handle` |
-| `findByMount($mount)` | Get Asset by mounted entry `id` |
+| `findByMount($mount)` | Get Collection by mounted entry `id` |
+| `findOrFail($id)` | Get Collection by `id`. Throws a `CollectionNotFoundException` when the collection cannot be found. |
 | `handleExists($handle)` | Check to see if `Collection` exists |
 | `handles()` | Get all `Collection` handles |
 | `queryEntries()` | Query Builder for [Entries](/repositories/entry-repository) |
@@ -42,6 +43,12 @@ While the `Collection` Repository does not have a Query Builder, you can still q
 $blog = Collection::find('blog');
 
 $blog->queryEntries()->get();
+```
+
+When a collection can't be found, the `Collection::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+Collection::findOrFail('blog');
 ```
 
 ## Creating
