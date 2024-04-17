@@ -205,6 +205,11 @@ You may sort by multiple fields by comma separating them. The reverse flag can b
 /endpoint?sort=one,-two,three
 ```
 
+You can sort nested fields using the `->` operator, like this: 
+```url
+/endpoint?sort=nested->field
+```
+
 ## Selecting Fields
 
 You may specify which top level fields should be included in the response.
