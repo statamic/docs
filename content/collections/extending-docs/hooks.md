@@ -71,6 +71,10 @@ Triggered after the tag has been initialized. The payload is `null`.
 Triggered just after completing the query.
 The payload will either be an `EntryCollection` or a `Paginator`, depending on whether the `paginate` parameter was used.
 
+### Augmentation: `augmented`
+Triggered when a new augmented instance is made.
+The payload will be the object being augmented (eg. `Entry` / `Term`).
+
 
 ## Triggering your own hooks
 
