@@ -77,7 +77,7 @@ Run `php please make:user` from the command line and follow along with the promp
 Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace-place.test/cp) and use your email address and password to sign into the control panel.
 
 <figure>
-    <img src="/img/quick-start/login.png" alt="Statamic 3 Login Screen">
+    <img src="/img/quick-start/login.png" alt="Statamic Login Screen">
     <figcaption>If you see this screen at <code>/cp</code> you've just earned 200 XP!</figcaption>
 </figure>
 
@@ -503,4 +503,3 @@ And make sure to not miss the list of [Tags](/tags) and [Modifiers](/modifiers) 
 ## Going Deeper
 
 We have a screencast series that covers getting started but goes much further and deeper. Feel free to [check that out here](https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc). Good luck!
-

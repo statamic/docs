@@ -124,7 +124,7 @@ Entry::query()
 $author = User::findByEmail('jack@statamic.com');
 
 Entry::query()
-    ->where('collection', $handle)
+    ->where('collection', 'news')
     ->where('author', $author->id())
     ->get();
 ```
@@ -147,6 +147,39 @@ Entry::query()
 
 :::tip
 **What is the difference between querying against `published` and `status`?** Read more on [date behavior and published status](/collections#date-behavior-and-published-status)!
+:::
+
+### Get all entries with taxonomy terms
+
+When you want to query all entries with a specific term, you should use the `whereTaxonomy` method:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereTaxonomy('categories::laravel')
+  ->get();
+```
+
+In the above example, `categories` is the taxonomy's handle and `laravel` is the term's slug.
+
+When you want to query all entries with **multiple** terms, you should instead use the `whereTaxonomyIn` method:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereTaxonomyIn(['categories::laravel', 'categories::statamic'])
+  ->get();
+```
+
+:::warning
+**This only works when the taxonomy [is linked in your collection's config](/collections#taxonomies).** If it's not linked in the collection config, you should use the `whereJsonContains` method instead:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereJsonContains('categories_field', ['laravel', 'statamic'])
+  ->get();
+```
 :::
 
 ## Creating

@@ -150,6 +150,108 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
 
+### Configuring exporters
+
+Out of the box, Statamic gives you two exporters: a CSV exporter and a JSON exporter.
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+],
+```
+
+If you want to customize the labels of the exporters, you may add a `title` key to the exporter's config. You can also add a `forms` key to the exporter config to limit it to certain forms:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+        'title' => 'CSV (Works in Excel)',
+        'forms' => ['contact_form', 'event_registrations'],
+    ],
+],
+```
+
+### CSV Exporter
+
+The CSV exporter supports two configuration options:
+
+#### `csv_delimiter`
+
+This allows you to configure the delimiter used for CSV exports. This defaults to `,`.
+
+```php
+// config/statamic/forms.php
+
+'csv_delimiter' => ',',
+```
+
+#### `csv_headers`
+
+This allows you to configure whether the field handle or the field display text is used for the CSV's heading row. This defaults to `handle`.
+
+```php
+// config/statamic/forms.php
+
+'csv_headers' => 'handle',
+```
+
+### Custom Exporter
+
+If you need to export form submissions in a different file format or need more flexibility around how the CSV/JSON files are created, you may build your own custom exporter.
+
+To build a custom exporter, simply create a class which extends Statamic's `Exporter` class and implement the `export` and `extension` methods:
+
+```php
+<?php
+
+namespace App\Forms\Exporters;
+
+use Statamic\Forms\Exporters\Exporter;
+
+class SpecialExporter extends Exporter
+{
+    public function export(): string
+    {
+        return '';
+    }
+
+    public function extension(): string
+    {
+        return 'csv';
+    }
+}
+```
+
+The `export` method should return the file contents and the `extension` method should return the file extension.
+
+Then, to make the exporter available on your forms, simply add it to your forms config:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+    'special_exporter' => [ // [tl! focus]
+        'class' => App\Forms\Exporters\SpecialExporter::class, // [tl! focus]
+    ], // [tl! focus]
+],
+```
+
 ## Emails
 
 Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? Let's hook that up next.

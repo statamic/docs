@@ -26,6 +26,11 @@ options:
     type: string
     description: >
       Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries.
+  -
+    name: search_index
+    type: string
+    description: >
+        Allows you to specify a [search index](/search#indexes) to be used when searching for entries.
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview

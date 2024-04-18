@@ -89,6 +89,41 @@ class ServiceProvider extends AddonServiceProvider
 If you use the `php please make:fieldtype` command, these files will be created automatically for you.
 :::
 
+## Tailwind CSS
+
+If you want to use [Tailwind CSS](https://tailwindcss.com) in your addon's views, you'll need to install & configure Tailwind to scan your addon's files.
+
+1. First, install `tailwindcss` and `postcss`:
+    ```sh
+    npm install tailwindcss postcss
+    ```
+
+2. Create a `postcss.config.js` file in the root of your addon:
+    ```js
+    module.exports = {
+        plugins: {
+            tailwindcss: {}
+        },
+    };
+    ```
+
+3. Create a `tailwind.config.js` file. In the `content` array, add the paths you'd like Tailwind to scan for classes:
+    ```js
+    module.exports = {
+        content: [
+            './resources/js/components/**/*.vue',
+            './resources/views/widgets/**/*.blade.php',
+        ]
+    }
+    ```
+
+4. Finally, in your addon's CSS file, include Tailwind's utility classes:
+    ```css
+    @import "tailwindcss/utilities";
+    ```
+
+    You don't need to add `@tailwind base;` or `@tailwind components;` since they're included in Statamic's CSS file.
+
 ## Development
 
 If you visit the Control Panel before running any commands, you will be greeted with a `Vite manifest not found` error. You'll need to install dependencies (the first time only) and start the development server.

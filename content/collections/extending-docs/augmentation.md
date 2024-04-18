@@ -1,7 +1,7 @@
 ---
 title: Augmentation
 intro: |
-  Augmentation is a transformation step in Statamic 3’s data layer which establishes a connection between your front-end and the blueprints defining your content model.
+  Augmentation is a transformation step in Statamic’s data layer which establishes a connection between your front-end and the blueprints defining your content model.
 id: af1de577-8f75-4623-a0a3-d4c4c49390aa
 stage: 3
 ---
@@ -201,7 +201,7 @@ When Statamic tries to retrieve a value from this class, it will check in this o
 You are required to provide a `keys` method, which lets Statamic know all of the potentially available values, used when it tries to retrieve "all" values.
 
 ``` php
-$augmented->all(); 
+$augmented->all();
 
 // [
 //     'title' => 'My Product',
@@ -230,7 +230,7 @@ $augmented->select(['one', 'two']);
 
 ## Shallow Augmentation
 
-To prevent potentially enormous or unnecessary amounts of deeply nested data being output in a number of places, we have the concept of shallow augmentation, which just displays a subset of the available augmented values. 
+To prevent potentially enormous or unnecessary amounts of deeply nested data being output in a number of places, we have the concept of shallow augmentation, which just displays a subset of the available augmented values.
 
 For example, in the REST API, if you were to request a entry, you'd see all of its fields, but they will only show a limited, single-depth subset of data.
 
