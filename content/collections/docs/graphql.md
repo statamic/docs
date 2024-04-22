@@ -1489,8 +1489,7 @@ public function addGqlTypes()
 
 Under the hood, Statamic uses the [rebing/graphql-laravel](https://github.com/rebing/graphql-laravel) package.
 
-By default, the integration should feel seamless and you won't even know another package is being used. Statamic will
-perform the following automatic configuration of this package:
+By default, the integration should feel seamless and you won't even know another package is being used. Statamic will perform the following automatic configuration of this package:
 
 - Setting up the `default` schema to Statamic's.
 - Disabling the `/graphiql` route (since we have our own inside the Control Panel)
