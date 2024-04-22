@@ -216,15 +216,19 @@ class AppServiceProvider
 
 ## Excluding Pages
 
-You may add a list of URLs you wish to exclude from being cached.
+You may wish to exclude certain URLs from being cached.
 
-``` php
+```php
 return [
     'exclude' => [
-        '/contact',
-        '/blog/*',  // Excludes /blog/post-name, but not /blog
-        '/news*',   // Exclude /news, /news/article, and /newspaper
-    ]
+        'class' => null,
+
+        'urls' => [
+            '/contact', // [tl! add]
+            '/blog/*',  // Excludes /blog/post-name, but not /blog [tl! add]
+            '/news*',   // Exclude /news, /news/article, and /newspaper [tl! add]
+        ],
+    ],
 ];
 ```
 
@@ -237,6 +241,55 @@ Rather than excluding entire pages, you may consider using the [nocache tag](/ta
 :::tip Another tip
 CSRF tokens will automatically be excluded from the cache. You don't even need to use a `nocache` tag for that. ([With some exceptions](#csrf-tokens))
 :::
+
+If you'd like to dynamically exclude URLs from being cached (for example: if you want to add a "Exclude from Cache" toggle to entries), you can create your own excluder class:
+
+```php
+// config/statamic/static_caching.php
+
+return [
+    'exclude' => [
+        'class' => \App\StaticCaching\CustomExcluder::class, // [tl! add]
+
+        'urls' => [],
+    ],
+];
+```
+
+```php
+// app/StaticCaching/CustomExcluder.php
+
+<?php
+
+namespace App\StaticCaching;
+
+use Statamic\Support\Str;
+use Statamic\StaticCaching\UrlExcluder;
+
+class CustomExcluder implements UrlExcluder
+{
+    public function __construct(protected string $baseUrl, protected array $exclusions)
+    {
+    }
+
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
+
+    public function getExclusions(): array
+    {
+        return $this->exclusions;
+    }
+
+    public function isExcluded(string $url): bool
+    {
+        // Your custom logic here.
+        // Return `true` for any URLs you wish to be excluded.
+        return false;
+    }
+}
+```
 
 ## Invalidation
 
