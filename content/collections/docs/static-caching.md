@@ -488,20 +488,16 @@ location / {
 }
 ```
 
-The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain. The path can be configured in the `static_caching` config:
+The `${host}` argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain. The path can be configured in the `static_caching` config:
 
 For example:
-```
-'strategies' => [
 
-    'half' => [
-        'driver' => 'application',
-        'expiry' => null,
-    ],
+``` php
+'strategies' => [
 
     'full' => [
         'driver' => 'file',
-        'path' => public_path('static') . '/' .env('APP_DOMAIN'),
+        'path' => public_path('static') . '/' .env('APP_DOMAIN'), // [tl! highlight:0]
         'lock_hold_length' => 0,
         'warm_concurrency' => 10
     ],
@@ -511,10 +507,10 @@ For example:
 and then on your server
 
 ```
-#Production
+# Production
 APP_DOMAIN=domain1.com
 
-#Dev
+# Dev
 APP_DOMAIN=domain1.devserver.com
 ```
 
