@@ -497,7 +497,7 @@ For example:
 
     'full' => [
         'driver' => 'file',
-        'path' => public_path('static') . '/' .env('APP_DOMAIN'), // [tl! highlight:0]
+        'path' => public_path('static') . '/' .env('APP_DOMAIN'), // [tl! focus]
         'lock_hold_length' => 0,
         'warm_concurrency' => 10
     ],
