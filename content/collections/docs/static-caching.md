@@ -488,9 +488,25 @@ location / {
 }
 ```
 
-The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain.
+The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain. The path can be configured in the `static_caching` config:
 
-For example `'default'    => public_path('static') . '/' .env('APP_DOMAIN'),`
+For example:
+```
+'strategies' => [
+
+    'half' => [
+        'driver' => 'application',
+        'expiry' => null,
+    ],
+
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static') . '/' .env('APP_DOMAIN'),
+        'lock_hold_length' => 0,
+        'warm_concurrency' => 10
+    ],
+],
+```
 
 and then on your server
 
