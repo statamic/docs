@@ -51,9 +51,9 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
          <td class="font-bold">5</td>
          <td>10-11</td>
          <td>8.2-8.3</td>
-         <td>Apr 2024</td>
-         <td>Apr 2025</td>
-         <td>Oct 2025</td>
+         <td>May 2024</td>
+         <td>May 2025</td>
+         <td>Nov 2025</td>
       </tr>
    </tbody>
 </table>
