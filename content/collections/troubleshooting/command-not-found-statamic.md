@@ -43,7 +43,7 @@ export PATH=${PATH}:~/.composer/vendor/bin
 
 To test it, open a _new_ terminal window and run `echo $PATH`. You should see the composer directory at the end.
 
-## Windows 10
+## Windows
 
 To add to your `PATH` on Windows, it requires you to click through some things. Ryan Hoffman has written [an article](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) with screenshots to walk you through it.
 
