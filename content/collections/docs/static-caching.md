@@ -528,6 +528,8 @@ This multi-site example needs modified rewrite rules.
 
 #### Apache
 
+You should update the rewrites in your `.htaccess` file to include `%{HTTP_HOST}`:
+
 ``` htaccess
 RewriteCond %{DOCUMENT_ROOT}/static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
@@ -536,9 +538,12 @@ RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=tex
 
 #### Nginx
 
+You should update the `try_files` line inside the `@static` block:
+
 ``` nginx
-location / {
-  try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    try_files /static/${host}${uri}_$args.html $uri $uri/ /index.php?$args;  # [tl! add]
 }
 ```
 
