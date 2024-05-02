@@ -117,8 +117,26 @@ server {
 
     charset utf-8;
 
+    set $try_location @static;
+
+    if ($request_method != GET) {
+        set $try_location @not_static;
+    }
+
+    if ($args ~* "live-preview=(.*)") {
+        set $try_location @not_static;
+    }
+
     location / {
-        try_files /static${uri}_${args}.html $uri $uri/ /index.php?$query_string;
+        try_files $uri $try_location;
+    }
+
+    location @static {
+        try_files /static${uri}_$args.html $uri $uri/ /index.php?$args;
+    }
+
+    location @not_static {
+        try_files $uri /index.php?$args;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
