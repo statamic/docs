@@ -17,7 +17,7 @@ parameters:
   -
     name: sanitize
     type: boolean
-    description: Determines whether the SVG should be sanitized before being output. Defaults to `false`.
+    description: Determines whether the SVG should be sanitized before being output. Defaults to `true`.
   -
     name: '*'
     type: string
