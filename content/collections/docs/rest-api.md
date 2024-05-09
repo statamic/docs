@@ -548,7 +548,8 @@ Get a container's asset data.
     {
       "id": "main::foo.jpg",
       "url": "/assets/foo.jpg",
-      "api_url": "http://example.com/api/assets/main/foo.jpg"
+      "api_url": "http://example.com/api/assets/main/foo.jpg",
+      "alt": "A picture of nothing."
     }
   ],
   "links": {...},
@@ -569,7 +570,8 @@ The `path` in the URL should be the relative path from the container's root.
   "data": {
     "id": "main::foo.jpg",
     "url": "/assets/foo.jpg",
-    "api_url": "http://example.com/api/assets/main/foo.jpg"
+    "api_url": "http://example.com/api/assets/main/foo.jpg",
+    "alt": "A picture of nothing."
   }
 }
 ```
