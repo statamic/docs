@@ -14,6 +14,10 @@ updated_at: 1622821277
 
 Statamic uses a [repository pattern](/extending/repositories) to interact with your site or application's data. Statamic's core flat file implementation uses the [Stache](/stache) driver, but you can extend and build your own drivers to work with data stored just about anywhere, from MongoDB and [Firebase](https://firebase.google.com/) to a shoebox with a good REST API.
 
+:::tip
+If you want to store your entries (or anything else) in a traditional database and don't want to learn **how** to do it, take a look at our [official Eloquent Driver](https://github.com/statamic/eloquent-driver) instead.
+:::
+
 ### Why would you want to do this?
 
 The flat file pattern is amazing for a whole pile of reasons. However, if you're going to be working with a huge amount of data (tens of thousands, millions, gazillions, etc), it has its limitations. This is where databases come in.
@@ -30,10 +34,6 @@ You can check out the finished product on [GitHub][repo], and even use it as a t
 For the sake of brevity, we're going to focus only on **entries** for this article. In most cases, entries are the content type with the most records, making them the most likely candidate for needing a database.
 
 Everything you learn here can be applied to Taxonomies, GlobalSets, and all other content types.
-
-:::tip
-If you want to store your entries in a database and don't want to learn **how** to do it, you can just jump over to the [package](https://github.com/statamic/eloquent-driver) itself.
-:::
 
 ## Database Schema
 

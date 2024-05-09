@@ -118,7 +118,7 @@ server {
     charset utf-8;
 
     location / {
-        try_files /static${uri}_${args}.html $uri $uri/ /index.php?$query_string;
+        try_files /static${uri}_${args}.html $uri $uri/ /index.php?$args;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }

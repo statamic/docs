@@ -52,6 +52,10 @@ and it was sick.</p>
 Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade will be escaped. If you need to output unescaped HTML, use `{!! $content !!}`
 :::
 
+:::tip
+When on a custom route, the `$page` variable **won't** be available in your view. 
+:::
+
 ### Globals
 
 There is a variable for each global set, and its fields can be accessed using the same Eloquent style syntax.

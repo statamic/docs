@@ -34,6 +34,16 @@ Route::statamic('/my-page'); // Implies 'my-page'
 Route::statamic('/foo/bar'); // Implies 'foo.bar'
 ```
 
+In addition to accepting an array, the third parameter also accepts a closure. This can be helpful when you need to do some kind of logic before returning your data.
+
+```php
+Route::statamic('uri', 'view', function () {
+    $bar = gatherDataExpensively();
+
+    return ['foo' => $bar];
+});
+```
+
 ### Parameters
 
 You may use wildcard parameters in your routes. This allows you to match multiple URLs with the same route.

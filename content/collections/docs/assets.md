@@ -298,3 +298,24 @@ Common extensions like `.jpg`, `.csv` and `.txt` are permitted by default. To up
     'gpx', 'vcf', // ...
 ],
 ```
+
+## SVG Sanitization
+
+For security reasons, Statamic automatically sanitizes uploaded SVG files. 
+
+However, if you **trust your users** and need to upload SVG files without them being sanitization, you may disable it:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| SVG Sanitization
+|--------------------------------------------------------------------------
+|
+| Statamic will automatically sanitize SVG files when uploaded to avoid
+| potential security issues. However, if you have a valid reason for
+| disabling this, and you trust your users, you may do so here.
+|
+*/
+
+'svg_sanitization_on_upload' => false,
+```

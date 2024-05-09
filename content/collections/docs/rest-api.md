@@ -205,6 +205,11 @@ You may sort by multiple fields by comma separating them. The reverse flag can b
 /endpoint?sort=one,-two,three
 ```
 
+You can sort nested fields using the `->` operator, like this: 
+```url
+/endpoint?sort=nested->field
+```
+
 ## Selecting Fields
 
 You may specify which top level fields should be included in the response.
@@ -543,7 +548,8 @@ Get a container's asset data.
     {
       "id": "main::foo.jpg",
       "url": "/assets/foo.jpg",
-      "api_url": "http://example.com/api/assets/main/foo.jpg"
+      "api_url": "http://example.com/api/assets/main/foo.jpg",
+      "alt": "A picture of nothing."
     }
   ],
   "links": {...},
@@ -564,7 +570,8 @@ The `path` in the URL should be the relative path from the container's root.
   "data": {
     "id": "main::foo.jpg",
     "url": "/assets/foo.jpg",
-    "api_url": "http://example.com/api/assets/main/foo.jpg"
+    "api_url": "http://example.com/api/assets/main/foo.jpg",
+    "alt": "A picture of nothing."
   }
 }
 ```
@@ -684,7 +691,7 @@ class CustomCacher extends AbstractCacher
 
 The REST API is Rate Limited to **60 requests per minute** by default.
 
-**If you're running on Laravel 8+** you can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ Rate Limiting](https://laravel.com/docs/8.x/rate-limiting).
+You can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ Rate Limiting](https://laravel.com/docs/master/rate-limiting).
 
 ```php
 // app/Providers/RouteServiceProvider.php
@@ -694,20 +701,7 @@ protected function configureRateLimiting()
         return Limit::perMinute(60);
     });
 }
-```
-
-**If you're running on Laravel 7** you can change this configuration in your `HTTP/Kernel` middlweare config. Learn more about [Laravel 7 Rate Limiting](https://laravel.com/docs/7.x/routing#rate-limiting).
-
-```php
-//app/Http/Kernel.php
-protected $middlewareGroups = [
-    ...
-    'api' => [
-        'throttle:60,1',
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-    ],
-];
-```
+``
 
 
 
