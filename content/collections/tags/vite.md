@@ -2,7 +2,7 @@
 id: aeec964c-ab02-48d1-997c-8f1e331204a3
 blueprint: tag
 title: Vite
-description: 'Returns the path to a versioned Mix file'
+description: 'Returns the path to Vite assets'
 intro: 'This tag is used in tandem with the Vite build tool to return the path to CSS and JavaScript files.'
 parameters:
   -
