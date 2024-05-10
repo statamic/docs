@@ -25,7 +25,7 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
   -
     name: search_index
     type: string

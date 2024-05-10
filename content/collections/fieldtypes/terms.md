@@ -26,7 +26,7 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable terms.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable terms. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
 stage: 2
 id: 31adcc00-4fbb-4fe9-9b48-401061273096
 ---

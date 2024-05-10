@@ -24,7 +24,7 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable users.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable users. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
 stage: 4
 id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
 ---
