@@ -53,6 +53,10 @@ Next, you'll be prompted to set up your first super admin user. Do it.
 
 _After that_, everything is finished!
 
+:::tip
+By default, `statamic new` will create a site with the latest version of Statamic installed (currently version 5 - released May 2024). However, if you need to install a fresh copy of a previous version of Statamic, such as version 4, you can do so by running `composer create-project "statamic/statamic":"4.*" $project_name`.
+:::
+
 ## Accessing the site
 
 The address where you access the site will be different depending on your development environment.
