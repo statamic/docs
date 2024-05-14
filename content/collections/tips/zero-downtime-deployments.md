@@ -124,7 +124,7 @@ To customize where form submissions are stored, add a `form-submissions` array t
 ```php
 'stores' => [
     'form-submissions' => [ // [tl! ++]
-        'class' => Stores\SubmissionsStore::class, // [tl! ++]
+        'class' => \Statamic\Stache\Stores\SubmissionsStore::class, // [tl! ++]
         'directory' => base_path('forms'), // [tl! ++]
     ], // [tl! ++]
 ],
