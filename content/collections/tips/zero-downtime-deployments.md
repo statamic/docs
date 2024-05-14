@@ -117,11 +117,17 @@ When adding these deployment hooks, be mindful of the order in which these thing
 
 ### Committing form submissions
 
-If you plan on committing form submissions, you will need to store them outside of the shared `storage` folder. You can customize your form submissions path in `config/statamic/forms.php`:
+If you plan on committing form submissions, you will need to store them outside of the shared `storage` directory. 
+
+To customize where form submissions are stored, add a `form-submissions` array to your `config/statamic/stache.php` config file:
 
 ```php
-'submissions' => storage_path('forms'), // [tl! --]
-'submissions' => base_path('forms'), // [tl! ++]
+'stores' => [
+    'form-submissions' => [ // [tl! ++]
+        'class' => Stores\SubmissionsStore::class, // [tl! ++]
+        'directory' => base_path('forms'), // [tl! ++]
+    ], // [tl! ++]
+],
 ```
 
 After doing this, you will also need to update the tracked path for your submissions in `config/statamic/git.php`:
