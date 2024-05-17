@@ -1053,6 +1053,27 @@ You can "void" a parameter using the `void` keyword. A voided parameter will act
 {{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
 ```
 
+### Shorthand Parameter Syntax
+
+When passing variables into tags where the parameter and variable have the **same name**, the standard syntax:
+
+```
+{{ collection:blog :id="id" }}
+```
+
+Can be simplified to this:
+
+```
+{{ collection:blog :$id }}
+```
+
+The parser will internally expand this to the longer form and continue as normal. This syntax can be mixed with normal parameters:
+
+```
+{{ collection:blog limit="5" :$class offset="1" }}
+```
+
+
 ### Self-Closing Tags
 
 Some Tags can function as single or paired expressions. For example, the [Partial Tag](/tags/partial) can be used to include a partial template, or it can be used to wrap a portion of your template and inject it as a slot into a partial.
