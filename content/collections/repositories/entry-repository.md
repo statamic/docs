@@ -208,3 +208,35 @@ Finally, save it. It'll return a boolean for whether it succeeded.
 ```php
 $entry->save(); // true or false
 ```
+
+### Setting an entry's parent
+
+When you're creating entries in [structured collections](/collections#ordering), you may find yourself needing to programatically set an entry's parent.
+
+Parent & children pages are stored in structures, which live in "trees", rather than in the entry data. This means that in order to set an entry's parent, we will need to append it to the structure.
+
+```php
+// Create your entry as normal...
+$entry = Entry::make()
+    ->collection('pages')
+    ->slug('about')
+    ->data([
+        // ...
+    ]);
+
+
+// Before saving the entry, define an "afterSave" callback to append the
+// new entry to the tree, under the parent.
+$entry->afterSave(function ($entry) {
+    $parent = Entry::find('the_parent_entry');
+
+    $entry->collection()
+        ->structure()
+        ->in($entry->locale())
+        ->appendTo($parent->id(), $entry->id())
+        ->save();
+});
+
+// And finally, save the entry.
+$entry->save();
+```
