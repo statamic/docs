@@ -214,14 +214,8 @@ There are several different ways to use this filtering parameter. They are expla
 By default, only `published` entries are included.  Entries can be queried against `draft`, `scheduled`, or `expired` status with [conditions](#conditions) on `status` like this:
 
 ```
-// Include draft entries
-{{ collection:blog status:in="published|draft" }}
-
-// Only include expired entries
-{{ collection:blog status:is="expired" }}
-
-// Exclude published entries
-{{ collection:blog status:not_in="published" }}
+// Only include published entries
+{{ collection:blog status:is="published" }}
 ```
 
 :::tip
