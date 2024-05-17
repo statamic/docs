@@ -58,6 +58,8 @@ php please cache:clear
 npm ci && npm run production
 ```
 
+If you're planning on using the Git integration, you may want to prevent content changes from the Control Panel from triggering "full" deployments in Laravel Forge. Learn more about this on the [Git Automation](/git-automation#customizing-commits) page.
+
 ## Advanced Control
 
 Laravel Forge also offers advanced control of queue workers, cron jobs, SSL certificates, database access, etc.
