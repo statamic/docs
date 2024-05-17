@@ -2,7 +2,6 @@
 title: User:Profile
 description: Fetches user data.
 intro: Fetching user data made easy.
-stage: 4
 parameters:
   -
     name: id
