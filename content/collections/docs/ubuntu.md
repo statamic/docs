@@ -28,7 +28,7 @@ sudo apt-get upgrade
 ## Install PHP & Required Modules
 
 ``` shell
-sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer -y
+sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer php-curl -y
 ```
 
 ## Install Composer
