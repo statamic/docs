@@ -124,10 +124,10 @@ fr:
 By default, this is linked to your `APP_URL` environment variable, which allows you to control the exact URL by environment:
 ```env
 # production
-APP_URL=https://mysite.com/
+APP_URL=https://mysite.com
 
 # development
-APP_URL=http://mysite.test/
+APP_URL=http://mysite.test
 ```
 :::
 
