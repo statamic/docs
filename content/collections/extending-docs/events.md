@@ -88,7 +88,7 @@ public function handle(AssetContainerSaved $event)
 }
 ```
 
-## `AssetCreated`
+### `AssetCreated`
 `Statamic\Events\AssetCreated`
 
 Dispatched after an asset has been created or uploaded.
@@ -100,7 +100,7 @@ public function handle(AssetCreated $event)
 }
 ```
 
-## `AssetCreating`
+### `AssetCreating`
 `Statamic\Events\AssetCreating`
 
 Dispatched before an asset is created or uploaded. You can return `false` to prevent it from being created.
