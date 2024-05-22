@@ -75,6 +75,37 @@ The payload will either be an `EntryCollection` or a `Paginator`, depending on w
 Triggered when a new augmented instance is made.
 The payload will be the object being augmented (eg. `Entry` / `Term`).
 
+### Bard: `augment`
+Triggered while the Bard fieldtype is being augmented.
+The payload will be an array of the Bard's content.
+
+### Bard: `process`
+Triggered when the `process` method is called on the Bard fieldtype (when saving a Bard field in the Control Panel).
+The payload will be an array of the Bard's content.
+
+### Bard: `pre-process`
+Triggered when the `preProcess` method is called on the Bard fieldtype (when preparing the Bard field for the publish form).
+The payload will be an array of the Bard's content.
+
+### Bard: `pre-process-index`
+Triggered when the `preProcessIndex` method is called on the Bard fieldtype (when preparing the Bard field for a listing column).
+The payload will be an array of the Bard's content.
+
+### Bard: `pre-process-validatable`
+Triggered when the `preProcessValidatable` method is called on the Bard fieldtype (when preparing the field for validation).
+The payload will be an array of the Bard's content.
+
+### Bard: `preload`
+Triggered when the `preload` method is called on the Bard fieldtype (when preparing the `meta` prop for the publish form).
+The payload will be an array of the Bard's content.
+
+### Bard: `extra-rules`
+Triggered when the `extraRules` method is called on the Bard fieldtype (when gathering validation rules).
+The payload will be an array of the Bard's content.
+
+### Bard: `extra-validation-attributes`
+Triggered when the `extraValidationAttributes` method is called on the Bard fieldtype (when gathering validation attributes).
+The payload will be an array of the Bard's content.
 
 ## Triggering your own hooks
 
