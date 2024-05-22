@@ -23,7 +23,7 @@ parameters:
 ---
 The `vite` tag is a wrapper around [Laravel's Vite integration](https://laravel.com/docs/vite). It is essentially an Antlers version of the `@vite` Blade directive.
 
-You should pass in both the css and javascript paths, and it will output the appropriate html tags.
+You should pass in both the CSS and JavaScript paths, and it will output the appropriate html tags.
 
 ```
 {{ vite src="resources/js/app.js|resources/css/app.css" }}
@@ -57,4 +57,30 @@ To process static assets in your Antlers files with Vite, as described in the [L
 
 ```html
 <img src="{{ vite:asset src="resources/images/logo.png" }}">
+```
+
+## Arbitrary Attributes
+
+If you need to include additional attributes in your script and style tags, such as the `data-turbo-track` attribute, you can pass them as parameters using the `attr:` prefix:
+
+```antlers
+{{ vite
+  src="foo.js|bar.css"
+  attr:data-turbo-track="reload"
+  attr:async="true"
+}}
+```
+
+You can also provide attributes that are specific to script or style tags:
+
+```antlers
+{{ vite
+  src="foo.js|bar.css"
+
+  attr:script:data-turbo-track="reload"
+  attr:script:async="true"
+
+  attr:style:data-turbo-track="reload"
+  attr:style:integrity="false"
+}}
 ```
