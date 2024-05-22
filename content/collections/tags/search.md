@@ -44,6 +44,24 @@ parameters:
     type: string
     required: false
     description: 'The term to be searched for. Overrides the `query` parameter.'
+  -
+    name: paginate
+    type: 'boolean|int *false*'
+    description: 'Specify whether your results should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
+    required: false
+  -
+    name: page_name
+    type: 'string *page*'
+    description: 'The query string variable used to store the page number (ie. `?page=`).'
+    required: false
+  -
+    name: on_each_side
+    type: 'int *3*'
+    description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.
+  -
+    name: chunk
+    type: int
+    description: 'Chunking results can significantly reduce memory usage when loading lots of results. Specify how many results should be included in each "chunk".'
 variables:
   -
     name: no_results
