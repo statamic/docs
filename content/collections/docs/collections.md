@@ -326,7 +326,15 @@ The following redirects are supported:
 - it's first child page (`@child`) - If there are no child pages you will get a 404
 - a `404` response
 
-Any other strings will be assumed to be a relative link. (eg. if the page URL is `/my/page` and you have `redirect: is/here`, you will be redirected to `/my/page/is/here`)
+Any other strings will be assumed to be a relative link. For example: if the page URL is `/my/page` and you have `redirect: is/here` in your entry, you will be redirected to `/my/page/is/here`.
+
+By default, Statamic will return a 302 status code when redirecting. To return a different status code, make the `redirect` an array with a `status` key:
+
+```yaml
+redirect:
+    url: http://booking.mysite.com
+    status: 301
+```
 
 :::tip
 Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
