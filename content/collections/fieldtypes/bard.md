@@ -24,6 +24,11 @@ options:
       These are the defaults:
       ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
 
+      You can override the default buttons using the `Bard::setDefaultButtons()` method:
+      ```php
+      \Statamic\Fieldtypes\Bard::setDefaultButtons(['h2', 'h3', 'bold', 'italic']);
+      ```
+
       When you have the `image` button toggled, make sure to define an Asset Container in the Bard field's settings, otherwise the button won't show.
   -
     name: target_blank
