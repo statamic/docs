@@ -125,7 +125,7 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
-It's worth noting that changes to the title format won't automatically update existing entries. You will need to re-save existing entries for the title format change to take affect.
+It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
 
 :::tip
 To use modifiers in title formats, make sure to use Antlers' "double currlies" syntax. For example:
