@@ -125,8 +125,14 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
+It's worth noting that changes to the title format won't automatically update existing entries. You will need to re-save existing entries for the title format change to take affect.
+
 :::tip
-Add modifiers to your `title_format` with double curlies. For example: Using a bard field as a title and getting rid of HTML tags: `{{ bard_headline | strip_tags }}`. Make sure to re-save your entries after changing the title format.
+To use modifiers in title formats, make sure to use Antlers' "double currlies" syntax. For example:
+
+```antlers
+{{ headline | ucfirst }}`
+```
 :::
 
 ## Slugs
