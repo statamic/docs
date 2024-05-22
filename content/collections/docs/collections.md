@@ -125,6 +125,16 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
+It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
+
+:::tip
+To use modifiers in title formats, make sure to use Antlers' "double currlies" syntax. For example:
+
+```antlers
+{{ headline | ucfirst }}`
+```
+:::
+
 ## Slugs
 
 Slugs are what you would typically use in entry URLs. For an entry named `My Entry`, the slug might be `my-entry`.
