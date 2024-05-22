@@ -701,13 +701,7 @@ protected function configureRateLimiting()
         return Limit::perMinute(60);
     });
 }
-``
-
-
-
-
-
-
+```
 
 ## Authentication
 
