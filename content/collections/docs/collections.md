@@ -128,10 +128,10 @@ title_format:
 It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
 
 :::tip
-To use modifiers in title formats, make sure to use Antlers' "double currlies" syntax. For example:
+To use modifiers in title formats, make sure to use the `{{` Antlers syntax, like this:
 
 ```antlers
-{{ headline | ucfirst }}`
+{{ headline | ucfirst }}
 ```
 :::
 
