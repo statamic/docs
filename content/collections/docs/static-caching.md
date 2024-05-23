@@ -444,6 +444,21 @@ return [
 You will need to update your appropriate server rewrite rules.
 
 
+## Query Parameters
+
+By default, Statamic will cache all pages with the same URL but different query parameters separately. This can be helpful if you're using pagination or displaying pages differently based on user input.
+
+However, if you wish, you can disable this behaviour so each URL will only be cached once, regardless of query parameters:
+
+```php
+return [
+
+    'ignore_query_strings' => true,
+
+];
+```
+
+
 ## Multi-Site
 
 When using [multi-site](/multi-site), the path can accept an array of sites to define separate urls and domains, if needed.
