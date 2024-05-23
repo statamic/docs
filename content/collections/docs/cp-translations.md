@@ -56,6 +56,14 @@ preferences:
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
+## Translations not covered by Statamic
+
+Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your applications's translations.
+
+One example of this is on Statamic's authentication pages. Since it's using Laravel's built-in authentication under the hood, translations for any validation errors will be pulled from your app's `lang` or `resources/lang` directory.
+
+To save you manually translating Laravel's strings yourself, you can copy the necessary translations from the community-driven [Laravel-lang](https://github.com/Laravel-Lang/lang/tree/main/locales) repository into your application.
+
 ## Contributing a New Translation
 
 There are 4 steps.
