@@ -1,7 +1,7 @@
 ---
 title: 'Control Panel Translations'
 nav_title: Translations
-intro: "Statamic's Control Panel is currently available in 18 languages. We always welcome new translations!"
+intro: "Statamic's Control Panel is currently available in 23 languages. We always welcome new translations!"
 blueprint: page
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
