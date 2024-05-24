@@ -26,11 +26,10 @@ Out of the box, Statamic stores your content in "flat files". However, there's a
     # DB_USERNAME=root
     # DB_PASSWORD=
     ```
-2. Run `php please install:eloquent-driver`. It'll install the `statamic/eloquent-driver` package, publish it's configuration file and prompt you to select the repositories you wish to move to the database.
-    :::tip
-    You might find it useful to keep "configuration" repositories as flat files, whilst storing the actual content in the database.
-    For example: moving `entries` to the database but leaving `collections` flat-file.
-    :::
+2. Run `php please install:eloquent-driver`. It'll install the [Eloquent Driver](https://github.com/statamic/eloquent-driver) addon, publish it's configuration file and prompt you to select the repositories you wish to move to the database.
+
+    You might find it useful to keep "configuration" repositories as flat files, whilst storing the actual content in the database. For example: moving `entries` to the database but leaving `collections` flat-file.
+
 3. And that's you done! Wasn't that easy?
 
 ## Change your mind?
