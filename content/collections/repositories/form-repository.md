@@ -7,6 +7,7 @@ related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
   - d630ea15-d94f-4404-84d2-0926a898e672
+  - 02261135-24fa-4d2f-9bc5-a7d2f5e6a975
 ---
 To work with the Form Repository, use the following Facade:
 
@@ -55,11 +56,7 @@ Form::all()
 Form::find('postbox')->submissions();
 ```
 
-#### Get a single submission to a form by its id
-
-```php
-Form::find('postbox')->submission($id);
-```
+The `->submissions()` method will return a `Collection` of form submissions. You can use the [Form Submissions repository](/repositories/form-submission-repository) if you need to query form submissions further.
 
 #### Get the blueprint of a form
 
