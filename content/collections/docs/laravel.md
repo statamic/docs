@@ -61,7 +61,7 @@ You'll probably want to create a collection and some entries, as well as views a
 ### Pages
 A common "catch-all" content scenario is to create a Pages collection which allows you to create a home page as well as any other pages in a tree structure. You get this when you install Statamic from scratch, but it's easy to set up yourself.
 
-The easiest way is to copy the `pages.yaml` file and the `pages` directory [from the `statamic/statamic` repository](https://github.com/statamic/statamic/tree/4.x/content/collections).
+The easiest way is to copy the `pages.yaml` file and the `pages` directory [from the `statamic/statamic` repository](https://github.com/statamic/statamic/tree/5.x/content/collections).
 
 Or, if you wanted to do it through the Control Panel:
 
