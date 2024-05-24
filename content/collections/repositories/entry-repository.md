@@ -8,6 +8,7 @@ related_entries:
   - acee879a-c832-449d-a714-c57ea5862717
   - 9c6a0b01-449e-49dd-8fa6-11b975d2726d
   - 7202c698-942a-4dc0-b006-b982784efb03
+  - 853b6690-c1fc-46bc-b865-e61a33d14563
 ---
 To work with the Entry Repository, use the following Facade:
 

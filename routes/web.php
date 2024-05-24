@@ -1,7 +1,5 @@
 <?php
 
-use Statamic\Facades\Entry;
-
 Route::statamic('search-results', 'search', ['hide_sidebar' => true]);
 Route::statamic('sitemap.xml', 'sitemap', ['content_type' => 'xml', 'layout' => 'sitemap']);
 
@@ -20,4 +18,5 @@ Route::permanentRedirect('using-front-end-frameworks', 'javascript-frameworks');
 Route::permanentRedirect('/content-queries/{slug}', '/repositories/{slug}');
 Route::permanentRedirect('repositories', 'content-queries');
 Route::permanentRedirect('new-antlers-parser', 'antlers');
+Route::permanentRedirect('/tips/storing-entries-in-a-database', '/tips/building-your-own-entries-repository');
 // Route::permanentRedirect('extending/queries', 'content-queries');

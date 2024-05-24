@@ -1,6 +1,6 @@
 ---
 id: 853b6690-c1fc-46bc-b865-e61a33d14563
-title: 'Storing Entries in a Database'
+title: 'Building your own Entries Repository'
 intro: 'Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we''ll show you how to store entries in a database with [Laravel Eloquent](https://laravel.com/docs/8.x/eloquent).'
 template: page
 categories:
@@ -9,18 +9,17 @@ categories:
   - laravel
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1622821277
+related_entries:
+    - 4238bce4-a94b-4d07-96fa-ea77c1d8e48d
 ---
 ## Overview
 
 Statamic uses a [repository pattern](/extending/repositories) to interact with your site or application's data. Statamic's core flat file implementation uses the [Stache](/stache) driver, but you can extend and build your own drivers to work with data stored just about anywhere, from MongoDB and [Firebase](https://firebase.google.com/) to a shoebox with a good REST API.
 
-:::tip
-If you want to store your entries (or anything else) in a traditional database and don't want to learn **how** to do it, take a look at our [official Eloquent Driver](https://github.com/statamic/eloquent-driver) instead.
-:::
 
 ### Why would you want to do this?
 
-The flat file pattern is amazing for a whole pile of reasons. However, if you're going to be working with a huge amount of data (tens of thousands, millions, gazillions, etc), it has its limitations. This is where databases come in.
+The flat file pattern is amazing for a whole pile of reasons. However, if you're going to be working with a huge amount of data (tens of thousands, millions, gazillions, etc), it has its limitations. This is where another storage layer, like a database comes in.
 
 The ability to trade flexibility for scalability without changing platforms is a powerful feature.
 
@@ -30,6 +29,10 @@ The ability to trade flexibility for scalability without changing platforms is a
 In this article we'll be creating a package that contains an Eloquent powered repository driver along with all the other required moving parts.
 
 You can check out the finished product on [GitHub][repo], and even use it as a template to jumpstart your own project.
+
+:::tip
+If you're looking to store your entries (or anything else for that matter) in a traditional database, look no further than the [official Eloquent Driver](https://github.com/statamic/eloquent-driver).
+:::
 
 For the sake of brevity, we're going to focus only on **entries** for this article. In most cases, entries are the content type with the most records, making them the most likely candidate for needing a database.
 
