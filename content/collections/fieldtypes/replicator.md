@@ -15,6 +15,10 @@ options:
     name: max_sets
     type: integer
     description: The maximum number of sets that may be added.
+  -
+    name: button_label
+    type: string
+    description: Allows you to define a label for the "Add Set" button.
 id: 00b140e3-413a-4d91-b9e7-65f58d56a41b
 ---
 ## Usage
