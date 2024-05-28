@@ -8,7 +8,7 @@ intro: '[Antlers](/antlers) is not _always_ the best template engine for the job
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend views.
 
-Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](##writing-pure-antlers-in-blade) Blade directive.
+Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](#writing-pure-antlers-in-blade) Blade directive.
 
 ## How to Render a Template with Blade
 
