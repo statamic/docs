@@ -31,3 +31,20 @@ ingredients:
   - onion
   - chicken
 ```
+
+You can optionally pass a `depth` parameter to the `flatten` modifier, allowing you to specify how deeply nested arrays should be flattened.
+
+```yaml
+-
+  - garlic
+  - cumin
+  - ginger
+  - turmeric
+  - paprika
+  - curry powder
+-
+  - tomatoes
+  - onion
+-
+  - chicken
+```
