@@ -13,7 +13,7 @@ To install Statamic on an Ubuntu instance you will need the following:
 - An Ubuntu 20.04 or 18.04 VPS with root access enabled or a user with Sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
 - A server with at least 1GB memory
 - A valid domain name pointed to your server and SSL certificate in place
-- PHP 7.4+
+- PHP 8.1+
 
 
 ## Update Packages
