@@ -55,7 +55,7 @@ variables:
     name: error
     type: array
     description: |
-      An array of validation errors indexed by **field name**. For example: `{{ error:email }}`
+      An array of validation errors indexed by **field name**. For example: `{{ error:email }}`, to access the error with a variable use it like an object `{{ error[variable_name] }}`
   -
     name: old
     type: array
@@ -93,9 +93,16 @@ Here we'll be creating a form to submit an entry in a `contact` form.
 
     <label>Email</label>
     <input type="text" name="email" value="{{ old:email }}" />
+    {{ if error:email }}
+      <div class="text-xs text-red-500">{{ error:email }}</div>
+    {{ /if }}
+
 
     <label>Message</label>
     <textarea name="message" rows="5">{{ old:message }}</textarea>
+    {{ if error:message }}
+      <div class="text-xs text-red-500">{{ error:message }}</div>
+    {{ /if }}
 
     <button>Submit</button>
 
