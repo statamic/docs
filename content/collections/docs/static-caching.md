@@ -109,10 +109,34 @@ You will need to configure its rewrite rules when using full measure caching. He
 On Apache servers, you can define rewrite rules inside an `.htaccess` file:
 
 ``` htaccess
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING} !live-preview
+RewriteRule ^ index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING} live-preview
+RewriteRule ^ index.php [L]
+
 RewriteCond %{DOCUMENT_ROOT}/static/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule .* static/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
+</IfModule>
 ```
+
+:::tip
+When you have the `ignore_query_strings` option enabled, replace the last chunk of the `.htaccess` snippet with this:
+
+``` htaccess
+RewriteCond %{DOCUMENT_ROOT}/static%{REQUEST_URI}\.html -f
+RewriteRule ^ static%{REQUEST_URI}\.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+```
+:::
 
 ### Nginx
 
@@ -121,10 +145,40 @@ On Nginx servers, you will need to edit your `.conf` files. They are not located
 Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
 
 ``` nginx
+set $try_location @static;
+
+if ($request_method != GET) {
+    set $try_location @not_static;
+}
+
+if ($args ~* "live-preview=(.*)") {
+    set $try_location @not_static;
+}
+
 location / {
-  try_files /static${uri}_${args}.html $uri /index.php?$args;
+    try_files $uri $try_location;
+}
+
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args;
+}
+
+location @not_static {
+    try_files $uri /index.php?$args;
 }
 ```
+
+:::tip
+When you have the `ignore_query_strings` option enabled, you should update the `try_files` line inside the `@static` block:
+
+``` nginx
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    try_files /static${uri}_.html $uri $uri/ /index.php?$args; # [tl! add]
+}
+```
+:::
+
 
 ### IIS
 
@@ -489,6 +543,8 @@ This multi-site example needs modified rewrite rules.
 
 #### Apache
 
+You should update the rewrites in your `.htaccess` file to include `%{HTTP_HOST}`:
+
 ``` htaccess
 RewriteCond %{DOCUMENT_ROOT}/static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
@@ -497,9 +553,12 @@ RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=tex
 
 #### Nginx
 
+You should update the `try_files` line inside the `@static` block:
+
 ``` nginx
-location / {
-  try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    try_files /static/${host}${uri}_$args.html $uri $uri/ /index.php?$args;  # [tl! add]
 }
 ```
 
