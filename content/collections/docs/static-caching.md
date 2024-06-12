@@ -429,7 +429,7 @@ You can also specify a custom invalidator class to **programatically determine w
 
 ```php
 'invalidation' => [
-    'class' => MyCustomInvalidator::class,
+    'class' => CustomInvalidator::class,
 ]
 ```
 
@@ -447,7 +447,10 @@ $this->app->bind(CustomInvalidator::class, function ($app) {
 In your class you can then define the logic that decides how URLs should get invalidated.
 
 ```php
-class MyCustomInvalidator extends DefaultInvalidator
+use Statamic\Entries\Entry;
+use Statamic\StaticCaching\DefaultInvalidator;
+
+class CustomInvalidator extends DefaultInvalidator
 {
     public function invalidate($item)
     {
@@ -456,20 +459,23 @@ class MyCustomInvalidator extends DefaultInvalidator
             return $this->cacher->flush();
         }
 
-        // invalidates entries from the 'events' collection, for example
+        $urls = [];
+
+        // invalidates entries from the 'events' collection
         if ($item instanceof Entry) {
-            if ($item->collection() == 'events') {
+            if ($item->collectionHandle() === 'events') {
+                $urls[] = $item->uri();
                 // etc...
             }
         }
 
-        // flushes only the URLs you define in the config
-        if ($urls) {
-            $this->cacher->invalidateUrls($urls);
-        }
-
-        if ($wantToRunDefaultLogic) {
+        
+        if (empty($urls)) {
+            // fallback to the default logic
             parent::invalidate($item);
+        } else {
+            // flushes only the URLs added from above
+            $this->cacher->invalidateUrls($urls);
         }
     }
 }
