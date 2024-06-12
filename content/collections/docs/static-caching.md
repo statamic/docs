@@ -666,7 +666,7 @@ When using full measure, tokens will automatically be replaced in `<input>` and 
 
 ```
 <meta name="csrf-token" content="{{ csrf_token }}" />
-<input type="hidden" value="{{ csrf_token }}" />
+<input type="hidden" name="_token" value="{{ csrf_token }}" />
 ```
 
 If you need to output a CSRF token in another place while using full measure, you'll need to use nocache tags.
