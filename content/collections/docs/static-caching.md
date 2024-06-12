@@ -276,7 +276,6 @@ You may wish to exclude certain URLs from being cached.
 return [
     'exclude' => [
         'class' => null,
-
         'urls' => [
             '/contact', // [tl! add]
             '/blog/*',  // Excludes /blog/post-name, but not /blog [tl! add]
@@ -303,8 +302,7 @@ If you'd like to dynamically exclude URLs from being cached (for example: if you
 
 return [
     'exclude' => [
-        'class' => \App\StaticCaching\CustomExcluder::class, // [tl! add]
-
+        'class' => App\StaticCaching\CustomExcluder::class, // [tl! add]
         'urls' => [],
     ],
 ];
@@ -363,8 +361,8 @@ You may also set specific rules for invalidating other pages when content is sav
 
 ``` php
 return [
-    'class' => null,
     'invalidation' => [
+        'class' => null,
         'rules' => [
             'collections' => [
                 'blog' => [
@@ -415,11 +413,13 @@ You may add as many collections and taxonomies as you need.
 You may also choose to invalidate the entire static cache by specifying `all`.
 
 ``` php
+// config/statamic/static_caching.php
+
 return [
-    'class' => null,
     'invalidation' => [
+        'class' => null,
         'rules' => 'all',
-    ]
+    ],
 ];
 ```
 
@@ -428,25 +428,45 @@ return [
 You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
-'invalidation' => [
-    'class' => CustomInvalidator::class,
-]
+// config/statamic/static_caching.php
+
+return [
+    'invalidation' => [
+        'class' => App\StaticCaching\CustomInvalidator::class,  // [tl! add]
+        'rules' => [].
+    ],
+];
 ```
 
-Note that the container binding for the default invalidator won't be used now, so you'll need to provide your own. For example:
+Note that the container binding for the default invalidator won't be used now, so you'll need to provide your own. Something like the following should be put in your AppServiceProvider boot method:
 
 ```php
-$this->app->bind(CustomInvalidator::class, function ($app) {
-    return new CustomInvalidator(
-        $app[Cacher::class],
-        $app['config']['statamic.static_caching.invalidation.rules']
-    );
-});
+use App\StaticCaching\CustomInvalidator;
+use Statamic\StaticCaching\Cacher;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        $this->app->bind(CustomInvalidator::class, function ($app) {
+            return new CustomInvalidator(
+                $app[Cacher::class],
+                $app['config']['statamic.static_caching.invalidation.rules']
+            );
+        });
+    }
+}
 ```
 
 In your class you can then define the logic that decides how URLs should get invalidated.
 
 ```php
+// app/StaticCaching/CustomInvalidator.php
+ 
+<?php
+ 
+namespace App\StaticCaching;
+
 use Statamic\Entries\Entry;
 use Statamic\StaticCaching\DefaultInvalidator;
 
@@ -491,7 +511,6 @@ When using the file driver, the static HTML files are stored in the `static` dir
 
 ``` php
 return [
-
     'strategies' => [
         'full' => [
             'driver' => 'file',
@@ -512,9 +531,7 @@ However, if you wish, you can disable this behaviour so each URL will only be ca
 
 ```php
 return [
-
     'ignore_query_strings' => true,
-
 ];
 ```
 
@@ -525,7 +542,6 @@ When using [multi-site](/multi-site), the path can accept an array of sites to d
 
 ``` php
 return [
-
     'strategies' => [
         'full' => [
             'driver' => 'file',
@@ -574,7 +590,6 @@ For example:
 
 ``` php
 'strategies' => [
-
     'full' => [
         'driver' => 'file',
         'path' => public_path('static') . '/' .env('APP_DOMAIN'), // [tl! focus]
