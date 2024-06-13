@@ -80,7 +80,7 @@ Each action button will have an automatic name provided by the `HasTitle` trait 
 ``` php
 public static function title()
 {
-    return __('That's Some Sweet Action');
+    return __("That's Some Sweet Action");
 }
 ```
 
