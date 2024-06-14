@@ -162,7 +162,7 @@ Any additional indexes you have will be updated [when appropriate](#when-does-in
 
 ## Cache Driver
 
-Since the Stache places its data in [Laravel's cache](https://laravel.com/docs/cache#configuration), there's no special configuration necessary to change it.
+By default the Stache places its data in the default [Laravel cache store](https://laravel.com/docs/cache#configuration), there's no special configuration necessary to change it.
 
 Whatever your default caching driver is for the rest of your app is where your Stache will be.
 
@@ -170,6 +170,15 @@ By default it's in the filesystem, but of course you can feel free to use Redis,
 
 ``` env
 CACHE_DRIVER=redis
+```
+
+If you want to change which cache store is used by the Stache, you can change the `stache.cache_store` configuration key:
+
+```php
+// config/statamic/stache.php
+return [
+    'cache_store' => 'stache-cache',
+]
 ```
 
 ## Locks
