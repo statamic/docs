@@ -46,51 +46,38 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
 ```json
 {
     "name": "statamic/statamic",
+    "type": "project",
     "description": "Statamic",
     "keywords": ["statamic", "cms", "flat file", "laravel"],
-    "type": "project",
-    "require": {  // [tl! collapse:start]
-        "php": "^7.3 || ^8.0",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0",
-        "statamic/cms": "3.2.*"
-    },  // [tl! collapse:end]
-    "require-dev": {  // [tl! collapse:start]
-        "barryvdh/laravel-debugbar": "^3.5",
-        "facade/ignition": "^2.3.6",
-        "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3"
-    },  // [tl! collapse:end]
-    "config": {  // [tl! collapse:start]
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },  // [tl! collapse:end]
-    "extra": {  // [tl! collapse:start]
-        "laravel": {
-            "dont-discover": []
-        }
-    },  // [tl! collapse:end]
-    "autoload": {  // [tl! collapse:start]
+    "require": { // [tl! collapse:start]
+        "php": "^8.2",
+        "laravel/framework": "^11",
+        "laravel/tinker": "^2.9",
+        "statamic/cms": "^5.0"
+    }, // [tl! collapse:end]
+    "require-dev": { // [tl! collapse:start]
+        "barryvdh/laravel-debugbar": "^3.8.1",
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0",
+        "spatie/laravel-ignition": "^2.4"
+    }, // [tl! collapse:end]
+    "autoload": { // [tl! collapse:start]
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
-    },  // [tl! collapse:end]
-    "autoload-dev": {   // [tl! collapse:start]
+    }, // [tl! collapse:end]
+    "autoload-dev": { // [tl! collapse:start]
         "psr-4": {
             "Tests\\": "tests/"
         }
-    },  // [tl! collapse:end]
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {   // [tl! collapse:start]
+    }, // [tl! collapse:end]
+    "scripts": { // [tl! collapse:start]
         "pre-update-cmd": [
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
         ],
@@ -103,9 +90,30 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ]
-    },  // [tl! collapse:end]
+    }, // [tl! collapse:end]
+    "extra": { // [tl! collapse:start]
+        "laravel": {
+            "dont-discover": []
+        }
+    }, // [tl! collapse:end]
+    "config": { // [tl! collapse:start]
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "pixelfear/composer-dist-plugin": true
+        }
+    }, // [tl! collapse:end]
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [ // [tl! focus:start]
         {
             "type": "path",
@@ -118,7 +126,7 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
 Next, require the branch of `cms` you checked out:
 
 ```shell
-composer require "statamic/cms 3.2.x-dev"
+composer require "statamic/cms 5.x-dev"
 ```
 
 (We'll go into more detail in a moment on what constraint should be used there.)
@@ -132,41 +140,37 @@ Running composer update statamic/cms
 Loading composer repositories with package information
 Updating dependencies
 Lock file operations: 0 installs, 1 update, 0 removals
-  - Upgrading statamic/cms (v3.2.17 => 3.2.x-dev) # [tl! focus]
+  - Upgrading statamic/cms (v5.7.3 => 5.x-dev) # [tl! focus]
 Writing lock file
 Installing dependencies from lock file (including require-dev)
 Package operations: 0 installs, 1 update, 0 removals
-  - Removing statamic/cms (v3.2.17)
-  - Installing statamic/cms (3.2.x-dev): Symlinking from /path/to/cms  # [tl! focus]
+  - Removing statamic/cms (v5.7.3)
+  - Installing statamic/cms (5.x-dev): Symlinking from /path/to/cms  # [tl! focus]
   - Downloading statamic/cms (dist)
     Failed to download
 Generating optimized autoload files
-composer/package-versions-deprecated: Generating version class...
-composer/package-versions-deprecated: ...done generating version class
 > Illuminate\Foundation\ComposerScripts::postAutoloadDump
 > @php artisan package:discover --ansi
 Discovered Package: ajthinking/archetype
 Discovered Package: barryvdh/laravel-debugbar
-Discovered Package: facade/ignition
-Discovered Package: fideloper/proxy
-Discovered Package: fruitcake/laravel-cors
 Discovered Package: intervention/image
+Discovered Package: laravel/sail
 Discovered Package: laravel/tinker
 Discovered Package: nesbot/carbon
 Discovered Package: nunomaduro/collision
+Discovered Package: nunomaduro/termwind
 Discovered Package: rebing/graphql-laravel
+Discovered Package: spatie/laravel-ignition
 Discovered Package: statamic/cms
 Discovered Package: wilderborn/partyline
-Package manifest generated successfully.
 > @php artisan statamic:install --ansi
-Addon manifest generated successfully.
-Copied Directory [/users/jason/code/cms/resources/users] To [/resources/users]
-Publishing complete.
-Copied Directory [/users/jason/code/cms/resources/dist] To [/public/vendor/statamic/cp]
-Publishing complete.
-Compiled views cleared!
-Application cache cleared!
-101 packages you are using are looking for funding.
+Discovering addons.
+Publishing [statamic] assets.
+Publishing [statamic-cp] assets.
+Publishing [statamic-frontend] assets.
+Compiled views cleared successfully.
+Application cache cleared successfully.
+97 packages you are using are looking for funding.
 Use the `composer fund` command to find out more!
 ```
 
@@ -190,7 +194,7 @@ git checkout -b fix/issue-9999
 When requiring the `cms` package, it's important to require the appropriate constraint. If you don't use the right one, Composer may decide to use the _real_ `cms` package, and you'll be left wondering why your code changes aren't appearing.
 :::
 
-If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `3.2` should use a constraint of `3.2.x-dev`).
+If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `5.7` should use a constraint of `5.7.x-dev`).
 
 Otherwise, you'll need to use `dev-BRANCH` (e.g. a branch named `feature/mybranch` should use a constraint of `dev-feature/mybranch`).
 
@@ -208,7 +212,7 @@ Compile the assets within the `cms` repo.
 ```shell
 cd cms
 npm ci
-npm run dev  # or npm run watch
+npm run dev  # or npm run build
 ```
 
 The assets will be compiled into `cms/resources/dist`. You can now symlink them into your sandbox:
@@ -243,9 +247,9 @@ Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 remote:
 remote: Create a pull request for 'feature/new-thing' on GitHub by visiting:  # [tl! **]
-remote:      https://github.com/jasonvarga/cms/pull/new/feature/new-thing # [tl! **]
+remote:      https://github.com/your-username/cms/pull/new/feature/new-thing # [tl! **]
 remote:
-To https://github.com/jasonvarga/cms.git
+To https://github.com/your-username/cms.git
  * [new branch]          HEAD -> feature/new-thing
 Branch 'feature/new-thing' set up to track remote branch 'feature/new-thing' from 'origin'.
 ```
