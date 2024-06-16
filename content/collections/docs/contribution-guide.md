@@ -194,7 +194,7 @@ git checkout -b fix/issue-9999
 When requiring the `cms` package, it's important to require the appropriate constraint. If you don't use the right one, Composer may decide to use the _real_ `cms` package, and you'll be left wondering why your code changes aren't appearing.
 :::
 
-If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `5.7` should use a constraint of `5.7.x-dev`).
+If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `5.x` should use a constraint of `5.x-dev`).
 
 Otherwise, you'll need to use `dev-BRANCH` (e.g. a branch named `feature/mybranch` should use a constraint of `dev-feature/mybranch`).
 
