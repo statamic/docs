@@ -139,7 +139,7 @@ You will need to run migrations to prepare your database for Statamic's user, pa
     php please auth:migration
     php artisan migrate
     ```
-4. (optional) If you are using the Statamic forgot password form, add the following method to your User model
+4. Optional: If you are using the Statamic forgot password form, add the following method to your User model
     ```php
     public function sendPasswordResetNotification($token)
     {
