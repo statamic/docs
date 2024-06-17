@@ -39,9 +39,7 @@ There are 3 steps to follow to install Statamic into your Laravel app.
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan statamic:install --ansi", // [tl! **]
-            "@php artisan statamic:search:update --all --ansi",
-            "@php artisan statamic:static:clear --ansi"
+            "@php artisan statamic:install --ansi" // [tl! **]
         ],
     }
     ```
