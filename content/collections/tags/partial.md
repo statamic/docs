@@ -65,30 +65,30 @@ Note that the `:items` parameter is prefixed by a colon, meaning it will pass th
 
 
 :::best-practice
-To define the default value of parameters inside your partials, you can use the ["view frontmatter" mechanism  ](/variables/#view-frontmatter).
+To set default values for parameters inside your partials, you can [add YAML front-matter](/variables/#view-frontmatter) to the top of your Antlers partials.
 
+In the example below, the partial has two front-matter variables (`author` and `image`). When the partial is called, the `author` parameter is provided. When the partial is outputted, the `author` parameter is used, and the value for the `image` variable falls back to the partial's front-matter.
+
+```antlers
+{{ partial:card author="David Hasselhoff" }}
 ```
-// including "demo" partial with a custom param1 value
-{{ partial:demo param1="custom param1 value" }}
 
-// "demo" partial content using frontmatter :
+```antlers
 ---
-param1: 'default param1 value'
-param2: 'default param2 value'
+author: Jack McDade
+image: https://example.com/placeholder.png
 ---
 
-param1 : {{ view:param1 }} 
-param2 : {{ view:param2 }} 
+<img src="{{ view:image }}">
+<p>Written by {{ view:author }}</p>
 ```
 
+```html
+<img src="https://example.com/placeholder.png"> <!-- No image was provided, so falling back to the front-matter. -->
+<p>Written by David Hasselhoff</p> <!-- Author parameter provided, so using that. -->
 ```
-// output : 
-param1 : custom param1 value
-param2 : default param2 value
-```
-As you can see, the explicitly defined "param1" value is merged with the "view" variable inside your partial.
 
-Using this mechanism is preferable over defining custom variable directly inside your partial. Indeed, [cascades variables](/variables/#reaching-into-the-cascade) beeing accessible from a partial, there is a risk you override one of them. If you have to create a custom variable inside a partial, you can prefix its name with a "_" (ie: "_myCustomPartialVariable = "a value" ), thus limiting the risk of conflict.
+This technique is preferrable over defining custom variables inside your partial.
 
 :::
 
