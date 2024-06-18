@@ -104,6 +104,11 @@ variables:
     type: string
     description: The type of result. e.g. `entry`, `term`, `asset`, etc.
   -
+    name: search_snippets
+    type: array
+    description: >
+      .
+  -
     name: _highlightResult
     type: array
     description: >
@@ -165,3 +170,15 @@ This has a few caveats:
   index the `status` field, or add `status:is=""` to your tag to prevent the filtering.
 - When using multiple sites, the search tag will filter items for the current site. If you haven't indexed the `site` field, you will get no results. Either
   index the `site` field, or add `site:is=""` to your tag to prevent the filtering.
+
+## Contextual Keyword Snippets
+
+This only works for the [local search driver](/search#local-driver) that Statamic's ships with. If you're using Algolia (Meilisearch, or something along the lines). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
+
+```
+{{ search:results }}
+
+  {{ search_snippets:content | implode(' … ') | mark }}
+
+{{ /search:results }}
+```
