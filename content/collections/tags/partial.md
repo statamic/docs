@@ -63,6 +63,36 @@ You can pass additional data into a partial via on-the-fly parameters. The param
 
 Note that the `:items` parameter is prefixed by a colon, meaning it will pass the _value_ of a `flavors` variable, if it exists.
 
+
+:::best-practice
+To set default values for parameters inside your partials, you can [add YAML front-matter](/variables/#view-frontmatter) to the top of your Antlers partials.
+
+In the example below, the partial has two front-matter variables (`author` and `image`). When the partial is called, the `author` parameter is provided. When the partial is outputted, the `author` parameter is used, and the value for the `image` variable falls back to the partial's front-matter.
+
+```antlers
+{{ partial:card author="David Hasselhoff" }}
+```
+
+```antlers
+---
+author: Jack McDade
+image: https://example.com/placeholder.png
+---
+
+<img src="{{ view:image }}">
+<p>Written by {{ view:author }}</p>
+```
+
+```html
+<img src="https://example.com/placeholder.png"> <!-- No image was provided, so falling back to the front-matter. -->
+<p>Written by David Hasselhoff</p> <!-- Author parameter provided, so using that. -->
+```
+
+This technique is preferrable over defining custom variables inside your partial.
+
+:::
+
+
 ## Slots
 
 Sometimes you might need to pass a large chunk of content into a partial. Jamming a bunch of HTML through a parameter would be like trying to shove a pizza through a donut. A hilarious YouTube video but a bad idea on a Friday night.

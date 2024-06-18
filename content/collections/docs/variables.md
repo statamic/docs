@@ -60,8 +60,7 @@ You can create your own [Global variables](/globals), which all get injected int
 
 ## View front-matter
 
-Inside Antlers views, you may define YAML front-matter. This may be a handy way to define variables without needing to add anything
-to content or blueprints.
+Inside Antlers views, you may define YAML front-matter. This may be a handy way to define variables without needing to add anything to content or blueprints.
 
 To access this data, prefix the variables with `view:`.
 
