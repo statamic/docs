@@ -241,3 +241,31 @@ $entry->afterSave(function ($entry) {
 // And finally, save the entry.
 $entry->save();
 ```
+
+### Localization
+
+#### Localizing an entry
+
+After an entry has been created, you can call the `makeLocalization` method to localize the entry into another site:
+
+```php
+$entry->makeLocalization('fr');
+```
+
+#### Getting an entry's localizations
+
+You can use various methods to get an entry's localizations:
+
+```php
+// Check if the entry has been localized in a specific site...
+$entry->existsIn('fr');
+
+// Get the localized entry in a specific site...
+$entry->in('fr');
+
+// Get all "descendants" of the entry (those entries localized from the current entry)...
+$entry->descendants();
+
+// Get all "ancestors" of the entry (those entries the current entry is localized from)...
+$entry->ancestors();
+```
