@@ -22,6 +22,11 @@ options:
     description: >
         The folder (relative to the container) to begin browsing. Default: the root folder of the container.
   -
+    name: min_files
+    type: int
+    description: >
+      The minimum number of allowed files. Leave empty for no minimum.
+  -
     name: max_files
     type: int
     description: >
@@ -31,6 +36,11 @@ options:
     type: string
     description: >
       Set to `list` to use the table layout mode, and `grid` to use the grid mode with larger thumbnails. Default: `grid`.
+  -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
   -
     name: restrict
     type: bool
@@ -129,6 +139,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `folder` | Which folder the file is in |
 | `is_audio` | `true` when file is one of `aac`, `flac`, `m4a`, `mp3`, `ogg`, or `wav`. |
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
+| `is_svg` | `true` when file is an `svg`. |
 | `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
 | `last_modified` | Formatted date string of the last modified time |
 | `last_modified_instance` | [Carbon][carbon] instance of the last modified time |

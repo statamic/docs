@@ -17,6 +17,11 @@ options:
     type: string
     description: |
       Set the non-selectable placeholder text. Default: none.
+  -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable forms. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
 related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - aa96fcf1-510c-404b-9b63-cea8942e1bf8
@@ -31,19 +36,12 @@ The Form fieldtype stores the `handle` of a single form as a string, or an array
 
 ## Templating
 
-The Form fieldtype uses [augmentation](/augmentation) to return Form instances.
+The Form fieldtype provides a few useful variables:
 
-```
-{{ form_field }}
-    {{ fields }}
-      <div class="p-2">
-          <label>{{ display }}</label>
-          <div class="p-1">{{ field }}</div>
-          {{ if error }}
-              <p class="text-gray-500">{{ error }}</p>
-          {{ /if }}
-      </div>
-  {{ /fields }}
-  <button type="submit">Submit</button>
-{{ /form_field }}
-```
+* `handle`
+* `title`
+* `fields`
+* `api_url`
+* `honeypot`
+
+You can use the [`{{ form:create }}`](/tags/form-create) tag to render a `<form>` on your page.

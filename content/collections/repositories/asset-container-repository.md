@@ -26,6 +26,7 @@ use Statamic\Facades\AssetContainer;
 | `all()` | Get all AssetContainers |
 | `find($id)` | Get AssetContainer by `id` |
 | `findByHandle($handle)` | Get AssetContainer by `handle` |
+| `findOrFail($id)` | Get AssetContainer by `id`. Throws an `AssetContainerNotFoundException` when the asset container cannot be found. |
 | `queryAssets()` | Query Builder for the AssetContainer's [Assets](#assets) |
 | `make()` | Makes a new AssetContainer instance |
 
@@ -43,6 +44,12 @@ $videos = AssetContainer::find('videos');
 $videos->queryAssets()
     ->where('series', 'stranger-things')
     ->get();
+```
+
+When an asset container can't be found, the `AssetContainer::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+AssetContainer::findOrFail('videos');
 ```
 
 ## Creating
@@ -71,4 +78,3 @@ Finally, save it.
 ```php
 $container->save();
 ```
-

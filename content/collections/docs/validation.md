@@ -89,7 +89,7 @@ Rather than reaching for `{this}`, you can consider using conditional fields alo
 
 ### All Laravel Rules
 
-You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation].
+You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation]. You may also use [custom rules](#custom-rules).
 
 ### Unique Entry Value
 
@@ -98,7 +98,7 @@ You may use any validation rule provided by Laravel. You can view the complete l
   handle: highlander
   field:
     type: text
-    validate: 'unique_entry_value:{collection},{id},{site}'
+    validate: 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
 ```
 
 This works like Laravel's `unique` validation rule, but for Statamic entries. The rule should be used verbatim as shown above. Statamic will replace the `collection`, `id`, and `site` behind the scenes.
@@ -120,10 +120,10 @@ You can then customize the error message right in your `resources/lang/{lang}/va
   handle: foo
   field:
     type: text
-    validate: 'unique_term_value:{taxonomy},{id},{site}'
+    validate: 'new \Statamic\Rules\UniqueTermValue({taxonomy}, {id}, {site})'
 ```
 
-This works like the `unique_entry_value` rule, but for taxonomy terms.
+This works like the `UniqueEntryValue` rule, but for taxonomy terms.
 
 ### Unique User Value
 
@@ -132,14 +132,34 @@ This works like the `unique_entry_value` rule, but for taxonomy terms.
   handle: login
   field:
     type: text
-    validate: 'unique_user_value:{id}'
+    validate: 'new \Statamic\Rules\UniqueUserValue({id})'
 ```
 
-This works like the `unique_entry_value` rule, but for users.
+This works like the `UniqueEntryValue` rule, but for users.
 
 :::tip
-If you want to override the field that is being validated (e.g. in Livewire Form Objects), you can do so by passing a second parameter to the validation rule, such as `unique_user_value:{id},username`.
+If you want to override the field that is being validated (e.g. in Livewire Form Objects), you can do so by passing a second parameter to the validation rule, such as `new \Statamic\Rules\UniqueUserValue({id}, "username")`.
 :::
 
+## Custom Rules
 
-[laravel-validation]: https://laravel.com/docs/8.x/validation#available-validation-rules
+You may use custom validation rules via Laravel's `Rule` objects.  
+[Documentation on those are here](https://laravel.com/docs/10.x/validation#using-rule-objects).
+
+To references those from your field, you can add them to your `validation` array as if you were writing PHP:
+
+<div class="screenshot">
+    <img src="/img/field-validation-custom-rule.png" width="643" alt="Custom Field validation rules" />
+</div>
+
+If you're writing directly into the YAML, make sure to escape any quotes:
+
+```yaml
+validate:
+  - required
+  - string
+  - new App\Rules\Uppercase
+  - 'new App\Rules\AnotherRule(''with argument'')'
+```
+
+[laravel-validation]: https://laravel.com/docs/10.x/validation#available-validation-rules

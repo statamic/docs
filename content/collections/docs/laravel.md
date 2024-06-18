@@ -24,7 +24,7 @@ You'll get a bunch of things automatically set up for you, like a pages collecti
 
 ## Supported Versions of Laravel
 
-**Laravel 9 and Laravel 10 are supported with Statamic 4+.** If you need Laravel 8 support, you can still use Statamic 3.x.
+**Laravel 10 & Laravel 11 are supported with Statamic 5.** If you need Laravel 9 support, you can still use Statamic 4.x.
 
 ## Install Statamic
 
@@ -39,9 +39,7 @@ There are 3 steps to follow to install Statamic into your Laravel app.
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan statamic:install --ansi", // [tl! **]
-            "@php artisan statamic:search:update --all --ansi",
-            "@php artisan statamic:static:clear --ansi"
+            "@php artisan statamic:install --ansi" // [tl! **]
         ],
     }
     ```
@@ -61,7 +59,7 @@ You'll probably want to create a collection and some entries, as well as views a
 ### Pages
 A common "catch-all" content scenario is to create a Pages collection which allows you to create a home page as well as any other pages in a tree structure. You get this when you install Statamic from scratch, but it's easy to set up yourself.
 
-The easiest way is to copy the `pages.yaml` file and the `pages` directory [from the `statamic/statamic` repository](https://github.com/statamic/statamic/tree/4.x/content/collections).
+The easiest way is to copy the `pages.yaml` file and the `pages` directory [from the `statamic/statamic` repository](https://github.com/statamic/statamic/tree/5.x/content/collections).
 
 Or, if you wanted to do it through the Control Panel:
 

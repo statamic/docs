@@ -44,6 +44,24 @@ parameters:
     type: string
     required: false
     description: 'The term to be searched for. Overrides the `query` parameter.'
+  -
+    name: paginate
+    type: 'boolean|int *false*'
+    description: 'Specify whether your results should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
+    required: false
+  -
+    name: page_name
+    type: 'string *page*'
+    description: 'The query string variable used to store the page number (ie. `?page=`).'
+    required: false
+  -
+    name: on_each_side
+    type: 'int *3*'
+    description: When using pagination, this specifies the max number of links each side of the current page. The minimum value is `1`.
+  -
+    name: chunk
+    type: int
+    description: 'Chunking results can significantly reduce memory usage when loading lots of results. Specify how many results should be included in each "chunk".'
 variables:
   -
     name: no_results
@@ -85,6 +103,11 @@ variables:
     name: result_type
     type: string
     description: The type of result. e.g. `entry`, `term`, `asset`, etc.
+  -
+    name: search_snippets
+    type: array
+    description: >
+      .
   -
     name: _highlightResult
     type: array
@@ -147,3 +170,15 @@ This has a few caveats:
   index the `status` field, or add `status:is=""` to your tag to prevent the filtering.
 - When using multiple sites, the search tag will filter items for the current site. If you haven't indexed the `site` field, you will get no results. Either
   index the `site` field, or add `site:is=""` to your tag to prevent the filtering.
+
+## Contextual Keyword Snippets
+
+This only works for the [local search driver](/search#local-driver) that Statamic's ships with. If you're using Algolia (Meilisearch, or something along the lines). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
+
+```
+{{ search:results }}
+
+  {{ search_snippets:content | implode(' … ') | mark }}
+
+{{ /search:results }}
+```

@@ -115,7 +115,7 @@ This example dynamically renders each input's HTML. You could alternatively writ
                 {{ /if }}
             </div>
         {{ /fields }}
-        
+
         // Add the honeypot field
         <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
 
@@ -149,6 +149,108 @@ You can display any or all of the submissions of your forms on the front-end of 
 ## Exporting your data
 
 Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
+
+### Configuring exporters
+
+Out of the box, Statamic gives you two exporters: a CSV exporter and a JSON exporter.
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+],
+```
+
+If you want to customize the labels of the exporters, you may add a `title` key to the exporter's config. You can also add a `forms` key to the exporter config to limit it to certain forms:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+        'title' => 'CSV (Works in Excel)',
+        'forms' => ['contact_form', 'event_registrations'],
+    ],
+],
+```
+
+### CSV Exporter
+
+The CSV exporter supports two configuration options:
+
+#### `csv_delimiter`
+
+This allows you to configure the delimiter used for CSV exports. This defaults to `,`.
+
+```php
+// config/statamic/forms.php
+
+'csv_delimiter' => ',',
+```
+
+#### `csv_headers`
+
+This allows you to configure whether the field handle or the field display text is used for the CSV's heading row. This defaults to `handle`.
+
+```php
+// config/statamic/forms.php
+
+'csv_headers' => 'handle',
+```
+
+### Custom Exporter
+
+If you need to export form submissions in a different file format or need more flexibility around how the CSV/JSON files are created, you may build your own custom exporter.
+
+To build a custom exporter, simply create a class which extends Statamic's `Exporter` class and implement the `export` and `extension` methods:
+
+```php
+<?php
+
+namespace App\Forms\Exporters;
+
+use Statamic\Forms\Exporters\Exporter;
+
+class SpecialExporter extends Exporter
+{
+    public function export(): string
+    {
+        return '';
+    }
+
+    public function extension(): string
+    {
+        return 'csv';
+    }
+}
+```
+
+The `export` method should return the file contents and the `extension` method should return the file extension.
+
+Then, to make the exporter available on your forms, simply add it to your forms config:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+    ],
+    'json' => [
+        'class' => Statamic\Forms\Exporters\JsonExporter::class,
+    ],
+    'special_exporter' => [ // [tl! focus]
+        'class' => App\Forms\Exporters\SpecialExporter::class, // [tl! focus]
+    ], // [tl! focus]
+],
+```
 
 ## Emails
 
@@ -203,7 +305,7 @@ In each iteration of the `fields` array, you have access to:
 - `display` - The display name of the field. (e.g. "Name")
 - `handle` - The handle of the field (e.g. "name")
 - `value` - The augmented value (same as explained above)
-- `type` - The handle of the fieldtype (e.g. "assets")
+- `fieldtype` - The handle of the fieldtype (e.g. "assets")
 - `config` - The configuration of the blueprint field
 
 
@@ -263,20 +365,65 @@ email:
     # other settings here
 ```
 
+If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained in the [File Uploads](#file-uploads) section.
+
+### Using Markdown Mailable Templates
+
+Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
+
+1. Enable Markdown parsing in your email config:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true # [tl! add]
+```
+
+2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
+
+```yaml
+email:
+  -
+    # other settings here
+    markdown: true
+    html: 'contact-us' # [tl! add]
+```
+
+```blade
+{{-- contact-us.blade.php --}}
+<x-mail::message>
+# New form submission
+
+Someone has taken the time to fill out a form on your website. Here are the details:
+
+<x-mail::panel>
+@foreach ($fields as $item)
+<strong>{{ $item['display'] }}:</strong> {{ $item['value'] }}<br>
+@endforeach
+</x-mail::panel>
+</x-mail::message>
+```
+
+:::warning
+Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
+:::
+
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
 
 ## File Uploads
 
 Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
 
-First up, add `files="true"` to  your form tag. (This will add `enctype="multipart/form-data"` to the generated `<form>` tag. That's always so difficult to remember.)
+First, add a file upload field to your blueprint:
+- Add an `assets` field if you want the uploaded files to be stored in one of your asset containers.
+- Add a `files` field if you're only wanting to attach the uploads to the email. Anything uploaded using this fieldtype will be attached and then deleted after the emails are sent.
 
-```
-{{ form:create formset="contact" files="true" }}
-...
-{{ /form:create }}
-```
+Then decide if you need single or multiple files to be uploaded.
 
-Then add an `assets` field to your blueprint, with a `max_files` setting of `1`:
+### Single files
+
+On your field, add a `max_files` setting of `1`:
 
 ```
 <input type="file" name="cat_selfie" />
@@ -298,7 +445,7 @@ You have two methods available to you:
 
 First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
-Or, you can enable multiple files on one field by dropping the `max_files` setting on your assets field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
+Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
 ```
 <input type="file" name="selfies[]" multiple />
@@ -353,7 +500,7 @@ If you are static caching the URL containing a form, return responses like 'succ
 {{ nocache }}
     {{ form:create formset="contact" }}
         ...
-    {{ /form:create }}    
+    {{ /form:create }}
 {{ /nocache }}
 ```
 
@@ -387,8 +534,8 @@ Some things to note here:
 {{ form:contact attr:x-ref="form" js="alpine" }}
     <div x-data='{
         form: $form(
-            "post", 
-            $refs.form.getAttribute("action"), 
+            "post",
+            $refs.form.getAttribute("action"),
             JSON.parse($refs.form.getAttribute("x-data"))
         ).setErrors({{ error | json }}),
     }'>
@@ -440,8 +587,8 @@ To build on the regular form submission example above, here's an example for AJA
 ```antlers
 <div x-data='{
     form: $form(
-        "post", 
-        $refs.form.getAttribute("action"), 
+        "post",
+        $refs.form.getAttribute("action"),
         JSON.parse($refs.form.getAttribute("x-data"))
     ).setErrors({{ error | json }}), {{# [tl! --] #}}
     ), {{# [tl! ++:start] #}}

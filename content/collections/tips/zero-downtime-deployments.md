@@ -35,7 +35,7 @@ After a successful deployment, the `current` folder is then symlinked to the lat
 
 ## Cache storage
 
-Statamic's content management heavily relies on caching, and sometimes it's necessary for the [Stache](/stache) to store absolute file paths in your app's cache. This can lead to deployment errors when while users are hitting your frontend, since each release [exists in a separate timestamped folder](#understanding-zero-downtime-deployment-file-structure).
+Statamic's content management heavily relies on caching, and sometimes it's necessary for the [Stache](/stache) to store absolute file paths in your app's cache. This can lead to deployment errors when users are hitting your frontend, since each release [exists in a separate timestamped folder](#understanding-zero-downtime-deployment-file-structure).
 
 The solution is simple. Just as you should never share a cache between different websites, you should never share a cache between your deployed releases.
 
@@ -117,11 +117,17 @@ When adding these deployment hooks, be mindful of the order in which these thing
 
 ### Committing form submissions
 
-If you plan on committing form submissions, you will need to store them outside of the shared `storage` folder. You can customize your form submissions path in `config/statamic/forms.php`:
+If you plan on committing form submissions, you will need to store them outside of the shared `storage` directory. 
+
+To customize where form submissions are stored, add a `form-submissions` array to your `config/statamic/stache.php` config file:
 
 ```php
-'submissions' => storage_path('forms'), // [tl! --]
-'submissions' => base_path('forms'), // [tl! ++]
+'stores' => [
+    'form-submissions' => [ // [tl! ++]
+        'class' => \Statamic\Stache\Stores\SubmissionsStore::class, // [tl! ++]
+        'directory' => base_path('forms'), // [tl! ++]
+    ], // [tl! ++]
+],
 ```
 
 After doing this, you will also need to update the tracked path for your submissions in `config/statamic/git.php`:

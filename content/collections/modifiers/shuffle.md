@@ -6,6 +6,8 @@ modifier_types:
   - markup
   - string
 title: Shuffle
+related_entries:
+  - 48178377-da99-4754-ae9e-d294720cff33
 ---
 Shuffles a string or an array to make it all random.
 

@@ -11,6 +11,7 @@ categories:
 This is the list of reserved words you shouldn't use as field names, in addition to the names of Statamic's [Tags](/tags) and [contextual variables](/variables).
 
 - `content_type`
+- `count`
 - `elseif`
 - `endif`
 - `endunless`

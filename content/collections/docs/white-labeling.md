@@ -58,6 +58,14 @@ You may set different logos for inside and outside Control Panel (nav bar and lo
 ],
 ```
 
+You can also specify a different URL to be used when in Dark Mode:
+
+``` php
+'custom_logo_url' => '/logo-light-mode.png',
+
+'custom_dark_logo_url' => '/logo-dark-mode.png',
+```
+
 ### Custom Favicon
 
 Swap out the favicon with a URL to one of your own.

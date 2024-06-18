@@ -15,7 +15,7 @@ Deployments are triggered by committing changes to your Git repository. Alternat
 ## Prerequisites
 
 :::tip
-Netlify **doesn't support PHP 8.2 yet**. Make sure your projects and its dependencies don't require it. It works with PHP **<=8.1**.
+While Netlify supports PHP versions from 7.4 through 8.3, it defaults to PHP 8.0. You can [specify the PHP version](https://docs.netlify.com/configure-builds/manage-dependencies/#php) using the `PHP_VERSION` environment variable.
 :::
 
 - A [Netlify](https://netlify.com) account
@@ -26,7 +26,7 @@ Netlify **doesn't support PHP 8.2 yet**. Make sure your projects and its depende
 ```json
 "scripts": {
     "build": [
-        "npm run production",
+        "npm run build",
         "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
         "@php artisan key:generate",
         "@php please ssg:generate"

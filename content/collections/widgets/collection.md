@@ -13,7 +13,12 @@ options:
     name: width
     type: int
     required: false
-    description: 'Width of dashboard area as a percentage.'
+    description: 'Width of dashboard area as a percentage. Accepts `25`, `33`, `50`, `66`, `75` and `100`.'
+  -
+    name: sites
+    type: array
+    required: false
+    description: 'Determines the sites in which this widget should be displayed.'
   -
     name: limit
     type: int
@@ -24,6 +29,11 @@ options:
     type: string
     required: false
     description: 'Sort and order by field name. E.g. `''title:desc''`. Defaults to the collection''s settings.'
+  -
+    name: fields
+    type: array
+    required: false
+    description: 'An array of field handles to be displayed as columns in the widget.'
 screenshot: widgets/collection.png
 nav_title: Collection
 ---

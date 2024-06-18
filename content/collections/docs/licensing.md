@@ -62,6 +62,8 @@ Statamic pings The Outpost (our validation web service) on a regular basis. The 
 
 This happens once per hour, and only when logged into the control panel. Changing your license key setting will trigger an immediate ping to the The Outpost. Tampering with outgoing API call will cause Statamic to consider your license invalid. If that happens, you'll need to open a [support request][support] to reinstate your license.
 
+If you need to run Statamic in an environment without an internet connection, please [contact support](https://statamic.com/support).
+
 ## One License Per Site
 
 Each license entitles you to run one production installation. You will need to specify the domains you plan to use from the "Sites" area of your Statamic Account. Domain are treated as wildcards so you can use subdomains for locales, testing, and other purposes.

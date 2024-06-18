@@ -15,6 +15,10 @@ options:
     name: max_sets
     type: integer
     description: The maximum number of sets that may be added.
+  -
+    name: button_label
+    type: string
+    description: Allows you to define a label for the "Add Set" button.
 id: 00b140e3-413a-4d91-b9e7-65f58d56a41b
 ---
 ## Usage
@@ -134,4 +138,25 @@ and the set partial may look something like:
 {{# this is image.antlers.html #}}
 
 <img src="{{ image }}" alt="{{ caption }}" >
+```
+
+## Custom set icons
+
+You can change the icons available in the set picker by setting an icons directory in a service provider.
+
+For example, you can drop this into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Fieldtypes\Sets;
+
+public function boot()
+{
+    Sets::setIconsDirectory(folder: 'light');
+}
+```
+
+Alternatively, if you want to use a different base directory altogether, you can do this:
+
+```php
+Sets::setIconsDirectory(directory: resource_path('custom-icons'));
 ```

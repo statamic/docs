@@ -24,6 +24,11 @@ options:
       These are the defaults:
       ![Bard Buttons](/img/fieldtypes/screenshots/bard-buttons.png) {.mt-4}
 
+      You can override the default buttons using the `Bard::setDefaultButtons()` method:
+      ```php
+      \Statamic\Fieldtypes\Bard::setDefaultButtons(['h2', 'h3', 'bold', 'italic']);
+      ```
+
       When you have the `image` button toggled, make sure to define an Asset Container in the Bard field's settings, otherwise the button won't show.
   -
     name: target_blank
@@ -46,6 +51,11 @@ options:
     description: |
       Enable the option to toggle into fullscreen mode. Default: `true`.
   -
+    name: collapse
+    type: boolean
+    description: >
+      Expand (`true`) or collapse (`false`) all sets by default. Default: `false`.
+  -
     name: container
     type: string
     description: >
@@ -65,6 +75,11 @@ options:
     type: boolean
     description: >
       Show estimated reading time at the bottom of the field. Default: `false`.
+  -
+    name: word_count
+    type: boolean
+    description: >
+      Show the word count at the bottom of the field. Default: `false`.
   -
     name: save_html
     type: boolean
@@ -106,7 +121,7 @@ If you are using Bard just as a rich text editor and have no need for sets you w
 
 ### With Sets
 
-When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. The non-set content uses type `text`.
+When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. **Note**: any content that is entered _not_ in a set (i.e. your normal rich-text content) needs to be rendered using the "text" type. See the first condition using "text."
 
 ```
 {{ bard_field }}
@@ -161,3 +176,24 @@ Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [Prose
 
 
 [prosemirror]: https://prosemirror.net/
+
+## Custom set icons
+
+You can change the icons available in the set picker by setting an icons directory in a service provider.
+
+For example, you can drop this into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Fieldtypes\Sets;
+
+public function boot()
+{
+    Sets::setIconsDirectory(folder: 'light');
+}
+```
+
+Alternatively, if you want to use a different base directory altogether, you can do this:
+
+```php
+Sets::setIconsDirectory(directory: resource_path('custom-icons'));
+```

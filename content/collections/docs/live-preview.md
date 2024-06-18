@@ -1,6 +1,6 @@
 ---
 title: 'Live Preview'
-intro: 'Live Preview gives you the ability to see what your entry will look like in real time as you write and edit. You can configure and switch the preview screen size, pop it out into a new window, and even switch to AMP mode if enabled.'
+intro: 'Live Preview gives you the ability to see what your entry will look like in real time as you write and edit. You can configure and switch the preview screen size or pop it out into a new window.'
 template: page
 blueprint: page
 id: cdffd2c9-cf42-495d-a8f1-f416ddfddc29
@@ -84,7 +84,7 @@ These values are available in your views, scoped into the `live_preview` array:
 
 ## Preview Targets
 
-On a Collection, you may define one or more preview targets which lets you choose which page should viewed in the Live Preview window.
+On a Collection, you may define one or more preview targets which lets you choose which page should be viewed in the Live Preview window.
 
 For example, you may want to preview how an entry looks on the entry's page itself, as well as a listing page.
 

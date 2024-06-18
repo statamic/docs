@@ -8,7 +8,7 @@ intro: '[Antlers](/antlers) is not _always_ the best template engine for the job
 
 While Statamic's [Antlers](/antlers) template language is powerful, tightly integrated, and simple to learn, it's not the only way to build your frontend views.
 
-Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](#writing-antlers-in-blade) Blade directive.
+Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](#writing-pure-antlers-in-blade) Blade directive.
 
 ## How to Render a Template with Blade
 
@@ -50,6 +50,10 @@ and it was sick.</p>
 
 :::tip
 Antlers outputs **unescaped** values by default, while `{{ $content }}` in Blade will be escaped. If you need to output unescaped HTML, use `{!! $content !!}`
+:::
+
+:::tip
+When on a custom route, the `$page` variable **won't** be available in your view. 
 :::
 
 ### Globals
@@ -107,7 +111,7 @@ By using the `@antlers` and `@endantlers` Blade directive pair you can write pur
 @endantlers
 ```
 
-Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@inlcude('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
+Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@include('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
 
 ## Using Tags with Blade
 
@@ -174,6 +178,41 @@ For tags that provide pagination, you can `fetch` the tag's output in a variable
 @endforeach
 
 {{ $tag['paginate']['auto_links'] }}
+```
+
+### Directive {#tag-directive}
+
+You may prefer to use an alternate syntax, available via a `@tags` Blade directive.
+
+Passing a string will give you the camelCased version of the tag as a variable:
+
+```blade
+@tags('collection:blog')
+
+@foreach($collectionBlog as $post) ... @endforeach
+```
+
+Passing an array of tags can provide multiple variables:
+
+```blade
+@tags(['collection:blog', 'collection:items'])
+
+@foreach($collectionBlog as $post) ... @endforeach
+
+@foreach($collectionItems as $item) ... @endforeach
+```
+
+You may also pass an array of tags, and parameters, with variable names as the keys:
+
+```blade
+@tags([
+    'posts' => ['collection:blog' => ['limit' => 5]], 
+    'items' => ['collection:items' => ['limit' => 5]],
+])
+
+@foreach($posts as $post) ... @endforeach
+
+@foreach($items as $item) ... @endforeach
 ```
 
 

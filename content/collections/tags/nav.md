@@ -15,7 +15,7 @@ parameters:
   -
     name: from
     type: string
-    description: "The starting point for your navigation. If unspecified, it'll start from the top. Note: this parameter is only supported for orderable collections."
+    description: "Specify the URI of the entry to be used as the starting point for your navigation. If unspecified, it'll start from the top. Note: this parameter is only supported for orderable collections."
   -
     name: show_unpublished
     type: 'boolean *false*'
@@ -25,7 +25,7 @@ parameters:
     type: 'boolean *false*'
     description: >
       You can choose to turn off the home page in the tree, opting to start the crumbs from the first level nav item. Doesn't do
-      anything if you're using the `from` paramter.
+      anything if you're using the `from` parameter.
   -
     name: max_depth
     type: 'int'
@@ -161,6 +161,10 @@ A single level nav, much like something you'd have at the top of your site, can 
 ```
 
 ## Show the children of the current page
+
+:::tip
+A simpler way is to use the [children tag](/tags/children) for this.
+:::
 
 Use the `uri` to get the children of the current page.
 

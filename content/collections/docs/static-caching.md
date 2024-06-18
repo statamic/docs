@@ -82,6 +82,24 @@ return [
 When using full-measure caching, the [nocache tag](/tags/nocache) will rely on JavaScript.
 :::
 
+
+### Permissions
+
+Using the file driver, you can configure the permissions for the directories and files that are getting created using the `static_caching.strategies.full` config option.
+
+```php
+'strategies' => [
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static'),
+        'permissions' => [ // [tl! focus]
+            'directory' => 0755, // [tl! focus]
+            'file' => 0644, // [tl! focus]
+        ], // [tl! focus]
+    ],
+]
+```
+
 ## Server Rewrite Rules
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
@@ -91,10 +109,34 @@ You will need to configure its rewrite rules when using full measure caching. He
 On Apache servers, you can define rewrite rules inside an `.htaccess` file:
 
 ``` htaccess
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING} !live-preview
+RewriteRule ^ index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING} live-preview
+RewriteRule ^ index.php [L]
+
 RewriteCond %{DOCUMENT_ROOT}/static/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule .* static/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
+</IfModule>
 ```
+
+:::tip
+When you have the `ignore_query_strings` option enabled, replace the last chunk of the `.htaccess` snippet with this:
+
+``` htaccess
+RewriteCond %{DOCUMENT_ROOT}/static%{REQUEST_URI}\.html -f
+RewriteRule ^ static%{REQUEST_URI}\.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+```
+:::
 
 ### Nginx
 
@@ -103,10 +145,40 @@ On Nginx servers, you will need to edit your `.conf` files. They are not located
 Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
 
 ``` nginx
+set $try_location @static;
+
+if ($request_method != GET) {
+    set $try_location @not_static;
+}
+
+if ($args ~* "live-preview=(.*)") {
+    set $try_location @not_static;
+}
+
 location / {
-  try_files /static${uri}_${args}.html $uri /index.php?$args;
+    try_files $uri $try_location;
+}
+
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args;
+}
+
+location @not_static {
+    try_files $uri /index.php?$args;
 }
 ```
+
+:::tip
+When you have the `ignore_query_strings` option enabled, you should update the `try_files` line inside the `@static` block:
+
+``` nginx
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    try_files /static${uri}_.html $uri $uri/ /index.php?$args; # [tl! add]
+}
+```
+:::
+
 
 ### IIS
 
@@ -127,9 +199,13 @@ You can get your app to automatically generate the public views for your entries
 php please static:warm
 ```
 
-This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag:
+This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag.
 
-It's a good idea to add this command to your deployment script on Forge or whatever deployment tool you use.
+Passing `--insecure` to the command allows you to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+
+Adding the `--user` and `--password` flags, you can run the command behind [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Useful when your site is secured with a simple username and password, like on a staging or development server. Otherwise, you might end up with a `401 Unauthorized` error running the command.
+
+Depending on your site's setup, it's a good idea to add this command to your deployment script on Forge or whatever deployment tool or pipeline you use.
 
 ### Concurrency
 
@@ -146,7 +222,6 @@ By default the pool will use `25`, but feel free to adjust it up or down based o
             'lock_hold_length' => 0,
             'warm_concurrency' => 10, // [tl! highlight]
         ],
-
     ],
 ```
 
@@ -154,17 +229,59 @@ By default the pool will use `25`, but feel free to adjust it up or down based o
 Lower the `warm_concurrency` to reduce the overhead and slow the process down, raise it to warm faster by using more CPU.
 :::
 
+### Warming additional URLs
+
+Statamic will automatically warm pages for entries, taxonomy terms and any basic `Route::statamic()` routes. If you wish to warm additional URLs as part of the `static:warm` command, you may add a hook into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Console\Commands\StaticWarm;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        StaticWarm::hook('additional', function ($urls, $next) {
+            return $next($urls->merge([
+                '/custom-1',
+                '/custom-2',
+                'https://different-domain.com/custom-3',
+            ]));
+        });
+    }
+}
+```
+
+When you're adding a lot of additional URLs, you may want to use a dedicated class instead:
+
+```php
+use App\StaticWarmExtras;
+use Statamic\Console\Commands\StaticWarm;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        StaticWarm::hook('additional', function ($urls, $next) {
+            return $next($urls->merge(StaticWarmExtras::handle()));
+        });
+    }
+}
+```
+
 ## Excluding Pages
 
-You may add a list of URLs you wish to exclude from being cached.
+You may wish to exclude certain URLs from being cached.
 
-``` php
+```php
 return [
     'exclude' => [
-        '/contact',
-        '/blog/*',  // Excludes /blog/post-name, but not /blog
-        '/news*',   // Exclude /news, /news/article, and /newspaper
-    ]
+        'class' => null,
+        'urls' => [
+            '/contact', // [tl! add]
+            '/blog/*',  // Excludes /blog/post-name, but not /blog [tl! add]
+            '/news*',   // Exclude /news, /news/article, and /newspaper [tl! add]
+        ],
+    ],
 ];
 ```
 
@@ -177,6 +294,54 @@ Rather than excluding entire pages, you may consider using the [nocache tag](/ta
 :::tip Another tip
 CSRF tokens will automatically be excluded from the cache. You don't even need to use a `nocache` tag for that. ([With some exceptions](#csrf-tokens))
 :::
+
+If you'd like to dynamically exclude URLs from being cached (for example: if you want to add a "Exclude from Cache" toggle to entries), you can create your own excluder class:
+
+```php
+// config/statamic/static_caching.php
+
+return [
+    'exclude' => [
+        'class' => App\StaticCaching\CustomExcluder::class, // [tl! add]
+        'urls' => [],
+    ],
+];
+```
+
+```php
+// app/StaticCaching/CustomExcluder.php
+
+<?php
+
+namespace App\StaticCaching;
+
+use Statamic\Support\Str;
+use Statamic\StaticCaching\UrlExcluder;
+
+class CustomExcluder implements UrlExcluder
+{
+    public function __construct(protected string $baseUrl, protected array $exclusions)
+    {
+    }
+
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
+
+    public function getExclusions(): array
+    {
+        return $this->exclusions;
+    }
+
+    public function isExcluded(string $url): bool
+    {
+        // Your custom logic here.
+        // Return `true` for any URLs you wish to be excluded.
+        return false;
+    }
+}
+```
 
 ## Invalidation
 
@@ -197,6 +362,7 @@ You may also set specific rules for invalidating other pages when content is sav
 ``` php
 return [
     'invalidation' => [
+        'class' => null,
         'rules' => [
             'collections' => [
                 'blog' => [
@@ -249,9 +415,84 @@ You may also choose to invalidate the entire static cache by specifying `all`.
 ``` php
 return [
     'invalidation' => [
-        'rules' => 'all',
-    ]
+        'class' => null,
+        'rules' => 'all', // [tl! highlight]
+    ],
 ];
+```
+
+### Custom Invalidator Class
+
+You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
+
+```php
+return [
+    'invalidation' => [
+        'class' => App\StaticCaching\CustomInvalidator::class,  // [tl! highlight]
+        'rules' => [],
+    ],
+];
+```
+
+It's worth noting that the container binding for the Default Invalidator won't be used now, so you'll need to bind it yourself in your `AppServiceProvider`:
+
+```php
+use App\StaticCaching\CustomInvalidator;
+use Statamic\StaticCaching\Cacher;
+
+class AppServiceProvider
+{
+    public function boot()
+    {
+        $this->app->bind(CustomInvalidator::class, function ($app) {
+            return new CustomInvalidator(
+                $app[Cacher::class],
+                $app['config']['statamic.static_caching.invalidation.rules']
+            );
+        });
+    }
+}
+```
+
+In your class you can then define the logic that decides how URLs should get invalidated.
+
+```php
+// app/StaticCaching/CustomInvalidator.php
+
+<?php
+
+namespace App\StaticCaching;
+
+use Statamic\Entries\Entry;
+use Statamic\StaticCaching\DefaultInvalidator;
+
+class CustomInvalidator extends DefaultInvalidator
+{
+    public function invalidate($item)
+    {
+        // Flushes everything by setting the invalidation rules to `all`.
+        if ($this->rules === 'all') {
+            return $this->cacher->flush();
+        }
+
+        $urls = [];
+
+        // Invalidates entries from the `events` collection.
+        if ($item instanceof Entry && $item->collectionHandle() === 'events') {
+            $urls[] = $item->uri();
+        }
+
+        // Flush the URLs we've added to the $urls array.
+        if (count($urls) >= 1) {
+            $this->cacher->invalidateUrls($urls);
+
+            return;
+        }
+
+        // Otherwise, when the $urls array is empty, fallback to the default invalidation logic.
+        parent::invalidate($item);
+    }
+}
 ```
 
 ### By Force
@@ -264,7 +505,6 @@ When using the file driver, the static HTML files are stored in the `static` dir
 
 ``` php
 return [
-
     'strategies' => [
         'full' => [
             'driver' => 'file',
@@ -277,13 +517,25 @@ return [
 You will need to update your appropriate server rewrite rules.
 
 
+## Query Parameters
+
+By default, Statamic will cache all pages with the same URL but different query parameters separately. This can be helpful if you're using pagination or displaying pages differently based on user input.
+
+However, if you wish, you can disable this behaviour so each URL will only be cached once, regardless of query parameters:
+
+```php
+return [
+    'ignore_query_strings' => true,
+];
+```
+
+
 ## Multi-Site
 
 When using [multi-site](/multi-site), the path can accept an array of sites to define separate urls and domains, if needed.
 
 ``` php
 return [
-
     'strategies' => [
         'full' => [
             'driver' => 'file',
@@ -307,6 +559,8 @@ This multi-site example needs modified rewrite rules.
 
 #### Apache
 
+You should update the rewrites in your `.htaccess` file to include `%{HTTP_HOST}`:
+
 ``` htaccess
 RewriteCond %{DOCUMENT_ROOT}/static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
@@ -315,23 +569,37 @@ RewriteRule .* static/%{HTTP_HOST}/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=tex
 
 #### Nginx
 
+You should update the `try_files` line inside the `@static` block:
+
 ``` nginx
-location / {
-  try_files /static/${host}${uri}_${args}.html $uri /index.php?$args;
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    try_files /static/${host}${uri}_$args.html $uri $uri/ /index.php?$args;  # [tl! add]
 }
 ```
 
-The ${host} argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain.
+The `${host}` argument should correspond to the domains set up in the path. This will be dependant on the server. If you're running different environments and need to use caching for them, you should define the paths using an ENV variable that corresponds to each server domain. The path can be configured in the `static_caching` config:
 
-For example `'default'    => public_path('static') . '/' .env('APP_DOMAIN'),`
+For example:
+
+``` php
+'strategies' => [
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static') . '/' .env('APP_DOMAIN'), // [tl! focus]
+        'lock_hold_length' => 0,
+        'warm_concurrency' => 10
+    ],
+],
+```
 
 and then on your server
 
 ```
-#Production
+# Production
 APP_DOMAIN=domain1.com
 
-#Dev
+# Dev
 APP_DOMAIN=domain1.devserver.com
 ```
 
@@ -413,7 +681,7 @@ When using full measure, tokens will automatically be replaced in `<input>` and 
 
 ```
 <meta name="csrf-token" content="{{ csrf_token }}" />
-<input type="hidden" value="{{ csrf_token }}" />
+<input type="hidden" name="_token" value="{{ csrf_token }}" />
 ```
 
 If you need to output a CSRF token in another place while using full measure, you'll need to use nocache tags.
@@ -425,3 +693,18 @@ If you need to output a CSRF token in another place while using full measure, yo
 {{ /nocache }} {{# [tl!++] #}}
 </span>
 ```
+
+## Custom Cache Store
+
+Static Caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead invalidation to fail.
+
+The cache store can be customized in `config/cache.php`.
+
+```php
+'static_cache' => [
+    'driver' => 'file',
+    'path' => storage_path('statamic/static-urls-cache'),
+],
+```
+
+By default, running `artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.

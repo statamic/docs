@@ -1,13 +1,13 @@
 ---
+id: 5bd75435-806e-458b-872e-7528f24df7e6
+blueprint: page
 title: Addons
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264134
-intro: An addon is a composer package you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.
+intro: 'An addon is a composer package you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.'
 stage: 1
-id: 5bd75435-806e-458b-872e-7528f24df7e6
 ---
-
 ## Creating an Addon
 
 You can generate an addon with a console command:
@@ -32,13 +32,13 @@ addons/
         src/
             ServiceProvider.php
         composer.json
-    app/
-    content/
-    config/
-    public/
-        index.php
-    resources
-    composer.json
+app/
+content/
+config/
+public/
+    index.php
+resources
+composer.json
 ```
 
 ``` json
@@ -409,7 +409,7 @@ Any views located in your `resources/views` directory will automatically be avai
     src/
     resources/
         views/
-        foo.blade.php
+            foo.blade.php
 ```
 
 ``` php
@@ -542,6 +542,11 @@ The `update()` method is where your custom data migration logic happens. Feel fr
 
 That's it! Statamic should now automatically run your update script as your users update their addons.
 
+## Testing
+
+Statamic automatically scaffolds a PHPUnit test suite when you generate an addon with `php please make:addon`.
+
+To learn more about writing addon tests, please review our [Testing in Addons](/extending/testing-in-addons) guide.
 
 ## Publishing to the Marketplace
 

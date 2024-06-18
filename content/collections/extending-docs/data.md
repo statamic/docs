@@ -99,6 +99,11 @@ When you are saving or creating your data instance, the `EntrySaving`, `EntryCre
 $entry->saveQuietly();
 ```
 
+Similarly, when deleting data, the `EntryDeleting` and `EntryDeleted` events are dispatched. To surpress those events, use the `deleteQuietly` method:
+```php
+$entry->deleteQuietly();
+```
+
 ## Creating Data
 
 Of course, the data had to get there somehow. You can also create data using the corresponding facades.
@@ -110,7 +115,7 @@ Once you have an instance, you can manipulate it using various methods the same 
 use Statamic\Facades\Entry;
 
 $entry = Entry::make()
-            ->published()
+            ->published(true)
             ->data(['title' => 'About us', 'subtitle' => 'We are awesome'])
             ->etc(); // and so on...
 
@@ -130,7 +135,7 @@ More often than not, you'll want to use the "standard" way of getting data out o
 You can use property access to get a single field's augmented value:
 
 ```yaml
-id: 1
+id: 123
 title: My post
 content: |
   # Heading
@@ -268,3 +273,44 @@ $entry->toAugmentedCollection(['title', 'collection']);
 ```
 
 The `toAugmentedArray` method does the same as `toAugmentedCollection`, except that it returns an array.
+
+
+### Checking for data changes
+
+Statamic provides `isDirty`, `isClean`, and `getOriginal` methods to let you see what data has been changed in your item since it was originally retrieved.
+
+The `isDirty` method checks if any of the item's data has been changed since it was last saved. You may pass a specific attribute name or an array of attributes to the `isDirty` method to determine if any of the attributes are "dirty". The `isClean` method will determine if an attribute has remained unchanged since the item was retrieved. This method also accepts an optional attribute argument:
+
+```php
+$entry->title; // "Post title"
+$entry->image; // "/path/to/image.jpg"
+
+$entry->title = 'New Title';
+
+$entry->isDirty(); // true
+$entry->isDirty('title'); // true
+$entry->isDirty('image'); // false
+$entry->isDirty(['image', 'title']); // true
+
+$entry->isClean(); // false
+$entry->isClean('title'); // false
+$entry->isClean('image'); // true
+$entry->isClean(['image', 'title']); // false
+
+$entry->save();
+
+$entry->isDirty(); // false
+$entry->isClean(); // true
+```
+
+The `getOriginal` method returns an array containing the original attributes of the item regardless of any changes to the item since it was retrieved. This method also accepts an optional attribute argument:
+
+```php
+$entry->title; // "Post title"
+$entry->image; // "/path/to/image.jpg"
+
+$entry->title = 'New Title';
+
+$entry->getOriginal('title'); // "Post title"
+$entry->getOriginal(); // ["Post title", "/path/to/image.jpg"]
+```

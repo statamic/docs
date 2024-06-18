@@ -1,7 +1,7 @@
 ---
 title: User:Can
 description: Checks if a user has a specific permission
-intro: Anything inside the `user:can` tag will only be rendered f the user has the specified permission.
+intro: Anything inside the `user:can` tag will only be rendered if the user has the specified permission.
 parameters:
   -
     name: permission|do

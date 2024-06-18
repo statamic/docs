@@ -237,6 +237,16 @@ In this example, you would also need to create a Redis database named `glide` in
 ],
 ```
 
+When using the [database driver](https://laravel.com/docs/11.x/cache#prerequisites-database), make sure to specify the connection and table, like so:
+
+```php
+'glide' => [
+    'driver' => 'database',
+    'connection' => 'mysql',
+    'table' => 'cache',
+],
+```
+
 ## Clearing the cache
 
 You may manually clear the Glide cache by running the following command:

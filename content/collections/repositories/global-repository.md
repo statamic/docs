@@ -20,6 +20,7 @@ use Statamic\Facades\GlobalSet;
 | `all()` | Get all GlobalSets |
 | `find($id)` | Get GlobalSets by `id` |
 | `findByHandle($handle)` | Get GlobalSets by `handle` |
+| `findOrFail($id)` | Get GlobalSets by `id`. Throws a `GlobalSetNotFoundException` when the global set cannot be found. |
 | `make()` | Makes a new `GlobalSet` instance |
 
 ## Querying

@@ -5,13 +5,15 @@ modifier_types:
   - array
   - utility
 title: Random
+related_entries:
+  - 63acdaa6-9724-4179-b210-ea5d507672e9
 ---
 ## Overview
-Randomizes an array or collection.
+Picks a _single_ random item from an array or collection.
+
+If you are trying to get _multiple_ random items, consider the [shuffle modifier](/modifiers/shuffle).
 
 ## Example
-
-Let's say you wanted to fetch a random item from an array. You could randomize the array and then apply a `limit: 1` and voila.
 
 ### The YAML
 ```yaml
@@ -23,7 +25,7 @@ arr:
 
 ### The Template
 ```
-{{ arr | random | limit(1) }}
+{{ arr | random }}
 ```
 
 ### The Output

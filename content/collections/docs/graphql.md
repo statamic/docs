@@ -22,8 +22,12 @@ Or you can enable for all environments in `config/statamic/graphql.php`:
 ```
 
 You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
-:::tip
 
+:::tip
+When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is available in the Control Panel. This allows you to explore and test available queries and fields.
+:::
+
+:::tip Heads up
 If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
 :::
 
@@ -1485,8 +1489,7 @@ public function addGqlTypes()
 
 Under the hood, Statamic uses the [rebing/graphql-laravel](https://github.com/rebing/graphql-laravel) package.
 
-By default, the integration should feel seamless and you won't even know another package is being used. Statamic will
-perform the following automatic configuration of this package:
+By default, the integration should feel seamless and you won't even know another package is being used. Statamic will perform the following automatic configuration of this package:
 
 - Setting up the `default` schema to Statamic's.
 - Disabling the `/graphiql` route (since we have our own inside the Control Panel)
@@ -1496,13 +1499,12 @@ However, you're free to use this package on its own, as if you've installed it i
 If Statamic detects that you've published the package's config file (located at `config/graphql.php`), it will assume you're trying to use it manually and will
 avoid doing the automatic setup steps mentioned above.
 
-If you'd like to use Statamic's GraphQL schema within the config file (maybe you want a different default, and want Statamic's one at `/graphql/statamic`)
-you can use the `DefaultSchema` class.
+If you'd like to use Statamic's GraphQL schema within the config file (maybe you want a different default, and want Statamic's one at `/graphql/statamic`) you can use the `DefaultSchema` class.
 
 ```php
 [
     'schemas' => [
-        'statamic' => \Statamic\GraphQL\DefaultSchema::config()
+        'statamic' => \Statamic\GraphQL\DefaultSchema::class
     ]
 ]
 ```

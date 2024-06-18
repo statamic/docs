@@ -29,3 +29,28 @@ You may also use Emmet-style CSS classes to be added to the tag.
 ```html
 <h1 class="fast furious">As the World Turns</h1>
 ```
+
+The `wrap` modifier also accepts passing in arrays. 
+
+```yaml
+team_members:
+  - Jack
+  - Jason
+  - Jesse
+  - Josh
+  - Duncan
+  - The Hoff
+```
+
+```
+{{ team_members | wrap('li') | join(' ') }}
+```
+
+```html
+<li>Jack</li>
+<li>Jason</li> 
+<li>Jesse</li> 
+<li>Josh</li> 
+<li>Duncan</li> 
+<li>The Hoff</li>
+```

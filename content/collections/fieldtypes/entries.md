@@ -11,7 +11,6 @@ options:
     type: array
     description: |
       Configure which collections you want to allow relationships with.
-
   -
     name: max_items
     type: integer
@@ -22,6 +21,16 @@ options:
     type: string
     description: |
         Set the UI style for this field. Can be one of 'default' (Stack Selector), 'select' (Select Dropdown) or 'typeahead' (Typeahead Field).
+  -
+    name: query_scopes
+    type: string
+    description: >
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
+  -
+    name: search_index
+    type: string
+    description: >
+        Allows you to specify a [search index](/search#indexes) to be used when searching for entries.
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview
@@ -60,5 +69,3 @@ Loop through the entries and do anything you want with the data.
   <li><a href="/look-at-that">Wait, Look at That!</a></li>
 </ul>
 ```
-
-

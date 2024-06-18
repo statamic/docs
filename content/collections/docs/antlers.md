@@ -4,14 +4,11 @@ blueprint: page
 title: 'Antlers Templates'
 intro: |-
   Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic. Coming from Laravel and want to stick to Blade? [We got you covered](/blade).
-  :::tip Hot Tip
-    For sites running Statamic 3.2 and older you'll need to use the [legacy Antlers parser](/antlers-legacy). For all other projects, keep reading. You're in the right place.
-  :::
 template: page
 ---
 ## Overview
 
-Antlers is one Statamic's foundational features. It consists of a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
+Antlers is one of Statamic's foundational features. It consists of a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
 
 Antlers templates are also called views. Any files in the `resources/views` directory with an `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
 
@@ -32,13 +29,22 @@ This is a very simple Antlers tag:
 
 ### Configuring
 
-You can configure advanced settings (or switch to the [legacy Antlers parser](/antlers-legacy) in `config/statamic/antlers.php`. The `runtime` version is the fresh new default parser as of Statamic 3.4, as documented on this very page.
+You can configure advanced settings, like guarded variables, tags & modifiers in `config/statamic/antlers.php`.
 
 ```php
 // config/statamic/antlers.php
 return [
-    'version' => 'runtime',
-    // ...
+    'guardedVariables' => [
+        'config.app.key',
+    ],
+
+    'guardedTags' => [
+        //
+    ],
+
+    'guardedModifiers' => [
+        //
+    ],
 ];
 ```
 
@@ -118,7 +124,7 @@ The `title` variable can be rendered like this:
 
 ### Valid Characters
 
-Variables must start with an alpha character or underscore, followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores, but must not end with an hyphen. Spaces or other special characters are not allowed. A valid variable name matches this regex `[_A-Za-z][-_0-9A-Za-z]*[_A-Za-z0-9]`.
+Variables must start with an alpha character or underscore, followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores, but must not end with a hyphen. Spaces or other special characters are not allowed. A valid variable name matches this regex `[_A-Za-z][-_0-9A-Za-z]*[_A-Za-z0-9]`.
 
 Don't be weird and mix-and-match them like a serial killer though:
 
@@ -316,7 +322,7 @@ You can combine literal and dynamic keys and get real fancy if you need to.
 
 ### Disambiguation {#disambiguating-variables}
 
-As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
+As your templates grow and increase in complexity, you _may_ find yourself unsure if you're working with a variable or a [Tag](#tags). You may optionally disambiguate your variables by prefixing them with a `$` dollar sign, just like PHP.
 
 ```
 {{ $content }}
@@ -374,10 +380,6 @@ It was lunch, is what it was.
 There are more than 150 built-in [modifiers](/reference/modifiers) that can do anything from array manipulations to automatically writing HTML for you. You can also [create your own modifiers](/extending/modifiers) to do unthinkable things we assumed nobody would ever need to do, until you arrived.
 
 You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusable one.
-
-#### Legacy Syntax
-
-The New Antlers Parser still supports what we're now calling the "[Legacy Syntax](/antlers-legacy#stringshorthand-style)" styles, and will continue to do so until Statamic 4.0.
 
 ### Creating Variables
 
@@ -472,7 +474,7 @@ Just remember: **never render user-submitted data without escaping it first!**
 
 ## Operators
 
-An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds numbers, as in `1 + 2`. Statamic supports many of the operators you may already know from PHP, and adds a few new ones to make your life as developer easier.
+An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds numbers, as in `1 + 2`. Statamic supports many of the operators you may already know from PHP, and adds a few new ones to make your life as a developer easier.
 
 ### Control Flow
 
@@ -543,14 +545,14 @@ Comparison operators, as their name implies, allow you to compare two values or 
 | Name | Example {.w-32} | Description |
 |------|----------------|-------------|
 | Equal | `$a == $b` | `true` if `$a` is equal to `$b` after type juggling. |
-| Identical | `$a === $b` | `true` if `$a` is equal to `$b`, and are of the same type |
+| Identical | `$a === $b` | `true` if `$a` is equal to `$b`, and are of the same type. |
 | Greater than | `$a > $b` | `true` if `$a` is greater than `$b`. |
 | Greater than or equal to | `$a >= $b` | `true` if `$a` is greater than or equal to `$b`. |
-| Less than | `$a < $b` | `true` `$a` is less than the `$b`. |
-| Less than or equal to | `$a <= $b` | `true` if `$a` is less than or equal `$b`. |
+| Less than | `$a < $b` | `true` if `$a` is less than `$b`. |
+| Less than or equal to | `$a <= $b` | `true` if `$a` is less than or equal to `$b`. |
 | Not equal | `$a != $b` |  `true` if `$a` is not equal to `$b` after type juggling. |
 | Not identical | `$a !== $b` | `true` if `$a` is not equal to `$b`, only if they are of the same type. |
-| Spaceship | `$a <=> $b` | Returns -1, 0 or 1 when `$a` is less than, equal to, or greater than `$b`, respectively. |
+| Spaceship | `$a <=> $b` | Returns -1, 0, or 1 when `$a` is less than, equal to, or greater than `$b`, respectively. |
 
 #### Examples
 
@@ -590,7 +592,7 @@ Logical operators join two or more expressions to create compound conditions.
 
 ### Ternary Statements {#ternary}
 
-Ternary statements let you write a simple condition and return one value if `true` and another if `false`, all one one expression.
+Ternary statements let you write a simple condition and return one value if `true` and another if `false`, all in one expression.
 
 ```
 This item is {{ is_sold ? "sold" : "for sale" }}.
@@ -678,7 +680,7 @@ Math is all the rage. Teenagers have been found in back rooms and back alleys do
 
 ### Assignment
 
-The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not receive $200. This means left operand gets set to the value of the expression on the right.
+The basic assignment operator is `=`. You might immediately think that means "equal to", but stop right there. Do not pass go and do not collect $200. This means left operand gets set to the value of the expression on the right.
 
 This is how you create variables as well as increment, decrement, or otherwise manipulate numerical variables.
 
@@ -705,7 +707,7 @@ The left assignment operator has a super power not shared by the others. If the 
 
 These operators are here for the edge cases, the wild ideas, and the unexpected client requests at midnight the night before a site launch. **These are the data wangjanglers.**
 
-Much of what they do is already handled by Modifiers or Tag Parameters (and you should use those if and whenever you can), but these operators become very useful as part of **assignment expressions** — when you've left the safety of a Tag or simplicity of a primitive variable in the dust behind you.
+Much of what they do is already handled by Modifiers or Tag Parameters (and you should use those if ever and whenever you can), but these operators become very useful as part of **assignment expressions** — when you've left the safety of a Tag or simplicity of a primitive variable in the dust behind you.
 
 ### Merge
 
@@ -767,7 +769,7 @@ The `groupby` operator can be applied to any array or tag output as part of an a
 
 Arguments are passed into a pair of parenthesis `()`. Each argument accepts the name of a field to group by and an optional alias, with additional arguments for additional fields separated by commas `,`.  If you don't set an alias, it will match the name of the field you pass in.
 
-Additionally you may set the name of the per-group `values` array with `as 'anything_you_want` at the end of the expression.
+Additionally you may set the name of the per-group `values` array with `as 'anything_you_want'` at the end of the expression.
 
 ```
 groupby (FIELD 'KEY1', FIELD2 'KEY2') as 'things'
@@ -949,7 +951,7 @@ Simply put, expressions show things and statements do things. Even more simply p
 Let's just go through the list of valid "in between braces stuff" so you can  accomplish your goals and hopefully win a trophy of some kind. 🏆
 
 ```
-{{ "This is a single expression that renders this very text. nothing more and nothing oesseiuhdieuhd " }}
+{{ "This is a single expression that renders this very text. Nothing more and nothing less." }}
 
 {{# This statement fetches Entries and begins iterating through them #}}
 {{ collection:blog limit="5" }}
@@ -1050,6 +1052,27 @@ You can "void" a parameter using the `void` keyword. A voided parameter will act
 
 {{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
 ```
+
+### Shorthand Parameter Syntax
+
+When passing variables into tags where the parameter and variable have the **same name**, the standard syntax:
+
+```
+{{ collection:blog :id="id" }}
+```
+
+Can be simplified to this:
+
+```
+{{ collection:blog :$id }}
+```
+
+The parser will internally expand this to the longer form and continue as normal. This syntax can be mixed with normal parameters:
+
+```
+{{ collection:blog limit="5" :$class offset="1" }}
+```
+
 
 ### Self-Closing Tags
 
@@ -1222,7 +1245,7 @@ The `{{ once }}` tag allows you to define a portion of the template that will on
 ```
 ### Section & Yield
 
-You may find that you wish you to define areas of a layout that may need to change depending on which template is being rendered.
+You may find that you wish to define areas of a layout that may need to change depending on which template is being rendered.
 
 Let's peek at this basic layout as an example:
 
@@ -1281,6 +1304,14 @@ The `@` can also be used to escape individual braces within tag parameters or st
 ```
 {{ "string @{foo@} bar" }}
 // "string {foo} bar"
+```
+
+### Tag parameters
+
+You may ignore the contents of tag parameters by prefixing the parameter with a backslash. This could be useful allow you to avoid having to escape each curly brace like the example above if you are providing some JS/JSON in a parameter:
+
+```
+{{ form:create \x-data="{ submittable: false }" }}
 ```
 
 ### The `noparse` Tag

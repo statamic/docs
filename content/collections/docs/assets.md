@@ -276,3 +276,46 @@ Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamicall
 ## Search Indexes
 
 You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
+
+## Allowed File Extensions
+
+For security reasons, Statamic restricts the file extensions that can be uploaded via the Control Panel and the Assets field on [Forms](/forms).
+
+Common extensions like `.jpg`, `.csv` and `.txt` are permitted by default. To upload additional file extensions, specify them in `config/statamic/assets.php`:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Additional Uploadable Extensions
+|--------------------------------------------------------------------------
+|
+| Statamic will only allow uploads of certain approved file extensions.
+| If you need to allow more file extensions, you may add them here.
+|
+*/
+
+'additional_uploadable_extensions' => [
+    'gpx', 'vcf', // ...
+],
+```
+
+## SVG Sanitization
+
+For security reasons, Statamic automatically sanitizes uploaded SVG files. 
+
+However, if you **trust your users** and need to upload SVG files without them being sanitization, you may disable it:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| SVG Sanitization
+|--------------------------------------------------------------------------
+|
+| Statamic will automatically sanitize SVG files when uploaded to avoid
+| potential security issues. However, if you have a valid reason for
+| disabling this, and you trust your users, you may do so here.
+|
+*/
+
+'svg_sanitization_on_upload' => false,
+```

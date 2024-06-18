@@ -10,10 +10,10 @@ parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 
 To install Statamic on an Ubuntu instance you will need the following:
 
-- An Ubuntu 20.04 or 18.04 VPS with root access enabled or a user with Sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
+- An Ubuntu 22.04 or 20.04 VPS with root access enabled or a user with Sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
 - A server with at least 1GB memory
 - A valid domain name pointed to your server and SSL certificate in place
-- PHP 7.4+
+- PHP 8.1+
 
 
 ## Update Packages
@@ -28,7 +28,7 @@ sudo apt-get upgrade
 ## Install PHP & Required Modules
 
 ``` shell
-sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer -y
+sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer php-curl -y
 ```
 
 ## Install Composer
@@ -117,8 +117,26 @@ server {
 
     charset utf-8;
 
+    set $try_location @static;
+
+    if ($request_method != GET) {
+        set $try_location @not_static;
+    }
+
+    if ($args ~* "live-preview=(.*)") {
+        set $try_location @not_static;
+    }
+
     location / {
-        try_files /static${uri}_${args}.html $uri $uri/ /index.php?$query_string;
+        try_files $uri $try_location;
+    }
+
+    location @static {
+        try_files /static${uri}_$args.html $uri $uri/ /index.php?$args;
+    }
+
+    location @not_static {
+        try_files $uri /index.php?$args;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
@@ -127,7 +145,7 @@ server {
     error_page 404 /index.php;
 
     location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
         include fastcgi_params;

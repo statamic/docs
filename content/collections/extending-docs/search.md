@@ -23,19 +23,20 @@ In the following examples, we'll assume you are wanting to store products as Elo
 
 ### Implement Searchable
 
-The object you want to make searchable should implement the `Statamic\Contracts\Search\Searchable` interface.
-
-There is a `Searchable` trait to make implementing it easier.
+The object you want to make searchable should implement both the `Statamic\Contracts\Data\Augmentable` and `Statamic\Contracts\Search\Searchable` interfaces. To make things easier, you can import the `HasAugmentedData` and `Searchable` traits which will handle most of the heavy lifting for you.
 
 ```php
+use Illuminate\Database\Eloquent\Model;
+use Statamic\Contracts\Data\Augmentable;
 use Statamic\Contracts\Search\Result as ResultContract;
 use Statamic\Contracts\Search\Searchable as SearchableContract;
-use Statamic\Search\Searchable;
+use Statamic\Data\HasAugmentedData;
 use Statamic\Search\Result;
+use Statamic\Search\Searchable;
 
-class Product extends Model implements SearchableContract
+class Product extends Model implements Augmentable, ContainsQueryableValues, SearchableContract
 {
-    use Searchable;
+    use HasAugmentedData, Searchable;
 
     /**
      * The identifier that will be used in search indexes.
@@ -61,6 +62,48 @@ class Product extends Model implements SearchableContract
     {
         return new Result($this, 'product');
     }
+
+/**
+     * Returns an array of the model's attributes to be used in augmentation.
+     */
+    public function augmentedArrayData()
+    {
+        return $this->attributesToArray();
+    }
+}
+```
+
+When you're making a searchable from an Eloquent model, you'll need to override some `offset`/`__call` methods to prevent conflicts between Eloquent and Statamic's implementations of those methods:
+
+```php
+/**
+ * These methods exist on both Eloquent's Model class and in Statamic's HasAugmentedInstance trait.
+ * To prevent conflicts, we need to override these methods and force them to call Eloquent's method.
+ */
+
+public function offsetGet($offset): mixed
+{
+    return parent::offsetGet($offset);
+}
+
+public function offsetSet($offset, $value): void
+{
+    parent::offsetSet($offset, $value);
+}
+
+public function offsetUnset($offset): void
+{
+    parent::offsetUnset($offset);
+}
+
+public function offsetExists($offset): bool
+{
+    return parent::offsetExists($offset);
+}
+
+public function __call($method, $parameters)
+{
+    return parent::__call($method, $parameters);
 }
 ```
 

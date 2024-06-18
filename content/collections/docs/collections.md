@@ -125,6 +125,16 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
+It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
+
+:::tip
+To use modifiers in title formats, make sure to use the `{{` Antlers syntax, like this:
+
+```antlers
+{{ headline | ucfirst }}
+```
+:::
+
 ## Slugs
 
 Slugs are what you would typically use in entry URLs. For an entry named `My Entry`, the slug might be `my-entry`.
@@ -227,7 +237,7 @@ For non-structured collections, you can choose which field and direction to sort
 
 ## Routing
 
-Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule.
+Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule. You can even use [computed values](/computed-values) or Antlers to do advanced things.
 
 ``` yaml
 route: /blog/{slug}
@@ -280,12 +290,32 @@ route: /{parent_uri}/{slug}.html
 ```
 
 #### Organizing sports brackets with structures
+Here's how we use the `depth` variable, along with the `team_name` field from the entry's blueprint.
+
 ``` yaml
-route: /tournament/round-{depth}/{team}
+route: /tournament/round-{depth}/{team_name}
 # example: /tournament/round-4/chicago-bulls
 ```
 
-#### Organizing gaming articles
+#### Using fields from related entries
+For example, if you have a `category` field in your Products collection and you'd like to your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
+
+``` php
+// app/Providers/AppServiceProvider.php
+
+use Statamic\Facades\Collection;
+
+Collection::computed('products', 'category_url', function ($entry, $value) {
+    return $entry->category?->url();
+});
+```
+
+``` yaml
+route: '{{ category_url }}/{{ slug }}'
+# example: /categories/wooden-toys/steam-locomotive
+```
+
+#### Using Antlers to organize gaming articles
 
 You can even use Antlers to get more complicated. Here we'll include the [mounted](#mounting) entry at the top level.
 
@@ -326,7 +356,15 @@ The following redirects are supported:
 - it's first child page (`@child`) - If there are no child pages you will get a 404
 - a `404` response
 
-Any other strings will be assumed to be a relative link. (eg. if the page URL is `/my/page` and you have `redirect: is/here`, you will be redirected to `/my/page/is/here`)
+Any other strings will be assumed to be a relative link. For example: if the page URL is `/my/page` and you have `redirect: is/here` in your entry, you will be redirected to `/my/page/is/here`.
+
+By default, Statamic will return a 302 status code when redirecting. To return a different status code, make the `redirect` an array with a `status` key:
+
+```yaml
+redirect:
+    url: http://booking.mysite.com
+    status: 301
+```
 
 :::tip
 Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
@@ -340,7 +378,7 @@ This will load a behind-the-scenes blueprint containing `title` and `redirect` f
 
 ## Taxonomies
 
-In Statamic 3, [taxonomies](/taxonomies) are defined on the _collection level_, not the blueprint-level. This enforces a tighter content-model, and reduces complexity when configuring blueprints.
+[Taxonomies](/taxonomies) are defined on the _collection level_, not the blueprint-level. This enforces a tighter content-model, and reduces complexity when configuring blueprints.
 
 Let's imagine you have a **product** collection. Each entry is a product, and each product _has one or more_ categories. Thus set, no matter what blueprints you configure, each will have a **categories** field in the sidebar. You'll be able to access any categories on your entries with a `{{ categories }}` variable loop.
 

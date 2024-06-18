@@ -39,7 +39,7 @@ tree:
         entry: 785ffa10-8b63-44b1-9da3-3837250cacbe
       -
         id: 0cdd7170-92ad-11ed-b05e-0800200c9a66
-        url: /preferences#adding-fields
+        url: '/preferences#adding-fields'
         title: Preferences
       -
         id: 9e649d17-d0b2-48a9-abf4-534c38c0c7ce
@@ -98,7 +98,7 @@ tree:
         entry: e2577828-504b-490b-a8b6-10991ae8a0b6
       -
         id: 37a82f80-92ad-11ed-b05e-0800200c9a66
-        url: /preferences#using-javascript
+        url: '/preferences#using-javascript'
         title: Preferences
   -
     id: a6b12519-6352-452b-9daf-b7dd76880fb2
@@ -123,6 +123,9 @@ tree:
         id: 48880724-6101-45a8-9286-5ee646645583
         entry: 6843f6e9-ac62-4128-8d50-887560f201ca
       -
+        id: 10747789-6efc-427b-bd68-fbf0d5b704db
+        entry: 900414a8-f73a-46f0-82bd-b607767f5d5d
+      -
         id: ae81c6b6-e582-44a4-a1e8-b85de3e06635
         entry: fd34ca35-57d1-4d28-97f9-ba6801656b39
       -
@@ -143,3 +146,6 @@ tree:
         id: a7f60530-f033-11ed-afc5-0800200c9a66
         entry: 5f26a634-19ae-4413-8b9e-1ed9c2c76bb0
         title: Vite
+      -
+        id: c08f0634-c324-4320-a698-e5098eaaf6a1
+        entry: 15db07e8-6e83-4b6e-89bb-d050b5d2c823

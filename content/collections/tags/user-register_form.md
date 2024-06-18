@@ -1,7 +1,6 @@
 ---
 title: User:Register_Form
 description: Creates user registration forms
-stage: 2
 parameters:
   -
     name: redirect
@@ -140,5 +139,5 @@ It’s best to remember that these are _starting_ roles for the user. You can la
 
 ## Honeypot
 
-If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key. 
+If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key.
 

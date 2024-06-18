@@ -45,7 +45,7 @@ You may find that your site is missing the ability to edit something you conside
 
 ### Every Statamic site needs a developer.
 
-Because of these three facts, it's important to note that every Statamic needs — at least at one point or another — a web developer. Someone who can write some code and get it up on a server.
+Because of these three facts, it's important to note that every Statamic site needs — at least at one point or another — a web developer. Someone who can write some code and get it up on a server.
 
 Statamic is pretty easy to learn for anyone who knows HTML and has run other PHP applications (like WordPress, for example) before. But if this isn't your skill set, it's okay. Just know that most people who build websites have the skills necessary to work on a Statamic site (assuming they're willing to read some of this documentation).
 

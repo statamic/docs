@@ -69,6 +69,8 @@ php please cache:clear
 npm ci && npm run production
 ```
 
+If you're planning on using the Git integration, you may want to prevent content changes from the Control Panel from triggering "full" deployments in Ploi. Learn more about this on the [Git Automation](/git-automation#customizing-commits) page.
+
 ## Statamic specific features
 
 Ploi let's you interact with your Statamic installation without you having to connect to your server via SSH. This includes clearing the (static) cache, warming the stache, generating meta data for assets etc.

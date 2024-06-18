@@ -8,6 +8,7 @@ related_entries:
   - acee879a-c832-449d-a714-c57ea5862717
   - 9c6a0b01-449e-49dd-8fa6-11b975d2726d
   - 7202c698-942a-4dc0-b006-b982784efb03
+  - 853b6690-c1fc-46bc-b865-e61a33d14563
 ---
 To work with the Entry Repository, use the following Facade:
 
@@ -22,6 +23,7 @@ use Statamic\Facades\Entry;
 | `all()` | Get all Entries |
 | `find($id)` | Get Entry by `id` |
 | `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
+| `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when the entry cannot be found. |
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
@@ -38,6 +40,12 @@ Entry::query()->where('id', 123)->first();
 
 // Or with the shorthand method
 Entry::find(123);
+```
+
+When an entry can't be found, the `Entry::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+Entry::findOrFail(123);
 ```
 
 #### Get an entry by its URI
@@ -117,7 +125,7 @@ Entry::query()
 $author = User::findByEmail('jack@statamic.com');
 
 Entry::query()
-    ->where('collection', $handle)
+    ->where('collection', 'news')
     ->where('author', $author->id())
     ->get();
 ```
@@ -140,6 +148,39 @@ Entry::query()
 
 :::tip
 **What is the difference between querying against `published` and `status`?** Read more on [date behavior and published status](/collections#date-behavior-and-published-status)!
+:::
+
+### Get all entries with taxonomy terms
+
+When you want to query all entries with a specific term, you should use the `whereTaxonomy` method:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereTaxonomy('categories::laravel')
+  ->get();
+```
+
+In the above example, `categories` is the taxonomy's handle and `laravel` is the term's slug.
+
+When you want to query all entries with **multiple** terms, you should instead use the `whereTaxonomyIn` method:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereTaxonomyIn(['categories::laravel', 'categories::statamic'])
+  ->get();
+```
+
+:::warning
+**This only works when the taxonomy [is linked in your collection's config](/collections#taxonomies).** If it's not linked in the collection config, you should use the `whereJsonContains` method instead:
+
+```php
+Entry::query()
+  ->where('collection', 'news')
+  ->whereJsonContains('categories_field', ['laravel', 'statamic'])
+  ->get();
+```
 :::
 
 ## Creating
@@ -167,4 +208,36 @@ Finally, save it. It'll return a boolean for whether it succeeded.
 
 ```php
 $entry->save(); // true or false
+```
+
+### Setting an entry's parent
+
+When you're creating entries in [structured collections](/collections#ordering), you may find yourself needing to programatically set an entry's parent.
+
+Parent & children pages are stored in structures, which live in "trees", rather than in the entry data. This means that in order to set an entry's parent, we will need to append it to the structure.
+
+```php
+// Create your entry as normal...
+$entry = Entry::make()
+    ->collection('pages')
+    ->slug('about')
+    ->data([
+        // ...
+    ]);
+
+
+// Before saving the entry, define an "afterSave" callback to append the
+// new entry to the tree, under the parent.
+$entry->afterSave(function ($entry) {
+    $parent = Entry::find('the_parent_entry');
+
+    $entry->collection()
+        ->structure()
+        ->in($entry->locale())
+        ->appendTo($parent->id(), $entry->id())
+        ->save();
+});
+
+// And finally, save the entry.
+$entry->save();
 ```

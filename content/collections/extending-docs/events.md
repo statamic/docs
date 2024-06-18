@@ -52,6 +52,18 @@ public function handle(AssetContainerBlueprintFound $event)
 }
 ```
 
+### AssetContainerCreating
+`Statamic\Events\AssetContainerCreating`
+
+Dispatched before an asset container is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(AssetContainerCreating $event)
+{
+    $event->container;
+}
+```
+
 ### AssetContainerDeleted
 `Statamic\Events\AssetContainerDeleted`
 
@@ -73,6 +85,42 @@ Dispatched after an asset container has been saved.
 public function handle(AssetContainerSaved $event)
 {
     $event->container;
+}
+```
+
+### `AssetCreated`
+`Statamic\Events\AssetCreated`
+
+Dispatched after an asset has been created or uploaded.
+
+``` php
+public function handle(AssetCreated $event)
+{
+    $event->asset;
+}
+```
+
+### `AssetCreating`
+`Statamic\Events\AssetCreating`
+
+Dispatched before an asset is created or uploaded. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(AssetCreating $event)
+{
+    $event->asset;
+}
+```
+
+### AssetDeleting
+`Statamic\Events\AssetDeleting`
+
+Dispatched before an asset is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(AssetDeleting $event)
+{
+    $event->asset;
 }
 ```
 
@@ -124,6 +172,18 @@ public function handle(AssetSaved $event)
 }
 ```
 
+### AssetSaving
+`Statamic\Events\AssetSaving`
+
+Dispatched before an asset is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(AssetSaving $event)
+{
+    $event->asset;
+}
+```
+
 ### AssetUploaded
 `Statamic\Events\AssetUploaded`
 
@@ -133,6 +193,30 @@ Dispatched after an asset has been uploaded.
 public function handle(AssetUploaded $event)
 {
     $event->asset;
+}
+```
+
+### BlueprintCreating
+`Statamic\Events\BlueprintCreating`
+
+Dispatched before a blueprint is created. You can return `false` to prevent it from being creating.
+
+``` php
+public function handle(BlueprintCreating $event)
+{
+    $event->blueprint;
+}
+```
+
+### BlueprintDeleting
+`Statamic\Events\BlueprintDeleting`
+
+Dispatched before a blueprint is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(BlueprintDeleting $event)
+{
+    $event->blueprint;
 }
 ```
 
@@ -160,6 +244,18 @@ public function handle(BlueprintSaved $event)
 }
 ```
 
+### CollectionDeleting
+`Statamic\Events\CollectionDeleting`
+
+Dispatched before a collection is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(CollectionDeleting $event)
+{
+    $event->collection;
+}
+```
+
 ### CollectionDeleted
 `Statamic\Events\CollectionDeleted`
 
@@ -184,6 +280,18 @@ public function handle(CollectionCreated $event)
 }
 ```
 
+### CollectionCreating
+`Statamic\Events\CollectionCreating`
+
+Dispatched before a collection is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(CollectionCreating $event)
+{
+    $event->collection;
+}
+```
+
 ### CollectionSaved
 `Statamic\Events\CollectionSaved`
 
@@ -191,6 +299,18 @@ Dispatched after a collection has been saved.
 
 ``` php
 public function handle(CollectionSaved $event)
+{
+    $event->collection;
+}
+```
+
+### CollectionSaving
+`Statamic\Events\CollectionSaving`
+
+Dispatched before a collection is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(CollectionSaving $event)
 {
     $event->collection;
 }
@@ -249,6 +369,30 @@ public function handle(EntryCreated $event)
 }
 ```
 
+### EntryCreating
+`Statamic\Events\EntryCreating`
+
+Dispatched before an entry is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(EntryCreating $event)
+{
+    $event->entry;
+}
+```
+
+### EntryDeleting
+`Statamic\Events\EntryDeleting`
+
+Dispatched before an entry is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(EntryDeleting $event)
+{
+    $event->entry;
+}
+```
+
 ### EntryDeleted
 `Statamic\Events\EntryDeleted`
 
@@ -273,6 +417,10 @@ public function handle(EntrySaved $event)
 }
 ```
 
+:::tip Note
+When an entry has multiple localizations, the `EntrySaved` event will be fired for each of those localizations. You may use the `$event->isInitial()` method to determine whether the localized entry from the event was the one originally being saved.
+:::
+
 ### EntrySaving
 `Statamic\Events\EntrySaving`
 
@@ -282,6 +430,30 @@ Dispatched before an entry is saved. You can return `false` to prevent it from b
 public function handle(EntrySaving $event)
 {
     $event->entry;
+}
+```
+
+### FieldsetCreating
+`Statamic\Events\FieldsetCreating`
+
+Dispatched before a fieldset is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(FieldsetCreating $event)
+{
+    $event->fieldset;
+}
+```
+
+### FieldsetDeleting
+`Statamic\Events\FieldsetDeleting`
+
+Dispatched before a fieldset is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(FieldsetDeleting $event)
+{
+    $event->fieldset;
 }
 ```
 
@@ -321,6 +493,30 @@ An example of when this would be useful is to add a section to a blueprint in th
 public function handle(FormBlueprintFound $event)
 {
     $event->blueprint;
+    $event->form;
+}
+```
+
+### FormCreating
+`Statamic\Events\FormCreating`
+
+Dispatched before a form is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(FormCreating $event)
+{
+    $event->form;
+}
+```
+
+### FormDeleting
+`Statamic\Events\FormDeleting`
+
+Dispatched before a form is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(FormDeleting $event)
+{
     $event->form;
 }
 ```
@@ -374,13 +570,37 @@ You may also just modify the submission object. You do not need to `return` anyt
 ### GlideImageGenerated
 `Statamic\Events\GlideImageGenerated`
 
-Dispatched after Glide generates an image. 
+Dispatched after Glide generates an image.
 
 ``` php
 public function handle(GlideImageGenerated $event)
 {
     $event->path;
     $event->params;
+}
+```
+
+### GlobalSetCreating
+`Statamic\Events\GlobalSetCreating`
+
+Dispatched before a global set is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(GlobalSetCreating $event)
+{
+    $event->globals;
+}
+```
+
+### GlobalSetDeleting
+`Statamic\Events\GlobalSetDeleting`
+
+Dispatched before a global set is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(GlobalSetDeleting $event)
+{
+    $event->globals;
 }
 ```
 
@@ -408,6 +628,30 @@ public function handle(GlobalSetSaved $event)
 }
 ```
 
+### GlobalVariablesDeleting
+`Statamic\Events\GlobalVariablesDeleting`
+
+Dispatched before Global Variables are deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(GlobalVariablesDeleting $event)
+{
+    $event->variables;
+}
+```
+
+### GlobalVariablesCreating
+`Statamic\Events\GlobalVariablesCreating`
+
+Dispatched before Global Variables are created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(GlobalVariablesCreating $event)
+{
+    $event->variables;
+}
+```
+
 ### GlobalVariablesBlueprintFound
 `Statamic\Events\GlobalVariablesBlueprintFound`
 
@@ -422,6 +666,18 @@ public function handle(GlobalVariablesBlueprintFound $event)
 {
     $event->blueprint;
     $event->globals;
+}
+```
+
+### NavDeleting
+`Statamic\Events\NavDeleting`
+
+Dispatched before a nav is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(NavDeleting $event)
+{
+    $event->nav;
 }
 ```
 
@@ -486,6 +742,18 @@ public function handle(RevisionDeleted $event)
 }
 ```
 
+### RevisionSaving
+`Statamic\Events\RevisionSaving`
+
+Dispatched before a revision of an entry is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(RevisionSaving $event)
+{
+    $event->revision;
+}
+```
+
 ### RevisionSaved
 `Statamic\Events\RevisionSaved`
 
@@ -537,6 +805,18 @@ public function handle(SubmissionCreated $event)
 
 If you're looking to prevent a form being submitted or trigger validation errors, check out the [FormSubmitted](#formsubmitted) event.
 
+### SubmissionCreating
+`Statamic\Events\SubmissionCreating`
+
+Dispatched before a submission is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(SubmissionCreating $event)
+{
+    $event->submission;
+}
+```
+
 ### SubmissionDeleted
 `Statamic\Events\SubmissionDeleted`
 
@@ -558,6 +838,30 @@ Dispatched after a form submission has been saved.
 public function handle(SubmissionSaved $event)
 {
     $event->submission;
+}
+```
+
+### TaxonomyCreating
+`Statamic\Events\TaxonomyCreating`
+
+Dispatched before a taxonomy is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(TaxonomyCreating $event)
+{
+    $event->taxonomy;
+}
+```
+
+### TaxonomyDeleting
+`Statamic\Events\TaxonomyDeleting`
+
+Dispatched before a taxonomy is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(TaxonomyDeleting $event)
+{
+    $event->taxonomy;
 }
 ```
 
@@ -601,6 +905,30 @@ public function handle(TermBlueprintFound $event)
 }
 ```
 
+### TermCreating
+`Statamic\Events\TermCreating`
+
+Dispatched before a taxonomy term is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(TermCreating $event)
+{
+    $event->term;
+}
+```
+
+### TermDeleting
+`Statamic\Events\TermDeleting`
+
+Dispatched before a taxonomy term is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(TermDeleting $event)
+{
+    $event->term;
+}
+```
+
 ### TermDeleted
 `Statamic\Events\TermDeleted`
 
@@ -637,6 +965,30 @@ An example of when this would be useful is to add a section to a blueprint in th
 public function handle(UserBlueprintFound $event)
 {
     $event->blueprint;
+}
+```
+
+### UserCreating
+`Statamic\Events\UserCreating`
+
+Dispatched before a user is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(UserCreating $event)
+{
+    $event->user;
+}
+```
+
+### UserDeleting
+`Statamic\Events\UserDeleting`
+
+Dispatched before a user is deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(UserDeleting $event)
+{
+    $event->user;
 }
 ```
 
@@ -711,5 +1063,17 @@ Dispatched after a user has been saved.
 public function handle(UserSaved $event)
 {
     $event->user;
+}
+```
+
+### UrlInvalidated
+`Statamic\Events\UrlInvalidated`
+
+Dispatched after a URL has been removed from the static cache.
+
+``` php
+public function handle(UrlInvalidated $event)
+{
+    $event->url;
 }
 ```

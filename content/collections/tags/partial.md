@@ -10,6 +10,16 @@ parameters:
     description: |
       You can pass the name of the partial with a parameter instead of tag argument. Example: `src="cards/author_bio"` or `:src="var_name"`.
   -
+    name: when
+    type: string
+    description: |
+      Render a partial only if a condition is met.
+  -
+    name: unless
+    type: string
+    description: |
+      The converse of `when`.
+  -
     name: "*"
     type: mixed
     description: |
@@ -116,6 +126,18 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
   <button @click="confirm" class="button">Do it</button>
 </div>
 ```
+
+## Conditional Rendering
+
+You can render a partial only if a condition is met.
+
+```antlers
+{{ partial:components/subtitle :when="subtitle" }}
+    {{ subtitle }}
+{{ /partial:components/subtitle }}
+```
+
+Also supports the converse using `:unless`.
 
 ## Related Reading
 

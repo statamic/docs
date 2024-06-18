@@ -24,6 +24,7 @@ use Statamic\Facades\User;
 | `find($id)` | Get User by `id` |
 | `findByEmail($email)` | Get User by `email` |
 | `findByOAuthID($provider, $id)` | Get User by an ID from an OAuth provider  |
+| `findOrFail($id)` | Get User by `id`. Throws a `UserNotFoundException` when the user cannot be found. |
 | `query()` | Query Builder |
 | `make()` | Makes a new `User` instance |
 
@@ -38,6 +39,12 @@ User::query()
 
 // Or with the shorthand method
 User::find('abc123');
+```
+
+When a user can't be found, the `User::find()` method will return `null`. If you'd prefer an exception be thrown, you may use the `findOrFail` method:
+
+```php
+User::findOrFail('abc123');
 ```
 
 #### Get a user by email
@@ -93,4 +100,24 @@ Finally, save it.
 
 ```php
 $user->save();
+```
+
+### Roles & Groups
+
+In the example above, it demonstrates passing roles & groups as arrays to the `->roles()` and `->groups()` methods.
+
+However, Statamic also provides a few convenience methods for assigning/removing/checking individual roles & groups:
+
+```php
+$user->roles(); // Returns a collection of the user's roles
+$user->roles(['role_1', 'role_2']); // Sets the user's roles (overrides any existing roles)
+$user->assignRole('role_1'); // Assigns a role to the user
+$user->removeRole('role_1'); // Removes a role from the user
+$user->hasRole('role_2'); // Checks if the user has the provided role.
+
+$user->groups(); // Returns a collection of the user's groups
+$user->groups(['group_1', 'group_2']); // Sets the user's groups (overrides any existing groups)
+$user->addToGroup('group_1'); // Adds the user to a group
+$user->removeFromGroup('group_1'); // Removes the user from a group
+$user->isInGroup('group_2'); // Checks if the user is part of a group
 ```
