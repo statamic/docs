@@ -413,12 +413,10 @@ You may add as many collections and taxonomies as you need.
 You may also choose to invalidate the entire static cache by specifying `all`.
 
 ``` php
-// config/statamic/static_caching.php
-
 return [
     'invalidation' => [
         'class' => null,
-        'rules' => 'all',
+        'rules' => 'all', // [tl! highlight]
     ],
 ];
 ```
@@ -428,17 +426,15 @@ return [
 You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
-// config/statamic/static_caching.php
-
 return [
     'invalidation' => [
-        'class' => App\StaticCaching\CustomInvalidator::class,  // [tl! add]
-        'rules' => [].
+        'class' => App\StaticCaching\CustomInvalidator::class,  // [tl! highlight]
+        'rules' => [],
     ],
 ];
 ```
 
-Note that the container binding for the default invalidator won't be used now, so you'll need to provide your own. Something like the following should be put in your AppServiceProvider boot method:
+It's worth noting that the container binding for the Default Invalidator won't be used now, so you'll need to bind it yourself in your `AppServiceProvider`:
 
 ```php
 use App\StaticCaching\CustomInvalidator;
@@ -462,9 +458,9 @@ In your class you can then define the logic that decides how URLs should get inv
 
 ```php
 // app/StaticCaching/CustomInvalidator.php
- 
+
 <?php
- 
+
 namespace App\StaticCaching;
 
 use Statamic\Entries\Entry;
@@ -474,29 +470,27 @@ class CustomInvalidator extends DefaultInvalidator
 {
     public function invalidate($item)
     {
-        // flushes everything by setting the invalidation rules to 'all'
+        // Flushes everything by setting the invalidation rules to `all`.
         if ($this->rules === 'all') {
             return $this->cacher->flush();
         }
 
         $urls = [];
 
-        // invalidates entries from the 'events' collection
-        if ($item instanceof Entry) {
-            if ($item->collectionHandle() === 'events') {
-                $urls[] = $item->uri();
-                // etc...
-            }
+        // Invalidates entries from the `events` collection.
+        if ($item instanceof Entry && $item->collectionHandle() === 'events') {
+            $urls[] = $item->uri();
         }
 
-        
-        if (empty($urls)) {
-            // fallback to the default logic
-            parent::invalidate($item);
-        } else {
-            // flushes only the URLs added from above
+        // Flush the URLs we've added to the $urls array.
+        if (count($urls) >= 1) {
             $this->cacher->invalidateUrls($urls);
+
+            return;
         }
+
+        // Otherwise, when the $urls array is empty, fallback to the default invalidation logic.
+        parent::invalidate($item);
     }
 }
 ```
