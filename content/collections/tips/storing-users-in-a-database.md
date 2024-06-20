@@ -23,11 +23,14 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
     ```php
     class User extends Authenticatable
     {
-         protected $casts = [ // [tl! focus]
-            'preferences' => 'json', // [tl! ++] [tl! focus]
-        ]; // [tl! focus]
+        protected function casts(): array // [tl! focus]
+        { // [tl! focus]
+            return [ // [tl! focus]
+                'preferences' => 'json', // [tl! ++] [tl! focus]
+            ]; // [tl! focus]
+        }; // [tl! focus]
 
-         // ...
+        // ...
     }
     ```
 1. If you plan to import existing file based users, you'll need to use UUIDs for the primary key. You can do this by adding a trait to your user model:
