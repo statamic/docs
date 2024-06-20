@@ -25,8 +25,6 @@ use Statamic\Facades\Entry;
 | `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
 | `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when the entry cannot be found. |
 | `query()` | Query Builder |
-| `whereCollection($handle)` | Get all Entries in a `Collection` |
-| `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
 | `make()` | Makes a new entry instance |
 
 ## Querying
