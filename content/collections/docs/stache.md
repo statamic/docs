@@ -20,20 +20,22 @@ id: 499d808b-18be-42e9-acd0-91bcdff73193
 Each page request from the frontend or Control Panel triggers a scan of the `last_modified` timestamps on all content and configuration files in your Statamic application. When Statamic sees a change, the Stache performs selective updates to any corresponding indexes.
 
 :::best-practice
-This is great for local development, but on a production environment **you should disable the file watcher.** If you're editing content through the control panel, or only ever pushing content through deployments, you are adding extra overhead to every request for no reason.
+This is great for local development, but on a production environment **you should make sure the watcher is disabled.** If you're editing content through the control panel, or only ever pushing content through deployments, you are adding extra overhead to every request for no reason.
 
-Disable this feature in your `.env` file or the `config/statamic/stache.php` config.
+By setting it to `auto`, it will be enabled when running on the `local` environment (`APP_ENV=local`) and disabled everywhere else. This is the default behavior for new sites.
 
 ``` env
-STATAMIC_STACHE_WATCHER=false
+STATAMIC_STACHE_WATCHER=auto
 ```
 
 ``` php
 return [
-   'watcher' => env('STATAMIC_STACHE_WATCHER', true), // [tl! highlight]
+   'watcher' => env('STATAMIC_STACHE_WATCHER', auto), // [tl! highlight]
    ...
 ];
 ```
+
+Of course, you may set it to `false` to explicitly disable it everywhere.
 :::
 
 ## Clearing the Stache {#clearing}
