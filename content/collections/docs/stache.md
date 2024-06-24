@@ -30,7 +30,7 @@ STATAMIC_STACHE_WATCHER=auto
 
 ``` php
 return [
-   'watcher' => env('STATAMIC_STACHE_WATCHER', auto), // [tl! highlight]
+   'watcher' => env('STATAMIC_STACHE_WATCHER', 'auto'), // [tl! highlight]
    ...
 ];
 ```
