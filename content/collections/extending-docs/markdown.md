@@ -80,10 +80,10 @@ class AppServiceProvider extends ServiceProvider
 ```
 
 :::tip
-You can find a long list of Markdown Extensions [on the CommonMark site](https://commonmark.thephpleague.com/2.0/extensions/overview/), or around on GitHub. We love this [Hint Extension](https://github.com/ueberdosis/commonmark-hint-extension) by Ueberdosis – you're seeing it in action, powering this "Hot Tip" box.
+You can find a long list of Markdown Extensions [on the CommonMark site](https://commonmark.thephpleague.com/2.4/extensions/overview/), or around on GitHub. We love this [Hint Extension](https://github.com/ueberdosis/commonmark-hint-extension) by Ueberdosis – you're seeing it in action, powering this "Hot Tip" box.
 :::
 
-Statamic 3.3+ uses CommonMark 2.0, while previous versions use CommonMark 1.6. Keep this in mind when reading docs and looking for extension packages.
+Statamic 5.0+ uses CommonMark 2.4, while previous versions used either CommonMark 2.2 or CommonMark 1.6. Keep this in mind when reading docs and looking for extension packages.
 
 ### Helper Methods
 
