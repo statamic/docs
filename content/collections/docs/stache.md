@@ -172,7 +172,7 @@ By default it's in the filesystem, but of course you can feel free to use Redis,
 CACHE_DRIVER=redis
 ```
 
-If you want to change which cache store is used by the Stache, you can change the `stache.cache_store` configuration key:
+If you want to change which cache store is used by the Stache, you can change the `statamic.stache.cache_store` configuration key:
 
 ```php
 // config/statamic/stache.php
