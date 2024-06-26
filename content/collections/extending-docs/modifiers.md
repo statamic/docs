@@ -100,10 +100,10 @@ class Repeat extends Modifier
         $repeat = 2;
 
         // Get the parameter, if there is one
-        if ($param = array_get($params, 0)) {
+        if ($param = Arr::get($params, 0)) {
             // Either get the variable from the context, or if it doesn't exist,
             // use the parameter itself - we'll assume its a number.
-            $repeat = array_get($context, $param, $param);
+            $repeat = Arr::get($context, $param, $param);
         }
 
         // Repeat!
