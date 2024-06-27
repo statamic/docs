@@ -302,10 +302,10 @@ You may provide local driver specific settings in a `settings` array.
 ```php
 'driver' => 'local',
 'searchables' => 'all',
-'settings' => [ // [tl! **:start]
-    'min_characters' => 3,
-    'use_stemming' => true,
-] // [tl! **:end]
+// [tl! **:start]
+'min_characters' => 3,
+'use_stemming' => true,
+// [tl! **:end]
 ```
 
 - `match_weights`: An array of weights for each field to use when calculating relevance scores. Defaults to:
