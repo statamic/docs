@@ -12,7 +12,7 @@ When you're writing partials, you might find yourself passing variables that wil
 ```antlers
 <input
     type="text"
-    {{ if name }}type="{{ name }}"{{ /if }}
+    {{ if name }}name="{{ name }}"{{ /if }}
     {{ if class }}class="{{ class }}"{{ /if }}
     {{ if mandatory }}required{{ /if }}
 />
