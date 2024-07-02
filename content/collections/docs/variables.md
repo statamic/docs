@@ -10,8 +10,7 @@ id: 662a5918-ac0f-42a1-bf40-5a7a320e87e1
 
 Where appropriate, Statamic will inject data automatically for you to use in your views.
 
-For example, when a view is loaded, you get automatic access to the variables applicable to it. You don't need to use a tag to "get" the data. If you're viewing an entry's URL, all of the [entry variables](#entry-variables) will just
-be there.
+For example, when a view is loaded, you get automatic access to the variables applicable to it. You don't need to use a tag to "get" the data. If you're viewing an entry's URL, all of the [entry variables](#entry-variables) will just be there.
 
 If you use a tag that does supply some data, it will typically make those variables available.
 
