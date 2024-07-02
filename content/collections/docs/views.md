@@ -56,7 +56,7 @@ Layouts usually contain `<head></head>` markup, global header, navigation, foote
 </html>
 ```
 
-An entry can control the layout its rendered with by setting the `layout` system variable.
+An entry can control the layout it's rendered with by setting the `layout` system variable.
 
 ``` yaml
 # Use /resources/views/rss.antlers.html
