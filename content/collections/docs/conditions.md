@@ -97,8 +97,6 @@ To pass multiple _values_ in a condition, separate them with `|` pipes.
 You can apply conditions to "sub fields", like date ranges:
 
 ```yaml
-
-```yaml
 event_date:
   start: 2023-12-01
   end: 2023-12-03
@@ -152,7 +150,7 @@ The following conditions apply to fields with data stored as strings.
 
 ### Query Modifiers {#taxonomy-query-modifiers}
 
-You may optionally control the behavior of the condition filter by passing the desired the modifier into the tag method call. If you don't set a modifier, it will use `any` by default.
+You may optionally control the behavior of the condition filter by passing the desired modifier into the tag method call. If you don't set a modifier, it will use `any` by default.
 
 #### Any (default) {#taxonomy-any}
 
@@ -184,7 +182,7 @@ Fetch all entries that contain _each_ of one or more taxonomy terms.
 
 | Argument | Description |
 | :--- | :--- |
-| `{handle}` | Handle of the Taxonomy you wish you query. |
+| `{handle}` | Handle of the Taxonomy you wish to query. |
 | `{modifier}` | Control the behavior of the condition filtering. Available options: `all`, `not`, and `any`. Default: `any`.  |
 | `{term}` | Term(s) to query. You may pass multiple terms by separating them with `\|` pipe delimiters. |
 
