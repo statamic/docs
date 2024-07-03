@@ -77,8 +77,8 @@ It also works down and for specific folders only as shown here:
 
 ```shell
 # SYNC DOWN: from remote to local one by one examples
-rsync -av '{{appname}}@deploy.{{region}}.frbit.com:~/content ./
-rsync -av '{{appname}}@deploy.{{region}}.frbit.com:~/users ./
+rsync -av {{appname}}@deploy.{{region}}.frbit.com:~/content ./
+rsync -av {{appname}}@deploy.{{region}}.frbit.com:~/users ./
 …
 ```
 
