@@ -111,7 +111,7 @@ For example, you may want to have a toggle field that controls whether an entry 
 ```php
 'searchables' => ['collection:blog'],
 'filter' => function ($item) {
-    return $item->status() === 'published' && $item->exclude_from_search;
+    return $item->status() === 'published' && ! $item->exclude_from_search;
 }
 ```
 
@@ -135,7 +135,7 @@ class BlogFilter
 {
     public function handle($item)
     {
-        return $item->status() === 'published' && $item->exclude_from_search;
+        return $item->status() === 'published' && ! $item->exclude_from_search;
     }
 }
 ```
