@@ -389,13 +389,7 @@ return [
                     ]
                 ]
             ],
-            'navigation' => [
-                'links' => [
-                    'urls' => [
-                        '/*'
-                    ]
-                ]
-            ]
+            'navigation' => 'all'
         ]
     ]
 ];
@@ -406,7 +400,7 @@ return [
 - “when an entry in the blog collection is saved, we should invalidate the /blog page, any pages beginning with /blog/category/, and the home page.”
 - “when a term in the tags taxonomy is saved, we should invalidate those same pages”
 - “when the settings global set is saved, we invalidate all urls”
-- “when the links navigation is saved, we invalidate all urls”
+- “when any of the navigations are saved, we invalidate all urls”
 
 You may add as many collections and taxonomies as you need.
 
