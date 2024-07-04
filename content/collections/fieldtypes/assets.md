@@ -40,7 +40,7 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. Make sure to specify the "handle" of the query scope, eg. `my_awesome_scope`.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
   -
     name: restrict
     type: bool
