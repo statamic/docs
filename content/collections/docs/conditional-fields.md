@@ -207,7 +207,7 @@ if:
 
 ## Field Context
 
-By default, conditions are performed against values in current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access root VueX store values by prepending your field with `root`:
+By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access root VueX store values by prepending your field with `root`:
 
 ```yaml
 if:
@@ -274,7 +274,7 @@ Statamic.$conditions.add('...', ({ root, store, storeName }) => {
 
 If you wish to conditionally apply validation to conditionally shown fields, we recommend using the `sometimes` [Laravel validation rule](https://laravel.com/docs/validation#validating-when-present).
 
-```
+```yaml
 -
   handle: online_event
   field:
