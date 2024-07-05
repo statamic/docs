@@ -99,7 +99,7 @@ preview_targets:
     url: /blog
 ```
 
-You may use entry's variables in the URL, just like defining a route.
+You may use the entry's variables in the URL, just like defining a route.
 
 If you don't define any targets, it will use the entry's URL.
 
