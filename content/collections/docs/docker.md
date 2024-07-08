@@ -23,45 +23,13 @@ If you don't already have Docker installed, head to [docker.com/get-started](htt
 
 ## Installing Laravel
 
-Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/9.x#your-first-laravel-project).
+Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/11.x#creating-a-laravel-project).
 
-On MacOS, run the following command, changing `example-app` to anything you want.
+Install Laravel Sail into your new Laravel app with no additional services, unless you want to get fancy and use MySQL with Statamic (yes, you can do that).
 
-```shell
-curl -s "https://laravel.build/example-app" | bash
-```
-
-## Statamic Docker-Composer File
-
-Unless you plan to get fancy and use MySQL with Statamic (yes, you can do that), replace the default `docker-compose.yml` file with this one to keep your overhead low.
-
-``` yaml
-# For more information: https://laravel.com/docs/sail
-version: '3'
-services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.2
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.2/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '${APP_PORT:-80}:80'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-networks:
-    sail:
-        driver: bridge
+``` shell
+composer require laravel/sail --dev
+php artisan sail:install --with=none
 ```
 
 ## Starting and Stopping Sail
