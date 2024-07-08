@@ -21,6 +21,11 @@ Each entry in a taxonomy is often called a **term**.
 Watch how to set up your first Taxonomy
 :::
 
+> [!CAUTION]
+> Avoid giving your taxonomy a name that is already used for a Statamic system [tag](tags).
+> Using an existing tag name will create complications when you come to reference your taxonomy and its terms in views.
+> For example, if you call your taxonomy 'Section', that will conflict with the system tag {{ section }} in your templates.
+
 ## Collections
 
 Each collection defines which taxonomies are part of its content model in their blueprint. Thus, taxonomies and their terms are connected to entries _through_ the collection in a strict relationship. Once you attach a taxonomy to a collection, the fields, variables, and routes are added automatically.
