@@ -55,7 +55,7 @@ parameters:
   -
     name: filter|query_scope
     type: string
-    description: 'Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters)'
+    description: "Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters) You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`."
     required: false
   -
     name: offset
@@ -230,6 +230,8 @@ Doing something custom or complicated? You can create [query scopes](/extending/
 ```
 {{ collection:blog query_scope="your_query_scope" }}
 ```
+
+You should reference the query scope by its handle, which is usually the name of the class in snake case. For example: `YourQueryScope` would be `your_query_scope`.
 
 ## Pagination
 
