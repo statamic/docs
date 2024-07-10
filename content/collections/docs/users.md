@@ -173,7 +173,7 @@ While users are stored in files by default — like everything else in Statamic 
 
 ## Avatars
 
-Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/asset) that falls back to the user's initials.
+Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/assets) that falls back to the user's initials.
 
 This avatar is used throughout the Control Panel to represent the user when the context is important. For example, on your user dropdown menu, as an entry's "Author", or while using [Real Time Collaboration](https://github.com/statamic/collaboration).
 
