@@ -2,16 +2,17 @@
 id: 6b691e04-8f28-4eb2-8288-b61433883fe4
 blueprint: page
 title: Users
-intro: 'Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel.'
+intro: "Users are the member accounts to your site or application. What a user can do with their account is up to you. They could have limited or full access to the Control Panel, a login-only area of the front-end, or even something more custom by tapping into Laravel."
 template: page
 pro: true
 related_entries:
-  - 878f0dd7-2d31-479c-b58d-bc60685fa7d2
-  - 748f88ce-85f6-491b-8e9c-fa2b1895be31
-  - 4c3f5caa-a861-4ffd-a856-1692cafeb870
-  - 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
-  - 55993382-c928-48d0-8559-c88b226d4657
+    - 878f0dd7-2d31-479c-b58d-bc60685fa7d2
+    - 748f88ce-85f6-491b-8e9c-fa2b1895be31
+    - 4c3f5caa-a861-4ffd-a856-1692cafeb870
+    - 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
+    - 55993382-c928-48d0-8559-c88b226d4657
 ---
+
 ## Overview
 
 The most common and obvious reason users exist are to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
@@ -30,7 +31,6 @@ Watch a new user being born. 🐣
 :::
 
 You can also [create users by hand](/tips/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
-
 
 ### New User Invitations
 
@@ -51,7 +51,6 @@ You're more than welcome — encouraged even — to customize what fields and in
 
 To customize these fields, edit the included `user` [blueprint](/blueprints) and configure it however you'd like.
 
-
 ## Permissions
 
 <div class="mb-8">
@@ -66,43 +65,43 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 
 ### Statamic's Native Permissions {#native-permissions}
 
-| Permission | Handle |
-|------------|--------|
-| Access the Control Panel | `access cp` |
-| Create, edit, and delete collections | `configure collections` |
-| Access site | `access {site} site` |
-| View entries | `view {collection} entries` |
-| ↳  Edit entries | `edit {collection} entries` |
-| &nbsp;&nbsp;↳  Create entries | `create {collection} entries` |
-| &nbsp;&nbsp;↳  Delete entries | `delete {collection} entries` |
-| &nbsp;&nbsp;↳  Publish entries | `publish {collection} entries` |
-| &nbsp;&nbsp;↳  Reorder entries | `reorder {collection} entries` |
-| &nbsp;&nbsp;↳  Edit other author's entries | `edit other authors {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries | `delete other authors {collection} entries` |
-| Create, edit, and delete navs | `configure navs` |
-| ↳  View nav | `view {nav} nav` |
-| &nbsp;&nbsp;↳  Edit nav | `edit {nav} nav` |
-| Edit global variables | `edit {global} globals` |
-| View asset container | `view {container} assets` |
-| ↳  Upload assets | `upload {container} assets` |
-| ↳  Edit assets | `edit {container} assets` |
-| &nbsp;&nbsp;↳  Move assets | `move {container} assets` |
-| &nbsp;&nbsp;↳  Rename assets | `rename {container} assets` |
-| &nbsp;&nbsp;↳  Delete assets | `delete {container} assets` |
-| View available updates | `view updates` |
-| &nbsp;&nbsp;↳  Perform updates | `perform updates` |
-| View users | `view users` |
-| ↳ Edit users | `edit users` |
-| &nbsp;&nbsp;↳ Create users | `create users` |
-| &nbsp;&nbsp;↳ Delete users | `delete users` |
-| &nbsp;&nbsp;↳ Change passwords | `change passwords` |
-| &nbsp;&nbsp;↳ Edit user groups | `edit user groups` |
-| &nbsp;&nbsp;↳ Edit roles | `edit roles` |
-| &nbsp;&nbsp;↳ Impersonate users | `impersonate users` |
-| Configure forms | `configure forms` |
-| View form submissions | `view {form} submissions` |
-| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
+| Permission                                               | Handle                                       |
+| -------------------------------------------------------- | -------------------------------------------- |
+| Access the Control Panel                                 | `access cp`                                  |
+| Create, edit, and delete collections                     | `configure collections`                      |
+| Access site                                              | `access {site} site`                         |
+| View entries                                             | `view {collection} entries`                  |
+| ↳ Edit entries                                           | `edit {collection} entries`                  |
+| &nbsp;&nbsp;↳ Create entries                             | `create {collection} entries`                |
+| &nbsp;&nbsp;↳ Delete entries                             | `delete {collection} entries`                |
+| &nbsp;&nbsp;↳ Publish entries                            | `publish {collection} entries`               |
+| &nbsp;&nbsp;↳ Reorder entries                            | `reorder {collection} entries`               |
+| &nbsp;&nbsp;↳ Edit other author's entries                | `edit other authors {collection} entries`    |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ Publish other author's entries | `publish other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ Delete other author's entries  | `delete other authors {collection} entries`  |
+| Create, edit, and delete navs                            | `configure navs`                             |
+| ↳ View nav                                               | `view {nav} nav`                             |
+| &nbsp;&nbsp;↳ Edit nav                                   | `edit {nav} nav`                             |
+| Edit global variables                                    | `edit {global} globals`                      |
+| View asset container                                     | `view {container} assets`                    |
+| ↳ Upload assets                                          | `upload {container} assets`                  |
+| ↳ Edit assets                                            | `edit {container} assets`                    |
+| &nbsp;&nbsp;↳ Move assets                                | `move {container} assets`                    |
+| &nbsp;&nbsp;↳ Rename assets                              | `rename {container} assets`                  |
+| &nbsp;&nbsp;↳ Delete assets                              | `delete {container} assets`                  |
+| View available updates                                   | `view updates`                               |
+| &nbsp;&nbsp;↳ Perform updates                            | `perform updates`                            |
+| View users                                               | `view users`                                 |
+| ↳ Edit users                                             | `edit users`                                 |
+| &nbsp;&nbsp;↳ Create users                               | `create users`                               |
+| &nbsp;&nbsp;↳ Delete users                               | `delete users`                               |
+| &nbsp;&nbsp;↳ Change passwords                           | `change passwords`                           |
+| &nbsp;&nbsp;↳ Edit user groups                           | `edit user groups`                           |
+| &nbsp;&nbsp;↳ Edit roles                                 | `edit roles`                                 |
+| &nbsp;&nbsp;↳ Impersonate users                          | `impersonate users`                          |
+| Configure forms                                          | `configure forms`                            |
+| View form submissions                                    | `view {form} submissions`                    |
+| &nbsp;&nbsp;↳ Delete form submissions                    | `delete {form} submissions`                  |
 
 ### Author Permissions
 
@@ -117,7 +116,6 @@ This feature only has any effect if your entry blueprint has an `author` field. 
 When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
 
 For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
-
 
 ### Super Users
 
@@ -166,14 +164,14 @@ Consult the [Laravel documentation](https://laravel.com/docs/8.x/validation#vali
 
 While users are stored in files by default — like everything else in Statamic — they can also be located in a database or really anywhere else. Here are links to articles for the different scenarios you may find yourself in.
 
-- [Storing Laravel Users in Files](/tips/storing-laravel-users-in-files)
-- [Storing Users in a Database](/tips/storing-users-in-a-database)
-- [Custom User Storage](/tips/storing-users-somewhere-custom)
-- [Using an Independent Auth Guard](/tips/using-an-independent-authentication-guard)
+-   [Storing Laravel Users in Files](/tips/storing-laravel-users-in-files)
+-   [Storing Users in a Database](/tips/storing-users-in-a-database)
+-   [Custom User Storage](/tips/storing-users-somewhere-custom)
+-   [Using an Independent Auth Guard](/tips/using-an-independent-authentication-guard)
 
 ## Avatars
 
-Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/asset) that falls back to the user's initials.
+Each user account has an avatar field named `avatar`. By default it's an [Assets Field](/fieldtypes/assets) that falls back to the user's initials.
 
 This avatar is used throughout the Control Panel to represent the user when the context is important. For example, on your user dropdown menu, as an entry's "Author", or while using [Real Time Collaboration](https://github.com/statamic/collaboration).
 
@@ -198,7 +196,6 @@ By default, users are ordered alphabetically by their email. However, if you wis
 Each user can have their own preferred language in the Control Panel. Head to your preferences area by clicking on the ⚙️ gear/cog icon in the global header and then go to **Preferences**.
 
 You can set the language for _everyone_ by going to **Default**, or you can set by Role or just the current user (yourself) with **Override For User**.
-
 
 <figure>
     <img src="/img/user-language-preference.png" alt="User Language Preferences">
