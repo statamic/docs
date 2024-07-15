@@ -11,16 +11,11 @@ intro: |
 
 Statamic will dispatch a number of events in various locations throughout the codebase.
 
-In a nutshell, you'd create an event listener or subscriber, connect them together in a service provider, then handle the event.
+To listen for events, simply create an event listener, type the event name, then handle the event.
 
 ``` php
-protected $listen = [
-    'SomeEvent' => [
-        'SomeListener',
-    ],
-];
-```
-``` php
+use Statamic\Events\SomeEvent;
+
 class SomeListener
 {
     public function handle(SomeEvent $event)
@@ -30,7 +25,17 @@ class SomeListener
 }
 ```
 
-Consult the [Laravel event documentation](https://laravel.com/docs/events) for a more in-depth explanation on events.
+For applications with a `app/Providers/EventServiceProvider.php` file, you should also register the event listener in the `$listen` array:
+
+``` php
+protected $listen = [
+    'SomeEvent' => [
+        'SomeListener',
+    ],
+];
+```
+
+For a more in-depth explanation on events, please consult the [Laravel documentation](https://laravel.com/docs/events).
 
 If you're creating an addon, you can quickly [register event listeners or subscribers](/extending/addons#events).
 
