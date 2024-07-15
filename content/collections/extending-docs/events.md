@@ -834,7 +834,7 @@ public function handle(RoleSaved $event)
 }
 ```
 
-## SearchIndexUpdated
+### SearchIndexUpdated
 `Statamic\Events\SearchIndexUpdated`
 
 Dispatched when a search index is updated, either via the `php please search:update` command or via the Search utility.
@@ -846,7 +846,7 @@ public function handle(SearchIndexUpdated $event)
 }
 ```
 
-## StacheCleared
+### StacheCleared
 `Statamic\Events\StacheCleared`
 
 Dispatched after the Stache cache has been cleared, either via the `php please stache:clear` command or via the Cache Manager utility.
@@ -858,7 +858,7 @@ public function handle(StacheCleared $event)
 }
 ```
 
-## StacheWarmed
+### StacheWarmed
 `Statamic\Events\StacheWarmed`
 
 Dispatched after the Stache cache has been warmed, either via the `php please stache:warm` command or via the Cache Manager utility.
@@ -870,7 +870,7 @@ public function handle(StacheWarmed $event)
 }
 ```
 
-## StaticCacheCleared
+### StaticCacheCleared
 `Statamic\Events\StaticCacheCleared`
 
 Dispatched after the Static Cache has been cleared, either via the `php please static:clear` command or via the Cache Manager utility.
