@@ -572,6 +572,18 @@ throw ValidationException::withMessages(['You did something wrong.']);
 
 You may also just modify the submission object. You do not need to `return` anything.
 
+### GlideCacheCleared
+`Statamic\Events\GlideCacheCleared`
+
+Dispatched after the Glide cache has been cleared, either via the `php please glide:clear` command or via the Cache Manager utility.
+
+``` php
+public function handle(GlideCacheCleared $event)
+{
+    //
+}
+```
+
 ### GlideImageGenerated
 `Statamic\Events\GlideImageGenerated`
 
@@ -671,6 +683,32 @@ public function handle(GlobalVariablesBlueprintFound $event)
 {
     $event->blueprint;
     $event->globals;
+}
+```
+
+### ImpersonationStarted
+`Statamic\Events\ImpersonationStarted`
+
+Dispatched whenever a user starts impersonating another user.
+
+``` php
+public function handle(ImpersonationStarted $event)
+{
+    $event->impersonator; // The other who started impersonating the other.
+    $event->impersonated; // The user being impersonated.
+}
+```
+
+### ImpersonationEnded
+`Statamic\Events\ImpersonationEnded`
+
+Dispatched whenever a user finishes impersonating another user.
+
+``` php
+public function handle(ImpersonationEnded $event)
+{
+    $event->impersonator; // The other who started impersonating the other.
+    $event->impersonated; // The user being impersonated.
 }
 ```
 
@@ -793,6 +831,54 @@ Dispatched after a role has been saved.
 public function handle(RoleSaved $event)
 {
     $event->role;
+}
+```
+
+## SearchIndexUpdated
+`Statamic\Events\SearchIndexUpdated`
+
+Dispatched when a search index is updated, either via the `php please search:update` command or via the Search utility.
+
+``` php
+public function handle(SearchIndexUpdated $event)
+{
+    $event->index;
+}
+```
+
+## StacheCleared
+`Statamic\Events\StacheCleared`
+
+Dispatched after the Stache cache has been cleared, either via the `php please stache:clear` command or via the Cache Manager utility.
+
+``` php
+public function handle(StacheCleared $event)
+{
+    //
+}
+```
+
+## StacheWarmed
+`Statamic\Events\StacheWarmed`
+
+Dispatched after the Stache cache has been warmed, either via the `php please stache:warm` command or via the Cache Manager utility.
+
+``` php
+public function handle(StacheWarmed $event)
+{
+    //
+}
+```
+
+## StaticCacheCleared
+`Statamic\Events\StaticCacheCleared`
+
+Dispatched after the Static Cache has been cleared, either via the `php please static:clear` command or via the Cache Manager utility.
+
+``` php
+public function handle(StaticCacheCleared $event)
+{
+    //
 }
 ```
 
@@ -1030,6 +1116,18 @@ Dispatched after a user group has been saved.
 public function handle(UserGroupSaved $event)
 {
     $event->group;
+}
+```
+
+### UserPasswordChanged
+`Statamic\Events\UserPasswordChanged`
+
+Dispatched when the password of another user has been changed in the Control Panel.
+
+``` php
+public function handle(UserPasswordChanged $event)
+{
+    $event->user;
 }
 ```
 
