@@ -712,6 +712,30 @@ public function handle(ImpersonationEnded $event)
 }
 ```
 
+### LicensesRefreshed
+`Statamic\Events\LicensesRefreshed`
+
+Dispatched when a user manually triggers a "Sync" of a site's licenses via the Licenses utility.
+
+``` php
+public function handle(LicensesRefreshed $event)
+{
+    //
+}
+```
+
+### LicenseSet
+`Statamic\Events\LicenseSet`
+
+Dispatched after a license key has been set via the `php please license:set` command.
+
+``` php
+public function handle(LicenseSet $event)
+{
+    //
+}
+```
+
 ### NavDeleting
 `Statamic\Events\NavDeleting`
 
