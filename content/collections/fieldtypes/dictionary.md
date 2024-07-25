@@ -19,12 +19,6 @@ options:
         type: countries
         region: Europe
       ```
-
-  -
-    name: clearable
-    type: boolean
-    description: |
-      Allow deselecting any chosen option and making null a possible value. Default: `false`.
   -
     name: placeholder
     type: string
@@ -36,15 +30,10 @@ options:
     description: |
       Set the default option key. Default: none.
   -
-    name: multiple
-    type: boolean
+    name: max_items
+    type: integer
     description: >
-      Allow multiple selections. Default: `false`.
-  -
-    name: searchable
-    type: boolean
-    description: >
-      Enable search with suggestions by typing in the select box. Default: `true`.
+      Cap the number of selections. Setting this to 1 will change the UI. Default: null (unlimited).
 id: 9b14b5b8-6a7a-4db2-8533-9c78faa0e054
 ---
 ## Overview
@@ -52,107 +41,15 @@ At a glance, the Dictionary fieldtype is similar to the [Select fieldtype](/fiel
 
 This can prove to be pretty powerful, since it means you can read options from YAML or JSON files, or even hit an external API. It also makes it easier to share common select options between projects.
 
-## Built-in dictionaries
-Statamic includes a few helpful dictionaries right out of the box:
-
-* Countries
-* Currencies
-* Timezones
-
-## Build your own dictionary
-It's really easy to build your own dictionary, it only takes a few minutes:
-
-1. Generate a dictionary class using `php please`:
-   ```sh
-    php please make:dictionary Provinces
-    ```
-    If you want to generate a dictionary for an addon, you should use the `--addon` parameter (`--addon=statamic/seo-pro`).
-
-2. In your `app/Dictionaries` directory (or `src/Dictionaries` in the case of an addon), you'll see a new `Provinces` dictionary has been generated:
-
-    ```php
-    class Provinces extends Dictionary
-
-        /**
-         * Returns a key/value array of options.
-         *
-         * @param string|null $search
-         * @return array
-         */
-        public function options(?string $search = null): array
-        {
-            return $this->getItems()
-                ->when($search ?? false, function ($collection) use ($search) {
-                    return $collection->filter(fn ($item) => str_contains($item['name'], $search));
-                })
-               ->mapWithKeys(fn ($item) => [$item['slug'] => $item['name']])
-                ->all();
-        }
-
-       /**
-         * Returns a single option.
-         *
-         * @param string $key
-         * @return string|array
-         */
-        public function get(string $key): string|array
-        {
-            return $this->getItems()->firstWhere('slug', $key);
-        }
-
-        private function getItems(): Collection
-        {
-            return collect([
-                ['name' => 'January', 'slug' => 'january'],
-                ['name' => 'February', 'slug' => 'february'],
-                ['name' => 'March', 'slug' => 'march'],
-                // ...
-            ]);
-        }
-    }
-    ```
-
-    * The `options` method should return a key/value array of all options.
-      * The `$search` variable will be provided if the user is searching options. Feel free to search the options in whatever way works for you.
-    * The `get` method should return a single option.
-      * This will be made available when the dictionary field's options are augmented. You're free to return whatever you need here.
-     * Optionally, you can also configure "config fields" for the dictionary which will be available in the dictionary's context:
-
-    ```php
-        protected function fieldItems()
-        {
-            return [
-                'region' => [
-                    'display' => __('Region'),
-                    'instructions' => __('statamic::messages.dictionaries_countries_region_instructions'),
-                    'type' => 'select',
-                    'options' => $this->getCountries()->unique('region')->pluck('region', 'region')->filter()->all(),
-                ],
-            ];
-        }
-
-        public function get(string $key): string|array
-        {
-            $region = $this->context['region'];
-
-            // ...
-        }
-    ```
-
 ## Data Storage
 Dictionary fields will store the "key" of the chosen option or options.
 
-For example, if a dictionary is returning these options:
+For example, a dictionary might have items such as:
 
 ```php
-public function options(?string $search = null): array
-{
-    return [
-        'jan' => 'January',
-        'feb' => 'February',
-        'mar' => 'March',
-    ];
-}
+'jan' => 'January',
+'feb' => 'February',
+'mar' => 'March',
 ```
 
 Your saved data will be:
@@ -162,7 +59,7 @@ select: jan
 ```
 
 ## Templating
-Dictionary fields will return the "option data" returned by the dictionary's `get` method. The shape of this data differs between dictionaries, but often it'll be an array of data. You can use the [`{{ dump }}` tag](/tags/dump) to determine which variables a dictionary provides.
+Dictionary fields will return the "option data" returned by the dictionary's `get` method. The shape of this data differs between dictionaries and is outlined below.
 
 For example, using the built-in Countries dictionary, your template might look like this:
 
@@ -192,3 +89,125 @@ past_vacations:
     <li>🇬🇧 United Kingdom</li>
 </ul>
 ```
+
+## Available Dictionaries
+Statamic includes a few dictionaries straight out of the box.
+
+### File
+This allows you point to a `json` or `yaml` file located in your `resources/dictionaries` directory to populate the options.
+
+Each option array should have `label` and `value` keys at the minimum. Any additional keys will be available when templating.
+
+You may redefine which keys are used for the labels and values by providing them to your fieldtype config. In the following example, `name` is the label and `id` is the value. 
+
+```json
+[
+    {"name": "Apple", "id": "apple", "emoji": "🍎"},
+    {"name": "Banana", "id": "banana", "emoji": "🍌"},
+    {"name": "Cherry", "id": "cherry", "emoji": "🍒"},
+    ...
+]
+```
+
+```yaml
+-
+  handle: fruit
+  field:
+    type: dictionary
+    dictionary:
+      type: file
+      filename: fruit.json
+      label: name  # optional, defaults to "label"
+      value: id    # optional, defaults to "value"
+```
+
+You may provide enhanced labels using basic Antlers syntax. For example, to include the emoji before the fruit name, you can do this:
+
+```yaml
+label: '{{ emoji }} {{ name }}'
+```
+
+### Countries
+This provides a list of countries with their ISO codes, region, subregion, and flag emoji.
+```yaml
+-
+  handle: countries
+  field:
+    type: dictionary
+    dictionary:
+      type: countries
+      region: 'oceania' # Optionally filter the countries by a region.
+                        # Supported options are: africa, americas, asia, europe, oceania, polar
+```
+```yaml
+countries:
+  - USA
+  - AUS
+```
+```
+{{ countries }}
+  {{ emoji }} {{ name }}, {{ iso2 }}, {{ iso3 }}, {{ region }}, {{ subregion }}
+{{ /countries }}
+```
+```
+🇺🇸 United States, US, USA, Americas, Northern America
+🇦🇺 Australia, AU, AUS, Oceania, Australia and New Zealand
+```
+
+### Timezones
+This provides a list of timezones and their UTC offsets.
+
+```yaml
+-
+  handle: timezones
+  field:
+    type: dictionary
+    dictionary:
+      type: timezones
+```
+```yaml
+timezones:
+  - America/New_York
+  - Australia/Sydney
+```
+```
+{{ timezones }}
+  {{ name }} {{ offset }}
+{{ /timezones }}
+```
+```
+America/New_York -04:00
+Australia/Sydney +10:00
+```
+
+### Currencies
+This provides a list of currencies, with their codes, symbols, and decimals.
+
+```yaml
+-
+  handle: currencies
+  field:
+    type: dictionary
+    dictionary:
+      type: currencies
+```
+```yaml
+currencies:
+  - USD
+  - HUF 
+```
+```
+{{ currencies }}
+  {{ name }}, {{ code }}, {{ symbol }}, {{ decimals }}
+{{ /currencies }}
+```
+```
+US Dollar, USD, $, 2
+Hungarian Forint, HUF, Ft, 0
+```
+
+## Custom Dictionaries
+
+In many cases, using the native [File](#file) dictionary can be all you need for something custom. However, it's possible to create an entirely custom dictionary that could read from files, APIs, or whatever you can think of.
+
+[Find out how to create a custom dictionary](/extending/dictionaries)
