@@ -52,10 +52,22 @@ Now you can check to make sure Composer is installed and configured correctly by
 composer
 ```
 
+## Install Statamic CLI
+
+Next up, let's install the Statamic CLI. To do this, run the following command in your terminal:
+
+``` shell
+composer global require statamic/cli
+```
+
+Upon installation, you can now use the `statamic new` command to spin up fresh Statamic sites with a CLI setup wizard 🧙‍♂️ to guide you through a variety of settings and options.
+
+Our CLI is essentially a super fancy wrapper around the `composer create-project` command. You can choose to not install it, but only at your own annoyance.
+
 
 ## Create a new Statamic Application
 
-Now we'll create a new Statamic application using the `composer create-project` command.
+Now we'll create a new Statamic application using the `statamic new` command.
 
 First, navigate to the `/var/www` directory:
 
@@ -66,11 +78,15 @@ cd /var/www
 Next, run the following install command:
 
 ``` shell
-composer create-project --prefer-dist statamic/statamic example.com
+statamic new example.com
 ```
 
 :::tip
-Alternatively, you could git clone an **existing project** instead of installing a new empty site.
+If you run into a TTY error like `TTY mode requires /dev/tty to be read/writable`, you can simulate TTY by calling `script` and using the `--no-interaction` flag.
+
+```
+script -q -c "statamic new --no-interaction example.com"
+```
 :::
 
 ## Set Permissions
@@ -189,3 +205,7 @@ Now visit your IP Address or `https://example.com` (but like the actual domain) 
 That's pretty much it. Time for you to take it from here.
 
 If this is your production server, you'll probably want to add cache expiry headers and so on, but those rules and what you cache to the browser are all up to you.
+
+There are many other variables at play when building your own server. It's unrealistic to think we've covered them all here, or that this article won't get out of date at times as things change.
+
+If you run into issues not covered here, you may want to read through [this discussion](https://github.com/statamic/cms/discussions/10487) where several folks work through many edge cases happening all at once.

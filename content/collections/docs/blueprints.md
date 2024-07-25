@@ -79,7 +79,7 @@ It’s possible to have fields be displayed only under certain conditions. For e
     <figcaption>The conditional field rule builder</figcaption>
 </figure>
 
-To learn what's possible and how implement the various rules, head over to the article on [conditional fields](/conditional-fields).
+To learn what's possible and how to implement the various rules, head over to the article on [conditional fields](/conditional-fields).
 
 ## YAML Structure
 
