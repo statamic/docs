@@ -94,7 +94,7 @@ past_vacations:
 Statamic includes a few dictionaries straight out of the box.
 
 ### File
-This allows you point to a `json` or `yaml` file located in your `resources/dictionaries` directory to populate the options.
+This allows you point to a file located in your `resources/dictionaries` directory to populate the options. The file can be `json`, `yaml`, or `csv`.
 
 Each option array should have `label` and `value` keys at the minimum. Any additional keys will be available when templating.
 

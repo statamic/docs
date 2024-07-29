@@ -14,7 +14,7 @@ With a `BasicDictionary`, you only really need to define the items. The options,
 If you need more control, you can either override methods, or extend the base `Dictionary` class and do it yourself.
 
 :::tip
-You might not even need a custom dictionary. The native [File dictionary](/fieldtypes/dictionary#file) allows you simply provide a JSON or YAML file to use a source of options.
+You might not even need a custom dictionary. The native [File dictionary](/fieldtypes/dictionary#file) allows you simply provide a JSON, YAML, or CSV file to use a source of options.
 :::
 
 
