@@ -200,3 +200,54 @@ protected function getGqlFields(): array
     ];
 }
 ```
+
+## Full Example
+
+Here is an example dictionary class that will use the [MusicBrainz](https://musicbrainz.org/) API to create a dictionary of musicians/artists.
+
+```php
+<?php
+
+namespace App\Dictionaries;
+
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Statamic\Dictionaries\Dictionary;
+use Statamic\Dictionaries\Item;
+
+class Artists extends Dictionary
+{
+    public function options(?string $search = null): array
+    {
+        if (! $search) {
+            return [];
+        }
+
+        $response = Http::get('https://musicbrainz.org/ws/2/artist/?fmt=json&query=artist:'.urlencode($search))->json();
+
+        return collect($response['artists'])->mapWithKeys(function ($artist) {
+            $label = $artist['name'];
+
+            if ($disambiguation = $artist['disambiguation'] ?? null) {
+                $label .= ' ('.$disambiguation.')';
+            }
+
+            return [$artist['id'] => $label];
+        })->all();
+    }
+
+    public function get(string $key): ?Item
+    {
+        return Cache::rememberForever('artist-'.$key, function () use ($key) {
+            $response = Http::get('https://musicbrainz.org/ws/2/artist/'.$key.'?fmt=json')->json();
+
+            return new Item($key, $response['name'], [
+                'name' => $response['name'],
+                'disambiguation' => $response['disambiguation'] ?? null,
+                'type' => $response['type'],
+                'country' => $response['country'],
+            ]);
+        });
+    }
+}
+```
