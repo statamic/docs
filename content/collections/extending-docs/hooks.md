@@ -75,6 +75,21 @@ The payload will either be an `EntryCollection` or a `Paginator`, depending on w
 Triggered when a new augmented instance is made.
 The payload will be the object being augmented (eg. `Entry` / `Term`).
 
+### Entry Index Query: `query`
+Triggered before the index query for the Entries listing table is executed.
+The payload will be an object with `query` and `collection` properties.
+
+```php
+use Statamic\Hooks\CP\EntriesIndexQuery;
+
+EntriesIndexQuery::hook('query', function ($payload, $next) {
+    $payload->query; // a QueryBuilder instance
+    $payload->collection; // a Collection instance
+
+    return $next($payload);
+});
+```
+
 ### Bard: `augment`
 Triggered while the Bard fieldtype is being augmented.
 The payload will be an array of the Bard's content.
