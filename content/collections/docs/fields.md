@@ -17,10 +17,11 @@ related_entries:
 
 All fields share the following settings regardless of type:
 
-- **Display** – The field's label shown throughout the control panel
+- **Display** – The field's label shown throughout the Control Panel
 - **Handle** – The field's variable name used in templates
 - **Instructions** – Help text shown to your authors
-- **Listable** – Whether to show the field as a column in the control panel's entry list
+- **Listable** – Whether to show the field as a column in the Control Panel's listing table
+- **Sortable** – Whether the field should be sortable in the Control Panel's listing table
 - **Visibility** – Allows you to control [field visibility](#field-visibility) on publish forms
 - **Always Save** – Allows you to override [field data flow](#field-data-flow) on save
 - **Localizable** – Whether the field can be translated in [other sites](#localization)
@@ -133,7 +134,7 @@ To define the French translations, you can create a `lang/fr.json`:
 }
 ```
 
-Alternatively, you can use translation keys. The keys can be whatever you want. The first part denotes the filename, and everything else is the array key. If you do this, you'll need to provide the Default/English strings too. 
+Alternatively, you can use translation keys. The keys can be whatever you want. The first part denotes the filename, and everything else is the array key. If you do this, you'll need to provide the Default/English strings too.
 
 ```yaml
 fields:
