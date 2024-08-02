@@ -6,7 +6,7 @@ modifier_types:
   - array
   - utility
 ---
-Retrieves just the keys from the given array.
+Retrieves just the values from the given array.
 
 ```yaml
 the_team:
