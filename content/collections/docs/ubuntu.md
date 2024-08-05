@@ -173,6 +173,10 @@ server {
 }
 ```
 
+:::tip
+Ensure that your php location matches the version of php-fpm that is installed e.g. the example config specifies `fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;`, but if you update all packages, you may end up with a later version.
+:::
+
 You can confirm that the configuration doesn’t contain any syntax errors with the following command:
 
 ``` shell
