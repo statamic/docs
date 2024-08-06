@@ -5,7 +5,6 @@ modifier_types:
   - conditions
   - array
 title: 'Where In'
-duplicated_from: c36a6f62-aaf4-478b-a469-29cdb1eab8dc
 ---
 Filter an array (such as a Replicator field's data) to items where a `key` matches specific `values`.
 
