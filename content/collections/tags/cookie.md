@@ -81,6 +81,31 @@ You can remove cookies by passing the names of the variables into the `keys` par
 
 ## Accessing Cookies in JavaScript
 
-By default, in Laravel, cookies are encrypted so you will not be able to access the values of any data you set outside of PHP.
+By default, in Laravel, cookies are encrypted so you will not be able to access the values of any data you set outside of PHP. To exclude specific cookies from encryption follow the steps below:
+
+### Laravel 10
 
 To prevent encryption you need to add an exception to the `$except` array in your `app/Http/Middleware/EncryptCookies.php` file.
+
+```php
+/**
+ * The names of the cookies that should not be encrypted.
+ *
+ * @var array
+ */
+protected $except = [
+    'cookie_name',
+];
+```
+
+### Laravel 11
+
+To prevent encryption you need to use the `encryptCookies` method in your application's `bootstrap/app.php` file:
+
+```php
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->encryptCookies(except: [
+        'cookie_name',
+    ]);
+})
+```
