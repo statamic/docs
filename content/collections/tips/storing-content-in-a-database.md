@@ -44,3 +44,4 @@ If you change your mind about moving content to the database, you can always mov
 - Navs: `php please eloquent:export-navs`
 - Revisions: `php please eloquent:export-revisions`
 - Taxonomies: `php please eloquent:export-taxonomies`
+- Sites: `php please eloquent:export-sites`
