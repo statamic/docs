@@ -9,6 +9,7 @@ id: 5900c99f-89b9-4ee3-834c-cb1b070146e4
 For widgets, start with `php please make:widget examplewidgetname`.
 
 This will automagically set up the widget and create a base template file at `resources/views/widgets/examplewidgetname.blade.php`.
+It will also create a class 'Examplewidgetname'.  Please note:  only the FIRST letter of the class name can be capitalized, otherwise, statamic will NOT find your Widget and will throw an error.
 
 ## Configuring
 
@@ -24,3 +25,4 @@ Widgets can be added to the dashboard by modifying the `widgets` array in the `c
   ], // [tl! focus:end]
 ],
 ```
+
