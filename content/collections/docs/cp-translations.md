@@ -31,6 +31,7 @@ preferences:
 | Language | Code |
 |----------|------|
 | Arabic | `ar` |
+| Azerbaijani | `az` |
 | Czech | `cs` |
 | Danish | `da` |
 | German | `de` or `de_CH` |
