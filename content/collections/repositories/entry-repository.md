@@ -242,6 +242,38 @@ $entry->afterSave(function ($entry) {
 $entry->save();
 ```
 
+### Validate entry data
+
+A Collectiion Blueprint can be used to validate the data before you use it to create an entry. This relies on the same field validation rules you already have in the Blueprint.
+
+```php
+use Statamic\Facades\Blueprint;
+use Statamic\Facades\Entry;
+
+$data = [
+  'title' => 'Statamic is awesome',
+  'slug' => 'statamic-is-awesome',
+  'foo' => 'bar',
+];
+
+
+$validData = Blueprint::setDirectory('resources/blueprints/collections/article')
+      ->find('article')
+      ->fields()
+      ->addValues($data)
+      ->validator()->validate();
+
+
+$entry = Entry::make()
+  ->collection('article')
+  ->slug(data_get($validData, 'slug'))
+  ->published()
+  ->data($validData);
+
+
+$entry->save();
+```
+
 ### Localization
 
 #### Localizing an entry
