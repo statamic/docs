@@ -100,7 +100,7 @@ If you want to delete an origin, you need to make a decision on how to handle an
 ![](/img/tips/delete-localization-modal.png)
 
 :::note
-When the user doesn't have access to the other sites an entry is localized in, the only option will be to detach the localizations.
+When a user doesn't have access to the sites an entry is localized into, deleting it will detach the localizations.
 :::
 
 ### Option 1: Delete
