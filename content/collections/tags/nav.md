@@ -145,6 +145,10 @@ You can also specify the navigation using the `handle` parameter:
 {{ nav handle="links" }} ... {{ /nav }}
 ```
 
+:::tip
+The `{{ nav }}` tag will only output entries for [**Orderable** collections](collections#ordering). If you need navigation for a non-ordered collection, you may wish to use the [`collection`](/tags/collection) tag instead.
+:::
+
 ## Basic Example
 
 A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
