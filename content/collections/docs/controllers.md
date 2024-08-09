@@ -74,21 +74,22 @@ public function index()
 Now, `myview` will be injected into `mylayout`'s `template_content` variable.
 Anything provided to `with` (eg. `title`) will be available in both views.
 
-To make an entry's content directly available to your view, use the `cascadeContent` method:
+If you want to make an entry's content available in your view, you can use the `cascadeContent` method:
 
 ``` php
+// app/Http/Controllers/MySpecialController.php
+
 public function index()
 {
-    $myEntry = Entry::whereCollection('my_collection')
-                        ->where('slug', $slug)
-                        ->where('published', true)
-                        ->first();
+    $entry = Entry::whereCollection('pages')
+        ->where('slug', 'special-page')
+        ->where('published', true)
+        ->first();
 
     return (new \Statamic\View\View)
         ->template('myview')
-        ->layout('mylayout')
-        ->with(['title' => 'Example Title']);
-        ->cascadeContent($myEntry);
+        ->layout('mylayout');
+        ->cascadeContent($entry);
 }
 ```
 
