@@ -132,6 +132,11 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 - ✅ Looping through terms in a taxonomy tag pair, using the collection parameter.
 - ❌ Looping through terms in a taxonomy tag pair, without specifying a collection.
 
+:::tip
+The tags based on your taxonomy names, eg {{ tags }}, can be disambiguated from other Statamic tags by prefixing with $. 
+For example, if you have a taxonomy called 'Section', its tag would clash with Statamic's own {{ section }} tag. So you can reference it with {{ $section }}.
+:::
+
 ### Listings and Indexes
 
 When on a [taxonomy route](#routing), you can list the terms by using a `terms` tag pair. For example:
