@@ -144,8 +144,9 @@ You can also specify the navigation using the `handle` parameter:
 ```
 {{ nav handle="links" }} ... {{ /nav }}
 ```
+
 :::tip
-The `nav` tag only shows entries for [**orderable** collections](collections#ordering). If you need navigation for a non-ordered collection you may want to substitute a [/tags/collection](collection tag) for this.
+The `{{ nav }}` tag will only output entries for [**Orderable** collections](collections#ordering). If you need navigation for a non-ordered collection, you may wish to use the [`collection`](/tags/collection) tag instead.
 :::
 
 ## Basic Example
