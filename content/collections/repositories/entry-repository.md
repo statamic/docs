@@ -150,7 +150,7 @@ Entry::query()
 **What is the difference between querying against `published` and `status`?** Read more on [date behavior and published status](/collections#date-behavior-and-published-status)!
 :::
 
-### Get all entries with taxonomy terms
+#### Get all entries with taxonomy terms
 
 When you want to query all entries with a specific term, you should use the `whereTaxonomy` method:
 
