@@ -328,6 +328,8 @@ As your templates grow and increase in complexity, you _may_ find yourself unsur
 {{ $content }}
 ```
 
+This includes variables that Statamic creates for you, such as the objects of your collections or taxonomies. For example, a taxonomy called 'Section' could be disambiguated from Statamic's own Section tag by referencing it as ```{{ $section }}```.
+
 ### Modifiers
 
 Modifiers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
