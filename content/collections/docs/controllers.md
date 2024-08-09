@@ -74,6 +74,25 @@ public function index()
 Now, `myview` will be injected into `mylayout`'s `template_content` variable.
 Anything provided to `with` (eg. `title`) will be available in both views.
 
+If you want to make an entry's content available in your view, you can use the `cascadeContent` method:
+
+``` php
+// app/Http/Controllers/MySpecialController.php
+
+public function index()
+{
+    $entry = Entry::whereCollection('pages')
+        ->where('slug', 'special-page')
+        ->where('published', true)
+        ->first();
+
+    return (new \Statamic\View\View)
+        ->template('myview')
+        ->layout('mylayout');
+        ->cascadeContent($entry);
+}
+```
+
 ## Related Reading
 
 - [Laravel Controllers][laravel-controllers]
