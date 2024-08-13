@@ -209,6 +209,25 @@ modules:
     prompt: false
 ```
 
+### Nesting Modules
+
+Finally, you can also nest modules where it makes sense to do so. Simply nest a `modules` object within any module.
+
+```yaml
+modules:
+  seo:
+    prompt: 'Would you like some awesome SEO with that!?'
+    dependencies:
+      - statamic/seo-pro
+    modules:
+      sitemap:
+        prompt: 'Would you like additional SEO sitemap features as well?'
+        dependencies:
+          - statamic/seo-pro-sitemap
+```
+
+In this example, the second `sitemap` module prompt will only be presented to the user, if they agree to installing the parent `seo` module.
+
 
 ## Post-Install Hooks
 
