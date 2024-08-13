@@ -97,6 +97,138 @@ The exporter will automatically detect the installed versions and whether or not
 
 When [installing the starter kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
 
+
+## Optional Modules
+
+You may also present an optional set of starter kit files, nested under `modules` in your `starter-kit.yaml` config file.
+
+For example, here we'll configure an opt-in `seo` module.
+
+```yaml
+modules:
+  seo:
+    dependencies:
+      - statamic/seo-pro
+```
+
+This presents a choice to the user, to confirm whether or not to install this module.
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
+</figure>
+
+These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `export_as`, `dependencies`, etc.).
+
+```yaml
+modules:
+  seo:
+    export_paths:
+      - resources/css/seo.css
+    export_as:
+      README.md: README-for-seo.md
+    dependencies:
+      - statamic/seo-pro
+```
+
+### Customizing Prompt Text
+
+If you don't like the default prompt text, you can customize it with custom `prompt` config.
+
+```yaml
+modules:
+  seo:
+    prompt: 'Would you like some awesome SEO with that!?'
+    dependencies:
+      - statamic/seo-pro
+```
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter kit custom prompt text">
+    <figcaption>Would you also like fries with that?</figcaption>
+</figure>
+
+### Selecting Between Modules
+
+You may find yourself in a situation where you want the user to select only one of multiple module options. To do this, you may nest multiple module configs under an `options` object.
+
+```yaml
+modules:
+  js:
+    options:
+      vue:
+        export_paths:
+          - resources/js/vue.js
+      react:
+        export_paths:
+          - resources/js/react.js
+      mootools:
+        export_paths:
+          - resources/js/mootools.js
+```
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-select-module.png" alt="Starter kit select module">
+</figure>
+
+### Customizing Select Modules
+
+Of course, you can also customize `prompt` text, the first 'No' `skip_option` text, as well as each option `label`, as you see fit.
+
+```yaml
+modules:
+  js:
+    prompt: 'Would you care for some JS?'
+    skip_option: 'No, thank you!'
+    options:
+      vue:
+        label: 'VueJS'
+        export_paths:
+          - resources/js/vue.js
+      react:
+        label: 'ReactJS'
+        export_paths:
+          - resources/js/react.js
+      mootools:
+        label: 'MooTools (will never die!)'
+        export_paths:
+          - resources/js/mootools.js
+```
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-select-module-customization.png" alt="Customizing starter kit select module">
+    <figcaption>🐮🐮🐮</figcaption>
+</figure>
+
+### Skipping Confirmation
+
+Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger starter kit configs. To do this, simply set `prompt` to false.
+
+```yaml
+modules:
+  seo:
+    prompt: false
+```
+
+### Nesting Modules
+
+Finally, you can also nest modules where it makes sense to do so. Simply nest a `modules` object within any module.
+
+```yaml
+modules:
+  seo:
+    prompt: 'Would you like some awesome SEO with that!?'
+    dependencies:
+      - statamic/seo-pro
+    modules:
+      sitemap:
+        prompt: 'Would you like additional SEO sitemap features as well?'
+        dependencies:
+          - statamic/seo-pro-sitemap
+```
+
+In this example, the second `sitemap` module prompt will only be presented to the user, if they agree to installing the parent `seo` module.
+
+
 ## Post-Install Hooks
 
 You may run additional logic after the starter kit is installed. For example, maybe you want to output some information.
