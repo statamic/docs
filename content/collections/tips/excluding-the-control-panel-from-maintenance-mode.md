@@ -28,31 +28,26 @@ php artisan up
 
 ## Excluding URLs
 
-It's possible to specify URLs that should remain "up" while your application is in maintenance mode. The steps for doing so differ depending on the version of Laravel you're using...
+It's possible to specify URLs that should remain "up" while your application is in maintenance mode. For most applications, you can define these in your app's `bootstrap/app.php` file:
 
-### Laravel 10
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting()
+    ->withMiddleware(function (Middleware $middleware) { // [tl! highlight:4]
+        $middleware->preventRequestsDuringMaintenance(except: [
+            '/cp*'
+        ]);
+    })
+```
 
-You can define exclusions in your `app/Http/Middleware/PreventRequestsDuringMaintenance.php` file:
+In this example, the Control Panel will be available while the rest of your application is "down".
+
+:::hint
+For older applications, without the `Application::configure()` API in the `bootstrap/app.php` file, you can instead define exclusions in the `app/Http/Middleware/PreventRequestsDuringMaintenance.php` file instead:
 
 ```php
 protected $except = [
     '/cp*'
 ];
 ```
-
-In this example, the Control Panel will be available while the rest of your application is "down".
-
-
-### Laravel 11
-
-You can define exclusions in your app's `bootstrap/app.php` file:
-
-```php
-->withMiddleware(function (Middleware $middleware) {
-    $middleware->preventRequestsDuringMaintenance(except: [
-        '/cp*'
-    ]);
-})
-```
-
-In this example, the Control Panel will be available while the rest of your application is "down".
+:::
