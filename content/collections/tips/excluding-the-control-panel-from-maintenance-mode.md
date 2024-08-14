@@ -33,17 +33,17 @@ It's possible to specify URLs that should remain "up" while your application is 
 ```php
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting()
-    ->withMiddleware(function (Middleware $middleware) { // [tl! highlight:4]
-        $middleware->preventRequestsDuringMaintenance(except: [
-            '/cp*'
-        ]);
-    })
+    ->withMiddleware(function (Middleware $middleware) { // [tl! focus]
+        $middleware->preventRequestsDuringMaintenance(except: [ // [tl! focus]
+            '/cp*' // [tl! focus]
+        ]); // [tl! focus]
+    }) // [tl! focus]
 ```
 
 In this example, the Control Panel will be available while the rest of your application is "down".
 
 :::hint
-For older applications, without the `Application::configure()` API in the `bootstrap/app.php` file, you can instead define exclusions in the `app/Http/Middleware/PreventRequestsDuringMaintenance.php` file instead:
+For older applications, without the `Application::configure()` API in the `bootstrap/app.php` file, you can instead define exclusions in the `app/Http/Middleware/PreventRequestsDuringMaintenance.php` file:
 
 ```php
 protected $except = [
