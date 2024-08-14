@@ -45,7 +45,7 @@ options:
     name: restrict
     type: bool
     description: >
-      If `true`, navigation within the asset browser will be disabled. Your users will be restricted to specified the container and folder. Default: `false`.
+      If `true`, navigation within the asset browser will be disabled. Your users will be restricted to a specified container and folder. Default: `false`.
 
 id: d0c65546-74f1-4a15-89d5-1562a95ee2c6
 ---
