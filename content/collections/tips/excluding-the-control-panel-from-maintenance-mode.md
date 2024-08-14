@@ -28,7 +28,7 @@ php artisan up
 
 ## Excluding URLs
 
-It's possible to specify URLs which should remain "up" while your application is in maintenance mode. The steps for doing so differs depending on the version of Laravel you're using...
+It's possible to specify URLs that should remain "up" while your application is in maintenance mode. The steps for doing so differ depending on the version of Laravel you're using...
 
 ### Laravel 10
 
