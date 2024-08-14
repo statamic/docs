@@ -736,6 +736,30 @@ public function handle(LicenseSet $event)
 }
 ```
 
+### NavCreated
+`Statamic\Events\NavCreated`
+
+Dispatched after a nav has been created.
+
+``` php
+public function handle(NavCreated $event)
+{
+    $event->nav;
+}
+```
+
+### NavCreating
+`Statamic\Events\NavCreating`
+
+Dispatched before a nav is created. You can return `false` to prevent it from being created.
+
+``` php
+public function handle(NavCreating $event)
+{
+    $event->nav;
+}
+```
+
 ### NavDeleting
 `Statamic\Events\NavDeleting`
 
@@ -767,6 +791,18 @@ Dispatched after a nav has been saved.
 
 ``` php
 public function handle(NavSaved $event)
+{
+    $event->nav;
+}
+```
+
+### NavSaving
+`Statamic\Events\NavSaving`
+
+Dispatched before a nav is saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(NavSaving $event)
 {
     $event->nav;
 }
