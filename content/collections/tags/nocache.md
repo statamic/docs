@@ -216,3 +216,26 @@ document.addEventListener('statamic:nocache.replaced', (event) => {
     alert('nocache fragments have been replaced!');
 });
 ```
+
+## Database
+
+Behind the scenes, the `nocache` tag needs to store some data somewhere. This includes the contents of the template chunks, the available variables at that point of the template, which pages it's being used on, etc.
+
+By default, these are stored in the cache. However, with increased traffic or site size, you may eventually run into resource usage issues. In this case, it's possible to store the nocache data in a database.
+
+1. Configure the database driver in `config/statamic/static_caching.php`:
+    ```php
+    'nocache' => 'database'
+    ``` 
+2. Generate the migration:
+    ```sh
+    php please nocache:migration
+    ```
+3. Run the migration:
+    ```sh
+    php artisan migrate
+    ```
+4. Clear the static cache. Things may be out of sync if you have previously cached pages but the nocache regions don't exist in the DB yet.
+    ```sh
+    php please static:clear
+    ```
