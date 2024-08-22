@@ -99,6 +99,30 @@ If you use a method, it will give you a query builder and allow you to chain cla
 @endforeach
 ```
 
+### Cascade Directive
+
+When using blade components or rendering views loaded by non-Statamic routes/controllers the cascade data will be not avaliable by default. In these situations you can use the `@cascade` directive to populate the current scope with cascade data.
+
+It works in exactly the same way as the `@props` directive used in blade components, with the ability to require certain values and provide default fallback values:
+
+```blade
+@cascade([
+    'site', // Will throw an exception if missing from the cascade
+    'my_global',
+    'page' => null, // Will use fallback if missing from the cascade
+    'live_preview' => false,
+])
+
+{{ $site->locale }}
+{{ $page?->title }}
+```
+
+It is also possible to populate the current scope with all cascade data if needed:
+
+```blade
+@cascade
+```
+
 ## Writing Pure Antlers in Blade 🆕
 
 By using the `@antlers` and `@endantlers` Blade directive pair you can write pure Antlers in your Blade templates.
