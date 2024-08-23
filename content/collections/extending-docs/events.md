@@ -736,6 +736,34 @@ public function handle(LicenseSet $event)
 }
 ```
 
+### LocalizedTermDeleted
+`Statamic\Events\LocalizedTermDeleted`
+
+Dispatched after a taxonomy term has been deleted.
+
+This event is *similar* to the [`TermDeleted`](#termdeleted) event, however, instead of `$term` being a `Term` instance, it will be a `LocalizedTerm` instance.
+
+``` php
+public function handle(LocalizedTermDeleted $event)
+{
+    $event->term;
+}
+```
+
+### LocalizedTermSaved
+`Statamic\Events\LocalizedTermSaved`
+
+Dispatched after a taxonomy term has been saved.
+
+This event is *similar* to the [`TermSaved`](#termsaved) event, however, instead of `$term` being a `Term` instance, it will be a `LocalizedTerm` instance.
+
+``` php
+public function handle(LocalizedTermSaved $event)
+{
+    $event->term;
+}
+```
+
 ### NavCreated
 `Statamic\Events\NavCreated`
 
@@ -1085,6 +1113,8 @@ public function handle(TermDeleting $event)
 
 Dispatched after a taxonomy term has been deleted.
 
+This event is *similar* to the [`LocalizedTermDeleted`](#localizedtermdeleted) event, however, instead of `$term` being a `LocalizedTerm` instance, it will be a `Term` instance.
+
 ``` php
 public function handle(TermDeleted $event)
 {
@@ -1096,6 +1126,8 @@ public function handle(TermDeleted $event)
 `Statamic\Events\TermSaved`
 
 Dispatched after a taxonomy term has been saved.
+
+This event is *similar* to the [`LocalizedTermSaved`](#localizedtermsaved) event, however, instead of `$term` being a `LocalizedTerm` instance, it will be a `Term` instance.
 
 ``` php
 public function handle(TermSaved $event)
