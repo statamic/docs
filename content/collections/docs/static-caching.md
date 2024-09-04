@@ -229,6 +229,25 @@ By default the pool will use `25`, but feel free to adjust it up or down based o
 Lower the `warm_concurrency` to reduce the overhead and slow the process down, raise it to warm faster by using more CPU.
 :::
 
+### Queuing
+
+When you're using a queue driver other than `sync`, Statamic will push the warming out to the queue.
+
+If needed, you can explicitly tell Statamic which queue and queue connection should be used when warming the static cache:
+
+```php
+// config/statamic/static_caching.php
+
+'warm_queue' => env('STATAMIC_STATIC_WARM_QUEUE'),
+
+'warm_queue_connection' => env('STATAMIC_STATIC_WARM_QUEUE_CONNECTION'),
+```
+
+```
+STATAMIC_STATIC_WARM_QUEUE=warming
+STATAMIC_STATIC_WARM_QUEUE_CONNECTION=database
+```
+
 ### Warming additional URLs
 
 Statamic will automatically warm pages for entries, taxonomy terms and any basic `Route::statamic()` routes. If you wish to warm additional URLs as part of the `static:warm` command, you may add a hook into your `AppServiceProvider`'s `boot` method:
