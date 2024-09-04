@@ -162,7 +162,20 @@ Since all tracked paths are committed at once, this can allow for more consolida
 
 ## Scheduling Commits
 
-You can also [schedule](https://laravel.com/docs/scheduling) commits to run via cron job at regular intervals within your `app/Console/Kernel.php` file:
+You can also [schedule](https://laravel.com/docs/scheduling) commits to run via cron job at regular intervals within your `routes/console.php` file:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::command('statamic:git:commit')->everyTenMinutes();
+```
+
+In this example, we schedule a commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
+
+:::hint
+If you're using Laravel 10, or still have a `app/Console/Kernel.php` file in your project, you should schedule Git commits inside your `app/Console/Kernel.php` file instead:
 
 ```php
 protected function schedule(Schedule $schedule)
@@ -172,8 +185,7 @@ protected function schedule(Schedule $schedule)
         ->everyTenMinutes();
 }
 ```
-
-In this example, we schedule a commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
+:::
 
 _Note: If you have never used Laravel's scheduler, be sure to also [configure a cron job on your server](https://laravel.com/docs/scheduling#running-the-scheduler) to run all scheduled jobs. This only needs to be done once per server._
 
