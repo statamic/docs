@@ -110,39 +110,45 @@ When you create your OAuth application, you will need to provide the callback UR
 
 If you would like to use a provider not natively supported by Socialite, you should use the [SocialiteProviders][socialite-providers] method.
 
-Require the appropriate provider using Composer:
+1. Require the appropriate provider using Composer:
+    ```
+    composer require socialiteproviders/dropbox
+    ```
 
-```
-composer require socialiteproviders/dropbox
-```
+1. Next, add an event listener in your `AppServiceProvider`'s `boot` method:
+    ```php
+    // app/Providers/AppServiceProvider.php
 
-Add the event listener to your EventServiceProvider:
+    Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
+        $event->extendSocialite('dropbox', \SocialiteProviders\Dropbox\DropboxExtendSocialite::class);
+    });
+    ```
 
-``` php
-protected $listen = [
-    \SocialiteProviders\Manager\SocialiteWasCalled::class => [
-        'SocialiteProviders\\Dropbox\\DropboxExtendSocialite@handle',
+    Alternatively, if your application has an `EventServiceProvider.php` file, you can register the event listener in there:
+
+    ```php
+    protected $listen = [
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Dropbox\\DropboxExtendSocialite@handle',
+        ],
+    ];
+    ```
+
+3. Add the service credentials to `config/services.php` config:
+    ``` php
+    'dropbox' => [
+        'client_id' => env('DROPBOX_CLIENT_ID'),
+        'client_secret' => env('DROPBOX_CLIENT_SECRET'),
+        'redirect' => 'http://your-site.com/oauth/dropbox/callback',
     ],
-];
-```
+    ```
 
-Add the service credentials to `config/services.php` config:
-
-``` php
-'dropbox' => [
-    'client_id' => env('DROPBOX_CLIENT_ID'),
-    'client_secret' => env('DROPBOX_CLIENT_SECRET'),
-    'redirect' => 'http://your-site.com/oauth/dropbox/callback',
-],
-```
-
-Add the provider to the `config/statamic/oauth.php` config:
-
-``` php
-'providers' => [
-    'dropbox',
-],
-```
+4. Add the provider to the `config/statamic/oauth.php` config:
+    ``` php
+    'providers' => [
+        'dropbox',
+    ],
+    ```
 
 ## Custom Providers
 
