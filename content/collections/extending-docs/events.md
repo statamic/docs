@@ -934,6 +934,42 @@ public function handle(SearchIndexUpdated $event)
 }
 ```
 
+### SiteCreated
+`Statamic\Events\SiteCreated`
+
+Dispatched when a site is created via the Control Panel.
+
+``` php
+public function handle(SiteCreated $event)
+{
+    $event->site;
+}
+```
+
+### SiteDeleted
+`Statamic\Events\SiteDeleted`
+
+Dispatched when a site is deleted via the Control Panel.
+
+``` php
+public function handle(SiteDeleted $event)
+{
+    $event->site;
+}
+```
+
+### SiteSaved
+`Statamic\Events\SiteSaved`
+
+Dispatched when a site is saved via the Control Panel.
+
+``` php
+public function handle(SiteSaved $event)
+{
+    $event->site;
+}
+```
+
 ### StacheCleared
 `Statamic\Events\StacheCleared`
 
