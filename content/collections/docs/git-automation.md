@@ -160,8 +160,6 @@ In this example, we queue a delayed commit to run 10 minutes after a user makes 
 Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
 :::
 
-_Note: When commits are run by a queue's background process, there will be no authenticated user. In this case, Statamic will use the hardcoded git user in your [configuration](#configuration)._
-
 ## Scheduling Commits
 
 You can also [schedule](https://laravel.com/docs/scheduling) commits to run via cron job at regular intervals within your `app/Console/Kernel.php` file:
