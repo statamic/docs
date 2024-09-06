@@ -39,7 +39,7 @@ Example : Suppose a collection named "portfolio" and a dynamically obtained "slu
 ```
  {{ collection:portfolio query_scope="portfolio_scope" slug="{portfolio}" }}
         {{ content }}
-    {{ /collection:portefeuilles }}
+    {{ /collection:portfolio }}
 ``` 
 In PortfolioScope:
 ```
