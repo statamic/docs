@@ -35,20 +35,22 @@ The `apply` method will give you a query builder instance, allowing you to modif
 
 It will also give you `$values`, which will be an array of contextual values. For example, when [using the scope on a collection tag](/tags/collection#custom-query-scopes), you will get all the parameter values. When used as a [filter](#filters) inside the control panel, you will get all of your filter's field values.
 
-Example : Suppose a collection named "portfolio" and a dynamically obtained "slug" variable. The scope is called PorfolioScope. In your Antlers template:
+Example: Suppose a collection named "portfolio" and a dynamically obtained "slug" variable. The scope is called PorfolioScope. In your Antlers template:
+``` antlers
+{{ collection:portfolio query_scope="portfolio_scope" slug="{portfolio}" }}
+    {{ content }}
+{{ /collection:portfolio }}
 ```
- {{ collection:portfolio query_scope="portfolio_scope" slug="{portfolio}" }}
-        {{ content }}
-    {{ /collection:portfolio }}
-``` 
-In PortfolioScope:
+
+In `PortfolioScope`:
+``` php
+public function apply($query, $values)
+{
+    $slug = $values['slug'];
+    $query->where('slug', $slug);
+}
 ```
- public function apply($query, $values)
-    {
-        $slug = $values['slug'];
-        $query->where('slug', $slug);
-    }
-```
+
 This will gives you the content of that page.
 
 
