@@ -551,7 +551,11 @@ return [
 
 ## Multi-Site
 
-When using [multi-site](/multi-site), the path can accept an array of sites to define separate urls and domains, if needed.
+When using static caching alongside [multi-site](/multi-site), some additional configuration is needed.
+
+### Paths
+
+The `path` config option accepts an array, allowing you to define a different path for each site.
 
 ``` php
 return [
@@ -559,22 +563,40 @@ return [
         'full' => [
             'driver' => 'file',
             'path' => [
-               'default'    => public_path('static') . '/domain1.com/',
-               'default_fr' => public_path('static') . '/domain1.com/',
-               'other_site' => public_path('static') . '/domain2.com/',
-            ]
-        ]
-    ]
+               'english' => public_path('static') . '/domain.com/',
+               'french' => public_path('static') . '/domain.fr/',
+               'german' => public_path('static') . '/domain.de/',
+            ],
+        ],
+    ],
 ];
 ```
 
-:::tip
-Your static caching paths should be organized at the top level domain level. You'll notice 'default' and 'default_fr' in the example use the same domain. The subfolders will be organized based on the urls defined in your sites config.
-:::
+For sites with subdirectory URLs rather than separate domains, you should ensure that all sites with the same domain have the same path.
+
+For example: the `english` and `french` sites below are on the same domain, whereas `german` is on its own domain.
+
+``` php
+return [
+    'strategies' => [
+        'full' => [
+            'driver' => 'file',
+            'path' => [
+                // These sites are on domain.com
+               'english' => public_path('static') . '/domain.com/',
+               'french' => public_path('static') . '/domain.com/',
+
+               // This site is on domain.de
+               'german' => public_path('static') . '/domain.de/',
+            ],
+        ],
+    ],
+];
+```
 
 ### Rewrite Rules
 
-This multi-site example needs modified rewrite rules.
+When you have sites across different domains, you will need to modify the rewrite rules on your server to include the domain name:
 
 #### Apache
 
