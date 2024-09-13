@@ -555,7 +555,7 @@ When using static caching alongside [multi-site](/multi-site), some additional c
 
 ### Paths
 
-The `path` config option accepts an array, allowing you to define a different path for each site.
+The `path` config option accepts an array, allowing you to define a different path for each site:
 
 ``` php
 return [
@@ -582,11 +582,9 @@ return [
         'full' => [
             'driver' => 'file',
             'path' => [
-                // These sites are on domain.com
                'english' => public_path('static') . '/domain.com/',
                'french' => public_path('static') . '/domain.com/',
 
-               // This site is on domain.de
                'german' => public_path('static') . '/domain.de/',
             ],
         ],
@@ -596,7 +594,7 @@ return [
 
 ### Rewrite Rules
 
-When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name:
+When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name.
 
 #### Apache
 
