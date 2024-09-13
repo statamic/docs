@@ -596,7 +596,7 @@ return [
 
 ### Rewrite Rules
 
-When you have sites across different domains, you will need to modify the rewrite rules on your server to include the domain name:
+When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name:
 
 #### Apache
 
@@ -615,7 +615,7 @@ You should update the `try_files` line inside the `@static` block:
 ``` nginx
 location @static {
     try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
-    try_files /static/${host}${uri}_$args.html $uri $uri/ /index.php?$args;  # [tl! add]
+    try_files /static/${host}${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! add]
 }
 ```
 
