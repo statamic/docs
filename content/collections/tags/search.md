@@ -173,7 +173,7 @@ This has a few caveats:
 
 ## Contextual Keyword Snippets
 
-This only works for the [local search driver](/search#local-driver) that Statamic's ships with. If you're using Algolia (Meilisearch, or something along the lines). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
+This feature only works with Statamic's [Local search driver](/search#local-driver). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
 
 ```
 {{ search:results }}
