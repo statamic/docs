@@ -170,6 +170,7 @@ This has a few caveats:
   index the `status` field, or add `status:is=""` to your tag to prevent the filtering.
 - When using multiple sites, the search tag will filter items for the current site. If you haven't indexed the `site` field, you will get no results. Either
   index the `site` field, or add `site:is=""` to your tag to prevent the filtering.
+- You won't be able to use variables like `result_type` and `search_score`.
 
 ## Contextual Keyword Snippets
 
