@@ -138,6 +138,7 @@ This provides a list of countries with their ISO codes, region, subregion, and f
       type: countries
       region: 'oceania' # Optionally filter the countries by a region.
                         # Supported options are: africa, americas, asia, europe, oceania, polar
+      emojis: true      # Whether flag emojis are in the labels. They're on by default.
 ```
 ```yaml
 countries:
