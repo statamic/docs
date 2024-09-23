@@ -32,18 +32,21 @@ There are 3 steps to follow to install Statamic into your Laravel app.
 
 1. Run `php artisan config:clear` to make sure your config isn't cached.
 
-2. Add the `statamic:install` command to `post-autoload-dump` in `composer.json`.
+2. In `composer.json`, add the following items:
 
     ``` json
-    "scripts": {
-        "post-autoload-dump": [
+    "scripts": { // [tl! **]
+        "pre-update-cmd": [ // [tl! ++ **]
+            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd" // [tl! ++ **]
+        ],  // [tl! ++ **]
+        "post-autoload-dump": [ // [tl! **]
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan statamic:install --ansi" // [tl! **]
-        ],
-    }
+            "@php artisan statamic:install --ansi" // [tl! ++ **]
+        ], // [tl! **]
+    } // [tl! **]
     ```
-
+   
 3. Install `statamic/cms` with Composer.
 
     ``` shell

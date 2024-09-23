@@ -45,7 +45,7 @@ You'll need one user guard & user provider for your Eloquent users and another f
 
 In the above example, the  `statamic`  guard is used to authenticate users using Statamic's flat-file driver and the `web` guard is used to authenticate users using Laravel's built-in Eloquent driver.
 
-While you're in the `config/auth.php` file, ensure you have separate reset & activation brokers for each of the providers (two for the Statamic driver & two for the Eloquent driver):
+While you're in the `config/auth.php` file, ensure you have separate brokers for each of the providers. Two for Statamic and one for Eloquent. Statamic separates the concepts of resets and activations where Eloquent doesn't by default.
 
 ```php
 'passwords' => [
@@ -56,14 +56,7 @@ While you're in the `config/auth.php` file, ensure you have separate reset & act
 		'throttle' => 60,
 	],
 
-	'activations' => [
-		'provider' => 'users',
-		'table' => 'password_activation_tokens',
-		'expire' => 4320,
-		'throttle' => 60,
-	],
-
-	'statamic_resets' => [
+	'statamic_resets' => [ // [tl! ++:start]
 		'provider' => 'statamic',
 		'table' => 'password_resets',
 		'expire' => 60,
@@ -75,7 +68,7 @@ While you're in the `config/auth.php` file, ensure you have separate reset & act
 		'table' => 'password_activations',
 		'expire' => 4320,
 		'throttle' => 60,
-	],
+	], // [tl! ++:end]
 ],
 ```
 
