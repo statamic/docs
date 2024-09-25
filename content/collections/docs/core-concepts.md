@@ -84,6 +84,8 @@ Statamic takes a different approach, that when combined with our "Bring Your Own
 
 **Got a Hero Image?** Use an Assets and text field and render the text on top of the `background-image` of your choosing.
 
+And just like with Lego bricks, it hurts really bad to step on Statamic barefooted.
+
 Hopefully you get the idea and see how you can solve almost any challenge with core fieldtypes and some HTML.
 
 ## The Control Panel Can Be Optional
