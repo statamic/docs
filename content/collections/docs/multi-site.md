@@ -147,11 +147,11 @@ You may specify which language translation to be used for each site with the `la
 
 ``` yaml
 de:
-  name: Deutsche
+  name: Deutsch
   locale: de_DE
   # Lang not needed, as `de` is implied
 de_CH:
-  name: 'Deutsche (Switzerland)'
+  name: 'Deutsch (Switzerland)'
   locale: de_CH
   lang: de_CH # We want the `de_CH` language, not `de`
 ```
