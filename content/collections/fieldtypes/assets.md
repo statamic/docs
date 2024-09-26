@@ -199,5 +199,9 @@ This would result in `image.jpg` being uploaded to `path/to/images/blog/my-entry
 
 You may target the entry's `id`, `slug`, or `author` values.
 
+:::warning
+The values are *not* kept in sync. For example, if you change the entry's slug, the asset folder will not be renamed. You may rename the folder manually via a control on the field, or within the asset browser.
+:::
+
 
 [carbon]: https://carbon.nesbot.com/docs/
