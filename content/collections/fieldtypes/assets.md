@@ -22,6 +22,11 @@ options:
     description: >
         The folder (relative to the container) to begin browsing. Default: the root folder of the container.
   -
+    name: dynamic
+    type: string
+    description:
+        Assets will be placed in a subfolder based on the value of this field. See [dynamic folders](#dynamic-folders). You may use `id`, `slug`, or `author`.
+  -
     name: min_files
     type: int
     description: >
@@ -177,6 +182,26 @@ All custom data set on the assets will also be available inside the asset tag lo
 {{ /gallery_images }}
 ```
 
+## Dynamic Folders
+
+In addition to selecting which container and folder assets will be uploaded into, you may configure the field to have a dedicated subfolder based on an entry's value.
+
+For example, you may want to place all the images for a blog post in its own directory.
+
+```yaml
+type: assets
+container: images
+folder: blog
+dynamic: slug
+```
+
+This would result in `image.jpg` being uploaded to `path/to/images/blog/my-entry-slug/image.jpg`.
+
+You may target the entry's `id`, `slug`, or `author` values.
+
+:::warning
+The values are *not* kept in sync. For example, if you change the entry's slug, the asset folder will not be renamed. You may rename the folder manually via a control on the field, or within the asset browser.
+:::
 
 
 [carbon]: https://carbon.nesbot.com/docs/
