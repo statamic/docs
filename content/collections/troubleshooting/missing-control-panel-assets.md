@@ -43,7 +43,7 @@ Regardless, you'll need to at least enable one. When installing or updating Stat
 
 2. Delete the `vendor/statamic/cms` directory. This will force Composer to re-download Statamic in the next step.
     ```bash
-    rm vendor/statamic/cms   
+    rm -rf vendor/statamic/cms   
     ```
 3. Update Statamic
     ```bash
