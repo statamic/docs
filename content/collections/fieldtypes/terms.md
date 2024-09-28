@@ -63,13 +63,25 @@ things_you_may_find_adorable:
 As outlined in the [Taxonomies Guide](/taxonomies#templating), term slugs will automatically be converted to Term objects which means
 you will have all of the term's data available as variables.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ wildlife }}
     <li><a href="{{ url }}">{{ title }}</a></li>
   {{ /wildlife }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+	@foreach ($wildlife as $term)
+		<li><a href="{{ $term->url }}">{{ $term->title }}</a></li>
+	@endforeach
+</ul>
+```
+::
 
 ```html
 <ul>
