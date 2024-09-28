@@ -202,9 +202,10 @@ You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform o
 
 ### Asset Field Data
 
+::tabs
 All custom data set on the assets will also be available inside the asset tag loop.
 
-```
+```antlers
 {{ gallery_images }}
   <figure>
     <img src="{{ url }}" alt="{{ alt }}">
@@ -212,6 +213,22 @@ All custom data set on the assets will also be available inside the asset tag lo
   </figure>
 {{ /gallery_images }}
 ```
+
+::sep
+
+All custom data set on the assets will also be available on the asset instance.
+
+```blade
+@foreach ($gallery_images as $image)
+    <img src="{{ $image->url }}" alt="{{ $image->alt }}" />
+
+    @if ($caption = $image->caption)
+    <figcaption>{{ $caption }}</figcaption>
+    @endif
+@endforeach
+```
+
+::
 
 ## Dynamic Folders
 
