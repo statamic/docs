@@ -213,7 +213,7 @@ resources/views/partials/sets/
 ::tab blade
 
 :::tip
-By using `[...$set]`, you can access the set variables within the set's Blade file without having to refer to reference `$set`.
+By using `[...$set]`, you can access the set variables within the set's Blade file without having to reference `$set` for each variable.
 
 For example, `{!! $set->text !!}` becomes `{!! $text !!}`.
 :::
