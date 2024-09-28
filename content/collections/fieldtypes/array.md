@@ -121,7 +121,7 @@ You can use basic array access, nested variables, or the [foreach tag](/tags/for
 {{ /foreach:address }}
 ```
 
-::sep
+::tab
 
 You can use basic array access or the `@foreach` directive to loop through all of the keys.
 

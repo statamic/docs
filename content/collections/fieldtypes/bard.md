@@ -115,15 +115,27 @@ Bard stores your data as a [ProseMirror document](https://prosemirror.net/docs/r
 
 If you are using Bard just as a rich text editor and have no need for sets you would use a single tag to render the content.
 
-```
+::tabs
+
+```antlers
 {{ bard_field }}
 ```
+
+::tab
+
+```blade
+{!! $bard_field !!}
+```
+
+::
 
 ### With Sets
 
 When working with sets, you should use the tag pair syntax and `if/else` conditions on the `type` variable to style each set accordingly. **Note**: any content that is entered _not_ in a set (i.e. your normal rich-text content) needs to be rendered using the "text" type. See the first condition using "text."
 
-```
+::tabs
+
+```antlers
 {{ bard_field }}
 
   {{ if type == "text" }}
@@ -150,9 +162,40 @@ When working with sets, you should use the tag pair syntax and `if/else` conditi
 {{ /bard_field }}
 ```
 
+::tab
+
+```blade
+@foreach ($bard_field_with_sets as $set)
+	@if ($set->type === 'text')
+	<div class="text">
+		{!! $set->text !!}
+	</div>
+	@elseif ($set->type === 'poll')
+	<figure class="poll">
+		<figcaption>{{ $set->question }}</figcaption>
+		<ul>
+			@foreach ($set->options as $option)
+				<li>{{ $option->text }}</li>
+			@endforeach
+		</ul>
+	</figure>
+	@elseif ($set->type === 'hero_image' && $hero_image = $set->hero_image)
+		<div class="heroimage">
+			<img src="{{ $hero_image }}" alt="{{ $hero_image->caption }}" />
+		</div>
+	@endif
+@endforeach
+```
+
+::
+
 An alternative approach (for those who like DRY or small templates) is to create multiple "set" partials and pass the data to them dynamically, moving the markup into corresponding partials bearing the set's name.
 
-```
+::tabs
+
+::tab antlers
+
+```antlers
 {{ bard_field }}
   {{ partial src="sets/{type}" }}
 {{ /bard_field }}
@@ -166,6 +209,31 @@ resources/views/partials/sets/
   text.antlers.html
   video.antlers.html
 ```
+
+::tab blade
+
+:::tip
+By using `[...$set]`, you can access the set variables within the set's Blade file without having to refer to reference `$set`.
+
+For example, `{!! $set->text !!}` becomes `{!! $text !!}`.
+:::
+
+```blade
+@foreach ($bard_field_with_sets as $set)
+	@include('fieldtypes.bard.sets.'.$set->type, [...$set])
+@endforeach
+```
+
+``` files theme:serendipity-light
+resources/views/partials/sets/
+  gallery.blade.php
+  hero_image.blade.php
+  poll.blade.php
+  text.blade.php
+  video.blade.php
+```
+
+::
 
 ## Extending Bard
 

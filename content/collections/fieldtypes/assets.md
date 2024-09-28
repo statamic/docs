@@ -103,7 +103,7 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /hero_image }}
 ```
-::sep
+::tab
 
 You can use the `@foreach` directive to loop over each asset and output its variables:
 
@@ -139,7 +139,7 @@ If you have `max_files: 1`, you can also use a single tag syntax to directly use
 {{ hero_image:alt }}
 ```
 
-::sep
+::tab
 
 If you have `max_files: 1`, you can use property access to output variables within the asset. When output as a string, the URL will be used.
 
@@ -214,7 +214,7 @@ All custom data set on the assets will also be available inside the asset tag lo
 {{ /gallery_images }}
 ```
 
-::sep
+::tab
 
 All custom data set on the assets will also be available on the asset instance.
 
