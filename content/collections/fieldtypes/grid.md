@@ -61,7 +61,11 @@ cast:
     character: Han Solo
 ```
 
-```
+::tabs
+
+::tab antlers
+
+```antlers
 <h3>Star Wars Cast</h3>
 <ul>
     {{ cast }}
@@ -69,6 +73,19 @@ cast:
     {{ /cast }}
 </ul>
 ```
+
+::tab blade
+
+```blade
+<h3>Star Wars Cast</h3>
+<ul>
+	@foreach ($cast as $role)
+	<li>{{ $role->character }} played by {{ $role->actor }}</li>
+	@endforeach
+</ul>
+```
+
+::
 
 ```html
 <h3>Star Wars Cast</h3>
