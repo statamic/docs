@@ -37,13 +37,29 @@ sites:
 
 You're more than likely using this field as a way to dynamically fetch content from a specific site other than the current one.
 
-```
+The following example assumes `max_items` has been set to `1`:
+
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ collection:news :site="my_sites_field" }}
     <li>{{ title }}</li>
   {{ /collection:news }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+	<statamic:collection:news
+		:site="$my_sites_field"
+	>
+		<li>{{ $title }}</li>
+	</statamic:collection:news>
+</ul>
+```
+::
 
 ```html
 <ul>
