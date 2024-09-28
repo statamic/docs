@@ -53,9 +53,21 @@ seat_choice: middle
 
 It's a string, so you can just use that value.
 
+::tabs
+
+::tab antlers
+
 ```
 <p>I love sitting in the {{ seat_choice }} seat. A lot.</p>
 ```
+
+::tab blade
+
+```blade
+<p>I love sitting in the {{ $seat_choice }} seat. A lot.</p>
+```
+
+::
 
 ```html
 <p>I love sitting in the middle seat. A lot.</p>
