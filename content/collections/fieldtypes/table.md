@@ -112,9 +112,7 @@ Want even more control? This example assumes you have a boolean field in your fr
 ```
 ::tab blade
 
-:::tip
 The following example uses the `fetch` helper function, which resolves `Value` instances for you and returns the underlying value. If the passed value is not a `Value` instance, you will get that original value back.
-:::
 
 ```blade
 <?php
