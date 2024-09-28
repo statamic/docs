@@ -46,9 +46,18 @@ This option will only be provided when the field is in a collection. Globals and
 
 Link fields will render a URL string you can use however you choose.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 Check out <a href="{{ url_link }}">Statamic</a>!
 ```
+
+::tab blade
+```blade
+Check out <a href="{{ $url_link }}">Statamic</a>!
+```
+::
 
 ```output
 Check out <a href="https://statamic.com">Statamic</a>!
@@ -56,6 +65,15 @@ Check out <a href="https://statamic.com">Statamic</a>!
 
 You can access other data of the link field by using it like an array. This could be the title of an entry you link to, for example.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ link_field:title }}
 ```
+
+::tab blade
+```blade
+{{ $link_field['title'] }}
+```
+::
