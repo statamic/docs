@@ -44,4 +44,4 @@ The Form fieldtype provides a few useful variables:
 * `api_url`
 * `honeypot`
 
-You can use the [`{{ form:create }}`](/tags/form-create) tag to render a `<form>` on your page.
+You can use the [`form:create`](/tags/form-create) tag to render a `<form>` on your page.
