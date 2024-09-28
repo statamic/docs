@@ -70,12 +70,26 @@ All environment variables are available in your config files by using the `env()
 'awesome' => env('ENABLE_AWESOME', true),
 ```
 
+::tabs
+
+::tab antlers
+
 Once passed into a config file, the variable can be used in your views with the `{{ config }}` tag.
 
 ``` antlers
 // To retrieve the above 'awesome' value...
 {{ config:app:awesome }}
 ```
+
+::tab blade
+
+Once passed into a config file, the variable can be used in your views with the `config()` helper function.
+
+```blade
+// To retrieve the above 'awesome' value...
+{{ config('app.awesome') }}
+```
+::
 
 :::warning
 **Your `.env` file should never be committed to version control**.
