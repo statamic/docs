@@ -82,7 +82,10 @@ Date fields are [augmented](/augmentation) to return a [Carbon instance][carbon]
 
 Ranges have nested `start` and `end` variables, so you can access them like this:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // Nested variable
 Event: {{ date:start }} through {{ date:end }}
 
@@ -91,6 +94,14 @@ Event: {{ date:start }} through {{ date:end }}
 Event: {{ start }} through {{ end }}
 {{ /date }}
 ```
+
+::tab blade
+
+```blade
+Event: {{ $date_range['start'] }} through {{ $date_range['end'] }}
+```
+
+::
 
 <figure>
   <img src="/img/fieldtypes/screenshots/date-range.png" alt="Date fieldtype in range mode" width="301">
@@ -101,21 +112,64 @@ Event: {{ start }} through {{ end }}
 
 You can format the output of your date fields with the [format modifier](/modifiers/format) and PHP's [date formatting options](https://www.php.net/manual/en/function.date.php).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date format="Y" }} // 2019
 {{ date format="Y-m-d" }} // 2019-10-10
 {{ date format="l, F jS" }} // Sunday, January 21st
 ```
 
+::tab blade
+
+When using Blade, you may also call the `->format` method on Carbon instances.
+
+```blade
+{{-- Using Modifiers --}}
+{{ Statamic::modify($date)->format('Y') }} // 2019
+{{ Statamic::modify($date)->format('Y-m-d') }} // 2019-10-10
+{{ Statamic::modify($date)->format('l, F jS') }} // Sunday, January 21st
+
+{{-- Using Carbon methods --}}
+{{ $date->format('Y') }} // 2019
+{{ $date->format('Y-m-d') }} // 2019-10-10
+{{ $date->format('l, F jS') }} // Sunday, January 21st
+```
+
+::
+
 ### Formatting localized Dates
 
 You can format localized dates with the [iso modifier](/modifiers/iso_format) and [ISO formatting options](https://carbon.nesbot.com/docs/#api-localization). This use Carbon's inner translations rather than language packages you need to install on every machine where you deploy your application.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date iso_format="YYYY" }} // 2019
 {{ date iso_format="YYYY-MM-DD" }} // 2019-10-10
 {{ date iso_format="dddd, MMMM Do" }} // Sunday, January 21st
 ```
+
+::tab blade
+
+When using Blade, you may also call the `->isoFormat` method on Carbon instances.
+
+```blade
+{{-- Using Modifiers --}}
+{{ Statamic::modify($date)->isoFormat('YYYY') }} // 2019
+{{ Statamic::modify($date)->isoFormat('YYYY-MM-DD') }} // 2019-10-10
+{{ Statamic::modify($date)->isoFormat('dddd, MMMM Do') }} // Sunday, January 21st
+
+{{-- Using Carbon methods --}}
+{{ $date->isoFormat('YYYY') }} // 2019
+{{ $date->isoFormat('YYYY-MM-DD') }} // 2019-10-10
+{{ $date->isoFormat('dddd, MMMM Do') }} // Sunday, January 21st
+
+```
+
+::
 
 
 
