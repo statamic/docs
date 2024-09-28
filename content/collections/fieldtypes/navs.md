@@ -41,13 +41,13 @@ navigations:
 Loop through the structures to  access their handles and pass them to a [Nav](/tags/nav) tag.
 
 ```
-{{ structures }}
+{{ navigations }}
   <ul>
     {{ nav :handle="handle" }}
       <li><a href="{{ url }}">{{ title }}</a></li>
     {{ /nav }}
   </ul>
-{{ /structures }}
+{{ /navigations }}
 ```
 
 ```html
