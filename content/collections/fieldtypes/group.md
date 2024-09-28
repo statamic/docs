@@ -27,9 +27,22 @@ location:
 
 All fields inside a Group will be scoped under their parent key like so:
 
-```
-{{ location:address }}, {{ location:city }}, {{ location:zip }}
+::tabs
 
-<!-- Will output... -->
+::tab antlers
+
+```antlers
+{{ location:address }}, {{ location:city }}, {{ location:zip }}
+```
+
+::tab blade
+```blade
+{{ $location['address'] }}, {{ $location['city'] }}, {{ $location['zip'] }}
+```
+::
+
+will output
+
+```html
 123 Main Street, Schenectady, 1234
 ```
