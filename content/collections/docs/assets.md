@@ -242,13 +242,25 @@ All of the data stored on your Assets will be available on the frontend without 
 
 If you had a `slideshow` field with a whole bunch of images selected, you can render them by looping through them.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <div class="slideshow">
     {{ slideshow }}
         <img src="{{ url }}" alt="{{ alt }}">
     {{ /slideshow }}
 </div>
 ```
+::tab blade
+```blade
+<div class="slideshow">
+  @foreach($slideshow as $image)
+      <img src="{{ $image->url }}" alt="{{ $image->alt }}">
+  @endforeach
+</div>
+```
+::
 
 Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 
@@ -257,11 +269,26 @@ Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 If you ever find yourself needing to loop over all of the assets in a container (or folder inside a container) instead of selecting them manually with the Assets Fieldtype, this is the way.
 
 #### Example
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ assets container="photoshoots" limit="10" sort="rating" }}
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /assets }}
 ```
+::tab blade
+```blade
+<statamic:assets
+  container="photoshoots"
+  limit="10"
+  sort="rating"
+>
+  <img src="{{ $url }}" alt="{{ $alt }}" />
+</statamic:assets>
+```
+::
 
 Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
@@ -269,9 +296,34 @@ Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
 Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamically resize, crop, and manipulate images. It's really easy to use and has [its own tag](/tags/glide).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:image width="120" height="500" filter="sepia" }}
 ```
+::tab blade
+```blade
+{{-- Using Statamic Elements --}}
+<statamic:glide
+  :src="$img"
+  width="120"
+  height="500"
+  filter="sepia"
+/>
+
+{{-- Using Fluent Tags --}}
+
+{{
+  Statamic::tag('glide')
+    ->src($img)
+    ->width(120)
+    ->height(500)
+    ->filter('sepia')
+    ->fetch()
+}}
+```
+::
 
 ## Search Indexes
 
