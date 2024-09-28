@@ -20,9 +20,15 @@ fruits:
   - jerky
 ```
 
-```
+::tabs
+```antlers
 {{ fruits | ampersand_list }}
 ```
+
+```blade
+{{ Statamic::modify($fruits)->ampersandList()->fetch() }}
+```
+::
 
 ```html
 apples, bananas & jerky

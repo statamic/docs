@@ -17,9 +17,15 @@ summary: >
   "I'm not listening!" said the small, strange creature.
 ```
 
-```
+::tabs
+```antlers
 {{ summary | add_slashes }}
 ```
+
+```blade
+{{ Statamic::modify($summary)->addSlashes()->fetch() }}
+```
+::
 
 ``` output
 \"I\'m not listening!\" said the small, strange creature.

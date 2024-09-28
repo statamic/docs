@@ -1,0 +1,12 @@
+ <div x-data="{ tab: '{{ active }}' }" x-cloak>
+   <div class="relative flex flex-col">
+     <div class="flex space-x-4">
+       {{ foreach:tabs }}
+       <button type="button" x-on:click="tab = '{{ key }}'" :class="{ 'font-bold': tab === '{{ key }}' }">{{ value }}</button>
+       {{ /foreach:tabs }}
+     </div>
+       {{ foreach:samples }}
+          <div x-show="tab === '{{ key }}'">{{ value }}</div>
+       {{ /foreach:samples }}
+   </div>
+ </div>

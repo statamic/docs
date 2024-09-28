@@ -101,9 +101,12 @@ address:
 
 _This fieldtype is not [augmented](/augmentation)._
 
+
+::tabs
+
 You can use basic array access, nested variables, or the [foreach tag](/tags/foreach) to loop through all of the keys. All three of the following methods are equivalent.
 
-```
+```antlers
 // Array access
 {{ address }}
     {{ street }} {{ city }} {{ country }}
@@ -117,3 +120,20 @@ You can use basic array access, nested variables, or the [foreach tag](/tags/for
     {{ value }}
 {{ /foreach:address }}
 ```
+
+::sep
+
+You can use basic array access or the `@foreach` directive to loop through all of the keys.
+
+```blade
+// Nested variables
+{{ $address['street'] }}
+{{ $address['city'] }}
+{{ $address['country'] }}
+
+// Using foreach
+@foreach ($address as $key => $value)
+	{{ $key }}: {{ $value }}
+@endforeach
+```
+::

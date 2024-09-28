@@ -12,13 +12,21 @@ books: 5
 magazines: 10
 ```
 
+::tabs
 ``` antlers
 {{ books | add:5 }}
 {{ books | add:magazines }}
 {{ books | +:magazines }}
 ```
 
+```blade
+{{ $books + 5 }}
+{{ $books + $magazines }}
+{{ $books + $magazines }}
 ```
+::
+
+```text
 10
 15
 15
