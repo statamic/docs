@@ -82,7 +82,7 @@ gallery_images:
   - dj-jazzy-jeff.jpg
   - uncle-phil.jpg
 
-# With max_items: 1
+# With max_files: 1
 hero_image: surf-boards.jpg
 ```
 
