@@ -40,7 +40,10 @@ navigations:
 
 Loop through the structures to  access their handles and pass them to a [Nav](/tags/nav) tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ navigations }}
   <ul>
     {{ nav :handle="handle" }}
@@ -49,6 +52,19 @@ Loop through the structures to  access their handles and pass them to a [Nav](/t
   </ul>
 {{ /navigations }}
 ```
+::tab blade
+```blade
+@foreach ($navigations as $nav)
+  <ul>
+    <statamic:nav
+      :handle="$nav"
+    >
+      <li><a href="{{ $url }}">{{ $title }}</a></li>
+    </statamic:nav>
+  </ul>
+@endforeach
+```
+::
 
 ```html
 <ul>
