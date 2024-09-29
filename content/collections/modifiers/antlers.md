@@ -13,6 +13,19 @@ title: 'Hello {{ audience }}!'
 audience: world
 ```
 
+::tabs
+
+::tab antlers
+```antlers
+{{ title | antlers }}
+```
+
+::tab blade
+```blade
+{{ Statamic::modify($title)->antlers() }}
+```
+::
+
 ```
 Hello world!
 ```
