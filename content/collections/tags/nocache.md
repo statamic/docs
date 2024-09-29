@@ -9,9 +9,12 @@ intro: When using a broader caching solution (like [static caching](/static-cach
 
 When using [Static Caching](/static-caching) or the [cache tag](/tags/cache), the rendered contents will be remembered for the next request. That's great for performance, but if you have something in there that you'd like to keep dynamic (such as authenticated user data, randomized elements, or listings), you'd normally have to disable static caching for the whole page.
 
-With the `nocache` tag, you can keep the entirety of the page cached (when using Static Caching) or chunks of the page cached (when using the cache tag), with certain parts left as as dynamic:
+With the `nocache` tag, you can keep the entirety of the page cached (when using Static Caching) or chunks of the page cached (when using the cache tag), with specific parts remaining dynamic:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ nav }} ... {{ /nav }}
 
 {{ nocache }} {{# [tl! focus:6] #}}
@@ -24,6 +27,21 @@ With the `nocache` tag, you can keep the entirety of the page cached (when using
 
 {{ content }}
 ```
+::tab blade
+```blade
+<statamic:nav> ... </statamic:nav>
+
+<statamic:nocache> {{-- [tl! focus:6] --}}
+   @if ($logged_in)
+      Welcome back, {{ $current_user->name }}   
+   @else
+      Hello, guest!
+   @endif
+</statamic:nocache>
+
+{!! $content !}}
+```
+::
 
 ## Forms
 
@@ -35,17 +53,33 @@ CSRF tokens are now updated automatically.
 
 However, if your form has logic in it, like validation or success messages, you'll need to keep the `form:create` dynamic by wrapping in `nocache` tags.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ nocache }} {{# [tl!++] #}}
     {{ form:create }}
         ...
     {{ /form:create }}
 {{ /nocache }} {{# [tl!++] #}}
 ```
+::tab blade
+```blade
+<statamic:nocache> {{-- [tl!++] --}}
+   <statamic:form:create>
+      ...
+   </statamic:form:create>
+</statamic:nocache> {{-- [tl!++] --}}
+```
+::
 
 ## Blade
 
-You can use the "no cache" feature in Blade too, although you should use the dedicated Blade directive instead of trying to use the tag.
+You can use the "no cache" feature in Blade too, although you should use the dedicated Blade directive or the Statamic Elements tag instead of trying to use `Statamic::tag`.
+
+::tabs
+
+::tab nocache Directive
 
 To keep a part of your template dynamic, move it into a partial then use the `@nocache` directive just like you would use the `@include` directive.
 
@@ -53,6 +87,16 @@ To keep a part of your template dynamic, move it into a partial then use the `@n
 @include('mypartial') {{-- this will be cached --}}
 @nocache('mypartial') {{-- this will be dynamic --}}
 ```
+::tab Statamic Elements
+
+If you'd like to make a section of the current template dynamic without extracting a dedicated partial, you may use the `<statamic:nocache>` tag:
+
+```blade
+<statamic:nocache>
+  ...
+</statamic:nocache>
+```
+::
 
 ## Caveats
 
@@ -63,7 +107,9 @@ Most of the time you can probably get away with wrapping something in a `nocache
 
 For example, let's say you have a collection of stocks. Each entry contains information about the stock, except for the price. You have a custom tag that will get the up-to-the-second stock price using an API.
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ collection:stocks }}
     <li>
         {{ company }}
@@ -72,12 +118,25 @@ For example, let's say you have a collection of stocks. Each entry contains info
     </li>
 {{ /collection:stocks }}
 ```
+::tab blade
+```blade
+<statamic:collection:stocks>
+   <li>
+      {{ $company }}
+      {{ $symbol }}
+      <statamic:get_price :of="$symbol" />
+   </li>
+</statamic:collection:stocks>
+```
+::
 
 If you turned on static caching now, then the whole listing would be cached, including the prices.
 
 In this example, you should put a `nocache` _inside_ the loop.
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ collection:stocks }}
     <li>
         {{ company }}
@@ -88,6 +147,19 @@ In this example, you should put a `nocache` _inside_ the loop.
     </li>
 {{ /collection:stocks }}
 ```
+::tab blade
+```blade
+<statamic:collection:stocks>
+   <li>
+      {{ $company }}
+      {{ $symbol }}
+      <statamic:nocache> {{-- [tl!++] --}}
+        <statamic:get_price :of="$symbol" />
+      </statamic:nocache> {{-- [tl!++] --}}
+   </li>
+</statamic:collection:stocks>
+```
+::
 
 By putting it inside the loop, it means that the `collection:stocks` tag wouldn't need to re-query for entries on each subsequent request.
 
@@ -95,13 +167,27 @@ You'd then also rely on [static caching invalidation rules](/static-caching#inva
 
 An example where you would want to put a `nocache` tag _around_ a loop would be when re-querying every request would be important. For example, a randomized section:
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ nocache }}
     {{ collection:blog featured:is="true" sort="random" }}
         ...
     {{ /collection:blog }}
 {{ /nocache }}
 ```
+::tab blade
+```blade
+<statamic:nocache>
+   <statamic:collection:blog
+     featured:is="true"
+     sort="random"
+   >
+     ...
+   </statamic:collection:blog>
+</statamic:nocache>
+```
+::
 
 ### Context
 
@@ -120,7 +206,9 @@ reviews:
     rating: 3%
 ```
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ reviews }}
     <div class="movie">
         {{ nocache }}
@@ -129,6 +217,18 @@ reviews:
     </div>
 {{ /reviews }}
 ```
+::tab blade
+
+```blade
+@foreach ($reviews as $review)
+  <div class="movie">
+    <statamic:nocache>
+      {{ $review->name }} {{ $review->rating}} {{ $review->title }}
+    </statamic:nocache>
+  </div>
+@endforeach
+```
+::
 
 ```
 <div class="movie"> Top Gun 58% Movie Reviews </div>
@@ -151,7 +251,9 @@ Now lets say you update `title` to `Ratings` and Top Gun's `rating` to `60%`. Th
 
 Only the `title`'s change would be reflected, since the `reviews` value was remembered. If you wanted this to be dynamic, you should wrap the loop rather than putting it inside the loop, as explained in [when to wrap](#when-to-wrap).
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ nocache }} {{# [tl!++] #}}
     {{ reviews }}
         <div class="movie">
@@ -162,6 +264,20 @@ Only the `title`'s change would be reflected, since the `reviews` value was reme
     {{ /reviews }}
 {{ /nocache }} {{# [tl!++] #}}
 ```
+::tab blade
+```blade
+<statamic:nocache> {{-- [tl!++] --}}
+    @foreach ($reviews as $review)
+        <div class="movie">
+            <statamic:nocache> {{-- [tl!--] --}}
+                {{ $review->name }} {{ $review->rating }} {{ $review->title }}
+            </statamic:nocache> {{-- [tl!--] --}}
+        </div>
+    @endforeach
+</statamic:nocache> {{-- [tl!++] --}}
+```
+::
+
 ```
 <div class="movie"> Top Gun 60% Ratings </div>
 ```
@@ -171,15 +287,36 @@ Sometimes, you may notice the contents of the `nocache` taking a while to load. 
 
 To improve performance, you can explicitly select the variables you need:
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ nocache select="this|that" }}
 ```
+::tab blade
+```blade
+<statamic:nocache
+  select="this|that"
+>
+</statamic:nocache>
+```
+::
 
 Alternatively, you can use the `@auto` placeholder for Statamic to extract the variables from the template (this is similar to the `@shallow` placeholder in the nav tag):
 
-```html
+::tabs
+::tab antlers
+```antlers
 {{ nocache select="@auto" }}
 ```
+::tab blade
+```blade
+<statamic:nocache
+  select="@auto"
+>
+
+</statamic:nocache>
+```
+::
 
 :::tip
 It's worth noting, the `nocache` tag won't be able to extract variables used inside partials or PHP files like custom tags. You will need to explicitly define the variables you need in these cases.
@@ -187,9 +324,20 @@ It's worth noting, the `nocache` tag won't be able to extract variables used ins
 
 You can also combine them to extract the variables from the template and add additional ones:
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ nocache select="@auto|this|that" }}
 ```
+::tab blade
+```blade
+<statamic:nocache
+  select="@auto|this|that"
+>
+
+</statamic:nocache>
+```
+::
 
 ## Full Measure Static Caching
 
