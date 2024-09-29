@@ -13,13 +13,22 @@ magazines: 10
 ```
 
 ::tabs
+
+::tab antlers
+
 ``` antlers
 {{ books | add:5 }}
 {{ books | add:magazines }}
 {{ books | +:magazines }}
 ```
-
+::tab blade
 ```blade
+{{-- Using Modifiers --}}
+{{ Statamic::modify($books)->add(5) }}
+{{ Statamic::modify($books)->add($magazines) }}
+{{ Statamic::modify($books)->add($magazines) }}
+
+{{-- Using PHP --}}
 {{ $books + 5 }}
 {{ $books + $magazines }}
 {{ $books + $magazines }}
