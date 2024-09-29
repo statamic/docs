@@ -18,12 +18,15 @@ summary: >
 ```
 
 ::tabs
+
+::tab antlers
 ```antlers
 {{ summary | add_slashes }}
 ```
 
+::tab blade
 ```blade
-{{ Statamic::modify($summary)->addSlashes()->fetch() }}
+{{ Statamic::modify($summary)->addSlashes() }}
 ```
 ::
 
