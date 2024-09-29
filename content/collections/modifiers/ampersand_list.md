@@ -26,7 +26,7 @@ fruits:
 ```
 
 ```blade
-{{ Statamic::modify($fruits)->ampersandList()->fetch() }}
+{{ Statamic::modify($fruits)->ampersandList() }}
 ```
 ::
 
