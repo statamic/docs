@@ -39,10 +39,33 @@ parameters:
 
 If you ever find yourself needing to loop over all the assets in a container or folder instead of selecting them manually with the [assets fieldtype](/fieldtypes/assets), this tag was designed to make you smile.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ assets container="photoshoots" }}
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /assets }}
 ```
+
+::tab blade
+```blade
+{{-- Using Statamic Elements --}}
+<statamic:assets
+  container="photoshoots"
+>
+	<img src="{{ $url }}" alt="{{ $alt }}" />
+</statamic:assets>
+
+{{-- Using Fluent Tags --}}
+@php
+	$assets = Statamic::tag('assets')->container('photoshoots')->fetch();
+@endphp
+
+@foreach ($assets as $asset)
+	<img src="{{ $asset->url }}" alt="{{ $asset->alt }}" />
+@endforeach
+```
+::
 
 This tag returns an array of [Asset](/assets) objects. You'll have access to all the data and meta data on each file.
