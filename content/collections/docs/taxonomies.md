@@ -115,11 +115,21 @@ tags:
   - sauce
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ tags }}
   {{ title }}, {{ url }}, {{ slug }}, etc
 {{ /tags }}
 ```
+::tab blade
+```blade
+@foreach ($tags as $tag)
+  {{ $tag->title }}, {{ $tag->url }}, {{ $tag->slug }}, etc
+@endforeach
+```
+::
 
 ```
 Awesome, /tags/awesome, awesome, etc
@@ -136,7 +146,10 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 
 When on a [taxonomy route](#routing), you can list the terms by using a `terms` tag pair. For example:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ terms }}
     <li><a href="{{ url }}">{{ title }}</a></li>
@@ -148,11 +161,29 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
 :::
 
+::tab blade
+```blade
+<ul>
+  @foreach ($terms as $term)
+    <li><a href="{{ $term->url }}">{{ $term->title }}</a></li>
+  @endforeach
+</ul>
+```
+
+:::tip
+You can replace the `terms` tag with the name of the taxonomy. eg. `$tags` or `$categories`
+:::
+::
+
+
 ### Listing Term Entries
 
 When on a [term route](#routing), you can list the entries by using an `entries` tag pair. For example:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ entries paginate="5" }}
   <ul>
   {{ results }}
@@ -161,6 +192,17 @@ When on a [term route](#routing), you can list the entries by using an `entries`
   </ul>
 {{ /entries }}
 ```
+::tab blade
+```blade
+@php($results = $entries->paginate(5))
+
+<ul>
+	@foreach ($results->items() as $result)
+		<li><a href="{{ $result->url }}">{{ $result->title }}</a></li>
+	@endforeach
+</ul>
+```
+::
 
 ## Search Indexes
 
