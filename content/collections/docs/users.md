@@ -160,7 +160,7 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/8.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
+Consult the [Laravel documentation](https://laravel.com/docs/11.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
 
 ## Storing User Records {#storage}
 

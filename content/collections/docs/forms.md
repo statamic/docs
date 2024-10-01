@@ -519,7 +519,7 @@ axios.post(form.action, new FormData(form))
 ```
 
 ## Precognition
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/10.x/precognition) in forms.
+Statamic supports using [Laravel Precognition](https://laravel.com/docs/11.x/precognition) in forms.
 
 Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
 

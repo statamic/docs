@@ -1,6 +1,6 @@
 ---
 title: Requirements
-intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/9.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
+intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/11.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
 template: page
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
@@ -44,7 +44,7 @@ You can even share your sites publicly using local tunnels. We use it ourselves 
 
 ### Windows: WAMP
 
-[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion. You may also want to checkout [Laravel Sail](https://laravel.com/docs/8.x/sail), which works well with Statamic or the [Valet for Windows port][valet-windows].
+[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion. You may also want to checkout [Laravel Sail](https://laravel.com/docs/11.x/sail), which works well with Statamic or the [Valet for Windows port][valet-windows].
 
 
 
