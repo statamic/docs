@@ -15,7 +15,7 @@ parameters:
   -
     name: tags
     type: string|array
-    description: 'The [cache tags](https://laravel.com/docs/8.x/cache#cache-tags) this section will be using, if you''d like to invalidate this pair programmatically. If you use this, do not also use `key`.'
+    description: 'The [cache tags](https://laravel.com/docs/9.x/cache#cache-tags) this section will be using, if you''d like to invalidate this pair programmatically. If you use this, do not also use `key`.'
   -
     name: scope
     type: 'string'

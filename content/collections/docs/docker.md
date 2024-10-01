@@ -7,7 +7,7 @@ intro: Docker is an open source project that streamlines the deployment of an ap
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 ## Overview
-[Laravel Sail](https://laravel.com/docs/9.x/sail) is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building Laravel applications without requiring prior Docker experience, and is a perfect fit for Statamic with a few tweaks.
+[Laravel Sail](https://laravel.com/docs/11.x/sail) is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building Laravel applications without requiring prior Docker experience, and is a perfect fit for Statamic with a few tweaks.
 
 At its heart, Sail is a `docker-compose.yml` file and script that is stored at the root of your project. The sail script provides a CLI with convenient methods for interacting with the Docker containers defined by the `docker-compose.yml` file.
 
@@ -75,4 +75,4 @@ Keep in mind that  commands need to be run inside Sail.
 
 ## Learn more about Laravel Sail
 
-The [Laravel Sail docs](https://laravel.com/docs/9.x/sail) cover a lot more of what you can do with Sail. Check them out!
+The [Laravel Sail docs](https://laravel.com/docs/11.x/sail) cover a lot more of what you can do with Sail. Check them out!

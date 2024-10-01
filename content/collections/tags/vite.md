@@ -49,7 +49,7 @@ Additionally, you can set custom locations for the build directory and hot file.
 ```
 {{ vite src="resources/css/tailwind.css|resources/js/site.js" directory="bundle" hot="storage/vite.hot" }}
 ```
-When using these options, please make sure to also adjust your `vite.config.js` file. More about advanced customization can be found in [Laravel's Vite docs](https://laravel.com/docs/9.x/vite#advanced-customization).
+When using these options, please make sure to also adjust your `vite.config.js` file. More about advanced customization can be found in [Laravel's Vite docs](https://laravel.com/docs/11.x/vite#advanced-customization).
 
 ## Processing Static Assets With Vite
 

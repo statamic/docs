@@ -215,7 +215,7 @@ If you omit the `prefix` you won't be able to import them more than once at the 
 
 Fields can have various validation rules applied to them, enforcing the need for content creators to fill them out in a specific way before saving or publishing.
 
-While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/8.x/validation#available-validation-rules).
+While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/11.x/validation#available-validation-rules).
 
 On top of any Laravel validation rules, there are some Statamic-specific goodies (like usage with conditional fields, Grids, Bards, or Replicators) that are explained on our [dedicated validation documentation](/validation).
 
