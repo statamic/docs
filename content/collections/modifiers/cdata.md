@@ -12,9 +12,17 @@ Wraps a string in [CDATA][cdata] tags, useful for formatting characters properly
 title: My Very Own Podcast
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | cdata }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($title)->cdata() !!}
+```
+::
 
 ```html
 <![CDATA[My Very Own Podcast]]>

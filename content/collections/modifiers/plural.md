@@ -18,12 +18,22 @@ shopping_list:
     quantity: 500
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 Please pick up the following items:
 {{ shopping_list }}
   - {{ quantity }} {{ item | plural($quantity) }}.
 {{ /shopping_list }}
 ```
+::tab blade
+```blade
+@foreach ($shopping_list as $item)
+  - {{ $item['quantity'] }} {{ Statamic::modify($item)->plural($item['quantity']) }}
+@endforeach
+```
+::
 
 ```html
 Please pick up the following items:

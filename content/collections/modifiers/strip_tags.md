@@ -17,11 +17,21 @@ html: >
 unwanted: [p, blockquote]
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ html | strip_tags }}
 {{ html | strip_tags('p') }}
 {{ html | strip_tags($unwanted) }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($html)->stripTags() !}}
+{!! Statamic::modify($html)->stripTags('p') !}}
+{!! Statamic::modify($html)->stripTags($unwanted) !}}
+```
+::
 
 ```html
 "Things we lose have a way of coming back to us in the end,

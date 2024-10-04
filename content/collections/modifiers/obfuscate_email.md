@@ -12,9 +12,15 @@ Obfuscates an email address with special characters making it hard for spam bots
 holler: holler@example.com
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ holler | obfuscate_email }}
 ```
+::tab blade
+{{ Statamic::modify($holler)->obfuscateEmail() }}
+::
 
 ```html
 # output appears as holler@example.com

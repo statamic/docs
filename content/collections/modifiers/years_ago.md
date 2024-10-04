@@ -18,9 +18,17 @@ Returns the number of years since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date | years_ago }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($date)->yearsAgo() }}
+```
+::
 
 ```html
 {{ test_date | years_ago }}

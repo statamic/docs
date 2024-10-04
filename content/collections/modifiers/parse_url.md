@@ -12,10 +12,19 @@ Get information about a URL.
 url: 'http://example.com/path?query=1'
 ```
 
+::tabs
+
+::tab antlers
 ``` antlers
 {{ url | parse_url }}
 {{ url | parse_url('host') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($url)->parseUrl() }}
+{{ Statamic::modify($url)->parseUrl('host') }}
+```
+::
 
 ```php
 [

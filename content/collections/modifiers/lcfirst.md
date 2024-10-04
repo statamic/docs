@@ -12,9 +12,17 @@ Converts the first character of the supplied string to lower case.
 title: Wow
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | lcfirst }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->lcfirst() }}
+```
+::
 
 ```html
 wow

@@ -14,11 +14,21 @@ entry_url: /waffles
 not_a_url: bacon
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if google_url | is_external_url }}
 {{ if entry_url | is_external_url }}
 {{ if not_a_url | is_external_url }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($google_url)->isExternalUrl()->fetch()) ... @endif
+@if (Statamic::modify($entry_url)->isExternalUrl()->fetch()) ... @endif
+@if (Statamic::modify($not_a_url)->isExternalUrl()->fetch()) ... @endif
+```
+::
 
 ```html
 true

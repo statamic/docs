@@ -12,7 +12,16 @@ Send a variable to Spatie's [Ray](https://myray.app) app.
 
 You can pass a string with a color name as parameter to get it colored in Ray. Note that you need to have the [spatie/laravel-ray](https://github.com/spatie/laravel-ray) package installed.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ your_field | ray }}
 {{ your_field | ray('red'} }
 ```
+::tab blade
+```blade
+@php(Statamic::modify($your_field)->ray())
+@php(Statamic::modify($your_field)->ray('red'))
+```
+::

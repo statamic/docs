@@ -12,10 +12,19 @@ ghost:
 zombie: BRAINSSSS
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if ghost | is_blank }}
 {{ if zombie | is_blank }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($ghost)->isBlank()->fetch()) @endif
+@if (Statamic::modify($zombie)->isBlank()->fetch()) @endif
+```
+::
 
 ```html
 true

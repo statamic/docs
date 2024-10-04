@@ -11,9 +11,17 @@ URL-encode a variable according to [RFC 3986][rfc-3986].
 example: please and thank you/Mommy
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 http://example.com/{{ example | rawurlencode }}
 ```
+::tab blade
+```blade
+https://example.com/{{ Statamic::modify($example)->rawurlencode() }}
+```
+::
 
 ```html
 http://example.com/please%20and%thank&20you%2FMommy

@@ -11,9 +11,17 @@ Repeats a value any given number of times. For fun.
 lyric: can't touch this
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ lyric | repeat(3) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($lyric)->repeat(3) }}
+```
+::
 
 ```html
 can't touch this can't touch this can't touch this

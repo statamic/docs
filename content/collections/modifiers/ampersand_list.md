@@ -21,10 +21,12 @@ fruits:
 ```
 
 ::tabs
+::tab antlers
 ```antlers
 {{ fruits | ampersand_list }}
 ```
 
+::tab blade
 ```blade
 {{ Statamic::modify($fruits)->ampersandList() }}
 ```

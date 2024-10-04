@@ -18,9 +18,17 @@ Returns the number of weeks since a given date variable. Statamic will attempt t
 date: October 1 2015
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date | weeks_ago }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($date)->weeksAgo() }}
+```
+::
 
 ```html
 {{ test_date | weeks_ago }}

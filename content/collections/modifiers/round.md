@@ -12,10 +12,19 @@ Rounds a number to a specified precision (number of digits after the decimal poi
 pi: 3.14159265359
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ pi | round }}
 {{ pi | round(2) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($pi)->round() }}
+{{ Statamic::modify($pi)->round(2) }}
+```
+::
 
 ```html
 3

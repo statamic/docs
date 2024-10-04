@@ -47,7 +47,7 @@ The following example assumes `max_items` has been set to `1`.
 
 ::tab blade
 ```blade
-{{-- Using Tag Elements --}}
+{{-- Using Statamic Tags --}}
 <statamic:user:is
 	:role="$role_field->handle"
 >

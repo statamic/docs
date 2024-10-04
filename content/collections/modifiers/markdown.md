@@ -13,9 +13,17 @@ quote: You can't wait for inspiration. **You have to go after it with a club.**
 
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ quote | markdown }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($quote)->markdown() !!}
+```
+::
 
 ```html
 <p>

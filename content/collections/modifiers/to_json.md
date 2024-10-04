@@ -17,9 +17,17 @@ stats:
     score: 1425
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ stats | to_json }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($stats)->toJson() !!}
+```
+::
 
 ```html
 [

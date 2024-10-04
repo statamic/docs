@@ -23,13 +23,21 @@ stuff:
 
 Would produce the following output:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
     <li>Value One</li>
     <li>The finest title there ever was</li>
     <li>Value Two</li>
 </ul>
 ```
+::tab blade
+```blade
+{!! Statamic::modify("stuff:one, title, stuff:two")->compact()->ul() !!}}
+```
+::
 
 :::tip
 It's similar to PHP's `compact()` function.

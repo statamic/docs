@@ -17,10 +17,19 @@ array:
 string: LEEEEROOOYYYY JEEENKINNNSS!
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ array | length }}
 {{ string | length }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($array)->length() }}
+{{ Statamic::modify($string)->length() }}
+```
+::
 
 ```html
 3

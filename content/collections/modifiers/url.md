@@ -13,9 +13,17 @@ Get the URL of an Asset, Page, Entry, or Taxonomy term from an ID.
 hero_image: 98hf98-sfq4h8f94-fd9s0fj0l
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ hero_image | url }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($hero_image)->url() }}
+```
+::
 
 ```html
 /assets/flying-bacon-wearing-a-batman-mask.jpg

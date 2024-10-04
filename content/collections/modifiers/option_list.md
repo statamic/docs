@@ -20,8 +20,21 @@ collections:
   - wigs
 ```
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ collection from="{collections|option_list}" }}
 ```
+::tab blade
+```blade
+<statamic:collection
+  :from="Statamic::modify($collections)->optionList()->fetch()"
+>
+
+</statamic:collection>
+```
+::
 
 Can also be used by its alias, [`piped`](/modifiers/piped).

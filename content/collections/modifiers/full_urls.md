@@ -12,9 +12,17 @@ Replaces root-relative URLs inside HTML attributes (e.g. `href` and `src` ) with
 I had this totally <a href="/dreams/spiders-with-ramen-legs">crazy dream</a> last night and I know you want to hear all about it!
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ content | full_urls }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($content)->fulLUrls() !!}
+```
+::
 
 ```html
 I had this totally <a href="https://example.com/dreams/spiders-with-ramen-legs">crazy dream</a> last night and I know you want to hear all about it!

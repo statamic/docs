@@ -7,9 +7,17 @@ title: Md5
 ---
 Creates an md5 hash of a variable.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ "hello" | md5 }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify('hello')->md5() }}
+```
+::
 
 ```html
 5d41402abc4b2a76b9719d911017c592

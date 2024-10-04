@@ -50,7 +50,7 @@ If you ever find yourself needing to loop over all the assets in a container or 
 
 ::tab blade
 ```blade
-{{-- Using Statamic Elements --}}
+{{-- Using Statamic Tags --}}
 <statamic:assets
   container="photoshoots"
 >

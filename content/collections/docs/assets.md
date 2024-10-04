@@ -304,7 +304,7 @@ Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamicall
 ```
 ::tab blade
 ```blade
-{{-- Using Statamic Elements --}}
+{{-- Using Statamic Tags --}}
 <statamic:glide
   :src="$img"
   width="120"

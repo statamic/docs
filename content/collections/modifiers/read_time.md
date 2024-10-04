@@ -15,10 +15,19 @@ title: A long post
 Pretend there are lots of words here...
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h1>{{ title }}</h1>
 <p>{{ content | read_time(180) }} min</p>
 ```
+::tab blade
+```blade
+<h1>{{ $title }}</h1>
+<p>{{ Statamic::modify($content)->readTime(180) }} min</p>
+```
+::
 
 ```html
 <h1>A long post</h1>

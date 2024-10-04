@@ -18,11 +18,20 @@ more_data:
     -
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if some_data | is_empty }}
 {{ if more_data | is_empty }}
 
 ```
+::tab blade
+```blade
+@if (Statamic::modify($some_data)->isEmpty()->fetch()) ... @endif
+@if (Statamic::modify($more_data)->isEmpty()->fetch()) ... @endif
+```
+::
 
 ```html
 false

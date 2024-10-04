@@ -16,9 +16,17 @@ Format a number with grouped thousands and decimal points. In other words, make 
 lucky_number: 130134.109
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ lucky_number | format_number(1, ',', ',') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($lucky_number)->formatNumber(1, ',', ',') }}
+```
+::
 
 ```html
 130,134,1

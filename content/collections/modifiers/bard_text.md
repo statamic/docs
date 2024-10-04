@@ -34,10 +34,19 @@ main_content:
         text: "Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in\_CYBERSPACE."
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ main_content | raw | bard_text }}
 {{ main_content | raw | bard_text | read_time }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($main_content)->bardText() }}
+{{ Statamic::modify($main_content)->bardText()->readTime() }}
+```
+::
 
 ```
 We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in CYBERSPACE.
