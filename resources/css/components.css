@@ -219,3 +219,9 @@ dl {
         @apply py-1 px-2 bg-mint text-black;
     }
 }
+
+.doc-tabs {
+    pre {
+        @apply mt-0 rounded-tl-none;
+    }
+}
