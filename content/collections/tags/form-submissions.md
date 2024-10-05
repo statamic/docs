@@ -32,7 +32,10 @@ stage: 4
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:submissions in="feedback" }}
     <div>
         Submitted on {{ date }}<br>
@@ -42,3 +45,33 @@ stage: 4
     </div>
 {{ /form:submissions }}
 ```
+::tab blade
+```blade
+{{-- Without aliasing. --}}
+<s:form:submissions
+  in="feedback"
+>
+  <div>
+    Submitted on {{ $date }}<br>
+    Name: {{ $name }}<br>
+    Rating: {{ $rating }}<br>
+    Comment: {{ $comment }}
+  </div>
+</s:form:submissions>
+
+{{-- With aliasing --}}
+<s:form:submissions
+  in="feedback"
+  as="submissions"
+>
+  @foreach ($submissions as $submission)
+    <div>
+      Submitted on {{ $submission->date }}<br>
+      Name: {{ $submission->name }}<br>
+      Rating: {{ $submission->rating }}<br>
+      Comment: {{ $submission->comment }}
+    </div>
+  @endforeach
+</s:form:submissions>
+```
+::
