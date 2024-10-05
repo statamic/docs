@@ -49,7 +49,8 @@ This tag can be used both as a conditional and as the data itself.
 ::tab blade
 ```blade
 <s:form:set
-  is="contact">
+  is="contact"
+>
   <s:form:errors
     as="errors"
   >
