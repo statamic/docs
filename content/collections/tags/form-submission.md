@@ -70,7 +70,7 @@ The `{{ $submission['name'] }}` and `{{ $submission['rating'] }}` variables corr
 The `$success` variable is added by the `<s:form:set></s:form:set>` tag pair. It is a shortcut for the following:
 
 ```blade
-@if (Statamic::tag('form:success')->context(get_defined_vars())->fetch())
+@if (Statamic::tag('form:success')->in('feedback')->fetch())
   ...
 @endif
 ```
