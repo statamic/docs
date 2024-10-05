@@ -21,9 +21,13 @@ stage: 4
 
 Here we'll output a small thank-you note once there's a successful submission, otherwise show the form itself.
 
+::tabs
+
+::tab antlers
+
 The `{{ name }}` and `{{ rating }}` variables correspond to input fields of the same name.
 
-```
+```antlers
 {{ form:set is="feedback" }}
     {{ if {form:success} }}
 
@@ -39,3 +43,37 @@ The `{{ name }}` and `{{ rating }}` variables correspond to input fields of the 
     {{ /if }}
 {{ /form:set }}
 ```
+::tab blade
+
+The `{{ $submission['name'] }}` and `{{ $submission['rating'] }}` variables correspond to input fields of the same name.
+
+```blade
+<s:form:set
+  is="feedback"
+>
+  @if ($success)
+    <s:form:submission
+      as="submission"
+    >
+      Thanks for your feedback, {{ $submission['name'] }}.
+      We appreciate the {{ $submission['rating'] }} star rating you gave us.
+    </s:form:submission>
+  @else
+    <s:form:create>
+      ...
+    </s:form:create>
+  @endif
+</s:form:set>
+```
+
+:::tip
+The `$success` variable is added by the `<s:form:set></s:form:set>` tag pair. It is a shortcut for the following:
+
+```blade
+@if (Statamic::tag('form:success')->context(get_defined_vars())->fetch())
+  ...
+@endif
+```
+:::
+
+::
