@@ -131,7 +131,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
       <label>{{ $field['display'] }}</label>
       <div class="p-1">{!! $field['field'] !!}</div>
       @if ($field['error'])
-        <p class="text-gray-500">{{ $field['errors'] }}</p>
+        <p class="text-gray-500">{{ $field['error'] }}</p>
       @endif
     </div>
   @endforeach

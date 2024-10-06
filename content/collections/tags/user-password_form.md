@@ -56,7 +56,11 @@ The tag will render the opening and closing `<form>` HTML elements for you.
 
 A basic user password form, with validation errors.
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ user:password_form }}
 
     {{ if errors }}
@@ -86,12 +90,46 @@ A basic user password form, with validation errors.
 
 {{ /user:password_form }}
 ```
+::tab blade
+```blade
+<s:user:password_form>
+  @if ($errors)
+    <div class="bg-red-300 text-white p-2">
+      @foreach ($errors as $error)
+        {{ $error }}<br>
+      @endforeach
+    </div>
+  @endif
+
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}<br>
+    </div>
+  @endif
+
+  <label>Current Password</label>
+  <input type="password" name="current_password" />
+
+  <label>New Password</label>
+  <input type="password" name="password" />
+
+  <label>Confirm Password</label>
+  <input type="password" name="password_confirmation" />
+
+  <button type="submit">Save</button>
+</s:user:password_form>
+```
+::
 
 ## Dynamic Rendering
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <div class="p-2">
         <label>{{ display }}</label>
@@ -102,6 +140,23 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
     </div>
 {{ /fields }}
 ```
+::tab blade
+```blade
+<s:user:password_form>
+
+  @foreach ($fields as $field)
+    <div class="p-2">
+      <label>{{ $field['display'] }}</label>
+      <div class="p-1">{!! $field['field'] !!}</div>
+      @if ($field['error'])
+        <p class="text-gray-500">{{ $field['error'] }}</p>
+      @endif
+    </div>
+  @endforeach
+
+</s:user:password_form>
+```
+::
 
 Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
 
