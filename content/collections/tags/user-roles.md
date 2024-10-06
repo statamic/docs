@@ -67,14 +67,14 @@ If you only want a specific role or roles, you can pass their handle(s) using th
 
 ::tab antlers
 ```antlers
-{{ user_roles handle="group_1|group_2" }}
+{{ user_roles handle="role_1|role_2" }}
   // cool stuff goes here
 {{ /user_roles }}
 ```
 ::tab blade
 ```blade
 <s:user_roles
-  handle="group_1|group_2"
+  handle="role_1|role_2"
 >
   // cool stuff goes here
 </s:user_roles>
