@@ -56,7 +56,10 @@ The tag will render the opening and closing `<form>` HTML elements for you.
 
 A basic profile edit form, with validation errors.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:profile_form }}
 
     {{ if errors }}
@@ -86,6 +89,11 @@ A basic profile edit form, with validation errors.
 
 {{ /user:profile_form }}
 ```
+::tab blade
+```blade
+
+```
+::
 
 ## Blueprints Fields
 
