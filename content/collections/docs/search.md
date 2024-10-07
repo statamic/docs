@@ -203,7 +203,7 @@ class MyTransformer
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
 ``` shell
-# Select which indexes to update from a prompt
+# Select which indexes to update
 php please search:update
 
 # Update a specific index
