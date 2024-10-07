@@ -26,18 +26,41 @@ id: 444d1109-ed96-4162-b86d-24b39f569220
 ## Redirecting to URLs
 
 Let's redirect visitors to the homepage if they're not logged in.
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ if ! logged_in }}
   {{ redirect to="/" }}
 {{ /if }}
 ```
+::tab blade
+```blade
+@if (! $logged_in)
+  <s:redirect to="/" />
+@endif
+```
+::
 
 How about RickRolling visitors if it's April Fool's Day?
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ if (now|format:m-d) == "04-01" }}
   {{ redirect to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" }}
 {{ /if }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($now)->format('m-d')->fetch() == '04-01')
+  <s:redirect to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+@endif
+```
+
+::
 
 
 ## Named Routes
@@ -49,7 +72,19 @@ Route::get('products/{product}/{size}', fn($product, $size) => ...)
      ->name('products.show');
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ redirect route="products.show" product="socks" size="large" }}
 // /products/socks/large
 ```
+::tab blade
+```blade
+<s:redirect
+  route="products.show"
+  product="socks"
+  size="large"
+/>
+```
+::
