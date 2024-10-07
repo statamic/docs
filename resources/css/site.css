@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 
 /* @import "code"; */
-@import "carbonads";
 @import "content";
 @import "components";
 @import "layout";

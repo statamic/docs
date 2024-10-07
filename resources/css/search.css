@@ -1,6 +1,6 @@
 /* Algolia DocSearch Variables */
 :root {
-    --docsearch-primary-color: theme('colors.purple') !important;
+    /* --docsearch-primary-color: theme('colors.purple-500') !important; */
     --docsearch-text-color: rgb(28, 30, 33);
     --docsearch-spacing: 16px !important;
     --docsearch-icon-stroke-width: 1.4;
@@ -13,7 +13,7 @@
     --docsearch-modal-width: 760px !important;
     --docsearch-modal-height: 600px;
     --docsearch-modal-background: #fff !important;
-    --docsearch-modal-shadow: 4px 4px 0 theme('colors.black') !important;
+    /* --docsearch-modal-shadow: 4px 4px 0 theme('colors.black') !important; */
 
     /* searchbox */
     --docsearch-searchbox-height: 56px;
@@ -25,7 +25,7 @@
     --docsearch-hit-height: 56px;
     --docsearch-hit-color: rgb(68, 73, 80);
     --docsearch-hit-active-color: #fff;
-    --docsearch-hit-background: theme('colors.gray.lightest') !important;
+    --docsearch-hit-background: theme('colors.gray.100') !important;
     --docsearch-hit-shadow: none !important;
 
     /* key */
@@ -64,7 +64,7 @@
 }
 
 .DocSearch-Hit-path {
-    @apply text-lg font-display font-medium text-black !important;
+    @apply text-lg font-sans font-medium text-black !important;
 }
 
 .DocSearch-Hits mark {

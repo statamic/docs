@@ -1,10 +1,12 @@
 {{ if segment_2 }}
-<nav class="breadcrumbs space-x-2 flex mb-8 text-sm">
-    <a href="/" class="no-underline font-normal">Docs</a>
+<nav class="space-x-1 font-normal flex items-center text-sm leading-tight not-prose mb-2">
+    <a href="/" class="text-sky-500">Docs</a>
     {{ nav:breadcrumbs include_home="false" }}
         {{ if ! is_current }}
-            <span>/</span>
-            <a href="{{ url }}" class="no-underline font-normal">{{ breadcrumb_title ?? nav_title ?? title }}</a>
+            <svg class="shrink-0 h-4 w-4 mx-1 mt-px text-zinc-400 dark:text-white/80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+            </svg>
+            <a href="{{ url }}" class="text-sky-500">{{ breadcrumb_title ?? nav_title ?? title }}</a>
         {{ /if }}
     {{ /nav:breadcrumbs }}
 </nav>

@@ -1,5 +1,5 @@
 title: Tags
-template: tags.show
+template: page
 layout: layout
 mount: 710810c7-f710-4364-a6e4-cedf8c292d88
 revisions: false
@@ -7,3 +7,4 @@ route: '/tags/{slug}'
 sort_dir: asc
 inject:
   section: reference
+  view_model: App\ViewModels\Tags

@@ -9,11 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
+        "jonassiewertsen/statamic-livewire": "^3.8",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.0",
         "league/commonmark": "^2.0",
+        "livewire/livewire": "^3.5",
         "statamic/cms": "^4.0",
         "statamic/ssg": "^2.0",
+        "stillat/antlers-components": "^2.3",
         "torchlight/torchlight-commonmark": "^0.5.5"
     },
     "require-dev": {

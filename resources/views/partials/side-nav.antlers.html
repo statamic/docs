@@ -1,28 +1,29 @@
-<div id="side-nav" class="md:block relative w-full z-10 md:w-64 lg:px-2 md:mr-16 lg:-ml-6 {{ ! segment_1 ?= 'z-10' }}" :class="{'mobile-open': showNav}" x-show="showNav">
+<div id="side-nav" class="md:block relative w-full z-10 md:w-[19rem] {{ ! segment_1 ?= 'z-10' }}" x-persist="side-nav">
     {{ if section }}
-    <div class="side-nav bg-white dark:bg-black md:bg-transparent sticky top-24 pb-6" x-data="{ open: 'Getting Started' }">
-        <nav class="lg:overflow-y-auto lg:overflow-x-visible lg:max-h-screen-sans-nav">
-            <header class="hidden md:block font-display font-bold text-xl ml-6 border-b-2 border-gray dark:text-white">{{ section | deslugify | title }}</header>
+    <div wire:scroll class="overflow-y-auto side-nav bg-white dark:bg-black md:bg-transparent pb-6 fixed" :style="{ 'max-height': 'calc(100dvh - ' + $el.offsetTop + 'px)' }">
+        <nav>
             <div class="md:hidden">
                 <div class="grid grid-cols-2 gap-2 mb-6">
                     {{ nav:collection:sections include_home="true" }}
-                        <a class="text-lg font-display p-2 font-medium border shadow-sm text-center hover:text-pink {{ page:section === section ? 'bg-mint' : 'dark:bg-white' }}" href="{{ url }}">{{ nav_title ?? title }}</a>
+                        <a wire:navigate class="text-base p-2 font-normal border shadow-sm text-center {{ page:section === section ? 'bg-mint' : 'dark:bg-white' }}" href="{{ url }}">{{ nav_title ?? title }}</a>
                     {{ /nav:collection:sections }}
                 </div>
-                {{ svg src="zig-zag-lg" class="w-full my-4 mx-auto" }}
             </div>
             <div class="pl-2 md:p-0">
                 {{ nav :handle="section" }}
-                <div class="relative pl-1">
-                    <button class="text-lg relative font-medium font-display mt-4 mb-2 flex items-center dark:text-white" @click="open = (open === '{{ title }}') ? '' : '{{ title }}'">
-                        <span class="mr-2 relative -top-px transform transistion duration-100" :class="{'rotate-90': open === '{{ title }}' }">{{ svg src="img/chevron2" class="dark:text-current-color" }}</span>
-                        <span>{{ title }}</span>
-                    </button>
-                    <ul class="space-y-2 text-base ml-[1.35rem] antialised" x-show="open == '{{ title }}'">
+                <div class="relative">
+                    <div class="text-base text-zinc-600 font-normal mt-2 mb-2 flex items-center dark:text-white" >
+                        {{ title }}
+                    </div>
+                    <ul class="list-inside border-l space-y-2 text-base mb-4 ml-1">
                         {{ if children }}
                             {{ children scope="child" }}
-                                <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
-                                    <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
+                                <li>
+                                    <a wire:navigate
+                                        href="{{ url }}"
+                                        class="border-l hover:border-black pl-4 border-transparent"
+                                        wire:current.class="active !border-black !text-black"
+                                    >
                                         {{ nav_title ?? title }}
                                     </a>
                                 </li>
@@ -30,14 +31,22 @@
                         {{ /if }}
                         {{ if section == "reference" }}
                             <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
-                                <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
+                                <a wire:navigate
+                                    href="{{ url }}"
+                                    class="border-l hover:border-black pl-4 border-transparent"
+                                    wire:current.class="active !border-black !text-black"
+                                >
                                     All {{ title }}
                                 </a>
                             </li>
 
                             {{ collection :from="slug" }}
                                 <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
-                                    <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
+                                    <a wire:navigate
+                                        href="{{ url }}"
+                                        class="border-l hover:border-black pl-4 border-transparent"
+                                        wire:current.class="active !border-black !text-black"
+                                    >
                                         {{ nav_title ?? title }}
                                     </a>
                                 </li>
@@ -48,9 +57,9 @@
                 {{ /nav }}
             </div>
         </nav>
-        {{ if segment_1 }}
+        {{# {{ if segment_1 }}
             {{ partial:sidebar-promo}}
-        {{ /if }}
+        {{ /if }} #}}
     </div>
     {{ /if }}
 </div>

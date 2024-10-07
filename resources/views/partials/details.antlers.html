@@ -1,18 +1,18 @@
 <div class="space-y-10">
     {{ details }}
-    <div class="parameter relative">
-        <header class="inline-flex items-center relative shadow-stack-sm border overflow-hidden h-10">
-            <h3 class="bg-black m-0 py-2 px-4 font-bold font-mono-alt text-base text-white tracking-wide">
+    <div class="parameter relative not-prose">
+        <header class="inline-flex items-center relative border rounded-t text-sm font-mono leading-none overflow-hidden">
+            <h3 class="bg-black px-2 py-2 text-white font-bold">
                 {{ name }}
             </h3>
-            <div class="bg-mint py-4 px-4 font-mono leading-none text-xs font-bold">
+            <div class="px-2 py-2 font-bold text-black">
                 {{ type }}
             </div>
             {{ if required }}
-                <div class="bg-white py-4 px-4 font-mono leading-none text-xs font-bold text-pink border-l">required</div>
+                <div class="bg-white px-2 py-2 border-l text-zinc-500">required</div>
             {{ /if }}
         </header>
-        <div class="markdown markdown-tight bg-gray-lightest text-base text-black px-4 py-2 leading-tight shadow-stack-sm border relative z-10 -top-px">
+        <div class="prose border rounded-b rounded-tr p-4 -mt-px relative">
             {{ description | widont  }}
         </div>
     </div>
