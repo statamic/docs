@@ -30,16 +30,20 @@ You can solve this by adding Composer's `bin` directory to your `PATH` (sometime
 
 ## MacOS or Linux
 
-Find out what shell you're using by running `echo $SHELL`.
+1. You'll need to find Composer's global directory. This is usually somewhere in your home directory. This command will output the absolute path:
+    ``` shell
+    composer global config bin-dir --absolute
+    ```
 
-- If it's `bash`, create a `~/.bashrc` file.
-- If it's `zsh`, create a `~/.zshrc` file.
+2. Identify which shell you're using. You can determine this by running `echo $SHELL`.
+3. Next, you'll need to add Composer's `bin` directory to your shell `rc` file. Feel free to create the file if it doesn't already exist.
+    - If you're using `bash`, this will be  `~/.bashrc`
+    - If you're using `zsh`, this will be `~/.zshrc`
 
-Then add this to the end of it:
-
-``` shell
-export PATH=${PATH}:~/.composer/vendor/bin
-```
+    ``` shell
+    # Replace the path below with the path identified in step 1
+    export PATH="/Users/me/.composer/vendor/bin/":$PATH
+    ```
 
 To test it, open a _new_ terminal window and run `echo $PATH`. You should see the composer directory at the end.
 
