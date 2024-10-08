@@ -41,7 +41,10 @@ The HTML of the form itself is up to you. The only requirement is to name the pa
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ protect:password_form }}
     {{ if no_token }}
         No token has been provided.
@@ -62,6 +65,29 @@ The HTML of the form itself is up to you. The only requirement is to name the pa
     {{ /if }}
 {{ /protect:password_form }}
 ```
+::tab blade
+```blade
+<s:protect:password_form>
+  @if ($no_token)
+    No token has been provided.
+  @else
+    @if ($error)
+      <div class="error">{{ $error }}</div>
+    @endif
+
+    <input type="password" name="password" />
+
+    @if (isset($errors['password']))
+      @foreach ($errors['password'] as $error)
+        <div class="inline-error">{{ $error }}</div>
+      @endforeach
+    @endif
+
+    <button>Submit</button>
+  @endif
+</s:protect:password_form>
+```
+::
 
 ### Tokens
 
