@@ -87,8 +87,6 @@ If you encounter any issues running `statamic new`, like a `Command not found` e
     <figcaption>Hot pink and sweet lookin' 💅</figcaption>
 </figure>
 
-For a more in-depth guide on using the CLI and all of its options, have a look at [its docs](/cli).
-
 ## Access the site
 
 Sweet, if you did all the previous steps you should now be able to open your site at  `http://your-project-name.test`.
