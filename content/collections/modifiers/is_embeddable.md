@@ -15,11 +15,21 @@ vimeo: https://vimeo.com/22439234
 other: http://example.com/video.mp4
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ youtube | is_embeddable }}
 {{ vimeo | is_embeddable }}
 {{ other | is_embeddable }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($youtube)->isEmbeddable()->fetch()) ... @endif
+@if (Statamic::modify($vimeo)->isEmbeddable()->fetch()) ... @endif
+@if (Statamic::modify($other)->isEmbeddable()->fetch()) ... @endif
+```
+::
 
 ```html
 true

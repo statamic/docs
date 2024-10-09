@@ -23,9 +23,17 @@ Returns the number of days since a given date variable. Statamic will attempt to
 date: December 25 2021
 ```
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ date | days_ago }}
 ```
+::tab blade
+```blade`
+{{ Statamic::modify($date)->daysAgo() }}
+``
+::
 
 ```output
 6

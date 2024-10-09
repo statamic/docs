@@ -34,7 +34,10 @@ To make dev life easier, this tag collapses whitespace automatically and can set
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // Using resources/svg/circle.svg
 {{ svg src="circle" class="fill-current text-teal" }}
 
@@ -44,6 +47,18 @@ To make dev life easier, this tag collapses whitespace automatically and can set
 // Using a variable `promo_graphic` (defined in your blueprint)
 {{ svg :src="promo_graphic" class="fill-current text-orange" }}
 ```
+::tab blade
+```blade
+// Using resources/svg/circle.svg
+<s:svg src="circle" class="fill-current text-teal" />
+
+// Using public/img/icons/square
+<s:svg src="img/icons/square" class="fill-current text-mint" />
+
+// Using a variable `promo_graphic` (defined in your blueprint)
+<s:svg :src="$promo_graphic" class="fill-current text-orange" />
+```
+::
 
 ```html
 <svg class="fill-current text-teal" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

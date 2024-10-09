@@ -8,9 +8,17 @@ title: Current Layout
 ---
 The name of the layout currently in use.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ current_layout }}
 ```
+::tab blade
+```blade
+{{ $current_layout }}
+```
+::
 
 ```html
 layouts.blog

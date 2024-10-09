@@ -19,10 +19,19 @@ array:
   - Tails
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | shuffle }}
 {{ array | shuffle }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->shuffle() }}
+{{ Statamic::modify($array)->shuffle()->fetch() }}
+```
+::
 
 ```yaml
 string: a nhglRsws.oMtiotr hprriao eeo.b ti

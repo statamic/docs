@@ -11,9 +11,17 @@ Removes a specified number of characters from the end of a string.
 title: supercalifragilisticexpialidocious
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | backspace:29 }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->backspace(29) }}
+```
+::
 
 ```html
 super

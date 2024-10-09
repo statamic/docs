@@ -11,10 +11,24 @@ Returns `true` if the value starts with a given string. This comparison is case-
 reply: Actually, I disagree because this is the internet.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if reply | starts_with('actually') }}
 {{ if reply | starts_with('respectfully') }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($reply)->startsWith('actually')->fetch())
+
+@endif
+
+@if (Statamic::modify($reply)->startsWith('respectfully')->fetch())
+
+@endif
+```
+::
 
 ```html
 true

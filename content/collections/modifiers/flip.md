@@ -13,10 +13,19 @@ favorites:
   drink: soda
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ favorites | json }}
 {{ favorites | flip | json }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($favorites)->json() !!}
+{!! Statamic::modify($favorites)->flip()->json() !!}
+```
+::
 
 ```json
 {"food":"burger","drink":"soda"}

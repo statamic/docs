@@ -15,9 +15,17 @@ summary: |
   on multiple lines
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ summary | nl2br }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($summary)->nl2br() !!}
+```
+::
 
 ```html
 This is a summary

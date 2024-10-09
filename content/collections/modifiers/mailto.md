@@ -12,9 +12,17 @@ Generate a `mailto` link element with the value as the email address. If it's _n
 holler: holler@example.com
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ holler | mailto }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($holler)->mailto() }}
+```
+::
 
 ```html
 <a href="mailto:holler@example.com">holler@example.com</a>

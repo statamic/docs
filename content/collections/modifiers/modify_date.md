@@ -12,11 +12,21 @@ Alters a timestamp by incrementing or decrementing in a format accepted by PHP's
 date: January 1, 2000
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date | modify_date("-1 day") }}
 {{ date | modify_date("next Sunday") }}
 {{ date | modify_date("+3 months") }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($date)->modifyDate('-1 day') }}
+{{ Statamic::modify($date)->modifyDate('next Sunday') }}
+{{ Statamic::modify($date)->modifyDate('+3 months') }}
+```
+::
 
 ```html
 December 31, 1999

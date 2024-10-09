@@ -29,7 +29,10 @@ video: https://www.youtube.com/watch?v=s9F5fhJQo34
 You can use the [is_embeddable](/modifiers/is_embeddable) and
 [embed_url](/modifiers/embed_url) modifiers to display your video player.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if video | is_embeddable }}
     <!-- Youtube and Vimeo -->
     <iframe src="{{ video | embed_url }}" ...></iframe>
@@ -38,3 +41,14 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
     <video src="{{ video | embed_url }}" ...></video>
 {{ /if }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($video)->isEmbeddable()->fetch())
+	<!-- Youtube and Vimeo -->
+	<iframe src="{{ Statamic::modify($video)->embedUrl() }}" ...></iframe>
+@else
+	<!-- Other HTML5 video types -->
+	<video src="{{ Statamic::modify($video)->embedUrl() }}" ...></video>
+@endif
+```
+::

@@ -12,12 +12,21 @@ bottles: 3
 glasses: 14
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glasses | mod(14) }}
 {{ glasses | mod($bottles) }}
 {{ glasses | %($bottles) }}
 
 ```
+::tab blade
+```blade
+{{ Statamic::modify($glasses)->mod(14) }}
+{{ Statamic::modify($glasses)->mod($bottles) }}
+```
+::
 
 ```html
 0

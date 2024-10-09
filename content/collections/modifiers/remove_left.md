@@ -12,9 +12,17 @@ Ensures that the string never begins with a specified string.
 twitter: @statamic
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="http://twitter.com/{{ twitter | remove_left('@') }}">Twitter</a>
 ```
+::tab blade
+```blade
+<a href="http://twitter.com/{{ Statamic::modify($twitter)->removeLeft('@') }}">Twitter</a>
+```
+::
 
 ```html
 <a href="http://twitter.com/statamic">Twitter</a>

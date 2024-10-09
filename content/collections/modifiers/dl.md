@@ -18,9 +18,17 @@ food:
     - kale
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ food | dl }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($food)->dl() !!}
+```
+::
 
 ```html
 <dl>

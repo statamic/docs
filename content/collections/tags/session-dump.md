@@ -6,9 +6,22 @@ stage: 5
 id: d1ef36ac-7d21-40b2-a7fc-b53a0be3c79c
 ---
 ## Example
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ session:dump }}
 ```
+::tab blade
+```blade
+{{-- Using session() helper and PHP --}}
+@php(dump(session()->all()))
+
+{{-- Using Antlers Blade Components --}}
+<s:session:dump />
+```
+::
 
 <figure>
     <img src="/img/session-dump.png" alt="Screenshot of the output of a session:dump tag.">

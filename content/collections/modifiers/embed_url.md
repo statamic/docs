@@ -15,11 +15,21 @@ vimeo: https://vimeo.com/22439234
 other: http://example.com/video.mp4
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ youtube | embed_url }}
 {{ vimeo | embed_url }}
 {{ other | embed_url }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($youtube)->embedUrl() }}
+{{ Statamic::modify($vimeo)->embedUrl() }}
+{{ Statamic::modify($other)->embedUrl() }}
+```
+::
 
 ```html
 https://www.youtube.com/embed/s9F5fhJQo34

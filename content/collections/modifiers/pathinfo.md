@@ -12,10 +12,19 @@ Get information about a file path.
 path: '/local/file/example.pdf'
 ```
 
+::tabs
+
+::tab antlers
 ``` antlers
 {{ path | pathinfo }}
 {{ path | pathinfo('extension') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($path)->pathinfo() }}
+{{ Statamic::modify($path)->pathinfo('extension') }}
+```
+::
 
 ```php
 [

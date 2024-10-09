@@ -11,9 +11,17 @@ Returns the single character at a given position in a string. It starts at zero 
 title: supercalifragilisticexpialidocious
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | at:21 }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->at(21) }}
+```
+::
 
 ```html
 x

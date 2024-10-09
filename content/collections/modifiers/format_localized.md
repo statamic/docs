@@ -18,9 +18,17 @@ For this to work you will need to have the necessary locales installed in your h
 event_date: April 15 2016
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ event_date | format_localized('%A %d %B %Y') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($event_date)->formatLocalized('%A %d %B %Y') }}
+```
+::
 
 Assuming your locale is `fr_FR`:
 

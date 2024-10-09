@@ -12,9 +12,17 @@ Returns the number of words in a given string.
 string: There are probably seven words in this sentence.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | word_count }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->wordCount() }}
+```
+::
 
 ```html
 8

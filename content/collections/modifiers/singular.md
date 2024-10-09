@@ -11,9 +11,17 @@ Get the singular form of an English word.
 word: nickles
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ word | singular }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($word)->singular() }}
+```
+::
 
 ```html
 nickle

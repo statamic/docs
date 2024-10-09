@@ -14,9 +14,17 @@ advice: >
   Live every week like it’s Shark Week.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ advice | safe_truncate(90, '...') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($advice)->safeTruncate(90, '...') }}
+```
+::
 
 ```html
 So, here’s some advice I wish I woulda got when I was your age:

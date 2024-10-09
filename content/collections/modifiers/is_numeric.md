@@ -13,10 +13,19 @@ sequence: 4815162342
 another_sequence: just type 4 8 15 16 23 42
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if sequence | is_numeric }}
 {{ if another_sequence | is_numeric }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($sequence))->isNumeric()->fetch()) ... @endif
+@if (Statamic::modify($another_sequence))->isNumeric()->fetch()) ... @endif
+```
+::
 
 ```html
 true

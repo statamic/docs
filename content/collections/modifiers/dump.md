@@ -14,9 +14,17 @@ food:
     - sushi
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ food | dump }}
 ```
+::tab blade
+```blade
+@dd($food)
+```
+::
 
 ```html
 array:2 [▼

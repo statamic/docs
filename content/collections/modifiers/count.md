@@ -14,9 +14,17 @@ fruit:
   - bacon
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fruit | count }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($fruit)->count() }}
+```
+::
 
 ```html
 3

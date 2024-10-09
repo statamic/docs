@@ -18,12 +18,13 @@
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
-        "spatie/laravel-ignition": "^2.0",
-        "filp/whoops": "^2.0",
         "fakerphp/faker": "^1.4",
+        "filp/whoops": "^2.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "spatie/laravel-ignition": "^2.0",
+        "spatie/laravel-ray": "^1.37"
     },
     "config": {
         "optimize-autoloader": true,
