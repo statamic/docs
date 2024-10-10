@@ -28,7 +28,7 @@ php please starter-kit:install vendor-name/starter-kit-name
 
 If you are installing a paid Starter Kit, you will be prompted to purchase and/or validate a single-use license. Once successfully installed, this license will be marked as used and cannot be used on future Statamic sites.
 
-To add a licence key, you can use the following command:
+To add a license key, you can use the following command:
 
 ``` shell
 php please starter-kit:install --license=your-starter-kit-license-key
