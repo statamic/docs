@@ -1,10 +1,8 @@
-<header class="markdown pb-8 mb-8">
+<header>
     {{ partial:breadcrumbs }}
-    <div class="md:flex items-center">
-        <h1 class="{{ title | length > 36 ?= 'text-5xl'}}">{{ title }}</h1>
+    <div class="md:flex gap-3 items-center mb-6">
+        <h1 class="mb-1">{{ title }}</h1>
         {{ partial:pro-badge }}
-        {{ partial:experimental }}
     </div>
-    {{ intro ?? overview | markdown }}
-    {{ partial:toc hide="{hide_toc} ?? false"}}
+    <div class="text-xl prose-p:mt-0">{{ intro ?? overview | markdown }}</div>
 </header>

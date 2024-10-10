@@ -1,3 +1,75 @@
 {{ if environment === "production" }}
 <script src="https://cdn.usefathom.com/script.js" data-site="LGYIPVOA" defer></script>
 {{ /if }}
+
+{{ livewire:scriptConfig }}
+
+<script data-navigate-once>
+    document.addEventListener('livewire:navigated', e => {
+        document.querySelectorAll('[wire\\:current\\.class]').forEach(el => {
+            let url = new URL(window.location.href)
+
+            if (url.pathname === el.getAttribute('href')) {
+                el.classList.add(...el.getAttribute('wire:current.class').split(' '))
+            } else {
+                el.classList.remove(...el.getAttribute('wire:current.class').split(' '))
+            }
+        })
+    })
+
+    document.addEventListener('alpine:initializing', () => {
+        Alpine.store('tocNavHighlighter', {
+            visibleHeadingId: null,
+        })
+
+        let store = Alpine.store('tocNavHighlighter')
+        let headings = []
+
+        document.addEventListener('scroll', Alpine.throttle(() => {
+            onScroll()
+        }, 25))
+
+        document.addEventListener('livewire:navigated', () => {
+            store.visibleHeadingId = null
+
+            // Grab all the headings inside the main container.
+            allHeadings = document.querySelectorAll('[listen-for-intersection-of-titles] h2, [listen-for-intersection-of-titles] h3, [listen-for-intersection-of-titles] h4, [listen-for-intersection-of-titles] h5, [listen-for-intersection-of-titles] h6');
+            headingsForHighlight = document.querySelectorAll('[listen-for-intersection-of-titles] h2:not(.no-sidebar)')
+
+            assignHeadingIds()
+
+            onScroll()
+        })
+
+        function assignHeadingIds() {
+            // If a heading doesn't have an [id], we'll give it one
+            // based on its text content.
+            allHeadings.forEach(heading => {
+                if (heading.id) return
+
+                heading.id = heading.textContent.trim().replace(/\s+/g, '-').toLowerCase()
+            })
+        }
+
+        function onScroll() {
+            let isAtTopIshOfPage = window.scrollY < 175;
+            let isAtBottomIshOfPage = (window.scrollY + window.innerHeight) > (document.body.offsetHeight - 175);
+            let headingsByDistanceFromTop = {};
+            let relativeTop;
+
+            if (isAtBottomIshOfPage) relativeTop = window.innerHeight;
+            else if (isAtTopIshOfPage) relativeTop = 250;
+            else relativeTop = window.innerHeight / 2;
+
+            headingsForHighlight.forEach(heading => {
+                headingsByDistanceFromTop[heading.getBoundingClientRect().top - relativeTop] = heading;
+            })
+
+            let closestNegativeTop = Math.max(...Object.keys(headingsByDistanceFromTop).filter(top => top < 0));
+
+            if (closestNegativeTop >= 0 || [Infinity, NaN, -Infinity].includes(closestNegativeTop)) return this.visibleHeadingId = null;
+
+            store.visibleHeadingId = headingsByDistanceFromTop[closestNegativeTop].id;
+        }
+    })
+</script>

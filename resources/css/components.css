@@ -1,7 +1,7 @@
 /* Markdown "Hint" Blocks */
 /* -------------------------------------------------- */
 
-.hint {
+/* .hint {
     @apply bg-pink-lightest px-7 pt-7 pb-5 my-20 text-black border relative shadow-pink-md;
 
     .hint-title {
@@ -89,7 +89,7 @@
     .button {
         @apply text-black no-underline absolute -bottom-4 right-4 font-normal bg-white;
     }
-}
+} */
 
 
 /* Video Embed */
@@ -109,7 +109,7 @@
 
 figure,
 .screenshot {
-    @apply bg-mint border py-3 md:py-6 my-16 shadow-stack-sm relative;
+    @apply border py-3 md:py-6 my-16 relative;
     @apply pb-6 md:pb-12;
 
     img {
@@ -119,7 +119,7 @@ figure,
 
 }
 
-.caption,
+/* .caption,
 figure figcaption {
     @apply bg-black px-6 py-1 text-mint text-sm inline-block antialiased absolute -right-2 -bottom-4 md:-right-4 md:bottom-2;
 
@@ -127,18 +127,18 @@ figure figcaption {
         font-size: 12px !important;
         padding: 1px 2px !important;
     }
-}
+} */
 
-.dark {
+/* .dark {
     figure, .screenshot { @apply bg-gray-darker shadow-none; }
     .caption, figure figcaption { @apply bg-mint text-black; }
-}
+} */
 
 
 /* Buttons */
 /* -------------------------------------------------- */
 
-.button {
+/* .button {
     @apply py-1 px-5 relative inline-block bg-yellow font-normal rounded border shadow-md font-display text-base whitespace-nowrap transition no-underline text-black !important;
 
     &:hover {
@@ -153,43 +153,33 @@ figure figcaption {
     &:focus {
         @apply outline-none shadow-outline;
     }
-}
+} */
 
 
 /* Table of Contents */
 /* -------------------------------------------------- */
 .toc {
-    @apply font-display py-2 space-y-2 ml-0;
-    list-style-type: none;
-    counter-reset: item;
-
-    li {
-        @apply px-2 leading-tight text-lg block;
-        counter-increment: item;
-        &:before {
-            @apply mr-2 font-medium;
-            content: counters(item, ".") ". ";
-        }
-    }
+    @apply list-none border-l space-y-2 text-sm mb-4 ml-1;
 
     li a {
-        @apply text-black no-underline hover:text-pink font-medium;
+        @apply !text-sm border-l border-transparent hover:border-black block pl-4;
     }
 
-    li ol {
-        @apply my-2 space-y-1 ml-5;
-        counter-reset: item;
-        /* list-style-type: lower-alpha; */
+    li a.active {
+        @apply text-black font-normal border-black;
+    }
 
-        li { @apply text-base; }
-        li:before {
-             content: counters(item, ".") " ";
-        }
+    ol {
+        @apply ml-8 space-y-1;
+    }
+
+    ol li a {
+        @apply !text-sm inline-block pl-0 border-none text-zinc-400;
     }
 }
 
 .dark .toc li a {
-    @apply text-gray-light;
+    /* @apply text-gray-light; */
 }
 
 /* @media screen(lg) {
@@ -202,7 +192,7 @@ figure figcaption {
 /* Little details */
 /* -------------------------------------------------- */
 
-.popout {
+/* .popout {
     @apply border px-2 inline-block shadow-stack-sm -ml-4 transform -rotate-3;
 }
 
@@ -217,5 +207,12 @@ dl {
     }
     dd {
         @apply py-1 px-2 bg-mint text-black;
+    }
+} */
+
+.btn-filled {
+    @apply cursor-pointer bg-zinc-200 inline-flex text-center items-center justify-center text-zinc-500 font-normal text-sm px-4 py-2 h-9 rounded-md;
+    &:not([disabled]) {
+        @apply hover:bg-zinc-300 hover:text-zinc-600;
     }
 }

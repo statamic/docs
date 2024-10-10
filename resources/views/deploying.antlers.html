@@ -1,23 +1,22 @@
-<header class="markdown pb-8 mb-8">
+<header>
     {{ partial:breadcrumbs }}
     <div class="flex items-center">
         <h1>{{ title }}</h1>
         {{ partial:pro-badge }}
     </div>
-    <div class="lg:pr-16 text-2xl">
+    <div class="text-2xl">
         {{ intro ?? overview | markdown}}
     </div>
-    {{ svg src="zig-zag" class="mt-16" }}
 </header>
 
 <section class="mt-0 md:pb-16"">
-    <header class="markdown">
+    <header>
         <h2 id="vps">
             Managed VPS Guides
             <a class="anchor" href="#vps">#</a>
         </h2>
     </header>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8 not-prose">
         <a href="/deploying/laravel-forge" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest dark:bg-gray-darkest dark:text-white dark:shadow-none">
             <div class="h-16 flex items-center mb-2">
                 <img class="mx-auto mb-4 w-32" src="/img/forge-logo.svg" alt="Laravel Forge Logo">
@@ -70,13 +69,13 @@
 </section>
 
 <section class="mt-6 md:mt-24 md:pb-16">
-    <header class="markdown">
+    <header>
         <h2 id="static">
             Static Site/Jamstack Guides
             <a class="anchor" href="#static">#</a>
         </h2>
     </header>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 md:gap-6 mt-8 not-prose">
         {{# <a href="#" class="bg-white border text-center shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm px-3 py-6 hover:bg-gradient-to-tl from-gray-lightest dark:bg-gray-darkest dark:text-white dark:shadow-none">
             <img class="mx-auto mb-2 h-16" src="/img/digital-ocean-logo.svg" alt="Digital Ocean Logo">
             <h2 class="text-2xl mb-2 font-bold font-display">Digital Ocean</h2>
