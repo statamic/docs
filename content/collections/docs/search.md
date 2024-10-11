@@ -249,7 +249,6 @@ Take these site and search configs for example:
 
 ```yaml
 # resources/sites.yaml
-
 en:
   url: /
 fr:
