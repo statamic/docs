@@ -18,8 +18,18 @@ You can get the parent by using the [Parent tag](/tags/parent).
 
 ## Example
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ children }}
     {{ title }}
 {{ /children }}
 ```
+::tab blade
+```blade
+<statamic:children>
+  {{ $title }}
+</statamic:children>
+```
+::

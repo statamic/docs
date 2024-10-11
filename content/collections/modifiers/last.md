@@ -18,10 +18,19 @@ array:
   - Tails
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | last(7) }}
 {{ array | last }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->last(7) }}
+{{ Statamic::modify($array)->last() }}
+```
+::
 
 ```html
 Nuggets

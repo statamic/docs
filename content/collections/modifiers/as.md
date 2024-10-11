@@ -18,7 +18,7 @@ blocks:
     photo: /assets/img/baño-tacos.jpg
 ```
 
-```
+```antlers
 {{ blocks as="sets" }}
     {{ sets }}
         {{ partial:type }}

@@ -12,8 +12,19 @@ related_entries:
 
 This is a very simple tag designed to be used in a condition statement. You may check to see if a key has been set (most likely by the [session:set](/tags/session-set) tag) in the session. It returns either `true` or `false`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if {session:has key="entered_survey"} }}
     <p>You already filled out the survey. Thanks for your feedback!</p>
 {{ /if }}
 ```
+::tab blade
+```blade
+{{-- We can use the session() helper in Blade --}}
+@if (session()->has('entered_survery'))
+  <p>You have already filled out the survey. Thanks for your feedback!</p>
+@endif
+```
+::

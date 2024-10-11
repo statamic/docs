@@ -13,12 +13,22 @@ If length not specific, will return the rest of the string.
 string: How neat is that?
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | substr(0, 3) }}
 {{ string | substr(4, 4) }}
 {{ string | substr(-8, 8) }}
 
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->substr(0, 3) }}
+{{ Statamic::modify($string)->substr(4, 4) }}
+{{ Statamic::modify($string)->substr(-8, 8) }}
+```
+::
 
 ```html
 How

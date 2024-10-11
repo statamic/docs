@@ -36,15 +36,36 @@ listings:
 
 You're more than likely using this field as a way to dynamically display a collection.
 
+::tabs
+
+::tab antlers
+
 Since the collection tag accepts a pipe-delimited list of collection names, you can join them together like this:
 
-```
+```antlers
 <ul>
   {{ collection from="{listings|piped}" }}
     <li>{{ title }}</li>
   {{ /collection }}
 </ul>
 ```
+
+::tab blade
+
+You can pass the values from the collections fieldtype to the collection tag like so:
+
+```blade
+<ul>
+	<statamic:collection
+		:from="$listings ?? []"
+	>
+		<li>{{ $title }}</li>
+	</statamic:collection>
+</ul>
+
+```
+
+::
 
 ```html
 <ul>

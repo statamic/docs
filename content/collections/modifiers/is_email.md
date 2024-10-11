@@ -13,10 +13,19 @@ an_email: lknope@inpra.org
 not_an_email: waffles
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if an_email | is_email }}
 {{ if not_an_email | is_email }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($an_email)->isEmail()->fetch()) @endif
+@if (Statamic::modify($not_an_email)->isEmail()->fetch()) @endif
+```
+::
 
 ```html
 true

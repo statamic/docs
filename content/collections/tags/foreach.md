@@ -40,8 +40,10 @@ song_reviews:
   Never Gonna Give You Up: 5/5
   My Heart Will Go On: 3/5
 ```
+::tabs
 
-```
+::tab antlers
+```antlers
 {{ foreach:company_info }}
   {{ key }}: {{ value }}<br>
 {{ /foreach:company_info }}
@@ -52,6 +54,22 @@ song_reviews:
   {{ /foreach:song_reviews }}
 </ul>
 ```
+::tab blade
+
+When authoring Blade templates, you should use the `@foreach` directive instead.
+
+```blade
+@foreach ($company_info as $key => $value)
+  <li>{{ $key }}: {{ $value }}<br>
+@endforeach
+
+<ul>
+  @foreach ($song_reviews as $song => $rating)
+     <li>{{ $song }}: {{ $rating }}</li>
+  @endforeach
+</ul>
+```
+::
 
 ```html
 Address 1: 123 Hollywood Blvd<br>
@@ -74,11 +92,21 @@ PHP reserves the word `foreach`, so this tag is _technically_ an alias of `itera
 
 Instead of using the shorthand `{{ foreach:variable_name }}` syntax, you may pass in the array's name manually.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ foreach array="song_reviews" }}
     ...
 {{ /foreach }}
 ```
+::tab blade
+```blade
+@foreach ($song_reviews as $review)
+  ...
+@endforeach
+```
+::
 
 If you have a more complicated array location, you can use a dynamic parameter to pass the array itself.
 
@@ -87,8 +115,18 @@ reviews:
   songs: [...]
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ foreach :array="reviews:songs" }}
     ...
 {{ /foreach }}
 ```
+::tab blade
+```blade
+@foreach ($reviews['songs'] as $song)
+  ...
+@endforeach
+```
+::

@@ -13,10 +13,19 @@ topic: fhqwhgads
 from: Sibbie
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if topic | is_lowercase }}
 {{ if from | is_lowercase }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($topic)->isLowercase()->fetch()) ... @endif
+@if (Statamic::modify($from)->isLowercase()->fetch()) ... @endif
+```
+::
 
 ```html
 true

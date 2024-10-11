@@ -22,9 +22,17 @@ headline:
 title: Actually i don't know what we're talking about.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | macro('headline') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->macro('headline') }}
+```
+::
 
 ```html
 Actually I Don't Know What We're Talking&nbsp;About
@@ -42,6 +50,13 @@ excerpt:
 
 This is equivalent to:
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ content | safe_truncate(175, '...') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($content)->safeTruncate(175, '...') }}
+```
+::

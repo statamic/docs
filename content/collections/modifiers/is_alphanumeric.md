@@ -14,10 +14,20 @@ secret_phrase: abc123
 even_more_secret_phrase: abc123!@#
 ```
 
-```
+
+::tabs
+
+::tab antlers:
+```antlers
 {{ if secret_phrase | is_alphanumeric }}
 {{ if even_more_secret_phrase | is_alphanumeric }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($secret_phrase)->isAlphanumeric()->fetch()) @endif
+@if (Statamic::modify($even_more_secret_phrase)->isAlphanumeric()->fetch()) @endif
+```
+::
 
 ```html
 true

@@ -12,10 +12,19 @@ bacon: 21
 skillets: 3
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ bacon | divide($skillets) }}
 {{ skillets | divide(3) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($bacon)->divide($skillets) }}
+{{ Statamic::modify($skillets)->divide(3) }}
+```
+::
 
 ```html
 7

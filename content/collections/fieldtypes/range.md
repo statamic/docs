@@ -46,9 +46,18 @@ number: 42
 
 Use the variable in your templates to display the value. That's pretty much it.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <p>My favorite number is {{ number }}.</p>
 ```
+
+::tab blade
+```blade
+<p>My favorite number is {{ $number }}.</p>
+```
+::
 
 ```html
 <p>My favorite number is 42.</p>

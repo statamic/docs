@@ -11,9 +11,17 @@ Convert all HTML entities to their applicable characters via PHP's [html_entity_
 string: "I'll &quot;eat&quot; the &lt;b&gt;bacon&lt;/b&gt; now";
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | decode }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->decode() }}
+```
+::
 
 ```html
 I'll "eat" the <b>bacon</b> now

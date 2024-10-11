@@ -15,17 +15,33 @@ Accepts `ap` or `mla` as an argument. Defaults to `ap` if none is specified.
 title: I see a bad-ass mother who don't take no crap off of nobody.
 ```
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ title | headline('ap') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->headline('ap') }}
+```
+::
 
 ```
 I See a Bad-Ass Mother Who Don't Take No Crap Off of Nobody.
 ```
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ title | headline('mla') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->headline('mla') }}
+```
+::
 
 ```
 I See a Bad-ass Mother Who Don't Take No Crap Off of Nobody.

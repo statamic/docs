@@ -18,9 +18,17 @@ conversation: |
   Kirk -- who was icing his hands after a 20 minute guitar solo.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ conversation | smartypants }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($conversation)->smartypants() }}
+```
+::
 
 ```html
 “What’s your favorite album?” asked Lars. “…And Justice for All” replied

@@ -14,10 +14,19 @@ The first parameter allows you to customize the number of words to add non-break
 string: I Just Want Pretty Headlines and Sentences
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | widont }}
 {{ string | widont(4) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->widont() }}
+{{ Statamic::modify($string)->widont(4) }}
+```
+::
 
 ```html
 I Just Want Pretty Headlines and&nbsp;Sentences

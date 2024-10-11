@@ -12,9 +12,17 @@ Rounds a number down to the next whole number.
 number: 25.98
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ number | floor }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($number)->floor() }}
+```
+::
 
 ```html
 25

@@ -42,7 +42,10 @@ main_content:
         text: "Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in\_CYBERSPACE."
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ main_content | raw | bard_items }}
 {{ main_content | raw | bard_items | where:type:image | first | bard_html }}
 {{ links = main_content | raw | bard_items | where:type:link }}
@@ -50,6 +53,19 @@ main_content:
     {{ node | bard_text }} - {{ attrs:href }}
 {{ /links }}
 ```
+::tab blade
+```blade
+<?php
+    Statamic::modify($bard_field_with_sets)->bardItems();
+    Statamic::modify($bard_field_with_sets)->bardItems()->where('type:text')->first()->bardHtml();
+    $links = Statamic::modify($bard_field_with_sets)->bardItems()->where('type:link')->fetch();
+?>
+
+@foreach ($links as $link)
+	{{ Statamic::modify($link['node'])->bardText() }} - {{ $link['attrs']['href'] }}
+@endforeach
+```
+::
 
 ```yaml
 value:

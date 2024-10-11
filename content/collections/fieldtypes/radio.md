@@ -60,9 +60,18 @@ favorite: brownies
 
 It's a string, so you can just use that value.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <p>I love {{ favorite }}. A lot.</p>
 ```
+
+::tab blade
+```blade
+<p>I love {{ $favorite }}. A lot.</p>
+```
+::
 
 ```html
 <p>I love donuts. A lot.</p>

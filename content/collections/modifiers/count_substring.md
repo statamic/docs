@@ -18,9 +18,17 @@ quote: |
   Dude! What does mine say?
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ quote | count_substring('dude') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($quote)->countSubstring('dude') }}
+```
+::
 
 ```html
 5

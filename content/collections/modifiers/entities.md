@@ -12,9 +12,17 @@ Encode a string with HTML entities via PHP's [htmlentities()][entities] function
 string: "The 'bacon' is <b>crispy</b>"
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | entities }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->entities() }}
+```
+::
 
 ```html
 The &#039;bacon&#039; is &lt;b&gt;crispy&lt;/b&gt;

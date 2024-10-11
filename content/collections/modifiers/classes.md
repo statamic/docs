@@ -15,11 +15,29 @@ is_active: false
 has_error: true
 ```
 
+::tabs
+
+::tab antlers
 ```antlers
 <div class="text-sm {{ ['p-4' => true, 'font-bold' => is_active, 'bg-red' => has_error] | classes }}">
   //
 </div>
 ```
+::tab blade
+```blade
+<?php
+    $classes = Statamic::modify([
+          'p-4' => true,
+          'font-bold' => $is_active,
+          'bg-red' => $has_error
+      ])->classes();
+?>
+
+<div class="text-sm {{ $classes }}">
+  //
+</div>
+```
+::
 
 ```html
 <div class="text-sm p-4 bg-red">

@@ -119,15 +119,28 @@ Here's a few examples of what you can do with the `get_files` tag.
 
 ### List non-asset images in the site's design resources
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ get_files in="public/img/brand" }}
   <img src="{{ file }}" class="w-1/3">
 {{ /get_files }}
 ```
+::tab blade
+```blade
+<s:get_files in="public/img/brand">
+  <img src="{{ $file }}" class="w-1/3">
+</s:get_files>
+```
+::
 
 ### List the zip files in a web-inaccessible directory
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <table>
   <thead>
     <tr>
@@ -147,3 +160,25 @@ Here's a few examples of what you can do with the `get_files` tag.
   </tbody>
 </table>
 ```
+::tab blade
+```blade
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Size</th>
+      <th>Last Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+  <s:get_files in="secure/downloads">
+    <tr>
+      <td>{{ $basename }}</td>
+      <td>{{ $size }}</td>
+      <td>{{ $last_modified }}</td>
+    </tr>
+  </s:get_files>
+  </tbody>
+</table>
+```
+::

@@ -12,9 +12,17 @@ Convert special characters to HTML entities with [htmlspecialchars][htmlspecialc
 example: <b>NEAT</b>
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ example | sanitize }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($example)->sanitize() !!}
+```
+::
 
 ```html
 &lt;b&gt;NEAT&lt;b&gt;
@@ -24,8 +32,16 @@ example: <b>NEAT</b>
 
 You can double encode HTML entities by passing `true` as an argument. This is useful for preserving JSON formatting.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ example | sanitize(true) }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($example)->sanitize(true) !!}
+```
+::
 
 [htmlspecialchars]: http://php.net/manual/en/function.htmlspecialchars.php

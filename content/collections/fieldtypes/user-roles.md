@@ -34,8 +34,29 @@ The User Role fieldtype stores the `handle` of a single group as a string, or an
 
 The User Role fieldtype uses [augmentation](/augmentation) to return the `title` and `handle` of each Role. You can use pass these values into the `{{ user:is }}` tag to protect content.
 
-```
+The following example assumes `max_items` has been set to `1`.
+
+::tabs
+
+::tab antlers
+```antlers
 {{ user:is :role="role_field:handle" }}
   You are a {{ role_field:title }}. Nice!
 {{ /user:is }}
 ```
+
+::tab blade
+```blade
+{{-- Using Statamic Tags --}}
+<statamic:user:is
+	:role="$role_field->handle"
+>
+	You are a {{ $role_field->title }}. Nice!
+</statamic:user:is>
+
+{{-- Using Fluent Tags --}}
+@if(Statamic::tag('user:is')->role($role_field->handle)->fetch())
+	You are a {{ $role_field->title }}. Nice!
+@endif
+```
+::

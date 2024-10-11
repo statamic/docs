@@ -11,9 +11,17 @@ Returns a trimmed string with the first letter of each word capitalized, ignorin
 string: It was one of the best adventures of my life
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | title }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->title() }}
+```
+::
 
 ```html
 It Was One of the Best Adventures of My Life

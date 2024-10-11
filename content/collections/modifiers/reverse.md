@@ -18,10 +18,19 @@ order_of_ceremony:
   - party
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ status | reverse }}
 {{ order_of_ceremony | reverse | list }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($status)->reverse() }}
+{{ Statamic::modify($status)->reverse()->list() }}
+```
+::
 
 ```html
 diaper

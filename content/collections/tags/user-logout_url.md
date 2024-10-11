@@ -14,6 +14,15 @@ stage: 3
 ---
 ## Example {#example}
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ user:logout_url }}">Log out</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('user:logout_url')->fetch() }}">Log out</a>
+```
+::

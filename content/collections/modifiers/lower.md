@@ -12,9 +12,17 @@ Converts all characters in the string to lowercase.
 yelling: I DON'T KNOW WHAT WE'RE YELLING ABOUT
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ yelling | lower }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($yelling)->lower() }}
+```
+::
 
 ```html
 i don't know what we're yelling about

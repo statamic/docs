@@ -14,11 +14,21 @@ links:
   - http://wilderborn.com
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ links }}
   <li>{{ value | ensure_left('http://') }}</li>
 {{ /links }}
 ```
+::tab blade
+```blade
+@foreach ($links as $link)
+  <li>{{ Statamic::modify($link)->ensureLeft('http://') }}</li>
+@endforeach
+```
+::
 
 ```html
 <li>http://statamic.com</li>

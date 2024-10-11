@@ -147,10 +147,19 @@ $antisocial = [
 ];
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ antisocial:facebook }}">Facebook</a>
 <a href="{{ antisocial:twitter }}">Twitter</a>
 ```
+::tab blade
+```blade
+<a href="{{ $antisocial['facebook'] }}">Facebook</a>
+<a href="{{ $antisocial['twitter'] }}">Twitter</a>
+```
+::
 
 ### Nesting mappings and sequences
 

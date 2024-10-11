@@ -12,9 +12,17 @@ Generate an HTML link element with the value as `href`.
 neat_site: http://example.com
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ neat_site | link }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($neat_site)->link() }}
+```
+::
 
 ```html
 <a href="http://example.com">http://example.com</a>

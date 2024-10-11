@@ -25,9 +25,18 @@ markdown_field: >
 ```
 
 ### The Template
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ markdown_field | raw }}
 ```
+::tab blade
+```blade
+{{ $markdown_field->raw() }}
+```
+::
 
 ### The Output
 ```
