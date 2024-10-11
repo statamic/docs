@@ -247,13 +247,15 @@ You may choose to use separate indexes to store localized content. For example, 
 
 Take these site and search configs for example:
 
-```php
-// config/statamic/sites.php
-'sites' => [
-    'en' => ['url' => '/'],
-    'fr' => ['url' => '/fr/'],
-    'de' => ['url' => '/de/'],
-]
+```yaml
+# resources/sites.yaml
+
+en:
+  url: /
+fr:
+  url: /fr/
+de:
+  url: /de/
 ```
 
 ```php
