@@ -122,6 +122,11 @@ The payload will be an array of the Bard's content.
 Triggered when the `extraValidationAttributes` method is called on the Bard fieldtype (when gathering validation attributes).
 The payload will be an array of the Bard's content.
 
+### Static Cache Warming: `additional`
+Triggered when the `static:warm` command is run. This hook allows you to warm additional URIs during the static warming process.
+For more information about this hook, see the docs on [Static Caching](https://statamic.dev/static-caching#warming-additional-urls).
+
+
 ## Triggering your own hooks
 
 You may want to trigger your own hook pipeline so that others may use it.
