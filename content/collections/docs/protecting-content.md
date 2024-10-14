@@ -99,6 +99,14 @@ This is perfect for times when you want to password-protect one or more files bu
 ]
 ```
 
+You can also define the password for a protected entry on the entries themselves. This might be helpful if each has a different password.
+
+```yaml
+protect: password
+password: local-password
+```
+
+
 ### Password Form
 
 <figure>
