@@ -346,6 +346,18 @@ public function handle(CollectionTreeSaved $event)
 }
 ```
 
+### CollectionTreeSaving
+`Statamic\Events\CollectionTreeSaving`
+
+Dispatched when a collection tree is being saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(CollectionTreeSaving $event)
+{
+    $event->tree;
+}
+```
+
 ### EntryBlueprintFound
 `Statamic\Events\EntryBlueprintFound`
 
@@ -843,6 +855,18 @@ Dispatched after a nav tree has been saved.
 
 ``` php
 public function handle(NavTreeSaved $event)
+{
+    $event->tree;
+}
+```
+
+### NavTreeSaving
+`Statamic\Events\NavTreeSaving`
+
+Dispatched when a nav tree is being saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(NavTreeSaving $event)
 {
     $event->tree;
 }
