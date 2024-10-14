@@ -21,17 +21,18 @@ This will scaffold out everything you need to get started as a [private addon](#
 Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
 :::tip
-If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and build an [extension](/extending).
+If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and just [add things to your Laravel application](/extending).
 :::
 
-An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/example`
+An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/acme/example`
 
 ``` files theme:serendipity-light
 addons/
-    example/
-        src/
-            ServiceProvider.php
-        composer.json
+    acme/
+        example/
+            src/
+                ServiceProvider.php
+            composer.json
 app/
 content/
 config/
@@ -72,7 +73,7 @@ composer.json
 }
 ```
 
-Note the service provider should extend `Statamic\Providers\AddonServiceProvider`, and not Illuminate\Support\ServiceProvider. The Statamic subclass provides you with some helpers to reduce boilerplate when compared to stock Laravel.
+You should make sure that your service provider extends Statamic's `Statamic\Providers\AddonServiceProvider`, and not `Illuminate\Support\ServiceProvider`. Statamic's `AddonServiceProvider` includes some bootstrapping and autoloading that isn't included with Laravel's service provider.
 
 ``` php
 <?php
@@ -83,10 +84,7 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    public function bootAddon()
-    {
-        //
-    }
+    //
 }
 ```
 
@@ -188,6 +186,14 @@ public function bootAddon()
 
 
 ## Registering Components
+
+::: tip
+Statamic v5.28.0 and v5.29.0 introduced the concept of "autoloading" for most addon components.
+
+For example: as long as your tags live in `src/Tags` and your fieldtypes live in `src/Fieldtypes`, they will be automatically registered by Statamic, without you needing to register them manually.
+
+If your addon supports Statamic v5.28.0 or lower, you should continue registering components manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
 
 You may register your various addon components by adding their class names to corresponding arrays:
 
@@ -305,6 +311,12 @@ protected $routes = [
     'web' => __DIR__.'/../routes/web.php',
 ];
 ```
+
+::: tip
+As of Statamic v5.29.0, addon routes following the convention shown above will be automatically registered by Statamic.
+
+If your addon supports Statamic v5.29 or lower, you should continue registering your route files manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
 
 #### Control Panel Routes
 
