@@ -22,37 +22,35 @@ To run Statamic you'll need a server meeting the following requirements. These a
 - GD Library or ImageMagick
 - Composer
 
+## Development Environments
+
+Depending on your operating system, we recommend the following development environments:
+
+### macOS and Windows: Laravel Herd
+
+[Laravel Herd](herd) is a blazing fast, native development environment for macOS and Windows. Herd includes `php`, `composer` and `npm` - *almost* everything you need to setup Statamic locally.
+
+We've written [a guide](herd-docs) on installing Herd and setting up your Statamic site.
+
+### Linux
+
+To develop locally with Statamic on Linux, you'll need to install `php`, `composer` and `npm`.
+
+If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/ubuntu) helpful.
+
 ## Recommended Hosts
 
 We recommend using [Digital Ocean][do] to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 
-:::tip
-We have an install guide on [how to get Statamic running on a typical Digital Ocean droplet](/installing/digital-ocean)
-:::
+Some developers choose to pair Digital Ocean with a tool like [Laravel Forge](forge) or [Ploi](ploi), which help you provision servers and handle deployments. However, if you're comfortable doing that yourself, then feel free!
 
 We also maintain a user-contributed [Github repo][hosts] full of other host recommendations.
-
-## Development Environments
-
-All of these requirements are satisfied by the [Laravel Homestead][homestead] virtual machine, which makes it a great local Laravel development environment. Virtual machines aren't for everybody though, so here are a couple of other options.
-
-### MacOS: Laravel Valet
-
-[Laravel Valet][valet] is a development environment for Mac minimalists. No Vagrant, No Apache, No Nginx, No need to manually edit hosts file. It simply maps all the subdirectories in a “web” directory (such as `~/Sites`) to `.test` or `.localhost` domains.
-
-You can even share your sites publicly using local tunnels. We use it ourselves and it’s brilliant.
-
-### Windows: WAMP
-
-[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion. You may also want to checkout [Laravel Sail](https://laravel.com/docs/11.x/sail), which works well with Statamic or the [Valet for Windows port][valet-windows].
-
-
 
 [do]: https://m.do.co/c/6469827e2269
 [vultr]: https://www.vultr.com/?ref=7337126
 [hosts]: https://github.com/statamic/hosts
-[homestead]: https://laravel.com/docs/homestead
-[valet]: https://laravel.com/docs/valet
-[valet-windows]: https://github.com/cretueusebiu/valet-windows
-[wamp]: http://www.wampserver.com/
-[laragon]:https://laragon.org/
+[herd]: https://herd.laravel.com
+[herd-docs]: /installing/laravel-herd
+[ubuntu]: /installing/ubuntu
+[forge]: /deploying/laravel-forge
+[ploi]: /deploying/ploi
