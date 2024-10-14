@@ -12,7 +12,7 @@ parameters:
   -
     name: sort
     type: string
-    description: 'Sort form submissions by field name (or `random`). You may pipe-separate multiple fields for sub-sorting and specify sort direction of each field using a colon. For example, `sort="name"` or `sort="date:asc|name:desc"` to sort by date then by name.
+    description: 'Sort form submissions by field name (or `random`). You may pipe-separate multiple fields for sub-sorting and specify sort direction of each field using a colon. For example, `sort="name"` or `sort="date:asc|name:desc"` to sort by date then by name.'
     required: false
   -
     name: limit
