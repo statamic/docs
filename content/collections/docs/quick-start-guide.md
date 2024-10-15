@@ -325,7 +325,7 @@ A few cool things to note here in this code example:
 
 <figure>
     <img src="/img/quick-start/blog-show.jpg" alt="A blog post" width="600">
-    <figcaption>How close does your look?</figcaption>
+    <figcaption>How close does yours look?</figcaption>
 </figure>
 
 
@@ -351,7 +351,7 @@ Back to your code editor — open up the `resources/views/blog/index.antlers.htm
 </section>
 ```
 
-And stop right there. We've now duplicated a whole chunk of code save for one little tiny bit — `limit="5'`. Let's DRY this up (reduce code duplication).
+And stop right there. We've now duplicated a whole chunk of code for one tiny little bit — `limit="5'`. Let's DRY this up (reduce code duplication).
 
 :::tip
 It's totally fine to duplicate code sometimes, especially if you have to make some code significantly more complex to reuse it. Just keep that in mind. We'll keep this simple.
@@ -361,7 +361,7 @@ It's totally fine to duplicate code sometimes, especially if you have to make so
 
 Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
-Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so, when you use your partial you can specify your desired limit. Replace that second line with this:
 
 ```
 {{ collection:blog :limit="limit" }}
