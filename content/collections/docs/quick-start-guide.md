@@ -17,6 +17,8 @@ Much of the documentation is intended to be used as a reference sheet for variou
 
 We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="uppercase font-bold tracking-widest text-green font-display">Cyberspace</span>.
 
+**This is not a "5 minute quick install guide" – we're going to be building a simple yet full site from scratch so you can see how everything comes together. It will likely take around 20-30 minutes.**
+
 ## High level approach
 
 A high level approach to building a site in Statamic often looks like this.
@@ -361,13 +363,13 @@ It's totally fine to duplicate code sometimes, especially if you have to make so
 
 Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
-Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so, when you use your partial you can specify your desired limit. Replace that second line with this:
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so you can pass a desired limit into your partial. Replace that second line with this:
 
 ```
 {{ collection:blog :limit="limit" }}
 ```
 
-By prefixing the `limit` parameter with a colon we're telling Statamic to look for a variable named "limit" as the argument. If there isn't one it will be null, and not add a limit — just how we want it on the blog index template.
+Prefixing the `limit` parameter with a colon tells Statamic to look for a variable named "limit" as the argument. If there isn't one it will be `null`, which will not set a limit which is how we want it on the blog index template.
 
 Your blog index template can now look like as simple as this:
 
