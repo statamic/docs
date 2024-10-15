@@ -361,7 +361,7 @@ ALGOLIA_SECRET=your-algolia-admin-key
 ```
 
 ``` shell
-composer require algolia/algoliasearch-client-php
+composer require algolia/algoliasearch-client-php:^3.4
 ```
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.
