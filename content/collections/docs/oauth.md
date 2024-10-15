@@ -120,7 +120,7 @@ If you would like to use a provider not natively supported by Socialite, you sho
     // app/Providers/AppServiceProvider.php
 
     Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
-        $event->extendSocialite('dropbox', \SocialiteProviders\Dropbox\DropboxExtendSocialite::class);
+        $event->extendSocialite('dropbox', \SocialiteProviders\Dropbox\Provider::class);
     });
     ```
 
