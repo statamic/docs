@@ -235,6 +235,16 @@ A structured collection will **not** have a maximum depth unless you set one, al
 
 For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
 
+### Root Page
+
+If you choose not to [mount](#mounting) the collection on an existing entry (usually an entry in the Pages collectiomn), then you can select this option to "Expect a root page". 
+
+The top entry in the collection will then be used as the contents for the index page for the collection.
+
+If you use this approach, you will need to specify an [index route](#Index route) manually, using a [custom route](/routing#statamic-routes) that exists at `/blog`, as Statamic won't automatically create one.
+
+Without this you'll have a rude runt root route rejected at rendering runtime. Right?
+
 ## Routing
 
 Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule. You can even use [computed values](/computed-values) or Antlers to do advanced things.
