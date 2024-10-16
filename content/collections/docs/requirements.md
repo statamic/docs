@@ -28,7 +28,7 @@ Depending on your operating system, we recommend the following development envir
 
 ### macOS and Windows: Laravel Herd
 
-[Laravel Herd](herd) is a blazing fast, native development environment for macOS and Windows. Herd includes `php`, `composer` and `npm` - *almost* everything you need to setup Statamic locally.
+[Laravel Herd](https://herd.laravel.com) is a blazing fast, native development environment for macOS and Windows. Herd includes `php`, `composer` and `npm` - *almost* everything you need to setup Statamic locally.
 
 We've written [a guide](/installing/laravel-herd) on installing Herd and setting up your Statamic site.
 
@@ -36,20 +36,12 @@ We've written [a guide](/installing/laravel-herd) on installing Herd and setting
 
 To develop locally with Statamic on Linux, you'll need to install `php`, `composer` and `npm`.
 
-If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/ubuntu) helpful.
+If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/installing/ubuntu) helpful.
 
 ## Recommended Hosts
 
-We recommend using [Digital Ocean][do] to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
+We recommend using [Digital Ocean][https://m.do.co/c/6469827e2269] to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 
-Some developers choose to pair Digital Ocean with a tool like [Laravel Forge](forge) or [Ploi](ploi), which help you provision servers and handle deployments. However, if you're comfortable doing that yourself, then feel free!
+Some developers choose to pair Digital Ocean with a tool like [Laravel Forge](/deploying/laravel-forge) or [Ploi](/deploying/ploi), which help you provision servers and handle deployments. However, if you're comfortable doing that yourself, then feel free!
 
-We also maintain a user-contributed [Github repo][hosts] full of other host recommendations.
-
-[do]: https://m.do.co/c/6469827e2269
-[vultr]: https://www.vultr.com/?ref=7337126
-[hosts]: https://github.com/statamic/hosts
-[herd]: https://herd.laravel.com
-[ubuntu]: /installing/ubuntu
-[forge]: /deploying/laravel-forge
-[ploi]: /deploying/ploi
+We also maintain a user-contributed [Github repo][https://github.com/statamic/hosts] full of other host recommendations.
