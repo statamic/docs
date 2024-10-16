@@ -30,7 +30,7 @@ Depending on your operating system, we recommend the following development envir
 
 [Laravel Herd](herd) is a blazing fast, native development environment for macOS and Windows. Herd includes `php`, `composer` and `npm` - *almost* everything you need to setup Statamic locally.
 
-We've written [a guide](herd-docs) on installing Herd and setting up your Statamic site.
+We've written [a guide](/installing/laravel-herd) on installing Herd and setting up your Statamic site.
 
 ### Linux
 
@@ -50,7 +50,6 @@ We also maintain a user-contributed [Github repo][hosts] full of other host reco
 [vultr]: https://www.vultr.com/?ref=7337126
 [hosts]: https://github.com/statamic/hosts
 [herd]: https://herd.laravel.com
-[herd-docs]: /installing/laravel-herd
 [ubuntu]: /installing/ubuntu
 [forge]: /deploying/laravel-forge
 [ploi]: /deploying/ploi
