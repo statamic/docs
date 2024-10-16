@@ -40,8 +40,8 @@ If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu 
 
 ## Recommended Hosts
 
-We recommend using [Digital Ocean][https://m.do.co/c/6469827e2269] to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
+We recommend using [Digital Ocean](https://m.do.co/c/6469827e2269) to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 
 Some developers choose to pair Digital Ocean with a tool like [Laravel Forge](/deploying/laravel-forge) or [Ploi](/deploying/ploi), which help you provision servers and handle deployments. However, if you're comfortable doing that yourself, then feel free!
 
-We also maintain a user-contributed [Github repo][https://github.com/statamic/hosts] full of other host recommendations.
+We also maintain a user-contributed [Github repo](https://github.com/statamic/hosts) full of other host recommendations.
