@@ -96,6 +96,7 @@ This is perfect for times when you want to password-protect one or more files bu
     'driver' => 'password',
     'allowed' => ['secret', 'confidential'],
     'form_url' => null,
+    'field' => 'password',
 ]
 ```
 
