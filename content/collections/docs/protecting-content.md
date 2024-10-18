@@ -96,15 +96,27 @@ This is perfect for times when you want to password-protect one or more files bu
     'driver' => 'password',
     'allowed' => ['secret', 'confidential'],
     'form_url' => null,
-    'field' => 'password',
 ]
 ```
 
 You can also define the password for a protected entry on the entries themselves. This might be helpful if each has a different password.
 
 ```yaml
+# content/collections/pages/secret-page.md
+
 protect: password
 password: local-password
+```
+
+``` php
+// config/statamic/protection.php
+
+'password' => [
+    'driver' => 'password',
+    'allowed' => ['secret', 'confidential'],
+    'form_url' => null,
+    'field' => 'password', // [tl! add]
+]
 ```
 
 
