@@ -55,7 +55,7 @@ We also support the negative use case using `user:isnt` tags.
     <a href="/apply">Apply to be an author!</a>
 {{ /user:isnt }}
 ```
-b:tab blade
+::tab blade
 ```blade
 {{-- Using Antlers Blade Components --}}
 <s:user:isnt role="author">
