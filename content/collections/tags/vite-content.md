@@ -18,7 +18,10 @@ parameters:
 ---
 The `vite:content` tag allows you to output the contents of a Vite asset. This is useful if you need to inline the contents of a CSS or JavaScript file.
 
-```html
+::tabs
+
+::tab antlers
+```antlers
 <style>
     {{ vite:content src="resources/css/app.css" }}
 </style>
@@ -27,6 +30,29 @@ The `vite:content` tag allows you to output the contents of a Vite asset. This i
     {{ vite:content src="resources/js/app.js" }}
 </script>
 ```
+::tab blade
+```blade
+// Using Antlers Blade components.
+<style>
+  <s:vite:content src="resources/css/app.css" />
+</style>
+
+<script>
+  <s:vite:content src="resources/js/app.js" />
+</script>
+
+// Using Blade directives.
+@use('Illuminate\Support\Facades\Vite')
+
+<style>
+  {!! Vite::content('resources/css/app.css') !!}
+</style>
+
+<script>
+  {!! Vite::content('resources/js/app.js') !!}
+</script>
+```
+::
 
 :::warning Psst!
 The `vite:content` tag will only output the contents of "built" assets. This means that changes made while running `npm run dev` will not be reflected in the output.
@@ -34,8 +60,19 @@ The `vite:content` tag will only output the contents of "built" assets. This mea
 
 If you need to, you can also specify a custom build directory.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ vite src="resources/css/tailwind.css|resources/js/site.js" directory="bundle" }}
 ```
+::tab blade
+```blade
+<s:vite
+  src="resources/css/tailwind.css|resources/js/site.js"
+  directory="bundle"
+/>
+```
+::
 
 When using these options, please make sure to also adjust your `vite.config.js` file. More about advanced customization can be found in [Laravel's Vite docs](https://laravel.com/docs/9.x/vite#advanced-customization).

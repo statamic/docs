@@ -5,6 +5,7 @@ title: 'Image Manipulation (Glide)'
 intro: Statamic uses [Glide](https://glide.thephpleague.com) to manipulate images – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
 ---
 ## Route
+
 The route controls where your Glide images will be served.
 
 ```php
@@ -35,17 +36,31 @@ Presets are pre-configured sets of manipulations that can be referenced at a lat
 All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets.
 
 ### Glide tag
+
 Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag]:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:thumbnail preset="thumbnail" }}
 <!-- width: 300px, height: 300px, quality: 75% -->
 
 {{ glide:hero_image preset="hero" }}
 <!-- width: 1440px, height: 600px, quality: 90% -->
 ```
+::tab blade
+```blade
+<s:glide:thumbnail preset="thumbnail" />
+<!-- width: 300px, height: 300px, quality: 75% -->
+
+<s:glide:hero_image preset="hero" />
+<!-- width: 1440px, height: 600px, quality: 90% -->
+```
+::
 
 ### Generate on upload
+
 When uploading an image asset, any configured presets will be generated so they're ready when you need to reference them, e.g. in the Glide tag.
 
 By default, all presets are generated, however you can [customize this per-container](#customize-glide-preset-warming).

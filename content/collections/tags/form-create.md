@@ -154,7 +154,7 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 
 Using this tag, Statamic will automatically take care of opening your form with a proper [CSRF token](https://laravel.com/docs/csrf).
 
-```output
+```html
 <form method="POST" action="https://website.example/!/forms/contact">
     <input type="hidden" name="_token" value="cN03woeRj5Q0GtlOj7GydsZcRwlyp9VLzfpwDFJZ">
     ...
