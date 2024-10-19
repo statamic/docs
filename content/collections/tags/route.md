@@ -23,11 +23,21 @@ This tag is equivalent to the `route()` helper in [Laravel](https://laravel.com/
   Route::put('bacon/{bacon}', 'BaconController@update')->name('bacon.update');
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <form action="{{ route:bacon.update :bacon="id" }}">
    ... yummy bacon goodness
 </form>
 ```
+::tab blade
+```blade
+<form action="{{ route('bacon.update', ['bacon' => $id]) }}">
+   ... yummy bacon goodness
+</form>
+```
+::
 
 ```html
 <form action="/bacon/6">
