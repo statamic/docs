@@ -40,9 +40,17 @@ return [
 ];
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ trans:foo.bar }} or {{ trans key="foo.bar" }}
 ```
+::tab blade
+```blade
+{{ trans('foo.bar') or {{ __('foo.bar') }}
+```
+::
 
 ```html
 Bar!
@@ -52,9 +60,17 @@ Bar!
 
 Any additional tag parameters will be treated as parameters that should be replaced in the string.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ trans:foo.welcome name="Bob" }}
 ```
+::tab blade
+```blade
+{{ trans('foo.welcome', ['name' => 'Bob']) }}
+```
+::
 
 ```html
 Welcome, Bob!
@@ -64,9 +80,17 @@ Welcome, Bob!
 
 To pluralize, use the `trans_choice` tag with a `count` parameter.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ trans_choice:foo.apples count="2" }}
 ```
+::tab blade
+```blade
+{{ trans_choice('foo.apples', 2) }}
+```
+::
 
 ```html
 There are 2 apples
