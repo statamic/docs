@@ -23,5 +23,10 @@ You can pass a string with a color name as parameter to get it colored in Ray. N
 ```blade
 @php(Statamic::modify($your_field)->ray())
 @php(Statamic::modify($your_field)->ray('red'))
+
+-- or --
+
+@php(ray($your_field))
+@php(ray($your_field)->red())
 ```
 ::
