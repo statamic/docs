@@ -7,8 +7,18 @@ title: Is Homepage
 ---
 Whether you're on the homepage.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if is_homepage }} Home sweet home {{ /if }}
 ```
+::tab blade
+```blade
+@if ($is_homepage)
+  Home sweet home
+@endif
+```
+::
 
 If you're using [multiple sites](/multi-site), this will be true if you're on the homepage for any configured site.

@@ -7,9 +7,17 @@ title: 'Size Gigabytes'
 ---
 The file size of the asset, in gigabytes. Also available as `size_gb`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ size_gigabytes }}
 ```
+::tab blade
+```blade
+{{ $size_gigabytes }}
+```
+::
 
 ```html
 0.00
