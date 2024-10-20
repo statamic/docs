@@ -17,27 +17,29 @@ stuff:
   two: 'Value Two'
 ```
 
-```
-{{ "stuff:one, title, stuff:two" | compact | ul }}
-```
-
-Would produce the following output:
-
 ::tabs
 
 ::tab antlers
 ```antlers
-<ul>
-    <li>Value One</li>
-    <li>The finest title there ever was</li>
-    <li>Value Two</li>
-</ul>
+{{ "stuff:one, title, stuff:two" | compact | ul }}
 ```
 ::tab blade
 ```blade
 {!! Statamic::modify("stuff:one, title, stuff:two")->compact()->ul() !!}
 ```
 ::
+
+Would produce the following output:
+
+::tabs
+
+```html
+<ul>
+    <li>Value One</li>
+    <li>The finest title there ever was</li>
+    <li>Value Two</li>
+</ul>
+```
 
 :::tip
 It's similar to PHP's `compact()` function.
