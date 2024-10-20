@@ -7,7 +7,10 @@ stage: 4
 ---
 ## Example {#example}
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <article class="mx-auto max-w-lg">
   {{ markdown:indent }}
     # My Favorite Nickelodeon Shows
@@ -20,6 +23,21 @@ stage: 4
   {{ /markdown:indent }}
 </article>
 ```
+::tab blade
+```blade
+<article class="mx-auto max-w-lg">
+  <s:markdown:indent>
+    # My Favorite Nickelodeon Shows
+
+    - Kenan & Kel
+    - All That
+    - Double Dare
+    - Wild & Crazy Kids
+    - Legends of the Hidden Temple
+  </s:markdown:indent>
+</article>
+```
+::
 
 ```html
 <article class="mx-auto max-w-lg">
