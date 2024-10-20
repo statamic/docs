@@ -14,14 +14,30 @@ parameters:
 
 This tag lets you get the URL to a collection's mount entry.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ mount_url handle="blog" }}">Read Our Blog</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('mount_url')->handle('blog') }}">Read Our Blog</a>
+```
+::
 
 ## Shorthand
 
 You may also use a shorthand syntax, where the second tag argument is the collection handle.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ mount_url:blog }}">Read Our Blog</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('mount_url:blog') }}">Read Our Blog</a>
+```
+::
