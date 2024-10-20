@@ -16,7 +16,7 @@ magazines: 10
 
 ::tab antlers
 
-``` antlers
+```antlers
 {{ books | add:5 }}
 {{ books | add:magazines }}
 {{ books | +:magazines }}
