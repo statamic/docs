@@ -32,7 +32,7 @@ There are {{ collection:count in="pogs" }} pogs in this site.
 ::tab blade
 
 ```blade
-{{-- Using Statamic Tags --}}
+{{-- Using Antlers Blade Components --}}
 There are <collection:count in="pogs" /> pogs in this site.
 
 {{-- Using Fluent Tags --}}
