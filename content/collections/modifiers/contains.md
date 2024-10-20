@@ -23,12 +23,23 @@ adjective: best
 noun: carrot
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if summary | contains('BEST') }}
 {{ if summary | contains('BEST', true) }}
 {{ if summary | contains('adjective') }}
 {{ if summary | contains('noun') }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($summary)->contains('BEST')->fetch()) ... @endif
+@if (Statamic::modify($summary)->contains('BEST', true)->fetch()) ... @endif
+@if (Statamic::modify($summary)->contains('adjective')->fetch()) ... @endif
+@if (Statamic::modify($summary)->contains('noun')->fetch()) ... @endif
+```
+::
 
 ```html
 true   (the substring "BEST" was in the string, and it didn't care about the case.)
@@ -51,7 +62,10 @@ numbers: [1, 2]
 number: '1'
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if foods | contains('bacon') }}
 {{ if foods | contains('delicious') }}
 {{ if foods | contains('gross') }}
@@ -60,6 +74,17 @@ number: '1'
 {{ if numbers | contains(number) }}
 {{ if numbers | contains(number, true) }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($foods)->contains('bacon')->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains('delicious')->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains('gross')->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains('vegan bacon strips')->fetch()) ... @endif
+
+@if (Statamic::modify($foods)->contains(number)->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains(number, true)->fetch()) ... @endif
+```
+::
 
 ```html
 true   (there's no field named "bacon", so it searched for literally "bacon")
