@@ -50,7 +50,7 @@ If you ever find yourself needing to loop over all the assets in a container or 
 
 ::tab blade
 ```blade
-{{-- Using Statamic Tags --}}
+{{-- Using Antlers Blade Components --}}
 <statamic:assets
   container="photoshoots"
 >
