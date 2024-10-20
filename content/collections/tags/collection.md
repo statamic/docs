@@ -377,7 +377,7 @@ To enable pagination mode, add the `paginate` parameter with the number of entri
 
   @foreach ($posts as $post)
     <article>
-      {{ $title }}
+      {{ $post->title }}
     </article>
   @endforeach
 
@@ -493,7 +493,7 @@ Here's the `auto_links` output, recreated using the other tags, for you maverick
 
   @foreach ($posts as $post)
     <article>
-      {{ $title }}
+      {{ $post->title }}
     </article>
   @endforeach
 
