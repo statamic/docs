@@ -27,7 +27,7 @@ The Asset tag's primary purpose is to retrieve [Assets](/assets) by their URL.  
 ```
 ::tab blade
 ```blade
-{{-- Using Statamic Tags --}}
+{{-- Using Antlers Blade Components --}}
 <statamic:asset
   url="/assets/logo.png"
 >
