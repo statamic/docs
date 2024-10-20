@@ -41,26 +41,37 @@ You can see the list of available commands in your terminal by running `php plea
 
 | Command | Description |
 |---------|-------------|
+| `install`          | Install Statamic |
+| `list`             | List all the Statamic commands |
+| `multisite`        | Converts from a single to multisite installation |
 | `addons:discover`  | Rebuild the cached addon package manifest |
 | `assets:generate-presets` | Generate asset preset manipulations |
 | `assets:meta`      | Generate asset metadata files |
 | `auth:migration`   | Generate Auth Migrations |
+| `eloquent:import-groups` | Imports file based groups into the database. |
+| `eloquent:import-roles` | Imports file based roles into the database. |
+| `eloquent:import-users` | Imports file based users into the database. |
+| `flat:camp` | Flat Camp ⛺ |
 | `glide:clear`      | Clear the Glide image cache |
-| `install`          | Install Statamic |
-| `list`             | List all the Statamic commands |
-| `make:action`      | Create a new action addon |
+| `install:collaboration` | Installs the Statamic Collaboration addon and enables broadcasting in Laravel. |
+| `install:eloquent-driver` | Install & configure Statamic's Eloquent Driver package |
+| `install:ssg` | Install & configure Statamic's Static Site Generator package |
+| `license:set` | Set Statamic license key in .env |
+| `make:action`      | Create a new action |
 | `make:addon`       | Create a new addon |
-| `make:filter`      | Create a new filter addon |
-| `make:fieldtype`   | Create a new fieldtype addon |
-| `make:modifier`    | Create a new modifier addon |
-| `make:scope`       | Create a new query scope addon |
-| `make:tag`         | Create a new tag addon |
+| `make:dictionary`  | Create a new dictionary |
+| `make:fieldtype`   | Create a new fieldtype |
+| `make:filter`      | Create a new filter |
+| `make:modifier`    | Create a new modifier |
+| `make:scope`       | Create a new query scope |
+| `make:tag`         | Create a new tag |
 | `make:user`        | Create a new user account |
-| `make:widget`      | Create a new widget addon |
-| `multisite`        | Converts from a single to multisite installation |
-| `site:clear`       | Start a fresh site, wiping away all content |
+| `make:widget`      | Create a new widget |
+| `nocache:migration` | Generate Nocache Migrations |
+| `pro:enable`      | Enable Statamic Pro in .env |
 | `search:insert`    | Insert an item into its search indexes |
 | `search:update`    | Update a search index |
+| `site:clear`       | Start a fresh site, wiping away all content |
 | `stache:clear`     | Clear the "Stache" cache |
 | `stache:doctor`    | Diagnose any problems with the Stache. |
 | `stache:refresh`   | Clear and rebuild the "Stache" cache |

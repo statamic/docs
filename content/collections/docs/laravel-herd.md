@@ -24,7 +24,7 @@ To install Herd and run Statamic locally you will need the following:
 
 ## Install Laravel Herd
 
-Installing Herd is super easy and the same process as with any other application. Just download the latest version on [herd.laravel.com](https://herd.laravel.com/download).
+Installing Herd is super easy and the same process as with any other application. Just download the latest version on [herd.laravel.com](https://herd.laravel.com).
 
 <figure>
     <img src="/img/herd-dmg-finder.jpg" alt="Screenshot showing the macOS finder with the Herd app icon">
@@ -86,8 +86,6 @@ If you encounter any issues running `statamic new`, like a `Command not found` e
     <img src="/img/herd-statamic-cli.jpg" alt="Screenshot showing the Kitty terminal emulator running the statamic new command with ASCII art">
     <figcaption>Hot pink and sweet lookin' 💅</figcaption>
 </figure>
-
-For a more in-depth guide on using the CLI and all of its options, have a look at [its docs](/cli).
 
 ## Access the site
 

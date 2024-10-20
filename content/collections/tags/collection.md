@@ -287,7 +287,7 @@ There are several different ways to use this filtering parameter. They are expla
 
 ### Published Status
 
-By default, only `published` entries are included.  Entries can be queried against `draft`, `scheduled`, or `expired` status with [conditions](#conditions) on `status` like this:
+By default, only `published` entries are included.  Entries can be queried against `any`, `draft`, `scheduled`, or `expired` status with [conditions](#conditions) on `status` like this:
 
 ::tabs
 ::tab antlers

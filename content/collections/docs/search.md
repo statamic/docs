@@ -235,11 +235,14 @@ class MyTransformer
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
 ``` shell
-# Update all indexes
+# Select which indexes to update
 php please search:update
 
 # Update a specific index
 php please search:update name
+
+# Update all indexes
+php please search:update --all
 ```
 
 ### Connecting Indexes
@@ -276,13 +279,14 @@ You may choose to use separate indexes to store localized content. For example, 
 
 Take these site and search configs for example:
 
-```php
-// config/statamic/sites.php
-'sites' => [
-    'en' => ['url' => '/'],
-    'fr' => ['url' => '/fr/'],
-    'de' => ['url' => '/de/'],
-]
+```yaml
+# resources/sites.yaml
+en:
+  url: /
+fr:
+  url: /fr/
+de:
+  url: /de/
 ```
 
 ```php
@@ -389,7 +393,7 @@ ALGOLIA_SECRET=your-algolia-admin-key
 ```
 
 ``` shell
-composer require algolia/algoliasearch-client-php
+composer require algolia/algoliasearch-client-php:^3.4
 ```
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.

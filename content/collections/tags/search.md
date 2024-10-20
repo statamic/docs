@@ -90,7 +90,9 @@ variables:
   -
     name: total_results
     type: integer
-    description: The number of results in the loop.
+    description: >
+      The number of results in the loop. 
+      When you're paginating results, this will be the number of results on the current page. If you need to get the total number of results across all pages, you can use `{{ paginate:total_items }}`.
   -
     name: search_score
     type: float

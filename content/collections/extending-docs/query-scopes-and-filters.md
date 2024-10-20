@@ -54,6 +54,29 @@ public function apply($query, $values)
 This will gives you the content of that page.
 
 
+### Using scopes programmatically
+
+In order to use a scope as a query builder method, like "local scopes" in Eloquent, you have to register it on the respective query builder:
+
+```php
+use Statamic\Facades\Entry;
+
+public function boot()
+{
+    Entry::allowQueryScope(Featured::class);
+}
+```
+```php
+Entry::query()->where('this', 'that')->featured()->get();
+```
+However, unlike Eloquent's local scopes, Statamic's scopes accept an array of context. Make sure to pass an associative array rather than individual arguments:
+```php
+$query->featured([
+    'field' => 'value',
+    'foo' => 'bar',
+]);
+```
+
 
 
 ## Filters
