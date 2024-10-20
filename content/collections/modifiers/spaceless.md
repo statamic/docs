@@ -24,7 +24,7 @@ html: |
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($html)->spaceless() !}}
+{!! Statamic::modify($html)->spaceless() !!}
 ```
 ::
 

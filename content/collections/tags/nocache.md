@@ -39,7 +39,7 @@ With the `nocache` tag, you can keep the entirety of the page cached (when using
    @endif
 </statamic:nocache>
 
-{!! $content !}}
+{!! $content !!}
 ```
 ::
 

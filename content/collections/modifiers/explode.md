@@ -20,7 +20,7 @@ places: Scotland, England, Switzerland, Italy
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($places)->explode(',')->ul() !}}
+{!! Statamic::modify($places)->explode(',')->ul() !!}
 ```
 ::
 

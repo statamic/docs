@@ -38,7 +38,7 @@ You may also use Emmet-style CSS classes to be added to the tag.
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($title)->wrap('h1.fast.furious') !}}
+{!! Statamic::modify($title)->wrap('h1.fast.furious') !!}
 ```
 ::
 
@@ -66,7 +66,7 @@ team_members:
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($team_members)->wrap('li')->join(' ') !}}
+{!! Statamic::modify($team_members)->wrap('li')->join(' ') !!}
 ```
 ::
 

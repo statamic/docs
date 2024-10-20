@@ -23,7 +23,7 @@ food:
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($food)->ul() !}}
+{!! Statamic::modify($food)->ul() !!}
 ```
 ::
 

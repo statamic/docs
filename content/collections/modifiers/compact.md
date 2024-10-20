@@ -35,7 +35,7 @@ Would produce the following output:
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify("stuff:one, title, stuff:two")->compact()->ul() !!}}
+{!! Statamic::modify("stuff:one, title, stuff:two")->compact()->ul() !!}
 ```
 ::
 
