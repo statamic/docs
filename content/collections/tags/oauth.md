@@ -19,9 +19,17 @@ id: f7676fe0-abb3-4a05-8530-6d23a9b5130d
 
 Here's the regular/parameter syntax in action, especially useful if the provider name comes from variable.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ oauth provider="github" }}">Sign In with Github</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('oauth')->provider('github') }}">Sign In with Github</a>
+```
+::
 
 ```output
 <a href="/oauth/github">Sign In with Github</a>
@@ -29,9 +37,17 @@ Here's the regular/parameter syntax in action, especially useful if the provider
 
 And the shorthand version.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ oauth:github }}">Sign In with Github</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('oauth:github') }}">Sign In with Github</a>
+```
+::
 
 ```html
 <a href="/oauth/github">Sign In with Github</a>
@@ -39,9 +55,17 @@ And the shorthand version.
 
 And now with a redirect:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ oauth:github redirect="/account" }}">Sign In with Github</a>
 ```
+::tab blade
+```blade
+<a href="{{ Statamic::tag('oauth:github')->redirect('/account') }}">Sign In with Github</a>
+```
+::
 
 ```html
 <a href="/oauth/github?redirect=/account">Sign In with Github</a>
