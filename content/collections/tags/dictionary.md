@@ -61,35 +61,75 @@ parameters:
 
 This tag allows you to loop through options from a [Dictionary](/fieldtypes/dictionary).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary handle="countries" }}
     {{ label }} {{ value }}
 {{ /dictionary }}
 ```
+::tab blade
+```blade
+<s:dictionary handle="countries">
+  {{ $label }} {{ $value }}
+</s:dictionary>
+```
+::
 
 You can also use the shorthand syntax for this:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:countries }}
     {{ label }} {{ value }}
 {{ /dictionary:countries }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries>
+  {{ $label }} {{ $value }}
+</s:dictionary:countries>
+```
+::
 
 You can also output any additional data provided by the Dictionary, like `emoji` or `region` in the case of the Countries dictionary:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:countries }}
     {{ emoji }} {{ name }} in {{ region }}
 {{ /dictionary:countries }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries>
+  {{ $emoji }} {{ $name }} in {{ $region }}
+</s:dictionary:countries>
+```
+::
 
 ## Searching
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ dictionary:countries search="Aus" }}
     {{ label }} {{ value }}
 {{ /dictionary:countries }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries search="Aus">
+  {{ $label }} {{ $value }}
+</s:dictionary:countries>
+```
+::
 
 ```html
 🇦🇺 Australia AUS
@@ -98,11 +138,21 @@ You can also output any additional data provided by the Dictionary, like `emoji`
 
 ## Conditions
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:countries region:is="Europe" }}
     {{ label }} {{ value }}
 {{ /dictionary:countries }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries region:is="Europe">
+  {{ $label }} {{ $value }}
+</s:dictionary:countries>
+```
+::
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out](/conditions).
 
@@ -110,7 +160,10 @@ There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contain
 
 To enable pagination mode, add the `paginate` parameter with the number of options in each page.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:countries paginate="10" as="countries" }}
     {{ countries }}
         {{ label }}<br>
@@ -120,12 +173,30 @@ To enable pagination mode, add the `paginate` parameter with the number of optio
         <a href="{{ prev_page }}">⬅ Previous</a>
 
         {{ current_page }} of {{ total_pages }} pages
-        (There are {{ total_items }} posts)
+        (There are {{ total_items }} pages)
 
         <a href="{{ next_page }}">Next ➡</a>
     {{ /paginate }}
 {{ /dictionary:countries }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries paginate="10" as="countries">
+  @foreach ($countries as $country)
+    {{ $country['label'] }}<br>
+  @endforeach
+
+  @if ($paginate['total_pages'] > 1)
+    <a href="{{ $paginate['prev_page'] }}">⬅ Previous</a>
+
+    {{ $paginate['current_page'] }} of {{ $paginate['total_pages'] }} pages
+    (There are {{ $paginate['total_items'] }} pages)
+
+    <a href="{{ $paginate['next_page'] }}">Next ➡</a>
+  @endif
+</s:dictionary:countries>
+```
+::
 
 In pagination mode, your options will be scoped (in the example, we're scoping them into the `countries` tag pair). Use that tag pair to loop over the options in that page.
 
@@ -149,9 +220,19 @@ The `paginate` variable will become available to you. This is an array containin
 
 Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results with the `query_scope` or `filter` parameter:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:countries query_scope="your_query_scope" }}
 ```
+::tab blade
+```blade
+<s:dictionary:countries query_scope="your_query_scope">
+
+</s:dictionary:countries>
+```
+::
 
 You should reference the query scope by its handle, which is usually the name of the class in snake case. For example: `YourQueryScope` would be `your_query_scope`.
 
@@ -159,6 +240,21 @@ You should reference the query scope by its handle, which is usually the name of
 
 One of the powerful things you can do with the Files dictionary is pull in options from a JSON, YAML or CSV file.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ dictionary:file filename="products.json" label="Name" value="Code" paginate="5" }}
 ```
+::tab blade
+```blade
+<s:dictionary:file
+  filename="products.json"
+  label="Name"
+  value="Code"
+  paginate="5"
+>
+
+</s:dictionary:file>
+```
+::
