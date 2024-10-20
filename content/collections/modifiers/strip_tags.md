@@ -27,9 +27,9 @@ unwanted: [p, blockquote]
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($html)->stripTags() !}}
-{!! Statamic::modify($html)->stripTags('p') !}}
-{!! Statamic::modify($html)->stripTags($unwanted) !}}
+{!! Statamic::modify($html)->stripTags() !!}
+{!! Statamic::modify($html)->stripTags('p') !!}
+{!! Statamic::modify($html)->stripTags($unwanted) !!}
 ```
 ::
 
