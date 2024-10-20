@@ -87,7 +87,7 @@ To keep a part of your template dynamic, move it into a partial then use the `@n
 @include('mypartial') {{-- this will be cached --}}
 @nocache('mypartial') {{-- this will be dynamic --}}
 ```
-::tab Statamic Tags
+::tab Antlers Blade Components
 
 If you'd like to make a section of the current template dynamic without extracting a dedicated partial, you may use the `<statamic:nocache>` tag:
 
