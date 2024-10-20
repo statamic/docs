@@ -16,6 +16,10 @@ Creates an md5 hash of a variable.
 ::tab blade
 ```blade
 {{ Statamic::modify('hello')->md5() }}
+
+-- or --
+
+{{ md5('hello') }}
 ```
 ::
 
