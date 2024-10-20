@@ -369,26 +369,26 @@ To enable pagination mode, add the `paginate` parameter with the number of entri
 ```blade
 <statamic:collection:pages
   paginate="10"
-	as="posts"
+  as="posts"
 >
-	@if ($no_results)
-		<p>Aww, there are no results.</p>
-	@endif
+  @if ($no_results)
+    <p>Aww, there are no results.</p>
+  @endif
 
-	@foreach ($posts as $post)
-		<article>
-			{{ $title }}
-		</article>
-	@endforeach
+  @foreach ($posts as $post)
+    <article>
+      {{ $title }}
+    </article>
+  @endforeach
 
   @if ($paginate['total_pages'] > 1)
-		<a href="{{ $paginate['prev_page'] }}">⬅ Previous</a>
+    <a href="{{ $paginate['prev_page'] }}">⬅ Previous</a>
 
-		{{ $paginate['current_page'] }} of {{ $paginate['total_pages'] }} pages
-		(There are {{ $paginate['total_items'] }} posts)
+    {{ $paginate['current_page'] }} of {{ $paginate['total_pages'] }} pages
+    (There are {{ $paginate['total_items'] }} posts)
 
-		<a href="{{ $paginate['next_page'] }}">Next ➡</a>
-	@endif
+    <a href="{{ $paginate['next_page'] }}">Next ➡</a>
+  @endif
 </statamic:collection:pages>
 ```
 ::
@@ -485,70 +485,70 @@ Here's the `auto_links` output, recreated using the other tags, for you maverick
 ```blade
 <statamic:collection:blog
   paginate="10"
-	as="posts"
+  as="posts"
 >
-	@if ($no_results)
-		<p>Aww, there are no results.</p>
-	@endif
+  @if ($no_results)
+    <p>Aww, there are no results.</p>
+  @endif
 
-	@foreach ($posts as $post)
-		<article>
-			{{ $title }}
-		</article>
-	@endforeach
+  @foreach ($posts as $post)
+    <article>
+      {{ $title }}
+    </article>
+  @endforeach
 
   @if ($paginate['total_pages'] > 1)
     @php
         $hasSlider = count($paginate['links']['segments']['slider']) > 0;
         $hasLast = count($paginate['links']['segments']['last']) > 0;
-		@endphp
+    @endphp
 
-		<ul class="pagination">
-			@if ($paginate['prev_page'])
-				<li><a href="{{ $paginate['prev_page'] }}">&laquo;</a></li>
-			@else
-				<li class="disabled"><span>&laquo;</span></li>
-			@endif
+    <ul class="pagination">
+      @if ($paginate['prev_page'])
+        <li><a href="{{ $paginate['prev_page'] }}">&laquo;</a></li>
+      @else
+        <li class="disabled"><span>&laquo;</span></li>
+      @endif
 
-			@foreach (Arr::get($paginate, 'links.segments.first', []) as $segment)
-				@if ($segment['page'] == $paginate['current_page'])
-					<li class="active"><span>{{ $segment['page'] }}</span></li>
-				@else
-					<li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
-				@endif
-			@endforeach
+      @foreach (Arr::get($paginate, 'links.segments.first', []) as $segment)
+        @if ($segment['page'] == $paginate['current_page'])
+          <li class="active"><span>{{ $segment['page'] }}</span></li>
+        @else
+          <li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
+        @endif
+      @endforeach
 
-			@if ($hasSlider)
-				<li class="disabled"><span>...</span></li>
-			@endif
+      @if ($hasSlider)
+        <li class="disabled"><span>...</span></li>
+      @endif
 
-			@foreach (Arr::get($paginate, 'links.segments.slider', []) as $segment)
-				@if ($segment['page'] == $paginate['current_page'])
-					<li class="active"><span>{{ $segment['page'] }}</span></li>
-				@else
-					<li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
-				@endif
-			@endforeach
+      @foreach (Arr::get($paginate, 'links.segments.slider', []) as $segment)
+        @if ($segment['page'] == $paginate['current_page'])
+          <li class="active"><span>{{ $segment['page'] }}</span></li>
+        @else
+          <li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
+        @endif
+      @endforeach
 
-			@if ($hasSlider || $hasLast)
-				<li class="disabled"><span>...</span></li>
-			@endif
+      @if ($hasSlider || $hasLast)
+        <li class="disabled"><span>...</span></li>
+      @endif
 
-			@foreach (Arr::get($paginate, 'links.segments.last', []) as $segment)
-				@if ($segment['page'] == $paginate['current_page'])
-					<li class="active"><span>{{ $segment['page'] }}</span></li>
-				@else
-					<li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
-				@endif
-			@endforeach
+      @foreach (Arr::get($paginate, 'links.segments.last', []) as $segment)
+        @if ($segment['page'] == $paginate['current_page'])
+          <li class="active"><span>{{ $segment['page'] }}</span></li>
+        @else
+          <li><a href="{{ $segment['url'] }}">{{ $segment['page'] }}</a></li>
+        @endif
+      @endforeach
 
-			@if ($paginate['next_page'])
-				<li><a href="{{ $paginate['next_page'] }}">&raquo;</a></li>
-			@else
-				<li class="disabled"><span>&raquo;</span></li>
-			@endif
-		</ul>
-	@endif
+      @if ($paginate['next_page'])
+        <li><a href="{{ $paginate['next_page'] }}">&raquo;</a></li>
+      @else
+        <li class="disabled"><span>&raquo;</span></li>
+      @endif
+    </ul>
+  @endif
 </statamic:collection:blog>
 ```
 ::
