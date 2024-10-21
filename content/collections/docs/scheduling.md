@@ -42,7 +42,9 @@ The following tasks will be executed whenever the task scheduler is running, wit
 
 ### EntryScheduleReached
 
-Statamic will dispatch a `Statamic\Events\EntryScheduleReached` event whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.  
+Statamic will dispatch a `Statamic\Events\EntryScheduleReached` event whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.
+
+The event will be dispatched on the minute _after_ the scheduled time.
 
 
 ## Defining Schedules
