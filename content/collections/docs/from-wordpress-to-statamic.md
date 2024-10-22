@@ -15,6 +15,11 @@ Arguably one of the best ways to build modern content-driven WordPress sites —
 
 Instead of this custom field approach being an afterthought, Statamic was built from the ground up with this approach with of 40 different [fieldtypes](/reference/fieldtypes) that you can organize into [blueprints](/blueprints) and reusable fieldsets.
 
+<figure>
+    <img src="/img/blueprints.png" alt="The Statamic blueprint configuration screen">
+    <figcaption>A glimpse at configuring a blueprint.</figcaption>
+</figure>
+
 Your fields are organized into Blueprints, which support sections and tabs for better organization. You have control over field order and width, validation rules, and can even configure conditions that show and hide fields based on your content, making your authoring experience as streamlined and uncluttered as possible for your content team.
 
 If you have groups of fields you want to use in multiple Blueprints, you can create a reusable Fieldset that can be imported into any Blueprint, saving you time duplicating configs.
@@ -26,6 +31,11 @@ It’s super intuitive to manage through the control panel. It feels like ACF, b
 If you've been working with a Gutenberg or Page Builder approach, take a look at the [Bard](/fieldtypes/bard) and [Replicator](/replicator) fieldtypes — they allow you to create blocks (we call them "sets") out of any _other_ native fieldtypes, giving you virtually unlimited ways to configure your content.
 
 These can be used to create numerous components that can be combined as a "page builder" allowing your content team to create and rearrange pages without ever working about what it looks like.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v4/bard-with-sets.png" width="597" alt="Bard Fieldtype UI">
+    <figcaption>The Bard Fieldtype in action.</figcaption>
+</figure>
 
 ### Block to Set Examples
 
