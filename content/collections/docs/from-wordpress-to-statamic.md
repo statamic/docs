@@ -30,7 +30,7 @@ It’s super intuitive to manage through the control panel. It feels like ACF, b
 
 If you've been working with a Gutenberg or Page Builder approach, take a look at the [Bard](/fieldtypes/bard) and [Replicator](/replicator) fieldtypes — they allow you to create blocks (we call them "sets") out of any _other_ native fieldtypes, giving you virtually unlimited ways to configure your content.
 
-These can be used to create numerous components that can be combined as a "page builder" allowing your content team to create and rearrange pages without ever working about what it looks like.
+These can be used to create numerous components that can be combined as a "page builder" allowing your content team to create and rearrange pages without ever worrying about what it looks like.
 
 <figure>
     <img src="/img/fieldtypes/screenshots/v4/bard-with-sets.png" width="597" alt="Bard Fieldtype UI">
