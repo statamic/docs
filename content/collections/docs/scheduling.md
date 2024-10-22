@@ -18,7 +18,7 @@ In a nutshell, you can create a single cron job which will allow things to happe
 
 ### In Production
 
-In production, you will need to set up a single once-per-minute cron entry that runs the `schedule:work` Artisan command.
+In production, you will need to set up a single once-per-minute cron entry that runs the `schedule:run` Artisan command.
 
 Using a service like Laravel Forge makes this simple.
 
