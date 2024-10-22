@@ -208,6 +208,14 @@ To get more granular and introduce _time_, add a [date field](/fieldtypes/date) 
 If you don't enable the time, all entries on a given day will assume a default time of midnight, or `00:00`. If you want to make sure that multiple entries on the same day are ordered in the order you published them, turn the time on.
 :::
 
+## Scheduling
+
+If you've added a date and/or time to your entries in order to "schedule" them, you may need to set up the scheduler in order for Statamic to properly invalidate things.
+
+For example, you might need things to happen exactly when an entry is scheduled, like refreshing a cached blog listing, or sending a notification.
+
+[Learn how to use the scheduler](/scheduling)
+
 ## Ordering
 
 Flick on the "Orderable" switch in a collection's settings and you'll have a drag and drop UI in the control panel to order the entries. The collection is now "structured". Learn more about [structures](/structures).
