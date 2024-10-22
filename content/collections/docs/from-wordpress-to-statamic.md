@@ -65,7 +65,7 @@ An empty set works, or a single [HTML](/fieldtypes/html) field letting insert a 
 A single [video](/fieldtypes/video) fieldtype to paste in the URL of a YouTube or Vimeo video would be enough, but you could add a [Select](/fieldtypes/select) or [Button Group](fieldtypes/button-group) field with some options to control the size of the embed (inline vs oversized, for example).
 
 ::: tip
-These fields store **structured content**, but don't explicitly give control over your _layout_ because they don't write their own HTML. You always have full control of your markup, which in the end makes for a better long-term experience, allowing you can redesign sites without ever having to clean up or rewrite content again.
+These fields store **structured content**, but don't explicitly give control over your _layout_ because they don't write their own HTML. You always have full control of your markup, which in the end makes for a better long-term experience, allowing you to redesign sites without ever having to clean up or rewrite content again.
 :::
 
 
@@ -146,7 +146,7 @@ If you’re using Statamic Pro, it can even automate your Git commits and pushes
 
 ## Importing Content
 
-Statamic has a [native Importer](https://github.com/statamic/importer) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
+Statamic has a [native Importer](https://github.com/statamic/importer) coming soon (any day now, as of Oct 22, 2024) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
 
 ## Everything Else
 
