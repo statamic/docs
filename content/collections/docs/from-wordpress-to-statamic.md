@@ -86,7 +86,7 @@ If you want to take it to the next level, you can check out our first-party addo
 But SEO Pro isn't the only option in the Statamic Ecosystem. You can explore some of the other popular addons:
 
 - [Advanced SEO](https://statamic.com/addons/aerni/advanced-seo)
-- [Aardvard SEO](https://statamic.com/addons/candour/aardvark-seo)
+- [Aardvark SEO](https://statamic.com/addons/candour/aardvark-seo)
 - [SEOtamic](https://statamic.com/addons/cnj/seotamic)
 - [SEO Checker](https://statamic.com/addons/luckymedia/seochecker)
 
