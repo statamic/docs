@@ -9,9 +9,20 @@ A helper to output the CSRF token inside a hidden field named `_token` from the 
 
 POST requests in Statamic will be keeping an eye out for a `_token` value.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ csrf_field }}
 ```
+::tab blade
+```blade
+{!! $csrf_field !!}
+
+-- or --
+{!! csrf_field() !!}
+```
+::
 
 ```
 <input type="hidden" name="_token" value="csrftokenhere" />

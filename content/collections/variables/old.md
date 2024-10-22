@@ -13,7 +13,10 @@ Instead of making your users re-type everything, you may use `{{ old:[field_name
 
 When using the `{{ user:login_form }}` to login, upon entering incorrect credentials, you will be shown the same page. You can use the `{{ old:[field_name] }}` tags to maintain the values like so:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:login_form }}
 
     {{ if errors }}
@@ -31,3 +34,21 @@ When using the `{{ user:login_form }}` to login, upon entering incorrect credent
 
 {{ /user:login_form }}
 ```
+::tab blade
+```blade
+<s:user:login_form>
+  @if (count($errors) > 0)
+    ...
+  @endif
+
+  <label>Username</label>
+  <input type="text" name="username" value="{{ old('username') }}" />
+
+  <label>Password</label>
+  <input type="password" name="password" value="{{ old('password') }}" />
+
+  <button>Log in</button>
+
+</s:user:login_form>
+```
+::

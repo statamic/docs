@@ -72,13 +72,29 @@ past_vacations:
   - GBR
 ```
 
-```
+::tabs
+
+::tab antlers
+
+```antlers
 <ul>
     {{ past_vacations }}
         <li>{{ emoji }} {{ name }}</li>
     {{ /past_vacations }}
 </ul>
 ```
+
+::tab blade
+
+```blade
+<ul>
+	@foreach ($past_vacations as $vacation)
+	<li>{{ $vacation['emoji'] }} {{ $vacation['name'] }}</li>
+	@endforeach
+</ul>
+```
+
+::
 
 ```html
 <ul>
@@ -145,11 +161,27 @@ countries:
   - USA
   - AUS
 ```
-```
+
+::tabs
+
+::tab antlers
+
+```antlers
 {{ countries }}
   {{ emoji }} {{ name }}, {{ iso2 }}, {{ iso3 }}, {{ region }}, {{ subregion }}
 {{ /countries }}
 ```
+
+::tab blade
+
+```blade
+@foreach ($countries as $country)
+	{{ $country['emoji'] }} {{ $country['name'] }}, {{ $country['iso2'] }}, {{ $country['iso3'] }}, {{ $country['region'] }}, {{ $country['subregion'] }}
+@endforeach
+```
+
+::
+
 ```
 🇺🇸 United States, US, USA, Americas, Northern America
 🇦🇺 Australia, AU, AUS, Oceania, Australia and New Zealand
@@ -171,11 +203,27 @@ timezones:
   - America/New_York
   - Australia/Sydney
 ```
-```
+
+::tabs
+
+::tab antlers
+
+```antlers
 {{ timezones }}
   {{ name }} {{ offset }}
 {{ /timezones }}
 ```
+
+::tab blade
+
+```blade
+@foreach ($timezones as $timezone)
+	{{ $timezone['name'] }} {{ $timezone['offset'] }}
+@endforeach
+```
+
+::
+
 ```
 America/New_York -04:00
 Australia/Sydney +10:00
@@ -197,11 +245,27 @@ currencies:
   - USD
   - HUF 
 ```
-```
+
+::tabs
+
+::tab antlers
+
+```antlers
 {{ currencies }}
   {{ name }}, {{ code }}, {{ symbol }}, {{ decimals }}
 {{ /currencies }}
 ```
+
+::tab blade
+
+```blade
+@foreach ($currencies as $currency)
+{{ $currency['name'] }}, {{ $currency['code'] }}, {{ $currency['symbol'] }}, {{ $currency['decimals'] }}
+@endforeach
+```
+
+::
+
 ```
 US Dollar, USD, $, 2
 Hungarian Forint, HUF, Ft, 0

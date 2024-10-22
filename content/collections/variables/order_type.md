@@ -7,9 +7,17 @@ title: 'Order Type'
 ---
 Get the order type of an entry. This could be `date`, `alphabetical`, or `number`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ order_type }}
 ```
+::tab blade
+```blade
+{{ $order_type }}
+```
+::
 
 ```html
 {{ number }}

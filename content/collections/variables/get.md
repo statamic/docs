@@ -10,7 +10,10 @@ An array of `GET` variables that come from any query strings present in the curr
 
 Example URL: `/about?show=pants&hide=jeggings`
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ get:show }}
 
 {{ get }}
@@ -19,6 +22,15 @@ Example URL: `/about?show=pants&hide=jeggings`
 {{ /get }}
 
 ```
+::tab blade
+```blade
+{{ $get['show'] ?? '' }}
+
+-- or --
+
+{{ request()->get('show') }}
+```
+::
 
 ```html
 pants
@@ -29,7 +41,19 @@ jeggings
 
 Be sure to escape these values with the `sanitize` modifier if you plan to use them in output in production.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <!-- Because let's face it. You really *should* sanitize your jeggings. -->
 {{ get:jeggings | sanitize }}
 ```
+::tab blade
+```blade
+{{ request()->get('jeggings') }}
+
+-- or --
+
+{!! Statamic::modify(request()->get('jeggings'))->sanitize() !!}
+```
+::

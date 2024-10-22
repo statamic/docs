@@ -7,9 +7,17 @@ title: Permalink
 ---
 Get the absolute URL to the content. This will include your site URL.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ permalink }}
 ```
+::tab blade
+```blade
+{{ $permalink }}
+```
+::
 
 ```html
 http://example.com/posts/bacon

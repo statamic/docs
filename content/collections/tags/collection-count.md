@@ -23,9 +23,22 @@ This tag's only purpose is to fetch the number of the entries in a collection th
 
 ## Example
 
-```
+::tabs
+::tab antlers
+```antlers
 There are {{ collection:count in="pogs" }} pogs in this site.
 ```
+
+::tab blade
+
+```blade
+{{-- Using Antlers Blade Components --}}
+There are <collection:count in="pogs" /> pogs in this site.
+
+{{-- Using Fluent Tags --}}
+There are {{ Statamic::tag('collection:count')->in('pogs') }} pogs in this site.
+```
+::
 
 ```html
 There are 6201 pogs in this site.
@@ -33,8 +46,25 @@ There are 6201 pogs in this site.
 
 You could do the same thing inside a regular collection tag by aliasing the results to a single variable and using the [count modifier](/modifiers/count).
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ collection:blog as="entries" }}
 There are {{ entries | count }} pogs in this site.
 {{ /collection:blog }}
 ```
+
+::tab blade
+```blade
+<statamic:collection:blog
+  as="entries"
+>
+{{-- This example calls the ->count() method on a Collection instance. --}}
+There are {{ $entries->count() }} pogs in this site.
+
+{{-- This example uses the count modifier. --}}
+There are {{ Statamic::modify($entries)->count()->fetch() }} pogs in this site.
+
+</statamic:collection:blog>
+```
+::

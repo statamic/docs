@@ -10,7 +10,10 @@ title: Chunk
 Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
 
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:news as="posts" limit="6" }}
   {{ posts chunk="3" }}
   <div class="flex space-x-4">
@@ -23,6 +26,23 @@ Break arrays or collections into smaller (wait for it) chunks of any given size.
   {{ /posts }}
 {{ /collection:news }}
 ```
+::tab blade
+```blade
+<s:collection:news as="posts" limit="6">
+
+  @foreach (Statamic::modify($posts)->chunk(3) as $chunk)
+    <div class="flex space-x-4">
+      @foreach ($chunk['chunk'] as $entry)
+        <a href="{{ $entry->url }}" class="bg-purple-800 text-white p-4">
+          {{ $entry->title }}
+        </a>
+      @endforeach
+    </div>
+  @endforeach
+
+</s:collection:news>
+```
+::
 
 ```html
 <div class="flex space-x-4">

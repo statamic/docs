@@ -18,9 +18,17 @@ playlist:
 
 Use with the pipe syntax to continue chaining in a single tag like so:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ playlist | offset(1) | join }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($playlist)->offset(1)->join() }}
+```
+::
 
 ```html
 Gong Gong, Possom Posse, Justin Bieber
@@ -28,11 +36,23 @@ Gong Gong, Possom Posse, Justin Bieber
 
 Or using the parameter syntax:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ playlist | offset(1) }}
     <li>{{ value }}</li>
 {{ /playlist }}
 ```
+
+::tab blade
+
+```blade
+@foreach (Statamic::modify($playlist)->offset(1)->fetch() as $value)
+    <li>{{ $valuie }}</li>
+@endforeach
+```
+::
 
 ```html
 <li>Gong Gong</li>

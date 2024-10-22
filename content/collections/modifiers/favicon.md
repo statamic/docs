@@ -12,9 +12,17 @@ Given a valid URL will generate a proper favicon meta tag.
 icon: /assets/img/favicon.png
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ icon | favicon }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($icon)->favicon() !!}
+```
+::
 
 ```html
 <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">

@@ -26,20 +26,57 @@ The User Roles tag fetches lists of the user roles on your site so you can do wh
 
 A simple example is to loop through all the roles and list them by handle:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ user_roles }}
     <li>{{ handle }}</li>
 {{ /user_roles }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+<s:user_roles>
+  <li>{{ $handle }}</li>
+</s:user_roles>
+</ul>
+
+{{-- Aliasing the roles. --}}
+<s:user_roles
+  as="roles"
+>
+  ...
+
+  @foreach ($roles as $role)
+    ...
+  @endforeach
+
+  ...
+</s:user_roles>
+```
+::
 
 ## Filtering
 
 If you only want a specific role or roles, you can pass their handle(s) using the `handle` parameter.
 
-```
-{{ user_roles handle="group_1|group_2" }}
+::tabs
+
+::tab antlers
+```antlers
+{{ user_roles handle="role_1|role_2" }}
   // cool stuff goes here
 {{ /user_roles }}
 ```
+::tab blade
+```blade
+<s:user_roles
+  handle="role_1|role_2"
+>
+  // cool stuff goes here
+</s:user_roles>
+```
+::

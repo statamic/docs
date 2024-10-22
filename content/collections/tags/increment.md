@@ -20,11 +20,25 @@ id: b33aa176-06e6-411d-a4b7-0a514f697d78
 
 Most loops already have an `index` variable that will display which iteration the loop is on. However, there are cases were you may need to start another counter, begin counting from a particular number, or increment by a step size other than `1`. For those reasons, this tag exists.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ items }}
   {{ increment }}
 {{ /items }}
 ```
+::tab blade
+```blade
+@foreach ($items as $item)
+  <s:increment />
+
+  -- or --
+  
+  {{ Statamic::tag('increment') }}
+@endforeach
+```
+::
 
 ```html
 0 1 2 3 4 5
@@ -38,21 +52,41 @@ A counter will only be incremented if its parsed. You can wrap it inside an `if`
 
 You can have multiple counters going at once in your view by giving each a unique name as the second tag argument.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ items }}
   {{ increment:again }}
 {{ /items }}
 ```
+::tab blade
+```blade
+@foreach ($items as $item)
+  <s:increment:again />
+@endforeach
+```
+::
 
 ## Customize the Counters
 
 Customize the counts using the `from` and `by` parameters.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ items }}
   {{ increment from="0" by="200" }}
 {{ /items }}
 ```
+::tab blade
+```blade
+@foreach ($items as $item)
+  <s:increment from="0" by-"200" />
+@endforeach
+```
+::
 
 ```html
 0 200 400 600 800 100

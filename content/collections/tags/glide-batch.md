@@ -27,11 +27,21 @@ I went exploring today and here are some photos I took and I was too lazy to use
 ![Battlestar](/images/galactica.jpg)
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:batch width="600" height="400" fit="crop" }}
   {{ page:content }}
 {{ /glide:batch }}
 ```
+::tab blade
+```blade
+<s:glide width="600" height="400" fit="crop">
+  {!! $page->content !!}
+</s:glide>
+```
+::
 
 ```html
 <p>I went exploring today and here are some photos I took and I was too lazy to use an Asset fieldtype so here they all are plop ok</p>

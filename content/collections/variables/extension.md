@@ -7,9 +7,17 @@ title: Extension
 ---
 The file extension of the asset.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ extension }}
 ```
+::tab blade
+```blade
+{{ $extension }}
+```
+::
 
 ```html
 jpg

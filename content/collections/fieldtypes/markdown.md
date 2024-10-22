@@ -85,9 +85,18 @@ This is the Markdown fieldtype. It's for writing [Markdown](https://daringfireba
 
 The Markdown content will be automatically transformed into HTML through [augmentation](/augmentation). You need only use the variable and the rest is done for you.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ content }}
 ```
+
+::tab blade
+```blade
+{!! $content !!}
+```
+::
 
 ```html
 <h2>Overview</h2>

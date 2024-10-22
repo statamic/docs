@@ -14,9 +14,19 @@ numbers:
   - [four, five, six]
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ numbers | collapse }}
 ```
+::tab blade
+```blade
+<?php
+    $collapsed = Satamic::modify($numbers)->collapse()->fetch();
+?>
+```
+::
 
 ```yaml
 numbers:

@@ -90,30 +90,60 @@ Each locale's system data, as configured in `config/statamic/sites.php`, is avai
 
 Loop through in each locale to get URLs to translated versions of an entry or taxonomy term.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ locales }}
     <li><a href="{{ permalink }}">View in {{ locale:name }}</a></li>
 {{ /locales }}
 </ul>
 ```
+::tab blade
+<ul>
+<s:locales>
+  <li><a href="{{ $locale['permalink'] }}">View in {{ $locale['name'] }}</a></li>
+</s:locales>
+</ul>
+::
 
 ### Targeting a locale {#targeting}
 
 You can also specify a locale directly instead of looping through them all.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ locales:fr }}
     <a href="{{ permalink }}">View in French</a>
 {{ /locales:fr }}
 ```
+::tab blade
+```blade
+<s:locales:fr>
+  <a href="{{ $locale['permalink'] }}">View in French</a>
+</s:locales:fr>
+```
+::
 
 ### Excluding the entry's locale {#excluding}
 
 You can choose to not show the locale belonging to the entry.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ locales self="false" }}
     <a href="{{ permalink }}">View in {{ locale:name }}</a>
 {{ /locales }}
 ```
+::tab blade
+```blade
+<s:locales self="false">
+  <a href="{{ $locale['permalink'] }}">View in {{ $locale['name'] }}</a>
+</s:locales>
+```
+::

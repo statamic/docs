@@ -32,7 +32,10 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 ]
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ sites }}
     {{ handle }}
     {{ name }}
@@ -46,6 +49,21 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 
 {{ /sites }}
 ```
+::tab blade
+```blade
+@foreach ($sites as $site)
+  {{ $site->handle }}
+  {{ $site->name }}
+  {{ $site->locale }}
+  {{ $site->short_locale }}
+  {{ $site->url }}
+  {{ $site->permalink }}
+  {{ $site->direction }}
+
+  {{ $site->attributes['foo'] }}
+@endforeach
+```
+::
 
 ```html
 english

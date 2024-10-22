@@ -18,9 +18,17 @@ Check out the [complete list of available replacements](https://carbon.nesbot.co
 event_date: June 19 2020
 ```
 
+::tabs
+
+::tab antlers
+```antlers
+{{ event_date | iso_format("MMMM Do YYYY, h:mm:ss a") }}
 ```
-{{ event_date | iso_format("MMMM Do YYYY, h:mm:ss a")}}
+::tab blade
+```blade
+{{ Statamic::modify($event_date)->isFormat("MMMM Do YYYY, h:mm:ss a") }}
 ```
+::
 
 ```html
 June 15th 2018, 5:34:15 pm
@@ -28,9 +36,17 @@ June 15th 2018, 5:34:15 pm
 
 You can use macro-formats to format and localize dates as well. 
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ event_date | iso_format('ll') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($event_date)->isoFormat('ll') }}
+```
+::
 
 Will output this on your English site:
 

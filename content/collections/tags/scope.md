@@ -16,7 +16,10 @@ Most commonly this take is used to avoid any kind of variable collisions or to c
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 ---
 title: Grimmace Shake
 ---
@@ -25,6 +28,17 @@ title: Grimmace Shake
 <h1>{{ stuff:title }}</h1>
 {{ /scope:stuff }}
 ```
+::tab blade
+```blade
+<?php
+  $title = 'Grimmace Shake';
+?>
+
+<s:scope:stuff>
+  <h1>{{ $stuff['title'] }}</h1>
+</s:scope:stuff>
+```
+::
 
 This will output:
 

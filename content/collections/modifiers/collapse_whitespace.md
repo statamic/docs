@@ -13,9 +13,17 @@ multibyte whitespace such as the thin space and ideographic space.
 title: Bad   at           typing
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | collapse_whitespace }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->collapseWhitespace() }}
+```
+::
 
 ```html
 Bad at typing

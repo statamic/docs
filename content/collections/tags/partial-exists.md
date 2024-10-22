@@ -13,13 +13,25 @@ parameters:
 
 You can use this tag to check if a partial exists. Useful if you have some sort of dynamic loop.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if {partial:exists src="mypartial" } }}
     It exists
 {{ else }}
     It doesn't.
 {{ /if }}
 ```
+::tab blade
+```blade
+@if (Statamic::tag('partial:exists')->src('mypartial')->fetch())
+  It exists
+@else
+  It doesn't.
+@endif
+```
+::
 
 ## Related Reading
 

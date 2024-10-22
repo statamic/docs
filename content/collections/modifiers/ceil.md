@@ -12,9 +12,17 @@ Rounds a number up to the next whole number.
 number: 25.98
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ number | ceil }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($number)->ceil() }}
+```
+::
 
 ```html
 26

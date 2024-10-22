@@ -17,8 +17,26 @@ The Asset tag's primary purpose is to retrieve [Assets](/assets) by their URL.  
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ asset url="/img/brand/logo.png" }}
-  <img src="{{ url }}" alt="{{ alt }}">
+  <img src="{{ url }}" alt="{{ alt }}" />
 {{ /asset }}
 ```
+::tab blade
+```blade
+{{-- Using Antlers Blade Components --}}
+<statamic:asset
+  url="/assets/logo.png"
+>
+	<img src="{{ $url }}" alt="{{ $alt }}" />
+</statamic:asset>
+
+{{-- Using Fluent Tags --}}
+@if ($asset = Statamic::tag('asset')->src('/assets/logo.png')->fetch())
+	<img src="{{ $asset->url }}" alt="{{ $asset->alt }}" />
+@endif
+```
+::

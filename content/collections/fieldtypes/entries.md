@@ -55,13 +55,27 @@ related_entries:
 
 Loop through the entries and do anything you want with the data.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ related_entries }}
     <li><a href="{{ url }}">{{ title }}</a></li>
   {{ /related_entries }}
 </ul>
 ```
+
+::tab blade
+```blade
+<ul>
+  @foreach ($entries as $entry)
+    <li><a href="{{ $entry->url }}">{{ $entry->title }}</a></li>
+  @endforeach
+</ul>
+```
+
+::
 
 ```html
 <ul>

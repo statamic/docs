@@ -13,9 +13,17 @@ Obfuscates a string with special characters making it hard for spam bots to snif
 magic_word: Abracadabra
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ magic_word | obfuscate }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($magic_word)->obfuscate() }}
+```
+::
 
 ```html
 # visibly appears as Abracadabra

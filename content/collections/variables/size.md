@@ -7,11 +7,21 @@ title: Size
 ---
 The file size of the asset, in an appropriate human-readable format.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ assets:files }}
     {{ size }}
 {{ /assets:files }}
 ```
+::tab blade
+```blade
+<s:assets:files>
+  {{ $size }}
+</s:assets:files>
+```
+::
 
 ```html
 11 B

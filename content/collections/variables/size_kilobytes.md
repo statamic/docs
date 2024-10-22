@@ -7,9 +7,17 @@ title: 'Size Kilobytes'
 ---
 The file size of the asset, in kilobytes. Also available as `size_kb`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ size_kilobytes }}
 ```
+::tab blade
+```blade
+{{ $size_kiobytes }}
+```
+::
 
 ```html
 127.69

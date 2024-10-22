@@ -3,7 +3,7 @@ id: 878f0dd7-2d31-479c-b58d-bc60685fa7d2
 blueprint: tag
 title: Users
 description: 'Fetch, filter, and iterate over Users and their data.'
-intro: 'Anything inside the `user:in` tag will only be rendered if the user is in the specified group.'
+intro: 'The users tag can be used to fetch, filter, and iterate over Users and their data.'
 parameters:
   -
     name: group
@@ -79,13 +79,26 @@ The Users tag works very much like the [Collection Tag](/tags/collection). It fe
 
 A simple example is to loop through all the users and list them by name:
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ users }}
     <li>{{ name }}</li>
 {{ /users }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+<s:users>
+  <li>{{ $name }}</li>
+</s:users>
+</ul>
+```
+::
 
 ## Filtering
 
@@ -95,9 +108,22 @@ You can filter you users by group, role, field, or even custom filter class if y
 
 Want to avoid listing users who have the words "hipster" and "coffee" in their bio?
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ users bio:doesnt_contain="hipster" bio:doesnt_contain="coffee" }}
 ```
+::tab blade
+```blade
+<s:users
+  bio:doesnt_contain="hipster"
+  bio:doesnt_contain="coffee"
+>
+  ...
+</s:users>
+```
+::
 
 There are a whole pile of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. Check out this page [dedicated to conditions](/conditions).
 
@@ -105,25 +131,61 @@ There are a whole pile of conditions available to you, like `:is`, `:isnt`, `:co
 
 Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results with the `query_scope` or `filter` parameter:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ users query_scope="your_query_scope" }}
 ```
+::tab blade
+```blade
+<s:users
+  query_scope="your_query_scope"
+>
+  ...
+</s:users>
+```
+::
 
 ### Examples
 
 #### Only super users
 
-```
-{{ user super:is="true" }}
+::tabs
+
+::tab antlers
+```antlers
+{{ users super:is="true" }}
   // these people are powerful
-{{ /user }}
+{{ /users }}
 ```
+::tab blade
+```blade
+<s:users
+  super:is="true"
+>
+  // these people are powerful
+</s:users>
+```
+::
 
 #### Exclude users with gmail email address
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ users email:doesnt_end_with="@gmail.com" }}
   // cool stuff goes here
 {{ /users }}
 ```
+::tab blade
+```blade
+<s:users
+  email:doesnt_end_with="@gmail.com"
+>
+  // cool stuff goes here
+</s:users>
+```
+::
 

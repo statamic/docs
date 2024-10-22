@@ -18,7 +18,10 @@ Most commonly this section/yield approach is used to create a global area in you
 
 In the example below, everything within the `section:sidebar` tag will _not_ be rendered in the template, but rather in the layout.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // The Template
 
 <h1>{{ title }}</h1>
@@ -49,12 +52,51 @@ In the example below, everything within the `section:sidebar` tag will _not_ be 
   </body>
 </html>
 ```
+::tab blade
+```blade
+// The template
+@extends('layout')
+
+<h1>{{ $title }}</h1>
+{!! $content !!}
+
+@section('sidebar')
+  <h2>About the Author</h2>
+
+  <div>
+    {{ $author['name'] }}
+  </div>
+  {{ $author['bio'] }}
+@stop
+```
+
+```blade
+// The Layout
+<html>
+  <head>
+    <title>{{ $title }} | {{ $site_name }}</title>
+  </head>
+  <body>
+    <article>
+      {!! $template_content !!}
+    </article>
+    <aside>
+      @yield('sidebar')
+    </aside>
+  </body>
+</html>
+```
+::
+
 
 ## Fallback Content
 
 If no section is being pushed into the yield, you may display fallback content by using the tag as a pair.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <aside>
   {{ yield:sidebar }}
     <img src="/img/CLIPPY.GIF">
@@ -62,6 +104,27 @@ If no section is being pushed into the yield, you may display fallback content b
   {{ /yield:sidebar }}
 </aside>
 ```
+::tab blade
+```blade
+// The Layout
+<aside>
+  @section('sidebar')
+    <img src="/img/CLIPPY.GIF">
+    <p>Hi! It looks like you're building a website. Would you like help?</p>
+  @show
+</aside>
+```
+
+```blade
+// The Template
+@extends('layout')
+
+// The following would override the default content:
+@section('sidebar')
+  I would override the default!
+@endsection
+```
+::
 
 ## Related Reading
 

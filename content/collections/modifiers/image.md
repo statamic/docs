@@ -13,10 +13,17 @@ Generate an HTML image element with the variable's value as `src`.
 header_image: /assets/img/bokeh-bunnies.jpg
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ header_image | image }}
 ```
-
+::tab blade
+```blade
+{!! Statamic::modify($header_image)->image() !!}
+```
+::
 ```html
 <img src="/assets/img/bokeh-bunnies.jpg">
 ```

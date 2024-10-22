@@ -7,7 +7,10 @@ stage: 5
 ---
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <article class="mx-auto max-w-lg">
 {{ markdown }}
 # My Favorite Nickelodeon Shows
@@ -20,6 +23,21 @@ stage: 5
 {{ /markdown }}
 </article>
 ```
+::tab blade
+```blade
+<article class="mx-auto max-w-lg">
+<s:markdown>
+# My Favorite Nickelodeon Shows
+
+- Kenan & Kel
+- All That
+- Double Dare
+- Wild & Crazy Kids
+- Legends of the Hidden Temple
+</s:markdown>
+</article>
+```
+::
 
 ```html
 <article class="mx-auto max-w-lg">

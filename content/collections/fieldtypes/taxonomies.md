@@ -45,13 +45,29 @@ taxonomies:
 
 You're more than likely using this field as a way to dynamically display Terms from one or more Taxonomies.
 
-```
+The following example assumes `max_items` has been set to `1`:
+
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ taxonomy :from="my_taxonomy_field" }}
     <li>{{ title }}</li>
   {{ /taxonomy }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+	<statamic:taxonomy
+		:from="$my_taxonomy_field"
+	>
+		<li>{{ $title }}</li>
+	</statamic:taxonomy>
+</ul>
+```
+::
 
 ```html
 <ul>

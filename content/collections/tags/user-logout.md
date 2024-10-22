@@ -15,11 +15,22 @@ stage: 3
 
 ## Example {#example}
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ if should_logout_for_whatever_reason }}
   {{ user:logout redirect="/somewhere" }}
 {{ /if }}
 ```
+::tab blade
+```blade
+@if ($should_logout_for_whatever_reason)
+  <s:user:logout redirect="/somewhere" />
+@endif
+```
+::
 
 This will immediately log a user out and redirect to `/somewhere` if the condition is met.
 

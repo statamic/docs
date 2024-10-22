@@ -7,9 +7,17 @@ title: 'Size Megabytes'
 ---
 The file size of the asset, in megabytes. Also available as `size_mb`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ size_megabytes }}
 ```
+::tab blade
+```blade
+{{ $size_megabytes }}
+```
+::
 
 ```html
 0.12

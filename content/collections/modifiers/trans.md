@@ -27,9 +27,17 @@ key: 'foo.bar'
 this_many: 2
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ key | trans }} or {{ "foo.bar" | trans }}
 ```
+::tab blade
+```blade
+{{ trans($key) }} {{ trans('foo.bar') }}
+```
+::
 
 ```html
 Bar!
@@ -43,10 +51,19 @@ Parameter replacements are only supported in the [tag version](/tags/trans).
 
 To pluralize, use the `trans_choice` modifier with the count as the parameter. You can use a number or a variable.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ "foo.apples" | trans_choice(2) }}
 {{ "foo.apples" | trans_choice($this_many) }}
 ```
+::tab blade
+```blade
+{{ trans_choice('foo.apples', 2) }}
+{{ trans_choice('foo.apples', $this_many) }}
+```
+::
 
 ```html
 There are 2 apples
@@ -63,9 +80,17 @@ These will be referenced from `resources/lang/fr.json` (where `fr` is the locale
 }
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ "Hello" | trans }}
 ```
+::tab blade
+```blade
+{{ trans('Hello') }}
+```
+::
 
 ```html
 Bonjour

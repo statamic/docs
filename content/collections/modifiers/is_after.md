@@ -13,11 +13,21 @@ start_date: January 17 2015
 end_date: December 1 2015
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if end_date | is_after($start_date) }}
 {{ if start_date | is_after(2014) }}
 {{ if start_date | is_after($end_date) }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($end_date)->isAfter($start_date)->fetch()) @endif
+@if (Statamic::modify($start_date)->isAfter(2014)->fetch()) @endif
+@if (Statamic::modify($start_date)->isAfter($end_date)->fetch()) @endif
+```
+::
 
 ```html
 true

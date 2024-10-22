@@ -25,9 +25,17 @@ The `vite` tag is a wrapper around [Laravel's Vite integration](https://laravel.
 
 You should pass in both the CSS and JavaScript paths, and it will output the appropriate html tags.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ vite src="resources/js/app.js|resources/css/app.css" }}
 ```
+::tab blade
+```blade
+<s:vite src="resources/js/app.js|resources/css/app.css" />
+```
+::
 
 If you are running in development mode by running `npm run dev`, it will handle hot-reloading (e.g. save a css file, your page will update automatically without you refreshing).
 
@@ -46,23 +54,47 @@ Otherwise, it will use the compiled assets, which you would have done by running
 
 Additionally, you can set custom locations for the build directory and hot file.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ vite src="resources/css/tailwind.css|resources/js/site.js" directory="bundle" hot="storage/vite.hot" }}
 ```
+::tab blade
+```blade
+<s:vite
+  src="resources/css/tailwind.css|resources/js/site.js"
+  directory="bundle"
+  hot="storage/vite.hot"
+/>
+```
+::
+
 When using these options, please make sure to also adjust your `vite.config.js` file. More about advanced customization can be found in [Laravel's Vite docs](https://laravel.com/docs/11.x/vite#advanced-customization).
 
 ## Processing Static Assets With Vite
 
 To process static assets in your Antlers files with Vite, as described in the [Laravel's Vite Docs](https://laravel.com/docs/master/vite#blade-processing-static-assets), you should use:
 
-```html
+::tabs
+
+::tab antlers
+```antlers
 <img src="{{ vite:asset src="resources/images/logo.png" }}">
 ```
+::tab blade
+```blade
+<img src="{{ Vite::asset('resources/images/logo.png') }}">
+```
+::
 
 ## Arbitrary Attributes
 
 If you need to include additional attributes in your script and style tags, such as the `data-turbo-track` attribute, you can pass them as parameters using the `attr:` prefix:
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ vite
   src="foo.js|bar.css"
@@ -70,9 +102,21 @@ If you need to include additional attributes in your script and style tags, such
   attr:async="true"
 }}
 ```
+::tab blade
+```blade
+<s:vite
+  src="foo.js|bar.css"
+  attr:data-turbo-track="reload"
+  attr:async="true"
+/>
+```
+::
 
 You can also provide attributes that are specific to script or style tags:
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ vite
   src="foo.js|bar.css"
@@ -84,3 +128,16 @@ You can also provide attributes that are specific to script or style tags:
   attr:style:integrity="false"
 }}
 ```
+::tab blade
+```blade
+<s:vite
+  src="foo.js|bar.css"
+
+  attr:script:data-turbo-track="reload"
+  attr:script:async="true"
+
+  attr:style:data-turbo-track="reload"
+  attr:style:integrity="false"
+/>
+```
+::

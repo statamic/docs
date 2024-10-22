@@ -14,7 +14,10 @@ stage: 4
 ---
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if {form:success in="contact"} }}
     <p>Thanks for filling out the survey! Sorry it was so long.</p>
 {{ /if }}
@@ -23,3 +26,19 @@ stage: 4
 :::tip
 `form:success` is a Tag, not a variable. Be sure to wrap it with single braces when inside a condition.
 :::
+
+::tab blade
+```blade
+{{-- Using Fluent Tags --}}
+@if (Statamic::tag('form:success')->in('contact')->fetch())
+  <p>Thanks for filling out the survey! Sorry it was so long.</p>
+@endif
+
+{{-- Using Antlers Blade Components --}}
+<s:form:success
+  in="contact"
+>
+  <p>Thanks for filling out the survey! Sorry it was so long.</p>
+</s:form:success>
+```
+::

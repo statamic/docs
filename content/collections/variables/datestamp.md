@@ -9,9 +9,17 @@ Get the timestamp of the entry. This will be an integer.
 
 Alias of `timestamp`. Maybe calling it a datestamp makes more sense to you if you aren't using time-based entries.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ datestamp }}
 ```
+::tab blade
+```blade
+{{ $datestamp }}
+```
+::
 
 ```html
 1425772800

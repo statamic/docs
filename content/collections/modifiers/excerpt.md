@@ -15,9 +15,17 @@ title: 'Example Entry'
 Lorem Ipsum dolor sit amet.<!--more--> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa id neque aliquam vestibulum.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ books | excerpt }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($books)->excerpt() }}
+```
+::
 
 ```html
 Lorem Ipsum dolor sit amet.

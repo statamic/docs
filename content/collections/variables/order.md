@@ -9,9 +9,17 @@ Get the order key of the content. It's what's at the beginning of the filename.
 
 For pages this could be a number. For entries it could be a number or a date string (2015-01-02).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ order }}
 ```
+::tab blade
+```blade
+{{ $order }}
+```
+::
 
 ```html
 1

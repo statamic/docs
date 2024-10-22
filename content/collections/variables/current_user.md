@@ -5,10 +5,18 @@ title: 'Current User'
 ---
 The current user.
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ current_user }} {{ name }} {{ /current_user }}
 
 {{ current_user:email }}
+```
+::tab blade
+```blade
+{{ $current_user['name'] }}
+
+{{ $current_user['email'] }}
 ```
 
 ```html

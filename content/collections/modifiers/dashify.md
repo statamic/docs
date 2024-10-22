@@ -11,9 +11,17 @@ Returns a lowercase and trimmed string separated by dashes. Dashes are inserted 
 title: Just Because I Can
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | dashify }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->dashify() }}
+```
+::
 
 ```html
 just-because-i-can

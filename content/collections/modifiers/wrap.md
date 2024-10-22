@@ -12,9 +12,17 @@ Wraps a string with a given HTML tag. Has the nice benefit of returning null if 
 title: As the World Turns
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | wrap('h1') }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($title)->wrap('h1') !!}
+```
+::
 
 ```html
 <h1>As the World Turns</h1>
@@ -22,9 +30,17 @@ title: As the World Turns
 
 You may also use Emmet-style CSS classes to be added to the tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | wrap('h1.fast.furious') }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($title)->wrap('h1.fast.furious') !!}
+```
+::
 
 ```html
 <h1 class="fast furious">As the World Turns</h1>
@@ -42,9 +58,17 @@ team_members:
   - The Hoff
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ team_members | wrap('li') | join(' ') }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($team_members)->wrap('li')->join(' ') !!}
+```
+::
 
 ```html
 <li>Jack</li>

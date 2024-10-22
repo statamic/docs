@@ -11,9 +11,17 @@ Replaces all hyphens and underscores in a string with spaces. The opposite of [d
 title: Just-Because-I-Can
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | deslugify }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->deslugify() }}
+```
+::
 
 ```html
 Just Because I Can

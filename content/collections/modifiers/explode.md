@@ -12,9 +12,17 @@ Breaks a string into an array of strings split on a given delimiter.
 places: Scotland, England, Switzerland, Italy
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ places | explode(',') | ul }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($places)->explode(',')->ul() !!}
+```
+::
 
 ```html
 <ul>

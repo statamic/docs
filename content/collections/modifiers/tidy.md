@@ -13,9 +13,17 @@ string: >
   “I see…”
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | tidy }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->tidy() }}
+```
+::
 
 ```html
 "I see..."

@@ -13,11 +13,21 @@ yes: "hell, yea"
 sure: -1
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ no | bool_string }}
 {{ yes | bool_string }}
 {{ sure | bool_string }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($no)->boolString() }}
+{{ Statamic::modify($yes)->boolString() }}
+{{ Statamic::modify($sure)->boolString() }}
+```
+::
 
 ```html
 false

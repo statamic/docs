@@ -20,21 +20,41 @@ id: b8936f37-a237-4fad-bf70-a6421ab413ae
 
 [Webpack][webpack] and asset compilation can be a pretty complicated task and Laravel Mix does a really good job of simplifying it as far as it can possibly go.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // CSS
 <link href="{{ mix src='/css/tailwind.css' }}" rel="stylesheet">
 
 // JavaScript
 <script src="{{ mix src='/js/app.js' }}"></script>
 ```
+::tab blade
+```blade
+// CSS
+<link href="{{ Statamic::tag('mix')->src('/css/tailwind.css') }}" rel="stylesheet">
+
+// JavaScript
+<script src="{{ Statamic::tag('mix')->src('/js/app.js') }}"></script>
+```
+::
 
 ## Default Directory
 
 By default Mix will assume that the `mix-manifest.json` file that points to the proper file locations is in your `public/` directory. If your file is configured to build elsewhere you can point to it with the `in` parameter.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <link href="{{ mix src='/css/tailwind.css' in='assets' }}" rel="stylesheet">
 ```
+::tab blade
+```blade
+<link href="{{ Statamic::tag('mix')->src('/css/tailwind.css')->in('assets') }}" rel="stylesheet">
+```
+::
 
 ## Related Reading
 

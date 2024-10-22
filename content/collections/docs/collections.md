@@ -426,11 +426,25 @@ route: '/{mount}/{slug}'
 
 You can loop through all entries in the the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ collection :from="mount" }}
     {{ title }}
 {{ /collection}}
 ```
+
+::tab blade
+```blade
+<statamic:collection
+  :from="$mount"
+>
+  {{ $title }}
+</statamic:collection>
+```
+
+::
 
 :::tip
 If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.

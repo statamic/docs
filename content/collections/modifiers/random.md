@@ -24,9 +24,18 @@ arr:
 ```
 
 ### The Template
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ arr | random }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($arr)->random() }}
+```
+::
 
 ### The Output
 ```

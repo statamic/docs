@@ -11,9 +11,17 @@ Returns a string with whitespace removed from the start and end of the string. S
 string: "    This is so sloppy   "
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | trim }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->trim() }}
+```
+::
 
 ```html
 This is so sloppy

@@ -7,9 +7,17 @@ title: Collection
 ---
 Get the name of the collection the entry belongs to.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection }}
 ```
+::tab blade
+```blade
+{{ $collection }}
+```
+::
 
 ```html
 blog

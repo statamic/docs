@@ -82,7 +82,7 @@ gallery_images:
   - dj-jazzy-jeff.jpg
   - uncle-phil.jpg
 
-# With max_items: 1
+# With max_files: 1
 hero_image: surf-boards.jpg
 ```
 
@@ -90,9 +90,11 @@ hero_image: surf-boards.jpg
 
 The Asset fieldtype uses [augmentation](/augmentation) to automatically relate the files with their Asset records, pull in custom and meta data, and resolve all image paths based on the container.
 
+::tabs
+
 By using a tag pair syntax, you'll be able to output variables for each asset:
 
-```
+```antlers
 {{ gallery_images }}
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /gallery_images }}
@@ -101,6 +103,21 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /hero_image }}
 ```
+::tab
+
+You can use the `@foreach` directive to loop over each asset and output its variables:
+
+```blade
+@foreach ($gallery_images as $asset)
+    <img src="{{ $asset->url }}" alt="{{ $asset->alt }}" />
+@endforeach
+
+{{-- Assuming $hero_image is max_files: 1 --}}
+<img src="{{ $hero_image->url }}" alt="{{ $hero_image->alt }}" />
+```
+
+::
+
 
 ```html
 <img src="/assets/fresh-prince.jpg" alt="Will Smith as the Fresh Prince" />
@@ -112,13 +129,27 @@ By using a tag pair syntax, you'll be able to output variables for each asset:
 
 The same tag pair syntax can be used regardless of your `max_files` setting.
 
+::tabs
+
 If you have `max_files: 1`, you can also use a single tag syntax to directly use a variable inside the asset. Without a second tag part, the URL will be used.
 
-```
+```antlers
 {{ hero_image }}
 {{ hero_image:url }}
 {{ hero_image:alt }}
 ```
+
+::tab
+
+If you have `max_files: 1`, you can use property access to output variables within the asset. When output as a string, the URL will be used.
+
+```blade
+{{ $hero_image }}
+{{ $hero_image->url }}
+{{ $hero_image->alt }}
+```
+
+::
 
 ```html
 /assets/surf-boards.jpg
@@ -171,9 +202,10 @@ You can use [Glide](/tags/glide) to crop, flip, sharpen, pixelate, and perform o
 
 ### Asset Field Data
 
+::tabs
 All custom data set on the assets will also be available inside the asset tag loop.
 
-```
+```antlers
 {{ gallery_images }}
   <figure>
     <img src="{{ url }}" alt="{{ alt }}">
@@ -181,6 +213,22 @@ All custom data set on the assets will also be available inside the asset tag lo
   </figure>
 {{ /gallery_images }}
 ```
+
+::tab
+
+All custom data set on the assets will also be available on the asset instance.
+
+```blade
+@foreach ($gallery_images as $image)
+    <img src="{{ $image->url }}" alt="{{ $image->alt }}" />
+
+    @if ($caption = $image->caption)
+    <figcaption>{{ $caption }}</figcaption>
+    @endif
+@endforeach
+```
+
+::
 
 ## Dynamic Folders
 

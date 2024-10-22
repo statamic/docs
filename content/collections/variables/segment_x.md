@@ -9,9 +9,17 @@ Given "x", any segment number, will return the value of that particular URL segm
 
 Example URL: `/put/that/cookie/down`
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ segment_3 }}
 ```
+::tab blade
+```blade
+{{ $segment_3 }}
+```
+::
 
 ```html
 cookie

@@ -12,9 +12,17 @@ Returns `true` if a given date is today, using the server's time.
 date: January 1, 2000
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if date | is_today }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($date)->isToday()->fetch()) ... @endif
+```
+::
 
 ```html
 false

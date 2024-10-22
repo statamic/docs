@@ -44,7 +44,7 @@ pre code.torchlight .summary-caret {
 }
 
 pre .language-badge {
-    @apply text-white tracking-widest inline-block absolute right-0 opacity-50 top-0 p-1 uppercase select-none;
+    @apply text-white tracking-widest inline-block absolute right-1 opacity-50 top-0 p-1 uppercase select-none;
     font-size: 10px;
 }
 

@@ -90,41 +90,89 @@ id: ba832b71-a567-491c-b1a3-3b3fae214703
 
 A basic example would be to loop through the terms in a tags taxonomy and link to each individual tag:
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ taxonomy from="tags" }}
     <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /taxonomy }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+<s:taxonomy from="tags">
+  <li><a href="{{ $url }}">{{ $title }}</a></li>
+</s:taxonomy>
+</ul>
+```
+::
 
 You can also use the shorthand syntax for this. We prefer this style ourselves.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ taxonomy:tags }}
     <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /taxonomy:tags }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+<s:taxonomy:tags>
+  <li><a href="{{ $url }}">{{ $title }}</a></li>
+</s:taxonomy:tags>
+</ul>
+```
+::
 
 If you'd like to fetch tags from multiple taxonomies, you'll need to use the standard syntax.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ taxonomy from="tags|categories" }}
 ```
+::tab blade
+```blade
+<s:taxonomy from="tags|categories">
+
+</s:taxonomy>
+```
+::
 
 To get terms from _all_ taxonomies, use the wildcard `*`. You may also exclude taxonomies when doing this.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ taxonomy from="*" not_from="tags" }}
 ```
+::tab blade
+```blade
+<s:taxonomy from="*" not_from="tags">
+
+</s:taxonomy>
+```
+::
 
 ## Entries
 
 The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iteration, you also have access to all the corresponding content.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ taxonomy:categories }}
   <h2>{{ title }}</h2>
   <ul>
@@ -134,6 +182,18 @@ The `taxonomy` tag allows you to iterate over taxonomy terms, but in each iterat
   </ul>
 {{ /taxonomy:categories }}
 ```
+::tab blade
+```blade
+<s:taxonomy:categories>
+  <h2>{{ $title }}</h2>
+  <ul>
+    @foreach ($entries as $entry)
+      <li><a href="{{ $entry->url }}">{{ $entry->title }}</a></li>
+    @endforeach
+  </ul>
+</s:taxonomy:categories>
+```
+::
 
 ```html
 <h2>News</h2>
@@ -161,9 +221,22 @@ There are a couple of ways to filter your taxonomy terms. There's the conditions
 
 Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ taxonomy:tags title:contains="awesome" title:contains="thing" author:is="joe" }}
 ```
+::tab blade
+```blade
+<s:taxonomy:tags
+  title:contains="awesome"
+  title:contains="thing"
+  author:is="joe"
+>
+</s:taxonomy:tags>
+```
+::
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
 

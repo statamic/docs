@@ -56,7 +56,10 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 
 A basic registration form, with validation errors.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:register_form }}
 
     {{ if errors }}
@@ -86,6 +89,36 @@ A basic registration form, with validation errors.
 
 {{ /user:register_form }}
 ```
+::tab blade
+```blade
+<s:user:register_form>
+  @if ($errors)
+    <div class="bg-red-300 text-white p-2">
+      @foreach ($errors as $error)
+        {{ $error }}<br>
+      @endforeach
+    </div>
+  @endif
+
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}<br>
+    </div>
+  @endif
+
+  <label>Email</label>
+  <input type="email" name="email" value="{{ old('email') }}" />
+
+  <label>Password</label>
+  <input type="password" name="password" />
+
+  <label>Password Confirmation</label>
+  <input type="password" name="password_confirmation" />
+
+  <button>Register</button>
+</s:user:register_form>
+```
+::
 
 ## Password Rules
 
@@ -113,7 +146,10 @@ Additional fields will be validated as per your blueprint `validate` rules.
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <div class="p-2">
         <label>{{ display }}</label>
@@ -124,6 +160,24 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
     </div>
 {{ /fields }}
 ```
+::tab blade
+```blade
+<s:user:register_form>
+
+  @foreach ($fields as $field)
+    <div class="p-2">
+      <label>{{ $field['display'] }}</label>
+      <div class="p-1">{!! $field['field'] !!}</div>
+
+      @if ($field['error'])
+        <p class="text-gray-500">{{ $field['error'] }}</p>
+      @endif
+    </div>
+  @endforeach
+
+</s:user:register_form>
+```
+::
 
 Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
 

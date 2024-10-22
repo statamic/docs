@@ -7,9 +7,17 @@ title: Height
 ---
 The height of an image asset, in pixels.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ height }}
 ```
+::tab blade
+```blade
+{{ $height }}
+```
+::
 
 ```html
 643

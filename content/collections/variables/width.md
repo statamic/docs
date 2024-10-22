@@ -7,9 +7,17 @@ title: Width
 ---
 The width of an image asset, in pixels.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ width }}
 ```
+::tab blade
+```blade
+{{ $width }}
+```
+::
 
 ```html
 900
