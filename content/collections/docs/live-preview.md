@@ -185,13 +185,3 @@ Route::get('/render-live-preview', function (Request $request) {
   return view('whatever', ['entry' => $entry]);
 });
 ```
-
-## Check if live preview
-
-Sometimes you may want to check if the page is being viewed in live preview, to do this you can use the helpful antlers tag below.
-
-```
-{{ if live_preview }}
-    <div> If you are seeing this, i'm in a another dimension, the one they call live preview... </div>
-{{ /if }}
-```
