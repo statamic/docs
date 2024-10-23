@@ -53,6 +53,7 @@ preferences:
 | Swedish | `sv` |
 | Turkish | `tr` |
 | Ukrainian | `uk` |
+| Vietnamese | `vi` `
 | Simplified Chinese | `zh_CN` |
 | Taiwan | `zh_TW` |
 
