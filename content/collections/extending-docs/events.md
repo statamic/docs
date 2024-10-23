@@ -450,6 +450,20 @@ public function handle(EntrySaving $event)
 }
 ```
 
+### EntryScheduleReached
+`Statamic\Events\EntryScheduleReached`
+
+Disptached whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.
+
+The event will be dispatched on the minute _after_ the scheduled time.
+
+``` php
+public function handle(EntryScheduleReached $event)
+{
+    $event->entry;
+}
+```
+
 ### FieldsetCreating
 `Statamic\Events\FieldsetCreating`
 
