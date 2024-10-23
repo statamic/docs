@@ -140,7 +140,7 @@ Need to manage redirects? In WordPress, you’d likely use the Redirection plugi
 
 ## Backups
 
-In WordPress, you might use UpdraftPlus to handle backups, but in Statamic — as long as you're running on flat files — git becomes you backup, version controlling all your changes to content, templates, and configs along the way.
+In WordPress, you might use UpdraftPlus to handle backups, but in Statamic — as long as you're running on flat files — git becomes your backup, version controlling all your changes to content, templates, and configs along the way.
 
 If you’re using Statamic Pro, it can even automate your Git commits and pushes. No more worrying about backups, they’re just an invisible part of your workflow.
 
