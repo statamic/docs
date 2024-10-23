@@ -86,20 +86,19 @@ However, sometimes you have other ideas in mind for using taxonomy terms. For in
 
 When using the taxonomy field in this way, terms will get saved using _IDs_ instead of slugs.
 
-```
+``` yaml
 similar_things:
-  - categories/hats
-  - tags/delightful
+  - categories::hats
+  - tags::delightful
 ```
 
-These will _not_ be automatically converted to Terms, since the field name does not match any taxonomy handle.
-You will need to use the [Relate Tag](/tags/relate) in your template to have these converted to Terms.
+You can still loop through them like your used to:
 
-```
+``` antlers
 <ul>
-  {{ relate:similar_things }}
+  {{ similar_things }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  {{ /relate:similar_things }}
+  {{ /similar_things }}
 </ul>
 ```
 
