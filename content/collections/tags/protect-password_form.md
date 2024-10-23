@@ -39,6 +39,8 @@ related_entries:
 
 The HTML of the form itself is up to you. The only requirement is to name the password input `password` and wrap the form with the tag pair.
 
+Any variables from the protected entry will also be available in the password form.
+
 ## Example
 
 ```
