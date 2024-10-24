@@ -180,6 +180,29 @@ location @static {
 :::
 
 
+:::tip
+If your site needs to support URLs with a trailing slash, make sure to update the NGINX config:
+
+``` nginx
+location / {
+    try_files $uri $try_location; # [tl! remove]
+    try_files $uri $uri/ $try_location; # [tl! add]
+}
+
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    rewrite ^/(.*)/$ /$1 last; # [tl! add]
+    try_files /static${uri}_$args.html /static${uri}/_$args.html $uri $uri/ /index.php?$args; # [tl! add]
+}
+
+location @not_static {
+    try_files $uri /index.php?$args; # [tl! remove]
+    try_files $uri $uri/ /index.php?$args; # [tl! add]
+}
+```
+:::
+
+
 ### IIS
 
 On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
