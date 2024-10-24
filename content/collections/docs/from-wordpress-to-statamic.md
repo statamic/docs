@@ -118,9 +118,9 @@ And if you need more customization, addons like [Flexible Forms](https://statami
 
 ## Security
 
-95.5% of the content managed websites hacked are running WordPress ([source](https://sucuri.net/reports/2023-hacked-website-report/)). It is the most targeted CMS on the market, which makes plugins like Wordfence critical to your security solution. Here a few reasons Statamic is more secure than WordPress:
+95.5% of the content-managed websites hacked are running WordPress ([source](https://sucuri.net/reports/2023-hacked-website-report/)). Also, last year there were almost 6000 vulnerabilities found in themes and plugins ([source](https://patchstack.com/whitepaper/state-of-wordpress-security-in-2024/)). It is the most targeted CMS on the market, which makes plugins like Wordfence, Patchstack, or WPScan critical to your security solution. Here are a few reasons Statamic is more secure than WordPress:
 
-- Most website hacks are done through SQL Injection. Out of the box Statamic doesn't use a database, thus eliminating most forms of automated attack.
+- Around 5% of website hacks are done through SQL Injection. Out of the box, Statamic doesn't use a database, thus eliminating most forms of automated attacks.
 - Statamic's developer team maintains all of the fundamental features most websites need. You will not need 30 plugins by 30 authors on different update schedules. This is one of the reasons why WordPress is so vulnerable.
 - Statamic is built on [Laravel](https://laravel.com), widely regarded as the most secure and well-maintained PHP framework today.
 
