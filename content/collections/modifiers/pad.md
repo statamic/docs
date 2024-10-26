@@ -24,9 +24,9 @@ epic_meal_time:
 ::tab blade
 ```blade
 <?php
-    $meals = Statamic::modify($epic_meal_time)
-        ->pad(4, 'bacon strips')
-        ->fetch();
+  $meals = Statamic::modify($epic_meal_time)
+    ->pad(4, 'bacon strips')
+    ->fetch();
 ?>
 
 @foreach ($meals as $meal)
