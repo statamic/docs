@@ -89,9 +89,17 @@ bands:
     - The Offspring
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ bands | dump }}
 ```
+::tab blade
+```blade
+@dd($bands)
+```
+::
 
 ``` php
 // Dumped output
