@@ -323,6 +323,29 @@ If you're using a lot of modifiers in your Blade template, you can also include 
 {{ modify('test')->stripTags()->safeTruncate([42, '...']) }}
 ```
 
+## Conditional Logic and Values
+
+Depending on where you got a value from, it may be wrapped in a class like `Value`. These can lead to unexpected results in conditional logic if they are not handled correctly (i.e., calling `->value()` in the condition).
+
+If you'd prefer to not think about that, you can include the `value` helper function into your template, which will take care of this for you:
+
+```blade
+@php
+  use function Statamic\View\Blade\{value};
+@endphp
+
+@if (value($theVariableName))
+  ...
+@endif
+```
+
+The `value` helper function will handle the following scenarios for you:
+
+* `Statamic\Fields\Value` objects (calls `->value()`)
+* `Statamic\Fields\Values` objects (calls `->all()`)
+* `Statamic\Tags\FluentTag` objects (calls `->fetch()`)
+* `Statamic\Modifiers\Modify` objects (calls `->fetch()`)
+
 ## Layouts
 
 When Statamic attempts to render a URL (eg. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
