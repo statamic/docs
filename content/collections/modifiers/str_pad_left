@@ -15,7 +15,7 @@ This modifier returns the string padded on the left to the specified padding len
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify(1)->strPadLeft(2, 0) }}
+{{ Statamic::modify(1)->strPadLeft([2, 0]) }}
 ```
 ::
 
