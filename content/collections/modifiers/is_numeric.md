@@ -22,8 +22,8 @@ another_sequence: just type 4 8 15 16 23 42
 ```
 ::tab blade
 ```blade
-@if (Statamic::modify($sequence))->isNumeric()->fetch()) ... @endif
-@if (Statamic::modify($another_sequence))->isNumeric()->fetch()) ... @endif
+@if (Statamic::modify($sequence)->isNumeric()->fetch()) ... @endif
+@if (Statamic::modify($another_sequence)->isNumeric()->fetch()) ... @endif
 ```
 ::
 
