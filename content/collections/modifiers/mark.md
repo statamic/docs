@@ -22,7 +22,7 @@ description: This cat video is the okayest thing ever.
 ::tab blade
 ```blade
 {!! Statamic::modify($description)->mark('cat thing') !!}
-{!! Statamic::modify($description)->mark('video', 'class:highlight') !!}
+{!! Statamic::modify($description)->mark(['video', 'class:highlight']) !!}
 ```
 ::
 
