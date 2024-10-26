@@ -31,9 +31,9 @@ games:
 ::tab blade
 ```blade
 <?php
-    $plucked = Statamic::modify($games)
-        ->pluck('title')
-        ->fetch();
+  $plucked = Statamic::modify($games)
+    ->pluck('title')
+    ->fetch();
 ?>
 ```
 ::
