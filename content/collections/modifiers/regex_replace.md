@@ -20,7 +20,7 @@ description: This cat video is the best thing ever.
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($description)->regexReplace('best', 'okayest') }}
+{{ Statamic::modify($description)->regexReplace(['best', 'okayest']) }}
 ```
 ::
 
