@@ -26,7 +26,7 @@ the_team:
 ::tab blade
 ```blade
 <?php
-    $keys = Statamic::modify($the_team)->keys()->fetch();
+  $keys = Statamic::modify($the_team)->keys()->fetch();
 ?>
 ```
 ::
