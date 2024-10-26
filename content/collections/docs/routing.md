@@ -19,10 +19,20 @@ Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you
 ``` php
 Route::statamic('uri', 'view', ['foo' => 'bar']);
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ myglobal }} // globals are available
 {{ foo }} // bar
 ```
+::tab blade
+```blade
+{{ $myglobal }} // globals are available
+{{ $foo }} // bar
+```
+::
 
 The first argument is the URI, the second is the name of the [template](/views#templates), and the third is an optional array of additional data.
 
