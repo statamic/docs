@@ -24,9 +24,9 @@ string: How neat is that?
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($string)->substr(0, 3) }}
-{{ Statamic::modify($string)->substr(4, 4) }}
-{{ Statamic::modify($string)->substr(-8, 8) }}
+{{ Statamic::modify($string)->substr([0, 3]) }}
+{{ Statamic::modify($string)->substr([4, 4]) }}
+{{ Statamic::modify($string)->substr([-8, 8]) }}
 ```
 ::
 
