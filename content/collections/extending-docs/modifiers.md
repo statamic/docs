@@ -9,15 +9,27 @@ id: e052ecb8-60d9-4afa-980e-ce128c301d70
 ---
 ## Anatomy of a Modifier
 
-A modifer consists of a few parts. Let’s break it down.
+A modifier consists of a few parts. Let’s break it down.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ variable | repeat:2 }}
 ```
 
 - The first part? A regular old variable: `variable`.
 - Next up, the modifier's [handle](#handle): `repeat`
 - And finally, a parameter: `2`
+
+::tab blade
+```blade
+{{ Statamic::modify($variable)->repeat(2) }}
+```
+- First, we call `Statamic::modify`, supplying the variable name we want to modify (`$variable`)
+- Next up, we call a method with the modifier's [handle](#handle) (`->repeat()`)
+- If our modifier accepts parameters, we supply them to the modifier's method call (`->repeat(2)`)
+::
 
 Parameters are used to modify the behavior of a modifier. They could be anything from an integer or boolean to a variable reference. It’s up to you.
 
@@ -48,10 +60,23 @@ class Repeat extends Modifier
 {
     public function index($value, $params, $context)
     {
-        // {{ variable | repeat }}
+        // Something awesome awaits.
     }
 }
 ```
+
+We'd be able to use our new `repeat` modifier in our template like so:
+
+::tabs
+::tab antlers
+```antlers
+{{ variable | repeat }}
+```
+::tab blade
+```blade
+{{ Statamic::modify($variable)->repeat() }}
+```
+::
 
 The first and only required argument passed into `index` will be the `$value` that needs modifying. We can do anything to this value as long as we return it when we’re done. Once returned, the template will either render it, or pass it along the next modifier in the chain.
 
@@ -70,7 +95,17 @@ You can override this by setting a static `$handle` property.
 protected static $handle = 'repeatrepeat';
 ```
 
+::tabs
+
+::tab antlers
+
 Then, using the example above, `variable | repeat` would now be `variable | repeatrepeat`.
+
+::tab blade
+
+Then, using the example above, `Statamic::modify($variable)->repeat()` would now be `Statamic::modify($variable)->repeatrepeat()`.
+
+::
 
 ## Aliases
 
@@ -121,11 +156,21 @@ thing: Pizza
 
 And template:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ thing | repeat }}
 {{ thing | repeat:3 }}
 {{ thing | repeat:times }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($thing)->repeat() }}
+{{ Statamic::modify($thing)->repeat(3) }}
+{{ Statamic::modify($thing)->repeat($times) }}
+```
+::
 
 You would find yourself with varying amounts of pizza.
 
