@@ -38,7 +38,7 @@ Just like the [honey badger](https://www.youtube.com/watch?v=4r7wHMg5Yjg), Stata
 
 ## Path of Least Resistance
 
-If you don't have a hard requirement, a strong preference, or just want our advice, we recommend writing your own HTML, use [Antlers](/antlers) in said HTML to pull content in, use [TailwindCSS](https://tailwindcss.com) as your CSS framework, and let [Vite][vite] compile any JavaScript, SCSS/LESS, or PostCSS as necessary.
+If you don't have a hard requirement, a strong preference, or just want our advice, we recommend writing your own HTML, use [Antlers](/antlers) or [Blade](/blade) in said HTML to pull content in, use [TailwindCSS](https://tailwindcss.com) as your CSS framework, and let [Vite][vite] compile any JavaScript, SCSS/LESS, or PostCSS as necessary.
 
 You'll be able to take advantage of all of our powerful, tightly coupled [tags](/tags) that do most of the heavy lifting — like fetching and displaying content from collections and taxonomies, manipulating, assets, and rendering variables.
 
