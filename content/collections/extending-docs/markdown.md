@@ -141,9 +141,17 @@ Markdown::extend('special', $config, function ($parser) {
 
 The `markdown` modifier accepts an optional argument to choose which parser to use.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ text | markdown:special }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($text)->markdown('special') !!}
+```
+::
 
 ### Using a custom parser in a fieldtype
 
