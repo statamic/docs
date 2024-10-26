@@ -20,7 +20,7 @@ opinion: This is yummy.
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($opinion)->insert('not', 8) }}
+{{ Statamic::modify($opinion)->insert(['not', 8]) }}
 ```
 ::
 
