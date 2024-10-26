@@ -64,7 +64,7 @@ I like {{ things | sentence_list('and', 0) }}.
 ```
 ::tab blade
 ```blade
-I like {{ Statamic::modify($things)->sentenceList('and', 0) }}.
+I like {{ Statamic::modify($things)->sentenceList(['and', 0]) }}.
 ```
 ::
 
