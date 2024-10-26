@@ -22,7 +22,7 @@ advice: >
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($advice)->safeTruncate(90, '...') }}
+{{ Statamic::modify($advice)->safeTruncate([90, '...']) }}
 ```
 ::
 
