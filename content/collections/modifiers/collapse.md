@@ -23,7 +23,7 @@ numbers:
 ::tab blade
 ```blade
 <?php
-    $collapsed = Satamic::modify($numbers)->collapse()->fetch();
+  $collapsed = Satamic::modify($numbers)->collapse()->fetch();
 ?>
 ```
 ::
