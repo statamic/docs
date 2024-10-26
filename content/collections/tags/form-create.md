@@ -263,7 +263,7 @@ Using the `field` variable will intelligently render inputs as inputs, textareas
 You can customize these pre-rendered snippets by running `php artisan vendor:publish --tag=statamic-forms`. It will expose editable templates snippets in your `views/vendor/statamic/forms/fields` directory that will be used by each fieldtype.
 
 :::tip
-By default, pre-rendered snippets are implemented in Antlers. If you'd prefer to use Blade, you can grab some [ready-to-go Blade snippets](/blade-form-fields) as a starting point.
+By default, pre-rendered snippets are implemented in Antlers. If you'd prefer to use Blade, you can grab some [ready-to-go Blade snippets](/blade-form-fields) to use as a starting point.
 :::
 
 This approach, combined with the [blueprint editor](/blueprints), will give you something very similar to a traditional "Form Builder" from other platforms.
