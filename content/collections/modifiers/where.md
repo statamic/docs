@@ -33,7 +33,9 @@ games:
 ::tab blade
 ```blade
 <?php
-   $filteredGames = Statamic::modify($games)->where('feeling', 'love')->fetch();
+  $filteredGames = Statamic::modify($games)
+    ->where(['feeling', 'love'])
+    ->fetch();
 ?>
 
 <h2>I love...</h2>
