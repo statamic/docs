@@ -20,8 +20,8 @@ summary: "It was the best of times, it was the worst of times."
 ```
 ::tab blade
 ```blade
-@if (Statamic::modify($summary)->containsAll('best', 'worst')->fetch()) ... @endif
-@if (Statamic::modify($summary)->containsAll('best', 'better')->fetch()) ... @endif
+@if (Statamic::modify($summary)->containsAll(['best', 'worst'])->fetch()) ... @endif
+@if (Statamic::modify($summary)->containsAll(['best', 'better'])->fetch()) ... @endif
 ```
 ::
 
