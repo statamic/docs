@@ -177,7 +177,7 @@ en:
 ```
 ::tab blade
 ```blade
-<body class="theme-{{ $site->attributes['them'] }}">
+<body class="theme-{{ $site->attributes['theme'] }}">
 ```
 ::
 
