@@ -32,7 +32,7 @@ games:
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($games)->select('title', 'published')->fetch() }}
+{{ Statamic::modify($games)->select(['title', 'published'])->fetch() }}
 ```
 ::
 
