@@ -26,7 +26,7 @@ event_date: June 19 2020
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($event_date)->isFormat("MMMM Do YYYY, h:mm:ss a") }}
+{{ Statamic::modify($event_date)->isoFormat(["MMMM Do YYYY, h:mm:ss a"]) }}
 ```
 ::
 
@@ -34,7 +34,7 @@ event_date: June 19 2020
 June 15th 2018, 5:34:15 pm
 ```
 
-You can use macro-formats to format and localize dates as well. 
+You can use macro-formats to format and localize dates as well.
 
 ::tabs
 
