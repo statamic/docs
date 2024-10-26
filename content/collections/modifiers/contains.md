@@ -35,7 +35,7 @@ noun: carrot
 ::tab blade
 ```blade
 @if (Statamic::modify($summary)->contains('BEST')->fetch()) ... @endif
-@if (Statamic::modify($summary)->contains('BEST', true)->fetch()) ... @endif
+@if (Statamic::modify($summary)->contains(['BEST', true])->fetch()) ... @endif
 @if (Statamic::modify($summary)->contains('adjective')->fetch()) ... @endif
 @if (Statamic::modify($summary)->contains('noun')->fetch()) ... @endif
 ```
@@ -81,8 +81,8 @@ number: '1'
 @if (Statamic::modify($foods)->contains('gross')->fetch()) ... @endif
 @if (Statamic::modify($foods)->contains('vegan bacon strips')->fetch()) ... @endif
 
-@if (Statamic::modify($foods)->contains(number)->fetch()) ... @endif
-@if (Statamic::modify($foods)->contains(number, true)->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains($number)->fetch()) ... @endif
+@if (Statamic::modify($foods)->contains([$number, true])->fetch()) ... @endif
 ```
 ::
 
