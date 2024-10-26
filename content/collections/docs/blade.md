@@ -160,6 +160,22 @@ We can pass multiple parameters to the tag like so:
 </s:collection>
 ```
 
+We can also pass dynamic values to parameters:
+
+```blade
+@php
+  $collection = 'pages';
+@endphp
+
+<s:collection
+  :from="$collection"
+  limit="2"
+  sort="title:desc"
+>
+  {{ $title }}
+</s:collection>
+```
+
 ### Antlers Blade Components and Partials
 
 Partials also work with Antlers Blade Components, and are intended to be used when you'd like to include an Antlers partial inside your Blade template:
