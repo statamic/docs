@@ -57,6 +57,6 @@ This is equivalent to:
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($content)->safeTruncate(175, '...') }}
+{{ Statamic::modify($content)->safeTruncate([175, '...']) }}
 ```
 ::
