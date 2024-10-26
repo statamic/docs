@@ -24,9 +24,9 @@ ingredients:
 ::tab blade
 ```blade
 <?php
-    $flattened = Statamic::modify($ingredients)
-        ->flatten()
-        ->fetch();
+  $flattened = Statamic::modify($ingredients)
+    ->flatten()
+    ->fetch();
 ?>
 ```
 ::
