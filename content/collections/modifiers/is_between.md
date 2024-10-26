@@ -23,7 +23,7 @@ end_date: December 1 2015
 ```
 ::tab blade
 ```blade
-@if (Statamic::modify($date)->isBetween($start_date, $end_date)->fetch()) @endif
+@if (Statamic::modify($date)->isBetween([$start_date, $end_date])->fetch()) @endif
 ```
 ::
 
