@@ -340,7 +340,7 @@ computed: {
 
 ## Updating from v2
 
-In Statamic v2 we pass a `data` prop that can be directly modified. You might be see something like this:
+In Statamic v2 we pass a `data` prop that can be directly modified. You might be used to seeing something like this:
 
 ``` html
 <input type="text" v-model="data" />
