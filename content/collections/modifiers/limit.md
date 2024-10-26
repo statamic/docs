@@ -47,7 +47,7 @@ Or using the parameter syntax:
 ::tab blade
 ```blade
 <?php
-    $limitedPlaylist = Statamic::modify($playlist)->limit(2);
+  $limitedPlaylist = Statamic::modify($playlist)->limit(2);
 ?>
 
 @foreach ($limitedPlaylist as $item)
