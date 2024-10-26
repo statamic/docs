@@ -10,10 +10,10 @@ parameters:
       Set HTML attributes as if you were on an HTML element. For example, `class="required" id="contact-form"`.
 variables:
   -
-    name: no_token
+    name: invalid_token
     type: boolean
     description: |
-      `true` if a valid token was not submitted.
+      Returns `true` when the token is missing or invalid. Functionally the same as the `no_token` variable.
   -
     name: errors
     type: array
@@ -39,6 +39,8 @@ related_entries:
 
 The HTML of the form itself is up to you. The only requirement is to name the password input `password` and wrap the form with the tag pair.
 
+Any variables from the protected entry will also be available in the password form.
+
 ## Example
 
 ::tabs
@@ -46,7 +48,7 @@ The HTML of the form itself is up to you. The only requirement is to name the pa
 ::tab antlers
 ```antlers
 {{ protect:password_form }}
-    {{ if no_token }}
+    {{ if invalid_token }}
         No token has been provided.
     {{ else }}
 
@@ -93,4 +95,4 @@ The HTML of the form itself is up to you. The only requirement is to name the pa
 
 When visiting a password protected page, Statamic generates a token and appends it to the form’s URL. Without this token, the form cannot function correctly. This is to combat brute-forcing and bots.
 
-In the example above, you can see the `no_token` boolean will be populated for you. This may happen if you visit the form URL directly.
+In the example above, you can see the `invalid_token` boolean will be populated for you. This may happen if you visit the form URL directly.

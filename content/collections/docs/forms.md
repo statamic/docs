@@ -334,7 +334,8 @@ Inside your email view, you have a number of variables available:
 - `date`, `now`, `today` - The current date/time
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
-- `config` - Any configuration values
+- `config` - Any app configuration values
+- `email_config` - The form's config
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array

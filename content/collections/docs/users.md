@@ -101,8 +101,8 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;↳ Edit roles | `edit roles` |
 | &nbsp;&nbsp;↳ Impersonate users | `impersonate users` |
 | Configure forms | `configure forms` |
-| View form submissions | `view {form} submissions` |
-| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
+| View form submissions | `view {form} form submissions` |
+| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} form submissions` |
 
 ### Author Permissions
 

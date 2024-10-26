@@ -53,6 +53,7 @@ preferences:
 | Swedish | `sv` |
 | Turkish | `tr` |
 | Ukrainian | `uk` |
+| Vietnamese | `vi` `
 | Simplified Chinese | `zh_CN` |
 | Taiwan | `zh_TW` |
 
@@ -74,7 +75,8 @@ There are 4 steps.
 2. Run `composer install`
 3. Generate a new translation from source files
 4. Translate new message files in `resources/lang`
-5. Commit changes and submit a PR
+5. Add the language to the [array in CorePreferences](https://github.com/statamic/cms/blob/cce7045e3f0ff418ee6e0a982a3830d604c6b64c/src/Preferences/CorePreferences.php#L56-L82) so it's selectable
+6. Commit changes and submit a PR
 
 ### Generating Translation Files
 

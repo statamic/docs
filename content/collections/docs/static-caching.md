@@ -440,6 +440,14 @@ return [
 ];
 ```
 
+### On a schedule
+
+If you have the scheduler running, Statamic will use the same set of rules mentioned above, but when scheduled entries are due to become active.
+
+For example, if you schedule an entry for Friday at 8am, and you have the scheduler running, appropriate pages will be invalidated just as if you had clicked saved on that entry at Friday at 8am.
+
+[Learn how to use the scheduler](/scheduling)
+
 ### Custom Invalidator Class
 
 You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).

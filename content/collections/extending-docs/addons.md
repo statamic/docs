@@ -440,6 +440,16 @@ return view('custom::foo');
 
 ## Events
 
+::: tip
+Statamic v5.33.0 introduced the concept of "autoloading" for event listeners.
+
+As long as your event listener lives in `src/Listeners` and the event is typehinted in the listener's `handle` method, they will be automatically registered by Statamic, without you needing to register them manually.
+
+Subscribers will also be autoloaded, as long as they live in `src/Subscribers`.
+
+If your addon supports below Statamic v5.33.0, you should continue registering events and subscribers manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
+
 You may register any number of event listeners or subscribers the same way you would in a traditional Laravel application's EventServiceProvider – by using a `$listen` or `$subscribes` array:
 
 ``` php

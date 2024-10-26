@@ -53,6 +53,12 @@ There are 3 steps to follow to install Statamic into your Laravel app.
     composer require statamic/cms --with-dependencies
     ```
 
+4. Depending on how you set up users in your app, you might need to run a command to publish Statamic's auth migrations.
+
+   ``` shell
+   php please auth:migration
+   ```
+
 ## Adding Content
 
 When you install Statamic into Laravel this way, **no content or views are included**.
