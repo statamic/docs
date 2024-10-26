@@ -31,11 +31,11 @@ In this template example we'll merge the two arrays and then pull out a single r
 ::tab blade
 ```blade
 <?php
-    $merged = Statamic::modify($good_ideas)
-        ->merge($bad_ideas)
-        ->sort('random')
-        ->limit(1)
-        ->fetch();
+  $merged = Statamic::modify($good_ideas)
+    ->merge($bad_ideas)
+    ->sort('random')
+    ->limit(1)
+    ->fetch();
 ?>
 
 <h2>Picking a random idea!</h2>
