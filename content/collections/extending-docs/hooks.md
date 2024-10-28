@@ -71,6 +71,21 @@ Triggered after the tag has been initialized. The payload is `null`.
 Triggered just after completing the query.
 The payload will either be an `EntryCollection` or a `Paginator`, depending on whether the `paginate` parameter was used.
 
+### Form tag: `attrs`
+Triggered when building the opening form tag. The payload is an array containing two properties:
+- 'attrs' - an array containing the currently calculated list of attributes for the opening &lt;form&gt; tag. Modifications to this array will affect the rendered form tag - e.g. it can be used to add attributes to the form tag.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
+
+### Form tag: `after-open`
+Triggered immediately after the opening form tag. The payload is an array containing two properties:
+- 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
+
+### Form tag: `before-open`
+Triggered immediately before the closing form tag. The payload is an array containing two properties:
+- 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
+
 ### Augmentation: `augmented`
 Triggered when a new augmented instance is made.
 The payload will be the object being augmented (eg. `Entry` / `Term`).
