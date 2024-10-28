@@ -443,7 +443,7 @@ return view('custom::foo');
 ::: tip
 Statamic v5.33.0 introduced the concept of "autoloading" for event listeners.
 
-As long as your event listener lives in `src/Listeners` and the event is typehinted in the listener's `handle` method, they will be automatically registered by Statamic, without you needing to register them manually.
+As long as your event listener lives in `src/Listeners` and the event is typehinted in the listener's `handle` or `__invoke` method, they will be automatically registered by Statamic, without you needing to register them manually.
 
 Subscribers will also be autoloaded, as long as they live in `src/Subscribers`.
 
