@@ -176,12 +176,39 @@ This has a few caveats:
 
 ## Contextual Keyword Snippets
 
-This feature only works with Statamic's [Local search driver](/search#local-driver). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
+This feature works slightly differently depending on the driver you're using.
+
+
+### Comb / Local
+```
+{{ search:results }}
+  {{ search_snippets:title | implode(' … ') | mark }}
+{{ /search:results }}
+```
+
+### Algolia
+Highlights are typically always available via `search_highlights`. The more powerful feature, [snippets](https://www.algolia.com/doc/api-reference/api-parameters/attributesToSnippet/), are available via `search_snippets` if you configure your index to use them. For example:
+
+```php
+'indexes' => [
+    'default' => [
+        'driver' => 'algolia',
+        'settings' => [ // [tl! **:start]
+            'attributesToSnippet' => [
+                'title:40',
+                'teaser:40',
+            ],
+            'highlightPreTag' => '<mark>',
+            'highlightPostTag' => '</mark>',
+        ], // [tl! **:end]
+    ],
+]
+```
 
 ```
 {{ search:results }}
-
-  {{ search_snippets:content | implode(' … ') | mark }}
-
+  {{ search_snippets:title:value }}
+  or
+  {{ search_highlights:title:value }}
 {{ /search:results }}
 ```
