@@ -224,4 +224,10 @@ dl {
     pre {
         @apply mt-0 rounded-tl-none;
     }
+    .tab-content > p {
+        @apply py-3 px-4 border rounded-tr mb-0 text-base bg-mint;
+    }
+    .tab-content > p + pre {
+        @apply rounded-tr-none;
+    }
 }

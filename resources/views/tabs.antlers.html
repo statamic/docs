@@ -6,7 +6,7 @@
         {{ /foreach:tabs }}
         </div>
         {{ foreach:samples }}
-            <div x-show="tab === '{{ key }}'">{{ value }}</div>
+            <div class="tab-content" x-show="tab === '{{ key }}'">{{ value }}</div>
         {{ /foreach:samples }}
    </div>
  </div>
