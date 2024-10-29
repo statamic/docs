@@ -153,7 +153,7 @@ If you’re using Statamic Pro, it can even automate your Git commits and pushes
 
 ## Importing Content
 
-Statamic has a [native Importer](https://github.com/statamic/importer) coming soon (any day now, as of Oct 22, 2024) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
+Statamic has a [native Importer](https://github.com/statamic/importer) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
 
 ## Everything Else
 
