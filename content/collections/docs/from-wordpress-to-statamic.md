@@ -68,6 +68,13 @@ A single [video](/fieldtypes/video) fieldtype to paste in the URL of a YouTube o
 These fields store **structured content**, but don't explicitly give control over your _layout_ because they don't write their own HTML. You always have full control of your markup, which in the end makes for a better long-term experience, allowing you to redesign sites without ever having to clean up or rewrite content again.
 :::
 
+## Themes
+
+Statamic uses [Starter Kits](https://statamic.dev/starter-kits) instead of traditional themes. These kits go beyond just styling – they can include plugins, custom code, and entire workflows. 
+
+You can [get Starter Kits from the Marketplace](https://statamic.com/starter-kits), where there are free and commercially available options. For example, the first-party [Cool Writings](https://statamic.com/starter-kits/statamic/cool-writings) starter kit is an excellent choice to use as the basis for a simple blog.
+
+We've even made it easy for you to [create your own starter kit](https://statamic.dev/starter-kits/creating-a-starter-kit). So once you've migrated your WordPress site, why not submit it to the marketplace?
 
 ## SEO
 
@@ -146,7 +153,7 @@ If you’re using Statamic Pro, it can even automate your Git commits and pushes
 
 ## Importing Content
 
-Statamic has a [native Importer](https://github.com/statamic/importer) coming soon (any day now, as of Oct 22, 2024) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
+Statamic has a [native Importer](https://github.com/statamic/importer) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
 
 ## Everything Else
 

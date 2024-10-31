@@ -15,9 +15,10 @@ class HeroSponsors extends Tags
     {
         return Cache::remember('hero-sponsors', now()->addHour(), function () {
             try {
-                return $this->sponsors()->collect()->where('price', '>=', 100);
+                return $this->sponsors()->collect()->where('price', '>=', 25);
             } catch (\Exception $e) {
                 Log::error($e);
+
                 return collect(['error' => true]);
             }
         });
@@ -51,7 +52,7 @@ class HeroSponsors extends Tags
             ->withUserAgent('statamic/docs')
             ->post('/graphql', [
                 'query' => $this->query(),
-                'variables' => ['cursor' => $cursor]
+                'variables' => ['cursor' => $cursor],
             ])
             ->json();
     }
