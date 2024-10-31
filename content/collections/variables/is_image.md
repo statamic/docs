@@ -7,10 +7,22 @@ title: 'Is Image'
 ---
 A boolean for whether the asset is an image.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if is_image }}
     <img src="{{ url }}" />
 {{ else }}
     <a href="{{ url }}">Download</a>
 {{ /if }}
 ```
+::tab blade
+```blade
+@if ($is_image)
+  <img src="{{ $url }}" />
+@else
+  <a href="{{ $url }}">Download</a>
+@endif
+```
+::

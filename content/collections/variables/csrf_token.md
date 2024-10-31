@@ -7,6 +7,18 @@ title: 'CSRF Token'
 ---
 Output the CSRF token from the session.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ csrf_token }}
 ```
+::tab blade
+```blade
+{{ $csrf_token }}
+
+-- or --
+
+{{ csrf_token() }}
+```
+::

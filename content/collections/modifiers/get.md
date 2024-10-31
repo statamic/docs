@@ -13,9 +13,17 @@ Gets a value from a relationship based on its ID. This is like a nicer-to-read s
 featured_post: 4e82a520-275f-11e6-bdf4-0800200c9a66
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ featured_post | get('title') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($featured_post)->get('title') }}
+```
+::
 
 ```html
 Featured Post Title
@@ -23,8 +31,18 @@ Featured Post Title
 
 The above is equivalent to doing this:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ get_content :from="featured_post" }}
     {{ title }}
 {{ /get_content }}
 ```
+::tab blade
+```blade
+<s:get_content :from="$featured_post">
+  {{ $title }}
+</s:get_content>
+```
+::

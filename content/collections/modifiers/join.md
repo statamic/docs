@@ -16,10 +16,19 @@ tasks:
   - clip toenails
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ tasks | join }}
 {{ tasks | join(" + ") }} = ready
 ```
+::tab blade
+```blade
+{{ Statamic::modify($tasks)->join() }}
+{{ Statamic::modify($tasks)->join(' + ') }} = ready
+```
+::
 
 ```html
 take a shower, brush hair, clip toenails

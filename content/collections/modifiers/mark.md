@@ -12,10 +12,19 @@ Wrap any matched words in `<mark>` tags to highlight them on the page.
 description: This cat video is the okayest thing ever.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ description | mark('cat thing') }}
 {{ description | mark('video', 'class:highlight') }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($description)->mark('cat thing') !!}
+{!! Statamic::modify($description)->mark(['video', 'class:highlight']) !!}
+```
+::
 
 ```html
 This <mark>cat</mark> video is the okayest <mark>thing</mark> ever.

@@ -86,7 +86,10 @@ Several [tags](tags/form) are provided to help you manage your form. You can exp
 
 This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#dynamic-rendering).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:super_fans }}
 
     // First let's check if this is after a submission, and if so, was it successful.
@@ -125,6 +128,46 @@ This example dynamically renders each input's HTML. You could alternatively writ
 
 {{ /form:super_fans }}
 ```
+::tab blade
+```blade
+<s:form:super_fans>
+
+  // First let's check if this is after a submission, and if so, was it successful.
+  // If it was, just show the success message. After all, we don't want them submitting again once they've gotten in touch!
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}
+    </div>
+  @else
+    // If we weren't successful, show any errors. If a fresh page load, there's no errors, so do nothing.
+    @if (count($errors) > 0)
+      <div class="bg-red-300 text-white p-2">
+        @foreach ($errors as $error)
+          {{ $error }}<br>
+        @endforeach
+      </div>
+    @endif
+
+    // Loop through and render the form inputs
+    @foreach ($fields as $field)
+      <div class="p-2">
+        <label>{{ $field['display'] }}</label>
+        <div class="p-1">{!! $field['field'] !!}</div>
+        @if ($field['error'])
+          <p class="text-gray-500">{{ $field['error'] }}</p>
+        @endif
+      </div>
+    @endforeach
+
+    // Add the honeypot field
+    <input type="text" class="hidden" name="{{ isset($honeypot) ? $honeypot : 'honeypot' }}" />
+
+    // This is just a submit button.
+    <button type="submit">Submit</button>
+  @endif
+</s:form:super_fans>
+```
+::
 
 ## Viewing Submissions
 
@@ -139,12 +182,23 @@ In the Forms area of the control panel you can explore the collected responses, 
 
 You can display any or all of the submissions of your forms on the front-end of your site using the [form submissions][submissions] Tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h2>My fans have said some things you can't forget...<h2>
 {{ form:submissions in="superfans" }}
   {{ message | markdown }}
 {{ /form:submissions }}
 ```
+::tab blade
+```blade
+<h2>My fans have said some things you can't forget...<h2>
+<s:form:submissions in="superfans">
+  {!! Statamic::modify($message)->markdown() !!}
+</s:form:submissions>
+```
+::
 
 ## Exporting your data
 
@@ -288,18 +342,37 @@ Inside your email view, you have a number of variables available:
 
 The submitted form values will be augmented for you. For instance, if you have an `assets` field, you will get a collection of Asset objects rather than just an array of paths. Or, a `select` field will be an array with `label` and `value` rather than just the value.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <b>Name:</b> {{ name }}
 <b>Email:</b> {{ email }}
 ```
+::tab blade
+```blade
+<b>Name:</b> {{ $name }}
+<b>Email:</b> {{ $email }}
+```
+::
 
 The `fields` variable is an array available for you for if you'd rather loop over your values in a dynamic way:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <b>{{ display }}</b> {{ value }}
 {{ /fields }}
 ```
+::tab blade
+```blade
+@foreach ($fields as $field)
+  <b>{{ $field['display'] }}</b> {{ $field['value'] }}
+@endforeach
+```
+::
 
 In each iteration of the `fields` array, you have access to:
 
@@ -471,12 +544,23 @@ Hide this field a method of your choosing (ie. CSS), so your users won't see it 
 
 For example:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:create }}
     ...
     <input type="text" name="honeypot" class="honeypot" />
 {{ /form:create }}
 ```
+::tab blade
+```blade
+<s:form:create>
+  ...
+  <input type="text" name="honeypot" class="honeypot" />
+</s:form:create>
+```
+::
 
 ```css
 .honeypot { display: none; }
@@ -498,13 +582,25 @@ If you are static caching the URL containing a form, return responses like 'succ
 
 **Wrapping the form in {{ nocache }}**
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ nocache }}
     {{ form:create formset="contact" }}
         ...
     {{ /form:create }}
 {{ /nocache }}
 ```
+::tab blade
+```blade
+<s:nocache>
+  <s:form:create formset="contact">
+    ...
+  </s:form:create>
+</s:nocache>
+```
+::
 
 ### Axios Example
 
@@ -532,6 +628,9 @@ Some things to note here:
 - Any errors that come back from the full page submission get passed into Precognition's `$form` helper via `setErrors()`. We use the same Alpine templating to output the inline Precognition errors and the full page submission's errors.
 - We need to override the [fieldtype's views](/tags/form-create#prerendered-field-html) so that `x-model` and `@change` are bound to the inputs as per the Precognition docs. The example below shows edits to the text field, but you would need to do it for all fieldtypes you plan to use.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ form:contact attr:x-ref="form" js="alpine" }}
     <div x-data='{
@@ -568,6 +667,7 @@ Some things to note here:
     </div>
 {{ /form:contact }}
 ```
+
 ```antlers
 <!-- resources/views/vendor/statamic/forms/fields/text.antlers.html [tl! **]-->
 <input
@@ -583,9 +683,72 @@ Some things to note here:
     {{ if validate|contains:required }}required{{ /if }}
 >
 ```
+::tab blade
+```blade
+<s:form:contact attr:x-ref="form" js="alpine">
+  <div
+    x-data="{
+      form: $form(
+        'post',
+        $refs.form.getAttribute('action'),
+        JSON.parse($refs.form.getAttribute('x-data'))
+      ).setErrors(@json($error)),
+    }"
+  >
+    @if ($success) Success! @endif
+
+    <template x-if="form.hasErrors">
+      <div>
+        Errors!
+        <ul>
+          <template x-for="error in form.errors">
+            <li x-text="error"></li>
+          </template>
+        </ul>
+      </div>
+    </template>
+
+    @foreach ($fields as $field)
+      <label>{{ $field['display'] }}</label>
+      {!! $field['field'] !!}
+
+      <small
+        x-show="form.invalid('{{ $field['handle'] }}')"
+        x-text="form.errors.{{ $field['handle'] }}"
+      ></small>
+    @endforeach
+
+    <button :disabled="form.processing">Submit</button>
+  </div>
+</s:form:contact>
+```
+
+:::tip
+By default, form input templates will be implemented in Antlers. The following template has been converted to Blade for your convenience.
+:::
+
+```blade
+<!-- resources/views/vendor/statamic/forms/fields/text.blade.php [tl! **]-->
+<input
+  type="{{ $input_type ?? 'text' }}"
+  name="{{ $handle }}"
+  value="{{ $value ?? '' }}"
+  @if (isset($placeholder)) placeholder="{{ $placeholder }}" @endif
+  @if (isset($character_limit)) maxlength="{{ $character_limit }}" @endif
+  @if (isset($autocomplete)) autocomplete="{{ $autocomplete }}" @endif
+  @if (isset($js_driver)) {!! $js_attributes !!} @endif {{-- [tl! -- **] --}}
+  x-model="form.{{ $handle }}" {{-- [tl! ++ **] --}}
+  @change="form.validate('{{ $handle }}')" {{-- [tl! ++ **] --}}
+  @required(in_array('required', $validate ?? []))
+>
+```
+::
 
 To build on the regular form submission example above, here's an example for AJAX submission:
 
+::tabs
+
+::tab antlers
 ```antlers
 <div x-data='{
     form: $form(
@@ -607,6 +770,29 @@ To build on the regular form submission example above, here's an example for AJA
     } {{# [tl! ++:end] #}}
 }'>
 ```
+::tab blade
+```blade
+<div x-data='{
+    form: $form(
+        "post",
+        $refs.form.getAttribute("action"),
+        JSON.parse($refs.form.getAttribute("x-data"))
+    ).setErrors(@json($error)), {{-- [tl! --] --}}
+    ), {{-- [tl! ++:start] --}}
+    init() {
+        $refs.form.addEventListener("submit", evt => {
+            evt.preventDefault();
+            this.form.submit().then(response => {
+                this.form.reset();
+                console.log("Success")
+            }).catch(error => {
+                console.log(error);
+            });
+        });
+    } {{-- [tl! ++:end] --}}
+}'>
+```
+::
 
 [tags]: /tags/form
 [submissions]: /tags/form-submissions

@@ -18,7 +18,10 @@ Most commonly this section/yield approach is used to create a global area in you
 
 In the example below, everything within the `section:sidebar` tag will _not_ be rendered in the template, but rather in the layout.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // The Template
 
 <h1>{{ title }}</h1>
@@ -33,7 +36,7 @@ In the example below, everything within the `section:sidebar` tag will _not_ be 
 {{ /section:sidebar }}
 ```
 
-```
+```antlers
 // The Layout
 <html>
   <head>
@@ -49,6 +52,41 @@ In the example below, everything within the `section:sidebar` tag will _not_ be 
   </body>
 </html>
 ```
+
+::tab blade
+```blade
+// The Template
+@extends('layout')
+
+<h1>{{ $title }}</h1>
+{!! $content !!}
+
+@section('sidebar')
+  <h2>About the Author</h2>
+  <div>
+    {{ $author['name'] }}
+  </div>
+  {{ $author['bio'] }}
+@endsection
+```
+
+```blade
+// The Layout
+<html>
+  <head>
+    <title>{{ $title }} | {{ $site_name }}</title>
+  </head>
+  <body>
+    <article>
+      {!! $template_content !!}
+    </article>
+    <aside>
+      @yield('sidebar')
+    </aside>
+  </body>
+</html>
+```
+::
 
 ## Related Reading
 

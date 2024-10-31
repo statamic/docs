@@ -31,15 +31,29 @@ Create and iterate through a loop a specific number of times using the `times` p
 ## Examples
 
 ### Count to 10
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ loop times="10" }}
   {{ value }}
 {{ /loop }}
 ```
+::tab blade
+```blade
+<s:loop times="10">
+  {{ $value }}
+</s:loop>
+```
+::
 
 ### Looping a variable number of times
 
 
+::tabs
+
+::tab antlers
 ```antlers
 ---
 number: "5"
@@ -52,13 +66,39 @@ text: "Pow"
 
 // Output: PowPowPowPowPow
 ```
+::tab blade
+```blade
+<?php
+  $number = 5;
+  $text = 'Pow';
+?>
+
+<s:loop :times="$number">
+  {{ $text }}
+</s:loop>
+
+// Output: PowPowPowPowPow
+```
+::
 
 ### Populate a select field with years
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <select name="year">
    {{ loop from="1900" to="2020" }}
       <option value="{{ value }}">{{ value }}</option>
    {{ /loop }}
 </select>
 ```
+::tab blade
+```blade
+<select name="year">
+  <s:loop from="1900" to="2020">
+    <option value="{{ $value }}">{{ $value }}</option>
+  </s:loop>
+</select>
+```
+::

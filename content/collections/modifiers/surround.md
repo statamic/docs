@@ -11,9 +11,17 @@ Surrounds a string with another string.
 string:  ͜
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | surround('ʘ') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->surround('ʘ') }}
+```
+::
 
 ```html
 ʘ ͜ ʘ

@@ -21,9 +21,22 @@ games:
     title: Chutes and Ladders
 ```
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ games | pluck('title') }}
 ```
+::tab blade
+```blade
+<?php
+  $plucked = Statamic::modify($games)
+    ->pluck('title')
+    ->fetch();
+?>
+```
+::
 
 ```yaml
 games:

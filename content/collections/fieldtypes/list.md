@@ -24,7 +24,10 @@ product_ideas:
 
 Loop through the array items to display each item's `value`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h1>Product Ideas</h1>
 <ul>
   {{ product_ideas }}
@@ -32,6 +35,17 @@ Loop through the array items to display each item's `value`.
   {{ /product_ideas }}
 </ul>
 ```
+
+::tab blade
+```blade
+<h1>Product Ideas</h1>
+<ul>
+	@foreach ($product_ideas as $idea)
+	<li>{{ $idea }}</li>
+	@endforeach
+</ul>
+```
+::
 
 ```html
 <h1>Product Ideas</h1>

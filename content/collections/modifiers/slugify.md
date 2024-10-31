@@ -14,9 +14,17 @@ and non-alphanumeric characters, and replacing whitespace with dashes. And then 
 string: Please, have some lemoñade.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | slugify }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->slugify() }}
+```
+::
 
 ```html
 please-have-some-lemonade

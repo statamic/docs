@@ -15,9 +15,17 @@ of the first character of the string), and in place of spaces as well as dashes.
 string: Please and thank you
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | underscored }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->underscored() }}
+```
+::
 
 ```html
 please_and_thank_you

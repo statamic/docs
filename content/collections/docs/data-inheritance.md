@@ -16,9 +16,17 @@ This approach allows you to create views that are less repetitive and are easier
 :::tip
 You can easily set variable fallbacks and "catch" the first value that exists without having to write a series of ugly `if/else` conditions.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h1>{{ nav_title ?? breadcrumb_title ?? title }}</h1>
 ```
+::tab blade
+```blade
+<h1>{{ $nav_title ?? $breadcrumb_title ?? $title }}</h1>
+```
+::
 :::
 
 

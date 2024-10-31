@@ -59,11 +59,21 @@ There are times when you may want to simply cache a section of an Antlers templa
 
 Wrap your markup in `{{ cache }}` tags, specify a duration, and your site is zippy and, one might say, quite delicious once again.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache for="1 hour" }}
   something impressive but slow here
 {{ /cache }}
 ```
+::tab blade
+```blade
+<s:cache for="1 hour">
+  something impressive but slow here
+</s:cache>
+```
+::
 
 ## Static Caching
 

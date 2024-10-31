@@ -219,3 +219,15 @@ dl {
         @apply py-1 px-2 bg-mint text-black;
     }
 }
+
+.doc-tabs {
+    pre {
+        @apply mt-0 rounded-tl-none;
+    }
+    .tab-content > p {
+        @apply py-3 px-4 border rounded-tr mb-0 text-base bg-mint;
+    }
+    .tab-content > p + pre {
+        @apply rounded-tr-none;
+    }
+}

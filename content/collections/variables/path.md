@@ -7,9 +7,17 @@ title: Path
 ---
 The path to the file, relative to the asset container.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ path }}
 ```
+::tab blade
+```blade
+{{ $path }}
+```
+::
 
 ```html
 img/black-bear-cubs.jpg

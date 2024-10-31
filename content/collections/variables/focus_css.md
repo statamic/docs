@@ -7,9 +7,17 @@ title: 'Focus Css'
 ---
 The focal point of the asset, in a format suitable for the background-position CSS property, if one has been set.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ focus_css }}
 ```
+::tab blade
+```blade
+{{ $focus_css }}
+```
+::
 
 ```html
 50% 30%

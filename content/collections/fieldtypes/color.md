@@ -32,11 +32,23 @@ header_color: "#FF269E"
 
 The color is output as a simple string. Most often you'll use this in an inline `style` tag to style elements of your front-end site.
 
-```
+::tabs
+
+::tab antlers
+
+```antlers
 <div class="hero" style="background-color: {{ header_color }}">
   <h1>Bay Side High's Sweetheart Dance</h1>
   <h2>This Friday Night!</h2>
 </div>
 ```
 
+::tab blade
 
+```blade
+<div class="hero" style="background-color: {{ $header_color }}">
+	<h1>Bay Side High's Sweetheart Dance</h1>
+	<h2>This Friday Night!</h2>
+</div>
+```
+::

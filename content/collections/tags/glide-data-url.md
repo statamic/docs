@@ -33,9 +33,23 @@ The `{{ glide:data_url }}` tag works in a very similar way to the standard [Glid
 
 You may pass any parameters you'd [normally pass to the Glide tag](/tags/glide#parameters), like `width`, `height` and `format`.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ glide:data_url src="image.jpg" width="1280" height="800" format="webp" }}
 ```
+::tab blade
+```blade
+{{
+  Statamic::tag('glide:data_url')
+    ->src('image.jpg')
+    ->width(1280)
+    ->height(800)
+    ->format('webp')
+}}
+```
+::
 
 ```output
 data:image/webp;base64,R0lGODlhAgACAJEAALwWrOQqhOwqhP///yH5BAEAAAMALAAAAAACAAIAAAIDBBIFADs=

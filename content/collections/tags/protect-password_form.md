@@ -43,7 +43,10 @@ Any variables from the protected entry will also be available in the password fo
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ protect:password_form }}
     {{ if invalid_token }}
         No token has been provided.
@@ -64,6 +67,29 @@ Any variables from the protected entry will also be available in the password fo
     {{ /if }}
 {{ /protect:password_form }}
 ```
+::tab blade
+```blade
+<s:protect:password_form>
+  @if ($no_token)
+    No token has been provided.
+  @else
+    @if ($error)
+      <div class="error">{{ $error }}</div>
+    @endif
+
+    <input type="password" name="password" />
+
+    @if (isset($errors['password']))
+      @foreach ($errors['password'] as $error)
+        <div class="inline-error">{{ $error }}</div>
+      @endforeach
+    @endif
+
+    <button>Submit</button>
+  @endif
+</s:protect:password_form>
+```
+::
 
 ### Tokens
 

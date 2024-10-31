@@ -17,6 +17,24 @@ do_the_thing: true
 
 Toggles are usually used to control logic, so you can combine them with `{{ if }}` statements in your templates to handle all manner of show/hide wizardry.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if do_the_thing }} It does it {{ /if }}
 ```
+
+::tab blade
+
+The following example uses the `fetch` helper function, which resolves `Value` instances for you and returns the underlying value. This way you always get the real "truthy" value, regardless of how you retrieved `$do_the_thing`.
+
+```blade
+<?php
+	use function Statamic\View\Blade\{fetch};
+?>
+
+@if (fetch($do_the_thing))
+  It does it
+@endif
+```
+::

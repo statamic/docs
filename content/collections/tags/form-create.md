@@ -74,7 +74,10 @@ stage: 4
 
 Here we'll be creating a form to submit an entry in a `contact` form.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:create in="contact" }}
 
     {{ if errors }}
@@ -101,18 +104,57 @@ Here we'll be creating a form to submit an entry in a `contact` form.
 
 {{ /form:create }}
 ```
+::tab blade
+```blade
+<s:form:create
+  in="contact"
+>
+  @if (count($errors) > 0)
+    <div class="bg-red-300 text-white p-2">
+      @foreach ($errors as $error)
+        {{ $error }}<br>
+      @endforeach
+    </div>
+  @endif
+
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}
+    </div>
+  @endif
+
+  <label>Email</label>
+  <input type="text" name="email" value="{{ old('email') }}" />
+
+  <label>Message</label>
+  <textarea name="message" rows="5">{{ old('message') }}</textarea>
+
+  <button>Submit</button>
+</s:form:create>
+```
+::
 
 You can also use the shorthand syntax for `form:create in="contact"`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact }}
     ...
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact>
+  ...
+</s:form:contact>
+```
+::
 
 Using this tag, Statamic will automatically take care of opening your form with a proper [CSRF token](https://laravel.com/docs/csrf).
 
-```output
+```html
 <form method="POST" action="https://website.example/!/forms/contact">
     <input type="hidden" name="_token" value="cN03woeRj5Q0GtlOj7GydsZcRwlyp9VLzfpwDFJZ">
     ...
@@ -127,11 +169,23 @@ It also provides helpers for [dynamically rendering](#dynamic-rendering) section
 
 When you need to render a form that's selected via the [Form Fieldtype](/fieldtypes/form) you can use this pattern:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:create in="{ form_fieldtype:handle }" }}
     ...
 {{ /form:create }}
 ```
+::tab blade
+```blade
+<s:form:create
+  :in="$form_fieldtype->handle"
+>
+  ...
+</s:form:create>
+```
+::
 
 This way you can let Control Panel users select which form should be used on an entry.
 
@@ -139,7 +193,10 @@ This way you can let Control Panel users select which form should be used on an 
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render your blueprint's fields in a dynamic fashion.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact }}
 
     {{ fields }}
@@ -161,6 +218,30 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact>
+
+  @foreach ($fields as $field)
+    <div class="p-2">
+      <label>
+        {{ $field['display'] }}
+        @if (in_array('required', $field['validate'] ?? []))
+          <sup class="text-red">*</sup>
+        @endif
+      </label>
+      <div class="p-1">{!! $field['field'] !!}</div>
+      @if ($field['error'])
+        <p class="text-gray-500">{{ $field['error'] }}</p>
+      @endif
+    </div>
+  @endforeach
+
+  <button>Submit</button>
+
+</s:form:contact>
+```
+::
 
 Each item in the `fields` array contains the following data configurable in the form's blueprint.
 
@@ -181,11 +262,18 @@ Using the `field` variable will intelligently render inputs as inputs, textareas
 
 You can customize these pre-rendered snippets by running `php artisan vendor:publish --tag=statamic-forms`. It will expose editable templates snippets in your `views/vendor/statamic/forms/fields` directory that will be used by each fieldtype.
 
+:::tip
+By default, pre-rendered snippets are implemented in Antlers. If you'd prefer to use Blade, you can grab some [ready-to-go Blade snippets](/blade-form-fields) to use as a starting point.
+:::
+
 This approach, combined with the [blueprint editor](/blueprints), will give you something very similar to a traditional "Form Builder" from other platforms.
 
 **Example**
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <div class="mb-2">
         <label class="block">{{ display }}</label>
@@ -193,6 +281,16 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
     </div>
 {{ /fields }}
 ```
+::tab blade
+```blade
+@foreach ($fields as $field)
+  <div class="mb-2">
+    <label class="block">{{ $field['display'] }}</label>
+    {!! $field['field'] !!}
+  </div>
+@endforeach
+```
+::
 
 ```output
 <div class="mb-2">
@@ -213,7 +311,10 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 
 If you have defined multiple sections in your form's blueprint, you can loop over these `sections` in a dynamic fashion as well.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact }}
 
     {{ sections }}
@@ -229,6 +330,25 @@ If you have defined multiple sections in your form's blueprint, you can loop ove
  
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact>
+
+  @foreach($sections as $section)
+    <fieldset>
+      <legend>{{ $section['display'] }}</legend>
+
+      @foreach ($section['fields'] as $field)
+        ...
+      @endforeach
+    </fieldset>
+  @endforeach
+
+  <button>Submit</button>
+
+</s:form:contact>
+```
+::
 
 Each item in the `sections` array contains the following data configurable in the form's blueprint.
 
@@ -260,11 +380,23 @@ These can be added to your [layout](/views#layouts) just before your `</body>` t
 
 The next step is to enable the Alpine JS driver via the `js="alpine"` parameter.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact js="alpine" }}
     ...
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact
+  js="alpine"
+>
+  ...
+</s:form:contact>
+```
+::
 
 This will generate an Alpine component, with automatic `x-data` handling that will respect old input when there are validation errors, etc.
 
@@ -272,7 +404,10 @@ This will generate an Alpine component, with automatic `x-data` handling that wi
 
 Finally, you will need to wire up the fields. With Alpine, this is done using `x-model` on the input to keep it in sync with the component, as well as an `x-if` to conditionally render the input and its label.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <template x-if="{{ show_field:name }}">
     <div class="p-2">
         <label>Name</label>
@@ -280,6 +415,16 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
     </div>
 </template>
 ```
+::tab blade
+```blade
+<template x-if="{{ $show_field['name'] }}">
+  <div class="p-2">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ old('name') }}" x-model="name" />
+  </div>
+</template>
+```
+::
 
 The `x-model` should reference the field's handle, and the `x-if` should reference the appropriate `show_field` JS generated by Statamic; In this case, `x-model="name"` and `x-if="{{ show_field:name }}"` respectively.
 
@@ -287,7 +432,10 @@ The `x-model` should reference the field's handle, and the `x-if` should referen
 
 If you are [dynamically rendering your fields](#dynamic-rendering) using the `fields` loop, your template might look something like this:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <template x-if="{{ show_field }}">
         <div class="p-2">
@@ -297,6 +445,24 @@ If you are [dynamically rendering your fields](#dynamic-rendering) using the `fi
     </template>
 {{ /fields }}
 ```
+::tab blade
+```blade
+<s:form:contact
+  js="alpine"
+>
+
+  @foreach ($fields as $field)
+    <template x-if="{{ $field['show_field'] }}">
+      <div class="p-2">
+        <label>{{ $field['display'] }}</label>
+        <div class="p-1">{!! $field['field'] !!}</div>
+      </div>
+    </template>
+  @endforeach
+
+</s:form:contact>
+```
+::
 
 The pre-rendered `{{ field }}` input will automatically render `x-model` for you, but you'll still need to wrap your input and its label with an `x-if="{{ show_field }}`, as shown above.
 
@@ -304,17 +470,32 @@ The pre-rendered `{{ field }}` input will automatically render `x-model` for you
 
 If you are using other Alpine components in your form or on your page, the included Alpine driver allows you to scope the generated `x-data` to prevent conflicts with your other components. To do this, provide a scope key when enabling the JS driver.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact js="alpine:contact_form" }}
     ...
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact
+  js="alpine:contact_form"
+>
+  ...
+</s:form:contact>
+```
+::
 
 The above will nest your form fields in a `contact_form` object within the generated `x-data`.
 
 If you are hardcoding your inputs, you will need adjust your `x-model` to follow suit.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <template x-if="{{ show_field:name }}">
     <div class="p-2">
         <label>Name</label>
@@ -322,6 +503,16 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
     </div>
 </template>
 ```
+::tab blade
+```blade
+<template x-if="{{ $show_field['name'] }}">
+  <div class="p-2">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ old('name') }}" x-model="contact_form.name" />
+  </div>
+</template>
+```
+::
 
 If you are [dynamically rendering your fields](#dynamic-rendering) using the `fields` loop, this is once again handled for you.
 
@@ -415,11 +606,23 @@ Take a look at the [AbstractJsDriver](https://github.com/statamic/cms/blob/featu
 
 You can also pass comma-delimited options into the `js` parameter like so:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ form:contact js="radjs:foo:bar" }}
     ...
 {{ /form:contact }}
 ```
+::tab blade
+```blade
+<s:form:contact
+  js="radjs:foo:bar"
+>
+  ...
+</s:form:contact>
+```
+::
 
 Within your driver class, you'll be able to access `$this->options` to retrieve an array of options (ie. `['foo', 'bar']` in the example above).
 

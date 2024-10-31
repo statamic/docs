@@ -20,9 +20,17 @@ things:
   - scrunchies
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ things | list }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($things)->list() }}
+```
+::
 
 ```html
 batman, zombies, scrunchies

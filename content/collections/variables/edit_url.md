@@ -9,9 +9,17 @@ Get the URL to edit the current page or entry in the Control Panel, if there is 
 
 The user will need to login and have permissions, so it's probably best if used in conjunction with [permissions checks](/tags/user-can).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ edit_url }}">Edit this page</a>
 ```
+::tab blade
+```blade
+<a href="{{ $edit_url }}">Edit this page</a>
+```
+::
 
 ```html
 <a href="/cp/pages/edit/about-ye-old-me">Edit this page</a>

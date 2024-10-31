@@ -7,9 +7,17 @@ title: Filename
 ---
 The filename of the asset, without the extension.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ filename }}
 ```
+::tab blade
+```blade
+{{ $filename }}
+```
+::
 
 ```html
 black-bear-cubs

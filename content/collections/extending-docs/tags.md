@@ -3,7 +3,7 @@ title: Building Tags
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264076
-intro: Ultimately a Tag is nothing more than a PHP Method called from an Antlers template. This common pattern allows non-PHP developers to take advantage of dynamic features in their site easily without writing any code.
+intro: Ultimately a Tag is nothing more than a PHP method called from an Antlers or Blade template. This common pattern allows non-PHP developers to take advantage of dynamic features in their site easily without writing any code.
 stage: 1
 id: 098cb1c5-94c2-4bc0-add7-9aad39951d67
 ---
@@ -11,7 +11,10 @@ id: 098cb1c5-94c2-4bc0-add7-9aad39951d67
 
 A tag consists of several parts, none of which are named the “thorax”. Let’s break a Tag down:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ acme:foo_bar src="baz" }}
 ```
 
@@ -19,13 +22,34 @@ A tag consists of several parts, none of which are named the “thorax”. Let�
 - The second bit is the method it maps to: `fooBar` (the method will be camelCased)
 - And lastly, a parameter: `src="foo"`. There can be any number of parameters on a Tag.
 
+::tab blade
+```blade
+<s:acme:foo_bar src="baz" />
+```
+
+- The first part after `<s:`? That’s the tag's handle: `acme`
+- The second bit is the method it maps to: `fooBar` (the method will be camelCased)
+- And lastly, a parameter: `src="foo"`. There can be any number of parameters on a Tag.
+
+::
+
 Tags can also come in pairs, much like beer comes in pints. For example:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ entries:listing folder="blog" }}
   <div>{{ title }}</div>
 {{ /entries:listing }}
 ```
+::tab blade
+```blade
+<s:entries:listing folder="blog">
+  <div>{{ $title }}</div>
+</s:entries:listing>
+```
+::
 
 Anything in-between your tag pair is available as `$this->content`. Sometimes you’ll want to use it as input, other times manipulate it, and yet another time leave it be. It’s up to you.
 
@@ -47,10 +71,24 @@ class MyTags extends \Statamic\Tags\Tags
 {
     public function fooBar()
     {
-        // {{ my_tags:foo_bar }}
+        // Stay awhile and listen.
     }
 }
 ```
+
+Would be called like so in your template:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ my_tags:foo_bar }}
+```
+::tab blade
+```blade
+<s:my_tags:foo_bar />
+```
+::
 
 ### Index
 
@@ -59,40 +97,76 @@ A tag without a method will use the `index` method.
 ``` php
 public function index()
 {
-    // {{ my_tags }}
+    // It's just one of those days.
 }
 ```
 
+Template:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ my_tags }}
+```
+::tab blade
+```blade
+<s:my:tags />
+```
+::
+
 ### Wildcards
 
-A common tag pattern is to have the method be dynamic. For example, the [Collection Tag][collection_tag]'s method is the handle of the collection you want to work with: `{{ collection:blog }}`.
+A common tag pattern is to have the method be dynamic. For example, the [Collection Tag][collection_tag]'s method is the handle of the collection you want to work with: `collection:blog`.
 
 You may add a `wildcard` method to your Tag class to catch these.
 
 ``` php
 public function wildcard($tag)
 {
-    // {{ tag:* }}
-
-    // if you used {{ tag:foo }}, $tag would be "foo"
+    // ♠️♥️♦️♣️
 }
 ```
 
+then, in your template:
+
+::tabs
+
+::tab antlers
+```antlers
+{{# Replace the * with anything you'd like! Go wild - play your crazy card! #}}
+{{ tag:* }}
+
+{{# In this case, the `$tag` value would be "foo" #}}
+{{ tag:foo }}
+```
+::tab blade
+```blade
+{{-- Replace the * with anything you'd like! Go wild - play your crazy card! --}}
+<s:tag:* />
+
+{{-- In this case, the `$tag` value would be "foo" --}}
+<s:tag:foo />
+```
+::
+
 If you want a tag named literally "wildcard", you can adjust the wildcard method that Statamic will call by updating the `wildcardMethod` property.
 
-``` php
+```php
 protected $wildcardMethod = 'missing';
 
 public function wildcard()
 {
-    // {{ tag:wildcard }}
+    // tag:wildcard
 }
 
 public function missing($tag)
 {
-    // {{ tag:* }}
+    // tag:*
 }
 ```
+
+
 
 You may have used the `__call()` magic method in Statamic v2 to handle wildcard tags. This still technically works, but we've
 introduced the `wildcard` method to prevent some infinite looping situations you may encounter.
@@ -139,7 +213,10 @@ Any parameters prefixed with a colon will resolve the values from the context au
 author: john
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ mytag
     greeting="hello"
     :name="author"
@@ -150,6 +227,20 @@ author: john
     things="foo|bar"
 }}
 ```
+::tab blade
+```blade
+<s:mytag
+  greeting="hello"
+  :name="$author"
+  do_this="true"
+  do_that="false"
+  limit="5"
+  latitude="6"
+  things="foo|bar"
+/>
+```
+::
+
 
 ``` php
 $this->params->get('greeting'); // "hello"
@@ -184,7 +275,10 @@ $this->params->get(['salutation', 'greeting']); // "hello"
 The context is the array of values being used for rendering the template where your tag happens to be placed.
 Take this block of templating for example:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title }}
 
 {{ collection:blog }}
@@ -192,6 +286,17 @@ Take this block of templating for example:
     {{ your_tag }}
 {{ /collection:blog }}
 ```
+::tab blade
+```blade
+{{ $title }}
+
+<s:collection:blog>
+  {{ $title }}
+
+  <s:your_tag />
+</s:collection:blog>
+```
+::
 
 The `title` in the first line uses the page context since it's not nested inside any other tag pairs. This would typically be the title of the entry of the URL you're visiting. You can pretend that the entire template is wrapped in a pair of invisible tags.
 
@@ -233,10 +338,20 @@ public function method()
     return 'hello';
 }
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ your_tag:method }}
 ```
+::tab blade
+```blade
+<s:your_tag:method />
 ```
+::
+
+```text
 hello
 ```
 
@@ -248,10 +363,21 @@ public function method()
     return true;
 }
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ if {your_tag:method} }} yup {{ /if }}
 ```
+::tab blade
+```blade
+@if (Statamic::tag('your_tag:method')->fetch()) yup @endif
 ```
+
+::
+
+```text
 yup
 ```
 
@@ -270,12 +396,24 @@ public function method() {
     ];
 }
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ your_tag:method }}
     {{ tree }} {{ path }} {{ sky }}
 {{ /your_tag:method }}
 ```
+::tab blade
+```blade
+<s:your_tag:method>
+  {{ $tree }} {{ $path }} {{ $sky }}
+</s:your_tag:method>
 ```
+::
+
+```text
 maple dirt blue
 ```
 
@@ -297,17 +435,31 @@ public function method() {
     ];
 }
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ your_tag:method }}
     {{ tree }} {{ path }} {{ sky }}
 {{ /your_tag:method }}
 ```
+::tab blade
+```blade
+<s:your_tag:method>
+  {{ $tree }} {{ $path }} {{ $sky }}
+</s:your_tag:method>
 ```
+::
+
+```text
 maple dirt blue
 oak asphalt black
 ```
 
-Returning an empty array will automatically make a `no_results` boolean available.
+### Empty Results in Antlers
+
+When using Antlers, a `no_results` variable will be automatically created when a tag returns an empty array.
 
 ``` php
 public function method() {
@@ -326,6 +478,53 @@ public function method() {
 ```
 No results.
 ```
+
+### Empty Results in Blade
+
+There are many different ways to handle empty results in Blade. When iterating simple tag results without aliasing, there is a special Blade component that takes the place of the `no_results` variable:
+
+``` php
+public function method() {
+    return [ ];
+}
+```
+
+```blade
+<s:your_tag:method>
+  Some results.
+
+  <s:no_results>
+    No results.
+  </s:no_results>
+</s:your_tag:method>
+```
+
+In all other scenarios, you will need to use other techniques. Some examples are:
+
+```blade
+{{-- Checking the count. --}}
+<s:your_tag:method as="results">
+
+  @if (count($results) > 0)
+    Some results.
+  @else
+    No results.
+  @endif
+
+</s:your_tag:method>
+
+{{-- Using forelese --}}
+<s:your_tag:method as="results">
+  @forelse ($results as $value)
+    ...
+  @empty
+    No results.
+  @endforelse
+
+</s:your_tag:method>
+```
+
+Whichever method you choose will depend on the situation and your personal preference.
 
 ### Passing along context
 
@@ -347,6 +546,151 @@ return array_merge(
     $this->context->only('foo', 'bar', 'baz')->all(),
     ['local' => 'value']
 );
+```
+
+## Considerations for Blade
+
+Most tag implementations will work seamlessly whether a user is writing their templates in Antlers or Blade, but there are a few things to keep in mind.
+
+### Conditionally Included Variables and "Falsey-ness"
+
+Tag implementations that conditionally inject a variable should consider always including the variable in their output, with a backwards-compatible default. Antlers will treat non-existent variables as `false` in conditions, and skip them entirely in other contexts.
+
+Because Blade compiles to PHP, if you do not always include the variable, users of your tag will have to resort to adding `isset` (or similar) checks.
+
+If your tag conditionally injects a variable that template authors rely on to change their output, consider adjusting the logic such that the variable is always available, with a backwards-compatible default.
+
+An example of this is Statamic's own form tag and the `success` variable.
+
+### Aliased Array Results
+
+The Antlers engine will automatically alias array results. Consider the following tag:
+
+```php
+<?php
+
+namespace App\Tags;
+
+use Statamic\Tags\Tags;
+
+class YourTag extends Tags
+{
+    public function index()
+    {
+        return ['a', 'b', 'c'];
+    }
+}
+```
+
+When writing Antlers, the following will "just work" due to how to the engine is implemented:
+
+```antlers
+{{ your_tag as="the_array_name" }}
+
+  {{ the_array_name }}
+    {{ value }}
+  {{ /the_array_name }}
+
+{{ /your_tag }}
+```
+
+The Blade countepart would be:
+
+```blade
+<s:my_custom_tag as="the_array_name">
+  @foreach ($the_array_name as $value)
+    {{ $value }}
+  @endforeach
+</s:my_custom_tag>
+```
+
+However, with the current tag implementation, this would not work and template authors would receive an error stating the `$the_array_name` variable doesn't exist. To make this work, we need to add support for the `as` parameter to our tag directly. Luckily, an `aliasedResult` helper method exists to make this easy for us:
+
+```php
+<?php
+
+namespace App\Tags;
+
+use Statamic\Tags\Tags;
+
+class YourTag extends Tags
+{
+    public function index()
+    {
+        return ['a', 'b', 'c']; // [tl! --]
+        return $this->aliasedResult(['a', 'b', 'c']); // [tl! ++]
+    }
+}
+```
+
+### Don't Assume Tag Content is Always Antlers
+
+If you are interacting with a tag's content and rendering it manually, you should *not* assume that the tag's content is always Antlers.
+
+For example, if you have a tag implementation that looks something like this:
+
+```php
+<?php
+
+namespace App\Tags;
+
+use Statamic\Facades\Antlers;
+use Statamic\Tags\Tags;
+
+class MyCustomTag extends Tags
+{
+    public function index()
+    {
+        return Antlers::parse($this->content);
+    }
+}
+
+```
+
+consider using the `parse()` method instead, which will take the current templating language into consideration:
+
+
+```php
+<?php
+
+namespace App\Tags;
+
+use Statamic\Facades\Antlers; // [tl! --]
+use Statamic\Tags\Tags;
+
+class MyCustomTag extends Tags
+{
+    public function index()
+    {
+        return Antlers::parse($this->content); // [tl! --]
+        return $this->parse(); // [tl! ++]
+    }
+}
+
+```
+
+### Implementing Custom Behavior for Blade vs. Antlers
+
+If you want to change your tags behavior specifically for Blade, you can check if the current tag instance is being rendered within a Blade template like so:
+
+```php
+<?php
+
+namespace App\Tags;
+
+use Statamic\Tags\Tags;
+
+class YourTag extends Tags
+{
+    public function index()
+    {
+        if ($this->isAntlersBladeComponent()) {
+            return 'Hello, Blade!';
+        }
+
+        return 'Hello, Antlers!';
+    }
+}
 ```
 
 ## Miscellaneous

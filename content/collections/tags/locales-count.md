@@ -6,10 +6,24 @@ intro: 'Get the number of localizations.'
 ---
 This tag shares everything from the [locales tag](/tags/locales), except that instead of looping over the results, it will just tell you how many there are.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ locales:count }}
 {{ locales:count self="false" }}
 ```
+::tab blade
+```blade
+{{-- Using Antlers Blade Components --}}
+<s:locales:count />
+<s:locales:count self="false" />
+
+{{-- Using Fluent Tags --}}
+{{ Statamic::tag('locales:count') }}
+{{ Statamic::tag('locales:count')->self(false) }}
+```
+::
 
 ```output
 3

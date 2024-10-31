@@ -19,11 +19,34 @@ User tags are designed for sites that have areas or features behind a login. The
 
 Let's say we want a link to edit the current entry in the control panel if the user has the `edit faq entries` permission.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:can do="edit faq entries" }}
     <a href="{{ edit_url }}">Edit this Page</a>
 {{ /user:can }}
 ```
+::tab blade
+```blade
+{{-- Using user methods --}}
+@if (auth()->user()?->can('edit blog entries'))
+  ...
+@endif
+
+{{-- Using Fluent Tags --}}
+@if (Statamic::tag('user:can')->do('edit blog entries')->fetch())
+  ...
+@endif
+
+{{-- Using Antlers Blade Components --}}
+<s:user:can
+  do="edit blog entries"
+>
+  ...
+</s:user:can>
+```
+::
 
 ## Super Users
 
@@ -33,11 +56,34 @@ Let's say we want a link to edit the current entry in the control panel if the u
 
 We also support the negative use case using `{{ user:cant }}` tags.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:cant do="anything" }}
   <p>Aww, I'm sure that's not true! 😊</p>
 {{ /user:cant }}
 ```
+::tab blade
+```blade
+{{-- Using user methods --}}
+@if (auth()->user()?->cant('do anything'))
+  <p>Aww, I'm sure that's not true! 😊</p>
+@endif
+
+{{-- Using Fluent Tags --}}
+@if (Statamic::tag('user:cant')->do('anything')->fetch())
+  <p>Aww, I'm sure that's not true! 😊</p>
+@endif
+
+{{-- Using Antlers Blade Components --}}
+<s:user:cant
+  do="anything"
+>
+  <p>Aww, I'm sure that's not true! 😊</p>
+</s:user:cant>
+```
+::
 
 ## Permissions List
 

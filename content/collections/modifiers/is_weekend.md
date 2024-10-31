@@ -12,9 +12,17 @@ Returns `true` if date is on the weekend.
 date: December 25 2015
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if date | is_weekend }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($date)->isWeekend()->fetch()) ... @endif
+```
+::
 
 
 ```html

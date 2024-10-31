@@ -50,7 +50,12 @@ author: abc-123-cba-321
 
 All relationship fields use [augmentation](/augmentation) to fetch the actual data objects, allowing you to interact with the related data automatically and dynamically.
 
-```
+The following example assumes `max_items` has been set to `1`.
+
+::tabs
+
+::tab antlers
+```antlers
 <div class="bg-white p-4 shadow flex items-center">
 {{ author }}
   <img class="w-10 h-10 rounded-full" src="{{ avatar }}" alt="Avatar of {{ name }}">
@@ -61,6 +66,18 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 {{ /author }}
 </div>
 ```
+::tab blade
+```blade
+<div class="bg-white p-4 shadow flex items-center">
+	<img class="w-10 h-10 rounded-full" src="{{ $author->avatar }}" alt="Avatar of {{ $author->name }}">
+	<div class="text-sm ml-4">
+		<p class="text-gray-900 leading-none">{{ $author->name }}</p>
+		<p class="text-gray-600">{{ $author->email }}</p>
+	</div>
+</div>
+```
+
+::
 
 ```html
 <div class="bg-white p-4 shadow flex items-center">

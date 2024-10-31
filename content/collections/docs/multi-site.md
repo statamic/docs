@@ -169,9 +169,17 @@ en:
     theme: standard
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <body class="theme-{{ site:attributes:theme }}">
 ```
+::tab blade
+```blade
+<body class="theme-{{ $site->attributes['theme'] }}">
+```
+::
 
 :::tip
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
@@ -185,9 +193,17 @@ For example, most sites will be `ltr`, but Statamic will automatically use `rtl`
 
 If you need to reference text direction in your front end, you make use the [site variable](/variables/site):
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <html dir="{{ site:direction }}">
 ```
+::tab blade
+```blade
+<html dir="{{ $site->direction }}">
+```
+::
 
 ## Renaming Sites
 
@@ -259,21 +275,43 @@ Here are a few common features you'll likely need to template while building a m
 
 This will loop through your sites and indicate the current site as the active one. Check out all the [available variables inside the `sites` loop](/variables/sites).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ sites }}
   <a class="{{ site:handle === handle ?= 'active' }}" href="{{ url }}">
     {{ handle }}
   </a>
 {{ /sites }}
 ```
+::tab blade
+```blade
+@foreach ($sites as $switcherSite)
+  <a @class([
+      'active' => $switcherSite->handle == $site->handle
+    ])
+    href="{{ $switcherSite->url }}"
+  >{{ $switcherSite->handle }}</a>
+@endforeach
+```
+::
 
 ### Declaring the Page Language
 
 Indicate the current language of the site by setting the `lang` attribute on your `<html>` tag (most likely in your layout view), or the container element around translated content if the page mixes and matches languages.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <html lang="{{ site:short_locale }}">
 ```
+::tab blade
+```blade
+<html lang="{{ $site->short_locale }}">
+```
+::
 
 ## Static Caching
 

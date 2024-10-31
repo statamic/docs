@@ -34,7 +34,10 @@ This tag relies on the native publish `date` field for date ordering.
 
 This will show the next 2 posts in a `blog` collection. It'll scope the entries loop into the `posts` tag pair. If there are no more entries, the no results text will be shown.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:previous in="blog" as="posts" limit="2" sort="date:asc" }}
 
   {{ if no_results }}
@@ -49,6 +52,26 @@ This will show the next 2 posts in a `blog` collection. It'll scope the entries 
 
 {{ /collection:previous }}
 ```
+::tab blade
+```blade
+<statamic:collection:previous
+  in="blog"
+  as="posts"
+  limit="2"
+  sort="date:asc"
+>
+  @if ($no_results)
+    No more posts to read!
+  @endif
+
+  @foreach ($posts as $post)
+    <div class="post">
+      <a href="{{ $post->url }}">{{ $post->title }}</a>
+    </div>
+  @endforeach
+</statamic:collection:previous>
+```
+::
 
 :::tip
 This functions the same way as the [collection:next](/tags/collection-next) tag but in the opposite direction.

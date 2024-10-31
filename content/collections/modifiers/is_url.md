@@ -13,10 +13,19 @@ a_url: http://google.com/
 not_a_url: waffles
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if a_url | is_url }}
 {{ if not_a_url | is_url }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($a_url)->isUrl()->fetch()) ... @endif
+@if (Statamic::modify($not_a_url)->isUrl()->fetch()) ... @endif
+```
+::
 
 ```html
 true

@@ -14,7 +14,6 @@ Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/co
 
 Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension.
 
-
 ## View Data
 
 You will have access to the same data as you would in Antlers views.
@@ -137,7 +136,63 @@ By using the `@antlers` and `@endantlers` Blade directive pair you can write pur
 
 Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@include('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
 
-## Using Tags with Blade
+## Using Antlers Blade Components
+
+Despite the name, Antlers Blade Components are a Blade-only feature that allows you to use existing tags inside your Blade templates using a custom tag syntax. For example, you can gather all entries from a "pages" collection using the [collection](/tags/collection) tag like so:
+
+```blade
+<s:collection:pages>
+  {{ $title }}
+</s:collection:pages>
+```
+
+In the previous example, you may have noticed the `s:` prefix. To use Antlers Blade Components we must prefix the tag name with either `s:` or `statamic:` (`s-` and `statamic-` also work).
+
+We can pass multiple parameters to the tag like so:
+
+```blade
+<s:collection
+  from="pages"
+  limit="2"
+  sort="title:desc"
+>
+  {{ $title }}
+</s:collection>
+```
+
+We can also pass dynamic values to parameters:
+
+```blade
+@php
+  $collection = 'pages';
+@endphp
+
+<s:collection
+  :from="$collection"
+  limit="2"
+  sort="title:desc"
+>
+  {{ $title }}
+</s:collection>
+```
+
+### Antlers Blade Components and Partials
+
+Partials also work with Antlers Blade Components, and are intended to be used when you'd like to include an Antlers partial inside your Blade template:
+
+```blade
+<s:partial/the-partial-name>
+  <s:slot:header>The header content.</s:slot:header>
+
+  Default slot content.
+</s:partial/the-partial-name>
+```
+
+:::tip
+If you are going all-in on Blade for a new project, you should consider sticking to Blade features such as `@include` or Blade components instead of reaching for the `partial` tag.
+:::
+
+## Using Fluent Tags with Blade
 
 You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax. Instantiate your tag with the `Statamic::tag()` method and chain parameters as needed.
 
@@ -239,7 +294,6 @@ You may also pass an array of tags, and parameters, with variable names as the k
 @foreach($items as $item) ... @endforeach
 ```
 
-
 ## Using Modifiers with Blade
 
 You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters. If you use a modifier that can take more than one parameter, pass those in as an array.
@@ -258,6 +312,39 @@ I wanted to say more but got cut off...
 When using multi-word modifiers, like `ensure_right`, you must use the camelCased version (`ensureRight`).
 :::
 
+If you're using a lot of modifiers in your Blade template, you can also include the `modify` helper function in your template:
+
+```blade
+@php
+  use function Statamic\View\Blade\{modify};
+@endphp
+
+{{ modify('test')->stripTags()->backspace(1)->ensureRight('!!!') }}
+{{ modify('test')->stripTags()->safeTruncate([42, '...']) }}
+```
+
+## Conditional Logic and Values
+
+Depending on where you got a value from, it may be wrapped in a class like `Value`. These can lead to unexpected results in conditional logic if they are not handled correctly (i.e., calling `->value()` in the condition).
+
+If you'd prefer to not think about that, you can include the `value` helper function into your template, which will take care of this for you:
+
+```blade
+@php
+  use function Statamic\View\Blade\{value};
+@endphp
+
+@if (value($theVariableName))
+  ...
+@endif
+```
+
+The `value` helper function will handle the following scenarios for you:
+
+* `Statamic\Fields\Value` objects (calls `->value()`)
+* `Statamic\Fields\Values` objects (calls `->all()`)
+* `Statamic\Tags\FluentTag` objects (calls `->fetch()`)
+* `Statamic\Modifiers\Modify` objects (calls `->fetch()`)
 
 ## Layouts
 

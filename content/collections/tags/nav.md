@@ -112,6 +112,7 @@ variables:
       of the `nav` tag pair.
 ---
 ## Overview
+
 The various Nav tags work together to allow you to easily traverse your content upways and downways, sideways, slantways, longways, backways, squareways, frontways, and any other ways that you can think of.
 
 This tag is designed to be used for top-level and multi-level navs.
@@ -122,28 +123,73 @@ The nav tag supports both [navigations](/navigation) or multi-depth [collections
 
 You specify what kind you need by using the second tag part:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // The "links" nav
 {{ nav:links }} ... {{ /nav:links }}
 ```
-
+::tab blade
+```blade
+// The "links" nav
+<s:nav:links>
+  ...
+</s:nav:links>
 ```
+::
+
+::tabs
+
+::tab antlers
+```antlers
 // The "pages" collection
 {{ nav:collection:pages }} ... {{ /nav:collection:pages }}
 ```
+::tab blade
+```blade
+// The "pages" collection
+<s:nav:collection:pages>
+  ...
+</s:nav:collection:pages>
+```
+::
 
 If you use the tag on it's own without a second part, it will assume you want the `pages` collection. That's a super common thing to do, and the `statamic/statamic` repo comes bundled with it.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // Also the "pages" collection
 {{ nav }} ... {{ /nav }}
 ```
+::tab blade
+```blade
+// Also the "pages" collection
+<s:nav>
+  ...
+</s:nav>
+```
+::
 
 You can also specify the navigation using the `handle` parameter:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ nav handle="links" }} ... {{ /nav }}
 ```
+::tab blade
+```blade
+<s:nav
+  handle="links"
+>
+  ...
+</s:nav>
+```
+::
 
 :::tip
 The `{{ nav }}` tag will only output entries for [**Orderable** collections](collections#ordering). If you need navigation for a non-ordered collection, you may wish to use the [`collection`](/tags/collection) tag instead.
@@ -152,7 +198,11 @@ The `{{ nav }}` tag will only output entries for [**Orderable** collections](col
 ## Basic Example
 
 A single level nav, much like something you'd have at the top of your site, can be built by looping through all the items in the nav and using their `title` and `url` variables in your HTML. Add a "current" state by checking for `is_current` and `is_parent`, and you're probably good to go.
-```
+
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ nav include_home="true" }}
     <li>
@@ -163,6 +213,22 @@ A single level nav, much like something you'd have at the top of your site, can 
   {{ /nav }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+  <s:nav include_home="true">
+    <li>
+      <a
+        href="{{ $url }}"
+        @if ($is_current || $is_parent) class="current" @endif
+      >
+        {{ $title }}
+      </a>
+    </li>
+  </s:nav>
+</ul>
+```
+::
 
 ## Show the children of the current page
 
@@ -172,7 +238,10 @@ A simpler way is to use the [children tag](/tags/children) for this.
 
 Use the `uri` to get the children of the current page.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
     {{ nav :from="uri" }}
         {{ unless no_results }}
@@ -183,12 +252,28 @@ Use the `uri` to get the children of the current page.
     {{ /nav }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+  <s:nav :from="uri" as="pages">
+    @foreach ($pages as $page)
+      <li>
+        <a href="{{ $page['url'] }}">{{ $page['title'] }}</a>
+      </li>
+    @endforeach
+  </s:nav>
+</ul>
+```
+::
 
 ## Multi-level Nav Example Recursion {#multi-level}
 
 Building an infinitely deep nav is possible by using recursion.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
    {{ nav :from="segment_1" }}
       <li>
@@ -202,6 +287,27 @@ Building an infinitely deep nav is possible by using recursion.
    {{ /nav }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+   <s:nav :from="$segment_1">
+      <li>
+         <a
+           href="{{ $url }}"
+           @if ($is_current || $is_parent) class="current" @endif
+         >
+           {{ $title }}
+         </a>
+         @if ($is_current || $is_parent)
+            @if (count($children) > 0)
+               <ul>@recursive_children</ul>
+            @endif
+         @endif
+      </li>
+   </s:nav>
+</ul>
+```
+::
 
 The `{{ *recursive children* }}` tag will repeat the contents of the entire `{{ nav }}` tag using child elements, if they exist. As long as there are children to display, and we’re still on either the current or parent page of those children, the nav tag will traverse deeper. If your scoped variables have trouble making it through to the next recursion, you can glue them to children like this: `{{ *recursive children:my_scoped_variable* }}`.
 

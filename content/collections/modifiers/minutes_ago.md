@@ -19,9 +19,17 @@ Returns the number of minutes since a given date variable. Statamic will attempt
 date: October 1 2015 8:30:am
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date | minutes_ago }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($date)->minutesAgo() }}
+```
+::
 
 ```html
 {{ test_date | minutes_ago }}

@@ -13,11 +13,27 @@ epic_meal_time:
   - bacon strips
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ epic_meal_time | pad(4, "bacon strips") }}
     {{ value }}
 {{ /epic_meal_time }}
 ```
+::tab blade
+```blade
+<?php
+  $meals = Statamic::modify($epic_meal_time)
+    ->pad(4, 'bacon strips')
+    ->fetch();
+?>
+
+@foreach ($meals as $meal)
+  {{ $meal }}
+@endforeach
+```
+::
 
 ```html
 jack daniels

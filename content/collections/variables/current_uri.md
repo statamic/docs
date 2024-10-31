@@ -7,9 +7,17 @@ title: 'Current Uri'
 ---
 The current URI (URL without domain).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ current_uri }}
 ```
+::tab blade
+```blade
+{{ $current_uri }}
+```
+::
 
 ```html
 /variables

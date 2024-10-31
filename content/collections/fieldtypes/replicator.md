@@ -94,7 +94,10 @@ Please note that you **cannot** use a Replicator fieldtype for the `content` fie
 
 Use the tag pair syntax with an `if/else` conditions to style each set accordingly.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ my_replicator_field }}
 
   {{ if type == "text" }}
@@ -120,25 +123,92 @@ Use the tag pair syntax with an `if/else` conditions to style each set according
 {{ /my_replicator_field }}
 
 ```
+::tab blade
+```blade
+@foreach($my_replicator_field as $set)
+	@if ($set->type === 'text')
+		<div class="text">
+			{!! Statamic::modify($set->text)->markdown() !!}
+		</div>
+	@elseif ($set->type === 'quote')
+		<blockquote>{{ $set->text  }}</blockquote>
+		<p>— {{ $set->cite }}</p>
+	@elseif ($set->type === 'image')
+		<figure>
+			<img src="{{ $set->photo }}" alt="{{ $set->caption }}" />
+			<figcaption>{{ $set->caption }}</figcaption>
+		</figure>
+	@endif
+@endforeach
+```
+::
+
 An alternative, and often cleaner, approach is to have multiple 'set' partials and do:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ my_replicator_field }}
   {{ partial src="sets/{type}" }}
 {{ /my_replicator_field }}
 ```
+::tab blade
+
+:::tip
+By using `[...$set]`, you can access the set variables within the set's Blade file without having to reference `$set` for each variable.
+
+For example, `{!! $set->text !!}` becomes `{!! $text !!}`.
+:::
+
+```blade
+@foreach ($my_replicator_field as $set)
+	@include('fieldtypes.partials.sets.'.$set->type, [...$set])
+@endforeach
+```
+::
+
 Then inside your partials directory you could have:
 
-`sets/image.antlers.html`
-`sets/quote.antlers.html`
+::tabs
 
-and the set partial may look something like:
-
+::tab antlers
+``` files theme:serendipity-light
+resources/views/partials/sets/
+  text.antlers.html
+  quote.antlers.html
+  image.antlers.html
 ```
+
+::tab blade
+``` files theme:serendipity-light
+resources/views/partials/sets/
+  text.blade.php
+  quote.blade.php
+  image.blade.php
+```
+::
+
+and the `image` set partial may look something like:
+
+::tabs
+
+::tab antlers
+```antlers
 {{# this is image.antlers.html #}}
 
 <img src="{{ image }}" alt="{{ caption }}" >
 ```
+
+::tab blade
+```blade
+{{-- this is image.blade.php --}}
+<figure>
+	<img src="{{ $photo }}" alt="{{ $caption }}" />
+	<figcaption>{{ $caption }}</figcaption>
+</figure>
+```
+::
 
 ## Custom set icons
 

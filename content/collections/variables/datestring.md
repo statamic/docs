@@ -7,9 +7,17 @@ title: Datestring
 ---
 Get the pre-formatted date of the entry as a string.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date }}
 ```
+::tab blade
+```blade
+{{ $date }}
+```
+::
 
 ```html
 February 16, 2016

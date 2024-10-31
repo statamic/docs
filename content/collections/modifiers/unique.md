@@ -22,9 +22,17 @@ checklist:
 
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ checklist | unique | list }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($checklist)->unique()->list() }}
+```
+::
 
 ```html
 zebra, hippo, hyena, giraffe

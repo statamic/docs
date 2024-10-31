@@ -12,12 +12,21 @@ smiles: 3
 winks: 4
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ smiles | multiply(10) }}
 {{ smiles | multiply($winks) }}
 {{ smiles | *($winks) }}
 
 ```
+::tab blade
+```blade
+{{ Statamic::modify($smiles)->multiply(10) }}
+{{ Statamic::modify($smiles)->multiply($winks) }}
+```
+::
 
 ```html
 30

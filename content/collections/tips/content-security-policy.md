@@ -67,9 +67,22 @@ Sanitizing works well to protect you from user's popping `<script>` tags and oth
 ```yaml
 my_link: http://example.com
 ```
-```html
+
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ my_link | sanitize }}">My Link</a>
 ```
+::tab blade
+```blade
+{{-- Blade sanitizes output by default --}}
+<a href="{{ $my_link }}">My Link</a>
+
+{{-- Using the sanitize modifier with Blade's unescaped syntax --}}
+{!! Statamic::modify($my_link)->sanitize() !!}
+```
+::
 
 This is fine if they provide a real URL, but what about something sneakier:
 

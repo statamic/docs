@@ -58,13 +58,23 @@ collections:
 
 You can work with the [nav](/tags/nav) to loop through and render your HTML with access to all the entries and nodes in the navigation.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ nav:footer }}
     <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /nav:footer }}
 </ul>
 ```
+::tab blade
+```blade
+<statamic:nav:footer>
+  <li><a href="{{ $url }}">{{ $title }}</a></li>
+</statamic:nav:footer>
+```
+::
 
 Within the tag pair, you will have access to any fields defined on that particular nav item - the item itself or the entry. See [blueprints and data](#blueprints-and-data) below for more information.
 

@@ -61,6 +61,10 @@ favorites:
 
 You can loop through the checked items and access the value and label of each item inside the loop.
 
+::tabs
+
+::tab antlers
+
 ```
 <ul>
 {{ favorites }}
@@ -69,6 +73,19 @@ You can loop through the checked items and access the value and label of each it
 </ul>
 ```
 
+::tab blade
+
+```blade
+<ul>
+	@foreach($favorites as $favorite)
+	{{-- You can also access $favorite['key'] and $favorite['label'] --}}
+	<li>{{ $favorite['value'] }}</li>
+	@endforeach
+</ul>
+```
+
+::
+
 ```html
 <ul>
     <li>donuts</li>
@@ -76,13 +93,28 @@ You can loop through the checked items and access the value and label of each it
 </ul>
 ```
 
+::tabs
+
+::tab antlers
+
 To conditionally check if a value has been selected, you can combine the [pluck](/modifiers/pluck) and [contains](/modifiers/contains) modifiers:
 
-```html
+```antlers
 {{ if favorites | pluck('value') | contains('donuts') }}
    <span>Contains donuts!</span>    
 {{ /if }}
 ```
+
+::tab blade
+
+To conditionally check if a value has been selected, you can combine the pluck and contains collection methods:
+
+```blade
+@if (collect($favorites)->pluck('value')->contains('donuts'))
+	<span>Contains donuts!</span>
+@endif
+```
+::
 
 ### Variables
 

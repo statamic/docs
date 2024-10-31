@@ -11,9 +11,19 @@ Returns `true` if the string contains an uppercase character, `false` otherwise.
 loud_noises: "I DON'T KNOW WHAT WE'RE YELLING ABOUT!"
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if loud_noises | has_upper_case }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($loud_noises)->hasUpperCase()->fetch())
+
+@endif
+```
+::
 
 ```html
 true

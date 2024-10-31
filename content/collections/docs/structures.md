@@ -55,13 +55,25 @@ Freestyle navigation structures exist to manage a nav out of existing entries, a
 
 You can work with the [nav tag](/tags/nav) to loop through and render your HTML with its links.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
 {{ nav:top_nav }}
     <li><a href="{{ url }}">{{ title }}</a></li>
 {{ /nav:top_nav }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+  <s:nav:top_nav>
+    <li><a href="{{ $url }}">{{ $title }}</a></li>
+  </s:nav:top_nav>
+</ul>
+```
+::
 
 ## Tree
 

@@ -193,18 +193,44 @@ Glide is ready to go out of the box with no setup required. However, you may cus
 
 Manipulate images by passing an image [source](#sources) and adding the desired [parameters](#parameters) like `height`, `crop`, or `quality`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide src="image.jpg" width="1280" height="800" }}
 ```
+::tab blade
+```blade
+<s:glide src="image.jpg" width="1280" height="800" />
+```
+::
+
+
 ```output
 /img/image.jpg?w=1280&h=800
 ```
 
 The Glide tag outputs a URL of the transformed image, so you'll likely want to use it as the `src` for an `<img />` HTML tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <img src="{{ glide ... }}" />
 ```
+::tab blade
+```blade
+{{-- Using fluent tags --}}
+<img
+  src="{{ Statamic::tag('glide')->src('test.png')->width(1280)->height(800)->fetch() }}"
+/>
+
+{{-- Using Antlers Blade Components tag pair --}}
+<s:glide src="test.png" width="1280" height="800">
+  <img src="{{ $url }}" />
+</s:glide>
+```
+::
 
 ## Sources
 
@@ -213,42 +239,93 @@ There are a number of options when it comes to what you can use as an image sour
 ### Asset
 You can pass along an asset object by using an asset field by reference:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide :src="asset_field" w="100" }} // /img/asset/6f75d8as?w=100
 ```
+::tab blade
+```blade
+<s:glide :src="$asset_field" w="100" /> // /img/asset/6f75d8as?w=100
+```
+::
 
 ### Relative path/URL
 You can pass a string of a path located within your `public` directory.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide src="image.jpg" w="100" }} // img/image.jpg?w=100
 ```
+::tab blade
+```blade
+<s:glide src="image.jpg" w="100" /> // img/image.jpg?w=100
+```
+::
 
 ### External URL
 You can pass a string of a URL on another site.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide src="http://anothersite.com/image.jpg" w="100" }} // /img/http/6f75d8as?w=100
 ```
+::tab blade
+```blade
+<s:glide src="http://anothersite.com/image.jpg" w="100" /> // /img/http/6f75d8as?w=100
+```
+::
 
 
 ## Tag Pair
 
 If you use the tag as a pair, you'll have access to `url`, `height`, and `width` variables inside to do with as you wish.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide src="image.jpg" width="600" }}
     <img src="{{ url }}" width="{{ width }}" height="{{ height }}">
 {{ /glide }}
 ```
+::tab blade
+```blade
+<s:glide src="image.jpg" width="600">
+  <img src="{{ $url }}" width="{{ $width }}" height="{{ $height }}">
+</s:glide>
+```
+::
 
 You may also use the tag pair to loop over multiple sources. For example, you may provide it with an `assets` field.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide :src="multiple_assets" width="600" }}
    ...
 {{ /glide }}
 ```
+::tab blade
+```blade
+<s:glide :src="multiple_assets" width="600">
+  {{ $url }}
+</s:glide>
+
+{{-- Aliasing the results --}}
+<s:glide :src="$multiple_assets" width="600" as="assets">
+  @foreach ($assets as $asset)
+    {{ $asset['url'] }}
+  @endforeach
+</s:glide>
+```
+::
 
 :::tip
 The tag pair is also available as `{{ glide:generate }}`. You may need to use this version if you're using [Blade](#usage-in-blade).
@@ -263,24 +340,50 @@ Normally, the Glide tag only generates a URL. The image itself is generated when
 
 Rather than using the `src` parameter, you may choose to use a variable name as the second part of the tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:my_var w="100" }}
 ```
+::tab blade
+```blade
+<s:glide:my_var w="100" />
+```
+::
 
 You may also use the shorthand as a tag pair:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:my_var }} ... {{ /glide:my_var }}
 ```
+::tab blade
+```blade
+<s:glide:my_var>
+  ...
+</s:glide:my_var>
+```
+::
 
 
 ## Watermarks
 
 You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide src="image.jpg" mark="watermark.jpg" markw="30" }}
 ```
+::tab blade
+```blade
+<s:glide src="image.jpg" mark="watermark.jpg" markw="30" />
+```
+::
 
 :::tip
 You don't need to worry about setting up a watermark filesystem yourself. Statamic will take care of that automatically based on the source you provide.
@@ -289,7 +392,7 @@ You don't need to worry about setting up a watermark filesystem yourself. Statam
 
 ## Usage in Blade
 
-To use the Glide tag within Blade, you should use the `generate` tag, which follows the same rules as the [tag pair](#tag-pair).
+To use the Glide tag within Blade, you can also use the `generate` tag, which follows the same rules as the [tag pair](#tag-pair).
 
 ```blade
 @foreach (Statamic::tag('glide:generate')->src($source)->width(100) as $image)
@@ -339,11 +442,23 @@ images:
   - image.svg
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ images }}
   <img src="{{ glide:url width="600" }}" />
 {{ /images }}
 ```
+::tab blade
+```blade
+@foreach ($images as $image)
+  <img
+    src="{{ Statamic::tag('glide')->src($image['url'])->width(600)->fetch() }}"
+  />
+@endforeach
+```
+::
 
 ```html
 <img src="/img/image.jpg?w=600" />

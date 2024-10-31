@@ -38,7 +38,11 @@ After a user has put their email address into the [user:forgot_password_form](/t
 
 ## Example
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ user:reset_password_form }}
 
     {{ if success }}
@@ -74,6 +78,37 @@ After a user has put their email address into the [user:forgot_password_form](/t
 
 {{ /user:reset_password_form }}
 ```
+::tab blade
+```blade
+<s:user:reset_password_form>
+  @if ($success)
+    <p class="alert alert-success">Password has been reset.</p>
+  @elseif ($url_invalid)
+    <p class="alert alert-danger">This reset URL is invalid.</p>
+  @else
+
+    @if ($errors)
+      <div class="alert alert-danger">
+        @foreach ($errors as $error)
+          {{ $error }}<br>
+        @endforeach
+      </div>
+    @endif
+
+    <label>E-Mail</label>
+    <input type="email" name="email" />
+
+    <label>Password</label>
+    <input type="password" name="password" />
+
+    <label>Password Confirmation</label>
+    <input type="password" name="password_confirmation" />
+
+    <button>Submit</button>
+  @endif
+</s:user:reset_password_form>
+```
+::
 
 ## Arriving at this URL
 

@@ -21,12 +21,29 @@ games:
     title: Chutes and Ladders
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h2>I love...</h2>
 {{ games | where('feeling', 'love') }}
   {{ title }}<br>
 {{ /games }}
 ```
+::tab blade
+```blade
+<?php
+  $filteredGames = Statamic::modify($games)
+    ->where(['feeling', 'love'])
+    ->fetch();
+?>
+
+<h2>I love...</h2>
+@foreach ($filteredGames as $game)
+  {{ $game['title'] }}
+@endforeach
+```
+::
 
 ```html
 Dominion

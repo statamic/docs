@@ -17,10 +17,10 @@ Sometimes these conventions don't fit your project, or maybe you're perfectly ha
 **But don't break convention unless you have a really, really good reason.** Like integrating Statamic with an existing Laravel app or when porting a site from another platform.
 :::
 
-A good example of this is the decision on whether to use [Blade](/blade) as the template language over [Antlers](/antlers). Antlers is deeply integrated with Statamic and can handle the responsibilities of both Blade _and_ Controllers right in your template. If you choose to not use Antlers, you'll have to do more work to fetch and prep content some other way.
+A good example of this is the decision on whether to use [Blade](/blade) as the template language over [Antlers](/antlers). Antlers is deeply integrated with Statamic and can handle the responsibilities of both Blade _and_ Controllers right in your template. If you choose to use Blade templates, you will also have access to our Antlers Blade components, or you can use controllers and fetch data more of the traditional MVC way.
 
 :::best-practice
-Do your best to maintain a project README with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
+Do your best to maintain a project `README.md` with anything you do to override Statamic's default behavior just in case you hand the site off to someone else.
 :::
 
 

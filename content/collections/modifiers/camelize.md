@@ -11,9 +11,17 @@ Returns a camelCase version of a string. Trims surrounding spaces, capitalizes l
 method: make_everything_better
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ method | camelize }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($method)->camelize() }}
+```
+::
 
 ```html
 makeEverythingBetter

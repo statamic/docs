@@ -24,7 +24,10 @@ Your tags will get saved as a simple YAML list, like this:
 
 Loop through the array items to display each item's `value`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <h1>I've heard rumors of:</h1>
 <ul>
   {{ tags }}
@@ -32,6 +35,18 @@ Loop through the array items to display each item's `value`.
   {{ /tags }}
 </ul>
 ```
+
+::tab blade
+
+```blade
+<h1>I've heard rumors of:</h1>
+<ul>
+	@foreach ($tags as $tag)
+		<li>{{ $tag }}</li>
+	@endforeach
+</ul>
+```
+::
 
 ```html
 <h1>I've heard rumors of:</h1>

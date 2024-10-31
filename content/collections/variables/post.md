@@ -16,13 +16,23 @@ An array of sanitized `POST` variables that come from any form data present for 
 </form>
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ post }}
   {{ first_name }} {{ last_name }}
 {{ /post }}
 
 Mr. {{ post:last_name }}
 ```
+::tab blade
+```blade
+{{ request()->post('first_name') }} {{ request()->post('last_name') }}
+
+Mr. {{ request()->post('last_name') }}
+```
+::
 
 ```html
 Niles Peppertrout

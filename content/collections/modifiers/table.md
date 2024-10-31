@@ -21,9 +21,17 @@ my_table:
       - Four
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ my_table | table }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($my_table)->table() !!}
+```
+::
 
 ```html
 <table>

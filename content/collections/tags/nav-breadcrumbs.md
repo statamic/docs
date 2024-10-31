@@ -64,7 +64,10 @@ Here's an example of what breadcrumbs might look like, as well as a code example
     <figcaption>These crumbs are delicious.</figcaption>
 </figure>
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul class="breadcrumbs">
     {{ nav:breadcrumbs }}
     <li{{ if is_current }} class="current"{{ /if }}>
@@ -73,3 +76,16 @@ Here's an example of what breadcrumbs might look like, as well as a code example
     {{ /nav:breadcrumbs }}
 </ul>
 ```
+::tab blade
+```blade
+<ul class="breadcrumbs">
+  <s:nav:breadcrumbs>
+  <li
+    @if ($is_current) class="current" @endif
+  >
+    <a href="{{ $url }}">{{ $title }}</a>
+  </li>
+  </s:nav:breadcrumbs>
+</ul>
+```
+::

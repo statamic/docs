@@ -13,17 +13,30 @@ The examples below use [Vue.js](https://vuejs.org/) as the framework of choice, 
 ## Pass all page data directly to a component
 This is probably the simplest possible method. You can encode all the page data into JSON and inject it directly into your component. The downside is that you'll be exposing all that data to the client-side, if that's a concern for your particular site.
 
-```vue
+::tabs
+
+::tab antlers
+```antlers
 <home-page
   :page-data="{{ page | to_json | entities }}">
 </home-page>
 ```
+::tab blade
+```blade
+<home-page
+  :page-data="{{ Statamic::modify($page)->toJson() }}">
+</home-page>
+```
+::
 
 
-## Assemble selective JSON inside Antlers and pass to components via props
+## Assemble selective JSON inside Antlers/Blade and pass to components via props
 This method is simple, best used for one-off situations. It provides you control over exactly what data you want to pass to your components, but is too messy to be used at a larger scale.
 
-```vue
+::tabs
+
+::tab antlers
+```antlers
 <home-page
   :navigation="[
    {{ nav:main_navigation }}
@@ -36,6 +49,21 @@ This method is simple, best used for one-off situations. It provides you control
  ]"
 ></home-page>
 ```
+::tab blade
+```blade
+<home-page
+  :navigation="[
+   @foreach (Statamic::tag('nav:main_navigation') as $navPage)
+      {
+        title: '{{ $navPage['title'] }}',
+        slug: '{{ $navPage['url'] }}',
+        id: '{{ $navPage['id'] }}'
+      },
+   @endforeach
+ ]"
+></home-page>
+```
+::
 
 ## Fetching data from a collection
 This method is used to fetch _any_ entry-based data, not just that available on the current page.
