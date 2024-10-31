@@ -51,7 +51,7 @@ The `{{ $submission['name'] }}` and `{{ $submission['rating'] }}` variables corr
 <s:form:set
   is="feedback"
 >
-  @if ($success)
+  @if (Statamic::tag('form:success')->in('feedback')->fetch())
     <s:form:submission
       as="submission"
     >
