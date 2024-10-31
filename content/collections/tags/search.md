@@ -213,11 +213,22 @@ This feature works slightly differently depending on the driver you're using.
 
 
 ### Comb / Local
+::tabs
+::tab antlers
 ```
 {{ search:results }}
   {{ search_snippets:title | implode(' … ') | mark }}
 {{ /search:results }}
 ```
+::tab blade
+```blade
+<s:search:results as="results">
+  @foreach ($results as $result)
+    {!! Statamic::modify($result->search_snippets['title'])->implode(' … ')->mark() !!}
+  @endforeach
+</s:search:results>
+```
+::
 
 ### Algolia
 Highlights are typically always available via `search_highlights`. The more powerful feature, [snippets](https://www.algolia.com/doc/api-reference/api-parameters/attributesToSnippet/), are available via `search_snippets` if you configure your index to use them. For example:
@@ -252,7 +263,9 @@ Highlights are typically always available via `search_highlights`. The more powe
 ```blade
 <s:search:results as="results">
   @foreach ($results as $result)
-    {!! Statamic::modify($result->searchSnippets('content'))->implode(' … ')->mark() !!}
+    {{ $result->search_snippets['title']['value'] }}
+    or
+    {{ $result->search_highlights['title']['value'] }}
   @endforeach
 </s:search:results>
 ```
