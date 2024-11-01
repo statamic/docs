@@ -7,11 +7,21 @@ stage: 1
 id: 83786f60-def6-11e9-aaef-0800200c9a66
 ---
 
+## Prerequisites
+
+Fieldtypes have a JavaScript component, so you will need to have a JavaScript entry file that gets loaded in the Control Panel.
+
+The best way to do that is to use [Vite](/extending/control-panel#using-vite).
+
+Throw an `alert('It works!')` into your JS file. Once you see that appear in the browser, you're ready to build your fieldtype!  
+
 ## Registering
+
+Once created (we'll get to that in a moment), a fieldtype will need to be registered.
 
 Any fieldtype classes inside the `App\Fieldtypes` namespace will be automatically registered.
 
-To store them elsewhere, manually register an action in a service provider by calling the static `register` method on your action class.
+To store them elsewhere, manually register an action in a service provider by calling the static `register` method on your fieldtype's class.
 
 ``` php
 public function boot()
@@ -22,10 +32,42 @@ public function boot()
 
 ## Creating
 
-Fieldtypes have two pieces:
+Fieldtypes have a PHP component and JS component. You can use a command to generate both pieces:
 
-  - A PHP class handling data processing and validation
-  - A Vue 2 component handling the view and data binding
+``` shell
+php please make:fieldtype TogglePassword
+```
+
+
+## Vue Component
+The Vue component is responsible for the view and data binding. It's what your user will be interacting with.
+
+The `make:fieldtype` command would have generated a Vue component into `resources/js/components/fieldtypes/TogglePassword.vue`.
+
+You should register this Vue component within your JS entry file (`cp.js`):
+
+``` js
+import Fieldtype from './components/fieldtypes/TogglePassword.vue';
+
+Statamic.booting(() => {
+    // Should be named [snake_case_handle]-fieldtype
+    Statamic.$components.register('toggle_password-fieldtype', Fieldtype);
+});
+```
+
+Your component has only two requirements.
+
+- It must expect a `value` prop. This how it "gets" the value.
+- It must emit an `input` event whenever the value updates. This is how it tells the form the value has changed.
+
+Other than that, your component can do whatever you like!
+
+:::best-practice
+**Do not** modify the `value` prop directly. Instead, call `this.update(value)` (or `this.updateDebounced(value)`) and let the Vuex store handle the update appropriately.
+:::
+
+
+### Example Vue Component
 
 For this example we will create a password field with a "show" toggle control:
 
@@ -34,37 +76,6 @@ For this example we will create a password field with a "show" toggle control:
     <figcaption>Follow along and you could make this!</figcaption>
 </figure>
 
-Create a fieldtype PHP class and Vue component by running the following command:
-
-``` shell
-php please make:fieldtype TogglePassword
-```
-
-``` php
-<?php
-
-class TogglePassword extends \Statamic\Fields\Fieldtype
-{
-    //
-}
-```
-
-Create a Vue component in [one of your loaded javascript files](/extending/control-panel#adding-css-and-js-assets) and register it as `[handle]-fieldtype`.
-
-Your component has two requirements:
-
-- It must expect a `value` prop.
-- It must emit an `input` event whenever the value updates.
-
-Statamic provides you with a `Fieldtype` mixin that does this automatically to reduce boilerplate code.
-
-### Example Vue component
-``` js
-import Fieldtype from './components/fieldtypes/TogglePassword.vue';
-
-// Should be named [snake_case_handle]-fieldtype
-Statamic.$components.register('toggle_password-fieldtype', Fieldtype);
-```
 
 ``` vue
 <template>
@@ -91,14 +102,32 @@ export default {
 </script>
 ```
 
-#### Example walk-through:
-- The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field.
-- The `text-input` component emits an `input` event whenever you type into it. Our component is listening for that event and calls the `update` method.
-- The `Fieldtype` mixin is providing an `updateDebounced` method which emits the required `input` event. This is how the parent component is detecting changes in your fieldtype.
+#### What's happening?
+1. The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field and it passes it along to a text field.
+2. When you type into the text field, an `updateDebounced` method is called which emits the `input` event with the new value.
 
-:::warning
-**Do not** modify the `value` prop directly. Instead, call `this.update(value)` (or `this.updateDebounced(value)`) and let the Vuex store handle the update appropriately.
-:::
+Those are the two requirements satisfied. ✅
+
+In addition to that, we are toggling the type between text and password so you can see what you're typing.
+
+## PHP Class
+
+The PHP class can be very barebones. At the most basic level, it just needs to exist in order to let Statamic know about it.
+
+```php
+<?php
+
+namespace App\Fieldtypes;
+
+use Statamic\Fields\Fieldtype;
+
+class TogglePassword extends Fieldtype
+{
+    //
+}
+```
+
+Of course, you may add functionality to it, outlined below.
 
 ## Fieldtype Icon
 
@@ -214,6 +243,33 @@ Text::appendConfigFields([
   'another' => ['type' => 'text', 'display' => '...',],
 ]);
 ```
+
+## Processing
+
+You may need to modify the data going to and from the browser.
+
+The `preProcess` method allows you to modify the original value into what the Vue component requires.
+The `process` method does the opposite. It takes the Vue component's value and allows you to modify it for what gets saved.
+
+For example, the YAML fieldtype stores its value in content as an array but the field needs it as a string in order for it to be editable:
+
+```php
+public function preProcess($value)
+{
+    return YAML::dump($value); // dump a yaml string from an array
+}
+```
+
+In the other direction, it takes the YAML string and needs to convert it back to an array when saving:
+
+```php
+public function process($value)
+{
+    return YAML::parse($value); // parses a yaml string into an array
+}
+```
+
+_(These snippets are simplified for example purposes.)_
 
 ## Meta Data
 
