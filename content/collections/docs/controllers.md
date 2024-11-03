@@ -88,7 +88,7 @@ public function index()
 
     return (new \Statamic\View\View)
         ->template('myview')
-        ->layout('mylayout');
+        ->layout('mylayout')
         ->cascadeContent($entry);
 }
 ```
