@@ -1,7 +1,7 @@
 ---
 title: 'Control Panel Translations'
 nav_title: Translations
-intro: "Statamic's Control Panel is currently available in 25 languages. We always welcome new translations!"
+intro: "Statamic's Control Panel is currently available in 28 languages. We always welcome new translations!"
 blueprint: page
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
@@ -28,34 +28,36 @@ preferences:
 
 ### Available Translations
 
-| Language | Code |
-|----------|------|
-| Arabic | `ar` |
-| Azerbaijani | `az` |
-| Czech | `cs` |
-| Danish | `da` |
-| German | `de` or `de_CH` |
-| English | `en` |
-| Spanish | `es` |
-| Persian | `fa` |
-| French | `fr` |
-| Hungarian | `hu` |
-| Indonesia | `id` |
-| Italian | `it` |
-| Japanese | `ja` |
-| Malaysia | `ms` |
-| Norwegian | `nb` |
-| Dutch | `nl` |
-| Polish | `pl` |
-| Portuguese | `pt` or `pt_BR` |
-| Russia | `ru` |
-| Slovene | `sl` |
-| Swedish | `sv` |
-| Turkish | `tr` |
-| Ukrainian | `uk` |
-| Vietnamese | `vi` `
-| Simplified Chinese | `zh_CN` |
-| Taiwan | `zh_TW` |
+| Language            | Code |
+|---------------------|------|
+| Arabic              | `ar` |
+| Azerbaijani         | `az` |
+| Czech               | `cs` |
+| Danish              | `da` |
+| German              | `de` |
+| German (Swiss)      | `de_CH` |
+| English             | `en` |
+| Spanish             | `es` |
+| Persian             | `fa` |
+| French              | `fr` |
+| Hungarian           | `hu` |
+| Indonesia           | `id` |
+| Italian             | `it` |
+| Japanese            | `ja` |
+| Malaysia            | `ms` |
+| Norwegian           | `nb` |
+| Dutch               | `nl` |
+| Polish              | `pl` |
+| Portuguese          | `pt` |
+| Portuguese (Brazil) | `pt_BR` |
+| Russia              | `ru` |
+| Slovene             | `sl` |
+| Swedish             | `sv` |
+| Turkish             | `tr` |
+| Ukrainian           | `uk` |
+| Vietnamese          | `vi` |
+| Chinese             | `zh_CN` |
+| Chinese (Taiwan)    | `zh_TW` |
 
 _Translations are community contributed so may you find them to be incomplete shortly after an update._
 
