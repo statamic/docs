@@ -5,6 +5,6 @@
         {{ partial:pro-badge }}
         {{ partial:experimental }}
     </div>
-    {{ intro ?? overview | markdown }}
+    {{ (intro ?? overview) | markdown }}
     {{ partial:toc hide="{hide_toc} ?? false"}}
 </header>
