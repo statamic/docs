@@ -6,7 +6,13 @@ updated_at: 1569264107
 id: 5900c99f-89b9-4ee3-834c-cb1b070146e4
 ---
 
-For widgets, start with `php please make:widget LocalWeather`.
+## Generating a widget
+
+You can generate a widget with a console command:
+
+```shell
+php please make:widget LocalWeather
+```
 
 This will automagically set up the widget and create a base template file at `resources/views/widgets/local_weather.blade.php`.
 

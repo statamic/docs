@@ -18,11 +18,14 @@ php please make:addon example/my-addon
 
 This will scaffold out everything you need to get started as a [private addon](#private-addons) within your site's `addons` directory.
 
-Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
+Eventually, an addon may be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
 :::tip
 If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and just [add things to your Laravel application](/extending).
 :::
+
+
+### What's in an addon?
 
 An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/acme/example`
 
@@ -41,6 +44,13 @@ public/
 resources
 composer.json
 ```
+
+### Composer.json
+
+The composer.json is used by (you guessed it) Composer in order to install your package.
+
+The `extra.statamic` section is used by Statamic to know that it's an addon and not just a standard Composer package.
+The `extra.laravel.providers` section what Laravel uses to load your service provider.
 
 ``` json
 {
@@ -73,6 +83,10 @@ composer.json
 }
 ```
 
+### Service Provider
+
+The service provider is where all the various components of your addon get wired together.
+
 You should make sure that your service provider extends Statamic's `Statamic\Providers\AddonServiceProvider`, and not `Illuminate\Support\ServiceProvider`. Statamic's `AddonServiceProvider` includes some bootstrapping and autoloading that isn't included with Laravel's service provider.
 
 ``` php
@@ -93,7 +107,11 @@ The `bootAddon` method should be used instead of `boot`. They are the same excep
 makes sure to boot _after_ Statamic has booted.
 :::
 
-In your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
+### Installing your freshly created addon
+
+If you ran the `make:addon` command, this would have been taken care of for you. 
+
+Otherwise, in your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
 
 ``` json
 {
@@ -128,7 +146,7 @@ Your addon is now installed. You should be able to go to `/cp/addons` and see it
 
 ### Public addons
 
-A public addon is one available as a composer package on packagist.org. Simple require it with composer:
+A public addon is one available as a composer package on packagist.org. Simply require it with composer:
 
 ``` shell
 composer require vendor/package
@@ -227,7 +245,7 @@ protected $commands = [
 ### CSS and Javascript
 The method of adding assets will differ slightly depending on whether you are using Vite or another build process. We recommend Vite.
 
-#### Using Vite
+#### Using Vite (recommended) {#using-vite}
 
 In your service provider, you may register your Vite config like this, adjusting the paths appropriately.
 
@@ -604,7 +622,7 @@ An example use case is a custom fieldtype maintained by a third party vendor. Ev
 
 ### Starters Kits
 
-- Starter kits are installed via `php please starter-kit:install`
+- Starter kits are installed via `statamic new` or `php please starter-kit:install`
 - Starter kits install pre-configured files and settings into your site
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install

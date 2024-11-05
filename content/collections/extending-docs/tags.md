@@ -166,10 +166,10 @@ public function missing($tag)
 }
 ```
 
-
-
-You may have used the `__call()` magic method in Statamic v2 to handle wildcard tags. This still technically works, but we've
-introduced the `wildcard` method to prevent some infinite looping situations you may encounter.
+:::best-practice
+You may notice that the `wildcard` method seems very similar to the `__call()` magic method. It is! The `wildcard` method
+uses `__call` under the hood, but with additional smarts. Be sure to use `wildcard`!
+:::
 
 ## Generating a tag class
 
