@@ -184,6 +184,40 @@ public function bootAddon()
 }
 ```
 
+## Uninstalling an Addon
+
+An addon can be removed by Composer:
+
+```shell
+composer remove vendor/package
+```
+
+You may want to perform clean up tasks during removal, such as deleting leftover files or directories.
+
+To do that, you may create an `Uninstall.php` class in your `src` directory.
+
+```php
+<?php
+
+namespace Acme\Example;
+
+use Statamic\Extend\Uninstaller;
+use Statamic\Facades\File;
+
+class Uninstall extends Uninstaller
+{
+    public function handle()
+    {
+        File::delete(base_path('example-addon-stuff'));
+
+        $this->output->writeln('Done!');
+    }
+}
+```
+
+You may write to the console output, but you should keep it basic since this will be within Composer's output. Things like progress bars will not display correctly.
+
+This class will be called when your addon is removed, regardless of whether `composer remove vendor/your-addon` was run. For example, if another package is requiring your addon, and _that_ package gets removed.
 
 ## Registering Components
 

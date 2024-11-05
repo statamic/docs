@@ -32,6 +32,16 @@ php please install:ssg
 
 To learn how to create your own addon, as well as publishing it to the Statamic Marketplace, head over to the [Extending Statamic](/extending/addons) area.
 
+## Uninstalling Addons
+
+You can uninstall an addon via Composer too.
+
+```shell
+composer remove vendor/package
+```
+
+Addons may perform automated cleanup tasks before being removed. If you're an addon developer, [find out how](/extending/addons#uninstalling-an-addon).  
+
 ## Licensing
 
 Addons may require a license, which you can purchase at the [Marketplace](https://statamic.com/marketplace). Licenses may be attached to a site in your [account area](https://statamic.com/account/sites). Make sure that you have your site key entered into your Statamic project.
