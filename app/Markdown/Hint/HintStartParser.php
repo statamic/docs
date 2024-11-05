@@ -15,7 +15,7 @@ class HintStartParser implements BlockStartParserInterface
             return BlockStart::none();
         }
 
-        $fence = $cursor->match('/^(?:\:{3,}(?!.*`))/');
+        $fence = $cursor->match('/^(?:\:{3,}\s?(?!.*`))/');
 
         if ($fence === null) {
             return BlockStart::none();
