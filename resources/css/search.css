@@ -43,60 +43,65 @@
 /* Overrides */
 /* -------------------------------------------------- */
 
-.DocSearch-Modal {
+.docsearch-modal {
     @apply rounded-lg border !important;
 }
 
-.DocSearch-Hit-Container {
+.docsearch-hit-container {
     @apply h-16 !important;
 }
 
-.DocSearch-Hit-content-wrapper {
+.docsearch-hit-content-wrapper {
     @apply mx-4 flex-col-reverse !important;
 }
 
-.DocSearch-Commands {
+.docsearch-modal-footer {
+    @apply justify-end !important;
+}
+
+.docsearch-modal-footer-commands {
     @apply hidden !important;
 }
 
-.DocSearch-Footer {
+.docsearch-footer {
     @apply border-t !important;
 }
 
-.DocSearch-Hit-path {
+.docsearch-hit-path {
     @apply text-lg font-display font-medium text-black !important;
 }
 
-.DocSearch-Hits mark {
+.docsearch-hits mark {
     color: inherit !important;
 }
 #docsearch {
     @apply w-full !important;
 }
 
-.DocSearch-Button {
+.docsearch-btn {
     @apply h-5 m-0 w-full text-black antialiased font-normal cursor-text !important;
     &:hover {
         box-shadow: none !important;
     }
 }
 
-.DocSearch-Button-Keys {
-    @apply hidden lg:flex !important;
+.docsearch-btn-keys {
+    @apply hidden lg:flex ml-auto !important;
 }
-.DocSearch-Button-Key {
-    @apply bg-white border shadow-md text-black pb-0 !important;
+.docsearch-btn-key {
+    @apply bg-white border shadow-md text-black uppercase pb-0 min-w-[20px] h-[18px] relative !important;
+    top: -1px !important;
 }
 
-.DocSearch-Button-Container {
+.docsearch-button-container {
     @apply flex-1 !important;
 }
 
 .dark {
-    .DocSearch-Button {
+    .docsearch-btn {
         @apply bg-transparent !important;
     }
-    .DocSearch-Button-Key  {
+    .docsearch-btn-key  {
         @apply bg-transparent !important;
     }
 }

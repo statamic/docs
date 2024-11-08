@@ -26,9 +26,42 @@ return [
     'indexes' => [
 
         'default' => [
-            'driver' => 'local',
-            'searchables' => ['collection:*', 'taxonomy:*'],
-            'fields' => ['title'],
+            'driver' => 'meilisearch',
+            'searchables' => ['docs:*'],
+            'fields' => [
+                'title',
+                'search_title',
+                'content',
+                'search_content',
+                'additional_context',
+                'hierarchy_lvl0',
+                'hierarchy_lvl1',
+                'url',
+            ],
+            'settings' => [
+                'rankingRules' => [
+                    'words',
+                    'typo',
+                    'proximity',
+                    'attribute',
+                    'exactness',
+                    'hierarchy_lvl0:asc',
+                ],
+                'searchableAttributes' => [
+                    'title',
+                    'search_title',
+                    'content',
+                    'search_content',
+                    'additional_context',
+                    'hierarchy_lvl0',
+                    'hierarchy_lvl1',
+                    'url',
+                ],
+            ],
+            'content_retriever' => App\Search\RequestContentRetriever::class,
+            'document_transformers' => [
+                App\Search\DocTransformer::class,
+            ],
         ],
 
         // 'blog' => [
@@ -62,7 +95,12 @@ return [
                 'secret' => env('ALGOLIA_SECRET', ''),
             ],
         ],
-
+        'meilisearch' => [
+            'credentials' => [
+                'url' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
+                'secret' => env('MEILISEARCH_KEY', ''),
+            ],
+        ],
     ],
 
     /*
@@ -76,7 +114,7 @@ return [
     */
 
     'defaults' => [
-        'fields' => ['title']
-    ]
+        'fields' => ['title'],
+    ],
 
 ];

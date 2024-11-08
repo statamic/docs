@@ -1,36 +1,22 @@
 import Alpine from 'alpinejs';
-import docsearch from '@docsearch/js';
-import '@docsearch/css';
+import "meilisearch-docsearch/css";
+import { docsearch } from "meilisearch-docsearch";
 
 require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
 require('./language-badges.js')
-
 var dayjs = require('dayjs')
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 window.dayjs = dayjs;
 
-
 docsearch({
-  container: '#docsearch',
-  appId: '90UJMUR5MX',
-  indexName: 'statamic_3',
-  apiKey: '2cea01a83bd805b6c642d3bda0b91437',
-  transformItems(items) {
-    return items.map((item) => {
-        // Transform the absolute URL into a relative URL so it works locally.
-        const a = document.createElement('a');
-        a.href = item.url;
-
-        // If the result is the h1, remove the hash
-        const hash = a.hash === '#content' ? '' : a.hash;
-
-        return {...item, url: `${a.pathname}${hash}`}
-    });
-  },
+    container: "#docsearch",
+    host: "http://localhost:7700",
+    apiKey: "c0384ca771d144ba4c1e5101b7dfda260ccc1c761f2059a6a4155782b8a76c41",
+    indexUid: "default",
 });
 
 window.bodyData = function() {
