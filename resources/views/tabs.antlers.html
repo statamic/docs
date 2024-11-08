@@ -1,10 +1,16 @@
  <div x-data="{ tab: '{{ active }}' }" x-cloak class="mt-2">
     <div class="relative">
+        {{#
+              Don't add tab names to search results. They just clutter it up.
+              Note: this only works when using the `/documentation-search` views.
+        #}}
+        {{ unless is_rendering_search }}
         <div class="flex space-x bg-[#292D3E] rounded-t-lg inline-flex">
-        {{ foreach:tabs }}
-            <button type="button" class="text-sm bg-black  text-gray-dark hover:text-gray-light pt-1.5 pb-1 px-3 rounded-t-md" x-on:click="tab = '{{ key }}'" :class="{ 'bg-[#292D3E] text-gray-light': tab === '{{ key }}' }">{{ value }}</button>
-        {{ /foreach:tabs }}
+          {{ foreach:tabs }}
+              <button type="button" class="text-sm bg-black  text-gray-dark hover:text-gray-light pt-1.5 pb-1 px-3 rounded-t-md" x-on:click="tab = '{{ key }}'" :class="{ 'bg-[#292D3E] text-gray-light': tab === '{{ key }}' }">{{ value }}</button>
+          {{ /foreach:tabs }}
         </div>
+        {{ /unless }}
         {{ foreach:samples }}
             <div class="tab-content" x-show="tab === '{{ key }}'">{{ value }}</div>
         {{ /foreach:samples }}
