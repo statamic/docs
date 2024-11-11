@@ -236,37 +236,37 @@ You can also extract modules to their own dedicated folders and import them in y
 
     ```yaml
     modules:
-      seo: '@import'           # import from modules/seo/module.yaml
+      seo: '@import'        # imports from modules/seo/module.yaml
       js:
         options:
-          vue: '@import'       # import from modules/js/vue/module.yaml
-          react: '@import'     # import from modules/js/react/module.yaml
+          vue: '@import'    # imports from modules/js/vue/module.yaml
+          react: '@import'  # imports from modules/js/react/module.yaml
     ```
 
     As you can see, the hierarchy in your `modules` folder should match the heirarchy in your main `starter-kit.yaml` config.
 
-2. Customize prompt flow, and `import` config from a folder based module.
+2. Customize prompt flow at the parent level, and implicitly import config from a folder based module.
 
     ```yaml
     modules:
       seo:
         prompt: 'Would you like some awesome SEO with that!?'
-        import: '@config'      # import from modules/seo/module.yaml
+        # implicitly imports from modules/seo/module.yaml
       js:
         prompt: 'Would you care for some JS?'
         skip_option: 'No, thank you!'
         options:
           vue:
             label: 'VueJS'
-            import: '@config'  # import from modules/js/vue/module.yaml
+            # implicitly imports from modules/js/vue/module.yaml
           react:
             label: 'ReactJS'
-            import: '@config'  # import from modules/js/react/module.yaml
+            # implicitly imports from modules/js/react/module.yaml
     ```
 
-    If you wish, you can also move your prompt flow config into your module folder's `module.yaml` config.
+    The installer will implicitly attempt to import from a `module.yaml` config within your `modules` folder, again following the same hierarchy defined in your parent `starter-kit.yaml` config.
 
-    Ultimately, these configs are merged when imported, with the parent config taking precedence.
+    These configs are merged when imported, with the parent config taking precedence.
 
 ### Importing External Starter Kits
 
