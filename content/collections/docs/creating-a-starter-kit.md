@@ -211,7 +211,7 @@ modules:
 
 ### Nesting Modules
 
-Finally, you can also nest modules where it makes sense to do so. Simply nest a `modules` object within any module.
+If it makes sense to do so, you can nest modules to control prompt flow. Simply nest a `modules` object within any module.
 
 ```yaml
 modules:
@@ -227,6 +227,68 @@ modules:
 ```
 
 In this example, the second `sitemap` module prompt will only be presented to the user, if they agree to installing the parent `seo` module.
+
+### Importing Module Folders
+
+You can also extract modules to their own dedicated folders and import them in your starter kit config. There are a few ways to do this:
+
+1. Import folder based module configs with `@import`.
+
+    ```yaml
+    modules:
+      seo: '@import'           # import from modules/seo/module.yaml
+      js:
+        options:
+          vue: '@import'       # import from modules/js/vue/module.yaml
+          react: '@import'     # import from modules/js/react/module.yaml
+    ```
+
+    As you can see, the hierarchy in your `modules` folder should match the heirarchy in your main `starter-kit.yaml` config.
+
+2. Customize prompt flow, and `import` config from a folder based module.
+
+    ```yaml
+    modules:
+      seo:
+        prompt: 'Would you like some awesome SEO with that!?'
+        import: '@config'      # import from modules/seo/module.yaml
+      js:
+        prompt: 'Would you care for some JS?'
+        skip_option: 'No, thank you!'
+        options:
+          vue:
+            label: 'VueJS'
+            import: '@config'  # import from modules/js/vue/module.yaml
+          react:
+            label: 'ReactJS'
+            import: '@config'  # import from modules/js/react/module.yaml
+    ```
+
+    If you wish, you can also move your prompt flow config into your module folder's `module.yaml` config.
+
+    Ultimately, these configs are merged when imported, with the parent config taking precedence.
+
+### Importing External Starter Kits
+
+Finally, if you with to get even more _modular_, you can extract out to a standard standalone starter kit and import that whole kit as a module. Again, there are a few ways to do this:
+
+1. Import an external starter kit as a module with `vendor/package`.
+
+    ```yaml
+    modules:
+      seo: 'your/starter-kit'
+    ```
+
+2. Customize prompt flow, and `import` an external `vendor/package`.
+
+    ```yaml
+    modules:
+      seo:
+        prompt: 'Would you like some awesome SEO with that!?'
+        import: 'your/starter-kit'
+    ```
+
+    Like with [module folders](#importing-module-folders), these configs are merged when imported, with the parent config taking precedence.
 
 
 ## Post-Install Hooks
