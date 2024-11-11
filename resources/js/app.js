@@ -6,6 +6,7 @@ require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
 require('./language-badges.js')
+require('./searchHotKeys.js')
 var dayjs = require('dayjs')
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -17,6 +18,7 @@ docsearch({
     host: "http://localhost:7700",
     apiKey: "c0384ca771d144ba4c1e5101b7dfda260ccc1c761f2059a6a4155782b8a76c41",
     indexUid: "default",
+    hotKeys: ['ctrl+k', '/']
 });
 
 window.bodyData = function() {
