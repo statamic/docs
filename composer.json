@@ -66,8 +66,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan statamic:install --ansi",
-            "@php artisan statamic:search:update --all --ansi",
-            "@php artisan statamic:static:clear --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
