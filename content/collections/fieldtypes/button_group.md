@@ -6,6 +6,11 @@ intro: |
 screenshot: fieldtypes/screenshots/button_group.png
 options:
   -
+    name: clearable
+    type: boolean
+    description: |
+      Allow deselecting all options, making `null` a possible value. Default: `false`.
+  -
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the buttons.'
