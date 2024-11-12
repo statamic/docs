@@ -16,7 +16,7 @@ window.dayjs = dayjs;
 docsearch({
     container: "#docsearch",
     host: "http://localhost:7700",
-    apiKey: "c0384ca771d144ba4c1e5101b7dfda260ccc1c761f2059a6a4155782b8a76c41",
+    apiKey: "fda1b40aeb7f13793823d0c60fa9f2f64592775a5ab166a7bad349d435044c41",
     indexUid: "default",
     hotKeys: ['ctrl+k', '/']
 });
