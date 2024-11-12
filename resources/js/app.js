@@ -1,36 +1,24 @@
 import Alpine from 'alpinejs';
-import docsearch from '@docsearch/js';
-import '@docsearch/css';
+import "meilisearch-docsearch/css";
+import { docsearch } from "meilisearch-docsearch";
 
 require('./anchors.js')
 require('./cookies.js')
 require('./external-links.js')
 require('./language-badges.js')
-
+require('./searchHotKeys.js')
 var dayjs = require('dayjs')
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 window.dayjs = dayjs;
 
-
 docsearch({
-  container: '#docsearch',
-  appId: '90UJMUR5MX',
-  indexName: 'statamic_3',
-  apiKey: '2cea01a83bd805b6c642d3bda0b91437',
-  transformItems(items) {
-    return items.map((item) => {
-        // Transform the absolute URL into a relative URL so it works locally.
-        const a = document.createElement('a');
-        a.href = item.url;
-
-        // If the result is the h1, remove the hash
-        const hash = a.hash === '#content' ? '' : a.hash;
-
-        return {...item, url: `${a.pathname}${hash}`}
-    });
-  },
+    container: "#docsearch",
+    host: "http://localhost:7700",
+    apiKey: "fda1b40aeb7f13793823d0c60fa9f2f64592775a5ab166a7bad349d435044c41",
+    indexUid: "default",
+    hotKeys: ['ctrl+k', '/']
 });
 
 window.bodyData = function() {
@@ -50,6 +38,9 @@ window.htmlData = function() {
         systemTheme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
         setSystemTheme(theme) {
             this.systemTheme = theme
+        },
+        get theme() {
+            return this.darkMode ? 'dark' : 'light'
         },
         setThemePreference(theme) {
             this.themePreference = theme

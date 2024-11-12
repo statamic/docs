@@ -1,4 +1,5 @@
 <html lang="en" class="bg-white" :class="{ dark: darkMode }"
+    :data-theme="theme"
     x-data="htmlData()"
     x-init="window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => setSystemTheme(e.matches ? 'dark' : 'light'))">
 <head>
@@ -13,12 +14,10 @@
     <meta property="og:url" content="{{ permalink }}" />
     <meta property="og:site_name" content="Statamic Docs" />
     <meta property="og:locale" content="en_US" />
-    {{# <meta property="og:image" content="{{ snapit:og }}" /> #}}
     <meta property="og:image" content="https://statamic.dev/img/social-placeholder.png" />
     <meta property="twitter:title" content="{{ title }}" />
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:site" content="@statamic" />
-    {{# <meta property="twitter:image" content="{{ snapit:twitter }}" /> #}}
     <meta property="twitter:image" content="https://statamic.dev/img/social-placeholder.png" />
     <meta property="twitter:description" content="{{ intro | striptags }}" />
     {{ partial:favicons}}
@@ -26,8 +25,6 @@
     <link rel="stylesheet" href="https://use.typekit.net/huy6nsb.css" defer>
     <link rel="stylesheet" href="{{ mix src='/css/tailwind.css' }}">
     <script src="{{ mix src='/js/app.js' }}" defer></script>
-    <script>
-    </script>
 </head>
 <body class="font-sans leading-normal dark:bg-black dark:bg-none" x-data="bodyData()" x-spread="bindings">
 {{ partial:partials/promo }}

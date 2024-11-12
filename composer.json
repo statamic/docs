@@ -12,9 +12,11 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.0",
         "league/commonmark": "^2.0",
+        "statamic-rad-pack/meilisearch": "^3.2",
         "statamic/cms": "^4.0",
         "statamic/ssg": "^2.0",
-        "torchlight/torchlight-commonmark": "^0.5.5"
+        "torchlight/torchlight-commonmark": "^0.5.5",
+        "stillat/documentation-search": "^1.2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
@@ -32,7 +34,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
-            "pixelfear/composer-dist-plugin": true
+            "pixelfear/composer-dist-plugin": true,
+            "php-http/discovery": true
         }
     },
     "extra": {

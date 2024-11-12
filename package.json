@@ -30,6 +30,7 @@
     "dependencies": {
         "@docsearch/js": "^3.0.0-alpha.40",
         "alpinejs": "^3.2.4",
-        "dayjs": "^1.10.7"
+        "dayjs": "^1.10.7",
+        "meilisearch-docsearch": "^0.7.0"
     }
 }
