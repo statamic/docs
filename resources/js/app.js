@@ -15,7 +15,7 @@ window.dayjs = dayjs;
 
 docsearch({
     container: "#docsearch",
-    host: "http://10.136.103.191:7700",
+    host: "https://search.statamic.com:7700",
     apiKey: "a8b8f82076221f9595dceca971be29c36cbccd772de5dbdb7f43dfac41557f95",
     indexUid: "default",
     hotKeys: ['ctrl+k', '/']
