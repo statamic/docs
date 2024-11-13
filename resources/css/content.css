@@ -1,12 +1,8 @@
 /* Main Content */
 /* -------------------------------------------------- */
 
-::-moz-selection,
-::selection {
-    @apply bg-yellow;
-}
-
-article, .markdown {
+article,
+.markdown {
     background: white;
     @apply text-gray-darkest leading-relaxed;
 
@@ -39,7 +35,8 @@ article, .markdown {
         /* line-height: 1.5em; */
     }
 
-    ul, ol {
+    ul,
+    ol {
         @apply mt-4 mb-6;
     }
 
@@ -55,18 +52,18 @@ article, .markdown {
         @apply inline-block;
         vertical-align: text-top;
         color: currentColor;
-        opacity: .6;
+        opacity: 0.6;
     }
 
     h2 > .anchor,
     h3 > .anchor,
     h4 > .anchor {
         @apply absolute top-0 no-underline text-white opacity-0 block;
-        text-shadow: -1px -1px 0 theme('colors.pink.DEFAULT'),
-            1px -1px 0 theme('colors.pink.DEFAULT'),
-            -1px 1px 0 theme('colors.pink.DEFAULT'),
-            1px 1px 0 theme('colors.pink.DEFAULT');
-        transition: all .2s ease-in-out;
+        text-shadow: -1px -1px 0 theme("colors.pink.DEFAULT"),
+            1px -1px 0 theme("colors.pink.DEFAULT"),
+            -1px 1px 0 theme("colors.pink.DEFAULT"),
+            1px 1px 0 theme("colors.pink.DEFAULT");
+        transition: all 0.2s ease-in-out;
         &:hover {
             @apply text-pink;
             text-shadow: none;
@@ -101,7 +98,8 @@ article, .markdown {
         @apply -left-4 opacity-100;
     }
 
-    ul:not([class*="list-"]), .hint ul {
+    ul:not([class*="list-"]),
+    .hint ul {
         @apply pl-0 list-none mb-6 text-base;
 
         li {
@@ -109,21 +107,21 @@ article, .markdown {
 
             &::before {
                 @apply absolute inline-block;
-                content: url('/img/triangle-pink.svg');
+                content: url("/img/triangle-pink.svg");
                 top: 6px;
                 left: 2px;
             }
 
-            &:nth-child(3n+0)::before {
-                content: url('/img/triangle-pink.svg');
+            &:nth-child(3n + 0)::before {
+                content: url("/img/triangle-pink.svg");
             }
 
-            &:nth-child(3n+1)::before {
-                content: url('/img/triangle-purple.svg');
+            &:nth-child(3n + 1)::before {
+                content: url("/img/triangle-purple.svg");
             }
 
-            &:nth-child(3n+2)::before {
-                content: url('/img/triangle-teal.svg');
+            &:nth-child(3n + 2)::before {
+                content: url("/img/triangle-teal.svg");
             }
 
             code {
@@ -140,17 +138,18 @@ article, .markdown {
         }
     }
 
-    > ol, .hint ol {
+    > ol,
+    .hint ol {
         @apply list-none text-base md:text-lg relative;
         counter-reset: item;
         z-index: 20;
 
-        >li {
+        > li {
             @apply relative pl-10 mb-2;
             z-index: 5;
         }
 
-        >li::before {
+        > li::before {
             @apply absolute top-0 left-0 mt-px flex items-center justify-center h-6 w-6 bg-yellow rounded-full text-lg font-bold font-display;
             content: counter(item);
             counter-increment: item;
@@ -164,19 +163,19 @@ article, .markdown {
         }
         > li::after {
             @apply w-6 h-1 absolute top-2 left-0 right-0;
-            content: '';
+            content: "";
             z-index: -1;
         }
-        >li:nth-child(1)::after {
+        > li:nth-child(1)::after {
             @apply bg-ninja-red;
         }
-        >li:nth-child(2)::after {
+        > li:nth-child(2)::after {
             @apply bg-ninja-blue;
         }
-        >li:nth-child(3)::after {
+        > li:nth-child(3)::after {
             @apply bg-ninja-orange;
         }
-        >li:nth-child(4)::after {
+        > li:nth-child(4)::after {
             @apply bg-ninja-purple;
         }
     }
@@ -224,14 +223,14 @@ article, .markdown {
     } */
 
     /* Code blocks in headers */
-    h1>code,
-    h2>code,
-    h3>code,
-    h4>code {
+    h1 > code,
+    h2 > code,
+    h3 > code,
+    h4 > code {
         @apply text-pink bg-gray-light rounded relative;
         font-size: 90%;
-        padding: .1em .2em;
-        bottom: .05rem;
+        padding: 0.1em 0.2em;
+        bottom: 0.05rem;
     }
 }
 
@@ -239,16 +238,23 @@ header.markdown p {
     @apply text-xl leading-normal;
 }
 
-
 /* Main Content in Tight Spaces */
 /* -------------------------------------------------- */
 
-.markdown-tight, table {
-    h1, h2, h3, h4, h5, h6 {
+.markdown-tight,
+table {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         @apply m-0;
     }
 
-    p, ul, ol {
+    p,
+    ul,
+    ol {
         font-size: inherit;
     }
 
@@ -262,11 +268,10 @@ header.markdown p {
         @apply text-base;
     }
 
-    :not(pre)>code {
+    :not(pre) > code {
         @apply bg-transparent text-purple font-bold text-sm;
     }
 }
-
 
 /* Multi-column list */
 /* -------------------------------------------------- */
@@ -290,19 +295,28 @@ ul.list-col {
     }
 }
 
-
-
 /* Dark mode */
 /* -------------------------------------------------- */
 
 .dark {
-    article, .markdown {
+    article,
+    .markdown {
         @apply bg-transparent text-gray-dark;
-        h1, h2, h3, h4 { @apply text-white }
+        h1,
+        h2,
+        h3,
+        h4 {
+            @apply text-white;
+        }
         table {
             @apply bg-transparent border-gray-darkest text-gray-dark;
-            tbody tr { @apply even:bg-transparent; }
-            td, th { @apply border-b border-gray-darkest; }
+            tbody tr {
+                @apply even:bg-transparent;
+            }
+            td,
+            th {
+                @apply border-b border-gray-darkest;
+            }
         }
     }
 }

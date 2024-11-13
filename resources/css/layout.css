@@ -2,11 +2,12 @@ html {
     height: 100%;
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+    @apply selection:bg-yellow selection:text-black;
 }
 
 body {
     min-height: 100%;
-    background: url('/img/splatter-tall.jpg') repeat-y;
+    background: url("/img/splatter-tall.jpg") repeat-y;
     background-position: right top;
     background-size: 200px 6500px;
 }
@@ -21,7 +22,7 @@ body {
 
     ul li a.active {
         @apply font-bold;
-        background: url('/img/ziggy.svg') 0 90% repeat-x;
+        background: url("/img/ziggy.svg") 0 90% repeat-x;
         background-size: auto 4px;
     }
 }
@@ -36,11 +37,13 @@ body {
         top: 10px;
         left: -5%;
         width: 110%;
-        content: '';
+        content: "";
     }
 }
 
 .dark .side-nav li.active a {
     @apply text-yellow !important;
-    &:before { display: none; }
+    &:before {
+        display: none;
+    }
 }
