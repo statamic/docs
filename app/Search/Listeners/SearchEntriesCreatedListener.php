@@ -88,6 +88,11 @@ class SearchEntriesCreatedListener
 
             $data['url'] = $data['search_url'];
 
+            // Clear this out to prevent "too much" from a specific page dominating the results.
+            if (! $data['is_root']) {
+                $data['origin_title'] = null;
+            }
+
             $section->searchEntry->data($data);
         }
     }
