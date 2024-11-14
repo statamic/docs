@@ -8,18 +8,17 @@ template: page
 nav_title: Updating
 ---
 
-## Not all starter kits are updatable
+## Not all Starter Kits are updatable
 
-As their name implies, starter kits were originally intended to be a way to "start" a site. Once installed, you're on your own and can customize as you see fit.
+As their name implies, Starter Kits were originally intended to be a way to "start" a site. Once installed, you're on your own and can customize as you see fit.
 
-However, some kits _are_ built in a way that they can be updated. Updatable kits will be noted on the Statamic Marketplace.
+However, some Kits _are_ built in a way that they can be updated. Updatable Kits will be noted on the Statamic Marketplace.
 
-For example, the [Podcaster](https://statamic.com/starter-kits/statamic/podcaster) kit is designed in an opinionated way, with settings for you to tweak brand colors. If a CSS or JavaScript bug is encountered one day, the 
-developer of the kit can fix it and you can simply pull down the update into your site. 
+For example, the [Podcaster](https://statamic.com/starter-kits/statamic/podcaster) Kit is designed in an opinionated way, with settings for you to tweak brand colors. If a CSS or JavaScript bug is encountered one day, the developer of the Kit can fix it and you can simply pull down the update into your site.
 
 ## Performing updates
 
-When initially installing an updatable starter kit, it will be left as a dependency in your `composer.json` file.
+When initially installing an updatable Starter Kit, it will be left as a dependency in your `composer.json` file.
 
 To update, you will need to update via Composer:
 

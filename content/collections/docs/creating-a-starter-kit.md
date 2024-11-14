@@ -8,16 +8,16 @@ nav_title: Creating
 ---
 ## Overview
 
-Starter kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
+Starter Kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
 
-A released Starter Kit package contains **only** the files relevant to the kit itself, and not a full Statamic/Laravel instance. Our Import/Export tools will allow you to maintain **only those relevant files**, without having to worry about maintaining the Statamic and underlying Laravel instances as they get updated over time.
+A released Starter Kit package contains **only** the files relevant to the Kit itself, and not a full Statamic/Laravel instance. Our Import/Export tools will allow you to maintain **only those relevant files**, without having to worry about maintaining the Statamic and underlying Laravel instances as they get updated over time.
 
 The **Export** command will export all the files and directories you've created or configured to a new location. It's this directory that becomes the package, and is the thing you should version control, not the sandbox instance.
 
 For example, maybe you are creating a pre-built, theme-style Starter Kit, the high-level workflow might look like this:
 
 1. Create a new Statamic project.
-2. Initialize it as a starter kit:
+2. Initialize it as a Starter Kit:
    ```shell
    php please starter-kit:init
    ```
@@ -39,7 +39,7 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
 
 ## Creating the Starter Kit Project
 
-The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
+The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your Starter Kit.
 
 Run the `init` command to generate the appropriate files.
 
@@ -96,7 +96,7 @@ When ready to export your Starter Kit, run the following command:
 php please starter-kit:export {export_repo_path}
 ```
 
-This will copy and arrange the appropriate files into the given directory that will be used as a distributable on GitHub, GitLab, Bitbucket, Composer, etc. 
+This will copy and arrange the appropriate files into the given directory that will be used as a distributable on GitHub, GitLab, Bitbucket, Composer, etc.
 
 :::tip
 Think of the exported directory similar to a compiled assets directory when using a build tool like Vite. You generate files into this directory and shouldn't touch it manually.
@@ -130,7 +130,7 @@ Once your export paths are configured, re-run the above `starter-kit:export` com
 
 ## Exporting Dependencies
 
-If you wish to bundle any of your installed Composer dependencies with your starter-kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
+If you wish to bundle any of your installed Composer dependencies with your Starter Kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
 
 ``` yaml
 dependencies:
@@ -139,12 +139,12 @@ dependencies:
 
 The exporter will automatically detect the installed versions and whether or not they are installed as dev dependencies, and export accordingly.
 
-When [installing the starter kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
+When [installing the Starter Kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
 
 
 ## Optional Modules
 
-You may also present an optional set of starter kit files, nested under `modules` in your `starter-kit.yaml` config file.
+You may also present an optional set of Starter Kit files, nested under `modules` in your `starter-kit.yaml` config file.
 
 For example, here we'll configure an opt-in `seo` module.
 
@@ -185,7 +185,7 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter kit custom prompt text">
+    <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter Kit custom prompt text">
     <figcaption>Would you also like fries with that?</figcaption>
 </figure>
 
@@ -209,7 +209,7 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-select-module.png" alt="Starter kit select module">
+    <img src="/img/starter-kit-select-module.png" alt="Starter Kit select module">
 </figure>
 
 ### Customizing Select Modules
@@ -237,13 +237,13 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-select-module-customization.png" alt="Customizing starter kit select module">
+    <img src="/img/starter-kit-select-module-customization.png" alt="Customizing Starter Kit select module">
     <figcaption>🐮🐮🐮</figcaption>
 </figure>
 
 ### Skipping Confirmation
 
-Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger starter kit configs. To do this, simply set `prompt` to false.
+Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger Starter Kit configs. To do this, simply set `prompt` to false.
 
 ```yaml
 modules:
@@ -273,9 +273,9 @@ In this example, the second `sitemap` module prompt will only be presented to th
 
 ## Post-Install Hooks
 
-You may run additional logic after the starter kit is installed. For example, maybe you want to output some information.
+You may run additional logic after the Starter Kit is installed. For example, maybe you want to output some information.
 
-To do so, you can create a `StarterKitPostInstall.php` file in the root of your starter kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
+To do so, you can create a `StarterKitPostInstall.php` file in the root of your Starter Kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
 
 ```php
 <?php
@@ -304,7 +304,7 @@ Once exported, you will need to update the `name` property in the `composer.json
     "extra": {
         "statamic": {
             "name": "Kung Fury Theme",
-            "description": "Kung Fury Theme starter kit"
+            "description": "Kung Fury Theme Starter Kit"
         }
     }
 }
@@ -316,7 +316,7 @@ Now create a `README.md` file and push to [Github](https://github.com/), [Gitlab
 Unlike addons, you are not required to register on [Packagist](https://packagist.org/).
 :::
 
-If you would like to share your kit, receive more exposure, or would like to charge for your Starter Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
+If you would like to share your Starter Kit, receive more exposure, or would like to charge for your Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
 
 
 ## Publishing to the Marketplace
@@ -417,10 +417,10 @@ An example use case is a custom fieldtype maintained by a third party vendor. Th
 
 ### Starter Kits
 
-- Starter kits are installed via `statamic new` or `php please starter-kit:install`
-- Starter kits install pre-configured files and settings into your site
-- Starter kits do not live as updatable packages within your apps (by default)
-- Starter kit licenses are not tied to a specific site, and expire after a successful install
+- Starter Kits are installed via `statamic new` or `php please starter-kit:install`
+- Starter Kits install pre-configured files and settings into your site
+- Starter Kits do not live as updatable packages within your apps (by default)
+- Starter Kit licenses are not tied to a specific site, and expire after a successful install
 
 :::tip
 An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.
