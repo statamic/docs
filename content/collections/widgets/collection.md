@@ -34,6 +34,11 @@ options:
     type: array
     required: false
     description: 'An array of field handles to be displayed as columns in the widget.'
+  -
+    name: title
+    type: string
+    required: false
+    description: 'The title of the widget. Defaults to the collection name.'
 screenshot: widgets/collection.png
 nav_title: Collection
 ---

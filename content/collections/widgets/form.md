@@ -30,6 +30,11 @@ options:
     type: array
     required: false
     description: 'An array of field handles to include in the list.'
+  -
+    name: title
+    type: string
+    required: false
+    description: 'The title of the widget. Defaults to the form name.'
 screenshot: widgets/form.png
 ---
 ## Configuring
