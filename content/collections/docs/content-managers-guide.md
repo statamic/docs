@@ -41,7 +41,8 @@ You may find that your site is missing the ability to edit something you conside
 
 **This is Statamic's secret power.** This is why developers use Statamic over the ubiquitous WordPress. **Do not be afraid** to ask the developer or team who built your Statamic site to make a change, make some bit of content editable, or add a new feature. It will most often it will be a very small amount of work.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">God, do I love working with <a href="https://twitter.com/statamic?ref_src=twsrc%5Etfw">@statamic</a>. It feels like implementing anything only takes a fraction of the time compared to other content management systems...</p>&mdash; Martin Keck (@sisyphos2dot0) <a href="https://twitter.com/sisyphos2dot0/status/1612761926626598913?ref_src=twsrc%5Etfw">January 10, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="font-medium pl-8 border-l-4 border-black italic mt-8"><p>God, do I love working with Statamic. It feels like implementing anything only takes a fraction of the time compared to other content management systems...</p><p>&mdash; Martin Keck, Developer</p></blockquote>
+
 
 ### Every Statamic site needs a developer.
 
