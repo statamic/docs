@@ -102,7 +102,7 @@ This will copy and arrange the appropriate files into the given directory that w
 Think of the exported directory similar to a compiled assets directory when using a build tool like Vite. You generate files into this directory and shouldn't touch it manually.
 :::
 
-## Export paths
+### Exporting Paths
 
 Any files that you modify on your site that you intend to be installed into a Statamic project should be marked for export in your `starter-kit.yaml` file.
 
@@ -128,7 +128,7 @@ Anything not configured in your `starter-kit.yaml` **will not be exported**. Thi
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
 
 
-## Exporting Dependencies
+### Exporting Dependencies
 
 If you wish to bundle any of your installed Composer dependencies with your Starter Kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
 
