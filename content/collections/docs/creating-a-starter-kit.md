@@ -17,17 +17,21 @@ The **Export** command will export all the files and directories you've created 
 For example, maybe you are creating a pre-built, theme-style Starter Kit, the high-level workflow might look like this:
 
 1. Create a new Statamic project.
+2. Initialize it as a starter kit:
+   ```shell
+   php please starter-kit:init
+   ```
 
-2. Develop the theme as you normally would.
+3. Develop the theme as you normally would.
 
-3. Export the theme to a separate repo for redistribution.
+4. Export the theme to a separate repo for redistribution.
     ``` shell
     php please starter-kit:export ../kung-fury-theme
     ```
 
-4. Publish to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/).
+5. Publish to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/).
 
-5. Install into new Statamic projects.
+6. Install into new Statamic projects.
     ``` shell
     php please starter-kit:install the-hoff/kung-fury-theme
     ```
@@ -37,8 +41,50 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
 
 The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
 
+Run the `init` command to generate the appropriate files.
 
-## Exporting Files
+```shell
+php please starter-kit:init
+```
+
+This command will add a `package` directory, which represents the eventual starter kit repository's root directory.
+
+## The Starter Kit Package
+
+Starter Kits are installed via Composer. You can control the package's contents via the `package` directory, which will be the exported repository's root directory.
+
+At a minimum, your `package` directory needs a `starter-kit.yaml` and `composer.json` files.
+
+``` files theme:serendipity-light
+app/
+content/
+config/
+package/ #[tl! ++]
+    composer.json #[tl! ++]
+    starter-kit.yaml #[tl! ++]
+public/
+resources/
+composer.json
+```
+
+If you plan to make your Kit updatable (more on that below), you should require this as a path repository.
+
+```json
+{
+    "name": "statamic/statamic",
+    "require": [
+        "the-hoff/kung-fury-theme": "dev-master" // [tl! ++]
+    ],
+    "repositories": [ // [tl! ++:start]
+        {
+            "type": "path",
+            "url": "package"
+        }
+    ] // [tl! ++:end]
+}
+```
+
+## Exporting
 
 When ready to export your Starter Kit, run the following command:
 
@@ -46,7 +92,15 @@ When ready to export your Starter Kit, run the following command:
 php please starter-kit:export {export_repo_path}
 ```
 
-If you are exporting for the first time, a new `starter-kit.yaml` config file will be created in your app's root, and you will be instructed to configure which `export_paths` you would like to export.
+This will copy and arrange the appropriate files into the given directory that will be used as a distributable on GitHub, GitLab, Bitbucket, Composer, etc. 
+
+:::tip
+Think of the exported directory similar to a compiled assets directory when using a build tool like Vite. You generate files into this directory and shouldn't touch it manually.
+:::
+
+## Export paths
+
+Any files that you modify on your site that you intend to be installed into a Statamic project should be marked for export in your `starter-kit.yaml` file.
 
 For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
 
@@ -68,20 +122,6 @@ export_paths:
 Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.
 
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
-
-### Avoiding Path Conflicts
-
-If you have a filename conflict between your sandbox and your starter kit repo, you can use `export_as` to customize its export path.
-
-For example, you may wish to export a `README.md` for installation into new sites that is separate from the `README.md` in your starter kit repo.
-
-``` yaml
-export_as:
-  file-in-sandbox.md: file-in-exported-repo.md
-  README.md: README-for-new-site.md
-```
-
-This will instruct `starter-kit:export` to rename each of those paths on export, and in reverse on `starter-kit:install` to match where you had them in your sandbox app.
 
 
 ## Exporting Dependencies
@@ -333,6 +373,30 @@ statamic new kung-fury-dev the-hoff/kung-fury-theme --with-config
 
 This will install your Starter Kit into a brand new Statamic project, along with your `starter-kit.yaml` config file for future exports.
 
+## Making Starter Kits Updatable
+
+As their name implies, Starter Kits were originally intended to be a way to "start" a site. Once installed, the user is on their own and can customize as they see fit.
+
+The Kit would get installed via Composer, files would get copied to their respective locations, and then the Kit gets removed.
+
+However, you may choose to construct your Kit in a way that it can be updated by the end user. To do that, you should instruct Statamic to leave the Kit required as a Composer dependency by adding `updatable: true` in your `starter-kit.yaml` file:
+
+```yaml
+updatable: true #[tl! ++]
+export_paths: ...
+```
+
+Now that the Kit package stays around after installation, it can be updated like any other Composer package:
+
+```shell
+composer update
+```
+
+This means that you could do things like:
+- Add a service provider to wire up Laravel or Statamic behavior.
+- Make the service provider extend AddonServiceProvider to make your Starter Kit _also_ an addon to get behavior for free like autoload tags, modifiers, etc.
+- Rather than exporting views, CSS, JS, PHP classes, etc. into the project, you can keep them in the package itself.
+
 
 ## Addons vs. Starter Kits
 
@@ -349,11 +413,11 @@ Both addons and Starter Kits can be used to extend the Statamic experience, but 
 An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
 :::
 
-### Starters Kits
+### Starter Kits
 
-- Starter kits are installed via `php please starter-kit:install`
+- Starter kits are installed via `statamic new` or `php please starter-kit:install`
 - Starter kits install pre-configured files and settings into your site
-- Starter kits do not live as updatable packages within your apps
+- Starter kits do not live as updatable packages within your apps (by default)
 - Starter kit licenses are not tied to a specific site, and expire after a successful install
 
 :::tip
