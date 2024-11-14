@@ -104,7 +104,7 @@ Think of the exported directory similar to a compiled assets directory when usin
 
 ### Exporting Paths
 
-Any files that you modify on your site that you intend to be installed into a Statamic project should be marked for export in your `starter-kit.yaml` file.
+Any files that you modify on your site that you intend to be installed into a Statamic project should be marked as `export_paths` in your `starter-kit.yaml` file.
 
 For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
 
