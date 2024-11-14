@@ -47,13 +47,13 @@ Run the `init` command to generate the appropriate files.
 php please starter-kit:init
 ```
 
-This command will add a `package` directory, which represents the eventual starter kit repository's root directory.
+This command will create and wire up a `package` directory, which represents the eventual Starter Kit repository's root directory.
 
 ## The Starter Kit Package
 
 Starter Kits are installed via Composer. You can control the package's contents via the `package` directory, which will be the exported repository's root directory.
 
-At a minimum, your `package` directory needs a `starter-kit.yaml` and `composer.json` files.
+At a minimum, your `package` directory needs a `starter-kit.yaml` and a `composer.json` file.
 
 ``` files theme:serendipity-light
 app/
@@ -67,7 +67,7 @@ resources/
 composer.json
 ```
 
-If you plan to make your Kit updatable (more on that below), you should require this as a path repository.
+If you plan to [make your Starter Kit updatable](#making-starter-kits-updatable), you should require this as a path repository.
 
 ```json
 {
@@ -83,6 +83,10 @@ If you plan to make your Kit updatable (more on that below), you should require 
     ] // [tl! ++:end]
 }
 ```
+
+:::tip
+Ths `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
+:::
 
 ## Exporting
 
@@ -157,15 +161,13 @@ This presents a choice to the user, to confirm whether or not to install this mo
     <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
 </figure>
 
-These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `export_as`, `dependencies`, etc.).
+These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `dependencies`, etc.).
 
 ```yaml
 modules:
   seo:
     export_paths:
       - resources/css/seo.css
-    export_as:
-      README.md: README-for-seo.md
     dependencies:
       - statamic/seo-pro
 ```
