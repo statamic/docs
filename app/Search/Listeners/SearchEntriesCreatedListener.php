@@ -2,10 +2,18 @@
 
 namespace App\Search\Listeners;
 
+use Illuminate\Support\Str;
 use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 
 class SearchEntriesCreatedListener
 {
+    protected array $escapeProperties = [
+        'description',
+        'intro',
+        'content',
+        'search_content',
+    ];
+
     protected function getParentHeadings($headers, $target)
     {
         $hierarchy = [];
@@ -81,12 +89,20 @@ class SearchEntriesCreatedListener
             $data['hierarchy_lvl1'] = implode(' » ', $parentHeadings);
 
             if ($data['is_root']) {
-                $data['content'] = $event->entry->intro ?? $event->entry->description ?? $data['search_content'];
+                $data['content'] = strip_tags($event->entry->intro ?? $event->entry->description ?? $data['search_content']);
             } else {
                 $data['content'] = $data['search_content'] ?? '';
             }
 
             $data['url'] = $data['search_url'];
+
+            foreach ($this->escapeProperties as $property) {
+                if (! $data->has($property)) {
+                    continue;
+                }
+
+                $data[$property] = e($data[$property]);
+            }
 
             // Clear this out to prevent "too much" from a specific page dominating the results.
             if (! $data['is_root']) {
