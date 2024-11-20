@@ -92,18 +92,20 @@ run: ({ value, update }) => {
 
 The payload provided to the `run`, `quick`, `visible`, and `icon` functions will contain the following properties:
 
-| Property          | Type     | Description                                                                               |
-|-------------------|----------|-------------------------------------------------------------------------------------------|
-| `handle`          | string   | The handle of the field                                                                   |
-| `value`           | mixed    | The value of the field                                                                    |
-| `config`          | Object   | The field configuration                                                                   |
-| `meta`            | Object   | The field's meta data                                                                     |
-| `update`          | function | Whatever you pass to this method will update the field's value.                           |
-| `updateMeta`      | function | Whatever you pass to this method will update the field's meta data                        |
-| `fieldPathPrefix` | string   | The path to the field handle, when nested inside another field like a Grid or Replicator. |
-| `vm`              | Object   | The Vue component                                                                         |
-| `fieldVm`         | Object   | When inside a Bard or Replicator set, this is the Vue component of the Bard/Replicator.   |
-| `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.
+| Property          | Type     | Description                                                                                                                                |
+|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `handle`          | string   | The handle of the field                                                                                                                    |
+| `value`           | mixed    | The value of the field, when used on a field.                                                                                              |
+| `values`          | mixed    | The values of the set, when used on a set.                                                                                                 |
+| `config`          | Object   | The field configuration                                                                                                                    |
+| `meta`            | Object   | The field's meta data                                                                                                                      |
+| `update`          | function | Whatever you pass to this method will update the field's value. When used in a set, this expects a field handle as the first argument.     |
+| `updateMeta`      | function | Whatever you pass to this method will update the field's meta data. When used in a set, this expects a field handle as the first argument. |
+| `fieldPathPrefix` | string   | The path to the field handle, when nested inside another field like a Grid or Replicator.                                                  |
+| `vm`              | Object   | The Vue component                                                                                                                          |
+| `fieldVm`         | Object   | When inside a Bard or Replicator set, this is the Vue component of the Bard/Replicator.                                                    |
+| `isReadOnly`      | bool     | Whether the field is read only.                                                                                                            |
+| `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.                                   |                                   
 
 ## Quick Actions
 
@@ -142,6 +144,31 @@ This may also be a function:
     visible: (payload) => true
 }
 ```
+
+
+## Read Only Fields
+
+By default, Statamic will not display an action if the field is read only. However, you can opt into showing it.
+
+```js
+{
+    visibleWhenReadOnly: true
+}
+```
+
+You may also pair this with the `isReadOnly` property within the payload.
+
+```js
+{
+    visibleWhenReadOnly: true,
+    run: ({ update, value, isReadOnly }) => {
+        doSomething();
+        
+        if (!isReadOnly) update(...);
+    }
+}
+```
+
 
 ## Confirmation Modals
 
