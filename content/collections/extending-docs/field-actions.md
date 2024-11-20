@@ -103,6 +103,7 @@ The payload provided to the `run`, `quick`, `visible`, and `icon` functions will
 | `fieldPathPrefix` | string   | The path to the field handle, when nested inside another field like a Grid or Replicator. |
 | `vm`              | Object   | The Vue component                                                                         |
 | `fieldVm`         | Object   | When inside a Bard or Replicator set, this is the Vue component of the Bard/Replicator.   |
+| `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.
 
 ## Quick Actions
 
@@ -183,7 +184,7 @@ You may pass an options object to the `confirm` property in order to customize i
 
 ### Confirmation Modal Fields
 
-You may provide blueprint field definitions that will be displayed in the modal. Their submitted values will be returned from the promise.
+You may provide blueprint field definitions that will be displayed in the modal. A `confirmation` property will be available within the `run` method payload.
 
 ```js
 {
@@ -207,3 +208,11 @@ You may provide blueprint field definitions that will be displayed in the modal.
     }
 }
 ```
+
+The `confirmation` property is an object containing the following properties:
+
+| Property | Type | Description                                                                       |
+|----------|------|-----------------------------------------------------------------------------------|
+| `values` | object | The values that are used in the modal's fieldtype Vue components. (Pre-processed) |
+| `processed` | object | The PHP-based values. e.g. What would get saved to content when editing an entry. |
+| `meta` | object | The meta data for all the fields in the modal.                                    |
