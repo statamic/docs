@@ -201,8 +201,8 @@ You may provide blueprint field definitions that will be displayed in the modal.
             }
         }
     },
-    run: ({ confirmed }) => {
-        console.log(confirmed.values);
+    run: ({ confirmation }) => {
+        console.log(confirmation.values);
         // { name: 'Bob Down', color: '#aabbcc' }
     }
 }
