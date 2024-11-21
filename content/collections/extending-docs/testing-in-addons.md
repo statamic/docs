@@ -129,8 +129,8 @@ jobs:
         laravel: [10.*, 11.*]
         os: [ubuntu-latest]
         exclude:
-            - php: 8.4
-              laravel: 10.*
+          - php: 8.4
+            laravel: 10.*
 
     name: ${{ matrix.php }} - ${{ matrix.laravel }}
 
