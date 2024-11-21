@@ -50,7 +50,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       <tr>
          <td class="font-bold">5</td>
          <td>10-11</td>
-         <td>8.2-8.3</td>
+         <td>8.2-8.4</td>
          <td>May 2024</td>
          <td>May 2025</td>
          <td>Nov 2025</td>
