@@ -17,7 +17,7 @@ phpunit.xml
 
 ## The `TestCase`
 
-The `TestCase` class extends Statamic's built-in `AddonTestCase` which is responsible for booting your addon's service provider, amongst other things. 
+The `TestCase` class extends Statamic's built-in `AddonTestCase` which is responsible for booting your addon's service provider, amongst other things.
 
 Under the hood, Statamic's `AddonTestCase` extends [Orchestra Testbench](https://github.com/orchestral/testbench)'s `TestCase` class. Testbench allows you to test against a *real* Laravel application.
 
@@ -125,12 +125,15 @@ jobs:
   php_tests:
     strategy:
       matrix:
-        php: [8.2, 8.3]
+        php: [8.2, 8.3, 8.4]
         laravel: [10.*, 11.*]
         os: [ubuntu-latest]
+        exclude:
+            - php: 8.4
+              laravel: 10.*
 
     name: ${{ matrix.php }} - ${{ matrix.laravel }}
-    
+
     runs-on: ${{ matrix.os }}
 
     steps:
