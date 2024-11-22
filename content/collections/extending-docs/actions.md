@@ -8,6 +8,10 @@ stage: 1
 id: ba2e6172-b4dc-443b-8230-b770dec1423c
 ---
 
+:::tip
+Actions allow you to perform tasks on PHP-based items like Entries. If you'd like to perform actions on specific fields within the publish form, check out [Field Actions](/extending/field-actions).
+:::
+
 ## Defining an action
 
 You may create an action using the following command, which will generate a class in the `App\Actions` namespace.
