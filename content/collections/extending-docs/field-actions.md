@@ -246,7 +246,7 @@ The `confirmation` property is an object containing the following properties:
 
 ## Accessing Other Fields
 
-If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your run function: 
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your `run` function: 
 
 ```js
 {
