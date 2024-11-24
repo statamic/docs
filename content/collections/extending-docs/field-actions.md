@@ -243,3 +243,15 @@ The `confirmation` property is an object containing the following properties:
 | `values` | object | The values that are used in the modal's fieldtype Vue components. (Pre-processed) |
 | `processed` | object | The PHP-based values. e.g. What would get saved to content when editing an entry. |
 | `meta` | object | The meta data for all the fields in the modal.                                    |
+
+## Accessing Other Fields
+
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your run function: 
+
+```js
+{
+    run: ({ store, storeName }) => {
+        const values = store.state.publish[storeName].values;
+    }
+}
+```
