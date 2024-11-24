@@ -161,7 +161,7 @@ modules:
 
 ### Skipping Confirmation
 
-Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger starter kit configs. To do this, simply set `prompt` to false.
+Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger Starter Kit configs. To do this, simply set `prompt` to false.
 
 ```yaml
 modules:
