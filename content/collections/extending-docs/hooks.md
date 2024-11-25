@@ -21,6 +21,8 @@ At some point, a payload is send through the pipeline, allowing any registered c
 For example, the `collection` tag will query for entries, then run the `fetched-entries` hook, passing all the entries along. Your hook may modify these entries.
 
 ```php
+// app/Providers/AppServiceProvider.php
+
 use Statamic\Tags\Collection;
 
 Collection::hook('fetched-entries', function ($entries, $next) {
@@ -37,6 +39,8 @@ It's also possible to wait until all the other closures in the pipeline have com
 For example, maybe you need to get all the ids of the entries that will be output. By passing along to the other closures first, it will give them a chance to manipulate it. In the example above, it would take the first 3 entries. Now in this hook we'll be getting 3 ids rather than the full amount the tag was originally going to output.
 
 ```php
+// app/Providers/AppServiceProvider.php
+
 use Statamic\Tags\Collection;
 
 Collection::addHook('fetched-entries', function ($entries, $next) {
