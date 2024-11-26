@@ -44,6 +44,8 @@ if (isAppleDevice()) {
         if (e.key.toLocaleLowerCase() !== 'k') {
             return;
         }
+        
         document.getElementsByClassName('docsearch-btn')[0].click();
+        e.preventDefault();
     });
 }
