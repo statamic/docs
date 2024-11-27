@@ -147,6 +147,28 @@ modules:
     <figcaption>Would you also like fries with that?</figcaption>
 </figure>
 
+### Customizing Prompt Default Value
+
+Setting `default: true` will ensure the module is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
+
+```yaml
+modules:
+  seo:
+    default: true
+    dependencies:
+      - statamic/seo-pro
+```
+
+### Skipping Confirmation
+
+Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger Starter Kit configs. To do this, simply set `prompt` to false.
+
+```yaml
+modules:
+  seo:
+    prompt: false
+```
+
 ### Selecting Between Modules
 
 You may find yourself in a situation where you want the user to select only one of multiple module options. To do this, you may nest multiple module configs under an `options` object.
@@ -170,7 +192,7 @@ modules:
     <img src="/img/starter-kit-select-module.png" alt="Starter kit select module">
 </figure>
 
-### Customizing Select Modules
+### Customizing Select Module Prompt Text
 
 Of course, you can also customize `prompt` text, the first 'No' `skip_option` text, as well as each option `label`, as you see fit.
 
@@ -199,15 +221,34 @@ modules:
     <figcaption>🐮🐮🐮</figcaption>
 </figure>
 
-### Skipping Confirmation
+### Customizing Select Module Default Value
 
-Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger starter kit configs. To do this, simply set `prompt` to false.
+Setting a `default` value will ensure a specific module option is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
 
 ```yaml
 modules:
-  seo:
-    prompt: false
+  js:
+    prompt: 'Would you care for some JS?'
+    default: vue
+    # ...
 ```
+
+### Disabling Select Module Skip Option
+
+If you want to force the user to select a module option, you can set `skip_option: false` to disable the 'No' skip option.
+
+```yaml
+modules:
+  js:
+    prompt: 'Would you care for some JS?'
+    skip_option: false
+    # ...
+```
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-select-module-disable-skip-option.png" alt="Starter kit disable skip option">
+</figure>
+
 
 ### Nesting Modules
 
