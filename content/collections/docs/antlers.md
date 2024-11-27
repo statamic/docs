@@ -328,6 +328,10 @@ As your templates grow and increase in complexity, you _may_ find yourself unsur
 {{ $content }}
 ```
 
+:::tip
+This includes variables that Statamic creates for you. For example on taxonomy pages, [the terms are available in a variable named after the taxonomy](/taxonomies#outputting-terms). If you've named the taxonomy the same as a tag (like "section") then you will need to be clear you mean the variable and not the tag.
+:::
+
 ### Modifiers
 
 Modifiers change the output of an Antlers variable. They are used inside any expression and are separated by a pipe character `|`.
