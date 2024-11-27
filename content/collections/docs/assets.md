@@ -20,6 +20,7 @@ updated_at: 1633025886
 
 Assets live in directories on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage services. Each defined location is called a **container**..
 
+
 Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
 ## Asset Browser
@@ -371,3 +372,9 @@ However, if you **trust your users** and need to upload SVG files without them b
 
 'svg_sanitization_on_upload' => false,
 ```
+
+## Performance
+
+If you're experiencing performance issues with Assets, like slow queries or a slow asset browser, it might be worth moving your assets to the database using the Eloquent Driver. It takes a different approach to caching asset metadata, which sometimes works better for sites with more assets.
+
+You can find out more about [moving assets to the database here](https://statamic.dev/tips/storing-content-in-a-database#moving-content-to-the-database).
