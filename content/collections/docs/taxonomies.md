@@ -161,6 +161,16 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
 :::
 
+:::tip
+If your taxonomy name conflicts with a [tag](/tags), will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
+
+For example, if your taxonomy is named `section`, there is also a [tag named section](/tags/section).
+
+```
+{{ $section }}...{{ /$section }}
+```
+:::
+
 ::tab blade
 ```blade
 <ul>
