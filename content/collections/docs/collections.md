@@ -243,6 +243,14 @@ A structured collection will **not** have a maximum depth unless you set one, al
 
 For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
 
+
+### Root Page
+
+If you specify that your collection should "expect a root page", the first item in the tree UI will be considered the root. This entry will _not_ use a slug in its URI.
+
+The most common usage for this is to define a home page in a pages collection. In this example, the root page's url would be `/` instead of `/home`.
+
+
 ## Routing
 
 Entries receive their URLs from their collection's route setting. You can use standard meta variables in addition to the variables from the collection's blueprint to define your route rule. You can even use [computed values](/computed-values) or Antlers to do advanced things.
