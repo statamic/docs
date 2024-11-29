@@ -82,7 +82,7 @@ html[data-theme='dark'] {
 }
 
 .docsearch-modal-search-hits-item-title {
-    @apply text-black font-semibold;
+    @apply font-semibold;
 }
 
 .docsearch-modal-search-hits-item-text {
