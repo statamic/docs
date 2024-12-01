@@ -255,6 +255,8 @@ Each item in the `fields` array contains the following data configurable in the 
 | `old` | array | Contains user input from an unsuccessful submission |
 | `instructions` | string | User-friendly instructions label |
 | `validate` | array | Contains an array of validation rules |
+| `width` | string | Width of the field assigned in the blueprint |
+
 
 ### Pre-rendered Field HTML
 
