@@ -20,5 +20,5 @@ The current URL.
 ::
 
 ```html
-https://docs.statamic.com/variables
+https://statamic.dev/variables/current_url
 ```
