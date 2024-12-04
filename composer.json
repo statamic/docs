@@ -16,7 +16,7 @@
         "statamic/cms": "^4.0",
         "statamic/ssg": "^2.0",
         "torchlight/torchlight-commonmark": "^0.5.5",
-        "stillat/documentation-search": "^1.2.0"
+        "stillat/documentation-search": "^1.2.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
