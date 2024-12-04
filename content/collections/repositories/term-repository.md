@@ -24,6 +24,11 @@ use Statamic\Facades\Term;
 | `find($id)` | Get Term by `id` |
 | `findByUri($uri)` | Get Term by `uri` |
 | `findOrFail($id)` | Get Term by `id`. Throws a `TermNotFoundException` when the term cannot be found. |
+| `findOrNew($id)` | Finds Term by `id` or returns fresh `Term` instance.  |
+| `findOr($id, $callback)` | Finds Term by `id` or call a callback. |
+| `firstOrNew($attributes, $values)` | Finds term with the provided `$attributes`. If one can't be found, a new `Term` instance will be returned with `$values`. |
+| `firstOrCreate($attributes, $values)` | Finds term with the provided `$attributes`. If one can't be found, a new `Term` instance will be returned and saved with `$values`. |
+| `updateOrCreate($attributes, $values)` | Finds term with the provided `$attributes` and updates it using provided `$values`. If one can't be found, a new `Term` instance will be returned and saved. |
 | `query()` | Query Builder |
 | `make()` | Makes a new `Term` instance |
 
@@ -82,6 +87,31 @@ Term::query()
     ->where('entries_count', '>=', 1);
     ->get();
 ```
+
+### Find term or call a callback
+
+```php
+Term::query()
+  ->where('taxonomy', 'tags')
+  ->findOr('my-term', function () {
+    return Term::make()->taxonomy('tags')->set('title', 'Blog');
+  );
+```
+
+This can also be simplified to `Term::findOr('my-term', ...)`.
+
+### Find entry or create an entry
+
+```php
+Term::query()
+  ->where('taxonomy', 'tags')
+  ->firstOrCreate(
+    ['slug' => 'blog'],
+    ['title' => 'Blog']
+  );
+```
+
+This can also be simplified to `Term::firstOrCreate($attributes, $values)`
 
 
 ## Creating
