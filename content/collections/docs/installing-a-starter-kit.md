@@ -8,7 +8,7 @@ nav_title: Installing
 ---
 ## Read This First
 
-Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
+Most (but not all) Starter Kits are intended to be used in a brand new, empty site. Be sure to read each Kit's documentation before installing into an existing site so you know what to expect and how to get the most out of it.
 
 ## Installing from the Command Line
 
