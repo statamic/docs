@@ -118,6 +118,10 @@ preview_targets:
 
 A `token` query parameter will be appended to the URL automatically, which you can then pass back to Statamic in a GraphQL query, where it will know to replace the entry with the Live Preview version.
 
+```js
+$http.post('/graphql?token='+params.token, ...);
+```
+
 ### Auto-refreshing
 
 On a preview target, you may disable the behavior that causes a full refresh of the iframe when you make changes. By disabling the refresh, [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) will be used instead to send a payload to the front-end. You can listen for this event and perform your own live updating behavior.

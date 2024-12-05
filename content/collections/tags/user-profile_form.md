@@ -103,6 +103,10 @@ Any submitted data that does _not_ exist in the blueprint will be completely ign
 
 Additional fields will be validated as per your blueprint `validate` rules.
 
+:::tip Note
+The `user:profile_form` tag doesn't currently support uploading Assets.
+:::
+
 ## Dynamic Rendering
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.

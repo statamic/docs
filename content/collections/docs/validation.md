@@ -162,4 +162,18 @@ validate:
   - 'new App\Rules\AnotherRule(''with argument'')'
 ```
 
+## Validating Programmatically
+
+You may validate programmatically via the blueprint, if you need to do so within custom code.
+
+```php
+$values = $request->all();
+
+$valid = $blueprint->fields()->addValues($values)->validate();
+
+$entry->data($valid)->save();
+```
+
+The `validate` method would throw a `ValidationException` if invalid and return the appropriate response.  
+
 [laravel-validation]: https://laravel.com/docs/11.x/validation#available-validation-rules

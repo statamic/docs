@@ -16,7 +16,7 @@
             </ul>
             <div class="flex items-center h-full">
                 <form class="relative hidden md:flex items-center text-sm w-[160px] lg:w-[240px] h-9 m-0 rounded border-2 border-black shadow-sm md:shadow relative top-[-2px] dark:bg-gray-darkest" :class="{ 'md:hidden': themePickerOpen }" action="/search-results">
-                    <div id="docsearch" ref="docSearch"></div>
+                    <div id="docsearch" class="w-full" ref="docSearch"></div>
                 </form>
                 {{ partial:theme }}
             </div>

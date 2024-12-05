@@ -1,7 +1,7 @@
 /* Algolia DocSearch Variables */
 :root {
   --docsearch-primary-color: rgb(84, 104, 255);
-  --docsearch-text-color: rgb(28, 30, 33);
+  --docsearch-text-color: theme('colors.gray.dark');
   --docsearch-spacing: 12px;
   --docsearch-icon-stroke-width: 1.4;
   --docsearch-highlight-color: var(--docsearch-primary-color);
@@ -74,38 +74,26 @@ html[data-theme='dark'] {
 /* -------------------------------------------------- */
 
 .docsearch-modal {
-    @apply rounded-lg border !important;
+    @apply font-sans;
 }
 
-.docsearch-hit-container {
-    @apply h-16 !important;
+.docsearch-modal-search-hits-category {
+    @apply text-sm mb-1 !important;
 }
 
-.docsearch-hit-content-wrapper {
-    @apply mx-4 flex-col-reverse !important;
+.docsearch-modal-search-hits-item-title {
+    @apply font-semibold;
 }
 
-.docsearch-modal-footer {
-    @apply justify-end !important;
+.docsearch-modal-search-hits-item-text {
+    @apply text-gray-darker font-normal text-sm !important;
 }
 
-.docsearch-modal-footer-commands {
-    @apply hidden !important;
-}
-
-.docsearch-footer {
-    @apply border-t !important;
-}
-
-.docsearch-hit-path {
-    @apply text-lg font-display font-medium text-black !important;
-}
-
-.docsearch-hits mark {
-    color: inherit !important;
-}
-#docsearch {
-    @apply w-full !important;
+.docsearch-modal-search-hits-item--active {
+    .docsearch-modal-search-hits-item-text,
+    .docsearch-modal-search-hits-item-title {
+        @apply text-white !important;
+    }
 }
 
 .docsearch-btn {
@@ -118,6 +106,7 @@ html[data-theme='dark'] {
 .docsearch-btn-keys {
     @apply hidden lg:flex ml-auto !important;
 }
+
 .docsearch-btn-key {
     @apply bg-white border shadow-md text-black uppercase pb-0 min-w-[18px] h-[18px] relative !important;
     top: -1px !important;
@@ -125,6 +114,13 @@ html[data-theme='dark'] {
 
 .docsearch-button-container {
     @apply flex-1 !important;
+}
+
+.docsearch-modal-search-hits-item-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .dark {

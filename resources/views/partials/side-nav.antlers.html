@@ -23,7 +23,7 @@
                             {{ children scope="child" }}
                                 <li class="{{ is_current || is_parent ?= 'active' }}" {{ if is_current || is_parent }}x-effect="open = '{{ parent:title }}'"{{ /if }}>
                                     <a href="{{ url }}" class="hover:text-pink dark:text-gray-dark dark:hover:text-pink">
-                                        {{ nav_title ?? title }}
+                                        {{ child:nav_title ?? child:title }}
                                     </a>
                                 </li>
                             {{ /children }}
