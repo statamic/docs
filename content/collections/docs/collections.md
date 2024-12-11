@@ -314,7 +314,7 @@ route: /tournament/round-{depth}/{team_name}
 ```
 
 #### Using fields from related entries
-For example, if you have a `category` field in your Products collection and you'd like to your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
+For example, if you have a `category` field in your Products collection and you'd like for your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
 
 ``` php
 // app/Providers/AppServiceProvider.php
