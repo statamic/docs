@@ -43,6 +43,10 @@ Finally, setup your deployment by pointing to your site to your source control r
     <img src="/img/deployment-forge-install-repo.png" alt="Install repo example">
 </figure>
 
+:::best-practice
+We recommend toggling off "Install Composer Dependencies", and "Run Laravel Migrations", and running them manually after installing the repository.
+:::
+
 After doing this, you'll be able to customize the deployment script if needed. You can also enable "**quick deploy**", which will automatically trigger deployments when you push changes to your chosen branch.
 
 <figure>
