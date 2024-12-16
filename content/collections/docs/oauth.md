@@ -51,7 +51,7 @@ If you plan to use a third party provider, follow the steps [below](#third-party
 
 ## Usage
 
-Send your users to the provider’s login URL to begin the OAuth workflow. You may do this with the `oauth` tag:
+Send your users to the provider’s login URL to begin the OAuth workflow. Buttons for each configured provider will be available on the Control Panel's login page, but you may also do this on the front-end with the `oauth` tag:
 
 ```
 <a href="{{ oauth:github }}">Log in with Github</a>
@@ -60,7 +60,7 @@ Send your users to the provider’s login URL to begin the OAuth workflow. You m
 Once they've logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
 They will then be automatically logged into your site with the Statamic account.
 
-You may [customize how the user is created](#customizing-user-data).
+However, you may [customize the user flow](#user-flow).
 
 
 ## Configuration
@@ -105,6 +105,23 @@ You may customize these in `config/statamic/oauth.php`:
 ```
 
 When you create your OAuth application, you will need to provide the callback URL.
+
+### User Flow
+
+By default, once as user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
+They will then be automatically logged into your site with the Statamic account.
+
+Additionally, any user data from the provider will be merged into that user's account.
+
+You may choose to customize this flow.
+
+```php
+'create_user' => true,
+'merge_user_data' => true,
+'unauthorized_redirect' => null,
+```
+
+By setting `'create_user' => false`, if a corresponding Statamic user account doesn't exist, one will not be created for them, and they will be redirected to the unauthorized error page.
 
 ## Third Party Providers
 
