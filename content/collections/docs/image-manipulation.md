@@ -198,8 +198,8 @@ You may choose to save your cached Glide images to somewhere CDN based, like Ama
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION'),
-        'bucket' => env('AWS_BUCKET'),
-        'url' => env('AWS_URL'),  // [tl! **]
+        'bucket' => env('AWS_BUCKET_GLIDE'), // [tl! **]
+        'url' => env('AWS_URL_GLIDE'),  // [tl! **]
         'endpoint' => env('AWS_ENDPOINT'),
         'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         'visibility' => 'public',  // [tl! **]
@@ -212,7 +212,7 @@ Make sure that the `visibility` is `public` and that the `url` points to the cor
 :::
 
 :::warning
-Don't use the same disk or bucket as your source images. If you were you to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
+Don't use the same disk, bucket or url as your source images. If you were you to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
 
 ## Path Cache Store
