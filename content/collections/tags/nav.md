@@ -110,6 +110,13 @@ variables:
     description: >
       Recursively output the entire contents
       of the `nav` tag pair.
+  -
+    name: '[condition parameters]'
+    type: 'arbitrary'
+    description: >
+      Pro Tip: You can also apply [conditions][1]
+      to the navigation tree! For example, try things
+      like `{{ nav hide_from_navigation:isnt="true" }}`.
 ---
 ## Overview
 
@@ -325,3 +332,5 @@ You may improve performance of the `nav` tag in two ways:
    If you only need one level, set `max_depth="1"`.
 2. Select the fields that you'll be using.
    If you're only going to be using `{{ title }}` and `{{ url }}` in the loop, set `select="title|url"`.
+
+[1]: https://statamic.dev/conditions
