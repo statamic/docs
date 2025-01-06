@@ -86,12 +86,17 @@ Statamic routed URLs will expect views named `default` and `layout`. You will ne
 
 ## Database
 
-When you install Statamic into an existing Laravel application, content and users will be stored as flat files.
+### Content
 
-If you'd prefer to store these in the database, please follow these guides:
+When you install Statamic into an existing Laravel application, content will be stored as flat files. 
 
-* [Storing Content in a Database](/tips/storing-content-in-a-database#overview)
-* [Storing Users in a Database](/tips/storing-users-in-a-database#in-an-existing-laravel-app)
+If you'd prefer to store content in a database instead, please follow the ["Storing Content in a Database"](https://statamic.dev/tips/storing-content-in-a-database) guide.
+
+### Users
+
+If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) follow those steps.
+
+Otherwise, the [Storing User Records](/users#storage) page should have instructions for the most common scenarios.
 
 ## New Statamic Directories
 
