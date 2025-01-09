@@ -144,7 +144,7 @@ class CustomFieldtype extends Fieldtype
     // or
     function icon()
     {
-        return resource_path('svg/left_shark.svg');
+        return file_get_contents(resource_path('svg/cube-solid.svg'));
     }
 }
 ```
