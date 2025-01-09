@@ -236,6 +236,10 @@ Statamic.$conditions.add('isCanadian', ({ target }) => {
 });
 ```
 
+:::warning
+It's worth noting that custom conditions only work in the Control Panel, not in the context of frontend forms.
+:::
+
 ### Parameters
 
 You may also pass parameters to your custom functions:
