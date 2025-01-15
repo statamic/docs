@@ -32,7 +32,7 @@ Don't pick those other options. You want Statamic.
 
 ### 3. Pick a Starter Kit
 
-Now you can pick which Starter Kit you'd like to use. This Forge workflow only works with free/open source Starter Kits, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
+Now you can pick which Starter Kit you'd like to use. This Forge workflow only works with free/open source Starter Kits, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](/installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
 
 Set your email address and super user password, and you're good to go.
 
