@@ -5,6 +5,10 @@ title: 'Deploying Statamic with Vercel'
 parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
 
+:::warning
+Please note that by hosting your site statically with a service like Vercel or Netlify, **you can't access the Control Panel in production** and are **not able to use dynamic features** like Statamic's built-in forms or random sorting in your templates.
+:::
+
 Deployments are triggered by committing to Git and pushing to GitHub.
 
 - Create a new file `build.sh` file in your project and paste from the [example code snippet](#example-build-script) below
