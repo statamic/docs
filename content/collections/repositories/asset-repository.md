@@ -25,7 +25,7 @@ use Statamic\Facades\Asset;
 | `findByUrl($url)` | Get Asset by `url` |
 | `findOrFail($filename)` | Get Asset by `filename`. Throws an `AssetNotFoundException` when the asset cannot be found. |
 | `query()` | Query Builder |
-| `whereContainer($container)` | Find Assets by [AssetContainer](#asset-container) |
+| `whereContainer($container)` | Find Assets by [AssetContainer](/repositories/asset-container-repository) |
 | `whereFolder($folder)` | Find Assets in a filesystem folder |
 | `make()` | Makes a new `Asset` instance |
 

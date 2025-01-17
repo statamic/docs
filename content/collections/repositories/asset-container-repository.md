@@ -27,7 +27,7 @@ use Statamic\Facades\AssetContainer;
 | `find($id)` | Get AssetContainer by `id` |
 | `findByHandle($handle)` | Get AssetContainer by `handle` |
 | `findOrFail($id)` | Get AssetContainer by `id`. Throws an `AssetContainerNotFoundException` when the asset container cannot be found. |
-| `queryAssets()` | Query Builder for the AssetContainer's [Assets](#assets) |
+| `queryAssets()` | Query Builder for the AssetContainer's [Assets](/repositories/asset-repository) |
 | `make()` | Makes a new AssetContainer instance |
 
 :::tip
