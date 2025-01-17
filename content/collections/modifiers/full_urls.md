@@ -20,7 +20,7 @@ I had this totally <a href="/dreams/spiders-with-ramen-legs">crazy dream</a> las
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($content)->fulLUrls() !!}
+{!! Statamic::modify($content)->fullUrls() !!}
 ```
 ::
 
