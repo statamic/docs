@@ -73,6 +73,10 @@ foo: bar
 bar
 ```
 
+:::tip
+Front-matter defined in a `View` **must** be placed at the top of the file (even before things like `Antler` comments).
+:::
+
 ## Available Variables
 
 The following groups of variables are available in your views, depending on their context.
