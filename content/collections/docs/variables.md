@@ -73,6 +73,10 @@ foo: bar
 bar
 ```
 
+:::tip
+You **must** define any front-matter variables at the top of the view file, even before things like Antlers comments.
+:::
+
 ## Available Variables
 
 The following groups of variables are available in your views, depending on their context.
