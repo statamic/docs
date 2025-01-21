@@ -216,19 +216,32 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 
 ## Warming the Static Cache
 
-You can get your app to automatically generate the public views for your entries and add them to the Static Cache, making first times loads much faster. To do this run:
+Before users visit your website, you may wish to warm the static cache to make first time loads much faster. To do this, run:
 
 ```
 php please static:warm
 ```
 
-This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag.
+The `static:warm` command supports various arguments:
 
-Passing `--insecure` to the command allows you to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--queue`**
+    Indicates that URIs should be warmed on the queue (in the background).
+* **`--insecure`**
+    Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--user` and `--password`**
+    Allows you to specify credentials to be used when your site is secured with [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Otherwise, you might end up with a `401 Unauthorized` error running the command.
+* **`--uncached`**
+    Ensure that only *uncached* pages are warmed. Perfect for when you just want to 'fill in the gaps' in your cache after some URLs were invalidated, without visiting every single URL in your website. This avoids unnecessary server load.
+* **`--include` and `--exclude`**
+    Accepts a comma-separated list of URLs you'd like to be included/excluded in the warming process.
+    Example: `--include='/about,/contact,/blog/*'`
+* **`--max-depth`**
+    Allows you to specify the max depth of pages that should be warmed.
+    For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
+* **`--max-requests`**
+    Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
 
-Adding the `--user` and `--password` flags, you can run the command behind [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Useful when your site is secured with a simple username and password, like on a staging or development server. Otherwise, you might end up with a `401 Unauthorized` error running the command.
-
-Depending on your site's setup, it's a good idea to add this command to your deployment script on Forge or whatever deployment tool or pipeline you use.
+Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
 ### Concurrency
 
