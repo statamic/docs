@@ -4,7 +4,6 @@ blueprint: page
 title: 'Sites API'
 intro: 'We have an API that can be used to manage your Statamic Sites in your [statamic.com](https://statamic.com) account. This is most useful with our Platform Plan, which you can [contact us](https://statamic.com/support) directly about for more information.'
 ---
-# Statamic Sites Api
 
 ## Authentication
 
