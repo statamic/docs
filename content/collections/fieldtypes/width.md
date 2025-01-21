@@ -7,14 +7,12 @@ intro: 'A slick way to select a width in your blueprints. Although you could use
 width_field: 50
 options:
   -
-    id: m66jkdfk
-    name: Options
+    name: options
     type: array
     required: false
-    description: 'The array of integers presented in the blueprint. If all options are removed, the default 25/33/50/66/75/100 values are used.'
+    description: 'The array of integers presented in the blueprint. Default: 25 / 33 / 50 / 66 / 75 / 100'
   -
-    id: m66jmueh
-    name: Default
+    name: default
     type: integer
     required: false
     description: "The default selected width. Can be set to a value that doesn't exist in the options array if desired."
