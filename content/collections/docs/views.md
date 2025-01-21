@@ -63,6 +63,12 @@ An entry can control the layout it's rendered with by setting the `layout` syste
 layout: rss
 ```
 
+As mentioned above, Statamic will use the `resources/views/layout.antlers.html` view as the default layout. You can change the default layout in your `config/statamic/system.php` config file:
+
+```php
+'layout' => env('STATAMIC_LAYOUT', 'layout'),
+```
+
 ## Templates
 
 Templates are views that can be used by any entry or section on your site. The template's contents will be inserted into the `{{ template_content }}` variable in your layout much like the way a painting goes into an ornate picture frame.
