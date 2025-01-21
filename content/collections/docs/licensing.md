@@ -50,7 +50,7 @@ In your [statamic.com account](https://statamic.com/account/sites), you can crea
 Each Site has one unique license key that any and all commercial products are attached to and validated through. No more juggling a fist full of keys like a bunch of quarters at the arcade.
 
 ### Programmatically Creating Sites
-You can programmatically create sites using our [Sites API](/account-api-sites). This is most useful while using our Platform subscription plan (to learn more about this, [contact us](https://statamic.com/support)).
+You can programmatically create sites using our [Sites API](/sites-api). This is most useful while using our Platform subscription plan (to learn more about this, [contact us](https://statamic.com/support)).
 
 ## License Validation
 
