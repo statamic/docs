@@ -171,6 +171,22 @@ You can select from any of the keys available in the `FieldtypeSelector`:
 - `structured`
 - `special`
 
+
+## Fieldtype Keywords
+
+You may specify keywords to be used when searching in the fieldtype selector.
+
+For example: if you search for "rich text" or "gutenberg", the [Bard fieldtype](/fieldtypes/bard) will be returned as a result.
+
+```php
+<?php
+
+class CustomFieldtype extends Fieldtype
+{
+    protected $keywords = ['file', 'files', 'image', 'images', 'video', 'videos', 'audio', 'upload'];
+}
+```
+
 ## Configuration Fields
 
 You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
