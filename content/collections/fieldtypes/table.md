@@ -6,6 +6,23 @@ intro: >
 screenshot: fieldtypes/screenshots/table.gif
 stage: 4
 id: 11e0ab78-7698-44c8-98f1-1194cb12ce28
+options:
+  -
+    name: min_rows
+    type: 'integer *0*'
+    description: The minimum number of required rows.
+  -
+    name: max_rows
+    type: integer
+    description: >
+      The maximum number of rows allowed. Once
+      reached the `Add Row`
+      button will disappear.
+  -
+    name: default
+    type: string
+    description: |
+      Set the default value.
 ---
 ## Data Structure
 
