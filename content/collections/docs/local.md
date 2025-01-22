@@ -59,11 +59,11 @@ The address where you access the site will be different depending on your develo
 
 For example, if you're using [Valet][valet] then your site would be at `http://$project_name.test` and the Control Panel at `/cp`.
 
-If you don't have Valet or some other server set up, you can run `php artisan serve` to use the built-in server, then use the URL it provides, (which is typically `http://127.0.0.1:8000`).
+If you don't have Valet or some other server set up, you can run `php please serve` to use the built-in server, then use the URL it provides, (which is typically `http://127.0.0.1:8000`).
 
 ```cli
-$ php artisan serve
-Starting Laravel development server: http://127.0.0.1:8000
+$ php please serve
+Laravel development server started on http://127.0.0.1:8000/
 ```
 
 ## Troubleshooting
