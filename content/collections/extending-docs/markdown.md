@@ -132,7 +132,7 @@ If you need to provide a config to your custom parser, you can either [define it
 
 ```php
 Markdown::extend('special', $config, function ($parser) {
-//
+    //
 });
 ```
 :::
