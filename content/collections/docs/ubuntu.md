@@ -148,6 +148,8 @@ server {
     }
 
     location @static {
+        # Allow the browser (and a proxy) to cache static pages, Laravel wil overwrite it with "no-cache, private" by default if index.php needs to be hit.
+        # add_header Cache-Control "max-age=120, stale-while-revalidate=3600";
         try_files /static${uri}_$args.html $uri $uri/ /index.php?$args;
     }
 
