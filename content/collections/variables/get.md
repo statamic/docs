@@ -58,7 +58,7 @@ Be sure to escape these values with the `sanitize` modifier if you plan to use t
 ```
 ::
 
-Accessing keys dynamically in Antlers can be done by wrapping the key with `[]`.
+Accessing `GET` values with a variable key in Antlers can be done by wrapping the key with `[]`.
 
 ```antlers
 {{ show_key = "show" }}
