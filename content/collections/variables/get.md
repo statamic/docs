@@ -57,3 +57,17 @@ Be sure to escape these values with the `sanitize` modifier if you plan to use t
 {!! Statamic::modify(request()->get('jeggings'))->sanitize() !!}
 ```
 ::
+
+Accessing keys dynamically in Antlers can be done by wrapping the key with `[]`.
+
+```antlers
+{{ show_key = "show" }}
+{{ hide_key = "hide" }}
+{{ get[show_key] }}
+{{ get[hide_key] }}
+```
+
+```html
+pants
+jeggings
+```
