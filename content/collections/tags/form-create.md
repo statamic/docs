@@ -358,7 +358,7 @@ Each item in the `sections` array contains the following data configurable in th
 | `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
 
 
-## Conditional Fields 🆕
+## Conditional Fields
 
 You may conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once configured, by including the necessary front-end scripts and enabling JavaScript on the `form:create` tag, all of the conditional logic will Just Work™.
 
