@@ -26,7 +26,7 @@ parameters:
   -
     name: csrf
     type: boolean
-    description: When `false`, the hidden `name="_token"` attribute won't be added to the form so you can use other ways of providing the token. Defaults to `true`. 
+    description: When `false`, the hidden `name="_token"` attribute won't be added to the form so you can use other ways of providing the token. Defaults to `true`.
   -
     name: files
     type: boolean
@@ -106,30 +106,30 @@ Here we'll be creating a form to submit an entry in a `contact` form.
 ```
 ::tab blade
 ```blade
-<s:form:create
-  in="contact"
->
-  @if (count($errors) > 0)
-    <div class="bg-red-300 text-white p-2">
-      @foreach ($errors as $error)
-        {{ $error }}<br>
-      @endforeach
-    </div>
-  @endif
+<s:form:create in="contact">
 
-  @if ($success)
-    <div class="bg-green-300 text-white p-2">
-      {{ $success }}
-    </div>
-  @endif
+    @if (count($errors) > 0)
+        <div class="bg-red-300 text-white p-2">
+            @foreach ($errors as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>
+    @endif
 
-  <label>Email</label>
-  <input type="text" name="email" value="{{ old('email') }}" />
+    @if ($success)
+        <div class="bg-green-300 text-white p-2">
+            {{ $success }}
+        </div>
+    @endif
 
-  <label>Message</label>
-  <textarea name="message" rows="5">{{ old('message') }}</textarea>
+    <label>Email</label>
+    <input type="text" name="email" value="{{ old('email') }}" />
 
-  <button>Submit</button>
+    <label>Message</label>
+    <textarea name="message" rows="5">{{ old('message') }}</textarea>
+
+    <button>Submit</button>
+
 </s:form:create>
 ```
 ::
@@ -147,7 +147,7 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 ::tab blade
 ```blade
 <s:form:contact>
-  ...
+    ...
 </s:form:contact>
 ```
 ::
@@ -173,16 +173,14 @@ When you need to render a form that's selected via the [Form Fieldtype](/fieldty
 
 ::tab antlers
 ```antlers
-{{ form:create in="{ form_fieldtype:handle }" }}
+{{ form:create :in="form_fieldtype:handle" }}
     ...
 {{ /form:create }}
 ```
 ::tab blade
 ```blade
-<s:form:create
-  :in="$form_fieldtype->handle"
->
-  ...
+<s:form:create :in="$form_fieldtype->handle">
+    ...
 </s:form:create>
 ```
 ::
@@ -222,22 +220,22 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```blade
 <s:form:contact>
 
-  @foreach ($fields as $field)
-    <div class="p-2">
-      <label>
-        {{ $field['display'] }}
-        @if (in_array('required', $field['validate'] ?? []))
-          <sup class="text-red">*</sup>
-        @endif
-      </label>
-      <div class="p-1">{!! $field['field'] !!}</div>
-      @if ($field['error'])
-        <p class="text-gray-500">{{ $field['error'] }}</p>
-      @endif
-    </div>
-  @endforeach
+    @foreach ($fields as $field)
+        <div class="p-2">
+            <label>
+                {{ $field['display'] }}
+                @if (in_array('required', $field['validate'] ?? []))
+                    <sup class="text-red">*</sup>
+                @endif
+            </label>
+            <div class="p-1">{!! $field['field'] !!}</div>
+            @if ($field['error'])
+                <p class="text-gray-500">{{ $field['error'] }}</p>
+            @endif
+        </div>
+    @endforeach
 
-  <button>Submit</button>
+    <button>Submit</button>
 
 </s:form:contact>
 ```
@@ -286,10 +284,10 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 ::tab blade
 ```blade
 @foreach ($fields as $field)
-  <div class="mb-2">
-    <label class="block">{{ $field['display'] }}</label>
-    {!! $field['field'] !!}
-  </div>
+    <div class="mb-2">
+        <label class="block">{{ $field['display'] }}</label>
+        {!! $field['field'] !!}
+    </div>
 @endforeach
 ```
 ::
@@ -329,24 +327,23 @@ If you have defined multiple sections in your form's blueprint, you can loop ove
     {{ /sections }}
 
     <button>Submit</button>
- 
+
 {{ /form:contact }}
 ```
 ::tab blade
 ```blade
 <s:form:contact>
 
-  @foreach($sections as $section)
-    <fieldset>
-      <legend>{{ $section['display'] }}</legend>
+    @foreach($sections as $section)
+        <fieldset>
+            <legend>{{ $section['display'] }}</legend>
+            @foreach ($section['fields'] as $field)
+                ...
+            @endforeach
+        </fieldset>
+    @endforeach
 
-      @foreach ($section['fields'] as $field)
-        ...
-      @endforeach
-    </fieldset>
-  @endforeach
-
-  <button>Submit</button>
+    <button>Submit</button>
 
 </s:form:contact>
 ```
@@ -392,10 +389,8 @@ The next step is to enable the Alpine JS driver via the `js="alpine"` parameter.
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine"
->
-  ...
+<s:form:contact js="alpine">
+    ...
 </s:form:contact>
 ```
 ::
@@ -420,10 +415,10 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
 ::tab blade
 ```blade
 <template x-if="{{ $show_field['name'] }}">
-  <div class="p-2">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old('name') }}" x-model="name" />
-  </div>
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old('name') }}" x-model="name" />
+    </div>
 </template>
 ```
 ::
@@ -449,20 +444,14 @@ If you are [dynamically rendering your fields](#dynamic-rendering) using the `fi
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine"
->
-
-  @foreach ($fields as $field)
+@foreach ($fields as $field)
     <template x-if="{{ $field['show_field'] }}">
-      <div class="p-2">
-        <label>{{ $field['display'] }}</label>
-        <div class="p-1">{!! $field['field'] !!}</div>
-      </div>
+        <div class="p-2">
+            <label>{{ $field['display'] }}</label>
+            <div class="p-1">{!! $field['field'] !!}</div>
+        </div>
     </template>
-  @endforeach
-
-</s:form:contact>
+@endforeach
 ```
 ::
 
@@ -482,10 +471,8 @@ If you are using other Alpine components in your form or on your page, the inclu
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine:contact_form"
->
-  ...
+<s:form:contact js="alpine:contact_form">
+    ...
 </s:form:contact>
 ```
 ::
@@ -508,10 +495,10 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
 ::tab blade
 ```blade
 <template x-if="{{ $show_field['name'] }}">
-  <div class="p-2">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old('name') }}" x-model="contact_form.name" />
-  </div>
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old('name') }}" x-model="contact_form.name" />
+    </div>
 </template>
 ```
 ::
@@ -618,10 +605,8 @@ You can also pass comma-delimited options into the `js` parameter like so:
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="radjs:foo:bar"
->
-  ...
+<s:form:contact js="radjs:foo:bar">
+    ...
 </s:form:contact>
 ```
 ::
