@@ -88,7 +88,7 @@ cd {{ release }}
 git init
 git remote add origin git@github.com:your/remote-repository.git
 git fetch
-git branch --track master origin/master
+git branch --track main origin/main
 git reset HEAD
 ```
 
