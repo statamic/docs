@@ -189,7 +189,7 @@ This way you can let Control Panel users select which form should be used on an 
 
 ### Dynamically Rendering Fields
 
-Instead of hardcoding individual fields, you may loop through the `fields` array to render your blueprint's fields in a dynamic fashion.
+Instead of hardcoding individual fields, you may loop through the `fields` array using the [form:fields](/tags/form-fields) tag to render your blueprint's fields in a dynamic fashion.
 
 ::tabs
 
@@ -197,7 +197,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```antlers
 {{ form:contact }}
 
-    {{ fields }}
+    {{ form:fields }}
         <div class="p-2">
             <label>
                 {{ display }}
@@ -210,7 +210,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
                 <p class="text-gray-500">{{ error }}</p>
             {{ /if }}
         </div>
-    {{ /fields }}
+    {{ /form:fields }}
 
     <button>Submit</button>
 
@@ -220,7 +220,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```blade
 <s:form:contact>
 
-    @foreach ($fields as $field)
+    <s:form:fields>
         <div class="p-2">
             <label>
                 {{ $field['display'] }}
@@ -233,7 +233,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
                 <p class="text-gray-500">{{ $field['error'] }}</p>
             @endif
         </div>
-    @endforeach
+    </s:form:fields>
 
     <button>Submit</button>
 
@@ -274,21 +274,21 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 
 ::tab antlers
 ```antlers
-{{ fields }}
+{{ form:fields }}
     <div class="mb-2">
         <label class="block">{{ display }}</label>
         {{ field }}
     </div>
-{{ /fields }}
+{{ /form:fields }}
 ```
 ::tab blade
 ```blade
-@foreach ($fields as $field)
+<s:form:fields>
     <div class="mb-2">
         <label class="block">{{ $field['display'] }}</label>
         {!! $field['field'] !!}
     </div>
-@endforeach
+</s:form:fields>
 ```
 ::
 
@@ -320,9 +320,9 @@ If you have defined multiple sections in your form's blueprint, you can loop ove
     {{ sections }}
         <fieldset>
             <legend>{{ display }}</legend>
-            {{ fields }}
+            {{ form:fields }}
                 ...
-            {{ /fields }}
+            {{ /form:fields }}
         </fieldset>
     {{ /sections }}
 
@@ -337,9 +337,9 @@ If you have defined multiple sections in your form's blueprint, you can loop ove
     @foreach($sections as $section)
         <fieldset>
             <legend>{{ $section['display'] }}</legend>
-            @foreach ($section['fields'] as $field)
+            <s:form:fields :section="$section">
                 ...
-            @endforeach
+            </s:form:fields>
         </fieldset>
     @endforeach
 
@@ -433,25 +433,25 @@ If you are [dynamically rendering your fields](#dynamic-rendering) using the `fi
 
 ::tab antlers
 ```antlers
-{{ fields }}
+{{ form:fields }}
     <template x-if="{{ show_field }}">
         <div class="p-2">
             <label>{{ display }}</label>
             <div class="p-1">{{ field }}</div>
         </div>
     </template>
-{{ /fields }}
+{{ /form:fields }}
 ```
 ::tab blade
 ```blade
-@foreach ($fields as $field)
+<s:form:fields>
     <template x-if="{{ $field['show_field'] }}">
         <div class="p-2">
             <label>{{ $field['display'] }}</label>
             <div class="p-1">{!! $field['field'] !!}</div>
         </div>
     </template>
-@endforeach
+</s:form:fields>
 ```
 ::
 
