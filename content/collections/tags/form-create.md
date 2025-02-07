@@ -228,7 +228,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
                     <sup class="text-red">*</sup>
                 @endif
             </label>
-            <div class="p-1">{!! $field['field'] !!}</div>
+            <div class="p-1">{{ $field['field'] }}</div>
             @if ($field['error'])
                 <p class="text-gray-500">{{ $field['error'] }}</p>
             @endif
@@ -286,7 +286,7 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 <s:form:fields>
     <div class="mb-2">
         <label class="block">{{ $field['display'] }}</label>
-        {!! $field['field'] !!}
+        {{ $field['field'] }}
     </div>
 </s:form:fields>
 ```
@@ -448,7 +448,7 @@ If you are [dynamically rendering your fields](#dynamic-rendering) using the `fi
     <template x-if="{{ $field['show_field'] }}">
         <div class="p-2">
             <label>{{ $field['display'] }}</label>
-            <div class="p-1">{!! $field['field'] !!}</div>
+            <div class="p-1">{{ $field['field'] }}</div>
         </div>
     </template>
 </s:form:fields>
