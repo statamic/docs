@@ -50,7 +50,7 @@ Dominion
 Netrunner
 ```
 
-You can also pass an operator to the modifier, so you can do checks like "where not" and "where greater than". Under the hood, this uses [the `where` method of Laravel Collections](https://laravel.com/docs/11.x/collections#method-where), so you can use any operators it supports.
+You can also pass an operator to the modifier, so you can do checks like "where not" and "where greater than". Under the hood, this uses [the `where` method of Laravel Collections](https://laravel.com/docs/12.x/collections#method-where), so you can use any operators it supports.
 
 ```
 <h2>I hate...</h2>

@@ -111,7 +111,7 @@ Learn more about configuring Statamic for [multi-site](/multi-site) projects.
 
 You may provide translations for the field UI (such as the display text, instructions, select option labels, etc). This allows content editors to display the Control Panel in their preferred language, regardless of whether it's used in a multi-site setup.
 
-Field UI strings are run through [Laravel's translations](https://laravel.com/docs/11.x/localization) feature.
+Field UI strings are run through [Laravel's translations](https://laravel.com/docs/12.x/localization) feature.
 
 For example, you may have a field defined like this:
 

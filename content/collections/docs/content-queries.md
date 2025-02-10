@@ -13,7 +13,7 @@ These methods will work no matter which driver you're using — flat files, Eloq
 [Learn how Statamic can use different storage methods!](/extending/repositories)
 
 :::tip
-While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/11.x/queries), they are **completely separate implementations**.
+While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/12.x/queries), they are **completely separate implementations**.
 
 What follows is complete documentation on all available methods. If you need a method available in Laravel that we don't currently support, feel free to open a [feature request](https://github.com/statamic/ideas) or better yet, a [Pull Request](https://github.com/statamic/cms)!
 :::
@@ -498,7 +498,7 @@ Entry::query()->paginate(15);
 This will return an instance of `Illuminate\Pagination\LengthAwarePaginator` that you can use to assemble the pagination style of your choice.
 
 :::tip
-You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/11.x/pagination#paginator-instance-methods)in the Laravel docs.
+You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/12.x/pagination#paginator-instance-methods)in the Laravel docs.
 :::
 
 ## Chunking
@@ -514,7 +514,7 @@ Entry::query()->chunk(25, function($entries) {
 ```
 
 :::tip
-You can [learn more about chunking query results](https://laravel.com/docs/11.x/queries#chunking-results) in the Laravel docs.
+You can [learn more about chunking query results](https://laravel.com/docs/12.x/queries#chunking-results) in the Laravel docs.
 :::
 
 ## Lazy Streaming
@@ -528,7 +528,7 @@ Entry::query()->lazy(100)
 ```
 
 :::tip
-You can learn more about [lazily streaming query results](https://laravel.com/docs/11.x/queries#streaming-results-lazily) and [LazyCollections](https://laravel.com/docs/11.x/collections#lazy-collections) in the Laravel docs.
+You can learn more about [lazily streaming query results](https://laravel.com/docs/12.x/queries#streaming-results-lazily) and [LazyCollections](https://laravel.com/docs/12.x/collections#lazy-collections) in the Laravel docs.
 :::
 
 ## Repository Classes
