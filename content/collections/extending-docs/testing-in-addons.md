@@ -66,7 +66,7 @@ class ExampleTest extends TestCase
 }
 ```
 
-For more information on writing tests, please review the [Laravel Testing Documentation](https://laravel.com/docs/11.x/testing).
+For more information on writing tests, please review the [Laravel Testing Documentation](https://laravel.com/docs/12.x/testing).
 
 ### The Stache
 
