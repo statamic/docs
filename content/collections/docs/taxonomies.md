@@ -162,7 +162,7 @@ You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` 
 :::
 
 :::tip
-If your taxonomy name conflicts with a [tag](/tags), will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
+If your taxonomy name conflicts with a [tag](/tags), you will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
 
 For example, if your taxonomy is named `section`, there is also a [tag named section](/tags/section).
 
