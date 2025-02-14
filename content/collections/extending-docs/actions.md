@@ -3,7 +3,7 @@ title: Actions
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347227
-intro: Actions allow you perform tasks on one or more items. You can trigger actions by selecting multiple items in a listing, or using each item's contextual menu.
+intro: Actions allow you to perform tasks on one or more items. You can trigger actions by selecting multiple items in a listing, or using each item's contextual menu.
 stage: 1
 id: ba2e6172-b4dc-443b-8230-b770dec1423c
 ---
@@ -128,7 +128,7 @@ protected $dangerous = true;
 
 ## Context
 
-Each action may have additional contextual data passed to it depending on which listing its being used within. For example, you may find
+Each action may have additional contextual data passed to it depending on which listing it's being used within. For example, you may find
 the collection handle when used inside an entry listing, or the asset container handle when used in an asset listing
 
 ``` php
