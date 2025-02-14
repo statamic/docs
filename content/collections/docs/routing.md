@@ -92,9 +92,9 @@ Route::statamic('/{component}/{mode}', function ($component, $mode) {
 });
 ```
 
-By returning a `View` instance from a closure, Statamic will still apply [all the "magic"](#statamic-routes) like middleware, layout, globals, system variables, etc.
+By returning `view()` from a closure, Statamic will still apply [all the "magic"](#statamic-routes) like middleware, layout, globals, system variables, etc.
 
-_Note: If you don't return `View` instance, middleware will still get applied, but layout, globals, system variables, etc. will not be._
+_Note: If you don't return `view()`, middleware will still get applied, but layout, globals, system variables, etc. will not be. For example, returning an array would output JSON, just like it would with `Route::get()` in Laravel, but with Statamic's middlware stack applied._
 
 #### Dynamic Route Data
 
