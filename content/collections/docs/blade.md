@@ -12,7 +12,7 @@ Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/co
 
 ## How to Render a Template with Blade
 
-Instead of naming your views `myview.antlers.html` use `myview.blade.php` extension.
+Instead of naming your views `myview.antlers.html`, use `myview.blade.php` extension.
 
 ## View Data
 
@@ -100,7 +100,7 @@ If you use a method, it will give you a query builder and allow you to chain cla
 
 ### Cascade Directive
 
-When using blade components or rendering views loaded by non-Statamic routes/controllers the cascade data will be not avaliable by default. In these situations you can use the `@cascade` directive to populate the current scope with cascade data.
+When using blade components or rendering views loaded by non-Statamic routes/controllers, the cascade data will be not available by default. In these situations you can use the `@cascade` directive to populate the current scope with cascade data.
 
 It works in exactly the same way as the `@props` directive used in blade components, with the ability to require certain values and provide default fallback values:
 
@@ -348,7 +348,7 @@ The `value` helper function will handle the following scenarios for you:
 
 ## Layouts
 
-When Statamic attempts to render a URL (eg. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
+When Statamic attempts to render a URL (e.g. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
 
 When the _template_ is **not** an Antlers view, this rule doesn't apply. The layout is ignored, allowing you to use `@extends` the way you would expect.
 
