@@ -28,42 +28,42 @@ preferences:
 
 ### Available Translations
 
-| Language            | Code |
-|---------------------|------|
-| Arabic              | `ar` |
-| Azerbaijani         | `az` |
-| Czech               | `cs` |
-| Danish              | `da` |
-| German              | `de` |
+| Language            | Code    |
+|---------------------|---------|
+| Arabic              | `ar`    |
+| Azerbaijani         | `az`    |
+| Czech               | `cs`    |
+| Danish              | `da`    |
+| German              | `de`    |
 | German (Swiss)      | `de_CH` |
-| English             | `en` |
-| Spanish             | `es` |
-| Persian             | `fa` |
-| French              | `fr` |
-| Hungarian           | `hu` |
-| Indonesia           | `id` |
-| Italian             | `it` |
-| Japanese            | `ja` |
-| Malaysia            | `ms` |
-| Norwegian           | `nb` |
-| Dutch               | `nl` |
-| Polish              | `pl` |
-| Portuguese          | `pt` |
+| English             | `en`    |
+| Spanish             | `es`    |
+| Persian             | `fa`    |
+| French              | `fr`    |
+| Hungarian           | `hu`    |
+| Indonesian          | `id`    |
+| Italian             | `it`    |
+| Japanese            | `ja`    |
+| Malay               | `ms`    |
+| Norwegian           | `nb`    |
+| Dutch               | `nl`    |
+| Polish              | `pl`    |
+| Portuguese          | `pt`    |
 | Portuguese (Brazil) | `pt_BR` |
-| Russia              | `ru` |
-| Slovene             | `sl` |
-| Swedish             | `sv` |
-| Turkish             | `tr` |
-| Ukrainian           | `uk` |
-| Vietnamese          | `vi` |
+| Russian             | `ru`    |
+| Slovene             | `sl`    |
+| Swedish             | `sv`    |
+| Turkish             | `tr`    |
+| Ukrainian           | `uk`    |
+| Vietnamese          | `vi`    |
 | Chinese             | `zh_CN` |
 | Chinese (Taiwan)    | `zh_TW` |
 
-_Translations are community contributed so may you find them to be incomplete shortly after an update._
+_Translations are community contributed so you may find them to be incomplete shortly after an update._
 
 ## Translations not covered by Statamic
 
-Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your applications's translations.
+Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your application's translations.
 
 One example of this is on Statamic's authentication pages. Since it's using Laravel's built-in authentication under the hood, translations for any validation errors will be pulled from your app's `lang` or `resources/lang` directory.
 

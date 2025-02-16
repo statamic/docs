@@ -626,7 +626,7 @@ You can also pass comma-delimited options into the `js` parameter like so:
 ```
 ::
 
-Within your driver class, you'll be able to access `$this->options` to retrieve an array of options (ie. `['foo', 'bar']` in the example above).
+Within your driver class, you'll be able to access `$this->options` to retrieve an array of options (i.e. `['foo', 'bar']` in the example above).
 
 ### The Helpers.js Script
 

@@ -214,7 +214,7 @@ When using multi-word parameters, like `query_scope`, you must use the camelCase
 
 ### Using Explicit Parameter Setters
 
-If you need to set a parameter containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
+If you need to set a parameter containing a colon (i.e. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
 
 ```php
 Statamic::tag('collection:pages')->param('title:contains', 'pizza')

@@ -186,14 +186,14 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 ::tab antlers
 ```antlers
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 {{ form:submissions in="superfans" }}
   {{ message | markdown }}
 {{ /form:submissions }}
 ```
 ::tab blade
 ```blade
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 <s:form:submissions in="superfans">
   {!! Statamic::modify($message)->markdown() !!}
 </s:form:submissions>
@@ -417,7 +417,7 @@ email:
 
 ### Setting the "Subject" Dynamically
 
-You can set the set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
+You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
 
 ```yaml
 email:
@@ -517,7 +517,7 @@ fields:
 
 You have two methods available to you:
 
-First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
+First, you can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
 Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
@@ -540,7 +540,7 @@ Simple and effective spam prevention.
 
 The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
 
-Hide this field a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
+Hide this field by a method of your choosing (i.e. CSS), so your users won't see it but spam bots will just think it’s another field.
 
 For example:
 

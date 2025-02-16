@@ -25,7 +25,7 @@ You will also need to [enable the resources](#enable-resources) you want to be a
 
 ### Enable Resources
 
-You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/api.php` config:
+You can enable resources (i.e. Collections, Taxonomies, etc.) in your `config/statamic/api.php` config:
 
 ```php
 'resources' => [
@@ -37,7 +37,7 @@ You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/sta
 
 ### Enable Specific Sub-Resources
 
-If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
+If you want more granular control over which sub-resources are enabled within a resource type (i.e. enabling specific Collection queries only), you can use array syntax:
 
 ```php
 'resources' => [
@@ -108,7 +108,7 @@ For security, [filtering](#filtering) is disabled by default. To enable, you'll 
 ],
 ```
 
-For endpoints that don't have sub-resources (ie. users), you can define `allowed_filters` at the top level of that resource config:
+For endpoints that don't have sub-resources (i.e. users), you can define `allowed_filters` at the top level of that resource config:
 
 ```php
 'resources' => [
@@ -126,7 +126,7 @@ You may filter results by using the `filter` query parameter.
 /endpoint?filter[{field}:{condition}]={value}
 ```
 
-You may use the [conditions](/conditions) available to the collection tag. eg. `contains`, `is`, `isnt` (or `not`), etc. For example:
+You may use the [conditions](/conditions) available to the collection tag. e.g. `contains`, `is`, `isnt` (or `not`), etc. For example:
 
 ``` url
 /endpoint?filter[title:contains]=awesome&filter[featured]=true
@@ -272,7 +272,7 @@ Gets entries within a collection.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with a `site` [filter](#filtering) (i.e. `&filter[site]=fr`).
 :::
 
 
@@ -388,7 +388,7 @@ Gets terms in a taxonomy.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (i.e. `&filter[site]=fr`).
 :::
 
 ## Taxonomy Term
@@ -429,7 +429,7 @@ Gets all globals.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), you can select the site using the `site` parameter (ie. `&site=fr`).
+If you are using [Multi-Site](/multi-site), you can select the site using the `site` parameter (i.e. `&site=fr`).
 :::
 
 ## Global
@@ -663,7 +663,7 @@ If you need a more intricate caching solution, you may reference a custom cache 
 ],
 ```
 
-Be sure to extend `Statamic\API\AbstractCacher` and implement the required methods. You can access custom config via the `config()` method, ie. `$this->config('foo')`.
+Be sure to extend `Statamic\API\AbstractCacher` and implement the required methods. You can access custom config via the `config()` method, i.e. `$this->config('foo')`.
 
 ```php
 use Statamic\API\AbstractCacher;

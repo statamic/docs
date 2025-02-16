@@ -26,7 +26,7 @@ User::computed('balance', function ($user, $value) {
 
 ### On Entry Instances
 
-Or maybe you wish to return a `shares` count on entries within your `articles` collection using 3rd party social media API:
+Or maybe you wish to return a `shares` count on entries within your `articles` collection using a 3rd party social media API:
 
 ```php
 use Statamic\Facades\Collection;
@@ -71,7 +71,7 @@ You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade
 
 ## Getting Computed Values
 
-Once configured, you can simply access your computed values as properties on your instances (ie. `$user->balance` or `$entry->shares`).
+Once configured, you can simply access your computed values as properties on your instances (i.e. `$user->balance` or `$entry->shares`).
 
 ### Showing Computed Values in the Control Panel
 

@@ -163,7 +163,7 @@ things like the dirty state and events.
 
 | Event | Description |
 |-------|-------------|
-| `updated` | Whenever the values have changed. ie. When a field is edited. The payload contains all the values. This event is used by `v-model`.
+| `updated` | Whenever the values have changed. i.e. When a field is edited. The payload contains all the values. This event is used by `v-model`.
 
 ### Methods
 

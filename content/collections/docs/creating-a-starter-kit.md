@@ -85,7 +85,7 @@ If you plan to [make your Starter Kit updatable](#making-starter-kits-updatable)
 ```
 
 :::tip
-Ths `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
+This `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
 :::
 
 ## Exporting
@@ -161,7 +161,7 @@ This presents a choice to the user, to confirm whether or not to install this mo
     <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
 </figure>
 
-These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `dependencies`, etc.).
+These modules are compatible with the same config options that you use at the top level of your config file (i.e. `export_paths`, `dependencies`, etc.).
 
 ```yaml
 modules:

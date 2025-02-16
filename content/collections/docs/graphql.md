@@ -15,7 +15,7 @@ To enable the GraphQL API, add the following to your `.env` file:
 STATAMIC_GRAPHQL_ENABLED=true
 ```
 
-Or you can enable for all environments in `config/statamic/graphql.php`:
+Or you can enable it for all environments in `config/statamic/graphql.php`:
 
 ```php
 'enabled' => true,
@@ -33,7 +33,7 @@ If you publish the underlying [package's](#laravel-package) config, the query ro
 
 ### Enable Resources
 
-You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/graphql.php` config:
+You can enable resources (i.e. Collections, Taxonomies, etc.) in your `config/statamic/graphql.php` config:
 
 ```php
 'resources' => [
@@ -45,7 +45,7 @@ You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/sta
 
 ### Enable Specific Sub-Resources
 
-If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
+If you want more granular control over which sub-resources are enabled within a resource type (i.e. enabling specific Collection queries only), you can use array syntax:
 
 ```php
 'resources' => [
@@ -1066,7 +1066,7 @@ For security, [filtering](#filtering) is disabled by default. To enable, you'll 
 ],
 ```
 
-For queries that don't have sub-resources (ie. users), you can define `allowed_filters` at the top level of that resource config:
+For queries that don't have sub-resources (i.e. users), you can define `allowed_filters` at the top level of that resource config:
 
 ```php
 'resources' => [
@@ -1525,7 +1525,7 @@ EntriesQuery::auth(function () {
 
 You can add fields to certain types by using the `addField` method on the facade.
 
-The method expects the [type](#types) name, the field name, and a closure that return a GraphQL field definition array.
+The method expects the [type](#types) name, the field name, and a closure that returns a GraphQL field definition array.
 
 For example, if you wanted to include a thumbnail from an asset field named `image`, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
 

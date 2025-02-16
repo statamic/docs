@@ -9,7 +9,7 @@ template: page
 
 Statamic provides a unique approach to data inheritance. The value of any given variable in your views can depend on the URL you're on. If a value of a variable doesn't exist on an entry URL, Statamic will check for a fallback value. If that fallback doesn't exist, it will fall back further, and so on. If it never finds anything, the value is `null`.
 
-We call this fallback logic "the cascade", because the value of any given variable "cascades" down from the "top" until it finds where its defined.
+We call this fallback logic "the cascade", because the value of any given variable "cascades" down from the "top" until it finds where it's defined.
 
 This approach allows you to create views that are less repetitive and are easier to read because a "missing" variable will never throw an error, it will only ever be null.
 

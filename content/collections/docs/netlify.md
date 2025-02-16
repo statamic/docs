@@ -65,9 +65,9 @@ The next step is to configure your site's settings and deployment configuration.
     - Otherwise just use `php please ssg:generate`
 4. Set the publish directory to `storage/app/static`
 5. Add `APP_KEY` env variable, by running `php artisan key:generate` locally, and copying from your `.env`
-    - ie. `APP_KEY` `your-app-key-value`
+    - i.e. `APP_KEY` `your-app-key-value`
 6. Add `APP_URL` environment variable after your site has a configured domain
-    - ie. `APP_URL` `https://thats-numberwang-47392.netlify.com`
+    - i.e. `APP_URL` `https://thats-numberwang-47392.netlify.com`
 
 Instead of doing all of this manually, you can also use a `netlify.toml` file at the base of your project. Netlify automatically detects the file and sets everything up for you. Feel free to use [this one](https://gist.github.com/joshuablum/845d6af82c710a9b9d8f1a57618f213d) as a reference or starting point.
 

@@ -156,27 +156,27 @@ For more advanced comparisons, several operators and right-hand-side literals/op
 
 Available operators include:
 
-| Operator | Description |
-| :--- | :--- |
-| `is` `equals` `==` | Loose equality comparison (inferred if no operator is used). |
-| `not` `isnt` `!=` | Loose inequality comparison. |
-| `===` | Strict equality comparison. |
-| `!==` | Strict inequality comparison. |
-| `>` | Greater than comparison. |
-| `>=` | Greater than or equal to comparison. |
-| `<` | Less than comparison. |
-| `<=` | Less than or equal to comparison. |
-| `contains` `includes` | Check if array contains a value, or if a string contains a sub-string value. |
+| Operator                      | Description                                                                                                                                   |
+|:------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
+| `is` `equals` `==`            | Loose equality comparison (inferred if no operator is used).                                                                                  |
+| `not` `isnt` `!=`             | Loose inequality comparison.                                                                                                                  |
+| `===`                         | Strict equality comparison.                                                                                                                   |
+| `!==`                         | Strict inequality comparison.                                                                                                                 |
+| `>`                           | Greater than comparison.                                                                                                                      |
+| `>=`                          | Greater than or equal to comparison.                                                                                                          |
+| `<`                           | Less than comparison.                                                                                                                         |
+| `<=`                          | Less than or equal to comparison.                                                                                                             |
+| `contains` `includes`         | Check if array contains a value, or if a string contains a sub-string value.                                                                  |
 | `contains_any` `includes_any` | Check if array contains any of a comma-separated list of values, or if a string contains any of a comma-separated list of sub-strings values. |
 
 Available right-hand-side literals/options include:
 
-| Literal / Option | Description |
-| :--- | :--- |
-| `empty` | Will intelligently check if value is empty (ie. `null`, `''`, `[]`, or `{}`). |
-| `null` | Will be evaluated as a **literal** `null`. |
-| `true` | Will be evaluated as a **literal** `true`. |
-| `false` | Will be evaluated as a **literal** `false`. |
+| Literal / Option | Description                                                                    |
+|:-----------------|:-------------------------------------------------------------------------------|
+| `empty`          | Will intelligently check if value is empty (i.e. `null`, `''`, `[]`, or `{}`). |
+| `null`           | Will be evaluated as a **literal** `null`.                                     |
+| `true`           | Will be evaluated as a **literal** `true`.                                     |
+| `false`          | Will be evaluated as a **literal** `false`.                                    |
 
 ## Multiple Conditions
 
@@ -207,7 +207,7 @@ if:
 
 ## Field Context
 
-By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access parent field values by prepending your field with `$parent`:
+By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (e.g. if you are in a replicator, trying to compare against fields outside of the replicator), you can access parent field values by prepending your field with `$parent`:
 
 ```yaml
 if:
