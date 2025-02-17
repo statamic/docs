@@ -63,7 +63,7 @@ If you want to override the above-mentioned field condition data flow behaviour,
 
 [Blueprints](/blueprints) determine what fields are shown in your publish forms. You can configure the fields order, each field's width, and group them into sections and tabs.
 
-Blueprints are attached to collections, taxonomies, global sets, assets, users, and even forms, all which help to determine their content schema.
+Blueprints are attached to collections, taxonomies, global sets, assets, users, and even forms, all of which help to determine their content schema.
 
 [Fieldsets](/fieldsets) are used to store and organize **reusable fields**. Blueprints can reference fields or entire fieldsets, helping you keep your configurations nice and [DRY][dry].
 

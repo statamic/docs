@@ -435,7 +435,7 @@ You can assign sub-expressions or interpolated statements to variables too. In t
 
 All variables are considered "truthy" if they exist _and_ contain a value. Variables that _don't_ exist, contain an empty string, or are structured and empty (e.g. an empty array or object) are considered "falsy".
 
-This is a powerful pattern that can help keep template logic simple and uncluttered. For instance, you can set a series of "fallback" variables all in one expression, allowing you to have default values and optionally override them instead of having to a bunch of `if`/`else` checks.
+This is a powerful pattern that can help keep template logic simple and uncluttered. For instance, you can set a series of "fallback" variables all in one expression, allowing you to have default values and optionally override them instead of having to do a bunch of `if`/`else` checks.
 
 ```
 <!-- Which one is better? -->

@@ -34,7 +34,7 @@ If you're using a [Markdown field](/fieldtypes/markdown), the output will be as 
 
 ### Without Augmentation
 
-While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will be exactly the same as the as input:
+While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will be exactly the same as the input:
 
 ```text
   ## How to Jump Higher

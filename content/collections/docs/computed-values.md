@@ -26,7 +26,7 @@ User::computed('balance', function ($user, $value) {
 
 ### On Entry Instances
 
-Or maybe you wish to return a `shares` count on entries within your `articles` collection using 3rd party social media API:
+Or maybe you wish to return a `shares` count on entries within your `articles` collection using a 3rd party social media API:
 
 ```php
 use Statamic\Facades\Collection;

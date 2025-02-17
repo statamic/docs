@@ -57,7 +57,7 @@ Statamic.booting(() => {
 
 Your component has only two requirements.
 
-- It must expect a `value` prop. This how it "gets" the value.
+- It must expect a `value` prop. This is how it "gets" the value.
 - It must emit an `input` event whenever the value updates. This is how it tells the form the value has changed.
 
 Other than that, your component can do whatever you like!
@@ -103,7 +103,7 @@ export default {
 ```
 
 #### What's happening?
-1. The `Fieldtype` mixin is providing an `value` prop containing the initial value of the field and it passes it along to a text field.
+1. The `Fieldtype` mixin is providing a `value` prop containing the initial value of the field and it passes it along to a text field.
 2. When you type into the text field, an `updateDebounced` method is called which emits the `input` event with the new value.
 
 Those are the two requirements satisfied. ✅
@@ -131,7 +131,7 @@ Of course, you may add functionality to it, outlined below.
 
 ## Fieldtype Icon
 
-You can use an existing SVG icon from Statamic's `resources/svg` directory by passing it's name into an `$icon` class variable, by returning a full SVG as a string, or returning it as a string from the `icon()` method.
+You can use an existing SVG icon from Statamic's `resources/svg` directory by passing its name into an `$icon` class variable, by returning a full SVG as a string, or returning it as a string from the `icon()` method.
 
 ```php
 <?php
@@ -231,7 +231,7 @@ return this.config.mode; // regular
 | **instructions** | Text shown underneath the display label. Supports Markdown. |
 | **type** | Name of the fieldtype used to manage the config option. |
 | **default** | An optional default value. |
-| **width*
+| **width** | The field's width. |
 | ***other*** | Some fieldtypes have additional configuration options available. |
 
 :::tip
