@@ -23,10 +23,10 @@ If you are using Laravel's `Http` facade to make your requests, you can use the 
 ```php
 Http::acceptJson()
   ->withToken($token)
-  ->post('https://statamic.com/v1/api/sites, $payload);
+  ->post('https://statamic.com/v1/api/sites', $payload);
 ```
 
-_*For more info, read more about [headers](https://laravel.com/docs/11.x/http-client#headers) and [bearer tokens](https://laravel.com/docs/11.x/http-client#bearer-tokens) in Laravel._
+_*For more info, read more about [headers](https://laravel.com/docs/11.x/http-client#headers) and [bearer tokens](https://laravel.com/docs/11.x/http-client#bearer-tokens) in Laravel.*_
 
 ## Endpoints
 

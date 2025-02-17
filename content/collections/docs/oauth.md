@@ -13,7 +13,7 @@ Statamic supports OAuth authentication via [Laravel Socialite](https://github.co
 
 The [Socialite Providers][socialite-providers] Github organization contains over 100 additional pre-built providers that you can take advantage of as well.
 
-If you require a provider not on the list, (perhaps you need a custom one for your own application) you may [create your own provider](#custom-providers).
+If you require a provider not on the list (perhaps you need a custom one for your own application), you may [create your own provider](#custom-providers).
 
 ## Installing Socialite
 
@@ -108,7 +108,7 @@ When you create your OAuth application, you will need to provide the callback UR
 
 ### User Flow
 
-By default, once as user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
+By default, once a user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
 They will then be automatically logged into your site with the Statamic account.
 
 Additionally, any user data from the provider will be merged into that user's account.

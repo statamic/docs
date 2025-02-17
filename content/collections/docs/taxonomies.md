@@ -11,7 +11,7 @@ related_entries:
 ---
 ## Overview
 
-Taxonomies give you the ability to tag your entries and then fetch and sort all the entries who share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
+Taxonomies give you the ability to tag your entries and then fetch and sort all the entries that share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
 
 Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 

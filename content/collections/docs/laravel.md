@@ -12,7 +12,7 @@ There are many reasons why you might want to install Statamic into an existing L
 
 - handle all the marketing and "logged out" content for a SaaS app
 - add an easy-to-manage blog the whole team can update
-- manage existing data kinda like [Laravel Nova](https://nova.laravel.com/) (yes, [you can do that](/extending/repositories)),
+- manage existing data kinda like [Laravel Nova](https://nova.laravel.com/) (yes, [you can do that](/extending/repositories))
 - run as a headless CMS and provide a REST API to your data
 - be a special comfort package for those tough projects even when you don't need it
 
@@ -94,7 +94,7 @@ If you'd prefer to store content in a database instead, please follow the ["Stor
 
 ### Users
 
-If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) follow those steps.
+If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) and follow those steps.
 
 Otherwise, the [Storing User Records](/users#storage) page should have instructions for the most common scenarios.
 
