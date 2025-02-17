@@ -130,7 +130,7 @@ For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will 
 
 ## Disable Statamic Routes
 
-If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting in `config/statamic/routes.php`.
+If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting it in `config/statamic/routes.php`.
 
 ``` php
 // Lemme do it my way

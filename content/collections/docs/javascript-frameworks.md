@@ -104,7 +104,7 @@ Here is a simple example component that fetches data using the asynchronous `cre
       try {
         const res = await fetch('/api/collections/pages/entries/home'); // Get the data from the API
         const { data } = await res.json() // Convert it to JSON
-        this.pageData = data; // Assign the data to the components Data
+        this.pageData = data; // Assign the data to the component Data
       } catch (e) {
         // Handle your errors
       }

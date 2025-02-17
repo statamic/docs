@@ -140,7 +140,7 @@ RewriteRule ^ index.php [L]
 
 ### Nginx
 
-On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slighly different place depending on your server setup.
+On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slightly different place depending on your server setup.
 
 Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
 
@@ -400,7 +400,7 @@ class CustomExcluder implements UrlExcluder
 
 ## Invalidation
 
-A statically cached page will be served until it is invalidated. You have a several options for how to invalidate your cache.
+A statically cached page will be served until it is invalidated. You have several options for how to invalidate your cache.
 
 ### Time Limit
 
@@ -486,7 +486,7 @@ For example, if you schedule an entry for Friday at 8am, and you have the schedu
 
 ### Custom Invalidator Class
 
-You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
+You can also specify a custom invalidator class to **programmatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
 return [

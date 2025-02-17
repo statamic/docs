@@ -15,7 +15,7 @@ To enable the REST API, add the following to your `.env` file:
 STATAMIC_API_ENABLED=true
 ```
 
-Or you can enable for all environments in `config/statamic/api.php`:
+Or you can enable it for all environments in `config/statamic/api.php`:
 
 ```php
 'enabled' => true,
@@ -578,7 +578,7 @@ The `path` in the URL should be the relative path from the container's root.
 
 ## Customizing Resources
 
-By default the resources generally use the item's [Augmented](/augmentation) data.
+By default, the resources generally use the item's [Augmented](/augmentation) data.
 
 You are free to override the resource classes with your own, in turn letting you customize the responses.
 

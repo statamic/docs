@@ -23,7 +23,7 @@ We envision Starter Kits as a great way to "skip ahead" in the usual development
 The best way to find Starter Kits is by exploring the [Statamic Marketplace](https://statamic.com/marketplace).
 
 <figure>
-    <img src="https://statamic.com/images/storage/products/HRU3TVeiAnVlzRecp8G6pUiYGagWTvWzoh7ZWC27.jpeg" alt="Podcaster – a Statatmic Starter Kit">
+    <img src="https://statamic.com/images/storage/products/HRU3TVeiAnVlzRecp8G6pUiYGagWTvWzoh7ZWC27.jpeg" alt="Podcaster – a Statamic Starter Kit">
     <figcaption>This is <a class="font-bold text-blue-dark no-underline" href="https://statamic.com/starter-kits/statamic/podcaster">Podcaster</a> — a Starter Kit for podcasters.</figcaption>
 </figure>
 

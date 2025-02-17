@@ -147,7 +147,7 @@ For example, you may want to have a toggle field that controls whether an entry 
 }
 ```
 
-Now, only published entries that dont have the `exclude_from_search` toggle field enabled will be indexed.
+Now, only published entries that don't have the `exclude_from_search` toggle field enabled will be indexed.
 
 
 :::tip Heads up

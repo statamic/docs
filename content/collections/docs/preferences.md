@@ -46,7 +46,7 @@ Since a user may have multiple roles, they will inherit the preferences of their
 
 ## Storage
 
-Default preferences are stored in `resources/preferences.yaml` as simple array.
+Default preferences are stored in `resources/preferences.yaml` as a simple array.
 
 ```yaml
 locale: en
