@@ -72,7 +72,7 @@ public function index()
 ```
 
 Now, `myview` will be injected into `mylayout`'s `template_content` variable.
-Anything provided to `with` (e.g. `title`) will be available in both views.
+Anything provided to `with` (eg. `title`) will be available in both views.
 
 If you want to make an entry's content available in your view, you can use the `cascadeContent` method:
 

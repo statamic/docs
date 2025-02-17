@@ -13,9 +13,9 @@ You can use the `<slugify>` component to generate a slug based off another prope
 </slugify>
 ```
 
-When the value of the `from` prop changes (i.e. the `title` property), it will update the `slug` property.
+When the value of the `from` prop changes (ie. the `title` property), it will update the `slug` property.
 
-If you update the slug manually (i.e. by typing in the field), the component will realize, and prevent any further automatic slug generation.
+If you update the slug manually (ie. by typing in the field), the component will realize, and prevent any further automatic slug generation.
 
 If you want underscores instead of dashes, you can pass in `separator="_"`.
 

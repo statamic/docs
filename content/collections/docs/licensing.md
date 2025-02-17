@@ -75,7 +75,7 @@ When Statamic calls home we use a series of rules to determine if the domain itâ
 
 If any of the following rules match, the domain is considered _not public_ (letting you stay in Trial Mode)
 
-- Is it a single segment? e.g. `localhost`
+- Is it a single segment? eg. `localhost`
 - Is it an IP address?
 - Does it use a port other than `80` or `443`?
 - Does it have a dev-related subdomain? `test.`, `testing.`, `sandbox.`,  `local.`, `dev.`, `stage.`, `staging.`, or `statamic.`

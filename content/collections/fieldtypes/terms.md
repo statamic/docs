@@ -37,7 +37,7 @@ Taxonomies are usually relationships established on the collection-configuration
 
 ## Data Structure
 
-If the field is being used for taxonomizing your content (i.e. the field name matches the taxonomy handle), the term's _slugs_ will be saved.
+If the field is being used for taxonomizing your content (ie. the field name matches the taxonomy handle), the term's _slugs_ will be saved.
 
 ``` yaml
 wildlife:

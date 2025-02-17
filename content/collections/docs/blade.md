@@ -214,7 +214,7 @@ When using multi-word parameters, like `query_scope`, you must use the camelCase
 
 ### Using Explicit Parameter Setters
 
-If you need to set a parameter containing a colon (i.e. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
+If you need to set a parameter containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
 
 ```php
 Statamic::tag('collection:pages')->param('title:contains', 'pizza')
@@ -348,7 +348,7 @@ The `value` helper function will handle the following scenarios for you:
 
 ## Layouts
 
-When Statamic attempts to render a URL (e.g. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
+When Statamic attempts to render a URL (eg. an entry), two views are combined. A template gets injected into a layout's `template_content` variable.
 
 When the _template_ is **not** an Antlers view, this rule doesn't apply. The layout is ignored, allowing you to use `@extends` the way you would expect.
 

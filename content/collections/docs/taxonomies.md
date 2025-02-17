@@ -45,25 +45,25 @@ URLs use slugs with dashes, and views use handles with underscores.
 
 - **Global Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
-  - Accessible at `/{taxonomy-slug}` (e.g. `/tags`)
-  - The `{taxonomy_handle}/index` view will be used (e.g. `tags/index.antlers.html`)
+  - Accessible at `/{taxonomy-slug}` (eg. `/tags`)
+  - The `{taxonomy_handle}/index` view will be used (eg. `tags/index.antlers.html`)
 - **Global Term details**
   - Display the details of the term, so you can list the entries.
-  - Accessible at `/{taxonomy-slug}/{term-slug}` (e.g. `/tags/t-shirts`)
-  - The `{taxonomy_handle}/show` view will be used. (e.g. `tags/show.antlers.html`)
+  - Accessible at `/{taxonomy-slug}/{term-slug}` (eg. `/tags/t-shirts`)
+  - The `{taxonomy_handle}/show` view will be used. (eg. `tags/show.antlers.html`)
 
 For each taxonomy [assigned to a collection](#collections) you will also get these routes:
 
 - **Collection Taxonomy Details**
   - Display the details of the taxonomy, so you can list the terms.
   - Only terms that have been used in entries in the collection will be displayed.
-  - Accessible at `/{collection-url}/{taxonomy-slug}` (e.g. `/products/tags`)
-  - The `{collection_handle}/{taxonomy_handle}/index` view will be used (e.g. `products/tags/index.antlers.html`)
+  - Accessible at `/{collection-url}/{taxonomy-slug}` (eg. `/products/tags`)
+  - The `{collection_handle}/{taxonomy_handle}/index` view will be used (eg. `products/tags/index.antlers.html`)
 - **Collection Term details**
   - Display the details of the term, so you can list the entries.
   - Only entries that exist in the collection will be displayed.
-  - Accessible at `/{collection-url}/{taxonomy-slug}/{term-slug}` (e.g. `/products/tags/t-shirts`)
-  - The `{collection_handle}/{taxonomy_handle}/show` view will be used. (e.g. `products/tags/show.antlers.html`)
+  - Accessible at `/{collection-url}/{taxonomy-slug}/{term-slug}` (eg. `/products/tags/t-shirts`)
+  - The `{collection_handle}/{taxonomy_handle}/show` view will be used. (eg. `products/tags/show.antlers.html`)
 
 ## Term Values and Slugs
 
@@ -136,7 +136,7 @@ Awesome, /tags/awesome, awesome, etc
 Sauce, /tags/sauce, sauce, etc
 ```
 
-When the collection can be inferred, the `url` and `permalink` values will include the collection's URL. (e.g. `/blog/tags/awesome` instead of just `/tags/awesome`)
+When the collection can be inferred, the `url` and `permalink` values will include the collection's URL. (eg. `/blog/tags/awesome` instead of just `/tags/awesome`)
 - ✅ Looping through tags on an entry's page.
 - ✅ Looping through tags while inside a collection tag pair.
 - ✅ Looping through terms in a taxonomy tag pair, using the collection parameter.
@@ -158,7 +158,7 @@ When on a [taxonomy route](#routing), you can list the terms by using a `terms` 
 ```
 
 :::tip
-You can replace the `terms` tag with the name of the taxonomy. e.g. `{{ tags }}` or `{{ categories }}`
+You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` or `{{ categories }}`
 :::
 
 :::tip
@@ -181,7 +181,7 @@ For example, if your taxonomy is named `section`, there is also a [tag named sec
 ```
 
 :::tip
-You can replace the `terms` tag with the name of the taxonomy. e.g. `$tags` or `$categories`
+You can replace the `terms` tag with the name of the taxonomy. eg. `$tags` or `$categories`
 :::
 ::
 

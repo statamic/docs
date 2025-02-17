@@ -18,9 +18,9 @@ Deployments are triggered by committing to Git and pushing to GitHub.
 - Set build command to `./build.sh`
 - Set output directory to `storage/app/static`
 - Add `APP_KEY` env variable, by running `php artisan key:generate` locally, and copying from your `.env`
-    - i.e. `APP_KEY` `your-app-key-value`
+    - ie. `APP_KEY` `your-app-key-value`
 - Add `APP_URL` environment variable after your site has a configured domain
-    - i.e. `APP_URL` `https://thats-numberwang-47392.vercel.app`
+    - ie. `APP_URL` `https://thats-numberwang-47392.vercel.app`
 
 #### Example Build Script
 

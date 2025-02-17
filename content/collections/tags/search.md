@@ -52,7 +52,7 @@ parameters:
   -
     name: page_name
     type: 'string *page*'
-    description: 'The query string variable used to store the page number (i.e. `?page=`).'
+    description: 'The query string variable used to store the page number (ie. `?page=`).'
     required: false
   -
     name: on_each_side

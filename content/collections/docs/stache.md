@@ -103,14 +103,14 @@ entry-id-2: Entry Two
 
 ### Default indexes
 
-All stores will have a number of predefined indexes, like id and path. Some stores will have their own predefined indexes. e.g. Entry stores will also have title, slug, uri, etc.
+All stores will have a number of predefined indexes, like id and path. Some stores will have their own predefined indexes. eg. Entry stores will also have title, slug, uri, etc.
 
 ### When does indexing happen?
 
 Indexes will only be created when needed, when a query is performed.
 
 When saving an item, its corresponding values will be updated in each of its store's indexes.
-e.g. An entry's title will be inserted into the title index, its slug into the slug index, and so on.
+eg. An entry's title will be inserted into the title index, its slug into the slug index, and so on.
 
 When deleting, it will be removed from each index.
 

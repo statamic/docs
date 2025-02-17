@@ -261,7 +261,7 @@ To create your custom protection driver, you should extend the `Statamic\Auth\Pr
 The protect method should typically:
 
   - Call `abort(403)` to deny access.
-  - Call `abort(redirect($url))` to redirect somewhere (e.g. how the auth driver redirects to a login page)
+  - Call `abort(redirect($url))` to redirect somewhere (eg. how the auth driver redirects to a login page)
   - Do nothing, which would allow access.
 
 Here's a silly example that will randomly allow or deny access:
@@ -288,7 +288,7 @@ Within this class, you have a number of properties available to you.
 $this->scheme; // The name of the scheme.
 $this->config; // The configuration array of the scheme.
 $this->url;    // The URL the protection was triggered on.
-$this->data;   // The data object (e.g. the Entry) being protected.
+$this->data;   // The data object (eg. the Entry) being protected.
 ```
 
 ### Registering the Driver

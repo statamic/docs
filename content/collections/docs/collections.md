@@ -368,7 +368,7 @@ A particularly useful example of when you might want to do this is if you need a
 The following redirects are supported:
 - external links (starting with `http`)
 - internal links (starting with `/`)
-- other entries or terms (e.g. `entry::id-of-entry` or `term::id-of-term`)
+- other entries or terms (eg. `entry::id-of-entry` or `term::id-of-term`)
 - its first child page (`@child`) - If there are no child pages you will get a 404
 - a `404` response
 

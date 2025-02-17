@@ -71,7 +71,7 @@ You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade
 
 ## Getting Computed Values
 
-Once configured, you can simply access your computed values as properties on your instances (i.e. `$user->balance` or `$entry->shares`).
+Once configured, you can simply access your computed values as properties on your instances (ie. `$user->balance` or `$entry->shares`).
 
 ### Showing Computed Values in the Control Panel
 

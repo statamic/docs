@@ -171,7 +171,7 @@ If you would like to use a provider not natively supported by Socialite, you sho
 
 If your OAuth provider isn’t already available in Socialite or [SocialiteProviders][socialite-providers], you may create your own.
 
-To create your own OAuth provider, you should make your own SocialiteProvider-ready provider. All that's needed is the event handler (e.g. `DropboxExtendSocialite.php`) and the provider (e.g. `Dropbox.php`).
+To create your own OAuth provider, you should make your own SocialiteProvider-ready provider. All that's needed is the event handler (eg. `DropboxExtendSocialite.php`) and the provider (eg. `Dropbox.php`).
 
 Follow the [third party installation steps](#third-party-providers), but skip the Composer bits. You can just keep the classes somewhere in your project.
 

@@ -75,7 +75,7 @@ parameters:
   -
     name: page_name
     type: 'string *page*'
-    description: 'The query string variable used to store the page number (i.e. `?page=`).'
+    description: 'The query string variable used to store the page number (ie. `?page=`).'
     required: false
   -
     name: on_each_side
@@ -403,7 +403,7 @@ The `paginate` variable will become available to you. This is an array containin
 | `prev_page` |	The URL to the previous paginated page.
 | `total_items` |	The total number of entries.
 | `total_pages` |	The number of paginated pages.
-| `current_page` |	The current paginated page. (i.e. the x in the ?page=x param)
+| `current_page` |	The current paginated page. (ie. the x in the ?page=x param)
 | `auto_links` |	Outputs an HTML list of paginated links.
 | `links` |	Contains data for you to construct a custom list of links.
 | `links:all` |	An array of all the pages. You can loop over this and output {{ url }} and {{ page }}.

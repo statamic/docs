@@ -540,7 +540,7 @@ Simple and effective spam prevention.
 
 The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
 
-Hide this field by a method of your choosing (i.e. CSS), so your users won't see it but spam bots will just think it’s another field.
+Hide this field by a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
 For example:
 
