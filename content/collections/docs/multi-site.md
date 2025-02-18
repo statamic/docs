@@ -316,3 +316,7 @@ Indicate the current language of the site by setting the `lang` attribute on you
 ## Static Caching
 
 If your multi-site should use static caching, you will also need to add additional config parameters and different server rewrite rules. Please refer to the related section of the [static caching documentation](/static-caching#multisite) for the correct settings.
+
+## Enabling Fields
+
+By default, your existing fields won't be enabled for multi-site editing. To enable a field to be editable within another site, navigate to the field and click the globe icon (Localizable).
