@@ -73,7 +73,7 @@ Display a custom name in plain text in the control panel; automatically changes 
 When defined, logo image URLs will take precedence over logo text.
 
 ``` php
-'custom_favicon_url' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
+'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
 ```
 
 ### Custom Favicon
