@@ -108,6 +108,18 @@ Route::statamic('stats/{category}', 'statistics.show', function ($category) {
 
 _Note: Passing closures into both the second and the third parameter are not supported. If you need to dynamically handle both your view and your data, pass a closure into the second argmuent [as detailed above](#dynamic-closure-based-routes)._
 
+#### Dependency Injection
+
+You may also type-hint dependencies in your closure based routes, just as you can [with Laravel](https://laravel.com/docs/routing#dependency-injection):
+
+```php
+use Illuminate\Http\Request;
+
+Route::statamic('stats', 'statistics.show', function (Request $request) {
+    return ['stats' => Stats::gatherDataExpensively($request->category)];
+});
+```
+
 ## Redirects
 
 Creating redirects can be done in your `routes/web.php` using native Laravel Route methods:
