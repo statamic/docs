@@ -2,10 +2,11 @@
 id: 6ff17a73-c631-433b-9727-0f72fa543807
 blueprint: modifiers
 title: 'To qs'
-intro: "Turn an array or array-like value into a query string using Laravel's [Arr::query()](https://laravel.com/docs/11.x/helpers#method-array-query) helper method."
 modifier_types:
   - array
 ---
+Converts an array or array-like value into a query string using Laravel's [Arr::query()](https://laravel.com/docs/11.x/helpers#method-array-query) helper method.
+
 ```yaml
 $params = [
     'mode' => 'plaid',
