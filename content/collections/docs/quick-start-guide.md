@@ -6,7 +6,7 @@ id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
 
-Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for glueing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
+Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for gluing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
 
 1. You are comfortable working with HTML.
 2. You have a local dev environment with [composer](https://getcomposer.org/) installed.
@@ -89,7 +89,7 @@ Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace
 
 ## Make a home page
 
-Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
+Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel, and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
 
 <figure>
     <img src="/img/quick-start/editing-home.png" alt="Editing the home page">
@@ -155,7 +155,7 @@ You might have known it was coming next – it's the staple of every CMS walkth
 
 But first, let's talk about what a blog is. A "blog" is a collection of posts that shares common traits or attributes. A typical blog post might contain a title, featured image, an author, a few tags, and the article content.
 
-There also always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
+There is always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
 
 Here's our todo list:
 
@@ -412,7 +412,7 @@ Here's your entire home template:
 
 We're almost done, but before we head back to the control panel to add a few more fields to your blog blueprint, let's add a nav.
 
-Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This let's you have a page with a slug of `/`.
+Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This lets you have a page with a slug of `/`.
 
 We can use the [Nav tag](/tags/nav) to fetch the entries in the Pages collection in the order you have them arranged.
 
@@ -422,7 +422,7 @@ Open up your layout file and drop in this nav snippet, right after the open body
 // resources/views/layout.antlers.html
 // ...
 
-<nav class="bg-black text-xs uppercase text-green text-center flex items-center justify-center space-x-4">
+<nav class="bg-black text-xs uppercase text-green-500 text-center flex items-center justify-center space-x-4">
     {{ nav from="pages" include_home="true" }}
         <a href="{{ url }}" class="p-2 block hover:text-yellow-200">{{ title }}</a>
     {{ /nav  }}

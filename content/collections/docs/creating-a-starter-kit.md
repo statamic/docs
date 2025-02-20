@@ -85,7 +85,7 @@ If you plan to [make your Starter Kit updatable](#making-starter-kits-updatable)
 ```
 
 :::tip
-Ths `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
+This `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
 :::
 
 ## Exporting

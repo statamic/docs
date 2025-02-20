@@ -37,7 +37,7 @@ The next step is to create a new site. This will scaffold out the directory stru
 
 ## Configuring Deployment
 
-Finally, setup your deployment by pointing to your site to your source control repository. Laravel Forge will create a sensible deployment script for you for one-click deployments.
+Finally, set up your deployment by pointing to your site to your source control repository. Laravel Forge will create a sensible deployment script for you for one-click deployments.
 
 <figure>
     <img src="/img/deployment-forge-install-repo.png" alt="Install repo example">

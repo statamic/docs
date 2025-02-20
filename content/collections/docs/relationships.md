@@ -3,7 +3,7 @@ id: 8ed04215-9f46-4000-bd67-c71b21b67d85
 blueprint: page
 title: Relationships
 template: page
-intro: 'Content is often related to other content and bits of data. A blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard. This pages covers ways to create and take advantage of these types relationships.'
+intro: 'Content is often related to other content and bits of data. A blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard. This page covers ways to create and take advantage of these types of relationships.'
 related_entries:
   - d0c65546-74f1-4a15-89d5-1562a95ee2c6
   - acee879a-c832-449d-a714-c57ea5862717

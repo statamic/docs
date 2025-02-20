@@ -32,11 +32,11 @@ See how layouts and templates work together.
 
 ## Layouts
 
-**Layouts** are the the foundation of your frontend's HTML. Any markup you want to present no matter what page you're on, no matter where you go, how far you travel, or loud you sing, should go into a layout.
+**Layouts** are the foundation of your frontend's HTML. Any markup you want to present no matter what page you're on, no matter where you go, how far you travel, or loud you sing, should go into a layout.
 
 By default, Statamic will look for and use `/resources/views/layout.antlers.html`, but you're welcome to create other layouts and configure specific entries, whole sections, or the whole site to use those instead.
 
-Layouts usually contain `<head></head>` markup, global header, navigation, footer, JavaScript includes, and so on. In between all that HTML is your _template_ area — the magical place where unique, non-global things happen. Use the `{{ template_content }}` variable to set where you'd like that live.
+Layouts usually contain `<head></head>` markup, global header, navigation, footer, JavaScript includes, and so on. In between all that HTML is your _template_ area — the magical place where unique, non-global things happen. Use the `{{ template_content }}` variable to set where you'd like that to live.
 
 ```
 // resources/views/layout.antlers.html
@@ -113,7 +113,7 @@ Partials are reusable views that may find themselves in any number of other layo
 ```
 
 :::best-practice
-We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
+We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}`. The underscore is not necessary in the partial tag definition.
 :::
 
 :::watch https://www.youtube.com/embed/Ddz6mD-jT7E

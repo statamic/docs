@@ -11,7 +11,7 @@ First, you need to create a fork of the repo. A fork is a copy of the repo where
 Head to the [cms repo][cms-repo] and click the "Fork" button at the top right.
 
 ## Clone it
-Once you have a fork, you can clone it on your local machine with git. It can go anywhere - you probably already have a folder where your projects live. Most people use `~/Sites/` or ~/Code`.
+Once you have a fork, you can clone it on your local machine with git. It can go anywhere - you probably already have a folder where your projects live. Most people use `~/Sites/` or `~/Code`.
 
 ```shell
 cd Code # [tl! **]

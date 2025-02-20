@@ -80,7 +80,7 @@ Statamic takes a different approach, that when combined with our "Bring Your Own
 
 **Want to build a photo gallery?** Add an Assets field that lets you select multiple images, and then loop through the selected images and render thumbnails on the fly with the Glide tag, and link to the full resolution image.
 
-**Need an image slider?** Add an Assets field, select multiple image, and pass the list of images into any number of open source image slider components available on Github.
+**Need an image slider?** Add an Assets field, select multiple images, and pass the list of images into any number of open source image slider components available on Github.
 
 **Got a Hero Image?** Use an Assets and text field and render the text on top of the `background-image` of your choosing.
 

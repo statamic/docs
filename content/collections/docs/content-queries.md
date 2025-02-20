@@ -364,7 +364,7 @@ The following operators are available in [basic where clauses](#basic-where-clau
 
 ### Like & Not Like
 
-The `like` operator is used in `where` clause to search for a specified pattern in a field. `not like` is the inverse, ensuring that the results **do not* match a pattern.
+The `like` operator is used in `where` clause to search for a specified pattern in a field. `not like` is the inverse, ensuring that the results **do not** match a pattern.
 
 There are two wildcards used in conjunction with the `like` operator:
 
@@ -425,7 +425,7 @@ Entry::query()
     ->where('title', 'not regexp', '/m | [tn]|b/')
     ->get();
 // [tl! collapse:start]
-// Okay so this regex doesn't work on any of the Star Wars
+// Okay, so this regex doesn't work on any of the Star Wars
 // movies after Rogue One but let's not split hairs here.
 // This is a good example and you know it.
 
@@ -442,7 +442,7 @@ Entry::query()
 
 The `greater than` operator is used to compare two values. If the first is greater than the second, the match will be included. The `greater than or equals` operator will include exact matches.
 
-The `less than` operator is used to compare two values. If the first is less than the second, the match will be included. The `greater than or equals` operator will include exact matches.
+The `less than` operator is used to compare two values. If the first is less than the second, the match will be included. The `less than or equals` operator will include exact matches.
 
 #### Examples {.popout}
 
@@ -519,7 +519,7 @@ You can [learn more about chunking query results](https://laravel.com/docs/12.x/
 
 ## Lazy Streaming
 
-Lazily streaming query results allows you to define a number of results to be returned from the query, similiar to [chunking](#chunking). The difference is that instead of being able to pass each chunk into a callback, you receive a `LazyCollection`. This can help in situations where you're working with large datasets while keeping the memory usage low.
+Lazily streaming query results allows you to define a number of results to be returned from the query, similar to [chunking](#chunking). The difference is that instead of being able to pass each chunk into a callback, you receive a `LazyCollection`. This can help in situations where you're working with large datasets while keeping the memory usage low.
 
 The chunk size for the lazy query should be at least `1` and defaults to `1000`.
 

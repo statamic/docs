@@ -60,13 +60,13 @@ If you want to know about the legal terms you can [read those here](https://stat
 
 Statamic pings The Outpost (our validation web service) on a regular basis. The Outpost collects the license key, public domain info (domain name, IP address, etc), and PHP version so we can validate them against your account.
 
-This happens once per hour, and only when logged into the control panel. Changing your license key setting will trigger an immediate ping to the The Outpost. Tampering with outgoing API call will cause Statamic to consider your license invalid. If that happens, you'll need to open a [support request][support] to reinstate your license.
+This happens once per hour, and only when logged into the control panel. Changing your license key setting will trigger an immediate ping to The Outpost. Tampering with outgoing API call will cause Statamic to consider your license invalid. If that happens, you'll need to open a [support request][support] to reinstate your license.
 
 If you need to run Statamic in an environment without an internet connection, please [contact support](https://statamic.com/support).
 
 ## One License Per Site
 
-Each license entitles you to run one production installation. You will need to specify the domains you plan to use from the "Sites" area of your Statamic Account. Domain are treated as wildcards so you can use subdomains for locales, testing, and other purposes.
+Each license entitles you to run one production installation. You will need to specify the domains you plan to use from the "Sites" area of your Statamic Account. Domains are treated as wildcards so you can use subdomains for locales, testing, and other purposes.
 
 If you attempt to use the site from a domain not listed in your Site settings, you will get a notification inside the Control Panel informing you thusly to make the necessary changes. You may change the domain associated with a license at any time on [statamic.com](https://statamic.com/account/sites).
 

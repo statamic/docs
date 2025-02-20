@@ -95,7 +95,7 @@ tree:
         entry: id-of-contact
       -
         title: 'GitHub Repo'
-        url: 'https://github.com/example/repo
+        url: 'https://github.com/example/repo'
 ```
 
 :::tip

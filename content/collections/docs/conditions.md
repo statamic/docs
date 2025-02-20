@@ -8,7 +8,7 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632512130
 ---
 :::tip
-Are you looking "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
+Are you looking for "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
 :::
 
 ## Overview
@@ -246,7 +246,7 @@ Fetch all entries that have _any_ of one or more taxonomy terms.
 
 Fetch all entries that _don't_ have one or more taxonomy terms.
 
-#### All {#taxonomy-not}
+#### All {#taxonomy-all}
 
 Fetch all entries that contain _each_ of one or more taxonomy terms.
 
@@ -263,7 +263,7 @@ Fetch all entries that contain _each_ of one or more taxonomy terms.
 <!-- Get all but sports-related articles -->
 {{ collection:articles taxonomy:tags:not="sports" }}
 
-<!-- Get all "featured" articles about gaming
+<!-- Get all "featured" articles about gaming -->
 {{ collection:articles taxonomy:tags:all="gaming|featured" }}
 ```
 ::tab blade

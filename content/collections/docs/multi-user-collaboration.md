@@ -17,7 +17,7 @@ id: a3adf32a-37a5-4e96-beee-f107dc1b81a9
 
 <figure>
     <img src="https://statamic.com/storage/products/oMTSYVZJlh4j0Qr8Zm4T5Tl3WM1GQLj5hXRMsnx1.png" alt="Statamic's multi-user collaboration in action">
-    <figcaption>A glimpse multi-user collaboration in action.</figcaption>
+    <figcaption>A glimpse of multi-user collaboration in action.</figcaption>
 </figure>
 
 ## Installation

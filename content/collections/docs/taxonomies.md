@@ -11,7 +11,7 @@ related_entries:
 ---
 ## Overview
 
-Taxonomies give you the ability to tag your entries and then fetch and sort all the entries who share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
+Taxonomies give you the ability to tag your entries and then fetch and sort all the entries that share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
 
 Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
@@ -162,7 +162,7 @@ You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` 
 :::
 
 :::tip
-If your taxonomy name conflicts with a [tag](/tags), will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
+If your taxonomy name conflicts with a [tag](/tags), you will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
 
 For example, if your taxonomy is named `section`, there is also a [tag named section](/tags/section).
 
