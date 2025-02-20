@@ -4,6 +4,7 @@ blueprint: modifiers
 title: 'To qs'
 modifier_types:
   - array
+  - utility
 ---
 Converts an array or array-like value into a query string using Laravel's [Arr::query()](https://laravel.com/docs/11.x/helpers#method-array-query) helper method.
 
