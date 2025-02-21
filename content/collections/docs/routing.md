@@ -14,7 +14,7 @@ All site requests are handled by Statamic unless you [create your own Laravel ro
 
 ## Statamic Routes
 
-Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you, like injecting data (globals and system variables, for example), fetching the view, layout, and so on.
+Statamic provides a `Route::statamic()` method to do all the CMS "magic" for you, like injecting data (globals and system variables, for example), applying middleware, fetching the view, layout, and so on.
 
 ``` php
 Route::statamic('uri', 'view', ['foo' => 'bar']);
@@ -42,16 +42,6 @@ When the template is the same as the URI, you can provide the one argument and S
 Route::statamic('my-page'); // Implies 'my-page'
 Route::statamic('/my-page'); // Implies 'my-page'
 Route::statamic('/foo/bar'); // Implies 'foo.bar'
-```
-
-In addition to accepting an array, the third parameter also accepts a closure. This can be helpful when you need to do some kind of logic before returning your data.
-
-```php
-Route::statamic('uri', 'view', function () {
-    $bar = gatherDataExpensively();
-
-    return ['foo' => $bar];
-});
 ```
 
 ### Parameters
@@ -89,6 +79,46 @@ You can control the content type headers by setting `'content_type' => '{content
 | `json` | `application/json` |
 | `xml` | `text/xml` |
 | `atom` | `application/atom+xml` (ensures `utf8` charset) |
+
+### Dynamic Closure Based Routes
+
+If needed, you can define more dynamic view or data logic by passing a closure.
+
+For example, you might want to dynamically return a view based on dynamic segments in your URI. You can do this by passing a closure into the second argument:
+
+```php
+Route::statamic('/{component}/{mode}', function ($component, $mode) {
+    return view($component, ['mode' => $mode]);
+});
+```
+
+By returning `view()` from a closure, Statamic will still apply [all the "magic"](#statamic-routes) like middleware, layout, globals, system variables, etc.
+
+_Note: If you don't return `view()`, middleware will still get applied, but layout, globals, system variables, etc. will not be. For example, returning an array would output JSON, just like it would with `Route::get()` in Laravel, but with Statamic's middlware stack applied._
+
+#### Dynamic Route Data
+
+Or, maybe you just want to dynamically compose data that's passed into a static view. You can do this by passing a closure into the third data argument:
+
+```php
+Route::statamic('stats/{category}', 'statistics.show', function ($category) {
+    return ['stats' => Stats::gatherDataExpensively($category)];
+});
+```
+
+_Note: Passing closures into both the second and the third parameter are not supported. If you need to dynamically handle both your view and your data, pass a closure into the second argmuent [as detailed above](#dynamic-closure-based-routes)._
+
+#### Dependency Injection
+
+You may also type-hint dependencies in your closure based routes, just as you can [with Laravel](https://laravel.com/docs/routing#dependency-injection):
+
+```php
+use Illuminate\Http\Request;
+
+Route::statamic('stats', 'statistics.show', function (Request $request) {
+    return ['stats' => Stats::gatherDataExpensively($request->category)];
+});
+```
 
 ## Redirects
 
