@@ -6,11 +6,11 @@ intro: |-
   Laravel Cloud is a fully managed infrastructure platform. It's relentlessly optimized for Laravel and PHP. It's our favorite way to deploy Statamic sites that need to scale.
 parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
-Before deploying to Laravel Cloud, there's a few things you should do to prepare your Statamic site:
+Before deploying to Laravel Cloud, there are a few things you should do to prepare your Statamic site:
 
-* Right now, Statamic's [Git automation](/git-automation) doesn't work on Laravel Cloud. You can workaround this by either:
+* Right now, Statamic's [Git automation](/git-automation) doesn't work on Laravel Cloud. You can work around this by either:
    * Moving [content](/tips/storing-content-in-a-database) and [users](https://statamic.dev/tips/storing-users-in-a-database) into the database.
-   * Disabling the Control Panel on Laravel Cloud, and pushing up any content changes from your local environment. 
+   * Disabling the Control Panel on Laravel Cloud, and pushing any content changes from your local environment. 
 * You should move any assets from the local filesystem to Laravel Cloud's object storage feature.
 
 If you don't want to move content to a database, we recommend using a VPS-based solution, like [Laravel Forge](/deploying/laravel-forge).
@@ -20,9 +20,9 @@ If you don't want to move content to a database, we recommend using a VPS-based 
 
 Once you've created your [Laravel Cloud](https://app.laravel.cloud) account, click "New application" to get started.
 
-If its your first application, you'll be asked to connect your Git provider of choice (GitHub, GitLab or Bitbucket).
+If it's your first application, you'll be asked to connect your Git provider of choice (GitHub, GitLab or Bitbucket).
 
-From there, select the repository you want to deploy, give it a name and pick the region you want your application to be deployed in.
+From there, select the repository you want to deploy, give it a name and pick the region where you want your application deployed.
 
 <figure>
     <img src="/img/deployment-cloud-new-application.png" alt="New application modal">
@@ -34,10 +34,10 @@ Upon creation, you can setup any "resources" needed for your application, like a
     <img src="/img/deployment-cloud-project-overview.png" alt="Application overview">
 </figure>
 
-Make sure to click "Save" after making changes to your applications's resources.
+Make sure to click "Save" after making changes to your application's resources.
 
 :::tip Note
-New applications on Laravel Cloud default to PHP 8.4. However, some of Statamic's third-party dependencies still need to be updated for PHP 8.4.
+New applications on Laravel Cloud use PHP 8.4 by default. However, some of Statamic's third-party dependencies still need to be updated for PHP 8.4.
 
 For the time being, we recommend downgrading to PHP 8.3 in your environment's settings.
 :::
@@ -67,7 +67,7 @@ You can use a database GUI, like [TablePlus](https://tableplus.com/) to do this.
 
 ### Creating an object storage bucket
 
-Since the Git Automation feature doesn't work on Laravel Cloud, we recommend moving assets to Laravel Cloud's object storage service.
+Since the [Git Automation](/git-automation) doesn’t work on Laravel Cloud, we recommend moving assets to Laravel Cloud's object storage service.
 
 You can create a new bucket from the environment overview page:
 
@@ -81,7 +81,7 @@ Once created, you can upload existing assets using an app like [Transmit](https:
 
 ## Deploying your application
 
-Now that you've got everything setup, all thats left to do is trigger your first deployment. 🚀
+Now that you've got everything set up, all thats left to do is trigger your first deployment. 🚀
 
 If you're using Vite to build CSS/JavaScript, make sure to uncomment the `npm` commands in your application's deployment settings.
 
