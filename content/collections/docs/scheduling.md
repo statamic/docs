@@ -12,7 +12,7 @@ Statamic leverages task scheduling via Laravel's Task Scheduler.
 
 In a nutshell, you can create a single cron job which will allow things to happen on a schedule, without any visitors needing to be on the site.
 
-[Learn more about scheduling tasks in the Laravel docs](https://laravel.com/docs/11.x/scheduling)
+[Learn more about scheduling tasks in the Laravel docs](https://laravel.com/docs/12.x/scheduling)
 
 ## Running the scheduler
 
@@ -34,7 +34,7 @@ Typically, you would not add a scheduler cron entry to your local development ma
 php artisan schedule:work
 ```   
 
-[Learn more about running the scheduler](https://laravel.com/docs/11.x/scheduling#running-the-scheduler)
+[Learn more about running the scheduler](https://laravel.com/docs/12.x/scheduling#running-the-scheduler)
 
 ## Included tasks
 
@@ -57,4 +57,4 @@ Schedule::command('my-command')->daily();
 Schedule::job(new Heartbeat)->everyFiveMinutes();
 ```
 
-[Learn more about defining schedules](https://laravel.com/docs/11.x/scheduling#defining-schedules)
+[Learn more about defining schedules](https://laravel.com/docs/12.x/scheduling#defining-schedules)

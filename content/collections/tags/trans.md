@@ -29,7 +29,7 @@ There's also a [modifier](/modifiers/trans) version that you may prefer.
 
 ## Usage
 
-Get the `bar` string from the `resources/lang/en/foo.php` translation file (where `en` is the current locale).
+Get the `bar` string from the `lang/en/foo.php` translation file (where `en` is the current locale).
 
 ```php
 <?php
