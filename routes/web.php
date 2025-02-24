@@ -20,4 +20,5 @@ Route::permanentRedirect('repositories', 'content-queries');
 Route::permanentRedirect('new-antlers-parser', 'antlers');
 Route::permanentRedirect('/tips/storing-entries-in-a-database', '/tips/building-your-own-entries-repository');
 Route::permanentRedirect('/account-api-sites', '/sites-api');
+Route::permanentRedirect('/deploying/workflow', '/tips/git-workflow');
 // Route::permanentRedirect('extending/queries', 'content-queries');
