@@ -112,7 +112,7 @@ The [Shopify addon](https://statamic.com/addons/rad-pack/shopify) helps you inte
 
 There are integrations for [Lemon Squeezy](https://statamic.com/addons/rias/lemon-squeezy) and [Snipcart](https://statamic.com/addons/aerni/snipcart) as well.
 
-Additionally, Statamic benefits from Laravel's extensive ecosystem, which includes tools like [Laravel Cashier](https://laravel.com/docs/11.x/billing) for subscription billing, and integrations with payment processors such as Stripe and Paddle. This flexibility allows developers to create fully custom e-commerce solutions tailored to specific needs.
+Additionally, Statamic benefits from Laravel's extensive ecosystem, which includes tools like [Laravel Cashier](https://laravel.com/docs/12.x/billing) for subscription billing, and integrations with payment processors such as Stripe and Paddle. This flexibility allows developers to create fully custom e-commerce solutions tailored to specific needs.
 
 ## Forms
 

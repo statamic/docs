@@ -483,7 +483,7 @@ Someone has taken the time to fill out a form on your website. Here are the deta
 Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
 :::
 
-You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/12.x/mail#customizing-the-components).
 
 ## File Uploads
 
@@ -616,7 +616,7 @@ axios.post(form.action, new FormData(form))
 ```
 
 ## Precognition
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/11.x/precognition) in forms.
+Statamic supports using [Laravel Precognition](https://laravel.com/docs/12.x/precognition) in forms.
 
 Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
 
