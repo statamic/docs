@@ -12,6 +12,11 @@ options:
     description: |
       Configure which collections you want to allow relationships with.
   -
+    name: create
+    type: boolean
+    description: |
+      Configure if new entries can be created.
+  -
     name: max_items
     type: integer
     description: >
@@ -31,6 +36,11 @@ options:
     type: string
     description: >
         Allows you to specify a [search index](/search#indexes) to be used when searching for entries.
+  -
+    name: select_across_sites
+    type: boolean
+    description: |
+      If `true`, then entries from all sites will be displayed
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview
