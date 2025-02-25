@@ -6,14 +6,14 @@ intro: |-
   Laravel Cloud is a fully managed infrastructure platform. It's relentlessly optimized for Laravel and PHP. It's our favorite way to deploy Statamic sites that need to scale.
 parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 ---
-Before deploying to Laravel Cloud, there are a few things you should do to prepare your Statamic site:
 
-* Right now, Statamic's [Git automation](/git-automation) doesn't work on Laravel Cloud. You can work around this by either:
-   * Moving [content](/tips/storing-content-in-a-database) and [users](https://statamic.dev/tips/storing-users-in-a-database) into the database.
-   * Disabling the Control Panel on Laravel Cloud, and pushing any content changes from your local environment. 
-* You should move any assets from the local filesystem to Laravel Cloud's object storage feature.
+:::warning
+Currently, Statamic's [Git automation](/git-automation) doesn't work on Laravel Cloud. 
 
-If you don't want to move content to a database, we recommend using a VPS-based solution, like [Laravel Forge](/deploying/laravel-forge).
+This may change in the future as Laravel Cloud continues to evolve. For now, we recommend moving [content](/tips/storing-content-in-a-database) and [users](https://statamic.dev/tips/storing-users-in-a-database) into the database, and moving assets [onto Laravel Cloud's object storage](#creating-an-object-storage-bucket) service. 
+
+Alternatively, if you prefer to keep everything in flat files, you can disable the Control Panel and manually push any content changes from your local environment.
+:::
 
 
 ## Creating your application
@@ -36,11 +36,6 @@ Upon creation, you can setup any "resources" needed for your application, like a
 
 Make sure to click "Save" after making changes to your application's resources.
 
-:::tip Note
-New applications on Laravel Cloud use PHP 8.4 by default. However, some of Statamic's third-party dependencies still need to be updated for PHP 8.4.
-
-For the time being, we recommend downgrading to PHP 8.3 in your environment's settings.
-:::
 
 ### Creating a database
 
@@ -67,17 +62,23 @@ You can use a database GUI, like [TablePlus](https://tableplus.com/) to do this.
 
 ### Creating an object storage bucket
 
-Since the [Git Automation](/git-automation) doesn’t work on Laravel Cloud, we recommend moving assets to Laravel Cloud's object storage service.
+Since the [Git Automation](/git-automation) does not work on Laravel Cloud, we recommend moving assets to Laravel Cloud's object storage service.
 
-You can create a new bucket from the environment overview page:
+Laravel Cloud provides an S3-compatible filesystem, so you will need to install the S3 Flysystem driver in your project:
+
+```
+composer require league/flysystem-aws-s3-v3 "^3.0" --with-all-dependencies
+```
+
+Then, in Laravel Cloud, you can create a new bucket from the environment overview page:
 
 <figure>
     <img src="/img/deployment-cloud-new-bucket.png" alt="">
 </figure>
 
-It'll ask you which filesystem disk the bucket should provide. This should match a disk in your `config/filesystems.php` config file. 
+You will then be prompted to select a filesystem disk for the bucket, it should match a disk in your `config/filesystems.php` config. 
 
-Once created, you can upload existing assets using an app like [Transmit](https://panic.com/transmit/), [Cyberduck](https://cyberduck.io/), or any similar app that supports S3-compatible filesystems.
+Once the bucket is created, you can upload existing assets using a tool like [Transmit](https://panic.com/transmit/), [Cyberduck](https://cyberduck.io/), or any similar app that supports S3-compatible filesystems.
 
 ## Deploying your application
 
