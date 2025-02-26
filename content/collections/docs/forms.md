@@ -186,14 +186,14 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 ::tab antlers
 ```antlers
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 {{ form:submissions in="superfans" }}
   {{ message | markdown }}
 {{ /form:submissions }}
 ```
 ::tab blade
 ```blade
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 <s:form:submissions in="superfans">
   {!! Statamic::modify($message)->markdown() !!}
 </s:form:submissions>
@@ -417,7 +417,7 @@ email:
 
 ### Setting the "Subject" Dynamically
 
-You can set the set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
+You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
 
 ```yaml
 email:
@@ -483,7 +483,7 @@ Someone has taken the time to fill out a form on your website. Here are the deta
 Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
 :::
 
-You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/12.x/mail#customizing-the-components).
 
 ## File Uploads
 
@@ -517,7 +517,7 @@ fields:
 
 You have two methods available to you:
 
-First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
+First, you can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
 Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
@@ -540,7 +540,7 @@ Simple and effective spam prevention.
 
 The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
 
-Hide this field a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
+Hide this field by a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
 For example:
 
@@ -616,7 +616,7 @@ axios.post(form.action, new FormData(form))
 ```
 
 ## Precognition
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/11.x/precognition) in forms.
+Statamic supports using [Laravel Precognition](https://laravel.com/docs/12.x/precognition) in forms.
 
 Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
 

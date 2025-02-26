@@ -15,7 +15,7 @@ To enable the GraphQL API, add the following to your `.env` file:
 STATAMIC_GRAPHQL_ENABLED=true
 ```
 
-Or you can enable for all environments in `config/statamic/graphql.php`:
+Or you can enable it for all environments in `config/statamic/graphql.php`:
 
 ```php
 'enabled' => true,
@@ -1525,7 +1525,7 @@ EntriesQuery::auth(function () {
 
 You can add fields to certain types by using the `addField` method on the facade.
 
-The method expects the [type](#types) name, the field name, and a closure that return a GraphQL field definition array.
+The method expects the [type](#types) name, the field name, and a closure that returns a GraphQL field definition array.
 
 For example, if you wanted to include a thumbnail from an asset field named `image`, you could do that here. You can even have arguments. In this example, we'll expect the width of the thumbnail to be passed in.
 

@@ -11,7 +11,7 @@ Please note that by hosting your site statically with a service like Vercel or N
 
 Deployments are triggered by committing to Git and pushing to GitHub.
 
-- Create a new file `build.sh` file in your project and paste from the [example code snippet](#example-build-script) below
+- Create a new file `build.sh` in your project and paste from the [example code snippet](#example-build-script) below
 - Run `chmod +x build.sh` on your terminal to make sure the file can be executed when deploying
 - Import a new site in your [Vercel](https://vercel.com) account
 - Link the site to your desired GitHub repository

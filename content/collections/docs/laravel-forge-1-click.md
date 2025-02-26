@@ -7,7 +7,7 @@ intro: "A full tutorial on how to install Statamic with Forge's 1-Click Installe
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 
-The Laravel team have made this an exceedingly simple process. Follow these 3 steps and you'll have a Statamic site running you can log right into.
+The Laravel team have made this an exceedingly simple process. Follow these 3 steps, and you'll have a Statamic site running that you can log right into.
 
 :::tip
 If you _already have_ a Statamic site built, you should switch over to the [Deploying Statamic on Laravel Forge](/deploying/laravel-forge) guide.

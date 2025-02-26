@@ -1,9 +1,9 @@
 ---
-id: f703b2eb-ad29-4e28-b778-20b00dc5f2b4
-blueprint: page
-title: Workflow
+id: b46adc3b-c4de-4148-a388-c8ff498ae9c9
+blueprint: tips
+title: 'Git Workflow'
 intro: 'A good workflow revolving around git to manage your deployments is a key factor in a pain-free and efficient project.'
-parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
+template: page
 ---
 Given a properly configured VPS solution (like Laravel Forge or similar), your typical deployment workflow would normally look like this:
 

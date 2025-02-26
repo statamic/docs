@@ -13,7 +13,7 @@ These methods will work no matter which driver you're using — flat files, Eloq
 [Learn how Statamic can use different storage methods!](/extending/repositories)
 
 :::tip
-While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/11.x/queries), they are **completely separate implementations**.
+While Statamic's Query builder is very similar to [Laravel's Query Builder](https://laravel.com/docs/12.x/queries), they are **completely separate implementations**.
 
 What follows is complete documentation on all available methods. If you need a method available in Laravel that we don't currently support, feel free to open a [feature request](https://github.com/statamic/ideas) or better yet, a [Pull Request](https://github.com/statamic/cms)!
 :::
@@ -364,7 +364,7 @@ The following operators are available in [basic where clauses](#basic-where-clau
 
 ### Like & Not Like
 
-The `like` operator is used in `where` clause to search for a specified pattern in a field. `not like` is the inverse, ensuring that the results **do not* match a pattern.
+The `like` operator is used in `where` clause to search for a specified pattern in a field. `not like` is the inverse, ensuring that the results **do not** match a pattern.
 
 There are two wildcards used in conjunction with the `like` operator:
 
@@ -425,7 +425,7 @@ Entry::query()
     ->where('title', 'not regexp', '/m | [tn]|b/')
     ->get();
 // [tl! collapse:start]
-// Okay so this regex doesn't work on any of the Star Wars
+// Okay, so this regex doesn't work on any of the Star Wars
 // movies after Rogue One but let's not split hairs here.
 // This is a good example and you know it.
 
@@ -442,7 +442,7 @@ Entry::query()
 
 The `greater than` operator is used to compare two values. If the first is greater than the second, the match will be included. The `greater than or equals` operator will include exact matches.
 
-The `less than` operator is used to compare two values. If the first is less than the second, the match will be included. The `greater than or equals` operator will include exact matches.
+The `less than` operator is used to compare two values. If the first is less than the second, the match will be included. The `less than or equals` operator will include exact matches.
 
 #### Examples {.popout}
 
@@ -498,7 +498,7 @@ Entry::query()->paginate(15);
 This will return an instance of `Illuminate\Pagination\LengthAwarePaginator` that you can use to assemble the pagination style of your choice.
 
 :::tip
-You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/11.x/pagination#paginator-instance-methods)in the Laravel docs.
+You can [learn more about the LengthAwarePaginator](https://laravel.com/docs/12.x/pagination#paginator-instance-methods)in the Laravel docs.
 :::
 
 ## Chunking
@@ -514,12 +514,12 @@ Entry::query()->chunk(25, function($entries) {
 ```
 
 :::tip
-You can [learn more about chunking query results](https://laravel.com/docs/11.x/queries#chunking-results) in the Laravel docs.
+You can [learn more about chunking query results](https://laravel.com/docs/12.x/queries#chunking-results) in the Laravel docs.
 :::
 
 ## Lazy Streaming
 
-Lazily streaming query results allows you to define a number of results to be returned from the query, similiar to [chunking](#chunking). The difference is that instead of being able to pass each chunk into a callback, you receive a `LazyCollection`. This can help in situations where you're working with large datasets while keeping the memory usage low.
+Lazily streaming query results allows you to define a number of results to be returned from the query, similar to [chunking](#chunking). The difference is that instead of being able to pass each chunk into a callback, you receive a `LazyCollection`. This can help in situations where you're working with large datasets while keeping the memory usage low.
 
 The chunk size for the lazy query should be at least `1` and defaults to `1000`.
 
@@ -528,7 +528,7 @@ Entry::query()->lazy(100)
 ```
 
 :::tip
-You can learn more about [lazily streaming query results](https://laravel.com/docs/11.x/queries#streaming-results-lazily) and [LazyCollections](https://laravel.com/docs/11.x/collections#lazy-collections) in the Laravel docs.
+You can learn more about [lazily streaming query results](https://laravel.com/docs/12.x/queries#streaming-results-lazily) and [LazyCollections](https://laravel.com/docs/12.x/collections#lazy-collections) in the Laravel docs.
 :::
 
 ## Repository Classes

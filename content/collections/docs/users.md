@@ -14,7 +14,7 @@ related_entries:
 ---
 ## Overview
 
-The most common and obvious reason users exist are to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
+The most common and obvious reason users exist is to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
 
 <figure>
     <img src="/img/users-index.png" alt="List of Statamic Control Panel users">
@@ -129,7 +129,7 @@ Super Admin accounts are special accounts with **access and permission to everyt
     <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
 </div>
 
-User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
+User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot of users.
 
 User groups are stored in `resources/users/groups.yaml`.
 
@@ -160,7 +160,7 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/11.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
+Consult the [Laravel documentation](https://laravel.com/docs/12.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
 
 ## Storing User Records {#storage}
 

@@ -13,7 +13,7 @@ intro: |-
 
 Arguably one of the best ways to build modern content-driven WordPress sites — especially those with a proper separation of content and style — is with Advanced Custom Fields (ACF) or Pods Framework.
 
-Instead of this custom field approach being an afterthought, Statamic was built from the ground up with this approach with of 40 different [fieldtypes](/reference/fieldtypes) that you can organize into [blueprints](/blueprints) and reusable fieldsets.
+Instead of this custom field approach being an afterthought, Statamic was built from the ground up with this approach with 40 different [fieldtypes](/reference/fieldtypes) that you can organize into [blueprints](/blueprints) and reusable fieldsets.
 
 <figure>
     <img src="/img/blueprints.png" alt="The Statamic blueprint configuration screen">
@@ -24,7 +24,7 @@ Your fields are organized into Blueprints, which support sections and tabs for b
 
 If you have groups of fields you want to use in multiple Blueprints, you can create a reusable Fieldset that can be imported into any Blueprint, saving you time duplicating configs.
 
-It’s super intuitive to manage through the control panel. It feels like ACF, but it’s right baked into the core CMS.
+It’s super intuitive to manage through the control panel. It feels like ACF, but it’s baked right into the core CMS.
 
 ## Gutenberg and Block/Page Builders
 
@@ -58,7 +58,7 @@ A [Markdown](/fieldtypes/markdown) or [Bard](/fieldtypes/bard) field to hold the
 
 #### Newsletter Signup
 
-An empty set works, or a single [HTML](/fieldtypes/html) field letting insert a display message in your editor saying "Newsletter shown here", and then on the frontend have it render whatever [partial](/tags/partial) you need for the form.
+An empty set works, or a single [HTML](/fieldtypes/html) field letting you insert a display message in your editor saying "Newsletter shown here", and then on the frontend have it render whatever [partial](/tags/partial) you need for the form.
 
 #### Video Embed
 
@@ -112,7 +112,7 @@ The [Shopify addon](https://statamic.com/addons/rad-pack/shopify) helps you inte
 
 There are integrations for [Lemon Squeezy](https://statamic.com/addons/rias/lemon-squeezy) and [Snipcart](https://statamic.com/addons/aerni/snipcart) as well.
 
-Additionally, Statamic benefits from Laravel's extensive ecosystem, which includes tools like [Laravel Cashier](https://laravel.com/docs/11.x/billing) for subscription billing, and integrations with payment processors such as Stripe and Paddle. This flexibility allows developers to create fully custom e-commerce solutions tailored to specific needs.
+Additionally, Statamic benefits from Laravel's extensive ecosystem, which includes tools like [Laravel Cashier](https://laravel.com/docs/12.x/billing) for subscription billing, and integrations with payment processors such as Stripe and Paddle. This flexibility allows developers to create fully custom e-commerce solutions tailored to specific needs.
 
 ## Forms
 
@@ -135,7 +135,7 @@ And if you need more customization, addons like [Flexible Forms](https://statami
 
 WordPress is notoriously slow out of the box, which is generally alleviated by plugins like WP Rocket and Redis caching.
 
-We've considered and optimized for performance in every area of Statamic. Built-in smart caching is often enough to for most sites to fly <strong>right out of the gate</strong>, and for those more complex sites that have more heavy lifting or higher traffic — [static caching](/static-caching), Redis caching, or even [static site generation](https://github.com/statamic/ssg) are all native tools at your disposal.
+We've considered and optimized for performance in every area of Statamic. Built-in smart caching is often enough for most sites to fly <strong>right out of the gate</strong>, and for those more complex sites that have more heavy lifting or higher traffic — [static caching](/static-caching), Redis caching, or even [static site generation](https://github.com/statamic/ssg) are all native tools at your disposal.
 
 ## Spam Protection
 
