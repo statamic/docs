@@ -40,7 +40,7 @@ options:
     name: select_across_sites
     type: boolean
     description: |
-      If `true`, then entries from all sites will be displayed
+      When enabled, entries from all sites will be displayed. 
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview
