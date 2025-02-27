@@ -73,7 +73,7 @@ You can also include other files like a `README.md`, etc. as well. Everything yo
 package/
     composer.json
     starter-kit.yaml
-    README.me #[tl! ++]
+    README.md #[tl! ++]
 ```
 
 :::tip
