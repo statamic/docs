@@ -67,7 +67,20 @@ resources/
 composer.json
 ```
 
-If you plan to [make your Starter Kit updatable](#making-starter-kits-updatable), you should require this as a path repository.
+You can also include other files like a `README.md`, etc. as well. Everything you put into this `/package` folder will be exported to your repository's root directory.
+
+``` files theme:serendipity-light
+package/
+    composer.json
+    starter-kit.yaml
+    README.me #[tl! ++]
+```
+
+:::tip
+If you want a separate `README.md` to be installed when the end user installs your Starter Kit into their app, you can export the `README.md` at the root of your development sandbox by adding it to [export_paths](http://docs.test/starter-kits/creating-a-starter-kit#exporting-paths).
+:::
+
+Finally, if you plan to [make your Starter Kit updatable](#making-starter-kits-updatable), you should require this as a path repository.
 
 ```json
 {
