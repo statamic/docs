@@ -70,10 +70,10 @@ If you need more flexibility around how the import happens, or would just prefer
         {
             // Get your content...
             $teamMembers = [
-                ['name', 'Josh Lyman', 'role' => 'Deputy Chief of Staff'],
-                ['name', 'CJ Cregg', 'role' => 'Press Secretary'],
-                ['name', 'Toby Ziegler', 'role' => 'Communications Director'],
-                ['name', 'Sam Seaborn', 'role' => 'Deputy Communications Director'],
+                ['name' => 'Josh Lyman', 'role' => 'Deputy Chief of Staff'],
+                ['name' => 'CJ Cregg', 'role' => 'Press Secretary'],
+                ['name' => 'Toby Ziegler', 'role' => 'Communications Director'],
+                ['name' => 'Sam Seaborn', 'role' => 'Deputy Communications Director'],
             ];
 
             // Loop through each item and create a new entry using the Entry facade...
