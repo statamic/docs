@@ -1,7 +1,7 @@
 ---
 id: 2080f786-9c04-4916-b77a-c62202ec4f07
 title: 'Timezones'
-intro: 'Every developers worst nightmare.'
+intro: "Every developer's worst nightmare."
 template: page
 related_entries:
     - 7dfba904-8a74-40e1-b507-51cd2b5f6123
