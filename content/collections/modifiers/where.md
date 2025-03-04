@@ -54,7 +54,7 @@ You can also pass an operator to the modifier, so you can do checks like "where 
 
 ```
 <h2>I hate...</h2>
-{{ games | where('feeling', '!=' 'love') }}
+{{ games | where('feeling', '!=', 'love') }}
   {{ title }}<br>
 {{ /games }}
 ```
