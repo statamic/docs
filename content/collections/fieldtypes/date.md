@@ -19,7 +19,7 @@ options:
     name: format
     type: string
     description: |
-      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php)
+      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php). We recommend choosing a format which stores date & time.
   -
     name: full_width
     type: boolean
@@ -67,12 +67,14 @@ Date fields have highly configurable user interfaces. They can be as simple as a
 Single dates are stored as a date/timestring. Ranges are stored as an array with a `start` and `end` key.
 
 ``` yaml
-date: 1983-10-01
+date: 1983-10-01 00:00
 date_with_time: 1983-10-01 12:00:00
 date_range:
-  start: 2019-11-18
-  end: 2019-11-22
+  start: 2019-11-18 00:00
+  end: 2019-11-22 00:00
 ```
+
+Dates are always stored in UTC, and will always include time, even when the `time_enabled` option is `false`.
 
 ## Templating
 
@@ -170,6 +172,12 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 ```
 
 ::
+
+## Timezones
+
+Dates are always stored in UTC, then converted before being displayed to the user.
+
+For more information on how Statamic handles timezones, please review our [Timezones](/tips/timezones) guide.
 
 
 
