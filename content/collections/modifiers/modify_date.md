@@ -37,3 +37,9 @@ April 1, 2000
 :::tip
 As of Statamic 5, this modifier will return a copy of the Date. Earlier versions would **modify the variable directly** which will be passed onto any additional modifiers.
 :::
+
+## Timezones
+
+By default, when using a modifier on a date variable, the modifier will be operating on the UTC date, rather than the "localized" date.
+
+Please refer to our [Timezones](/tips/timezones) guide for more information on using modifiers on dates.

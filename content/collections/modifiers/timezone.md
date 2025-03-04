@@ -32,8 +32,7 @@ Tue, 27 Jan 2015 11:00:00 -0500
 Wed, 28 Jan 2015 03:00:00 +1100
 ```
 
-Using no parameter will simply use the timezone defined in your system settings. This is useful if your date value
-already contains a timezone, and you want to display it in the system timezone.
+Using no parameter will simply use the `display_timezone` configured in your `config/statamic/system.php` config file. This is useful if your date value already contains a timezone, and you want to output it in the display timezone.
 
 ```yaml
 when: Tue, 27 Jan 2015 16:00:00 +0000  # Date in UTC
