@@ -74,7 +74,7 @@ date_range:
   end: 2019-11-22 00:00
 ```
 
-Dates are always stored in UTC, and will always include time, even when the `time_enabled` option is `false`.
+Dates are stored in your application timezone, and will always include time, even when the `time_enabled` option is `false`.
 
 ## Templating
 
@@ -175,7 +175,7 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 
 ## Timezones
 
-Dates are always stored in UTC, then converted before being displayed to the user.
+Dates are stored in your application timezone, then converted before being displayed to users.
 
 For more information on how Statamic handles timezones, please review our [Timezones](/tips/timezones) guide.
 

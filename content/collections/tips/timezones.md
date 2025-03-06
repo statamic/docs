@@ -33,10 +33,6 @@ You can configure the `display_timezone` in your `config/statamic/system.php` co
 'display_timezone' => 'America/New_York',
 ```
 
-> Before Statamic 6, you might have had to change your application's timezone in `config/app.php` or your `.env` file.
-> 
-> If you did this, we **highly recommend** changing it back to `UTC` and instead relying on the new `display_timezone` option.
-
 However, as the timezone conversion only takes place when PHP converts the Carbon instance to a string, it means that any modifiers you're chaining on a date variable will be operating on the UTC date.
 
 There are two ways you can workaround this:
