@@ -34,9 +34,3 @@ date: October 1 2015 8:30:am
 ```html
 {{ test_date | minutes_ago }}
 ```
-
-## Timezones
-
-By default, when using a modifier on a date variable, the modifier will be operating on the UTC date, rather than the "localized" date.
-
-Please refer to our [Timezones](/tips/timezones) guide for more information on using modifiers on dates.
