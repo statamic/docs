@@ -28,6 +28,12 @@ event_date: April 15 2016
 2016-04-15
 ```
 
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
+
 ## Parameters
 
 ### Day
