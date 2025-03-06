@@ -30,10 +30,10 @@ Assuming your site's locale is `fr_FR`:
 mercredi 28 février 2024
 ```
 
-## Timezones
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
 
-By default, when using a modifier on a date variable, the modifier will be operating on the UTC date, rather than the "localized" date.
-
-Please refer to our [Timezones](/tips/timezones) guide for more information on using modifiers on dates.
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
 
 [carbon]: http://carbon.nesbot.com

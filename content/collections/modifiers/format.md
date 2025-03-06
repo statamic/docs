@@ -28,6 +28,12 @@ event_date: April 15 2016
 2016-04-15
 ```
 
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
+
 ## Parameters
 
 ### Day
@@ -97,12 +103,6 @@ event_date: April 15 2016
 | --------- | ----------- | -------------- |
 | `c` | ISO 8601 date | 2004-02-12T15:19:21+00:00 |
 | `r` | [RFC 2822](http://www.faqs.org/rfcs/rfc2822) or [RFC 5322](http://www.faqs.org/rfcs/rfc5322) formatted date | `Thu, 21 Dec 2000 16:01:07 +0200`  |
-
-## Timezones
-
-By default, when using a modifier on a date variable, the modifier will be operating on the UTC date, rather than the "localized" date.
-
-Please refer to our [Timezones](/tips/timezones) guide for more information on using modifiers on dates.
 
 [carbon]: http://carbon.nesbot.com
 [datetime]: https://www.php.net/manual/en/datetime.format.php

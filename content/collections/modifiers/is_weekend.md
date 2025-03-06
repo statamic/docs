@@ -29,8 +29,8 @@ date: December 25 2015
 false
 ```
 
-## Timezones
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
 
-By default, when using a modifier on a date variable, the modifier will be operating on the UTC date, rather than the "localized" date.
-
-Please refer to our [Timezones](/tips/timezones) guide for more information on using modifiers on dates.
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
