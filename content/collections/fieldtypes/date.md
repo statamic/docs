@@ -19,7 +19,7 @@ options:
     name: format
     type: string
     description: |
-      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php)
+      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php). We recommend choosing a format which stores date & time.
   -
     name: full_width
     type: boolean
@@ -73,6 +73,10 @@ date_range:
   start: 2019-11-18
   end: 2019-11-22
 ```
+
+Dates are stored in your application's timezone. 
+
+The time will be when `time_enabled` is `true`, or depending on the timezone of the user who selected the date. e.g. On date fields where there is no time configured, it will assume midnight for the person who selected it.
 
 ## Templating
 
@@ -170,6 +174,12 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 ```
 
 ::
+
+## Timezones
+
+Dates are stored in your application timezone, then converted before being displayed to users.
+
+For more information on how Statamic handles timezones, please review our [Timezones](/tips/timezones) guide.
 
 
 

@@ -5,7 +5,10 @@ types:
   - system
 title: Now
 ---
-The current date/time. If you use it on its own, it will be formatted using the default time format. If you pass it into a tag parameter or modifier, it will be treated as the `Carbon` instance.
+
+The current date/time. If you use it on its own, it will be converted to your [`display_timezone`](/tips/timezones) and formatted using the default time format.
+
+When you pass it to a tag parameter, or modifier, it will be treated as a UTC [`Carbon`](https://carbon.nesbot.com/) instance.
 
 ::tabs
 
