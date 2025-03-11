@@ -9,59 +9,77 @@ related_entries:
 
 > **This guide is only relevant to sites running Statamic 6 and above.**
 
-Whenever Statamic passes dates into templates, the dates will be in UTC, rather than your local timezone.
+## UTC
 
-UTC serves as a sort of "normalization" format for dates, making it much easier for Statamic to know how to localize them based on the user's preferences.
+It's best practice to store dates in the UTC timezone for consistency, and to convert the timezone just before displaying it.
 
-When you output dates in your templates, [Carbon](https://carbon.nesbot.com) (the underlying package Statamic uses for handling dates) will automatically convert the date from UTC into your "display timezone".
-
-You can configure the `display_timezone` in your `config/statamic/system.php` config file:
+We recommend leaving your timezone set to UTC. Statamic will convert dates to the timezone defined in `config/statamic/system.php` when appropriate.
 
 ```php
-/*  
-|--------------------------------------------------------------------------  
-| Timezone  
-|--------------------------------------------------------------------------  
-|  
-| Statamic will use this timezone when displaying dates on the front-end.  
-| You can use any timezone supported by PHP.  
-|  
-| https://www.php.net/manual/en/timezones.php  
-|  
-*/  
-  
 'display_timezone' => 'America/New_York',
 ```
 
-However, as the timezone conversion only takes place when PHP converts the Carbon instance to a string, it means that any modifiers you're chaining on a date variable will be operating on the UTC date.
+By default, or when this is not explicitly set, it will also be `UTC`.
 
-There are two ways you can workaround this:
 
-1. You can add the  [`timezone`](https://statamic.dev.test/modifiers/timezone) modifier (or `tz` for short) to the start of your modifier "chain". It will convert the Carbon instance from UTC to your "display format":
-  
-  ```antlers
-  {{ start_date | modify_date('+ day') | format('Y-m-d') }} {{# [tl! --] #}}
-  {{ start_date | tz | modify_date('+ day') | format('Y-m-d') }} {{# [tl! ++] #}}
-  ```
+## Templating
 
-2. Alternatively, if you would rather not add the `timezone` modifier everywhere you're passing a date to a modifier, you may enable the `localize_dates_in_modifiers` config option in `config/statamic/system.php`.
+Within templates, any dates will be [Carbon](https://carbon.nesbot.com) instances in the UTC timezone.
+
+When converting a Carbon instance to a string, it will be automatically converted to your configured display timezone. For example:
+
+```antlers
+{{ date }} "December 25th, 2020"
+````
+
+Since this automatic conversion only happens when casting a Carbon instance to a string, when a date is passed to a modifier or tag, it will still be a UTC Carbon instance.
+
+### Modifiers
+
+For example, the `format` modifier will receive a UTC date:
+
+```yaml
+date: '2020-12-25 03:00' # This is UTC
+```
+
+```antlers
+{{ date | format('Y-m-d H:i') }} "2020-12-25 03:00"
+```
+
+Since the format modifier received a UTC date, it applied the formatting for UTC. But, since we want it displayed in New York time as per our configuration, we expect to see it 5 hours earlier.
+
+There are two options for this:
+1. Apply the `timezone` modifier (or `tz` for short) before passing it along:
+   ```antlers
+   {{ date | tz | format(...) }} "2020-12-24 20:00"
+   ```
+2. Opt to convert dates in date modifiers in `config/statamic/system.php`:
+   ```php
+   'localize_dates_in_modifiers' => true,
+   ```
+   ```antlers
+   {{ date | format(...) }} "2020-12-24 20:00"   
+   ```
+   _Note that this option will only convert dates when using date-related modifiers like `format`, `days_ago`, etc._
    
-	It will automatically convert dates to your configured "display timezone" *before* they get passed to any date modifiers.
-	
-	```php
-	/*  
-	|--------------------------------------------------------------------------  
-	| Localize Dates in Modifiers?  
-	|--------------------------------------------------------------------------  
-	|  
-	| Since Statamic stores dates in UTC, any modifiers you chain onto a date  
-	| field will be working with the UTC value. If you'd prefer modifiers to  
-	| always use your `display_timezone`, set this to `true`.  
-	|  
-	*/  
-	  
-	'localize_dates_in_modifiers' => true,
-	```
+### Tags
+
+If a tag _needs_ a Carbon instance in your display timezone, you can modify it before passing it:
+
+::tabs
+::tab antlers
+```antlers
+{{ my_tag :date="date|tz" }}
+```
+::tab blade
+```blade
+{{ Statamic::tag('my_tag')->date(
+    $date->tz(config('statamic.system.display_timezone'))
+) }}
+```
+::
+
+Although, a tag shouldn't be expecting this of you.
 
 ## Custom Routes
 If you're passing Carbon instances into templates yourself (eg. from a custom route), you should make sure they're all in UTC.
