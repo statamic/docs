@@ -67,14 +67,16 @@ Date fields have highly configurable user interfaces. They can be as simple as a
 Single dates are stored as a date/timestring. Ranges are stored as an array with a `start` and `end` key.
 
 ``` yaml
-date: 1983-10-01 00:00
+date: 1983-10-01
 date_with_time: 1983-10-01 12:00:00
 date_range:
-  start: 2019-11-18 00:00
-  end: 2019-11-22 00:00
+  start: 2019-11-18
+  end: 2019-11-22
 ```
 
-Dates are stored in your application timezone, and will always include time, even when the `time_enabled` option is `false`.
+Dates are stored in your application's timezone. 
+
+The time will be when `time_enabled` is `true`, or depending on the timezone of the user who selected the date. e.g. On date fields where there is no time configured, it will assume midnight for the person who selected it.
 
 ## Templating
 
