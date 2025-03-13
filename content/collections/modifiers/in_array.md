@@ -19,11 +19,21 @@ shopping_list:
 want: eggs
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if (shopping_list | in_array('flour')) }} GOT IT! {{ /if }}
 {{ if (shopping_list | in_array('want')) }} GOT EM! {{ /if }}
 {{ if (shopping_list | in_array('eggs', 'flour')) }} YES I DID NOT FORGET! {{ /if }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($shopping_list)->inArray('flour')->fetch()) GOT IT! @endif
+@if (Statamic::modify($shopping_list)->inArray('want')->fetch()) GOT EM! @endif
+@if (Statamic::modify($shopping_list)->inArray('eggs', 'flour')->fetch()) YES I DID NOT FORGET! @endif
+```
+::
 
 
 ```html

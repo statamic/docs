@@ -15,7 +15,7 @@ YAML complies with the JSON spec, making it easy to interchange it with nearly a
 variable_name: value
 ```
 
-YAML is usually stored in `.yaml` or `.yml` files, but can often (and in Statamic's case) can be found inside and top of other text files. This is referred to as "Front Matter" and looks like this:
+YAML is usually stored in `.yaml` or `.yml` files, but can often (and in Statamic's case) be found inside and at the top of other text files. This is referred to as "Front Matter" and looks like this:
 
 ```md
 ---
@@ -147,10 +147,19 @@ $antisocial = [
 ];
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <a href="{{ antisocial:facebook }}">Facebook</a>
 <a href="{{ antisocial:twitter }}">Twitter</a>
 ```
+::tab blade
+```blade
+<a href="{{ $antisocial['facebook'] }}">Facebook</a>
+<a href="{{ $antisocial['twitter'] }}">Twitter</a>
+```
+::
 
 ### Nesting mappings and sequences
 
@@ -161,7 +170,7 @@ This is a very common pattern in Statamic. Bard, Grid, and Replicator fieldtypes
 ```yaml
 students:
   -
-    name: Zack Slater
+    name: Zach Slater
     school: Bayside High
   -
     name: Jack McDade
@@ -208,7 +217,7 @@ title: Another Monday
 
 ## Explicit Typing
 
-YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
+YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
 
 ```yaml
 a: 42                      # integer

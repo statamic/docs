@@ -11,9 +11,17 @@ Search a string against multiple needles and return `true` if any are found, oth
 summary: "It was the best of times, it was the worst of times."
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if summary | contains_any('good', 'better', 'best') }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($summary)->containsAny(['good', 'better', 'best'])->fetch()) @endif
+```
+::
 
 ```html
 true

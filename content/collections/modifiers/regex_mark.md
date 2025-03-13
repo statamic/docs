@@ -12,10 +12,19 @@ Wrap any regex matches in `<mark>` tags to highlight them on the page.
 description: This cat video is the okayest thing ever.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ description | regex_mark('cat video|thing') }}
 {{ description | regex_mark('video', 'class:highlight') }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($description)->regexMark('cat video|thing') !!}
+{!! Statamic::modify($description)->regexMark(['video', 'class:highlight']) !!}
+```
+::
 
 ```html
 This <mark>cat video</mark> is the okayest <mark>thing</mark> ever.

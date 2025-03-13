@@ -23,10 +23,19 @@ stats:
     score: 1425
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ numbers | sum }}
-{{ stats | sum($score) }}
+{{ stats | sum('score') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($numbers)->sum() }}
+{{ Statamic::modify($numbers)->sum('score') }}
+```
+::
 
 ```html
 75

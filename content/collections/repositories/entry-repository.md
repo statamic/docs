@@ -138,11 +138,11 @@ Entry::query()
     ->get();
 ```
 
-#### Get all published and scheduled entries
+#### Get all published entries
 
 ```php
 Entry::query()
-  ->whereIn('status', ['published', 'scheduled'])
+  ->whereStatus('published')
   ->get();
 ```
 

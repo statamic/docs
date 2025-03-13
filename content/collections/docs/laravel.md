@@ -12,7 +12,7 @@ There are many reasons why you might want to install Statamic into an existing L
 
 - handle all the marketing and "logged out" content for a SaaS app
 - add an easy-to-manage blog the whole team can update
-- manage existing data kinda like [Laravel Nova](https://nova.laravel.com/) (yes, [you can do that](/extending/repositories)),
+- manage existing data kinda like [Laravel Nova](https://nova.laravel.com/) (yes, [you can do that](/extending/repositories))
 - run as a headless CMS and provide a REST API to your data
 - be a special comfort package for those tough projects even when you don't need it
 
@@ -24,7 +24,7 @@ You'll get a bunch of things automatically set up for you, like a pages collecti
 
 ## Supported Versions of Laravel
 
-**Laravel 10 & Laravel 11 are supported with Statamic 5.** If you need Laravel 9 support, you can still use Statamic 4.x.
+**Laravel 10, 11 and 12 are supported with Statamic 5.** If you need Laravel 9 support, you can still use Statamic 4.x.
 
 ## Install Statamic
 
@@ -53,6 +53,12 @@ There are 3 steps to follow to install Statamic into your Laravel app.
     composer require statamic/cms --with-dependencies
     ```
 
+4. Depending on how you set up users in your app, you might need to run a command to publish Statamic's auth migrations.
+
+   ``` shell
+   php please auth:migration
+   ```
+
 ## Adding Content
 
 When you install Statamic into Laravel this way, **no content or views are included**.
@@ -78,9 +84,17 @@ Statamic routed URLs will expect views named `default` and `layout`. You will ne
 
 [Read more about how Statamic views and layouts work](/views)
 
-## Regarding Users
+## Database
 
-If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) follow those steps.
+### Content
+
+When you install Statamic into an existing Laravel application, content will be stored as flat files. 
+
+If you'd prefer to store content in a database instead, please follow the ["Storing Content in a Database"](https://statamic.dev/tips/storing-content-in-a-database) guide.
+
+### Users
+
+If you want to continue to keep users in a database, head over to [Storing Users in a Database in an Existing Laravel App](/tips/storing-users-in-a-database#in-an-existing-laravel-app) and follow those steps.
 
 Otherwise, the [Storing User Records](/users#storage) page should have instructions for the most common scenarios.
 

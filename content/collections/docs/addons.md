@@ -12,13 +12,21 @@ You can browse the [Statamic Marketplace](https://statamic.com/addons) to find a
 
 ## Installing Addons
 
-Within the Control Panel, you can install addons by browsing to the one you want and clicking install. Behind the scenes, the addon will be installed using Composer.
-
-If you want to do it yourself, you can use Composer directly on the command line:
+You can use Composer to install any addon:
 
 ``` shell
 composer require vendor/package
 ```
+
+The command can be found on the addon's page in the Control Panel or the Statamic Marketplace.
+
+:::tip
+Some first party addons – such as the Static Site Generator or Eloquent Driver - have their own dedicated commands which will be noted on the same pages.
+
+```shell
+php please install:ssg 
+```
+:::
 
 ## Creating Addons
 
@@ -27,6 +35,8 @@ To learn how to create your own addon, as well as publishing it to the Statamic 
 ## Licensing
 
 Addons may require a license, which you can purchase at the [Marketplace](https://statamic.com/marketplace). Licenses may be attached to a site in your [account area](https://statamic.com/account/sites). Make sure that you have your site key entered into your Statamic project.
+
+You can try out commercial addons locally for free. Be sure to purchase a license before deploying to production.
 
 ## Editions
 

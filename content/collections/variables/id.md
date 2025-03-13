@@ -8,9 +8,17 @@ title: Id
 The ID is the identifier of the content. It's usually a long number that you wouldn't want to show anyone.
 However it's super handy to pass into other tags.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ id }}
 ```
+::tab blade
+```blade
+{{ $page->id }}
+```
+::
 
 ```html
 0020c540-d4cd-11e5-a837-0800200c9a66

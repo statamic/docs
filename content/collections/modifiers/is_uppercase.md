@@ -13,10 +13,19 @@ declaration: NOISES
 cite: anonymous
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if declaration | is_uppercase }}
 {{ if cite | is_uppercase }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($declaration)->isUppercase()->fetch()) ... @endif
+@if (Statamic::modify($cite)->isUppercase()->fetch()) ... @endif
+```
+::
 
 ```html
 true

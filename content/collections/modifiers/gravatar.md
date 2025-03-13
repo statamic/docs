@@ -12,10 +12,18 @@ Converts an email string to a Gravatar image URL. The size can be specified by a
 email: rswanson@inpra.org
 ```
 
-```
+::tabs
+::tab antlers
+```antlers
 {{ email | gravatar }}
 {{ email | gravatar(80) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($email)->gravatar() }}
+{{ Statamic::modify($email)->gravatar(80) }}
+```
+::
 
 ```html
 https://www.gravatar.com/avatar/f4650388367dc01cf2acf16b412b3966

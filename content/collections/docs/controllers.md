@@ -18,7 +18,7 @@ Anything you can do in Laravel you can do here. Because you're using Laravel. Yo
 These explicitly defined routes will take precedence over Statamic routes and URL patterns. Keep this in mind.
 :::
 
-For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app\Http\Controllers\ExampleController.php` file like this:
+For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app/Http/Controllers/ExampleController.php` file like this:
 
 ``` php
 use App\Http\Controllers\ExampleController;
@@ -88,7 +88,7 @@ public function index()
 
     return (new \Statamic\View\View)
         ->template('myview')
-        ->layout('mylayout');
+        ->layout('mylayout')
         ->cascadeContent($entry);
 }
 ```

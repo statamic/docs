@@ -12,9 +12,17 @@ Run a find and replace regex on a string of content.
 description: This cat video is the best thing ever.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ description | regex_replace('best', 'okayest') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($description)->regexReplace(['best', 'okayest']) }}
+```
+::
 
 ```html
 This cat video is the okayest thing ever.

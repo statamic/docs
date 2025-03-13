@@ -23,7 +23,7 @@ Every Statamic install needs at least one site. Building zero sites is a bad way
 
 ### Converting Existing Content to Multi-Site
 
-The simplest way to convert existing content to multi-site friendly structure is to run the automated command:
+The simplest way to convert existing content to a multi-site friendly structure is to run the automated command:
 
 ``` shell
 php please multisite
@@ -64,7 +64,7 @@ second:
 
 ## Available Options
 
-Let's look at a full site configuration and then we'll explore all of its options.
+Let's look at a full site configuration, and then we'll explore all of its options.
 
 ``` yaml
 # resources/sites.yaml
@@ -133,7 +133,7 @@ APP_URL=http://mysite.test
 
 ### Locale
 
-Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default Statamic will use English – United States (`en_US`).
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default, Statamic will use English – United States (`en_US`).
 
 :::tip
 To see the list of installed locales on your system or server, run the command `locale -a`.
@@ -169,9 +169,17 @@ en:
     theme: standard
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <body class="theme-{{ site:attributes:theme }}">
 ```
+::tab blade
+```blade
+<body class="theme-{{ $site->attributes['theme'] }}">
+```
+::
 
 :::tip
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
@@ -183,11 +191,19 @@ Text direction is automatically inferred by Statamic, based on the [language](#l
 
 For example, most sites will be `ltr`, but Statamic will automatically use `rtl` for languages like Arabic or Hebrew.
 
-If you need to reference text direction in your front end, you make use the [site variable](/variables/site):
+If you need to reference text direction in your front end, you can make use the [site variable](/variables/site):
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <html dir="{{ site:direction }}">
 ```
+::tab blade
+```blade
+<html dir="{{ $site->direction }}">
+```
+::
 
 ## Renaming Sites
 
@@ -230,7 +246,7 @@ permissions:
 
 [Views](/views) can be organized into site directories.
 
-If a requested view exists in a subdirectory with the same name as your site [handle](#handle), it will load it instead. This allows you have site-specific views without any extra configuration.
+If a requested view exists in a subdirectory with the same name as your site [handle](#handle), it will load it instead. This allows you to have site-specific views without any extra configuration.
 
 ``` yaml
 # resources/sites.yaml
@@ -259,22 +275,48 @@ Here are a few common features you'll likely need to template while building a m
 
 This will loop through your sites and indicate the current site as the active one. Check out all the [available variables inside the `sites` loop](/variables/sites).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ sites }}
   <a class="{{ site:handle === handle ?= 'active' }}" href="{{ url }}">
     {{ handle }}
   </a>
 {{ /sites }}
 ```
+::tab blade
+```blade
+@foreach ($sites as $switcherSite)
+  <a @class([
+      'active' => $switcherSite->handle == $site->handle
+    ])
+    href="{{ $switcherSite->url }}"
+  >{{ $switcherSite->handle }}</a>
+@endforeach
+```
+::
 
 ### Declaring the Page Language
 
 Indicate the current language of the site by setting the `lang` attribute on your `<html>` tag (most likely in your layout view), or the container element around translated content if the page mixes and matches languages.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <html lang="{{ site:short_locale }}">
 ```
+::tab blade
+```blade
+<html lang="{{ $site->short_locale }}">
+```
+::
 
 ## Static Caching
 
 If your multi-site should use static caching, you will also need to add additional config parameters and different server rewrite rules. Please refer to the related section of the [static caching documentation](/static-caching#multisite) for the correct settings.
+
+## Enabling Fields
+
+By default, your existing fields won't be enabled for multi-site editing. To enable a field to be editable within another site, navigate to the field and click the globe icon (Localizable).

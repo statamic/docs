@@ -116,17 +116,41 @@ code_snippet:
 
 You can output that string just as it is. If it is indeed code (and why wouldn't it be?), you'll probably want to to wrap it in pre and code tags to display it prettier. If you want code highlighting on your front-end, we recommend hooking up [prism.js](https://prismjs.com).
 
-```
+::tabs
+
+::tab antlers
+
+```antlers
 <pre><code>{{ code_snippet }}</code></pre>
 ```
 
+::tab blade
+
+```blade
+<pre><code>{!! $code_snippet !!}</code></pre>
+```
+
+::
+
 You're also able to use it as an array if you want to output the mode.
+
+::tabs
+
+::tab antlers
 
 ```
 {{ code_snippet }}
 <pre class="language-{{ mode }}"><code>{{ code }}</code></pre>
 {{ /code_snippet }}
 ```
+
+::tab blade
+
+```blade
+<pre class="language-{{ $code_snippet['mode'] }}"><code>{!! $code_snippet['code'] !!}</code></pre>
+```
+
+::
 
 ### Variables
 

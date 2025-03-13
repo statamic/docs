@@ -9,9 +9,17 @@ Since you don't always know how many segments your URL will have, you can always
 
 Example URL: `/nestled/safely/under/our/tree`
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ last_segment }}
 ```
+::tab blade
+```blade
+{{ $last_segment }}
+```
+::
 
 ```html
 tree

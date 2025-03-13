@@ -6,7 +6,7 @@ id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
 
-Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for glueing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
+Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for gluing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
 
 1. You are comfortable working with HTML.
 2. You have a local dev environment with [composer](https://getcomposer.org/) installed.
@@ -17,12 +17,14 @@ Much of the documentation is intended to be used as a reference sheet for variou
 
 We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="uppercase font-bold tracking-widest text-green font-display">Cyberspace</span>.
 
+**This is not a "5 minute quick install guide" – we're going to be building a simple yet full site from scratch so you can see how everything comes together. It will likely take around 20-30 minutes.**
+
 ## High level approach
 
 A high level approach to building a site in Statamic often looks like this.
 
 1. Start with a static HTML site or series of different layouts
-2. Break static files up into the appropriate [Antlers views](/antlers) (layouts, templates, and partials)
+2. Break static files up into the appropriate [views](/antlers) (layouts, templates, and partials)
 3. Create applicable [collections](/collections) to hold content and set up [routes](/routing) to determine your URL patterns
 4. Stub out top level pages and map them to the proper templates
 5. Configure [blueprints](/blueprints) to hold fields that match your HTML (like title, author, date, content) and move static content out of your markup and into entries using the beautiful UI
@@ -38,21 +40,25 @@ We want this quick start guide to be just that — quick. Rather than stop after
 
 Let's start right at the very beginning. Installing Statamic.
 
-There are a [few ways to do it](/installing), but we'll just go with the simplest, most copy & pasteable method – using [Composer's](https://getcomposer.org) `create-project` command.
-
-The command you're about to run clones (makes a copy of) our [empty starter site](https://github.com/statamic/statamic) and then runs a few automated scripts to get your new blank site ready.
-
-You should run this command from your Terminal application of choice (we like [iTerm2](https://iterm2.com/index.html) inside your `~/Sites` directory or wherever you prefer putting your sites.
+There are a [few ways to do it](/installing), but we recommend using our CLI installer. So let's get that installed to your local machine.
 
 ``` shell
-composer create-project --prefer-dist statamic/statamic cyberspace-place
+composer global require statamic/cli
 ```
 
-If everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic welcome screen.
+Now you can run the `statamic new` command wherever you prefer to keep your site projects (we use `~/Sites` but you do you) to get a fresh site up and running.
 
-If you encounter a 404 error, make sure your `APP_URL` is set correctly in the `.env` file. If you encounter a Composer error, try running `composer global update` and trying again.
+``` shell
+cd ~/Sites && statamic new cyberspace-place
+```
 
-If you encounter any other errors, Google them frantically and try anything and everything suggested until it magically begins working.
+You'll be asked if you want to install a blank site or a [Starter Kit](/starter-kits). Let's just keep it really simple and start with a blank site.
+
+Next you'll be prompted to set up your first super admin user. Do it.
+
+Once the installer is done and if everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic welcome screen.
+
+If you encounter any errors, Google them frantically and try anything and everything suggested until it magically begins working.
 
 **Just kidding**, that's a terrible idea. Please don't do that. You should check our [troubleshooting](/troubleshooting) guide and [GitHub discussions](https://github.com/statamic/cms/discussions) to look for a validated solution before resorting to such measures. We try our best to have answers to all the most common things you might encounter. Modern web development is amazing when everything is up to date, and can be pretty frustrating when it isn't. We feel this pain too.
 
@@ -63,11 +69,11 @@ If you encounter any other errors, Google them frantically and try anything and 
 
 Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](https://code.visualstudio.com/) but there are a ton of great editors and IDEs out there.
 
-## Create your first user
+## Signing Into the Control Panel
 
-Now we can create a new **super user**, sign into the control panel, and start creating content to display on the frontend.
+As part of the install process you should have created yourself a super user, but if you said no on accident, we've got your back.
 
-Run `php please make:user` from the command line and follow along with the prompts (name, email, etc). Be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
+At any time you can run `php please make:user` from the command line and follow along with the prompts (name, email, etc). For the purpose of this walkthrough, be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
 
 <figure>
     <img src="/img/quick-start/make-user.png" alt="Statamic Make:User Command" width="453">
@@ -83,7 +89,7 @@ Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace
 
 ## Make a home page
 
-Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
+Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel, and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
 
 <figure>
     <img src="/img/quick-start/editing-home.png" alt="Editing the home page">
@@ -95,7 +101,7 @@ Note that the entry is using the `home` template (you can see it there in the `t
 In your code editor, open the file `resources/views/home.antlers.html`. This is the home template. The "name" of a template is the filename _up until the file extension_. Any view ending in `.antlers.html` will be parsed with Statamic's [Antlers](/antlers) template parser.
 
 :::tip
-If a view file ends with `.blade.php` it will use Laravel's [Blade language](/blade). This same pattern applies for other template engines that could be installed in the future.
+If a view file ends with `.blade.php` it will use Laravel's [Blade templates](/blade). This same pattern applies for any other template engine you may wish to install in the future, like Twig or something that hasn't been invented yet.
 :::
 
 Delete all the placeholder HTML from the template and replace it with the following:
@@ -120,7 +126,9 @@ You probably noticed that there is some _very_ basic styling going on. That's co
 <html>
 <head>
     <title>{{ title }}</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white text-lg font-mono">
     <div class="container max-w-lg mx-auto py-8">
@@ -141,21 +149,13 @@ Think of layouts like a **picture frame**, and everything that changes from sect
     <figcaption>If copy & pasted properly you should see this 👆</figcaption>
 </figure>
 
-:::tip
-There's really no perfect place to mention this, but here is as good as any.
-
-The default install uses [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
-
-This is super easy and happens automatically when you run `npm run dev` from the terminal in your project directory (as long as you've run `npm install` first).
-:::
-
 ## Now let's build a blog
 
 You might have known it was coming next – it's the staple of every CMS walkthrough. How easy is it to build a blog? You're about to find out.
 
 But first, let's talk about what a blog is. A "blog" is a collection of posts that shares common traits or attributes. A typical blog post might contain a title, featured image, an author, a few tags, and the article content.
 
-There also always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
+There is always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
 
 Here's our todo list:
 
@@ -327,7 +327,7 @@ A few cool things to note here in this code example:
 
 <figure>
     <img src="/img/quick-start/blog-show.jpg" alt="A blog post" width="600">
-    <figcaption>How close does your look?</figcaption>
+    <figcaption>How close does yours look?</figcaption>
 </figure>
 
 
@@ -353,7 +353,7 @@ Back to your code editor — open up the `resources/views/blog/index.antlers.htm
 </section>
 ```
 
-And stop right there. We've now duplicated a whole chunk of code save for one little tiny bit — `limit="5'`. Let's DRY this up (reduce code duplication).
+And stop right there. We've now duplicated a whole chunk of code for one tiny little bit — `limit="5'`. Let's DRY this up (reduce code duplication).
 
 :::tip
 It's totally fine to duplicate code sometimes, especially if you have to make some code significantly more complex to reuse it. Just keep that in mind. We'll keep this simple.
@@ -363,13 +363,13 @@ It's totally fine to duplicate code sometimes, especially if you have to make so
 
 Partials are reusable template chunks. Create a new file named `_listing.antlers.html` in the `resources/views/blog/` directory. Prefixing a template with an underscore is a common convention to indicate that it's a reusable partial and not a full layout. You could also create a subdirectory named `partials` — it's up to you. Just be consistent.
 
-Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so when you use your partial you can specify your desired limit. Replace that second line with this:
+Inside that new template file, copy and paste the entire `<section>` chunk that includes the Collection tag pair from either the homepage, the blog index, or this guide. We can create a variable on the fly here so you can pass a desired limit into your partial. Replace that second line with this:
 
 ```
 {{ collection:blog :limit="limit" }}
 ```
 
-By prefixing the `limit` parameter with a colon we're telling Statamic to look for a variable named "limit" as the argument. If there isn't one it will be null, and not add a limit — just how we want it on the blog index template.
+Prefixing the `limit` parameter with a colon tells Statamic to look for a variable named "limit" as the argument. If there isn't one it will be `null`, which will not set a limit which is how we want it on the blog index template.
 
 Your blog index template can now look like as simple as this:
 
@@ -412,7 +412,7 @@ Here's your entire home template:
 
 We're almost done, but before we head back to the control panel to add a few more fields to your blog blueprint, let's add a nav.
 
-Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This let's you have a page with a slug of `/`.
+Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This lets you have a page with a slug of `/`.
 
 We can use the [Nav tag](/tags/nav) to fetch the entries in the Pages collection in the order you have them arranged.
 
@@ -422,7 +422,7 @@ Open up your layout file and drop in this nav snippet, right after the open body
 // resources/views/layout.antlers.html
 // ...
 
-<nav class="bg-black text-xs uppercase text-green text-center flex items-center justify-center space-x-4">
+<nav class="bg-black text-xs uppercase text-green-500 text-center flex items-center justify-center space-x-4">
     {{ nav from="pages" include_home="true" }}
         <a href="{{ url }}" class="p-2 block hover:text-yellow-200">{{ title }}</a>
     {{ /nav  }}

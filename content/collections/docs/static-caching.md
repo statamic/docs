@@ -140,7 +140,7 @@ RewriteRule ^ index.php [L]
 
 ### Nginx
 
-On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slighly different place depending on your server setup.
+On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slightly different place depending on your server setup.
 
 Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
 
@@ -180,6 +180,29 @@ location @static {
 :::
 
 
+:::tip
+If your site needs to support URLs with a trailing slash, make sure to update the NGINX config:
+
+``` nginx
+location / {
+    try_files $uri $try_location; # [tl! remove]
+    try_files $uri $uri/ $try_location; # [tl! add]
+}
+
+location @static {
+    try_files /static${uri}_$args.html $uri $uri/ /index.php?$args; # [tl! remove]
+    rewrite ^/(.*)/$ /$1 last; # [tl! add]
+    try_files /static${uri}_$args.html /static${uri}/_$args.html $uri $uri/ /index.php?$args; # [tl! add]
+}
+
+location @not_static {
+    try_files $uri /index.php?$args; # [tl! remove]
+    try_files $uri $uri/ /index.php?$args; # [tl! add]
+}
+```
+:::
+
+
 ### IIS
 
 On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
@@ -193,19 +216,32 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 
 ## Warming the Static Cache
 
-You can get your app to automatically generate the public views for your entries and add them to the Static Cache, making first times loads much faster. To do this run:
+Before users visit your website, you may wish to warm the static cache to make first time loads much faster. To do this, run:
 
 ```
 php please static:warm
 ```
 
-This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag.
+The `static:warm` command supports various arguments:
 
-Passing `--insecure` to the command allows you to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--queue`**
+    Indicates that URIs should be warmed on the queue (in the background).
+* **`--insecure`**
+    Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--user` and `--password`**
+    Allows you to specify credentials to be used when your site is secured with [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Otherwise, you might end up with a `401 Unauthorized` error running the command.
+* **`--uncached`**
+    Ensure that only *uncached* pages are warmed. Perfect for when you just want to 'fill in the gaps' in your cache after some URLs were invalidated, without visiting every single URL in your website. This avoids unnecessary server load.
+* **`--include` and `--exclude`**
+    Accepts a comma-separated list of URLs you'd like to be included/excluded in the warming process.
+    Example: `--include='/about,/contact,/blog/*'`
+* **`--max-depth`**
+    Allows you to specify the max depth of pages that should be warmed.
+    For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
+* **`--max-requests`**
+    Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
 
-Adding the `--user` and `--password` flags, you can run the command behind [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Useful when your site is secured with a simple username and password, like on a staging or development server. Otherwise, you might end up with a `401 Unauthorized` error running the command.
-
-Depending on your site's setup, it's a good idea to add this command to your deployment script on Forge or whatever deployment tool or pipeline you use.
+Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
 ### Concurrency
 
@@ -364,7 +400,7 @@ class CustomExcluder implements UrlExcluder
 
 ## Invalidation
 
-A statically cached page will be served until it is invalidated. You have a several options for how to invalidate your cache.
+A statically cached page will be served until it is invalidated. You have several options for how to invalidate your cache.
 
 ### Time Limit
 
@@ -440,9 +476,17 @@ return [
 ];
 ```
 
+### On a schedule
+
+If you have the scheduler running, Statamic will use the same set of rules mentioned above, but when scheduled entries are due to become active.
+
+For example, if you schedule an entry for Friday at 8am, and you have the scheduler running, appropriate pages will be invalidated just as if you had clicked saved on that entry at Friday at 8am.
+
+[Learn how to use the scheduler](/scheduling)
+
 ### Custom Invalidator Class
 
-You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
+You can also specify a custom invalidator class to **programmatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
 return [
@@ -700,7 +744,7 @@ When a page is being statically cached on the first request, or loaded on subseq
 
 Statamic includes two replacers out of the box. One will replace [CSRF tokens](#csrf-tokens), the other will handle [nocache](/tags/nocache) tag usages.
 
-A replacer is a class that implements a `Statamic\StaticCaching\NoCache\Replacer` interface. You will be passed responses to the appropriate methods where you can adjust them as necessary.
+A replacer is a class that implements a `Statamic\StaticCaching\Replacer` interface. You will be passed responses to the appropriate methods where you can adjust them as necessary.
 
 You can then enable your class by adding it to `config/statamic/static_caching.php`:
 

@@ -7,32 +7,28 @@ title: Sites
 ---
 A collection containing all the configured sites as `Statamic\Sites\Site` objects which you can loop over using a tag pair.
 
-``` php
-// config/statamic/sites.php
-
-'sites' => [
-    'english' => [
-        'name' => 'English Site',
-        'locale' => 'en_US',
-        'url' => 'http://mysite.com/',
-        'direction' => 'ltr',
-        'attributes' => [
-            'foo' => 'bar',
-        ]
-    ],
-    'french' => [
-        'name' => 'French Site',
-        'locale' => 'en_FR',
-        'url' => 'http://mysite.com.fr/',
-        'direction' => 'ltr',
-        'attributes' => [
-            'foo' => 'baz',
-        ]
-    ]
-]
+```yaml
+# resources/sites.yaml
+english:
+  name: English Site
+  url: 'http://mysite.com/'
+  locale: en_US
+  direction: ltr
+  attributes:
+    foo: bar
+french:
+  name: French Site
+  url: 'http://mysite.com.fr/'
+  locale: en_FR
+  direction: ltr
+  attributes:
+    foo: baz
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ sites }}
     {{ handle }}
     {{ name }}
@@ -46,6 +42,21 @@ A collection containing all the configured sites as `Statamic\Sites\Site` object
 
 {{ /sites }}
 ```
+::tab blade
+```blade
+@foreach ($sites as $site)
+  {{ $site->handle }}
+  {{ $site->name }}
+  {{ $site->locale }}
+  {{ $site->short_locale }}
+  {{ $site->url }}
+  {{ $site->permalink }}
+  {{ $site->direction }}
+
+  {{ $site->attributes['foo'] }}
+@endforeach
+```
+::
 
 ```html
 english

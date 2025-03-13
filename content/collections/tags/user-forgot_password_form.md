@@ -58,7 +58,10 @@ Unless you set a `redirect` parameter, the user will be redirected back to the *
 
 ## Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:forgot_password_form reset_url="/reset-password" }}
 
     {{ if errors }}
@@ -82,6 +85,32 @@ Unless you set a `redirect` parameter, the user will be redirected back to the *
 
 {{ /user:forgot_password_form }}
 ```
+::tab blade
+```blade
+<s:user:forgot_password_form
+  reset_url="/reset-password"
+>
+  @if ($errors)
+    <div class="bg-red-300 text-white p-2">
+      @foreach ($errors as $error)
+        {{ $error }}<br>
+      @endforeach
+    </div>
+  @endif
+
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}<br>
+    </div>
+  @endif
+
+  <label>Email</label>
+  <input type="text" name="email" value="{{ old('email') }}" />
+
+  <button type="submit">Send Reset Email</button>
+</s:user:forgot_password_form>
+```
+::
 
 The email will contain a link to the URL specified in the `reset_url` parameter, along with extra query parameters. On that URL you must have a [user:reset_password_form](/tags/user-reset_password_form) tag to finish the task and let the user set their new password.
 

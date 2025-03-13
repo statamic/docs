@@ -1,0 +1,14 @@
+<article class="markdown pb-8">
+    {{ content | toc:ids }}
+
+    {{ if parameters }}
+        <h2 id="parameters">Parameters</h2>
+        {{ partial:details :details="parameters" }}
+    {{ /if }}
+
+    {{ if variables }}
+        <h2 id="variables">Variables</h2>
+        {{ partial:variables }}
+    {{ /if }}
+
+</article>

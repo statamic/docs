@@ -22,7 +22,10 @@ Here are a few ideas on what you can do with the switch tag.
 
 ### Set alternating background color for table rows
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <table>
   {{ collection:shows }}
     <tr class="{{ switch between='bg-white|bg-grey-100' }}">
@@ -32,10 +35,25 @@ Here are a few ideas on what you can do with the switch tag.
   {{ /collection:shows }}
 </table>
 ```
+::tab blade
+```blade
+<table>
+  <s:collection:shows>
+    <tr class="{{ Statamic::tag('switch')->between('bg-white|bg-grey-100') }}">
+     <th>{{ $title }}</th>
+     <td>{{ $rating }}</td>
+    </tr>
+  </s:collection:shows>
+</table>
+```
+::
 
 ### Reverse every other pair of items with `flex-direction: row-reverse`
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ features }}
   <div class="flex {{ switch between='flex-row|flex-row-reverse' }}">
     <div class="w-1/2 px-4 m-2">
@@ -46,6 +64,19 @@ Here are a few ideas on what you can do with the switch tag.
   </div>
 {{ /features }}
 ```
+::tab blade
+```blade
+@foreach ($features as $feature)
+  <div class="flex {{ Statamic::tag('switch')->between('flex-row|flex-row-reverse') }}">
+    <div class="w-1/2 px-4 m-2">
+      <h2>{{ $feature->feature_name }}</h2>
+      <div>{{ $feature->description }}</div>
+    </div>
+    <img src="{{ $feature->feature_screenshot }}" class="w-1/2 m-2">
+  </div>
+@endforeach
+```
+::
 
 ## Multiple Instances
 
@@ -53,10 +84,19 @@ You can have multiple instances of the switch tag in a single view and they won'
 
 If you want to have multiple, identical switch tags you can add an extra parameter to keep track of which is which.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ switch between="even|odd" for="gallery" }}
 {{ switch between="even|odd" for="footer" }}
 ```
+::tab blade
+```blade
+{{ Statamic::tag('switch')->between('even|odd')->for('gallery') }}
+{{ Statamic::tag('switch')->between('even|odd')->for('footer') }}
+```
+::
 
 ## Repeating Values
 
@@ -64,14 +104,31 @@ If you have a lot of redundancy in your `between` parameter, you can simplify it
 
 For example, if you'd like to set the background of every 10th element to purple, you could set the first value to white 9 times followed by purple 1 time.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ switch between="bg-white:9|bg-purple" }}
 ```
+::tab blade
+```blade
+{{ Statamic::tag('switch')->between('bg-white:9|bg-purple') }}
+```
+::
 
 :::tip
 If you're using [TailwindCSS's JIT mode](https://tailwindcss.com/docs/just-in-time-mode) or you purge your CSS on production, you might notice any classes **only in your switch tag** are missing. Add spaces around the pipes to make sure JIT picks them up.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ switch between="bg-white | bg-purple" }}
 ```
+::tab blade
+```blade
+{{ Statamic::tag('switch')->between('bg-white | bg-purple') }}
+```
+::
+
 :::

@@ -33,8 +33,28 @@ The User Group fieldtype stores the `handle` of a single group as a string, or a
 
 The User Group fieldtype uses [augmentation](/augmentation) to return the `title` and `handle` of each Group. You can use pass these values into the `{{ user:in }}` tag to protect content.
 
-```
+The following example assumes `max_items` has been set to `1`.
+
+::tabs
+
+::tab antlers
+```antlers
 {{ user:in :group="group_field:handle" }}
   You are in the {{ group_field:title }} group. Nice!
 {{ /user:in }}
 ```
+::tab blade
+```blade
+{{-- Using Statamic Tags --}}
+<statamic:user:in
+  :group="$group_field->handle"
+>
+  You are in the {{ $group_field->title }} group. Nice!
+</statamic:user:in>
+
+{{-- Using Fluent Tags --}}
+@if(Statamic::tag('user:in')->group($group_field->handle)->fetch())
+  You are in the {{ $group_field->title }} group. Nice!
+@endif
+```
+::

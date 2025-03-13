@@ -7,10 +7,18 @@ title: 'Current Url'
 ---
 The current URL.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ current_url }}
 ```
+::tab blade
+```blade
+{{ $current_uri }}
+```
+::
 
 ```html
-https://docs.statamic.com/variables
+https://statamic.dev/variables/current_url
 ```

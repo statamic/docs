@@ -45,7 +45,10 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 
 ### Example
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:login_form }}
 
     {{ if errors }}
@@ -72,3 +75,30 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 
 {{ /user:login_form }}
 ```
+::tab blade
+```blade
+<s:user:login_form>
+  @if ($errors)
+    <div class="bg-red-300 text-white p-2">
+      @foreach ($errors as $error)
+        {{ $error }}<br>
+      @endforeach
+    </div>
+  @endif
+
+  @if ($success)
+    <div class="bg-green-300 text-white p-2">
+      {{ $success }}<br>
+    </div>
+  @endif
+
+  <label>Email</label>
+  <input type="email" name="email" value="{{ old('email') }}" />
+
+  <label>Password</label>
+  <input type="password" name="password" value="{{ old('password') }}" />
+
+  <button type="submit">Log in</button>
+</s:user:login_form>
+```
+::

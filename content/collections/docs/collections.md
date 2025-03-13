@@ -59,7 +59,7 @@ id: 3a28f050-f8d2-4a56-ba8a-314a9d46bf38
 It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at the 1999 Summer X Games in a moment that launched the sport into popular consciousness in a new way.
 ```
 
-You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of moment. Let your passion carry you away.
+You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of the moment. Let your passion carry you away.
 
 ### View Data
 
@@ -125,7 +125,7 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
-It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
+It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take effect, you will need to re-save your existing entries.
 
 :::tip
 To use modifiers in title formats, make sure to use the `{{` Antlers syntax, like this:
@@ -202,11 +202,19 @@ We recommend [filtering](/tags/collection#published-status) and [querying](/repo
 
 ## Time
 
-To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
+To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific time**, e.g. `11:45am`.
 
 :::tip
 If you don't enable the time, all entries on a given day will assume a default time of midnight, or `00:00`. If you want to make sure that multiple entries on the same day are ordered in the order you published them, turn the time on.
 :::
+
+## Scheduling
+
+If you've added a date and/or time to your entries in order to "schedule" them, you may need to set up the scheduler in order for Statamic to properly invalidate things.
+
+For example, you might need things to happen exactly when an entry is scheduled, like refreshing a cached blog listing, or sending a notification.
+
+[Learn how to use the scheduler](/scheduling)
 
 ## Ordering
 
@@ -233,7 +241,15 @@ A structured collection will **not** have a maximum depth unless you set one, al
 
 ### Default Sort Order in Listings
 
-For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
+For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default, the Title field will be used.
+
+
+### Root Page
+
+If you specify that your collection should "expect a root page", the first item in the tree UI will be considered the root. This entry will _not_ use a slug in its URI.
+
+The most common usage for this is to define a home page in a pages' collection. In this example, the root page's url would be `/` instead of `/home`.
+
 
 ## Routing
 
@@ -298,7 +314,7 @@ route: /tournament/round-{depth}/{team_name}
 ```
 
 #### Using fields from related entries
-For example, if you have a `category` field in your Products collection and you'd like to your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
+For example, if you have a `category` field in your Products collection and you'd like for your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
 
 ``` php
 // app/Providers/AppServiceProvider.php
@@ -353,7 +369,7 @@ The following redirects are supported:
 - external links (starting with `http`)
 - internal links (starting with `/`)
 - other entries or terms (eg. `entry::id-of-entry` or `term::id-of-term`)
-- it's first child page (`@child`) - If there are no child pages you will get a 404
+- its first child page (`@child`) - If there are no child pages you will get a 404
 - a `404` response
 
 Any other strings will be assumed to be a relative link. For example: if the page URL is `/my/page` and you have `redirect: is/here` in your entry, you will be redirected to `/my/page/is/here`.
@@ -404,7 +420,7 @@ You may mount a collection onto an entry as a way of saying "all these entries b
 
 ### Mount Setting
 
-You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to a **aquarium** entry page.
+You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to an **aquarium** entry page.
 
 Now you can use `mount` variable in the route to automatically prepend the mounted entry's URL. So for example, if you mounted a collection to `/aquarium` with `/{mount}/{slug}`, all your fish URLs will follow the `/aquarium/entry-url` pattern. If you later move `/aquarium` to `/house-of-fishies`, all your entries will automatically update with `/house-of-fishies/entry-url`.
 
@@ -416,13 +432,27 @@ route: '/{mount}/{slug}'
 
 ### Looping through mounted entries
 
-You can loop through all entries in the the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
+You can loop through all entries in the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ collection :from="mount" }}
     {{ title }}
 {{ /collection}}
 ```
+
+::tab blade
+```blade
+<statamic:collection
+  :from="$mount"
+>
+  {{ $title }}
+</statamic:collection>
+```
+
+::
 
 :::tip
 If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.
@@ -431,7 +461,7 @@ If you are coming from Statamic 2, you might have used the `{{ entries }}` tag p
 
 ## Search Indexes
 
-You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users' searches. Learn [how to connect indexes](search#connecting-indexes).
 
 ## Revisions
 

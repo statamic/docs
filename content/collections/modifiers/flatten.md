@@ -15,9 +15,21 @@ ingredients:
   meat: [chicken]
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ ingredients | flatten }}
 ```
+::tab blade
+```blade
+<?php
+  $flattened = Statamic::modify($ingredients)
+    ->flatten()
+    ->fetch();
+?>
+```
+::
 
 ```yaml
 ingredients:

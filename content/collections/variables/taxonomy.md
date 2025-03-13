@@ -7,9 +7,17 @@ title: Taxonomy
 ---
 Get the name of the taxonomy the term belongs to.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ taxonomy }}
 ```
+::tab blade
+```blade
+{{ $taxonomy }}
+```
+::
 
 ```html
 categories

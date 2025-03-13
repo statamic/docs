@@ -17,9 +17,17 @@ the_team:
     duncan: Duncan McClean
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ the_team | values }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($the_team)->values()->fetch() }}
+```
+::
 
 ```yaml
 - Jack McDade

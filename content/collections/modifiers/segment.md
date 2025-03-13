@@ -12,9 +12,17 @@ Returns a segment by number from any valid URL or URI.
 example: /this/is/pretty/neat
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ example | segment(4) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($example)->segment(4) }}
+```
+::
 
 ```html
 neat

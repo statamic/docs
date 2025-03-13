@@ -11,9 +11,17 @@ Replaces all non-ASCII characters with their closest ASCII counterparts and remo
 title: lemoñade
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ title | ascii }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($title)->ascii() }}
+```
+::
 
 ```html
 lemonade

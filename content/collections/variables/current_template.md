@@ -8,9 +8,17 @@ title: Current Template
 ---
 The name of the template currently in use.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ current_template }}
 ```
+::tab blade
+```blade
+{{ $current_template }}
+```
+::
 
 ```html
 blog.index

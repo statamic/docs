@@ -32,7 +32,7 @@ config/statamic/
 
 ## Environment Variables
 
-It is often helpful to have different configuration setting based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server
+It is often helpful to have different configuration settings based on the environment where the site is running. For example, you may wish to enable debug mode on your local server but not your production server
 
 :::warning
 **Never enable Debug Mode or DebugBar on production.** The error messages — as beautiful as they are — will reveal much about the way your site is configured, where important files are, and possibly even leak data from your `.env` file depending on how you use those variables.
@@ -70,12 +70,26 @@ All environment variables are available in your config files by using the `env()
 'awesome' => env('ENABLE_AWESOME', true),
 ```
 
+::tabs
+
+::tab antlers
+
 Once passed into a config file, the variable can be used in your views with the `{{ config }}` tag.
 
 ``` antlers
 // To retrieve the above 'awesome' value...
 {{ config:app:awesome }}
 ```
+
+::tab blade
+
+Once passed into a config file, the variable can be used in your views with the `config()` helper function.
+
+```blade
+// To retrieve the above 'awesome' value...
+{{ config('app.awesome') }}
+```
+::
 
 :::warning
 **Your `.env` file should never be committed to version control**.

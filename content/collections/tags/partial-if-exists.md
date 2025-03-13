@@ -18,9 +18,17 @@ parameters:
 
 You can use this tag to output a partial if it exists. Useful if you have some sort of dynamic loop.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ partial:if_exists src="mypartial" }}
 ```
+::tab blade
+```blade
+<s:partial:if_exists src="mypartial" />
+```
+::
 
 Practically identical to the [`partial`](/tags/partial) except if the view doesn't exist it will just output
 nothing instead of throwing a "view not found" exception.

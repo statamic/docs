@@ -3,7 +3,7 @@ id: 8ed04215-9f46-4000-bd67-c71b21b67d85
 blueprint: page
 title: Relationships
 template: page
-intro: 'Content is often related to other content and bits of data. A blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard. This pages covers ways to create and take advantage of these types relationships.'
+intro: 'Content is often related to other content and bits of data. A blog post may have an author and 3 other recommended posts. A product may have a brand and a category. A hot dog may have a bun and some mustard. This page covers ways to create and take advantage of these types of relationships.'
 related_entries:
   - d0c65546-74f1-4a15-89d5-1562a95ee2c6
   - acee879a-c832-449d-a714-c57ea5862717
@@ -59,7 +59,10 @@ related_products:
 
 In this following template example you can see how easy it is to use the data from related entries, assets, and users. You don't need to write queries, request data filter results, or anything complicated. As long as you've used the appropriate [fieldtypes](#fieldtypes) in your [blueprint](/blueprints), the data will be ready and waiting for you to use in your view template.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <!-- resources/views/products/show.antlers.html -->
 
 <div class="product">
@@ -84,12 +87,42 @@ In this following template example you can see how easy it is to use the data fr
   </div>
 </div>
 ```
+::tab blade
+```blade
+<!-- resources/views/products/show.blade.php -->
+
+<div class="product">
+  <div class="flex justify-between">
+    <h1>{{ $title }}</h1>
+    <h2 class="text-green">${{ $price }}</h2>
+  </div>
+  <img src="{{ $photo->url }}" alt="{{ $photo->alt }}">
+  <p>Listed by: {{ $author->name }}</p>
+</div>
+
+<div class="mt-8">
+  <h3>Related Products</h3>
+  <div class="flex flex-wrap -mx-2">
+    @foreach ($related_products as $product)
+    <div class="w-1/2 p-4 border m-2">
+      <div class="font-bold">{{ $product->title }}</div>
+      <div class="text-green">{{ $product->price }}</div>
+      <img src="{{ $product->photo->url }}" alt="{{ $product->photo->alt }}">
+    </div>
+    @endforeach
+  </div>
+</div>
+```
+::
 
 ## Manual Fetching
 
 If you _aren't_ using a relationship fieldtype but _do_ have an `id` or `handle` to fetch data from you can use the [get_content tag](/tags/get_content).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <!-- You can hardcode the ID -->
 {{ get_content from="123-1234-12-4321" }}
   <a href="{{ url }}">{{ title }}</a>
@@ -100,3 +133,16 @@ If you _aren't_ using a relationship fieldtype but _do_ have an `id` or `handle`
   <a href="{{ url }}">{{ title }}</a>
 {{ /get_content }}
 ```
+::tab blade
+```blade
+<!-- You can hardcode the ID -->
+<s:get_content from="123-1234-12-4321">
+  <a href="{{ $url }}">{{ $title }}</a>
+</s:get_content>
+
+<!-- Or pass the variable holding it -->
+<s:get_content :from="related_id">
+  <a href="{{ $url }}">{{ $title }}</a>
+</s:get_content>
+```
+::

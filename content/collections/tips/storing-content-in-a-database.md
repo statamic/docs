@@ -14,7 +14,7 @@ related_entries:
 ---
 ## Overview
 
-Out of the box, Statamic stores your content in "flat files". However, there are a number of reasons you might find yourself reaching for a traditional database. Whether it fits better into your existing workflows or to enhance your site's performance, you'll be glad to know it's easy to switch.
+When you create a new Statamic site, it will ask if you want to store content in flat files or in a database. If you change your mind, maybe for performance or workflow reasons, it's really easy to switch.
 
 ## Moving content to the database
 1. First things first, ensure your database is configured correctly. By default, Statamic sites are configured to use a SQLite database. However, [you're free to change this](https://laravel.com/docs/master/database#configuration) in your `.env`:

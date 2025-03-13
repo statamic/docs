@@ -19,9 +19,11 @@ You can also [create your own drivers](#custom-drivers).
 
 Whichever approach you choose, know that it's designed to help you out. We’ve tried to keep the syntax as simple as possible while allowing for flexibility. Because of this, if Statamic sees you’ve set `protect`, but the scheme has been configured incorrectly, _all users will be denied_.
 
-:::tip
-This feature only applies to the frontend of your site on pages routed through Statamic (like entry URLs). Custom PHP/Laravel-defined routes and the Control Panel will be unaffected.
-:::
+## Caveats
+
+* Protection only applies to the frontend of your site routed through Statamic (like entry URLs). Custom routes defined in your `routes/web.php` file and the Control Panel will be unaffected.
+* Protected pages are automatically excluded from the [static cache](https://statamic.dev/static-caching#important-preface).
+
 
 ## Protecting an entry
 
@@ -99,6 +101,27 @@ This is perfect for times when you want to password-protect one or more files bu
 ]
 ```
 
+You can also define the password for a protected entry on the entries themselves. This might be helpful if each has a different password.
+
+```yaml
+# content/collections/pages/secret-page.md
+
+protect: password
+password: local-password
+```
+
+``` php
+// config/statamic/protection.php
+
+'password' => [
+    'driver' => 'password',
+    'allowed' => ['secret', 'confidential'],
+    'form_url' => null,
+    'field' => 'password', // [tl! add]
+]
+```
+
+
 ### Password Form
 
 <figure>
@@ -109,9 +132,14 @@ This is perfect for times when you want to password-protect one or more files bu
 You’ll need to provide a way for people to enter passwords for URLs. Statamic has a built-in generic password entry form. If you want to customize it, you have two options:
 
 #### Override the view
+
+::tabs
+
+::tab antlers
+
 Override the view by creating `vendor/statamic/auth/protect/password.antlers.html` in your `views` directory, and use the  [protect:password_form](/tags/protect-password_form) tag to build a form. No config change required. For example:
 
-```
+```antlers
 {{ protect:password_form }}
     {{ if no_token }}
         No token has been provided.
@@ -132,6 +160,32 @@ Override the view by creating `vendor/statamic/auth/protect/password.antlers.htm
     {{ /if }}
 {{ /protect:password_form }}
 ```
+::tab blade
+
+Override the view by creating `vendor/statamic/auth/protect/password.blade.php` in your `views` directory, and use the [protect:password_form](/tags/protect-password_form) tag to build a form. No config change required. For example:
+
+```blade
+<s:protect:password_form>
+  @if ($no_token)
+    No token has been provided.
+  @else
+    @if ($error)
+      <div class="error">{{ $error }}</div>
+    @endif
+
+    <input type="password" name="password" />
+
+    @if (isset($errors['password']))
+      @foreach ($errors['password'] as $error)
+        <div class="inline-error">{{ $error }}</div>
+      @endforeach
+    @endif
+
+    <button>Submit</button>
+  @endif
+</s:protect:password_form>
+```
+::
 
 The `protect:password_form` tag is going to wrap everything between the tags in an HTML form tag pointing to the appropriate place.
 

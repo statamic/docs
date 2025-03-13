@@ -18,9 +18,17 @@ Returns the number of months since a given date variable. Statamic will attempt 
 date: October 1 2017
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ date | months_ago }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($date)->monthsAgo() }}
+```
+::
 
 ```html
 {{ test_date | months_ago }}

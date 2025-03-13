@@ -17,13 +17,23 @@ stuff:
   two: 'Value Two'
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ "stuff:one, title, stuff:two" | compact | ul }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify("stuff:one, title, stuff:two")->compact()->ul() !!}
+```
+::
 
 Would produce the following output:
 
-```
+::tabs
+
+```html
 <ul>
     <li>Value One</li>
     <li>The finest title there ever was</li>

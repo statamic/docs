@@ -31,7 +31,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
          <td>Mar 2023</td>
          <td>Sep 2023</td>
       </tr>
-      <tr class="bg-gray-lightest text-black/60">
+      <tr class="bg-red text-[#ffc9bf]">
          <td class="font-bold">3.4*</td>
          <td>8-9</td>
          <td>7.4-8.1</td>
@@ -39,7 +39,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
          <td>Jan 2023</td>
          <td>Jul 2024</td>
       </tr>
-      <tr class="bg-white">
+      <tr class="bg-red text-[#ffc9bf]">
          <td class="font-bold">4</td>
          <td>9-10</td>
          <td>8.0-8.3</td>
@@ -49,11 +49,19 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       </tr>
       <tr>
          <td class="font-bold">5</td>
-         <td>10-11</td>
+         <td>10-12</td>
          <td>8.2-8.3</td>
          <td>May 2024</td>
          <td>May 2025</td>
          <td>Nov 2025</td>
+      </tr>
+       <tr>
+         <td class="font-bold">6</td>
+         <td>11-12</td>
+         <td>8.3-8.4</td>
+         <td>May 2025</td>
+         <td>May 2026</td>
+         <td>Nov 2026</td>
       </tr>
    </tbody>
 </table>

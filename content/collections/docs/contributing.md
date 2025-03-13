@@ -31,7 +31,7 @@ Statamic is split into a few Github repositories. Here's a quick summary of each
 
 - [`statamic/cms`](https://github.com/statamic/cms) is the core package. It doesn't run by itself but is instead a dependency consumed by Laravel apps. **99% of the work goes on here.**
 - [`statamic/statamic`](https://github.com/statamic/statamic) is the starter Laravel app used to build a new site. It's an empty shell.
-- [`statamic/docs`](https://github.com/statamic/docs) is the Statamic 3 documentation site that is curently running on [statamic.dev](https://statamic.dev).
+- [`statamic/docs`](https://github.com/statamic/docs) is the Statamic documentation site that is currently running on [statamic.dev](https://statamic.dev).
 
 ### Bug Reports
 
@@ -55,7 +55,7 @@ If you _do_ find a similar request, **upvote it** by adding a 👍 [reaction](ht
 
 ### Security Disclosures
 
-If you discover a security vulnerability, please review our [Security Policy](https://github.com/statamic/cms/security/policy), then report the issue directly to us from [statamic.com/support](https://statamic.com/support). We will review and respond privately via email. We do not respond to cold "do pay bounties?" emails.
+If you discover a security vulnerability, please review our [Security Policy](https://github.com/statamic/cms/security/policy), then report the issue directly to us from [statamic.com/support](https://statamic.com/support). We will review and respond privately via email. We do not respond to cold "do you pay bounties?" emails.
 
 ### Documentation Edits
 

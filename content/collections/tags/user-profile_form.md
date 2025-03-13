@@ -56,7 +56,10 @@ The tag will render the opening and closing `<form>` HTML elements for you.
 
 A basic profile edit form, with validation errors.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:profile_form }}
 
     {{ if errors }}
@@ -86,6 +89,11 @@ A basic profile edit form, with validation errors.
 
 {{ /user:profile_form }}
 ```
+::tab blade
+```blade
+
+```
+::
 
 ## Blueprints Fields
 
@@ -95,11 +103,19 @@ Any submitted data that does _not_ exist in the blueprint will be completely ign
 
 Additional fields will be validated as per your blueprint `validate` rules.
 
+:::tip Note
+The `user:profile_form` tag doesn't currently support uploading Assets.
+:::
+
 ## Dynamic Rendering
 
 Instead of hardcoding individual fields, you may loop through the `fields` array to render fields more dynamically.
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ fields }}
     <div class="p-2">
         <label>{{ display }}</label>
@@ -110,6 +126,23 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
     </div>
 {{ /fields }}
 ```
+::tab blade
+```blade
+<s:user:profile_form>
+
+  @foreach ($fields as $field)
+    <div class="p-2">
+      <label>{{ $field['display'] }}</label>
+      <div class="p-1">{!! $field['field'] !!}</div>
+      @if ($field['error'])
+        <p class="text-gray-500">{{ $field['error'] }}</p>
+      @endif
+    </div>
+  @endforeach
+
+</s:user:profile_form>
+```
+::
 
 Each item in the `fields` array contains `type`, `display` and `handle`, which are configurable from the `user` blueprint.
 

@@ -2,10 +2,12 @@
 id: c095fb87-4c02-462c-9e6f-dfe0b6889248
 blueprint: page
 title: 'Git Automation'
-intro: 'Statamic can automate your version control workflow with Git. It can automatically commit and push content as it''s changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works.'
+intro: "Statamic can automate your version control workflow with Git. It can automatically commit and push content as it's changed, schedule commits, or allow users to commit and push changes from the control panel without having to understand how git works."
 pro: true
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632512218
+related_entries:
+  - b46adc3b-c4de-4148-a388-c8ff498ae9c9
 ---
 ## Overview
 

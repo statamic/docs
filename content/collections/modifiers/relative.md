@@ -16,12 +16,23 @@ past_date: October 1 2020
 future_date: October 1 2024
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ past_date | relative }}
 {{ past_date | relative(true) }}
 {{ future_date | relative }}
 {{ future_date | relative(true) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($past_date)->relative() }}
+{{ Statamic::modify($past_date)->relative(true) }}
+{{ Statamic::modify($future_date)->relative() }}
+{{ Statamic::modify($future_date)->relative(true) }}
+```
+::
 
 ```html
 2 years ago

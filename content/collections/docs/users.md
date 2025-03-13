@@ -14,7 +14,7 @@ related_entries:
 ---
 ## Overview
 
-The most common and obvious reason users exist are to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
+The most common and obvious reason users exist is to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
 
 <figure>
     <img src="/img/users-index.png" alt="List of Statamic Control Panel users">
@@ -23,7 +23,7 @@ The most common and obvious reason users exist are to have the means to access t
 
 ## Creating Users
 
-The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-admins), you can log into the control panel at `example.com/cp`.
+The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-users), you can log into the control panel at `example.com/cp`.
 
 :::watch https://youtube.com/embed/KuiPocGq3L8
 Watch a new user being born. 🐣
@@ -101,8 +101,8 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | &nbsp;&nbsp;↳ Edit roles | `edit roles` |
 | &nbsp;&nbsp;↳ Impersonate users | `impersonate users` |
 | Configure forms | `configure forms` |
-| View form submissions | `view {form} submissions` |
-| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} submissions` |
+| View form submissions | `view {form} form submissions` |
+| &nbsp;&nbsp;↳ Delete form submissions | `delete {form} form submissions` |
 
 ### Author Permissions
 
@@ -129,7 +129,7 @@ Super Admin accounts are special accounts with **access and permission to everyt
     <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
 </div>
 
-User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
+User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot of users.
 
 User groups are stored in `resources/users/groups.yaml`.
 
@@ -160,7 +160,7 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/11.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
+Consult the [Laravel documentation](https://laravel.com/docs/12.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
 
 ## Storing User Records {#storage}
 

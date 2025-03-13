@@ -24,6 +24,9 @@ Maybe you would like to render a footer hierarchy, with top level pages as `<h3>
 
 We can do this by performing a `depth` check to decide how to render the current item based on it's depth in the nav structure:
 
+::tabs
+
+::tab antlers
 ```antlers
 <div class="flex">
     {{ nav }}
@@ -42,6 +45,27 @@ We can do this by performing a `depth` check to decide how to render the current
     {{ /nav }}
 </div>
 ```
+::tab blade
+```blade
+<div class="flex">
+  <s:nav>
+    @if ($depth == 1)
+      <div class="mx-10">
+        <h3 class="mb-2">{{ $title }}</h3>
+
+        @if (count($children) > 0)
+          <ul>@recursive_children</ul>
+        @endif
+      </div>
+    @elseif ($depth == 2)
+      <li class="my-1">
+        <a href="{{ $url }}">{{ $title }}</a>
+      </li>
+    @endif
+  </s:nav>
+</div>
+```
+::
 
 ## Sidebar Nav Example
 
@@ -53,6 +77,9 @@ Or maybe you would like to render a sidebar style nav as a `<ul>`, while applyin
 
 Here we dynamically insert a CSS class based on the current item's `depth` in the nav structure:
 
+::tabs
+
+::tab antlers
 ```antlers
 ---
 nav_classes:
@@ -76,3 +103,26 @@ nav_classes:
     {{ /nav }}
 </ul>
 ```
+::tab blade
+```blade
+<ul class="nav">
+  <s:nav>
+    <li>
+      <span @class([
+        'text-gray-900 font-bold'=> $depth == 1,
+        'text-gray-800 ml-3'=> $depth == 2,
+        'text-gray-500 ml-6 text-sm'=> $depth == 3,
+      ])>{{ $title }}</span>
+
+      @if (count($children) > 0)
+        <ul @class([
+          'mb-4' => $depth == 1
+        ])>
+          @recursive_children
+        </ul>
+      @endif
+    </li>
+  </s:nav>
+</ul>
+```
+::

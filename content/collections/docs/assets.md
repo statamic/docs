@@ -2,7 +2,7 @@
 id: 7277432d-bb25-458a-a3a2-a72976b44ad5
 blueprint: page
 title: Assets
-intro: 'Assets are files managed by Statamic and made available to your writers and developers with tags and fieldtypes. They can be images, videos, PDFs, or any other type of file. Asset can have fields and content attached to them, just like entries, making them very powerful.'
+intro: 'Assets are files managed by Statamic and made available to your writers and developers with tags and fieldtypes. They can be images, videos, PDFs, or any other type of file. Assets can have fields and content attached to them, just like entries, making them very powerful.'
 template: page
 related_entries:
   - 5b748a3f-be0e-41c1-8877-73f6b7ee1d0a
@@ -18,7 +18,8 @@ updated_at: 1633025886
 ---
 ## Overview
 
-Assets live in directories on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage services. Each defined location is called a **container**..
+Assets live in directories on your local server, in an [Amazon S3 bucket](https://aws.amazon.com/s3), or other cloud storage services. Each defined location is called a **container**.
+
 
 Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
@@ -105,7 +106,7 @@ Bulk
 : No
 
 ### Delete
-The delete action removes an asset from your site and server, permanently.  Exercise caution when using this action, as deleted assets cannot always be easily restored.
+The delete action removes an asset from your site and server, permanently. Exercise caution when using this action, as deleted assets cannot always be easily restored.
 
 Bulk
 : Yes
@@ -168,7 +169,7 @@ Each container implements a "disk", also known as a [Laravel Filesystem](https:/
 ]
 ```
 
-Filesystems are defined in `config/filesystems.php`  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
+Filesystems are defined in `config/filesystems.php`.  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
 ### Private Containers
 
@@ -198,10 +199,10 @@ Make sure to also set the [visibility](#container-visibility) to `private`.
 
 ### Container Visibility
 
-Your filesystem's disk can have a `visibility` which is an abstraction of file permissions. You can set it to `public` or `private`,
+Your filesystem's disk can have a `visibility`, which is an abstraction of file permissions. You can set it to `public` or `private`,
 which essentially controls whether they're accessible or not.
 
-Be sure to set `'visibility' => 'public',` if you want to be able to see, interact with, and manipulate files in your container.
+Be sure to set `'visibility' => 'public'` if you want to be able to see, interact with, and manipulate files in your container.
 
 :::tip
 If you're using a service based driver like Amazon S3, and you want the files to be accessible by URL, make sure you set the [visibility](#container-visibility) to `public`.
@@ -242,13 +243,25 @@ All of the data stored on your Assets will be available on the frontend without 
 
 If you had a `slideshow` field with a whole bunch of images selected, you can render them by looping through them.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <div class="slideshow">
     {{ slideshow }}
         <img src="{{ url }}" alt="{{ alt }}">
     {{ /slideshow }}
 </div>
 ```
+::tab blade
+```blade
+<div class="slideshow">
+  @foreach($slideshow as $image)
+      <img src="{{ $image->url }}" alt="{{ $image->alt }}">
+  @endforeach
+</div>
+```
+::
 
 Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 
@@ -257,11 +270,26 @@ Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 If you ever find yourself needing to loop over all of the assets in a container (or folder inside a container) instead of selecting them manually with the Assets Fieldtype, this is the way.
 
 #### Example
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ assets container="photoshoots" limit="10" sort="rating" }}
     <img src="{{ url }}" alt="{{ alt }}" />
 {{ /assets }}
 ```
+::tab blade
+```blade
+<statamic:assets
+  container="photoshoots"
+  limit="10"
+  sort="rating"
+>
+  <img src="{{ $url }}" alt="{{ $alt }}" />
+</statamic:assets>
+```
+::
 
 Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
@@ -269,9 +297,34 @@ Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
 Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamically resize, crop, and manipulate images. It's really easy to use and has [its own tag](/tags/glide).
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:image width="120" height="500" filter="sepia" }}
 ```
+::tab blade
+```blade
+{{-- Using Statamic Tags --}}
+<statamic:glide
+  :src="$img"
+  width="120"
+  height="500"
+  filter="sepia"
+/>
+
+{{-- Using Fluent Tags --}}
+
+{{
+  Statamic::tag('glide')
+    ->src($img)
+    ->width(120)
+    ->height(500)
+    ->filter('sepia')
+    ->fetch()
+}}
+```
+::
 
 ## Search Indexes
 
@@ -319,3 +372,9 @@ However, if you **trust your users** and need to upload SVG files without them b
 
 'svg_sanitization_on_upload' => false,
 ```
+
+## Performance
+
+If you're experiencing performance issues with Assets, like slow queries or a slow asset browser, it might be worth moving your assets to the database using the Eloquent Driver. It takes a different approach to caching asset metadata, which sometimes works better for sites with more assets.
+
+You can find out more about [moving assets to the database here](https://statamic.dev/tips/storing-content-in-a-database#moving-content-to-the-database).

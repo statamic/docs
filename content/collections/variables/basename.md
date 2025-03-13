@@ -7,9 +7,17 @@ title: Basename
 ---
 The basename of the asset, which is the filename _with_ the extension.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ basename }}
 ```
+::tab blade
+```blade
+{{ $basename }}
+```
+::
 
 ```html
 black-bear-cubs.jpg

@@ -13,10 +13,19 @@ You may pass a [PHP timezone value](http://php.net/manual/en/timezones.php) to s
 when: 2015-01-27 11:00
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ when | format('r') }}
 {{ when | timezone('Australia/Sydney') | format('r') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($when)->format('r') }}
+{{ Statamic::modify($when)->timezone('Australia/Sydney')->format('r') }}
+```
+::
 
 ```html
 Tue, 27 Jan 2015 11:00:00 -0500
@@ -30,9 +39,17 @@ already contains a timezone, and you want to display it in the system timezone.
 when: Tue, 27 Jan 2015 16:00:00 +0000  # Date in UTC
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ when | timezone | format('r') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($when)->timezone()->format('r') }}
+```
+::
 
 ```html
 Tue, 27 Jan 2015 11:00:00 -0500  <!-- Assuming my system timezone is America/New_York -->

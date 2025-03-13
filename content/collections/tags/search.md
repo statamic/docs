@@ -90,7 +90,9 @@ variables:
   -
     name: total_results
     type: integer
-    description: The number of results in the loop.
+    description: >
+      The number of results in the loop. 
+      When you're paginating results, this will be the number of results on the current page. If you need to get the total number of results across all pages, you can use `{{ paginate:total_items }}`.
   -
     name: search_score
     type: float
@@ -124,7 +126,11 @@ An overview on how to _configure_ search, indexing, and the query form can be fo
 
 On a search result page, you can loop through the results of the search like they were entries. You'll have access to all the data of all the content of your search results returned so you can format them any way you wish.
 
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ search:results }}
 
   {{ if no_results }}
@@ -140,6 +146,25 @@ On a search result page, you can loop through the results of the search like the
 
 {{ /search:results }}
 ```
+::tab blade
+```blade
+<s:search:results as="results">
+  @forelse($results as $result)
+    <a href="{{ $result->url }}" class="result">
+      <h2>{{ $result->title }}</h2>
+      <p>{{ Statamic::modify($result->content)->truncate(240) }}</p>
+    </a>
+  @empty
+    <h2>No results.</h2>
+  @endforelse
+</s:search:results>
+```
+
+:::tip
+When using Blade, make sure to alias your search results if you want to use variables like `$no_results`!
+:::
+
+::
 
 ## Search Forms
 
@@ -159,9 +184,19 @@ want to be searchable, the tag will convert your results into full objects (entr
 
 There is an overhead associated with this though, so if all you need is to display values that are in the index, you may disable supplementing.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ search:results supplement_data="false" }}
 ```
+::tab blade
+```blade
+<s:search:results supplement_data="false">
+  ...
+</s:search:results>
+```
+::
 
 This has a few caveats:
 
@@ -174,12 +209,68 @@ This has a few caveats:
 
 ## Contextual Keyword Snippets
 
-This feature only works with Statamic's [Local search driver](/search#local-driver). Pairs well with the [`mark` modifier](/modifiers/mark) to highlight the keyword.
+This feature works slightly differently depending on the driver you're using.
 
+
+### Comb / Local
+::tabs
+::tab antlers
 ```
 {{ search:results }}
-
-  {{ search_snippets:content | implode(' … ') | mark }}
-
+  {{ search_snippets:title | implode(' … ') | mark }}
 {{ /search:results }}
 ```
+::tab blade
+```blade
+<s:search:results as="results">
+  @foreach ($results as $result)
+    {!! Statamic::modify($result->search_snippets['title'])->implode(' … ')->mark() !!}
+  @endforeach
+</s:search:results>
+```
+::
+
+### Algolia
+Highlights are typically always available via `search_highlights`. The more powerful feature, [snippets](https://www.algolia.com/doc/api-reference/api-parameters/attributesToSnippet/), are available via `search_snippets` if you configure your index to use them. For example:
+
+```php
+'indexes' => [
+    'default' => [
+        'driver' => 'algolia',
+        'settings' => [ // [tl! **:start]
+            'attributesToSnippet' => [
+                'title:40',
+                'teaser:40',
+            ],
+            'highlightPreTag' => '<mark>',
+            'highlightPostTag' => '</mark>',
+        ], // [tl! **:end]
+    ],
+]
+```
+
+::tabs
+
+::tab antlers
+```antlers
+{{ search:results }}
+  {{ search_snippets:title:value }}
+  or
+  {{ search_highlights:title:value }}
+{{ /search:results }}
+```
+::tab blade
+```blade
+<s:search:results as="results">
+  @foreach ($results as $result)
+    {{ $result->search_snippets['title']['value'] }}
+    or
+    {{ $result->search_highlights['title']['value'] }}
+  @endforeach
+</s:search:results>
+```
+
+:::tip
+Calling `$result->searchSnippets()` without any arguments returns an array with all search snippets!
+:::
+::

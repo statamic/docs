@@ -13,10 +13,19 @@ date: October 21 2015
 another_date: November 2030
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if date | is_future }}
 {{ if another_date | is_future }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($date)->isFuture()->fetch()) ... @endif
+@if (Statamic::modify($another_date)->isFuture()->fetch()) ... @endif
+```
+::
 
 ```html
 false

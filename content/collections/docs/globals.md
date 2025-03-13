@@ -46,14 +46,29 @@ data:
 
 ## Frontend Templating
 
+::tabs
+
+::tab antlers
+
 In this example all of the variables inside a `footer` global set will be accessed through `footer:<var_name>`.
 
-```
+```antlers
 <footer class="site-footer">
     <p>{{ footer:copyright }}</p>
     <p class="text-sm">{{ footer:flair }}</p>
 </footer>
 ```
+::tab blade
+
+In this example all of the variables inside a `footer` global set will be accessed through `$footer->{$var_name}`.
+
+```blade
+<footer class="site-footer">
+	<p>{{ $footer->copyright }}</p>
+	<p class="text-sm">{{ $footer->flair }}</p>
+</footer>
+```
+::
 
 If you only have one default global set (which we named "Globals" because it cannot get any simpler), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
 

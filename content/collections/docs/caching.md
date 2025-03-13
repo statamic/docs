@@ -25,7 +25,7 @@ php please stache:warm
 php please stache:refresh
 ```
 
-The are settings you can configure to improve the performance of the stache, just like with a relational database. [Learn more about the Stache](/stache) and it's various settings.
+There are settings you can configure to improve the performance of the stache, just like with a relational database. [Learn more about the Stache](/stache) and its various settings.
 
 :::tip
 **You cannot disable the stache** &mdash; it is critical architecture.
@@ -59,11 +59,21 @@ There are times when you may want to simply cache a section of an Antlers templa
 
 Wrap your markup in `{{ cache }}` tags, specify a duration, and your site is zippy and, one might say, quite delicious once again.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache for="1 hour" }}
   something impressive but slow here
 {{ /cache }}
 ```
+::tab blade
+```blade
+<s:cache for="1 hour">
+  something impressive but slow here
+</s:cache>
+```
+::
 
 ## Static Caching
 

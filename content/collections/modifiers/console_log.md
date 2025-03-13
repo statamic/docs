@@ -14,9 +14,17 @@ fruit:
   - bacon
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ fruit | console_log }}
 ```
+::tab blade
+```blade
+@php(Statamic::modify($fruit)->consoleLog())
+```
+::
 
 ```js
 ["apples", "banana", "jerky"]

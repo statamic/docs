@@ -13,10 +13,14 @@ If you're [creating an addon](/extending/addons), they will have their own ways 
 
 Statamic can load custom stylesheets and Javascript files located in the `public/vendor/` directory, or from external sources.
 
-### Using Vite
-You may register a Vite asset to be loaded in the Control Panel using the `vite` method. This will accept a vendor name and an array of paths.
+### Using Vite (recommended) {#using-vite}
+[Vite](https://vite.dev/) is a modern frontend build tool and recommended in the Statamic and Laravel ecosystems.
 
-For your application specific modifications, `app` will probably do just fine as a vendor name.
+A fresh Statamic install will have Vite ready to go (using the Laravel Vite wrapper plugin) and is the fastest way for you to add CSS and JavaScript to the Control Panel.
+
+The code snippets below will already be in your site but commented out. They just need to be uncommented.
+
+You may register a Vite asset to be loaded in the Control Panel using the `vite` method. This will accept a vendor name and an array of paths. For your application specific modifications, `app` will probably do just fine as a vendor name.
 
 ```php
 use Statamic\Statamic;
@@ -25,19 +29,57 @@ class AppServiceProvider
 {
     public function boot()
     {
-        Statamic::vite('app', [
+        Statamic::vite('app', [ // [tl! ++:start]
             'resources/js/cp.js',
             'resources/css/cp.css'
-        ]);
+        ]); // [tl! ++:end]
     }
 }
 ```
 
-:::tip
-This, as well as the Vite config below are already included in the `statamic/statamic` starter site. You just have to uncomment them in `app/Providers/AppServiceProvider.php`.
-:::
+Your `vite.config.js` can contain files for your front-end and the control panel. You'll need to add the control panel input files.
+
+If you plan to create Vue-based features (such as fieldtypes), you will need to make sure the vue2 npm package is installed. 
+
+
+```bash
+npm i --save-dev @vitejs/plugin-vue2
+```
+
+``` js
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue2 from '@vitejs/plugin-vue2'; // [tl! ++]
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/site.css',
+                'resources/js/site.js',
+                'resources/css/cp.css',  // [tl! ++]
+                'resources/js/cp.js',  // [tl! ++]
+            ],
+            refresh: true,
+        }),
+        vue2(), // [tl! ++]
+    ],
+});
+```
+
+Now you are ready to add JS code to `cp.js`:
+
+```php
+alert('Ready to code!');
+```
+
+To start Vite, run `npm run dev`. The control panel will automatically reload your changes as you work. 
+
+When you're ready to deploy to production, you can run `npm run build`. 
 
 ### Using Webpack
+
+While Vite is the recommended build tool for adding assets to the control panel, you are welcome to use other tools.
 
 If you're using Webpack, Laravel Mix, or some other tool, you may register an asset to be loaded in the Control Panel using the `script` and `style` methods. This will accept a vendor name and a path.
 
@@ -88,72 +130,6 @@ class AppServiceProvider
 }
 ```
 
-## Adding assets to your build process
-
-Rather than writing flat CSS and JS files directly into the `public` directory, you can (and should) set up source files to output there instead.
-
-Add the following to your `vite.config.js`, adjusting the location of your source files as necessary:
-
-``` js
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue2 from '@vitejs/plugin-vue2'; // [tl! ++]
-
-export default defineConfig({
-    plugins: [
-        laravel({
-            input: [
-                'resources/css/site.css',
-                'resources/js/site.js',
-                'resources/css/cp.css',  // [tl! ++]
-                'resources/js/cp.js',  // [tl! ++]
-            ],
-            refresh: true,
-        }),
-        vue2(), // [tl! ++]
-    ],
-});
-```
-
-```bash
-npm i --save-dev @vitejs/plugin-vue2
-```
-
-The `cp.js` in this example may be your entry point for loading various other files. For instance, you could import fieldtypes:
-
-``` files theme:serendipity-light
-resources/
-    js/
-        cp.js
-        components/
-            fieldtypes/
-                Password.vue
-```
-
-``` js
-// resources/js/cp.js
-import Password from './components/fieldtypes/Password.vue';
-
-Statamic.booting(() => {
-    Statamic.$components.register('password-fieldtype', Password);
-});
-```
-
-``` vue
-// resources/js/components/fieldtypes/Password.vue
-<template>
-    ...
-</template>
-<script>
-export default {
-    //
-}
-</script>
-```
-
-:::tip
-You are welcome to customize the filenames and folder structure and even the entire build process. The only important thing is to import the files with `Statamic::vite()` (or `Statamic::script()`).
-:::
 
 ## Adding control panel routes
 

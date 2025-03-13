@@ -33,15 +33,16 @@ This means that Statamic doesn't do everything automatically, and generally requ
 
 Each of these things can be "built" in a matter of minutes (or even seconds) with Statamic's building-block approach to custom fields and features.
 
-This might feel like backwards if you're used to working in a platform like WordPress or Drupal, but we have found (and our customers agree emphatically!) that it's much better in the long run to _turn on_ the things you need, enable features you plan to use, and name things _the way you want for clarity_, than to spend precious time clicking about the control panel disabling all the things you'll never need, or worse — just leaving behind features, buttons, or sections that simply don't do anything.
+This might feel like it's backwards if you're used to working in a platform like WordPress or Drupal, but we have found (and our customers agree emphatically!) that it's much better in the long run to _turn on_ the things you need, enable features you plan to use, and name things _the way you want for clarity_, than to spend precious time clicking about the control panel disabling all the things you'll never need, or worse — just leaving behind features, buttons, or sections that simply don't do anything.
 
 You may find that your site is missing the ability to edit something you consider to be fundamental in a content management system. It might frustrate you. You might feel stuck. But before reaching for WordPress to rebuild your whole site from scratch (please don't do that), just have a quick chat with whoever built your site, because...
 
 ### Statamic sites are _very_ easy to change.
 
-**This is Statamic's secret power.** This is why developers use Statamic over the ubiquitous WordPress. **Do not be afraid** to ask the developer or team who built your Statamic site to make a change, make some bit of content editable, or add a new feature. It will most often it will be a very small amount of work.
+**This is Statamic's secret power.** This is why developers use Statamic over the ubiquitous WordPress. **Do not be afraid** to ask the developer or team who built your Statamic site to make a change, make some bit of content editable, or add a new feature. Most often, it will be a very small amount of work.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">God, do I love working with <a href="https://twitter.com/statamic?ref_src=twsrc%5Etfw">@statamic</a>. It feels like implementing anything only takes a fraction of the time compared to other content management systems...</p>&mdash; Martin Keck (@sisyphos2dot0) <a href="https://twitter.com/sisyphos2dot0/status/1612761926626598913?ref_src=twsrc%5Etfw">January 10, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="font-medium pl-8 border-l-4 border-black italic mt-8"><p>God, do I love working with Statamic. It feels like implementing anything only takes a fraction of the time compared to other content management systems...</p><p>&mdash; Martin Keck, Developer</p></blockquote>
+
 
 ### Every Statamic site needs a developer.
 

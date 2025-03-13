@@ -5,6 +5,7 @@ title: 'Image Manipulation (Glide)'
 intro: Statamic uses [Glide](https://glide.thephpleague.com) to manipulate images – from resizing and cropping to adjustments (like sharpness and contrast) and image effects (like pixelate and sepia).
 ---
 ## Route
+
 The route controls where your Glide images will be served.
 
 ```php
@@ -16,7 +17,7 @@ The route controls where your Glide images will be served.
 By default your Glide images will be served from `'/img/...'` but you are free to change that. Perhaps if you intend to have some actual images stored in the `img` directory.
 
 :::tip
-This route setting may become irrelevant when using customizing [caching options](#caching) explained further down this page.
+This route setting may become irrelevant when using customized [caching options](#caching) explained further down this page.
 :::
 
 ## Presets
@@ -35,17 +36,31 @@ Presets are pre-configured sets of manipulations that can be referenced at a lat
 All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets.
 
 ### Glide tag
+
 Each named preset can be referenced with the `preset` parameter on the [Glide tag][glide-tag]:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ glide:thumbnail preset="thumbnail" }}
 <!-- width: 300px, height: 300px, quality: 75% -->
 
 {{ glide:hero_image preset="hero" }}
 <!-- width: 1440px, height: 600px, quality: 90% -->
 ```
+::tab blade
+```blade
+<s:glide:thumbnail preset="thumbnail" />
+<!-- width: 300px, height: 300px, quality: 75% -->
+
+<s:glide:hero_image preset="hero" />
+<!-- width: 1440px, height: 600px, quality: 90% -->
+```
+::
 
 ### Generate on upload
+
 When uploading an image asset, any configured presets will be generated so they're ready when you need to reference them, e.g. in the Glide tag.
 
 By default, all presets are generated, however you can [customize this per-container](#customize-glide-preset-warming).
@@ -60,7 +75,7 @@ You may also choose to disable image generation on upload completely:
 
 ### Generate manually
 
-You may want to generate the presets manually (for example after you changed the config and you already uploaded the images, or if you've disable generation on upload) on the command line:
+You may want to generate the presets manually (for example after you changed the config, and you already uploaded the images, or if you've disabled generation on upload) on the command line:
 
 ```bash
 php please assets:generate-presets
@@ -92,7 +107,7 @@ The `fit` is the important part for this one. Using `max` will ensure images sma
 
 ### Customize Preset Warming
 
-As mentioned [above](#presets), Statamic will generate for all of your configured presets on upload. (i.e. "warming" the generated images).
+As mentioned [above](#presets), Statamic will generate images for all of your configured presets on upload. (i.e. "warming" the generated images).
 
 By default, Statamic will do this "intelligently", which means it'll generate all presets except for the one used for source processing:
 
@@ -107,12 +122,12 @@ However, you may wish to configure which presets are warmed in your asset contai
 </figure>
 
 :::tip
-If you have a preset that's only going to be used images in one particular container, you should customize which ones are used so your server doesn't have to waste resources on generating and storing images that won't get used.
+If you have a preset that's only going to be used with images in one particular container, you should customize which ones are used so your server doesn't have to waste resources on generating and storing images that won't get used.
 :::
 
 ## Caching
 
-Out of the box, Glide will "just work". However you may want to adjust its caching methods for better performance.
+Out of the box, Glide will "just work". However, you may want to adjust its caching methods for better performance.
 
 In the context of Glide, the "source" is the filesystem where the original images are kept, and the "cache" is the filesystem where it saves the manipulated images.
 
@@ -137,7 +152,7 @@ When using this method, since the Glide tag only needs to generate URLs, the loa
 :::
 
 :::tip
-Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`
+Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`.
 :::
 
 ### Custom Path (Static)
@@ -197,7 +212,7 @@ Make sure that the `visibility` is `public` and that the `url` points to the cor
 :::
 
 :::warning
-Don't use the same disk or bucket as your source images. If you were you to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
+Don't use the same disk or bucket as your source images. If you were to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
 
 ## Path Cache Store
@@ -237,7 +252,7 @@ In this example, you would also need to create a Redis database named `glide` in
 ],
 ```
 
-When using the [database driver](https://laravel.com/docs/11.x/cache#prerequisites-database), make sure to specify the connection and table, like so:
+When using the [database driver](https://laravel.com/docs/12.x/cache#prerequisites-database), make sure to specify the connection and table, like so:
 
 ```php
 'glide' => [

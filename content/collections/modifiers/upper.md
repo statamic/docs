@@ -11,9 +11,17 @@ Transform a string into uppercase. Multi-byte friendly.
 string: That is über neat.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | upper }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->upper() }}
+```
+::
 
 ```html
 THAT IS ÜBER NEAT.

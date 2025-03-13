@@ -18,20 +18,24 @@ php please make:addon example/my-addon
 
 This will scaffold out everything you need to get started as a [private addon](#private-addons) within your site's `addons` directory.
 
-Eventually, an addon will be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
+Eventually, an addon may be available on Packagist and installable through Composer (and therefore live inside your `vendor` directory). During development however, you can keep it on your local filesystem as a path repository.
 
 :::tip
-If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and build an [extension](/extending).
+If you don't plan on distributing your addon or sharing it between multiple projects, you can take a simpler approach and just [add things to your Laravel application](/extending).
 :::
 
-An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/example`
+
+### What's in an addon?
+
+An addon consists of at least a `composer.json` and a service provider. Your directory may be placed anywhere, but for the sake of this example, we'll put it in `addons/acme/example`
 
 ``` files theme:serendipity-light
 addons/
-    example/
-        src/
-            ServiceProvider.php
-        composer.json
+    acme/
+        example/
+            src/
+                ServiceProvider.php
+            composer.json
 app/
 content/
 config/
@@ -40,6 +44,13 @@ public/
 resources
 composer.json
 ```
+
+### Composer.json
+
+The composer.json is used by (you guessed it) Composer in order to install your package.
+
+The `extra.statamic` section is used by Statamic to know that it's an addon and not just a standard Composer package.
+The `extra.laravel.providers` section what Laravel uses to load your service provider.
 
 ``` json
 {
@@ -72,7 +83,11 @@ composer.json
 }
 ```
 
-Note the service provider should extend `Statamic\Providers\AddonServiceProvider`, and not Illuminate\Support\ServiceProvider. The Statamic subclass provides you with some helpers to reduce boilerplate when compared to stock Laravel.
+### Service Provider
+
+The service provider is where all the various components of your addon get wired together.
+
+You should make sure that your service provider extends Statamic's `Statamic\Providers\AddonServiceProvider`, and not `Illuminate\Support\ServiceProvider`. Statamic's `AddonServiceProvider` includes some bootstrapping and autoloading that isn't included with Laravel's service provider.
 
 ``` php
 <?php
@@ -83,10 +98,7 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    public function bootAddon()
-    {
-        //
-    }
+    //
 }
 ```
 
@@ -95,7 +107,11 @@ The `bootAddon` method should be used instead of `boot`. They are the same excep
 makes sure to boot _after_ Statamic has booted.
 :::
 
-In your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
+### Installing your freshly created addon
+
+If you ran the `make:addon` command, this would have been taken care of for you. 
+
+Otherwise, in your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
 
 ``` json
 {
@@ -130,7 +146,7 @@ Your addon is now installed. You should be able to go to `/cp/addons` and see it
 
 ### Public addons
 
-A public addon is one available as a composer package on packagist.org. Simple require it with composer:
+A public addon is one available as a composer package on packagist.org. Simply require it with composer:
 
 ``` shell
 composer require vendor/package
@@ -189,6 +205,14 @@ public function bootAddon()
 
 ## Registering Components
 
+::: tip
+Statamic v5.28.0 and v5.29.0 introduced the concept of "autoloading" for most addon components.
+
+For example: as long as your tags live in `src/Tags` and your fieldtypes live in `src/Fieldtypes`, they will be automatically registered by Statamic, without you needing to register them manually.
+
+If your addon supports Statamic v5.28.0 or lower, you should continue registering components manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
+
 You may register your various addon components by adding their class names to corresponding arrays:
 
 ``` php
@@ -221,7 +245,7 @@ protected $commands = [
 ### CSS and Javascript
 The method of adding assets will differ slightly depending on whether you are using Vite or another build process. We recommend Vite.
 
-#### Using Vite
+#### Using Vite (recommended) {#using-vite}
 
 In your service provider, you may register your Vite config like this, adjusting the paths appropriately.
 
@@ -305,6 +329,12 @@ protected $routes = [
     'web' => __DIR__.'/../routes/web.php',
 ];
 ```
+
+::: tip
+As of Statamic v5.29.0, addon routes following the convention shown above will be automatically registered by Statamic.
+
+If your addon supports Statamic v5.29 or lower, you should continue registering your route files manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
 
 #### Control Panel Routes
 
@@ -427,6 +457,16 @@ return view('custom::foo');
 ```
 
 ## Events
+
+::: tip
+Statamic v5.35.0 introduced the concept of "autoloading" for event listeners.
+
+As long as your event listener lives in `src/Listeners` and the event is typehinted in the listener's `handle` or `__invoke` method, they will be automatically registered by Statamic, without you needing to register them manually.
+
+Subscribers will also be autoloaded, as long as they live in `src/Subscribers`.
+
+If your addon supports below Statamic v5.33.0, you should continue registering events and subscribers manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
+:::
 
 You may register any number of event listeners or subscribers the same way you would in a traditional Laravel application's EventServiceProvider – by using a `$listen` or `$subscribes` array:
 
@@ -582,7 +622,7 @@ An example use case is a custom fieldtype maintained by a third party vendor. Ev
 
 ### Starters Kits
 
-- Starter kits are installed via `php please starter-kit:install`
+- Starter kits are installed via `statamic new` or `php please starter-kit:install`
 - Starter kits install pre-configured files and settings into your site
 - Starter kits do not live as updatable packages within your apps
 - Starter kit licenses are not tied to a specific site, and expire after a successful install

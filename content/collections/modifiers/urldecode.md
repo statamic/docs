@@ -12,9 +12,17 @@ URL-decodes a string. The inverse of [urlencode](/modifiers/urlencode)
 string: I+just+want+%26+need+%24pecial+characters%21
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | urldecode }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($string)->urldecode() !!}
+```
+::
 
 ```html
 I just want & need $pecial characters!

@@ -13,11 +13,19 @@ date: October 21 2015
 another_date: November 2019
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if date | is_past }}
 {{ if another_date | is_past }}
 ```
-
+::tab blade
+```blade
+@if (Statamic::modify($date)->isPast()->fetch()) ... @endif
+@if (Statamic::modify($another_date)->isPast()->fetch()) ... @endif
+```
+::
 ```html
 true
 false

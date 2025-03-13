@@ -13,13 +13,24 @@ Modifiers are available exclusively in [Antlers][antlers] templates. Each modifi
 
 You could take some text, render it as markdown, uppercase it, and ensure there are no widows (lines with only one word on them) like this:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // This...
 {{ "Ruth, Ruth, Ruth! Baby Ruth!" | markdown | upper | widont }}
 
 // Becomes this!
 <p>RUTH, RUTH, RUTH! BABY&nbsp;RUTH!</p>
 ```
+::tab blade
+```blade
+{!! Statamic::modify("Ruth, Ruth, Ruth! Baby Ruth!")->markdown()->upper()->widont() !!}
+
+// Becomes this!
+<p>RUTH, RUTH, RUTH! BABY&nbsp;RUTH!</p>
+```
+::
 
 ## Related Reading
 

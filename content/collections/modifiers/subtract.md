@@ -12,11 +12,20 @@ capacity: 2500
 reservations: 1900
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ capacity | subtract(1900) }}
 {{ capacity | subtract($reservations) }}
 {{ capacity | -($reservations) }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($capacity)->subtract(1900) }}
+{{ Statamic::modify($capacity)->subtract($reservations) }}
+```
+::
 
 ```html
 600

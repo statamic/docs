@@ -12,9 +12,17 @@ Given a date string, or anything that sort of looks like a date string, `format`
 event_date: April 15 2016
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ event_date | format('Y-m-d') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($event_date)->format('Y-m-d') }}
+```
+::
 
 ```html
 2016-04-15

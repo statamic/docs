@@ -24,9 +24,17 @@ games:
     publisher: Unknown
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ games | select('title', 'publisher') }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($games)->select(['title', 'published'])->fetch() }}
+```
+::
 
 ```yaml
 -

@@ -12,9 +12,17 @@ Converts an asset focal point value (eg. `50-30`) into a value suitable for the 
 focus: 50-30
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 background-position: {{ focus | background_position }};
 ```
+::tab blade
+```blade
+background-position: {{ Statamic::modify($focus)->backgroundPosition() }};
+```
+::
 
 ```html
 background-position: 50% 30%;

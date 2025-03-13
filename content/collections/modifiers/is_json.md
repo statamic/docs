@@ -12,9 +12,17 @@ Returns `true` if string is valid json
 data: '{"book": "All The Places You'll Go"}'
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if data | is_json }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($data)->isJson()->fetch()) ... @endif
+```
+::
 
 ```html
 true

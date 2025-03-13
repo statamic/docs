@@ -12,9 +12,15 @@ Find and replace all occurrences of a string with a totally different string.
 description: This cat video is the okayest thing ever.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ description | replace('cat', 'dog') }}
 ```
+::tab blade
+{{ Statamic::modify($description)->replace(['cat', 'dog']) }}
+::
 
 ```html
 This dog video is the okayest thing ever.

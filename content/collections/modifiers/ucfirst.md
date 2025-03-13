@@ -11,9 +11,17 @@ Converts the first character of a string to upper case.
 string: i wanna go home.
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | ucfirst }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->ucfirst() }}
+```
+::
 
 ```html
 I wanna go home.

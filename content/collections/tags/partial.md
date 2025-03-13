@@ -31,10 +31,19 @@ id: 1f683992-401e-44f6-8506-7967005778a5
 
 You can use any view as a partial by using this here partial tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 // This will import /resources/views/blog/_card.antlers.html
 {{ partial:blog/card }}
 ```
+::tab blade
+```blade
+// This will import /resources/views/blog/_card.antlers.html
+<s:partial:blog/card />
+```
+::
 
 :::best-practice
 We recommend prefixing any views intended to be _only_ used as partials with an underscore, `_like-this.antlers.html` and reference them `{{ partial:like-this }}. The underscore is not necessary in the partial tag definition.
@@ -44,13 +53,31 @@ We recommend prefixing any views intended to be _only_ used as partials with an 
 
 You can pass additional data into a partial via on-the-fly parameters. The parameter name will become a variable inside the partial. The only reserved parameter is `src`, so you can name your variables just about anything.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ partial:list header="favorite ice cream flavors" :items="flavors" }}
 
 // Inside `list.antlers.html`
 <h2>These are my {{ header }}</h2>
 {{ items | ul }}
 ```
+::tab blade
+```blade
+<s:partial:list
+  header="favorite ice cream flavors"
+  :items="$flavors"
+/>
+```
+
+```blade
+{{-- Inside `list.blade.php` --}}
+
+<h2>These are my {{ $header }}</h2>
+{!! Statamic::modify($items)->ul() !!}
+```
+::
 
 ```html
 <h2>These are my favorite ice cream flavors</h2>
@@ -69,6 +96,9 @@ To set default values for parameters inside your partials, you can [add YAML fro
 
 In the example below, the partial has two front-matter variables (`author` and `image`). When the partial is called, the `author` parameter is provided. When the partial is outputted, the `author` parameter is used, and the value for the `image` variable falls back to the partial's front-matter.
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ partial:card author="David Hasselhoff" }}
 ```
@@ -82,6 +112,21 @@ image: https://example.com/placeholder.png
 <img src="{{ view:image }}">
 <p>Written by {{ view:author }}</p>
 ```
+::tab blade
+```blade
+<s:partial:card author="David Hasselhoff" />
+```
+
+```blade
+@frontmatter([
+  'author' => 'Jack McDade',
+  'image'  => 'https://example.com/placeholder.png',
+])
+
+<img src="{{ $view['image'] }}">
+<p>Written by {{ $view['author'] }}</p>
+```
+::
 
 ```html
 <img src="https://example.com/placeholder.png"> <!-- No image was provided, so falling back to the front-matter. -->
@@ -99,7 +144,9 @@ Sometimes you might need to pass a large chunk of content into a partial. Jammin
 
 The solution is to use the partial tag as a pair. Everything inside will be passed into the partial in the `{{ slot }}` variable.
 
-```
+::tabs
+::tab antlers
+```antlers
 // Your main view
 {{ partial:modal title="Confirmation" }}
   <div class="flex items-center">
@@ -115,6 +162,24 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
   <button @click="confirm" class="button">Do it</button>
 </div>
 ```
+::tab blade
+```blade
+// Your main view
+<s:partial:modal title="Confirmation">
+  <div class="flex items-center">
+    <img src="/img/warning.svg" />
+    <p>Are you sure you want to delete your entire collection of WWE wrestling figures?</p>
+  </div>
+</s:partial:modal>
+
+// _modal.blade.php
+<div class="bg-white rounded shadow">
+  <h2 class="p-2 border-b">{{ $title }}</h2>
+  {!! $slot !!}
+  <button @click="confirm" class="button">Do it</button>
+</div>
+```
+::
 
 ```output
 <div class="bg-white rounded shadow">
@@ -131,11 +196,20 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
 
 You can render a partial only if a condition is met.
 
+::tabs
+::tab antlers
 ```antlers
 {{ partial:components/subtitle :when="subtitle" }}
     {{ subtitle }}
 {{ /partial:components/subtitle }}
 ```
+::tab blade
+```blade
+<s:partial:components/subtitle :when="isset($subtitle)">
+  {{ $subtitle }}
+</s:partial:components/subtitle>
+```
+::
 
 Also supports the converse using `:unless`.
 

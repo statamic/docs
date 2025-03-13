@@ -12,11 +12,21 @@ This tag obfuscates content.
 
 Obfuscation is a method of encoding content so that the **source code** is hard or impossible to understand. This is most often used on email addresses to prevent spambots from scraping them and signing the poor souls up for an endless chain of pharmaceutical drug emails.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ obfuscate }}
-	djjazzyjeff@angelfire.com
+  djjazzyjeff@angelfire.com
 {{ /obfuscate }}
 ```
+::tab
+```blade
+<s:obfuscate>
+  djjazzyjeff@angelfire.com
+</s:obfuscate>
+```
+::
 
 ```html
 <!-- Users see this -->
@@ -31,4 +41,3 @@ djjazzyjeff@angelfire.com
 - [Obfuscate modifier](/modifiers/obfuscate)
 - [How to pronounce obfuscate](https://www.youtube.com/watch?v=zaEg0gziFiU)
 - [How to pronounce Schenectady](https://www.youtube.com/watch?v=e6IO_x3L53c)
-

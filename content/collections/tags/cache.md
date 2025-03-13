@@ -13,10 +13,6 @@ parameters:
     type: string
     description: 'The cache key to be used, if you''d like to manually invalidate this tag pair programmatically.'
   -
-    name: tags
-    type: string|array
-    description: 'The [cache tags](https://laravel.com/docs/9.x/cache#cache-tags) this section will be using, if you''d like to invalidate this pair programmatically. If you use this, do not also use `key`.'
-  -
     name: scope
     type: 'string'
     description: 'Sets the [cache scope](#scope). Three possible values: `site`, `page` or `user`. Has no effect when using the `key` parameter.'
@@ -31,7 +27,10 @@ id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 
 After an initial render, markup inside a cache tag will be pulled from a cached, statically cached copy until invalidated.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache for="5 minutes" }}
   {{ collection:stocks limit="5000" }}
     <!-- probably lots of stuff happening -->
@@ -39,8 +38,22 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 {{ /cache }}
 ```
 
+::tab blade
+```blade
+<statamic:cache
+  for="5 minutes"
+>
+  <statamic:collection:stocks
+    limit="5000"
+  >
+    <!-- probably lots of stuff happening -->
+  </statamic:collection:stocks>
+</statamic:cache>
+```
+::
+
 :::tip
-You can disable the `{{ cache }}` tag (temporarily) based on the environment. This is great for your local setup.
+You can disable the `cache` tag (temporarily) based on the environment. This is great for your local setup.
 
 ``` env
 STATAMIC_CACHE_TAGS_ENABLED=false
@@ -58,13 +71,25 @@ return [
 
 You may use the `nocache` tag inside a `cache` tag to keep that section dynamic.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache }}
-    this will be cached
-    {{ nocache }} this will remain dynamic {{ /nocache }}
-    this will also be cached
+  this will be cached
+  {{ nocache }} this will remain dynamic {{ /nocache }}
+  this will also be cached
 {{ /cache }}
 ```
+::tab blade
+```blade
+<statamic:cache>
+  this will be cached
+  <statamic:nocache> this will remain dynamic </statamic:nocache>
+  this will also be cached
+</statamic:cache>
+```
+::
 
 [Read more about the nocache tag](/tags/nocache)
 
@@ -77,17 +102,41 @@ the tag contents can be invalidated.
 
 Using the `for` parameter allows you to say how long the tag pair contents should be cached in time.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache for="5 minutes" }} ... {{ /cache }}
 ```
+::tab blade
+```blade
+<statamic:cache
+  for="5 minute"
+>
+  ...
+</statamic:cache>
+```
+::
 
 ### Key
 
 By specifying a `key`, you can invalidate it programmatically.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache key="homepage_stocks" }} ... {{ /cache }}
 ```
+::tab blade
+```blade
+<statamic:cache
+  key="homepage_stocks"
+>
+  ...
+</statamic:cache>
+```
+::
 
 For example, you could listen for an entry in the `stocks` collection being saved and then bust the key.
 
@@ -111,27 +160,6 @@ class EventServiceProvider
 
 :::warning
 Invalidating by `key` won't work if you're using tags. In that case, you should invalidate by flushing the tag.
-:::
-
-### Tag
-
-By specifying `tags`, you can invalidate it programmatically. You must be using a cache driver that supports [tags](https://laravel.com/docs/8.x/cache#cache-tags), like Redis or Memcached.
-
-```
-{{ cache tags="stocks|home" }} ... {{ /cache }}
-{{ cache tags="home" }} ... {{ /cache }}
-{{ cache tags="stocks" }} ... {{ /cache }}
-```
-
-Similar to invalidating by a key as explained above, you can flush all keys that use the tags.
-
-```php
-Cache::tags('home')->flush(); // invalidates first and second pair
-Cache::tags('stocks')->flush(); // invalidates first and third pair
-```
-
-:::warning
-Don't use the `key` and `tags` parameters together.
 :::
 
 ### Cache clear
@@ -160,21 +188,46 @@ For example, you might have a "recent articles" list on the sidebar that's the s
 
 However, your header navigation might have "active" states on it, so you'd want to make sure to cache it per page.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache scope="page" }}
     {{ nav }} ... {{ /nav }}
 {{ /cache }}
 ```
+::tab blade
+```blade
+<statamic:cache
+  scope="page"
+>
+  <statamic:nav> ... </statamic:nav>
+</statamic:cache>
+```
+::
 
 Or if your navigation changes depending on the current user, you want to use the `user` scope:
 
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ cache scope="user" }}
     {{ nav }} {{ user }} ... {{ /user }} {{ /nav }}
 {{ /cache }}
 ```
-
+::tab blade
+```blade
+<statamic:cache
+  scope="user"
+>
+  <statamic:nav>
+    {{ $user->name }}
+  </statamic:nav>
+</statamic:cache>
+```
+::
 
 :::tip
 The `scope` parameter has no effect if you use the `key` parameter.

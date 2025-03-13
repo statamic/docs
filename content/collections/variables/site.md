@@ -27,9 +27,17 @@ It's a `Statamic\Sites\Site` object and can be used as a single tag or tag pair.
 
 As a single tag, it will output the handle of the site:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ site }}
 ```
+::tab blade
+```blade
+{{ $site }}
+```
+::
 
 ```html
 default
@@ -37,7 +45,10 @@ default
 
 As a tag pair, you can access additional information:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ site }}
     {{ handle }}
     {{ name }}
@@ -51,6 +62,19 @@ As a tag pair, you can access additional information:
     {{ /attributes }}
 {{ /site }}
 ```
+::tab blade
+```blade
+{{ $site->handle }}
+{{ $site->name }}
+{{ $site->locale }}
+{{ $site->short_locale }}
+{{ $site->url }}
+{{ $site->permalink }}
+{{ $site->direction }}
+
+{{ $site->attributes['foo'] }}
+```
+::
 
 ```html
 default
@@ -65,10 +89,19 @@ bar
 
 You can also access those variables directly as single tags:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ site:name }}
 {{ site:attributes:foo }}
 ```
+::tab blade
+```blade
+{{ $site->name }}
+{{ $site->attributes['foo'] }}
+```
+::
 
 ```html
 My Statamic Site

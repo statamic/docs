@@ -1,7 +1,7 @@
 ---
 title: 'Control Panel Translations'
 nav_title: Translations
-intro: "Statamic's Control Panel is currently available in 25 languages. We always welcome new translations!"
+intro: "Statamic's Control Panel is currently available in 28 languages. We always welcome new translations!"
 blueprint: page
 id: 79129d32-3f7c-4215-b6b1-21a2fccafa8d
 ---
@@ -28,39 +28,42 @@ preferences:
 
 ### Available Translations
 
-| Language | Code |
-|----------|------|
-| Arabic | `ar` |
-| Azerbaijani | `az` |
-| Czech | `cs` |
-| Danish | `da` |
-| German | `de` or `de_CH` |
-| English | `en` |
-| Spanish | `es` |
-| Persian | `fa` |
-| French | `fr` |
-| Hungarian | `hu` |
-| Indonesia | `id` |
-| Italian | `it` |
-| Japanese | `ja` |
-| Malaysia | `ms` |
-| Norwegian | `nb` |
-| Dutch | `nl` |
-| Polish | `pl` |
-| Portuguese | `pt` or `pt_BR` |
-| Russia | `ru` |
-| Slovene | `sl` |
-| Swedish | `sv` |
-| Turkish | `tr` |
-| Ukrainian | `uk` |
-| Simplified Chinese | `zh_CN` |
-| Taiwan | `zh_TW` |
+| Language            | Code    |
+|---------------------|---------|
+| Arabic              | `ar`    |
+| Azerbaijani         | `az`    |
+| Czech               | `cs`    |
+| Danish              | `da`    |
+| German              | `de`    |
+| German (Swiss)      | `de_CH` |
+| English             | `en`    |
+| Spanish             | `es`    |
+| Persian             | `fa`    |
+| French              | `fr`    |
+| Hungarian           | `hu`    |
+| Indonesian          | `id`    |
+| Italian             | `it`    |
+| Japanese            | `ja`    |
+| Malay               | `ms`    |
+| Norwegian           | `nb`    |
+| Dutch               | `nl`    |
+| Polish              | `pl`    |
+| Portuguese          | `pt`    |
+| Portuguese (Brazil) | `pt_BR` |
+| Russian             | `ru`    |
+| Slovene             | `sl`    |
+| Swedish             | `sv`    |
+| Turkish             | `tr`    |
+| Ukrainian           | `uk`    |
+| Vietnamese          | `vi`    |
+| Chinese             | `zh_CN` |
+| Chinese (Taiwan)    | `zh_TW` |
 
-_Translations are community contributed so may you find them to be incomplete shortly after an update._
+_Translations are community contributed so you may find them to be incomplete shortly after an update._
 
 ## Translations not covered by Statamic
 
-Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your applications's translations.
+Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your application's translations.
 
 One example of this is on Statamic's authentication pages. Since it's using Laravel's built-in authentication under the hood, translations for any validation errors will be pulled from your app's `lang` or `resources/lang` directory.
 
@@ -74,7 +77,8 @@ There are 4 steps.
 2. Run `composer install`
 3. Generate a new translation from source files
 4. Translate new message files in `resources/lang`
-5. Commit changes and submit a PR
+5. Add the language to the [array in CorePreferences](https://github.com/statamic/cms/blob/cce7045e3f0ff418ee6e0a982a3830d604c6b64c/src/Preferences/CorePreferences.php#L56-L82) so it's selectable
+6. Commit changes and submit a PR
 
 ### Generating Translation Files
 

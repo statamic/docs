@@ -207,11 +207,18 @@ if:
 
 ## Field Context
 
-By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access root VueX store values by prepending your field with `root`:
+By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access parent field values by prepending your field with `$parent`:
 
 ```yaml
 if:
-  root.favorite_foods: includes bacon
+  $parent.favorite_foods: includes bacon
+```
+
+You can also access values at the top-level of your blueprint with `$root`:
+
+```yaml
+if:
+  $root.favorite_foods: includes bacon
 ```
 
 ## Custom Logic
@@ -228,6 +235,10 @@ Statamic.$conditions.add('isCanadian', ({ target }) => {
     return new RegExp('eh|bud|hoser').test(target);
 });
 ```
+
+:::warning
+It's worth noting that custom conditions only work in the Control Panel, not in the context of frontend forms.
+:::
 
 ### Parameters
 

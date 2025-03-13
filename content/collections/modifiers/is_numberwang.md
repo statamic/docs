@@ -12,9 +12,17 @@ Is it or is it not numberwang? Returns `true` if it is indeed numberwang.
 number: 1002
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ if number | is_numberwang }}
 ```
+::tab blade
+```blade
+@if (Statamic::modify($number)->isNumberwang()->fetch()) ... @endif
+```
+::
 
 ```html
 ???

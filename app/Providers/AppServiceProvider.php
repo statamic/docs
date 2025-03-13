@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\SideNavComposer;
 use App\Markdown\Hint\HintExtension;
+use App\Markdown\Tabs\TabbedCodeBlockExtension;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
@@ -18,13 +21,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // View::composer('partials.side-nav', SideNavComposer::class);
+
         Markdown::addExtensions(function () {
-            return [new DescriptionListExtension(), new HintExtension(), new AttributesExtension()];
+            return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension];
         });
 
-        if (config('torchlight.token')) {
+        if (config('torchlight.token') && ! app()->runningConsoleCommand('search:update')) {
             Markdown::addExtensions(function () {
-                return [new TorchlightExtension()];
+                return [new TorchlightExtension];
             });
         }
     }

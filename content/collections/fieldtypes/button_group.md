@@ -6,6 +6,11 @@ intro: |
 screenshot: fieldtypes/screenshots/button_group.png
 options:
   -
+    name: clearable
+    type: boolean
+    description: |
+      Allow deselecting all options, making `null` a possible value. Default: `false`.
+  -
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the buttons.'
@@ -53,9 +58,21 @@ seat_choice: middle
 
 It's a string, so you can just use that value.
 
+::tabs
+
+::tab antlers
+
 ```
 <p>I love sitting in the {{ seat_choice }} seat. A lot.</p>
 ```
+
+::tab blade
+
+```blade
+<p>I love sitting in the {{ $seat_choice }} seat. A lot.</p>
+```
+
+::
 
 ```html
 <p>I love sitting in the middle seat. A lot.</p>

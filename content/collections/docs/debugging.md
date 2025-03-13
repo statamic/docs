@@ -91,9 +91,17 @@ bands:
     - The Offspring
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ bands | dump }}
 ```
+::tab blade
+```blade
+@dd($bands)
+```
+::
 
 ``` php
 // Dumped output
@@ -111,7 +119,7 @@ Learn more about [configuring other logging channels](https://laravel.com/docs/l
 
 ### Viewing Logs in the Debug Bar
 
-You can enable logs in the Debug Bar in its config file. If you haven't already published the config, you can do from the command line:
+You can enable logs in the Debug Bar in its config file. If you haven't already published the config, you can do so from the command line:
 
 ```cli
 php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"

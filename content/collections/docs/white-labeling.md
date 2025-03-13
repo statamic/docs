@@ -66,6 +66,16 @@ You can also specify a different URL to be used when in Dark Mode:
 'custom_dark_logo_url' => '/logo-dark-mode.png',
 ```
 
+### Custom Logo Text
+
+Display a custom name in plain text in the control panel; automatically changes when in Dark Mode.
+
+When defined, logo image URLs will take precedence over logo text.
+
+``` php
+'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
+```
+
 ### Custom Favicon
 
 Swap out the favicon with a URL to one of your own.
@@ -73,6 +83,7 @@ Swap out the favicon with a URL to one of your own.
 ``` php
 'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
 ```
+
 ### Custom CSS
 
 Set the path to a CSS file and easily add your own styles to the control panel.

@@ -7,9 +7,17 @@ title: Homepage
 ---
 The URL of the homepage. Usually (but not always) the same as `{{ site:url }}`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ homepage }}
 ```
+::tab blade
+```blade
+{{ $homepage }}
+```
+::
 
 ```html
 https://docs.statamic.com/

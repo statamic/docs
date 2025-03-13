@@ -17,7 +17,10 @@ User tags are designed for sites that have areas or features behind a login. The
 
 Let's say we want show a list of downloadable PDFs if the user is in a `coaches` group.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:in group="coaches" }}
 <ul>
   {{ assets in="pdf" }}
@@ -26,16 +29,37 @@ Let's say we want show a list of downloadable PDFs if the user is in a `coaches`
 </ul>
 {{ /user:in }}
 ```
+::tab blade
+```blade
+<s:user:in group="coaches">
+<ul>
+  <s:assets in="pdf">
+    <li><a href="{{ $url }}">{{ $title }}</a></li>
+  </s:assets>
+</ul>
+</s:user:in>
+```
+::
 
 ## Not In
 
 We also support the negative use case using the `{{ user:not_in }}` tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ user:not_in group="coaches" }}
   <p>Hello, sportsball players!</p>
 {{ /user:not_in }}
 ```
+::tab blade
+```blade
+<s:user:not_in group="coaches">
+  <p>Hello, sportsball players!</p>
+</s:user:not_in>
+```
+::
 
 ## Super Users
 

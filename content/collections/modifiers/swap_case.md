@@ -12,9 +12,17 @@ Returns a case swapped version of the string.
 string: IpHONE
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ string | swap_case }}
 ```
+::tab blade
+```blade
+{{ Statamic::modify($string)->swapCase() }}
+```
+::
 
 ```html
 iPhone

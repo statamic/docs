@@ -41,7 +41,10 @@ Results are powered by the [Search Results](/tags/search) tag. The tag will look
 
 Inside the tag you have access to all the content and variables from each result.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ search:results index="default" }}
     {{ if no_results }}
         <h2>No results found for {{ get:q }}.</h2>
@@ -53,6 +56,23 @@ Inside the tag you have access to all the content and variables from each result
     {{ /if }}
 {{ /search:results }}
 ```
+::tab blade
+```blade
+<statamic:search:results
+  index="default"
+  as="results"
+>
+  @forelse ($results as $result)
+    <a href="{{ $result->url }}">
+        <h2>{{ $result->title }}</h2>
+        <p>{{ Statamic::modify($result->description)->truncate(180) }}</p>
+    </a>
+  @empty
+    <h2>No results found for {{ get('q') }}.</h2>
+  @endforelse
+</statamic:search:results>
+```
+::
 
 The tag has a lot more fine-tuned control available, like renaming the query parameter, filtering on fields and collections, and so on. You can read more about it in the [search results tag](/tags/search) docs.
 
@@ -80,9 +100,21 @@ Your site's default index includes _only_ the title from _all_ collections. The 
 
 The index you wish you to search can be specified as a parameter on your [search results](#results) tag.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ search:results index="docs" }} ... {{ /search:results }}
 ```
+::tab blade
+```blade
+<statamic:search:results
+  index="docs"
+>
+  ...
+</statamic:search:results>
+```
+::
 
 ### Searchables
 
@@ -115,7 +147,7 @@ For example, you may want to have a toggle field that controls whether an entry 
 }
 ```
 
-Now, only published entries that dont have the `exclude_from_search` toggle field enabled will be indexed.
+Now, only published entries that don't have the `exclude_from_search` toggle field enabled will be indexed.
 
 
 :::tip Heads up
@@ -203,11 +235,14 @@ class MyTransformer
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
 ``` shell
-# Update all indexes
+# Select which indexes to update
 php please search:update
 
 # Update a specific index
 php please search:update name
+
+# Update all indexes
+php please search:update --all
 ```
 
 ### Connecting Indexes
@@ -244,13 +279,14 @@ You may choose to use separate indexes to store localized content. For example, 
 
 Take these site and search configs for example:
 
-```php
-// config/statamic/sites.php
-'sites' => [
-    'en' => ['url' => '/'],
-    'fr' => ['url' => '/fr/'],
-    'de' => ['url' => '/de/'],
-]
+```yaml
+# resources/sites.yaml
+en:
+  url: /
+fr:
+  url: /fr/
+de:
+  url: /de/
 ```
 
 ```php
@@ -357,7 +393,7 @@ ALGOLIA_SECRET=your-algolia-admin-key
 ```
 
 ``` shell
-composer require algolia/algoliasearch-client-php
+composer require algolia/algoliasearch-client-php:^3.4
 ```
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.

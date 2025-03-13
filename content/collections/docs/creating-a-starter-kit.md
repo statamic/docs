@@ -8,26 +8,30 @@ nav_title: Creating
 ---
 ## Overview
 
-Starter kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
+Starter Kit development happens within a real instance of Statamic, just like developing any other Statamic site using your normal, preferred workflows.
 
-A released Starter Kit package contains **only** the files relevant to the kit itself, and not a full Statamic/Laravel instance. Our Import/Export tools will allow you to maintain **only those relevant files**, without having to worry about maintaining the Statamic and underlying Laravel instances as they get updated over time.
+A released Starter Kit package contains **only** the files relevant to the Kit itself, and not a full Statamic/Laravel instance. Our Import/Export tools will allow you to maintain **only those relevant files**, without having to worry about maintaining the Statamic and underlying Laravel instances as they get updated over time.
 
 The **Export** command will export all the files and directories you've created or configured to a new location. It's this directory that becomes the package, and is the thing you should version control, not the sandbox instance.
 
 For example, maybe you are creating a pre-built, theme-style Starter Kit, the high-level workflow might look like this:
 
 1. Create a new Statamic project.
+2. Initialize it as a Starter Kit:
+   ```shell
+   php please starter-kit:init
+   ```
 
-2. Develop the theme as you normally would.
+3. Develop the theme as you normally would.
 
-3. Export the theme to a separate repo for redistribution.
+4. Export the theme to a separate repo for redistribution.
     ``` shell
     php please starter-kit:export ../kung-fury-theme
     ```
 
-4. Publish to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/).
+5. Publish to [Github](https://github.com/), [Gitlab](https://gitlab.com/), or [Bitbucket](https://bitbucket.org/).
 
-5. Install into new Statamic projects.
+6. Install into new Statamic projects.
     ``` shell
     php please starter-kit:install the-hoff/kung-fury-theme
     ```
@@ -35,10 +39,56 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
 
 ## Creating the Starter Kit Project
 
-The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your starter kit.
+The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your Starter Kit.
 
+Run the `init` command to generate the appropriate files.
 
-## Exporting Files
+```shell
+php please starter-kit:init
+```
+
+This command will create and wire up a `package` directory, which represents the eventual Starter Kit repository's root directory.
+
+## The Starter Kit Package
+
+Starter Kits are installed via Composer. You can control the package's contents via the `package` directory, which will be the exported repository's root directory.
+
+At a minimum, your `package` directory needs a `starter-kit.yaml` and a `composer.json` file.
+
+``` files theme:serendipity-light
+app/
+content/
+config/
+package/ #[tl! ++]
+    composer.json #[tl! ++]
+    starter-kit.yaml #[tl! ++]
+public/
+resources/
+composer.json
+```
+
+If you plan to [make your Starter Kit updatable](#making-starter-kits-updatable), you should require this as a path repository.
+
+```json
+{
+    "name": "statamic/statamic",
+    "require": [
+        "the-hoff/kung-fury-theme": "dev-master" // [tl! ++]
+    ],
+    "repositories": [ // [tl! ++:start]
+        {
+            "type": "path",
+            "url": "package"
+        }
+    ] // [tl! ++:end]
+}
+```
+
+:::tip
+This `package` folder can be automatically scaffolded and wired up in your composer `repositories` by [running the init command](#creating-the-starter-kit-project) to create your Starter Kit project.
+:::
+
+## Exporting
 
 When ready to export your Starter Kit, run the following command:
 
@@ -46,7 +96,15 @@ When ready to export your Starter Kit, run the following command:
 php please starter-kit:export {export_repo_path}
 ```
 
-If you are exporting for the first time, a new `starter-kit.yaml` config file will be created in your app's root, and you will be instructed to configure which `export_paths` you would like to export.
+This will copy and arrange the appropriate files into the given directory that will be used as a distributable on GitHub, GitLab, Bitbucket, Composer, etc.
+
+:::tip
+Think of the exported directory similar to a compiled assets directory when using a build tool like Vite. You generate files into this directory and shouldn't touch it manually.
+:::
+
+### Exporting Paths
+
+Any files that you modify on your site that you intend to be installed into a Statamic project should be marked as `export_paths` in your `starter-kit.yaml` file.
 
 For example, the following config would tell Statamic to export sample content, along with related assets, config, blueprints, css, views, and front-end build config out for distribution on the Statamic Marketplace.
 
@@ -69,24 +127,10 @@ Anything not configured in your `starter-kit.yaml` **will not be exported**. Thi
 
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
 
-### Avoiding Path Conflicts
 
-If you have a filename conflict between your sandbox and your starter kit repo, you can use `export_as` to customize its export path.
+### Exporting Dependencies
 
-For example, you may wish to export a `README.md` for installation into new sites that is separate from the `README.md` in your starter kit repo.
-
-``` yaml
-export_as:
-  file-in-sandbox.md: file-in-exported-repo.md
-  README.md: README-for-new-site.md
-```
-
-This will instruct `starter-kit:export` to rename each of those paths on export, and in reverse on `starter-kit:install` to match where you had them in your sandbox app.
-
-
-## Exporting Dependencies
-
-If you wish to bundle any of your installed Composer dependencies with your starter-kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
+If you wish to bundle any of your installed Composer dependencies with your Starter Kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
 
 ``` yaml
 dependencies:
@@ -95,12 +139,12 @@ dependencies:
 
 The exporter will automatically detect the installed versions and whether or not they are installed as dev dependencies, and export accordingly.
 
-When [installing the starter kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
+When [installing the Starter Kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
 
 
 ## Optional Modules
 
-You may also present an optional set of starter kit files, nested under `modules` in your `starter-kit.yaml` config file.
+You may also present an optional set of Starter Kit files, nested under `modules` in your `starter-kit.yaml` config file.
 
 For example, here we'll configure an opt-in `seo` module.
 
@@ -117,15 +161,13 @@ This presents a choice to the user, to confirm whether or not to install this mo
     <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
 </figure>
 
-These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `export_as`, `dependencies`, etc.).
+These modules are compatible with the same config options that you use at the top level of your config file (ie. `export_paths`, `dependencies`, etc.).
 
 ```yaml
 modules:
   seo:
     export_paths:
       - resources/css/seo.css
-    export_as:
-      README.md: README-for-seo.md
     dependencies:
       - statamic/seo-pro
 ```
@@ -143,9 +185,31 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter kit custom prompt text">
+    <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter Kit custom prompt text">
     <figcaption>Would you also like fries with that?</figcaption>
 </figure>
+
+### Customizing Prompt Default Value
+
+Setting `default: true` will ensure the module is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
+
+```yaml
+modules:
+  seo:
+    default: true
+    dependencies:
+      - statamic/seo-pro
+```
+
+### Skipping Confirmation
+
+Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger Starter Kit configs. To do this, simply set `prompt` to false.
+
+```yaml
+modules:
+  seo:
+    prompt: false
+```
 
 ### Selecting Between Modules
 
@@ -167,10 +231,10 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-select-module.png" alt="Starter kit select module">
+    <img src="/img/starter-kit-select-module.png" alt="Starter Kit select module">
 </figure>
 
-### Customizing Select Modules
+### Customizing Select Module Prompt Text
 
 Of course, you can also customize `prompt` text, the first 'No' `skip_option` text, as well as each option `label`, as you see fit.
 
@@ -195,19 +259,38 @@ modules:
 ```
 
 <figure class="mt-0 mb-8">
-    <img src="/img/starter-kit-select-module-customization.png" alt="Customizing starter kit select module">
+    <img src="/img/starter-kit-select-module-customization.png" alt="Customizing Starter Kit select module">
     <figcaption>🐮🐮🐮</figcaption>
 </figure>
 
-### Skipping Confirmation
+### Customizing Select Module Default Value
 
-Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger starter kit configs. To do this, simply set `prompt` to false.
+Setting a `default` value will ensure a specific module option is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
 
 ```yaml
 modules:
-  seo:
-    prompt: false
+  js:
+    prompt: 'Would you care for some JS?'
+    default: vue
+    # ...
 ```
+
+### Disabling Select Module Skip Option
+
+If you want to force the user to select a module option, you can set `skip_option: false` to disable the 'No' skip option.
+
+```yaml
+modules:
+  js:
+    prompt: 'Would you care for some JS?'
+    skip_option: false
+    # ...
+```
+
+<figure class="mt-0 mb-8">
+    <img src="/img/starter-kit-select-module-disable-skip-option.png" alt="Starter kit disable skip option">
+</figure>
+
 
 ### Nesting Modules
 
@@ -231,9 +314,9 @@ In this example, the second `sitemap` module prompt will only be presented to th
 
 ## Post-Install Hooks
 
-You may run additional logic after the starter kit is installed. For example, maybe you want to output some information.
+You may run additional logic after the Starter Kit is installed. For example, maybe you want to output some information.
 
-To do so, you can create a `StarterKitPostInstall.php` file in the root of your starter kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
+To do so, you can create a `StarterKitPostInstall.php` file in the root of your Starter Kit. It should be a simple non-namespaced class with a `handle` method. You will be provided with an instance of the command so you can output lines, get input, and so on.
 
 ```php
 <?php
@@ -262,7 +345,7 @@ Once exported, you will need to update the `name` property in the `composer.json
     "extra": {
         "statamic": {
             "name": "Kung Fury Theme",
-            "description": "Kung Fury Theme starter kit"
+            "description": "Kung Fury Theme Starter Kit"
         }
     }
 }
@@ -274,7 +357,7 @@ Now create a `README.md` file and push to [Github](https://github.com/), [Gitlab
 Unlike addons, you are not required to register on [Packagist](https://packagist.org/).
 :::
 
-If you would like to share your kit, receive more exposure, or would like to charge for your Starter Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
+If you would like to share your Starter Kit, receive more exposure, or would like to charge for your Kit, you should [publish it to the Statamic Marketplace](#publishing-to-the-marketplace).
 
 
 ## Publishing to the Marketplace
@@ -321,7 +404,7 @@ statamic new kung-fury-dev the-hoff/kung-fury-theme --local
 
 ## Maintaining a Starter Kit
 
-When making changes to your Starter Kit, just [re-export](#exporting-files) from your development repo and push your changes from your exported repo.
+When making changes to your Starter Kit, just [re-export](#exporting) from your development repo and push your changes from your exported repo.
 
 ### Keeping up-to-date with Statamic and Laravel
 
@@ -332,6 +415,30 @@ statamic new kung-fury-dev the-hoff/kung-fury-theme --with-config
 ```
 
 This will install your Starter Kit into a brand new Statamic project, along with your `starter-kit.yaml` config file for future exports.
+
+## Making Starter Kits Updatable
+
+As their name implies, Starter Kits were originally intended to be a way to "start" a site. Once installed, the user is on their own and can customize as they see fit.
+
+The Kit would get installed via Composer, files would get copied to their respective locations, and then the Kit gets removed.
+
+However, you may choose to construct your Kit in a way that it can be updated by the end user. To do that, you should instruct Statamic to leave the Kit required as a Composer dependency by adding `updatable: true` in your `starter-kit.yaml` file:
+
+```yaml
+updatable: true #[tl! ++]
+export_paths: ...
+```
+
+Now that the Kit package stays around after installation, it can be updated like any other Composer package:
+
+```shell
+composer update
+```
+
+This means that you could do things like:
+- Add a service provider to wire up Laravel or Statamic behavior.
+- Make the service provider extend AddonServiceProvider to make your Starter Kit _also_ an addon to get behavior for free like autoload tags, modifiers, etc.
+- Rather than exporting views, CSS, JS, PHP classes, etc. into the project, you can keep them in the package itself.
 
 
 ## Addons vs. Starter Kits
@@ -349,12 +456,12 @@ Both addons and Starter Kits can be used to extend the Statamic experience, but 
 An example use case is a custom fieldtype maintained by a third party vendor. Though you would install and use the addon within your app, you would still rely on the vendor to maintain and update the addon over time.
 :::
 
-### Starters Kits
+### Starter Kits
 
-- Starter kits are installed via `php please starter-kit:install`
-- Starter kits install pre-configured files and settings into your site
-- Starter kits do not live as updatable packages within your apps
-- Starter kit licenses are not tied to a specific site, and expire after a successful install
+- Starter Kits are installed via `statamic new` or `php please starter-kit:install`
+- Starter Kits install pre-configured files and settings into your site
+- Starter Kits do not live as updatable packages within your apps (by default)
+- Starter Kit licenses are not tied to a specific site, and expire after a successful install
 
 :::tip
 An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.

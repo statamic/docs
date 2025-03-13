@@ -12,9 +12,17 @@ Given the URL to an Asset file, returns the string output of an Asset file's con
 icon: /img/icons/heart.svg
 ```
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ icon | output }}
 ```
+::tab blade
+```blade
+{!! Statamic::modify($icon)->output() !!}
+```
+::
 
 ```html
 <svg width="52px" height="50px" viewBox="0 0 52 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

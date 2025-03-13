@@ -346,6 +346,18 @@ public function handle(CollectionTreeSaved $event)
 }
 ```
 
+### CollectionTreeSaving
+`Statamic\Events\CollectionTreeSaving`
+
+Dispatched when a collection tree is being saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(CollectionTreeSaving $event)
+{
+    $event->tree;
+}
+```
+
 ### EntryBlueprintFound
 `Statamic\Events\EntryBlueprintFound`
 
@@ -433,6 +445,20 @@ Dispatched before an entry is saved. You can return `false` to prevent it from b
 
 ``` php
 public function handle(EntrySaving $event)
+{
+    $event->entry;
+}
+```
+
+### EntryScheduleReached
+`Statamic\Events\EntryScheduleReached`
+
+Disptached whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.
+
+The event will be dispatched on the minute _after_ the scheduled time.
+
+``` php
+public function handle(EntryScheduleReached $event)
 {
     $event->entry;
 }
@@ -843,6 +869,18 @@ Dispatched after a nav tree has been saved.
 
 ``` php
 public function handle(NavTreeSaved $event)
+{
+    $event->tree;
+}
+```
+
+### NavTreeSaving
+`Statamic\Events\NavTreeSaving`
+
+Dispatched when a nav tree is being saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(NavTreeSaving $event)
 {
     $event->tree;
 }

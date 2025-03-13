@@ -1,6 +1,6 @@
 ---
 title: Requirements
-intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/11.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
+intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/12.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
 template: page
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
@@ -22,37 +22,26 @@ To run Statamic you'll need a server meeting the following requirements. These a
 - GD Library or ImageMagick
 - Composer
 
-## Recommended Hosts
-
-We recommend using [Digital Ocean][do] to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
-
-:::tip
-We have an install guide on [how to get Statamic running on a typical Digital Ocean droplet](/installing/digital-ocean)
-:::
-
-We also maintain a user-contributed [Github repo][hosts] full of other host recommendations.
-
 ## Development Environments
 
-All of these requirements are satisfied by the [Laravel Homestead][homestead] virtual machine, which makes it a great local Laravel development environment. Virtual machines aren't for everybody though, so here are a couple of other options.
+Depending on your operating system, we recommend the following development environments:
 
-### MacOS: Laravel Valet
+### macOS and Windows: Laravel Herd
 
-[Laravel Valet][valet] is a development environment for Mac minimalists. No Vagrant, No Apache, No Nginx, No need to manually edit hosts file. It simply maps all the subdirectories in a “web” directory (such as `~/Sites`) to `.test` or `.localhost` domains.
+[Laravel Herd](https://herd.laravel.com) is a blazing fast, native development environment for macOS and Windows. Herd includes `php`, `composer` and `npm` - *almost* everything you need to setup Statamic locally.
 
-You can even share your sites publicly using local tunnels. We use it ourselves and it’s brilliant.
+We've written [a guide](/installing/laravel-herd) on installing Herd and setting up your Statamic site.
 
-### Windows: WAMP
+### Linux
 
-[Laragon][laragon] and [WAMP][wamp] are both good choice for those of the Windows persuasion. You may also want to checkout [Laravel Sail](https://laravel.com/docs/11.x/sail), which works well with Statamic or the [Valet for Windows port][valet-windows].
+To develop locally with Statamic on Linux, you'll need to install `php`, `composer` and `npm`.
 
+If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/installing/ubuntu) helpful.
 
+## Recommended Hosts
 
-[do]: https://m.do.co/c/6469827e2269
-[vultr]: https://www.vultr.com/?ref=7337126
-[hosts]: https://github.com/statamic/hosts
-[homestead]: https://laravel.com/docs/homestead
-[valet]: https://laravel.com/docs/valet
-[valet-windows]: https://github.com/cretueusebiu/valet-windows
-[wamp]: http://www.wampserver.com/
-[laragon]:https://laragon.org/
+We recommend using [Digital Ocean](https://m.do.co/c/6469827e2269) to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
+
+Some developers choose to pair Digital Ocean with a tool like [Laravel Forge](/deploying/laravel-forge) or [Ploi](/deploying/ploi), which help you provision servers and handle deployments. However, if you're comfortable doing that yourself, then feel free!
+
+We also maintain a user-contributed [Github repo](https://github.com/statamic/hosts) full of other host recommendations.

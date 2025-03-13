@@ -9,9 +9,17 @@ Outputs the current environment.
 
 This will be the value of `APP_ENV` in your `.env` file. If you haven't set that, then it will output the default of `production`.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ environment }}
 ```
+::tab blade
+```blade
+{{ $environment }}
+```
+::
 
 ```html
 production

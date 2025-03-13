@@ -63,13 +63,25 @@ things_you_may_find_adorable:
 As outlined in the [Taxonomies Guide](/taxonomies#templating), term slugs will automatically be converted to Term objects which means
 you will have all of the term's data available as variables.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <ul>
   {{ wildlife }}
     <li><a href="{{ url }}">{{ title }}</a></li>
   {{ /wildlife }}
 </ul>
 ```
+::tab blade
+```blade
+<ul>
+	@foreach ($wildlife as $term)
+		<li><a href="{{ $term->url }}">{{ $term->title }}</a></li>
+	@endforeach
+</ul>
+```
+::
 
 ```html
 <ul>
@@ -86,20 +98,19 @@ However, sometimes you have other ideas in mind for using taxonomy terms. For in
 
 When using the taxonomy field in this way, terms will get saved using _IDs_ instead of slugs.
 
-```
+``` yaml
 similar_things:
-  - categories/hats
-  - tags/delightful
+  - categories::hats
+  - tags::delightful
 ```
 
-These will _not_ be automatically converted to Terms, since the field name does not match any taxonomy handle.
-You will need to use the [Relate Tag](/tags/relate) in your template to have these converted to Terms.
+You can still loop through them like your used to:
 
-```
+``` antlers
 <ul>
-  {{ relate:similar_things }}
+  {{ similar_things }}
     <li><a href="{{ url }}">{{ title }}</a></li>
-  {{ /relate:similar_things }}
+  {{ /similar_things }}
 </ul>
 ```
 

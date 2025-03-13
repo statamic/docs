@@ -144,7 +144,7 @@ If you want to override the field that is being validated (e.g. in Livewire Form
 ## Custom Rules
 
 You may use custom validation rules via Laravel's `Rule` objects.  
-[Documentation on those are here](https://laravel.com/docs/11.x/validation#using-rule-objects).
+[Documentation on those is here](https://laravel.com/docs/12.x/validation#using-rule-objects).
 
 To references those from your field, you can add them to your `validation` array as if you were writing PHP:
 
@@ -162,4 +162,18 @@ validate:
   - 'new App\Rules\AnotherRule(''with argument'')'
 ```
 
-[laravel-validation]: https://laravel.com/docs/11.x/validation#available-validation-rules
+## Validating Programmatically
+
+You may validate programmatically via the blueprint, if you need to do so within custom code.
+
+```php
+$values = $request->all();
+
+$valid = $blueprint->fields()->addValues($values)->validate();
+
+$entry->data($valid)->save();
+```
+
+The `validate` method would throw a `ValidationException` if invalid and return the appropriate response.  
+
+[laravel-validation]: https://laravel.com/docs/12.x/validation#available-validation-rules

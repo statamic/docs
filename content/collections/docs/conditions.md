@@ -8,7 +8,7 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632512130
 ---
 :::tip
-Are you looking "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
+Are you looking for "if/else" conditions? You probably want this page: [Antler's Logic & Conditions](/antlers#conditions)
 :::
 
 ## Overview
@@ -46,51 +46,121 @@ taxonomy:category="happy|radical"
 
 For conditions where you're matching or comparing a value `is` or `starts_with`, you'd do:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:blog title:starts_with="Once upon a time..." }}
 ```
+::tab blade
+```blade
+<s:collection:blog
+  title:starts_with="Once upon a time..."
+>
+
+</s:collection:blog>
+```
+::
 
 ### Boolean
 
 For boolean conditions like `exists` or `null`, specify a value of `true`:
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:blog hero_image:exists="true" }}
 ```
+::tab blade
+```blade
+<s:collection:blog
+  hero_image:exists="true"
+>
+
+</s:collection:blog>
+```
+::
 
 For _negative_ boolean conditions, _don't_ use `="false"`. Instead, pick the inverse condition, like `:exists` instead of `:doesnt_exist`.
 
-```
+::tabs
+::tab antlers
+```antlers
  // Nope
 {{ collection:articles related_articles:exists="false" }}
 
 // Yup
 {{ collection:articles related_articles:doesnt_exist="true" }}
 ```
+::tab blade
+```blade
+// Nope
+<s:collection:articles
+  related_articles:exists="false"
+>
+</s:collection:articles>
+
+// Yup
+<s:collection:articles
+  related_articles:doesnt_exist="true"
+>
+</s:collection:articles>
+```
+::
 
 ### Multiple Conditions
 
 Need multiple conditions? Yeah, we support that.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:drinks type:is="tiki" ingredients:in="Orgeat" }}
     <a href="{{ url }}">
         {{ title }}
     </a>
 {{ /collection:drinks }}
 ```
+::tab blade
+```blade
+<s:collection:drinks
+  type:is="tiki"
+  ingredients:in="Orgeat"
+>
+  <a href="{{ $url }}">
+    {{ $title }}
+  </a>
+<s:/collection:drinks>
+```
+::
 
 ### Passing multiple values
 
 To pass multiple _values_ in a condition, separate them with `|` pipes.
 
-```
+::tabs
+
+::tab antlers
+```antlers
 {{ collection:drinks ingredients:in="rum|falernum" }}
     <a href="{{ url }}">
         {{ title }}
     </a>
 {{ /collection:drinks }}
 ```
+::tab blade
+```blade
+<s:collection:drinks
+  ingredients:in="rum|falernum"
+>
+  <a href="{{ $url }}">
+    {{ $title }}
+  </a>
+</s:collection:drinks>
+```
+::
 
 ### Sub Fields
 
@@ -102,10 +172,26 @@ event_date:
   end: 2023-12-03
 ```
 
+::tabs
+
+::tab antlers
 ```antlers
 {{ collection:events :event_date.start="today" }}
 {{ collection:events :event_date.end="today" }}
 ```
+::tab blade
+```blade
+<s:collection:events
+  :event_date.start="$today"
+>
+</s:collection:events>
+
+<s:collection:events
+  :event_date.end="$today"
+>
+</s:collection:events>
+```
+::
 
 ## String Conditions
 
@@ -160,13 +246,16 @@ Fetch all entries that have _any_ of one or more taxonomy terms.
 
 Fetch all entries that _don't_ have one or more taxonomy terms.
 
-#### All {#taxonomy-not}
+#### All {#taxonomy-all}
 
 Fetch all entries that contain _each_ of one or more taxonomy terms.
 
 ### Examples {#taxonomy-examples}
 
-```
+::tabs
+
+::tab antlers
+```antlers
 <!-- Get all featured articles -->
 {{ collection:articles taxonomy:tags:any="featured" }}
 {{ collection:articles taxonomy:tags="featured" }} (shorthand)
@@ -174,9 +263,30 @@ Fetch all entries that contain _each_ of one or more taxonomy terms.
 <!-- Get all but sports-related articles -->
 {{ collection:articles taxonomy:tags:not="sports" }}
 
-<!-- Get all "featured" articles about gaming
+<!-- Get all "featured" articles about gaming -->
 {{ collection:articles taxonomy:tags:all="gaming|featured" }}
 ```
+::tab blade
+```blade
+<!-- Get all featured articles -->
+<s:collection:articles taxonomy:tags:any="featured">
+</s:collection:articles>
+
+<s:collection:articles taxonomy:tags="featured"> (shorthand)
+</s:collection:articles>
+
+
+<!-- Get all but sports-related articles -->
+<s:collection:articles taxonomy:tags:not="sports">
+</s:collection:articles>
+
+
+<!-- Get all "featured" articles about gaming -->
+<s:collection:articles taxonomy:tags:all="gaming|featured">
+</s:collection:articles>
+
+```
+::
 
 ## Arguments
 

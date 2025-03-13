@@ -16,11 +16,29 @@ You might have something like this:
 my_asset_field:
   - path/to/image.jpg
 ```
-```
+
+::tabs
+
+::tab antlers
+```antlers
 {{ my_asset_field }}
-    <img src="{{ url }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}" />
+  <img
+    src="{{ url }}" alt="{{ alt }}"
+    width="{{ width }}" height="{{ height }}"
+  />
 {{ /my_asset_field }}
 ```
+::tab blade
+```blade
+@foreach ($my_asset_field as $asset)
+  <img
+    src="{{ $asset->url }}" alt="{{ $asset->alt }}"
+    width="{{ $asset->width }}" height="{{ $asset->height }}"
+  />
+@endforeach
+```
+::
+
 ```html
 <img src="" alt="An image" width="100" height="150" />
 ```

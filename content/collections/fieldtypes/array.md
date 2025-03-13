@@ -45,7 +45,7 @@ If you'd like to have _lists_ of this type of data, you might want to use a [gri
 
 ## Modes
 
-The screenshot above depicts the two modes you can choose from. One for when you know there is a fixed set of keys (keyed), and one for when you don't (dynamic).
+The screenshot above depicts the three modes you can choose from. Two for when you know there is a fixed set of keys (keyed/single), and one for when you don't (dynamic).
 
 ### Keyed Mode
 
@@ -71,6 +71,10 @@ keys:
   - country
 ```
 
+### Single Mode
+
+Exactly the same restrictions and setup as keyed mode, except the user can only manage an array one item at a time, using a select box to switch between keys.
+
 ### Dynamic Mode
 
 The second field contains no pre-defined keys. This will allow the user to define them on the fly and re-arrange them.
@@ -88,7 +92,7 @@ key_header: Why is it awesome?
 
 ## Data Structure
 
-In the example above, both fields would save the exact same data.
+In the example above, the keyed mode and dynamic mode would save the exact same data.
 
 ```yaml
 address:
@@ -97,13 +101,24 @@ address:
   country: England
 ```
 
+Single mode will only save data if it has been entered by the user.
+
+```yaml
+address:
+  England: '221 Baker Street, London'
+```
+
+
 ## Templating
 
 _This fieldtype is not [augmented](/augmentation)._
 
+
+::tabs
+
 You can use basic array access, nested variables, or the [foreach tag](/tags/foreach) to loop through all of the keys. All three of the following methods are equivalent.
 
-```
+```antlers
 // Array access
 {{ address }}
     {{ street }} {{ city }} {{ country }}
@@ -117,3 +132,20 @@ You can use basic array access, nested variables, or the [foreach tag](/tags/for
     {{ value }}
 {{ /foreach:address }}
 ```
+
+::tab
+
+You can use basic array access or the `@foreach` directive to loop through all of the keys.
+
+```blade
+// Nested variables
+{{ $address['street'] }}
+{{ $address['city'] }}
+{{ $address['country'] }}
+
+// Using foreach
+@foreach ($address as $key => $value)
+	{{ $key }}: {{ $value }}
+@endforeach
+```
+::

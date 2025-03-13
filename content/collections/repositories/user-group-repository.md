@@ -29,7 +29,7 @@ use Statamic\Facades\UserGroup;
 #### Get a User Group
 
 ``` php
-UserGroup::find('admin')->get();
+UserGroup::find('admin');
 ```
 
 #### Get all users in a group

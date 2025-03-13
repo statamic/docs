@@ -21,6 +21,8 @@ At some point, a payload is send through the pipeline, allowing any registered c
 For example, the `collection` tag will query for entries, then run the `fetched-entries` hook, passing all the entries along. Your hook may modify these entries.
 
 ```php
+// app/Providers/AppServiceProvider.php
+
 use Statamic\Tags\Collection;
 
 Collection::hook('fetched-entries', function ($entries, $next) {
@@ -37,6 +39,8 @@ It's also possible to wait until all the other closures in the pipeline have com
 For example, maybe you need to get all the ids of the entries that will be output. By passing along to the other closures first, it will give them a chance to manipulate it. In the example above, it would take the first 3 entries. Now in this hook we'll be getting 3 ids rather than the full amount the tag was originally going to output.
 
 ```php
+// app/Providers/AppServiceProvider.php
+
 use Statamic\Tags\Collection;
 
 Collection::addHook('fetched-entries', function ($entries, $next) {
@@ -70,6 +74,21 @@ Triggered after the tag has been initialized. The payload is `null`.
 ### Collection tag: `fetched-entries`
 Triggered just after completing the query.
 The payload will either be an `EntryCollection` or a `Paginator`, depending on whether the `paginate` parameter was used.
+
+### Form tag: `attrs`
+Triggered when building the opening form tag. The payload is an array containing two properties:
+- 'attrs' - an array containing the currently calculated list of attributes for the opening &lt;form&gt; tag. Modifications to this array will affect the rendered form tag - e.g. it can be used to add attributes to the form tag.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
+
+### Form tag: `after-open`
+Triggered immediately after the opening form tag. The payload is an array containing two properties:
+- 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
+
+### Form tag: `before-open`
+Triggered immediately before the closing form tag. The payload is an array containing two properties:
+- 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
+- 'data' - the data assembled about the form (config, blueprint, sections etc.)
 
 ### Augmentation: `augmented`
 Triggered when a new augmented instance is made.
@@ -121,6 +140,11 @@ The payload will be an array of the Bard's content.
 ### Bard: `extra-validation-attributes`
 Triggered when the `extraValidationAttributes` method is called on the Bard fieldtype (when gathering validation attributes).
 The payload will be an array of the Bard's content.
+
+### Static Cache Warming: `additional`
+Triggered when the `static:warm` command is run. This hook allows you to warm additional URIs during the static warming process.
+For more information about this hook, see the docs on [Static Caching](https://statamic.dev/static-caching#warming-additional-urls).
+
 
 ## Triggering your own hooks
 
