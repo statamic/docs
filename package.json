@@ -8,7 +8,6 @@
     "devDependencies": {
         "@alpinejs/intersect": "^3.14.1",
         "@docsearch/js": "^3.0.0-alpha.40",
-        "@tailwindcss/typography": "^0.5.1",
         "alpinejs": "^3.2.4",
         "autoprefixer": "^10.4.20",
         "axios": "^0.28",
@@ -18,7 +17,6 @@
         "postcss": "^8.4.47",
         "postcss-import": "^14.0.1",
         "postcss-nesting": "^12.1.0",
-        "tailwindcss": "^3.4.13",
         "vite": "^5.2.8"
     }
 }
