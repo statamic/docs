@@ -535,9 +535,13 @@ class RadJs extends AbstractJsDriver
 
     public function addToRenderableFieldAttributes($field)
     {
-        return [
-            'r-model' => $field->handle(),
-        ];
+        $attributes = [];
+
+        if ($field->fieldtype()->hasJsDriverDataBinding()) {
+            $attributes['r-model'] => $field->handle(),
+        }
+
+        return $attributes;
     }
 
     public function addToRenderableFieldData($field, $data)
