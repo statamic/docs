@@ -222,7 +222,7 @@ dl {
         @apply mt-0 rounded-tl-none;
     }
     .tab-content > p {
-        @apply py-3 px-4 border rounded-tr mb-0 text-base bg-mint;
+        @apply py-3 px-4 border rounded-tr mb-0 text-base bg-yellow-200;
     }
     .tab-content > p + pre {
         @apply rounded-tr-none;

@@ -1,7 +1,7 @@
 /* Algolia DocSearch Variables */
 :root {
   --docsearch-primary-color: rgb(84, 104, 255);
-  --docsearch-text-color: theme('colors.gray.dark');
+  --docsearch-text-color: white;
   --docsearch-spacing: 12px;
   --docsearch-icon-stroke-width: 1.4;
   --docsearch-highlight-color: var(--docsearch-primary-color);
@@ -86,7 +86,7 @@ html[data-theme='dark'] {
 }
 
 .docsearch-modal-search-hits-item-text {
-    @apply text-gray-darker font-normal text-sm !important;
+    @apply text-black font-normal text-sm !important;
 }
 
 .docsearch-modal-search-hits-item--active {
