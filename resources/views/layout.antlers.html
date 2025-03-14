@@ -23,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@250..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     {{# GROUP CSS 
     =================================================== #}}
-    {{# {{ partial:styles/stylesheets }} #}}
-    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+    {{ partial:styles/stylesheets }}
+    {{ vite src="resources/js/site.js" }}
 </head>
 <body class="font-sans font-light leading-normal" x-data="{ showNav: false, showSearch: false, nearTop: true }">
     {{ partial:partials/nav }}
