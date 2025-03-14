@@ -1,0 +1,55 @@
+<header class="c-docs-header">
+    <div class="c-docs-header__inner">
+        <a class="o-logo" href="/">
+            {{ svg src='logomark' }}
+            {{ svg src='wordmark' }}
+        </a>
+        <div class="c-docs-header__search">
+            <form class="c-search-form" action="/action_page.php">
+                <!-- markup from the existing site -->
+                <div id="docsearch" ref="docSearch">
+                    <button type="button" class="docsearch-btn" aria-label="Search">
+                        {{# <?php include 'img/search.svg'; ?> #}}
+                        <span class="docsearch-btn-placeholder">Search<span class="docsearch-btn-placeholder__desktop-only"> the docs</span></span>
+                        <span class="docsearch-btn-keys">
+                            <kbd class="docsearch-btn-key">⌘</kbd>
+                            <kbd class="docsearch-btn-key">K</kbd>
+                        </span>
+                    </button>
+                </div>
+            </form>
+            <div class="c-theme-picker">
+                <div class="c-theme-picker__button">
+                    <img class="c-theme-picker-light-icon u-hide-in-dark-mode" src="/img/theme-light.svg" alt="Light theme" />
+                    <img class="c-theme-picker-dark-icon u-hide-in-light-mode" src="/img/theme-dark.svg" alt="Dark theme" />
+                </div>
+                <select id="color-scheme">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+        </div>
+        <div class="c-nav-dots-with-popover-api">
+            <button id="anchor-nav-dots" class="c-docs-header__nav-dots c-nav-dots-with-popover-api__mobile-button" popovertarget="popover-nav-dots">
+                {{ svg src='nav-dots' }}
+            </button>
+            <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-desktop" popover>
+                <ul>
+                    <li><a href="/" class="o-current-menu-item">Docs</a></li>
+                    <li><a href="/">Screencasts</a></li>
+                    <li><a href="/">Reference</a></li>
+                    <li><a href="/">Extending</a></li>
+                </ul>
+            </nav>
+            <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-mobile">
+                <ul>
+                    <li><a href="/" class="o-current-menu-item">Docs</a></li>
+                    <li><a href="/">Screencasts</a></li>
+                    <li><a href="/">Reference</a></li>
+                    <li><a href="/">Extending</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
