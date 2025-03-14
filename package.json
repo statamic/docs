@@ -7,11 +7,9 @@
     },
     "devDependencies": {
         "@alpinejs/intersect": "^3.14.1",
-        "@docsearch/js": "^3.0.0-alpha.40",
         "alpinejs": "^3.2.4",
         "autoprefixer": "^10.4.20",
         "axios": "^0.28",
-        "dayjs": "^1.10.7",
         "laravel-vite-plugin": "^1.0.5",
         "@vitejs/plugin-vue2": "^2.3.1",
         "lodash": "^4.17.19",
@@ -19,5 +17,10 @@
         "postcss-import": "^15.1.0",
         "postcss-nesting": "^12.1.5",
         "vite": "^5.2.8"
+    },
+    "dependencies": {
+        "@docsearch/js": "^3.0.0-alpha.40",
+        "meilisearch-docsearch": "^0.7.0",
+        "dayjs": "^1.10.7"
     }
 }
