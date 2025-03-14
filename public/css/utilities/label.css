@@ -1,0 +1,38 @@
+/* GROUP UTILITIES / LABELS
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Funky green labels e.g. "Hot Tip", "Recommended", etc.
+
+*/
+/* HTML Example...
+
+    <div class="u-label">Hot Tip!</div>
+
+*/
+@layer utilities {
+    .u-label,
+    .c-tip__title,
+    .c-icon-grid__item__label div {
+        position: relative;
+        display: inline-block;
+        z-index: var(--z-index-above-body);
+        color: light-dark(var(--color-primary-text), var(--color-body-background));
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-medium);
+        @container style(--color-scheme: dark) {
+            font-weight: var(--font-family-ui-weight-heavy);
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: var(--color-green);
+            rotate: 1deg;
+            border-radius: 2% 98% 2% 98% / 98% 2% 98% 2%;
+        }
+    }
+}

@@ -1,0 +1,389 @@
+/* GROUP NOTES
+===================================================  */
+/* This file contains detailed guide notes about CSS groups without cluttering CSS files */
+
+
+
+/* GROUP NOTES / FORMATTING / COMMENTS / DEFAULT FORMATTING
+===================================================  */
+/* By default comments should sit vertically above code so they're easily seen when scanning the CSS file. It's tempting to add them to the end of the line to save space but this makes them harder to scan / makes CSS harder to debug, and comments are stripped from production CSS anyway. */
+
+/* Here is an example of a comment */
+.something {
+    display: grid;
+    /* Here is a second example of a commment, e.g. Prevent overflow on screens less than em or px value */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24em), 1fr));
+}
+
+
+
+/* GROUP NOTES / FORMATTING / SPACING / SELECTORS
+===================================================  */
+/* Aims of formatting:
+
+    - Readability
+        - It's very important to be able to quickly understand the author's intentions when scanning CSS
+    - Scannability
+        - While spacing things can aid readability, it can also hinder scannability and comprehension
+        - We should try and save space where possible to improve scannability
+        - Because we use 4 spaces (rather than 2) readability is higher and we can generally visually afford to remove spaces between selectors
+        - Only keep a line between selectors if you're grouping themes (for example, layout selectors, positioning, etc.). Here is a good example of grouping themes, adding a line in between:
+
+        ```
+        c-flying-badges {
+            min-height: 100vh;
+            min-height: 100svh;
+
+            /* Needed for overflow: hidden; to work 
+            position: relative;
+
+            display: grid;
+            align-content: center;
+            text-align: center;
+            /* Minimum vertical padding of --carousel-product-fake-celing if it exists, with a fallback if it doesn't
+            padding: var(--carousel-product-fake-ceiling, var(--spacing-l-3)) var(--spacing-l);
+
+            & > * {
+                text-wrap: balance;
+                &:first-child {
+                    padding-block-start: 0;
+                }
+            }
+            & h2 {
+                font-size: var(--font-size-l-4);
+                line-height: var(--font-size-l-4-line-height);
+                max-width: var(--max-width-content);
+                margin-inline: auto;
+            }
+            & p {
+                font-size: var(--font-size-s);
+                max-width: var(--max-width-reading-long);
+                margin-inline: auto;
+                &:last-of-type {
+                    margin-block-end: 0;
+                }
+            }
+
+            .c-flying-badges__badge {
+                position: absolute;
+                @supports not (animation-timeline: auto) {
+                    rotate: 25deg;
+                    &:nth-of-type(even) {
+                        rotate: -25deg;
+                    }
+                }
+                /* e.g. Pink badge
+                &:nth-of-type(1) {
+                    top: -2rem;
+                    left: -3rem;
+                }
+                /* e.g. Blue badge
+                &:nth-of-type(2) {
+                    bottom: -5%;
+                    left: 8%;
+                }
+                etc.
+        ```
+*/
+/*
+
+    Examples of where we can remove spacing:
+
+    1. Within Objects and Components there should be no line in between _selector_ rules, to keep scannability high. Example:
+        ```
+        .something {
+            
+        }
+        .something-else {
+
+        }
+    ```
+    2. Space in between different media queries can be eliminated without hindering readability
+    3. You can remove space between selectors where code is grouped because it's "reset" or "base" code. You almost never need to touch this code or comprehend the relationship between different selectors.
+    4. You can remove space between selectors where you'd like to logically group code, to help convey a theme. You might want to do this for "reset" CSS, "utility" CSS or, for example, where I am targetting headings:
+        ```
+        blockquote
+            /* e.g. >> /blog/intolerance
+            :is(h2) + & {
+                margin-block: 0 var(--spacing-m);
+            }
+            /* e.g. >> /blog/setting-up-statamic-v3-on-macos-part-4-of-4-publishing-a-statamic-site
+            :is(h3) + & {
+                margin-block-start: var(--spacing-m);
+            }
+        ```
+    5. There should be NO line between groups for Variable definitions at the top of the stylesheet (in the root)
+
+*/
+
+
+
+/* GROUP NOTES / FORMATTING / SPACING / PROPERTIES AND VALUES
+===================================================  */
+/*
+
+    1. Generally every property/value pair should be on a separte line, _except_ in the following circumstances
+    2. When different values or properties share very similar numbers or letters. Example:
+        ```
+        h2, .h2 {
+            font-size: var(--font-size-l); line-height: var(--font-size-l-line-height);
+        }
+    ```
+
+*/
+
+
+
+/* GROUP NOTES / FORMATTING / SPACING / GROUPING
+===================================================  */
+/*
+
+    There should be THREE LINES to separate each group, but _within_ Objects and Components there should be NO line in between groups, to keep scannability high. Example:
+        ```
+        /* GROUP COMPONENTS / SOMETHING
+        =================================================== 
+        .something {
+            
+        }
+        .something-else {
+
+        }
+        /* GROUP COMPONENTS / SOMETHING / MQS
+        =================================================== 
+        @media (min-width: 768px) {
+            .something {
+                
+            }
+        }
+    ```
+
+*/
+
+
+
+/* GROUP VARIABLES -- SPACING
+===================================================  */
+/* Cound be useful to use the max value for increasing spacing on hero text elements, e.g.
+
+    padding-inline-start: max(var(--spacing-l-1), 7vw);
+
+*/
+
+
+
+/* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES
+=================================================== */
+/*
+
+e.g. Based on Augmented Fourth - https://type-scale.com/
+
+---
+
+For thoughts on typography and scale see 'Scaling with vw and clamp units' in my typography.txt file in my wiki
+
+---
+
+CSS min(), max(), and clamp()
+
+- min() — the value used in all situations will be the smallest of the possibilities.
+- max() — the value used in all situations will be the largest of the possibilities.
+- clamp() — accepts three values or calculations: a minimum, preferred, and a maximum. The minimum or maximum will be used if the computed value falls below the minimum or above the maximum. The preferred value will be used if the computed value falls between the two. This allows the property value to adapt to changes in the element or page it is assigned to, while remaining between the minimum and maximum values.
+
+h1 {
+    font-size: clamp(
+    1.1em,  // min - the value is set at this by default. This sholud be a good legible value on smaller screens. Don't worry too much about dramatic type scale.
+    5vw,    // value - when 5vw is bigger than 1.5rem then the font-size becomes 5vw. Don't worry too much about dramatic type scale.
+    1.414em // max - when 5vw hits 1.414em, it stays there as the max. Here is where you should concentrate on aligning to a more dramatic type scale.
+    );
+}
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+The <h1> element's font-size is set as clamp(1.8rem, 2.5vw, 2.8rem). This means that the font-size will be set at 1.8rem, until the computed value of 2.5vw becomes greater than that of 1.8rem. At this point, font-size will be set at 2.5vw, until 2.5vw's computed value becomes greater than that of 2.8rem. At this point, the font-size will be set at 2.8rem. clamp() allows you to set a minimum and maximum value.
+
+---
+
+Variable font-size and line-height example...
+(variables are bumped up and down in :root)
+
+font-size: var(--font-size-l-2);
+line-height: var(--font-size-height-l-1);
+
+*/
+
+
+
+/* GROUP ELEMENTS / FRAMEWORK / TEXT / LINK STYLES {/ LINKS} / ACCESSIBILITY / FOCUS
+=================================================== */
+/* Notes...
+
+    Focus = obvious
+    hover = subtle
+
+    - After some thinking I've concluded that...
+        - A _really_ obvious outline maybe combined with a soft hue'd background is the best for outline styles
+        - Use outline on links but box-shadow if you're dealing with buttons or form elements with a border-radius
+        - It's best to make outlines for keyboard users extremely obvious but then remove them totally for non-keyboard users (see 'Remove Focus Styles for Mouse Users' below)
+            - I think extreme both sides is better than going for a middle of the road approach which still offends designers but is very easy to use for keyboard users
+
+    e.g. 
+
+    Example 1 - taken from apple.com
+    ---------
+    .el:focus {
+        outline: 4px solid rgba(0,125,250,0.6);
+        outline-offset: 1px;
+    }
+
+    Example 2 - box-shadow example from Statamic cpanel
+    ---------
+    .el:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0,125,255,.25);
+    }
+
+    Example 3 - apple.com but more subtle
+    ---------
+    .el:focus {
+        outline: 4px solid white;
+        outline-offset: 4px;
+    }
+
+    Example 4
+    ---------
+    .el:focus {
+        outline: 3px solid hsla(var(--color-turquoise-hsl),0.2);
+        text-decoration: none;
+        background: hsla(var(--color-turquoise-hsl),0.2);
+        border-bottom: 2px solid hsla(var(--color-turquoise-hsl),0.8);
+    }
+
+*/
+/* .u-focus-style-1 a:focus,
+.c-entry-content a:focus {
+    outline: 3px solid hsla(var(--color-turquoise-hsl),0.2);
+    text-decoration: none;
+    background: hsla(var(--color-turquoise-hsl),0.2);
+    border-bottom: 2px solid hsla(var(--color-turquoise-hsl),0.8);
+} */
+
+/* Notes...
+
+    - Use "u-link-style-custom" prefix then these are pretty much rare/1 off
+    - Still include them in this group so we can see all link styles for easy maintenance
+
+*/
+
+
+
+/* GROUP ELEMENTS / FRAMEWORK / TEXT / LINK STYLES {/ LINKS} / ACCESSIBILITY / HOVER
+=================================================== */
+/* Notes...
+
+    Focus = obvious
+    hover = subtle
+
+    Subtle effects such as going from light gray to black are best for hover. We want to gentle suggest rather than pop out, like we do with focus.
+
+    - Consider descending from p so we don't affect buttons e.g. reply button for blog comments
+    - Consider darkening the underline/border-bottom color on hover, or removing the border on hover
+    - Consider going from light gray to black e.g. navigation hover events
+
+    e.g. 
+
+    .el {
+        color: #eee;
+    }
+    
+    .el:hover {
+        color: black;
+    }
+
+*/
+
+
+
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / TEXT / LINK STYLES {/ LINKS} / ACCESSIBILITY / FOCUS
+=================================================== */
+/* Notes...
+
+    Rian Rietveld, Twitter, on 2018-03-08:
+    - keep a good color contrast for text/borders against the background
+    - not by color alone, so don't only change the color (for color blind users)
+    - in WCAG 2.1 the borders also need to comply to a good contrast
+
+    For focusing on images you could also consider using box-shadow so you can get border radius e.g. box-shadow: var(--box-shadow-focus);
+
+    Other tips:
+    - **https://www.gov.uk/ is a great example of how to handle focus styles**
+    - Do not make colors faint; make them obvious
+    - Try to keep focus colors consistent where possible. You may want to avoid changing colors on buttons though, because it's gross
+    - Use box shadow if you'd like to use border-radius
+
+*/
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / TEXT / LINK STYLES {/ LINKS} / EXTERNAL
+=================================================== */
+/* Source http://css-tricks.com/snippets/jquery/target-only-external-links/ */
+/* a:not([href^="http://brewpixel.com"]):not([href^="#"]):not([href^="/"]) {
+
+} */
+
+
+
+/* GROUP COMPONENTS / FRAMEWORK / BUTTONS
+=================================================== */
+/* Notes...
+
+    Wrap the .c-btn around the a href instead of the other way around because this is the most valid HTML.
+    http://stackoverflow.com/questions/5320404/wrap-link-a-around-div
+
+    <div class="btn">
+        <a href>
+        </a>
+    </div>
+
+*/
+/* GROUP COMPONENTS / FRAMEWORK / BUTTONS / ACCESSIBILITY / HOVER
+=================================================== */
+/* These should be slightly different to focus states. Subtle effects such as changing the background color from blue to darkblue are best for hover. We want to gently suggest rather than pop out (opposite of focus states).
+
+    - Consider darkening the background color slightly e.g. blue to darkblue
+    - Here is a good example...
+    https://material-components.github.io/material-components-web-catalog/#/component/button
+
+*/
+.c-btn a:hover {
+    /* Cancel link hover effect */
+    border-bottom: 0;
+}
+
+/* 1 */
+/* .c-btn--background-transition-example a:hover {
+    background-color: var(--color-brown-dark);
+} */
+
+/* 2 */
+/* .c-btn--2 a:hover {
+    
+} */
+
+
+
+/* GROUP UTILITIES / ANIMATION / IO FRAMEWORK (Authored by me)
+=================================================== */
+/* Here's an example of me using a hidden trigger:
+
+@layer scope {
+    /*
+    [1] Flip the colours on .o-scroll-snap__slide--flip-colours
+    [2] Except when there's a hidden trigger.
+
+    .s-social:has(.o-scroll-snap__slide--flip-colours [data-io-seen]):not(:has([data-io-hidden-trigger])) .c-site-header * {
+        color: black;
+        transition: color 0.5s ease-in 0s;
+    }
+    [3] When the slide contains an explicit trigger then use this to flip the .c-site-header colours
+    .s-social:has(.o-scroll-snap__slide--flip-colours [data-io-hidden-trigger][data-io-seen]) .c-site-header * {
+        color: black;
+    }
+}
+*/

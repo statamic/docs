@@ -1,0 +1,57 @@
+/* GROUP OBJECTS / BADGE HEADING
+=================================================== */
+/* Notes...
+
+    What does it do
+    ---------------
+    - A container that houses an heading e.g. h1, and a badge such as the Pro Feature badge
+
+*/
+/* HTML Example...
+
+*/
+
+@layer objects {
+    .o-badge-heading {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-l) var(--spacing-l-1);
+
+        > :has(img) {
+            flex-basis: 6rem;
+            flex-shrink: 0;
+        }
+        /* --mq-grid-before */
+        @media (width < 1000px) {
+            flex-wrap: wrap;
+            &:has(h1) {
+                padding-block-end: var(--spacing-l);
+            }
+            h1 {
+                order: 1;
+                padding-block-end: 0;
+            }
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            justify-content: space-between;
+            align-items: unset;
+        }
+    }
+}
+@layer scope {
+    .o-badge-heading {
+        /* --mq-wide-after */
+        @media (width >= 1650px) {
+            > :has(img) {
+                /* Pull it out of the flow to let the layout breathe */
+                position: absolute;
+                right: -3rem;
+                top: -7rem;
+                /* Increase */
+                inline-size: 7rem;
+            }
+        }
+    }
+}

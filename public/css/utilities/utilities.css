@@ -1,0 +1,49 @@
+/* GROUP UTILITIES / FRAMEWORK
+=================================================== */
+@layer utilities {
+    .qa-test {
+        border: 3px solid red!important;
+    }
+    /* Images without alt tags. Turn on when needed */
+    /* img:not([alt]) {
+        border: 5px dashed red;
+    } */
+    /* Components > Framework > Nav */
+    .no-js .u-js-only {
+        display: none!important;
+    }
+    /* Text meant only for screen readers. */
+    /* Components > Framework > Nav */
+    .u-screen-reader-text {
+        clip: rect(1px, 1px, 1px, 1px);
+
+        position: absolute!important;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        /* Needed if the text should be visible on keyboard focus */
+        &:focus {
+            clip: auto!important;
+
+            z-index: 100000; /* Above WP toolbar. */
+            display: block;
+            top: 0;
+            left: 0;
+
+            width: auto;
+            height: auto;
+        }
+    }
+    /* Custom */
+    @media (width < 700px) {
+        /* e.g. Sponsors on homepage */
+        .u-center-on-lower-mqs {
+            text-align: center;
+            justify-content: center;
+        }
+    }
+    /* e.g. */
+    .u-image-boost-with-hue-rotate {
+        filter: var(--filter-image-boost-1-with-hue-rotate);
+    }
+}

@@ -1,0 +1,76 @@
+/* GROUP COMPONENTS / ICON GRID
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A grid of icons with a title and text e.g. /installing
+
+*/
+/* HTML Example...
+
+*/
+@layer components {
+    .c-icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr));
+        gap: var(--spacing-l-1) var(--spacing-s-1);
+        text-align: center;
+
+        img {
+            &:not([src*=".svg"]) {
+                max-width: 5.5rem;
+                filter: var(--filter-image-boost-1);
+            }
+        }
+
+        h2 {
+            padding-block: var(--spacing-l-static) var(--spacing-s-5);
+            font-family: var(--font-family-ui);
+            font-size: var(--font-size-ui);
+            font-weight: var(--font-family-ui-weight-heavy);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        p {
+            font-family: var(--font-family-code);
+            font-size: var(--font-size-s-2);
+        }
+
+        &:has(.c-icon-grid__item__label) {
+            padding-block-start: var(--spacing-l-static);
+        }
+    }
+    .c-icon-grid__item {
+        position: relative;
+    }
+    .c-icon-grid__item__label {
+        position: absolute;
+        top: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-heavy);
+        font-size: var(--font-size-s-2);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        div {
+            padding: var(--spacing-s-4) var(--spacing-s-1);
+        }
+    }
+    .c-icon-grid__icon {
+        aspect-ratio: 2 / 1.5;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        /* Custom */
+        @media (width < 600px) {
+            max-width: 17rem;
+        }
+        margin-inline: auto;
+        background: var(--color-gradient-full-light-2);
+        border: var(--border-dashed-red);
+        border-radius: var(--border-radius-l-2);
+    }
+}

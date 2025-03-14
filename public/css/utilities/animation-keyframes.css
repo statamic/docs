@@ -1,0 +1,28 @@
+/* If they're OK with animation */
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes wiggle {
+        20% {
+            transform: rotate(-7deg);
+        }
+        40% {
+            transform: rotate(7deg);
+        }
+        60% {
+            transform: rotate(-4deg);
+        }
+        80% {
+            transform: rotate(4deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+}
+/* GROUP UTILITIES / ANIMATIONS / KEYFRAMES / MISC
+=================================================== */
+@keyframes restore-click {
+    /* This restores click events to buttons when other popovers are deactivated. We need to use an animation in order to to _delay_ the restoring of click events, so that clicking through the "backdrop" of a popover onto another popover trigger doesn't do anything as the popover is in the process of disappearing. */
+    to {
+        pointer-events: unset;
+    }
+}

@@ -1,0 +1,60 @@
+/* GROUP COMPONENTS / PRO BADGE
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Pro Feature badge used on pages such as Git Automation
+
+*/
+/* HTML Example...
+
+*/
+@layer components {
+    .c-pro-badge {
+        position: relative;
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-heavy);
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
+        text-align: center;
+
+        img {
+            filter: contrast(102%) saturate(1.05) brightness(105%);
+            @container style(--color-scheme: dark) {
+                filter: var(--filter-dark-tint);
+            }
+        }
+        > img {
+            border-radius: 50%;
+        }
+    }
+    .c-pro-badge__text {
+        position: absolute;
+        left: -20%;
+        inline-size: 10rem;
+        transform: translateY(-1.2rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-s-4);
+        padding: var(--spacing-s-5) var(--spacing-s-4);
+        background: var(--color-yellow-light-2);
+        background: linear-gradient(to right, var(--color-yellow-light-4) 0%,var(--color-yellow-light-2) 100%);
+        font-size: var(--font-size-s-1);
+        rotate: -5deg;
+
+        img {
+            inline-size: 2em;
+        }
+    }
+    /* --mq-grid-after */
+    @media (width >= 1000px) {
+        .c-pro-badge {
+            bottom: var(--spacing-l);
+        }
+    }
+}

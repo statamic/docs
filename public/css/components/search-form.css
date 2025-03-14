@@ -1,0 +1,103 @@
+/* GROUP COMPONENTS / SEARCH FORM
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    Home
+
+    What does it do?
+    ----------------
+    Search "box"
+
+*/
+/* HTML Example...
+
+*/
+@layer components {
+    .c-search-form {
+        position: relative;
+        display: flex;
+        background: var(--color-search-form);
+        border: 1px solid var(--color-pink-border);
+        box-shadow: var(--box-shadow-pink-light);
+        border-radius: 50px;
+
+        & input,
+        #docsearch button {
+            margin: 0;
+            padding-inline: 3.5em var(--spacing-m);
+            /* Custom */
+            @media (width < 500px) {
+                padding-inline-end: max(2.5rem, 10vw);
+            }
+            border: 0;
+        }
+        & ::placeholder {
+            color: var(--color-black);
+            opacity: 1;
+        }
+    }
+    .c-search-form__icon {
+        /* Take it out of the document flow so the search input is still clickable */
+        position: absolute;
+        left: var(--spacing-s-1);
+        pointer-events: none;
+        font-size: 1.3em;
+    }
+}
+@layer ui {
+    #docsearch {
+        button {
+            align-items: center;
+            inline-size: 100%;
+            background: inherit;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+        .docsearch-btn-keys {
+            display: flex;
+            gap: 0.4rem;
+        }
+        .docsearch-btn-key {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
+            border-radius: 5px;
+            inline-size: 1.5rem;
+            aspect-ratio: 1;
+            font-family: var(--font-family-ui);
+            font-size: var(--font-size-s-1);
+            /* Page preference is "dark" */
+            html:has(#color-scheme option[value="dark"]:checked) & {
+                border: 0;
+                background: var(--color-transparent-dark-mode);
+            }
+            /* Page preference is "system", and system preference is "dark" */
+            @media (prefers-color-scheme: dark) {
+                html:has(#color-scheme option[value="system"]:checked) & {
+                    border: 0;
+                    background: var(--color-transparent-dark-mode);
+                }
+            }
+        }
+    }
+    /* Custom */
+    @media (width < 500px) {
+        #docsearch {
+            /* Hide when short on space */
+            .docsearch-btn-keys,
+            .docsearch-btn-placeholder__desktop-only {
+                display: none;
+            }
+        }
+        .c-docs-header__search {
+            min-width: 60%;
+            .docsearch-btn {
+                min-width: 43vw;
+            }
+        }
+    }
+}
