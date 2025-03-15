@@ -5,10 +5,10 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import intersect from '@alpinejs/intersect';
 import './anchors.js';
-// require('./cookies.js')
-// require('./external-links.js')
-// require('./language-badges.js')
-// require('./searchHotKeys.js')
+import './cookies.js';
+import './external-links.js';
+import './language-badges.js';
+import './searchHotKeys.js';
 // var dayjs = require('dayjs')
 dayjs.extend(relativeTime)
 window.dayjs = dayjs;
