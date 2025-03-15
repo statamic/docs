@@ -1,15 +1,17 @@
 import "meilisearch-docsearch/css";
 import { docsearch } from "meilisearch-docsearch";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import intersect from '@alpinejs/intersect';
 
-require('./anchors.js')
-require('./cookies.js')
-require('./external-links.js')
-require('./language-badges.js')
-require('./searchHotKeys.js')
-var dayjs = require('dayjs')
-var relativeTime = require('dayjs/plugin/relativeTime')
+// require('./anchors.js')
+// require('./cookies.js')
+// require('./external-links.js')
+// require('./language-badges.js')
+// require('./searchHotKeys.js')
+// var dayjs = require('dayjs')
 dayjs.extend(relativeTime)
-
 window.dayjs = dayjs;
 
 docsearch({
@@ -51,36 +53,9 @@ window.htmlData = function() {
     }
 }
 
+Alpine.plugin(intersect);
 Alpine.start();
 window.Alpine = Alpine;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
-import intersect from '@alpinejs/intersect'
-
-Alpine.plugin(intersect);
 
 console.log('site.js loaded')
 // require('./anchors.js')
@@ -139,6 +114,5 @@ Array.prototype.forEach.call(document.querySelectorAll('code.torchlight'), funct
         el.parentElement.appendChild(badge)
     }
 });
-
 
 Livewire.start();
