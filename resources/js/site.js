@@ -4,8 +4,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import intersect from '@alpinejs/intersect';
-
-// require('./anchors.js')
+import './anchors.js';
 // require('./cookies.js')
 // require('./external-links.js')
 // require('./language-badges.js')
@@ -57,15 +56,7 @@ Alpine.plugin(intersect);
 Alpine.start();
 window.Alpine = Alpine;
 
-console.log('site.js loaded')
-// require('./anchors.js')
-
-var elements = document.querySelectorAll('article h2, article h3, article h4');
-Array.prototype.forEach.call(elements, function (el, i) {
-    if (el.id) {
-        el.innerHTML += '<a href="#' + el.id + '" class="anchor">#</a>';
-    }
-});
+console.log('site.js loaded');
 
 // function tocNavigation() {
 //     return {
