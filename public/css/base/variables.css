@@ -286,12 +286,15 @@
         - You can check exactly how they see it by going to System Preferences > Displays > Scaled
 
     */
-    @media (min-width: 1025px) and (max-width: 1440px) {
-        --font-bump: -0.09em; /* Decrease */
+    /* Custom */
+    @media (width >= 1025px) and (width < 1441px) {
+        /* Decrease */
+        --font-bump: -0.165em;
     }
     /* --mq-text-bump-2-after */
-    @media (min-width: 1401px) {
-        --font-bump: -0.02em; /* Decrease */
+    @media (width >= 1441px) {
+        /* Decrease */
+        --font-bump: -0.02em;
     }
     /* --mq-text-bump-3-after */
     @media (min-width: 1800px) {
