@@ -469,6 +469,7 @@
             /* any additional dark styles */
             /* e.g. .c-doc-tabs */
             --color-black: var(--color-dark-mode-gray);
+            --color-black-off: hsl(var(--color-body-background-hue) 17% 5%);
             --color-gray-aa: hsl(250deg 3% 53%);
             /* For dark colours, take the same hs value but dial the lightness right down, making small adjustments as necessary */
             --color-blue-light-1: hsl(197deg 50% 11%);
@@ -527,7 +528,7 @@
             --color-gradient-blue-light-1: var(--color-gradient-full-light-3);
             /* e.g. .c-related */
             --color-gradient-blue-light-2: var(--color-gradient-full-light-2);
-
+    
             /* e.g. .o-current-menu-item in the sidebar */
             --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
             /* e.g. homepage tiles */

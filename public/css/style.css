@@ -22,6 +22,7 @@ scope;
 @import 'objects/scroll-shadows.css';
 @import 'objects/toc-scroll-spy.css';
 /* Components > Global */
+@import 'components/skip-to-content.css';
 @import 'components/docs-header.css';
 @import 'components/site-footer.css';
 @import 'components/theme-picker.css';
