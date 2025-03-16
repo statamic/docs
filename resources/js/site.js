@@ -8,16 +8,6 @@ import './searchHotKeys.js';
 import './dayjs.js';
 import './docsearch.js';
 
-// window.bodyData = function() {
-//     let primaryKeyBind = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? 'meta' : 'ctrl';
-//     return {
-//         showNav: false,
-//         showSearch: false,
-//         showEasterEgg: false,
-//         nearTop: true,
-//     };
-// }
-
 // window.htmlData = function() {
 //     return {
 //         themePickerOpen: false,
