@@ -8,27 +8,6 @@ import './searchHotKeys.js';
 import './dayjs.js';
 import './docsearch.js';
 
-// window.htmlData = function() {
-//     return {
-//         themePickerOpen: false,
-//         themePreference: localStorage.getItem('theme') || 'system',
-//         systemTheme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-//         setSystemTheme(theme) {
-//             this.systemTheme = theme
-//         },
-//         get theme() {
-//             return this.darkMode ? 'dark' : 'light'
-//         },
-//         setThemePreference(theme) {
-//             this.themePreference = theme
-//             localStorage.setItem('theme', theme)
-//         },
-//         get darkMode() {
-//             return this.themePreference === 'dark' || (this.themePreference === 'system' && this.systemTheme === 'dark')
-//         },
-//     }
-// }
-
 Alpine.plugin(intersect);
 Alpine.start();
 window.Alpine = Alpine;
