@@ -21,10 +21,9 @@
 @layer elements {
     /* GROUP ELEMENTS / FRAMEWORK
     =================================================== */
-    /* ::selection {
-        background: light color;
-        color: dark color;
-    } */
+    ::selection {
+        background: light-dark(hsl(var(--color-purple-hue), 60%, 90%), hsl(var(--color-purple-hue) 60% 30%));
+    }
     /* https://twitter.com/bramus/status/1452572001697153029 */
     /* html,
     body {
@@ -498,7 +497,6 @@
     select:focus-visible,
     textarea:focus-visible {
         outline: 3px solid var(--color-focus);
-        outline-offset: 3px;
     }
     /* ensure the focus outline is effective when a link is wrapped around a heading */
     a:has(> h2, h3, h4, h5, h6) {

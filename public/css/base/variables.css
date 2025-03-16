@@ -56,6 +56,7 @@
     --color-blue-light-3: hsl(197deg 100% 98%);
     --color-blue-light-4: hsl(197deg 100% 99%);
     --color-purple-dark: hsl(256deg 60% 50%);
+    --color-purple-hue: 256deg;
     --color-purple: hsl(256deg 60% 60%);
     /* e.g. bullet point decoration */
     --color-purple-light-1: hsl(256deg 60% 85%);

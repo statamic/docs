@@ -96,6 +96,10 @@
                     border-radius: 50px;
                     box-shadow: var(--box-shadow-not-t-light);
                     text-decoration: none;
+                    &:focus-visible {
+                        /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
+                        outline-offset: -3px;
+                    }
                 }
                 img {
                     inline-size: 1.55em;
