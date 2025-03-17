@@ -68,6 +68,9 @@
     .docsearch-btn {
         padding: var(--button-spacing);
         height: unset;
+        > * {
+            margin-inline-end: unset;
+        }
     }
     .docsearch-btn-key {
         display: flex;
@@ -75,6 +78,7 @@
         align-items: center;
         border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
         border-radius: 5px;
+        background: linear-gradient(to bottom, hsl(var(--color-yellow-hue) 100% 97%) 0%,white 100%);
         inline-size: 1.5rem;
         aspect-ratio: 1;
         font-family: var(--font-family-ui);
@@ -133,8 +137,7 @@
 */
 :root {
     /* Overrides For Meilisearch CSS */
-    --docsearch-muted-color: var(--color-black)!important;
+    --docsearch-muted-color: inherit!important;
     --docsearch-primary-color: var(--color-purple)!important;
-    /* --docsearch-key-gradient: var(--color-search-form)!important; */
     --docsearch-key-shadow: unset!important;
 }
