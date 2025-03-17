@@ -7,6 +7,7 @@
     },
     "devDependencies": {
         "@alpinejs/intersect": "^3.14.1",
+        "@alpinejs/persist": "^3.14.1",
         "alpinejs": "^3.2.4",
         "autoprefixer": "^10.4.20",
         "axios": "^0.28",

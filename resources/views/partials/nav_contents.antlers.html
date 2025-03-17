@@ -2,20 +2,10 @@
     wire:scroll 
     class="o-shadow-container-vertical"
     x-data="{ 
-        initScroll() {
-            // Restore scroll position on page load
-            const savedScroll = localStorage.getItem('navScrollPosition');
-            if (savedScroll) {
-                this.$el.scrollTop = parseInt(savedScroll);
-            }
-        },
-        saveScroll() {
-            // Save scroll position before navigation
-            localStorage.setItem('navScrollPosition', this.$el.scrollTop);
-        }
+        navScrollPosition: $persist(0)
     }"
-    x-init="initScroll()"
-    @scroll="saveScroll()"
+    x-init="$el.scrollTop = navScrollPosition"
+    @scroll="navScrollPosition = $el.scrollTop"
 >
     {{ nav :handle="section" }}
         <li>
