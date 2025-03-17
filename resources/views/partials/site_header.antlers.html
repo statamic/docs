@@ -34,18 +34,20 @@
             </button>
             <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-desktop" popover>
                 <ul>
-                    <li><a href="/" class="o-current-menu-item">Docs</a></li>
-                    <li><a href="/">Screencasts</a></li>
-                    <li><a href="/">Reference</a></li>
-                    <li><a href="/">Extending</a></li>
+                    <li>
+                        {{ nav:collection:sections include_home="true" }}
+                            <a wire:navigate href="{{ url }}">{{ nav_title ?? title }}</a>
+                        {{ /nav:collection:sections }}
+                    </li>
                 </ul>
             </nav>
             <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-mobile">
                 <ul>
-                    <li><a href="/" class="o-current-menu-item">Docs</a></li>
-                    <li><a href="/">Screencasts</a></li>
-                    <li><a href="/">Reference</a></li>
-                    <li><a href="/">Extending</a></li>
+                    {{ nav:collection:sections include_home="true" }}
+                        <li>
+                            <a wire:navigate href="{{ url }}" {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}>{{ nav_title ?? title }}</a>
+                        </li>
+                    {{ /nav:collection:sections }}
                 </ul>
             </nav>
         </div>

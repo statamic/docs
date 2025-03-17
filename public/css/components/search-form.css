@@ -78,7 +78,7 @@
         align-items: center;
         border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
         border-radius: 5px;
-        background: linear-gradient(to bottom, hsl(var(--color-yellow-hue) 100% 97%) 0%,white 100%);
+        background: var(--docsearch-key-gradient);
         inline-size: 1.5rem;
         aspect-ratio: 1;
         font-family: var(--font-family-ui);
@@ -86,19 +86,14 @@
         /* Page preference is "dark" */
         html:has(#color-scheme option[value="dark"]:checked) & {
             border: 0;
-            background: var(--color-transparent-dark-mode);
         }
         /* Page preference is "system", and system preference is "dark" */
         @media (prefers-color-scheme: dark) {
             html:has(#color-scheme option[value="system"]:checked) & {
                 border: 0;
-                background: var(--color-transparent-dark-mode);
             }
         }
     }
-}
-.docsearch-modal-search-input {
-    margin-block-end: 0;
 }
 /* --mq-meilisearch-mobile-breakpoint-before */
 @media (width < 768px) {
@@ -128,6 +123,15 @@
         }
     }
 }
+/* GROUP COMPONENTS / SEARCH FORM / MODAL
+=================================================== */
+.docsearch-modal {
+    /* --mq-text-bump-3-before */
+    @media (width < 1800px) {
+        
+    }
+    font-size: 1.05em;
+}
 /* GROUP COMPONENTS / SEARCH FORM / Overrides For Meilisearch CSS
 =================================================== */
 /* Notes...
@@ -140,4 +144,29 @@
     --docsearch-muted-color: inherit!important;
     --docsearch-primary-color: var(--color-purple)!important;
     --docsearch-key-shadow: unset!important;
+    --docsearch-key-gradient: linear-gradient(to bottom, hsl(var(--color-yellow-hue) 100% 97%) 0%,white 100%)!important;
+    --docsearch-modal-width: 50rem!important;
+    /* Page preference is "dark" */
+    &:has(#color-scheme option[value="dark"]:checked) {
+        --docsearch-key-gradient: var(--color-transparent-dark-mode)!important;
+    }
+    /* Page preference is "system", and system preference is "dark" */
+    /* Note: For now, we need to repeat these values, but in the future, we can use style queries to eliminate the need to repeat the dark mode variables. [Current support](https://caniuse.com/?search=style%20queries). To do this, we must shift everything down so variables are on the `body` instead of the `root`. The root then contains the `colour-scheme` variables, which means we can now query the `colour-scheme` variable since the root is now the container. */
+    @media (prefers-color-scheme: dark) {
+        &:has(#color-scheme option[value="system"]:checked) {
+            --docsearch-key-gradient: var(--color-transparent-dark-mode)!important;
+        }
+    }
+}
+.docsearch-modal-footer-commands-key {
+    border: 1px solid hsl(var(--color-pink-hue) 100% 90%)!important;
+}
+.docsearch-modal-search-input {
+    margin-block-end: 0;
+}
+.docsearch-modal-search-hits-item-title {
+    font-weight: var(--font-family-ui-weight-strong)!important;
+}
+.docsearch-modal-search-hits-item-text {
+    font-weight: var(--font-family-ui-weight-normal)!important;
 }

@@ -1,18 +1,18 @@
 <html lang="en">
-{{ partial:head }}
-{{ partial:site_header }}
-<body class="font-sans font-light leading-normal">
-    {{ partial:partials/nav }}
+    {{ partial:head }}
+    {{ partial:site_header }}
+    <body class="font-sans font-light leading-normal">
+        {{ partial:partials/nav }}
 
-    <div class="wrapper flex py-8" name="top">
-        {{ partial:side-nav }}
-        <article id="content" class="w-full max-w-3xl px-12 pb-12 mx-auto prose prose-headings:font-normal prose-zinc prose-h1:font-light prose-p:text-zinc-500 prose-ul:text-zinc-500 prose-ol:text-zinc-500 prose-pre:p-0">
-            {{ template_content }}
-        </article>
-        {{ partial:toc :hide="hide_toc ?? false" }}
-    </div>
+        <div class="wrapper flex py-8" name="top">
+            {{ partial:side-nav }}
+            <article id="content" class="w-full max-w-3xl px-12 pb-12 mx-auto prose prose-headings:font-normal prose-zinc prose-h1:font-light prose-p:text-zinc-500 prose-ul:text-zinc-500 prose-ol:text-zinc-500 prose-pre:p-0">
+                {{ template_content }}
+            </article>
+            {{ partial:toc :hide="hide_toc ?? false" }}
+        </div>
 
-    {{# {{ partial:footer }} #}}
-    {{ partial:scripts }}
-</body>
+        {{# {{ partial:footer }} #}}
+        {{ partial:scripts }}
+    </body>
 </html>

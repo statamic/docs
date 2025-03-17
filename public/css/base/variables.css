@@ -528,7 +528,7 @@
             --color-gradient-blue-light-1: var(--color-gradient-full-light-3);
             /* e.g. .c-related */
             --color-gradient-blue-light-2: var(--color-gradient-full-light-2);
-    
+
             /* e.g. .o-current-menu-item in the sidebar */
             --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
             /* e.g. homepage tiles */
