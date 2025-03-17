@@ -34,11 +34,11 @@
             </button>
             <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-desktop" popover>
                 <ul>
-                    <li>
-                        {{ nav:collection:sections include_home="true" }}
-                            <a wire:navigate href="{{ url }}">{{ nav_title ?? title }}</a>
-                        {{ /nav:collection:sections }}
-                    </li>
+                    {{ nav:collection:sections include_home="true" }}
+                        <li>
+                            <a wire:navigate href="{{ url }}" {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}>{{ nav_title ?? title }}</a>
+                        </li>
+                    {{ /nav:collection:sections }}
                 </ul>
             </nav>
             <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-mobile">
