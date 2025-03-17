@@ -11,9 +11,6 @@
     Search "box"
 
 */
-/* HTML Example...
-
-*/
 @layer components {
     .c-search-form {
         position: relative;
@@ -47,58 +44,87 @@
         font-size: 1.3em;
     }
 }
-@layer ui {
-    #docsearch {
-        button {
-            align-items: center;
-            inline-size: 100%;
-            background: inherit;
-            color: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+#docsearch {
+    button {
+        align-items: center;
+        inline-size: 100%;
+        background: inherit;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    .docsearch-btn-keys {
+        display: flex;
+        gap: 0.4rem;
+        > * {
+            margin-inline-end: unset;
         }
-        .docsearch-btn-keys {
-            display: flex;
-            gap: 0.4rem;
+    }
+    .docsearch-btn-placeholder {
+        &::after {
+            content: "the docs";
         }
-        .docsearch-btn-key {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
-            border-radius: 5px;
-            inline-size: 1.5rem;
-            aspect-ratio: 1;
-            font-family: var(--font-family-ui);
-            font-size: var(--font-size-s-1);
-            /* Page preference is "dark" */
-            html:has(#color-scheme option[value="dark"]:checked) & {
+        margin-inline-end: 0;
+        padding-inline-end: 0;
+    }
+    .docsearch-btn {
+        padding: var(--button-spacing);
+        height: unset;
+    }
+    .docsearch-btn-key {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
+        border-radius: 5px;
+        inline-size: 1.5rem;
+        aspect-ratio: 1;
+        font-family: var(--font-family-ui);
+        font-size: var(--font-size-s-1);
+        /* Page preference is "dark" */
+        html:has(#color-scheme option[value="dark"]:checked) & {
+            border: 0;
+            background: var(--color-transparent-dark-mode);
+        }
+        /* Page preference is "system", and system preference is "dark" */
+        @media (prefers-color-scheme: dark) {
+            html:has(#color-scheme option[value="system"]:checked) & {
                 border: 0;
                 background: var(--color-transparent-dark-mode);
             }
-            /* Page preference is "system", and system preference is "dark" */
-            @media (prefers-color-scheme: dark) {
-                html:has(#color-scheme option[value="system"]:checked) & {
-                    border: 0;
-                    background: var(--color-transparent-dark-mode);
-                }
-            }
         }
     }
-    /* Custom */
-    @media (width < 500px) {
-        #docsearch {
-            /* Hide when short on space */
-            .docsearch-btn-keys,
-            .docsearch-btn-placeholder__desktop-only {
-                display: none;
-            }
-        }
-        .c-docs-header__search {
-            min-width: 60%;
-            .docsearch-btn {
-                min-width: 43vw;
-            }
+}
+.docsearch-modal-search-input {
+    margin-block-end: 0;
+}
+/* Custom */
+@media (width < 500px) {
+    #docsearch {
+        /* Hide when short on space */
+        .docsearch-btn-keys,
+        .docsearch-btn-placeholder__desktop-only {
+            display: none;
         }
     }
+    .c-docs-header__search {
+        min-width: 60%;
+        .docsearch-btn {
+            min-width: 43vw;
+        }
+    }
+}
+/* GROUP COMPONENTS / SEARCH FORM / Overrides For Meilisearch CSS
+=================================================== */
+/* Notes...
+
+    - Meilisearch styles are loaded inline so we'll need !important here.
+
+*/
+:root {
+    /* Overrides For Meilisearch CSS */
+    --docsearch-muted-color: var(--color-black)!important;
+    --docsearch-primary-color: var(--color-purple)!important;
+    /* --docsearch-key-gradient: var(--color-search-form)!important; */
+    --docsearch-key-shadow: unset!important;
 }
