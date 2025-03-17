@@ -16,7 +16,7 @@
         position: relative;
         display: flex;
         align-items: center;
-        gap: var(--spacing-l) var(--spacing-l-1);
+        gap: 2.1rem var(--spacing-l-1);
 
         > :has(img) {
             flex-basis: 6rem;
