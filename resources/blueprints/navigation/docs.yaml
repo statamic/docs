@@ -1,13 +1,26 @@
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          input_type: text
-          antlers: false
-          display: Title
-          type: text
-          icon: text
-          listable: hidden
+        fields:
+          -
+            handle: title
+            field:
+              display: Title
+              type: text
+          -
+            handle: navigation_image
+            field:
+              container: main
+              type: assets
+              display: 'Navigation Image'
+              instructions: 'Used for the major sections of the sidebar'
+              max_files: 1
+              folder: navigation
+          -
+            handle: image_width_override
+            field:
+              type: text
+              display: 'Image Width Override'
+              instructions: 'e.g. `2.05em`. This allows you to override the width for certain navigation images. You may want to do this if the image has an unusual aspect ratio, which might make the image appear smaller, such as sunglasses that are more landscape.'
