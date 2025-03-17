@@ -37,8 +37,6 @@
         }
     }
     .c-search-form__icon {
-        /* Take it out of the document flow so the search input is still clickable */
-        position: absolute;
         left: var(--spacing-s-1);
         pointer-events: none;
         font-size: 1.3em;
@@ -98,12 +96,24 @@
 .docsearch-modal-search-input {
     margin-block-end: 0;
 }
+/* --mq-meilisearch-mobile-breakpoint-before */
+@media (width < 768px) {
+    #docsearch .docsearch-btn-placeholder {
+        /* Override Meilsearch hiding the text on lower MQs */
+        display: inline-block!important;
+        /* Custom */
+        @media (width < 500px) {
+            &::after {
+                content: unset;
+            }
+        }
+    }
+}
 /* Custom */
 @media (width < 500px) {
     #docsearch {
         /* Hide when short on space */
-        .docsearch-btn-keys,
-        .docsearch-btn-placeholder__desktop-only {
+        .docsearch-btn-keys {
             display: none;
         }
     }
