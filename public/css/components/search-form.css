@@ -155,6 +155,7 @@
         --docsearch-modal-background: var(--color-body-background);
         --docsearch-footer-background: var(--color-body-background);
         --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 20%)!important;
+        --docsearch-hit-shadow: unset;
     }
     /* Page preference is "system", and system preference is "dark" */
     /* Note: For now, we need to repeat these values, but in the future, we can use style queries to eliminate the need to repeat the dark mode variables. [Current support](https://caniuse.com/?search=style%20queries). To do this, we must shift everything down so variables are on the `body` instead of the `root`. The root then contains the `colour-scheme` variables, which means we can now query the `colour-scheme` variable since the root is now the container. */
@@ -166,6 +167,7 @@
             --docsearch-modal-background: var(--color-body-background);
             --docsearch-footer-background: var(--color-body-background);
             --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 20%)!important;
+            --docsearch-hit-shadow: unset;
         }
     }
 }
