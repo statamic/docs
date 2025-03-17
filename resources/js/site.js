@@ -2,6 +2,7 @@ import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.e
 import intersect from '@alpinejs/intersect';
 import './anchors.js';
 import './cookies.js';
+import './color-scheme-preferences.js';
 import './external-links.js';
 import './language-badges.js';
 import './searchHotKeys.js';
