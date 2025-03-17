@@ -5,13 +5,19 @@
         {{# =jfg This is not currently in use but could be useful in future #}}
         {{# {{ partial:partials/promo }} #}}
 
-        <div class="wrapper flex py-8" name="top">
-            {{ partial:side-nav }}
-            <article id="content" class="w-full max-w-3xl px-12 pb-12 mx-auto prose prose-headings:font-normal prose-zinc prose-h1:font-light prose-p:text-zinc-500 prose-ul:text-zinc-500 prose-ol:text-zinc-500 prose-pre:p-0">
-                {{ template_content }}
-            </article>
-            {{ partial:toc :hide="hide_toc ?? false" }}
-        </div>
+        {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
+        <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
+            {{ partial:nav_sidebar }}
+
+            <div class="wrapper flex py-8" name="top">
+                {{# {{ partial:side-nav }} #}}
+                <article id="content" class="w-full max-w-3xl px-12 pb-12 mx-auto prose prose-headings:font-normal prose-zinc prose-h1:font-light prose-p:text-zinc-500 prose-ul:text-zinc-500 prose-ol:text-zinc-500 prose-pre:p-0">
+                    {{ template_content }}
+                </article>
+                {{ partial:toc :hide="hide_toc ?? false" }}
+            </div>
+
+        </main>
 
         {{# {{ partial:footer }} #}}
         {{ partial:scripts }}
