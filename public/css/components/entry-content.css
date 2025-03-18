@@ -1,0 +1,180 @@
+/* GROUP COMPONENTS / ENTRY / ENTRY CONTENT
+=================================================== */
+/*
+
+    - Entry content is the main page content which houses prose and other writing components
+    - Although technically, this is more like a scope, housing different components, it should sit at the component layer so that the components inside can easily override this base layer.
+
+*/
+/* HTML Example...
+
+    <div class="c-entry-content-wrapper"> <-- container to help with placement
+        <article class="c-entry-content">
+            <h1>Title</h1>
+            <p>Entry content</p>
+        </article>
+    </div>
+
+*/
+/* Put some rules at the element layer where components should easily override them */
+@layer elements {
+    .c-entry-content {
+        p {
+            max-width: var(--max-width-reading);
+            font-size: var(--font-size-m);
+        }
+    }
+}
+@layer components {
+    .c-entry-content-wrapper {
+        max-width: var(--max-width-1);
+        /* If it's the first entry-content on the page then push it away from the header */
+        :is(main) > section > article &:first-child {
+            padding-block-start: var(--spacing-vh-s);
+        }
+        /* The last entry-content but not if it's the last main item. */
+        main > *:not(:last-child) &:last-child {
+            padding-block-end: var(--spacing-l-4);
+        }
+        /* If it's the last item set padding to 0 */
+        main > section:last-child &:last-child {
+            padding-block-end: 0;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            grid-area: content;
+        }
+    }
+    .c-entry-content {
+        max-width: var(--max-width-content);
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            margin-inline: auto;
+        }
+        padding-inline: var(--spacing-l);
+        font-family: var(--font-family-prose);
+
+        /* e.g. .o-badge-heading */
+        > :has(h1),
+        > h1, > .h1 {
+            padding-block-start: 0;
+            /* Article intro text */
+            + p {
+                font-size: var(--font-size-l-1);
+                line-height: var(--font-size-l-1-line-height);
+                max-width: var(--max-width-content);
+            }
+        }
+
+        & h2 {
+            :is(.c-entry-content) > &:first-child {
+                /* Add top spacing for the beginning of a section */
+                padding-block-start: var(--spacing-s-1);
+            }
+        }
+
+        /* Direct descendents only because we don't want to affect components such as .c-related */
+        > ul {
+            --padding-inline-start: min(1.5rem, 5vw);
+            padding-inline-start: var(--padding-inline-start);
+            li {
+                padding-inline-start: var(--spacing-s-5);
+                position: relative;
+                &::before {
+                    content: '';
+                    background: var(--color-purple-light-1);
+                    position: absolute;
+                    left: calc(0% - var(--padding-inline-start));
+                    top: 0.55rem;
+                    inline-size: 0.5em;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        ol {
+            counter-reset: item;
+            li {
+                --size: 1.75rem;
+                list-style: none;
+                padding-inline-start: calc(var(--size) + var(--spacing-s-2));
+                &:not(:last-child) {
+                    padding-block-end: var(--spacing-s-3);
+                }
+                position: relative;
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    inline-size: var(--size);
+                    block-size: var(--size);
+                    content: counter(item);
+                    counter-increment: item;
+                    color: light-dark(var(--color-primary-text), var(--color-body-background));
+                    font-size: var(--font-size-s-1);
+                    font-weight: var(--font-family-prose-weight-strong);
+                    margin-inline-end: min(var(--spacing-s-1), 3vw);
+                    background: var(--color-yellow-light-1);
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        p {
+            + :is(ol, ul) {
+                padding-block: var(--spacing-s-3) var(--spacing-l);
+            }
+        }
+        /* Followed by some kind of image component */
+        > p:has(+ * img) {
+            margin-block-end: calc(var(--spacing-l-1));
+        }
+
+        ol, ul {
+            font-size: var(--font-size-m);
+            &:has(+ :is(h2, h3, h4, h5, h6)) {
+                padding-block-end: var(--spacing-s-1);
+            }
+        }
+
+        li :is(ol, ul) {
+            /* e.g.
+
+            <ul>
+                <li>something</li>
+                <li>something else
+                    <ol> <-- we don't want this to have extra padding
+
+            */
+            padding-inline: 0;
+            padding-block-start: 0;
+        }
+
+        li {
+            /* Bard wraps <li> text in a <p> tag */
+            p {
+                padding-block-end: 0!important;
+            }
+        }
+
+        &:has(+ .c-entry-content--inline-image) {
+            /* Increase - push an inline image away from the paragraph above */
+            padding-block-end: var(--spacing-l-3);
+        }
+
+        blockquote {
+            font-style: italic;
+            font-weight: var(--font-family-main-weight-medium);
+            padding-inline-start: var(--spacing-m);
+            margin-block-end: var(--spacing-l);
+            border-inline-start: 3px solid var(--color-primary-accent);
+        }
+        /* Use this if you want to embed entry content in a component that already handles inline padding */
+        .c-entry-content--flush {
+            padding-inline: 0;
+        }
+    }
+}

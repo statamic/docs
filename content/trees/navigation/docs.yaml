@@ -2,6 +2,9 @@ tree:
   -
     id: c872a03e-cae9-4c2e-81f9-3a2034a21adb
     title: 'Getting Started'
+    url: /
+    data:
+      navigation_image: navigation/computer.png
     children:
       -
         id: 0bbf1af8-f694-43bf-b8de-6d8c5977d3b7
@@ -25,6 +28,8 @@ tree:
   -
     id: 561b2475-a98a-498d-8cbe-2de46e8f5d06
     title: 'Core Concepts'
+    data:
+      navigation_image: navigation/triforce.png
     children:
       -
         id: f03ca036-43d5-4bcb-ba03-260732fdf163
@@ -63,6 +68,9 @@ tree:
   -
     id: 3c6081eb-746f-44f0-ae90-fffec9fdef9f
     title: 'Diving Deeper'
+    data:
+      navigation_image: navigation/sunglasses.png
+      image_width_override: 2.05em
     children:
       -
         id: 50484ca7-40d5-4504-9f8f-adc8d6557a19
@@ -124,6 +132,9 @@ tree:
   -
     id: 0cbb901d-581c-433f-b873-1256c70d2f5c
     title: Frontend
+    data:
+      navigation_image: navigation/nike-air-jordans.png
+      image_width_override: 2.1em
     children:
       -
         id: 6482b878-b8eb-4114-886e-dc8c9eb277b8
@@ -179,6 +190,8 @@ tree:
   -
     id: 1a3486df-4c42-447e-bd1e-0f4d048cf63e
     title: 'Control Panel'
+    data:
+      navigation_image: navigation/rubiks-cube.png
     children:
       -
         id: 8b7e584d-91ba-46f0-a5f5-feccb02a70ed
@@ -221,6 +234,9 @@ tree:
   -
     id: 54d885ee-1b58-41ed-9268-baca6e83e9e8
     title: Addons
+    data:
+      navigation_image: navigation/lego.png
+      image_width_override: 2.1em
     children:
       -
         id: dae0a662-0a66-4a4f-8d2a-b63c2eaf8f65
@@ -229,6 +245,9 @@ tree:
   -
     id: 6e285cb4-23db-4817-abc6-1c76a08def33
     title: 'Starter Kits'
+    data:
+      navigation_image: navigation/indiana-jones.png
+      image_width_override: 2.05em
     children:
       -
         id: a4591991-324c-4678-9993-a735d09269ed
@@ -246,6 +265,9 @@ tree:
   -
     id: ae5c17c7-dbde-489f-a1ef-50ac1206a44f
     title: Resources
+    data:
+      navigation_image: navigation/toucan.png
+      image_width_override: 2.6em
     children:
       -
         id: 02927095-6b41-4832-aaa6-3d2ca40c9eee

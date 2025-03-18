@@ -1,0 +1,73 @@
+/* GROUP COMPONENTS / VIDEO
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A video container for embedding videos like YouTube, Vimeo, etc.
+
+*/
+/* HTML Example...
+
+    <figure class="c-video">
+        <iframe src="https://www.youtube.com/embed/POgIsLeWGGQ?si=uG-8hz4u1HRebJsM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <figcaption>Watch how to build a simple nav with a Structured Collection</figcaption>
+    </figure>
+
+*/
+@layer components {
+    .c-video {
+        position:relative;
+        margin-inline: auto;
+        + * {
+            /* Push the next element away instead because of collapsing margins */
+            padding-block-start: var(--spacing-l-1);
+            &:is(h2, h3, h4) {
+                /* Increase the distance if it's a heading */
+                padding-block-start: var(--spacing-l-2);
+            }
+        }
+        &:not(:is(h1, h2, h3, h4, p) + &) {
+            /* A large margin except where it follows a heading or a paragraph */
+            margin-block-start: var(--spacing-l-2);
+        }
+        aspect-ratio: 16 / 9;
+        iframe, video {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--color-black);
+            border-radius: var(--border-radius-s);
+            box-shadow: var(--box-shadow-medium);
+        }
+        &:not(:last-child) {
+            margin-block-end: calc(var(--spacing-l-1) + var(--spacing-s-4));
+        }
+        img {
+            margin-block-end: 0;
+            border-radius: var(--border-radius-s);
+            border-bottom-left-radius: 0;
+        }
+        figcaption {
+            position: absolute;
+            /* Below the box-shadow of the video */
+            z-index: var(--z-index-below-body);
+            bottom: 0;
+            transform: translateY(100%);
+            display: inline-block;
+            padding: var(--spacing-s-3) var(--spacing-s-1);
+            background: var(--color-gradient-full-light-2);
+            font-weight: var(--font-family-ui-weight-normal);
+            border-radius: var(--border-radius-l-1);
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}
+@layer scope {
+    .c-entry-content:has(.c-video:last-child) {
+        /* We need this if the video is the last item in the entry-content because of collapsing margins */
+        padding-block-end: var(--spacing-l);
+    }
+}

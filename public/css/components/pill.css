@@ -1,0 +1,54 @@
+/* GROUP COMPONENTS / PILL
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Little pill displaying a key and a value, e.g. Bulk: Yes/No
+
+*/
+/* HTML Example...
+
+    <dl class="c-pill c-pill--negative">
+        <dt>Bulk</dt>
+        <dd>No</dd>
+    </dl>
+
+*/
+/* Modifiers...
+
+    .c-pill--negative <- will turn the value text to red
+
+*/
+@layer components {
+    .c-pill {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin-block: var(--spacing-s-2) var(--spacing-s-1);
+        background: var(--color-gradient-full-light-3);
+        border: var(--border-solid);
+        border-radius: var(--border-radius-l-1);
+        font-family: var(--font-family-ui);
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
+        font-weight: var(--font-family-ui-weight-strong);
+        text-transform: uppercase;
+        > * {
+            padding: var(--spacing-s-2) var(--spacing-m);
+            margin: 0;
+            &:not(:last-child) {
+                border-inline-end: var(--border-solid);
+            }
+        }
+        dd {
+            color: var(--color-purple);
+        }
+    }
+}
+@layer modifiers {
+    .c-pill--negative dd {
+        color: var(--color-red-bright);
+    }
+}

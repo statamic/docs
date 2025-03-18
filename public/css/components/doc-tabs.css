@@ -1,0 +1,83 @@
+/* GROUP COMPONENTS / DOC TABS
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A tabbed interface for displaying different languages e.g. Antlers, Blade, etc.
+
+*/
+/* HTML Example...
+
+*/
+/* Modifiers...
+
+    .c-pill--negative <- will turn the value text to red
+
+*/
+@layer components {
+    .c-doc-tabs {
+        --button-radius: var(--border-radius-l-1);
+        padding-block: var(--spacing-s-5) var(--spacing-l-1);
+        border-radius: var(--button-radius);
+        font-family: var(--font-family-ui);
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
+        font-weight: var(--font-family-ui-weight-strong);
+
+        pre {
+            margin-block-end: 0;
+        }
+
+        code {
+            font-size: unset;
+        }
+
+        .tab-content {
+            border-radius: var(--button-radius);
+            border-top-left-radius: 0;
+            background: var(--color-gradient-full-light-4);
+            @container style(--color-scheme: dark) {
+                background: var(--color-gradient-full-light-2);
+            }
+            border: 1px solid var(--color-black);
+            border-block-end: 0;
+            p {
+                padding: var(--spacing-s-1);
+                padding-block-end: 0;
+            }
+        }
+    }
+    .c-doc-tabs__tabs {
+        display: inline-flex;
+        border: 1px solid var(--color-black);
+        border-block-end: 0;
+        border-radius: var(--border-radius-s);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        button {
+            margin: 0;
+            padding: var(--spacing-s-3) var(--spacing-s-1);
+            text-transform: uppercase;
+            font-size: var(--font-size-s-1);
+            &:first-child {
+                border-top-left-radius: inherit;
+            }
+            &:not(:last-child) {
+                border-inline-end: 1px solid var(--color-black);
+            }
+        }
+    }
+    .c-doc-tabs__active {
+        background: var(--color-gradient-blue-1);
+        font-weight: var(--font-family-ui-weight-heavy);
+    }
+}
+@layer plugins {
+    .c-doc-tabs {
+        pre {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}

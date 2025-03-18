@@ -1,0 +1,51 @@
+/* GROUP COMPONENTS / SIDEBAR ADVERT
+=================================================== */
+@layer ui {
+    .c-sidebar-advert {
+        padding-inline-start: 3.85rem;
+        a {
+            padding: 0;
+        }
+        img {
+            margin-inline-start: -0.5rem;
+            inline-size: 85%;
+            rotate: -4deg;
+            border-radius: var(--border-radius-s);
+            box-shadow: 0px 15px 25px -10px hsl(0deg 0% 0% / 55%);
+            /* Make the advert less distracting */
+            opacity: 0.95;
+        }
+        h2 {
+            padding-block: var(--spacing-l) var(--spacing-s-2);
+            font-size: var(--font-size-s-2);
+            font-family: var(--font-family-ui);
+            font-weight: var(--font-family-ui-weight-normal);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        p {
+            margin-block-end: var(--spacing-s-3);
+            font-weight: var(--font-family-ui-weight-medium);
+            line-height: var(--font-size-s-1-line-height);
+            text-wrap: balance;
+            a {
+                text-decoration: underline;
+                font-size: var(--font-size-s-2);
+                font-family: var(--font-family-ui);
+                font-weight: var(--font-family-ui-weight-normal);
+                text-transform: uppercase;
+                text-decoration-color: var(--color-text-underline-light);
+            }
+        }
+        @container style(--color-scheme: dark) {
+            img {
+                /* Tweak the default dark-mode image filter, increasing the hue rotation so there's more of a stylised purple tinge. */
+                filter:
+                    hue-rotate(-15deg)
+                    contrast(110%)
+                    brightness(87%)
+                ;
+            }
+        }
+    }
+}

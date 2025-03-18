@@ -11,9 +11,9 @@ class Toc extends Modifier
     /**
      * Modify a value
      *
-     * @param mixed  $value    The value to be modified
-     * @param array  $params   Any parameters used in the modifier
-     * @param array  $context  Contextual values
+     * @param  mixed  $value  The value to be modified
+     * @param  array  $params  Any parameters used in the modifier
+     * @param  array  $context  Contextual values
      * @return mixed
      */
     public function index($value, $params, $context)
@@ -22,7 +22,7 @@ class Toc extends Modifier
 
         $creatingIds = array_get($params, 0) == 'ids';
 
-        list($toc, $content) = $this->create($value, $creatingIds ? 5 : 3);
+        [$toc, $content] = $this->create($value, $creatingIds ? 5 : 3);
 
         return $creatingIds ? $content : $toc;
     }
@@ -38,7 +38,7 @@ class Toc extends Modifier
 
         global $anchors;
 
-        $anchors = array();
+        $anchors = [];
         $toc = '<ol class="toc">'."\n";
         $i = 0;
 
@@ -90,11 +90,11 @@ class Toc extends Modifier
 
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
-                    $toc .= "\n"."<ol>"."\n";
+                    $toc .= "\n".'<ol>'."\n";
                 } elseif ($prevlvl > $lvl) {
                     $toc .= '</li>'."\n";
                     while ($prevlvl > $lvl) {
-                        $toc .= "</ol>"."\n".'</li>'."\n";
+                        $toc .= '</ol>'."\n".'</li>'."\n";
                         $prevlvl--;
                     }
                 } else {
@@ -103,7 +103,7 @@ class Toc extends Modifier
             }
 
             $j = 0;
-            $toc .= '<li><a href="#'.$anchor.'">'.$title.'</a>';
+            $toc .= '<li><a href="#'.$anchor.'" x-bind:class="$store.tocNavHighlighter.visibleHeadingId == \''.$anchor.'\' ? \'active\' : \'\'">'.$title.'</a></li>';
             $prevlvl = $lvl;
 
             $i++;
@@ -143,7 +143,7 @@ class Toc extends Modifier
                 '<h2 id="parameters">Parameters</h2>',
                 '2',
                 ' id="parameters"',
-                'Parameters'
+                'Parameters',
             ];
         }
 
@@ -154,7 +154,7 @@ class Toc extends Modifier
                 '<h2 id="variables">Variables</h2>',
                 '2',
                 ' id="variables"',
-                'Variables'
+                'Variables',
             ];
         }
 
@@ -165,7 +165,7 @@ class Toc extends Modifier
                 '<h2 id="options">Options</h2>',
                 '2',
                 ' id="options"',
-                'Options'
+                'Options',
             ];
         }
 

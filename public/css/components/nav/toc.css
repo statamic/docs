@@ -1,0 +1,287 @@
+/* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / API
+=================================================== */
+@layer components {
+    .c-nav-toc-with-popover-api {
+        --dropdown-nav-item-padding: 0.35rem;
+
+        nav,
+        nav [popover] {
+            /* Reset */
+            margin: 0;
+            padding: 0;
+            border: 0;
+
+            display: none;
+            opacity: 0;
+            transition: opacity 350ms, margin 350ms allow-discrete, display 350ms allow-discrete, overlay 350ms allow-discrete;
+
+            &:popover-open {
+                display: block;
+                opacity: 1;
+
+                @starting-style {
+                    opacity: 0;
+                    margin-block-start: 0;
+                    /* margin-inline-start: 50%; */
+                    &::backdrop {
+                        /* Needed to get the popover backdrop to fade in when opening */
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+        nav {
+            /* Override the default background color of the popover */
+            background: inherit;
+            [popover] {
+                max-width: 14rem;
+                &:popover-open {
+                    margin-block-start: var(--spacing-s-5);
+                }
+            }
+        }
+        #anchor-nav-mobile {
+            anchor-name: --anchor-nav-mobile;
+        }
+        #popover-nav-toc {
+            position-anchor: --anchor-nav-mobile;
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MOBILE NAV BUTTON
+        =================================================== */
+        .c-nav-toc-with-popover-api__mobile-button {
+            padding: 1.2rem;
+            margin: 0;
+            background: var(--color-dropdown-nav-background);
+            border-radius: 40%;
+            box-shadow: var(--box-shadow-not-t-medium);
+            svg {
+                color: var(--color-primary-text);
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
+        =================================================== */
+        .c-nav-toc-with-popover-api__close-button {
+            position: absolute;
+            z-index: var(--z-index-above-body);
+            right: 0.25rem;
+            top: 1.25rem;
+            & svg {
+                font-size: 1rem;
+                inline-size: unset;
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
+        =================================================== */
+        nav {
+            color: var(--color-primary-text);
+            & * {
+                line-height: 1.5;
+                font-weight: var(--font-family-ui-weight-light);
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-l-2);
+                font-size: var(--font-size-s-2);
+                overscroll-behavior-y: contain;
+                /* Need to cut this short a little to force scrolling when there are a lot of items. */
+                &:not(ul ul) {
+                    height: 100dvh;
+                }
+                /* Increase */
+                outline-offset: 5px;
+
+                & li {
+                    padding-block-end: 0;
+                    &:not(ul ul *, .c-sidebar-advert) {
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            z-index: var(--z-index-below-body);
+                            top: 1rem;
+                            left: var(--spacing-l);
+                            height: calc(100% - 1rem);
+                            border-inline-start: 1px solid var(--color-pink-light-3-static);
+                        }
+                    }
+
+                    button {
+                        text-align: left;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: var(--spacing-s-2);
+                        /* Reset */
+                        margin-inline-end: 0;
+                        padding: 0;
+                        cursor: pointer;
+                        & svg {
+                            font-size: 0.6em;
+                        }
+                    }
+
+                    a, button, span {
+                        /* Increase the pointer targets a little to improve usability */
+                        padding: var(--dropdown-nav-item-padding);
+                        display: inline-block;
+                    }
+
+                    ul {
+                        gap: var(--spacing-s-5);
+                        max-height: unset;
+                        padding: 0 3.85rem;
+                        font-size: var(--font-size-ui-rem);
+                        .o-current-menu-item {
+                            text-decoration: none;
+                            font-weight: var(--font-family-ui-weight-medium);
+                            &::before {
+                                content: '';
+                                border-inline-start: 4px solid var(--color-pink-light-1);
+                                position: absolute;
+                                left: calc(0% + var(--spacing-l));
+                                height: 2em;
+                                transform: translateY(-0.25em);
+                            }
+                        }
+
+                        ul {
+                            /* Need this to line up so that the scroll spy line also continues to line up */
+                            padding-inline-start: 0;
+                            a {
+                                /* Indent the subnav */
+                                padding-inline-start: var(--spacing-m);
+                            }
+                        }
+                    }
+                }
+
+                /* Subnav */
+                & ul[popover] {
+                    &:popover-open {
+                        display: flex;
+                    }
+                    padding: var(--spacing-m);
+                    /* Just clear the outline state of the parent so it looks cleaner when tabbing through with a keyboard */
+                    margin-block-start: var(--spacing-s-5);
+                    letter-spacing: 1px;
+                    & a, button {
+                        outline-offset: unset;
+                    }
+                }
+            }
+            & a:not(.o-current-menu-item) {
+                /* https://app.typographychecklist.com/ - 43. Links that are clearly part of navigation usually don't need a special link treatment. */
+                text-decoration: none;
+            }
+        }
+        .c-nav-toc-with-popover-api-category-heading {
+            display: inline-flex;
+            gap: var(--spacing-s-1);
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-s-2) var(--spacing-l);
+            margin-block-end: var(--spacing-m);
+            font-family: var(--font-family-prose);
+            font-size: var(--font-size-l-2);
+            background: var(--color-body-background);
+            border-radius: 50px;
+            box-shadow: var(--box-shadow-not-t-light);
+            img {
+                inline-size: 1.75em;
+                /* --mq-nav-open-after to custom */
+                @media (width >= 1250px) and (width < 1460px) {
+                    /* Hide the TOC category heading image when we're tight on space */
+                    display: none;
+                }
+            }
+            &.o-current-menu-item {
+                box-shadow: none;
+                background: var(--color-gradient-full-light-2);
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MQS
+        =================================================== */
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            position: sticky;
+            z-index: var(--z-index-above-nav);
+            top: 0.8rem;
+            display: inline-block;
+            float: right;
+            padding-inline: var(--spacing-s-3);
+            /* Pull the button over to the right when we're on mobile */
+            text-align: right;
+            ul {
+                /* Which means we need to reverse this for the popover */
+                text-align: left;
+            }
+            .c-nav-toc-with-popover-api__desktop {
+                /* Prevent a lag in seeing the desktop nav collapse if you pull the window in  */
+                transition: unset;
+            }
+            #popover-nav-toc {
+                /* position-area: bottom span-right; */
+                box-shadow: var(--box-shadow-medium);
+                &:not(:popover-open) {
+                    pointer-events: none;
+                }
+                body:has(&:popover-open) {
+                    /* Stop the body scrolling if you try and scroll a toc that's shorter than the viewport height */
+                    overflow: clip;
+                }
+            }
+            nav {
+                background: var(--color-dropdown-nav-background);
+                width: min(85%, 24rem);
+                margin-inline-start: auto;
+                &::backdrop {
+                    transition: all 0.5s var(--animation-timing-function-hipster) 0s;
+                }
+                &:popover-open::backdrop {
+                    backdrop-filter: blur(5px);
+                    background: var(--popover-backdrop);
+                }
+                & ul {
+                    padding: var(--spacing-l-3) var(--spacing-s-3);
+                    & ul {
+                        padding: 0 var(--spacing-l-2);
+                    }
+                }
+            }
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1250px) {
+            grid-area: sidebar-2;
+            nav {
+                /* Override `popover`'s default position:fixed; */
+                position: relative;
+                display: block;
+                opacity: 1;
+                ul li ul {
+                    padding-inline-end: 0;
+                }
+            }
+            .c-nav-toc-with-popover-api-category-heading {
+                gap: var(--spacing-s-2);
+                inline-size: 100%;
+            }
+            .c-nav-toc-with-popover-api__mobile-button {
+                display: none;
+            }
+            .c-nav-toc-with-popover-api__desktop {
+                position: sticky;
+                --top: 9rem;
+                top: var(--top);
+                block-size: calc(100vh - var(--top) -  3.5rem);
+                ul:not(ul ul) {
+                    /* Need to cut this short a little to force scrolling when there are a lot of items. */
+                    height: 80dvh;
+                    padding-block-end: var(--spacing-l);
+                }
+            }
+        }
+    }
+}

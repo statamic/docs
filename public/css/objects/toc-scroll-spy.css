@@ -1,0 +1,122 @@
+/* GROUP COMPONENTS / SCROLL DRIVEN SCROLL SPY TABLE OF CONTENTS
+=================================================== */
+/* Notes...
+
+    - Based on https://codepen.io/kevinpowell/pen/GgKrzNL, which is from this conversation: https://www.youtube.com/watch?v=kOwLG3Nc5eM
+
+*/
+/* HTML Example...
+
+    <section class="o-scroll-spy-timeline"> <-- this needs to wrap around both the items and the toc
+        <div class="articles">
+            <h2 style="--ti-name: --1" class="o-scroll-spy-timeline__track">Overview</h2> <-- can be any element; doesn't need to be a wrapper
+            <p>Stuff here</p>
+            <article style="--ti-name: --2" class="o-scroll-spy-timeline__track">
+                <h2>Stuff here</h2>
+            </article>
+            <article style="--ti-name: --3" class="o-scroll-spy-timeline__track">
+                <h2>Asset Actions</h2>
+            </article>
+            <article style="--ti-name: --4" class="o-scroll-spy-timeline__track">
+                <h2>Asset Fields</h2>
+            </article>
+            <article style="--ti-name: --5" class="o-scroll-spy-timeline__track">
+                <h2>Metadata</h2>
+            </article>
+            <article style="--ti-name: --6" class="o-scroll-spy-timeline__track">
+                <h2>Containers</h2>
+            </article>
+            <article style="--ti-name: --7" class="o-scroll-spy-timeline__track">
+                <h2>Blueprints</h2>
+            </article>
+            <article style="--ti-name: --8" class="o-scroll-spy-timeline__track">
+                <h2>Ordering</h2>
+            </article>
+            <article style="--ti-name: --9" class="o-scroll-spy-timeline__track">
+                <h2>Drivers</h2>
+            </article>
+            <article style="--ti-name: --10" class="o-scroll-spy-timeline__track">
+                <h2>Frontend Templating</h2>
+            </article>
+        </div>
+
+        <ul class="o-scroll-spy-timeline__toc">
+            <li style="--ti: --1"><a href="">Overview</a></li>
+            <li style="--ti: --2"><a href="">Asset Browser</a></li>
+            <li style="--ti: --3"><a href="">Asset Actions</a></li>
+            <li style="--ti: --4"><a href="">Asset Fields</a></li>
+            <li style="--ti: --5"><a href="">Metadata</a></li>
+            <li style="--ti: --6"><a href="">Containers</a></li>
+            <li style="--ti: --7"><a href="">Blueprints</a></li>
+            <li style="--ti: --8"><a href="">Ordering</a></li>
+            <li style="--ti: --9"><a href="">Drivers</a></li>
+            <li style="--ti: --10"><a href="">Frontend Templating</a></li>
+        </ul>
+    </section>
+
+*/
+.o-scroll-spy-timeline {
+    timeline-scope: --1, --2, --3, --4, --5, --6, --7, --8, --9, --10;
+}
+
+.o-scroll-spy-timeline__track {
+    view-timeline-name: var(--ti-name);
+    scroll-margin-top: 4em;
+}
+
+/* ul*/
+.o-scroll-spy-timeline__toc {
+    --item-padding: var(--spacing-s-5);
+    &, ul {
+        gap: unset;
+    }
+    li {
+        position: relative;
+        padding-block-end: var(--item-padding);
+        &::before,
+        &::after {
+            content: '';
+            width: 3px;
+            height: 100%;
+            background: var(--color-pink-light-1);
+            position: absolute;
+            z-index: var(--z-index-below-body);
+            top: 0;
+            left: calc(0% - var(--spacing-m));
+            transform: scaleY(0);
+            transform-origin: top;
+
+            animation: i-spy linear both;
+            animation-timeline: var(--ti);
+        }
+        &::after {
+            /* This needs to be the same color as the background. It effectively makes the previous item's scroll spy indicator.  */
+            background: var(--color-pink-light-3);
+            @container style(--color-scheme: dark) {
+                /* background: red; */
+                background: var(--color-pink-light-2);
+            }
+            animation-name: i-spy-reverse;
+            top: calc(-100% - var(--item-padding));
+        }
+    }
+}
+/* GROUP COMPONENTS / SCROLL DRIVEN SCROLL SPY TABLE OF CONTENTS / ANIMATIONS
+=================================================== */
+@keyframes i-spy {
+    entry 40% {
+        transform-origin: top;
+        transform: scaleY(0);
+    }
+
+    entry 100%, exit 100% {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+}
+@keyframes i-spy-reverse {
+    entry 100%, exit 100% {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+}
