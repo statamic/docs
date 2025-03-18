@@ -18,7 +18,7 @@
     .c-tiles-with-description {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
-        gap: var(--spacing-l-2) var(--spacing-s-2);
+        gap: var(--spacing-l-1) var(--spacing-s-2);
         padding-block-end: var(--spacing-l-2);
     }
     .c-tiles-with-description__item {
@@ -64,7 +64,7 @@
     /* Custom */
     @media (width >= 768px) {
         p + .c-tiles-with-description {
-            padding-block-start: var(--spacing-s-1);
+            padding-block-start: var(--spacing-s-3);
         }
     }
 }
