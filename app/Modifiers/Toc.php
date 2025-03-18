@@ -42,8 +42,8 @@ class Toc extends Modifier
         global $anchors;
         $anchors = [];
         
-        // Initialize TOC with an ordered list
-        $toc = '<ol class="o-scroll-spy-timeline__toc">'."\n";
+        // Initialize TOC with an unordered list
+        $toc = '<ul class="o-scroll-spy-timeline__toc">'."\n";
         $i = 0;
 
         // Add any additional headings for parameters, variables, and options sections
@@ -101,13 +101,13 @@ class Toc extends Modifier
             // Handle nested list structure based on heading levels
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
-                    // Start a new nested list
-                    $toc .= "\n".'<ol>'."\n";
+                    // Start a new nested list wrapped in li
+                    $toc .= "\n".'<li><ul>'."\n";
                 } elseif ($prevlvl > $lvl) {
                     // Close current item and any nested lists
                     $toc .= '</li>'."\n";
                     while ($prevlvl > $lvl) {
-                        $toc .= '</ol>'."\n".'</li>'."\n";
+                        $toc .= '</ul></li>'."\n".'</li>'."\n";
                         $prevlvl--;
                     }
                 } else {
@@ -127,12 +127,12 @@ class Toc extends Modifier
         unset($anchors);
 
         while ($lvl > $startlvl) {
-            $toc .= "\n</ol>";
+            $toc .= "\n</ul>";
             $lvl--;
         }
 
         $toc .= '</li>'."\n";
-        $toc .= '</ol>'."\n";
+        $toc .= '</ul>'."\n";
 
         // A tiny TOC is a lame TOC
         $toc = (count($matches) < 3) ? null : $toc;
