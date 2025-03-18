@@ -2,6 +2,7 @@ tree:
   -
     id: c872a03e-cae9-4c2e-81f9-3a2034a21adb
     title: 'Getting Started'
+    url: /
     data:
       navigation_image: navigation/computer.png
     children:

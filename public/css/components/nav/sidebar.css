@@ -104,7 +104,9 @@
                 img {
                     inline-size: 1.55em;
                 }
-                /* Has a sub nav with .o-current-menu-item */
+                /* [1] Has .o-current-menu-item itself */
+                &.o-current-menu-item a,
+                /* [/2] Or has a sub nav with .o-current-menu-item */
                 &:has(+ * .o-current-menu-item) a {
                     box-shadow: none;
                     background: var(--color-gradient-full-light-2);
