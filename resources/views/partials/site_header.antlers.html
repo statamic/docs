@@ -36,7 +36,7 @@
                 <ul>
                     {{ nav:collection:sections include_home="true" }}
                         <li>
-                            <a wire:navigate href="{{ url }}" {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}>{{ nav_title ?? title }}</a>
+                            <a wire:navigate href="{{ url }}" {{ page:section === section ?= 'class="o-current-menu-item"' }}>{{ nav_title ?? title }}</a>
                         </li>
                     {{ /nav:collection:sections }}
                 </ul>
@@ -45,7 +45,7 @@
                 <ul>
                     {{ nav:collection:sections include_home="true" }}
                         <li>
-                            <a wire:navigate href="{{ url }}" {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}>{{ nav_title ?? title }}</a>
+                            <a wire:navigate href="{{ url }}" {{ page:section === section ?= 'class="o-current-menu-item"' }}>{{ nav_title ?? title }}</a>
                         </li>
                     {{ /nav:collection:sections }}
                 </ul>
