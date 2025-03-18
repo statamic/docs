@@ -45,6 +45,7 @@ class Toc extends Modifier
         // Initialize TOC with an unordered list
         $toc = '<ul class="o-scroll-spy-timeline__toc">'."\n";
         $i = 0;
+        $tiCounter = 1; // Add counter for --ti values
 
         // Add any additional headings for parameters, variables, and options sections
         $matches = $this->appendDetails($matches);
@@ -102,7 +103,8 @@ class Toc extends Modifier
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
                     // Start a new nested list wrapped in li
-                    $toc .= "\n".'<li><ul>'."\n";
+                    $toc .= "\n".'<li style="--ti: --'.$tiCounter.'"><ul>'."\n";
+                    $tiCounter++;
                 } elseif ($prevlvl > $lvl) {
                     // Close current item and any nested lists
                     $toc .= '</li>'."\n";
@@ -117,8 +119,9 @@ class Toc extends Modifier
             }
 
             $j = 0;
-             // Add TOC entry with Alpine.js binding for active state
-            $toc .= '<li><a href="#'.$anchor.'" x-bind:class="$store.tocNavHighlighter.visibleHeadingId == \''.$anchor.'\' ? \'active\' : \'\'">'.$title.'</a></li>';
+            // Add TOC entry with Alpine.js binding and --ti style
+            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'" x-bind:class="$store.tocNavHighlighter.visibleHeadingId == \''.$anchor.'\' ? \'active\' : \'\'">'.$title.'</a></li>';
+            $tiCounter++;
             $prevlvl = $lvl;
 
             $i++;
