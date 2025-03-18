@@ -3,6 +3,7 @@
 namespace App\Modifiers;
 
 use Statamic\Modifiers\Modifier;
+use Illuminate\Support\Arr;
 
 class Toc extends Modifier
 {
@@ -20,7 +21,7 @@ class Toc extends Modifier
     {
         $this->context = $context;
 
-        $creatingIds = array_get($params, 0) == 'ids';
+        $creatingIds = Arr::get($params, 0) == 'ids';
 
         [$toc, $content] = $this->create($value, $creatingIds ? 5 : 3);
 
