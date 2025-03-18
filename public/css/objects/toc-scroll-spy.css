@@ -112,13 +112,13 @@
         transform: scaleY(0);
     }
 
-    entry 100%, exit 100% {
+    entry 500%, exit 100% {
         transform-origin: top;
         transform: scaleY(1);
     }
 }
 @keyframes i-spy-reverse {
-    entry 100%, exit 100% {
+    entry 500%, exit 100% {
         transform-origin: top;
         transform: scaleY(1);
     }
