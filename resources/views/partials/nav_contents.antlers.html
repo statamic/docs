@@ -56,21 +56,20 @@
                 {{ /if }}
 
                 {{ if section == "reference" }}
-                    <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                    <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
                         <a wire:navigate
                             href="{{ url }}"
-                            {{ if is_current }}class="o-current-menu-item"{{ /if }}
+                            {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
                         >
                             All {{ title }}
                         </a>
                     </li>
 
                     {{ collection :from="slug" }}
-                        <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                        <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
                             <a wire:navigate
                                 href="{{ url }}"
-                                class="border-l hover:border-black pl-4 border-transparent"
-                                wire:current.class="active !border-black !text-black"
+                                {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
                             >
                                 {{ nav_title ?? title }}
                             </a>

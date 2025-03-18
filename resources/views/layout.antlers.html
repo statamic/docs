@@ -10,7 +10,7 @@
             {{ partial:nav_sidebar }}
             <nav class="c-breadcrumbs">
                 <ol>
-                    <li><a href="/">Docs</a></li>
+                    <li><a href="/">{{ page:section }}</a></li>
                     {{ nav :handle="section" }}
                         {{ if {children | where('is_current', true) | count} > 0 }}
                             <li>
@@ -22,15 +22,7 @@
                             </li>
                         {{ /if }}
                     {{ /nav }}
-
-
                     <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
-
-                    {{# {{ nav:breadcrumbs }}
-                    <li{{ if is_current }} class="current"{{ /if }}>
-                        <a href="{{ url }}">{{ title }}</a>
-                    </li>
-                    {{ /nav:breadcrumbs }} #}}
                 </ol>
             </nav>
 
