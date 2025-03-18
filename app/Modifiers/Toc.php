@@ -31,38 +31,45 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+        // Match all headings between h2 and maxHeadingLevels
+        preg_match_all('/<h([2-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[2-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
 
         if (! $matches) {
             return [null, $content];
         }
 
+        // Track unique anchor IDs across the document
         global $anchors;
-
         $anchors = [];
-        $toc = '<ol class="toc">'."\n";
+        
+        // Initialize TOC with an ordered list
+        $toc = '<ol class="o-scroll-spy-timeline__toc">'."\n";
         $i = 0;
 
-        // Wangjangle params, vars, and options in there.
+        // Add any additional headings for parameters, variables, and options sections
         $matches = $this->appendDetails($matches);
 
         foreach ($matches as $heading) {
+            // Track the starting heading level for proper list nesting
             if ($i == 0) {
                 $startlvl = $heading[1];
             }
 
             $lvl = $heading[1];
 
+            // Check if heading already has an ID attribute
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
                 $anchor = trim(stripslashes($anchor[1]));
                 $add_id = false;
             } else {
+                // Generate an ID from the heading text
                 $anchor = preg_replace('/\s+/', '-', trim(preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3])))));
                 $add_id = true;
             }
 
+            // Ensure anchor ID is unique by adding numeric suffixes if needed
             if (! in_array($anchor, $anchors)) {
                 $anchors[] = $anchor;
             } else {
@@ -75,10 +82,12 @@ class Toc extends Modifier
                 $anchors[] = $anchor;
             }
 
+            // Add ID to the heading in content if it didn't have one
             if ($add_id) {
                 $content = substr_replace($content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos($content, $heading[0]), strlen($heading[0]));
             }
 
+            // Extract title from title attribute or use heading text
             $ret = preg_match('/title=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $title);
 
             if ($ret && $title[1] != '') {
@@ -89,21 +98,26 @@ class Toc extends Modifier
 
             $title = trim(strip_tags($title));
 
+            // Handle nested list structure based on heading levels
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
+                    // Start a new nested list
                     $toc .= "\n".'<ol>'."\n";
                 } elseif ($prevlvl > $lvl) {
+                    // Close current item and any nested lists
                     $toc .= '</li>'."\n";
                     while ($prevlvl > $lvl) {
                         $toc .= '</ol>'."\n".'</li>'."\n";
                         $prevlvl--;
                     }
                 } else {
+                    // Close current item at same level
                     $toc .= '</li>'."\n";
                 }
             }
 
             $j = 0;
+             // Add TOC entry with Alpine.js binding for active state
             $toc .= '<li><a href="#'.$anchor.'" x-bind:class="$store.tocNavHighlighter.visibleHeadingId == \''.$anchor.'\' ? \'active\' : \'\'">'.$title.'</a></li>';
             $prevlvl = $lvl;
 
@@ -126,6 +140,9 @@ class Toc extends Modifier
         return [$toc, $content];
     }
 
+    /**
+     * Safely extracts value from Statamic Value objects
+     */
     private function valueGet($value)
     {
         if ($value instanceof \Statamic\Fields\Value) {
@@ -135,6 +152,10 @@ class Toc extends Modifier
         return $value;
     }
 
+    /**
+     * Appends additional headings for parameters, variables, and options sections
+     * if they exist in the context
+     */
     private function appendDetails($matches)
     {
         $parameters = $this->valueGet($this->context['parameters'] ?? null);
