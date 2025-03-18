@@ -66,15 +66,38 @@
                             {{ template_content | toc }}
                         </li>
                         <li class="c-sidebar-advert">
-                            <a href="https://statamic.com/addons/statamic/seo-pro">
-                                <img 
-                                    src="/img/adverts/seo-pro.jpg"
-                                    alt="SEO Pro advert"
-                                >
-                            </a>
-                            <h2>A Statamic SEO Addon</h2>
-                            <p>Optimize your website for search engines with a complete SEO addon.</p>
-                            <p><a href="https://statamic.com/addons/statamic/seo-pro">Get SEO Pro</a></p>
+                            {{ collection:adverts limit='1' sort='random' }}
+                                <a href="https://statamic.com/addons/statamic/seo-pro">
+                                    {{ image }}
+                                        <picture>
+                                            {{# WebP #}}
+                                            <source
+                                                srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
+                                                        {{ glide:url width='220' dpr='3' format='webp' }} 3x"
+                                                type="image/webp"
+                                            >
+                                            {{# JPEG #}}
+                                            <source
+                                                srcset="{{ glide:url width='220' dpr='2' }} 2x,
+                                                        {{ glide:url width='220' dpr='3' }} 3x"
+                                                type="image/jpeg"
+                                            >
+                                            {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                                            <img 
+                                                src="{{ glide:url width='220' }}"
+                                                decoding="async"
+                                                fetchpriority="high"
+                                                width="{{ width }}" 
+                                                height="{{ height }}"
+                                                alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                                            />
+                                        </picture>
+                                    {{ /image }}
+                                    <h2>{{ heading }}</h2>
+                                    <p>{{ text }}</p>
+                                    <p><a href="{{ link }}">{{ link_text }}</a></p>
+                                </a>
+                            {{ /collection:adverts }}
                         </li>
                     </ul>
                 </nav>
