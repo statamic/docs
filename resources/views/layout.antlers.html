@@ -12,9 +12,7 @@
                 <ol>
                     <li><a href="/">Docs</a></li>
                     {{ nav :handle="section" }}
-                        {{ isCurrentSection = {children | where('uri', page:uri) | count} > 0 }}
-
-                        {{ if isCurrentSection }}
+                        {{ if {children | where('is_current', true) | count} > 0 }}
                             {{ title }}
                         {{ /if }}
                     {{ /nav }}
