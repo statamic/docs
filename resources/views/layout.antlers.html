@@ -8,6 +8,19 @@
         {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
         <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
             {{ partial:nav_sidebar }}
+            <nav class="c-breadcrumbs">
+                <ol>
+                    {{ nav :handle="section" }}
+                    {{ /nav }}
+                    <li><a href="/">Docs</a></li>
+                    <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">Getting Started</button></li>
+                    {{# {{ nav:breadcrumbs }}
+                    <li{{ if is_current }} class="current"{{ /if }}>
+                        <a href="{{ url }}">{{ title }}</a>
+                    </li>
+                    {{ /nav:breadcrumbs }} #}}
+                </ol>
+            </nav>
 
             <div class="c-entry-content-wrapper" name="top">
                 {{# {{ partial:side-nav }} #}}
