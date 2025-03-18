@@ -119,8 +119,8 @@ class Toc extends Modifier
             }
 
             $j = 0;
-            // Add TOC entry with Alpine.js binding and --ti style
-            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'" x-bind:class="$store.tocNavHighlighter.visibleHeadingId == \''.$anchor.'\' ? \'active\' : \'\'">'.$title.'</a></li>';
+            // Add TOC entry with --ti style
+            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a></li>';
             $tiCounter++;
             $prevlvl = $lvl;
 
