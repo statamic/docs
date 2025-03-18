@@ -12,9 +12,14 @@
                 <ol>
                     <li><a href="/">Docs</a></li>
                     {{ nav :handle="section" }}
-                        {{ if is_current }}{{ title }}{{ /if }}
+                        {{ isCurrentSection = {children | where('uri', page:uri) | count} > 0 }}
+
+                        {{ if isCurrentSection }}
+                            {{ title }}
+                        {{ /if }}
                     {{ /nav }}
-                    {{ title }}
+
+
                     <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
 
                     {{# {{ nav:breadcrumbs }}
