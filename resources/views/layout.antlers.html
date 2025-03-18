@@ -13,7 +13,13 @@
                     <li><a href="/">Docs</a></li>
                     {{ nav :handle="section" }}
                         {{ if {children | where('is_current', true) | count} > 0 }}
-                            {{ title }}
+                            <li>
+                                {{ svg src='breadcrumb-chevron' }}
+                                {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
+                                <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
+                                    {{ title }}
+                                </a>
+                            </li>
                         {{ /if }}
                     {{ /nav }}
 

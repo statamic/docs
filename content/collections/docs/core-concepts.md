@@ -4,6 +4,7 @@ blueprint: page
 title: 'Core Concepts'
 intro: 'Statamic is opinionated software. Understanding the principles we follow and apply to the way we build features will help you learn Statamic faster.'
 template: page
+breadcrumb_title: Overview
 ---
 ## Statamic is Opinionated But Configurable
 
