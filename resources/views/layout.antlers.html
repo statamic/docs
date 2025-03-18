@@ -10,9 +10,11 @@
             {{ partial:nav_sidebar }}
             <nav class="c-breadcrumbs">
                 <ol>
-                    {{# {{ nav :handle="section" }}
-                    {{ /nav }} #}}
                     <li><a href="/">Docs</a></li>
+                    {{ nav :handle="section" }}
+                        {{ if is_current }}{{ title }}{{ /if }}
+                    {{ /nav }}
+                    {{ title }}
                     <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
 
                     {{# {{ nav:breadcrumbs }}

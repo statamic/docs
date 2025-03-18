@@ -29,7 +29,7 @@
                             >
                             {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
                             <img 
-                                src="{{ glide:url square='40' }}"
+                                src="{{ glide:url width='40' dpr='2' }}"
                                 decoding="async"
                                 fetchpriority="high"
                                 width="{{ width }}" 
