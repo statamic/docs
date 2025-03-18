@@ -9,7 +9,7 @@
 >
     {{ nav :handle="section" }}
         <li>
-            <span class="c-nav-sidebar-with-popover-api-category-heading{{ if url == current_uri }} o-current-menu-item{{ /if }}">
+            <span class="c-nav-sidebar-with-popover-api-category-heading{{ if is_current }} o-current-menu-item{{ /if }}">
                 {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
                 <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
                     {{ title }}
@@ -47,7 +47,7 @@
                         <li>
                             <a wire:navigate
                                 href="{{ url }}"
-                                {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}
+                                {{ if is_current }}class="o-current-menu-item"{{ /if }}
                             >
                                 {{ nav_title ?? title }}
                             </a>
@@ -59,7 +59,7 @@
                     <li class="{{ permalink === current_url ?= 'active' }}" {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
                         <a wire:navigate
                             href="{{ url }}"
-                            {{ if url == current_uri }}class="o-current-menu-item"{{ /if }}
+                            {{ if is_current }}class="o-current-menu-item"{{ /if }}
                         >
                             All {{ title }}
                         </a>
