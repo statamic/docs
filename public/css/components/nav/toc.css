@@ -190,7 +190,7 @@
             border-radius: 50px;
             box-shadow: var(--box-shadow-not-t-light);
             img {
-                inline-size: 1.75em;
+                inline-size: 1.55em;
                 /* --mq-nav-open-after to custom */
                 @media (width >= 1250px) and (width < 1460px) {
                     /* Hide the TOC category heading image when we're tight on space */

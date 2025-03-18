@@ -55,17 +55,14 @@
                     <ul>
                         <li>
                             <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                <img 
-                                    src="/img/nav/computer-for-static-site.png"
-                                    loading="lazy"
-                                    decoding="async"
-                                    alt="An old computer"
-                                >
+                                {{ nav :handle="section" }}
+                                    {{ if {children | where('is_current', true) | count} > 0 }}
+                                        {{ navigation_image }}
+                                            {{ partial:image_dimensions/navigation_image }}
+                                        {{ /navigation_image }}
+                                    {{ /if }}
+                                {{ /nav }}
                             </span>
-                            {{# <ul class="o-scroll-spy-timeline__toc">
-                                <li style="--ti: --1"><a href="#learn-about-statamic">Learn Statamic</a></li>
-                                <li style="--ti: --2"><a href="#sponsors">Sponsors</a></li>
-                            </ul> #}}
                             {{ template_content | toc }}
                         </li>
                         <li class="c-sidebar-advert">

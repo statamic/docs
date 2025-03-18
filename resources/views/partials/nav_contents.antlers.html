@@ -14,30 +14,7 @@
                 <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
                     {{ title }}
                     {{ navigation_image }}
-                        <picture>
-                            {{# WebP #}}
-                            <source
-                                srcset="{{ glide:url width='40' dpr='2' format='webp' }} 2x,
-                                        {{ glide:url width='40' dpr='3' format='webp' }} 3x"
-                                type="image/webp"
-                            >
-                            {{# JPEG #}}
-                            <source
-                                srcset="{{ glide:url width='40' dpr='2' }} 2x,
-                                        {{ glide:url width='40' dpr='3' }} 3x"
-                                type="image/jpeg"
-                            >
-                            {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                            <img 
-                                src="{{ glide:url width='40' dpr='2' }}"
-                                decoding="async"
-                                fetchpriority="high"
-                                width="{{ width }}" 
-                                height="{{ height }}"
-                                alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                {{ image_width_override ?='style="width: {image_width_override};"' }}
-                            />
-                        </picture>
+                        {{ partial:image_dimensions/navigation_image }}
                     {{ /navigation_image }}
                 </a>
             </span>
