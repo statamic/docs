@@ -56,7 +56,7 @@
                         <li>
                             <span class="c-nav-toc-with-popover-api-category-heading">On this page
                                 {{ nav :handle="section" }}
-                                    {{ if {children | where('is_current', true) | count} > 0 }}
+                                    {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
                                         {{ navigation_image }}
                                             {{ partial:image_dimensions/navigation_image }}
                                         {{ /navigation_image }}

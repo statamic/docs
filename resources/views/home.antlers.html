@@ -49,6 +49,26 @@
 
 <hr>
 
+<h2 id="sponsors" style="--ti-name: --2" class="u-center-on-lower-mqs o-scroll-spy-timeline__track">Sponsors</h2>
+<p class="u-center-on-lower-mqs">We've reserved this space to thank our top open source sponsors.</p>
+<div class="c-logo-grid u-center-on-lower-mqs">
+    {{ hero_sponsors }}
+        <div class="c-logo-grid__item">
+            {{ if error }}
+                <p>We're having trouble loading the sponsors at the moment.</p>
+            {{ else }}
+                <a href="{{ url }}">
+                    <img src="{{ avatarUrl }}">
+                    <span>{{ name }}</span>
+                </a>
+            {{ /if }}
+        </div>
+    {{ /hero_sponsors }}
+    <div class="c-logo-grid__item">
+        <a href="https://github.com/sponsors/statamic">Sponsor Statamic</a>
+    </div>
+</div>
+
 <section class="mt-32 lg:mt-64 relative dark:mt-32">
     <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
     <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
