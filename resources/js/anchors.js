@@ -1,5 +1,11 @@
 // Add header anchors
 var elements = document.querySelectorAll('article h2, article h3');
+
+// If fewer than 3 headings, also include h1s
+if (elements.length < 3) {
+    elements = document.querySelectorAll('article h1, article h2, article h3');
+}
+
 Array.prototype.forEach.call(elements, function (el, i) {
     // Generate an ID if one doesn't exist
     if (!el.id) {

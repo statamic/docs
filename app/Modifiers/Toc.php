@@ -58,10 +58,11 @@ class Toc extends Modifier
         foreach ($matches as $heading) {
             // Track the starting heading level for proper list nesting
             if ($i == 0) {
-                $startlvl = $heading[1];
+                $startlvl = ($heading[1] == '1') ? '2' : $heading[1];
             }
 
-            $lvl = $heading[1];
+            // Normalize h1 to same level as h2
+            $lvl = ($heading[1] == '1') ? '2' : $heading[1];
 
             // Check if heading already has an ID attribute
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
