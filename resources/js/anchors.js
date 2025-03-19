@@ -17,5 +17,5 @@ Array.prototype.forEach.call(elements, function (el, i) {
     // Add scroll spy timeline track class and incrementing style
     el.classList.add('o-scroll-spy-timeline__track');
     el.setAttribute('style', '--ti-name: --' + (i + 1));
-    el.innerHTML += '<a href="#' + el.id + '" class="anchor">#</a>';
+    el.innerHTML += '<a href="#' + el.id + '" class="c-anchor">#</a>';
 });

@@ -33,6 +33,7 @@ scope;
 @import 'components/nav/toc.css';
 @import 'components/nav/breadcrumbs.css';
 /* Components */
+@import 'components/anchors.css';
 @import 'components/entry-content.css';
 @import 'components/buttons.css';
 @import 'components/search-form.css';

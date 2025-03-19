@@ -1,0 +1,43 @@
+/* GROUP COMPONENTS / ANCHORS
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    Home
+
+    What does it do?
+    ----------------
+    Anchors are added with anchors.js, which b
+
+*/
+/* HTML Example...
+
+    <h1 id="learn-statamic">Learn Statamic<a href="#learn-statamic" class="c-anchor">#</a></h1>
+
+*/
+@layer components {
+    .c-anchor {
+        position: absolute;
+        left: -2.15rem;
+        top: 0.085em;
+        transition: all 0.35s var(--animation-timing-function-fast-out-slow-in) 0s;
+        background: linear-gradient(to bottom, hsl(197deg 100% 80%), hsl(var(--color-pink-hue) 100% 65%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        :is(h1, h2, h3, h4, h5, h6):has(&) {
+            position: relative;
+            &:not(:hover) .c-anchor {
+                left: -2rem;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+        h1 & {
+            /* Hide h1 anchors because they're pointless. However, we still need to generate these with JS because they're used to generate the TOC. */
+            display: none;
+        }
+    }
+}
