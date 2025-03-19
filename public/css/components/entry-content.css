@@ -58,11 +58,15 @@
         > :has(h1),
         > h1, > .h1 {
             padding-block-start: 0;
+        }
+
+        :nth-child(1 of header) {
             /* Article intro text */
-            + p {
+            p {
                 font-size: var(--font-size-l-1);
                 line-height: var(--font-size-l-1-line-height);
                 max-width: var(--max-width-content);
+                margin-block-end: var(--spacing-m);
             }
         }
 
@@ -129,7 +133,7 @@
             }
         }
         /* Followed by some kind of image component */
-        > p:has(+ * img) {
+        > :is(header, p):has(+ * img) {
             margin-block-end: calc(var(--spacing-l-1));
         }
 

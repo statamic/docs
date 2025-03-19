@@ -1,5 +1,7 @@
-<h1 id="learn-statamic" style="--ti-name: --1" class="o-scroll-spy-timeline__track">Learn Statamic</h1>
-{{ intro }}
+<header>
+    <h1 id="learn-statamic" style="--ti-name: --1" class="o-scroll-spy-timeline__track">Learn Statamic</h1>
+    {{ intro }}
+</header>
 
 <div class="c-tiles-with-description">
     {{ tiles }}
@@ -44,6 +46,33 @@
         </div>
     {{ /tiles }}
 </div>
+
+<hr>
+
+<section class="mt-32 lg:mt-64 relative dark:mt-32">
+    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
+    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
+    <div class="bg-mint border shadow-lg p-4 md:px-5 md:pb-8 relative">
+        <header class="markdown markdown-tight bg-mint mb-5">
+            <h2 class="mb-3 text-lg dark:text-black">Sponsors</h2>
+            <p class="text-black text-base mb-2 md:w-4/5">We've reserved this space to thank our top open source sponsors.</p>
+        </header>
+        <div class="flex flex-wrap">
+            {{ hero_sponsors }}
+                {{ if error }}
+                    <p class="text-xs flex items-center mb-2">We're having trouble loading the sponsors at the moment.</p>
+                {{ else }}
+                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
+                        <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
+                        <span class="font-bold">{{ name }}</span>
+                    </a>
+                {{ /if }}
+            {{ /hero_sponsors }}
+        </div>
+        <a href="https://github.com/sponsors/statamic" class="button bg-white">
+            Become a Sponsor &rarr;
+        </a>
+    </div>
 
 <div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
     <div class="flex flex-col md:flex-row items-center">
@@ -135,28 +164,3 @@
     </table>
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
 </section> #}}
-
-<section class="mt-32 lg:mt-64 relative dark:mt-32">
-    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
-    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
-    <div class="bg-mint border shadow-lg p-4 md:px-5 md:pb-8 relative">
-        <header class="markdown markdown-tight bg-mint mb-5">
-            <h2 class="mb-3 text-lg dark:text-black">Sponsors</h2>
-            <p class="text-black text-base mb-2 md:w-4/5">We've reserved this space to thank our top open source sponsors.</p>
-        </header>
-        <div class="flex flex-wrap">
-            {{ hero_sponsors }}
-                {{ if error }}
-                    <p class="text-xs flex items-center mb-2">We're having trouble loading the sponsors at the moment.</p>
-                {{ else }}
-                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
-                        <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
-                        <span class="font-bold">{{ name }}</span>
-                    </a>
-                {{ /if }}
-            {{ /hero_sponsors }}
-        </div>
-        <a href="https://github.com/sponsors/statamic" class="button bg-white">
-            Become a Sponsor &rarr;
-        </a>
-    </div>

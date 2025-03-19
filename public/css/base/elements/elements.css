@@ -77,7 +77,7 @@
         margin: 0.25rem;
     }
     hr {
-        --border-width: 0.85px;
+        --border-width: 0.3px;
         border-image: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue)) 1;
         border-width: var(--border-width);
         position: relative;
