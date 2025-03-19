@@ -1,7 +1,75 @@
-<header class="markdown">
-    <h1>Learn Statamic</h1>
-    <div class="max-w-2xl text-xl">{{ intro | widont }}</div>
-</header>
+<h1 id="learn-statamic" style="--ti-name: --1" class="o-scroll-spy-timeline__track">Learn Statamic</h1>
+<p>{{ intro }}</p>
+
+<div class="c-tiles-with-description">
+    {{ tiles }}
+    <div class="c-tiles-with-description__item">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            {{ tile_image }}
+                    <img 
+                        src="{{ glide:url width='375' dpr='2' }}"
+                    >
+            {{ /tile_image }}
+            <figcaption>Installing Statamic</figcaption>
+        </figure>
+        <p>Let’s get Statamic installed and start tinkering around.</p>
+    </div>
+    {{ tiles }}
+    <div class="c-tiles-with-description__item">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            <picture>
+                <source srcset="img/home/cat-for-static-site.png" type="image/png">
+                <img class="u-image-boost-with-hue-rotate" src="img/home/cat-for-static-site.png" alt="A ginger cat sat in a loaf pose, looking intently" />
+            </picture>
+            <figcaption>Learn by Watching</figcaption>
+        </figure>
+        <p>Learn Statamic with Jack’s free Laravel Creator Series.</p>
+    </div>
+    <div class="c-tiles-with-description__item">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            <picture>
+                <source srcset="img/home/modern-people-for-static-site.png" type="image/png">
+                <img src="img/home/modern-people-for-static-site.png" alt="A woman with a 90s style baggy top and sunglasses hanging out" />
+            </picture>
+            <figcaption>Discord Community</figcaption>
+        </figure>
+        <p>Hang out with exceptional devs & designers 24/7.</p>
+    </div>
+    <div class="c-tiles-with-description__item c-tiles-with-description__item--flush">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            <picture class="u-hide-in-dark-mode">
+                <source srcset="img/home/antlers-for-static-site.png" type="image/png">
+                <img src="img/home/antlers-for-static-site.png" alt="A screenshot of some Antlers code" />
+            </picture>
+            <picture class="u-hide-in-light-mode">
+                <source srcset="img/home/antlers-dark-mode.png" type="image/png">
+                <img src="img/home/antlers-dark-mode.png" alt="A screenshot of some Antlers code" />
+            </picture>
+            <figcaption>Antler Templating Docs</figcaption>
+        </figure>
+        <p>Start unlocking the mighty flexible powers of Antlers.</p>
+    </div>
+    <div class="c-tiles-with-description__item">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            <picture>
+                <source srcset="img/home/cd.png" type="image/png">
+                <img src="img/home/cd.png" alt="A glossy CD with rainbow hues" />
+            </picture>
+            <figcaption>Feature Reference Lists</figcaption>
+        </figure>
+        <p>Start unlocking the mighty flexible powers of Antlers.</p>
+    </div>
+    <div class="c-tiles-with-description__item">
+        <figure class="c-tiles-with-description__item__thumbnail">
+            <picture>
+                <source srcset="img/home/stereo-for-static-site.png" type="image/png">
+                <img src="img/home/stereo-for-static-site.png" alt="An old skool boombox" />
+            </picture>
+            <figcaption>Recent Doc Updates</figcaption>
+        </figure>
+        <p>Help keep your Statamic superpowers up-to-date.</p>
+    </div>
+</div>
 
 <div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
     <div class="flex flex-col md:flex-row items-center">
@@ -69,7 +137,8 @@
     </a>
 </div>
 
-<section class="markdown mt-6 md:mt-20">
+{{# =JFG. Keeping this here for now because it could be useful at some point #}}
+{{# <section class="markdown mt-6 md:mt-20">
     <h2>Recent Updates</h2>
     <p>Keep your Statamic superpowers up-to-date with the latest updates to the docs.</p>
     <table>
@@ -91,7 +160,7 @@
         </tbody>
     </table>
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
-</section>
+</section> #}}
 
 <section class="mt-32 lg:mt-64 relative dark:mt-32">
     <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
