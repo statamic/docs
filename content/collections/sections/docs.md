@@ -16,6 +16,7 @@ tiles:
     tile_description: 'Let’s get Statamic installed and start tinkering around.'
     type: tile
     enabled: true
+    flush_image: false
   -
     id: m8fsmcva
     tile_image: tiles/cat.png
@@ -23,6 +24,7 @@ tiles:
     tile_description: 'Learn Statamic with Jack’s free Laravel Creator Series.'
     type: tile
     enabled: true
+    flush_image: false
   -
     id: m8fszcgf
     tile_image: tiles/modern-people.png
@@ -30,6 +32,7 @@ tiles:
     tile_description: 'Hang out with exceptional devs & designers 24/7.'
     type: tile
     enabled: true
+    flush_image: false
   -
     id: m8ft268a
     tile_image: tiles/antlers.png
@@ -38,6 +41,7 @@ tiles:
     type: tile
     enabled: true
     tile_image_dark_mode: tiles/antlers-dark-mode.png
+    flush_image: true
   -
     id: m8ft2vpz
     tile_image: tiles/cd.png
@@ -45,6 +49,7 @@ tiles:
     tile_description: 'Start unlocking the mighty flexible powers of Antlers.'
     type: tile
     enabled: true
+    flush_image: false
   -
     id: m8ft8fb1
     tile_image: tiles/stereo.png
@@ -52,4 +57,6 @@ tiles:
     tile_description: 'Help keep your Statamic superpowers up-to-date.'
     type: tile
     enabled: true
+    flush_image: false
+advert_override: 972d7159-e76a-4817-a441-65d965d8c794
 ---

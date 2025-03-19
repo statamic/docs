@@ -66,38 +66,73 @@
                             {{ template_content | toc }}
                         </li>
                         <li class="c-sidebar-advert">
-                            {{ collection:adverts limit='1' sort='random' }}
-                                <a href="https://statamic.com/addons/statamic/seo-pro">
-                                    {{ image }}
-                                        <picture>
-                                            {{# WebP #}}
-                                            <source
-                                                srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
-                                                        {{ glide:url width='220' dpr='3' format='webp' }} 3x"
-                                                type="image/webp"
-                                            >
-                                            {{# JPEG #}}
-                                            <source
-                                                srcset="{{ glide:url width='220' dpr='2' }} 2x,
-                                                        {{ glide:url width='220' dpr='3' }} 3x"
-                                                type="image/jpeg"
-                                            >
-                                            {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                            <img 
-                                                src="{{ glide:url width='220' }}"
-                                                decoding="async"
-                                                fetchpriority="high"
-                                                width="{{ width }}" 
-                                                height="{{ height }}"
-                                                alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                            />
-                                        </picture>
-                                    {{ /image }}
-                                    <h2>{{ heading }}</h2>
-                                    <p>{{ text }}</p>
-                                    <p><a href="{{ link }}">{{ link_text }}</a></p>
-                                </a>
-                            {{ /collection:adverts }}
+                            {{ if advert_override }}
+                                {{ advert_override }}
+                                    <a href="{{ link }}">
+                                        {{ image }}
+                                            <picture>
+                                                {{# WebP #}}
+                                                <source
+                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
+                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
+                                                    type="image/webp"
+                                                >
+                                                {{# JPEG #}}
+                                                <source
+                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
+                                                            {{ glide:url width='220' dpr='3' }} 3x"
+                                                    type="image/jpeg"
+                                                >
+                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                                                <img 
+                                                    src="{{ glide:url width='220' }}"
+                                                    decoding="async"
+                                                    fetchpriority="high"
+                                                    width="{{ width }}" 
+                                                    height="{{ height }}"
+                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                                                />
+                                            </picture>
+                                        {{ /image }}
+                                        <h2>{{ heading }}</h2>
+                                        <p>{{ text }}</p>
+                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
+                                    </a>
+                                {{ /advert_override }}
+                            {{ else }}
+                                {{ collection:adverts limit='1' sort='random' }}
+                                    <a href="{{ link }}">
+                                        {{ image }}
+                                            <picture>
+                                                {{# WebP #}}
+                                                <source
+                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
+                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
+                                                    type="image/webp"
+                                                >
+                                                {{# JPEG #}}
+                                                <source
+                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
+                                                            {{ glide:url width='220' dpr='3' }} 3x"
+                                                    type="image/jpeg"
+                                                >
+                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                                                <img 
+                                                    src="{{ glide:url width='220' }}"
+                                                    decoding="async"
+                                                    fetchpriority="high"
+                                                    width="{{ width }}" 
+                                                    height="{{ height }}"
+                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                                                />
+                                            </picture>
+                                        {{ /image }}
+                                        <h2>{{ heading }}</h2>
+                                        <p>{{ text }}</p>
+                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
+                                    </a>
+                                {{ /collection:adverts }}
+                            {{ /if }}
                         </li>
                     </ul>
                 </nav>

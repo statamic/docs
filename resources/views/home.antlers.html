@@ -1,74 +1,48 @@
 <h1 id="learn-statamic" style="--ti-name: --1" class="o-scroll-spy-timeline__track">Learn Statamic</h1>
-<p>{{ intro }}</p>
+{{ intro }}
 
 <div class="c-tiles-with-description">
     {{ tiles }}
-    <div class="c-tiles-with-description__item">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            {{ tile_image }}
-                    <img 
-                        src="{{ glide:url width='375' dpr='2' }}"
-                    >
-            {{ /tile_image }}
-            <figcaption>Installing Statamic</figcaption>
-        </figure>
-        <p>Let’s get Statamic installed and start tinkering around.</p>
-    </div>
-    {{ tiles }}
-    <div class="c-tiles-with-description__item">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            <picture>
-                <source srcset="img/home/cat-for-static-site.png" type="image/png">
-                <img class="u-image-boost-with-hue-rotate" src="img/home/cat-for-static-site.png" alt="A ginger cat sat in a loaf pose, looking intently" />
-            </picture>
-            <figcaption>Learn by Watching</figcaption>
-        </figure>
-        <p>Learn Statamic with Jack’s free Laravel Creator Series.</p>
-    </div>
-    <div class="c-tiles-with-description__item">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            <picture>
-                <source srcset="img/home/modern-people-for-static-site.png" type="image/png">
-                <img src="img/home/modern-people-for-static-site.png" alt="A woman with a 90s style baggy top and sunglasses hanging out" />
-            </picture>
-            <figcaption>Discord Community</figcaption>
-        </figure>
-        <p>Hang out with exceptional devs & designers 24/7.</p>
-    </div>
-    <div class="c-tiles-with-description__item c-tiles-with-description__item--flush">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            <picture class="u-hide-in-dark-mode">
-                <source srcset="img/home/antlers-for-static-site.png" type="image/png">
-                <img src="img/home/antlers-for-static-site.png" alt="A screenshot of some Antlers code" />
-            </picture>
-            <picture class="u-hide-in-light-mode">
-                <source srcset="img/home/antlers-dark-mode.png" type="image/png">
-                <img src="img/home/antlers-dark-mode.png" alt="A screenshot of some Antlers code" />
-            </picture>
-            <figcaption>Antler Templating Docs</figcaption>
-        </figure>
-        <p>Start unlocking the mighty flexible powers of Antlers.</p>
-    </div>
-    <div class="c-tiles-with-description__item">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            <picture>
-                <source srcset="img/home/cd.png" type="image/png">
-                <img src="img/home/cd.png" alt="A glossy CD with rainbow hues" />
-            </picture>
-            <figcaption>Feature Reference Lists</figcaption>
-        </figure>
-        <p>Start unlocking the mighty flexible powers of Antlers.</p>
-    </div>
-    <div class="c-tiles-with-description__item">
-        <figure class="c-tiles-with-description__item__thumbnail">
-            <picture>
-                <source srcset="img/home/stereo-for-static-site.png" type="image/png">
-                <img src="img/home/stereo-for-static-site.png" alt="An old skool boombox" />
-            </picture>
-            <figcaption>Recent Doc Updates</figcaption>
-        </figure>
-        <p>Help keep your Statamic superpowers up-to-date.</p>
-    </div>
+        <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
+            <figure class="c-tiles-with-description__item__thumbnail">
+                {{ tile_image }}
+                    <picture>
+                        {{# WebP #}}
+                        <source
+                            srcset="{{ glide:url width='375' dpr='2' format='webp' }} 750w,
+                                    {{ glide:url width='500' dpr='2' format='webp' }} 1000w,
+                                    {{ glide:url width='768' dpr='2' format='webp' }} 1536w,
+                                    {{ glide:url width='1024' dpr='2' format='webp' }} 2048w,
+                                    {{ glide:url width='1680' dpr='2' format='webp' }} 3360w"
+                            type="image/webp"
+                            sizes="(min-width: 1000px) 250px, 200px"
+                        >
+                        {{# JPEG #}}
+                        <source
+                            srcset="{{ glide:url width='375' dpr='2' }} 750w,
+                                    {{ glide:url width='500' dpr='2' }} 1000w,
+                                    {{ glide:url width='768' dpr='2' }} 1536w,
+                                    {{ glide:url width='1024' dpr='2' }} 2048w,
+                                    {{ glide:url width='1680' dpr='2' }} 3360w"
+                            type="image/jpeg"
+                            sizes="(min-width: 1000px) 250px, 200px"
+                        >
+                        {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                        <img 
+                            src="{{ glide:url width='375' dpr='2' }}"
+                            decoding="async"
+                            fetchpriority="high"
+                            width="{{ width }}" 
+                            height="{{ height }}"
+                            alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                        >
+                    </picture>
+                {{ /tile_image }}
+                <figcaption>{{ tile_title }}</figcaption>
+            </figure>
+            <p>{{ tile_description }}</p>
+        </div>
+    {{ /tiles }}
 </div>
 
 <div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">

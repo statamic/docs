@@ -28,8 +28,8 @@ tabs:
               type: replicator
               display: Tiles
               sets:
-                new_set_group:
-                  display: 'New Set Group'
+                tiles:
+                  display: Tiles
                   sets:
                     tile:
                       display: Tile
@@ -43,16 +43,6 @@ tabs:
                             type: assets
                             display: 'Tile Image'
                             folder: tiles
-                            width: 50
-                        -
-                          handle: tile_image_dark_mode
-                          field:
-                            max_files: 1
-                            container: main
-                            type: assets
-                            display: 'Tile Image (Dark Mode, optional override)'
-                            folder: tiles
-                            width: 50
                         -
                           handle: tile_title
                           field:
@@ -65,6 +55,31 @@ tabs:
                             character_limit: 60
                             type: text
                             display: 'Tile Description'
+                        -
+                          handle: advanced_options
+                          field:
+                            type: revealer
+                            display: 'Advanced Options'
+                        -
+                          handle: tile_image_dark_mode
+                          field:
+                            max_files: 1
+                            container: main
+                            type: assets
+                            display: 'Tile Image (Dark Mode, optional override)'
+                            folder: tiles
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
+                        -
+                          handle: flush_image
+                          field:
+                            type: toggle
+                            display: 'Flush Image'
+                            instructions: 'Makes the image flush, which may be useful, e.g. a screenshot of Antlers code'
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
   sidebar:
     display: Sidebar
     sections:
@@ -90,3 +105,5 @@ tabs:
             field:
               type: template
               display: Template
+          -
+            import: advert_override
