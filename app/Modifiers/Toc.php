@@ -31,8 +31,13 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        // Match all headings between h2 and maxHeadingLevels
+        // First try with h2-hN headings
         preg_match_all('/<h([2-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[2-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+
+        // If we don't have enough entries, include h1 headings as well
+        if (count($matches) < 3) {
+            preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+        }
 
         if (! $matches) {
             return [null, $content];
@@ -138,7 +143,7 @@ class Toc extends Modifier
         $toc .= '</ul>'."\n";
 
         // A tiny TOC is a lame TOC
-        $toc = (count($matches) < 3) ? null : $toc;
+        // $toc = (count($matches) < 3) ? null : $toc;
 
         return [$toc, $content];
     }
