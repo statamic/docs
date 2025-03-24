@@ -291,7 +291,7 @@
     /* Custom */
     @media (width >= 1025px) and (width < 1441px) {
         /* Decrease */
-        --font-bump: -0.165em;
+        --font-bump: -0.09em;
     }
     /* --mq-text-bump-2-after */
     @media (width >= 1441px) {
