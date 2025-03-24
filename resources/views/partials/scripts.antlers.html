@@ -4,7 +4,7 @@
 
 {{ livewire:scriptConfig }}
 
-<script data-navigate-once>
+{{# <script data-navigate-once>
     document.addEventListener('livewire:navigated', e => {
         document.querySelectorAll('[wire\\:current\\.class]').forEach(el => {
             let url = new URL(window.location.href)
@@ -72,4 +72,4 @@
             store.visibleHeadingId = headingsByDistanceFromTop[closestNegativeTop].id;
         }
     })
-</script>
+</script> #}}
