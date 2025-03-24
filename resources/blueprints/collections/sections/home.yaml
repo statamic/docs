@@ -61,6 +61,29 @@ tabs:
                             type: revealer
                             display: 'Advanced Options'
                         -
+                          handle: flush_image
+                          field:
+                            type: toggle
+                            display: 'Flush Image'
+                            instructions: 'Makes the image flush, which may be useful, e.g. a screenshot of Antlers code'
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
+                        -
+                          handle: hue_rotate
+                          field:
+                            type: toggle
+                            display: 'Hue Rotate'
+                            instructions: 'Add an extra hue rotation to make the image more stylised'
+                            width: 50
+                        -
+                          handle: dark_mode
+                          field:
+                            type: section
+                            display: 'Dark Mode'
+                            if:
+                              advanced_options: 'equals true'
+                        -
                           handle: tile_image_dark_mode
                           field:
                             max_files: 1
@@ -68,15 +91,6 @@ tabs:
                             type: assets
                             display: 'Tile Image (Dark Mode, optional override)'
                             folder: tiles
-                            width: 50
-                            if:
-                              advanced_options: 'equals true'
-                        -
-                          handle: flush_image
-                          field:
-                            type: toggle
-                            display: 'Flush Image'
-                            instructions: 'Makes the image flush, which may be useful, e.g. a screenshot of Antlers code'
                             width: 50
                             if:
                               advanced_options: 'equals true'

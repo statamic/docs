@@ -1,0 +1,32 @@
+<picture{{ modifier_classes ?= ' class="{ modifier_classes }"'}}>
+    {{# WebP #}}
+    <source
+        srcset="{{ glide:url width='375' dpr='2' format='webp' }} 750w,
+                {{ glide:url width='500' dpr='2' format='webp' }} 1000w,
+                {{ glide:url width='768' dpr='2' format='webp' }} 1536w,
+                {{ glide:url width='1024' dpr='2' format='webp' }} 2048w,
+                {{ glide:url width='1680' dpr='2' format='webp' }} 3360w"
+        type="image/webp"
+        sizes="(min-width: 1000px) 250px, 200px"
+    >
+    {{# JPEG #}}
+    <source
+        srcset="{{ glide:url width='375' dpr='2' }} 750w,
+                {{ glide:url width='500' dpr='2' }} 1000w,
+                {{ glide:url width='768' dpr='2' }} 1536w,
+                {{ glide:url width='1024' dpr='2' }} 2048w,
+                {{ glide:url width='1680' dpr='2' }} 3360w"
+        type="image/jpeg"
+        sizes="(min-width: 1000px) 250px, 200px"
+    >
+    {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+    <img 
+        src="{{ glide:url width='375' dpr='2' }}"
+        decoding="async"
+        fetchpriority="high"
+        width="{{ width }}" 
+        height="{{ height }}"
+        alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+        {{ hue_rotate ?= 'class="u-image-boost-with-hue-rotate"' }}
+    >
+</picture>

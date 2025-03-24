@@ -17,6 +17,7 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
+    hue_rotate: false
   -
     id: m8fsmcva
     tile_image: tiles/cat.png
@@ -25,6 +26,7 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
+    hue_rotate: true
   -
     id: m8fszcgf
     tile_image: tiles/modern-people.png
@@ -33,6 +35,7 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
+    hue_rotate: false
   -
     id: m8ft268a
     tile_image: tiles/antlers.png
@@ -42,6 +45,7 @@ tiles:
     enabled: true
     tile_image_dark_mode: tiles/antlers-dark-mode.png
     flush_image: true
+    hue_rotate: false
   -
     id: m8ft2vpz
     tile_image: tiles/cd.png
@@ -50,6 +54,7 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
+    hue_rotate: false
   -
     id: m8ft8fb1
     tile_image: tiles/stereo.png
@@ -58,5 +63,6 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
+    hue_rotate: false
 advert_override: 972d7159-e76a-4817-a441-65d965d8c794
 ---
