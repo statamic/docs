@@ -76,53 +76,6 @@
         padding: 0.2rem 0.3rem;
         margin: 0.25rem;
     }
-    /* GROUP ELEMENTS / HR
-    =================================================== */
-    /* [1] This first technique is used to fake an hr */
-    hr, .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --border-width: 0.3px;
-    }
-    .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --distance: var(--spacing-l-3);
-        margin-block-start: var(--distance);
-        &::before, &::after {
-            content: "";
-            position: absolute;
-            top: calc(0% - var(--distance) / 4 - 10px);
-        }
-        &::before {
-            background: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue));
-            opacity: 0.5;
-            inline-size: 100%;
-            block-size: 1px;
-        }
-        &:after {
-            inline-size: 100%;
-
-            position: absolute;
-            left: 0;
-            content: "";
-            inline-size: 100%;
-            border: var(--border-width) dashed white;
-        }
-    }
-    /* [/2] This second technique is for real hrs */
-    hr {
-        border-image: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue)) 1;
-        border-width: var(--border-width);
-        position: relative;
-        opacity: 0.5;
-        margin-block: var(--spacing-l-3);
-
-        /* I think this is the only way we can have a dashed border-image */
-        &:after {
-            position: absolute;
-            content: "";
-            inset: 0;
-            top: calc(0% - var(--border-width));
-            border: var(--border-width) dashed var(--color-body-background);
-        }
-    }
     /* Fix popover buttons being triggered underneath the backdrops of other open popovers. If you have a popover open and there's a button underneath it, clicking on the button will trigger the popover underneath. We don't want this, so we need to disable other popover buttons when a popover is open. */
     button[popovertarget]:not([popover] button) {
         /* Disable by default */
@@ -431,6 +384,60 @@
     /* Headings */
     .c-entry-content hr + :is(h2, h3, h4) {
         padding-block-start: 0;
+    }
+    /* GROUP ELEMENTS / HR
+    =================================================== */
+    /* [1] This first technique is used to fake an hr */
+    hr, .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+        --border-width: 0.3px;
+    }
+    .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+        --distance: var(--spacing-l-3);
+        margin-block-start: var(--distance);
+        p:has(+ &) {
+            padding-block-end: var(--spacing-m);
+        }
+        figure:has(+ &) + h2 {
+            /* e.g. >> /quick-start-guide */
+            margin-block-start: var(--spacing-l-4);
+        }
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            top: calc(0% - var(--distance) / 4 - 10px);
+        }
+        &::before {
+            background: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue));
+            opacity: 0.5;
+            inline-size: 100%;
+            block-size: 1px;
+        }
+        &:after {
+            inline-size: 100%;
+
+            position: absolute;
+            left: 0;
+            content: "";
+            inline-size: 100%;
+            border: var(--border-width) dashed white;
+        }
+    }
+    /* [/2] This second technique is for real hrs */
+    hr {
+        border-image: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue)) 1;
+        border-width: var(--border-width);
+        position: relative;
+        opacity: 0.5;
+        margin-block: var(--spacing-l-3);
+
+        /* I think this is the only way we can have a dashed border-image */
+        &:after {
+            position: absolute;
+            content: "";
+            inset: 0;
+            top: calc(0% - var(--border-width));
+            border: var(--border-width) dashed var(--color-body-background);
+        }
     }
 }
 

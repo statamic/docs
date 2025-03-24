@@ -15,7 +15,7 @@ Much of the documentation is intended to be used as a reference sheet for variou
 
 ### What we're building
 
-We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="uppercase font-bold tracking-widest text-green font-display">Cyberspace</span>.
+We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="c-spaced">Cyberspace</span>.
 
 **This is not a "5 minute quick install guide" – we're going to be building a simple yet full site from scratch so you can see how everything comes together. It will likely take around 20-30 minutes.**
 
@@ -64,7 +64,7 @@ If you encounter any errors, Google them frantically and try anything and everyt
 
 <figure>
     <img src="/img/quick-start/installed-3.3.png" alt="Statamic Welcome Screen">
-    <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
+    <figcaption>If you see this you are right on track.</figcaption>
 </figure>
 
 Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](https://code.visualstudio.com/) but there are a ton of great editors and IDEs out there.

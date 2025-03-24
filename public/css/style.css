@@ -50,6 +50,7 @@ scope;
 @import 'components/related.css';
 /* Components > Unique/Quriky */
 @import 'components/list-turtles.css';
+@import 'components/quirky.css';
 /* Components > Imagery */
 @import 'components/imagery/full-width-image.css';
 @import 'components/imagery/bordered-image.css';
