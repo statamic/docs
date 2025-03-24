@@ -97,6 +97,9 @@
                 }
             }
         }
+        .external {
+            display: none;
+        }
         /* [1] For when we have <span> text next to the logo */
         a {
             display: flex;
