@@ -23,6 +23,7 @@
     .c-breadcrumbs {
         display: inline-block;
         grid-area: breadcrumbs;
+        height: 100%;
         & ol {
             list-style: none;
             display: flex;
