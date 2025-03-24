@@ -23,13 +23,11 @@
     .c-breadcrumbs {
         display: inline-block;
         grid-area: breadcrumbs;
-        height: 100%;
         & ol {
             list-style: none;
             display: flex;
             align-items: center;
             gap: var(--spacing-m);
-            height: 100%;
             /* --mq-grid-before */
             @media (width < 1000px) {
                 position: relative;
@@ -74,7 +72,7 @@
             font-weight: var(--font-family-ui-weight-strong);
             margin-inline-end: 0;
         }
-        /* GROUP COMPONENTS / BREADCRUMBS
+        /* GROUP COMPONENTS / BREADCRUMBS / MQs
         =================================================== */
         @media (width < 700px) {
             li:not(:last-child) {
@@ -86,6 +84,7 @@
         @media (width >= 1000px) {
             ol {
                 gap: var(--spacing-l);
+                block-size: 100%;
             }
             li svg {
                 /* Increase to allow the gradient background to breathe */
