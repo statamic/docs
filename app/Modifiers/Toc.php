@@ -108,9 +108,8 @@ class Toc extends Modifier
             // Handle nested list structure based on heading levels
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
-                    // Start a new nested list wrapped in li
-                    $toc .= "\n".'<li style="--ti: --'.$tiCounter.'"><ul>'."\n";
-                    $tiCounter++;
+                    // Start a new nested list wrapped in li, don't increment counter for parent li
+                    $toc .= "\n".'<li><ul>'."\n";
                 } elseif ($prevlvl > $lvl) {
                     // Close current item and any nested lists
                     $toc .= '</li>'."\n";
@@ -124,10 +123,10 @@ class Toc extends Modifier
                 }
             }
 
-            $j = 0;
-            // Add TOC entry with --ti style
-            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a></li>';
+            // Add TOC entry with --ti style (only for leaf nodes)
+            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a>';
             $tiCounter++;
+
             $prevlvl = $lvl;
 
             $i++;

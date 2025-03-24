@@ -72,7 +72,9 @@
     }
     li {
         position: relative;
-        padding-block-end: var(--item-padding);
+        &:not(:has(ul)) {
+            padding-block-end: var(--item-padding);
+        }
         &::before,
         &::after {
             content: '';
@@ -112,13 +114,13 @@
         transform: scaleY(0);
     }
 
-    entry 500%, exit 100% {
+    entry 100%, exit 100% {
         transform-origin: top;
         transform: scaleY(1);
     }
 }
 @keyframes i-spy-reverse {
-    entry 500%, exit 100% {
+    entry 100%, exit 100% {
         transform-origin: top;
         transform: scaleY(1);
     }
