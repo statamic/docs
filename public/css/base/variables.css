@@ -57,7 +57,7 @@
     --color-blue-light-4: hsl(197deg 100% 99%);
     --color-purple-dark: hsl(256deg 60% 50%);
     --color-purple-hue: 256deg;
-    --color-purple: hsl(256deg 60% 60%);
+    --color-purple: hsl(256deg 70% 55%);
     /* e.g. bullet point decoration */
     --color-purple-light-1: hsl(256deg 60% 85%);
     --color-purple-light-2: hsl(256deg 60% 98.5%);
@@ -203,7 +203,7 @@
     --font-size-l-3: clamp(1.975em * 0.85, 6vw, 1.975em);
     --font-size-l-3-line-height: 1.3;
 
-    --font-size-l-4: clamp(2.2em * 0.9, 6vw, 2.25em);
+    --font-size-l-4: clamp(2.3em * 0.9, 6vw, 2.3em);
     --font-size-l-4-line-height: 1.3;
 
     --font-size-l-5: clamp(2.827em * 0.8, 9vw, 2.827em);

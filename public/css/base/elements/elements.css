@@ -76,8 +76,38 @@
         padding: 0.2rem 0.3rem;
         margin: 0.25rem;
     }
-    hr {
+    /* GROUP ELEMENTS / HR
+    =================================================== */
+    /* [1] This first technique is used to fake an hr */
+    hr, .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
         --border-width: 0.3px;
+    }
+    .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+        --distance: var(--spacing-l-3);
+        margin-block-start: var(--distance);
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            top: calc(0% - var(--distance) / 4 - 10px);
+        }
+        &::before {
+            background: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue));
+            opacity: 0.5;
+            inline-size: 100%;
+            block-size: 1px;
+        }
+        &:after {
+            inline-size: 100%;
+
+            position: absolute;
+            left: 0;
+            content: "";
+            inline-size: 100%;
+            border: var(--border-width) dashed white;
+        }
+    }
+    /* [/2] This second technique is for real hrs */
+    hr {
         border-image: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue)) 1;
         border-width: var(--border-width);
         position: relative;
@@ -456,7 +486,7 @@
     a,
     button {
         text-decoration-skip-ink: auto;
-        text-underline-position: under;
+        text-underline-offset: 0.2rem;
         text-decoration-thickness: 1px;
         text-decoration-color: light-dark(var(--color-primary-accent), var(--color-link));
         color: var(--color-link);
