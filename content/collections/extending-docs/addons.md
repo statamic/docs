@@ -189,7 +189,7 @@ After the composer package has been brought in, Statamic will automatically acti
 
 ### Post-install commands {#post-install-commands}
 
-By default the `vendor:publish` command will be run for you after `statamic:install`, letting your assets be automatically published.
+By default, the `vendor:publish` command will be run for you after `statamic:install`, letting your assets be automatically published.
 
 However, you can run other commands or custom code too using the `afterInstalled` method:
 
@@ -205,15 +205,9 @@ public function bootAddon()
 
 ## Registering Components
 
-::: tip
-Statamic v5.28.0 and v5.29.0 introduced the concept of "autoloading" for most addon components.
+Statamic will autoload _most_ of your addon's components, as long as they're in the right place and named correctly. 
 
-For example: as long as your tags live in `src/Tags` and your fieldtypes live in `src/Fieldtypes`, they will be automatically registered by Statamic, without you needing to register them manually.
-
-If your addon supports Statamic v5.28.0 or lower, you should continue registering components manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
-:::
-
-You may register your various addon components by adding their class names to corresponding arrays:
+However, you can still register them manually in your service provider if you need to:
 
 ``` php
 protected $tags = [
@@ -237,7 +231,6 @@ protected $widgets = [
 protected $commands = [
     //
 ];
-
 ```
 
 ## Assets
@@ -320,7 +313,24 @@ ln -s /path/to/addons/example/resources public/vendor/package
 
 ### Registering Routes
 
-You may register three types of routes in your service provider.
+Addons can register three types of routes:
+
+* Control Panel routes
+* Action routes
+* Web routes
+
+To keep things organized, we recommend keeping your routes in separate files.
+
+``` files theme:serendipity-light
+/
+    src/
+    routes/
+        cp.php
+        actions.php
+        web.php
+```
+
+If you follow this convention, Statamic will automatically register these route files for you. If you prefer to keep them elsewhere, you can register them manually in your service provider:
 
 ``` php
 protected $routes = [
@@ -329,12 +339,6 @@ protected $routes = [
     'web' => __DIR__.'/../routes/web.php',
 ];
 ```
-
-::: tip
-As of Statamic v5.29.0, addon routes following the convention shown above will be automatically registered by Statamic.
-
-If your addon supports Statamic v5.29 or lower, you should continue registering your route files manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
-:::
 
 #### Control Panel Routes
 
@@ -363,7 +367,7 @@ When referencing a controller in a route, it will automatically be namespaced to
 ```
 
 ``` php
-Route::get('/', 'ExampleController@index'); // Acme\Example\ExampleController
+Route::get('/', [ExampleController::class, 'index']); // Acme\Example\ExampleController
 ```
 
 If you'd prefer not to have separate route files, you can write routes in your service provider's `bootAddon` method.
@@ -458,31 +462,37 @@ return view('custom::foo');
 
 ## Events
 
-::: tip
-Statamic v5.35.0 introduced the concept of "autoloading" for event listeners.
+Statamic will automatically register any event listeners in the `src/Listeners` directory, as long as the event is type-hinted in the listener's `handle` or `__invoke` method.
 
-As long as your event listener lives in `src/Listeners` and the event is typehinted in the listener's `handle` or `__invoke` method, they will be automatically registered by Statamic, without you needing to register them manually.
+``` php
+use Acme\Example\Events\OrderShipped;
+
+class SendShipmentNotification
+{
+    public function handle(OrderShipped $event)
+    {
+        //
+    }
+}
+```
 
 Subscribers will also be autoloaded, as long as they live in `src/Subscribers`.
 
-If your addon supports below Statamic v5.33.0, you should continue registering events and subscribers manually, like shown below. Otherwise, you can let Statamic do its thing 😎.
-:::
-
-You may register any number of event listeners or subscribers the same way you would in a traditional Laravel application's EventServiceProvider – by using a `$listen` or `$subscribes` array:
+If your addon's listeners or subscribers live elsewhere, you may register them manually in your service provider:
 
 ``` php
 protected $listen = [
-    'Acme\Example\Events\OrderShipped' => [
-        'Acme\Example\Listeners\SendShipmentNotification',
+    \Acme\Example\Events\OrderShipped::class => [
+        \Acme\Example\Listeners\SendShipmentNotification::class,
     ],
 ];
 
 protected $subscribe = [
-    'Acme\Example\Listeners\UserEventSubscriber',
+    \Acme\Example\Listeners\UserEventSubscriber::class,
 ];
 ```
 
-Consult the [Laravel event documentation](https://laravel.com/docs/events) to learn how to define events, listeners, and subscribers.
+To learn more about defining events, listeners and subscribers, please consult the [Laravel event documentation](https://laravel.com/docs/events).
 
 
 ## Scheduling
@@ -543,15 +553,9 @@ You don't need to check whether a license is valid, Statamic does that automatic
 
 You may register update scripts to help your users migrate data, etc. when new features are added or breaking changes are introduced.
 
-For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission. To do this, first register your update script in your addon's service provider:
+For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission. 
 
-``` php
-protected $updateScripts = [
-    \Acme\Example\Updates\UpdatePermissions::class,
-];
-```
-
-Then in your update script, you can extend `UpdateScript` and implement the necessary methods:
+To do this, create a class which extends the `UpdateScript` class and implement the necessary methods:
 
 ``` php
 use Statamic\UpdateScripts\UpdateScript;
