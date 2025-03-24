@@ -1,8 +1,8 @@
 /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / API
 =================================================== */
 @layer components {
-    .c-nav-toc-with-popover-api {
-        --dropdown-nav-item-padding: 0.35rem;
+.c-nav-toc-with-popover-api {
+        --dropdown-nav-item-padding: 0.325rem;
 
         nav,
         nav [popover] {

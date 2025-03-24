@@ -14,8 +14,8 @@
 
     /* Smaller values for mobile */
     --spacing-l-2: min(12vw, 4rem);
-    /* Slight increase based on .c-nav-sidebar-with-popover-api */
-    --spacing-l-2-horizontal: min(12vw, 4.2rem);
+    /* Increased at higher MQs */
+    --spacing-l-2-horizontal: min(12vw, 4rem);
     --spacing-l-3: min(15vw, 4.7rem);
     --spacing-l-4: min(18vw, 7.5rem);
 
@@ -291,12 +291,14 @@
     /* Custom */
     @media (width >= 1025px) and (width < 1441px) {
         /* Decrease */
-        --font-bump: -0.09em;
+        --font-bump: -0.085em;
     }
     /* --mq-text-bump-2-after */
     @media (width >= 1441px) {
         /* Decrease */
         --font-bump: -0.02em;
+        /* Slight increase based on .c-nav-sidebar-with-popover-api */
+        --spacing-l-2-horizontal: 4.2rem;
     }
     /* --mq-text-bump-3-after */
     @media (min-width: 1800px) {

@@ -278,6 +278,7 @@
             /* --mq-wide-before */
             @media (width < 1650px) {
                 column-gap: 0;
+                padding-inline-start: var(--spacing-s-4);
             }
             /* --mq-wide-after */
             @media (width >= 1650px) {
@@ -342,12 +343,7 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
     h1, .h1 {
-        padding-block-end: var(--spacing-l-1);
-        /* Custom */
-        @media (width < 500px) {
-            /* Decrease */
-            padding-block-end: var(--spacing-l);
-        }
+        padding-block-end: var(--spacing-l);
     }
     h2, .h2 {
         /* E.g. h2 following article intro text */

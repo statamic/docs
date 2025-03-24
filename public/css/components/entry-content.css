@@ -51,7 +51,7 @@
         @media (width < 1250px) {
             margin-inline: auto;
         }
-        padding-inline: var(--spacing-l);
+        padding-inline: var(--spacing-l-1);
         font-family: var(--font-family-prose);
 
         /* e.g. .o-badge-heading */
@@ -179,6 +179,11 @@
         /* Use this if you want to embed entry content in a component that already handles inline padding */
         .c-entry-content--flush {
             padding-inline: 0;
+        }
+
+        /* --mq-wider-entry-content-after */
+        @media (width >= 1500px) {
+            padding-inline: var(--spacing-l);
         }
     }
 }

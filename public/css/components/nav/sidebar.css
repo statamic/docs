@@ -2,7 +2,7 @@
 =================================================== */
 @layer components {
     .c-nav-sidebar-with-popover-api {
-        --dropdown-nav-item-padding: 0.35rem;
+        --dropdown-nav-item-padding: 0.325rem;
         position: sticky;
         grid-area: sidebar-1;
 
@@ -84,7 +84,7 @@
             .c-nav-sidebar-with-popover-api-category-heading {
                 a {
                     display: flex;
-                    max-width: 18rem;
+                    max-width: 17.9rem;
                     max-height: 4.1rem;
                     gap: var(--spacing-s-2);
                     align-items: center;
