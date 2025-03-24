@@ -16,12 +16,13 @@
             opacity: 0.95;
         }
         h2 {
-            padding-block: var(--spacing-l) var(--spacing-s-2);
+            padding-block: var(--spacing-l-1) var(--spacing-s-2);
             font-size: var(--font-size-s-2);
             font-family: var(--font-family-ui);
             font-weight: var(--font-family-ui-weight-normal);
             letter-spacing: 1px;
             text-transform: uppercase;
+            color: inherit;
         }
         p {
             margin-block-end: var(--spacing-s-3);
@@ -41,9 +42,9 @@
             img {
                 /* Tweak the default dark-mode image filter, increasing the hue rotation so there's more of a stylised purple tinge. */
                 filter:
-                    hue-rotate(-15deg)
+                    hue-rotate(-18deg)
                     contrast(110%)
-                    brightness(87%)
+                    brightness(85%)
                 ;
             }
         }

@@ -22,5 +22,34 @@
     {{# GROUP CSS 
     =================================================== #}}
     {{ partial:styles/stylesheets }}
+    {{# GROUP JS
+    =================================================== #}}
+    <script>
+        // Test for "system" color scheme first. The browser will ignore the subsequent theme-colors.
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.head.insertAdjacentHTML('beforeend', '<meta name="theme-color" content="hsl(230deg 17% 7%)">');
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get preferred color scheme from localStorage, default to 'light'
+            const preferredScheme = localStorage.getItem('preferredColorScheme') || 'light';
+            
+            // Check if screen width is greater than 1200px
+            const isWideScreen = window.innerWidth > 1200;
+
+            if (isWideScreen) {
+                // Set theme color based on preferred scheme
+                const themeColor = preferredScheme === 'dark' 
+                    ? 'hsl(230deg 17% 7%)' 
+                    : 'white';
+                document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
+            } else {
+                // Set theme color based on preferred scheme
+                const themeColor = preferredScheme === 'dark' 
+                    ? 'hsl(230deg 17% 7%)' 
+                    : 'hsl(197deg 100% 95%)';
+                document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
+            }
+        });
+    </script>
     {{ vite src="resources/js/site.js" }}
 </head>

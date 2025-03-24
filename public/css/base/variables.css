@@ -125,6 +125,7 @@
     --color-gradient-full-light-3: linear-gradient(225deg, var(--color-blue-light-2), var(--color-pink-light-4), var(--color-yellow-light-4));
     --color-gradient-full-light-4: linear-gradient(225deg, var(--color-blue-light-3), var(--color-pink-light-5), var(--color-yellow-light-5));
     --color-gradient-full-light-5: linear-gradient(225deg, var(--color-blue-light-4), var(--color-pink-light-5), var(--color-yellow-light-6));
+    --color-gradient-full-light-6: linear-gradient(195deg, var(--color-blue-light-2), var(--color-pink-light-4), var(--color-yellow-light-4));
     /* e.g. code background. Darkened on higher MQs */
     --color-gradient-blue-1: linear-gradient(to bottom, var(--color-blue-light-1), hsl(var(--color-pink-hue) 80% 95%));
     /* e.g. header */
@@ -402,6 +403,7 @@
         --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
         /* e.g. homepage tiles */
         --color-gradient-full-light-3: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+        --color-gradient-full-light-6: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
         /* e.g. tables */
         --color-gradient-full-light-4: linear-gradient(to left, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
         /* e.g. .c-pill-with-description */
