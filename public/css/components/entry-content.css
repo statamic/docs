@@ -81,6 +81,8 @@
         > ul {
             --padding-inline-start: min(1.5rem, 5vw);
             padding-inline-start: var(--padding-inline-start);
+            /* e.g. >> /upgrade-guide */
+            padding-block: var(--spacing-s-4) var(--spacing-l-1);
             li {
                 padding-inline-start: var(--spacing-s-5);
                 position: relative;
@@ -128,8 +130,13 @@
         }
 
         p {
-            + :is(ol, ul) {
-                padding-block: var(--spacing-s-3) var(--spacing-l);
+            /* e.g. >> /quick-start-guide */
+            + ol {
+                padding-block: var(--spacing-s-1) var(--spacing-l-1);
+            }
+            /* e.g. >> /quick-start-guide */
+            + ul {
+                padding-block: var(--spacing-s-4) var(--spacing-l-1);
             }
         }
         /* Followed by some kind of image component */
@@ -139,6 +146,8 @@
 
         ol, ul {
             font-size: var(--font-size-m);
+            /* e.g. >> /upgrade-guide */
+            /* margin-block: var(--spacing-l); */
             &:has(+ :is(h2, h3, h4, h5, h6)) {
                 padding-block-end: var(--spacing-s-1);
             }
