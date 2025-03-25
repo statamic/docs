@@ -57,7 +57,6 @@ Now you'll need to update your default site content file & folder structure, so 
     - Take the `root` and `tree` variables, and move them in a file in a subdirectory named after your default site's handle. (eg. `content/trees/navigation/pages.yaml` to `content/trees/navigation/default/pages.yaml`)
     - Add a `sites` array to the root structure's yaml file with each site you want the structure to be available in.
 3. For each global set:
-    - Take the values inside the `data` array, and move them to the top level in a file in a subdirectory named after the default site's handle. (eg. `content/globals/pages.yaml` to `content/globals/default/pages.yaml`)
     - Add a `sites` array to the root global's yaml file with each site you want the global to be available in.
 
 At this point, your content will be available in the default site. You will need to localize each piece of content by following the steps in its respective documentation.
