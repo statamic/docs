@@ -331,7 +331,7 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
     h1 {
-        padding-block-end: var(--spacing-l);
+        padding-block-end: var(--spacing-l-1);
     }
     h2 {
         /* E.g. h2 following article intro text */
