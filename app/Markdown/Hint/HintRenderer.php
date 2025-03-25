@@ -44,7 +44,7 @@ final class HintRenderer implements NodeRendererInterface
         $content = $childRenderer->renderNodes($node->children());
         
         // Add mascot image for tips and best practices
-        $mascot = in_array($type, ['tip', 'best-practice'])
+        $mascot = in_array($type, ['tip', 'best-practice', 'warning'])
             ? '<img src="img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />' 
             : '';
 

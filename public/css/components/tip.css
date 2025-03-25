@@ -25,6 +25,7 @@
 @layer components {
     .c-tip,
     .tip,
+    .hint,
     .best-practice {
         position: relative;
         z-index: var(--z-index-above-body);
@@ -97,10 +98,12 @@
     }
 }
 @layer scope {
-    .c-tip--warning {
+    .c-tip--warning,
+    .hint.warning {
         &::before {
             background: var(--color-gradient-burnt-dark);
         }
+        .hint-title,
         .c-tip__title {
             &, &::before {
                 background: var(--color-red-burnt-1);
