@@ -129,6 +129,11 @@
             }
         }
 
+        a {
+            /* Improve legibility */
+            font-weight: var(--font-family-prose-weight-medium);
+        }
+
         p {
             /* e.g. >> /quick-start-guide */
             + ol {
