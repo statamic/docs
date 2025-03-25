@@ -67,7 +67,7 @@
         =================================================== */
         &:has(+ h2) {
             /* e.g. >> /updating */
-            margin-block-end: var(--spacing-l);
+            margin-block-end: var(--spacing-m);
         }
         header:has(+ &) + & {
             /* e.g. >> /updating */

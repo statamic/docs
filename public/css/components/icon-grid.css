@@ -39,9 +39,12 @@
         p {
             font-family: var(--font-family-code);
             font-size: var(--font-size-s-2);
+            line-height: var(--font-size-s-2-line-height);
         }
 
+        padding-block-start: var(--spacing-m);
         &:has(.c-icon-grid__item__label) {
+            /* A recommended label like e.g. >> /installing */
             padding-block-start: var(--spacing-l-static);
         }
 
