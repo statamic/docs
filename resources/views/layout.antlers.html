@@ -140,9 +140,12 @@
                 <article id="content" class="c-entry-content">
                     {{ template_content }}
                 </article>
-                
+                {{ if $suggest == 'yes' }}
+                    {{ partial:suggest }}
+                {{ else }}
+                    {{ partial:edit }}
+                {{ /if }}
                 {{# {{ partial:toc :hide="hide_toc ?? false" }} #}}
-                {{ partial:edit }}
             </div>
         </main>
 
