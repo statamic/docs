@@ -43,6 +43,8 @@
     }
 }
 #docsearch {
+    /* Prevent Safari from nudging the page layout when this is rendered */
+    max-height: 3.6rem;
     button {
         align-items: center;
         inline-size: 100%;
