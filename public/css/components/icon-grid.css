@@ -15,6 +15,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr));
         gap: var(--spacing-l-1) var(--spacing-s-1);
+        padding-block-end: var(--spacing-l-3);
         text-align: center;
 
         img {
@@ -24,7 +25,7 @@
             }
         }
 
-        h2 {
+        h2, h3 {
             padding-block: var(--spacing-l-static) var(--spacing-s-5);
             font-family: var(--font-family-ui);
             font-size: var(--font-size-ui);
@@ -41,6 +42,12 @@
         &:has(.c-icon-grid__item__label) {
             padding-block-start: var(--spacing-l-static);
         }
+
+        .c-anchor,
+        .external {
+            /* Silly inside the icon grid so hide these */
+            display: none;
+        }
     }
     .c-icon-grid__item {
         position: relative;
@@ -51,7 +58,6 @@
         left: 50%;
         transform: translateX(-50%);
         font-family: var(--font-family-ui);
-        font-weight: var(--font-family-ui-weight-heavy);
         font-size: var(--font-size-s-2);
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -72,5 +78,10 @@
         background: var(--color-gradient-full-light-2);
         border: var(--border-dashed-red);
         border-radius: var(--border-radius-l-2);
+    }
+}
+@layer utilities {
+    body .c-icon-grid__item__label div {
+        font-weight: var(--font-family-ui-weight-heavy);
     }
 }

@@ -505,7 +505,8 @@
     }
 }
 @layer elements {
-    .c-entry-content a:not(.c-btn) {
+    /* Don't target components like .c-icon-grid on /installing */
+    .c-entry-content a:not([class^="c-"] *) {
         font-weight: var(--font-family-prose-weight-medium);
         &[target="_blank"] {
             /* To handle the external link icon e.g. <a href="https://aws.amazon.com/s3" target="_blank">Amazon S3 bucket{{ svg src="external-link" }}</a> */
