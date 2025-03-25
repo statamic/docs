@@ -116,7 +116,7 @@
     =================================================== */
     .c-site-footer {
         /* Fix tiny overflow */
-        contain: paint;
+        overflow: clip;
     }
     .c-site-footer__nav,
     .c-site-footer__bottom {
