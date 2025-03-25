@@ -636,9 +636,13 @@ return [
 ];
 ```
 
+_**Note:** You only need to configure paths when you're using full-measure static caching._
+
 ### Rewrite Rules
 
 When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name.
+
+_**Note:** You only need to configure rewrite rules when you're using full-measure static caching._
 
 #### Apache
 
