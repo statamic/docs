@@ -187,6 +187,7 @@
     =================================================== */
     /* -m is just above 1rem */
     --font-size-m: clamp(1em, 4vw, 1.125em);
+    --font-size-m-rem: clamp(1rem, 4vw, 1.125rem);
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */

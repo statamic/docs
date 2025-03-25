@@ -21,7 +21,8 @@
     .c-entry-content {
         p {
             max-width: var(--max-width-reading);
-            font-size: var(--font-size-m);
+            /* Rem instead of em because of p tags inside li tags e.g. e.g. >> /fields */
+            font-size: var(--font-size-m-rem);
         }
     }
 }
