@@ -144,6 +144,12 @@
             margin-block-end: calc(var(--spacing-l-1));
         }
 
+        .external {
+            /* e.g. external links */
+            display: inline-block;
+            margin-inline: 0.15rem 0;
+        }
+
         ol, ul {
             font-size: var(--font-size-m);
             /* e.g. >> /upgrade-guide */
