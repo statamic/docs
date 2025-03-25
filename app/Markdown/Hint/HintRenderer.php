@@ -41,11 +41,7 @@ final class HintRenderer implements NodeRendererInterface
             )
             : '';
 
-        $content = new HtmlElement(
-            'p',
-            ['class' => 'hint-content'],
-            $childRenderer->renderNodes($node->children())
-        );
+        $content = $childRenderer->renderNodes($node->children());
 
         return new HtmlElement(
             'div',
