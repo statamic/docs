@@ -15,6 +15,7 @@
 @layer utilities {
     .u-label,
     .c-tip__title,
+    .hint-title,
     .c-icon-grid__item__label div {
         position: relative;
         display: inline-block;

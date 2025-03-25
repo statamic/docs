@@ -53,11 +53,11 @@
         + p {
             padding-block-start: var(--spacing-s-1);
         }
-    }
-    /* Only descending from certain tags, otherwise torchlight is used */
-    p, figure {
-        pre,
-        code {
+        p:has(+ &) {
+            padding-block-end: var(--spacing-s-1);
+        }
+        /* Only descending from certain tags, otherwise torchlight is used */
+        :is(p, figure, li) & {
             /* e.g. try <code><?php bloginfo('stylesheet_url'); ?></code> and you'll see that it overflows on smaller screens */
             overflow-x: scroll;
             padding: 0.07rem 0.4rem;
@@ -70,7 +70,12 @@
             font-size: 1.1rem;
             letter-spacing: -0.2px;
         }
+        li & {
+            /* Make code in bullet points slightly smaller */
+            font-size: 1.025rem;
+        }
     }
+
     figure code {
         /* Make a little more readable when in a caption because we don't have to worry about surrounding prose */
         padding: 0.2rem 0.3rem;
@@ -158,7 +163,7 @@
     }
     /* Don't affect nav */
     .s-main li:not(:last-child) {
-        padding-block-end: var(--spacing-s-3);
+        padding-block-end: var(--spacing-s-4);
     }
     dl,
     dt,dd,

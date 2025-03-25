@@ -42,6 +42,11 @@ final class HintRenderer implements NodeRendererInterface
             : '';
 
         $content = $childRenderer->renderNodes($node->children());
+        
+        // Add mascot image for tips
+        $mascot = $type === 'tip' 
+            ? '<img src="img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />' 
+            : '';
 
         return new HtmlElement(
             'div',
@@ -49,6 +54,7 @@ final class HintRenderer implements NodeRendererInterface
             "\n".
             $title."\n".
             $content.
+            $mascot.
             "\n"
         );
     }

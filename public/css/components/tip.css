@@ -23,7 +23,8 @@
 
 */
 @layer components {
-    .c-tip {
+    .c-tip,
+    .tip {
         position: relative;
         z-index: var(--z-index-above-body);
         padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-1);
@@ -63,7 +64,8 @@
         }
     }
     /* Cross pollinated */
-    .c-tip__title {
+    .c-tip__title,
+    .hint-title {
         display: inline-block;
         padding: var(--spacing-s-5) var(--spacing-s-1);
         margin-block-end: var(--spacing-m);

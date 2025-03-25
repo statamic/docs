@@ -21,7 +21,7 @@
         position: absolute;
         left: -2.15rem;
         transition: all 0.35s var(--animation-timing-function-fast-out-slow-in) 0s;
-        padding-block-start: 0.1em;
+        padding-block-start: 0.05em;
         background: linear-gradient(to bottom, hsl(197deg 100% 80%), hsl(var(--color-pink-hue) 100% 65%));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

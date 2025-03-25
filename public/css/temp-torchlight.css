@@ -10,7 +10,7 @@
         position: relative;
     }
 
-    :not(pre, p, figcaption, table *) > code {
+    :not(pre, p, li, figcaption, table *) > code {
         background-color: #e7ecf1;
         border-radius: .25rem;
         /* color: rgba(107,38,255,var(--tw-text-opacity)); */
