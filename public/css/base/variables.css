@@ -61,6 +61,7 @@
     /* e.g. bullet point decoration */
     --color-purple-light-1: hsl(256deg 60% 85%);
     --color-purple-light-2: hsl(256deg 60% 98.5%);
+    --color-purple-light-2-highlight: hsl(256deg 60% 96.25%);
     --color-pink-hue: 287deg;
     --color-pink-border: hsl(287deg 80% 90%);
     --color-pink: hsl(287deg 80% 50%);
@@ -352,6 +353,7 @@
         --color-purple-light-1: hsl(256deg 40% 45%);
         /* e.g. torchlight file tree view */
         --color-purple-light-2: hsl(240deg 20% 10%);
+        --color-purple-light-2-highlight: hsl(256deg 40% 15%);
         --color-purple-reading: hsl(252deg 65% 67%);
         /* e.g. hover over a link */
         --color-purple-dark: hsl(252deg 65% 62%);

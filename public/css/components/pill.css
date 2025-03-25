@@ -21,7 +21,8 @@
 
 */
 @layer components {
-    .c-pill {
+    .c-pill,
+    dl {
         display: inline-flex;
         justify-content: center;
         align-items: center;
