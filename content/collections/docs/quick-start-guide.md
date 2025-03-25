@@ -423,9 +423,9 @@ Open up your layout file and drop in this nav snippet, right after the open body
 // ...
 
 <nav class="bg-black text-xs uppercase text-green-500 text-center flex items-center justify-center space-x-4">
-    {{ nav from="pages" include_home="true" }}
+    {{ nav:collection:pages include_home="true" }}
         <a href="{{ url }}" class="p-2 block hover:text-yellow-200">{{ title }}</a>
-    {{ /nav  }}
+    {{ /nav:collection:pages  }}
 </nav>
 ```
 
