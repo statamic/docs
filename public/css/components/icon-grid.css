@@ -90,12 +90,4 @@
     body .c-icon-grid__item__label div {
         font-weight: var(--font-family-ui-weight-heavy);
     }
-    .c-icon-grid {
-        /* Hide the timeline position because many headings are on the page at once, which messeg up the TOC position */
-        body:has(&) .o-scroll-spy-timeline__toc li {
-            &::before, &::after {
-                content: unset;
-            }
-        }
-    }
 }

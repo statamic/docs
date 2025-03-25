@@ -92,6 +92,13 @@
                 animation: i-spy linear both;
                 animation-timeline: var(--ti);
             }
+            /* An option to hide the timeline position. You may want to do this because many headings are on the page at once, which messes up the TOC position. To use this add {{ push:scope_classes }}u-no-scroll-spy-toc-position{{ /push:scope_classes }} to the template */
+            .u-no-scroll-spy-toc-position & {
+                &::before,
+                &::after {
+                    content: unset;
+                }
+            }
             &::after {
                 /* This needs to be the same color as the background. It effectively makes the previous item's scroll spy indicator.  */
                 background: var(--color-pink-light-3);
