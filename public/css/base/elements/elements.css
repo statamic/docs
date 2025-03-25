@@ -306,39 +306,38 @@
         /* When a heading is inside a link, escape the link colour */
         color: initial;
     }
-    h2, .h2, h3, .h3, h4, .h4, h4 a, .h4 a {
+    h2, h3, h4, h4 a {
         font-family: var(--font-family-prose);
         font-weight: var(--font-family-prose-weight-light);
     }
-    h1, .h1 {
+    h1 {
         font-size: var(--font-size-l-6); line-height: var(--font-size-l-6-line-height);
     }
-    h2, .h2 {
+    h2 {
         font-size: var(--font-size-l-4); line-height: var(--font-size-l-4-line-height);
     }
-    h3, .h3 {
+    h3 {
         font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
     }
-    h4, .h4 {
+    h4 {
         font-size: var(--font-size-l-2); line-height: var(--font-size-l-2-line-height);
     }
-    h5, .h5 {
+    h5 {
         font-size: var(--font-size-m); line-height: var(--font-size-s-line-height);
     }
-    h6, .h6 {
+    h6 {
         font-size: var(--font-size-s-1-1); line-height: var(--font-size-s-1-1-line-height);
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
-    h1, .h1 {
+    h1 {
         padding-block-end: var(--spacing-l);
     }
-    h2, .h2 {
+    h2 {
         /* E.g. h2 following article intro text */
         padding-block-end: var(--spacing-m);
     }
     * + h2,
-    * + .h2,
     article + article {
         /* E.g. h2 following article intro text */
         padding-block: var(--spacing-l-1) var(--spacing-m);
@@ -347,10 +346,17 @@
             /* Decrease */
             padding-block-start: var(--spacing-l);
         }
+        &:has(+ h3) {
+            /* e.g. >> /assets */
+            padding-block-end: 0;
+        }
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / LOW PRIORITY / VERTICAL SPACING
     =================================================== */
-    h3, .h3 {
+    h3 {
+        padding-block: var(--spacing-l-1) var(--spacing-m);
+    }
+    h4 {
         padding-block: var(--spacing-l-1) var(--spacing-m);
     }
 }
