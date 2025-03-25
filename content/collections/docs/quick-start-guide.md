@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start Guide'
+title: 'Quick start guide'
 intro: "A step-by-step guide to installing and building your first Statamic site."
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b

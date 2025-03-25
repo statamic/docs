@@ -23,7 +23,7 @@ If you installed with [Statamic CLI](/cli), you can update your installation wit
 statamic update
 ```
 
-## Control Panel
+## Control panel
 
 The Control Panel will inform you when updates are available.
 
@@ -51,6 +51,6 @@ To go back to a more traditional version range constraint, you may want to repla
 }
 ```
 
-## Major Upgrades
+## Major upgrades
 
 Upgrading between major Statamic versions sometimes involves extra manual steps. Check out [these guides](/upgrade-guide) for further details.
