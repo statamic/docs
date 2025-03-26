@@ -52,6 +52,7 @@
     }
 
     table {
+        width: 100%;
         max-width: 100%;
         background: var(--color-gradient-full-light-3);
         @container style(--color-scheme: dark) {
@@ -69,6 +70,11 @@
         td {
             font-size: var(--font-size-m);
             line-height: var(--font-size-m-line-height);
+            font-weight: var(--font-family-ui-weight-normal);
+        }
+
+        .c-entry-content & strong {
+            font-weight: var(--font-family-ui-weight-strong);
         }
     }
 
@@ -85,10 +91,6 @@
         }
     }
 
-    table {
-        width: 100%;
-    }
-
     table > thead > tr > th,
     table > tbody > tr > th,
     table > tfoot > tr > th,
@@ -100,6 +102,11 @@
         line-height: 1.43;
         vertical-align: top;
         /* border-top: 1px dashed var(--color-pink-light-1); */
+    }
+
+    table tr td:first-child {
+        /* Make the first "column" stand out */
+        font-weight: var(--font-family-ui-weight-heavy);
     }
 
     table > thead > tr > th {

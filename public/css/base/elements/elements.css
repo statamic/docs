@@ -46,6 +46,7 @@
         /* https://app.typographychecklist.com/ - 23. Use standard ligatures but avoid using discretionary ligatures in body text */
         font-feature-settings: "kern", "liga", "clig", "calt";
         font-family: var(--font-family-ui);
+        /* font-weight: var(--font-family-ui-weight-normal); */
         /* https://css-tricks.com/scrollbar-reflowing/ */
         scrollbar-gutter: stable both-edges;
     }
@@ -314,9 +315,9 @@
         /* When a heading is inside a link, escape the link colour */
         color: initial;
     }
-    h2, h3, h4, h4 a {
+    h2, h3, h4, h4 a, h5, h5 a, h6, h6 a {
         font-family: var(--font-family-prose);
-        font-weight: var(--font-family-prose-weight-light);
+        font-weight: var(--font-family-prose-weight-normal);
     }
     h1 {
         font-size: var(--font-size-l-6); line-height: var(--font-size-l-6-line-height);
@@ -331,10 +332,10 @@
         font-size: var(--font-size-l-2); line-height: var(--font-size-l-2-line-height);
     }
     h5 {
-        font-size: var(--font-size-m); line-height: var(--font-size-s-line-height);
+        font-size: var(--font-size-l-1); line-height: var(--font-size-l-1-line-height);
     }
     h6 {
-        font-size: var(--font-size-s-1-1); line-height: var(--font-size-s-1-1-line-height);
+        font-size: var(--font-size-m); line-height: var(--font-size-m-line-height);
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
@@ -370,6 +371,9 @@
             /* e.g. >> /forms */
             padding-block-start: var(--spacing-m);
         }
+    }
+    h5 {
+        padding-block: var(--spacing-l-1) var(--spacing-m);
     }
 }
 @layer components {
