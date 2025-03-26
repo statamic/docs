@@ -27,52 +27,54 @@
     .tip,
     .hint,
     .best-practice {
-        position: relative;
-        z-index: var(--z-index-above-body);
-        padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-1);
-        /* Custom */
-        @media (width < 550px) {
-            padding-inline: var(--spacing-m);
-        }
-        margin-block: var(--spacing-l-2);
-        font-family: var(--font-family-ui);
-        &:hover .c-tip__mascot {
-            animation: wiggle 0.5s linear;
-        }
-        &::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: var(--z-index-below-body);
-            background: var(--color-gradient-burnt);
-            rotate: -1deg;
-            border-radius: var(--border-radius-l-3);
-        }
-        p {
-            max-width: 96%;
-            &:last-of-type {
+        &:not(.watch) {
+            position: relative;
+            z-index: var(--z-index-above-body);
+            padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-1);
+            /* Custom */
+            @media (width < 550px) {
+                padding-inline: var(--spacing-m);
+            }
+            margin-block: var(--spacing-l-2);
+            font-family: var(--font-family-ui);
+            &:hover .c-tip__mascot {
+                animation: wiggle 0.5s linear;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: var(--z-index-below-body);
+                background: var(--color-gradient-burnt);
+                rotate: -1deg;
+                border-radius: var(--border-radius-l-3);
+            }
+            p {
+                max-width: 96%;
+                &:last-of-type {
+                    /* Custom */
+                    @media (width < 500px) {
+                        /* The only reason we reduce this to zero at lower MQs is because the background rotation is not noticeable anymore, so we need to balance things out more */
+                        margin-block-end: 0;
+                    }
+                }
+                font-size: unset;
+                font-weight: var(--font-family-ui-weight-medium);
                 /* Custom */
                 @media (width < 500px) {
-                    /* The only reason we reduce this to zero at lower MQs is because the background rotation is not noticeable anymore, so we need to balance things out more */
-                    margin-block-end: 0;
+                    font-size: 0.9rem;
                 }
             }
-            font-size: unset;
-            font-weight: var(--font-family-ui-weight-medium);
-            /* Custom */
-            @media (width < 500px) {
-                font-size: 0.9rem;
+            /* GROUP COMPONENTS / TIP / SCOPE TWEAKS
+            =================================================== */
+            &:has(+ h2) {
+                /* e.g. >> /updating */
+                margin-block-end: var(--spacing-m);
             }
-        }
-        /* GROUP COMPONENTS / TIP / SCOPE TWEAKS
-        =================================================== */
-        &:has(+ h2) {
-            /* e.g. >> /updating */
-            margin-block-end: var(--spacing-m);
-        }
-        header:has(+ &) + & {
-            /* e.g. >> /updating */
-            margin-block-start: var(--spacing-m);
+            header:has(+ &) + & {
+                /* e.g. >> /updating */
+                margin-block-start: var(--spacing-m);
+            }
         }
     }
     /* Cross pollinated */

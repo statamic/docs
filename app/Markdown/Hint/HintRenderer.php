@@ -70,10 +70,10 @@ final class HintRenderer implements NodeRendererInterface
         return new HtmlElement(
             'div',
             $attrs,
-            '<div class="embed">'.
+            '<figure class="c-video">'.
                 '<iframe src="'.$node->getTitle().'"></iframe>'.
-            '</div>'.
-            $caption
+                '<figcaption>'.$caption.'</figcaption>'.
+            '</figure>'
         );
     }
 }
