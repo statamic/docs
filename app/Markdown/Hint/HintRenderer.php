@@ -21,7 +21,7 @@ final class HintRenderer implements NodeRendererInterface
         Hint::assertInstanceOf($node);
 
         $attrs = $node->data->get('attributes');
-        isset($attrs['class']) ? $attrs['class'] .= ' hint' : $attrs['class'] = 'hint';
+        isset($attrs['class']) ? $attrs['class'] .= ' hint' : $attrs['class'] = 'c-tip';
 
         if ($type = $node->getType()) {
             $attrs['class'] = isset($attrs['class']) ? $attrs['class'].' ' : '';

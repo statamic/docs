@@ -15,7 +15,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr));
         gap: var(--spacing-l-1) var(--spacing-s-1);
-        padding-block-end: var(--spacing-l-3);
+        &:not(:last-child) {
+            padding-block-end: var(--spacing-l-3);
+        }
         text-align: center;
 
         img {
@@ -42,7 +44,10 @@
             line-height: var(--font-size-s-2-line-height);
         }
 
-        padding-block-start: var(--spacing-m);
+        header + & {
+            /* e.g. >> /deploying */
+            padding-block-start: var(--spacing-m);
+        }
         &:has(.c-icon-grid__item__label) {
             /* A recommended label like e.g. >> /installing */
             padding-block-start: var(--spacing-l);

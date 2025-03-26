@@ -143,6 +143,9 @@
             /* e.g. >> /quick-start-guide */
             + ul {
                 padding-block: var(--spacing-s-4) var(--spacing-l-1);
+                &:has(+ .c-tip) {
+                    padding-block-end: 0;
+                }
             }
         }
         /* Followed by some kind of image component */

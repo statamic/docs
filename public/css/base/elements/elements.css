@@ -53,8 +53,9 @@
         + p {
             padding-block-start: var(--spacing-s-1);
         }
-        p:has(+ &) {
-            padding-block-end: var(--spacing-s-1);
+        /* Put some space between paragraphs and code blocks, except if it's in a tip */
+        p:has(+ &):not(.c-tip *) {
+            margin-block-end: var(--spacing-l);
         }
         li & {
             /* Make code in bullet points slightly smaller */

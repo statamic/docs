@@ -18,7 +18,9 @@
 @layer components {
     .c-doc-tabs {
         --button-radius: var(--border-radius-l-1);
-        padding-block: var(--spacing-s-5) var(--spacing-l-1);
+        margin-block: var(--spacing-s-5) var(--spacing-l-1);
+        /* e.g. p followed by .c-docs-tabs e.g. >> /collections */
+        padding-block-start: var(--spacing-s-2);
         border-radius: var(--button-radius);
         font-family: var(--font-family-ui);
         font-size: var(--font-size-s-1);
