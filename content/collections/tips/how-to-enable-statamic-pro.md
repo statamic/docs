@@ -25,7 +25,7 @@ While in trial mode you are also able to try out any commercial [addons](https:/
 
 Once it’s time to launch your site on a public domain, there are a few things you need to do:
 
-- [Create a Site](https://statamic.com/sign-up) on statamic.com and enter the appropriate domain(s).
+- [Create a Site](https://statamic.com/account/sites/create) on statamic.com and enter the appropriate domain(s).
 - Purchase a license of [Statamic Pro](https://statamic.com/pricing) (and any paid addons) and attach them to your Site.
 - Add your Site's license key to your environment file in production.
 
