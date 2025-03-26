@@ -1,0 +1,65 @@
+@layer utilities {
+    /* GROUP UTILITIES / HIDERS
+    =================================================== */
+    /* Notes...
+
+        URL example
+        -----------
+        Home
+
+        What does it do?
+        ----------------
+        Hide things at different breakpoints
+
+    */
+    /* --mq-nav-open-before */
+    @media (width < 1250px) {
+        .u-hide-on-mobile {
+            display: none!important;
+        }
+    }
+    /* --mq-nav-open-after */
+    @media (width >= 1250px) {
+        .u-hide-on-desktop {
+            display: none!important;
+        }
+    }
+
+    /* GROUP UTILITIES / HIDERS / LIGHT/DARK DISPLAY MODES
+    =================================================== */
+    /* Notes...
+
+        What does it do?
+        ----------------
+        Hide things depending on light/dark display modes
+
+    */
+    /* Page preference is "light" */
+    html:has(#color-scheme option[value="light"]:checked) {
+        .u-hide-in-light-mode {
+            display: none;
+        }
+    }
+    /* Page preference is "system", and system preference is "light" */
+    @media (prefers-color-scheme: light) {
+        html:has(#color-scheme option[value="system"]:checked) {
+            .u-hide-in-light-mode {
+                display: none;
+            }
+        }
+    }
+    /* Page preference is "dark" */
+    html:has(#color-scheme option[value="dark"]:checked) {
+        .u-hide-in-dark-mode {
+            display: none;
+        }
+    }
+    /* Page preference is "system", and system preference is "dark" */
+    @media (prefers-color-scheme: dark) {
+        html:has(#color-scheme option[value="system"]:checked) {
+            .u-hide-in-dark-mode {
+                display: none;
+            }
+        }
+    }
+}

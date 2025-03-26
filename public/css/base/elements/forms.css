@@ -1,0 +1,614 @@
+/*! Notes...
+
+    Author: Jay George
+    Author URI: https://jaygeorge.co.uk
+
+    ABOUT THIS CSS
+    ===================================================
+    - Class name prefixes are influenced by Namespaces article - http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/
+    - Class relationships are based on BEM structure
+    - For more information open readme.css at https://raw.githubusercontent.com/JayGeorge/framework_css/main/css-framework/css/readme.css
+
+*/
+
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / (CROSS POLLINATED)
+=================================================== */
+/* HTML Example...
+
+    <form class="c-form">
+        <div class="c-form__notes">
+            Your email address will not be published
+        </div>
+
+        <fieldset>
+            <legend>Leave a comment</legend>
+            <div>
+
+            </div>
+        </fieldset>
+    </form>
+
+*/
+@layer elements {
+    [type="text"],
+    [type="email"],
+    [type="tel"],
+    [type="password"],
+    [type="url"],
+    [type="tel"],
+    [type="search"],
+    [type="file"],
+    textarea {
+        vertical-align: top;
+        /* box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1); */
+        /* =JFG. e.g. search box >> blog or newsletter signup email address */
+        padding: 15px;
+        margin-block-end: 2rem;
+        /* e.g. fields next to each other */
+        margin-right: 0.5rem;
+        /* =JFG. Need line height; IE9 bug. Source http://stackoverflow.com/questions/7797103/text-indent-for-a-text-box-in-ie */
+        line-height: 1.45;
+        border-radius: 2px;
+    }
+
+    [type="file"] {
+        padding-inline-start: 0;
+        border: 0!important;
+    }
+
+    select {
+        /* prevent long options making the box longer */
+        max-width: 100%;
+    }
+
+    label {
+        /* Make padding effective */
+        display: block;
+        padding-block-end: 1rem;
+        /* Fixed */
+        font-size: 16px;
+        font-weight: var(--font-family-ui-weight-heavy);
+        /* Override line-height set on body */
+        line-height: 1;
+    }
+
+    textarea {
+        width: 100%;
+        /* e.g. something like Hubspot might be a bit short */
+        min-height: 200px;
+    }
+
+    [type="checkbox"] {
+        /* Override any input styles */
+        box-shadow: none;
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+        margin-right: var(--spacing-s);
+    }
+
+    /* Checkbox and Radio labels */
+    [type="checkbox"] + label,
+    [type="radio"] + label {
+        padding-block-end: var(--spacing-s-2);
+    }
+
+    [type="submit"] {
+        /* e.g. >> /blog/readability-test/ */
+        margin-top: var(--spacing-s);
+    }
+
+    /* Don't carpet bomb since we don't want a checkbox 100% width */
+    [type="email"],
+    [type="text"],
+    [type="url"],
+    [type="password"] {
+        width: 100%;
+        /* max-width: 275px; */
+    }
+
+    /* Exceptions */
+    /* =JFG. Need high specificity e.g. "Preferred Appointment Time" xx HH, xx MM */
+    [type="text"] + label {
+        position: relative;
+        /* =JFG. Counter margin-block-end */
+        top: -0.25rem;
+    }
+}
+
+@layer components {
+    .c-form {
+        width: 100%;
+        max-width: var(--max-width-reading);
+        max-width: 50rem;
+        margin-inline: auto;
+    }
+
+    input:not[type="hidden"] + .c-form__notes {
+        /* e.g. 'Login' button followed by 'Forgotten your password?' */
+        padding-block: var(--spacing-l) 0;
+    }
+
+    .c-form__notes {
+        padding-block-end: var(--spacing-m);
+        padding-inline: var(--spacing-l);
+        & p {
+            color: var(--color-gray-reading);
+        }
+    }
+
+    .c-form legend {
+        /* START SCREEN READER TEXT
+        --------------------------- */
+        clip: rect(1px, 1px, 1px, 1px);
+
+        position: absolute!important;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        /* END SCREEN READER TEXT
+        ------------------------- */
+    }
+
+    /* We use a class of fieldset since the `fieldset` element is not always present */
+    .c-form__fieldset {
+        padding: 0 var(--spacing-l);
+        /* Override default */
+        margin: 0;
+        border: 0;
+    }
+
+    .c-form__fieldset.js__formHideLabelsUntilFocused {
+        /* Decrease to account for hidden labels at the top */
+        padding-block-start: var(--spacing-s-1);
+    }
+
+    /* Exceptions */
+    .c-form :is([type="checkbox"], [type="radio"]) {
+        margin-block-end: 0;
+    }
+
+    .maple,
+    /* The <br/> is inserted by Statamic to break lines. We don't want this to take up extra space */
+    .c-form__checkbox-group br {
+        display: none;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / (MODIFIERS)
+=================================================== */
+@layer modifiers {
+    .c-form--wide {
+        max-width: 80rem;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / STATAMIC EXAMPLE
+=================================================== */
+/* HTML Example...
+
+    <form method="POST" action="https://paradise.wip/!/forms/contact" class="c-form">
+    <input type="hidden" name="_token" value="08dv52uFjXl3JPShnriTrNGc3QUEMRrVWIYRH7Wb">
+        <div class="c-form__notes">
+            <h2>Contact us</h2>
+            <p>Some text here</p>
+        </div>
+        <input type="text" name="maple" class="maple">
+        <fieldset class="c-form__fieldset">
+            <div class="c-form-cols form-cols--2">
+                <div class="c-form-cols__col">
+                    <label>Name</label>
+                    <div><input type="text" name="name"></div>
+                </div>
+                <div class="c-form-cols__col">
+                    <label>Email Address</label>
+                    <div><input type="email" name="email_address"></div>
+                </div>
+                <div class="c-form-cols__col c-form-cols__col--full-width">
+                    <label>Message</label>
+                    <div><textarea name="form_message" rows="5"></textarea></div>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+*/
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / PERCH EXAMPLE
+=================================================== */
+/* HTML Example...
+
+    <form id="form1_comment" class="c-form" action="/blog/serving-adaptive-images-to-visitors" method="post">
+        <div class="c-form__notes">
+            <h2>Leave a comment</h2>
+            <p>Your email address will not be published</p>
+        </div>
+
+        <fieldset class="c-form__fieldset">
+            <legend>Leave a comment</legend>
+            <div class="c-form-cols">
+                <div class="c-form-cols__col">
+                    <label for="form1_commentName">Name</label>
+                    <input id="form1_commentName" name="commentName" type="text" required="required">
+                </div>
+                <div class="c-form-cols__col">
+                    <label for="form1_commentEmail">Email</label>
+                    <input id="form1_commentEmail" name="commentEmail" type="email" required="required">
+                </div>
+            </div>
+            <div>
+                <label for="form1_commentURL">Website</label>
+                <input id="form1_commentURL" name="commentURL" placeholder="http://" type="url">
+            </div>
+            <div>
+                <label for="form1_commentHTML">Comment</label>
+                <textarea id="form1_commentHTML" name="commentHTML" cols="30" rows="4" required="required"></textarea>
+            </div>
+            <div>
+                <input id="form1_postID" name="postID" value="15" type="hidden">
+                <input id="form1_submitComment" name="submitComment" value="Submit" type="submit"><input type="hidden" name="cms-form" value="Y29tbWVudDpwZXJjaF9ibG9nOi90ZW1wbGF0ZXMvYmxvZy9jb21tZW50X2Zvcm0uaHRtbDoxNDk0NDM2MDkw">
+            </div>
+        </fieldset>
+    </form>
+
+*/
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / COLUMNS
+=================================================== */
+/* HTML Example...
+
+    <div class="c-form-wrapper"> <-- (Optional). Used to adding padding on smaller MQs
+        <form>
+            <div class="c-form-cols"> <-- or just c-form-rows if you just want a vertically stacked form
+                <div class="c-form-cols__col">
+                    <input/>
+                </div>
+                <div class="c-form-cols__col">
+                    <input/>
+                </div>
+                <div class="c-form-cols__col c-form-cols__col--full-width">
+                    <textarea/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+*/
+/* Modifiers...
+
+    .c-form-cols__col--full-width <-- span the whole column e.g. Message
+
+*/
+@layer components {
+    .c-form-wrapper {
+        /* (Optional). Used to adding padding on smaller MQs */
+        padding-inline: var(--spacing-s);
+    }
+
+    /* if you just want a vertically stacked form */
+    .c-form-rows {
+        display: grid;
+        gap: var(--spacing-l);
+        padding-block-end: var(--spacing-l-2);
+
+        & input {
+            width: 100%;
+            max-width: none;
+            margin-block-end: 0;
+        }
+    }
+
+    /* When you want the submit button to span 100% */
+    /* <button class="c-btn-row" type="submit">Submit</button> */
+    .c-btn-row {
+        width: 100%;
+        text-align: center;
+    }
+
+    .c-form-cols {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-column-gap: 1em;
+    }
+
+    /* Custom */
+    @media (min-width: 500px) {
+        .c-form-cols__col input {
+            /* e.g. if we have a shorter form field like a password */
+            width: 100%;
+            max-width: none;
+        }
+
+        /* Exceptions */
+        .c-form-cols__col [type="checkbox"],
+        .c-form-cols__col [type="radio"] {
+            width: initial;
+        }
+    }
+}
+@layer modifiers {
+    .c-form-cols--1 {
+        grid-template-columns: 1fr;
+    }
+
+    .c-form-cols__col--full-width,
+    /* e.g. has a file attachment */
+    .c-form-cols__col:has(input[type=file]) {
+        grid-column: 1 / -1;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / BUTTONS
+=================================================== */
+/* Notes...
+
+    - You should consider increasing specificity depending on the environment e.g. add .site-container to
+    the selector for WordPress so rules do not affect wp-admin bar
+
+*/
+@layer elements {
+    [type="submit"] {
+        /* Always on a separate line */
+        display: block!important;
+        /* Organisms > Forms > Plugins > Mailchimp */
+        font-size: 0.85rem;
+        /* Same as HTML, overriding the default of 1 in the reset */
+        line-height: 1.5;
+        /* Remove user agent style */
+        background: transparent;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / ALERTS
+=================================================== */
+@layer components {
+    .c-alert {
+        padding: var(--spacing-s) var(--spacing-s-1);
+        border-radius: var(--border-radius-l-2);
+        margin-block-end: var(--spacing-s-1);
+        text-transform: uppercase;
+        letter-spacing: var(--letter-spacing-s);
+        font-family: var(--font-family-system);
+        font-weight: 600;
+        font-size: var(--font-size-s-x-x);
+    }
+
+    .c-alert--success {
+        /* https://tailwindui.com/components/application-ui/feedback/alerts */
+        /* AA */
+        background: #ecfdf5;
+        color: #218065;
+    }
+
+    .c-alert--fail {
+        /* https://tailwindui.com/components/application-ui/feedback/alerts */
+        /* AA */
+        background: #fef2f2;
+        color: #c03233;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / DECORATION
+=================================================== */
+@layer components {
+    /* Small is output with instructions e.g.
+
+    <label>{{ display }}</label>
+    {{ field }}
+    {{ instructions ?= '<small>{ instructions }</small>' }}
+    {{ if error }}
+        <p class="c-form-error">{{ error }}</p>
+    {{ /if }}
+
+    */
+    .c-form small {
+        display: block;
+        padding-block-start: var(--spacing-s);
+        font-size: 0.9em;
+        text-transform: uppercase;
+        font-family: var(--font-family-ui);
+        color: hsl(0deg 0% 0% / 50%);
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / DECORATION / BORDERS
+=================================================== */
+@layer elements {
+    input:not([type="submit"]) {
+        border: 1px solid hsl(0deg 0% 90%);
+        border-radius: 4px;
+    }
+
+    [type="text"],
+    [type="email"],
+    [type="password"],
+    [type="tel"],
+    [type="number"],
+    [type="date"],
+    textarea {
+        /* =JFG. Cancel default button appearance */
+        -webkit-appearance: none;
+        background: none;
+        border: 0;
+        border-radius: 0;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / INPUT TYPES
+    =================================================== */
+    [type="checkbox"] {
+        -webkit-appearance: checkbox;
+    }
+
+    [type="radio"] {
+        -webkit-appearance: radio;
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+        /* =JFG. So they always line up */
+        float: left;
+    }
+
+    /* The \9 is correct apparently. https://www.google.co.uk/search?q=input%5Btype%3Dradio%5D%2C+input%5Btype%3Dcheckbox%5D+%7B+margin%3A+4px+0+0%3B+margin-top%3A+1px+%5C9%3B+line-height%3A+normal%3B+%7D&oq=input%5Btype%3Dradio%5D%2C+input%5Btype%3Dcheckbox%5D+%7B+margin%3A+4px+0+0%3B+margin-top%3A+1px+%5C9%3B+line-height%3A+normal%3B+%7D&aqs=chrome..69i57.552j0j7&sourceid=chrome&es_sm=91&ie=UTF-8 */
+    [type="radio"],
+    [type="checkbox"] {
+        /* margin: 4px 0 0; */
+        margin-top: 1px \9;
+        line-height: normal;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / INPUT TYPES / DECORATION
+    =================================================== */
+    [type="search"] {
+        border-radius: 5px;
+    }
+}
+
+
+@layer elements {
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION
+    =================================================== */
+    textarea {
+        border: 1px solid hsl(0deg 0% 73%);
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 1
+    =================================================== */
+    [role="search"] input {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 0 5px #ddd inset;
+    }
+}
+@layer scope {
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 1
+    =================================================== */
+    .s-input-style--1 input {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 2
+    =================================================== */
+    .s-input-style--2 {
+        background-color: #f3f3f3;
+    }
+
+    .s-input-style--2 input {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 3
+    =================================================== */
+    /* =JFG. https://dribbble.com/shots/267632-Personal-Info?list=searches&tag=form_input&offset=6 */
+    .s-input-style--3 input:not([type="radio"]):not([type="file"]) {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow:
+            4px 4px 0 #f6f6f6,
+            4px -4px 0 #f6f6f6,
+            -4px -4px 0 #f6f6f6,
+            -4px 4px 0 #f6f6f6;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 4
+    =================================================== */
+    /* =JFG. https://dribbble.com/shots/267632-Personal-Info?list=searches&tag=form_input&offset=6 */
+    .s-input-style--4 input {
+        border-radius: 30px;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 5
+    =================================================== */
+    .s-input-style--5 input {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow:
+            inset 4px 4px 0 #f2f2f2,
+            inset 4px -4px 0 #f2f2f2,
+            inset -4px -4px 0 #f2f2f2,
+            inset -4px 4px 0 #f2f2f2;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 6
+    =================================================== */
+    .s-input-style--6 input:not([type="radio"]):not([type="file"]) {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 5px rgba(0,0,0,0.1);
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 7
+    =================================================== */
+    .s-input-style--7 input {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 0 1px #ddd inset;
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / DECORATION / STYLE 8
+    =================================================== */
+    .s-input-style--8 input:not([type="submit"]),
+    .s-input-style--8 textarea {
+        /* e.g. https://dribbble.com/shots/13869341/attachments/5476846?mode=media */
+        /* In case you don't have --box-shadow-s-light-b */
+        /* --box-shadow-s-light-b: 0 10px 9px -8px hsla(0, 0%, 0%, 0.09); */
+        box-shadow: var(--box-shadow-s-light-b);
+        border-radius: var(--border-radius-l-3);
+    }
+
+    .s-input-style--8 textarea {
+        /* Slightly darker to make up for the fact it's bigger */
+        border: 1px solid hsl(0deg 0% 88%);
+    }
+
+    .s-input-style--8 [type="submit"] {
+        width: 100%;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / WORDPRESS
+=================================================== */
+@layer components {
+    /* e.g. do not affect hubspot comment, which is the last field. We do not want to create a big gap between the Hubspot comment and the submit button */
+    .comment-form-comment textarea {
+        margin-block-end: 2.4rem;
+    }
+}
+
+
+
+
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / FORMS / TEXT FIELDS / LABELS HIDDEN UNTIL FOCUSED
+=================================================== */
+/* Notes...
+
+    - Uses :has(). For a version that uses JS see forms-archive in my css framework.
+    - Used to provide a more compact experience
+    - Still accessible since labels appear when you start typing
+
+*/
+
+/* HTML Example...
+
+    {{ form:contact class='c-form u-hide-labels-until-focused' }}
+
+*/
+
+/* Alternative classes...
+
+    - Use .u-hide-labels-until-focused__always-show to explicitly always show a label. You probably want to do this on radios and checkboxes since they have multiple labels
+
+*/
+@layer utilities {
+    @supports selector(:has(*)) {
+        .u-hide-labels-until-focused label {
+            /* Fast out, Slow in */
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            opacity: 0;
+        }
+
+        .u-hide-labels-until-focused input {
+            /* Decrease */
+            margin-block-end: var(--spacing-s);
+        }
+
+        .u-hide-labels-until-focused label:has(+ input:focus, + textarea:focus) {
+            opacity: 1;
+        }
+
+        .u-hide-labels-until-focused__always-show label {
+            opacity: 1;
+            /* Make up for the labels which other fields don't have */
+            padding-block-start: var(--spacing-l-1);
+            padding-block-end: var(--spacing-m);
+        }
+    }
+}

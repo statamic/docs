@@ -1,0 +1,66 @@
+/* GROUP COMPONENTS / FULL WITH IMAGE
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /assets
+
+    What does it do?
+    ----------------
+    Full width style image as opposed to a bordered image. You may use this as an alternative style.
+
+*/
+/* HTML Example...
+
+    <picture class="c-full-width-image">
+        <source> etc.
+        <img />
+    </picture>
+
+    or with a figure
+
+    <figure class="c-full-width-image">
+        <picture>
+            <source> etc.
+            <img />
+        </picture>
+        <figcaption>Browsing some assets.</figcaption>
+    </figure>
+
+*/
+@layer components {
+    .c-full-width-image {
+        &:not(:last-child) {
+            margin-block-end: calc(var(--spacing-l-1) + var(--spacing-s-4));
+        }
+        img {
+            @container style(--color-scheme: dark) {
+                /* Easier on the eyes */
+                opacity: 0.95;
+            }
+            margin-block-end: 0;
+            border-radius: var(--border-radius-s);
+            border-bottom-left-radius: 0;
+        }
+        figcaption {
+            display: inline-block;
+            padding: var(--spacing-s-3) var(--spacing-s-1);
+            background: var(--color-yellow-light-3);
+            /* Page preference is "dark" */
+            html:has(#color-scheme option[value="dark"]:checked) & {
+                background: var(--color-gradient-full-light-2);
+            }
+            /* Page preference is "system", and system preference is "dark" */
+            @media (prefers-color-scheme: dark) {
+                html:has(#color-scheme option[value="system"]:checked) & {
+                    background: var(--color-gradient-full-light-2);
+                }
+            }
+            font-weight: var(--font-family-ui-weight-normal);
+            border-radius: var(--border-radius-s);
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}

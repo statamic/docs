@@ -1,0 +1,158 @@
+/* GROUP COMPONENTS / RELATED
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Show related entries to the current article
+
+*/
+/* HTML Example...
+
+    <section class="c-related">
+        <div class="u-label">Learn More!</div>
+        <p>There is more to learn in these related articles:</p>
+        <div class="c-related__item">
+            <ul>
+                <li><a href="/">Reference</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Tags</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Nav</a></li>
+            </ul>
+        </div>
+        <div class="c-related__item">
+            <ul>
+                <li><a href="/">Docs</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Diving deeper</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Structures</a></li>
+            </ul>
+        </div>
+        <div class="c-related__item">
+            <ul>
+                <li><a href="/">Docs</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Resources</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Tips & tricks</a></li>
+                <li><?php include 'img/breadcrumb-chevron.svg'; ?><a href="/1.php">Localizing navigation</a></li>
+            </ul>
+        </div>
+    </section>
+
+*/
+@layer components {
+    .c-related {
+        --background-image-height: 4rem;
+        padding: var(--background-image-height) var(--spacing-l);
+        margin-block-start: var(--spacing-l-2);
+        background: var(--color-gradient-blue-light-1);
+        /* Custom */
+        @media (width >= 500px) {
+            background: var(--color-gradient-blue-light-2);
+        }
+
+        position: relative;
+        &::before,
+        &::after {
+            content: '';
+            left: 0;
+            inline-size: 100%;
+            block-size: var(--background-image-height);
+            position: absolute;
+            --background-position: 1.5rem;
+            --background-image: url('/img/paper-tear.png');
+            @container style(--color-scheme: dark) {
+                --background-image: url('/img/paper-tear-dark-mode.png');
+            }
+            background: var(--background-image) no-repeat 0% var(--background-position), transparent;
+            opacity: 0.8;
+        }
+        &::before {
+            top: 0;
+            transform: scaleY(-1);
+        }
+        &::after {
+            bottom: 0;
+        }
+        & ul {
+            padding: var(--spacing-m);
+            background: light-dark(white, var(--color-dark-mode-gray-background));
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--spacing-s-1);
+            height: 100%;
+            font-family: var(--font-family-ui);
+            box-shadow: var(--box-shadow-not-t-light);
+            border-radius: var(--border-radius-m);
+        }
+        & li {
+            display: flex;
+            align-items: center;
+            padding-block-end: 0;
+            & svg {
+                margin-inline-end: var(--spacing-s-1);
+                inline-size: 0.4rem;
+                color: var(--color-gray-aa);
+            }
+            &:last-child a {
+                font-weight: var(--font-family-ui-weight-strong);
+                margin-inline-end: 0;
+                text-decoration: underline;
+                text-decoration-color: var(--color-black);
+                color: light-dark(var(--color-black), white);
+            }
+        }
+        a {
+            padding: 0;
+            text-decoration: none;
+            color: var(--color-gray-aa);
+            text-transform: uppercase;
+            font-size: 0.8em;
+            font-weight: var(--font-family-ui-weight-normal);
+            text-box: trim-start cap;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+    }
+    .c-related__item {
+        /* First instance of this class */
+        :nth-child(1 of &) {
+            padding-block-start: var(--spacing-s-2);
+        }
+        &:not(:last-child) {
+            margin-block-end: var(--spacing-m);
+        }
+        /* Custom */
+        @media (width < 800px) {
+            li {
+                &:not(:last-child) {
+                    /* Hide breadcrumb trail on smaller vieWordPressorts */
+                    display: none;
+                }
+                svg {
+                    margin-inline-end: var(--spacing-s-3);
+                }
+            }
+        }
+    }
+}
+@layer utilities {
+    .c-related .u-label {
+        position: absolute;
+        top: -0.5rem;
+        left: 0;
+        padding: var(--spacing-s-4) var(--spacing-m);
+        font-size: var(--font-size-m);
+        text-transform: uppercase;
+    }
+}
+@layer scope {
+    @container style(--color-scheme: dark) {
+        /* Change the hover colors for the dark theme */
+        .c-related a {
+            text-decoration-color: white;
+            &:hover {
+                text-decoration-color: white;
+                color: white;
+            }
+        }
+    }
+}

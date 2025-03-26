@@ -1,5 +1,5 @@
 title: Widgets
-template: widgets/show
+template: page
 layout: layout
 mount: 565f0285-43b1-41d2-935c-e52ad00c012c
 revisions: false

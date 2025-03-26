@@ -1,0 +1,183 @@
+/* GROUP ELEMENTS / FRAMEWORK / (NON CORE) / TABLES
+=================================================== */
+/* Notes...
+
+    - .c-table should be the wrapper
+    - table should be the actual table
+
+*/
+
+/* HTML Example...
+
+    <div class="c-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Example URL</th>
+                    <th>Route Pattern Rule</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>/blog/2021-12-24/merry-christmas</code></td>
+                    <td><code>/blog/{year}-{month}-{day}/{slug}</code></td>
+                </tr>
+                <tr>
+                    <td><code>/blog/2020/still-bored</code></td>
+                    <td><code>/blog/{year}/{slug}</code></td>
+                </tr>
+                <tr>
+                    <td><code>/blog/happy-new-year</code></td>
+                    <td><code>/blog/{slug}</code></td>
+                </tr>
+                <tr>
+                    <td><code>/evergreen-syle</code></td>
+                    <td><code>/{slug}</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+*/
+/* GROUP ELEMENTS / TABLES
+=================================================== */
+@layer elements {
+    .c-table {
+        p:has(+ &) {
+            margin-block-end: 0;
+        }
+        &:not(:last-child) {
+            padding-block-end: var(--spacing-s-4);
+        }
+    }
+
+    table {
+        max-width: 100%;
+        background: var(--color-gradient-full-light-3);
+        @container style(--color-scheme: dark) {
+            background: var(--color-gradient-full-light-4);
+        }
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-block: var(--spacing-l-1);
+        font-family: var(--font-family-ui);
+
+        td {
+            font-size: var(--font-size-m);
+            line-height: var(--font-size-m-line-height);
+        }
+    }
+
+    th {
+        text-align: left;
+    }
+
+    tbody tr {
+        &:first-child td {
+            padding-block-start: var(--spacing-m);
+        }
+        &:last-child td {
+            padding-block-end: var(--spacing-l);
+        }
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table > thead > tr > th,
+    table > tbody > tr > th,
+    table > tfoot > tr > th,
+    table > thead > tr > td,
+    table > tbody > tr > td,
+    table > tfoot > tr > td {
+        padding: 0.7rem 2rem;
+        padding-inline-end: 20px;
+        line-height: 1.43;
+        vertical-align: top;
+        /* border-top: 1px dashed var(--color-pink-light-1); */
+    }
+
+    table > thead > tr > th {
+        padding-block: 1.5rem;
+        vertical-align: bottom;
+        border-block-end: 1px dotted var(--color-pink-light-1);
+        text-transform: uppercase;
+    }
+
+    table > caption + thead > tr:first-child > th,
+    table > colgroup + thead > tr:first-child > th,
+    table > thead:first-child > tr:first-child > th,
+    table > caption + thead > tr:first-child > td,
+    table > colgroup + thead > tr:first-child > td,
+    table > thead:first-child > tr:first-child > td {
+        border-top: 0;
+    }
+
+    table > tbody + tbody {
+        border-top: 2px solid var(--color-pink-light-1);
+    }
+
+    table table {
+        background: white;
+    }
+
+    /* table > thead > tr > th,
+    table > tbody > tr > th,
+    table > tfoot > tr > th,
+    table > thead > tr > td,
+    table > tbody > tr > td,
+    table > tfoot > tr > td {
+        border: 1px solid var(--color-pink-light-1);
+    } */
+
+    table > thead > tr > th,
+    table > thead > tr > td {
+        border-bottom-width: 2px;
+    }
+    /* GROUP ELEMENTS / TABLES / (JAY ADDED)
+    =================================================== */
+    /* Custom */
+    @media (width < 768px) {
+        .c-table {
+            overflow-y: hidden;
+            overflow-x: scroll;
+            /* Make sure we can see the shadow */
+            padding-inline-start: 0.2rem;
+            /* Balance out between the container and table so that the scrollbar appears halfway between the component and the following element */
+            margin-block-end: calc(var(--spacing-l-1) / 2);
+            table {
+                margin-block-end: calc(var(--spacing-l-1) / 2);
+            }
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            box-shadow: var(--box-shadow-s-inset-right);
+        }
+
+        table > thead > tr > th,
+        table > tbody > tr > th,
+        table > tfoot > tr > th,
+        table > thead > tr > td,
+        table > tbody > tr > td,
+        table > tfoot > tr > td {
+            &,
+            /* Statamic adds p tags */
+            & p {
+                white-space: nowrap;
+            }
+        }
+    }
+    /* GROUP ELEMENTS / TABLES / (MODIFICATIONS) / BORDERED
+    =================================================== */
+    table {
+        border-radius: var(--border-radius-l-2);
+        box-shadow: var(--box-shadow-pink-light);
+    }
+    /* GROUP ELEMENTS / TABLES / (JAY ADDED) / (CROSS POLLINATED)
+    =================================================== */
+    /* =JFG. Fix it so tabular info is easier to digest */
+    table {
+        font-size: 0.85rem;
+    }
+}

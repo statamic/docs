@@ -1,8 +1,8 @@
- <div x-data="{ tab: '{{ active }}' }" x-cloak class="mt-2">
-    <div class="relative">
-        <div class="flex space-x bg-[#292D3E] rounded-t-lg inline-flex" data-indexer="ignore">
+ <div x-data="{ tab: '{{ active }}' }" x-cloak>
+    <div>
+        <div class="c-doc-tabs__tabs" data-indexer="ignore">
           {{ foreach:tabs }}
-              <button type="button" class="text-sm bg-black  text-gray-dark hover:text-gray-light pt-1.5 pb-1 px-3 rounded-t-md" x-on:click="tab = '{{ key }}'" :class="{ 'bg-[#292D3E] text-gray-light': tab === '{{ key }}' }">{{ value }}</button>
+              <button type="button" x-on:click="tab = '{{ key }}'" :class="{ 'c-doc-tabs__active': tab === '{{ key }}' }">{{ value }}</button>
           {{ /foreach:tabs }}
         </div>
         {{ foreach:samples }}

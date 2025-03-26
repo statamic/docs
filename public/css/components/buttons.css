@@ -1,0 +1,123 @@
+/* GROUP COMPONENTS / BUTTONS
+=================================================== */
+/* Notes...
+
+    - You can use a .o-btn-container object to control alignment. For example on the contact form
+
+*/
+/* HTML Example...
+
+    <div class="o-btn-container"> <-- optional object, which you could use to control alignment, e.g. .c-contact-form .o-btn-container { display: flex; justify-content: end; }
+        <div class="c-btn c-btn--1">
+            <a href="">Some button</a>
+        </div>
+    </div>
+
+*/
+@layer components {
+    .c-btn,
+    form button,
+    [type="submit"] {
+        display: inline-flex;
+        gap: 1rem;
+        /* I've found it more stable to use pxls rather than ems. */
+        --button-spacing: var(--button-spacing-vertical) var(--button-spacing-inline);
+        padding: var(--button-spacing);
+        font-size: var(--font-size-s-1);
+        font-weight: var(--font-family-ui-weight-heavy);
+        text-decoration-line: none;
+        /* Hover states with a slight delay, but focus without any because keyboard users want quick feedback. Do not use 'all' because it resizes slowly when resizing the browser window */
+        transition: background-color 0.2s ease 0s;
+    }
+    .c-btn {
+        position: relative;
+        /* e.g. icons in buttons */
+        display: inline-flex;
+        align-items: center;
+        margin-block-end: 1.25rem;
+        text-align: left;
+
+        :is(p) + & {
+            margin-block-start: var(--spacing-s-2);
+        }
+    }
+    button {
+        /* Improve usability */
+        cursor: pointer;
+    }
+}
+@layer elements {
+    /*
+        - Don't affect the header
+        - Not .c-btn + .c-btn in case a button is next to a different tag such as <p/>
+    */
+    main :is(.c-btn, button):not(:last-child) {
+        margin-right: 1rem;
+    }
+    button,
+    [type="search"],
+    [type="submit"] {
+        /* Cancel default button appearance */
+        -webkit-appearance: none!important;
+        border: none;
+    }
+    button {
+        /* Improve usability */
+        cursor: pointer;
+        /* Cancel default button appearance */
+        background: none;
+        /* To combat -apple-system-blueinput on iOS 15 */
+        color: var(--color-primary-text);
+    }
+}
+@layer components {
+    button svg {
+        font-size: 1.3em;
+    }
+}
+/* GROUP COMPONENTS / BUTTONS / TYPES
+=================================================== */
+@layer modifiers {
+    /* 1 */
+    .c-btn--1,
+    form button,
+    [type="submit"] {
+        background: linear-gradient(to top left, var(--color-black) 0%,var(--color-black-light) 100%);
+        color: var(--color-green);
+        border-radius: var(--border-radius-s);
+        font-weight: var(--font-family-ui-weight-medium);
+        @container style(--color-scheme: dark) {
+            background: var(--color-dark-mode-gray-dark);
+        }
+    }
+    /* GROUP COMPONENTS / FRAMEWORK / BUTTONS / ACCESSIBILITY / HOVER
+    =================================================== */
+    /* These should be slightly different to focus states. Subtle effects such as changing the background color from blue to darkblue are best for hover. We want to gently suggest rather than pop out (opposite of focus states).
+
+        - Consider darkening the background color slightly e.g. blue to darkblue
+        - Here is a good example...
+        https://material-components.github.io/material-components-web-catalog/#/component/button
+
+    */
+
+    /* 2 */
+    .c-btn--2 {
+        background: var(--color-gray-background);
+        border-radius: var(--border-radius-l-2);
+    }
+
+    /* Inline */
+    .c-btn--inline {
+        padding: 0;
+        text-decoration-line: underline;
+        text-decoration-thickness: 3px;
+        font-weight: var(--font-family-ui-weight-heavy);
+    }
+
+    /* Small */
+    .c-btn--s {
+        --button-spacing-vertical: 0.7rem;
+        --button-spacing-inline: 1rem;
+        font-size: 1rem;
+    }
+}

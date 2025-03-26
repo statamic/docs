@@ -1,0 +1,164 @@
+/* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / DOTS
+=================================================== */
+@layer components {
+    .c-nav-dots-with-popover-api {
+        display: grid;
+        --dropdown-nav-item-padding: var(--spacing-s-4);
+        --dropdown-nav-subnav-background-color: #151515;
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            --color-dropdown-nav-background: var(--color-black-static);
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1250px) {
+            /* Darker */
+            --dropdown-nav-subnav-background-color: #111;
+        }
+
+        nav,
+        nav [popover] {
+            /* Reset */
+            margin: 0;
+            padding: 0;
+            border: 0;
+
+            display: none;
+            opacity: 0;
+            transition: opacity 350ms, margin 350ms, display 350ms allow-discrete, overlay 350ms allow-discrete;
+
+            &:popover-open {
+                display: block;
+                opacity: 1;
+                /* --mq-nav-open-before */
+                @media (width < 1250px) {
+                    margin-block-start: var(--spacing-s-5);
+                }
+                @starting-style {
+                    opacity: 0;
+                    margin-block-start: 0;
+                }
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
+        =================================================== */
+        nav {
+            /* Override the default background color of the popover */
+            background: inherit;
+            & ul {
+                overscroll-behavior-y: contain;
+                /* Need to cut this short a little to force scrolling when there are a lot of items. */
+                max-height: 70vh;
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-s-2);
+                list-style: none;
+                font-size: var(--font-size-s-2);
+                border-radius: var(--border-radius-l-2);
+
+                & li {
+                    & a, button {
+                        /* Increase the pointer targets a little to improve usability */
+                        padding-block: var(--dropdown-nav-item-padding);
+                        /* Increase */
+                        text-underline-offset: 0.25rem;
+                    }
+                }
+            }
+            & a:not(.o-current-menu-item) {
+                /* https://app.typographychecklist.com/ - 43. Links that are clearly part of navigation usually don't need a special link treatment. */
+                text-decoration: none;
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MQS
+        =================================================== */
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            .c-nav-dots-with-popover-api__desktop {
+                /* Prevent a lag in seeing the desktop nav collapse if you pull the window in  */
+                transition: unset;
+            }
+            #popover-nav-dots {
+                position-area: bottom span-left;
+            }
+            nav ul {
+                overflow: scroll;
+                padding: var(--spacing-m);
+                background: var(--color-dropdown-nav-background);
+                color: white;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                a, button {
+                    text-decoration-color: hsl(0deg 0% 100% / 50%);
+                }
+            }
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1250px) {
+            .c-nav-dots-with-popover-api__mobile {
+                /* Prevent a lag in seeing the mobile nav collapse if you pull the window out  */
+                transition: unset;
+            }
+            --color-dropdown-nav-background: unset;
+            nav {
+                /* Override `popover`'s default position:fixed; */
+                position: relative;
+                display: block;
+                opacity: 1;
+                > ul {
+                    flex-direction: row;
+                    justify-content: end;
+                    font-size: unset;
+                    li:last-child a {
+                        padding-inline-end: 0;
+                    }
+                    :is(a, button):not(ul ul *) {
+                        padding: var(--spacing-s-1);
+                        /* Pull the outline back in to counter padding */
+                        outline-offset: -10px;
+
+                        &.o-current-menu-item {
+                            text-decoration: none;
+                            position: relative;
+                            font-weight: var(--font-family-ui-weight-medium);
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                border-block-end: 2px solid var(--color-pink-light-1);
+                                inset: 0;
+                                top: 80%;
+                                height: 5px;
+                                inline-size: 75%;
+                                left: 15%;
+                                box-shadow: var(--box-shadow-not-t-light);
+                            }
+                        }
+                    }
+                }
+                & a, button {
+                    /* Increase the pointer targets a little to improve usability */
+                    padding: var(--dropdown-nav-item-padding);
+                }
+            }
+            .c-nav-dots-with-popover-api__mobile-button {
+                display: none;
+            }
+        }
+    }
+}
+/* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CSS based fallback for browsers that don't support anchor positioning
+=================================================== */
+@supports not (position-anchor: --my-anchor) {
+    @layer scope {
+        .c-nav-dots-with-popover-api {
+            /* --mq-nav-open-before */
+            @media (width < 1250px) {
+                & nav {
+                    /* Pull the nav to the right */
+                    margin-inline-start: auto;
+                    margin-block-start: var(--spacing-l-3);
+                    margin-inline-end: var(--spacing-s-3);
+                }
+            }
+        }
+    }
+}

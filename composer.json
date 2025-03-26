@@ -12,9 +12,10 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.0",
         "league/commonmark": "^2.0",
-        "statamic-rad-pack/meilisearch": "^3.2",
-        "statamic/cms": "^4.0",
-        "statamic/ssg": "^2.0",
+        "statamic-rad-pack/meilisearch": "^3.4",
+        "livewire/livewire": "^3.5",
+        "statamic/cms": "^5.0",
+        "statamic/ssg": "^3.0",
         "torchlight/torchlight-commonmark": "^0.5.5",
         "stillat/documentation-search": "^1.2.1"
     },

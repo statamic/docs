@@ -10,7 +10,7 @@ pre {
   Inline code
 */
 :not(pre)>code {
-    @apply text-purple rounded;
+    @apply text-purple-600 rounded;
     padding: 1px 2px;
     font-size: 15px;
     background-color: #E7ECF1;

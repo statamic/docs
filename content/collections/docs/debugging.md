@@ -16,9 +16,11 @@ To enable Ignition, set `APP_DEBUG=true` in your [.env](/configuration#environme
     <figcaption>This is Ignition. Isn't it pretty for an error screen?</figcaption>
 </figure>
 
-Statamic will try to detect why you're receiving a specific exception and provide a **solution** for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showEasterEgg = true">Clippy</a>, but 80% less annoying.
+<div x-data="showEasterEgg">
+    <p>Statamic will try to detect why you're receiving a specific exception and provide a **solution** for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showEasterEgg = true">Clippy</a>, but 80% less annoying.</p>
 
-<img src="/img/clippy-docs.gif" class="fixed z-10 cursor-pointer bottom-0 right-0 m-8" x-show.transition="showEasterEgg" x-on:click="showEasterEgg = false">
+    <img src="/img/clippy-docs.gif" class="fixed z-10 cursor-pointer bottom-0 right-0 m-8" x-show.transition="showEasterEgg" x-on:click="showEasterEgg = false">
+</div>
 
 
 ## Fake SQL Queries

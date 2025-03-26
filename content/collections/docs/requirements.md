@@ -5,7 +5,7 @@ template: page
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
 ---
-## Server Requirements
+## Server requirements
 
 To run Statamic you'll need a server meeting the following requirements. These are standard defaults (at minimum) for most modern hosting platforms.
 
@@ -22,7 +22,7 @@ To run Statamic you'll need a server meeting the following requirements. These a
 - GD Library or ImageMagick
 - Composer
 
-## Development Environments
+## Development environments
 
 Depending on your operating system, we recommend the following development environments:
 
@@ -38,7 +38,7 @@ To develop locally with Statamic on Linux, you'll need to install `php`, `compos
 
 If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/installing/ubuntu) helpful.
 
-## Recommended Hosts
+## Recommended hosts
 
 We recommend using [Digital Ocean](https://m.do.co/c/6469827e2269) to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 

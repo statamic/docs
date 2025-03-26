@@ -23,7 +23,7 @@ Assets live in directories on your local server, in an [Amazon S3 bucket](https:
 
 Statamic scans the files in each container and caches [meta information](#metadata) (like `width` and `height` for images) on them. This cache is used to speed up interactions and response times when working with them on the [frontend](/frontend) of your site.
 
-## Asset Browser
+## Asset browser
 
 You can explore these files in the Control Panel's asset browser. You can edit, sort, search, move, rename, replace, reupload, preview, and — if working with images — even set focal crop points to make dynamically resized images look their best.
 
@@ -32,7 +32,7 @@ You can explore these files in the Control Panel's asset browser. You can edit, 
     <figcaption>Browsing some assets.</figcaption>
 </figure>
 
-## Asset Actions
+## Asset actions
 
 There are a number of actions that can be taken on assets while in the asset browser. Some can be run in bulk (on multiple assets at once), while others are only available on individual assets.
 
@@ -111,7 +111,7 @@ The delete action removes an asset from your site and server, permanently. Exerc
 Bulk
 : Yes
 
-## Asset Fields
+## Asset fields
 
 Asset fields are configured like a [blueprint](/blueprints) and attached to the [container](#containers). Whenever you edit an asset in the Control Panel, you'll see the fields from the configured blueprint.
 
@@ -171,7 +171,7 @@ Each container implements a "disk", also known as a [Laravel Filesystem](https:/
 
 Filesystems are defined in `config/filesystems.php`.  They can point to the local filesystem, S3, or any [Flysystem adapter](https://flysystem.thephpleague.com/v2/docs/).
 
-### Private Containers
+### Private containers
 
 Sometimes it’s handy to store assets that shouldn’t be publicly visible through a direct URL or browser.
 
@@ -197,7 +197,7 @@ Private containers should be located above webroot. If you leave the disk within
 Make sure to also set the [visibility](#container-visibility) to `private`.
 
 
-### Container Visibility
+### Container visibility
 
 Your filesystem's disk can have a `visibility`, which is an abstraction of file permissions. You can set it to `public` or `private`,
 which essentially controls whether they're accessible or not.
@@ -218,7 +218,7 @@ If you want to edit the blueprint file directly, you can do so in `resources/blu
 
 ## Ordering
 
-### Default Sort Order in Listings
+### Default sort order in listings
 
 You can choose which field and direction to sort the list of assets in the Control Panel by setting the `sort_by` and `sort_dir` variables in your container.yaml. By default the file name will be used.
 
@@ -229,11 +229,11 @@ Statamic uses Flysystem and includes the core `local` driver. S3, SFTP, and othe
 Flysystem is not limited to these three, however. There are adapters for many other storage systems. You can [create a custom driver](https://laravel.com/docs/filesystem#custom-filesystems) if you want to use one of these additional adapters in your Laravel application.
 
 
-## Frontend Templating {#templating}
+## Frontend templating {#templating}
 
 There are two main methods for working with Asset data on the frontend. The Assets Fieldtype, and the Assets Tag.
 
-### Assets Fieldtype
+### Assets fieldtype
 
 The [Assets Fieldtype](/fieldtypes/assets) can be used in your content Blueprints to attach assets to your entries, taxonomy terms, globals, or user accounts. It can be used to create image galleries, video players, zip downloads, or anything else you can think of.
 
@@ -265,7 +265,7 @@ If you had a `slideshow` field with a whole bunch of images selected, you can re
 
 Learn more about the [Assets Fieldtype](/fieldtypes/assets).
 
-### Assets Tag
+### Assets tag
 
 If you ever find yourself needing to loop over all of the assets in a container (or folder inside a container) instead of selecting them manually with the Assets Fieldtype, this is the way.
 
@@ -293,7 +293,7 @@ If you ever find yourself needing to loop over all of the assets in a container 
 
 Learn more about the [Assets Tag](/tags/assets) and what you can do with it.
 
-### Manipulating Images
+### Manipulating images
 
 Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamically resize, crop, and manipulate images. It's really easy to use and has [its own tag](/tags/glide).
 
@@ -326,11 +326,11 @@ Statamic uses the [Glide library](https://glide.thephpleague.com/) to dynamicall
 ```
 ::
 
-## Search Indexes
+## Search indexes
 
 You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
 
-## Allowed File Extensions
+## Allowed file extensions
 
 For security reasons, Statamic restricts the file extensions that can be uploaded via the Control Panel and the Assets field on [Forms](/forms).
 
@@ -352,7 +352,7 @@ Common extensions like `.jpg`, `.csv` and `.txt` are permitted by default. To up
 ],
 ```
 
-## SVG Sanitization
+## SVG sanitization
 
 For security reasons, Statamic automatically sanitizes uploaded SVG files. 
 

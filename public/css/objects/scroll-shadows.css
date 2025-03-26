@@ -1,0 +1,59 @@
+/* GROUP OBJECTS / SCROLL SHADOWS using background-attachment: local;
+=================================================== */
+/* Notes...
+
+    What does it do
+    ---------------
+    - Adds a shadow when the container has overflow, using background-attachment: local;
+    - https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/
+
+*/
+/* HTML Example...
+
+    <ul class="o-shadow-container-vertical">
+        <li>Test content</li>
+        <li>Test content</li>
+        <li>Test content</li>
+        <li>etc.</li>
+    </ul>
+
+*/
+
+@layer objects {
+    .o-shadow-container-vertical {
+        overflow: auto;
+
+        --shadow-color: light-dark(hsl(0deg 0% 0% / 5%), hsl(var(--color-body-background-hue, 0) 50% 60% / 10%));
+
+        background:
+        /* Shadow Cover TOP */
+        linear-gradient(
+            var(--color-body-background) 30%,
+            transparent
+        ) center top,
+
+        /* Shadow Cover BOTTOM */
+        linear-gradient(
+            transparent,
+            var(--color-body-background) 70%
+        ) center bottom,
+
+        /* Shadow TOP */
+        radial-gradient(
+            farthest-side at 50% 0,
+            var(--shadow-color),
+            transparent
+        ) center top,
+
+        /* Shadow BOTTOM */
+        radial-gradient(
+            farthest-side at 50% 100%,
+            var(--shadow-color),
+            transparent
+        ) center bottom;
+
+        background-repeat: no-repeat;
+        background-size: 100% 40px, 100% 40px, 100% 15px, 100% 15px;
+        background-attachment: local, local, scroll, scroll;
+    }
+}

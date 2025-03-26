@@ -1,0 +1,63 @@
+<ul 
+    wire:scroll 
+    class="o-shadow-container-vertical"
+    x-data="{ 
+        navScrollPosition: $persist(0)
+    }"
+    x-init="$el.scrollTop = navScrollPosition"
+    @scroll="navScrollPosition = $el.scrollTop"
+>
+    {{ nav :handle="section" }}
+        <li>
+            <span class="c-nav-sidebar-with-popover-api-category-heading{{ if is_current }} o-current-menu-item{{ /if }}">
+                {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
+                <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
+                    {{ title }}
+                    {{ navigation_image }}
+                        {{ partial:image_dimensions/navigation_image }}
+                    {{ /navigation_image }}
+                </a>
+            </span>
+            <ul>
+                {{ if children }}
+                    {{ children scope="child" }}
+                        <li>
+                            <a wire:navigate
+                                href="{{ url }}"
+                                {{ if is_current }}class="o-current-menu-item"{{ /if }}
+                            >
+                                {{ nav_title ?? title }}
+                            </a>
+                        </li>
+                    {{ /children }}
+                {{ /if }}
+
+                {{ if section == "reference" }}
+                    <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                        <a wire:navigate
+                            href="{{ url }}"
+                            {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
+                        >
+                            All {{ title }}
+                        </a>
+                    </li>
+
+                    {{ collection :from="slug" }}
+                        <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                            <a wire:navigate
+                                href="{{ url }}"
+                                {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
+                            >
+                                {{ nav_title ?? title }}
+                            </a>
+                        </li>
+                    {{ /collection }}
+                {{ /if }}
+            </ul>
+        </li>
+        {{# =JFG. Old/2024 site section #}}
+        {{# {{ if segment_1 }}
+        {{ partial:sidebar-promo}}
+        {{ /if }} #}}
+    {{ /nav }}
+</ul>
