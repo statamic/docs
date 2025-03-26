@@ -24,6 +24,9 @@
             /* Rem instead of em because of p tags inside li tags e.g. e.g. >> /fields */
             font-size: var(--font-size-m-rem);
         }
+        strong {
+            font-weight: var(--font-family-prose-weight-strong);
+        }
     }
 }
 @layer components {
