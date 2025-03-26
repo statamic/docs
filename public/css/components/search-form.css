@@ -81,8 +81,8 @@
         border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
         border-radius: 5px;
         background: var(--docsearch-key-gradient);
-        inline-size: 1.5rem;
-        aspect-ratio: 1;
+        height: 1.5rem;
+        padding-inline: 0.3rem;
         font-family: var(--font-family-ui);
         font-size: var(--font-size-s-1);
         /* Page preference is "dark" */
