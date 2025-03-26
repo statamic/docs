@@ -17,13 +17,13 @@ You can workaround this by changing the `user_id` column to a string/varchar:
 
 ```php
 Schema::create('sessions', function (Blueprint $table) {
-	$table->string('id')->primary();
-	$table->foreignId('user_id')->nullable()->index(); // [tl! remove]
-  	$table->string('user_id')->nullable()->index(); // [tl! add]
-	$table->string('ip_address', 45)->nullable();
-	$table->text('user_agent')->nullable();
-	$table->longText('payload');
-	$table->integer('last_activity')->index();
+    $table->string('id')->primary();
+    $table->foreignId('user_id')->nullable()->index(); // [tl! remove]
+    $table->string('user_id')->nullable()->index(); // [tl! add]
+    $table->string('ip_address', 45)->nullable();
+    $table->text('user_agent')->nullable();
+    $table->longText('payload');
+    $table->integer('last_activity')->index();
 });
 ```
 
