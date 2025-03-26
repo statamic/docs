@@ -25,7 +25,7 @@ final class HintRenderer implements NodeRendererInterface
 
         if ($type = $node->getType()) {
             $attrs['class'] = isset($attrs['class']) ? $attrs['class'].' ' : '';
-            $attrs['class'] .= $type;
+            $attrs['class'] .= $type.' c-tip--'.$type;
         }
 
         if ($type === 'watch') {

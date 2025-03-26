@@ -99,8 +99,7 @@
     }
 }
 @layer scope {
-    .c-tip--warning,
-    .hint.warning {
+    .c-tip--warning {
         &::before {
             background: var(--color-gradient-burnt-dark);
         }
