@@ -60,6 +60,10 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin-block: var(--spacing-l-1);
+        :is(h2, h3, h4) + & {
+            /* e.g. >> /users */
+            margin-block-start: var(--spacing-s-3);
+        }
         font-family: var(--font-family-ui);
 
         td {
