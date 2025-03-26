@@ -27,6 +27,11 @@ parameters:
       You can choose to turn off the home page in the tree, opting to start the crumbs from the first level nav item. Doesn't do
       anything if you're using the `from` parameter.
   -
+    name: include_parents
+    type: 'boolean *true*'
+    description: >
+      Prevents the `parent` key from being returned on nav items.
+  -
     name: max_depth
     type: 'int'
     description: >
