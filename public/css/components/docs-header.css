@@ -131,7 +131,7 @@
             }
         }
         .c-docs-header__inner {
-            padding: 2.25rem var(--spacing-l) 3.75rem;
+            padding: 2rem var(--spacing-l) 3.75rem;
             margin-block-end: 2.5rem;
             .o-logomark {
                 /* Decrease */
@@ -205,7 +205,7 @@
                 inline-size: 100%;
             }
             main {
-                padding-block-start: 12.5rem;
+                padding-block-start: 11.5rem;
             }
         }
         /* Custom */
@@ -229,7 +229,7 @@
         animation-name: compress-header;
         animation-timing-function: linear;
         animation-timeline: --body;
-        animation-range: entry 100% entry 110%;
+        animation-range: entry 100% entry 104%;
         animation-fill-mode: both;
         @supports (animation-timeline: auto) {
             margin-block-end: unset;
