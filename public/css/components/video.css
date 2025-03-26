@@ -19,7 +19,9 @@
     .c-video {
         position:relative;
         margin-inline: auto;
-        margin-block-end: var(--spacing-l-2);
+        &:not(:last-child) {
+            margin-block-end: var(--spacing-l-2);
+        }
         + * {
             /* Push the next element away instead because of collapsing margins */
             padding-block-start: var(--spacing-l-1);

@@ -42,10 +42,6 @@
         }
     }
 
-    .line-highlight {
-        background: var(--color-purple-light-2-highlight)!important;
-    }
-
     pre code.torchlight .line {
         padding-left: .75rem;
         padding-right: .75rem
