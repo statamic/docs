@@ -22,10 +22,6 @@
         /* e.g. p followed by .c-docs-tabs e.g. >> /collections */
         padding-block-start: var(--spacing-s-2);
         border-radius: var(--button-radius);
-        font-family: var(--font-family-ui);
-        font-size: var(--font-size-s-1);
-        line-height: var(--font-size-s-1-line-height);
-        font-weight: var(--font-family-ui-weight-strong);
 
         pre {
             margin-block-end: 0;
@@ -38,20 +34,34 @@
         .tab-content {
             border-radius: var(--button-radius);
             border-top-left-radius: 0;
-            background: var(--color-gradient-full-light-4);
-            @container style(--color-scheme: dark) {
-                background: var(--color-gradient-full-light-2);
-            }
-            border: 1px solid var(--color-black);
             border-block-end: 0;
-            p {
-                padding: var(--spacing-s-1);
-                padding-block-end: 0;
+            /* Sometimes the tab content contains tips e.g. >> /taxonomies */
+            &:not(:has(.c-tip)) {
+                background: var(--color-gradient-full-light-4);
+                @container style(--color-scheme: dark) {
+                    background: var(--color-gradient-full-light-2);
+                }
+                border: 1px solid var(--color-black);
+                p {
+                    padding: var(--spacing-s-1);
+                    padding-block-end: 0;
+                }
             }
         }
+        :nth-last-child(1 of .c-tip) {
+            margin-block-end: 0;
+        }
+    }
+    .c-doc-tabs p:not(.c-tip *),
+    .c-doc-tabs__tabs {
+        font-size: unset;
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-strong);
     }
     .c-doc-tabs__tabs {
         display: inline-flex;
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
         border: 1px solid var(--color-black);
         border-block-end: 0;
         border-radius: var(--border-radius-s);
@@ -81,13 +91,13 @@
 @layer plugins {
     .c-doc-tabs {
         pre {
-            &, /* code*/.torchlight {
+            &, /* code*/.torchlight:not(.c-tip *) {
                 border-top-left-radius: 0;
                 margin-block-start: 0;
             }
         }
         &:has(p) pre {
-            &, /* code*/.torchlight {
+            &, /* code*/.torchlight:not(.c-tip *) {
                 border-top-right-radius: 0;
             }
         }

@@ -1,7 +1,7 @@
 @layer plugins {
     pre {
         &, /* code*/.torchlight {
-            border-radius: var(--border-radius-l-1);
+            border-radius: calc(var(--border-radius-l-1) / 1.125);
         }
         line-height: 2;
         &:not(.c-doc-tabs &) {
@@ -26,6 +26,8 @@
 
     pre code.torchlight {
         display: block;
+        padding-block: var(--spacing-m);
+        background: var(--color-code-block-background);
         font-size: .9rem;
         /* Custom */
         @media (width >= 768px) {
@@ -39,11 +41,6 @@
             padding-inline: var(--spacing-s-3);
             background: var(--color-purple-light-2)!important;
         }
-    }
-
-    pre code.torchlight {
-        padding-block: var(--spacing-m);
-        background: var(--color-code-block-background);
     }
 
     .line-highlight {
