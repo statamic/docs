@@ -72,6 +72,7 @@
             padding: var(--spacing-s-3) var(--spacing-s-1);
             text-transform: uppercase;
             font-size: var(--font-size-s-1);
+            background: light-dark(var(--color-body-background), transparent);
             &:first-child {
                 border-top-left-radius: inherit;
             }
@@ -83,23 +84,19 @@
             }
         }
     }
-    .c-doc-tabs__active {
+    button.c-doc-tabs__active {
         background: var(--color-gradient-blue-1);
         font-weight: var(--font-family-ui-weight-heavy);
     }
 }
 @layer plugins {
-    .c-doc-tabs {
-        pre {
-            &, /* code*/.torchlight:not(.c-tip *) {
-                border-top-left-radius: 0;
-                margin-block-start: 0;
-            }
-        }
-        &:has(p) pre {
-            &, /* code*/.torchlight:not(.c-tip *) {
-                border-top-right-radius: 0;
-            }
+    .c-doc-tabs__tabs ~ .tab-content {
+        /* e.g. >> /globals */
+        /* e.g. >> /navigation */
+        /* e.g. >> /data-inheritance */
+        pre:not(:has(p)), code {
+            margin-block-start: 0;
+            border-top-left-radius: 0;
         }
     }
 }

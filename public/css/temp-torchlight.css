@@ -27,7 +27,7 @@
     pre code.torchlight {
         display: block;
         padding-block: var(--spacing-m);
-        background: var(--color-code-block-background);
+        background: var(--color-code-block-background)!important;
         font-size: .9rem;
         /* Custom */
         @media (width >= 768px) {
