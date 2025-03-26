@@ -97,6 +97,21 @@
                     aspect-ratio: 1;
                     border-radius: 50%;
                 }
+                /* Lists within lists e.g. >> /taxonomies */
+                ul li {
+                    padding-inline-start: 0;
+                    padding-block-end: var(--spacing-s-5);
+                    &:first-child {
+                        padding-block-start: var(--spacing-s-4);
+                    }
+                    &:last-child {
+                        padding-block-end: var(--spacing-s-4);
+                    }
+                    &::before {
+                        /* Remove the purple dot for lists within lists */
+                        content: unset;
+                    }
+                }
             }
         }
 
@@ -160,7 +175,8 @@
         }
 
         ol, ul {
-            font-size: var(--font-size-m);
+            /* Rem because sometimes there are lists within lists e.g. >> /taxonomies */
+            font-size: var(--font-size-m-rem);
             /* e.g. >> /upgrade-guide */
             /* margin-block: var(--spacing-l); */
             &:has(+ :is(h2, h3, h4, h5, h6)) {
