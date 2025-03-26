@@ -28,10 +28,10 @@ You can choose to switch the default "rad" login theme with a more vanilla (and 
 - `rad`
 - `business`
 
-<div class="screenshot">
+<figure>
     <img src="/img/white-label-login.png" alt="Statamic White Label Theme">
-    <div class="caption">Here's the "business" theme with a custom logo</div>
-</div>
+    <figcaption>Here's the "business" theme with a custom logo</figcaption>
+</figure>
 
 ### Custom CMS Name
 

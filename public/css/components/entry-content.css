@@ -81,6 +81,13 @@
             }
         }
 
+        ol, ul {
+            &:has(+ .c-tip, + pre) {
+                /* e.g. >> /forms */
+                padding-block-end: 0;
+            }
+        }
+
         /* Direct descendents only because we don't want to affect components such as .c-related */
         > ul {
             --padding-inline-start: min(1.5rem, 5vw);
@@ -161,9 +168,6 @@
             /* e.g. >> /quick-start-guide */
             + ul {
                 padding-block: var(--spacing-s-4) var(--spacing-l-1);
-                &:has(+ .c-tip) {
-                    padding-block-end: 0;
-                }
             }
         }
         /* Followed by some kind of image component */

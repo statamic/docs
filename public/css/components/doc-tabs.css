@@ -94,7 +94,7 @@
         /* e.g. >> /globals */
         /* e.g. >> /navigation */
         /* e.g. >> /data-inheritance */
-        pre:not(:has(p)), code {
+        pre:first-of-type:not(:has(p)), code {
             margin-block-start: 0;
             border-top-left-radius: 0;
         }

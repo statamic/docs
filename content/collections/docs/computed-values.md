@@ -77,19 +77,19 @@ Once configured, you can simply access your computed values as properties on you
 
 Or view your computed values in the control panel if you configure your blueprint to allow for it. The first step is to add a field with your computed value's `handle`:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/computed-field-handle.png" alt="Computed field handle">
 </figure>
 
 Next, set your field `Visibility` to `Computed`. This will ensure your field is displayed on your Publish Form as a read-only field [that will not store any data on save](/fields#field-data-flow):
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/computed-field-visibility.png" alt="Computed field visibility config">
 </figure>
 
 You may also show this field as a column on your listings using the `Listable` setting, as shown above:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/computed-field-listing.png" alt="Computed field visibility config">
     <figcaption>One of us never has credit card debt, but who's complaining?</figcaption>
 </figure>

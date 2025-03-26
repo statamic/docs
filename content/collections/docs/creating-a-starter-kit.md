@@ -157,7 +157,7 @@ modules:
 
 This presents a choice to the user, to confirm whether or not to install this module.
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
 </figure>
 
@@ -184,7 +184,7 @@ modules:
       - statamic/seo-pro
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter Kit custom prompt text">
     <figcaption>Would you also like fries with that?</figcaption>
 </figure>
@@ -230,7 +230,7 @@ modules:
           - resources/js/mootools.js
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module.png" alt="Starter Kit select module">
 </figure>
 
@@ -258,7 +258,7 @@ modules:
           - resources/js/mootools.js
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module-customization.png" alt="Customizing Starter Kit select module">
     <figcaption>🐮🐮🐮</figcaption>
 </figure>
@@ -287,7 +287,7 @@ modules:
     # ...
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module-disable-skip-option.png" alt="Starter kit disable skip option">
 </figure>
 

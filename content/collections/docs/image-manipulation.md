@@ -111,7 +111,7 @@ As mentioned [above](#presets), Statamic will generate images for all of your co
 
 By default, Statamic will do this "intelligently", which means it'll generate all presets except for the one used for source processing:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/glide-intelligently-warm.png" alt="Glide Intelligently Warm Presets">
 </figure>
 

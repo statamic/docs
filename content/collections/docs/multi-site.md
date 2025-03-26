@@ -45,7 +45,7 @@ First, enable `multisite` in your `config/statamic/system.php`:
 
 Next, you can add new sites through the control panel:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/configure-sites.png" alt="Configure sites page in control panel">
 </figure>
 

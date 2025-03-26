@@ -67,7 +67,7 @@
         }
     }
     /* Only descending from certain tags, otherwise torchlight is used */
-    :is(p, figure, li) {
+    :is(h2, h3, h4, p, figure, li) {
         code {
             /* e.g. try <code><?php bloginfo('stylesheet_url'); ?></code> and you'll see that it overflows on smaller screens */
             overflow-x: scroll;
@@ -215,7 +215,8 @@
     }
     /* For Statamic's lists use a different method: */
     ol:has(li p) {
-        padding-inline-start: var(--spacing-l-1);
+        /* e.g. >> /oauth */
+        padding-inline-start: 0;
     }
     p + ul {
         padding-block-start: var(--spacing-s-3);
@@ -365,6 +366,10 @@
     }
     h4 {
         padding-block: var(--spacing-l-1) var(--spacing-m);
+        &:has(code) {
+            /* e.g. >> /forms */
+            padding-block-start: var(--spacing-m);
+        }
     }
 }
 @layer components {

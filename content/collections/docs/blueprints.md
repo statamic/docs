@@ -225,10 +225,10 @@ The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, whic
 
 You should define its fields using the blueprint field syntax. This will allow you to reference other fields and/or import entire fieldsets.
 
-<div class="screenshot">
+<figure>
     <img src="/img/grid.png" alt="An example grid field" />
-    <div class="caption">This is an example Grid field.</div>
-</div>
+    <figcaption>This is an example Grid field.</figcaption>
+</figure>
 
 ``` yaml
 links:

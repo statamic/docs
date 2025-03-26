@@ -10,10 +10,10 @@ template: page
 
 While configuring a [blueprint or fieldset field](/blueprints), switch to the **Validation** tab where you can choose from [any built in Laravel rule][laravel-validation].
 
-<div class="screenshot">
+<figure>
     <img src="/img/field-validation.png" width="521" alt="Field validation"/>
-    <div class="caption">Add validation rules (with a shortcut for requiring)</div>
-</div>
+    <figcaption>Add validation rules (with a shortcut for requiring)</figcaption>
+</figure>
 
 In this screenshot, you can see that the field has an `alpha_dash` and `min:4` rule which means you can only type letters and dashes, like a slug, and that it
 must be at least 4 characters. You have plenty of options to be creative and confident that your data will be entered the way you need it to be.
@@ -148,9 +148,10 @@ You may use custom validation rules via Laravel's `Rule` objects.
 
 To references those from your field, you can add them to your `validation` array as if you were writing PHP:
 
-<div class="screenshot">
+<figure>
     <img src="/img/field-validation-custom-rule.png" width="643" alt="Custom Field validation rules" />
-</div>
+    <figcaption>Custom Field validation rules</figcaption>
+</figure>
 
 If you're writing directly into the YAML, make sure to escape any quotes:
 
