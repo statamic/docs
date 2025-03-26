@@ -19,10 +19,10 @@ Globals are intended to be used for **reusable content** or content that **belon
 
 Globals are organized into "sets", each containing [fields](/fields). This convention helps you keep groups of globals together and stay organized. Each set also acts as a "scope" for templating purposes.
 
-<div class="screenshot">
+<figure class="screenshot">
     <img src="/img/global-set-footer.png" alt="Statamic Global Set Example">
-    <div class="caption">Global Set</div>
-</div>
+    <figcaption>Global Set</figcaption>
+</figure>
 
 
 ## Storage

@@ -1,6 +1,8 @@
 @layer plugins {
     pre {
-        border-radius: var(--border-radius-l-1);
+        &, /* code*/.torchlight {
+            border-radius: var(--border-radius-l-1);
+        }
         line-height: 2;
         &:not(.c-doc-tabs &) {
             margin-bottom: 1.5rem;

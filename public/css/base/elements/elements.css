@@ -56,8 +56,14 @@
         p:has(+ &) {
             padding-block-end: var(--spacing-s-1);
         }
-        /* Only descending from certain tags, otherwise torchlight is used */
-        :is(p, figure, li) & {
+        li & {
+            /* Make code in bullet points slightly smaller */
+            font-size: 1.025rem;
+        }
+    }
+    /* Only descending from certain tags, otherwise torchlight is used */
+    :is(p, figure, li) {
+        code {
             /* e.g. try <code><?php bloginfo('stylesheet_url'); ?></code> and you'll see that it overflows on smaller screens */
             overflow-x: scroll;
             padding: 0.07rem 0.4rem;
@@ -69,10 +75,6 @@
             /* Based on code being inside tips too */
             font-size: 1.1rem;
             letter-spacing: -0.2px;
-        }
-        li & {
-            /* Make code in bullet points slightly smaller */
-            font-size: 1.025rem;
         }
     }
 
