@@ -31,7 +31,6 @@ Watch a new user being born. 🐣
 
 You can also [create users by hand](/tips/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
 
-
 ### New User Invitations
 
 When creating users in the Control Panel you can send email invitations to help guide those users into activating their accounts and signing in for the first time. You can even customize a lovely little welcome message for them.
@@ -51,11 +50,14 @@ You're more than welcome — encouraged even — to customize what fields and in
 
 To customize these fields, edit the included `user` [blueprint](/blueprints) and configure it however you'd like.
 
-
 ## Permissions
 
-<div class="mb-8">
-    <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+<div class="c-pro-badge">
+    <a href="/licensing">
+        <div class="c-pro-badge__text">
+            ⭐️ Pro Feature ⭐️
+        </div>
+    </a>
 </div>
 
 A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for a user to access the control panel, create, edit, or publish content, create users, and so on.

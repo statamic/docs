@@ -9,6 +9,42 @@
 */
 /* HTML Example...
 
+    <header>
+        <div class="o-badge-heading">
+            <h1>{{ title }}</h1>
+            <div class="c-pro-badge">
+                <a href="/licensing">
+                    {{ global:pro_badges sort='random' limit='1' }}
+                        {{ artwork }}
+                            <picture class="c-pro-badge__artwork">
+                                <img/>
+                            </picture>
+                        {{ /artwork }}
+                        <div class="c-pro-badge__text">
+                            {{ icon }}
+                                <picture>
+                                    <img/>
+                                </picture>
+                            {{ /icon }}
+                            Pro Feature
+                        </div>
+                    {{ /global:pro_badges }}
+                </a>
+            </div>
+        </div>
+        {{ intro ?? overview | markdown }}
+    </header>
+
+    Or you can use this in text, with the pro badge on its own e.g.
+
+    <div class="c-pro-badge">
+        <a href="/licensing">
+            <div class="c-pro-badge__text">
+                ⭐️ Pro Feature ⭐️
+            </div>
+        </a>
+    </div>
+
 */
 @layer components {
     .c-pro-badge {
@@ -22,7 +58,9 @@
         }
 
         a {
-            color: var(--color-primary-text);
+            &, &:hover {
+                color: var(--color-primary-text)!important;
+            }
             font-family: var(--font-family-ui);
             font-weight: var(--font-family-ui-weight-heavy);
             font-size: var(--font-size-s-1);
@@ -30,34 +68,46 @@
             letter-spacing: 0.75px;
             text-transform: uppercase;
             text-align: center;
+            text-decoration: none;
+        }
+
+        + p {
+            margin-block-start: var(--spacing-l);
+        }
+        h2:has(+ &) {
+            padding-block-end: var(--spacing-s-3);
         }
     }
     .c-pro-badge__artwork img {
         border-radius: 50%;
     }
     .c-pro-badge__text {
-        position: absolute;
-        left: -20%;
-        inline-size: 10rem;
-        transform: translateY(-1.2rem);
-        display: flex;
+        position: relative;
+        left: -1.6rem;
+        min-width: 10rem;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         gap: var(--spacing-s-4);
         padding: var(--spacing-s-5) var(--spacing-s-4);
-        background: var(--color-yellow-light-2);
         background: linear-gradient(to right, var(--color-yellow-light-4) 0%,var(--color-yellow-light-2) 100%);
         font-size: var(--font-size-s-1);
-        rotate: -5deg;
+        rotate: -2.5deg;
 
         img {
             inline-size: 2em;
         }
     }
-    /* --mq-grid-after */
-    @media (width >= 1000px) {
-        .c-pro-badge {
+    .c-pro-badge:has(img) {
+        .c-pro-badge__text {
+            position: absolute;
+            left: -1.75rem;
+            transform: translateY(-1.2rem);
+            rotate: -5deg;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
             bottom: var(--spacing-l);
         }
     }
