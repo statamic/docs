@@ -411,14 +411,6 @@
     }
     .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
         --distance: var(--spacing-l-3);
-        /* If there's a video before it */
-        .watch:has(+ &) + & {
-            --distance: var(--spacing-l-4);
-        }
-        /* If there's a video before it with a caption */
-        .watch:has(+ &):has(figcaption) + & {
-            --distance: calc(var(--spacing-l-4) + var(--spacing-l-1));
-        }
         margin-block-start: var(--distance);
         p:has(+ &) {
             padding-block-end: var(--spacing-m);
