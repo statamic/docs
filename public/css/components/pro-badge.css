@@ -13,13 +13,6 @@
 @layer components {
     .c-pro-badge {
         position: relative;
-        font-family: var(--font-family-ui);
-        font-weight: var(--font-family-ui-weight-heavy);
-        font-size: var(--font-size-s-1);
-        line-height: var(--font-size-s-1-line-height);
-        letter-spacing: 0.75px;
-        text-transform: uppercase;
-        text-align: center;
 
         img {
             filter: contrast(102%) saturate(1.05) brightness(105%);
@@ -27,9 +20,20 @@
                 filter: var(--filter-dark-tint);
             }
         }
-        > img {
-            border-radius: 50%;
+
+        a {
+            color: var(--color-primary-text);
+            font-family: var(--font-family-ui);
+            font-weight: var(--font-family-ui-weight-heavy);
+            font-size: var(--font-size-s-1);
+            line-height: var(--font-size-s-1-line-height);
+            letter-spacing: 0.75px;
+            text-transform: uppercase;
+            text-align: center;
         }
+    }
+    .c-pro-badge__artwork img {
+        border-radius: 50%;
     }
     .c-pro-badge__text {
         position: absolute;
