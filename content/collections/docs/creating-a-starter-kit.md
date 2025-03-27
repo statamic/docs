@@ -404,7 +404,7 @@ statamic new kung-fury-dev the-hoff/kung-fury-theme --local
 
 ## Maintaining a Starter Kit
 
-When making changes to your Starter Kit, just [re-export](#exporting-files) from your development repo and push your changes from your exported repo.
+When making changes to your Starter Kit, just [re-export](#exporting) from your development repo and push your changes from your exported repo.
 
 ### Keeping up-to-date with Statamic and Laravel
 
