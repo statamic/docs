@@ -43,14 +43,6 @@
         /* https://web.dev/accent-color/ */
         accent-color: var(--color-form-accent);
     }
-    body {
-        /* https://app.typographychecklist.com/ - 23. Use standard ligatures but avoid using discretionary ligatures in body text */
-        font-feature-settings: "kern", "liga", "clig", "calt";
-        font-family: var(--font-family-ui);
-        /* font-weight: var(--font-family-ui-weight-normal); */
-        /* https://css-tricks.com/scrollbar-reflowing/ */
-        scrollbar-gutter: stable both-edges;
-    }
     pre, code {
         /* https://dbushell.com/2024/11/05/webkit-font-smoothing/ */
         -webkit-font-smoothing: antialiased;
