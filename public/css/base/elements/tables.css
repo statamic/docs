@@ -61,9 +61,13 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin-block: var(--spacing-l-1);
-        :is(h2, h3, h4) + & {
+        h2 + & {
             /* e.g. >> /users */
             margin-block-start: var(--spacing-s-3);
+        }
+        :is(h3, h4, h5, h6) + & {
+            /* e.g. >> /graphql */
+            margin-block-start: 0;
         }
         font-family: var(--font-family-ui);
 
@@ -105,8 +109,13 @@
     }
 
     table tr td:first-child {
-        /* Make the first "column" stand out */
-        font-weight: var(--font-family-ui-weight-heavy);
+        &, & * {
+            /* Make the first "column" stand out. The * selector is there just in case there's also code, e.g. /content-queries */
+            font-weight: var(--font-family-ui-weight-heavy);
+            code {
+                font-weight: var(--font-family-code-weight-strong);
+            }
+        }
     }
 
     table > thead > tr > th {

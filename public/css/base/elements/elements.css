@@ -27,6 +27,7 @@
     }
     .torchlight ::selection {
         background: light-dark(hsl(229deg 20% 35%), hsl(229deg 20% 35%));
+        color: white;
     }
     /* https://twitter.com/bramus/status/1452572001697153029 */
     /* html,

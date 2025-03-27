@@ -55,6 +55,7 @@
     --color-blue-light-2: hsl(197deg 100% 97%);
     --color-blue-light-3: hsl(197deg 100% 98%);
     --color-blue-light-4: hsl(197deg 100% 99%);
+    /* Used for :hover */
     --color-purple-dark: hsl(256deg 60% 50%);
     --color-purple-hue: 256deg;
     --color-purple: hsl(256deg 70% 55%);
@@ -110,7 +111,7 @@
     --color-link: var(--color-primary-accent);
     --color-text-underline-light: hsl(0deg 0% 80%);
     --color-code-background: var(--color-gradient-blue-1);
-    --color-code-block-background: hsl(228.57deg 20.39% 15%);
+    --color-code-block-background: hsl(228.57deg 23% 18%);
 
     --color-form-accent: var(--color-primary-accent);
 
@@ -161,6 +162,7 @@
 
     --font-family-code-weight-light: 500;
     --font-family-code-weight-normal: 650;
+    --font-family-code-weight-strong: 800;
 
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES
     =================================================== */

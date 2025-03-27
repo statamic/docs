@@ -1650,7 +1650,7 @@ GraphQL::addMiddleware(MyMiddleware::class);
 
 ## Troubleshooting
 
-**"Cannot query field" error"**
+### "Cannot query field" error"
 
 If you see an error like `Cannot query field "entries" on type "Query"`, this likely means you haven't enabled that query. See [Enable GraphQL](#enable-graphql).
 After enabling it, you may need to clear your cache as the request would probably have been cached.

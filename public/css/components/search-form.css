@@ -147,13 +147,13 @@
     --docsearch-key-shadow: unset!important;
     --docsearch-key-gradient: linear-gradient(to bottom, hsl(var(--color-yellow-hue) 100% 97%) 0%,white 100%)!important;
     --docsearch-modal-width: 50rem!important;
-    --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 30% / 50%)!important;
+    --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 30% / 52%)!important;
     --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 85%)!important;
     /* Page preference is "dark" */
     &:has(#color-scheme option[value="dark"]:checked) {
         --docsearch-primary-color: hsl(250deg 50% 50%)!important;
         --docsearch-key-gradient: var(--color-transparent-dark-mode)!important;
-        --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 5% / 50%)!important;
+        --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 5% / 70%)!important;
         --docsearch-modal-background: var(--color-body-background);
         --docsearch-footer-background: var(--color-body-background);
         --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 20%)!important;

@@ -54,6 +54,11 @@
         }
     }
 
+    .line-highlight {
+        /* e.g. >> /content-queries */
+        background: light-dark(hsl(0deg 0% 0% / 50%), hsl(0deg 0% 0% / 30%))!important;
+    }
+
     pre code.torchlight .line-number,pre code.torchlight .summary-caret {
         margin-right: 1rem
     }

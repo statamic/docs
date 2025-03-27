@@ -19,7 +19,8 @@
 /* Put some rules at the element layer where components should easily override them */
 @layer elements {
     .c-entry-content {
-        p {
+        /* Sometimes there are p tags in tables e.g. >> /tags */
+        p:not(table *) {
             max-width: var(--max-width-reading);
             /* Rem instead of em because of p tags inside li tags e.g. e.g. >> /fields */
             font-size: var(--font-size-m-rem);
@@ -81,10 +82,14 @@
             }
         }
 
-        ol, ul {
-            &:has(+ .c-tip, + pre) {
+        :has(+ .c-tip, + pre) {
+            ol& {
                 /* e.g. >> /forms */
                 padding-block-end: 0;
+            }
+            ul& {
+                /* e.g. >> /graphql */
+                padding-block-end: var(--spacing-s-3);
             }
         }
 

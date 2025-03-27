@@ -1388,7 +1388,7 @@ You can also change your view's file extension from `.antlers.html` to `.antlers
 ?>
 ```
 
-## Debugbar Profiler 🆕 {#debugbar-profiler}
+## Debugbar Profiler 🎊 {#debugbar-profiler}
 
 Antlers has an experimental new Profiler tab in the [Debugbar](/debugging#debug-bar) that helps you see the performance impact of all of your template code.
 

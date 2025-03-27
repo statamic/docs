@@ -477,7 +477,7 @@ Last, use the `@aware` directive in any child component of your layout to access
 
 If you choose to take a more "traditional" Laravel application approach to building your Statamic site, you can use routes and controllers much the same way you might with Eloquent models instead of Statamic's native collection routing and data cascade. Here's an example:
 
-**The Routes**
+### The Routes
 
 ```php
 use App\Http\Controllers\BlogController;
@@ -486,7 +486,8 @@ Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog/{slug}', [BlogController::class, 'show']);
 ```
 
-**The Controller**
+### The Controller
+
 ```php
 <?php
 namespace App\Http\Controllers;
@@ -518,7 +519,8 @@ class BlogController extends Controller
 }
 ```
 
-**The Index View**
+### The Index View
+
 ```blade
 <h1>The Blog</h1>
 
@@ -533,7 +535,8 @@ class BlogController extends Controller
 </div>
 ```
 
-**The Show View**
+### The Show View
+
 ```blade
 <header>
     <h1>{!! $title !!}</h1>
