@@ -27,42 +27,46 @@
             </nav>
 
             <div class="c-nav-toc-with-popover-api">
-                <button class="c-nav-toc-with-popover-api__mobile-button" popovertarget="popover-nav-toc">
-                    {{ svg src='nav-toc-chevron' }}
-                </button>
-                <nav id="popover-nav-toc" class="c-nav-toc-with-popover-api__mobile u-hide-on-desktop" popover>
-                    <button class="c-nav-toc-with-popover-api__close-button" title="Close" popovertarget="popover-nav-toc">
-                        <svg height="100pt" aria-hidden="true" viewBox="0 0 100 100" width="100pt" xmlns="http://www.w3.org/2000/svg"><path d="m91.668 13.676-5.3398-5.3398-36.328 36.324-36.328-36.324-5.3398 5.3398 36.328 36.324-36.328 36.324 5.3398 5.3398 36.328-36.324 36.328 36.324 5.3398-5.3398-36.328-36.324z"/></svg>
+                {{ unless $hide_toc == 'yes' }}
+                    <button class="c-nav-toc-with-popover-api__mobile-button" popovertarget="popover-nav-toc">
+                        {{ svg src='nav-toc-chevron' }}
                     </button>
-                    <ul>
-                        <li>
-                            <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                {{ nav :handle="section" }}
-                                    {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
-                                        {{ navigation_image }}
-                                            {{ partial:image_dimensions/navigation_image }}
-                                        {{ /navigation_image }}
-                                    {{ /if }}
-                                {{ /nav }}
-                            </span>
-                            {{ template_content | toc }}
-                        </li>
-                    </ul>
-                </nav>
+                    <nav id="popover-nav-toc" class="c-nav-toc-with-popover-api__mobile u-hide-on-desktop" popover>
+                        <button class="c-nav-toc-with-popover-api__close-button" title="Close" popovertarget="popover-nav-toc">
+                            <svg height="100pt" aria-hidden="true" viewBox="0 0 100 100" width="100pt" xmlns="http://www.w3.org/2000/svg"><path d="m91.668 13.676-5.3398-5.3398-36.328 36.324-36.328-36.324-5.3398 5.3398 36.328 36.324-36.328 36.324 5.3398 5.3398 36.328-36.324 36.328 36.324 5.3398-5.3398-36.328-36.324z"/></svg>
+                        </button>
+                        <ul>
+                            <li>
+                                <span class="c-nav-toc-with-popover-api-category-heading">On this page
+                                    {{ nav :handle="section" }}
+                                        {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
+                                            {{ navigation_image }}
+                                                {{ partial:image_dimensions/navigation_image }}
+                                            {{ /navigation_image }}
+                                        {{ /if }}
+                                    {{ /nav }}
+                                </span>
+                                {{ template_content | toc }}
+                            </li>
+                        </ul>
+                    </nav>
+                {{ /unless }}
                 <nav class="c-nav-toc-with-popover-api__desktop u-hide-on-mobile">
                     <ul class="o-shadow-container-vertical">
-                        <li>
-                            <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                {{ nav :handle="section" }}
-                                    {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
-                                        {{ navigation_image }}
-                                            {{ partial:image_dimensions/navigation_image }}
-                                        {{ /navigation_image }}
-                                    {{ /if }}
-                                {{ /nav }}
-                            </span>
-                            {{ template_content | toc }}
-                        </li>
+                        {{ unless $hide_toc == 'yes' }}
+                            <li>
+                                <span class="c-nav-toc-with-popover-api-category-heading">On this page
+                                    {{ nav :handle="section" }}
+                                        {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
+                                            {{ navigation_image }}
+                                                {{ partial:image_dimensions/navigation_image }}
+                                            {{ /navigation_image }}
+                                        {{ /if }}
+                                    {{ /nav }}
+                                </span>
+                                {{ template_content | toc }}
+                            </li>
+                        {{ /unless }}
                         <li class="c-sidebar-advert">
                             {{ if advert_override }}
                                 {{ advert_override }}

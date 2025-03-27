@@ -2,6 +2,10 @@
 =================================================== */
 @layer ui {
     .c-sidebar-advert {
+        &:first-child {
+            /* I.e. when the toc is hidden with {{ $hide_toc = 'yes' }} */
+            padding-block-start: var(--spacing-l-1);
+        }
         padding-inline-start: 3.85rem;
         a {
             padding: 0;
