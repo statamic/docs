@@ -113,5 +113,5 @@ Here is a simple example component that fetches data using the asynchronous `cre
 </script>
 ```
 
-## Custom View Models
+## Custom view models
 It is also possible to create [a view model](/view-models) which will return only the data you require. However, this requires PHP knowledge.

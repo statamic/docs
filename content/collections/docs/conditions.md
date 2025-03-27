@@ -162,7 +162,7 @@ To pass multiple _values_ in a condition, separate them with `|` pipes.
 ```
 ::
 
-### Sub Fields
+### Sub fields
 
 You can apply conditions to "sub fields", like date ranges:
 
@@ -193,7 +193,7 @@ event_date:
 ```
 ::
 
-## String Conditions
+## String conditions
 
 The following conditions apply to fields with data stored as strings.
 
@@ -227,14 +227,14 @@ The following conditions apply to fields with data stored as strings.
 | `is_before` | Include if field **is before** date. |
 | `is_numberwang` | Include if field **is numberwang**. |
 
-## Taxonomy Conditions
+## Taxonomy conditions
 
 [Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, an optional modifier argument, and finally the term you're seeking.
 
 <div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm"><span class="bg-pink text-white p-1 rounded-sm">taxonomy</span>:<span class="bg-purple text-white p-1 rounded-sm">{handle}</span>:<span class="bg-black text-white p-1 rounded-sm">{modifier}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{term}</span>"
 </div>
 
-### Query Modifiers {#taxonomy-query-modifiers}
+### Query modifiers {#taxonomy-query-modifiers}
 
 You may optionally control the behavior of the condition filter by passing the desired modifier into the tag method call. If you don't set a modifier, it will use `any` by default.
 

@@ -49,7 +49,7 @@ related_products:
   - abc-1234-bc-4eba
 ```
 
-### Field Breakdown
+### Field breakdown
 - `id` is the unique identifier given to this particular entry
 - `photo` is a reference to an asset image of the product (why didn't they clean up the filename?)
 - `author` is the id of the user who created this entry
@@ -115,7 +115,7 @@ In this following template example you can see how easy it is to use the data fr
 ```
 ::
 
-## Manual Fetching
+## Manual fetching
 
 If you _aren't_ using a relationship fieldtype but _do_ have an `id` or `handle` to fetch data from you can use the [get_content tag](/tags/get_content).
 

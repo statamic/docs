@@ -106,7 +106,7 @@ You may customize these in `config/statamic/oauth.php`:
 
 When you create your OAuth application, you will need to provide the callback URL.
 
-### User Flow
+### User flow
 
 By default, once a user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
 They will then be automatically logged into your site with the Statamic account.
@@ -123,7 +123,7 @@ You may choose to customize this flow.
 
 By setting `'create_user' => false`, if a corresponding Statamic user account doesn't exist, one will not be created for them, and they will be redirected to the unauthorized error page.
 
-## Third Party Providers
+## Third party providers
 
 If you would like to use a provider not natively supported by Socialite, you should use the [SocialiteProviders][socialite-providers] method.
 
@@ -167,7 +167,7 @@ If you would like to use a provider not natively supported by Socialite, you sho
     ],
     ```
 
-## Custom Providers
+## Custom providers
 
 If your OAuth provider isn’t already available in Socialite or [SocialiteProviders][socialite-providers], you may create your own.
 
@@ -175,7 +175,7 @@ To create your own OAuth provider, you should make your own SocialiteProvider-re
 
 Follow the [third party installation steps](#third-party-providers), but skip the Composer bits. You can just keep the classes somewhere in your project.
 
-## Customizing User Data
+## Customizing user data
 
 After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist. You may customize how it's handled by adding a callback to your `AppServiceProvider`.
 

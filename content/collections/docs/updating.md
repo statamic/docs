@@ -23,7 +23,7 @@ If you installed with [Statamic CLI](/cli), you can update your installation wit
 statamic update
 ```
 
-## Control panel
+## Control Panel
 
 The Control Panel will inform you when updates are available.
 

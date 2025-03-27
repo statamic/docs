@@ -1,7 +1,7 @@
 ---
 id: 24a9c9d8-d607-4117-9806-738668c173cd
 blueprint: page
-title: 'Core concepts'
+title: 'Core Concepts'
 intro: 'Statamic is opinionated software. Understanding the principles we follow and apply to the way we build features will help you learn Statamic faster.'
 template: page
 breadcrumb_title: Overview

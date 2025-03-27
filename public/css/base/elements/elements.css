@@ -360,7 +360,7 @@
     =================================================== */
     h3 {
         /* e.g. >> /contributing */
-        padding-block: var(--spacing-l) var(--spacing-m);
+        padding-block: var(--spacing-l) var(--spacing-l-static);
     }
     h4 {
         /* e.g. >> /content-managers-guide */

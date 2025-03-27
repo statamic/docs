@@ -131,7 +131,7 @@ This is useful if...
 - You're really used to using Blade and don't want to learn anything else even if it's really simple, similar, and powerful. You do you.
 
 
-## Recommended Conventions
+## Recommended conventions
 
 We recommend the following conventions for consistency. These are just suggestions, not requirements.
 
@@ -146,7 +146,7 @@ We recommend the following conventions for consistency. These are just suggestio
 
 There are a few recommended ways to organize your layouts, templates, and partials. But you don't have to take _our_ word for it. 🌈
 
-### Go Super Flat
+### Go super flat
 
 Partials are indicated by a prefixed underscore (`_header`), layout by the word `layout` and everything else is a template. **Best for small sites.**
 
@@ -160,7 +160,7 @@ resources/views/
   page.antlers.html
 ```
 
-### Organize by Type
+### Organize by type
 
 This is a bit more of a Statamic v2 style where views are grouped by type - partials, layouts, and templates. **Best for medium sized sites.**
 
@@ -183,7 +183,7 @@ resources/views/
     form.antlers.html
 ```
 
-### Organize by Section
+### Organize by section
 
 A more Laravel/application approach where views are grouped by section (or collection), along with their own partials and alternate layout files. **Best for large sites.**
 

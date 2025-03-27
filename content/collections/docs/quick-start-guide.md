@@ -164,7 +164,7 @@ Here's our todo list:
 - Create a blog detail page (`/blog/why-i-love-mustard`)
 - Add a list of the most recent 5 blog entries to the homepage
 
-### Create a new Collection
+### Create a new collection
 
 Head back to the Control Panel and click on the Collections link in the sidebar. Click the blue **Create Collection** button and then call your new collection "Blog".
 
@@ -330,8 +330,7 @@ A few cool things to note here in this code example:
     <figcaption>How close does yours look?</figcaption>
 </figure>
 
-
-## Blog Index
+## Blog index
 
 Next, let's make that blog index page. Head back to the control panel and go to the **Pages** collection. Create a new entry and call it "Blog", "My Blog", or even "My CyberBlog" — just make sure the slug is `blog`. Set the template to `blog/index`.
 
@@ -500,6 +499,6 @@ Refresh the page and there you have it — a basic but fully functional website
 
 And make sure to not miss the list of [Tags](/tags) and [Modifiers](/modifiers) that do all sorts of powerful things in your templates.
 
-## Going Deeper
+## Going deeper
 
 We have a screencast series that covers getting started but goes much further and deeper. Feel free to [check that out here](https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc). Good luck!

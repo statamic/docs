@@ -15,7 +15,7 @@ Globals are intended to be used for **reusable content** or content that **belon
 - Site settings (e.g. on/off toggles for various features)
 - Success and error message text
 
-## Global Sets
+## Global sets
 
 Globals are organized into "sets", each containing [fields](/fields). This convention helps you keep groups of globals together and stay organized. Each set also acts as a "scope" for templating purposes.
 
@@ -23,7 +23,6 @@ Globals are organized into "sets", each containing [fields](/fields). This conve
     <img src="/img/global-set-footer.png" alt="Statamic Global Set Example">
     <figcaption>Global Set</figcaption>
 </figure>
-
 
 ## Storage
 
@@ -44,7 +43,7 @@ data:
 ```
 
 
-## Frontend Templating
+## Frontend templating
 
 ::tabs
 
@@ -72,7 +71,7 @@ In this example all of the variables inside a `footer` global set will be access
 
 If you only have one default global set (which we named "Globals" because it cannot get any simpler), _the scope is optional_. You can access them with either `{{ var_name }}` or `{{ global:var_name }}`.
 
-## Blueprints are Optional
+## Blueprints are optional
 
 If you don't explicitly create a [Blueprint](/blueprints) for your global set, Statamic will treat each key in the YAML file as a text variable. Blueprints only become necessary when you need more control over which fieldtype you want used, wish to create fields before you have the content to put in them, or want to work with [GraphQL](/graphql)
 
@@ -86,7 +85,7 @@ When running a [multi-site](/multi-site) installation, you can have globals exis
 
 [Read about localizing globals](/tips/localizing-globals)
 
-## Ideas on How to Use Globals
+## Ideas on how to use globals
 
 Here are a few more ideas what you can use globals for:
 

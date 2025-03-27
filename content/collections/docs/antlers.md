@@ -17,7 +17,7 @@ The `.antlers.html` extension is important. Without it, your template will be re
 :::
 
 
-### Basic Example
+### Basic example
 
 Antlers adds dynamic features to HTML in the form of "tags" – expressions contained inside a pair of curly braces: `{{` and `}}` Those curly braces (often called double mustaches or squiggly gigglies) look a whole lot like _antlers_ to us, hence the name.
 
@@ -48,11 +48,11 @@ return [
 ];
 ```
 
-## The Book
+## The book
 If you want to go beyond these docs and really dive into Antler's advanced capabilities, check out [Antlers: Building Beautiful Websites with Statamic](https://stillat.com/books/antlers-building-beautiful-websites-with-statamic), the official companion book by the great John Koster.
 
 
-## The Basics
+## The basics
 
 ### Delimiters
 
@@ -62,7 +62,7 @@ There are three kinds of delimiters.
 - `{{? ?}}` and `{{$ $}}` Allow you to write, execute, and echo PHP.
 - `{{# #}}` Are for code comments.
 
-### Formatting Rules
+### Formatting rules
 
 1. Each set of curly braces **must** stay together always, like Kenan & Kel or Wayne & Garth. There must be a left pair and a right pair, just like HTML's `<` and `>` angle braces.
 1. Expressions are **case sensitive**.
@@ -94,7 +94,7 @@ This is terrible in every possible way.
 We recommend indenting the markup in your HTML for **human readability and maintainability**, not for final rendered output. Anyone still caring about that this day and age probably needs a long vacation and strong Mai Tai or two. 🍹🍹
 :::
 
-### IDE Integrations
+### IDE integrations
 
 Syntax highlighting and auto-completion packages are available for many of the popular IDEs:
 - [Antlers Toolbox for VS Code](https://antlers.dev) (We recommend this one!)
@@ -122,7 +122,7 @@ The `title` variable can be rendered like this:
 <h1>DJ Jazzy Jeff & The Fresh Prince</h1>
 ```
 
-### Valid Characters
+### Valid characters
 
 Variables must start with an alpha character or underscore, followed by any number of additional uppercase or lowercase alphanumeric characters, hyphens, or underscores, but must not end with a hyphen. Spaces or other special characters are not allowed. A valid variable name matches this regex `[_A-Za-z][-_0-9A-Za-z]*[_A-Za-z0-9]`.
 
@@ -181,7 +181,7 @@ songs:
 </ul>
 ```
 
-#### Next / Previous
+#### Next / previous
 
 While in a loop, you can get the respective iterations using the `next` or `prev` variables.
 
@@ -238,7 +238,8 @@ You can access the keys inside the dictionary "colon", "dot", or "bracket" notat
 I live in {{ mailing_address:city }}. It's in {{ mailing_address:province }}.
 ```
 
-#### Multi-Dimensional Arrays
+#### Multi-dimensional arrays
+
 More complex data is stored in objects or arrays inside arrays. This is usually called a multi-dimensional array.
 
 ``` yaml
@@ -293,7 +294,7 @@ Tony Hawk<br>
 Rodney Mullen<br>
 Bob Burnquist
 ```
-#### Dynamic Access
+#### Dynamic access
 
 If you don't know the names of the keys inside the array – which can happen when working with dynamic or user submitted data – you can access the elements dynamically using variables for the key names.
 
@@ -385,7 +386,7 @@ There are more than 150 built-in [modifiers](/reference/modifiers) that can do a
 
 You can even create [Macros](/modifiers/macro) to combine sets of often used modifiers into one, new reusable one.
 
-### Creating Variables
+### Creating variables
 
 You can now set variables by using the assignment operator, `=`.
 
@@ -416,7 +417,7 @@ You can also create arrays, if you find the need. Keep in mind that more complex
 </ul>
 ```
 
-#### Sub-Expressions
+#### Sub-expressions
 
 You can assign sub-expressions or interpolated statements to variables too. In this example, you can use `{{ items }}` as if it were the actual Collection Tag. Because it is.
 
@@ -431,7 +432,7 @@ You can assign sub-expressions or interpolated statements to variables too. In t
 </ul>
 ```
 
-### Truthy and Falsy
+### Truthy and falsy
 
 All variables are considered "truthy" if they exist _and_ contain a value. Variables that _don't_ exist, contain an empty string, or are structured and empty (e.g. an empty array or object) are considered "falsy".
 
@@ -480,7 +481,7 @@ Just remember: **never render user-submitted data without escaping it first!**
 
 An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds numbers, as in `1 + 2`. Statamic supports many of the operators you may already know from PHP, and adds a few new ones to make your life as a developer easier.
 
-### Control Flow
+### Control flow
 
 Statamic provides a variety of control flow statements. These include `if`, `else`, `or`, `unless`, and `switch` statements to run different branches of template code based on defined conditions.
 
@@ -594,7 +595,7 @@ Logical operators join two or more expressions to create compound conditions.
 | Xor | `$a xor $b` | `true` if either `$a` or `$b` is `true`, but not both. |
 
 
-### Ternary Statements {#ternary}
+### Ternary statements {#ternary}
 
 Ternary statements let you write a simple condition and return one value if `true` and another if `false`, all in one expression.
 
@@ -619,7 +620,7 @@ The null coalescing operator (`$a ?? $b`) considers each variable in a statement
 {{ meta_title ?? title ?? "Someone Forgot the Title" }}
 ```
 
-### The Gatekeeper (Truthy Assignment) {#gatekeeper}
+### The Gatekeeper (Truthy assignment) {#gatekeeper}
 
 The Gatekeeper operator (`a ?= b`) will execute an expression **if and only if** it passes a "truthy" check. It doesn't exist in any programming language — we invented this one. Enjoy!
 
@@ -697,7 +698,7 @@ This is how you create variables as well as increment, decrement, or otherwise m
 | Division | `$a /= $b` | Assigns the quotient of `$a` and `$b` to `$a`. |
 | Modulus | `$a %= $b` | Assigns the remainder of `$a` divided by `$b` to `$a`. |
 
-### Self-Iterating Assignments
+### Self-iterating assignments
 
 The left assignment operator has a super power not shared by the others. If the value of the **right-hand** expression returns a value that can be iterated (arrays, objects, etc.), the captured variable name can be used as a tag pair to iterate the returned value immediately.
 
@@ -707,7 +708,7 @@ The left assignment operator has a super power not shared by the others. If the 
 {{ /pages }}
 ```
 
-## Advanced Operators
+## Advanced operators
 
 These operators are here for the edge cases, the wild ideas, and the unexpected client requests at midnight the night before a site launch. **These are the data wangjanglers.**
 
@@ -855,7 +856,7 @@ players:
   <li>Terry Mills</li>
 </ul>
 ```
-#### Group Collection Entries by Year
+#### Group collection entries by year
 
 ```
 {{ blog = {collection:blog} groupby (date|format('Y') 'year') as 'entries' }}
@@ -946,7 +947,7 @@ Multiple expressions or statements can be performed inside a single Antlers tag 
 19 years
 ```
 
-## Expressions and Statements
+## Expressions and statements
 
 If you want the computer science answer, an "expression" is a combination of values and functions that are combined and interpreted to create new values, whereas a "statement" is a standalone unit of execution that doesn't return anything. 🥱
 
@@ -1024,7 +1025,7 @@ You may optionally disambiguate your tags by prefixing them with a `%` percent s
 {{ %collection:blog }}
 ```
 
-### Tag Parameters
+### Tag parameters
 
 Most Tags can be configured through the use of Parameters, which accepts arguments — much like an HTML attribute. In following example, the [SVG Tag](/tags/svg) is accepting a filename and string of classes to apply while rendering an inline `<svg>` element.
 
@@ -1057,7 +1058,7 @@ You can "void" a parameter using the `void` keyword. A voided parameter will act
 {{ svg src="hamburger" class="{wide ? 'w-full' : void}" }} {{# [tl! ++] #}}
 ```
 
-### Shorthand Parameter Syntax
+### Shorthand parameter syntax
 
 When passing variables into tags where the parameter and variable have the **same name**, the standard syntax:
 
@@ -1078,7 +1079,7 @@ The parser will internally expand this to the longer form and continue as normal
 ```
 
 
-### Self-Closing Tags
+### Self-closing tags
 
 Some Tags can function as single or paired expressions. For example, the [Partial Tag](/tags/partial) can be used to include a partial template, or it can be used to wrap a portion of your template and inject it as a slot into a partial.
 
@@ -1094,7 +1095,7 @@ In the below example, you can **self-close** the first partial tag much like an 
 {{ /partial }}
 ```
 
-## Working With Templates
+## Working with templates
 
 ### Layouts
 
@@ -1169,7 +1170,7 @@ We can now pass whatever we want into the slot by injecting content into the par
 {{ /partial:modal }}
 ```
 
-#### Named Slots
+#### Named slots
 
 Sometimes you might want to render multiple different slots in different locations inside a partial. Let's modify our example to allow of the injection of a "title" slot:
 
@@ -1247,7 +1248,7 @@ The `{{ once }}` tag allows you to define a portion of the template that will on
 
 {{ /collection:blog }}
 ```
-### Section & Yield
+### Section & yield
 
 You may find that you wish to define areas of a layout that may need to change depending on which template is being rendered.
 
@@ -1282,7 +1283,7 @@ Notice the [`yield`](/tags/yield) tag. The contents of that tag will be rendered
 {{ /section:footer }}
 ```
 
-## Prevent Parsing
+## Prevent parsing
 
 You may find you need to prevent Antlers statements from being parsed. This is common when working with a JavaScript library like [Vue.js](https://vuejs.org), writing code examples, like we do in these docs. In either case, you have a few options.
 
@@ -1330,13 +1331,13 @@ Use this method if you need to prevent entire code blocks from being parsed.
 {{ /noparse }}
 ```
 
-## Using Antlers in Content
+## Using Antlers in content
 
 Antlers template code inside your content **is not** parsed automatically for security and performance reasons.
 
 You may **enable** Antlers parsing on a per-field basis by setting `antlers: true` in a given field's blueprint config.
 
-## Code Comments {#comments}
+## Code comments {#comments}
 
 Antlers code comments are not rendered in HTML (unlike HTML comments), which allows you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.
 
@@ -1388,7 +1389,7 @@ You can also change your view's file extension from `.antlers.html` to `.antlers
 ?>
 ```
 
-## Debugbar Profiler 🎊 {#debugbar-profiler}
+## Debugbar profiler 🎊 {#debugbar-profiler}
 
 Antlers has an experimental new Profiler tab in the [Debugbar](/debugging#debug-bar) that helps you see the performance impact of all of your template code.
 
@@ -1399,24 +1400,24 @@ Antlers has an experimental new Profiler tab in the [Debugbar](/debugging#debug-
 
 Inside this Profiler there are 3 separate views that give you different glimpses into your site.
 
-### View Graph
+### View graph
 
 This view groups your Antlers expressions by the view files (templates, layouts, and partials) they exist in, allowing you to more easily tease out the location of any potential slowdowns or redundant calls.
 
 Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
 
-### Expression Graph
+### Expression graph
 
 This view shows all parsed expressions in a given request, listing them in **execution order**.
 
 Each parsed expression in this view gets its own row in the table that shows various metrics and details that may prove to be useful.
 
-### Source View
+### Source view
 
 The Source View shows the final rendered template and highlights any content rendered by Antlers with a color corresponding to how fast it was executed. Green is fast, Yellow is a little slow, and Red is very slow.
 
 
-### Profiler Columns
+### Profiler columns
 
 | Column | Explanation |
 |--|--|
@@ -1430,7 +1431,7 @@ The Source View shows the final rendered template and highlights any content ren
 | Total Time | The amount of time it took to run the expression along with any child expressions (e.g. a tag pair) |
 | % | The percentage of total load time dedicated to run this expression. |
 
-### How to Use the Profiler
+### How to use the profiler
 
 If you have some pages in your site that are running slow, the Profiler can help you narrow down and find bottlenecks in your template code. Look for anything colored — yellow, orange, and red all _may_ point to some logic that is performing extra slow.
 
@@ -1442,7 +1443,7 @@ With this information you can look for opportunities to cache bits of your templ
 This feature is new and experimental! It's recommendations and "slow code" thresholds may need to be updated after getting more real world data.
 :::
 
-## Even More Advanced Stuff
+## Even more advanced stuff
 
 [John Koster's blog](https://stillat.com/blog) is full of really useful tips and tricks covering some really advanced features not documented here. Be sure to check it out!
 

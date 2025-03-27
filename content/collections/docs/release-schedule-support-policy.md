@@ -6,10 +6,11 @@ nav_title: 'Release Schedule'
 intro: 'For all Statamic releases, bug fixes are provided for 1 year and security fixes are provided for 18 months.  For all first party addons, only the latest major release receives bug fixes. In addition, please review the [Laravel Support Policy](https://laravel.com/docs/master/releases#support-policy).'
 ---
 
-## Versioning Scheme
+## Versioning scheme
+
 Statamic and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major releases are released every year (~Q1), following Laravel's major releases by roughly a month. Minor and patch releases may be released as often as every few days. Minor and patch releases should never contain breaking changes.
 
-## Support Policy
+## Support policy
 
 <table>
    <thead>

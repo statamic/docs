@@ -26,7 +26,7 @@ If you have groups of fields you want to use in multiple Blueprints, you can cre
 
 It’s super intuitive to manage through the control panel. It feels like ACF, but it’s baked right into the core CMS.
 
-## Gutenberg and Block/Page Builders
+## Gutenberg and block/page builders
 
 If you've been working with a Gutenberg or Page Builder approach, take a look at the [Bard](/fieldtypes/bard) and [Replicator](/replicator) fieldtypes — they allow you to create blocks (we call them "sets") out of any _other_ native fieldtypes, giving you virtually unlimited ways to configure your content.
 
@@ -37,7 +37,7 @@ These can be used to create numerous components that can be combined as a "page 
     <figcaption>The Bard Fieldtype in action.</figcaption>
 </figure>
 
-### Block to Set Examples
+### Block to set examples
 
 Here is how you could create some common "blocks" with Bard and Replicator sets using our native fieldtypes.
 
@@ -56,11 +56,11 @@ A single [Assets](/fieldtypes/assets) field is all you need, as Assets themselve
 
 A [Markdown](/fieldtypes/markdown) or [Bard](/fieldtypes/bard) field to hold the quote, and a [Text](/fieldtypes/text) field for the author `<cite>`.
 
-#### Newsletter Signup
+#### Newsletter signup
 
 An empty set works, or a single [HTML](/fieldtypes/html) field letting you insert a display message in your editor saying "Newsletter shown here", and then on the frontend have it render whatever [partial](/tags/partial) you need for the form.
 
-#### Video Embed
+#### Video embed
 
 A single [video](/fieldtypes/video) fieldtype to paste in the URL of a YouTube or Vimeo video would be enough, but you could add a [Select](/fieldtypes/select) or [Button Group](fieldtypes/button-group) field with some options to control the size of the embed (inline vs oversized, for example).
 
@@ -137,7 +137,7 @@ WordPress is notoriously slow out of the box, which is generally alleviated by p
 
 We've considered and optimized for performance in every area of Statamic. Built-in smart caching is often enough for most sites to fly <strong>right out of the gate</strong>, and for those more complex sites that have more heavy lifting or higher traffic — [static caching](/static-caching), Redis caching, or even [static site generation](https://github.com/statamic/ssg) are all native tools at your disposal.
 
-## Spam Protection
+## Spam protection
 
 If you’re used to using Akismet to keep spam out of your forms, you can [continue doing so](https://statamic.com/addons/silentz/akismet).
 
@@ -151,11 +151,11 @@ In WordPress, you might use UpdraftPlus to handle backups, but in Statamic — 
 
 If you’re using Statamic Pro, it can even automate your Git commits and pushes. No more worrying about backups, they’re just an invisible part of your workflow.
 
-## Importing Content
+## Importing content
 
 Statamic has a [native Importer](https://github.com/statamic/importer) with support for WordPress's XML or CSV export formats. It supports importing entries, taxonomy terms, and users, and can handle converting Gutenberg content to Bard sets. It even has hooks you can use to customize the import process at any step of the way.
 
-## Everything Else
+## Everything else
 
 - **Slider Revolution:** Build custom sliders with Statamic’s [Replicator field](/fieldtypes/replicator) and plug it into frontend libraries like [Slick](https://kenwheeler.github.io/slick/) or [Flickity](https://flickity.metafizzy.co/).
 - **MonsterInsights:** You can drop Google Analytics right into Statamic or use the [Ginsights Analytics](https://statamic.com/addons/vijay-software/ginsights-analytics) addon if you want a more integrated feel.

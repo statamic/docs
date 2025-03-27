@@ -10,15 +10,15 @@ While Statamic's [Antlers](/antlers) template language is powerful, tightly inte
 
 Antlers combines the responsibilities of Blade Templates _and_ [Controllers](/controllers) all at once. If you choose to **not** use Antlers, you _may_ need to create controllers and routes to fetch content and map them to templates depending on what you're doing. Want to write Antlers in your Blade templates? That's also possible by using the [@antlers](#writing-pure-antlers-in-blade) Blade directive.
 
-## How to Render a Template with Blade
+## How to render a template with Blade
 
 Instead of naming your views `myview.antlers.html`, use `myview.blade.php` extension.
 
-## View Data
+## View data
 
 You will have access to the same data as you would in Antlers views.
 
-### Current Page
+### Current page
 
 The current page's data will be available in a `$page` variable, and you can access its values using a syntax similar to Eloquent models.
 
@@ -69,7 +69,7 @@ data:
 {{ $settings->site_name }}
 ```
 
-### System Variables
+### System variables
 
 Top level [system variables](/variables#system-variables) like, `environment`, `logged_in`, etc will be available as dedicated variables.
 
@@ -98,7 +98,7 @@ If you use a method, it will give you a query builder and allow you to chain cla
 @endforeach
 ```
 
-### Cascade Directive
+### Cascade directive
 
 When using blade components or rendering views loaded by non-Statamic routes/controllers, the cascade data will be not available by default. In these situations you can use the `@cascade` directive to populate the current scope with cascade data.
 
@@ -122,7 +122,7 @@ It is also possible to populate the current scope with all cascade data if neede
 @cascade
 ```
 
-## Writing Pure Antlers in Blade 🆕
+## Writing pure Antlers in Blade 🆕
 
 By using the `@antlers` and `@endantlers` Blade directive pair you can write pure Antlers in your Blade templates.
 
@@ -136,7 +136,7 @@ By using the `@antlers` and `@endantlers` Blade directive pair you can write pur
 
 Under the hood, this is syntactic sugar for creating an Antlers partial and does an on-the-fly `@include('antlers_file_name_here')` for you. This means that variables created _inside_ the Antlers will not be available _outside_ of the `@antlers` directive.
 
-## Using Antlers Blade Components
+## Using Antlers Blade components
 
 Despite the name, Antlers Blade Components are a Blade-only feature that allows you to use existing tags inside your Blade templates using a custom tag syntax. For example, you can gather all entries from a "pages" collection using the [collection](/tags/collection) tag like so:
 
@@ -176,9 +176,9 @@ We can also pass dynamic values to parameters:
 </s:collection>
 ```
 
-### Antlers Blade Components and Partials
+### Antlers Blade components and partials
 
-Partials also work with Antlers Blade Components, and are intended to be used when you'd like to include an Antlers partial inside your Blade template:
+Partials also work with Antlers Blade components, and are intended to be used when you'd like to include an Antlers partial inside your Blade template:
 
 ```blade
 <s:partial/the-partial-name>
@@ -192,7 +192,7 @@ Partials also work with Antlers Blade Components, and are intended to be used wh
 If you are going all-in on Blade for a new project, you should consider sticking to Blade features such as `@include` or Blade components instead of reaching for the `partial` tag.
 :::
 
-## Using Fluent Tags with Blade
+## Using fluent tags with Blade
 
 You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax. Instantiate your tag with the `Statamic::tag()` method and chain parameters as needed.
 
@@ -212,7 +212,7 @@ You can use [Tags](/tags) in Blade templates with a Laravel-style fluent syntax.
 When using multi-word parameters, like `query_scope`, you must use the camelCased version (`queryScope`).
 :::
 
-### Using Explicit Parameter Setters
+### Using explicit parameter setters
 
 If you need to set a parameter containing a colon (ie. a [filter](/tags/collection#filtering) param), you can use the dedicated `param()` setter method:
 
@@ -229,7 +229,7 @@ Statamic::tag('collection:pages')->params([
 ])
 ```
 
-### Passing Contextual Data
+### Passing contextual data
 
 You can pass in contextual data to the tag using the `context($data)` method:
 
@@ -294,7 +294,7 @@ You may also pass an array of tags, and parameters, with variable names as the k
 @foreach($items as $item) ... @endforeach
 ```
 
-## Using Modifiers with Blade
+## Using modifiers with Blade
 
 You can also use [Modifiers](/modifiers) in Blade templates with a Laravel-style fluent syntax. Wrap your value with the `Statamic::modify()` method and chain modifiers as needed. The value will get passed along in sequence like it does in Antlers. Any parameters should be specified like regular PHP parameters. If you use a modifier that can take more than one parameter, pass those in as an array.
 
@@ -323,7 +323,7 @@ If you're using a lot of modifiers in your Blade template, you can also include 
 {{ modify('test')->stripTags()->safeTruncate([42, '...']) }}
 ```
 
-## Conditional Logic and Values
+## Conditional logic and values
 
 Depending on where you got a value from, it may be wrapped in a class like `Value`. These can lead to unexpected results in conditional logic if they are not handled correctly (i.e., calling `->value()` in the condition).
 
@@ -402,7 +402,7 @@ The template contents
 </html>
 ```
 
-### Passing Context into Components
+### Passing context into components
 
 If you are using Blade components for your layout rather than Blade directives, you might want to pass the view context into your layout for access by child components. You can do so with the special `$__data` variable in the layout root, and the `@aware` directive in the child. Here's how:
 
@@ -473,11 +473,11 @@ Last, use the `@aware` directive in any child component of your layout to access
 </div>
 ```
 
-## Routes and Controllers
+## Routes and controllers
 
 If you choose to take a more "traditional" Laravel application approach to building your Statamic site, you can use routes and controllers much the same way you might with Eloquent models instead of Statamic's native collection routing and data cascade. Here's an example:
 
-### The Routes
+### The routes
 
 ```php
 use App\Http\Controllers\BlogController;
@@ -486,7 +486,7 @@ Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/blog/{slug}', [BlogController::class, 'show']);
 ```
 
-### The Controller
+### The controller
 
 ```php
 <?php
@@ -519,7 +519,7 @@ class BlogController extends Controller
 }
 ```
 
-### The Index View
+### The index view
 
 ```blade
 <h1>The Blog</h1>
@@ -535,7 +535,7 @@ class BlogController extends Controller
 </div>
 ```
 
-### The Show View
+### The show view
 
 ```blade
 <header>

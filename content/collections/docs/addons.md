@@ -7,11 +7,11 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632424769
 breadcrumb_title: Overview
 ---
-## Finding Addons
+## Finding addons
 
 You can browse the [Statamic Marketplace](https://statamic.com/addons) to find addons, or use the "Addons" section inside your Statamic Control Panel.
 
-## Installing Addons
+## Installing addons
 
 You can use Composer to install any addon:
 
@@ -29,7 +29,7 @@ php please install:ssg
 ```
 :::
 
-## Creating Addons
+## Creating addons
 
 To learn how to create your own addon, as well as publishing it to the Statamic Marketplace, head over to the [Extending Statamic](/extending/addons) area.
 

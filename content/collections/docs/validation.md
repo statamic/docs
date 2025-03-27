@@ -35,12 +35,12 @@ If you're interested in customizing user password validation, you can read about
 :::
 
 
-## Required Fields
+## Required fields
 
 Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
 
 
-## Validating Nestable Fields
+## Validating nestable fields
 
 Statamic's [Grid](/fieldtypes/grid), [Replicator](/fieldtypes/replicator), and [Bard](/fieldtypes/bard) fields can all contain sub-fields.
 
@@ -85,13 +85,13 @@ Rather than reaching for `{this}`, you can consider using conditional fields alo
 :::
 
 
-## Available Rules
+## Available rules
 
-### All Laravel Rules
+### All Laravel rules
 
 You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation]. You may also use [custom rules](#custom-rules).
 
-### Unique Entry Value
+### Unique entry value
 
 ```yaml
 -
@@ -113,7 +113,7 @@ You can then customize the error message right in your `resources/lang/{lang}/va
 ],
 ```
 
-### Unique Term Value
+### Unique term value
 
 ```yaml
 -
@@ -125,7 +125,7 @@ You can then customize the error message right in your `resources/lang/{lang}/va
 
 This works like the `UniqueEntryValue` rule, but for taxonomy terms.
 
-### Unique User Value
+### Unique user value
 
 ```yaml
 -
@@ -163,7 +163,7 @@ validate:
   - 'new App\Rules\AnotherRule(''with argument'')'
 ```
 
-## Validating Programmatically
+## Validating programmatically
 
 You may validate programmatically via the blueprint, if you need to do so within custom code.
 

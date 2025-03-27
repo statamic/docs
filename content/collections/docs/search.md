@@ -134,7 +134,7 @@ The searchables value determines what items are contained in a given index. By p
 - `users`
 - Custom ones may be added by addons. [Read about creating custom searchables](/extending/search)
 
-### Filtering Searchables
+### Filtering searchables
 
 You may choose to allow only a subset of searchable items.
 
@@ -172,11 +172,11 @@ class BlogFilter
 }
 ```
 
-### Records & Fields
+### Records & fields
 
 The best practice for creating search indexes is to simplify your record structure as much as possible. Each record should contain only enough information to be discoverable on its own, and no more. You can customize this record by deciding which _fields_ are included in the index.
 
-### Transforming Fields
+### Transforming fields
 
 By default, the data in the entry/term/etc that corresponds to the `fields` you've selected will be stored in the index. However, you're able to tailor the values exactly how you want using `transformers`.
 
@@ -230,7 +230,7 @@ class MyTransformer
 }
 ```
 
-### Updating Indexes
+### Updating indexes
 
 Whenever you save an item in the Control Panel it will automatically update any appropriate indexes. If you edit content by hand, you can tell Statamic to scan for new and updated records via the command line.
 
@@ -245,7 +245,7 @@ php please search:update name
 php please search:update --all
 ```
 
-### Connecting Indexes
+### Connecting indexes
 
 When a search is performed in the control panel (in collections, taxonomies, or asset containers, for example), Statamic will search the configured index for that content type.
 
@@ -425,7 +425,7 @@ We recommend using the [Javascript implementation](https://www.algolia.com/doc/a
 
 ## Extras
 
-### Config Cascade
+### Config cascade
 
 You can add values into the defaults array, which will cascade down to all the indexes, regardless of which driver they use.
 
