@@ -49,6 +49,14 @@
         &:not(:last-child) {
             padding-block-end: var(--spacing-s-4);
         }
+        h2 + & table {
+            /* e.g. >> /users */
+            margin-block-start: var(--spacing-s-3);
+        }
+        :is(h3, h4, h5, h6) + & table {
+            /* e.g. >> /graphql */
+            margin-block-start: 0;
+        }
     }
 
     table {
@@ -61,14 +69,6 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin-block: var(--spacing-l-1);
-        h2 + & {
-            /* e.g. >> /users */
-            margin-block-start: var(--spacing-s-3);
-        }
-        :is(h3, h4, h5, h6) + & {
-            /* e.g. >> /graphql */
-            margin-block-start: 0;
-        }
         font-family: var(--font-family-ui);
 
         td {

@@ -6,6 +6,7 @@ import './cookies.js';
 import './color-scheme-preferences.js';
 import './external-links.js';
 import './dl.js';
+import './tables.js';
 import './language-badges.js';
 import './searchHotKeys.js';
 import './dayjs.js';
