@@ -35,8 +35,10 @@
                 transform: scale(0.9);
             }
         }
-        h1 & {
-            /* Hide h1 anchors because they're pointless. However, we still need to generate these with JS because they're used to generate the TOC. */
+        /* Hide h1 anchors because they're pointless. However, we still need to generate these with JS because they're used to generate the TOC. */
+        h1 &,
+        /* Sometimes headings are in li items e.g. >> /troubleshooting */
+        li & {
             display: none;
         }
     }

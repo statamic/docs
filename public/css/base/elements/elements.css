@@ -304,13 +304,16 @@
         font-weight: var(--font-family-ui-weight-medium);
     }
     h1, .h1, h1 a, .h1 a, h2, .h2, h2 a, .h2 a, h3, .h3, h3 a, .h3 a {
-        font-family: var(--font-family-prose);
-        font-weight: var(--font-family-prose-weight-normal);
-        /* https://app.typographychecklist.com/ 91 - Use discretionary ligatures and swashes in headlines */
-        font-feature-settings: "kern", "liga", "clig", "calt", "dlig", "swsh";
-        /* Override iOS Safari's user agent stylesheet */
-        text-decoration: none;
-        color: inherit; /* If you use a link inside a heading, inherit the colour so it's not the default browser-purple */
+        /* Not when headings are inside li, which they sometimes are, e.g. /tips */
+        &:not(li *) {
+            font-family: var(--font-family-prose);
+            font-weight: var(--font-family-prose-weight-normal);
+            /* https://app.typographychecklist.com/ 91 - Use discretionary ligatures and swashes in headlines */
+            font-feature-settings: "kern", "liga", "clig", "calt", "dlig", "swsh";
+            /* Override iOS Safari's user agent stylesheet */
+            text-decoration: none;
+            color: inherit; /* If you use a link inside a heading, inherit the colour so it's not the default browser-purple */
+        }
     }
     a :is(h1, h2, h3, h4, h5, h6) {
         /* When a heading is inside a link, escape the link colour */

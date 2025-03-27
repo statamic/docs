@@ -82,6 +82,41 @@
             }
         }
 
+        ol, ul {
+            /* Rem because sometimes there are lists within lists e.g. >> /taxonomies */
+            font-size: var(--font-size-m-rem);
+            /* e.g. >> /upgrade-guide */
+            /* margin-block: var(--spacing-l); */
+            &:has(+ :is(h2, h3, h4, h5, h6)) {
+                padding-block-end: var(--spacing-s-1);
+            }
+            :is(h2, h3, h4, h5, h6) {
+                font-size: inherit;
+                line-height: inherit;
+                padding-block-end: 0;
+            }
+        }
+
+        li :is(ol, ul) {
+            /* e.g.
+
+            <ul>
+                <li>something</li>
+                <li>something else
+                    <ol> <-- we don't want this to have extra padding
+
+            */
+            padding-inline: 0;
+            padding-block-start: 0;
+        }
+
+        li {
+            /* Bard wraps <li> text in a <p> tag */
+            p {
+                padding-block-end: 0!important;
+            }
+        }
+
         :has(+ .c-tip, + pre) {
             ol& {
                 /* e.g. >> /forms */
@@ -184,41 +219,6 @@
             /* e.g. external links */
             display: inline-block;
             margin-inline: 0.15rem 0;
-        }
-
-        ol, ul {
-            /* Rem because sometimes there are lists within lists e.g. >> /taxonomies */
-            font-size: var(--font-size-m-rem);
-            /* e.g. >> /upgrade-guide */
-            /* margin-block: var(--spacing-l); */
-            &:has(+ :is(h2, h3, h4, h5, h6)) {
-                padding-block-end: var(--spacing-s-1);
-            }
-        }
-
-        li :is(ol, ul) {
-            /* e.g.
-
-            <ul>
-                <li>something</li>
-                <li>something else
-                    <ol> <-- we don't want this to have extra padding
-
-            */
-            padding-inline: 0;
-            padding-block-start: 0;
-        }
-
-        li {
-            /* Bard wraps <li> text in a <p> tag */
-            p {
-                padding-block-end: 0!important;
-            }
-        }
-
-        &:has(+ .c-entry-content--inline-image) {
-            /* Increase - push an inline image away from the paragraph above */
-            padding-block-end: var(--spacing-l-3);
         }
 
         blockquote {
