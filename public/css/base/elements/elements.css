@@ -60,7 +60,7 @@
             padding-block-start: var(--spacing-s-1);
         }
         /* Put some space between paragraphs and code blocks, except if it's in a tip */
-        p:has(+ &):not(.c-tip *) {
+        p:has(+ &):not(.c-tip p, ol p) {
             margin-block-end: var(--spacing-l);
         }
         li & {
@@ -364,10 +364,12 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / LOW PRIORITY / VERTICAL SPACING
     =================================================== */
     h3 {
-        padding-block: var(--spacing-l-1) var(--spacing-m);
+        /* e.g. >> /contributing */
+        padding-block: var(--spacing-l) var(--spacing-m);
     }
     h4 {
-        padding-block: var(--spacing-l-1) var(--spacing-m);
+        /* e.g. >> /content-managers-guide */
+        padding-block: var(--spacing-s-1) var(--spacing-m);
         &:has(code) {
             /* e.g. >> /forms */
             padding-block-start: var(--spacing-m);
