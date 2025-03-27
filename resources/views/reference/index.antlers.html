@@ -1,8 +1,4 @@
-<header>
-    {{ partial:breadcrumbs }}
-    <h1>{{ title }}</h1>
-    <div class="text-2xl">{{ intro ?? overview | markdown }}</div>
-</header>
+{{ partial:header }}
 
 <section class="not-prose mt-8 grid lg:grid-cols-2 grid *:bg-zinc-50 *:p-5 gap-4 *:rounded-lg hover:*:bg-zinc-100 dark:*:bg-zinc-800 dark:hover:*:bg-zinc-700">
     {{ nav handle="reference" }}

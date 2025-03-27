@@ -19,6 +19,9 @@ tabs:
             handle: breadcrumb_title
             field: page.breadcrumb_title
           -
+            handle: intro
+            field: page.intro
+          -
             handle: content
             field:
               type: markdown
