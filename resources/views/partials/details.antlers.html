@@ -1,18 +1,18 @@
 <div class="space-y-10">
     {{ details }}
-    <div class="parameter relative not-prose">
-        <header class="inline-flex items-center relative border rounded-t text-sm font-mono leading-none overflow-hidden">
-            <h3 class="bg-black px-2 py-2 text-white font-bold">
+    <div class="c-pill-with-description">
+        <header>
+            <h3>
                 {{ name }}
             </h3>
-            <div class="px-2 py-2 font-bold text-black">
+            <div>
                 {{ type }}
             </div>
             {{ if required }}
-                <div class="bg-white px-2 py-2 border-l text-zinc-500">required</div>
+                <div>required</div>
             {{ /if }}
         </header>
-        <div class="prose border rounded-b rounded-tr p-4 -mt-px relative">
+        <div>
             {{ description | widont  }}
         </div>
     </div>

@@ -56,10 +56,11 @@
                     rotate: 20deg;
                 }
                 &:first-child {
-                    font-size: var(--font-size-m);
+                    /* Custom */
+                    font-size: clamp(1rem, 4vw, 1.1rem);
                     font-family: var(--font-family-code);
                     font-weight: var(--font-family-code-weight-normal);
-                    text-transform: lowercase;
+                    text-transformr: lowercase;
                 }
                 &:last-child {
                     padding-inline: var(--spacing-s-1);
@@ -82,6 +83,10 @@
         }
         p {
             font-family: var(--font-family-ui);
+            &, & code {
+                /* Custom */
+                font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+            }
         }
     }
 }
