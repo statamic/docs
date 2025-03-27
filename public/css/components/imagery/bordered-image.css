@@ -24,23 +24,23 @@
         <picture>
             <!-- {{# WebP #}} -->
             <source
-                srcset="img/2/make-user.png 750w,
-                        img/2/make-user.png 1000w,
-                        img/2/make-user.png 1536w"
+                srcset="/img/2/make-user.png 750w,
+                        /img/2/make-user.png 1000w,
+                        /img/2/make-user.png 1536w"
                 type="image/webp"
                 sizes="(min-width: 1000px) 33.333vw, 100vw"
             >
             <!-- {{# JPEG #}} -->
             <source
-                srcset="img/2/make-user.png 750w,
-                        img/2/make-user.png 1000w,
-                        img/2/make-user.png 1536w"
+                srcset="/img/2/make-user.png 750w,
+                        /img/2/make-user.png 1000w,
+                        /img/2/make-user.png 1536w"
                 type="image/jpeg"
                 sizes="(min-width: 1000px) 33.333vw, 100vw"
             >
             <!-- {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}} -->
             <img
-                src="img/2/make-user.png"
+                src="/img/2/make-user.png"
                 loading="lazy"
                 decoding="async"
                 width="906"

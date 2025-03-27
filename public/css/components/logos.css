@@ -130,7 +130,7 @@
         /* This is needed for rasterised images */
         object-fit: contain;
         height: 2rem;
-        /* Where needed, it's best to set sizes for individual logos as an inline style e.g. <img src="img/sponsors/arcustech.svg" alt="Arcustech logo" class="u-hide-in-dark-mode" /> <img src="img/sponsors/arcustech-dark.svg" alt="Arcustech logo" class="u-hide-in-light-mode" style="min-width: 10rem;" /> */
+        /* Where needed, it's best to set sizes for individual logos as an inline style e.g. <img src="/img/sponsors/arcustech.svg" alt="Arcustech logo" class="u-hide-in-dark-mode" /> <img src="/img/sponsors/arcustech-dark.svg" alt="Arcustech logo" class="u-hide-in-light-mode" style="min-width: 10rem;" /> */
         /* min-inline-size: 8.5rem; */
     }
 }

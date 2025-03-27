@@ -12,7 +12,7 @@
     <div class="c-tip">
         <div class="c-tip__title">Hot Tip!</div>
         <p>If a view file ends with <code>.blade.php</code> it will use Laravel’s <a href="https://statamic.dev/blade" >Blade templates</a>. This same pattern applies for any other template engine you may wish to install in the future, like Twig or something that hasn't been invented yet.</p>
-        <img src="img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />
+        <img src="/img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />
     </div>
 
 */
