@@ -19,7 +19,7 @@
     .c-video {
         position:relative;
         margin-inline: auto;
-        &:not(:last-child) {
+        &:not(article > :last-child) {
             margin-block-end: var(--spacing-l-2);
         }
         + * {
