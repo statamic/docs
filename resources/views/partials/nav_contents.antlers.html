@@ -1,10 +1,21 @@
+{{# Little hack to stop the scrollbar flickering here...
+    - First we hide the overflow so the view transition captures a "screenshot" of the ul without the scroll bar
+    - Then we remove the overflow pretty much as soon as the page has loaded
+    - The overflow is both hidden and removed with JS so it's a cool progressive enhancement
+#}}
 <ul 
     wire:scroll 
     class="o-shadow-container-vertical"
     x-data="{ 
         navScrollPosition: $persist(0)
     }"
-    x-init="$el.scrollTop = navScrollPosition"
+    x-init="
+        $el.scrollTop = navScrollPosition;
+        $el.style.overflow = 'hidden';
+        setTimeout(() => {
+            $el.style.overflow = 'auto';
+        }, 200)
+    "
     @scroll="navScrollPosition = $el.scrollTop"
 >
     {{ nav :handle="section" }}

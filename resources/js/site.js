@@ -12,7 +12,7 @@ import './searchHotKeys.js';
 import './dayjs.js';
 import './docsearch.js';
 import './torchlight.js';
-import './toc-navigation.js';
+// import './toc-navigation.js';
 
 // Register plugins before starting Alpine
 Alpine.plugin(intersect);
