@@ -43,7 +43,11 @@
     .c-tiles-with-description {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
-        gap: var(--spacing-l-1) var(--spacing-s-2);
+        gap: var(--spacing-l-1) var(--spacing-s-4);
+        /* Custom */
+        @media (width >= 530px) {
+            column-gap: var(--spacing-s-2);
+        }
         padding-block-end: var(--spacing-l-2);
 
         .external {
