@@ -1,10 +1,26 @@
 {{ partial:header }}
 
-<section class="not-prose mt-8 grid lg:grid-cols-2 grid *:bg-zinc-50 *:p-5 gap-4 *:rounded-lg hover:*:bg-zinc-100 dark:*:bg-zinc-800 dark:hover:*:bg-zinc-700">
+<section class="c-tiles-with-description">
+    {{ nav handle="reference" }}
+        <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
+            <a href="{{ url }}" class="u-link-style-none">
+                <figure class="c-tiles-with-description__item__thumbnail">
+                    {{ tile_image }}
+                        {{ partial:image_dimensions/tile }}
+                    {{ /tile_image }}
+                    <figcaption>{{ collection :in="slug" as="entries" }}{{ entries | count }} {{ title }}{{ /collection }}</figcaption>
+                </figure>
+            </a>
+            <p>{{ content }}</p>
+        </div>
+    {{ /nav }}
+</section>
+
+{{# <section class="not-prose mt-8 grid lg:grid-cols-2 grid *:bg-zinc-50 *:p-5 gap-4 *:rounded-lg hover:*:bg-zinc-100 dark:*:bg-zinc-800 dark:hover:*:bg-zinc-700">
     {{ nav handle="reference" }}
         <a href="{{ url }}" class="hover:bg-zinc-300 text-base text-zinc-500">
             <h2 class="font-normal text-zinc-800 mb-3">{{ title }}</h2>
             {{ content | widont }}
         </a>
     {{ /nav }}
-</section>
+</section> #}}

@@ -9,4 +9,4 @@ related_entries:
   - dcf80ee6-209e-45aa-af42-46bbe01996e2
   - e052ecb8-60d9-4afa-980e-ce128c301d70
 ---
-Manipulate the data of your Antlers variables on the fly with Modifiers.
+Manipulate your data on the fly with Modifiers.

@@ -4,4 +4,4 @@ blueprint: reference
 title: Tags
 template: tags/index
 ---
-Fetch & manipulate content and build all manner of dynamic functionality right in your HTML.
+Fetch, manipulate, and add dynamic functionality

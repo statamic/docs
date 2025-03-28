@@ -1,0 +1,32 @@
+title: Navigation
+fields:
+  -
+    handle: navigation_image
+    field:
+      max_files: 1
+      container: main
+      folder: navigation
+      type: assets
+      display: 'Navigation Image'
+      instructions: 'Used for the major sections of the sidebar'
+  -
+    handle: image_width_override
+    field:
+      type: text
+      display: 'Image Width Override'
+      instructions: 'e.g. `2.05em`. This allows you to override the width for certain navigation images. You may want to do this if the image has an unusual aspect ratio, which might make the image appear smaller, such as sunglasses that are more landscape.'
+  -
+    handle: tile_image
+    field:
+      max_files: 1
+      container: main
+      folder: tiles
+      type: assets
+      display: 'Tile Image'
+      instructions: 'A "fuller" version of the image, used for the tile images on the page, e.g. `/reference`'
+  -
+    handle: hue_rotate
+    field:
+      type: toggle
+      display: 'Hue Rotate'
+      instructions: 'Add an extra hue rotation to make the image more stylised'

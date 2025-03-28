@@ -2,6 +2,9 @@ tree:
   -
     id: 25143313-bcc5-4897-a16f-16b4b4fb42b4
     entry: 5a8fe626-b073-41fc-8da4-264b54837600
+    data:
+      tile_image: tiles/fieldtypes.png
+      hue_rotate: true
   -
     id: 6241c501-22d8-420d-8202-46c152c3a4d7
     entry: a4bc698a-5971-474d-a19c-0c43c0d641b9

@@ -23,7 +23,7 @@
                     <figcaption>{{ tile_title }}</figcaption>
                 </figure>
             </a>
-            <p>{{ tile_description }}</p>
+            <p>{{ tile_description | remove_right('.') }}</p>
         </div>
     {{ /tiles }}
 </div>

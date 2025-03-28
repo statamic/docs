@@ -45,6 +45,10 @@
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
         gap: var(--spacing-l-1) var(--spacing-s-2);
         padding-block-end: var(--spacing-l-2);
+
+        .external {
+            display: none;
+        }
     }
     .c-tiles-with-description__item {
         max-width: 21rem;
@@ -52,6 +56,7 @@
         font-family: var(--font-family-ui);
         p {
             padding-inline: var(--spacing-m);
+            /* padding-inline: var(--spacing-s-1); */
             font-size: var(--font-size-ui);
             line-height: var(--font-size-ui-line-height);
             max-width: 16rem;
