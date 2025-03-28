@@ -46,4 +46,11 @@
     .u-image-boost-with-hue-rotate {
         filter: var(--filter-image-boost-1-with-hue-rotate);
     }
+    .u-link-style-none {
+        &, * {
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 0;
+        }
+    }
 }

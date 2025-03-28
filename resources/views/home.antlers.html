@@ -6,21 +6,23 @@
 <div class="c-tiles-with-description">
     {{ tiles }}
         <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
-            <figure class="c-tiles-with-description__item__thumbnail">
-                {{ if tile_image_dark_mode }}
-                    {{ tile_image }}
-                        {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
-                    {{ /tile_image }}
-                    {{ tile_image_dark_mode }}
-                        {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
-                    {{ /tile_image_dark_mode }}
-                {{ else }}
-                    {{ tile_image }}
-                        {{ partial:image_dimensions/tile }}
-                    {{ /tile_image }}
-                {{ /if }}
-                <figcaption>{{ tile_title }}</figcaption>
-            </figure>
+            <a href="{{ tile_link }}" class="u-link-style-none">
+                <figure class="c-tiles-with-description__item__thumbnail">
+                    {{ if tile_image_dark_mode }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /tile_image }}
+                        {{ tile_image_dark_mode }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
+                        {{ /tile_image_dark_mode }}
+                    {{ else }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile }}
+                        {{ /tile_image }}
+                    {{ /if }}
+                    <figcaption>{{ tile_title }}</figcaption>
+                </figure>
+            </a>
             <p>{{ tile_description }}</p>
         </div>
     {{ /tiles }}

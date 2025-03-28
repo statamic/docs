@@ -56,6 +56,11 @@ tabs:
                             type: text
                             display: 'Tile Description'
                         -
+                          handle: tile_link
+                          field:
+                            type: link
+                            display: 'Tile Link'
+                        -
                           handle: advanced_options
                           field:
                             type: revealer
@@ -76,6 +81,8 @@ tabs:
                             display: 'Hue Rotate'
                             instructions: 'Add an extra hue rotation to make the image more stylised'
                             width: 50
+                            if:
+                              advanced_options: 'equals true'
                         -
                           handle: dark_mode
                           field:
