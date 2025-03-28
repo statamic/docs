@@ -3,20 +3,46 @@ tree:
     id: 25143313-bcc5-4897-a16f-16b4b4fb42b4
     entry: 5a8fe626-b073-41fc-8da4-264b54837600
     data:
+      navigation_image: navigation/hand.png
       tile_image: tiles/fieldtypes.png
-      hue_rotate: true
+      hue_rotate: hue_rotate_2
   -
     id: 6241c501-22d8-420d-8202-46c152c3a4d7
     entry: a4bc698a-5971-474d-a19c-0c43c0d641b9
+    data:
+      navigation_image: navigation/eyes.png
+      image_width_override: 1.95em
+      tile_image: tiles/modifiers.png
+      hue_rotate: hue_rotate_2
   -
     id: da835fbd-8687-4c91-abaa-d59bc88dbdd2
     entry: 082e1db7-7b52-4b92-a8bf-4c51ce7d741c
+    data:
+      navigation_image: tiles/repositories.png
+      image_width_override: 2.4em
+      tile_image: tiles/repositories.png
+      hue_rotate: hue_rotate_1
   -
     id: 4066b00a-98c2-4bbb-b762-f6f5d0835d78
     entry: 710810c7-f710-4364-a6e4-cedf8c292d88
+    data:
+      navigation_image: navigation/racoon.png
+      image_width_override: 2em
+      tile_image: tiles/tags.png
+      hue_rotate: hue_rotate_2
   -
     id: f12c6a80-2078-4d59-b3bc-c7970cfe791d
     entry: 03cf195b-2030-43c1-a6f3-039fa55ffd6a
+    data:
+      navigation_image: tiles/variables.png
+      image_width_override: 2.75em
+      tile_image: tiles/variables.png
+      hue_rotate: hue_rotate_2
   -
     id: 43aa419f-3855-42f5-bd74-acf8925989ea
     entry: 565f0285-43b1-41d2-935c-e52ad00c012c
+    data:
+      navigation_image: tiles/widgets.png
+      image_width_override: 2.5em
+      tile_image: tiles/widgets.png
+      hue_rotate: hue_rotate_2

@@ -76,10 +76,8 @@ tabs:
                               advanced_options: 'equals true'
                         -
                           handle: hue_rotate
-                          field:
-                            type: toggle
-                            display: 'Hue Rotate'
-                            instructions: 'Add an extra hue rotation to make the image more stylised'
+                          field: hue_rotate.hue_rotate
+                          config:
                             width: 50
                             if:
                               advanced_options: 'equals true'

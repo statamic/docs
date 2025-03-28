@@ -27,7 +27,7 @@ tiles:
     type: tile
     enabled: true
     flush_image: false
-    hue_rotate: true
+    hue_rotate: hue_rotate_1
     tile_link: /screencasts
   -
     id: m8fszcgf

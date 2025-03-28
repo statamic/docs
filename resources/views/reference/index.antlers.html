@@ -16,6 +16,30 @@
     {{ /nav }}
 </section>
 
+<hr>
+
+<h2 id="sponsors" class="u-center-on-lower-mqs o-scroll-spy-timeline__track">Sponsors</h2>
+<p class="u-center-on-lower-mqs">We've reserved this space to thank our top open source sponsors.</p>
+<div class="c-logo-grid u-center-on-lower-mqs">
+    {{ hero_sponsors }}
+        <div class="c-logo-grid__item">
+            {{ if error }}
+                <p>We're having trouble loading the sponsors at the moment.</p>
+            {{ else }}
+                <a href="{{ url }}">
+                    <img src="{{ avatarUrl }}">
+                    <span>{{ name }}</span>
+                </a>
+            {{ /if }}
+        </div>
+    {{ /hero_sponsors }}
+    <div class="c-logo-grid__item">
+        <a href="https://github.com/sponsors/statamic">Sponsor Statamic</a>
+    </div>
+</div>
+
+{{ $article_footer = 'no' }}
+
 {{# <section class="not-prose mt-8 grid lg:grid-cols-2 grid *:bg-zinc-50 *:p-5 gap-4 *:rounded-lg hover:*:bg-zinc-100 dark:*:bg-zinc-800 dark:hover:*:bg-zinc-700">
     {{ nav handle="reference" }}
         <a href="{{ url }}" class="hover:bg-zinc-300 text-base text-zinc-500">

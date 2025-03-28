@@ -27,6 +27,6 @@
         width="{{ width }}" 
         height="{{ height }}"
         alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-        {{ hue_rotate ?= 'class="u-image-boost-with-hue-rotate"' }}
+        {{ if hue_rotate == 'hue_rotate_1' }} class="u-image-boost-with-hue-rotate"{{ elseif hue_rotate == 'hue_rotate_2' }} class="u-image-boost-with-hue-rotate-extra"{{ /if }}
     >
 </picture>

@@ -147,9 +147,11 @@
                 {{ if $suggest == 'yes' }}
                     {{ partial:suggest }}
                 {{ else }}
-                    {{ partial:edit }}
+                    {{# e.g. we output this variable on homepages like / and /reference #}}
+                    {{ unless $article_footer == 'no' }}
+                        {{ partial:edit }}
+                    {{ /unless }}
                 {{ /if }}
-                {{# {{ partial:toc :hide="hide_toc ?? false" }} #}}
             </div>
         </main>
 

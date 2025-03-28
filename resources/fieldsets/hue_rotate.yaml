@@ -1,0 +1,16 @@
+title: 'Hue Rotate'
+fields:
+  -
+    handle: hue_rotate
+    field:
+      options:
+        -
+          key: hue_rotate_1
+          value: 'Hue Rotate'
+        -
+          key: hue_rotate_2
+          value: 'Hue Rotate Extra'
+      clearable: true
+      type: button_group
+      display: 'Hue Rotate'
+      instructions: 'Add extra hue rotations to make the image more stylised'

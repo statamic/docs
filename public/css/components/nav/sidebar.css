@@ -129,6 +129,10 @@
 
                 & li {
                     padding-block-end: 0;
+                    a {
+                        /* Otherwise the sidebar might grow too big e.g. >> /reference */
+                        max-width: 12rem;
+                    }
                     &:not(ul ul *) {
                         position: relative;
                         &::before {

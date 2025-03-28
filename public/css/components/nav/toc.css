@@ -267,7 +267,9 @@
             }
             .c-nav-toc-with-popover-api-category-heading {
                 gap: var(--spacing-s-2);
-                inline-size: 100%;
+                &:has(img) {
+                    inline-size: 100%;
+                }
             }
             .c-nav-toc-with-popover-api__mobile-button {
                 display: none;

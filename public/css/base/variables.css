@@ -244,7 +244,7 @@
     =================================================== */
     --filter-image-boost-1: contrast(103%) saturate(1.12);
     --filter-image-boost-1-with-hue-rotate: contrast(103%) saturate(1.12) hue-rotate(-12deg);
-    --filter-image-boost-1-with-hue-rotate-extra: contrast(103%) saturate(1.375) hue-rotate(-12deg);
+    --filter-image-boost-1-with-hue-rotate-extra: contrast(108%) saturate(1.35) hue-rotate(-12deg);
     --filter-image-boost-2: contrast(105%) saturate(1.175);
     --filter-burnt-shadow: drop-shadow(0px 5px 2px var(--color-red-burnt-1));
 

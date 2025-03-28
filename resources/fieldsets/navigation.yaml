@@ -25,8 +25,4 @@ fields:
       display: 'Tile Image'
       instructions: 'A "fuller" version of the image, used for the tile images on the page, e.g. `/reference`'
   -
-    handle: hue_rotate
-    field:
-      type: toggle
-      display: 'Hue Rotate'
-      instructions: 'Add an extra hue rotation to make the image more stylised'
+    import: hue_rotate

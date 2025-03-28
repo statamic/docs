@@ -42,9 +42,11 @@
             justify-content: center;
         }
     }
-    /* e.g. */
     .u-image-boost-with-hue-rotate {
         filter: var(--filter-image-boost-1-with-hue-rotate);
+    }
+    .u-image-boost-with-hue-rotate-extra {
+        filter: var(--filter-image-boost-1-with-hue-rotate-extra);
     }
     .u-link-style-none {
         &, * {
