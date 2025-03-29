@@ -1,7 +1,11 @@
-{{# Little hack to stop the scrollbar flickering here...
-    - First we hide the overflow so the view transition captures a "screenshot" of the ul without the scroll bar
-    - Then we remove the overflow pretty much as soon as the page has loaded
-    - The overflow is both hidden and removed with JS so it's a cool progressive enhancement
+{{# Notes... 
+
+    Little hack to stop the scrollbar flickering here...
+        - First we hide the overflow so the view transition captures a "screenshot" of the ul without the scroll bar
+        - Then we remove the overflow pretty much as soon as the page has loaded
+        - The overflow is both hidden and removed with JS so it's a cool progressive enhancement
+
+    We also add a few conditions to check that we're the scroll position is only saved if we're in the same section of the site, e.g. if we're going from Docs to Reference we now have a different sidebar nav so we don't want to apply a previous position.
 #}}
 <ul 
     wire:scroll 
@@ -10,7 +14,9 @@
         navScrollPosition: $persist(0)
     }"
     x-init="
-        $el.scrollTop = navScrollPosition;
+        if (window.location.pathname !== '/reference' && window.location.pathname !== '/') {
+            $el.scrollTop = navScrollPosition;
+        }
         $el.style.overflow = 'hidden';
         setTimeout(() => {
             $el.style.overflow = 'auto';
