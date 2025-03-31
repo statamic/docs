@@ -10,7 +10,7 @@
             {{ partial:nav_sidebar }}
             <nav class="c-breadcrumbs">
                 <ol>
-                    <li><a href="/">{{ page:section }}</a></li>
+                    <li><a href="{{ nav:collection:sections include_home="true" }}{{ page:section === section ?= '{ url }' }}{{ /nav:collection:sections }}">{{ page:section }}</a></li>
                     {{ nav :handle="section" }}
                         {{ if {children | where('is_current', true) | count} > 0 }}
                             <li>
