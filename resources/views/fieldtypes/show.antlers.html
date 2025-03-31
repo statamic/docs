@@ -1,0 +1,31 @@
+<header class="markdown pb-8 mb-8">
+    {{ partial:breadcrumbs }}
+    <div class="flex items-center">
+        <h1>{{ title ensure_right=" Fieldtype" }}</h1>
+        {{ partial:pro-badge }}
+    </div>
+    {{ intro ?? overview | markdown }}
+    {{ partial:toc }}
+</header>
+
+<article class="markdown md:pb-16">
+    {{ if screenshot }}
+    <figure>
+        {{ screenshot }}
+            <img src="{{ url }}" width="{{ width | /:2 | +:2 }}" alt="{{ page:title }} Fieldtype UI">
+        {{ /screenshot }}
+        <figcaption>The {{ title }} in action!</figcaption>
+    </figure>
+    {{ /if }}
+
+    {{ content | toc:ids }}
+
+    {{ if options }}
+        <h2 id="options">Options</h2>
+        {{ partial:details :details="options" }}
+    {{ /if }}
+</article>
+
+{{ partial:related }}
+
+{{ partial:edit }}
