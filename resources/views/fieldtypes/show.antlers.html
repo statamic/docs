@@ -9,12 +9,14 @@
 </header>
 
 <article class="markdown md:pb-16">
+    {{ if screenshot }}
     <figure>
         {{ screenshot }}
             <img src="{{ url }}" width="{{ width | /:2 | +:2 }}" alt="{{ page:title }} Fieldtype UI">
         {{ /screenshot }}
         <figcaption>The {{ title }} in action!</figcaption>
     </figure>
+    {{ /if }}
 
     {{ content | toc:ids }}
 
