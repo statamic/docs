@@ -68,9 +68,7 @@
     </header>
 {{ else }}
     <header>
-        <div>
-            <h1>{{ title }}</h1>
-        </div>
+        <h1>{{ title }}</h1>
         {{ intro ?? overview | markdown }}
     </header>
 {{ /if }}
