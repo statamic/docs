@@ -4,6 +4,7 @@
         - First we hide the overflow so the view transition captures a "screenshot" of the ul without the scroll bar
         - Then we remove the overflow pretty much as soon as the page has loaded
         - The overflow is both hidden and removed with JS so it's a cool progressive enhancement
+        - Be careful with the delay between switching the overflow back to auto. If the delay is set to more than 50ms, the scroll bars will flicker in when loading when "System Settings > Scroll bar behaviour > Show scroll bars" is set to "Automatically based on mouse or trackpad" on macOS.
 
     We also add a few conditions to check that we're the scroll position is only saved if we're in the same section of the site, e.g. if we're going from Docs to Reference we now have a different sidebar nav so we don't want to apply a previous position.
 #}}
@@ -20,7 +21,7 @@
         $el.style.overflow = 'hidden';
         setTimeout(() => {
             $el.style.overflow = 'auto';
-        }, 200)
+        }, 20)
     "
     @scroll="navScrollPosition = $el.scrollTop"
 >
