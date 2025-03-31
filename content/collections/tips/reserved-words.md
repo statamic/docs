@@ -13,6 +13,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `blueprint`
 - `content_type`
 - `count`
+- `date`
 - `elseif`
 - `endif`
 - `endunless`
