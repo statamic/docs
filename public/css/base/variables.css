@@ -175,6 +175,7 @@
     /* e.g. .c-tiles-with-description p */
     --font-size-s-2-line-height: 1.55;
     --font-size-s-1: 0.9em;
+    --font-size-s-1-fixed: 0.9em;
     --font-size-s-1-line-height: 1.4;
 
     /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
@@ -312,7 +313,10 @@
         --max-width-1: 105rem;
         /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- BUMPS
         =================================================== */
-        --font-bump: 0.03vw; /* Increase */
+        /* Increase */
+        --font-bump: 0.03vw;
+        /* Decrease */
+        --font-size-s-1-fixed: 0.84em;
     }
 
     /* GROUP VARIABLES -- LIGHT/DARK MODE

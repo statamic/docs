@@ -1,0 +1,51 @@
+/* GROUP COMPONENTS / ICON LIST
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /reference/fieldtypes
+
+    What does it do?
+    ----------------
+    Display a list-like grid of icons e.g. /reference/fieldtypes
+
+*/
+/* HTML Example...
+
+<article class="c-icon-list">
+    <ul>
+        <li>
+            <a href="/fieldtypes/array">
+                <svg>
+            </a>
+        </li>
+    </ul>
+</article>
+
+*/
+@layer components {
+    .c-icon-list {
+        font-family: var(--font-family-code);
+        padding: var(--spacing-l-1) var(--spacing-l-2);
+        margin-block-start: calc(var(--spacing-l-2) - 0.75rem);
+        background: var(--color-purple-light-2);
+        ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 11em), 1fr));
+            gap: var(--spacing-s-5) var(--spacing-s-3);
+        }
+        a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s-3);
+            text-decoration: none;
+            font-size: var(--font-size-s-1-fixed);
+            line-height: var(--font-size-s-1-line-height);
+            &:not(:has(svg)) {
+                /* If there's no icon create a space */
+                margin-inline-start: 29px;
+            }
+        }
+    }
+}
