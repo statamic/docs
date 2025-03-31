@@ -1,21 +1,16 @@
 {{ partial:header }}
 
-<article class="markdown md:pb-16">
-    {{ content | toc:ids }}
+{{ content | toc:ids }}
 
-    <div class="space-y-10">
-        {{ taxonomy:modifier_types collection="modifiers" }}
-            <div class="bg-white border p-8 w-full rounded-sm shadow-stack z-10 font-mono-alt font-bold antialiased dark:bg-gray-darkest dark:shadow-none">
-                <h3 class="m-0">{{ title | title }}</h3>
-                <ul class="list-col-3 mb-0">
-                    {{ entries sort="slug" }}
-                        <li><a class="" href="{{ url }}">{{ slug }}</a></li>
-                    {{ /entries }}
-                </ul>
-            </div>
-        {{ /taxonomy:modifier_types }}
-    </div>
+<article class="c-panel-list">
+    {{ taxonomy:modifier_types collection="modifiers" }}
+        <h3 class="js__no-anchors">{{ title | title }}</h3>
+        <ul>
+            {{ entries sort="slug" }}
+                <li><a href="{{ url }}">{{ slug }}</a></li>
+            {{ /entries }}
+        </ul>
+    {{ /taxonomy:modifier_types }}
 </article>
 
 {{ partial:related }}
-

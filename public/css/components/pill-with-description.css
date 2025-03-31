@@ -88,5 +88,8 @@
                 font-size: clamp(0.9rem, 3.5vw, 1.05rem);
             }
         }
+        ul:last-child {
+            padding-block-end: var(--spacing-s-2);
+        }
     }
 }
