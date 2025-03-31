@@ -55,6 +55,17 @@ class Toc extends Modifier
         // Add any additional headings for parameters, variables, and options sections
         $matches = $this->appendDetails($matches);
 
+        // Remove headings with duplicate content e.g. /fieldtypes/array
+        $seen = [];
+        $matches = array_filter($matches, function($heading) use (&$seen) {
+            $content = trim(strip_tags($heading[3]));
+            if (in_array($content, $seen)) {
+                return false;
+            }
+            $seen[] = $content;
+            return true;
+        });
+
         foreach ($matches as $heading) {
             // Track the starting heading level for proper list nesting
             if ($i == 0) {
