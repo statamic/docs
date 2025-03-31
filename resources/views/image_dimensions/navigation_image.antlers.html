@@ -1,19 +1,19 @@
 <picture>
     {{# WebP #}}
     <source
-        srcset="{{ glide:url width='40' dpr='2' format='webp' }} 2x,
-                {{ glide:url width='40' dpr='3' format='webp' }} 3x"
+        srcset="{{ glide:url width='65' dpr='2' format='webp' }} 2x,
+                {{ glide:url width='65' dpr='3' format='webp' }} 3x"
         type="image/webp"
     >
     {{# JPEG #}}
     <source
-        srcset="{{ glide:url width='40' dpr='2' }} 2x,
-                {{ glide:url width='40' dpr='3' }} 3x"
+        srcset="{{ glide:url width='65' dpr='2' }} 2x,
+                {{ glide:url width='65' dpr='3' }} 3x"
         type="image/jpeg"
     >
     {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
     <img 
-        src="{{ glide:url width='40' dpr='2' }}"
+        src="{{ glide:url width='65' dpr='2' }}"
         decoding="async"
         fetchpriority="high"
         width="{{ width }}" 
