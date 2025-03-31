@@ -210,8 +210,8 @@
                 padding-block: var(--spacing-s-4) var(--spacing-l-1);
             }
         }
-        /* Followed by some kind of image component */
-        > :is(header, p):has(+ * img) {
+        /* Followed by some kind of image component (or paragraph like /javascript-frameworks) */
+        > :is(header, p):has(+ * img, + p) {
             margin-block-end: calc(var(--spacing-l-1));
         }
 
