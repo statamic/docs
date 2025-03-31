@@ -70,6 +70,10 @@
                 /* e.g. >> /updating */
                 margin-block-end: var(--spacing-m);
             }
+            h2:has(+ &) + & {
+                /* e.g. >> /tags/children */
+                margin-block-start: var(--spacing-s-5);
+            }
             header:has(+ &) + & {
                 /* e.g. >> /updating */
                 margin-block-start: var(--spacing-m);

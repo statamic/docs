@@ -67,7 +67,9 @@
 
         :nth-child(1 of header) {
             /* Article intro text */
-            p {
+            p,
+            /* Or if there's no article intro text in the header, instead make the first following paragraph an "intro" style text e.g. >> /reference/widgets */
+            &:has(:not(p)) + article > p:first-child {
                 font-size: var(--font-size-l-1);
                 line-height: var(--font-size-l-1-line-height);
                 max-width: var(--max-width-content);
@@ -210,8 +212,8 @@
                 padding-block: var(--spacing-s-4) var(--spacing-l-1);
             }
         }
-        /* Followed by some kind of image component (or paragraph like /javascript-frameworks) */
-        > :is(header, p):has(+ * img, + p) {
+        /* Followed by some kind of image component (or paragraph like /javascript-frameworks). Not when the h1 is an only child, e.g. /modifiers/add */
+        > :is(header, p):has(+ * img, + p):not:has(h1:only-child) {
             margin-block-end: calc(var(--spacing-l-1));
         }
 
