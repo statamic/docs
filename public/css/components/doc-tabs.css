@@ -45,10 +45,11 @@
                 p, ol, ul {
                     padding: var(--spacing-s-1);
                 }
-                /* Cancelled based on e.g. >> /extending/modifiers */
-                /* p {
+                /* Not >> /extending/modifiers */
+                p:has(~ pre) {
+                    /* e.g. >> /fieldtypes/assets */
                     padding-block-end: 0;
-                } */
+                }
                 ol, ul {
                     /* e.g. >> /extending/modifiers */
                     padding-block-end: var(--spacing-l);
