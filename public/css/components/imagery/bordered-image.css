@@ -58,6 +58,8 @@
     .c-bordered-image {
         position: relative;
         place-items: center;
+        /* e.g. >> /collections and /stache */
+        margin-block-start: var(--spacing-l);
         &:not(:last-child) {
             margin-block-end: calc(var(--spacing-l-1) + var(--spacing-s-4));
         }

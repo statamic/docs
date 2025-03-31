@@ -46,7 +46,7 @@
 
         header + & {
             /* e.g. >> /deploying */
-            padding-block-start: var(--spacing-m);
+            padding-block-start: var(--spacing-l);
         }
         &:has(.c-icon-grid__item__label) {
             /* A recommended label like e.g. >> /installing */

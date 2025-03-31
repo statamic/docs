@@ -1,22 +1,20 @@
 {{ partial:header }}
 
-<article>
-    {{ content | toc:ids }}
+{{ content | toc:ids }}
 
-    {{ taxonomy:types sort="order" }}
-        <h3 id="{{ slug }}-variables">{{ title }}</h3>
-        {{ content }}
-        <table>
-            {{ entries sort="title" }}
-            <tr>
-                <td>
-                    <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ slug }}</a>
-                </td>
-                <td>
-                    {{ description ?? overview | markdown }}
-                </td>
-            </tr>
-            {{ /entries }}
-        </table>
-    {{ /taxonomy:types }}
-</article>
+{{ taxonomy:types sort="order" }}
+    <h3 id="{{ slug }}-variables">{{ title }}</h3>
+    {{ content }}
+    <table>
+        {{ entries sort="title" }}
+        <tr>
+            <td>
+                <a href="{{ url }}" class="font-display text-base text-pink-hot font-bold">{{ slug }}</a>
+            </td>
+            <td>
+                {{ description ?? overview | markdown }}
+            </td>
+        </tr>
+        {{ /entries }}
+    </table>
+{{ /taxonomy:types }}

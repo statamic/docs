@@ -75,6 +75,10 @@
                 max-width: var(--max-width-content);
                 margin-block-end: var(--spacing-m);
             }
+            /* e.g. >> /extending/markdown */
+            &:has(h1:only-child):has(+ h2) h1 {
+                padding-block-end: 0;
+            }
         }
 
         & h2 {

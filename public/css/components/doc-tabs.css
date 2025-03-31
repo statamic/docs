@@ -42,9 +42,16 @@
                     background: var(--color-gradient-full-light-2);
                 }
                 border: 1px solid var(--color-black);
-                p {
+                p, ol, ul {
                     padding: var(--spacing-s-1);
+                }
+                /* Cancelled based on e.g. >> /extending/modifiers */
+                /* p {
                     padding-block-end: 0;
+                } */
+                ol, ul {
+                    /* e.g. >> /extending/modifiers */
+                    padding-block-end: var(--spacing-l);
                 }
             }
         }

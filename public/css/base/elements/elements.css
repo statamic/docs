@@ -29,6 +29,11 @@
         background: light-dark(hsl(229deg 20% 35%), hsl(229deg 20% 35%));
         color: white;
     }
+    mark {
+        background: var(--color-green);
+        /* e.g. >> /static-caching */
+        padding-inline: var(--spacing-s-5);
+    }
     /* https://twitter.com/bramus/status/1452572001697153029 */
     /* html,
     body {
@@ -48,7 +53,8 @@
         -webkit-font-smoothing: antialiased;
         font-family: var(--font-family-code);
         font-weight: var(--font-family-code-weight-light);
-        + p {
+        + p:not(ol p, ul p) {
+            /* Not on this page e.g. >> /extending/vite-in-addons */
             padding-block-start: var(--spacing-s-1);
         }
         /* Put some space between paragraphs and code blocks, except if it's in a tip */

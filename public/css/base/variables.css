@@ -375,7 +375,7 @@
         /* Slightly darker */
         --color-green: hsl(75deg 100% 50%);
         @supports (background: oklch(0% 0 0)) {
-            --color-green: oklch(0.9 0.25 128);
+            --color-green: oklch(0.9 0.3 128);
         }
         --color-green-subtle: hsl(76.34deg 100% 32%);
         @supports (background: oklch(0% 0 0)) {
