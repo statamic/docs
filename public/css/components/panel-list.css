@@ -39,24 +39,43 @@
             }
         }
         ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 11em), 1fr));
-            gap: var(--spacing-s-5) var(--spacing-s-3);
+            /* Custom */
+            @media (width >= 500px) {
+                column-count: 2;
+            }
+            /* Word-type list rather than icon-type list */
             &:not(:has(svg)) {
                 /* More colums when there are no icons e.g. /reference/modifiers */
-                grid-template-columns: repeat(auto-fit, minmax(min(100%, 9em), 1fr));
-                column-gap: var(--spacing-l-1);
+                /* Custom */
+                @media (width >= 800px) {
+                    column-count: 3;
+                }
+                gap: var(--spacing-l-3);
+                a {
+                    /* Decrease */
+                    font-size: var(--font-size-s-2);
+                    line-height: var(--font-size-s-2-line-height);
+                }
+                li {
+                    padding-block-end: var(--spacing-s-4);
+                }
             }
         }
-        h3:first-child {
-            padding-block-start: 0;
+        li {
+            padding-block-end: var(--spacing-s-3);
+        }
+        h3 {
+            padding-block-end: var(--spacing-s-2);
+            &:first-child {
+                padding-block-start: 0;
+            }
         }
         a {
             display: flex;
             align-items: center;
             gap: var(--spacing-s-3);
             /* Where SVGs are used remove text decoration */
-            .c-panel-list:has(svg) & {
+            .c-panel-list:has(svg) &:not(:hover) {
                 text-decoration: none;
             }
             font-size: var(--font-size-s-1-fixed);
