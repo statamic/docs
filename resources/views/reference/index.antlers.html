@@ -5,9 +5,18 @@
         <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
             <a href="{{ url }}" class="u-link-style-none">
                 <figure class="c-tiles-with-description__item__thumbnail">
-                    {{ tile_image }}
-                        {{ partial:image_dimensions/tile }}
-                    {{ /tile_image }}
+                    {{ if tile_image_dark_mode }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /tile_image }}
+                        {{ tile_image_dark_mode }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
+                        {{ /tile_image_dark_mode }}
+                    {{ else }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile }}
+                        {{ /tile_image }}
+                    {{ /if }}
                     <figcaption>{{ collection :in="slug" as="entries" }}{{ entries | count }} {{ title }}{{ /collection }}</figcaption>
                 </figure>
             </a>

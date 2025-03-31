@@ -1,4 +1,4 @@
-<picture>
+<picture{{ modifier_classes ?= ' class="{ modifier_classes }"'}}>
     {{# WebP #}}
     <source
         srcset="{{ glide:url width='65' dpr='2' format='webp' }} 2x,

@@ -94,7 +94,7 @@ tabs:
                             max_files: 1
                             container: main
                             type: assets
-                            display: 'Tile Image (Dark Mode, optional override)'
+                            display: 'Tile Image Dark Mode (optional override)'
                             folder: tiles
                             width: 50
                             if:

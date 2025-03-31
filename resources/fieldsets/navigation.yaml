@@ -9,6 +9,17 @@ fields:
       type: assets
       display: 'Navigation Image'
       instructions: 'Used for the major sections of the sidebar'
+      width: 50
+  -
+    handle: navigation_image_dark_mode
+    field:
+      max_files: 1
+      container: main
+      folder: navigation
+      type: assets
+      display: 'Navigation Image Dark Mode (optional override)'
+      instructions: 'Used for the major sections of the sidebar'
+      width: 50
   -
     handle: image_width_override
     field:
@@ -24,5 +35,15 @@ fields:
       type: assets
       display: 'Tile Image'
       instructions: 'A "fuller" version of the image, used for the tile images on the page, e.g. `/reference`'
+      width: 50
+  -
+    handle: tile_image_dark_mode
+    field:
+      max_files: 1
+      container: main
+      folder: tiles
+      type: assets
+      display: 'Tile Image Dark Mode (Optional override)'
+      width: 50
   -
     import: hue_rotate

@@ -4,8 +4,10 @@ tree:
     entry: 5a8fe626-b073-41fc-8da4-264b54837600
     data:
       navigation_image: navigation/fieldtypes.png
+      navigation_image_dark_mode: navigation/fieldtypes-dark-mode.png
       image_width_override: 2.4em
       tile_image: tiles/fieldtypes.png
+      tile_image_dark_mode: tiles/fieldtypes-dark-mode.png
       hue_rotate: hue_rotate_2
   -
     id: 6241c501-22d8-420d-8202-46c152c3a4d7

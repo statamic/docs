@@ -33,9 +33,18 @@
                 {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
                 <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
                     {{ title }}
-                    {{ navigation_image }}
-                        {{ partial:image_dimensions/navigation_image }}
-                    {{ /navigation_image }}
+                    {{ if navigation_image_dark_mode }}
+                        {{ navigation_image }}
+                            {{ partial:image_dimensions/navigation_image modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /navigation_image }}
+                        {{ navigation_image_dark_mode }}
+                            {{ partial:image_dimensions/navigation_image modifier_classes='u-hide-in-light-mode' }}
+                        {{ /navigation_image_dark_mode }}
+                    {{ else }}
+                        {{ navigation_image }}
+                            {{ partial:image_dimensions/navigation_image }}
+                        {{ /navigation_image }}
+                    {{ /if }}
                 </a>
             </span>
             <ul>

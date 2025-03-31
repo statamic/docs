@@ -362,7 +362,7 @@
         /* e.g. torchlight file tree view */
         --color-purple-light-2: hsl(240deg 20% 10%);
         --color-purple-light-2-highlight: hsl(256deg 40% 15%);
-        --color-purple-reading: hsl(252deg 65% 67%);
+        --color-purple-reading: hsl(252deg 70% 70%);
         /* e.g. hover over a link */
         --color-purple-dark: hsl(252deg 65% 62%);
         --color-purple-code-background: hsl(252deg 55% 25%);
