@@ -108,7 +108,7 @@
                     flex-direction: row;
                     justify-content: end;
                     font-size: unset;
-                    li:last-child a {
+                    li:last-child:not(:has(.o-current-menu-item)) a {
                         padding-inline-end: 0;
                     }
                     :is(a, button):not(ul ul *) {
@@ -128,7 +128,7 @@
                                 top: 80%;
                                 height: 5px;
                                 inline-size: 75%;
-                                left: 15%;
+                                left: 12.5%;
                                 box-shadow: var(--box-shadow-not-t-light);
                             }
                         }

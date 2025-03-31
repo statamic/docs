@@ -15,7 +15,7 @@
         navScrollPosition: $persist(0)
     }"
     x-init="
-        if (window.location.pathname !== '/reference' && window.location.pathname !== '/') {
+        if (window.location.pathname !== '/reference' && window.location.pathname !== '/' && window.location.pathname !== '/extending') {
             $el.scrollTop = navScrollPosition;
         }
         $el.style.overflow = 'hidden';
