@@ -19,7 +19,7 @@ There are four components (coincidentally, the same number of Ninja Turtles) who
 2. Results
 3. Indexes
 4. Drivers
-{.ninja.font-bold}
+{.c-list-turtles}
 
 ## Forms
 
