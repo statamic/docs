@@ -5,6 +5,9 @@ tree:
   -
     id: c21a6b97-f7a1-47cf-9356-f3a9a2954050
     title: Front-end
+    data:
+      navigation_image: navigation/nike-air-jordans.png
+      image_width_override: 2.1em
     children:
       -
         id: 9d692c0e-df82-463d-af3c-b355a28d91dc
@@ -21,6 +24,8 @@ tree:
   -
     id: affc2001-e4f5-4e06-9e00-58dd88edbb6e
     title: 'Control Panel'
+    data:
+      navigation_image: navigation/rubiks-cube.png
     children:
       -
         id: d5214ec3-c89f-4889-8f14-ed2b65a899d6
@@ -65,6 +70,9 @@ tree:
   -
     id: 73354789-cbf2-4bee-ab86-b289d748a64d
     title: Javascript
+    data:
+      navigation_image: navigation/joystick.png
+      image_width_override: 1.75em
     children:
       -
         id: b598494b-6e08-4d10-8fb7-7fd6f20a4a20
@@ -109,6 +117,8 @@ tree:
   -
     id: a6b12519-6352-452b-9daf-b7dd76880fb2
     title: 'Core & Data'
+    data:
+      navigation_image: navigation/triforce.png
     children:
       -
         id: 2a1a9358-2ad6-40d0-9022-78257abc64a9
@@ -144,6 +154,9 @@ tree:
     id: ba853a27-7829-4663-83e0-b762a96d109a
     title: Addons
     url: /extending/addons
+    data:
+      navigation_image: navigation/lego.png
+      image_width_override: 2.1em
     children:
       -
         id: 9519cca9-4afd-4143-b949-090f209a57e4
