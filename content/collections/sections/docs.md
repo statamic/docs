@@ -28,7 +28,7 @@ tiles:
     enabled: true
     flush_image: false
     hue_rotate: hue_rotate_1
-    tile_link: /screencasts
+    tile_link: https://learnstatamic.com
   -
     id: m8fszcgf
     tile_image: tiles/modern-people.png
