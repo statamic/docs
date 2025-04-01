@@ -1,37 +1,57 @@
-// function tocNavigation() {
-//     return {
-//         activeSection: null,
+// [1] Find all <h2> elements inside .js__scroll-spy-toc__timeline and observe them
+// [2] Find all the corresponding a elements with the same ids in .js__scroll-spy-toc
+// [3] Add an event listener to each a element to check if it is currently in view
+// [4] If it is, add the active class to the a element
+// [5] If it is not, remove the active class from the a element
+// [6] Update the activeSection state variable to the id of the section that is currently in view
+// [7] Update the activeLink state variable to the link that is currently in view
 
-//         init() {
-//             const tocLinks = document.querySelectorAll('ol.toc a');
+function tocNavigation() {
+    const state = {
+        activeSection: null,
+        activeLink: null
+    };
 
-//             // Find all <h2> elements and observe them
-//             document.querySelectorAll('article h2').forEach((h2) => {
-//             const id = h2.getAttribute('id');
+    function init() {
+        // [1] Find all heading elements (h2-h3)
+        const headingElements = document.querySelectorAll('.js__scroll-spy-toc__timeline h2, .js__scroll-spy-toc__timeline h3');
+        
+        // [2] Find all TOC links
+        const tocLinks = document.querySelectorAll('.js__scroll-spy-toc a');
 
-//             // Use IntersectionObserver to detect when an <h2> enters the viewport
-//             const observer = new IntersectionObserver((entries) => {
-//                 entries.forEach(entry => {
-//                 if (entry.isIntersecting) {
-//                     this.activeSection = id;
-//                     this.updateActiveLink(id, tocLinks);
-//                 }
-//                 });
-//             }, { threshold: 0.6 }); // Trigger when 60% of the section is in view
+        // Create intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                
+                if (entry.isIntersecting) {
+                    // [6] Update active section
+                    state.activeSection = id;
+                    
+                    // [4] & [5] Update active classes
+                    tocLinks.forEach(link => {
+                        link.classList.remove('js--scroll-spy-toc-active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('js--scroll-spy-toc-active');
+                            // [7] Update active link
+                            state.activeLink = link;
+                        }
+                    });
+                }
+            });
+        }, { 
+            threshold: 0.1,  // Reduced threshold
+            rootMargin: '-10% 0px -50% 0px'  // Added rootMargin
+        });
 
-//             observer.observe(h2);
-//             });
-//         },
+        // [3] Observe each heading element
+        headingElements.forEach(heading => observer.observe(heading));
+    }
 
-//         updateActiveLink(sectionId, tocLinks) {
-//             // Remove the active class from all links
-//             tocLinks.forEach(link => link.classList.remove('active'));
+    return { init };
+}
 
-//             // Find the link that corresponds to the sectionId and add the active class
-//             const activeLink = document.querySelector(`ol.toc a[href="#${sectionId}"]`);
-//             if (activeLink) {
-//             activeLink.classList.add('active');
-//             }
-//         }
-//     };
-// }
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    tocNavigation().init();
+});

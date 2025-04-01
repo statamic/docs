@@ -24,6 +24,7 @@ class Toc extends Modifier
 
         $creatingIds = Arr::get($params, 0) == 'ids';
 
+        // Here maxHeadingLevels is set to either 5 (when creating IDs) or 3 (for TOC)
         [$toc, $content] = $this->create($value, $creatingIds ? 5 : 3);
 
         return $creatingIds ? $content : $toc;
@@ -49,7 +50,7 @@ class Toc extends Modifier
         $anchors = [];
 
         // Initialize TOC with an unordered list
-        $toc = '<ul class="o-scroll-spy-timeline__toc">'."\n";
+        $toc = '<ul class="o-scroll-spy-timeline__toc js__scroll-spy-toc">'."\n";
         $i = 0;
         $tiCounter = 1; // Add counter for --ti values
 

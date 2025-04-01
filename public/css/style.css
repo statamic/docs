@@ -20,7 +20,9 @@ scope;
 @import 'objects/badge-heading.css';
 @import 'objects/entry-content.css';
 @import 'objects/scroll-shadows.css';
-@import 'objects/toc-scroll-spy.css';
+/* Use JS for now until scroll-driven-animations are more widely supported */
+/* @import 'objects/toc-scroll-spy.css'; */
+@import 'objects/toc-js-scroll-spy.css';
 /* Components > Global */
 @import 'components/skip-to-content.css';
 @import 'components/docs-header.css';
