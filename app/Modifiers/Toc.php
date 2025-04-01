@@ -2,8 +2,9 @@
 
 namespace App\Modifiers;
 
-use Statamic\Modifiers\Modifier;
 use Illuminate\Support\Arr;
+use Statamic\Modifiers\Modifier;
+use Statamic\Statamic;
 
 class Toc extends Modifier
 {
@@ -46,7 +47,7 @@ class Toc extends Modifier
         // Track unique anchor IDs across the document
         global $anchors;
         $anchors = [];
-        
+
         // Initialize TOC with an unordered list
         $toc = '<ul class="o-scroll-spy-timeline__toc">'."\n";
         $i = 0;
@@ -65,14 +66,13 @@ class Toc extends Modifier
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
-                $anchor = trim(stripslashes($anchor[1]));
+                $anchor = $this->slugify($heading[1]);
                 $add_id = false;
             } else {
                 // Generate an ID from the heading text
-                $anchor = preg_replace('/\s+/', '-', trim(preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3])))));
+                $anchor = $this->slugify($heading[3]);
                 $add_id = true;
             }
-
             // Ensure anchor ID is unique by adding numeric suffixes if needed
             if (! in_array($anchor, $anchors)) {
                 $anchors[] = $anchor;
@@ -139,9 +139,6 @@ class Toc extends Modifier
         $toc .= '</li>'."\n";
         $toc .= '</ul>'."\n";
 
-        // A tiny TOC is a lame TOC
-        // $toc = (count($matches) < 3) ? null : $toc;
-
         return [$toc, $content];
     }
 
@@ -155,5 +152,10 @@ class Toc extends Modifier
         }
 
         return $value;
+    }
+
+    private function slugify($text)
+    {
+        return Statamic::modify($text)->replace('&amp;', '')->slugify()->stripTags();
     }
 }
