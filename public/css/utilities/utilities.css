@@ -55,4 +55,13 @@
             border-bottom: 0;
         }
     }
+    /* GROUP UTILITIES / FRAMEWORK / (NON CORE) / LINE CLAMP
+    =================================================== */
+    /* e.g. <div class="u-line-clamp" style="--clamp: 3;"> */
+    .u-line-clamp {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: var(--clamp, 2);
+    }
 }

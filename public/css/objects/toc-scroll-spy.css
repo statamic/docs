@@ -109,9 +109,6 @@
                 animation-name: i-spy-reverse;
                 top: calc(-100% - var(--item-padding));
             }
-            a {
-                line-clamp: 1;
-            }
         }
     }
     /* GROUP COMPONENTS / SCROLL DRIVEN SCROLL SPY TABLE OF CONTENTS / ANIMATIONS

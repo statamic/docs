@@ -121,7 +121,7 @@ class Toc extends Modifier
             }
 
             // Add TOC entry with --ti style (only for leaf nodes)
-            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a>';
+            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'" class="u-line-clamp" style="--clamp: 1;">'.$title.'</a>';
             $tiCounter++;
 
             $prevlvl = $lvl;
