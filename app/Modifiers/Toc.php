@@ -157,6 +157,8 @@ class Toc extends Modifier
 
     private function slugify($text)
     {
-        return Statamic::modify($text)->replace('&amp;', '')->slugify()->stripTags();
+        $slugified = Statamic::modify($text)->replace('&amp;', '')->slugify()->stripTags();
+        // Remove 'code-code' from the slugified text e.g. Otherwise "the `@` ignore symbol" gets converted to `the-code-code-ignore-symbol`
+        return str_replace('code-code-', '', $slugified);
     }
 }
