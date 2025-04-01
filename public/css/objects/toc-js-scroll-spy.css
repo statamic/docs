@@ -42,6 +42,7 @@
         li {
             position: relative;
             &:not(:has(ul)) {
+                /* Because we've removed padding-block-end on the anchor for line-clamp */
                 padding-block-end: calc(var(--item-padding) * 2);
             }
             ul &:has(> .js--scroll-spy-toc-active)::before {
