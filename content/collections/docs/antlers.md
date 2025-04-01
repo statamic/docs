@@ -1248,7 +1248,7 @@ The `{{ once }}` tag allows you to define a portion of the template that will on
 
 {{ /collection:blog }}
 ```
-### Section & yield
+### Section & Yield
 
 You may find that you wish to define areas of a layout that may need to change depending on which template is being rendered.
 
@@ -1311,7 +1311,7 @@ The `@` can also be used to escape individual braces within tag parameters or st
 // "string {foo} bar"
 ```
 
-### Tag parameters
+### Ignoring Tag parameters
 
 You may ignore the contents of tag parameters by prefixing the parameter with a backslash. This could be useful allow you to avoid having to escape each curly brace like the example above if you are providing some JS/JSON in a parameter:
 
