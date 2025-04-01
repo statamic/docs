@@ -42,7 +42,7 @@
         li {
             position: relative;
             &:not(:has(ul)) {
-                padding-block-end: var(--item-padding);
+                padding-block-end: calc(var(--item-padding) * 2);
             }
             ul &:has(> .js--scroll-spy-toc-active)::before {
                 content: '';

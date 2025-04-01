@@ -62,6 +62,8 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        /* Stop padding ruining the clamp */
+        padding-block-end: 0;
         -webkit-line-clamp: var(--clamp, 2);
     }
 }
