@@ -52,20 +52,6 @@ class Toc extends Modifier
         $i = 0;
         $tiCounter = 1; // Add counter for --ti values
 
-        // Add any additional headings for parameters, variables, and options sections
-        $matches = $this->appendDetails($matches);
-
-        // Remove headings with duplicate content e.g. /fieldtypes/array
-        $seen = [];
-        $matches = array_filter($matches, function($heading) use (&$seen) {
-            $content = trim(strip_tags($heading[3]));
-            if (in_array($content, $seen)) {
-                return false;
-            }
-            $seen[] = $content;
-            return true;
-        });
-
         foreach ($matches as $heading) {
             // Track the starting heading level for proper list nesting
             if ($i == 0) {
@@ -169,47 +155,5 @@ class Toc extends Modifier
         }
 
         return $value;
-    }
-
-    /**
-     * Appends additional headings for parameters, variables, and options sections
-     * if they exist in the context
-     */
-    private function appendDetails($matches)
-    {
-        $parameters = $this->valueGet($this->context['parameters'] ?? null);
-
-        if ($parameters && count($parameters) > 0) {
-            $matches[] = [
-                '<h2 id="parameters">Parameters</h2>',
-                '2',
-                ' id="parameters"',
-                'Parameters',
-            ];
-        }
-
-        $variables = $this->valueGet($this->context['variables'] ?? null);
-
-        if ($variables && count($variables) > 0) {
-            $matches[] = [
-                '<h2 id="variables">Variables</h2>',
-                '2',
-                ' id="variables"',
-                'Variables',
-            ];
-        }
-
-        $options = $this->valueGet($this->context['options'] ?? null);
-
-        if ($options && count($options) > 0) {
-            $matches[] = [
-                '<h2 id="options">Options</h2>',
-                '2',
-                ' id="options"',
-                'Options',
-            ];
-        }
-
-        return $matches;
     }
 }
