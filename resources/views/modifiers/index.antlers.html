@@ -4,7 +4,7 @@
 
 <article class="c-panel-list">
     {{ taxonomy:modifier_types collection="modifiers" }}
-        <h3 class="js__no-anchors">{{ title | title }}</h3>
+        <h3>{{ title | title }}</h3>
         <ul>
             {{ entries sort="slug" }}
                 <li><a href="{{ url }}">{{ slug }}</a></li>
