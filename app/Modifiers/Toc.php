@@ -67,7 +67,7 @@ class Toc extends Modifier
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
-                $anchor = $this->slugify($heading[1]);
+                $anchor = trim(stripslashes($anchor[1]));
                 $add_id = false;
             } else {
                 // Generate an ID from the heading text
