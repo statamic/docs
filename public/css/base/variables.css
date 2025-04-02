@@ -7,7 +7,7 @@
     --spacing-s-2: 1rem;
     --spacing-s-1: 1.35rem;
 
-    --spacing-m: 1.5rem;
+    --spacing-m: 1.65rem;
     --spacing-l: 1.8rem;
     --spacing-l-static: 1.8rem;
     /* Based on e.g. >> Home on mobile */
@@ -207,10 +207,10 @@
     --font-size-l-2-line-height: 1.3;
 
     --font-size-l-3: clamp(1.975em * 0.85, 6vw, 1.975em);
-    --font-size-l-3-line-height: 1.3;
+    --font-size-l-3-line-height: 1.2;
 
     --font-size-l-4: clamp(2.3em * 0.9, 6vw, 2.3em);
-    --font-size-l-4-line-height: 1.3;
+    --font-size-l-4-line-height: 1.15;
 
     --font-size-l-5: clamp(2.827em * 0.8, 9vw, 2.827em);
     --font-size-l-5-line-height: 1.15;
