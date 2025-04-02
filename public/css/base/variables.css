@@ -494,7 +494,8 @@
             --color-purple-light-1: hsl(256deg 40% 45%);
             /* e.g. torchlight file tree view */
             --color-purple-light-2: hsl(240deg 20% 10%);
-            --color-purple-reading: hsl(252deg 65% 67%);
+            --color-purple-light-2-highlight: hsl(256deg 40% 15%);
+            --color-purple-reading: hsl(252deg 70% 70%);
             /* e.g. hover over a link */
             --color-purple-dark: hsl(252deg 65% 62%);
             --color-purple-code-background: hsl(252deg 55% 25%);
@@ -507,7 +508,7 @@
             /* Slightly darker */
             --color-green: hsl(75deg 100% 50%);
             @supports (background: oklch(0% 0 0)) {
-                --color-green: oklch(0.9 0.25 128);
+                --color-green: oklch(0.9 0.3 128);
             }
             --color-green-subtle: hsl(76.34deg 100% 32%);
             @supports (background: oklch(0% 0 0)) {
@@ -547,6 +548,7 @@
             --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
             /* e.g. homepage tiles */
             --color-gradient-full-light-3: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+            --color-gradient-full-light-6: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
             /* e.g. tables */
             --color-gradient-full-light-4: linear-gradient(to left, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
             /* e.g. .c-pill-with-description */
