@@ -297,12 +297,12 @@
     /* Custom */
     @media (width >= 1025px) and (width < 1441px) {
         /* Decrease */
-        --font-bump: -0.085em;
+        --base-font-size: 0.915em;
     }
     /* --mq-text-bump-2-after */
     @media (width >= 1441px) {
         /* Decrease */
-        --font-bump: -0.02em;
+        --base-font-size: 0.98em;
         /* Slight increase based on .c-nav-sidebar-with-popover-api */
         --spacing-l-2-horizontal: 4.2rem;
     }
@@ -314,7 +314,7 @@
         /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- BUMPS
         =================================================== */
         /* Increase */
-        --font-bump: 0.03vw;
+        --base-font-size: 0.656vw;
         /* Decrease */
         --font-size-s-1-fixed: 0.84em;
     }

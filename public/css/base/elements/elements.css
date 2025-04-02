@@ -42,7 +42,7 @@
     html {
         /* Consider disabling this if you have pages that require lots of cmd + f https://css-tricks.com/downsides-of-smooth-scrolling/ */
         scroll-behavior: smooth;
-        font-size: calc(1em + var(--font-bump));
+        font-size: var(--base-font-size);
         /* Opinion on this will differ depending on the font you choose. Do not carpet bomb line height with a * selector though */
         line-height: 1.5;
         /* https://web.dev/accent-color/ */
