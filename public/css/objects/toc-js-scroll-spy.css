@@ -44,6 +44,17 @@
             &:not(:has(ul)) {
                 /* Because we've removed padding-block-end on the anchor for line-clamp */
                 padding-block-end: calc(var(--item-padding) * 2);
+                a {
+                    /* Line clamp */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    box-orient: vertical;
+                    overflow: hidden;
+                    /* Stop padding ruining the clamp */
+                    padding-block-end: 0;
+                    -webkit-line-clamp: 1;
+                    line-clamp: 1;
+                }
             }
             ul &:has(> .js--scroll-spy-toc-active)::before {
                 content: '';
