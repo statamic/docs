@@ -53,6 +53,7 @@ scope;
 @import 'components/related.css';
 /* Components > Unique/Quriky */
 @import 'components/list-turtles.css';
+@import 'components/syntax-explainer.css';
 @import 'components/quirky.css';
 /* Components > Imagery */
 @import 'components/imagery/full-width-image.css';

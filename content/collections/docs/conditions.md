@@ -23,9 +23,14 @@ _Note: These conditions currently apply to the [collections](/tags/collection), 
 
 The conditions syntax has 3 parts: the field name, the condition name, and the value.
 
-<div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm">
-<span class="bg-pink text-white p-1 rounded-sm">{field_name}</span>:<span class="bg-purple text-white p-1 rounded-sm">{condition}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{value}</span>"
+<div class="c-syntax-explainer">
+<span class="c-syntax-explainer__1">{field_name}</span>:<span class="c-syntax-explainer__2">{condition}</span><span>=</span>"<span class="c-syntax-explainer__3">{value}</span>"
 </div>
+
+### Field name
+The field name is the name of the field you're filtering on.
+
+
 
 ### Using a variable reference
 If you prefix the field name with a colon, it will use the value of a variable in your view
