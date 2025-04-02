@@ -66,6 +66,10 @@
             font-size: 1.025rem;
         }
     }
+    code {
+        /* Stop code elements with a long path in causing overflow. Source: https://stackoverflow.com/questions/1165497/how-to-prevent-text-from-overflowing-in-css#3791058 */
+         word-wrap: break-word;
+    }
     /* Only descending from certain tags, otherwise torchlight is used */
     :is(h2, h3, h4, p, figure, li) {
         code {
