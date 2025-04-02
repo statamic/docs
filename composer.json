@@ -16,7 +16,7 @@
         "livewire/livewire": "^3.5",
         "statamic/cms": "^5.0",
         "statamic/ssg": "^3.0",
-        "torchlight/torchlight-commonmark": "^0.5.5",
+        "torchlight/engine": "^0.1.0",
         "stillat/documentation-search": "^1.2.1"
     },
     "require-dev": {
