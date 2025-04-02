@@ -26,7 +26,7 @@ return [
     'indexes' => [
 
         'default' => [
-            'driver' => 'meilisearch',
+            'driver' => env('SEARCH_DRIVER', 'meilisearch'),
             'searchables' => ['docs:*'],
             'fields' => [
                 'title',
