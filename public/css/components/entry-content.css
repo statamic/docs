@@ -56,7 +56,8 @@
         @media (width < 1250px) {
             margin-inline: auto;
         }
-        padding-inline: var(--spacing-l-1);
+        /* Based on e.g. >> Home on mobile */
+        padding-inline: var(--spacing-l);
         font-family: var(--font-family-prose);
 
         /* e.g. .o-badge-heading */
