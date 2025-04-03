@@ -1,0 +1,33 @@
+{{ partial:header }}
+
+{{# <div listen-for-intersection-of-titles> #}}
+    {{ if screenshot }}
+        <figure>
+            {{ screenshot }}
+                <img src="{{ url }}" width="{{ width | /:2 | +:2 }}" alt="Screenshot of {{ page:title }}">
+            {{ /screenshot }}
+            {{# e.g. /fieldtypes/assets #}}
+            <figcaption>The {{ title }} in action!</figcaption>
+        </figure>
+    {{ /if }}
+
+    {{ content }}
+
+    {{ if options }}
+        <h2 id="options">Options</h2>
+        {{ options_content | markdown ?? '' }}
+        {{ partial:details :details="options" }}
+    {{ /if }}
+
+    {{ if parameters }}
+        <h2 id="parameters">Parameters</h2>
+        {{ partial:details :details="parameters" }}
+    {{ /if }}
+
+    {{ if variables }}
+        <h2 id="variables">Variables</h2>
+        {{ partial:variables }}
+    {{ /if }}
+{{# </div> #}}
+
+{{ partial:related }}
