@@ -294,29 +294,11 @@
         - You can check exactly how they see it by going to System Preferences > Displays > Scaled
 
     */
-    /* Custom */
-    @media (width >= 1025px) and (width < 1441px) {
-        /* Decrease */
-        --base-font-size: 0.915em;
-    }
-    /* --mq-text-bump-2-after */
-    @media (width >= 1441px) {
-        /* Decrease */
-        --base-font-size: 0.98em;
-        /* Slight increase based on .c-nav-sidebar-with-popover-api */
-        --spacing-l-2-horizontal: 4.2rem;
-    }
-    /* --mq-text-bump-3-after */
+    /* --mq-wide-mqs */
     @media (min-width: 1800px) {
         /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
         =================================================== */
         --max-width-1: 105rem;
-        /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- BUMPS
-        =================================================== */
-        /* Increase */
-        --base-font-size: 0.656vw;
-        /* Decrease */
-        --font-size-s-1-fixed: 0.84em;
     }
 
     /* GROUP VARIABLES -- LIGHT/DARK MODE
