@@ -195,7 +195,7 @@
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */
-    --font-size-l-1: clamp(1em, 4vw, 1.3em);
+    --font-size-l-1: clamp(1em, 4vw, 1.32em);
     --font-size-l-1-line-height: 1.6;
     /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
     --font-size-l-1-uppercase: 1.2em;
@@ -305,7 +305,8 @@
     @media (min-width: 1800px) {
         /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
         =================================================== */
-        --max-width-1: 105rem;
+        --max-width-1: 108rem;
+        --max-width-content: 52rem;
     }
 
     /* GROUP VARIABLES -- LIGHT/DARK MODE
