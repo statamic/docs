@@ -34,18 +34,3 @@ document.addEventListener('click', function(event) {
         dismissSearchModal();
     }
 });
-
-if (isAppleDevice()) {
-    window.addEventListener('keydown', function (e) {
-        if (! e.metaKey) {
-            return;
-        }
-
-        if (e.key.toLocaleLowerCase() !== 'k') {
-            return;
-        }
-        
-        document.getElementsByClassName('docsearch-btn')[0].click();
-        e.preventDefault();
-    });
-}
