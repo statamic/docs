@@ -24,6 +24,8 @@
         margin-block-end: var(--spacing-m);
         font-family: var(--font-family-code);
         font-weight: var(--font-family-code-weight-normal);
+        /* Because of the extra padding */
+        line-height: 2;
         > * {
             padding: var(--spacing-s-5) var(--spacing-s-4);
             border-radius: var(--border-radius-s);
