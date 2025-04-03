@@ -20,13 +20,13 @@
     }
     /* --mq-toc-open-after */
     @media (width >= 1100px) and (width < 1250px) {
-        .u-hide-on-medium-mqs {
+        .u-hide-on-medium-screens {
             display: none!important;
         }
     }
     /* --mq-nav-open-after */
     @media (width >= 1250px) {
-        .u-hide-on-high-mqs {
+        .u-hide-on-large-screens {
             display: none!important;
         }
     }

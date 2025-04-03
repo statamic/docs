@@ -32,7 +32,7 @@
             <button id="anchor-nav-dots" class="c-docs-header__nav-dots c-nav-dots-with-popover-api__mobile-button" popovertarget="popover-nav-dots">
                 {{ svg src='nav-dots' }}
             </button>
-            <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-high-mqs" popover>
+            <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-large-screens" popover>
                 <ul>
                     {{ nav:collection:sections include_home="true" }}
                         <li>
@@ -41,7 +41,7 @@
                     {{ /nav:collection:sections }}
                 </ul>
             </nav>
-            <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-mobile u-hide-on-medium-mqs">
+            <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-mobile u-hide-on-medium-screens">
                 <ul>
                     {{ nav:collection:sections include_home="true" }}
                         <li>
