@@ -14,7 +14,7 @@
     */
     /* --mq-nav-open-before */
     @media (width < 1100px) {
-        .u-hide-on-mobile {
+        .u-hide-on-small-screens {
             display: none!important;
         }
     }

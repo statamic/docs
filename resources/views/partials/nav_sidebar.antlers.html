@@ -2,13 +2,13 @@
     <button class="c-nav-sidebar-with-popover-api__mobile-button" id="anchor-nav-mobile" popovertarget="popover-nav-sidebar">
         {{ svg src='nav-lines' }}
     </button>
-    <nav id="popover-nav-sidebar" class="c-nav-sidebar-with-popover-api__mobile u-hide-on-medium-screens" popover>
+    <nav id="popover-nav-sidebar" class="c-nav-sidebar-with-popover-api__mobile u-hide-on-medium-screens u-hide-on-large-screens" popover>
         <button class="c-nav-sidebar-with-popover-api__close-button" title="Close" popovertarget="popover-nav-sidebar">
             <svg height="100pt" aria-hidden="true" viewBox="0 0 100 100" width="100pt" xmlns="http://www.w3.org/2000/svg"><path d="m91.668 13.676-5.3398-5.3398-36.328 36.324-36.328-36.324-5.3398 5.3398 36.328 36.324-36.328 36.324 5.3398 5.3398 36.328-36.324 36.328 36.324 5.3398-5.3398-36.328-36.324z"/></svg>
         </button>
         {{ partial:nav_contents }}
     </nav>
-    <nav class="c-nav-sidebar-with-popover-api__desktop u-hide-on-mobile">
+    <nav class="c-nav-sidebar-with-popover-api__desktop u-hide-on-small-screens">
         {{ partial:nav_contents }}
     </nav>
 </div>
