@@ -14,10 +14,10 @@
         /* https://css-tricks.com/scrollbar-reflowing/ */
         scrollbar-gutter: stable both-edges;
 
-        /* Custom */
+        /* --mq-text-bump-1-after */
         @media (width >= 1025px) and (width < 1441px) {
             /* Decrease */
-            font-size: 91.5%;
+            font-size: 90%;
         }
         /* --mq-text-bump-2-after */
         @media (width >= 1441px) {

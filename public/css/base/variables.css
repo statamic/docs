@@ -31,8 +31,8 @@
     /* From lowest to highest value */
     --max-width-reading: 43rem;
     /* Increased at later MQs */
-    --max-width-content: 50rem;
-    --max-width-1: 101rem;
+    --max-width-content: 49rem;
+    --max-width-1: 99rem;
 
     /* GROUP VARIABLES -- LAYOUT -- Z-INDEX
     =================================================== */
@@ -267,8 +267,7 @@
         ===================================================  */
         /* Based on nav sidebar and toc spacing */
         --spacing-s-5: 0.3rem;
-        --spacing-l: 2.3rem;
-        --spacing-l-1: 2.6rem;
+        --spacing-l: 2.2rem;
     }
     /* --mq-root-variable-adjustments-2 */
     @media (min-width: 730px) {
@@ -279,6 +278,14 @@
     @media (min-width: 730px) and (orientation: portrait) {
         /* e.g. iPad */
         --spacing-l-4: 5rem;
+    }
+    /* --mq-text-bump-1-after */
+    @media (width >= 1025px) and (width < 1441px) {
+        /* e.g. >> Home */
+        --button-spacing-vertical: 0.9rem;
+        --button-spacing-inline: 1.25rem;
+        /* Decrease */
+        --spacing-s-1: 1.2rem;
     }
     /* --mq-nav-open-after */
     @media (width >= 1100px) {
