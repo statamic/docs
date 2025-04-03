@@ -181,7 +181,7 @@
 
     /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
     --font-size-ui: 0.94em;
-    --font-size-ui-rem: 0.94rem;
+    --font-size-ui-rem: 0.95rem;
     /* A touch lower */
     --font-size-ui-line-height: 1.575;
 
@@ -286,6 +286,8 @@
         --button-spacing-inline: 1.25rem;
         /* Decrease */
         --spacing-s-1: 1.2rem;
+        --font-size-ui-rem: 0.85rem;
+        --max-width-text: 48rem;
     }
     /* --mq-nav-open-after */
     @media (width >= 1100px) {

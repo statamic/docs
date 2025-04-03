@@ -166,7 +166,7 @@
                         gap: var(--spacing-s-5);
                         max-height: unset;
                         padding: 0 var(--spacing-l-2-horizontal);
-                        font-size: var(--font-size-m);
+                        font-size: var(--font-size-ui-rem);
                         & a, button, span {
                             /* Increase the pointer targets a little to improve usability */
                             padding: var(--dropdown-nav-item-padding);
