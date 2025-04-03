@@ -9,8 +9,8 @@
                     {{ items }}
                         <div class="c-related__item">
                             <ul>
-                                <li><a href="/">{{ group }}</a></li>
-                                <li>{{ svg src='breadcrumb-chevron' }}<a href="/1.php">{{ title }}</a></li>
+                                <li><a href="{{ {mount_url :handle="collection:handle"} ?? '/' }}">{{ group }}</a></li>
+                                <li>{{ svg src='breadcrumb-chevron' }}<a href="{{ url }}">{{ title }}</a></li>
                             </ul>
                         </div>
                     {{ /items }}
