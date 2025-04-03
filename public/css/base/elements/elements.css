@@ -13,6 +13,24 @@
         font-feature-settings: "kern", "liga", "clig", "calt";
         /* https://css-tricks.com/scrollbar-reflowing/ */
         scrollbar-gutter: stable both-edges;
+
+        /* Custom */
+        @media (width >= 1025px) and (width < 1441px) {
+            /* Decrease */
+            font-size: 91.5%;
+        }
+        /* --mq-text-bump-2-after */
+        @media (width >= 1441px) {
+            /* Decrease */
+            font-size: 98%;
+            /* Slight increase based on .c-nav-sidebar-with-popover-api */
+            --spacing-l-2-horizontal: 4.2rem;
+        }
+        /* --mq-text-bump-3-after */
+        @media (min-width: 1800px) {
+            /* Increase */
+            font-size: 101%;
+        }
     }
 }
 
