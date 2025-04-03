@@ -44,7 +44,7 @@
                 margin-inline: auto;
             }
             /* --mq-grid-after to --mq-nav-open-before */
-            @media (width >= 1000px) and (width < 1250px) {
+            @media (width >= 1000px) and (width < 1100px) {
                 padding-inline: var(--spacing-l);
             }
         }

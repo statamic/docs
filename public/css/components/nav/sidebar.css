@@ -93,6 +93,7 @@
                     margin-block-end: var(--spacing-m);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
+                    line-height: var(--font-size-l-2-line-height);
                     border-radius: 50px;
                     box-shadow: var(--box-shadow-not-t-light);
                     text-decoration: none;

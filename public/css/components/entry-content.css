@@ -49,6 +49,10 @@
         @media (width >= 1000px) {
             grid-area: content;
         }
+        /* --mq-nav-open-after and --mq-nav-open-before */
+        @media (width >= 1100px) and (width < 1250px) {
+            grid-column: span 2;
+        }
     }
     .c-entry-content {
         max-width: var(--max-width-content);
