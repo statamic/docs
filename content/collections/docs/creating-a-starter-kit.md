@@ -37,7 +37,7 @@ For example, maybe you are creating a pre-built, theme-style Starter Kit, the hi
     ```
 
 
-## Creating the Starter Kit Project
+## Creating the Starter Kit project
 
 The first step is to [create a new Statamic project](/installing#creating-a-new-statamic-project). This is essentially a throwaway sandbox that you will use to develop and test your Starter Kit.
 
@@ -49,7 +49,7 @@ php please starter-kit:init
 
 This command will create and wire up a `package` directory, which represents the eventual Starter Kit repository's root directory.
 
-## The Starter Kit Package
+## The Starter Kit package
 
 Starter Kits are installed via Composer. You can control the package's contents via the `package` directory, which will be the exported repository's root directory.
 
@@ -128,7 +128,7 @@ Anything not configured in your `starter-kit.yaml` **will not be exported**. Thi
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
 
 
-### Exporting Dependencies
+### Exporting dependencies
 
 If you wish to bundle any of your installed Composer dependencies with your Starter Kit, just `composer require` them in your sandbox project as you would into any app, then add them under a `dependencies` array in your `starter-kit.yaml` config file:
 
@@ -142,7 +142,7 @@ The exporter will automatically detect the installed versions and whether or not
 When [installing the Starter Kit](#installing-a-starter-kit), composer will install with the same version constraints as you had installed in your sandbox project during development.
 
 
-## Optional Modules
+## Optional modules
 
 You may also present an optional set of Starter Kit files, nested under `modules` in your `starter-kit.yaml` config file.
 
@@ -157,7 +157,7 @@ modules:
 
 This presents a choice to the user, to confirm whether or not to install this module.
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-module-confirmation.png" alt="The user can confirm whether or not to install the `seo` module">
 </figure>
 
@@ -184,12 +184,12 @@ modules:
       - statamic/seo-pro
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-module-custom-prompt.png" alt="Starter Kit custom prompt text">
     <figcaption>Would you also like fries with that?</figcaption>
 </figure>
 
-### Customizing Prompt Default Value
+### Customizing prompt default value
 
 Setting `default: true` will ensure the module is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
 
@@ -201,7 +201,7 @@ modules:
       - statamic/seo-pro
 ```
 
-### Skipping Confirmation
+### Skipping confirmation
 
 Or maybe you wish to skip the user prompt and always install a given module, using modules to better organize larger Starter Kit configs. To do this, simply set `prompt` to false.
 
@@ -211,7 +211,7 @@ modules:
     prompt: false
 ```
 
-### Selecting Between Modules
+### Selecting between modules
 
 You may find yourself in a situation where you want the user to select only one of multiple module options. To do this, you may nest multiple module configs under an `options` object.
 
@@ -230,11 +230,11 @@ modules:
           - resources/js/mootools.js
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module.png" alt="Starter Kit select module">
 </figure>
 
-### Customizing Select Module Prompt Text
+### Customizing select module prompt text
 
 Of course, you can also customize `prompt` text, the first 'No' `skip_option` text, as well as each option `label`, as you see fit.
 
@@ -258,12 +258,12 @@ modules:
           - resources/js/mootools.js
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module-customization.png" alt="Customizing Starter Kit select module">
     <figcaption>🐮🐮🐮</figcaption>
 </figure>
 
-### Customizing Select Module Default Value
+### Customizing select module default value
 
 Setting a `default` value will ensure a specific module option is installed by default if the user spams the enter key through the prompt, or the Starter Kit is installed non-interactively.
 
@@ -275,7 +275,7 @@ modules:
     # ...
 ```
 
-### Disabling Select Module Skip Option
+### Disabling select module skip option
 
 If you want to force the user to select a module option, you can set `skip_option: false` to disable the 'No' skip option.
 
@@ -287,12 +287,12 @@ modules:
     # ...
 ```
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/starter-kit-select-module-disable-skip-option.png" alt="Starter kit disable skip option">
 </figure>
 
 
-### Nesting Modules
+### Nesting modules
 
 Finally, you can also nest modules where it makes sense to do so. Simply nest a `modules` object within any module.
 
@@ -312,7 +312,7 @@ modules:
 In this example, the second `sitemap` module prompt will only be presented to the user, if they agree to installing the parent `seo` module.
 
 
-## Post-Install Hooks
+## Post-install hooks
 
 You may run additional logic after the Starter Kit is installed. For example, maybe you want to output some information.
 
@@ -376,7 +376,7 @@ Products will be marked as drafts that you can preview and tweak until you're re
 Once published, you'll be able to see your Starter Kit on the Marketplace and within the Starter Kits area of the Statamic Control Panel.
 
 
-## Installing from a Local Repo
+## Installing from a local repo
 
 To test install your Starter Kit from your local exported repo, you can add the repo's local path to your global Composer `config.json` file as a repository:
 
@@ -416,9 +416,9 @@ statamic new kung-fury-dev the-hoff/kung-fury-theme --with-config
 
 This will install your Starter Kit into a brand new Statamic project, along with your `starter-kit.yaml` config file for future exports.
 
-## Making Starter Kits Updatable
+## Making starter kits updatable
 
-As their name implies, Starter Kits were originally intended to be a way to "start" a site. Once installed, the user is on their own and can customize as they see fit.
+As their name implies, starter kits were originally intended to be a way to "start" a site. Once installed, the user is on their own and can customize as they see fit.
 
 The Kit would get installed via Composer, files would get copied to their respective locations, and then the Kit gets removed.
 
@@ -467,7 +467,7 @@ An example use case is a custom fieldtype maintained by a third party vendor. Th
 An example use case is a frontend theme with sample content. This is the kind of thing you would install into your app once and modify to fit your own style. You would essentially own and maintain the installed files yourself.
 :::
 
-## Related Reading
+## Related reading
 
 - [Starter Kit Overview](/starter-kits)
 - [How to Install a Starter Kit](/starter-kits/installing-a-starter-kit)

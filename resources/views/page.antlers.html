@@ -1,17 +1,33 @@
 {{ partial:header }}
 
-<article class="markdown md:pb-16">
-    {{ content | toc:ids }}
+{{# <div listen-for-intersection-of-titles> #}}
+    {{ if screenshot }}
+        <figure>
+            {{ screenshot }}
+                <img src="{{ url }}" width="{{ width | /:2 | +:2 }}" alt="Screenshot of {{ page:title }}">
+            {{ /screenshot }}
+            {{# e.g. /fieldtypes/assets #}}
+            <figcaption>The {{ title }} in action!</figcaption>
+        </figure>
+    {{ /if }}
+
+    {{ content }}
 
     {{ if options }}
         <h2 id="options">Options</h2>
-        {{ if options_content }}
-            {{ options_content | markdown }}
-        {{ /if }}
+        {{ options_content | markdown ?? '' }}
         {{ partial:details :details="options" }}
     {{ /if }}
-</article>
+
+    {{ if parameters }}
+        <h2 id="parameters">Parameters</h2>
+        {{ partial:details :details="parameters" }}
+    {{ /if }}
+
+    {{ if variables }}
+        <h2 id="variables">Variables</h2>
+        {{ partial:variables }}
+    {{ /if }}
+{{# </div> #}}
 
 {{ partial:related }}
-
-{{ partial:edit }}

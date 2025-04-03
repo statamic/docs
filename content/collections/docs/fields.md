@@ -13,7 +13,7 @@ related_entries:
 ---
 ## Configuration
 
-### Common Settings
+### Common settings
 
 All fields share the following settings regardless of type:
 
@@ -31,7 +31,7 @@ All fields share the following settings regardless of type:
     <figcaption>A textarea field's settings screen.</figcaption>
 </figure>
 
-### Field Visibility
+### Field visibility
 
 Fields are always visible by default, but you can configure custom visibility to any of the following options:
 
@@ -46,7 +46,7 @@ You can also dynamically show and hide your fields using [Conditional Fields](/c
 **Note:** Unless you are using a Revealer, hiding a field using conditions will generally prevent its value from being submitted on save. Learn more about [Field Data Flow](#field-data-flow) to get the most out of this feature!
 :::
 
-### Field Data Flow
+### Field data flow
 
 Fields are always submitted on save, except for in the following situations:
 
@@ -59,7 +59,7 @@ If you want to override the above-mentioned field condition data flow behaviour,
     <img src="/img/field-always-save.png" alt="Always save field setting">
 </figure>
 
-## Blueprints & Fieldsets
+## Blueprints & fieldsets
 
 [Blueprints](/blueprints) determine what fields are shown in your publish forms. You can configure the fields order, each field's width, and group them into sections and tabs.
 
@@ -160,8 +160,5 @@ return [
     'favorite_food.instructions' => 'Veuillez indiquer votre préférence alimentaire.',
 ];
 ```
-
-
-
 
 [dry]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself

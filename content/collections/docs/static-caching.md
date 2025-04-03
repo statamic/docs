@@ -6,7 +6,7 @@ intro: |
     Nothing loads faster than static pages. Instead of rendering pages dynamically on demand, Statamic can cache static pages and pass routing to Apache or Nginx with reverse proxying.
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
-## Important Preface
+## Important preface
 
 Certain features — such as forms with server-side validation, page protection, or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
 
@@ -16,7 +16,7 @@ Whatever is on the page the first time it's visited is what will be cached for a
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
 :::
 
-## Caching Strategies
+## Caching strategies
 
 Each caching strategy can be configured independently. Inside `config/statamic/static_caching.php` you will find two pre-configured strategies - one for each supported driver.
 
@@ -37,7 +37,7 @@ return [
 
 Set `strategy` to the name of the strategy you wish to use, or `null` to disable static caching completely.
 
-## Application Driver
+## Application driver
 
 The application driver will store your cached page content within Laravel's cache. We refer to this as **half measure**.
 
@@ -59,7 +59,7 @@ return [
 You may use the [nocache tag](/tags/nocache) to keep parts of your pages dynamic.
 :::
 
-## File Driver
+## File driver
 
 The file driver will generate completely static `.html` pages ready for your web server to serve directly. This means that the HTML files will be loaded before it even reaches PHP.
 
@@ -100,7 +100,7 @@ Using the file driver, you can configure the permissions for the directories and
 ]
 ```
 
-## Server Rewrite Rules
+## Server rewrite rules
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
 
@@ -214,7 +214,7 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 </rule>
 ```
 
-## Warming the Static Cache
+## Warming the static cache
 
 Before users visit your website, you may wish to warm the static cache to make first time loads much faster. To do this, run:
 
@@ -484,7 +484,7 @@ For example, if you schedule an entry for Friday at 8am, and you have the schedu
 
 [Learn how to use the scheduler](/scheduling)
 
-### Custom Invalidator Class
+### Custom invalidator class
 
 You can also specify a custom invalidator class to **programmatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
@@ -558,11 +558,11 @@ class CustomInvalidator extends DefaultInvalidator
 }
 ```
 
-### By Force
+### By force
 
 To clear the static file cache you can run `php please static:clear` (and/or delete the appropriate static file locations).
 
-## File Locations
+## File locations
 
 When using the file driver, the static HTML files are stored in the `static` directory of your webroot, but you can change it.
 
@@ -580,7 +580,7 @@ return [
 You will need to update your appropriate server rewrite rules.
 
 
-## Query Parameters
+## Query parameters
 
 By default, Statamic will cache all pages with the same URL but different query parameters separately. This can be helpful if you're using pagination or displaying pages differently based on user input.
 
@@ -593,7 +593,7 @@ return [
 ```
 
 
-## Multi-Site
+## Multi-site
 
 When using static caching alongside [multi-site](/multi-site), some additional configuration is needed.
 
@@ -638,7 +638,7 @@ return [
 
 _**Note:** You only need to configure paths when you're using full-measure static caching._
 
-### Rewrite Rules
+### Rewrite rules
 
 When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name.
 
@@ -703,7 +703,7 @@ APP_DOMAIN=domain1.devserver.com
 `{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
 :::
 
-### Invalidation Rules
+### Invalidation rules
 
 In the [invalidation rules array](#when-saving) explained above, the URLs are relative.
 
@@ -781,9 +781,9 @@ If you need to output a CSRF token in another place while using full measure, yo
 </span>
 ```
 
-## Custom Cache Store
+## Custom cache store
 
-Static Caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead invalidation to fail.
+Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead invalidation to fail.
 
 The cache store can be customized in `config/cache.php`.
 

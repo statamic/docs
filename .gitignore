@@ -2,7 +2,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/css
 /public/vendor/statamic
 /public/js
 /storage/*.key

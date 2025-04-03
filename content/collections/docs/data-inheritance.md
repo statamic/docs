@@ -29,9 +29,7 @@ You can easily set variable fallbacks and "catch" the first value that exists wi
 ::
 :::
 
-
-
-## Cascade Order
+## Cascade order
 
 Here's the cascading order in which Statamic will look for the value of a given variable:
 

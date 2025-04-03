@@ -39,7 +39,7 @@ php please make:fieldtype TogglePassword
 ```
 
 
-## Vue Component
+## Vue component
 The Vue component is responsible for the view and data binding. It's what your user will be interacting with.
 
 The `make:fieldtype` command would have generated a Vue component into `resources/js/components/fieldtypes/TogglePassword.vue`.
@@ -67,7 +67,7 @@ Other than that, your component can do whatever you like!
 :::
 
 
-### Example Vue Component
+### Example Vue component
 
 For this example we will create a password field with a "show" toggle control:
 
@@ -129,7 +129,7 @@ class TogglePassword extends Fieldtype
 
 Of course, you may add functionality to it, outlined below.
 
-## Fieldtype Icon
+## Fieldtype icon
 
 You can use an existing SVG icon from Statamic's `resources/svg` directory by passing its name into an `$icon` class variable, by returning a full SVG as a string, or returning it as a string from the `icon()` method.
 
@@ -149,7 +149,7 @@ class CustomFieldtype extends Fieldtype
 }
 ```
 
-## Fieldtype Categories
+## Fieldtype categories
 
 When using the blueprint builder inside the control panel, your fieldtype will be listed under the `special` category by default. To move your fieldtype into a different category, define the `$categories` property on your class:
 
@@ -172,7 +172,7 @@ You can select from any of the keys available in the `FieldtypeSelector`:
 - `special`
 
 
-## Fieldtype Keywords
+## Fieldtype keywords
 
 You may specify keywords to be used when searching in the fieldtype selector.
 
@@ -187,7 +187,7 @@ class CustomFieldtype extends Fieldtype
 }
 ```
 
-## Configuration Fields
+## Configuration fields
 
 You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
 
@@ -319,7 +319,7 @@ Here are some reasons why you might want to use this feature:
 - Grid, Bard, and Replicator fields all preload values for what a new row/set contains, plus the recursive meta values of any nested fields.
 
 
-## Replicator Preview
+## Replicator preview
 
 When [Replicator](/fieldtypes/replicator) (or [Bard](/fieldtypes/bard)) sets are collapsed, Statamic will display a preview of the values within it.
 
@@ -339,7 +339,7 @@ computed: {
 This _does_ support returning an HTML string so you could display image tags for a thumbnail, etc. Just be aware of the limited space.
 :::
 
-## Index Fieldtypes
+## Index fieldtypes
 
 In listings (collection indexes in the Control Panel, for example), string values will be displayed as a truncated string and arrays will be displayed as JSON.
 
@@ -396,7 +396,7 @@ public function augment($value)
 
 [Read more about augmentation](/extending/augmentation)
 
-## Accessing Other Fields
+## Accessing other fields
 
 If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component: 
 

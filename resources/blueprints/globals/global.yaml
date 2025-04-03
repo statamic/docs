@@ -1,0 +1,44 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: pro_badges
+            field:
+              type: replicator
+              display: 'Pro Badges'
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  sets:
+                    pro_badge:
+                      display: 'Pro Badge'
+                      fields:
+                        -
+                          handle: artwork
+                          field:
+                            max_files: 1
+                            container: main
+                            folder: pro-badges/artwork
+                            type: assets
+                            display: Artwork
+                            width: 75
+                        -
+                          handle: icon
+                          field:
+                            max_files: 1
+                            container: main
+                            folder: pro-badges/icons
+                            type: assets
+                            display: Icon
+                            width: 25
+          -
+            handle: experimental_badges
+            field:
+              type: text
+          -
+            handle: powered_by
+            field:
+              type: text

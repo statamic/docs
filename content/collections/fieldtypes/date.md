@@ -171,6 +171,4 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 
 ::
 
-
-
 [carbon]: https://carbon.nesbot.com/docs/

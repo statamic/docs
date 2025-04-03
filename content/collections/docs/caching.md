@@ -31,7 +31,7 @@ There are settings you can configure to improve the performance of the stache, j
 **You cannot disable the stache** &mdash; it is critical architecture.
 :::
 
-## Application Cache
+## Application cache
 
 **Purpose:** _Make site faster_
 
@@ -51,7 +51,7 @@ php artisan cache:clear
 The Stache is stored **inside** the application cache, so if you clear it, you don't need to _also_ clear the Stache.
 :::
 
-## View Fragments
+## View fragments
 
 **Purpose:** _Make a view faster_
 
@@ -75,7 +75,7 @@ Wrap your markup in `{{ cache }}` tags, specify a duration, and your site is zip
 ```
 ::
 
-## Static Caching
+## Static caching
 
 **Purpose:** _Ultimate speed at the cost of dynamic features_
 

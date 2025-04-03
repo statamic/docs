@@ -1,0 +1,248 @@
+/* GROUP COMPONENTS / ENTRY / ENTRY CONTENT
+=================================================== */
+/*
+
+    - Entry content is the main page content which houses prose and other writing components
+    - Although technically, this is more like a scope, housing different components, it should sit at the component layer so that the components inside can easily override this base layer.
+
+*/
+/* HTML Example...
+
+    <div class="c-entry-content-wrapper"> <-- container to help with placement
+        <article class="c-entry-content">
+            <h1>Title</h1>
+            <p>Entry content</p>
+        </article>
+    </div>
+
+*/
+/* Put some rules at the element layer where components should easily override them */
+@layer elements {
+    .c-entry-content {
+        /* Sometimes there are p tags in tables e.g. >> /tags */
+        p:not(table *) {
+            max-width: var(--max-width-reading);
+            /* Rem instead of em because of p tags inside li tags e.g. e.g. >> /fields */
+            font-size: var(--font-size-m-rem);
+        }
+        strong {
+            font-weight: var(--font-family-prose-weight-strong);
+        }
+    }
+}
+@layer components {
+    .c-entry-content-wrapper {
+        max-width: var(--max-width-1);
+        /* If it's the first entry-content on the page then push it away from the header */
+        :is(main) > section > article &:first-child {
+            padding-block-start: var(--spacing-vh-s);
+        }
+        /* The last entry-content but not if it's the last main item. */
+        main > *:not(:last-child) &:last-child {
+            padding-block-end: var(--spacing-l-4);
+        }
+        /* If it's the last item set padding to 0 */
+        main > section:last-child &:last-child {
+            padding-block-end: 0;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            grid-area: content;
+        }
+    }
+    .c-entry-content {
+        max-width: var(--max-width-content);
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            margin-inline: auto;
+        }
+        /* Based on e.g. >> Home on mobile */
+        padding-inline: var(--spacing-l);
+        font-family: var(--font-family-prose);
+
+        /* e.g. .o-badge-heading */
+        > :has(h1),
+        > h1, > .h1 {
+            padding-block-start: 0;
+        }
+
+        :nth-child(1 of header) {
+            /* Article intro text */
+            p,
+            /* Or if there's no article intro text in the header, instead make the first following paragraph an "intro" style text e.g. >> /reference/widgets */
+            &:has(:not(p)) + article > p:first-child {
+                font-size: var(--font-size-l-1);
+                line-height: var(--font-size-l-1-line-height);
+                max-width: var(--max-width-content);
+                margin-block-end: var(--spacing-m);
+            }
+            /* e.g. >> /extending/markdown */
+            &:has(h1:only-child):has(+ h2) h1 {
+                padding-block-end: 0;
+            }
+        }
+
+        & h2 {
+            :is(.c-entry-content) > &:first-child {
+                /* Add top spacing for the beginning of a section */
+                padding-block-start: var(--spacing-s-1);
+            }
+        }
+
+        ol, ul {
+            /* Rem because sometimes there are lists within lists e.g. >> /taxonomies */
+            font-size: var(--font-size-m-rem);
+            /* e.g. >> /upgrade-guide */
+            /* margin-block: var(--spacing-l); */
+            &:has(+ :is(h2, h3, h4, h5, h6)) {
+                padding-block-end: var(--spacing-s-1);
+            }
+            :is(h2, h3, h4, h5, h6) {
+                font-size: inherit;
+                line-height: inherit;
+                padding-block-end: 0;
+            }
+        }
+
+        li :is(ol, ul) {
+            /* e.g.
+
+            <ul>
+                <li>something</li>
+                <li>something else
+                    <ol> <-- we don't want this to have extra padding
+
+            */
+            padding-inline: 0;
+            padding-block-start: 0;
+        }
+
+        li {
+            /* Bard wraps <li> text in a <p> tag */
+            p {
+                padding-block-end: 0!important;
+            }
+        }
+
+        :has(+ .c-tip, + pre) {
+            ol& {
+                /* e.g. >> /forms */
+                padding-block-end: 0;
+            }
+            ul& {
+                /* e.g. >> /graphql */
+                padding-block-end: var(--spacing-s-3);
+            }
+        }
+
+        /* Direct descendents only because we don't want to affect components such as .c-related */
+        > ul {
+            --padding-inline-start: min(1.5rem, 5vw);
+            padding-inline-start: var(--padding-inline-start);
+            /* e.g. >> /upgrade-guide */
+            padding-block: var(--spacing-s-4) var(--spacing-l-1);
+            li {
+                padding-inline-start: var(--spacing-s-5);
+                position: relative;
+                &::before {
+                    content: '';
+                    background: var(--color-purple-light-1);
+                    position: absolute;
+                    left: calc(0% - var(--padding-inline-start));
+                    top: 0.55rem;
+                    inline-size: 0.5em;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                }
+                /* Lists within lists e.g. >> /taxonomies */
+                ul li {
+                    padding-inline-start: 0;
+                    padding-block-end: var(--spacing-s-5);
+                    &:first-child {
+                        padding-block-start: var(--spacing-s-4);
+                    }
+                    &:last-child {
+                        padding-block-end: var(--spacing-s-4);
+                    }
+                    &::before {
+                        /* Remove the purple dot for lists within lists */
+                        content: unset;
+                    }
+                }
+            }
+        }
+
+        ol {
+            counter-reset: item;
+            li {
+                --size: 1.75rem;
+                list-style: none;
+                padding-inline-start: calc(var(--size) + var(--spacing-s-2));
+                &:not(:last-child) {
+                    padding-block-end: var(--spacing-s-3);
+                }
+                position: relative;
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    inline-size: var(--size);
+                    block-size: var(--size);
+                    content: counter(item);
+                    counter-increment: item;
+                    color: light-dark(var(--color-primary-text), var(--color-body-background));
+                    font-size: var(--font-size-s-1);
+                    font-weight: var(--font-family-prose-weight-strong);
+                    margin-inline-end: min(var(--spacing-s-1), 3vw);
+                    background: var(--color-yellow-light-1);
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        a {
+            /* Improve legibility */
+            font-weight: var(--font-family-prose-weight-medium);
+        }
+
+        p {
+            /* e.g. >> /quick-start-guide */
+            + ol {
+                padding-block: var(--spacing-s-1) var(--spacing-l-1);
+            }
+            /* e.g. >> /quick-start-guide */
+            + ul {
+                padding-block: var(--spacing-s-4) var(--spacing-l-1);
+            }
+        }
+        /* Followed by some kind of image component (or paragraph like /javascript-frameworks). Not when the h1 is an only child, e.g. /modifiers/add */
+        > :is(header, p):has(+ * img, + p):not:has(h1:only-child) {
+            margin-block-end: calc(var(--spacing-l-1));
+        }
+
+        .external {
+            /* e.g. external links */
+            display: inline-block;
+            margin-inline: 0.15rem 0;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-weight: var(--font-family-main-weight-medium);
+            padding-inline-start: var(--spacing-m);
+            margin-block-end: var(--spacing-l);
+            border-inline-start: 3px solid var(--color-primary-accent);
+        }
+        /* Use this if you want to embed entry content in a component that already handles inline padding */
+        .c-entry-content--flush {
+            padding-inline: 0;
+        }
+
+        /* --mq-wider-entry-content-after */
+        @media (width >= 1500px) {
+            padding-inline: var(--spacing-l);
+        }
+    }
+}

@@ -2,7 +2,9 @@
 
 namespace App\Modifiers;
 
+use Illuminate\Support\Arr;
 use Statamic\Modifiers\Modifier;
+use Statamic\Statamic;
 
 class Toc extends Modifier
 {
@@ -11,18 +13,19 @@ class Toc extends Modifier
     /**
      * Modify a value
      *
-     * @param mixed  $value    The value to be modified
-     * @param array  $params   Any parameters used in the modifier
-     * @param array  $context  Contextual values
+     * @param  mixed  $value  The value to be modified
+     * @param  array  $params  Any parameters used in the modifier
+     * @param  array  $context  Contextual values
      * @return mixed
      */
     public function index($value, $params, $context)
     {
         $this->context = $context;
 
-        $creatingIds = array_get($params, 0) == 'ids';
+        $creatingIds = Arr::get($params, 0) == 'ids';
 
-        list($toc, $content) = $this->create($value, $creatingIds ? 5 : 3);
+        // Here maxHeadingLevels is set to either 5 (when creating IDs) or 3 (for TOC)
+        [$toc, $content] = $this->create($value, $creatingIds ? 5 : 3);
 
         return $creatingIds ? $content : $toc;
     }
@@ -30,38 +33,48 @@ class Toc extends Modifier
     // Good golly this thing is ugly.
     private function create($content, $maxHeadingLevels)
     {
-        preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+        // First try with h2-hN headings
+        preg_match_all('/<h([2-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[2-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+
+        // If we don't have enough entries, include h1 headings as well
+        if (count($matches) < 3) {
+            preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
+        }
 
         if (! $matches) {
             return [null, $content];
         }
 
+        // Track unique anchor IDs across the document
         global $anchors;
+        $anchors = [];
 
-        $anchors = array();
-        $toc = '<ol class="toc">'."\n";
+        // Initialize TOC with an unordered list
+        $toc = '<ul class="o-scroll-spy-timeline__toc js__scroll-spy-toc">'."\n";
         $i = 0;
-
-        // Wangjangle params, vars, and options in there.
-        $matches = $this->appendDetails($matches);
+        $tiCounter = 1; // Add counter for --ti values
 
         foreach ($matches as $heading) {
+            // Track the starting heading level for proper list nesting
             if ($i == 0) {
-                $startlvl = $heading[1];
+                $startlvl = ($heading[1] == '1') ? '2' : $heading[1];
             }
 
-            $lvl = $heading[1];
+            // Normalize h1 to same level as h2
+            $lvl = ($heading[1] == '1') ? '2' : $heading[1];
 
+            // Check if heading already has an ID attribute
             $ret = preg_match('/id=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $anchor);
 
             if ($ret && $anchor[1] != '') {
                 $anchor = trim(stripslashes($anchor[1]));
                 $add_id = false;
             } else {
-                $anchor = preg_replace('/\s+/', '-', trim(preg_replace('/[^a-z\s]/', '', strtolower(strip_tags($heading[3])))));
+                // Generate an ID from the heading text
+                $anchor = $this->slugify($heading[3]);
                 $add_id = true;
             }
-
+            // Ensure anchor ID is unique by adding numeric suffixes if needed
             if (! in_array($anchor, $anchors)) {
                 $anchors[] = $anchor;
             } else {
@@ -74,10 +87,12 @@ class Toc extends Modifier
                 $anchors[] = $anchor;
             }
 
+            // Add ID to the heading in content if it didn't have one
             if ($add_id) {
                 $content = substr_replace($content, '<h'.$lvl.' id="'.$anchor.'"'.$heading[2].'>'.$heading[3].'</h'.$lvl.'>', strpos($content, $heading[0]), strlen($heading[0]));
             }
 
+            // Extract title from title attribute or use heading text
             $ret = preg_match('/title=[\'|"](.*)?[\'|"]/i', stripslashes($heading[2]), $title);
 
             if ($ret && $title[1] != '') {
@@ -88,22 +103,28 @@ class Toc extends Modifier
 
             $title = trim(strip_tags($title));
 
+            // Handle nested list structure based on heading levels
             if ($i > 0) {
                 if ($prevlvl < $lvl) {
-                    $toc .= "\n"."<ol>"."\n";
+                    // Start a new nested list wrapped in li, don't increment counter for parent li
+                    $toc .= "\n".'<li><ul>'."\n";
                 } elseif ($prevlvl > $lvl) {
+                    // Close current item and any nested lists
                     $toc .= '</li>'."\n";
                     while ($prevlvl > $lvl) {
-                        $toc .= "</ol>"."\n".'</li>'."\n";
+                        $toc .= '</ul></li>'."\n".'</li>'."\n";
                         $prevlvl--;
                     }
                 } else {
+                    // Close current item at same level
                     $toc .= '</li>'."\n";
                 }
             }
 
-            $j = 0;
-            $toc .= '<li><a href="#'.$anchor.'">'.$title.'</a>';
+            // Add TOC entry with --ti style (only for leaf nodes)
+            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a>';
+            $tiCounter++;
+
             $prevlvl = $lvl;
 
             $i++;
@@ -112,19 +133,19 @@ class Toc extends Modifier
         unset($anchors);
 
         while ($lvl > $startlvl) {
-            $toc .= "\n</ol>";
+            $toc .= "\n</ul>";
             $lvl--;
         }
 
         $toc .= '</li>'."\n";
-        $toc .= '</ol>'."\n";
-
-        // A tiny TOC is a lame TOC
-        $toc = (count($matches) < 3) ? null : $toc;
+        $toc .= '</ul>'."\n";
 
         return [$toc, $content];
     }
 
+    /**
+     * Safely extracts value from Statamic Value objects
+     */
     private function valueGet($value)
     {
         if ($value instanceof \Statamic\Fields\Value) {
@@ -134,41 +155,10 @@ class Toc extends Modifier
         return $value;
     }
 
-    private function appendDetails($matches)
+    private function slugify($text)
     {
-        $parameters = $this->valueGet($this->context['parameters'] ?? null);
-
-        if ($parameters && count($parameters) > 0) {
-            $matches[] = [
-                '<h2 id="parameters">Parameters</h2>',
-                '2',
-                ' id="parameters"',
-                'Parameters'
-            ];
-        }
-
-        $variables = $this->valueGet($this->context['variables'] ?? null);
-
-        if ($variables && count($variables) > 0) {
-            $matches[] = [
-                '<h2 id="variables">Variables</h2>',
-                '2',
-                ' id="variables"',
-                'Variables'
-            ];
-        }
-
-        $options = $this->valueGet($this->context['options'] ?? null);
-
-        if ($options && count($options) > 0) {
-            $matches[] = [
-                '<h2 id="options">Options</h2>',
-                '2',
-                ' id="options"',
-                'Options'
-            ];
-        }
-
-        return $matches;
+        $slugified = Statamic::modify($text)->replace('&amp;', '')->slugify()->stripTags();
+        // Remove 'code-code' from the slugified text e.g. Otherwise "the `@` ignore symbol" gets converted to `the-code-code-ignore-symbol`
+        return str_replace('code-code-', '', $slugified);
     }
 }

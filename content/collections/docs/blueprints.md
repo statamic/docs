@@ -219,16 +219,16 @@ While configuring a field, switch to the **Validation** tab where you can choose
 
 On top of any Laravel validation rules, there are some Statamic-specific goodies (like usage with conditional fields, Grids, Bards, or Replicators) that are explained on our [dedicated validation documentation](/validation).
 
-## Grid Fieldtype
+## Grid fieldtype
 
 The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
 
 You should define its fields using the blueprint field syntax. This will allow you to reference other fields and/or import entire fieldsets.
 
-<div class="screenshot">
+<figure>
     <img src="/img/grid.png" alt="An example grid field" />
-    <div class="caption">This is an example Grid field.</div>
-</div>
+    <figcaption>This is an example Grid field.</figcaption>
+</figure>
 
 ``` yaml
 links:
@@ -246,7 +246,7 @@ links:
 ```
 
 
-## Unlisted Fields
+## Unlisted fields
 
 While [conditional fields](#conditional-fields) allow you to control field visibility on the publish form, you may also customize column visibility on **entry listings** in the control panel.
 

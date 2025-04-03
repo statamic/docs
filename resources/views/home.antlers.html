@@ -1,75 +1,59 @@
-<header class="markdown">
-    <h1>Learn Statamic</h1>
-    <div class="max-w-2xl text-xl">{{ intro | widont }}</div>
+<header>
+    <h1 id="learn-statamic" class="o-scroll-spy-timeline__track">Learn Statamic</h1>
+    {{ intro }}
 </header>
 
-<div class="bg-gradient-to-br from-gray-lightest to-mint mt-8 md:mt-12 p-4 md:py-5 md:px-8 border shadow-stack dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
-    <div class="flex flex-col md:flex-row items-center">
-        <div class="flex-1">
-            <h2 class="font-display text-3xl font-semibold mb-2">Get Started</h2>
-            <p>There's more than one way to get started with Statamic.</p>
-            <div class="flex flex-wrap md:space-x-4 mt-6">
-                <a href="/installing/local" class="button pr-3">Local Install &rarr;</a>
-                <a href="/quick-start-guide" class="hidden md:block button bg-mint">Quick Start Guide</a>
-            </div>
-            <div class="hidden md:flex flex-wrap space-x-4 mt-6">
-                {{# <a href="" class="button button-small">Local Environment Setup</a> #}}
-                <a href="/installing/laravel" class="button button-small">Laravel</a>
-                <a href="/installing/docker" class="button button-small">Docker</a>
-                <a href="/installing/ubuntu" class="button button-small">Ubuntu</a>
-                <a href="/starter-kits" class="button button-small">Starter Kits</a>
-            </div>
+<div class="c-tiles-with-description">
+    {{ tiles }}
+        <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
+            <a href="{{ tile_link }}" class="u-link-style-none">
+                <figure class="c-tiles-with-description__item__thumbnail">
+                    {{ if tile_image_dark_mode }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /tile_image }}
+                        {{ tile_image_dark_mode }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
+                        {{ /tile_image_dark_mode }}
+                    {{ else }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile }}
+                        {{ /tile_image }}
+                    {{ /if }}
+                    <figcaption>{{ tile_title }}</figcaption>
+                </figure>
+            </a>
+            <p>{{ tile_description | remove_right('.') }}</p>
         </div>
-        <div class="md:w-96 mt-4 md:m-0 md:pl-8">
-            <img src="/img/control-panel-screenshot.png" alt="The Statamic Control Panel" class="border shadow rounded">
+    {{ /tiles }}
+</div>
+
+<hr>
+
+<h2 id="sponsors" class="u-center-on-lower-mqs o-scroll-spy-timeline__track">Sponsors</h2>
+<p class="u-center-on-lower-mqs">We've reserved this space to thank our top open source sponsors.</p>
+<div class="c-logo-grid u-center-on-lower-mqs">
+    {{ hero_sponsors }}
+        <div class="c-logo-grid__item">
+            {{ if error }}
+                <p>We're having trouble loading the sponsors at the moment.</p>
+            {{ else }}
+                <a href="{{ url }}">
+                    <img src="{{ avatarUrl }}">
+                    <span>{{ name }}</span>
+                </a>
+            {{ /if }}
         </div>
+    {{ /hero_sponsors }}
+    <div class="c-logo-grid__item">
+        <a href="https://github.com/sponsors/statamic">Sponsor Statamic</a>
     </div>
 </div>
 
-<div class="bg-black shadow-stack mt-6 py-5 px-8 text-white hidden md:flex items-center dark:bg-pink dark:shadow-none">
-    <img src="/img/retro-tv.svg" alt="A retro tv" class="mr-2">
-    <p class="text-center flex-1">Check out <b class="text-yellow">Learn Statamic with Jack</b> &mdash; our Laracasts CreatorSeries!</p>
-    <a href="https://laracasts.com/series/learn-statamic-with-jack" class="button">Watch &amp; Learn</a>
-</div>
+{{ $article_footer = 'no' }}
 
-<div class="grid md:grid-cols-3 gap-y-6 md:gap-6 mt-6">
-    {{# <a href="/screencasts" class="bg-white border shadow-stack-sm text-center hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest">
-        <img src="/img/tv.svg" alt="Retro TV Set" class="h-16 mb-4 mx-auto">
-            <h2 class="text-2xl mb-2 font-bold font-display">Screencasts</h2>
-        <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
-    </a> #}}
-    <a href="/screencasts" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
-        <header class="flex items-center mb-3">
-            <img src="/img/tv.svg" alt="Retro TV Set" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
-            <h2 class="text-2xl ml-2 font-bold font-display">Watch + Learn</h2>
-        </header>
-        <p class="text-sm font-mono-alt">Tips, tricks, and tutorials on how to build with Statamic.</p>
-    </a>
-    <a href="/upgrade-guide" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
-        <header class="flex items-center mb-3">
-            <img src="/img/car.svg" alt="An older car that needs to be upgraded" class="relative top-[-2px] transform rotate-[-7deg] -left-1">
-            <h2 class="text-2xl font-bold font-display">Upgrade Guides</h2>
-        </header>
-        <p class="text-sm font-mono-alt">For when it's time to get that older Statamic site up to date.</p>
-    </a>
-    <a href="https://statamic.com/discord" class="bg-white border shadow-stack-sm hover:shadow-stack-yellow-sm rounded-sm p-5 hover:bg-gradient-to-tl from-gray-lightest dark:bg-none dark:bg-gray-darkest dark:text-white dark:shadow-none">
-        <header class="flex items-center mb-3" x-data="{active: 1}" x-init="setInterval(() => { if (active === 9) { active = 0; }; active++ }, 1500)">
-            <img :style="{ 'display': active === 1 ? 'block' : 'none' }" src="/img/people/person-1.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 2 ? 'block' : 'none' }" src="/img/people/person-2.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 3 ? 'block' : 'none' }" src="/img/people/person-3.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 4 ? 'block' : 'none' }" src="/img/people/person-4.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 5 ? 'block' : 'none' }" src="/img/people/person-5.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 6 ? 'block' : 'none' }" src="/img/people/person-6.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 7 ? 'block' : 'none' }" src="/img/people/person-7.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 8 ? 'block' : 'none' }" src="/img/people/person-8.svg" alt="A person representing the community">
-            <img :style="{ 'display': active === 9 ? 'block' : 'none' }" src="/img/people/person-9.svg" alt="A person representing the community">
-            <h2 class="text-2xl ml-2 font-bold font-display">Community</h2>
-        </header>
-        <p class="text-sm font-mono-alt">Hang out with truly exceptional devs & designers on Discord.</p>
-    </a>
-</div>
-
-<section class="markdown mt-6 md:mt-20">
+{{# =JFG. Keeping this here for now because it could be useful at some point #}}
+{{# <section class="markdown mt-6 md:mt-20">
     <h2>Recent Updates</h2>
     <p>Keep your Statamic superpowers up-to-date with the latest updates to the docs.</p>
     <table>
@@ -91,29 +75,4 @@
         </tbody>
     </table>
     <a href="/recent-updates" class="button float-right mt-4">View all recent updates</a>
-</section>
-
-<section class="mt-32 lg:mt-64 relative dark:mt-32">
-    <img src="/img/palms-left.png" width="448" class="hidden lg:block absolute left-[-100px] top-[-180px] dark:hidden" alt="" loading="lazy">
-    <img src="/img/palms-right.png" width="159" class="hidden lg:block absolute right-0 top-[-140px] dark:hidden" alt="" loading="lazy">
-    <div class="bg-mint border shadow-lg p-4 md:px-5 md:pb-8 relative">
-        <header class="markdown markdown-tight bg-mint mb-5">
-            <h2 class="mb-3 text-lg dark:text-black">Sponsors</h2>
-            <p class="text-black text-base mb-2 md:w-4/5">We've reserved this space to thank our top open source sponsors.</p>
-        </header>
-        <div class="flex flex-wrap">
-            {{ hero_sponsors }}
-                {{ if error }}
-                    <p class="text-xs flex items-center mb-2">We're having trouble loading the sponsors at the moment.</p>
-                {{ else }}
-                    <a href="{{ url }}" class="button h-13 bg-white flex items-center mb-4 mr-2 md:mr-4 pl-2 pr-2">
-                        <img src="{{ avatarUrl }}" class="rounded h-8 w-8 md:h-10 md:w-10 mr-2">
-                        <span class="font-bold">{{ name }}</span>
-                    </a>
-                {{ /if }}
-            {{ /hero_sponsors }}
-        </div>
-        <a href="https://github.com/sponsors/statamic" class="button bg-white">
-            Become a Sponsor &rarr;
-        </a>
-    </div>
+</section> #}}

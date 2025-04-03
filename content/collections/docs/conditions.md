@@ -23,9 +23,14 @@ _Note: These conditions currently apply to the [collections](/tags/collection), 
 
 The conditions syntax has 3 parts: the field name, the condition name, and the value.
 
-<div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm">
-<span class="bg-pink text-white p-1 rounded-sm">{field_name}</span>:<span class="bg-purple text-white p-1 rounded-sm">{condition}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{value}</span>"
+<div class="c-syntax-explainer">
+<span class="c-syntax-explainer__1">{field_name}</span>:<span class="c-syntax-explainer__2">{condition}</span><span>=</span>"<span class="c-syntax-explainer__3">{value}</span>"
 </div>
+
+### Field name
+The field name is the name of the field you're filtering on.
+
+
 
 ### Using a variable reference
 If you prefix the field name with a colon, it will use the value of a variable in your view
@@ -162,7 +167,7 @@ To pass multiple _values_ in a condition, separate them with `|` pipes.
 ```
 ::
 
-### Sub Fields
+### Sub fields
 
 You can apply conditions to "sub fields", like date ranges:
 
@@ -193,7 +198,7 @@ event_date:
 ```
 ::
 
-## String Conditions
+## String conditions
 
 The following conditions apply to fields with data stored as strings.
 
@@ -227,14 +232,14 @@ The following conditions apply to fields with data stored as strings.
 | `is_before` | Include if field **is before** date. |
 | `is_numberwang` | Include if field **is numberwang**. |
 
-## Taxonomy Conditions
+## Taxonomy conditions
 
 [Taxonomy](/taxonomies) conditions are a little bit different. They start with `taxonomy:`, followed by the taxonomy name, an optional modifier argument, and finally the term you're seeking.
 
 <div class="font-mono bg-grey-300 text-purple rounded inline-block p-2 mb-6 text-sm"><span class="bg-pink text-white p-1 rounded-sm">taxonomy</span>:<span class="bg-purple text-white p-1 rounded-sm">{handle}</span>:<span class="bg-black text-white p-1 rounded-sm">{modifier}</span><span class="p-1">=</span>"<span class="bg-teal text-white p-1 rounded-sm">{term}</span>"
 </div>
 
-### Query Modifiers {#taxonomy-query-modifiers}
+### Query modifiers {#taxonomy-query-modifiers}
 
 You may optionally control the behavior of the condition filter by passing the desired modifier into the tag method call. If you don't set a modifier, it will use `any` by default.
 

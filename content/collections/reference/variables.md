@@ -4,4 +4,4 @@ blueprint: reference
 title: Variables
 template: variables/index
 ---
-Access data from current URL, user, entry, site, date, and more right in your templates.
+Access data from current URL, user, entry, and more

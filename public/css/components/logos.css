@@ -1,0 +1,136 @@
+/* GROUP COMPONENTS / LOGOS
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /home
+
+    What does it do?
+    ----------------
+    - Logos such as sponsors
+    - Based on https://css-irl.info/aspect-ratio-is-great/
+
+*/
+/* HTML Example...
+
+    <div class="c-logo-grid">
+        <div class="c-logo-grid__item">
+            <img src="https://assets.codepen.io/85648/logo-made-up-company.svg" />
+        </div>
+        <div class="c-logo-grid__item">
+            <img src="https://assets.codepen.io/85648/logo-pie-club.svg" />
+        </div>
+        <div class="c-logo-grid__item">
+            <img src="https://assets.codepen.io/85648/logo-birdwatchers.svg" />
+        </div>
+        <div class="c-logo-grid__item">
+            <img src="https://assets.codepen.io/85648/logo-vitamins.svg" />
+        </div>
+        <div class="c-logo-grid__item">
+            <img src="https://assets.codepen.io/85648/logo-angry-jelly.svg" />
+        </div>
+    </div>
+
+*/
+/* Statamic Example...
+
+    {{ logos }}
+        <div class="c-logo-grid__item">
+            <a href="">
+                <picture>
+                    {{# WebP #}}
+                    <source
+                        srcset="{{ glide:url width='185' dpr='2' format='webp' }} 2x"
+                        type="image/webp"
+                    >
+                    {{# JPEG #}}
+                    <source
+                        srcset="{{ glide:url width='185' dpr='2' }} 2x"
+                        type="image/jpeg"
+                    >
+                    {{# Fallback #}}
+                    <img src="{{ glide:url width='185' dpr='2' }}"
+                        loading="lazy" width="{{ width | round }}" height="{{ height | round }}"
+                        alt="{{ if alt }}{{ alt ucfirst='true' ensure_right='.' }}{{ else }}{{ filename ucfirst='true' ensure_right='.' replace='-| ' }}{{ /if }}"
+                    />
+                </picture>
+            </a>
+        <span>Jeroen Peters</span> <-- an optional image
+        </div>
+    {{ /logos }}
+
+*/
+@layer components {
+    .c-logo-grid {
+        --width: 9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-s-2);
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .c-logo-grid__item {
+        align-content: center;
+        padding: var(--spacing-s-1) var(--spacing-m);
+        background: var(--color-gradient-blue-light-1);
+        border-radius: var(--border-radius-l-2);
+        font-family: var(--font-family-ui);
+        --color-link: var(--color-primary-text);
+        &:has(a):not(:has(img)) {
+            /* e.g. "Sponsor Statamic" */
+            padding: 0 var(--spacing-s-2);
+            background: none;
+            a {
+                /* Put the padding on the link instead to make it appear smaller */
+                border: 1px dashed var(--color-primary-text);
+                padding: var(--spacing-s-2) var(--spacing-m);
+                border-radius: var(--border-radius-l-1);
+                /* Custom hover effect */
+                &:hover {
+                    color: inherit!important;
+                    text-decoration: underline;
+                    text-decoration-color: inherit!important;
+                    text-underline-position: unset;
+                }
+            }
+        }
+        .external {
+            display: none;
+        }
+        /* [1] For when we have <span> text next to the logo */
+        a {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-s-2);
+        }
+        /* [2] */
+        &:has(span) {
+            font-size: var(--font-size-m);
+            line-height: var(--font-size-m-line-height);
+            /* Reduce to compensate for the increased image height */
+            padding-block: var(--spacing-s-2);
+            :is(img, svg) {
+                min-inline-size: unset;
+                inline-size: 2.65rem;
+                block-size: 2.65rem;
+                /* e.g. a GitHub avatar */
+                border-radius: var(--border-radius-s);
+            }
+        }
+        span {
+            align-content: center;
+            text-box: trim-start cap;
+        }
+    }
+
+    .c-logo-grid :is(img, svg) {
+        /* This is needed for rasterised images */
+        object-fit: contain;
+        height: 2rem;
+        /* Where needed, it's best to set sizes for individual logos as an inline style e.g. <img src="/img/sponsors/arcustech.svg" alt="Arcustech logo" class="u-hide-in-dark-mode" /> <img src="/img/sponsors/arcustech-dark.svg" alt="Arcustech logo" class="u-hide-in-light-mode" style="min-width: 10rem;" /> */
+        /* min-inline-size: 8.5rem; */
+    }
+}
