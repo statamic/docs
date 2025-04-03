@@ -21,11 +21,11 @@ final class HintRenderer implements NodeRendererInterface
         Hint::assertInstanceOf($node);
 
         $attrs = $node->data->get('attributes');
-        isset($attrs['class']) ? $attrs['class'] .= ' hint' : $attrs['class'] = 'hint';
+        isset($attrs['class']) ? $attrs['class'] .= ' hint' : $attrs['class'] = 'c-tip';
 
         if ($type = $node->getType()) {
             $attrs['class'] = isset($attrs['class']) ? $attrs['class'].' ' : '';
-            $attrs['class'] .= $type;
+            $attrs['class'] .= $type.' c-tip--'.$type;
         }
 
         if ($type === 'watch') {
@@ -41,11 +41,12 @@ final class HintRenderer implements NodeRendererInterface
             )
             : '';
 
-        $content = new HtmlElement(
-            'p',
-            ['class' => 'hint-content'],
-            $childRenderer->renderNodes($node->children())
-        );
+        $content = $childRenderer->renderNodes($node->children());
+        
+        // Add mascot image for tips and best practices
+        $mascot = in_array($type, ['tip', 'hint', 'best-practice', 'warning'])
+            ? '<img src="/img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />' 
+            : '';
 
         return new HtmlElement(
             'div',
@@ -53,6 +54,7 @@ final class HintRenderer implements NodeRendererInterface
             "\n".
             $title."\n".
             $content.
+            $mascot.
             "\n"
         );
     }
@@ -68,10 +70,10 @@ final class HintRenderer implements NodeRendererInterface
         return new HtmlElement(
             'div',
             $attrs,
-            '<div class="embed">'.
+            '<figure class="c-video">'.
                 '<iframe src="'.$node->getTitle().'"></iframe>'.
-            '</div>'.
-            $caption
+                '<figcaption>'.$caption.'</figcaption>'.
+            '</figure>'
         );
     }
 }

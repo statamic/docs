@@ -1,0 +1,248 @@
+@layer components {
+    /* GROUP COMPONENTS / SITE HEADER
+    =================================================== */
+    /* HTML Example...
+
+        .c-docs-header
+            .c-docs-header__inner
+                .c-docs-header__site-logo
+                .c-docs-header__nav
+                .c-docs-header__cta
+
+    */
+
+    .c-docs-header {
+        position: sticky;
+        top: 0;
+        z-index: var(--z-index-nav);
+        --background-position: 5.75rem;
+        --gradient: var(--color-gradient-blue-2);
+        --background-image: url('/img/paper-tear.png');
+        /* Page preference is "dark" */
+        html:has(#color-scheme option[value="dark"]:checked) & {
+            --background-image: url('/img/paper-tear-dark-mode.png');
+        }
+        /* Page preference is "system", and system preference is "dark" */
+        @media (prefers-color-scheme: dark) {
+            html:has(#color-scheme option[value="system"]:checked) & {
+                --background-image: url('/img/paper-tear-dark-mode.png');
+            }
+        }
+        background: var(--background-image) no-repeat 0% var(--background-position), var(--gradient);
+    }
+
+    .c-docs-header__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--spacing-s-1);
+        max-width: var(--max-width-1);
+        margin-inline: auto;
+        padding: var(--spacing-s-1) var(--spacing-s-3) var(--spacing-l-1);
+        margin-block-end: var(--spacing-s-3);
+
+        /* GROUP COMPONENTS / NAV / CURRENT PAGE
+        =================================================== */
+        .o-current-menu-item > a span {
+            color: var(--color-turquoise);
+        }
+
+        /* GROUP COMPONENTS / SITE HEADER / SITE LOGO
+        =================================================== */
+        .o-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s-2);
+        }
+        .o-logomark {
+            width: 1em;
+            height: 1em;
+            font-size: 3.75em;
+        }
+        /* svg*/
+        .o-wordmark {
+            width: 11em;
+            block-size: 100%;
+            fill: var(--color-logo-wordmark);
+        }
+    }
+    .c-docs-header__nav-dots {
+        font-size: 1.7em;
+        padding-inline: 0 var(--spacing-s-4);
+        svg {
+            color: var(--color-primary-text);
+        }
+    }
+    .c-docs-header__search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-s-4);
+        /* Custom */
+        @media (width >= 700px) {
+            /* Increase */
+            gap: var(--spacing-s-3);
+        }
+        .c-theme-picker {
+            display: flex;
+        }
+    }
+    /* GROUP COMPONENTS / SITE HEADER / SITE LOGO / MQs
+    =================================================== */
+    /* --mq-nav-open-before */
+    @media (width < 1250px) {
+        .c-docs-header {
+            margin-block-end: var(--spacing-m);
+            @supports (animation-timeline: auto) {
+                /* Less space because the header is not compressed until we scroll further down */
+                margin-block-end: var(--spacing-s-2);
+                /* --mq-grid-after */
+                @media (width >= 1000px) {
+                    /* Increase */
+                    margin-block-end: var(--spacing-m);
+                }
+            }
+            @container style(--color-scheme: dark) {
+                --gradient: linear-gradient(160deg, var(--color-blue-light-1), var(--color-pink-light-3) 75%, var(--color-yellow-light-3));
+            }
+        }
+        .c-docs-header__inner {
+            .o-wordmark {
+                display: none;
+            }
+        }
+    }
+    /* --mq-nav-open-after */
+    @media (width >= 1250px) {
+        .c-docs-header {
+            /* Increase */
+            --background-position: 7rem;
+            /* Change to include some yellow */
+            --gradient: linear-gradient(175deg, var(--color-blue-light-1), var(--color-pink-light-3), var(--color-yellow-light-3));
+            @container style(--color-scheme: dark) {
+                /* Change the stop point very slightly for dark mode */
+                --gradient: linear-gradient(140deg, var(--color-blue-light-1), var(--color-pink-light-3) 75%, var(--color-yellow-light-3));
+            }
+
+            /* Custom */
+            @media (width >= 1580px) {
+                /* Increase */
+                background-size: 100% auto, auto auto;
+            }
+        }
+        .c-docs-header__inner {
+            padding: 2rem var(--spacing-l) 3.75rem;
+            margin-block-end: 2.5rem;
+            .o-logomark {
+                /* Decrease */
+                font-size: 2.75em;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: var(--z-index-below-body);
+                opacity: 0.6;
+                inline-size: 38.2%;
+                right: 0;
+                height: 85%;
+                transform: scaleX(-1);
+
+                /* https://css-pattern.com/graph-paper/ */
+                --s: 220px; /* control the size*/
+                --c1: white;
+                --c2: transparent;
+                --_g: #0000 90deg,var(--c1) 0;
+                background:
+                  conic-gradient(from 90deg at 1px 1px,var(--_g)),
+                  conic-gradient(from 90deg at 1px 1px,var(--_g)),
+                  var(--c2);
+                background-size: var(--s) var(--s), calc(var(--s)/5) calc(var(--s)/5);
+            }
+        }
+        /* Page preference is "dark" */
+        html:has(#color-scheme option[value="dark"]:checked) .c-docs-header__inner::before {
+            opacity: 0.05;
+        }
+        /* Page preference is "system", and system preference is "dark" */
+        @media (prefers-color-scheme: dark) {
+            html:has(#color-scheme option[value="system"]:checked) .c-docs-header__inner::before {
+                opacity: 0.05;
+            }
+        }
+    }
+    /* Custom */
+    @media (width >= 2100px) {
+        .c-docs-header {
+            --background-image: url('/img/paper-tear-large.png');
+            /* Page preference is "dark" */
+            html:has(#color-scheme option[value="dark"]:checked) & {
+                --background-image: url('/img/paper-tear-large-dark-mode.png');
+            }
+            /* Page preference is "system", and system preference is "dark" */
+            @media (prefers-color-scheme: dark) {
+                html:has(#color-scheme option[value="system"]:checked) & {
+                    --background-image: url('/img/paper-tear-large-dark-mode.png');
+                }
+            }
+            --background-position: 7.75rem;
+            background-repeat: repeat-x;
+            background-size: 1800px auto, auto auto;
+        }
+        .c-docs-header__inner {
+            /* Increase */
+            padding-block: 2.5rem 4.75rem;
+        }
+    }
+    /* GROUP COMPONENTS / SITE HEADER / SCROLL DRIVEN ANIMATIONS
+    =================================================== */
+    @supports (animation-timeline: auto) {
+        /* --mq-nav-open-after */
+        @media (width >= 1250px) {
+            .c-docs-header {
+                position: fixed;
+                top: unset;
+                inline-size: 100%;
+            }
+            main {
+                padding-block-start: 11.5rem;
+            }
+        }
+        /* Custom */
+        @media (width >= 2100px) {
+            main {
+                /* Increase */
+                padding-block-start: 13rem;
+            }
+        }
+    }
+    body {
+        view-timeline-name: --body;
+    }
+    @keyframes compress-header {
+       100% {
+            padding-block: var(--spacing-s-3) var(--spacing-s-2);
+       }
+    }
+    .c-docs-header__inner {
+        /* This gets triggered straight away on browsers that don't support scroll-driven animations, so the header will always appear compressed */
+        animation-name: compress-header;
+        animation-timing-function: linear;
+        animation-timeline: --body;
+        animation-range: entry 100% entry 104%;
+        animation-fill-mode: both;
+        @supports (animation-timeline: auto) {
+            margin-block-end: unset;
+        }
+        @supports not (animation-timeline: auto) {
+            /* --mq-nav-open-after */
+            @media (width >= 1250px) {
+                /* [1] I had this option at first to make the "torn" header the default */
+                /* animation: unset; */
+                /* [/2] But in the end I made the "compressed" header the default for browsers that don't support scroll-driven-animations */
+                padding-block: var(--spacing-s-3) var(--spacing-s-2);
+                margin-block-end: var(--spacing-l-3);
+            }
+        }
+    }
+}

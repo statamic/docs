@@ -1,0 +1,210 @@
+/* GROUP COMPONENTS / SEARCH FORM
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    Home
+
+    What does it do?
+    ----------------
+    Search "box"
+
+*/
+@layer components {
+    .c-search-form {
+        position: relative;
+        display: flex;
+        margin-block-end: 0;
+        background: var(--color-search-form);
+        border: 1px solid var(--color-pink-border);
+        box-shadow: var(--box-shadow-pink-light);
+        border-radius: 50px;
+
+        & input,
+        #docsearch button {
+            margin: 0;
+            padding-inline: 3.5em var(--spacing-m);
+            /* Custom */
+            @media (width < 500px) {
+                padding-inline-end: max(2.5rem, 10vw);
+            }
+            border: 0;
+        }
+        & ::placeholder {
+            color: var(--color-black);
+            opacity: 1;
+        }
+    }
+    .c-search-form__icon {
+        left: var(--spacing-s-1);
+        pointer-events: none;
+        font-size: 1.3em;
+    }
+}
+#docsearch {
+    /* Prevent Safari from nudging the page layout when this is rendered */
+    max-height: 3.6rem;
+    button {
+        align-items: center;
+        inline-size: 100%;
+        background: inherit;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    .docsearch-btn-keys {
+        display: flex;
+        gap: 0.4rem;
+        > * {
+            margin-inline-end: unset;
+        }
+    }
+    .docsearch-btn-placeholder {
+        &::after {
+            content: "the docs";
+        }
+        margin-inline-end: 0;
+        padding-inline-end: 0;
+    }
+    .docsearch-btn {
+        padding: var(--button-spacing);
+        height: unset;
+        > * {
+            margin-inline-end: unset;
+        }
+    }
+    .docsearch-btn-key {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid hsl(var(--color-pink-hue) 100% 90%);
+        border-radius: 5px;
+        background: var(--docsearch-key-gradient);
+        height: 1.5rem;
+        padding-inline: 0.3rem;
+        font-family: var(--font-family-ui);
+        font-size: var(--font-size-s-1);
+        /* Page preference is "dark" */
+        html:has(#color-scheme option[value="dark"]:checked) & {
+            border: 0;
+        }
+        /* Page preference is "system", and system preference is "dark" */
+        @media (prefers-color-scheme: dark) {
+            html:has(#color-scheme option[value="system"]:checked) & {
+                border: 0;
+            }
+        }
+    }
+}
+/* --mq-meilisearch-mobile-breakpoint-before */
+@media (width < 768px) {
+    #docsearch .docsearch-btn-placeholder {
+        /* Override Meilsearch hiding the text on lower MQs */
+        display: inline-block!important;
+        /* Custom */
+        @media (width < 500px) {
+            &::after {
+                content: unset;
+            }
+        }
+    }
+}
+/* Custom */
+@media (width < 500px) {
+    #docsearch {
+        /* Hide when short on space */
+        .docsearch-btn-keys {
+            display: none;
+        }
+    }
+    .c-docs-header__search {
+        min-width: 60%;
+        .docsearch-btn {
+            min-width: 43vw;
+        }
+    }
+}
+/* GROUP COMPONENTS / SEARCH FORM / MODAL
+=================================================== */
+.docsearch-modal {
+    /* --mq-text-bump-3-before */
+    @media (width < 1800px) {
+        font-size: 1.05em;
+    }
+}
+/* GROUP COMPONENTS / SEARCH FORM / Overrides For Meilisearch CSS
+=================================================== */
+/* Notes...
+
+    - Meilisearch styles are loaded inline so we'll need !important here.
+
+*/
+:root {
+    /* Overrides For Meilisearch CSS */
+    --docsearch-muted-color: inherit!important;
+    --docsearch-primary-color: var(--color-purple)!important;
+    --docsearch-key-shadow: unset!important;
+    --docsearch-key-gradient: linear-gradient(to bottom, hsl(var(--color-yellow-hue) 100% 97%) 0%,white 100%)!important;
+    --docsearch-modal-width: 50rem!important;
+    --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 30% / 52%)!important;
+    --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 85%)!important;
+    /* Page preference is "dark" */
+    &:has(#color-scheme option[value="dark"]:checked) {
+        --docsearch-primary-color: hsl(250deg 50% 50%)!important;
+        --docsearch-key-gradient: var(--color-transparent-dark-mode)!important;
+        --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 5% / 70%)!important;
+        --docsearch-modal-background: var(--color-body-background);
+        --docsearch-footer-background: var(--color-body-background);
+        --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 20%)!important;
+        --docsearch-hit-shadow: unset;
+    }
+    /* Page preference is "system", and system preference is "dark" */
+    /* Note: For now, we need to repeat these values, but in the future, we can use style queries to eliminate the need to repeat the dark mode variables. [Current support](https://caniuse.com/?search=style%20queries). To do this, we must shift everything down so variables are on the `body` instead of the `root`. The root then contains the `colour-scheme` variables, which means we can now query the `colour-scheme` variable since the root is now the container. */
+    @media (prefers-color-scheme: dark) {
+        &:has(#color-scheme option[value="system"]:checked) {
+            --docsearch-primary-color: hsl(250deg 50% 50%)!important;
+            --docsearch-key-gradient: var(--color-transparent-dark-mode)!important;
+            --docsearch-modal-container-background: hsl(var(--color-purple-hue) 20% 5% / 50%)!important;
+            --docsearch-modal-background: var(--color-body-background);
+            --docsearch-footer-background: var(--color-body-background);
+            --docsearch-modal-shadow: 0 0px 100px hsl(var(--color-body-background-hue, 0) 30% 20%)!important;
+            --docsearch-hit-shadow: unset;
+        }
+    }
+}
+@container style(--color-scheme: light) {
+    .docsearch-modal-footer-commands-key {
+        border: 1px solid hsl(var(--color-pink-hue) 100% 90%)!important;
+    }
+}
+.docsearch-modal {
+    border-radius: 15px!important;
+}
+.docsearch-modal-search-input-form {
+    border-radius: 12px!important;
+}
+.docsearch-modal-footer {
+    border-radius: 0 0 10px 10px!important;
+}
+.docsearch-modal-search-input {
+    margin-block-end: 0;
+}
+.docsearch-modal-search-hits-item-title {
+    font-weight: var(--font-family-ui-weight-strong)!important;
+}
+.docsearch-modal-search-hits-item-text {
+    font-weight: var(--font-family-ui-weight-normal)!important;
+}
+@container style(--color-scheme: dark) {
+    .docsearch-modal-search-hits-category {
+        color: var(--color-green)!important;
+    }
+}
+.docsearch-modal-footer-logo-icon {
+    /* The logo colour is distracting otherwise */
+    filter: grayscale(100%);
+    @container style(--color-scheme: dark) {
+        filter: grayscale(100%) invert(1);
+    }
+}

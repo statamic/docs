@@ -1,5 +1,5 @@
 ---
-title: 'Upgrade Guides'
+title: 'Upgrade guide'
 intro: How to upgrade between various versions of Statamic.
 template: page
 id: f12f8ba3-19ff-48cb-a07b-653b05082d7e

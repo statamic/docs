@@ -9,10 +9,10 @@ id: 249e046f-a9b4-494b-9e4d-084c28e01028
 
 When you log into the control panel, you will be taken to the dashboard &mdash; a customizable screen containing widgets. Widgets!
 
-<div class="screenshot">
+<figure>
     <img src="/img/dashboard.png" alt="Statamic Global Set Example">
-    <div class="caption">The dashboard and the Getting Started widget</div>
-</div>
+    <figcaption>The dashboard and the Getting Started widget</figcaption>
+</figure>
 
 ## Widgets
 

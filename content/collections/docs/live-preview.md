@@ -20,7 +20,7 @@ Keep in mind: Live Preview does not work using the `array` cache driver.
     <figcaption>And he's still touring, ladies and gentlemen.</figcaption>
 </figure>
 
-## Device Sizes
+## Device sizes
 
 You can customize the list of device sizes in `config/statamic/live_preview.php`.
 
@@ -37,7 +37,7 @@ You can customize the list of device sizes in `config/statamic/live_preview.php`
     <figcaption>This dropdown will obey you better than any puppy will, guaranteed.</figcaption>
 </figure>
 
-## Customizing the Toolbar
+## Customizing the toolbar
 
 You may add extra input fields to Live Preview's header toolbar using custom Vue components. The values of these fields will be available in the data injected into the template.
 
@@ -82,7 +82,7 @@ These values are available in your views, scoped into the `live_preview` array:
 {{ /if }}
 ```
 
-## Preview Targets
+## Preview targets
 
 On a Collection, you may define one or more preview targets which lets you choose which page should be viewed in the Live Preview window.
 
@@ -103,7 +103,7 @@ You may use the entry's variables in the URL, just like defining a route.
 
 If you don't define any targets, it will use the entry's URL.
 
-## Headless / Front-end Frameworks
+## Headless / front-end frameworks
 
 To use Live Preview with a front-end framework, you may use a [preview target](#preview-targets) that points to a custom URL.
 
@@ -165,7 +165,7 @@ const updatePage = function (e) {
 }
 ```
 
-## Custom Rendering
+## Custom rendering
 
 If you need even more control, you may create your own route that retrieves the Live Preview entry through the token manually. Whatever you return from the route will be displayed within Live Preview.
 

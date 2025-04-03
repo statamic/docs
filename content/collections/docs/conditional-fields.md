@@ -19,7 +19,7 @@ Field conditions are set on individual field settings in [blueprints](/blueprint
 
 You may specify various rules for showing a field under either the `if` / `show_when` keys, or hiding a field under the `unless` / `hide_when` keys.
 
-### Data Flow
+### Data flow
 
 Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
 
@@ -137,7 +137,7 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
       favorite_food: 'contains_any pizza, lasagna'
 ```
 
-## Advanced Comparisons
+## Advanced comparisons
 
 For more advanced comparisons, several operators and right-hand-side literals/options are available to you.  For example, we could show an `email` field if age is greater than or equal to `16`:
 
@@ -178,7 +178,7 @@ Available right-hand-side literals/options include:
 | `true` | Will be evaluated as a **literal** `true`. |
 | `false` | Will be evaluated as a **literal** `false`. |
 
-## Multiple Conditions
+## Multiple conditions
 
 If you define multiple field conditions, all conditions need to pass for the field to be shown (or hidden if you use the `unless` / `hide_when` parent key).  For example, the following will show the field when `this_field` is `bacon` *__AND__* `that_field` is `cheeseburger`:
 
@@ -196,7 +196,7 @@ if_any:
   that_field: cheeseburger
 ```
 
-## Nested Fields
+## Nested fields
 
 You may use dot notation to access nested values when necessary.  For example, maybe you would like to show a field when an `array` fieldtype's `country` value is `Canada`:
 
@@ -205,7 +205,7 @@ if:
   address.country: Canada
 ```
 
-## Field Context
+## Field context
 
 By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access parent field values by prepending your field with `$parent`:
 
@@ -221,7 +221,7 @@ if:
   $root.favorite_foods: includes bacon
 ```
 
-## Custom Logic
+## Custom logic
 
 If you need something more complex than the YAML syntax provides, you may write your own logic.  In a [JS script](/extending/control-panel) or addon, you can define custom functions using the `$conditions` JS API:
 
@@ -271,7 +271,7 @@ Statamic.$conditions.add('reallyLovesFood', ({ values }) => {
 
 ```
 
-### Field Context
+### Field context
 
 Furthermore, if you need access to values outside of the current [field context](#field-context), we also provide a `root` values parameter, as well as access to the VueX store via `store` and `storeName`:
 

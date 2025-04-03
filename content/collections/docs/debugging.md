@@ -5,7 +5,7 @@ template: page
 id: 7fb5f2df-de3e-480f-a613-f38a9109e8d8
 blueprint: page
 ---
-## Ignition Debug Screens
+## Ignition debug screens
 
 [Ignition][ignition] is an included Laravel package for debugging exceptions. It provides a clean and organized stack trace, code snippets, information about the request, and even the ability to share the error message with others.
 
@@ -16,12 +16,14 @@ To enable Ignition, set `APP_DEBUG=true` in your [.env](/configuration#environme
     <figcaption>This is Ignition. Isn't it pretty for an error screen?</figcaption>
 </figure>
 
-Statamic will try to detect why you're receiving a specific exception and provide a **solution** for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showEasterEgg = true">Clippy</a>, but 80% less annoying.
+<div x-data="showEasterEgg">
+    <p>Statamic will try to detect why you're receiving a specific exception and provide a **solution** for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showEasterEgg = true">Clippy</a>, but 80% less annoying.</p>
 
-<img src="/img/clippy-docs.gif" class="fixed z-10 cursor-pointer bottom-0 right-0 m-8" x-show.transition="showEasterEgg" x-on:click="showEasterEgg = false">
+    <img src="/img/clippy-docs.gif" class="fixed z-10 cursor-pointer bottom-0 right-0 m-8" x-show.transition="showEasterEgg" x-on:click="showEasterEgg = false">
+</div>
 
 
-## Fake SQL Queries
+## Fake SQL queries
 
 By default, Statamic doesn't use a database, so our query builders don't actually execute SQL queries. However, we "fake" the queries so that they appear in your preferred debugging tools like [Ray](https://myray.app) or Debugbar (more on that below).
 
@@ -32,7 +34,7 @@ They are enabled when you're in debug mode, but if you'd like to disable them yo
 ```
 
 
-## Debug Bar
+## Debug bar
 
 The debug bar is a convenient way to explore many of the things happening in any given page request. You can see data Statamic is fetching, which views are being rendered, information on the current route, available variables, user's session, request data, and more.
 
@@ -41,7 +43,7 @@ The debug bar is a convenient way to explore many of the things happening in any
     <figcaption>The debug bar is like X-Ray vision into many of Statamic's inner workings.</figcaption>
 </figure>
 
-### Benchmarking Response Times
+### Benchmarking response times
 
 You can see all of the major operations performed on a given page request in the **Timeline** tab, which can help with fine-tuning and performance optimization.
 
@@ -50,11 +52,11 @@ You can see all of the major operations performed on a given page request in the
     <figcaption>Slow tags or operations are candidates for caching or indexing tweaks.</figcaption>
 </figure>
 
-### Exploring Data
+### Exploring data
 
 Any variables defined in a [blueprint](/blueprints) will be shown as a `Value` object in the Variables tab. They can be expanded to see their "raw" original data, as well what fieldtype they're managed by, and their [augmented](/augmentation) value.
 
-### How to Enable the Debug Bar
+### How to enable the debug bar
 
 You need to require the package with [Composer][composer].
 
@@ -73,7 +75,7 @@ DEBUGBAR_ENABLED=true
 The debug bar injects JavaScript into the page and adds significant overhead server-side work to each request. **Make sure to turn it off when you're testing your site's performance!**
 :::
 
-## Dump Modifier
+## Dump modifier
 
 When working in [Antlers](/antlers) templates, you can slap the [dump modifier](/modifiers/dump) onto any variable to explore its contents. Here's an example.
 
@@ -115,7 +117,7 @@ Statamic uses Laravel's logging handling system to log messages and errors to fi
 
 Learn more about [configuring other logging channels](https://laravel.com/docs/logging#configuration) on the Laravel docs.
 
-### Viewing Logs in the Debug Bar
+### Viewing logs in the debug bar
 
 You can enable logs in the Debug Bar in its config file. If you haven't already published the config, you can do so from the command line:
 

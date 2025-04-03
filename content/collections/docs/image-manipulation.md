@@ -81,7 +81,7 @@ You may want to generate the presets manually (for example after you changed the
 php please assets:generate-presets
 ```
 
-### Process Source Images
+### Process source images
 
 Sometimes you may wish to process your actual source images on upload. For example, maybe you need to enforce maximum dimensions on extremely large images in order to save on disk space.
 
@@ -105,13 +105,13 @@ Then in your asset container settings, you can configure uploads to use this pre
 The `fit` is the important part for this one. Using `max` will ensure images smaller than those dimensions will not be upscaled - only larger images will be resized.
 :::
 
-### Customize Preset Warming
+### Customize preset warming
 
 As mentioned [above](#presets), Statamic will generate images for all of your configured presets on upload. (i.e. "warming" the generated images).
 
 By default, Statamic will do this "intelligently", which means it'll generate all presets except for the one used for source processing:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/glide-intelligently-warm.png" alt="Glide Intelligently Warm Presets">
 </figure>
 
@@ -155,7 +155,7 @@ When using this method, since the Glide tag only needs to generate URLs, the loa
 Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`.
 :::
 
-### Custom Path (Static)
+### Custom path (static)
 
 The next level of caching would be to specify a custom, publicly accessible location for the images to be generated.
 
@@ -177,7 +177,7 @@ Since the images are generated to a publicly accessible location, the next time 
 When using this method, since the Glide tag has to generate the images, the initial load time of the page will be slower.
 :::
 
-### Custom Disk (CDN)
+### Custom disk (CDN)
 
 You may choose to save your cached Glide images to somewhere CDN based, like Amazon S3 or DigitalOcean Spaces. Instead of specifying `true` as mentioned above, you can point to a filesystem disk.
 
@@ -215,7 +215,7 @@ Make sure that the `visibility` is `public` and that the `url` points to the cor
 Don't use the same disk or bucket as your source images. If you were to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
 
-## Path Cache Store
+## Path cache store
 
 Before Glide tries to generate an image, it will look into the filesystem to determine whether the image has already been generated. This will prevent the need for the image to be needlessly re-generated.
 

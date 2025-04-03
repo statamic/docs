@@ -1,36 +1,27 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "mix",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "production": "mix --production",
-        "prod": "mix --production"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
-        "autoprefixer": "^10.3.2",
-        "axios": "^0.28",
-        "browser-sync": "^2.29.3",
-        "browser-sync-webpack-plugin": "^2.3.0",
-        "cross-env": "^7.0",
-        "laravel-mix": "^6.0",
-        "laravel-mix-purgecss": "^6.0.0",
+        "@alpinejs/intersect": "^3.14.1",
+        "@alpinejs/persist": "^3.14.1",
+        "alpinejs": "^3.2.4",
+        "autoprefixer": "^10.4.20",
+        "axios": "^0.30",
+        "laravel-vite-plugin": "^1.0.5",
+        "@vitejs/plugin-vue2": "^2.3.1",
         "lodash": "^4.17.19",
-        "postcss": "^8.4.31",
-        "postcss-import": "^12.0.1",
-        "postcss-nested": "^4.1.2",
-        "postcss-preset-env": "^6.7.0",
-        "resolve-url-loader": "^3.0",
-        "tailwindcss": "^2.2.7",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.12"
+        "postcss": "^8.4.47",
+        "postcss-import": "^15.1.0",
+        "postcss-nesting": "^12.1.5",
+        "vite": "^5.4.17"
     },
     "dependencies": {
         "@docsearch/js": "^3.0.0-alpha.40",
-        "alpinejs": "^3.2.4",
-        "dayjs": "^1.10.7",
-        "meilisearch-docsearch": "^0.7.0"
+        "meilisearch-docsearch": "^0.7.1",
+        "dayjs": "^1.10.7"
     }
 }

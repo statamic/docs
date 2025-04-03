@@ -1,0 +1,584 @@
+:root {
+    /* GROUP VARIABLES -- SPACING
+    =================================================== */
+    --spacing-s-5: 0.25rem;
+    --spacing-s-4: 0.5rem;
+    --spacing-s-3: 0.8rem;
+    --spacing-s-2: 1rem;
+    --spacing-s-1: 1.35rem;
+
+    --spacing-m: 1.65rem;
+    --spacing-l: 1.8rem;
+    --spacing-l-static: 1.8rem;
+    /* Based on e.g. >> Home on mobile */
+    --spacing-l-1: 2rem;
+
+    /* Smaller values for mobile */
+    --spacing-l-2: min(12vw, 4rem);
+    /* Increased at higher MQs */
+    --spacing-l-2-horizontal: min(12vw, 4rem);
+    --spacing-l-3: min(15vw, 4.7rem);
+    --spacing-l-4: min(18vw, 7.5rem);
+
+    /* e.g. footer padding */
+    --spacing-vh-s: min(18vw, 10vh);
+
+    --button-spacing-vertical: 1rem;
+    --button-spacing-inline: 1.5rem;
+
+    /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
+    =================================================== */
+    /* From lowest to highest value */
+    --max-width-reading: 43rem;
+    /* Increased at later MQs */
+    --max-width-content: 50rem;
+    --max-width-1: 101rem;
+
+    /* GROUP VARIABLES -- LAYOUT -- Z-INDEX
+    =================================================== */
+    --z-index-below-body: -1;
+    --z-index-above-body: 1;
+    --z-index-nav: 2;
+    --z-index-above-nav: 3;
+
+    /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
+    =================================================== */
+    /* Dark to light */
+    --color-black: hsl(210deg 3.85% 0%);
+    /* Stays the same for both light and dark mode */
+    --color-black-static: hsl(210deg 3.85% 0%);
+    --color-black-light: #334155;
+    /* e.g. .c-site-footer */
+    --color-black-off: hsl(207deg 5% 10%);
+    --color-green: hsl(75deg 100% 65%);
+    --color-blue: hsl(197deg 100% 60%);
+    --color-blue-light-1: hsl(197deg 100% 95%);
+    --color-blue-light-2: hsl(197deg 100% 97%);
+    --color-blue-light-3: hsl(197deg 100% 98%);
+    --color-blue-light-4: hsl(197deg 100% 99%);
+    /* Used for :hover */
+    --color-purple-dark: hsl(256deg 60% 50%);
+    --color-purple-hue: 256deg;
+    --color-purple: hsl(256deg 70% 55%);
+    /* e.g. bullet point decoration */
+    --color-purple-light-1: hsl(256deg 60% 85%);
+    --color-purple-light-2: hsl(256deg 60% 98.5%);
+    --color-purple-light-2-highlight: hsl(256deg 60% 96.25%);
+    --color-pink-hue: 287deg;
+    --color-pink-border: hsl(287deg 80% 90%);
+    --color-pink: hsl(287deg 80% 50%);
+    /* e.g. table border */
+    --color-pink-light-1: hsl(287deg 80% 80%);
+    /* e.g. .c-pill */
+    --color-pink-light-2: hsl(287deg 80% 90%);
+    --color-pink-light-3: hsl(287deg 100% 95%);
+    --color-pink-light-3-static: hsl(287deg 100% 95%);
+    --color-pink-light-4: hsl(287deg 100% 98%);
+    --color-pink-light-5: hsl(287deg 100% 99.5%);
+    --color-red: hsl(0deg 75% 50%);
+    --color-red-bright-hsl: 0deg 95% 50%;
+    --color-red-bright: hsl(0deg 95% 50%);
+    --color-red-light: hsl(0deg 75% 75%);
+    --color-red-burnt-1: hsl(0deg 75% 95%);
+    --color-red-burnt-2: hsl(0deg 75% 97%);
+    --color-red-burnt-3: hsl(0deg 75% 98%);
+    --color-red-burnt-4: hsl(0deg 75% 99%);
+    --color-yellow-hue: 35deg;
+    --color-yellow-hsl: var(--color-yellow-hue) 100% 44.52%;
+    --color-yellow: hsl(var(--color-yellow-hue) 100% 44.52%);
+    /* e.g. ol items */
+    --color-yellow-light-1: hsl(var(--color-yellow-hue) 100% 90%);
+    /* e.g. figcaption on .c-bordered-image */
+    --color-yellow-light-2: hsl(var(--color-yellow-hue) 100% 93.5%);
+    --color-yellow-light-3: hsl(var(--color-yellow-hue) 100% 95%);
+    --color-yellow-light-4: hsl(var(--color-yellow-hue) 100% 98%);
+    --color-yellow-light-5: hsl(var(--color-yellow-hue) 100% 98.5%);
+    --color-yellow-light-6: hsl(var(--color-yellow-hue) 100% 99.5%);
+    --color-gray-background: hsl(217deg 23% 96%);
+    --color-gray-aa: hsl(0deg 0% 40%);
+    /* GROUP VARIABLES -- DECORATION -- COLORS -- SEMANTIC
+    =================================================== */
+    --color-body-background: white;
+    --color-logo-wordmark: var(--color-black);
+    --color-search-form: white;
+    --color-shadow: hsl(0deg 0% 0% / 3.5%);
+
+    --color-primary-text: var(--color-black);
+    --color-primary-accent: var(--color-purple);
+
+    --color-dropdown-nav-background: white;
+
+    --color-focus: var(--color-primary-accent);
+    --color-link: var(--color-primary-accent);
+    --color-text-underline-light: hsl(0deg 0% 80%);
+    --color-code-background: var(--color-gradient-blue-1);
+    --color-code-block-background: hsl(228.57deg 23% 18%);
+
+    --color-form-accent: var(--color-primary-accent);
+
+    --popover-backdrop: light-dark(hsl(0deg 0% 100% / 80%), hsl(0deg 0% 0% / 80%));
+
+    --color-logo-s-hole: var(--color-logo-wordmark);
+    /* GROUP VARIABLES -- DECORATION -- COLOURS -- THEME -- GRADIENTS
+    =================================================== */
+    --color-gradient-purple: linear-gradient(to var(--gradient-direction, right), var(--color-pink),var(--color-purple));
+    /* e.g. current breadcrumb */
+    --color-gradient-full-light-1: linear-gradient(to bottom, var(--color-blue-light-2), var(--color-pink-light-3), var(--color-yellow-light-3));
+    --color-gradient-full-light-2: linear-gradient(225deg, var(--color-blue-light-1), var(--color-pink-light-3), var(--color-yellow-light-3));
+    --color-gradient-full-light-3: linear-gradient(225deg, var(--color-blue-light-2), var(--color-pink-light-4), var(--color-yellow-light-4));
+    --color-gradient-full-light-4: linear-gradient(225deg, var(--color-blue-light-3), var(--color-pink-light-5), var(--color-yellow-light-5));
+    --color-gradient-full-light-5: linear-gradient(225deg, var(--color-blue-light-4), var(--color-pink-light-5), var(--color-yellow-light-6));
+    --color-gradient-full-light-6: linear-gradient(195deg, var(--color-blue-light-2), var(--color-pink-light-4), var(--color-yellow-light-4));
+    /* e.g. code background. Darkened on higher MQs */
+    --color-gradient-blue-1: linear-gradient(to bottom, var(--color-blue-light-1), hsl(var(--color-pink-hue) 80% 95%));
+    /* e.g. header */
+    --color-gradient-blue-2: linear-gradient(175deg, var(--color-blue-light-1) 0%,var(--color-pink-light-3) 100%);
+    /* -- */
+    --color-gradient-blue-light-1: linear-gradient(to bottom, var(--color-blue-light-2),var(--color-pink-light-3));
+    /* Changed to lighter at higher MQs */
+    --color-gradient-blue-light-2: linear-gradient(to bottom, var(--color-blue-light-3),var(--color-pink-light-4));
+    --color-gradient-burnt: linear-gradient(to right, var(--color-red-burnt-3), var(--color-yellow-light-4));
+    --color-gradient-burnt-dark: linear-gradient(to bottom, var(--color-red-burnt-3), var(--color-red-burnt-4));
+    --color-gradient-fire: linear-gradient(to bottom, hsl(var(--color-red-bright-hsl) / 25%), hsl(var(--color-yellow-hsl) / 25%));
+    /* e.g. figcaption for .c-bordered-image */
+    --color-gradient-burnt-right: linear-gradient(to right, var(--color-yellow-light-2), var(--color-red-burnt-2));
+
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- FONTS
+    =================================================== */
+    --font-family-ui: "Lexend", sans-serif;
+    --font-family-prose: p22-mackinac-pro, serif;
+    --font-family-code: "Source Code Pro", serif;
+
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- WEIGHTS
+    =================================================== */
+    --font-family-ui-weight-light: 250;
+    --font-family-ui-weight-normal: 350;
+    --font-family-ui-weight-medium: 500;
+    --font-family-ui-weight-strong: 550;
+    --font-family-ui-weight-heavy: 650;
+
+    --font-family-prose-weight-normal: 400;
+    --font-family-prose-weight-medium: 500;
+    --font-family-prose-weight-strong: 700;
+
+    --font-family-code-weight-light: 500;
+    --font-family-code-weight-normal: 650;
+    --font-family-code-weight-strong: 800;
+
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES
+    =================================================== */
+    /*
+        -s sizes are sub 1rem
+        -m is just above 1rem
+        -l sizes are above 1rem
+    */
+    --font-size-s-2: 0.85em;
+    /* e.g. .c-tiles-with-description p */
+    --font-size-s-2-line-height: 1.55;
+    --font-size-s-1: 0.9em;
+    --font-size-s-1-fixed: 0.9em;
+    --font-size-s-1-line-height: 1.4;
+
+    /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
+    --font-size-ui: 0.94em;
+    --font-size-ui-rem: 0.94rem;
+    /* A touch lower */
+    --font-size-ui-line-height: 1.575;
+
+    --font-size-reading-line-height: 1.65;
+
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
+    =================================================== */
+    /* -m is just above 1rem */
+    --font-size-m: clamp(1em, 4vw, 1.125em);
+    --font-size-m-rem: clamp(1rem, 4vw, 1.125rem);
+    /* e.g. .c-tip, with more characters, such as "Best Practice" */
+    --font-size-m-uppercase: 1.075em;
+    /* e.g. >> Home > Lead Text */
+    --font-size-l-1: clamp(1em, 4vw, 1.3em);
+    --font-size-l-1-line-height: 1.6;
+    /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
+    --font-size-l-1-uppercase: 1.2em;
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- AUGMENTED FOURTH
+    =================================================== */
+    /* Based on Augmented Fourth - https://type-scale.com/ */
+    /* e.g. .c-nav-sidebar-with-popover-api-category-heading on mobile */
+    --font-size-l-2: clamp(1.35em, 6vw, 1.6em);
+    --font-size-l-2-line-height: 1.3;
+
+    --font-size-l-3: clamp(1.975em * 0.85, 6vw, 1.975em);
+    --font-size-l-3-line-height: 1.2;
+
+    --font-size-l-4: clamp(2.3em * 0.9, 6vw, 2.3em);
+    --font-size-l-4-line-height: 1.15;
+
+    --font-size-l-5: clamp(2.827em * 0.8, 9vw, 2.827em);
+    --font-size-l-5-line-height: 1.15;
+
+    /* e.g. >> Home > Learn Statamic */
+    --font-size-l-6: clamp(3.998em * 0.67, 11vw, 3.998em);
+    --font-size-l-6-line-height: 1.05;
+
+    /* GROUP VARIABLES -- DECORATION -- BORDER RADIUS
+    =================================================== */
+    /* e.g. .c-full-width-image */
+    --border-radius-s: 5px;
+    --border-radius-m: 8px;
+    --border-radius-l-1: 20px;
+    /* e.g. >> Home > .c-tiles-with-description */
+    --border-radius-l-2: 25px;
+    /* e.g. .c-bordered-image */
+    --border-radius-l-3: 50px;
+
+    /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BORDERS - ordered from light to dark variants
+    =================================================== */
+    --border-dashed-red: 1px dashed var(--color-red-light);
+    --border-solid: 1px solid var(--color-pink-light-2);
+
+    /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BOX SHADOWS - ordered from light to dark variants
+    =================================================== */
+    --box-shadow-medium: 0px 0px 15px rgba(0,0,0,0.125);
+    --box-shadow-pink-light: 0px 5px 5px hsl(var(--color-pink-hue) 100% 95%);
+    --box-shadow-not-t-light: 0 3px 5px var(--color-shadow), 0 4px 6px -2px var(--color-shadow);
+    --box-shadow-not-t-medium: 0 10px 15px -3px hsl(0deg 0% 0% / 5%), 0 4px 6px -2px hsl(0deg 0% 0% / 5%);
+
+    /* GROUP VARIABLES -- DECORATION -- OTHER
+    =================================================== */
+    --filter-image-boost-1: contrast(103%) saturate(1.12);
+    --filter-image-boost-1-with-hue-rotate: contrast(103%) saturate(1.12) hue-rotate(-12deg);
+    --filter-image-boost-1-with-hue-rotate-extra: contrast(108%) saturate(1.35) hue-rotate(-12deg);
+    --filter-image-boost-2: contrast(105%) saturate(1.175);
+    --filter-burnt-shadow: drop-shadow(0px 5px 2px var(--color-red-burnt-1));
+
+    /* GROUP VARIABLES -- ANIMATIONS -- TIMING
+    =================================================== */
+    --animation-timing-function-fast-out-slow-in: cubic-bezier(.4,0,.2,1);
+
+    /* GROUP VARIABLES -- ANIMATIONS -- TRANSITIONS
+    =================================================== */
+    --transition-transform: transform 0.3s var(--animation-timing-function-fast-out-slow-in);
+    --animation-timing-function-hipster: cubic-bezier(0.55, 0, 0.1, 1);
+
+    /* GROUP VARIABLES -- OTHER
+    =================================================== */
+    /* --mq-root-variable-adjustments-1 */
+    @media (min-width: 450px) {
+        /* GROUP VARIABLES -- SPACING
+        ===================================================  */
+        /* Based on nav sidebar and toc spacing */
+        --spacing-s-5: 0.3rem;
+        --spacing-l: 2.3rem;
+        --spacing-l-1: 2.6rem;
+    }
+    /* --mq-root-variable-adjustments-2 */
+    @media (min-width: 730px) {
+        /* e.g. code background. Darkened on higher MQs */
+        --color-gradient-blue-1: linear-gradient(to bottom, var(--color-blue-light-1), hsl(var(--color-pink-hue) 80% 91%));
+    }
+    /* --mq-root-variable-adjustments-2-portrait */
+    @media (min-width: 730px) and (orientation: portrait) {
+        /* e.g. iPad */
+        --spacing-l-4: 5rem;
+    }
+    /* --mq-nav-open-after */
+    @media (width >= 1250px) {
+        /* Make colors more subtle because there's more going on. Based on .c-nav-sidebar-with-popover-api-category-heading.o-current-menu-item */
+        --color-pink-light-3: hsl(287deg 100% 97%);
+        --color-blue-light-1: hsl(197deg 100% 96%);
+        --color-yellow-light-3: hsl(var(--color-yellow-hue) 100% 96%);
+    }
+    /* Notes...
+
+        --mq-root-variable-adjustments-smaller-laptops-after to --mq-root-variable-adjustments-larger-laptops-before
+        - Bear in mind users on smaller laptops do _not_ see things how you see things at a window width of 1440px.
+        - You can check exactly how they see it by going to System Preferences > Displays > Scaled
+
+    */
+    /* --mq-wide-mqs */
+    @media (min-width: 1800px) {
+        /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
+        =================================================== */
+        --max-width-1: 105rem;
+    }
+
+    /* GROUP VARIABLES -- LIGHT/DARK MODE
+    =================================================== */
+    /* Inspiration - https://www.smashingmagazine.com/2024/03/setting-persisting-color-scheme-preferences-css-javascript/ */
+    /* Default to light */
+    --color-scheme: light;
+    color-scheme: var(--color-scheme, light);
+
+    /* GROUP VARIABLES -- DARK MODE
+    =================================================== */
+    /* e.g. betterify this page */
+    --color-dark-mode-gray-dark: hsl(260deg 35% 17%);
+    --color-dark-mode-gray: hsl(260deg 15% 20%);
+    /* e.g. .c-related background */
+    --color-dark-mode-gray-background: hsl(240deg 20% 17%);
+    --color-dark-mode-gray-light: hsl(260deg 10% 30%);
+    /* Page preference is "dark" */
+    &:has(#color-scheme option[value="dark"]:checked) {
+        /* GROUP VARIABLES -- DECORATION -- TEXT -- WEIGHTS
+        =================================================== */
+        /* Trim heavier weights */
+        --font-family-ui-weight-medium: 450;
+        --font-family-ui-weight-strong: 500;
+        --font-family-ui-weight-heavy: 750;
+        /* GROUP VARIABLES -- DARK MODE -- COLORS
+        =================================================== */
+        /* Thin out fonts */
+        -webkit-font-smoothing: antialiased;
+        --color-scheme: dark;
+        /* any additional dark styles */
+        /* e.g. .c-doc-tabs */
+        --color-black: var(--color-dark-mode-gray);
+        --color-black-off: hsl(var(--color-body-background-hue) 17% 5%);
+        --color-gray-aa: hsl(250deg 3% 53%);
+        /* For dark colours, take the same hs value but dial the lightness right down, making small adjustments as necessary */
+        --color-blue-light-1: hsl(197deg 50% 11%);
+        --color-blue-light-2: hsl(197deg 100% 5%);
+        /* e.g. a folder name in the torchlight file tree view */
+        --color-purple: hsl(256deg 60% 70%);
+        /* e.g. hr-style border before meerkat feedback */
+        --color-purple-light-1: hsl(256deg 40% 45%);
+        /* e.g. torchlight file tree view */
+        --color-purple-light-2: hsl(240deg 20% 10%);
+        --color-purple-light-2-highlight: hsl(256deg 40% 15%);
+        --color-purple-reading: hsl(252deg 70% 70%);
+        /* e.g. hover over a link */
+        --color-purple-dark: hsl(252deg 65% 62%);
+        --color-purple-code-background: hsl(252deg 55% 25%);
+        --color-pink-light-1: hsl(287deg 80% 22%);
+        /* e.g. toc scrollbar */
+        --color-pink-light-2: hsl(287deg 80% 12%);
+        --color-pink-light-3: hsl(287deg 90% 8.5%);
+        --color-pink-light-3-static: hsl(287deg 100% 17%);
+        --color-pink-light-4: hsl(287deg 100% 5%);
+        /* Slightly darker */
+        --color-green: hsl(75deg 100% 50%);
+        @supports (background: oklch(0% 0 0)) {
+            --color-green: oklch(0.9 0.3 128);
+        }
+        --color-green-subtle: hsl(76.34deg 100% 32%);
+        @supports (background: oklch(0% 0 0)) {
+            --color-green-subtle: oklch(0.65 0.25 128);
+        }
+        /* e.g. .c-tip__mascot shadow */
+        --color-red-burnt-1: hsl(305deg 50% 10%);
+        /* e.g. figcaption */
+        --color-red-burnt-2: hsl(305deg 34% 14%);
+        /* e.g. feedback meerkat */
+        --color-red-burnt-3: hsl(236deg 30% 12%);
+        /* e.g. c-tip--warning */
+        --color-red-burnt-4: var(--color-yellow-light-4);
+        /* e.g. .c-docs-header__search */
+        --color-pink-border: unset;
+        --color-yellow-light-1: hsl(44deg 100% 80%);
+        /* e.g. figcaption */
+        --color-yellow-light-2: hsl(235deg 26% 13%);
+        --color-yellow-light-3: hsl(35deg 90% 8%);
+        /* e.g. feedback meerkat */
+        --color-yellow-light-4: hsl(277deg 40% 11.5%);
+        --color-yellow-light-5: var(--color-yellow-light-4);
+        --color-transparent-dark-mode: hsl(0deg 0% 100% / 10%);
+        /* GROUP VARIABLES -- DARK MODE -- COLORS -- GRADIENTS
+        =================================================== */
+        /* e.g. .c-doc-tabs */
+        --color-gradient-blue-1: var(--color-code-background);
+        --color-gradient-blue-2: linear-gradient(to bottom, hsl(197deg 35% 12%) 0%,var(--color-pink-light-3) 100%);
+        --color-gradient-blue-2-radial: radial-gradient(circle at left, hsl(197deg 35% 10%), var(--color-pink-light-3));
+        --color-gradient-blue-light-1: linear-gradient(to bottom, var(--color-blue-light-2),var(--color-pink-light-3));
+        /* e.g. sponsors background */
+        --color-gradient-blue-light-1: var(--color-gradient-full-light-3);
+        /* e.g. .c-related */
+        --color-gradient-blue-light-2: var(--color-gradient-full-light-2);
+
+        /* e.g. .o-current-menu-item in the sidebar */
+        --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
+        /* e.g. homepage tiles */
+        --color-gradient-full-light-3: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+        --color-gradient-full-light-6: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+        /* e.g. tables */
+        --color-gradient-full-light-4: linear-gradient(to left, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+        /* e.g. .c-pill-with-description */
+        --color-gradient-full-light-5: linear-gradient(to right, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+        /* e.g. .c-tip--warning */
+        --color-gradient-fire: var(--color-purple-code-background);
+        /* GROUP VARIABLES -- DARK MODE -- COLORS -- SEMANTIC
+        =================================================== */
+        --color-body-background-hue: 230;
+        --color-body-background: hsl(var(--color-body-background-hue) 17% 7%);
+        --color-dropdown-nav-background: var(--color-body-background);
+        --color-primary-text: hsl(0deg 0% 90%);
+        /* e.g. select dropdown for .c-theme-picker on iOS */
+        --color-primary-accent: white;
+        --color-link: var(--color-purple-reading);
+        --color-code-background: var(--color-purple-code-background);
+        --color-logo-wordmark: var(--color-green);
+        --color-search-form: var(--color-transparent-dark-mode);
+        --color-shadow: hsl(var(--color-body-background-hue, 0) 30% 15% / 40%);
+        --color-code-block-background: hsl(228deg 20% 15%);
+        --color-logo-s-hole: var(--color-body-background);
+        /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BOX SHADOWS - ordered from light to dark variants
+        =================================================== */
+        /* e.g. .c-docs-header__search */
+        --box-shadow-pink-light: unset;
+        /* The shadow here stands out a touch more than in light mode */
+        --box-shadow-not-t-light: 0 5px 10px var(--color-shadow), 0 4px 10px -2px var(--color-shadow);
+        /* In dark mode this is the same as the above */
+        --box-shadow-not-t-medium: var(--box-shadow-not-t-light);
+        /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BORDERS - ordered from light to dark variants
+        =================================================== */
+        --border-dashed-red: 1px dashed var(--color-green-subtle);
+        /* e.g. .c-pill */
+        --border-solid: 1px solid var(--color-black);
+        /* GROUP VARIABLES -- DECORATION -- OTHER
+        =================================================== */
+        --filter-dark-tint:
+            hue-rotate(-12deg)
+            contrast(105%)
+            opacity(95%)
+        ;
+        /* Map the burnt shadow to the dark tint */
+        --filter-burnt-shadow: var(--filter-dark-tint);
+        /* Custom */
+        @media (width <= 505px) {
+            /* For making things stand out a bit more in dark mode on mobile e.g. .c-tiles-with-description */
+            --dark-mode-border: 1px dashed hsl(0deg 0% 100% / 10%);
+        }
+    }
+    /* Page preference is "system", and system preference is "dark" */
+    /* Note: For now, we need to repeat these values, but in the future, we can use style queries to eliminate the need to repeat the dark mode variables. [Current support](https://caniuse.com/?search=style%20queries). To do this, we must shift everything down so variables are on the `body` instead of the `root`. The root then contains the `colour-scheme` variables, which means we can now query the `colour-scheme` variable since the root is now the container. */
+    @media (prefers-color-scheme: dark) {
+        &:has(#color-scheme option[value="system"]:checked) {
+            /* GROUP VARIABLES -- DECORATION -- TEXT -- WEIGHTS
+            =================================================== */
+            /* Trim heavier weights */
+            --font-family-ui-weight-medium: 450;
+            --font-family-ui-weight-strong: 500;
+            --font-family-ui-weight-heavy: 750;
+            /* GROUP VARIABLES -- DARK MODE -- COLORS
+            =================================================== */
+            /* Thin out fonts */
+            -webkit-font-smoothing: antialiased;
+            --color-scheme: dark;
+            /* any additional dark styles */
+            /* e.g. .c-doc-tabs */
+            --color-black: var(--color-dark-mode-gray);
+            --color-black-off: hsl(var(--color-body-background-hue) 17% 5%);
+            --color-gray-aa: hsl(250deg 3% 53%);
+            /* For dark colours, take the same hs value but dial the lightness right down, making small adjustments as necessary */
+            --color-blue-light-1: hsl(197deg 50% 11%);
+            --color-blue-light-2: hsl(197deg 100% 5%);
+            /* e.g. a folder name in the torchlight file tree view */
+            --color-purple: hsl(256deg 60% 70%);
+            /* e.g. hr-style border before meerkat feedback */
+            --color-purple-light-1: hsl(256deg 40% 45%);
+            /* e.g. torchlight file tree view */
+            --color-purple-light-2: hsl(240deg 20% 10%);
+            --color-purple-light-2-highlight: hsl(256deg 40% 15%);
+            --color-purple-reading: hsl(252deg 70% 70%);
+            /* e.g. hover over a link */
+            --color-purple-dark: hsl(252deg 65% 62%);
+            --color-purple-code-background: hsl(252deg 55% 25%);
+            --color-pink-light-1: hsl(287deg 80% 22%);
+            /* e.g. toc scrollbar */
+            --color-pink-light-2: hsl(287deg 80% 12%);
+            --color-pink-light-3: hsl(287deg 90% 8.5%);
+            --color-pink-light-3-static: hsl(287deg 100% 17%);
+            --color-pink-light-4: hsl(287deg 100% 5%);
+            /* Slightly darker */
+            --color-green: hsl(75deg 100% 50%);
+            @supports (background: oklch(0% 0 0)) {
+                --color-green: oklch(0.9 0.3 128);
+            }
+            --color-green-subtle: hsl(76.34deg 100% 32%);
+            @supports (background: oklch(0% 0 0)) {
+                --color-green-subtle: oklch(0.65 0.25 128);
+            }
+            /* e.g. .c-tip__mascot shadow */
+            --color-red-burnt-1: hsl(305deg 50% 10%);
+            /* e.g. figcaption */
+            --color-red-burnt-2: hsl(305deg 34% 14%);
+            /* e.g. feedback meerkat */
+            --color-red-burnt-3: hsl(236deg 30% 12%);
+            /* e.g. c-tip--warning */
+            --color-red-burnt-4: var(--color-yellow-light-4);
+            /* e.g. .c-docs-header__search */
+            --color-pink-border: unset;
+            --color-yellow-light-1: hsl(44deg 100% 80%);
+            /* e.g. figcaption */
+            --color-yellow-light-2: hsl(235deg 26% 13%);
+            --color-yellow-light-3: hsl(35deg 90% 8%);
+            /* e.g. feedback meerkat */
+            --color-yellow-light-4: hsl(277deg 40% 11.5%);
+            --color-yellow-light-5: var(--color-yellow-light-4);
+            --color-transparent-dark-mode: hsl(0deg 0% 100% / 10%);
+            /* GROUP VARIABLES -- DARK MODE -- COLORS -- GRADIENTS
+            =================================================== */
+            /* e.g. .c-doc-tabs */
+            --color-gradient-blue-1: var(--color-code-background);
+            --color-gradient-blue-2: linear-gradient(to bottom, hsl(197deg 35% 12%) 0%,var(--color-pink-light-3) 100%);
+            --color-gradient-blue-2-radial: radial-gradient(circle at left, hsl(197deg 35% 10%), var(--color-pink-light-3));
+            --color-gradient-blue-light-1: linear-gradient(to bottom, var(--color-blue-light-2),var(--color-pink-light-3));
+            /* e.g. sponsors background */
+            --color-gradient-blue-light-1: var(--color-gradient-full-light-3);
+            /* e.g. .c-related */
+            --color-gradient-blue-light-2: var(--color-gradient-full-light-2);
+
+            /* e.g. .o-current-menu-item in the sidebar */
+            --color-gradient-full-light-2: radial-gradient(circle at left, hsl(217deg 35% 12%), hsl(287deg 40% 10.5%));
+            /* e.g. homepage tiles */
+            --color-gradient-full-light-3: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+            --color-gradient-full-light-6: linear-gradient(to bottom, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+            /* e.g. tables */
+            --color-gradient-full-light-4: linear-gradient(to left, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+            /* e.g. .c-pill-with-description */
+            --color-gradient-full-light-5: linear-gradient(to right, hsl(240deg 25% 10%), hsl(275deg 30% 10%));
+            /* e.g. .c-tip--warning */
+            --color-gradient-fire: var(--color-purple-code-background);
+            /* GROUP VARIABLES -- DARK MODE -- COLORS -- SEMANTIC
+            =================================================== */
+            --color-body-background-hue: 230;
+            --color-body-background: hsl(var(--color-body-background-hue) 17% 7%);
+            --color-dropdown-nav-background: var(--color-body-background);
+            --color-primary-text: hsl(0deg 0% 90%);
+            /* e.g. select dropdown for .c-theme-picker on iOS */
+            --color-primary-accent: white;
+            --color-link: var(--color-purple-reading);
+            --color-code-background: var(--color-purple-code-background);
+            --color-logo-wordmark: var(--color-green);
+            --color-search-form: var(--color-transparent-dark-mode);
+            --color-shadow: hsl(var(--color-body-background-hue, 0) 30% 15% / 40%);
+            --color-code-block-background: hsl(228deg 20% 15%);
+            --color-logo-s-hole: var(--color-body-background);
+            /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BOX SHADOWS - ordered from light to dark variants
+            =================================================== */
+            /* e.g. .c-docs-header__search */
+            --box-shadow-pink-light: unset;
+            /* The shadow here stands out a touch more than in light mode */
+            --box-shadow-not-t-light: 0 5px 10px var(--color-shadow), 0 4px 10px -2px var(--color-shadow);
+            /* In dark mode this is the same as the above */
+            --box-shadow-not-t-medium: var(--box-shadow-not-t-light);
+            /* GROUP VARIABLES -- DECORATION -- SEPARATORS -- BORDERS - ordered from light to dark variants
+            =================================================== */
+            --border-dashed-red: 1px dashed var(--color-green-subtle);
+            /* e.g. .c-pill */
+            --border-solid: 1px solid var(--color-black);
+            /* GROUP VARIABLES -- DECORATION -- OTHER
+            =================================================== */
+            --filter-dark-tint:
+                hue-rotate(-12deg)
+                contrast(105%)
+                opacity(95%)
+            ;
+            /* Map the burnt shadow to the dark tint */
+            --filter-burnt-shadow: var(--filter-dark-tint);
+            /* Custom */
+            @media (width <= 505px) {
+                /* For making things stand out a bit more in dark mode on mobile e.g. .c-tiles-with-description */
+                --dark-mode-border: 1px dashed hsl(0deg 0% 100% / 10%);
+            }
+        }
+    }
+}

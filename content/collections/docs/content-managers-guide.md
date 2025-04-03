@@ -1,9 +1,9 @@
 ---
 id: e947dc19-9a8a-44c2-911c-171d1f196c91
 blueprint: page
-title: 'Content Manager''s Guide to Statamic'
-nav_title: 'Content Manager''s Guide'
-breadcrumb_title: 'Content Manager''s Guide'
+title: 'Content Manager’s Guide to Statamic'
+nav_title: 'Content Manager’s Guide'
+breadcrumb_title: "Content Manager's Guide"
 intro: |-
   So you've got yourself a brand new Statamic site, inherited an older one, or joined a team that's already using Statamic. Great! Welcome to the wonderful world of Statamic. Perhaps you're wondering what to do next, how to add a tracking code to a landing page, get technical support, or reset your password and get back into the Control Panel.
 
@@ -11,7 +11,7 @@ intro: |-
 ---
 ## Four things you need to know.
 
-### We can't get into your site.
+### We can’t get into your site.
 
 This is important information, so please read this whole section. All Statamic sites are **self-hosted**. This means that each Statamic site is a unique _copy_ of the Statamic application, and is running on a server that you, your company, or web design/development agency owns or has access to.
 

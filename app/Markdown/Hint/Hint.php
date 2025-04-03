@@ -26,6 +26,10 @@ class Hint extends AbstractBlock implements StringContainerInterface
             return 'Hot Tip!';
         }
 
+        if ($words[0] === 'hint') {
+            return 'Hinty Hint!';
+        }
+
         if ($words[0] === 'warning') {
             return 'Warning!';
         }

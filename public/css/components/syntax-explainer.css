@@ -1,0 +1,44 @@
+/* GROUP COMPONENTS / SYNTAX EXPLAINER
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /conditions
+
+    What does it do?
+    ----------------
+    - e.g. when explaining on the `/conditions` page, `{field_name}:{condition}="{value}"` might be broken down as per the HTML example below...
+
+
+*/
+/* HTML Example...
+
+<div class="c-syntax-explainer">
+    <span class="c-syntax-explainer__1">{field_name}</span>:<span class="c-syntax-explainer__2">{condition}</span><span>=</span>"<span class="c-syntax-explainer__3">{value}</span>"
+</div>
+
+*/
+@layer components {
+    .c-syntax-explainer {
+        margin-block-end: var(--spacing-m);
+        font-family: var(--font-family-code);
+        font-weight: var(--font-family-code-weight-normal);
+        /* Because of the extra padding */
+        line-height: 2;
+        > * {
+            padding: var(--spacing-s-5) var(--spacing-s-4);
+            border-radius: var(--border-radius-s);
+        }
+    }
+    .c-syntax-explainer__1 {
+        background: var(--color-pink-light-2);
+    }
+    .c-syntax-explainer__2 {
+        background: var(--color-purple-light-1);
+    }
+    .c-syntax-explainer__3 {
+        background: var(--color-green);
+        color: light-dark(var(--color-primary-text), var(--color-black));
+    }
+}

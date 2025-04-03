@@ -1,55 +1,60 @@
-id: 02174866-a776-4fea-b7e0-935980d9cf1c
 title: Globals
 data:
   pro_badges:
-    - magnum
-    - mrt
-    - miyagi
-    - rocky
-    - sigourney
-    - freddie
+    -
+      id: m8q1g335
+      artwork: pro-badges/artwork/pro-doc-brown.jpg
+      icon: pro-badges/icons/pro-sheriff-badge.png
+      type: pro_badge
+      enabled: true
+    -
+      id: m8q1napf
+      artwork: pro-badges/artwork/pro-marty-mcfly.jpg
+      icon: pro-badges/icons/pro-sheriff-badge.png
+      type: pro_badge
+      enabled: true
   experimental_badges:
     - doc
     - hackerman
     - rick
   powered_by:
     - 'the sweat of Rambo'
-    - 'Michael McDonald''s beard'
-    - 'MacGyver''s paperclip collection'
-    - 'Mr. T''s mohawk'
-    - 'Hulk Hogan''s triceps'
-    - 'E.T.''s glowing finger'
+    - "Michael McDonald's beard"
+    - "MacGyver's paperclip collection"
+    - "Mr. T's mohawk"
+    - "Hulk Hogan's triceps"
+    - "E.T.'s glowing finger"
     - 'the memory of John Candy'
     - 'the Jamaican bobsled team'
-    - 'Rick Moranis''s glasses'
+    - "Rick Moranis's glasses"
     - 'the power of Greyskull'
-    - 'David Hasselhoff''s smile'
-    - 'Weird Al''s purple accordion'
-    - 'Michael Jackson''s glove'
-    - 'Alf''s back hair'
-    - 'Zack Morris''s cell phone battery'
-    - 'Mr. Roger''s red cardigan'
-    - 'Uncle Jesse''s hairspray'
-    - 'the eye of Rocky''s tiger'
-    - 'Blockbuster''s 2-for-1 nights'
-    - 'Kevin Mccallister''s Talkboy'
-    - 'Michelle Tanner''s catch phrases'
-    - 'John McClane''s undershirt'
-    - 'John Hammond''s cane'
+    - "David Hasselhoff's smile"
+    - "Weird Al's purple accordion"
+    - "Michael Jackson's glove"
+    - "Alf's back hair"
+    - "Zack Morris's cell phone battery"
+    - "Mr. Roger's red cardigan"
+    - "Uncle Jesse's hairspray"
+    - "the eye of Rocky's tiger"
+    - "Blockbuster's 2-for-1 nights"
+    - "Kevin Mccallister's Talkboy"
+    - "Michelle Tanner's catch phrases"
+    - "John McClane's undershirt"
+    - "John Hammond's cane"
     - 'a Festivus pole'
-    - 'Pheobe''s smelly cat'
+    - "Pheobe's smelly cat"
     - 'the Binford 6100'
-    - 'DJ Jazzy Jeff''s turntable'
+    - "DJ Jazzy Jeff's turntable"
     - 'Hi-C Ecto Cooler'
     - 'the Kool-Aid man'
-    - 'Harry''s gold tooth'
-    - 'Double Dare''s physical challenge'
-    - 'Daniel Larusso''s headband'
+    - "Harry's gold tooth"
+    - "Double Dare's physical challenge"
+    - "Daniel Larusso's headband"
     - 'the presidential fitness test'
-    - 'Marty McFly''s orange vest'
-    - 'Ferris Bueller''s Ferrari'
-    - 'Forrest Gump''s box of chocolates'
-    - 'a Speak N'' Spell with fresh batteries'
+    - "Marty McFly's orange vest"
+    - "Ferris Bueller's Ferrari"
+    - "Forrest Gump's box of chocolates"
+    - "a Speak N' Spell with fresh batteries"
     - 'the Kobayashi porcelain mug'
     - 'an amp that goes to 11'
     - 'the Men in Black flashy thing'
@@ -57,30 +62,30 @@ data:
     - 'an unbroken Super Soaker 200'
     - 'an old pair of Moon Shoes'
     - 'a pair of never-worn Reebok pumps'
-    - 'Tommy Pickle''s screwdriver'
+    - "Tommy Pickle's screwdriver"
     - 'a bottle of Flintstone vitamins'
     - 'Fruit by the Foot'
     - 'two cases of Surge'
     - 'a fully fed, adult Tamagotchi'
-    - 'a pair of Will Smith''s high-tops'
+    - "a pair of Will Smith's high-tops"
     - 'a tube of Pogs'
     - 'a binder full of Garbage Pail Kids'
     - 'Peanut, the royal-blue Beanie Baby'
     - 'your secret Lisa Frank Trapper Keeper'
-    - 'Teddy Ruxpin''s voice box'
+    - "Teddy Ruxpin's voice box"
     - 'a bin of mangled G.I. Joes'
     - 'an ewok snuggling baby Yoda'
     - 'a mint condition Street Fighter II arcade cabinet'
     - 'two Nintendo Power Gloves'
     - 'a rechargable Gameboy magnifier light'
-    - 'a rogue, sentient Speak ''N Spell'
+    - "a rogue, sentient Speak 'N Spell"
     - 'a Michael Jordan rookie card'
     - 'an unwashed Chicago Bulls jersey'
-    - 'Ross & Rachael''s break'
-    - 'Gunther''s extra wide neck tie'
-    - 'Jerry''s puffy shirt'
-    - 'Al Borland''s flannel collection'
-    - 'Buffy''s Dagger of Lex'
-    - 'Xena''s Sword'
-    - 'Fraiser''s Rothko painting'
-    - 'Chandler''s oversized dress shirts'
+    - "Ross & Rachael's break"
+    - "Gunther's extra wide neck tie"
+    - "Jerry's puffy shirt"
+    - "Al Borland's flannel collection"
+    - "Buffy's Dagger of Lex"
+    - "Xena's Sword"
+    - "Fraiser's Rothko painting"
+    - "Chandler's oversized dress shirts"

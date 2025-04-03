@@ -1,0 +1,581 @@
+@layer elements {
+    html {
+        background: var(--color-body-background);
+        color: var(--color-primary-text);
+    }
+
+    body {
+        min-height: 100vh;
+
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-normal);
+        /* https://app.typographychecklist.com/ - 23. Use standard ligatures but avoid using discretionary ligatures in body text */
+        font-feature-settings: "kern", "liga", "clig", "calt";
+        /* https://css-tricks.com/scrollbar-reflowing/ */
+        scrollbar-gutter: stable both-edges;
+    }
+}
+
+/* GROUP ELEMENTS
+=================================================== */
+@layer elements {
+    /* GROUP ELEMENTS / FRAMEWORK
+    =================================================== */
+    ::selection {
+        background: light-dark(hsl(var(--color-purple-hue), 60%, 90%), hsl(var(--color-purple-hue) 60% 30%));
+        color: var(--color-primary-text);
+    }
+    .torchlight ::selection {
+        background: light-dark(hsl(229deg 20% 35%), hsl(229deg 20% 35%));
+        color: white;
+    }
+    mark {
+        background: var(--color-green);
+        /* e.g. >> /static-caching */
+        padding-inline: var(--spacing-s-5);
+    }
+    /* https://twitter.com/bramus/status/1452572001697153029 */
+    /* html,
+    body {
+        background: ;
+    } */
+    html {
+        /* Consider disabling this if you have pages that require lots of cmd + f https://css-tricks.com/downsides-of-smooth-scrolling/ */
+        scroll-behavior: smooth;
+        /* Opinion on this will differ depending on the font you choose. Do not carpet bomb line height with a * selector though */
+        line-height: 1.5;
+        /* https://web.dev/accent-color/ */
+        accent-color: var(--color-form-accent);
+    }
+    pre, code {
+        /* https://dbushell.com/2024/11/05/webkit-font-smoothing/ */
+        -webkit-font-smoothing: antialiased;
+        font-family: var(--font-family-code);
+        font-weight: var(--font-family-code-weight-light);
+        + p:not(ol p, ul p) {
+            /* Not on this page e.g. >> /extending/vite-in-addons */
+            padding-block-start: var(--spacing-s-1);
+        }
+        /* Put some space between paragraphs and code blocks, except if it's in a tip */
+        p:has(+ &):not(.c-tip p, ol p) {
+            margin-block-end: var(--spacing-l);
+        }
+        li & {
+            /* Make code in bullet points slightly smaller */
+            font-size: 1.025rem;
+        }
+    }
+    code {
+        /* Stop code elements with a long path in causing overflow. Source: https://stackoverflow.com/questions/1165497/how-to-prevent-text-from-overflowing-in-css#3791058 */
+         word-wrap: break-word;
+    }
+    /* Only descending from certain tags, otherwise torchlight is used */
+    :is(h2, h3, h4, p, figure, li) {
+        code {
+            /* e.g. try <code><?php bloginfo('stylesheet_url'); ?></code> and you'll see that it overflows on smaller screens */
+            overflow-x: scroll;
+            padding: 0.07rem 0.4rem;
+            margin: 0.15rem;
+            background: var(--color-code-background);
+            border-radius: 5px;
+            font-family: var(--font-family-code);
+            font-weight: var(--font-family-code-weight-normal);
+            /* Based on code being inside tips too */
+            font-size: 1.1rem;
+            letter-spacing: -0.2px;
+        }
+    }
+
+    figure code {
+        /* Make a little more readable when in a caption because we don't have to worry about surrounding prose */
+        padding: 0.2rem 0.3rem;
+        margin: 0.25rem;
+    }
+    /* Fix popover buttons being triggered underneath the backdrops of other open popovers. If you have a popover open and there's a button underneath it, clicking on the button will trigger the popover underneath. We don't want this, so we need to disable other popover buttons when a popover is open. */
+    button[popovertarget]:not([popover] button) {
+        /* Disable by default */
+        pointer-events: none;
+        body:not(:has(:popover-open)) & {
+            /* This restores click events to buttons when other popovers are deactivated. We need to use an animation in order to to _delay_ the restoring of click events, so that clicking through the "backdrop" of a popover onto another popover trigger doesn't do anything as the popover is in the process of disappearing. */
+            animation: 1s linear restore-click both;
+        }
+    }
+    /* Prevent images stretching too much */
+    img {
+        /* Maintain aspect ratio */
+        height: auto;
+        .s-main &:not(.c-entry-content *) {
+            /* Some image treatment, particularly in dark mode */
+            filter:
+                contrast(108%)
+                saturate(1.075)
+            ;
+            @container style(--color-scheme: dark) {
+                filter:
+                    hue-rotate(-12deg)
+                    contrast(110%)
+                    opacity(85%)
+                    saturate(1.1)
+                ;
+            }
+        }
+    }
+    /* https://www.youtube.com/watch?v=2lyDv0wOQuQ */
+    img, picture, svg, video {
+        display: block;
+        max-width: 100%;
+    }
+    /* Reset */
+    h1, h2, h3, h4, h5, h6,
+    p,
+    ul, ol,
+    figure, blockquote {
+        margin-block: 0;
+    }
+    blockquote {
+        margin: 0;
+        quotes: "“" "”" "‘" "’";
+        /* Only where there are no children */
+        &:not(:has(*)) {
+            &::before {
+                content: open-quote;
+            }
+            &::after {
+                content: close-quote;
+            }
+            /* https://chriscoyier.net/2023/11/27/the-hanging-punctuation-property-in-CSS */
+            text-indent: -0.45em;
+        }
+        @supports (hanging-punctuation: first) {
+            text-indent: 0;
+            hanging-punctuation: first;
+        }
+    }
+    /* Reset */
+    figure {
+        margin-inline: 0;
+        & img {
+            /* Push the caption away from the image */
+            margin-block-end: var(--spacing-s-3);
+        }
+    }
+    /*
+        - https://youtu.be/UWFrl79092w?si=T0cPhMFkQhdkoLiA&t=75
+        - Excluding navigation and pagination
+    */
+    ul:not([class], nav *, [class*="pagi"] *) {
+        padding-inline-start: 0;
+    }
+    ul[class],
+    *[class] > ul {
+        /* Try to target components that have a list, such as .c-paging > ul, and remove default list styling */
+        list-style: none;
+    }
+    /* Don't affect nav */
+    .s-main li:not(:last-child) {
+        padding-block-end: var(--spacing-s-4);
+    }
+    dl,
+    dt,dd,
+    th,
+    td {
+        padding-block-end: var(--spacing-s-3);
+    }
+    p {
+        margin-block-end: var(--spacing-m);
+        /* --mq-nav-open-before */
+        @media (width < 1250px) {
+            /* Decrease */
+            margin-block-end: var(--spacing-s-1);
+        }
+        &:last-child {
+            margin-block-end: 0;
+        }
+        &:has(+ blockquote) {
+            margin-block-end: var(--spacing-l);
+        }
+    }
+    a {
+        color: inherit;
+    }
+    /* Don't affect Statamic's lists here, which contain p tags like this:
+        <ol>
+            <li>
+                <p>Sponsor games</p>
+            </li>
+            <li>
+                <p>Promote your game</p>
+            </li>
+            <li>
+                <p>Sponsor live events</p>
+            </li>
+        </ol>
+    */
+    .s-main :is(p:not(li p), ol, ul):not(:has(li p)) {
+        line-height: var(--font-size-reading-line-height);
+        list-style-position: inside;
+        padding-inline-start: 0;
+    }
+    /* For Statamic's lists use a different method: */
+    ol:has(li p) {
+        /* e.g. >> /oauth */
+        padding-inline-start: 0;
+    }
+    p + ul {
+        padding-block-start: var(--spacing-s-3);
+    }
+    strong {
+        font-weight: var(--font-family-ui-weight-heavy);
+    }
+    /* Only target our own name-spaced components so that we don't affect plugins */
+    :is([class^="c-"], [class^="o-"]) svg {
+        fill: currentColor;
+        /* For SVG icons */
+        width: 1em;
+        height: 1em;
+    }
+    :is(h1, h2, h3, h4, h5, h6, p) svg {
+        vertical-align: baseline;
+        margin-inline-end: var(--spacing-s-4);
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / MAIN
+    =================================================== */
+    /* Target the main element with a class rather than the main tag, because the main tag can still be used elsewhere e.g. Meilisearch uses it for its modal */
+    .s-main {
+        &:focus {
+            outline: none;
+        }
+        /* Custom */
+        @media (width < 1024px) {
+            /* Only when followed by the footer */
+            &:has(+ footer) {
+                margin-block-end: var(--spacing-l-2);
+            }
+        }
+        & > *:last-child {
+            padding-block-end: 0;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-areas:
+                "sidebar-1 breadcrumbs sidebar-2"
+                "sidebar-1 content     sidebar-2"
+            ;
+            gap: var(--spacing-l-2) var(--spacing-m);
+            max-width: var(--max-width-1);
+            margin-inline: auto;
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1250px) {
+            grid-template-columns: 22.5fr 62fr 21fr;
+            grid-template-columns: 22fr 60fr 18fr;
+            /* Decrease */
+            row-gap: var(--spacing-l-1);
+            padding-inline: var(--spacing-s-1) var(--spacing-l);
+            /* --mq-wide-before */
+            @media (width < 1650px) {
+                column-gap: 0;
+                padding-inline-start: var(--spacing-s-4);
+            }
+            /* --mq-wide-after */
+            @media (width >= 1650px) {
+                /* Change proportions slightly so the middle section has more room, and "on this page" is pushed further to the right. */
+                grid-template-columns: 22.75fr 60fr 17.25fr;
+            }
+            grid-template-rows: 4rem auto;
+        }
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / HEADINGS
+    =================================================== */
+    /* https://developer.chrome.com/blog/CSS-text-wrap-balance */
+    h1, h2, h3, h4, h5, h6 {
+        /* Not .c-entry-content headings because it feels a bit weird */
+        &:not(.c-entry-content &) {
+            text-wrap: balance;
+        }
+    }
+    blockquote, figcaption, .s-main p {
+        text-wrap: pretty;
+    }
+    figcaption {
+        /* e.g. >> Docs Home */
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-medium);
+    }
+    h1, .h1, h1 a, .h1 a, h2, .h2, h2 a, .h2 a, h3, .h3, h3 a, .h3 a {
+        /* Not when headings are inside li, which they sometimes are, e.g. /tips */
+        &:not(li *) {
+            font-family: var(--font-family-prose);
+            font-weight: var(--font-family-prose-weight-normal);
+            /* https://app.typographychecklist.com/ 91 - Use discretionary ligatures and swashes in headlines */
+            font-feature-settings: "kern", "liga", "clig", "calt", "dlig", "swsh";
+            /* Override iOS Safari's user agent stylesheet */
+            text-decoration: none;
+            color: inherit; /* If you use a link inside a heading, inherit the colour so it's not the default browser-purple */
+        }
+    }
+    a :is(h1, h2, h3, h4, h5, h6) {
+        /* When a heading is inside a link, escape the link colour */
+        color: initial;
+    }
+    h2, h3, h4, h4 a, h5, h5 a, h6, h6 a {
+        font-family: var(--font-family-prose);
+        font-weight: var(--font-family-prose-weight-normal);
+    }
+    h1 {
+        font-size: var(--font-size-l-6); line-height: var(--font-size-l-6-line-height);
+    }
+    h2 {
+        font-size: var(--font-size-l-4); line-height: var(--font-size-l-4-line-height);
+    }
+    h3 {
+        font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
+    }
+    h4 {
+        font-size: var(--font-size-l-2); line-height: var(--font-size-l-2-line-height);
+    }
+    h5 {
+        font-size: var(--font-size-l-1); line-height: var(--font-size-l-1-line-height);
+    }
+    h6 {
+        font-size: var(--font-size-m); line-height: var(--font-size-m-line-height);
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
+    =================================================== */
+    h1 {
+        padding-block-end: var(--spacing-l-1);
+    }
+    h2 {
+        /* E.g. h2 following article intro text */
+        padding-block-end: var(--spacing-m);
+    }
+    * + h2,
+    article + article {
+        /* E.g. h2 following article intro text */
+        padding-block: var(--spacing-l-1) var(--spacing-m);
+        /* --mq-nav-open-before */
+        @media (width < 1024px) {
+            /* Decrease */
+            padding-block-start: var(--spacing-l);
+        }
+        &:has(+ h3) {
+            /* e.g. >> /assets */
+            padding-block-end: 0;
+        }
+    }
+    /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / LOW PRIORITY / VERTICAL SPACING
+    =================================================== */
+    h3 {
+        /* e.g. >> /contributing */
+        padding-block: var(--spacing-l) var(--spacing-m);
+    }
+    h4 {
+        /* e.g. >> /content-managers-guide */
+        padding-block: var(--spacing-s-1) var(--spacing-m);
+        &:has(code) {
+            /* e.g. >> /forms */
+            padding-block-start: var(--spacing-m);
+        }
+    }
+    h5 {
+        padding-block: var(--spacing-l-1) var(--spacing-m);
+    }
+}
+@layer components {
+    /* Put these at the component level e.g. so we make sure we override something like .c-site-footer li { padding-block-end: var(--spacing-s-4); } */
+    /* Nested lists */
+    ol ol,
+    ol ol li:last-child,
+    ul ul,
+    ul ul li:last-child {
+        padding-block-end: 0;
+    }
+
+    button svg,
+    .c-btn :is([src*="svg"], svg) {
+        font-size: 1.1em;
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / HEADINGS / SCOPE ADJUSTMENTS
+=================================================== */
+@layer scope {
+    .c-tip,
+    .c-bordered-image {
+        &:has(+ :is(h2, h3)) {
+            /* Decrease */
+            margin-block-end: var(--spacing-m);
+        }
+    }
+    /* Decrease bottom padding/margin elements previous to hr */
+    .c-entry-content :has(+ hr) {
+        /* Needed for lists */
+        padding-block-end: 0;
+        margin-block-end: 0;
+    }
+    /* Decrease bottom padding/margin following previous to hr e.g. >> /7 on the HTML prototype */
+    /* Headings */
+    .c-entry-content hr + :is(h2, h3, h4) {
+        padding-block-start: 0;
+    }
+    /* GROUP ELEMENTS / HR
+    =================================================== */
+    /* [1] This first technique is used to fake an hr */
+    hr, .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+        --border-width: 0.3px;
+    }
+    .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+        --distance: var(--spacing-l-3);
+        margin-block-start: var(--distance);
+        p:has(+ &) {
+            padding-block-end: var(--spacing-m);
+        }
+        figure:has(+ &) + h2 {
+            /* e.g. >> /quick-start-guide */
+            margin-block-start: var(--spacing-l-4);
+        }
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            top: calc(0% - var(--distance) / 4 - 10px);
+        }
+        &::before {
+            background: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue));
+            opacity: 0.5;
+            inline-size: 100%;
+            block-size: 1px;
+        }
+        &:after {
+            inline-size: 100%;
+
+            position: absolute;
+            left: 0;
+            content: "";
+            inline-size: 100%;
+            border: var(--border-width) dashed white;
+        }
+    }
+    /* [/2] This second technique is for real hrs */
+    hr {
+        border-image: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue)) 1;
+        border-width: var(--border-width);
+        position: relative;
+        opacity: 0.5;
+        margin-block: var(--spacing-l-3);
+
+        /* I think this is the only way we can have a dashed border-image */
+        &:after {
+            position: absolute;
+            content: "";
+            inset: 0;
+            top: calc(0% - var(--border-width));
+            border: var(--border-width) dashed var(--color-body-background);
+        }
+    }
+}
+
+
+
+/* GROUP ELEMENTS / NAV
+=================================================== */
+@layer elements {
+    nav {
+        & ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        & a {
+            color: inherit;
+        }
+        & svg:last-child {
+            /* subnav arrow */
+            margin-inline-start: var(--spacing-s-5);
+            width: 0.7rem;
+            color: var(--color-primary-text);
+
+            *:has(> &) {
+                /* The SVG container */
+                display: flex;
+            }
+        }
+    }
+}
+@layer objects {
+    .o-subnav {
+        transition: var(--transition-transform);
+    }
+    .o-subnav--open {
+        transform: scaleY(-1);
+    }
+}
+
+
+
+/* GROUP ELEMENTS / FRAMEWORK / TEXT / LINK STYLES {/ LINKS }
+=================================================== */
+/* Notes...
+
+    - Link styles are stored as group selectors rather than scattered, since we have multiple properties here.
+    - Do not put transitions on all links, it makes keyboard navigation feel slower. Instead, use transition animations on an individual basis e.g. skip-to-content
+
+*/
+
+/* Default */
+@layer elements {
+    a,
+    button {
+        text-decoration-skip-ink: auto;
+        text-underline-offset: 0.2rem;
+        text-decoration-thickness: 1px;
+        text-decoration-color: light-dark(var(--color-primary-accent), var(--color-link));
+        color: var(--color-link);
+    }
+}
+@layer elements {
+    /* Don't target components like .c-icon-grid on /installing */
+    .c-entry-content a:not([class^="c-"] *) {
+        font-weight: var(--font-family-prose-weight-medium);
+        &[target="_blank"] {
+            /* To handle the external link icon e.g. <a href="https://aws.amazon.com/s3" target="_blank">Amazon S3 bucket{{ svg src="external-link" }}</a> */
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            padding-inline-end: 0.2rem;
+            svg {
+                font-size: 0.85em;
+                margin-inline-end: 0;
+            }
+        }
+    }
+}
+/* GROUP ELEMENTS / FRAMEWORK / TEXT / LINK STYLES {/ LINKS} / ACCESSIBILITY / HOVER
+=================================================== */
+@layer components {
+    .c-entry-content a:not(.c-btn):hover {
+        text-decoration-color: var(--color-purple-dark);
+        color: var(--color-purple-dark);
+    }
+}
+/* GROUP ELEMENTS / TEXT / LINK STYLES {/ LINKS} / ACCESSIBILITY / FOCUS
+=================================================== */
+@layer base {
+    :is(a, button, summary):focus-visible,
+    /* focus-visible on input so we don't cause an outline when ticking cookie choices */
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+        outline: 3px solid var(--color-focus);
+    }
+    /* ensure the focus outline is effective when a link is wrapped around a heading */
+    a:has(> h2, h3, h4, h5, h6) {
+        display: inline-block;
+    }
+    a:focus {
+        p & {
+            /* Offset for text */
+            outline-offset: 5px;
+        }
+    }
+}

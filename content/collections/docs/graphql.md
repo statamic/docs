@@ -31,7 +31,7 @@ When GraphQL is enabled, [GraphiQL](https://github.com/graphql/graphiql) is avai
 If you publish the underlying [package's](#laravel-package) config, the query routes will be enabled regardless of whether you've disabled it in the Statamic config.
 :::
 
-### Enable Resources
+### Enable resources
 
 You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/graphql.php` config:
 
@@ -43,7 +43,7 @@ You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/sta
 ]
 ```
 
-### Enable Specific Sub-Resources
+### Enable specific sub-resources
 
 If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
 
@@ -136,7 +136,7 @@ Note that you can even perform the same query multiple times. If you want to do 
 }
 ```
 
-## Available Queries
+## Available queries
 
 - [Ping](#ping-query)
 - [Collections](#collections-query)
@@ -284,7 +284,7 @@ Used for querying a single entry.
 }
 ```
 
-### Asset Containers {#asset-containers-query}
+### Asset containers {#asset-containers-query}
 
 Used for querying asset containers.
 
@@ -306,7 +306,7 @@ Used for querying asset containers.
 }
 ```
 
-### Asset Container {#asset-container-query}
+### Asset container {#asset-container-query}
 
 Used for querying a single asset container.
 
@@ -509,7 +509,7 @@ Used for querying a single taxonomy term.
 }
 ```
 
-### Global Sets {#global-sets-query}
+### Global sets {#global-sets-query}
 
 Used for querying multiple global sets.
 
@@ -548,7 +548,7 @@ Example query and response:
 }
 ```
 
-### Global Set {#global-set-query}
+### Global set {#global-set-query}
 
 Used for querying a single global set.
 
@@ -748,7 +748,7 @@ You can query by either `id` or `email`.
 | `id` | `String` | The ID of the user. If you use this, you don't `email`.
 | `email` | `String` | The email address of the user. If you use this, you don't `id`.
 
-## Custom Queries
+## Custom queries
 
 Here's an example of a basic query class. It has the name attribute which is the key the user needs to put in the request, any number of middleware, the type(s) that will be returned, any arguments, and how the data should be resolved.
 
@@ -1040,7 +1040,7 @@ The [code fieldtype](/fieldtypes/code) will return this type when `mode_selectab
 
 ## Filtering
 
-### Enabling Filters
+### Enabling filters
 
 For security, [filtering](#filtering) is disabled by default. To enable, you'll need to opt in by defining a list of `allowed_filters` for each sub-resource in your `config/statamic/graphql.php` config:
 
@@ -1076,7 +1076,7 @@ For queries that don't have sub-resources (ie. users), you can define `allowed_f
 ],
 ```
 
-### Using Filters
+### Using filters
 
 You can filter the results of listing queries (like `entries`) using the `filter` argument. This argument accepts a JSON object containing different
 [conditions](/conditions).
@@ -1128,7 +1128,7 @@ If you need to use the same condition on the same field more than once, you can 
     }
 ```
 
-### Advanced Filtering Config
+### Advanced filtering config
 
 You can also allow filters on all enabled sub-resources using a `*` wildcard config. For example, here we'll enable only the `articles`, `pages`, and `products` collections, with `title` filtering enabled on each, in addition to `status` filtering on the `articles` collection specifically: 
 
@@ -1326,7 +1326,7 @@ Grid fields can be queried with no extra requirements. You can just use the nest
 }
 ```
 
-### Select, Radio, Checkboxes, and Button Group
+### Select, radio, checkboxes, and button group
 
 These fieldtypes provide you with labels and values. You'll need to use a sub selection.
 
@@ -1359,7 +1359,7 @@ The same syntax is used when multiple values are expected. e.g. a select field w
 ]
 ```
 
-## Recursive Tree Branches
+## Recursive tree branches
 
 Often, when dealing with navs, you need to recursively output all the child branches. For example, when using the `nav` tag in Antlers, you might do something like this:
 
@@ -1444,7 +1444,7 @@ fragment RecursiveChildren on NavTreeBranch {
 
 Hat tip to Hash Interactive for their [blog post](https://hashinteractive.com/blog/graphql-recursive-query-with-fragments/) on this technique.
 
-## Custom Fieldtypes
+## Custom fieldtypes
 
 A fieldtype can define what GraphQL type will be used. By default, all fieldtypes will return strings.
 
@@ -1485,7 +1485,7 @@ public function addGqlTypes()
 }
 ```
 
-## Laravel Package
+## Laravel package
 
 Under the hood, Statamic uses the [rebing/graphql-laravel](https://github.com/rebing/graphql-laravel) package.
 
@@ -1521,7 +1521,7 @@ EntriesQuery::auth(function () {
 });
 ```
 
-## Custom Fields
+## Custom fields
 
 You can add fields to certain types by using the `addField` method on the facade.
 
@@ -1589,7 +1589,7 @@ GraphQL uses a basic whole-response cache by default. Each query/variables combi
 ],
 ```
 
-### Cache Invalidation
+### Cache invalidation
 
 Cached responses are automatically invalidated when content is changed. Depending on your GraphQL usage and blueprint schema, you may also wish to ignore specific events when invalidating.
 
@@ -1603,7 +1603,7 @@ Cached responses are automatically invalidated when content is changed. Dependin
 ],
 ```
 
-### Disabling Caching
+### Disabling caching
 
 If you wish to disable caching altogether, set `cache` to `false`.
 
@@ -1611,7 +1611,7 @@ If you wish to disable caching altogether, set `cache` to `false`.
 'cache' => false,
 ```
 
-## Custom Middleware
+## Custom middleware
 
 You may add custom middleware, which are identical to any other Laravel middleware class. They will be executed on all GraphQL requests (unless another middleware, e.g. caching, prevents it).
 
@@ -1650,7 +1650,7 @@ GraphQL::addMiddleware(MyMiddleware::class);
 
 ## Troubleshooting
 
-**"Cannot query field" error"**
+### "Cannot query field" error
 
 If you see an error like `Cannot query field "entries" on type "Query"`, this likely means you haven't enabled that query. See [Enable GraphQL](#enable-graphql).
 After enabling it, you may need to clear your cache as the request would probably have been cached.

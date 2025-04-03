@@ -1,0 +1,77 @@
+/* GROUP OBJECTS / SCROLL DRIVEN SCROLL SPY TABLE OF CONTENTS
+=================================================== */
+/* Notes...
+
+    - Use JS for now until scroll-driven-animations are more widely supported
+    - For scroll-driven version see /objects/toc-scroll-spy.css
+
+*/
+/* HTML Example...
+
+    <article id="content" class="c-entry-content js__scroll-spy-toc__timeline"> <-- .js__scroll-spy-toc__timeline here watches this section
+        {{ template_content }}
+    </article>
+
+    <section class="o-scroll-spy-timeline">
+        <ul class="o-scroll-spy-timeline__toc js__scroll-spy-toc"> <-- this needs to wrap around the toc
+            <li><a href="">Overview</a></li>
+            <li><a href="">Asset Browser</a></li>
+            <li><a href="">Asset Actions</a></li>
+            <li><a href="">Asset Fields</a></li>
+            <li><a href="">Metadata</a></li>
+            <li><a href="">Containers</a></li>
+            <li><a href="">Blueprints</a></li>
+            <li><a href="">Ordering</a></li>
+            <li><a href="">Drivers</a></li>
+            <li"><a href="">Frontend Templating</a></li>
+        </ul>
+    </section>
+
+*/
+@layer utilities {
+    .o-scroll-spy-timeline__track {
+        scroll-margin-top: 4em;
+    }
+
+    /* ul*/
+    .o-scroll-spy-timeline__toc {
+        --item-padding: var(--spacing-s-5);
+        &, ul {
+            gap: unset;
+        }
+        li {
+            position: relative;
+            &:not(:has(ul)) {
+                /* Because we've removed padding-block-end on the anchor for line-clamp */
+                padding-block-end: calc(var(--item-padding) * 2);
+                a {
+                    /* Line clamp */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    box-orient: vertical;
+                    overflow: hidden;
+                    /* Stop padding ruining the clamp */
+                    padding-block-end: 0;
+                    -webkit-line-clamp: 1;
+                    line-clamp: 1;
+                }
+            }
+            ul &:has(> .js--scroll-spy-toc-active)::before {
+                content: '';
+                width: 3px;
+                height: 100%;
+                background: var(--color-pink-light-1);
+                position: absolute;
+                z-index: var(--z-index-below-body);
+                top: 0;
+                left: calc(0% - var(--spacing-m));
+            }
+            /* An option to hide the timeline position. You may want to do this because many headings are on the page at once, which messes up the TOC position. To use this add {{ push:scope_classes }}u-no-scroll-spy-toc-position{{ /push:scope_classes }} to the template */
+            .u-no-scroll-spy-toc-position & {
+                &::before {
+                    content: unset;
+                }
+            }
+        }
+    }
+}

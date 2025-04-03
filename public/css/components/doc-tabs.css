@@ -1,0 +1,110 @@
+/* GROUP COMPONENTS / DOC TABS
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A tabbed interface for displaying different languages e.g. Antlers, Blade, etc.
+
+*/
+/* HTML Example...
+
+*/
+/* Modifiers...
+
+    .c-pill--negative <- will turn the value text to red
+
+*/
+@layer components {
+    .c-doc-tabs {
+        --button-radius: var(--border-radius-l-1);
+        margin-block: var(--spacing-s-5) var(--spacing-l-1);
+        /* e.g. p followed by .c-docs-tabs e.g. >> /collections */
+        padding-block-start: var(--spacing-s-2);
+        border-radius: var(--button-radius);
+
+        pre {
+            margin-block-end: 0;
+        }
+
+        code {
+            font-size: unset;
+        }
+
+        .tab-content {
+            border-radius: var(--button-radius);
+            border-top-left-radius: 0;
+            border-block-end: 0;
+            /* Sometimes the tab content contains tips e.g. >> /taxonomies */
+            &:not(:has(.c-tip)) {
+                background: var(--color-gradient-full-light-4);
+                @container style(--color-scheme: dark) {
+                    background: var(--color-gradient-full-light-2);
+                }
+                border: 1px solid var(--color-black);
+                p, ol, ul {
+                    padding: var(--spacing-s-1);
+                }
+                /* Not >> /extending/modifiers */
+                p:has(~ pre) {
+                    /* e.g. >> /fieldtypes/assets */
+                    padding-block-end: 0;
+                }
+                ol, ul {
+                    /* e.g. >> /extending/modifiers */
+                    padding-block-end: var(--spacing-l);
+                }
+            }
+        }
+        :nth-last-child(1 of .c-tip) {
+            margin-block-end: 0;
+        }
+    }
+    .c-doc-tabs p:not(.c-tip *),
+    .c-doc-tabs__tabs {
+        font-size: unset;
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-strong);
+    }
+    .c-doc-tabs__tabs {
+        display: inline-flex;
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
+        border: 1px solid var(--color-black);
+        border-block-end: 0;
+        border-radius: var(--border-radius-s);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        button {
+            margin: 0;
+            padding: var(--spacing-s-3) var(--spacing-s-1);
+            text-transform: uppercase;
+            font-size: var(--font-size-s-1);
+            background: light-dark(var(--color-body-background), transparent);
+            &:first-child {
+                border-top-left-radius: inherit;
+            }
+            &:last-child {
+                border-top-right-radius: inherit;
+            }
+            &:not(:last-child) {
+                border-inline-end: 1px solid var(--color-black);
+            }
+        }
+    }
+    button.c-doc-tabs__active {
+        background: var(--color-gradient-blue-1);
+        font-weight: var(--font-family-ui-weight-heavy);
+    }
+}
+@layer plugins {
+    .c-doc-tabs__tabs ~ .tab-content {
+        /* e.g. >> /globals */
+        /* e.g. >> /navigation */
+        /* e.g. >> /data-inheritance */
+        pre:first-of-type:not(:has(p)), code {
+            margin-block-start: 0;
+            border-top-left-radius: 0;
+        }
+    }
+}

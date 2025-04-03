@@ -1,13 +1,17 @@
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          input_type: text
-          antlers: false
-          display: Title
-          type: text
-          icon: text
-          listable: hidden
+        fields:
+          -
+            handle: title
+            field:
+              display: Title
+              type: text
+          -
+            handle: navigation_image
+            field: navigation.navigation_image
+          -
+            handle: image_width_override
+            field: navigation.image_width_override

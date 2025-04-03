@@ -10,10 +10,10 @@ template: page
 
 While configuring a [blueprint or fieldset field](/blueprints), switch to the **Validation** tab where you can choose from [any built in Laravel rule][laravel-validation].
 
-<div class="screenshot">
+<figure>
     <img src="/img/field-validation.png" width="521" alt="Field validation"/>
-    <div class="caption">Add validation rules (with a shortcut for requiring)</div>
-</div>
+    <figcaption>Add validation rules (with a shortcut for requiring)</figcaption>
+</figure>
 
 In this screenshot, you can see that the field has an `alpha_dash` and `min:4` rule which means you can only type letters and dashes, like a slug, and that it
 must be at least 4 characters. You have plenty of options to be creative and confident that your data will be entered the way you need it to be.
@@ -35,12 +35,12 @@ If you're interested in customizing user password validation, you can read about
 :::
 
 
-## Required Fields
+## Required fields
 
 Being the most common type of validation rule, we give you a shortcut for that. Simply toggle it on, or add `required: true` to the YAML.
 
 
-## Validating Nestable Fields
+## Validating nestable fields
 
 Statamic's [Grid](/fieldtypes/grid), [Replicator](/fieldtypes/replicator), and [Bard](/fieldtypes/bard) fields can all contain sub-fields.
 
@@ -85,13 +85,13 @@ Rather than reaching for `{this}`, you can consider using conditional fields alo
 :::
 
 
-## Available Rules
+## Available rules
 
-### All Laravel Rules
+### All Laravel rules
 
 You may use any validation rule provided by Laravel. You can view the complete list [on their documentation][laravel-validation]. You may also use [custom rules](#custom-rules).
 
-### Unique Entry Value
+### Unique entry value
 
 ```yaml
 -
@@ -113,7 +113,7 @@ You can then customize the error message right in your `resources/lang/{lang}/va
 ],
 ```
 
-### Unique Term Value
+### Unique term value
 
 ```yaml
 -
@@ -125,7 +125,7 @@ You can then customize the error message right in your `resources/lang/{lang}/va
 
 This works like the `UniqueEntryValue` rule, but for taxonomy terms.
 
-### Unique User Value
+### Unique user value
 
 ```yaml
 -
@@ -148,9 +148,10 @@ You may use custom validation rules via Laravel's `Rule` objects.
 
 To references those from your field, you can add them to your `validation` array as if you were writing PHP:
 
-<div class="screenshot">
+<figure>
     <img src="/img/field-validation-custom-rule.png" width="643" alt="Custom Field validation rules" />
-</div>
+    <figcaption>Custom Field validation rules</figcaption>
+</figure>
 
 If you're writing directly into the YAML, make sure to escape any quotes:
 
@@ -162,7 +163,7 @@ validate:
   - 'new App\Rules\AnotherRule(''with argument'')'
 ```
 
-## Validating Programmatically
+## Validating programmatically
 
 You may validate programmatically via the blueprint, if you need to do so within custom code.
 

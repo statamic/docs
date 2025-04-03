@@ -4,8 +4,9 @@ blueprint: page
 title: 'Core Concepts'
 intro: 'Statamic is opinionated software. Understanding the principles we follow and apply to the way we build features will help you learn Statamic faster.'
 template: page
+breadcrumb_title: Overview
 ---
-## Statamic is Opinionated But Configurable
+## Statamic is opinionated but configurable
 
 Statamic is an opinionated platform. We like defaults to match the most common use cases. We implement patterns that help speed up your workflow, enforce consistency, and make it easy to share code between projects.
 
@@ -24,7 +25,7 @@ Do your best to maintain a project `README.md` with anything you do to override 
 :::
 
 
-## Statamic is Flat First
+## Statamic is flat first
 
 Statamic has the ability to adapt to any data storage mechanism, from relational databases like MySQL and Postgres, to NoSQL solutions like MongoDB and Redis, and more. This feature is called [Repositories](/extending/repositories).
 
@@ -44,7 +45,7 @@ As your site scales, you can choose to move from the flat file driver to one bes
     <figcaption>Let's be honest. We've all done this.</figcaption>
 </figure>
 
-## The Content Schema Is Up To You
+## The content schema is up to you
 
 It's completely up to you how to organize your content. You pick the field names, you pick how to organize entries into different collections. You pick what to name your taxonomies, what the URL patterns should be, and so on.
 
@@ -54,7 +55,7 @@ If you like the "one big field" approach with all your content and markup in one
 
 Or if you prefer to break everything up into small, discrete, optional fields, showing and hiding things as needed, you can do that too (you should check out [conditional fields](/conditional-fields)).
 
-## You Bring the HTML
+## You bring the HTML
 
 Statamic doesn't start with a design or HTML you're expected to use or hack around. It doesn't include any CSS or JavaScript either. All of that is up to you (or a [Starter Kit](/starter-kits)) to provide.
 
@@ -62,7 +63,7 @@ Every Statamic site &mdash; just like every fingerprint and person in the world 
 
 Because of this, most Statamic projects need to involve a developer. It's not very "no-code" friendly to assemble. But once the site is built and all the collections and blueprints configured, just about anyone can handle maintaining the site.
 
-## Keep it Simple
+## Keep it simple
 
 Statamic does its best to take a "start simple and add things as needed" approach to features and settings, in contrast to other platforms that take a "everything is included and rip out what you don't want" approach.
 
@@ -72,7 +73,7 @@ This means that Statamic doesn't do everything right out the box. We find it's m
 If many of the sites you build share a common set of features, collections, blueprints, and/or templates, consider turning them into a [Starter Kit](/starter-kits) and make it your boilerplate to kickstart new projects.
 :::
 
-## Statamic is a Box of Lego Bricks
+## Statamic is a box of Lego bricks
 
 You **may** be used to content management systems and platforms that have a long list of explicit pre-built features, or plugins that provide these features, like photo galleries, hero images, and so on.
 
@@ -88,7 +89,7 @@ And just like with Lego bricks, it hurts really bad to step on Statamic barefoot
 
 Hopefully you get the idea and see how you can solve almost any challenge with core fieldtypes and some HTML.
 
-## The Control Panel Can Be Optional
+## The Control Panel can be optional
 
 You should be able to do everything (and more) without ever logging into the Control Panel. Granted, it _does_ tend to make some of the more complicated things easier (like creating relationships, discovering all possible options for a given setting, and so on), but we love efficiency and your editor is a great place to find it.
 

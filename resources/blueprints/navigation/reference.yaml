@@ -1,0 +1,8 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            import: navigation

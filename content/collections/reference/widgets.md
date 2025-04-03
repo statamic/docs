@@ -4,4 +4,4 @@ blueprint: reference
 title: Widgets
 template: widgets/index
 ---
-Configurable blocks in the Control Panel that can show and do all sorts of things.
+Configurable CP blocks to showcase useful things

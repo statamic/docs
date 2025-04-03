@@ -19,11 +19,11 @@ Variables created "on the fly" with Front Matter won't be augmented.
 Let's look at an example with and without augmentation using the following `content`:
 
 ``` md
-## How to Jump Higher
+## How to jump higher
 Bend your knees more and then spring upwards a _lot_ faster.
 ```
 
-### With Augmentation
+### With augmentation
 
 If you're using a [Markdown field](/fieldtypes/markdown), the output will be as follows:
 
@@ -32,7 +32,7 @@ If you're using a [Markdown field](/fieldtypes/markdown), the output will be as 
 <p>Bend your knees more and then spring upwards a <em>lot</em> faster.</p>
 ```
 
-### Without Augmentation
+### Without augmentation
 
 While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmented — the output will be exactly the same as the input:
 
@@ -41,6 +41,6 @@ While using a [Textarea field](/fieldtypes/textarea) — which _is not_ augmente
   Bend your knees more and then spring upwards a _lot_ faster.
 ```
 
-## Digging Deeper
+## Digging deeper
 
 [Learn the inner workings of Augmentation](/extending/augmentation) and how to take advantage of it in your own addons and extensions.

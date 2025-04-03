@@ -1,17 +1,50 @@
-<header class="markdown pb-8">
-    {{ partial:breadcrumbs }}
-    <h1>{{ title }}</h1>
-    <div class="text-2xl max-w-2xl">{{ intro ?? overview | markdown }}</div>
-</header>
+{{ partial:header }}
 
-<section class="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<section class="c-tiles-with-description">
     {{ nav handle="reference" }}
-        <a href="{{ url }}" class="bg-gray-lightest border shadow-stack-sm p-5 block dark:bg-gray-darkest dark:shadow-none dark:text-white">
-            <h2 class="text-2xl font-bold font-display mb-3">{{ title }}</h2>
-            {{ content | widont }}
-            {{ collection :in="slug" as="entries" }}
-                <button class="button bg-mint mt-3">Explore all {{ entries | count }} {{ title }}</button>
-            {{ /collection }}
-        </a>
+        <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
+            <a href="{{ url }}" class="u-link-style-none">
+                <figure class="c-tiles-with-description__item__thumbnail">
+                    {{ if tile_image_dark_mode }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /tile_image }}
+                        {{ tile_image_dark_mode }}
+                            {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
+                        {{ /tile_image_dark_mode }}
+                    {{ else }}
+                        {{ tile_image }}
+                            {{ partial:image_dimensions/tile }}
+                        {{ /tile_image }}
+                    {{ /if }}
+                    <figcaption>{{ collection :in="slug" as="entries" }}{{ entries | count }} {{ title }}{{ /collection }}</figcaption>
+                </figure>
+            </a>
+            <p>{{ content }}</p>
+        </div>
     {{ /nav }}
 </section>
+
+<hr>
+
+<h2 id="sponsors" class="u-center-on-lower-mqs o-scroll-spy-timeline__track">Sponsors</h2>
+<p class="u-center-on-lower-mqs">We've reserved this space to thank our top open source sponsors.</p>
+<div class="c-logo-grid u-center-on-lower-mqs">
+    {{ hero_sponsors }}
+        <div class="c-logo-grid__item">
+            {{ if error }}
+                <p>We're having trouble loading the sponsors at the moment.</p>
+            {{ else }}
+                <a href="{{ url }}">
+                    <img src="{{ avatarUrl }}">
+                    <span>{{ name }}</span>
+                </a>
+            {{ /if }}
+        </div>
+    {{ /hero_sponsors }}
+    <div class="c-logo-grid__item">
+        <a href="https://github.com/sponsors/statamic">Sponsor Statamic</a>
+    </div>
+</div>
+
+{{ $article_footer = 'no' }}

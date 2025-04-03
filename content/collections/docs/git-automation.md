@@ -31,7 +31,7 @@ By default, content will be committed automatically as it's changed, but you can
 
 Git workflow can be configured in your `config/statamic/git.php` file, or per environment in your `.env` file.
 
-## Git User
+## Git user
 
 By default, Statamic will attempt to use the authenticated user's name and email when committing changes. If you prefer to always use hardcoded git user info, you can disable this by setting `use_authenticated` to `false` in your [configuration](#configuration):
 
@@ -46,7 +46,7 @@ By default, Statamic will attempt to use the authenticated user's name and email
 
 _Note: Depending on how you configure your commit workflow, an authenticated user may not always be available. In these cases, Statamic will fall back to the above configured user._
 
-## Tracked Paths
+## Tracked paths
 
 You are free to define the tracked paths to be considered when staging and committing changes. Default stache and file locations are already set up for you, but feel free to modify these paths in your [configuration](#configuration) to suit your storage config.
 
@@ -69,7 +69,7 @@ You are free to define the tracked paths to be considered when staging and commi
 You may also reference absolute paths to external repositories! If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
 :::
 
-## Committing Changes
+## Committing changes
 
 By default, Statamic listens to various `Saved` and `Deleted` data events to determine when your content is changed, and will automatically commit your changes. If you prefer users to manually trigger commits using the Git utility interface, you may set this to `false` in your [configuration](#configuration):
 
@@ -91,7 +91,7 @@ Manually trigger commits via the command line with the following command:
 php please git:commit
 ```
 
-## Pushing Changes
+## Pushing changes
 
 Statamic can also `git push` your changes after committing. Enable this behavior in your [configuration](#configuration):
 
@@ -124,7 +124,7 @@ git reset HEAD
 ```
 
 
-## Queueing Commits
+## Queueing commits
 
 When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
 
@@ -162,7 +162,7 @@ In this example, we queue a delayed commit to run 10 minutes after a user makes 
 Since all tracked paths are committed at once, this can allow for more consolidated commits when you have multiple users making simultaneous content changes to your repository.
 :::
 
-## Scheduling Commits
+## Scheduling commits
 
 You can also [schedule](https://laravel.com/docs/scheduling) commits to run via cron job at regular intervals within your `routes/console.php` file:
 
@@ -205,7 +205,7 @@ Since all tracked paths are committed at once, this can allow for more consolida
 
 _Note: When commits are scheduled to run via cron, there will be no authenticated user. In this case, Statamic will use the hardcoded git user in your [configuration](#configuration)._
 
-## Customizing Commits
+## Customizing commits
 
 To customize the commit messages themselves, modify the `commands` array in the [configuration](#configuration) file.
 
@@ -264,7 +264,7 @@ For example, if you're [storing users in a database](/tips/storing-users-in-a-da
 When ignoring events, you may also wish to remove any related [tracked paths](#tracked-paths) from your configuration.
 :::
 
-## Addon Events
+## Addon events
 
 When building an addon that provides its own content saved events, you should register those events with our git listener in your addon service provider:
 

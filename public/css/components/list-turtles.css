@@ -1,0 +1,62 @@
+/* GROUP COMPONENTS / LIST TURTLES
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    An ordered list styled like the Ninja Turtles.
+
+*/
+/* HTML Example...
+
+    <ol class="c-list-turtles">
+        <li>Forms</li>
+        <li>Indexes</li>
+        <li>Drivers</li>
+    </ol>
+
+*/
+@layer scope {
+    /* Need to override the .c-entry-content ol */
+    .c-entry-content {
+        /* ol*/
+        .c-list-turtles {
+            li {
+                /* Increase */
+                --size: 2.25em;
+                font-family: var(--font-family-ui);
+                font-weight: var(--font-family-ui-weight-strong);
+                /* Increase */
+                font-size: var(--font-size-m);
+                &::before {
+                    top: -0.2rem;
+                    background: linear-gradient(to bottom, #70D50B 0%,#70B927 100%);
+                }
+                &:not(:last-child) {
+                    padding-block-end: var(--spacing-s-1);
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0.1rem;
+                    left: 0;
+                    inline-size: calc(var(--size) - 0.2rem);
+                    border: 3px solid var(--color-red-bright);
+                    border-radius: var(--border-radius-s);
+                }
+                &::marker {
+                    position: relative;
+                }
+                &:nth-child(2)::after {
+                    border-color: oklch(0.8 0.2 224);
+                }
+                &:nth-child(3)::after {
+                    border-color: oklch(0.85 0.2 70);
+                }
+                &:nth-child(4)::after {
+                    border-color: oklch(0.6 0.2 290);
+                }
+            }
+        }
+    }
+}

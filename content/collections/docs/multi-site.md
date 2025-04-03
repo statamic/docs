@@ -21,7 +21,7 @@ Each site can have different base URLs:
 Every Statamic install needs at least one site. Building zero sites is a bad way to build a website and clients will probably challenge any invoices.
 :::
 
-### Converting Existing Content to Multi-Site
+### Converting existing content to multi-site
 
 The simplest way to convert existing content to a multi-site friendly structure is to run the automated command:
 
@@ -33,7 +33,7 @@ Read more on [converting to a multi-site setup](/tips/converting-from-single-to-
 
 ## Configuration
 
-### Enabling Multi-Site
+### Enabling multi-site
 
 First, enable `multisite` in your `config/statamic/system.php`:
 
@@ -41,11 +41,11 @@ First, enable `multisite` in your `config/statamic/system.php`:
 'multisite' => true,
 ```
 
-### Adding New Sites
+### Adding new sites
 
 Next, you can add new sites through the control panel:
 
-<figure class="mt-0 mb-8">
+<figure>
     <img src="/img/configure-sites.png" alt="Configure sites page in control panel">
 </figure>
 
@@ -62,7 +62,7 @@ second:
   locale: en_US
 ```
 
-## Available Options
+## Available options
 
 Let's look at a full site configuration, and then we'll explore all of its options.
 
@@ -158,7 +158,7 @@ de_CH:
 
 Note that both Statamic and Laravel don't ship with frontend language translations out of the box. You have to provide your own string files for this. There is a great package called [Laravel Lang](https://github.com/Laravel-Lang/lang) containing over 75 languages that can help you out with this.
 
-### Additional Attributes
+### Additional attributes
 
 You may also include additional arbitrary `attributes` in your site's config, which can later be accessed with the [site variable](/variables/site).
 
@@ -185,7 +185,7 @@ en:
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
 :::
 
-## Text Direction
+## Text direction
 
 Text direction is automatically inferred by Statamic, based on the [language](#language) of your configured site.
 
@@ -205,11 +205,11 @@ If you need to reference text direction in your front end, you can make use the 
 ```
 ::
 
-## Renaming Sites
+## Renaming sites
 
 If you rename a site's [handle](#handle), you'll need to update a few folders and config settings along with it. Replace `{old_handle}` with the new handle in these locations:
 
-**Content Folders**
+**Content folders**
 
 - `content/collections/{old_handle}/`
 - `content/globals/{old_handle}/`
@@ -267,11 +267,11 @@ resources/views/
 
 For example, given `template: home`, Statamic will load `site_one/home` because that view exists in the subdirectory. If you were to have `template: page`, it would load the one in the root directory because there's no site-specific variant.
 
-## Template Snippets
+## Template snippets
 
 Here are a few common features you'll likely need to template while building a multi-site.
 
-### Building a Site Switcher {#site-switcher}
+### Building a site switcher {#site-switcher}
 
 This will loop through your sites and indicate the current site as the active one. Check out all the [available variables inside the `sites` loop](/variables/sites).
 
@@ -297,7 +297,7 @@ This will loop through your sites and indicate the current site as the active on
 ```
 ::
 
-### Declaring the Page Language
+### Declaring the page language
 
 Indicate the current language of the site by setting the `lang` attribute on your `<html>` tag (most likely in your layout view), or the container element around translated content if the page mixes and matches languages.
 
@@ -313,10 +313,10 @@ Indicate the current language of the site by setting the `lang` attribute on you
 ```
 ::
 
-## Static Caching
+## Static caching
 
 If your multi-site should use static caching, you will also need to add additional config parameters and different server rewrite rules. Please refer to the related section of the [static caching documentation](/static-caching#multisite) for the correct settings.
 
-## Enabling Fields
+## Enabling fields
 
 By default, your existing fields won't be enabled for multi-site editing. To enable a field to be editable within another site, navigate to the field and click the globe icon (Localizable).
