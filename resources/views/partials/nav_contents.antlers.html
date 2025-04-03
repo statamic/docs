@@ -27,6 +27,7 @@
     "
     @scroll="navScrollPosition = $el.scrollTop"
 >
+    {{ if section }}
     {{ nav :handle="section" }}
         <li>
             <span class="c-nav-sidebar-with-popover-api-category-heading{{ if is_current }} o-current-menu-item{{ /if }}">
@@ -89,4 +90,5 @@
         {{ partial:sidebar-promo}}
         {{ /if }} #}}
     {{ /nav }}
+    {{ /if }}
 </ul>

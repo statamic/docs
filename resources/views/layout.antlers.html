@@ -11,6 +11,7 @@
             <nav class="c-breadcrumbs">
                 <ol>
                     <li><a href="{{ nav:collection:sections include_home="true" }}{{ page:section === section ?= '{ url }' }}{{ /nav:collection:sections }}">{{ page:section | replace('_', ' ') }}</a></li>
+                    {{ if section }}
                     {{ nav :handle="section" }}
                         {{ if {children | where('is_current', true) | count} > 0 }}
                             <li>
@@ -22,6 +23,7 @@
                             </li>
                         {{ /if }}
                     {{ /nav }}
+                    {{ /if }}
                     <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
                 </ol>
             </nav>
@@ -38,6 +40,7 @@
                         <ul>
                             <li>
                                 <span class="c-nav-toc-with-popover-api-category-heading">On this page
+                                    {{ if section }}
                                     {{ nav :handle="section" }}
                                         {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
                                             {{ navigation_image }}
@@ -45,6 +48,7 @@
                                             {{ /navigation_image }}
                                         {{ /if }}
                                     {{ /nav }}
+                                    {{ /if }}
                                 </span>
                                 {{ template_content | toc }}
                             </li>
@@ -56,6 +60,7 @@
                         {{ unless $hide_toc == 'yes' }}
                             <li>
                                 <span class="c-nav-toc-with-popover-api-category-heading">On this page
+                                    {{ if section }}
                                     {{ nav :handle="section" }}
                                         {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
                                             {{ navigation_image }}
@@ -63,6 +68,7 @@
                                             {{ /navigation_image }}
                                         {{ /if }}
                                     {{ /nav }}
+                                    {{ /if }}
                                 </span>
                                 {{ template_content | toc }}
                             </li>
