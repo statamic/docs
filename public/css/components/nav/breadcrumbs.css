@@ -39,7 +39,7 @@
                 margin-block-start: -0.25rem;
             }
             /* --mq-nav-open-before */
-            @media (width < 1250px) {
+            @media (width < 1100px) {
                 max-width: var(--max-width-content);
                 margin-inline: auto;
             }
@@ -105,7 +105,7 @@
             }
         }
         /* --mq-nav-open-after */
-        @media (width >= 1250px) {
+        @media (width >= 1100px) {
             padding-inline: var(--spacing-l);
         }
     }

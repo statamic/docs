@@ -205,7 +205,7 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MQS
         =================================================== */
-        /* --mq-nav-open-before */
+        /* --mq-toc-open-before */
         @media (width < 1250px) {
             position: sticky;
             z-index: var(--z-index-above-nav);
@@ -253,7 +253,7 @@
                 }
             }
         }
-        /* --mq-nav-open-after */
+        /* --mq-toc-open-after */
         @media (width >= 1250px) {
             grid-area: sidebar-2;
             nav {
