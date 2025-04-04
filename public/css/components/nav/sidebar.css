@@ -118,7 +118,7 @@
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-l);
+                gap: var(--spacing-m);
                 font-size: var(--font-size-s-2);
                 overscroll-behavior-y: contain;
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
