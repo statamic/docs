@@ -209,8 +209,10 @@
         a {
             /* Improve legibility */
             font-weight: var(--font-family-prose-weight-medium);
-            /* Needed for Safari 18.3.1 */
-            display: inline-flex;
+            &:has(.external):not(.c-icon-grid *) {
+                /* Needed for external link icons Safari 18.3.1 */
+                display: inline-flex;
+            }
         }
 
         p {
