@@ -70,7 +70,7 @@
     }
     .c-tiles-with-description__item__thumbnail {
         padding: var(--spacing-s-2);
-        margin-block-end: var(--spacing-m);
+        margin-block-end: var(--spacing-s-1);
         text-align: center;
         background: var(--color-gradient-full-light-6);
         border: var(--dark-mode-border);
