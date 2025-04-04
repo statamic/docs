@@ -4,7 +4,7 @@
     --spacing-s-5: 0.25rem;
     --spacing-s-4: 0.5rem;
     --spacing-s-3: 0.8rem;
-    --spacing-s-2: 1rem;
+    --spacing-s-2: 0.975rem;
     --spacing-s-1: 1.35rem;
 
     --spacing-m: 1.65rem;
@@ -266,7 +266,7 @@
         /* GROUP VARIABLES -- SPACING
         ===================================================  */
         /* Based on nav sidebar and toc spacing */
-        --spacing-s-5: 0.3rem;
+        --spacing-s-5: 0.27rem;
         --spacing-l: 2.2rem;
     }
     /* --mq-root-variable-adjustments-2 */
@@ -296,13 +296,13 @@
         --color-blue-light-1: hsl(197deg 100% 96%);
         --color-yellow-light-3: hsl(var(--color-yellow-hue) 100% 96%);
     }
-    /* Notes...
-
-        --mq-root-variable-adjustments-smaller-laptops-after to --mq-root-variable-adjustments-larger-laptops-before
-        - Bear in mind users on smaller laptops do _not_ see things how you see things at a window width of 1440px.
-        - You can check exactly how they see it by going to System Preferences > Displays > Scaled
-
-    */
+    /* --mq-text-bump-2-after */
+    @media (width >= 1441px) {
+        /* Decrease */
+        --font-size-ui-rem: 0.94rem;
+        /* Slight increase based on .c-nav-sidebar-with-popover-api */
+        --spacing-l-2-horizontal: 4.2rem;
+    }
     /* --mq-wide-mqs */
     @media (min-width: 1800px) {
         /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX

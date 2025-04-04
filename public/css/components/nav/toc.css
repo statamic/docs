@@ -75,7 +75,7 @@
         nav {
             color: var(--color-primary-text);
             & * {
-                line-height: 1.5;
+                line-height: 1.45;
                 font-weight: var(--font-family-ui-weight-light);
             }
 
