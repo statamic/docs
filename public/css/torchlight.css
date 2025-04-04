@@ -21,7 +21,6 @@
     }
 
     :not(pre, p, li, figcaption, table *, h2, h3, h4) > code {
-        background-color: #e7ecf1;
         border-radius: .25rem;
         font-size: 15px;
         padding: 1px 2px;
