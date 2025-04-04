@@ -231,7 +231,8 @@
         .external {
             /* e.g. external links */
             display: inline-block;
-            margin-inline: 0.15rem 0;
+            margin: 0.15em 0 0 0.1em;
+            font-size: 0.95em;
         }
 
         blockquote {
