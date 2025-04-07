@@ -97,7 +97,7 @@
             font-family: var(--font-family-code);
             font-weight: var(--font-family-code-weight-normal);
             /* Based on code being inside tips too */
-            font-size: 1.1rem;
+            font-size: 1.075rem;
             letter-spacing: -0.2px;
         }
     }

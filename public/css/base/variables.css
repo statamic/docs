@@ -112,6 +112,8 @@
     --color-link: var(--color-primary-accent);
     --color-text-underline-light: hsl(0deg 0% 80%);
     --color-code-background: var(--color-gradient-blue-1);
+    --color-code-background: var(--color-pink-light-2);
+    --color-code-background: hsl(287deg 80% 93.5%);
     --color-code-block-background: hsl(228.57deg 23% 18%);
 
     --color-form-accent: var(--color-primary-accent);
@@ -307,7 +309,7 @@
     @media (min-width: 1800px) {
         /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
         =================================================== */
-        --max-width-1: 108rem;
+        --max-width-1: 105rem;
         --max-width-content: 52rem;
     }
 
