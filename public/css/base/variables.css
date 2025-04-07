@@ -11,7 +11,7 @@
     --spacing-l: 1.8rem;
     --spacing-l-static: 1.8rem;
     /* Based on e.g. >> Home on mobile */
-    --spacing-l-1: 2rem;
+    --spacing-l-1: 1.9rem;
 
     /* Smaller values for mobile */
     --spacing-l-2: min(12vw, 4rem);
@@ -219,7 +219,8 @@
 
     /* e.g. >> Home > Learn Statamic */
     --font-size-l-6: clamp(3.998em * 0.67, 11vw, 3.998em);
-    --font-size-l-6-line-height: 1.05;
+    /* e.g. deploying/laravel-forge */
+    --font-size-l-6-line-height: 1.15;
 
     /* GROUP VARIABLES -- DECORATION -- BORDER RADIUS
     =================================================== */
