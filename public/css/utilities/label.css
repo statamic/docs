@@ -37,7 +37,7 @@
         }
         /* Alternate colors for some tip types when there are multiple hints on the page to make things a bit more interesting e.g. /core-concepts */
         :nth-child(even of .c-tip):is(.c-tip--best-practice, .c-tip--tip) &::before {
-            background: light-dark(hsl(287deg 80% 94%), var(--color-purple));
+            background: light-dark(hsl(256deg 100% 90%), var(--color-purple));
         }
     }
 }
