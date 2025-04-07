@@ -192,6 +192,9 @@ The solution is to use the partial tag as a pair. Everything inside will be pass
 </div>
 ```
 
+You can also name your slots using the `name` parameter.
+
+
 ## Conditional Rendering
 
 You can render a partial only if a condition is met.
