@@ -235,12 +235,6 @@
         display: grid;
         gap: var(--spacing-s-5);
     }
-    .c-site-footer__nav__item--full-width {
-        grid-column: -1 / 1;
-        p:only-child {
-            text-align: right;
-        }
-    }
     /* GROUP COMPONENTS / FOOTER / BOTTOM
     =================================================== */
     .c-site-footer__bottom {
