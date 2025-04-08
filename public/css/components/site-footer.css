@@ -146,6 +146,9 @@
             margin-inline: calc(-50vw + 50%);
             background: inherit;
         }
+        &:not(:last-child) {
+            padding-block-end: 0;
+        }
     }
     .c-site-footer__nav {
         --color-link: white;
@@ -185,6 +188,10 @@
                     display: none;
                 }
             }
+        }
+
+        p {
+            color: var(--color-link);
         }
 
         /* Link Hover Effect */
@@ -227,6 +234,12 @@
     .c-site-footer__nav__item ul {
         display: grid;
         gap: var(--spacing-s-5);
+    }
+    .c-site-footer__nav__item--full-width {
+        grid-column: -1 / 1;
+        p:only-child {
+            text-align: right;
+        }
     }
     /* GROUP COMPONENTS / FOOTER / BOTTOM
     =================================================== */
