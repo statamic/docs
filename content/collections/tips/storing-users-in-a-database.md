@@ -75,6 +75,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
         Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
+            $table->uuid('user_id');  // [tl! ++] [tl! **]
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
             $table->string('role_id');
         });
@@ -82,6 +83,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
         Schema::create('group_user', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
+            $table->uuid('user_id');  // [tl! ++] [tl! **]
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
             $table->string('group_id');
         });
