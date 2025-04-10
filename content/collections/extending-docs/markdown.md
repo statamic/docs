@@ -20,13 +20,17 @@ By default, Statamic follows the [CommonMark spec](https://spec.commonmark.org/c
 - GFM Tables
 - HTML Attributes (eg. `# heading {.someclass #someid}`)
 - Strikethrough (eg. `~~strikethrough~~`)
+- Description Lists
+- Footnotes
+- Task Lists
 
 A few other extensions are available, but disabled by default:
 
 - Autolinking
 - HTML escaping
 - Automatic line breaks
-
+- Heading Permalinks
+- Table of Contents
 
 ## Customizing Markdown behavior
 
@@ -59,7 +63,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Statamic\Facades\Markdown;
-use League\CommonMark\Extension\Footnote\FootnoteExtension;
+use Ueberdosis\CommonMark\HintExtension;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 
 class AppServiceProvider extends ServiceProvider
@@ -68,12 +72,12 @@ class AppServiceProvider extends ServiceProvider
     {
         // Add one extension... [tl! focus:start]
         Markdown::addExtension(function () {
-            return new FootnoteExtension;
+            return new HintExtension;
         });
 
         // or multiple.
         Markdown::addExtensions(function () {
-            return [new FootnoteExtension, new TableOfContentsExtension];
+            return [new HintExtension, new TableOfContentsExtension];
         }); // [tl! focus:end]
     }
 }
