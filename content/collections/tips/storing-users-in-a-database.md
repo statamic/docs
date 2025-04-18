@@ -154,3 +154,22 @@ You will need to run migrations to prepare your database for Statamic's user, pa
 
 
 This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/tips/storing-users-somewhere-custom).
+
+## Roles and Groups (optional)
+
+If you would like to store roles and groups also by the Eloquent driver to the database you need to adjust the configuration BEFORE creating the migrations.
+
+In `config/statamic/users.php` change the `tables` array to:
+
+```php
+'tables' => [
+        'users' => 'users',
+        'role_user' => 'role_user',
+        'roles' => 'roles', // default: false
+        'group_user' => 'group_user',
+        'groups' => 'groups', // default: false
+    ],
+```
+
+You can choose any name you like instead of the default value `false`. 
+Then create the migrations like mentioned above.
