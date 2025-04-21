@@ -28,7 +28,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             return [ // [tl! focus]
                 'preferences' => 'json', // [tl! ++] [tl! focus]
             ]; // [tl! focus]
-        }; // [tl! focus]
+        } // [tl! focus]
 
         // ...
     }
