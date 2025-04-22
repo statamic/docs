@@ -44,6 +44,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
         gap: var(--spacing-l-1) var(--spacing-s-4);
+        gap: calc(var(--spacing-l-1) + var(--spacing-s-5)) var(--spacing-s-4);
         /* Custom */
         @media (width >= 530px) {
             column-gap: var(--spacing-s-2);
@@ -70,7 +71,7 @@
     }
     .c-tiles-with-description__item__thumbnail {
         padding: var(--spacing-s-2);
-        margin-block-end: var(--spacing-m);
+        margin-block-end: var(--spacing-s-2);
         text-align: center;
         background: var(--color-gradient-full-light-6);
         border: var(--dark-mode-border);
@@ -98,7 +99,7 @@
     /* Custom */
     @media (width >= 768px) {
         :is(header, p) + .c-tiles-with-description {
-            padding-block-start: var(--spacing-s-3);
+            padding-block-start: var(--spacing-s-2);
         }
     }
 }

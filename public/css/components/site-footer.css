@@ -120,11 +120,21 @@
     }
     .c-site-footer__nav,
     .c-site-footer__bottom {
-        /* Vertically align with .c-nav-sidebar-with-popover-api */
-        max-width: calc(var(--max-width-1) - var(--spacing-l-2-horizontal) - var(--spacing-l) - 0.35rem);
+        max-width: var(--max-width-1);
         margin-inline: auto;
         background: var(--color-black-off);
         padding: var(--spacing-l-2) var(--spacing-l) var(--spacing-vh-s);
+
+        /* --mq-nav-open-after and --mq-wide-before */
+        @media (width >= 1100px) and (width < 1650px) {
+            /* Vertically align with .c-nav-sidebar-with-popover-api */
+            padding: var(--spacing-l-2) calc(var(--spacing-l-2-horizontal) + var(--spacing-s-4)) var(--spacing-vh-s);
+        }
+        /* --mq-wide-after */
+        @media (width >= 1650px) {
+            /* Vertically align with .c-nav-sidebar-with-popover-api */
+            padding-inline: calc(var(--spacing-l-2-horizontal) + var(--spacing-s-1));
+        }
 
         position: relative;
         &::before {
@@ -135,6 +145,9 @@
             /* Bust out of container */
             margin-inline: calc(-50vw + 50%);
             background: inherit;
+        }
+        &:not(:last-child) {
+            padding-block-end: 0;
         }
     }
     .c-site-footer__nav {
@@ -175,6 +188,10 @@
                     display: none;
                 }
             }
+        }
+
+        p {
+            color: var(--color-link);
         }
 
         /* Link Hover Effect */

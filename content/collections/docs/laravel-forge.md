@@ -53,10 +53,18 @@ The Deploy Script area is where you'd add commands to install Composer and NPM d
 
 ``` shell
 cd /home/forge/{example}.{tld}
-git pull origin main
+git pull origin $FORGE_SITE_BRANCH
+
+$FORGE_COMPOSER install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+( flock -w 10 9 || exit 1
+    echo 'Reloading PHP FPM...'; sudo -S service $FORGE_PHP_FPM reload ) 9>/tmp/fpmlock
+
 php please cache:clear
 npm ci && npm run production
 ```
+
+Unless you're using the [Eloquent Driver](https://github.com/statamic/eloquent-driver), you may want to comment out the `$FORGE_PHP artisan migrate --force` command from your deployment script.
 
 If you're planning on using the Git integration, you may want to prevent content changes from the Control Panel from triggering "full" deployments in Laravel Forge. Learn more about this on the [Git Automation](/git-automation#customizing-commits) page.
 

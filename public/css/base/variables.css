@@ -4,14 +4,14 @@
     --spacing-s-5: 0.25rem;
     --spacing-s-4: 0.5rem;
     --spacing-s-3: 0.8rem;
-    --spacing-s-2: 1rem;
+    --spacing-s-2: 0.975rem;
     --spacing-s-1: 1.35rem;
 
     --spacing-m: 1.65rem;
     --spacing-l: 1.8rem;
     --spacing-l-static: 1.8rem;
     /* Based on e.g. >> Home on mobile */
-    --spacing-l-1: 2rem;
+    --spacing-l-1: 1.9rem;
 
     /* Smaller values for mobile */
     --spacing-l-2: min(12vw, 4rem);
@@ -31,8 +31,8 @@
     /* From lowest to highest value */
     --max-width-reading: 43rem;
     /* Increased at later MQs */
-    --max-width-content: 50rem;
-    --max-width-1: 101rem;
+    --max-width-content: 49rem;
+    --max-width-1: 99rem;
 
     /* GROUP VARIABLES -- LAYOUT -- Z-INDEX
     =================================================== */
@@ -112,6 +112,8 @@
     --color-link: var(--color-primary-accent);
     --color-text-underline-light: hsl(0deg 0% 80%);
     --color-code-background: var(--color-gradient-blue-1);
+    --color-code-background: var(--color-pink-light-2);
+    --color-code-background: hsl(287deg 80% 93.5%);
     --color-code-block-background: hsl(228.57deg 23% 18%);
 
     --color-form-accent: var(--color-primary-accent);
@@ -181,7 +183,7 @@
 
     /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
     --font-size-ui: 0.94em;
-    --font-size-ui-rem: 0.94rem;
+    --font-size-ui-rem: 0.95rem;
     /* A touch lower */
     --font-size-ui-line-height: 1.575;
 
@@ -195,7 +197,7 @@
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */
-    --font-size-l-1: clamp(1em, 4vw, 1.3em);
+    --font-size-l-1: clamp(1em, 4vw, 1.32em);
     --font-size-l-1-line-height: 1.6;
     /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
     --font-size-l-1-uppercase: 1.2em;
@@ -217,7 +219,8 @@
 
     /* e.g. >> Home > Learn Statamic */
     --font-size-l-6: clamp(3.998em * 0.67, 11vw, 3.998em);
-    --font-size-l-6-line-height: 1.05;
+    /* e.g. deploying/laravel-forge */
+    --font-size-l-6-line-height: 1.15;
 
     /* GROUP VARIABLES -- DECORATION -- BORDER RADIUS
     =================================================== */
@@ -266,9 +269,8 @@
         /* GROUP VARIABLES -- SPACING
         ===================================================  */
         /* Based on nav sidebar and toc spacing */
-        --spacing-s-5: 0.3rem;
-        --spacing-l: 2.3rem;
-        --spacing-l-1: 2.6rem;
+        --spacing-s-5: 0.27rem;
+        --spacing-l: 2.2rem;
     }
     /* --mq-root-variable-adjustments-2 */
     @media (min-width: 730px) {
@@ -280,25 +282,36 @@
         /* e.g. iPad */
         --spacing-l-4: 5rem;
     }
+    /* --mq-text-bump-1-after */
+    @media (width >= 1025px) and (width < 1441px) {
+        /* e.g. >> Home */
+        --button-spacing-vertical: 0.9rem;
+        --button-spacing-inline: 1.25rem;
+        /* Decrease */
+        --spacing-s-1: 1.2rem;
+        --font-size-ui-rem: 0.85rem;
+        --max-width-text: 48rem;
+    }
     /* --mq-nav-open-after */
-    @media (width >= 1250px) {
+    @media (width >= 1100px) {
         /* Make colors more subtle because there's more going on. Based on .c-nav-sidebar-with-popover-api-category-heading.o-current-menu-item */
         --color-pink-light-3: hsl(287deg 100% 97%);
         --color-blue-light-1: hsl(197deg 100% 96%);
         --color-yellow-light-3: hsl(var(--color-yellow-hue) 100% 96%);
     }
-    /* Notes...
-
-        --mq-root-variable-adjustments-smaller-laptops-after to --mq-root-variable-adjustments-larger-laptops-before
-        - Bear in mind users on smaller laptops do _not_ see things how you see things at a window width of 1440px.
-        - You can check exactly how they see it by going to System Preferences > Displays > Scaled
-
-    */
+    /* --mq-text-bump-2-after */
+    @media (width >= 1441px) {
+        /* Decrease */
+        --font-size-ui-rem: 0.94rem;
+        /* Slight increase based on .c-nav-sidebar-with-popover-api */
+        --spacing-l-2-horizontal: 4.2rem;
+    }
     /* --mq-wide-mqs */
     @media (min-width: 1800px) {
         /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
         =================================================== */
         --max-width-1: 105rem;
+        --max-width-content: 52rem;
     }
 
     /* GROUP VARIABLES -- LIGHT/DARK MODE

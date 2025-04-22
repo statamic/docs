@@ -13,10 +13,14 @@
         :is(h1,h2,h3,h4,h5,h6) + & {
             margin-block-start: 0;
         }
+        /* --mq-nav-open-after to custom */
+        @media (width >= 1250px) and (width < 1350px) {
+            /* Prevent the chance of the width of pre affecting the grid layout e.g. >> /quick-start-guide */
+            max-width: calc(var(--max-width-reading) - 1.5rem);
+        }
     }
 
     :not(pre, p, li, figcaption, table *, h2, h3, h4) > code {
-        background-color: #e7ecf1;
         border-radius: .25rem;
         font-size: 15px;
         padding: 1px 2px;

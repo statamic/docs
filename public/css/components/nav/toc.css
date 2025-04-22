@@ -75,7 +75,7 @@
         nav {
             color: var(--color-primary-text);
             & * {
-                line-height: 1.5;
+                line-height: 1.45;
                 font-weight: var(--font-family-ui-weight-light);
             }
 
@@ -149,7 +149,7 @@
 
                         ul {
                             /* Need this to line up so that the scroll spy line also continues to line up */
-                            padding-inline-start: 0;
+                            padding-inline: 0;
                             a {
                                 /* Indent the subnav */
                                 padding-inline-start: var(--spacing-m);
@@ -205,7 +205,7 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MQS
         =================================================== */
-        /* --mq-nav-open-before */
+        /* --mq-toc-open-before */
         @media (width < 1250px) {
             position: sticky;
             z-index: var(--z-index-above-nav);
@@ -253,7 +253,7 @@
                 }
             }
         }
-        /* --mq-nav-open-after */
+        /* --mq-toc-open-after */
         @media (width >= 1250px) {
             grid-area: sidebar-2;
             nav {
