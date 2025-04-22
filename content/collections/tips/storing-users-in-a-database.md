@@ -163,12 +163,14 @@ In `config/statamic/users.php` change the `tables` array to:
 
 ```php
 'tables' => [
-        'users' => 'users',
-        'role_user' => 'role_user',
-        'roles' => 'roles', // default: false
-        'group_user' => 'group_user',
-        'groups' => 'groups', // default: false
-    ],
+    'users' => 'users',
+    'role_user' => 'role_user',
+    'roles' => false, // [tl! --]
+    'roles' => 'roles', // [tl! ++]
+    'group_user' => 'group_user',
+    'groups' => false, // [tl! --]
+    'groups' => 'groups', // [tl! ++]
+],
 ```
 
 You can choose any name you like instead of the default value `false`. 
