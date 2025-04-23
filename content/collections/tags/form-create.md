@@ -243,6 +243,8 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 
 Each item in this `fields` array contains the following data:
 
+#### Fields Array Variables
+
 | Variable | Type | Description |
 |---|---| --- |
 | `display` | string | User-friendly field label configured in blueprint |
