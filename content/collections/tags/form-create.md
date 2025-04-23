@@ -241,17 +241,20 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```
 ::
 
-Each item in the `fields` array contains the following data configurable in the form's blueprint.
+Each item in this `fields` array contains the following data:
 
 | Variable | Type | Description |
 |---|---| --- |
-| `handle` | string | System name for the field |
-| `display` | string | User-friendly field label |
-| `type` | string | Name of the [fieldtype](/fieldtypes) |
+| `display` | string | User-friendly field label configured in blueprint |
+| `instructions` | string | User-friendly instructions label configured in blueprint |
 | `field` | string | [Pre-rendered field HTML](#prerendered-field-html) based on the fieldtype |
+| `type` | string | Name of the [fieldtype](/fieldtypes) |
+| `handle` | string | Blueprint handle for the field |
+| `name` | string | Input name for submitting the field |
+| `value` | mixed | Field value, which respects both `old` and `default` |
+| `default` | mixed | Default field value as assigned by blueprint |
+| `old` | mixed | Old field value from an unsuccessful submission |
 | `error` | string | Error message from an unsuccessful submission |
-| `old` | array | Contains user input from an unsuccessful submission |
-| `instructions` | string | User-friendly instructions label |
 | `validate` | array | Contains an array of validation rules |
 | `width` | string | Width of the field assigned in the blueprint |
 
