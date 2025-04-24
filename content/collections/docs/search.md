@@ -398,6 +398,23 @@ composer require algolia/algoliasearch-client-php:^3.4
 
 Statamic will automatically create and sync your indexes as you create and modify entries once you kick off the initial index creation by running the command `php please search:update`.
 
+:::tip Heads up 
+Algolia uses Guzzle Client to send the data to their cloud. If you need additional setup (i.e. proxy), you might want to override the default Guzzle Client with your own in `AppServiceProvider.php`:
+```php
+use Algolia\AlgoliaSearch\Algolia;
+use Algolia\AlgoliaSearch\Http\GuzzleHttpClient;
+use GuzzleHttp\Client as GuzzleClient;
+
+$httpClient = new GuzzleHttpClient(
+    new GuzzleClient([
+        'proxy' => 'proxy-url'
+    ])
+);
+
+Algolia::setHttpClient($httpClient);
+```
+:::
+
 #### Settings
 You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-reference/settings-api-parameters/) in a `settings` array.
 
