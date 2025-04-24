@@ -223,3 +223,35 @@ You can configure impersonation in `config/statamic/users.php`, like setting the
 In addition to conventional user authentication, Statamic also provides a simple, convenient way to authenticate with OAuth providers through [Laravel Socialite](https://github.com/laravel/socialite). Socialite currently supports authentication with Facebook, Twitter, LinkedIn, Google, GitHub, GitLab and Bitbucket, while dozens of additional providers are available though [third-party Socialite Providers](https://socialiteproviders.netlify.com/).
 
 Learn how to [configure OAuth](/oauth) on your site.
+
+## Two-Factor Authentication
+
+Statamic includes first-party support for two-factor authentication (2FA), providing an extra layer of account security. Once enabled, users must enter a time-based one-time password (TOTP) from an authenticator app — like Google Authenticator or 1Password — alongside their password when logging in.
+
+To enable 2FA, head to your **Profile** in the Control Panel. Scan the QR code with your authenticator app, enter the generated code, and you’re set. You’ll also receive a set of recovery codes — store these somewhere safe in case you lose access to your authenticator app.
+
+2FA is optional by default, but you can enforce it for specific roles via configuration:
+
+```php
+// config/statamic/users.php
+
+'two_factor' => [  
+    'enforced_roles' => [
+	    // Enforce for everyone
+	    '*',
+
+		// Enforce for super users
+		'super_users',
+
+		// Enforce for a specific role
+		'marketing_managers',
+		'user_admin',
+    ],  
+],
+```
+
+:::warning
+Statamic uses your `APP_KEY` to encrypt the two-factor authentication secret and recovery codes.
+
+You may run into issues with two-factor authentication if you have different `APP_KEY` values between environments *and* they share the same users (eg. you're tracking users in Git).
+:::
