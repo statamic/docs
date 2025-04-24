@@ -1258,6 +1258,66 @@ public function handle(TermSaved $event)
 }
 ```
 
+### TwoFactorAuthenticationChallenged
+`Statamic\Events\TwoFactorAuthenticationChallenged`
+
+Dispatched when the two-factor authentication challenge is presented to a user.
+
+``` php
+public function handle(TwoFactorAuthenticationChallenged $user)
+{
+    $event->user;
+}
+```
+
+### TwoFactorAuthenticationDisabled
+`Statamic\Events\TwoFactorAuthenticationDisabled`
+
+Dispatched when a user disables two-factor authentication.
+
+``` php
+public function handle(TwoFactorAuthenticationDisabled $user)
+{
+    $event->user;
+}
+```
+
+### TwoFactorAuthenticationEnabled
+`Statamic\Events\TwoFactorAuthenticationEnabled`
+
+Dispatched when a user enables two-factor authentication.
+
+``` php
+public function handle(TwoFactorAuthenticationEnabled $user)
+{
+    $event->user;
+}
+```
+
+### TwoFactorAuthenticationFailed
+`Statamic\Events\TwoFactorAuthenticationFailed`
+
+Dispatched when a user fails the two-factor authentication challenge.
+
+``` php
+public function handle(TwoFactorAuthenticationFailed $user)
+{
+    $event->user;
+}
+```
+
+### TwoFactorRecoveryCodeReplaced
+`Statamic\Events\TwoFactorRecoveryCodeReplaced`
+
+Dispatched when one of a user's two-factor authentication recovery codes is replaced.
+
+``` php
+public function handle(TwoFactorRecoveryCodeReplaced $user)
+{
+    $event->user;
+}
+```
+
 ### UserBlueprintFound
 `Statamic\Events\UserBlueprintFound`
 
