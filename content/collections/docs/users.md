@@ -226,7 +226,9 @@ Learn how to [configure OAuth](/oauth) on your site.
 
 ## Two-Factor Authentication
 
-Statamic includes first-party support for two-factor authentication (2FA), providing an extra layer of account security. Once enabled, users must enter a time-based one-time password (TOTP) from an authenticator app — like Google Authenticator or 1Password — alongside their password when logging in.
+Statamic includes first-party support for two-factor authentication (2FA), providing an extra layer of account security. 
+
+Once enabled, users must enter a time-based one-time password (TOTP) from an authenticator app — like Google Authenticator or 1Password — alongside their password when logging in.
 
 To enable 2FA, head to your **Profile** in the Control Panel. Scan the QR code with your authenticator app, enter the generated code, and you’re set. You’ll also receive a set of recovery codes — store these somewhere safe in case you lose access to your authenticator app.
 
