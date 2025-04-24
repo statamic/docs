@@ -19,6 +19,12 @@
             navScrollPosition = 0;
         } else {
             $el.scrollTop = navScrollPosition;
+            // Scroll to current menu item if we came from a URL
+            const referrer = document.referrer;
+            const isSameDomain = referrer && new URL(referrer).hostname === window.location.hostname;
+            if (!isSameDomain) {
+                $el.querySelector('.o-current-menu-item').scrollIntoView({ block: 'center' });
+            }
         }
         $el.style.overflow = 'hidden';
         setTimeout(() => {

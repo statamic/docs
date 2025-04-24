@@ -61,11 +61,9 @@ final class HintRenderer implements NodeRendererInterface
 
     private function renderWatch(Hint $node, ChildNodeRendererInterface $childRenderer, array $attrs)
     {
-        $caption = new HtmlElement(
-            'div',
-            ['class' => 'caption'],
-            $childRenderer->renderNodes($node->children())
-        );
+        // Strip all HTML tags except for essential formatting elements (links, code, bold, italic)
+        // This ensures the caption is rendered as plain text without unwanted p tags or other wrappers
+        $caption = strip_tags($childRenderer->renderNodes($node->children()), '<a><code><strong><em>');
 
         return new HtmlElement(
             'div',
