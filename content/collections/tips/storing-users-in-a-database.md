@@ -19,7 +19,7 @@ If you installed Statamic using the `statamic new` command, or created a project
 Statamic comes with an Eloquent driver to make the transition as seamless as possible.
 
 1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
-1. In your user model, cast the preferences column to json.
+1. In your `User` model, add casts for the `preferences` and `two_factor_confirmed_at` columns:
     ```php
     class User extends Authenticatable
     {
@@ -27,6 +27,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
         { // [tl! focus]
             return [ // [tl! focus]
                 'preferences' => 'json', // [tl! ++] [tl! focus]
+                'two_factor_confirmed_at' => 'datetime', // [tl! ++] [tl! focus]
             ]; // [tl! focus]
         } // [tl! focus]
 
@@ -70,6 +71,9 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             $table->json('preferences')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('password')->nullable()->change();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
         });
 
         Schema::create('role_user', function (Blueprint $table) {
