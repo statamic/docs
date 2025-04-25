@@ -1,9 +1,9 @@
 // Add header anchors
-var elements = document.querySelectorAll('article h2:not(.js__no-anchors), article h3:not(.js__no-anchors)');
+var elements = document.querySelectorAll('article :is(h2, h3, h4, h5, h6):not(.js__no-anchors)');
 
 // If fewer than 3 headings, also include h1s
 if (elements.length < 3) {
-    elements = document.querySelectorAll('article h1:not(.js__no-anchors), article h2:not(.js__no-anchors), article h3:not(.js__no-anchors)');
+    elements = document.querySelectorAll('article :is(h1, h2, h3, h4, h5, h6):not(.js__no-anchors)');
 }
 
 Array.prototype.forEach.call(elements, function (el, i) {

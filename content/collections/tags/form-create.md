@@ -245,6 +245,8 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 
 Each item in the `fields` array contains the following data configurable in the form's blueprint.
 
+#### Fields Array Variables
+
 | Variable | Type | Description |
 |---|---| --- |
 | `handle` | string | System name for the field |
