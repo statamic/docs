@@ -26,7 +26,7 @@ parameters:
   -
     name: csrf
     type: boolean
-    description: When `false`, the hidden `name="_token"` attribute won't be added to the form so you can use other ways of providing the token. Defaults to `true`. 
+    description: When `false`, the hidden `name="_token"` attribute won't be added to the form so you can use other ways of providing the token. Defaults to `true`.
   -
     name: files
     type: boolean
@@ -45,7 +45,7 @@ variables:
     name: fields
     type: array
     description: >
-      An array of available fields for [dynamic rendering](#dynamic-rendering).
+      An array of available fields for [dynamic rendering](#dynamically-rendering-fields).
   -
     name: errors
     type: array
@@ -106,30 +106,30 @@ Here we'll be creating a form to submit an entry in a `contact` form.
 ```
 ::tab blade
 ```blade
-<s:form:create
-  in="contact"
->
-  @if (count($errors) > 0)
-    <div class="bg-red-300 text-white p-2">
-      @foreach ($errors as $error)
-        {{ $error }}<br>
-      @endforeach
-    </div>
-  @endif
+<s:form:create in="contact">
 
-  @if ($success)
-    <div class="bg-green-300 text-white p-2">
-      {{ $success }}
-    </div>
-  @endif
+    @if (count($errors) > 0)
+        <div class="bg-red-300 text-white p-2">
+            @foreach ($errors as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>
+    @endif
 
-  <label>Email</label>
-  <input type="text" name="email" value="{{ old('email') }}" />
+    @if ($success)
+        <div class="bg-green-300 text-white p-2">
+            {{ $success }}
+        </div>
+    @endif
 
-  <label>Message</label>
-  <textarea name="message" rows="5">{{ old('message') }}</textarea>
+    <label>Email</label>
+    <input type="text" name="email" value="{{ old('email') }}" />
 
-  <button>Submit</button>
+    <label>Message</label>
+    <textarea name="message" rows="5">{{ old('message') }}</textarea>
+
+    <button>Submit</button>
+
 </s:form:create>
 ```
 ::
@@ -147,7 +147,7 @@ You can also use the shorthand syntax for `form:create in="contact"`.
 ::tab blade
 ```blade
 <s:form:contact>
-  ...
+    ...
 </s:form:contact>
 ```
 ::
@@ -173,16 +173,14 @@ When you need to render a form that's selected via the [Form Fieldtype](/fieldty
 
 ::tab antlers
 ```antlers
-{{ form:create in="{ form_fieldtype:handle }" }}
+{{ form:create :in="form_fieldtype:handle" }}
     ...
 {{ /form:create }}
 ```
 ::tab blade
 ```blade
-<s:form:create
-  :in="$form_fieldtype->handle"
->
-  ...
+<s:form:create :in="$form_fieldtype->handle">
+    ...
 </s:form:create>
 ```
 ::
@@ -191,7 +189,7 @@ This way you can let Control Panel users select which form should be used on an 
 
 ### Dynamically Rendering Fields
 
-Instead of hardcoding individual fields, you may loop through the `fields` array to render your blueprint's fields in a dynamic fashion.
+Instead of hardcoding individual fields, you may loop through the `fields` array using the [form:fields](/tags/form-fields) tag to render your blueprint's fields in a dynamic fashion.
 
 ::tabs
 
@@ -199,7 +197,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```antlers
 {{ form:contact }}
 
-    {{ fields }}
+    {{ form:fields }}
         <div class="p-2">
             <label>
                 {{ display }}
@@ -212,7 +210,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
                 <p class="text-gray-500">{{ error }}</p>
             {{ /if }}
         </div>
-    {{ /fields }}
+    {{ /form:fields }}
 
     <button>Submit</button>
 
@@ -222,38 +220,43 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 ```blade
 <s:form:contact>
 
-  @foreach ($fields as $field)
-    <div class="p-2">
-      <label>
-        {{ $field['display'] }}
-        @if (in_array('required', $field['validate'] ?? []))
-          <sup class="text-red">*</sup>
-        @endif
-      </label>
-      <div class="p-1">{!! $field['field'] !!}</div>
-      @if ($field['error'])
-        <p class="text-gray-500">{{ $field['error'] }}</p>
-      @endif
-    </div>
-  @endforeach
+    <s:form:fields>
+        <div class="p-2">
+            <label>
+                {{ $field['display'] }}
+                @if (in_array('required', $field['validate'] ?? []))
+                    <sup class="text-red">*</sup>
+                @endif
+            </label>
+            <div class="p-1">{{ $field['field'] }}</div>
+            @if ($field['error'])
+                <p class="text-gray-500">{{ $field['error'] }}</p>
+            @endif
+        </div>
+    </s:form:fields>
 
-  <button>Submit</button>
+    <button>Submit</button>
 
 </s:form:contact>
 ```
 ::
 
-Each item in the `fields` array contains the following data configurable in the form's blueprint.
+Each item in this `fields` array contains the following data:
+
+#### Fields Array Variables
 
 | Variable | Type | Description |
 |---|---| --- |
-| `handle` | string | System name for the field |
-| `display` | string | User-friendly field label |
+| `display` | string | User-friendly field label configured in blueprint |
+| `instructions` | string | User-friendly instructions label configured in blueprint |
+| `field` | string | [Pre-rendered field HTML](#prerendered-field-html) based on the fieldtype |
 | `type` | string | Name of the [fieldtype](/fieldtypes) |
-| ` field` | string | [Pre-rendered field HTML](#pre-rendered-field-html) based on the fieldtype |
+| `handle` | string | Blueprint handle for the field |
+| `name` | string | Input name for submitting the field |
+| `value` | mixed | Field value, which respects both `old` and `default` |
+| `default` | mixed | Default field value as assigned by blueprint |
+| `old` | mixed | Old field value from an unsuccessful submission |
 | `error` | string | Error message from an unsuccessful submission |
-| `old` | array | Contains user input from an unsuccessful submission |
-| `instructions` | string | User-friendly instructions label |
 | `validate` | array | Contains an array of validation rules |
 | `width` | string | Width of the field assigned in the blueprint |
 
@@ -276,21 +279,21 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 
 ::tab antlers
 ```antlers
-{{ fields }}
+{{ form:fields }}
     <div class="mb-2">
         <label class="block">{{ display }}</label>
         {{ field }}
     </div>
-{{ /fields }}
+{{ /form:fields }}
 ```
 ::tab blade
 ```blade
-@foreach ($fields as $field)
-  <div class="mb-2">
-    <label class="block">{{ $field['display'] }}</label>
-    {!! $field['field'] !!}
-  </div>
-@endforeach
+<s:form:fields>
+    <div class="mb-2">
+        <label class="block">{{ $field['display'] }}</label>
+        {{ $field['field'] }}
+    </div>
+</s:form:fields>
 ```
 ::
 
@@ -322,31 +325,30 @@ If you have defined multiple sections in your form's blueprint, you can loop ove
     {{ sections }}
         <fieldset>
             <legend>{{ display }}</legend>
-            {{ fields }}
+            {{ form:fields }}
                 ...
-            {{ /fields }}
+            {{ /form:fields }}
         </fieldset>
     {{ /sections }}
 
     <button>Submit</button>
- 
+
 {{ /form:contact }}
 ```
 ::tab blade
 ```blade
 <s:form:contact>
 
-  @foreach($sections as $section)
-    <fieldset>
-      <legend>{{ $section['display'] }}</legend>
+    @foreach($sections as $section)
+        <fieldset>
+            <legend>{{ $section['display'] }}</legend>
+            <s:form:fields :section="$section">
+                ...
+            </s:form:fields>
+        </fieldset>
+    @endforeach
 
-      @foreach ($section['fields'] as $field)
-        ...
-      @endforeach
-    </fieldset>
-  @endforeach
-
-  <button>Submit</button>
+    <button>Submit</button>
 
 </s:form:contact>
 ```
@@ -361,7 +363,7 @@ Each item in the `sections` array contains the following data configurable in th
 | `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
 
 
-## Conditional Fields 🆕
+## Conditional Fields
 
 You may conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once configured, by including the necessary front-end scripts and enabling JavaScript on the `form:create` tag, all of the conditional logic will Just Work™.
 
@@ -392,10 +394,8 @@ The next step is to enable the Alpine JS driver via the `js="alpine"` parameter.
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine"
->
-  ...
+<s:form:contact js="alpine">
+    ...
 </s:form:contact>
 ```
 ::
@@ -410,7 +410,7 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
 
 ::tab antlers
 ```antlers
-<template x-if="{{ show_field:name }}">
+<template x-if="{{ show_field['name'] }}">
     <div class="p-2">
         <label>Name</label>
         <input type="text" name="name" value="{{ old:name }}" x-model="name" />
@@ -420,15 +420,17 @@ Finally, you will need to wire up the fields. With Alpine, this is done using `x
 ::tab blade
 ```blade
 <template x-if="{{ $show_field['name'] }}">
-  <div class="p-2">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old('name') }}" x-model="name" />
-  </div>
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old('name') }}" x-model="name" />
+    </div>
 </template>
 ```
 ::
 
-The `x-model` should reference the field's handle, and the `x-if` should reference the appropriate `show_field` JS generated by Statamic; In this case, `x-model="name"` and `x-if="{{ show_field:name }}"` respectively.
+The `x-model` should reference the field's handle, and the `x-if` should reference the appropriate `show_field` JS generated by Statamic; In this case, `x-model="name"` and `x-if="{{ show_field['name'] }}"` respectively.
+
+For nested fields, you can get `show_field` JS by passing the whole dotted handle as the key, ie) `x-if="{{ show_field['field_group.nested_field']}}"`.
 
 ### Wiring Up Dynamically Rendered Fields
 
@@ -438,31 +440,25 @@ If you are [dynamically rendering your fields](#dynamic-rendering) using the `fi
 
 ::tab antlers
 ```antlers
-{{ fields }}
+{{ form:fields }}
     <template x-if="{{ show_field }}">
         <div class="p-2">
             <label>{{ display }}</label>
             <div class="p-1">{{ field }}</div>
         </div>
     </template>
-{{ /fields }}
+{{ /form:fields }}
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine"
->
-
-  @foreach ($fields as $field)
+<s:form:fields>
     <template x-if="{{ $field['show_field'] }}">
-      <div class="p-2">
-        <label>{{ $field['display'] }}</label>
-        <div class="p-1">{!! $field['field'] !!}</div>
-      </div>
+        <div class="p-2">
+            <label>{{ $field['display'] }}</label>
+            <div class="p-1">{{ $field['field'] }}</div>
+        </div>
     </template>
-  @endforeach
-
-</s:form:contact>
+</s:form:fields>
 ```
 ::
 
@@ -482,10 +478,8 @@ If you are using other Alpine components in your form or on your page, the inclu
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="alpine:contact_form"
->
-  ...
+<s:form:contact js="alpine:contact_form">
+    ...
 </s:form:contact>
 ```
 ::
@@ -508,10 +502,10 @@ If you are hardcoding your inputs, you will need adjust your `x-model` to follow
 ::tab blade
 ```blade
 <template x-if="{{ $show_field['name'] }}">
-  <div class="p-2">
-    <label>Name</label>
-    <input type="text" name="name" value="{{ old('name') }}" x-model="contact_form.name" />
-  </div>
+    <div class="p-2">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ old('name') }}" x-model="contact_form.name" />
+    </div>
 </template>
 ```
 ::
@@ -546,9 +540,13 @@ class RadJs extends AbstractJsDriver
 
     public function addToRenderableFieldAttributes($field)
     {
-        return [
-            'r-model' => $field->handle(),
-        ];
+        $attributes = [];
+
+        if ($field->fieldtype()->hasJsDriverDataBinding()) {
+            $attributes['r-model'] => $field->handle(),
+        }
+
+        return $attributes;
     }
 
     public function addToRenderableFieldData($field, $data)
@@ -618,10 +616,8 @@ You can also pass comma-delimited options into the `js` parameter like so:
 ```
 ::tab blade
 ```blade
-<s:form:contact
-  js="radjs:foo:bar"
->
-  ...
+<s:form:contact js="radjs:foo:bar">
+    ...
 </s:form:contact>
 ```
 ::
