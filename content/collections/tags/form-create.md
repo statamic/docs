@@ -245,8 +245,6 @@ Each item in this `fields` array contains the following data:
 
 #### Fields Array Variables
 
-#### Fields Array Variables
-
 | Variable | Type | Description |
 |---|---| --- |
 | `display` | string | User-friendly field label configured in blueprint |
