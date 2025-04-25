@@ -249,7 +249,7 @@ Each item in this `fields` array contains the following data:
 |---|---| --- |
 | `display` | string | User-friendly field label configured in blueprint |
 | `instructions` | string | User-friendly instructions label configured in blueprint |
-| `field` | string | [Pre-rendered field HTML](#prerendered-field-html) based on the fieldtype |
+| `field` | string | [Pre-rendered field HTML](#pre-rendered-field-html) based on the fieldtype |
 | `type` | string | Name of the [fieldtype](/fieldtypes) |
 | `handle` | string | Blueprint handle for the field |
 | `name` | string | Input name for submitting the field |
