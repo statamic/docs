@@ -1,0 +1,64 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              instructions: "Isn't used in templating, just use this to identify the advert in the CP"
+              validate:
+                - required
+          -
+            handle: image
+            field:
+              max_files: 1
+              container: main
+              type: assets
+              display: Image
+              instructions: 'Will be cropped at width x 1.35 height. Recommended dimensions at least 1000px wide.'
+              folder: adverts
+          -
+            handle: heading
+            field:
+              character_limit: 25
+              type: text
+              display: Heading
+              instructions: 'e.g. A Statamic Starter Kit'
+              replicator_preview: false
+          -
+            handle: text
+            field:
+              character_limit: 70
+              type: text
+              display: Text
+              instructions: 'e.g. Optimize your website for search engines with a complete SEO addon.'
+          -
+            handle: link_text
+            field:
+              type: text
+              display: 'Link Text'
+              width: 50
+          -
+            handle: link
+            field:
+              input_type: url
+              type: text
+              display: Link
+              width: 50
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+title: Advert

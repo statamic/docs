@@ -1,10 +1,11 @@
 ---
-title: 'Upgrade Guides'
+title: 'Upgrade guide'
 intro: How to upgrade between various versions of Statamic.
 template: page
 id: f12f8ba3-19ff-48cb-a07b-653b05082d7e
 blueprint: page
 ---
+- [5.0 to 6.0](/upgrade-guide/5-to-6)
 - [4.0 to 5.0](/upgrade-guide/4-to-5)
 - [3.4 to 4.0](/upgrade-guide/3-4-to-4-0)
 - [3.3 to 3.4](/upgrade-guide/3-3-to-3-4)

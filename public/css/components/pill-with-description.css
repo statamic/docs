@@ -1,0 +1,95 @@
+/* GROUP COMPONENTS / PILL WITH DESCRIPTION
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    - Little pill displaying a key and a value, typically demo'ing a parameter, e.g. `alt: string`, along with a paragraph description underneath.
+    - Decoration-wise this is very similar to .c-pill but since the markup structure is different I've separated it out for now.
+
+*/
+/* HTML Example...
+
+    <div class="c-pill-with-description">
+        <header>
+            <h3>Tag</h3>
+            <div>boolean *false*</div>
+        </header>
+        <div>
+            <p>When set to true, this will output an <code>&lt;img&gt;</code> tag with the URL in the <code>src</code> attribute, rather than just the&nbsp;URL.</p>
+        </div>
+    </div>
+
+*/
+@layer components {
+    .c-pill-with-description {
+        margin-block-end: var(--spacing-l-1);
+        &:has(+ &) {
+            /* Slightly Decrease if it's followed by another .c-pill-with-description */
+            margin-block-end: var(--spacing-l);
+        }
+        header {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin-block-start: var(--spacing-s-2);
+            background: var(--color-gradient-full-light-3);
+            @container style(--color-scheme: dark) {
+                background: var(--color-gradient-full-light-2);
+            }
+            border: var(--border-solid);
+            border-block-end: 0;
+            > * {
+                padding: var(--spacing-s-4) var(--spacing-m);
+                font-size: var(--font-size-s-1);
+                line-height: var(--font-size-s-1-line-height);
+
+                position: relative;
+                &:not(:last-child)::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    block-size: 100%;
+                    border-inline-start: var(--border-solid);
+                    rotate: 20deg;
+                }
+                &:first-child {
+                    /* Custom */
+                    font-size: clamp(1rem, 4vw, 1.1rem);
+                    font-family: var(--font-family-code);
+                    font-weight: var(--font-family-code-weight-normal);
+                    text-transformr: lowercase;
+                }
+                &:last-child {
+                    padding-inline: var(--spacing-s-1);
+                    font-size: var(--font-size-s-2);
+                    font-family: var(--font-family-code);
+                    font-weight: var(--font-family-code-weight-normal);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: var(--color-purple);
+                }
+            }
+        }
+        > *:last-child {
+            padding: var(--spacing-m) var(--spacing-s-1);
+            font-size: var(--font-size-s-1);
+            background: var(--color-gradient-full-light-5);
+            border: var(--border-solid);
+            border-radius: var(--border-radius-l-1);
+            border-top-left-radius: 0;
+        }
+        p {
+            font-family: var(--font-family-ui);
+            &, & code {
+                /* Custom */
+                font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+            }
+        }
+        ul:last-child {
+            padding-block-end: var(--spacing-s-2);
+        }
+    }
+}

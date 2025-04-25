@@ -1,0 +1,100 @@
+{{# Notes... 
+
+    Little hack to stop the scrollbar flickering here...
+        - First we hide the overflow so the view transition captures a "screenshot" of the ul without the scroll bar
+        - Then we remove the overflow pretty much as soon as the page has loaded
+        - The overflow is both hidden and removed with JS so it's a cool progressive enhancement
+        - Be careful with the delay between switching the overflow back to auto. If the delay is set to more than 50ms, the scroll bars will flicker in when loading when "System Settings > Scroll bar behaviour > Show scroll bars" is set to "Automatically based on mouse or trackpad" on macOS.
+
+    We also add a few conditions to check that we're the scroll position is only saved if we're in the same section of the site, e.g. if we're going from Docs to Reference we now have a different sidebar nav so we don't want to apply a previous position.
+#}}
+<ul 
+    wire:scroll 
+    class="o-shadow-container-vertical"
+    x-data="{ 
+        navScrollPosition: $persist(0)
+    }"
+    x-init="
+        if (window.location.pathname === '/' || window.location.pathname === '/reference' || window.location.pathname === '/extending') {
+            navScrollPosition = 0;
+        } else {
+            $el.scrollTop = navScrollPosition;
+            // Scroll to current menu item if we came from a URL
+            const referrer = document.referrer;
+            const isSameDomain = referrer && new URL(referrer).hostname === window.location.hostname;
+            if (!isSameDomain) {
+                $el.querySelector('.o-current-menu-item').scrollIntoView({ block: 'center' });
+            }
+        }
+        $el.style.overflow = 'hidden';
+        setTimeout(() => {
+            $el.style.overflow = 'auto';
+        }, 20)
+    "
+    @scroll="navScrollPosition = $el.scrollTop"
+>
+    {{ if section }}
+    {{ nav :handle="section" }}
+        <li>
+            <span class="c-nav-sidebar-with-popover-api-category-heading{{ if is_current }} o-current-menu-item{{ /if }}">
+                {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
+                <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
+                    {{ title }}
+                    {{ if navigation_image_dark_mode }}
+                        {{ navigation_image }}
+                            {{ partial:image_dimensions/navigation_image modifier_classes='u-hide-in-dark-mode' }}
+                        {{ /navigation_image }}
+                        {{ navigation_image_dark_mode }}
+                            {{ partial:image_dimensions/navigation_image modifier_classes='u-hide-in-light-mode' }}
+                        {{ /navigation_image_dark_mode }}
+                    {{ else }}
+                        {{ navigation_image }}
+                            {{ partial:image_dimensions/navigation_image }}
+                        {{ /navigation_image }}
+                    {{ /if }}
+                </a>
+            </span>
+            <ul>
+                {{ if children }}
+                    {{ children scope="child" }}
+                        <li>
+                            <a wire:navigate
+                                href="{{ url }}"
+                                {{ if is_current }}class="o-current-menu-item"{{ /if }}
+                            >
+                                {{ nav_title ?? title }}
+                            </a>
+                        </li>
+                    {{ /children }}
+                {{ /if }}
+
+                {{ if section == "reference" }}
+                    <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                        <a wire:navigate
+                            href="{{ url }}"
+                            {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
+                        >
+                            All {{ title }}
+                        </a>
+                    </li>
+
+                    {{ collection :from="slug" }}
+                        <li {{ if permalink === current_url }}x-effect="open = '{{ collection:title }}'"{{ /if }}>
+                            <a wire:navigate
+                                href="{{ url }}"
+                                {{ permalink === current_url ?= 'class="o-current-menu-item"' }}
+                            >
+                                {{ nav_title ?? title }}
+                            </a>
+                        </li>
+                    {{ /collection }}
+                {{ /if }}
+            </ul>
+        </li>
+        {{# =JFG. Old/2024 site section #}}
+        {{# {{ if segment_1 }}
+        {{ partial:sidebar-promo}}
+        {{ /if }} #}}
+    {{ /nav }}
+    {{ /if }}
+</ul>

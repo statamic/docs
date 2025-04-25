@@ -14,6 +14,6 @@ Each item in the array should specify the widget as the type, plus any widget-sp
 
 You may use the same widget multiple times, configured in different ways.
 
-## Available Widgets
+## Available widgets
 
-Check out the [list of available widgets](/reference/widgets) include in Statamic Core.
+Check out the [list of available widgets](/reference/widgets) included in Statamic Core.

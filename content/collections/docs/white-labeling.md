@@ -15,7 +15,7 @@ White Label options are available in `config/statamic/cp.php` or through corresp
 Keep in mind that according to the license terms you can only rebrand for personal, internal, or client usage. You cannot resell Statamic under another name.
 :::
 
-### CP Theme
+### CP theme
 
 You can choose to switch the default "rad" login theme with a more vanilla (and boring) "business" theme.
 
@@ -28,12 +28,12 @@ You can choose to switch the default "rad" login theme with a more vanilla (and 
 - `rad`
 - `business`
 
-<div class="screenshot">
+<figure>
     <img src="/img/white-label-login.png" alt="Statamic White Label Theme">
-    <div class="caption">Here's the "business" theme with a custom logo</div>
-</div>
+    <figcaption>Here's the "business" theme with a custom logo</figcaption>
+</figure>
 
-### Custom CMS Name
+### Custom CMS name
 
 Set a custom name for the CMS.
 
@@ -41,7 +41,7 @@ Set a custom name for the CMS.
 'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Statamic'),
 ```
 
-### Custom Logo
+### Custom logo
 
 Swap out the logo with a URL to one of your own.
 
@@ -66,13 +66,24 @@ You can also specify a different URL to be used when in Dark Mode:
 'custom_dark_logo_url' => '/logo-dark-mode.png',
 ```
 
-### Custom Favicon
+### Custom logo text
+
+Display a custom name in plain text in the control panel; automatically changes when in Dark Mode.
+
+When defined, logo image URLs will take precedence over logo text.
+
+``` php
+'custom_logo_text' => env('STATAMIC_CUSTOM_LOGO_TEXT', null),
+```
+
+### Custom favicon
 
 Swap out the favicon with a URL to one of your own.
 
 ``` php
 'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
 ```
+
 ### Custom CSS
 
 Set the path to a CSS file and easily add your own styles to the control panel.

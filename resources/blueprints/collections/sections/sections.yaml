@@ -1,38 +1,45 @@
 title: Sections
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          type: text
-          required: true
-          validate:
-            - required
-      -
-        handle: content
-        field:
-          type: markdown
-          localizable: true
-      -
-        handle: template
-        field:
-          hide_partials: true
-          display: Template
-          type: template
-          icon: template
-          listable: hidden
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: nav_title
+            field: page.nav_title
+          -
+            handle: breadcrumb_title
+            field: page.breadcrumb_title
+          -
+            handle: intro
+            field: page.intro
+          -
+            handle: content
+            field:
+              type: markdown
+              localizable: true
+          -
+            handle: template
+            field:
+              display: Template
+              type: template
   sidebar:
     display: Sidebar
-    fields:
+    sections:
       -
-        handle: slug
-        field:
-          type: slug
-          required: true
-          localizable: true
-          validate:
-            - required
-          listable: hidden
-          generate: true
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required

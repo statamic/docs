@@ -12,6 +12,11 @@ options:
     description: |
       Configure which collections you want to allow relationships with.
   -
+    name: create
+    type: boolean
+    description: |
+      By default you may create new entries. Set to `false` to only allow selecting from existing entries.
+  -
     name: max_items
     type: integer
     description: >
@@ -25,12 +30,17 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable entries. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
   -
     name: search_index
     type: string
     description: >
         Allows you to specify a [search index](/search#indexes) to be used when searching for entries.
+  -
+    name: select_across_sites
+    type: boolean
+    description: |
+      When enabled, entries from all sites will be displayed. 
 id: acee879a-c832-449d-a714-c57ea5862717
 ---
 ## Overview

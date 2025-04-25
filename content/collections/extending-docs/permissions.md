@@ -158,3 +158,51 @@ Permission::extend(function () {
     );
 });
 ```
+
+
+## Overriding Policies
+
+You may override policies by registering a binding in your AppServiceProvider.
+
+```php
+public function register()
+{
+    $this->app->bind(
+        \Statamic\Policies\EntryPolicy::class, 
+        \App\Policies\CustomEntryPolicy::class
+    );
+}
+```
+
+```php
+class CustomEntryPolicy extends \Statamic\Policies\EntryPolicy
+{
+    public function edit($user, $entry)
+    {
+        // ...
+    }
+}
+```
+
+Keep in mind that most of Statamic policies will grant access earlier if the user is a super user. If you need to disable or override the super user logic, you will need to also adjust the `before` method. For example:
+
+```php
+class CustomEntryPolicy extends \Statamic\Policies\EntryPolicy
+{
+    public function before($user, $ability) // [tl! **:start]
+    {
+        if ($ability === 'edit') {
+            // Returning null here will allow the method to be called.
+            return null;
+        }
+        
+        return parent::before($user, $ability);
+    } // [tl! **:end]
+    
+    
+    public function edit($user, $entry)
+    {
+        // ...
+    }
+}
+```

@@ -14,14 +14,14 @@ related_entries:
 ---
 ## Overview
 
-The most common and obvious reason users exist are to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
+The most common and obvious reason users exist is to have the means to access the Control Panel and manage the content of your site. But there is so much more a user can do, if you so desire.
 
 <figure>
     <img src="/img/users-index.png" alt="List of Statamic Control Panel users">
     <figcaption>Why hasn't the Hoff logged in?</figcaption>
 </figure>
 
-## Creating Users
+## Creating users
 
 The easiest way to create your **first user** is by running `php please make:user` terminal command. After entering basic information, setting a password, and saying `yes` to [super user](#super-users), you can log into the control panel at `example.com/cp`.
 
@@ -31,8 +31,7 @@ Watch a new user being born. 🐣
 
 You can also [create users by hand](/tips/creating-users-by-hand) in a YAML file if you'd prefer, or don't have access to the command line. And don't worry, the password field will automatically get encrypted as soon as Statamic spots it.
 
-
-### New User Invitations
+### New user invitations
 
 When creating users in the Control Panel you can send email invitations to help guide those users into activating their accounts and signing in for the first time. You can even customize a lovely little welcome message for them.
 
@@ -45,17 +44,20 @@ When creating users in the Control Panel you can send email invitations to help 
 Be sure to [configure the email driver](/email) so those emails actually go out.
 :::
 
-## User Fields
+## User fields
 
 You're more than welcome — encouraged even — to customize what fields and information you'd like to store on your users. For example, you could store author bios and social media links to be used in articles on your front-end.
 
 To customize these fields, edit the included `user` [blueprint](/blueprints) and configure it however you'd like.
 
-
 ## Permissions
 
-<div class="mb-8">
-    <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+<div class="c-pro-badge">
+    <a href="/licensing">
+        <div class="c-pro-badge__text">
+            ⭐️ Pro Feature ⭐️
+        </div>
+    </a>
 </div>
 
 A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for a user to access the control panel, create, edit, or publish content, create users, and so on.
@@ -64,7 +66,7 @@ Permissions are grouped into **roles**, and are very simple to manage in the Con
 
 In turn, **roles** are attached directly to individual users or [user groups](#user-groups).
 
-### Statamic's Native Permissions {#native-permissions}
+### Statamic's native permissions {#native-permissions}
 
 | Permission | Handle |
 |------------|--------|
@@ -104,7 +106,7 @@ In turn, **roles** are attached directly to individual users or [user groups](#u
 | View form submissions | `view {form} form submissions` |
 | &nbsp;&nbsp;↳ Delete form submissions | `delete {form} form submissions` |
 
-### Author Permissions
+### Author permissions
 
 Author permissions are a little bit special. They determine the control users can have over their own entries or those created by other authors.
 
@@ -112,28 +114,28 @@ Author permissions are a little bit special. They determine the control users ca
 This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
 :::
 
-### Site Permissions
+### Site permissions
 
 When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
 
 For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
 
 
-### Super Users
+### Super users
 
 Super Admin accounts are special accounts with **access and permission to everything**. This includes things reserved only for super users like the ability to _create more super users_. It's important to prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
 
-## User Groups
+## User groups
 
 <div class="mb-8">
     <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
 </div>
 
-User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot users.
+User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot of users.
 
 User groups are stored in `resources/users/groups.yaml`.
 
-## Password Resets
+## Password resets
 
 Let's face it. People forget their passwords. A lot, and often. Statamic supports password resets. For users with Control Panel access, the login screen (found by default at `example.com/cp`) already handles this for you automatically.
 
@@ -141,7 +143,7 @@ You can also create your own password reset pages for front-end users by using t
 
 The user will receive an email with a temporary, single-use token allowing them to set a new password and log in again.
 
-## Password Validation
+## Password validation
 
 By default, passwords need to be 8 characters long. If you'd like to customize the default rules, you can use the `Password` rule object. (Requires at least Laravel 8.43).
 
@@ -160,9 +162,9 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/11.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
+Consult the [Laravel documentation](https://laravel.com/docs/12.x/validation#validating-passwords) to see all the available methods for customizing the password rule.
 
-## Storing User Records {#storage}
+## Storing user records {#storage}
 
 While users are stored in files by default — like everything else in Statamic — they can also be located in a database or really anywhere else. Here are links to articles for the different scenarios you may find yourself in.
 
@@ -193,7 +195,7 @@ By default, users are ordered alphabetically by their email. However, if you wis
 'sort_direction' => 'asc',
 ```
 
-## Language Preference
+## Language preference
 
 Each user can have their own preferred language in the Control Panel. Head to your preferences area by clicking on the ⚙️ gear/cog icon in the global header and then go to **Preferences**.
 
@@ -205,7 +207,7 @@ You can set the language for _everyone_ by going to **Default**, or you can set 
     <figcaption>Last we checked, Statamic has been translated into a lot of languages.</figcaption>
 </figure>
 
-## Impersonate Users
+## Impersonate users
 
 Statamic gives you the ability to impersonate users via the Control Panel. This lets you see the Control Panel and front end of your site through the eyes of the user you chose. This is pretty neat if certain content or capabilities are limited through roles and permissions and you want to test those things. It saves quite some time since there's no need to manually sign out and in again with a different user anymore.
 

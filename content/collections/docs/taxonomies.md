@@ -11,7 +11,7 @@ related_entries:
 ---
 ## Overview
 
-Taxonomies give you the ability to tag your entries and then fetch and sort all the entries who share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
+Taxonomies give you the ability to tag your entries and then fetch and sort all the entries that share any given tag. `Categories` and `tags` are probably the most common taxonomies, but you're not limited to those two. There are many useful taxonomies that can help group and sort your content. For example, `topic`, `color`, `genre`, and `size`.
 
 Practically speaking, taxonomies are very similar to [collections](/collections). They can have their own fields as defined by [blueprints](/blueprints) and also have their own URLs.
 
@@ -65,7 +65,7 @@ For each taxonomy [assigned to a collection](#collections) you will also get the
   - Accessible at `/{collection-url}/{taxonomy-slug}/{term-slug}` (eg. `/products/tags/t-shirts`)
   - The `{collection_handle}/{taxonomy_handle}/show` view will be used. (eg. `products/tags/show.antlers.html`)
 
-## Term Values and Slugs
+## Term values and slugs
 
 A term **value** is how you might identify a term in your content. For example, “Star Wars”.
 
@@ -105,7 +105,7 @@ For example, you would set up your "topics" index page in `resources/views/topic
 
 The collection equivalents would automatically filter terms that have been associated to entries in that collection.
 
-### Outputting Terms
+### Outputting terms
 
 Term values will be [augmented](/augmentation) into term objects and will have access to all data
 
@@ -142,7 +142,7 @@ When the collection can be inferred, the `url` and `permalink` values will inclu
 - ✅ Looping through terms in a taxonomy tag pair, using the collection parameter.
 - ❌ Looping through terms in a taxonomy tag pair, without specifying a collection.
 
-### Listings and Indexes
+### Listings and indexes
 
 When on a [taxonomy route](#routing), you can list the terms by using a `terms` tag pair. For example:
 
@@ -162,7 +162,7 @@ You can replace the `terms` tag with the name of the taxonomy. eg. `{{ tags }}` 
 :::
 
 :::tip
-If your taxonomy name conflicts with a [tag](/tags), will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
+If your taxonomy name conflicts with a [tag](/tags), you will need to [disambiguate](/antlers#disambiguating-variables) it by using a dollar symbol (`$`).
 
 For example, if your taxonomy is named `section`, there is also a [tag named section](/tags/section).
 
@@ -186,7 +186,7 @@ You can replace the `terms` tag with the name of the taxonomy. eg. `$tags` or `$
 ::
 
 
-### Listing Term Entries
+### Listing term entries
 
 When on a [term route](#routing), you can list the entries by using an `entries` tag pair. For example:
 
@@ -214,6 +214,6 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 ```
 ::
 
-## Search Indexes
+## Search indexes
 
 You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](/search#connecting-indexes).

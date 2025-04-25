@@ -1,7 +1,7 @@
 ---
 id: 61d9e659-10e4-4eed-94b0-c5e639493dfd
 title: 'Storing Content in a Database'
-intro: 'Statamic stores your content in "flat files" by default, however, as you scale, you might reach a point where a traditional database might work better. In this short article, we''l show you how to move your entries (& other content) into a database.'
+intro: 'Statamic stores your content in "flat files" by default, however, as you scale, you might reach a point where a traditional database might work better. In this short article, we''ll show you how to move your entries (& other content) into a database.'
 template: page
 categories:
   - development

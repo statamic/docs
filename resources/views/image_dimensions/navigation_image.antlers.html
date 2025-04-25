@@ -1,0 +1,24 @@
+<picture{{ modifier_classes ?= ' class="{ modifier_classes }"'}}>
+    {{# WebP #}}
+    <source
+        srcset="{{ glide:url width='65' dpr='2' format='webp' }} 2x,
+                {{ glide:url width='65' dpr='3' format='webp' }} 3x"
+        type="image/webp"
+    >
+    {{# JPEG #}}
+    <source
+        srcset="{{ glide:url width='65' dpr='2' }} 2x,
+                {{ glide:url width='65' dpr='3' }} 3x"
+        type="image/jpeg"
+    >
+    {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+    <img 
+        src="{{ glide:url width='65' dpr='2' }}"
+        decoding="async"
+        fetchpriority="high"
+        width="{{ width }}" 
+        height="{{ height }}"
+        alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+        {{ image_width_override ?='style="width: {image_width_override};"' }}{{ if hue_rotate == 'hue_rotate_1' }} class="u-image-boost-with-hue-rotate"{{ elseif hue_rotate == 'hue_rotate_2' }} class="u-image-boost-with-hue-rotate-extra"{{ /if }}
+    />
+</picture>

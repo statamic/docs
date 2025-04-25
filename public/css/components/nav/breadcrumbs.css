@@ -1,0 +1,112 @@
+/* GROUP COMPONENTS / BREADCRUMBS
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A navigation component that displays the current page's location. Each link represents a step in the journey to the current page.
+
+*/
+/* HTML Example...
+
+    <nav class="c-breadcrumbs">
+        <ol>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Pictures</a></li>
+            <li><a href="#">Summer 15</a></li>
+            <li>Italy</li>
+        </ol>
+    </nav>
+
+*/
+@layer components {
+    .c-breadcrumbs {
+        display: inline-block;
+        grid-area: breadcrumbs;
+        & ol {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-m);
+            /* --mq-grid-before */
+            @media (width < 1000px) {
+                position: relative;
+                /* Tweak to align with flanking buttons on mobile */
+                top: -0.1rem;
+                /* 10.5 is an approx width of the two flanking nav buttons, to make sure we stay on the same line for mobile */
+                max-width: calc(100% - 10.5rem);
+                padding-block-end: var(--spacing-l-3);
+                margin-block-start: -0.25rem;
+            }
+            /* --mq-nav-open-before */
+            @media (width < 1100px) {
+                max-width: var(--max-width-content);
+                margin-inline: auto;
+            }
+            /* --mq-grid-after to --mq-nav-open-before */
+            @media (width >= 1000px) and (width < 1100px) {
+                padding-inline: var(--spacing-l);
+            }
+        }
+        & li {
+            display: flex;
+            align-items: center;
+            padding-block-end: 0;
+            & svg {
+                inline-size: 0.4rem;
+                margin-inline: 0 1.5rem;
+            }
+        }
+        & a, button {
+            padding: 0;
+            text-decoration: none;
+            color: inherit;
+            text-transform: uppercase;
+            font-size: var(--font-size-s-2);
+            font-weight: var(--font-family-ui-weight-light);
+            text-box: text;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+        button {
+            font-weight: var(--font-family-ui-weight-strong);
+            margin-inline-end: 0;
+        }
+        /* GROUP COMPONENTS / BREADCRUMBS / MQs
+        =================================================== */
+        @media (width < 700px) {
+            li:not(:last-child) {
+                /* Hide the breadcrumb trail when we have limited space */
+                display: none;
+            }
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            ol {
+                gap: var(--spacing-l);
+                block-size: 100%;
+            }
+            li svg {
+                /* Increase to allow the gradient background to breathe */
+                margin-inline-end: 2.35rem;
+            }
+            button:last-child {
+                position: relative;
+                margin-inline-start: var(--spacing-s-3);
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: var(--z-index-below-body);
+                    inset: -0.8rem -1.5rem;
+                    left: -1.25rem;
+                    background: var(--color-gradient-full-light-2);
+                    border-radius: 30% 40% 25% 60% / 80% 110% 40% 60%;
+                }
+            }
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1100px) {
+            padding-inline: var(--spacing-l);
+        }
+    }
+}

@@ -6,41 +6,42 @@ nav_title: 'Release Schedule'
 intro: 'For all Statamic releases, bug fixes are provided for 1 year and security fixes are provided for 18 months.  For all first party addons, only the latest major release receives bug fixes. In addition, please review the [Laravel Support Policy](https://laravel.com/docs/master/releases#support-policy).'
 ---
 
-## Versioning Scheme
+## Versioning scheme
+
 Statamic and its other first-party packages follow [Semantic Versioning](https://semver.org/). Major releases are released every year (~Q1), following Laravel's major releases by roughly a month. Minor and patch releases may be released as often as every few days. Minor and patch releases should never contain breaking changes.
 
-## Support Policy
+## Support policy
 
-<table class="text-sm">
+<table>
    <thead>
       <tr>
-         <th class="text-sm font-bold">Statamic</th>
-         <th class="text-sm font-bold">Laravel</th>
-         <th class="text-sm font-bold">PHP</th>
-         <th class="text-sm font-bold">Release</th>
-         <th class="text-sm font-bold">Bug Fixes Until</th>
-         <th class="text-sm font-bold">Security Fixes Until</th>
+         <th>Statamic</th>
+         <th>Laravel</th>
+         <th>PHP</th>
+         <th>Release</th>
+         <th>Bug Fixes Until</th>
+         <th>Security Fixes Until</th>
       </tr>
    </thead>
    <tbody>
-      <tr class="bg-red text-[#ffc9bf]">
-         <td class="font-bold">3.3*</td>
+      <tr>
+         <td>3.3*</td>
          <td>8-9</td>
          <td>7.4-8.1</td>
          <td>Mar 2022</td>
          <td>Mar 2023</td>
          <td>Sep 2023</td>
       </tr>
-      <tr class="bg-red text-[#ffc9bf]">
-         <td class="font-bold">3.4*</td>
+      <tr>
+         <td>3.4*</td>
          <td>8-9</td>
          <td>7.4-8.1</td>
          <td>Jan 2023</td>
          <td>Jan 2023</td>
          <td>Jul 2024</td>
       </tr>
-      <tr class="bg-red text-[#ffc9bf]">
-         <td class="font-bold">4</td>
+      <tr>
+         <td>4</td>
          <td>9-10</td>
          <td>8.0-8.3</td>
          <td>Mar 2023</td>
@@ -48,20 +49,20 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
          <td>Sep 2024</td>
       </tr>
       <tr>
-         <td class="font-bold">5</td>
-         <td>10-11</td>
+         <td>5</td>
+         <td>10-12</td>
          <td>8.2-8.3</td>
          <td>May 2024</td>
          <td>May 2025</td>
          <td>Nov 2025</td>
       </tr>
        <tr>
-         <td class="font-bold">6</td>
+         <td>6</td>
          <td>11-12</td>
          <td>8.3-8.4</td>
-         <td>May 2025</td>
-         <td>May 2026</td>
-         <td>Nov 2026</td>
+         <td>June 2025</td>
+         <td>June 2026</td>
+         <td>June 2026</td>
       </tr>
    </tbody>
 </table>

@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ meta_title ?? title }} // Statamic Docs</title>
+    {{ partial:meta }}
+    {{ livewire:styles }}
+    {{# GROUP WEB FONTS 
+    =================================================== #}}
+    {{# Highest priority because render blocking. An additional preload improves the Lighthouse score. #}}
+    {{# Typekit #}}
+    {{# Make Lighthouse happy. Source: https://stackoverflow.com/questions/60411231/preload-typekit-font-css#60812240 #}}
+    {{# https://use.typekit.net & https://p.typekit.net is the font file origin (Lighthouse required both links from Adobe) #}}
+    {{# It may not have the same origin as the CSS file (https://use.typekit.net/pgd3inh.css) #}}
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/wyy0pka.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@250..800&family=Source+Code+Pro:ital,wght@0,200..800;1,200..900&display=swap" rel="stylesheet">
+    {{# GROUP CSS 
+    =================================================== #}}
+    {{ partial:styles/stylesheets }}
+    {{# GROUP JS
+    =================================================== #}}
+    <script>
+        // Test for "system" color scheme first. The browser will ignore the subsequent theme-colors.
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.head.insertAdjacentHTML('beforeend', '<meta name="theme-color" content="hsl(230deg 17% 7%)">');
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Get preferred color scheme from localStorage, default to 'light'
+            const preferredScheme = localStorage.getItem('preferredColorScheme') || 'light';
+            
+            // Check if screen width is greater than 1200px
+            const isWideScreen = window.innerWidth > 1200;
+
+            if (isWideScreen) {
+                // Set theme color based on preferred scheme
+                const themeColor = preferredScheme === 'dark' 
+                    ? 'hsl(230deg 17% 7%)' 
+                    : 'white';
+                document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
+            } else {
+                // Set theme color based on preferred scheme
+                const themeColor = preferredScheme === 'dark' 
+                    ? 'hsl(230deg 17% 7%)' 
+                    : 'hsl(197deg 100% 95%)';
+                document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
+            }
+        });
+    </script>
+    {{ vite src="resources/js/site.js" }}
+</head>

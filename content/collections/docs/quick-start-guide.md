@@ -1,12 +1,12 @@
 ---
-title: 'Quick Start Guide'
+title: 'Quick start guide'
 intro: "A step-by-step guide to installing and building your first Statamic site."
 video: https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc
 id: 1d1920fb-604c-4ac1-8c99-f0de44abc06b
 ---
 ## Overview
 
-Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for glueing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
+Much of the documentation is intended to be used as a reference sheet for various features, explaining how they work and what options and settings they provide. But not this guide. This is for gluing it all together, assuming you know very little about how Statamic works. We'll only make a couple of assumptions here before we get started.
 
 1. You are comfortable working with HTML.
 2. You have a local dev environment with [composer](https://getcomposer.org/) installed.
@@ -15,7 +15,7 @@ Much of the documentation is intended to be used as a reference sheet for variou
 
 ### What we're building
 
-We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="uppercase font-bold tracking-widest text-green font-display">Cyberspace</span>.
+We're going to build a simple personal website for a fictitious young aspiring programmer named Kurt Logan. Kurt always has and always will live in the 1980s and is very excited at the prospect of having his very own place in <span class="c-spaced">Cyberspace</span>.
 
 **This is not a "5 minute quick install guide" – we're going to be building a simple yet full site from scratch so you can see how everything comes together. It will likely take around 20-30 minutes.**
 
@@ -64,7 +64,7 @@ If you encounter any errors, Google them frantically and try anything and everyt
 
 <figure>
     <img src="/img/quick-start/installed-3.3.png" alt="Statamic Welcome Screen">
-    <figcaption><a class="no-underline hover:text-pink-hot font-bold text-blue-darkest">If you see this you are right on track.</a></figcaption>
+    <figcaption>If you see this you are right on track.</figcaption>
 </figure>
 
 Next, in your command line navigate into the new site (`cd cyberspace-place`) and open the project directory in your code editor. We like [VS Code](https://code.visualstudio.com/) but there are a ton of great editors and IDEs out there.
@@ -89,7 +89,7 @@ Now you can sign in. Head to [http://cyberspace-place.test/cp](http://cyberspace
 
 ## Make a home page
 
-Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
+Next, let's get some content of _our_ choosing to show on the homepage. Head to `Collections → Pages` in the control panel, and you'll see an empty home page entry waiting for you. Click on the entry's title to edit it. Type anything you want in the `content` field and then click **Save & Publish**.
 
 <figure>
     <img src="/img/quick-start/editing-home.png" alt="Editing the home page">
@@ -155,7 +155,7 @@ You might have known it was coming next – it's the staple of every CMS walkth
 
 But first, let's talk about what a blog is. A "blog" is a collection of posts that shares common traits or attributes. A typical blog post might contain a title, featured image, an author, a few tags, and the article content.
 
-There also always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
+There is always a list (sometimes called an "archive") of blog posts linking to each post's unique URL, and sometimes the homepage has a short list of the most recent posts as well. Let's detail exactly what we're going to build, and then build it.
 
 Here's our todo list:
 
@@ -164,7 +164,7 @@ Here's our todo list:
 - Create a blog detail page (`/blog/why-i-love-mustard`)
 - Add a list of the most recent 5 blog entries to the homepage
 
-### Create a new Collection
+### Create a new collection
 
 Head back to the Control Panel and click on the Collections link in the sidebar. Click the blue **Create Collection** button and then call your new collection "Blog".
 
@@ -330,8 +330,7 @@ A few cool things to note here in this code example:
     <figcaption>How close does yours look?</figcaption>
 </figure>
 
-
-## Blog Index
+## Blog index
 
 Next, let's make that blog index page. Head back to the control panel and go to the **Pages** collection. Create a new entry and call it "Blog", "My Blog", or even "My CyberBlog" — just make sure the slug is `blog`. Set the template to `blog/index`.
 
@@ -412,7 +411,7 @@ Here's your entire home template:
 
 We're almost done, but before we head back to the control panel to add a few more fields to your blog blueprint, let's add a nav.
 
-Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This let's you have a page with a slug of `/`.
+Your `home` and `blog` entries are both in an "ordered" Pages collection. If you look at this default collection's config you'll see that it has the **Orderable** setting on and that the root page is considered the home page. This lets you have a page with a slug of `/`.
 
 We can use the [Nav tag](/tags/nav) to fetch the entries in the Pages collection in the order you have them arranged.
 
@@ -422,10 +421,10 @@ Open up your layout file and drop in this nav snippet, right after the open body
 // resources/views/layout.antlers.html
 // ...
 
-<nav class="bg-black text-xs uppercase text-green text-center flex items-center justify-center space-x-4">
-    {{ nav from="pages" include_home="true" }}
+<nav class="bg-black text-xs uppercase text-green-500 text-center flex items-center justify-center space-x-4">
+    {{ nav:collection:pages include_home="true" }}
         <a href="{{ url }}" class="p-2 block hover:text-yellow-200">{{ title }}</a>
-    {{ /nav  }}
+    {{ /nav:collection:pages  }}
 </nav>
 ```
 
@@ -500,6 +499,6 @@ Refresh the page and there you have it — a basic but fully functional website
 
 And make sure to not miss the list of [Tags](/tags) and [Modifiers](/modifiers) that do all sorts of powerful things in your templates.
 
-## Going Deeper
+## Going deeper
 
 We have a screencast series that covers getting started but goes much further and deeper. Feel free to [check that out here](https://www.youtube.com/playlist?list=PLVZTm2PNrzMwYLGotkQvTvjsXAkANJIkc). Good luck!

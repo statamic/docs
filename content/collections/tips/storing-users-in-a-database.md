@@ -28,7 +28,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             return [ // [tl! focus]
                 'preferences' => 'json', // [tl! ++] [tl! focus]
             ]; // [tl! focus]
-        }; // [tl! focus]
+        } // [tl! focus]
 
         // ...
     }
@@ -74,19 +74,21 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
 
         Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');  // [tl! --] [tl! **]
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
             $table->uuid('user_id');  // [tl! ++] [tl! **]
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
             $table->string('role_id');
         });
 
         Schema::create('group_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');  // [tl! --] [tl! **]
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
             $table->uuid('user_id');  // [tl! ++] [tl! **]
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
             $table->string('group_id');
         });
         ```
-    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/11.x/migrations).
+    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/12.x/migrations).
         ```php
         $table->string('some_field');
         ```
@@ -152,3 +154,30 @@ You will need to run migrations to prepare your database for Statamic's user, pa
 
 
 This assumes you are happy to use our opinionated setup. If you need something more custom you can [create your own user driver](/tips/storing-users-somewhere-custom).
+
+## Roles and Groups (optional)
+
+By default, roles and groups are stored in flat files. If you would like to store them in the database instead, follow these steps:
+
+1. Specify the `roles` and `groups` tables in the `config/statamic/users.php` config file. 
+
+    ```php
+    'tables' => [
+        'users' => 'users',
+        'role_user' => 'role_user',
+        'roles' => false, // [tl! --]
+        'roles' => 'roles', // [tl! ++]
+        'group_user' => 'group_user',
+        'groups' => false, // [tl! --]
+        'groups' => 'groups', // [tl! ++]
+    ],
+    ```
+   
+2. Run `php please auth:migration` to generate the required migrations for the `roles` and `groups` tables. This will create two migrations in the `database/migrations` directory. You can delete the duplicate the `statamic_auth_table` migration.
+3. Run the migrations using `php artisan migrate`.
+4. Finally, if you have existing file based roles and groups, you can import them using these commands:
+
+    ```shell
+    php please eloquent:import-roles
+    php please eloquent:import-groups
+    ```

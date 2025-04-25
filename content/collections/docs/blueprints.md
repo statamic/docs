@@ -215,20 +215,20 @@ If you omit the `prefix` you won't be able to import them more than once at the 
 
 Fields can have various validation rules applied to them, enforcing the need for content creators to fill them out in a specific way before saving or publishing.
 
-While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/11.x/validation#available-validation-rules).
+While configuring a field, switch to the **Validation** tab where you can choose from [any built in Laravel rule](https://laravel.com/docs/12.x/validation#available-validation-rules).
 
 On top of any Laravel validation rules, there are some Statamic-specific goodies (like usage with conditional fields, Grids, Bards, or Replicators) that are explained on our [dedicated validation documentation](/validation).
 
-## Grid Fieldtype
+## Grid fieldtype
 
 The [Grid fieldtype](/fieldtypes/grid) lets you define a set of sub-fields, which it will allow you to repeat as many times as you like.
 
 You should define its fields using the blueprint field syntax. This will allow you to reference other fields and/or import entire fieldsets.
 
-<div class="screenshot">
+<figure>
     <img src="/img/grid.png" alt="An example grid field" />
-    <div class="caption">This is an example Grid field.</div>
-</div>
+    <figcaption>This is an example Grid field.</figcaption>
+</figure>
 
 ``` yaml
 links:
@@ -246,7 +246,7 @@ links:
 ```
 
 
-## Unlisted Fields
+## Unlisted fields
 
 While [conditional fields](#conditional-fields) allow you to control field visibility on the publish form, you may also customize column visibility on **entry listings** in the control panel.
 

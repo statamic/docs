@@ -1,0 +1,250 @@
+/* GROUP COMPONENTS / FOOTER
+=================================================== */
+/* HTML Example...
+
+*/
+@layer components {
+    .c-site-footer {
+        background: linear-gradient(to bottom, transparent 0%,var(--color-body-background) 10%);
+        position: relative;
+        z-index: var(--z-index-above-body);
+
+        /* Page preference is "dark" */
+        html:has(#color-scheme option[value="dark"]:checked) & {
+            .c-site-footer__scene__image-container {
+                background: linear-gradient(to bottom, transparent, var(--color-body-background), hsl(211 45% 10%) 60%, var(--color-black-off));
+                img {
+                    filter:
+                        grayscale(100%)
+                        brightness(0%)
+                    ;
+                }
+                /* Make shorter because there's nuttin' to see really. Once we get to higher MQs this isn't needed because we start getting near the max-height of the .c-site-footer__scene__image-container anyway. */
+                @media (width < 2100px) {
+                    max-height: 39rem;
+                }
+            }
+        }
+        /* Page preference is "system", and system preference is "dark" */
+        /* Note: For now, we need to repeat these values, but in the future, we can use style queries to eliminate the need to repeat the dark mode variables. [Current support](https://caniuse.com/?search=style%20queries). To do this, we must shift everything down so variables are on the `body` instead of the `root`. The root then contains the `colour-scheme` variables, which means we can now query the `colour-scheme` variable since the root is now the container. */
+        @media (prefers-color-scheme: dark) {
+            html:has(#color-scheme option[value="system"]:checked) & {
+                .c-site-footer__scene__image-container {
+                    background: linear-gradient(to bottom, transparent, var(--color-body-background), hsl(211 45% 10%) 60%, var(--color-black-off));
+                    img {
+                        filter:
+                            grayscale(100%)
+                            brightness(0%)
+                        ;
+                    }
+                    /* Make shorter because there's nuttin' to see really. Once we get to higher MQs this isn't needed because we start getting near the max-height of the .c-site-footer__scene__image-container anyway. */
+                    @media (width < 2100px) {
+                        max-height: 39rem;
+                    }
+                }
+            }
+        }
+    }
+    .c-site-footer__scene {
+        position: relative;
+    }
+    .c-site-footer__scene__image-container {
+        max-height: 45rem;
+        position: relative;
+        display: flex;
+        --stop: 3.5rem;
+        /* Custom */
+        @media (width >= 500px) {
+            --stop: 4rem;
+        }
+        background: linear-gradient(to top, var(--color-black-off) 0%, var(--stop), transparent var(--stop), transparent 100%);
+        img {
+            filter: var(--filter-image-boost-2);
+            mask: url(/img/footer/waterfall-mask.svg) center/contain no-repeat, linear-gradient(#000 0 0); /* we need this extra layer for mask-composite */
+            mask-composite: exclude;
+            mask-repeat: no-repeat;
+            /* Fix weird bug where there is a hairline gap between the masked image and the subsequent DOM element */
+            --fix-hairline-gap: 0.1rem;
+            mask-position: 0% calc(100% + var(--fix-hairline-gap));
+            mask-size: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+    .c-site-footer__scene__stars {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        img {
+            position: absolute;
+            width: 1em;
+            top: 35%;
+            left: 70%;
+            opacity: 0.25;
+            &:nth-child(2) {
+                top: 10%;
+                left: 50%;
+                opacity: 0.1;
+            }
+            &:nth-child(3) {
+                top: 17%;
+                left: 30%;
+                opacity: 0.15;
+            }
+            &:nth-child(4) {
+                top: 20%;
+                left: 90%;
+                opacity: 0.1;
+            }
+            &:nth-child(5) {
+                top: 0%;
+                left: 70%;
+                opacity: 0.08;
+            }
+        }
+        /* Custom */
+        @media (width < 930px) {
+            opacity: 0.5;
+            /* Pull up slightly so they're more visible */
+            top: -2rem;
+            img:nth-child(5) {
+                display: none;
+            }
+        }
+    }
+    /* GROUP COMPONENTS / FOOTER / NAV
+    =================================================== */
+    .c-site-footer {
+        /* Fix tiny overflow */
+        overflow: clip;
+    }
+    .c-site-footer__nav,
+    .c-site-footer__bottom {
+        max-width: var(--max-width-1);
+        margin-inline: auto;
+        background: var(--color-black-off);
+        padding: var(--spacing-l-2) var(--spacing-l) var(--spacing-vh-s);
+
+        /* --mq-nav-open-after and --mq-wide-before */
+        @media (width >= 1100px) and (width < 1650px) {
+            /* Vertically align with .c-nav-sidebar-with-popover-api */
+            padding: var(--spacing-l-2) calc(var(--spacing-l-2-horizontal) + var(--spacing-s-4)) var(--spacing-vh-s);
+        }
+        /* --mq-wide-after */
+        @media (width >= 1650px) {
+            /* Vertically align with .c-nav-sidebar-with-popover-api */
+            padding-inline: calc(var(--spacing-l-2-horizontal) + var(--spacing-s-1));
+        }
+
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: var(--z-index-below-body);
+            inset: 0;
+            /* Bust out of container */
+            margin-inline: calc(-50vw + 50%);
+            background: inherit;
+        }
+        &:not(:last-child) {
+            padding-block-end: 0;
+        }
+    }
+    .c-site-footer__nav {
+        --color-link: white;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 11em), 1fr));
+        /* Custom */
+        @media (width >= 370px) and (width < 600px) {
+            /* Force 2 columns at lower MQs e.g. mobile */
+            grid-template-columns: repeat(2, 1fr);
+        }
+        gap: var(--spacing-l-2) var(--spacing-l-3);
+        /* Custom */
+        @media (width < 500px) {
+            /* Bit more room for the .c-footer-arrow svgs */
+            padding-inline: var(--spacing-l-2);
+        }
+        font-family: var(--font-family-code);
+        font-size: var(--font-size-s-2);
+        line-height: var(--font-size-s-2-line-height);
+
+        img {
+            max-height: 1rem;
+            max-width: 1rem;
+            opacity: 0.35;
+        }
+
+        li {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-s-5);
+            align-items: center;
+            color: var(--color-link);
+            span {
+                color: var(--color-link);
+                /* Custom */
+                @media (width < 1280px) {
+                    display: none;
+                }
+            }
+        }
+
+        p {
+            color: var(--color-link);
+        }
+
+        /* Link Hover Effect */
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-s-4);
+            text-decoration: none;
+            position: relative;
+            &::after {
+                width: 0;
+                transition: width .3s ease 0.05s;
+
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                height: 1px;
+                margin-top: 2px;
+                background: white;
+                right: 0;
+            }
+            &:hover::after {
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+    .c-site-footer-heading {
+        color: white;
+        position: relative;
+        text-transform: uppercase;
+        font-weight: var(--font-family-code-weight-normal);
+        margin-block-end: min(2.85vw, var(--spacing-s-2));
+        svg {
+            position: absolute;
+            top: calc(50% + 0.1rem);
+            transform: translate(-1.75rem, -50%);
+        }
+    }
+    .c-site-footer__nav__item ul {
+        display: grid;
+        gap: var(--spacing-s-5);
+    }
+    /* GROUP COMPONENTS / FOOTER / BOTTOM
+    =================================================== */
+    .c-site-footer__bottom {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 11em), 1fr));
+        gap: var(--spacing-l-3);
+        padding-block-start: 0;
+        /* margin-inline: auto; */
+        img {
+            max-height: 1.5rem;
+        }
+    }
+}

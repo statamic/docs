@@ -14,7 +14,7 @@ Set which language you want to use by default in `config/app.php`. You may also 
 'fallback_locale' => 'en',
 ```
 
-### Per-User Override
+### Per-user override
 
 You can override the translation locale on a per-user basis by setting `locale: {code}` in a given user's preferences (their YAML record).
 
@@ -28,48 +28,48 @@ preferences:
 
 ### Available Translations
 
-| Language            | Code |
-|---------------------|------|
-| Arabic              | `ar` |
-| Azerbaijani         | `az` |
-| Czech               | `cs` |
-| Danish              | `da` |
-| German              | `de` |
+| Language            | Code    |
+|---------------------|---------|
+| Arabic              | `ar`    |
+| Azerbaijani         | `az`    |
+| Czech               | `cs`    |
+| Danish              | `da`    |
+| German              | `de`    |
 | German (Swiss)      | `de_CH` |
-| English             | `en` |
-| Spanish             | `es` |
-| Persian             | `fa` |
-| French              | `fr` |
-| Hungarian           | `hu` |
-| Indonesia           | `id` |
-| Italian             | `it` |
-| Japanese            | `ja` |
-| Malaysia            | `ms` |
-| Norwegian           | `nb` |
-| Dutch               | `nl` |
-| Polish              | `pl` |
-| Portuguese          | `pt` |
+| English             | `en`    |
+| Spanish             | `es`    |
+| Persian             | `fa`    |
+| French              | `fr`    |
+| Hungarian           | `hu`    |
+| Indonesian          | `id`    |
+| Italian             | `it`    |
+| Japanese            | `ja`    |
+| Malay               | `ms`    |
+| Norwegian           | `nb`    |
+| Dutch               | `nl`    |
+| Polish              | `pl`    |
+| Portuguese          | `pt`    |
 | Portuguese (Brazil) | `pt_BR` |
-| Russia              | `ru` |
-| Slovene             | `sl` |
-| Swedish             | `sv` |
-| Turkish             | `tr` |
-| Ukrainian           | `uk` |
-| Vietnamese          | `vi` |
+| Russian             | `ru`    |
+| Slovene             | `sl`    |
+| Swedish             | `sv`    |
+| Turkish             | `tr`    |
+| Ukrainian           | `uk`    |
+| Vietnamese          | `vi`    |
 | Chinese             | `zh_CN` |
 | Chinese (Taiwan)    | `zh_TW` |
 
-_Translations are community contributed so may you find them to be incomplete shortly after an update._
+_Translations are community contributed so you may find them to be incomplete shortly after an update._
 
 ## Translations not covered by Statamic
 
-Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your applications's translations.
+Although Statamic's translations cover *most* of the strings in the Control Panel, there are a couple of places where Statamic will fallback to your application's translations.
 
 One example of this is on Statamic's authentication pages. Since it's using Laravel's built-in authentication under the hood, translations for any validation errors will be pulled from your app's `lang` or `resources/lang` directory.
 
 To save you manually translating Laravel's strings yourself, you can copy the necessary translations from the community-driven [Laravel-lang](https://github.com/Laravel-Lang/lang/tree/main/locales) repository into your application.
 
-## Contributing a New Translation
+## Contributing a new translation
 
 There are 4 steps.
 
@@ -80,7 +80,7 @@ There are 4 steps.
 5. Add the language to the [array in CorePreferences](https://github.com/statamic/cms/blob/cce7045e3f0ff418ee6e0a982a3830d604c6b64c/src/Preferences/CorePreferences.php#L56-L82) so it's selectable
 6. Commit changes and submit a PR
 
-### Generating Translation Files
+### Generating translation files
 
 Run the `translator generate` command in the `statamic/cms` project, along with the new language code as an argument. This will generate empty JSON and PHP files in `resources/lang` ready to be translated into the locale of your choice.
 
@@ -111,7 +111,7 @@ resources/lang/
 This command will also update existing files with any changes from recent Statamic releases.
 :::
 
-#### Using Google Translate
+#### Using Google translate
 
 You can get a translation kickstarted with the Google API by passing your API key.
 
@@ -119,7 +119,7 @@ You can get a translation kickstarted with the Google API by passing your API ke
 php translator generate eo --key=abc123
 ```
 
-### Using the Reviewer
+### Using the reviewer
 
 Running the `translator review` command will loop through all the translations showing you the key, the English phrase, and new translated phrase for proofreading. You can enter new translations during this process. You can also use this command to gather new or changed translatable strings after a Statamic update.
 

@@ -59,9 +59,9 @@ id: 3a28f050-f8d2-4a56-ba8a-314a9d46bf38
 It took skateboarding legend Tony Hawk 11 tries, but he finally landed a 900 at the 1999 Summer X Games in a moment that launched the sport into popular consciousness in a new way.
 ```
 
-You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of moment. Let your passion carry you away.
+You can create, edit, and delete entries in the control panel _or_ filesystem, it's up to you and your preference in the heat of the moment. Let your passion carry you away.
 
-### View Data
+### View data
 
 Each entry has its own unique URL. When you're on it, all of the entry's data will be available in your views as variables. If an entry is _missing_ data, intentionally or not, it will fall back to a series of defaults. We call this fallback logic [the cascade](/cascade).
 
@@ -71,8 +71,7 @@ If a value doesn't exist in one place, it'll check the next place, then the next
 2. The origin entry (if using localization)
 3. The collection
 
-
-### Setting Default Data {#inject}
+### Setting default data {#inject}
 
 **Injecting** data into your collection allows you to provide default values for your entries. If entries have these variables set, they will override the collection _defaults_, but not any data set on the entries themselves.
 
@@ -125,7 +124,7 @@ title_format:
   fr: '{stars} étoiles par {author:name}'
 ```
 
-It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take affect, you will need to re-save your existing entries.
+It's worth noting that changes to a collection's title format won't change the titles of existing entries. For it to take effect, you will need to re-save your existing entries.
 
 :::tip
 To use modifiers in title formats, make sure to use the `{{` Antlers syntax, like this:
@@ -155,7 +154,6 @@ This will prevent collections from automatically adding a slug field.
 Since Statamic stores entries as files, it uses the slug for the filename. If you disable slugs, it will use the ID instead. (e.g. `my-entry.md` vs. `123.md`)
 :::
 
-
 ## Dates
 
 If your collection requires a date, as they often do, you can decide how Statamic uses it to control default visibility. For example, you can choose to have dates set in the future to be private (404), which effectively allows you to schedule their publish date.
@@ -167,7 +165,7 @@ Alternatively, you could have _past_ dates be private which would make entries a
     <figcaption>Just imagine! This could be you, configuring date behaviors.</figcaption>
 </figure>
 
-### Available Date Behaviors
+### Available date behaviors
 
 Each of these behaviors is available for future and past dates.
 
@@ -179,7 +177,7 @@ Each of these behaviors is available for future and past dates.
 Date behaviors are _defaults_. They can be overridden at the [tag level](/tags/collection) in your templates.
 :::
 
-### Date Behavior and Published Status
+### Date behavior and published status
 
 You can override [date behavior visibility settings](#available-date-behaviors) on an entry-by-entry basis by setting `published: false` on your entry.
 
@@ -199,10 +197,9 @@ We recommend [filtering](/tags/collection#published-status) and [querying](/repo
     <figcaption>Filter by entry status in your collection listings.</figcaption>
 </figure>
 
-
 ## Time
 
-To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific times**, e.g. `11:45am`.
+To get more granular and introduce _time_, add a [date field](/fieldtypes/date) named `date` to your blueprint and Statamic will respect however you configure it. You can use this approach to have entries publish at a **specific time**, e.g. `11:45am`.
 
 :::tip
 If you don't enable the time, all entries on a given day will assume a default time of midnight, or `00:00`. If you want to make sure that multiple entries on the same day are ordered in the order you published them, turn the time on.
@@ -219,7 +216,6 @@ For example, you might need things to happen exactly when an entry is scheduled,
 ## Ordering
 
 Flick on the "Orderable" switch in a collection's settings and you'll have a drag and drop UI in the control panel to order the entries. The collection is now "structured". Learn more about [structures](/structures).
-
 
 <figure>
     <img src="/img/collection-structure.png" alt="An orderable collection">
@@ -239,17 +235,15 @@ A structured collection will **not** have a maximum depth unless you set one, al
     <figcaption>These reorderable entries have a max depth of 1.</figcaption>
 </figure>
 
-### Default Sort Order in Listings
+### Default sort order in listings
 
-For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default the Title field will be used.
+For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default, the Title field will be used.
 
-
-### Root Page
+### Root page
 
 If you specify that your collection should "expect a root page", the first item in the tree UI will be considered the root. This entry will _not_ use a slug in its URI.
 
-The most common usage for this is to define a home page in a pages collection. In this example, the root page's url would be `/` instead of `/home`.
-
+The most common usage for this is to define a home page in a pages' collection. In this example, the root page's url would be `/` instead of `/home`.
 
 ## Routing
 
@@ -287,25 +281,29 @@ Statamic does not automatically define route rules. If you want entries in your 
 
 Here are a few examples of possible route rules for inspiration. 💡
 
-#### Wordpress Style
+#### Wordpress style
+
 ``` yaml
 route: /news/{year}/{month}/{day}/{slug}
 # example: /news/2019/01/01/happy-new-year
 ```
 
 #### For when you don't care about SEO
+
 ``` yaml
 route: /{id}
 # example: /12345-1234-321-12345
 ```
 
 #### For when you care _too much_ about SEO
+
 ``` yaml
 route: /{parent_uri}/{slug}.html
 # example: /details/project.html
 ```
 
 #### Organizing sports brackets with structures
+
 Here's how we use the `depth` variable, along with the `team_name` field from the entry's blueprint.
 
 ``` yaml
@@ -314,6 +312,7 @@ route: /tournament/round-{depth}/{team_name}
 ```
 
 #### Using fields from related entries
+
 For example, if you have a `category` field in your Products collection and you'd like for your product URLs to depend on it, you can configure a [computed value](/computed-values) to return the category URL, then use that computed value in your collection's route:
 
 ``` php
@@ -369,7 +368,7 @@ The following redirects are supported:
 - external links (starting with `http`)
 - internal links (starting with `/`)
 - other entries or terms (eg. `entry::id-of-entry` or `term::id-of-term`)
-- it's first child page (`@child`) - If there are no child pages you will get a 404
+- its first child page (`@child`) - If there are no child pages you will get a 404
 - a `404` response
 
 Any other strings will be assumed to be a relative link. For example: if the page URL is `/my/page` and you have `redirect: is/here` in your entry, you will be redirected to `/my/page/is/here`.
@@ -386,7 +385,7 @@ redirect:
 Entries with redirects will get filtered out of the [collection](/tags/collection) tag by default. You can include them by adding a `redirects="true"` parameter.
 :::
 
-### Entry Link Blueprint
+### Entry link blueprint
 
 When a Collection is structured and you have set `Entries in this collection may contain links (redirects) to other entries or URLs.` on in the collection settings, you will be presented with the option to create "Links" along with any other available blueprints when you try to create an entry.
 
@@ -398,7 +397,7 @@ This will load a behind-the-scenes blueprint containing `title` and `redirect` f
 
 Let's imagine you have a **product** collection. Each entry is a product, and each product _has one or more_ categories. Thus set, no matter what blueprints you configure, each will have a **categories** field in the sidebar. You'll be able to access any categories on your entries with a `{{ categories }}` variable loop.
 
-### Taxonomies Setting
+### Taxonomies setting
 
 ``` yaml
 taxonomies:
@@ -418,9 +417,9 @@ You may mount a collection onto an entry as a way of saying "all these entries b
     <figcaption>Look at those add and edit links!</figcaption>
 </figure>
 
-### Mount Setting
+### Mount setting
 
-You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to a **aquarium** entry page.
+You can mount a collection to an entry in the collection configure page (or by specifying the ID of the desired entry in the collection's YAML config file). For example, you might mount a **tropical fish** collection to an **aquarium** entry page.
 
 Now you can use `mount` variable in the route to automatically prepend the mounted entry's URL. So for example, if you mounted a collection to `/aquarium` with `/{mount}/{slug}`, all your fish URLs will follow the `/aquarium/entry-url` pattern. If you later move `/aquarium` to `/house-of-fishies`, all your entries will automatically update with `/house-of-fishies/entry-url`.
 
@@ -432,7 +431,7 @@ route: '/{mount}/{slug}'
 
 ### Looping through mounted entries
 
-You can loop through all entries in the the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
+You can loop through all entries in the mounted collection easily by using the `{{ collection }}` tag and setting the `from` value to bind to the mounted collection using `mount`, like so.
 
 ::tabs
 
@@ -458,10 +457,9 @@ You can loop through all entries in the the mounted collection easily by using t
 If you are coming from Statamic 2, you might have used the `{{ entries }}` tag pair to loop through mounted collections. That tag is no longer available, and instead, you should use the above approach.
 :::
 
+## Search indexes
 
-## Search Indexes
-
-You can configure search indexes for your collections to improve the efficiency and relevancy of your users searches. Learn [how to connect indexes](search#connecting-indexes).
+You can configure search indexes for your collections to improve the efficiency and relevancy of your users' searches. Learn [how to connect indexes](search#connecting-indexes).
 
 ## Revisions
 

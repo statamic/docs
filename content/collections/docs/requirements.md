@@ -1,15 +1,15 @@
 ---
 title: Requirements
-intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/11.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
+intro: Statamic is a modern PHP application built as a [Laravel](https://laravel.com) package, which carries with it the same [server requirements](https://laravel.com/docs/12.x/deployment#server-requirements) as Laravel itself. To manipulate images (resize, crop, etc), you will also need the GD Library or ImageMagick installed on your server.
 template: page
 id: 792644d2-8bd2-421d-a080-e0be7fca125c
 blueprint: page
 ---
-## Server Requirements
+## Server requirements
 
 To run Statamic you'll need a server meeting the following requirements. These are standard defaults (at minimum) for most modern hosting platforms.
 
-- PHP 8.1 or above
+- PHP 8.2 or above
 - BCMath PHP Extension
 - Ctype PHP Extension
 - Exif PHP Extension
@@ -22,7 +22,7 @@ To run Statamic you'll need a server meeting the following requirements. These a
 - GD Library or ImageMagick
 - Composer
 
-## Development Environments
+## Development environments
 
 Depending on your operating system, we recommend the following development environments:
 
@@ -38,7 +38,7 @@ To develop locally with Statamic on Linux, you'll need to install `php`, `compos
 
 If you're using Ubuntu (or another variant of Debian), you may find our [Ubuntu guide](/installing/ubuntu) helpful.
 
-## Recommended Hosts
+## Recommended hosts
 
 We recommend using [Digital Ocean](https://m.do.co/c/6469827e2269) to host most small to medium Statamic sites. Their servers are fast, inexpensive, and we use them ourselves. _**Full disclosure:** that's an affiliate link but we wouldn't recommend them if it wasn't an excellent option._
 

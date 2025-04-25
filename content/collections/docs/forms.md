@@ -11,7 +11,7 @@ related_entries:
 
 Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
-## Your First Form
+## Your first form
 
 Let's pretend you're a famous celebrity with a large following of dedicated fans. If this is true, why are you building your own website? Who's going to sail your yacht?
 
@@ -33,7 +33,7 @@ title: Super Fans
 email: []
 ```
 
-### The Blueprint
+### The blueprint
 
 The [blueprint](blueprints) is where you define your form's `fields` and validation rules to be used on form submission.
 
@@ -80,7 +80,7 @@ If you'd like to include more fieldtypes, you can opt into each one by calling `
 Statamic\Fieldtypes\Section::makeSelectableInForms();
 ```
 
-### The Template
+### The template
 
 Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
 
@@ -169,7 +169,7 @@ This example dynamically renders each input's HTML. You could alternatively writ
 ```
 ::
 
-## Viewing Submissions
+## Viewing submissions
 
 In the Forms area of the control panel you can explore the collected responses, configure dashboards and export the data to CSV or JSON formats.
 
@@ -186,14 +186,14 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 ::tab antlers
 ```antlers
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 {{ form:submissions in="superfans" }}
   {{ message | markdown }}
 {{ /form:submissions }}
 ```
 ::tab blade
 ```blade
-<h2>My fans have said some things you can't forget...<h2>
+<h2>My fans have said some things you can't forget...</h2>
 <s:form:submissions in="superfans">
   {!! Statamic::modify($message)->markdown() !!}
 </s:form:submissions>
@@ -259,7 +259,7 @@ This allows you to configure whether the field handle or the field display text 
 'csv_headers' => 'handle',
 ```
 
-### Custom Exporter
+### Custom exporter
 
 If you need to export form submissions in a different file format or need more flexibility around how the CSV/JSON files are created, you may build your own custom exporter.
 
@@ -383,7 +383,7 @@ In each iteration of the `fields` array, you have access to:
 - `config` - The configuration of the blueprint field
 
 
-### Setting the From and Reply-To Name
+### Setting the from and reply-to name
 
 You can set a full "From" and "Reply-To" name in addition to the email address using the following syntax:
 
@@ -393,7 +393,7 @@ reply_to: 'Jack Black <jack@jackblack.com>'
 ```
 
 
-### Setting the Recipient Dynamically
+### Setting the recipient dynamically
 
 You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
@@ -404,7 +404,7 @@ email:
     # other settings here
 ```
 
-### Setting the "Reply To" Dynamically
+### Setting the "Reply to" dynamically
 
 You can set the "reply to" to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
@@ -415,9 +415,9 @@ email:
     # other settings here
 ```
 
-### Setting the "Subject" Dynamically
+### Setting the "Subject" dynamically
 
-You can set the set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
+You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
 
 ```yaml
 email:
@@ -483,9 +483,9 @@ Someone has taken the time to fill out a form on your website. Here are the deta
 Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
 :::
 
-You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/11.x/mail#customizing-the-components).
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/12.x/mail#customizing-the-components).
 
-## File Uploads
+## File uploads
 
 Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
 
@@ -517,7 +517,7 @@ fields:
 
 You have two methods available to you:
 
-First, You can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
+First, you can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
 
 Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
 
@@ -540,7 +540,7 @@ Simple and effective spam prevention.
 
 The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
 
-Hide this field a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
+Hide this field by a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
 For example:
 
@@ -602,7 +602,7 @@ If you are static caching the URL containing a form, return responses like 'succ
 ```
 ::
 
-### Axios Example
+### Axios example
 
 ``` javascript
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -616,7 +616,8 @@ axios.post(form.action, new FormData(form))
 ```
 
 ## Precognition
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/11.x/precognition) in forms.
+
+Statamic supports using [Laravel Precognition](https://laravel.com/docs/12.x/precognition) in forms.
 
 Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
 

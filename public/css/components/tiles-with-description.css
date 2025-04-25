@@ -1,0 +1,116 @@
+/* GROUP COMPONENTS / TILES WITH DESCRIPTION
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    Home
+
+    What does it do?
+    ----------------
+    Lays out thumbnails with a title and short description
+
+*/
+/* HTML Example...
+
+    <div class="c-tiles-with-description">
+        {{ tiles }}
+            <div class="c-tiles-with-description__item{{ flush_image ?= ' c-tiles-with-description__item--flush' }}">
+                <a href="{{ tile_link }}" class="u-link-style-none">
+                    <figure class="c-tiles-with-description__item__thumbnail">
+                        {{ if tile_image_dark_mode }}
+                            {{ tile_image }}
+                                {{ partial:image_dimensions/tile modifier_classes='u-hide-in-dark-mode' }}
+                            {{ /tile_image }}
+                            {{ tile_image_dark_mode }}
+                                {{ partial:image_dimensions/tile modifier_classes='u-hide-in-light-mode' }}
+                            {{ /tile_image_dark_mode }}
+                        {{ else }}
+                            {{ tile_image }}
+                                {{ partial:image_dimensions/tile }}
+                            {{ /tile_image }}
+                        {{ /if }}
+                        <figcaption>{{ tile_title }}</figcaption>
+                    </figure>
+                </a>
+                <p>{{ tile_description }}</p>
+            </div>
+        {{ /tiles }}
+    </div>
+
+*/
+@layer components {
+    .c-tiles-with-description {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
+        gap: var(--spacing-l-1) var(--spacing-s-4);
+        gap: calc(var(--spacing-l-1) + var(--spacing-s-5)) var(--spacing-s-4);
+        /* Custom */
+        @media (width >= 530px) {
+            column-gap: var(--spacing-s-2);
+        }
+        padding-block-end: var(--spacing-l-2);
+
+        .external {
+            display: none;
+        }
+    }
+    .c-tiles-with-description__item {
+        max-width: 21rem;
+        margin-inline: auto;
+        font-family: var(--font-family-ui);
+        p {
+            padding-inline: var(--spacing-m);
+            /* padding-inline: var(--spacing-s-1); */
+            font-size: var(--font-size-ui);
+            line-height: var(--font-size-ui-line-height);
+            max-width: 16rem;
+            text-align: center;
+            margin-inline: auto;
+        }
+    }
+    .c-tiles-with-description__item__thumbnail {
+        padding: var(--spacing-s-2);
+        margin-block-end: var(--spacing-s-2);
+        text-align: center;
+        background: var(--color-gradient-full-light-6);
+        border: var(--dark-mode-border);
+        border-radius: var(--border-radius-l-2);
+
+        figcaption {
+            margin-block-end: var(--spacing-s-5);
+            margin-block-end: 0.4rem;
+        }
+        img {
+            display: inline-block;
+            max-width: 75%;
+            filter: var(--filter-image-boost-1);
+        }
+    }
+    /* Custom */
+    @media (width >= 500px) {
+        .c-tiles-with-description__item p {
+            text-align: left;
+            /* Decrease */
+            font-size: var(--font-size-s-2);
+            line-height: var(--font-size-s-2-line-height);
+        }
+    }
+    /* Custom */
+    @media (width >= 768px) {
+        :is(header, p) + .c-tiles-with-description {
+            padding-block-start: var(--spacing-s-2);
+        }
+    }
+}
+@layer modifiers {
+    .c-tiles-with-description__item--flush {
+        & img {
+            max-width: 100%;
+            margin-block-end: 1.6rem;
+        }
+        .c-tiles-with-description__item__thumbnail {
+            padding: var(--spacing-s-3);
+        }
+    }
+}

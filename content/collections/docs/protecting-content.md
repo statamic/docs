@@ -40,7 +40,7 @@ When visiting this entry's URL, logged in users will see it,
 but logged out users will be redirected to a login page.
 ```
 
-## Protecting a Collection
+## Protecting a collection
 
 To protect an entire collection, inject a `protect` variable into your collection. To do this, add the following to your collection's YAML config file. This cannot be done in the control panel.
 
@@ -51,14 +51,14 @@ inject:
 ```
 
 
-## Configuring Schemes
+## Configuring schemes
 
 The configuration file is located at `config/statamic/protect.php`. In this file you may specify a number of different schemes which you can reference throughout your content files.
 
 You are free to use the same driver in multiple schemes, configured in different ways. Check below for details on how to configure each driver.
 
 
-## IP Address
+## IP address
 
 Add the IP address(es) you wish to allow to the aptly named `allowed` array.
 
@@ -122,7 +122,7 @@ password: local-password
 ```
 
 
-### Password Form
+### Password form
 
 <figure>
     <img src="/img/password-protected.png" alt="A Statamic password protected page">
@@ -191,7 +191,7 @@ The `protect:password_form` tag is going to wrap everything between the tags in 
 
 The HTML of the form itself is up to you. The only requirement is to name the password input `password`. You can do anything else you want.
 
-#### Custom Form URL
+#### Custom form URL
 
 If you would like more control over the location of the password form, you may change `form_url` in the scheme's config:
 
@@ -201,7 +201,7 @@ If you would like more control over the location of the password form, you may c
 
 You can create a page or a route for this. In the corresponding view, you can build a form as described above.
 
-### Validation Errors
+### Validation errors
 When a validation error is encountered, `error` and `errors` variables will be available to you.
 
 The `error` variable will be a string with the first error, useful if you want to display an error at the top of your form.
@@ -211,10 +211,10 @@ The `errors` variable will be an array keyed by field names, each containing an 
 ### Token
 When visiting a password protected page, Statamic will generate a token and append it to the form’s URL. Without a token, the form cannot function correctly. In the example above, you can see the `no_token` boolean will be populated for you. This may happen if you visit the form URL directly.
 
-### Invalid Passwords
+### Invalid passwords
 If someone submits a password and it isn’t valid, Statamic will redirect back with the appropriate validation error. Valid passwords can vary from piece of content to piece of content. This one form is smart enough to handle all password management between password-protected URLs.
 
-### Valid Passwords
+### Valid passwords
 A valid password is anything matching one of the passwords in the allowed list as configured on the scheme. This means that you can send three people three different passwords to access the same URL, each having their own way in. Additionally, you could also set just one password and send that to 100 people and they can all use the same password.
 
 As always with online security, be careful with who you share passwords with or you'll find yourself changing them often.
@@ -223,18 +223,18 @@ As always with online security, be careful with who you share passwords with or 
 This protection method is meant for short-term access control. For example, showing a client your progress without the public or to prevent Google from indexing a staging site. It's about as secure as curtain over an open window: just good enough for passer-bys.
 :::
 
-### Password Expiration
+### Password expiration
 Each user’s passwords will expire along with their session. To manually invalidate a password, remove it from the list of allowed passwords on the page. The next time a user with that password visits this page they’ll be redirected to the password form just like everyone else.
 
 
-## Endgame Protection
+## Endgame protection
 
 If you want to protect a page from anyone - regardless of authentication status, IP address, time of day, weather, or beverage preference - you can simply add `protect: true` to the entry's front-matter.
 
 One may find this useful to quickly disable something.
 
 
-## Site-wide Protection
+## Site-wide protection
 
 To protect your whole site at once, add a scheme name to `default` in your `protect.php` configuration file.
 
@@ -252,9 +252,9 @@ For example, to make sure your whole site is only accessible to a single IP addr
 ```
 
 
-## Custom Drivers
+## Custom drivers
 
-### Writing the Driver
+### Writing the driver
 
 To create your custom protection driver, you should extend the `Statamic\Auth\Protect\Protector` class and add a `protect` method.
 
@@ -291,7 +291,7 @@ $this->url;    // The URL the protection was triggered on.
 $this->data;   // The data object (eg. the Entry) being protected.
 ```
 
-### Registering the Driver
+### Registering the driver
 
 Inside a service provider's `boot` method, you can use the `extend` method on the protector manager class.
 
