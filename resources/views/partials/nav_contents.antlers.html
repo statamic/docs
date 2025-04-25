@@ -19,14 +19,11 @@
             navScrollPosition = 0;
         } else {
             $el.scrollTop = navScrollPosition;
-            // Scroll to current menu item if we came from a URL or docsearch was used
+            // Scroll to current menu item if we came from a URL
             const referrer = document.referrer;
             const isSameDomain = referrer && new URL(referrer).hostname === window.location.hostname;
-            const shouldScrollNextPage = sessionStorage.getItem('scrollNextPage');
-            console.log('Checking scrollNextPage:', shouldScrollNextPage);
-            if (!isSameDomain || shouldScrollNextPage) {
+            if (!isSameDomain) {
                 $el.querySelector('.o-current-menu-item').scrollIntoView({ block: 'center' });
-                sessionStorage.removeItem('scrollNextPage');
             }
         }
         $el.style.overflow = 'hidden';
