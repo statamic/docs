@@ -339,9 +339,12 @@
         /* When a heading is inside a link, escape the link colour */
         color: initial;
     }
-    h2, h3, h4, h4 a, h5, h5 a, h6, h6 a {
+    h4, h4 a, h5, h5 a, h6, h6 a {
         font-family: var(--font-family-prose);
         font-weight: var(--font-family-prose-weight-normal);
+        /* Override iOS Safari's user agent stylesheet */
+        text-decoration: none;
+        color: inherit; /* If you use a link inside a heading, inherit the colour so it's not the default browser-purple */
     }
     h1 {
         font-size: var(--font-size-l-6); line-height: var(--font-size-l-6-line-height);

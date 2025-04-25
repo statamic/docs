@@ -153,6 +153,8 @@
                             a {
                                 /* Indent the subnav */
                                 padding-inline-start: var(--spacing-m);
+                                /* Make it slightly smaller to improve comprehension when the TOC is busy e.g. /tags/form-create */
+                                font-size: var(--font-size-s-1);
                             }
                         }
                     }

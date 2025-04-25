@@ -19,19 +19,19 @@
             navScrollPosition = 0;
         } else {
             $el.scrollTop = navScrollPosition;
-            // Scroll to current menu item if we came from a URL
-            const referrer = document.referrer;
-            const isSameDomain = referrer && new URL(referrer).hostname === window.location.hostname;
-            if (!isSameDomain) {
+            // Scroll to current menu item if we _didn't_ come from a click in the sidenav
+            if (!localStorage.getItem('comingFromSidebarNav')) {
                 $el.querySelector('.o-current-menu-item').scrollIntoView({ block: 'center' });
             }
         }
         $el.style.overflow = 'hidden';
         setTimeout(() => {
             $el.style.overflow = 'auto';
+            localStorage.removeItem('comingFromSidebarNav');
         }, 20)
     "
     @scroll="navScrollPosition = $el.scrollTop"
+    @click="localStorage.setItem('comingFromSidebarNav', 'true')"
 >
     {{ if section }}
     {{ nav :handle="section" }}
