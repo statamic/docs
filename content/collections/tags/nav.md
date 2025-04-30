@@ -41,6 +41,13 @@ parameters:
     type: array
     description: >
       Limits the fields that will be made available to the tag. Selecting fewer fields will improve performance. By default all variables will be selected. See [performance](#performance).
+  -
+    name: '[condition parameters]'
+    type: 'arbitrary'
+    description: >
+      Pro Tip: You can also apply [conditions][1]
+      to the navigation tree! For example, try things
+      like `{{ nav hide_from_navigation:isnt="true" }}`.
 variables:
   -
     name: is_published
@@ -330,3 +337,5 @@ You may improve performance of the `nav` tag in two ways:
    If you only need one level, set `max_depth="1"`.
 2. Select the fields that you'll be using.
    If you're only going to be using `{{ title }}` and `{{ url }}` in the loop, set `select="title|url"`.
+
+[1]: https://statamic.dev/conditions
