@@ -104,6 +104,10 @@ Using the file driver, you can configure the permissions for the directories and
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
 
+:::tip
+If you're using Laravel Herd or Laravel Valet, you don't need to worry about configuring rewrite rules locally. They will automatically handle the rewrite rules for you.
+:::
+
 ### Apache
 
 On Apache servers, you can define rewrite rules inside an `.htaccess` file:
