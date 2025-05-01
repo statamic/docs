@@ -41,6 +41,12 @@ parameters:
     type: array
     description: >
       Limits the fields that will be made available to the tag. Selecting fewer fields will improve performance. By default all variables will be selected. See [performance](#performance).
+  -
+     name: as
+     type: string
+     description: >
+      Alias your nav items into a new variable loop. It's worth noting that the `*recursive children*` variable won't be available when using this parameter.
+     required: false
 variables:
   -
     name: is_published
