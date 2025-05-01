@@ -46,6 +46,19 @@ Collection::computed(['articles', 'pages'], 'shares', function ($entry, $value) 
 });
 ```
 
+You can also provide multiple computed values for the same collection using an associative array:
+
+```php
+Collection::computed('articles', [
+    'shares' => function ($entry, $value) {
+        return TooterService::shareCount($entry->permalink);
+    },
+    'likes' => function ($entry, $value) {
+        return TooterService::likeCount($entry->permalink);
+    },
+]);
+```
+
 ### Overriding using stored values
 
 The second `$value` parameter in the `computed()` callback function will return a _stored_ value under the same handle, if one exists, allowing you to override computed values if necessary.
