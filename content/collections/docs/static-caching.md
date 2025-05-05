@@ -234,13 +234,6 @@ The `static:warm` command supports various arguments:
     Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
 * **`--user` and `--password`**
     Allows you to specify credentials to be used when your site is secured with [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Otherwise, you might end up with a `401 Unauthorized` error running the command.
-* **`--headers`**
-    Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
-    
-    ```
-    php please static:warm --headers="Authorization: Bearer your_token" --headers="Accept: application/json"
-    ```
-    This is useful for APIs, protected routes, or any scenario where custom headers are required.
 * **`--uncached`**
     Ensure that only *uncached* pages are warmed. Perfect for when you just want to 'fill in the gaps' in your cache after some URLs were invalidated, without visiting every single URL in your website. This avoids unnecessary server load.
 * **`--include` and `--exclude`**
@@ -251,6 +244,13 @@ The `static:warm` command supports various arguments:
     For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
 * **`--max-requests`**
     Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
+* **`--headers`**
+    Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
+    
+    ```
+    php please static:warm --headers="Authorization: Bearer your_token" --headers="Accept: application/json"
+    ```
+    This is useful for APIs, protected routes, or any scenario where custom headers are required.
 
 Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
