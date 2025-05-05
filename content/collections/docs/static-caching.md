@@ -234,6 +234,13 @@ The `static:warm` command supports various arguments:
     Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
 * **`--user` and `--password`**
     Allows you to specify credentials to be used when your site is secured with [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Otherwise, you might end up with a `401 Unauthorized` error running the command.
+* **`--headers`**
+    Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
+    
+    ```
+    php please static:warm --headers="Authorization: Bearer your_token" --headers="Accept: application/json"
+    ```
+    This is useful for APIs, protected routes, or any scenario where custom headers are required.
 * **`--uncached`**
     Ensure that only *uncached* pages are warmed. Perfect for when you just want to 'fill in the gaps' in your cache after some URLs were invalidated, without visiting every single URL in your website. This avoids unnecessary server load.
 * **`--include` and `--exclude`**
@@ -799,3 +806,37 @@ The cache store can be customized in `config/cache.php`.
 ```
 
 By default, running `artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.
+
+## Custom headers
+
+The `--headers` option can be used in advanced scenarios to control how the static cache is warmed. Here are some practical examples:
+
+### Bypassing cache for refreshes with Nginx
+
+If you have custom Nginx rules, you can check for a specific header (e.g., `X-Cache-Refresh: 1`) and bypass the `try_files` static cache, forcing a fresh request to the backend. For example:
+
+```nginx
+location / {
+    if ($http_x_cache_refresh = "1") {
+        proxy_pass http://127.0.0.1:8000; # your statamic server
+        break;
+    }
+    try_files $uri $try_location;
+}
+```
+
+Then, you can run:
+
+```
+php please static:warm --headers="X-Cache-Refresh: 1"
+```
+
+### Warming behind authentication
+
+If your site is protected by HTTP authentication or expects a specific header, you can use `--headers` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
+
+```
+php please static:warm --headers="Authorization: Bearer your_token"
+```
+
+This ensures the cache warming requests are accepted by your backend even when authentication is required.
