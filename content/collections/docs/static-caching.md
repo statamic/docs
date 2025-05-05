@@ -248,7 +248,7 @@ The `static:warm` command supports various arguments:
     Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
     
     ```
-    php please static:warm --headers="Authorization: Bearer your_token" --headers="Accept: application/json"
+    php please static:warm --headers="Authorization: Bearer your_token" --headers="X-Ignore-Cache: true"
     ```
     This is useful for APIs, protected routes, or any scenario where custom headers are required.
 
