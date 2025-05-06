@@ -237,18 +237,16 @@ To enable 2FA, head to your **Profile** in the Control Panel. Scan the QR code w
 ```php
 // config/statamic/users.php
 
-'two_factor' => [  
-    'enforced_roles' => [
-	    // Enforce for everyone
-	    '*',
+'two_factor_enforced_roles' => [
+    // Enforce for everyone
+    '*',
 
-		// Enforce for super users
-		'super_users',
+    // Enforce for super users
+    'super_users',
 
-		// Enforce for a specific role
-		'marketing_managers',
-		'user_admin',
-    ],  
+    // Enforce for a specific role
+    'marketing_managers',
+    'user_admin',
 ],
 ```
 
