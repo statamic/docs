@@ -44,7 +44,7 @@ If you run into any issues or errors, check out this [helpful article](/troubles
 In your terminal, `cd` to the parent directory you want to start a new Statamic project in and run the install command.
 
 ``` shell
-statamic new $project_name
+statamic new project_name
 ```
 
 You'll be asked if you want to install a blank site or a [Starter Kit](/starter-kits). If this is your first time, we usually recommend starting with a blank site. Keep it simple.
