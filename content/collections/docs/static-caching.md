@@ -596,6 +596,27 @@ return [
 ];
 ```
 
+### Allowed and disallowed query parameters
+
+If you're using half measure caching, you may specify which query parameters Statamic should include in it's "normalized" static caching URL. This is useful if you only want certain query parameters to be persisted in your cache:
+
+```php
+'allowed_query_parameters' => [
+    'page',
+],
+```
+
+**For example:** if you allow the `page` query parameter, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
+
+You can also do the opposite, by specifying which query parameters should be excluded from the "normalized" static caching URL:
+
+```php
+'disallowed_query_strings' => [
+    'utm_content', 'utm_medium', 'utm_source', 'utm_campaign',
+],
+```
+
+**For example:** if you disallow the UTM query parameters, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
 
 ## Multi-site
 
