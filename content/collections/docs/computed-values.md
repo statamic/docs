@@ -86,7 +86,9 @@ You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade
 
 Once configured, you can simply access your computed values as properties on your instances (ie. `$user->balance` or `$entry->shares`).
 
-Computed values are only available for top-level fields that are placed inside the blueprint. Fields imported from a fieldset, inside a replicator or inside a grid field aren't available
+:::tip
+Computed values are only available for **top-level** fields. You can't use them inside Replicator or Grid fields.
+:::
 
 ### Showing computed values in the control panel
 
