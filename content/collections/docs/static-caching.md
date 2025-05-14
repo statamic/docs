@@ -244,11 +244,11 @@ The `static:warm` command supports various arguments:
     For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
 * **`--max-requests`**
     Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
-* **`--headers`**
+* **`--header`**
     Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
     
     ```
-    php please static:warm --headers="Authorization: Bearer your_token" --headers="X-Ignore-Cache: true"
+    php please static:warm --header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"
     ```
     This is useful for APIs, protected routes, or any scenario where custom headers are required.
 
