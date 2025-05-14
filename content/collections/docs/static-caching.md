@@ -828,15 +828,15 @@ location / {
 Then, you can run:
 
 ```
-php please static:warm --headers="X-Cache-Refresh: 1"
+php please static:warm --header="X-Cache-Refresh: 1"
 ```
 
 ### Warming behind authentication
 
-If your site is protected by HTTP authentication or expects a specific header, you can use `--headers` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
+If your site is protected by HTTP authentication or expects a specific header, you can use `--header` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
 
 ```
-php please static:warm --headers="Authorization: Bearer your_token"
+php please static:warm --header="Authorization: Bearer your_token"
 ```
 
 This ensures the cache warming requests are accepted by your backend even when authentication is required.
