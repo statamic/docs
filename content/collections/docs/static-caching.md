@@ -245,12 +245,8 @@ The `static:warm` command supports various arguments:
 * **`--max-requests`**
     Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
 * **`--header`**
-    Allows you to specify custom HTTP headers to be sent with each request. You can use this option multiple times to set multiple headers. For example:
-    
-    ```
-    php please static:warm --header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"
-    ```
-    This is useful for APIs, protected routes, or any scenario where custom headers are required.
+    Allows you to specify custom HTTP headers to be sent with each request. Can be used multiple times to set multiple headers. Useful for APIs, protected routes, or any scenario where custom headers are required. 
+    For example: `--header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"`
 
 Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
