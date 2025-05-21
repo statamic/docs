@@ -244,6 +244,12 @@ The `static:warm` command supports various arguments:
     For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
 * **`--max-requests`**
     Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
+* **`--header`**
+    Allows you to specify custom HTTP headers to be sent with each request. Can be used multiple times to set multiple headers. Useful for APIs, protected routes, or any scenario where custom headers are required. 
+
+    For example: `--header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"`
+
+    You can find [practical examples](#custom-headers) of this parameter below.
 
 Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
@@ -326,6 +332,41 @@ class AppServiceProvider
     }
 }
 ```
+
+### Custom headers
+
+The `--headers` option can be used in advanced scenarios to control how the static cache is warmed. Here are some practical examples:
+
+#### Bypassing cache for refreshes with Nginx
+
+If you have custom Nginx rules, you can check for a specific header (e.g., `X-Cache-Refresh: 1`) and bypass the `try_files` static cache, forcing a fresh request to the backend. For example:
+
+```nginx
+location / {
+    if ($http_x_cache_refresh = "1") {
+        proxy_pass http://127.0.0.1:8000; # your statamic server
+        break;
+    }
+    try_files $uri $try_location;
+}
+```
+
+Then, you can run:
+
+```
+php please static:warm --header="X-Cache-Refresh: 1"
+```
+
+#### Warming behind authentication
+
+If your site is protected by HTTP authentication or expects a specific header, you can use `--header` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
+
+```
+php please static:warm --header="Authorization: Bearer your_token"
+```
+
+This ensures the cache warming requests are accepted by your backend even when authentication is required.
+
 
 ## Excluding Pages
 
