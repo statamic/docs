@@ -601,7 +601,7 @@ return [
 If you're using half measure caching, you may specify which query parameters Statamic should include in it's "normalized" static caching URL. This is useful if you only want certain query parameters to be persisted in your cache:
 
 ```php
-'allowed_query_parameters' => [
+'allowed_query_strings' => [
     'page',
 ],
 ```
