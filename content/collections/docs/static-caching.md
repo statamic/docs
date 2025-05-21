@@ -618,6 +618,8 @@ You can also do the opposite, by specifying which query parameters should be exc
 
 **For example:** if you disallow the UTM query parameters, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
 
+The `ignore_query_strings` option should be set to `false` in order for the `allowed_query_strings` & `disallowed_query_strings` to work.
+
 ## Multi-site
 
 When using static caching alongside [multi-site](/multi-site), some additional configuration is needed.
