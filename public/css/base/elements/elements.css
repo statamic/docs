@@ -296,11 +296,6 @@
             }
             /* --mq-nav-open-after */
             @media (width >= 1250px) {
-                grid-template-columns: 22fr 60fr 18fr;
-            }
-            /* --mq-wide-after */
-            @media (width >= 1650px) {
-                /* Change proportions slightly so the middle section has more room, and "on this page" is pushed further to the right. */
                 grid-template-columns: 22.75fr 60fr 17.25fr;
             }
             grid-template-rows: 4rem auto;

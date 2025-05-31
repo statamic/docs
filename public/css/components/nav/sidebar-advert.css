@@ -11,8 +11,8 @@
             padding: 0;
         }
         img {
-            margin-inline-start: -0.5rem;
-            inline-size: 85%;
+            margin-inline-start: -0.25rem;
+            inline-size: 80%;
             rotate: -4deg;
             border-radius: var(--border-radius-s);
             box-shadow: 0px 15px 25px -10px hsl(0deg 0% 0% / 55%);
