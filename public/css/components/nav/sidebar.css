@@ -86,7 +86,7 @@
                     display: flex;
                     max-width: 17.9rem;
                     max-height: 4.1rem;
-                    gap: var(--spacing-s-2);
+                    gap: var(--spacing-s-1);
                     align-items: center;
                     justify-content: space-between;
                     padding: var(--spacing-s-2) var(--spacing-l);
@@ -94,6 +94,11 @@
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
                     line-height: var(--font-size-l-2-line-height);
+                    /* --mq-nav-open-after to custom */
+                    @media (width >= 1100px) and (width < 1240px) {
+                        font-size: var(--font-size-l-1);
+                        line-height: var(--font-size-l-1-line-height);
+                    }
                     border-radius: 50px;
                     box-shadow: var(--box-shadow-not-t-light);
                     text-decoration: none;

@@ -7,6 +7,7 @@
             padding-block-start: var(--spacing-l-1);
         }
         padding-inline-start: 3.85rem;
+        padding-inline-start: 2.85rem;
         a {
             padding: 0;
         }
