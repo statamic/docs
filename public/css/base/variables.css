@@ -32,11 +32,6 @@
     --max-width-reading: 43rem;
     /* Increased at later MQs */
     --max-width-content: 49rem;
-    /* --mq-nav-open-after to custom */
-    @media (width >= 1250px) and (width < 1370px) {
-        /* Fix the content getting too big and affecting the sidebar width on lower MQs e.g. >> /tags/collection-next */
-        --max-width-content: 41rem;
-    }
     /* -- */
     --max-width-1: 105rem;
 
