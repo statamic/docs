@@ -21,13 +21,16 @@
 */
 @layer components {
     .c-breadcrumbs {
-        display: inline-block;
+        /* For Safari */
+        display: flex;
         grid-area: breadcrumbs;
         & ol {
             list-style: none;
             display: flex;
             align-items: center;
             gap: var(--spacing-m);
+            /* For Safari */
+            inline-size: 100%;
             /* --mq-grid-before */
             @media (width < 1000px) {
                 position: relative;
