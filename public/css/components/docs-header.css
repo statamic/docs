@@ -241,7 +241,7 @@
                 /* animation: unset; */
                 /* [/2] But in the end I made the "compressed" header the default for browsers that don't support scroll-driven-animations */
                 padding-block: var(--spacing-s-3) var(--spacing-s-2);
-                margin-block-end: var(--spacing-l-3);
+                margin-block-end: var(--spacing-l-2);
             }
         }
     }

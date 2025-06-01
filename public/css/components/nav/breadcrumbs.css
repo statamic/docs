@@ -35,7 +35,7 @@
                 top: -0.1rem;
                 /* 10.5 is an approx width of the two flanking nav buttons, to make sure we stay on the same line for mobile */
                 max-width: calc(100% - 10.5rem);
-                padding-block-end: var(--spacing-l-3);
+                padding-block-end: var(--spacing-l-2);
                 margin-block-start: -0.25rem;
             }
             /* --mq-nav-open-before */

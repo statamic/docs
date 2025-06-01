@@ -14,7 +14,7 @@
     --spacing-l-1: 1.9rem;
 
     /* Smaller values for mobile */
-    --spacing-l-2: min(12vw, 4rem);
+    --spacing-l-2: min(12vw, 3.5rem);
     /* Increased at higher MQs */
     --spacing-l-2-horizontal: min(12vw, 3.5rem);
     --spacing-l-3: min(15vw, 4.7rem);

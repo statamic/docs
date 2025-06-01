@@ -274,7 +274,7 @@
                 "sidebar-1 breadcrumbs sidebar-2"
                 "sidebar-1 content     sidebar-2"
             ;
-            gap: var(--spacing-l-2) var(--spacing-m);
+            gap: var(--spacing-l-1) var(--spacing-m);
             max-width: var(--max-width-1);
             margin-inline: auto;
         }
@@ -416,7 +416,7 @@
     .c-bordered-image {
         &:has(+ :is(h2, h3)) {
             /* Decrease */
-            margin-block-end: var(--spacing-m);
+            margin-block-end: var(--spacing-l-3);
         }
     }
     /* Decrease bottom padding/margin elements previous to hr */
@@ -437,14 +437,14 @@
         --border-width: 0.3px;
     }
     .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --distance: var(--spacing-l-1);
+        --distance: var(--spacing-l-2);
         margin-block-start: var(--distance);
         p:has(+ &) {
-            padding-block-end: var(--spacing-m);
+            padding-block-end: var(--spacing-s-2);
         }
         figure:has(+ &) + h2 {
             /* e.g. >> /quick-start-guide */
-            margin-block-start: var(--spacing-l-4);
+            margin-block-start: var(--spacing-l-3);
         }
         &::before, &::after {
             content: "";
