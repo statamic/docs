@@ -84,7 +84,7 @@
             .c-nav-sidebar-with-popover-api-category-heading {
                 a {
                     display: flex;
-                    max-width: 17.9rem;
+                    max-width: 17rem;
                     max-height: 4.1rem;
                     gap: var(--spacing-s-1);
                     align-items: center;
@@ -112,7 +112,7 @@
                     }
                 }
                 img {
-                    inline-size: 1.5em;
+                    inline-size: 1.45em;
                 }
                 /* [1] Has .o-current-menu-item itself */
                 &.o-current-menu-item a,

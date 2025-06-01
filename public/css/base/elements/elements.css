@@ -24,11 +24,6 @@
             /* Decrease */
             font-size: 98%;
         }
-        /* --mq-text-bump-3-after */
-        @media (min-width: 1800px) {
-            /* Increase */
-            font-size: 101%;
-        }
     }
 }
 
