@@ -193,7 +193,7 @@
         padding-block-end: var(--spacing-s-3);
     }
     p {
-        margin-block-end: var(--spacing-m);
+        margin-block-end: var(--spacing-s-1);
         /* --mq-nav-open-before */
         @media (width < 1100px) {
             /* Decrease */
@@ -361,7 +361,7 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
     h1 {
-        padding-block-end: var(--spacing-s-1);
+        padding-block-end: var(--spacing-m);
     }
     h2 {
         /* E.g. h2 following article intro text */
@@ -370,12 +370,7 @@
     * + h2,
     article + article {
         /* E.g. h2 following article intro text */
-        padding-block: var(--spacing-s-2);
-        /* Custom */
-        @media (width < 1024px) {
-            /* Decrease */
-            padding-block-start: var(--spacing-l);
-        }
+        padding-block: var(--spacing-s-1);
         &:has(+ h3) {
             /* e.g. >> /assets */
             padding-block-end: 0;
@@ -385,7 +380,7 @@
     =================================================== */
     h3 {
         /* e.g. >> /contributing */
-        padding-block: var(--spacing-l) var(--spacing-m);
+        padding-block: var(--spacing-s-1) var(--spacing-s-2);
     }
     h4 {
         /* e.g. >> /content-managers-guide */
@@ -442,7 +437,7 @@
         --border-width: 0.3px;
     }
     .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --distance: var(--spacing-l-3);
+        --distance: var(--spacing-l-1);
         margin-block-start: var(--distance);
         p:has(+ &) {
             padding-block-end: var(--spacing-m);
@@ -478,7 +473,7 @@
         border-width: var(--border-width);
         position: relative;
         opacity: 0.5;
-        margin-block: var(--spacing-l-3);
+        margin-block: var(--spacing-l-2);
 
         /* I think this is the only way we can have a dashed border-image */
         &:after {

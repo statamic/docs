@@ -221,7 +221,7 @@
     }
     @keyframes compress-header {
        100% {
-            padding-block: var(--spacing-s-3) var(--spacing-s-2);
+            padding-block: var(--spacing-s-2) var(--spacing-s-2);
        }
     }
     .c-docs-header__inner {

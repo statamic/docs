@@ -90,7 +90,7 @@
                     align-items: center;
                     justify-content: space-between;
                     padding: var(--spacing-s-3) var(--spacing-m);
-                    margin-block-end: var(--spacing-s-1);
+                    margin-block-end: var(--spacing-s-2);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
                     line-height: var(--font-size-l-2-line-height);

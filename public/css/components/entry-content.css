@@ -148,6 +148,7 @@
             li {
                 padding-inline-start: var(--spacing-s-5);
                 position: relative;
+                font-size: var(--font-size-s-1);
                 &::before {
                     content: '';
                     background: var(--color-purple-light-1);
