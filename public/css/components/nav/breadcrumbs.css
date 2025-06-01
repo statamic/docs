@@ -21,8 +21,7 @@
 */
 @layer components {
     .c-breadcrumbs {
-        /* For Safari */
-        display: flex;
+        display: inline-block;
         grid-area: breadcrumbs;
         & ol {
             list-style: none;
@@ -85,6 +84,8 @@
         }
         /* --mq-grid-after */
         @media (width >= 1000px) {
+            /* For Safari */
+            display: flex;
             ol {
                 gap: var(--spacing-l);
                 block-size: 100%;
