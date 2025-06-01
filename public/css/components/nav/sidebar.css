@@ -89,7 +89,7 @@
                     gap: var(--spacing-s-1);
                     align-items: center;
                     justify-content: space-between;
-                    padding: var(--spacing-s-2) var(--spacing-l);
+                    padding: var(--spacing-s-2) var(--spacing-m);
                     margin-block-end: var(--spacing-m);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
@@ -105,6 +105,10 @@
                     &:focus-visible {
                         /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
                         outline-offset: -3px;
+                    }
+                    /* --mq-text-bump-2-after */
+                    @media (width >= 1441px) {
+                        padding: var(--spacing-s-2) var(--spacing-l);
                     }
                 }
                 img {
@@ -282,6 +286,10 @@
             .c-nav-sidebar-with-popover-api__desktop ul:not(ul ul) {
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
                 height: 80dvh;
+                /* --mq-text-bump-2-before */
+                @media (width < 1441px) {
+                    max-width: 15.5rem;
+                }
                 padding-block-end: var(--spacing-l);
             }
         }

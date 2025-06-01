@@ -268,7 +268,7 @@
                 }
             }
             .c-nav-toc-with-popover-api-category-heading {
-                gap: var(--spacing-s-2);
+                gap: var(--spacing-s-3);
                 &:has(img) {
                     inline-size: 100%;
                 }

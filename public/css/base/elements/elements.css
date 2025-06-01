@@ -296,6 +296,10 @@
             }
             /* --mq-nav-open-after */
             @media (width >= 1250px) {
+                grid-template-columns: 21fr 61fr 18fr;
+            }
+            /* --mq-text-bump-2-after */
+            @media (width >= 1441px) {
                 grid-template-columns: 22.75fr 60fr 17.25fr;
             }
             grid-template-rows: 4rem auto;
