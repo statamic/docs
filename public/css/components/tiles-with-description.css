@@ -77,10 +77,6 @@
         border: var(--dark-mode-border);
         border-radius: var(--border-radius-l-2);
 
-        figcaption {
-            margin-block-end: var(--spacing-s-5);
-            margin-block-end: 0.4rem;
-        }
         img {
             display: inline-block;
             max-width: 75%;

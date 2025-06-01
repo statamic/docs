@@ -295,9 +295,9 @@
             }
             /* --mq-text-bump-2-after */
             @media (width >= 1441px) {
-                grid-template-columns: 22.75fr 60fr 17.25fr;
+                grid-template-columns: 22.5fr 60fr 17.5fr;
             }
-            grid-template-rows: 3rem auto;
+            grid-template-rows: 2.5rem auto;
         }
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS

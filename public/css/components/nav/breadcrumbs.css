@@ -97,8 +97,8 @@
                     content: '';
                     position: absolute;
                     z-index: var(--z-index-below-body);
-                    inset: -0.5rem -1.2rem;
-                    left: -1.2rem;
+                    inset: -0.4rem -1rem;
+                    left: -1.1rem;
                     background: var(--color-gradient-full-light-2);
                     border-radius: 30% 40% 25% 60% / 80% 110% 40% 60%;
                 }
