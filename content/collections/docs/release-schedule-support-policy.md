@@ -51,18 +51,18 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       <tr>
          <td>5</td>
          <td>10-12</td>
-         <td>8.2-8.3</td>
+         <td>8.2-8.4</td>
          <td>May 2024</td>
-         <td>May 2025</td>
+         <td>~July 2025</td>
          <td>Nov 2025</td>
       </tr>
        <tr>
          <td>6</td>
          <td>11-12</td>
          <td>8.3-8.4</td>
-         <td>June 2025</td>
-         <td>June 2026</td>
-         <td>June 2026</td>
+         <td>~July 2025</td>
+         <td>~July 2026</td>
+         <td>~January 2027</td>
       </tr>
    </tbody>
 </table>

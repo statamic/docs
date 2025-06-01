@@ -80,6 +80,12 @@ If you'd like to include more fieldtypes, you can opt into each one by calling `
 Statamic\Fieldtypes\Section::makeSelectableInForms();
 ```
 
+You can also do the opposite and prevent a fieldtype from being used in forms by calling `makeUnselectableInForms` on the respective class within a service provider:
+
+```php
+Statamic\Fieldtypes\Dictionary::makeUnselectableInForms();
+```
+
 ### The template
 
 Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.

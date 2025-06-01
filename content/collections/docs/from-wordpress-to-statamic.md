@@ -62,7 +62,7 @@ An empty set works, or a single [HTML](/fieldtypes/html) field letting you inser
 
 #### Video embed
 
-A single [video](/fieldtypes/video) fieldtype to paste in the URL of a YouTube or Vimeo video would be enough, but you could add a [Select](/fieldtypes/select) or [Button Group](fieldtypes/button-group) field with some options to control the size of the embed (inline vs oversized, for example).
+A single [video](/fieldtypes/video) fieldtype to paste in the URL of a YouTube or Vimeo video would be enough, but you could add a [Select](/fieldtypes/select) or [Button Group](fieldtypes/button_group) field with some options to control the size of the embed (inline vs oversized, for example).
 
 ::: tip
 These fields store **structured content**, but don't explicitly give control over your _layout_ because they don't write their own HTML. You always have full control of your markup, which in the end makes for a better long-term experience, allowing you to redesign sites without ever having to clean up or rewrite content again.
