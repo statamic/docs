@@ -89,7 +89,7 @@
                     gap: var(--spacing-s-1);
                     align-items: center;
                     justify-content: space-between;
-                    padding: var(--spacing-s-2) var(--spacing-m);
+                    padding: var(--spacing-s-3) var(--spacing-m);
                     margin-block-end: var(--spacing-m);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
@@ -112,7 +112,7 @@
                     }
                 }
                 img {
-                    inline-size: 1.55em;
+                    inline-size: 1.5em;
                 }
                 /* [1] Has .o-current-menu-item itself */
                 &.o-current-menu-item a,

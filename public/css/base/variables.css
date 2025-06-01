@@ -16,7 +16,7 @@
     /* Smaller values for mobile */
     --spacing-l-2: min(12vw, 4rem);
     /* Increased at higher MQs */
-    --spacing-l-2-horizontal: min(12vw, 4rem);
+    --spacing-l-2-horizontal: min(12vw, 3.5rem);
     --spacing-l-3: min(15vw, 4.7rem);
     --spacing-l-4: min(18vw, 7.5rem);
 
@@ -305,7 +305,7 @@
         /* Decrease */
         --font-size-ui-rem: 0.94rem;
         /* Slight increase based on .c-nav-sidebar-with-popover-api */
-        --spacing-l-2-horizontal: 4.2rem;
+        --spacing-l-2-horizontal: 4rem;
     }
     /* --mq-wide-mqs */
     @media (min-width: 1800px) {
