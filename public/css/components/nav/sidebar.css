@@ -2,7 +2,7 @@
 =================================================== */
 @layer components {
     .c-nav-sidebar-with-popover-api {
-        --dropdown-nav-item-padding: 0.325rem;
+        --dropdown-nav-item-padding: 0.3rem;
         position: sticky;
         grid-area: sidebar-1;
 
@@ -90,7 +90,7 @@
                     align-items: center;
                     justify-content: space-between;
                     padding: var(--spacing-s-3) var(--spacing-m);
-                    margin-block-end: var(--spacing-m);
+                    margin-block-end: var(--spacing-s-1);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
                     line-height: var(--font-size-l-2-line-height);

@@ -304,8 +304,6 @@
     @media (width >= 1441px) {
         /* Decrease */
         --font-size-ui-rem: 0.94rem;
-        /* Slight increase based on .c-nav-sidebar-with-popover-api */
-        --spacing-l-2-horizontal: 4rem;
     }
     /* --mq-wide-mqs */
     @media (min-width: 1800px) {
