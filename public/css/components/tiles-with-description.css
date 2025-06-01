@@ -99,7 +99,7 @@
     /* Custom */
     @media (width >= 768px) {
         :is(header, p) + .c-tiles-with-description {
-            padding-block-start: var(--spacing-s-2);
+            padding-block-start: var(--spacing-s-4);
         }
     }
 }

@@ -297,7 +297,7 @@
             @media (width >= 1441px) {
                 grid-template-columns: 22.75fr 60fr 17.25fr;
             }
-            grid-template-rows: 4rem auto;
+            grid-template-rows: 3rem auto;
         }
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS
@@ -361,7 +361,7 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
     h1 {
-        padding-block-end: var(--spacing-l-1);
+        padding-block-end: var(--spacing-s-1);
     }
     h2 {
         /* E.g. h2 following article intro text */
@@ -370,7 +370,7 @@
     * + h2,
     article + article {
         /* E.g. h2 following article intro text */
-        padding-block: var(--spacing-l-1) var(--spacing-m);
+        padding-block: var(--spacing-s-2);
         /* Custom */
         @media (width < 1024px) {
             /* Decrease */

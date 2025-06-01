@@ -177,7 +177,7 @@
     */
     --font-size-s-2: 0.85em;
     /* e.g. .c-tiles-with-description p */
-    --font-size-s-2-line-height: 1.55;
+    --font-size-s-2-line-height: 1.45;
     --font-size-s-1: 0.9em;
     --font-size-s-1-fixed: 0.9em;
     --font-size-s-1-line-height: 1.4;
@@ -188,7 +188,7 @@
     /* A touch lower */
     --font-size-ui-line-height: 1.575;
 
-    --font-size-reading-line-height: 1.65;
+    --font-size-reading-line-height: 1.6;
 
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
     =================================================== */
@@ -198,8 +198,8 @@
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */
-    --font-size-l-1: clamp(1em, 4vw, 1.32em);
-    --font-size-l-1-line-height: 1.6;
+    --font-size-l-1: clamp(1em, 4vw, 1.25em);
+    --font-size-l-1-line-height: 1.5;
     /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
     --font-size-l-1-uppercase: 1.2em;
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- AUGMENTED FOURTH
@@ -219,9 +219,9 @@
     --font-size-l-5-line-height: 1.15;
 
     /* e.g. >> Home > Learn Statamic */
-    --font-size-l-6: clamp(3.998em * 0.67, 11vw, 3.998em);
+    --font-size-l-6: clamp(3.5em * 0.67, 11vw, 3.5em);
     /* e.g. deploying/laravel-forge */
-    --font-size-l-6-line-height: 1.15;
+    --font-size-l-6-line-height: 1.05;
 
     /* GROUP VARIABLES -- DECORATION -- BORDER RADIUS
     =================================================== */
