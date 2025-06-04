@@ -71,6 +71,10 @@ If you're ready to start working on your feature, bug fix, or improvement, we ha
 
 If you are submitting a change that will affect a compiled file, such as most of the files in `resources/sass` or `resources/js`, do not commit the compiled files. Due to their large size, they cannot realistically be reviewed by our team. This could be exploited as a way to inject malicious code into Statamic. In order to defensively prevent this, all compiled files will be generated and committed by the core Statamic team.
 
+### Code style
+
+We use [Laravel Pint](https://laravel.com/docs/master/pint#main-content) to enforce a consistent code style across the codebase. You can run it locally with `./vendor/bin/pint`.
+
 ### Control Panel translations
 
 We welcome new translations and updates! Please follow [these instructions](https://statamic.dev/cp-translations#contributing-a-new-translation) on how to contribute to Statamic's translation files.
