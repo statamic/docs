@@ -443,6 +443,8 @@ class CustomExcluder implements UrlExcluder
 }
 ```
 
+Alternatively, you may also prevent URLs from being cached by adding the `X-Statamic-Uncacheable: true` header to requests. 
+
 ## Invalidation
 
 A statically cached page will be served until it is invalidated. You have several options for how to invalidate your cache.
