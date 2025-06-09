@@ -126,7 +126,6 @@ RewriteRule ^ index.php [L]
 RewriteCond %{DOCUMENT_ROOT}/static/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule .* static/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
-</IfModule>
 ```
 
 :::tip
