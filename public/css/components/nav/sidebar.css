@@ -85,6 +85,10 @@
                 a {
                     display: flex;
                     max-width: 17rem;
+                    /* --mq-nav-open-after to --mq-text-bump-2-after */
+                    @media (width >= 1100px) and (width < 1441px) {
+                        max-width: 14.85rem;
+                    }
                     max-height: 4.1rem;
                     gap: var(--spacing-s-1);
                     align-items: center;
