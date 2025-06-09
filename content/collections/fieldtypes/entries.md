@@ -15,7 +15,7 @@ options:
     name: create
     type: boolean
     description: |
-      By default you may create new entries. Set to `false` to only allow selecting from existing entries.
+      By default you may create new entries. Set to `false` to only allow selecting from existing entries. Only available in the `default` mode.
   -
     name: max_items
     type: integer
