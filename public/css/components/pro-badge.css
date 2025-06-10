@@ -65,7 +65,7 @@
             font-weight: var(--font-family-ui-weight-heavy);
             font-size: var(--font-size-s-1);
             line-height: var(--font-size-s-1-line-height);
-            letter-spacing: 0.75px;
+            letter-spacing: 0.25px;
             text-transform: uppercase;
             text-align: center;
             text-decoration: none;
@@ -84,7 +84,7 @@
     .c-pro-badge__text {
         position: relative;
         left: -1.6rem;
-        min-width: 10rem;
+        min-width: 9.5rem;
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -92,7 +92,7 @@
         gap: var(--spacing-s-4);
         padding: var(--spacing-s-5) var(--spacing-s-4);
         background: linear-gradient(to right, var(--color-yellow-light-4) 0%,var(--color-yellow-light-2) 100%);
-        font-size: var(--font-size-s-1);
+        font-size: var(--font-size-s-2);
         rotate: -2.5deg;
 
         img {
