@@ -572,7 +572,7 @@ Often times you'd like to have some extra markup around your list of entries, bu
 ```
 ::tab blade
 ```blade
-<collection:blog
+<statamic:collection:blog
   as="posts"
 >
   <ul>
@@ -582,7 +582,7 @@ Often times you'd like to have some extra markup around your list of entries, bu
     </li>
     @endforeach
   </ul>
-</collection:blog>
+</statamic:collection:blog>
 ```
 ::
 
@@ -609,13 +609,13 @@ featured_image: /img/totes-adorbs-kitteh.jpg
 
 ::tab blade
 ```blade
-<collection:blog
+<statamic:collection:blog
     scope="post"
 >
   <div class="block">
     <img src="{{ $post->featured_image }}">
   </div>
-</collection:blog>
+</statamic:collection:blog>
 ```
 ::
 
@@ -634,7 +634,7 @@ You can also add your scope down into your [alias](#alias) loop. Yep, we thought
 ```
 ::tab blade
 ```blade
-<collection:blog
+<statamic:collection:blog
     as="posts"
 >
   @foreach ($posts as $post)
@@ -642,7 +642,7 @@ You can also add your scope down into your [alias](#alias) loop. Yep, we thought
       <img src="{{ $post->featured_image }}">
     </div>
   @endforeach
-</collection:blog>
+</statamic:collection:blog>
 ```
 ::
 
