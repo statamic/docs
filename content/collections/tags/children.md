@@ -33,3 +33,17 @@ You can get the parent by using the [Parent tag](/tags/parent).
 </statamic:children>
 ```
 ::
+
+## Checking for children on the current page
+
+Since `children` is an Antlers tag, you need to enclose `children` in curly brackets to access the page's `children` variable.
+
+```
+{{ if {children} }}
+    <ul class="container-centered">
+        {{ children }}
+            <li><a href="{{ url }} ">{{ title }}</a></li>
+        {{ /children }}
+    </ul>
+{{ /if }}
+```
