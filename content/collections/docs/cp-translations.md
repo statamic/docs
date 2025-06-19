@@ -38,6 +38,7 @@ preferences:
 | German (Swiss)      | `de_CH` |
 | English             | `en`    |
 | Spanish             | `es`    |
+| Estonian            | `et`    |
 | Persian             | `fa`    |
 | French              | `fr`    |
 | Hungarian           | `hu`    |
