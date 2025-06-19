@@ -52,9 +52,7 @@ Now you can run the `statamic new` command wherever you prefer to keep your site
 cd ~/Sites && statamic new cyberspace-place
 ```
 
-You'll be asked if you want to install a blank site or a [Starter Kit](/starter-kits). Let's just keep it really simple and start with a blank site.
-
-Next you'll be prompted to set up your first super admin user. Do it.
+You'll be asked a couple of questions, like whether you want to install a blank site or a [Starter Kit](/starter-kits) (to keep it really simple, start with a blank site), create your first user, or initialize a Git repository.
 
 Once the installer is done and if everything worked as expected, you should be able to visit [http://cyberspace-place.test](http://cyberspace-place.test) and see the Statamic welcome screen.
 

@@ -116,7 +116,7 @@
     @media (width >= 1100px) {
         .c-docs-header {
             /* Increase */
-            --background-position: 7rem;
+            --background-position: 5.85rem;
             /* Change to include some yellow */
             --gradient: linear-gradient(175deg, var(--color-blue-light-1), var(--color-pink-light-3), var(--color-yellow-light-3));
             @container style(--color-scheme: dark) {
@@ -131,8 +131,8 @@
             }
         }
         .c-docs-header__inner {
-            padding: 2rem var(--spacing-l) 3.75rem;
-            margin-block-end: 2.5rem;
+            padding: 1.5rem var(--spacing-l) 3.25rem;
+            margin-block-end: 2rem;
             .o-logomark {
                 /* Decrease */
                 font-size: 2.75em;
@@ -205,7 +205,7 @@
                 inline-size: 100%;
             }
             main {
-                padding-block-start: 11.2rem;
+                padding-block-start: 9.25rem;
             }
         }
         /* Custom */
@@ -221,7 +221,7 @@
     }
     @keyframes compress-header {
        100% {
-            padding-block: var(--spacing-s-3) var(--spacing-s-2);
+            padding-block: var(--spacing-s-2) var(--spacing-s-2);
        }
     }
     .c-docs-header__inner {
@@ -241,7 +241,7 @@
                 /* animation: unset; */
                 /* [/2] But in the end I made the "compressed" header the default for browsers that don't support scroll-driven-animations */
                 padding-block: var(--spacing-s-3) var(--spacing-s-2);
-                margin-block-end: var(--spacing-l-3);
+                margin-block-end: var(--spacing-l-2);
             }
         }
     }

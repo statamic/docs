@@ -24,11 +24,6 @@
             /* Decrease */
             font-size: 98%;
         }
-        /* --mq-text-bump-3-after */
-        @media (min-width: 1800px) {
-            /* Increase */
-            font-size: 101%;
-        }
     }
 }
 
@@ -198,7 +193,7 @@
         padding-block-end: var(--spacing-s-3);
     }
     p {
-        margin-block-end: var(--spacing-m);
+        margin-block-end: var(--spacing-s-1);
         /* --mq-nav-open-before */
         @media (width < 1100px) {
             /* Decrease */
@@ -279,13 +274,13 @@
                 "sidebar-1 breadcrumbs sidebar-2"
                 "sidebar-1 content     sidebar-2"
             ;
-            gap: var(--spacing-l-2) var(--spacing-m);
+            gap: var(--spacing-l-1) var(--spacing-m);
             max-width: var(--max-width-1);
             margin-inline: auto;
         }
         /* --mq-nav-open-after */
         @media (width >= 1100px) {
-            grid-template-columns: 28fr 60fr 12fr;
+            grid-template-columns: 22fr 70fr 8fr;
             /* Decrease */
             row-gap: var(--spacing-l-1);
             padding-inline: var(--spacing-s-1) var(--spacing-l);
@@ -296,14 +291,13 @@
             }
             /* --mq-nav-open-after */
             @media (width >= 1250px) {
-                grid-template-columns: 22fr 60fr 18fr;
+                grid-template-columns: 21fr 61fr 18fr;
             }
-            /* --mq-wide-after */
-            @media (width >= 1650px) {
-                /* Change proportions slightly so the middle section has more room, and "on this page" is pushed further to the right. */
-                grid-template-columns: 22.75fr 60fr 17.25fr;
+            /* --mq-text-bump-2-after */
+            @media (width >= 1441px) {
+                grid-template-columns: 22.5fr 60fr 17.5fr;
             }
-            grid-template-rows: 4rem auto;
+            grid-template-rows: 2.5rem auto;
         }
     }
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS
@@ -367,7 +361,7 @@
     /* GROUP ELEMENTS / FRAMEWORK / HEADINGS / HIGH PRIORITY / VERTICAL SPACING
     =================================================== */
     h1 {
-        padding-block-end: var(--spacing-l-1);
+        padding-block-end: var(--spacing-m);
     }
     h2 {
         /* E.g. h2 following article intro text */
@@ -376,12 +370,7 @@
     * + h2,
     article + article {
         /* E.g. h2 following article intro text */
-        padding-block: var(--spacing-l-1) var(--spacing-m);
-        /* Custom */
-        @media (width < 1024px) {
-            /* Decrease */
-            padding-block-start: var(--spacing-l);
-        }
+        padding-block: var(--spacing-s-1);
         &:has(+ h3) {
             /* e.g. >> /assets */
             padding-block-end: 0;
@@ -391,7 +380,7 @@
     =================================================== */
     h3 {
         /* e.g. >> /contributing */
-        padding-block: var(--spacing-l) var(--spacing-m);
+        padding-block: var(--spacing-s-1) var(--spacing-s-2);
     }
     h4 {
         /* e.g. >> /content-managers-guide */
@@ -427,7 +416,7 @@
     .c-bordered-image {
         &:has(+ :is(h2, h3)) {
             /* Decrease */
-            margin-block-end: var(--spacing-m);
+            margin-block-end: var(--spacing-l-3);
         }
     }
     /* Decrease bottom padding/margin elements previous to hr */
@@ -448,14 +437,14 @@
         --border-width: 0.3px;
     }
     .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --distance: var(--spacing-l-3);
+        --distance: var(--spacing-l-2);
         margin-block-start: var(--distance);
         p:has(+ &) {
-            padding-block-end: var(--spacing-m);
+            padding-block-end: var(--spacing-s-2);
         }
         figure:has(+ &) + h2 {
             /* e.g. >> /quick-start-guide */
-            margin-block-start: var(--spacing-l-4);
+            margin-block-start: var(--spacing-l-3);
         }
         &::before, &::after {
             content: "";
@@ -484,7 +473,7 @@
         border-width: var(--border-width);
         position: relative;
         opacity: 0.5;
-        margin-block: var(--spacing-l-3);
+        margin-block: var(--spacing-l-2);
 
         /* I think this is the only way we can have a dashed border-image */
         &:after {

@@ -229,11 +229,13 @@
                 /* position-area: bottom span-right; */
                 box-shadow: var(--box-shadow-medium);
                 &:not(:popover-open) {
-                    pointer-events: none;
+                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause pointer-events: none; to persist even when the popover was dismissed */
+                    /* pointer-events: none; */
                 }
                 body:has(&:popover-open) {
                     /* Stop the body scrolling if you try and scroll a toc that's shorter than the viewport height */
-                    overflow: clip;
+                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause overflow-clip: clip; to persist even when the popover was dismissed */
+                    /* overflow: clip; */
                 }
             }
             nav {
@@ -268,7 +270,7 @@
                 }
             }
             .c-nav-toc-with-popover-api-category-heading {
-                gap: var(--spacing-s-2);
+                gap: var(--spacing-s-3);
                 &:has(img) {
                     inline-size: 100%;
                 }

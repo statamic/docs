@@ -47,10 +47,10 @@
             > :has(img) {
                 /* Pull it out of the flow to let the layout breathe */
                 position: absolute;
-                right: -3rem;
-                top: -7rem;
+                right: -2rem;
+                top: -4rem;
                 /* Increase */
-                inline-size: 7rem;
+                inline-size: 6rem;
             }
         }
     }

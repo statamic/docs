@@ -104,6 +104,10 @@ Using the file driver, you can configure the permissions for the directories and
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
 
+:::tip
+If you're using Laravel Herd or Laravel Valet, you don't need to worry about configuring rewrite rules locally. They will automatically handle the rewrite rules for you.
+:::
+
 ### Apache
 
 On Apache servers, you can define rewrite rules inside an `.htaccess` file:
@@ -122,7 +126,6 @@ RewriteRule ^ index.php [L]
 RewriteCond %{DOCUMENT_ROOT}/static/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule .* static/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
-</IfModule>
 ```
 
 :::tip
@@ -240,6 +243,12 @@ The `static:warm` command supports various arguments:
     For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
 * **`--max-requests`**
     Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
+* **`--header`**
+    Allows you to specify custom HTTP headers to be sent with each request. Can be used multiple times to set multiple headers. Useful for APIs, protected routes, or any scenario where custom headers are required. 
+
+    For example: `--header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"`
+
+    You can find [practical examples](#custom-headers) of this parameter below.
 
 Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
@@ -323,6 +332,41 @@ class AppServiceProvider
 }
 ```
 
+### Custom headers
+
+The `--headers` option can be used in advanced scenarios to control how the static cache is warmed. Here are some practical examples:
+
+#### Bypassing cache for refreshes with Nginx
+
+If you have custom Nginx rules, you can check for a specific header (e.g., `X-Cache-Refresh: 1`) and bypass the `try_files` static cache, forcing a fresh request to the backend. For example:
+
+```nginx
+location / {
+    if ($http_x_cache_refresh = "1") {
+        proxy_pass http://127.0.0.1:8000; # your statamic server
+        break;
+    }
+    try_files $uri $try_location;
+}
+```
+
+Then, you can run:
+
+```
+php please static:warm --header="X-Cache-Refresh: 1"
+```
+
+#### Warming behind authentication
+
+If your site is protected by HTTP authentication or expects a specific header, you can use `--header` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
+
+```
+php please static:warm --header="Authorization: Bearer your_token"
+```
+
+This ensures the cache warming requests are accepted by your backend even when authentication is required.
+
+
 ## Excluding Pages
 
 You may wish to exclude certain URLs from being cached.
@@ -397,6 +441,8 @@ class CustomExcluder implements UrlExcluder
     }
 }
 ```
+
+Alternatively, you may also prevent URLs from being cached by adding the `X-Statamic-Uncacheable: true` header to requests. 
 
 ## Invalidation
 
@@ -592,6 +638,29 @@ return [
 ];
 ```
 
+### Allowed and disallowed query parameters
+
+If you're using half measure caching, you may specify which query parameters Statamic should include in it's "normalized" static caching URL. This is useful if you only want certain query parameters to be persisted in your cache:
+
+```php
+'allowed_query_strings' => [
+    'page',
+],
+```
+
+**For example:** if you allow the `page` query parameter, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
+
+You can also do the opposite, by specifying which query parameters should be excluded from the "normalized" static caching URL:
+
+```php
+'disallowed_query_strings' => [
+    'utm_content', 'utm_medium', 'utm_source', 'utm_campaign',
+],
+```
+
+**For example:** if you disallow the UTM query parameters, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
+
+The `ignore_query_strings` option should be set to `false` in order for the `allowed_query_strings` & `disallowed_query_strings` to work.
 
 ## Multi-site
 
@@ -783,7 +852,7 @@ If you need to output a CSRF token in another place while using full measure, yo
 
 ## Custom cache store
 
-Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead invalidation to fail.
+Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
 
 The cache store can be customized in `config/cache.php`.
 
@@ -794,4 +863,4 @@ The cache store can be customized in `config/cache.php`.
 ],
 ```
 
-By default, running `artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.
+By default, running `php artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.

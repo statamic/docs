@@ -89,6 +89,50 @@ You can find a long list of Markdown Extensions [on the CommonMark site](https:/
 
 Statamic 5.0+ uses CommonMark 2.4, while previous versions used either CommonMark 2.2 or CommonMark 1.6. Keep this in mind when reading docs and looking for extension packages.
 
+### Adding renderers
+
+You may add a custom renderer for a specific node type with the `addRenderer` or `addRenderers` method. For example, in the `boot` method of your `AppServiceProvider`, return an array containing the node type and your custom renderer.
+
+```php
+<?php
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Statamic\Facades\Markdown;
+use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        // Add one renderer... [tl! focus:start]
+        Markdown::addRenderer(function () {
+            return [Link::class, new \App\Markdown\LinkRenderer];
+        });
+
+        // or multiple.
+        Markdown::addRenderers(function () {
+            return [
+                [Link::class, new \App\Markdown\LinkRenderer],
+                [Heading::class, new \App\Markdown\HeadingRenderer, 100],
+            ];
+        }); // [tl! focus:end]
+    }
+}
+```
+
+You may also [specify a priority](https://commonmark.thephpleague.com/2.7/customization/rendering/#designating-renderers) for renderers, which CommonMark uses to determine which result is rendered when multiple renderers are available for the same node type:
+
+```php
+Markdown::addRenderers(function () {
+    return [
+        [FencedCode::class, new CodeRenderer, 10],
+        [IndentedCode::class, new CodeRenderer, 20]
+    ];
+});
+```
+
 ### Helper Methods
 
 In addition to manually defining and configuring extensions, some frequently used behaviors are wrapped up in methods for you to use.

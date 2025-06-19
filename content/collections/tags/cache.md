@@ -52,6 +52,9 @@ After an initial render, markup inside a cache tag will be pulled from a cached,
 ```
 ::
 
+It's worth noting that variables defined inside the cache tag won't be available outside of it.
+
+
 :::tip
 You can disable the `cache` tag (temporarily) based on the environment. This is great for your local setup.
 

@@ -235,7 +235,7 @@ return this.config.mode; // regular
 | ***other*** | Some fieldtypes have additional configuration options available. |
 
 :::tip
-A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/3.3/src/Fieldtypes>
+A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/5.x/src/Fieldtypes>
 :::
 
 ### Adding configuration fields to existing fieldtypes

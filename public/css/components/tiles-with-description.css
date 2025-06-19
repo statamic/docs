@@ -71,16 +71,12 @@
     }
     .c-tiles-with-description__item__thumbnail {
         padding: var(--spacing-s-2);
-        margin-block-end: var(--spacing-s-2);
+        margin-block-end: var(--spacing-s-3);
         text-align: center;
         background: var(--color-gradient-full-light-6);
         border: var(--dark-mode-border);
         border-radius: var(--border-radius-l-2);
 
-        figcaption {
-            margin-block-end: var(--spacing-s-5);
-            margin-block-end: 0.4rem;
-        }
         img {
             display: inline-block;
             max-width: 75%;
@@ -99,7 +95,7 @@
     /* Custom */
     @media (width >= 768px) {
         :is(header, p) + .c-tiles-with-description {
-            padding-block-start: var(--spacing-s-2);
+            padding-block-start: var(--spacing-s-4);
         }
     }
 }

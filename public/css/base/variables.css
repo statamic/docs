@@ -7,16 +7,16 @@
     --spacing-s-2: 0.975rem;
     --spacing-s-1: 1.35rem;
 
-    --spacing-m: 1.65rem;
+    --spacing-m: 1.6rem;
     --spacing-l: 1.8rem;
     --spacing-l-static: 1.8rem;
     /* Based on e.g. >> Home on mobile */
     --spacing-l-1: 1.9rem;
 
     /* Smaller values for mobile */
-    --spacing-l-2: min(12vw, 4rem);
+    --spacing-l-2: min(12vw, 3.5rem);
     /* Increased at higher MQs */
-    --spacing-l-2-horizontal: min(12vw, 4rem);
+    --spacing-l-2-horizontal: min(12vw, 3.5rem);
     --spacing-l-3: min(15vw, 4.7rem);
     --spacing-l-4: min(18vw, 7.5rem);
 
@@ -32,11 +32,6 @@
     --max-width-reading: 43rem;
     /* Increased at later MQs */
     --max-width-content: 49rem;
-    /* --mq-nav-open-after to custom */
-    @media (width >= 1250px) and (width < 1370px) {
-        /* Fix the content getting too big and affecting the sidebar width on lower MQs e.g. >> /tags/collection-next */
-        --max-width-content: 41rem;
-    }
     /* -- */
     --max-width-1: 105rem;
 
@@ -182,9 +177,9 @@
     */
     --font-size-s-2: 0.85em;
     /* e.g. .c-tiles-with-description p */
-    --font-size-s-2-line-height: 1.55;
-    --font-size-s-1: 0.9em;
-    --font-size-s-1-fixed: 0.9em;
+    --font-size-s-2-line-height: 1.45;
+    --font-size-s-1: 0.93em;
+    --font-size-s-1-fixed: 0.93em;
     --font-size-s-1-line-height: 1.4;
 
     /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
@@ -193,7 +188,7 @@
     /* A touch lower */
     --font-size-ui-line-height: 1.575;
 
-    --font-size-reading-line-height: 1.65;
+    --font-size-reading-line-height: 1.6;
 
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
     =================================================== */
@@ -203,30 +198,30 @@
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */
-    --font-size-l-1: clamp(1em, 4vw, 1.32em);
-    --font-size-l-1-line-height: 1.6;
+    --font-size-l-1: clamp(1em, 4vw, 1.25em);
+    --font-size-l-1-line-height: 1.5;
     /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
     --font-size-l-1-uppercase: 1.2em;
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- AUGMENTED FOURTH
     =================================================== */
     /* Based on Augmented Fourth - https://type-scale.com/ */
     /* e.g. .c-nav-sidebar-with-popover-api-category-heading on mobile */
-    --font-size-l-2: clamp(1.35em, 6vw, 1.6em);
+    --font-size-l-2: clamp(1.35em, 6vw, 1.55em);
     --font-size-l-2-line-height: 1.3;
 
-    --font-size-l-3: clamp(1.975em * 0.85, 6vw, 1.975em);
+    --font-size-l-3: clamp(1.8em * 0.85, 6vw, 1.8em);
     --font-size-l-3-line-height: 1.2;
 
-    --font-size-l-4: clamp(2.3em * 0.9, 6vw, 2.3em);
+    --font-size-l-4: clamp(2.25em * 0.9, 6vw, 2.25em);
     --font-size-l-4-line-height: 1.15;
 
     --font-size-l-5: clamp(2.827em * 0.8, 9vw, 2.827em);
     --font-size-l-5-line-height: 1.15;
 
     /* e.g. >> Home > Learn Statamic */
-    --font-size-l-6: clamp(3.998em * 0.67, 11vw, 3.998em);
+    --font-size-l-6: clamp(3.45em * 0.67, 11vw, 3.45em);
     /* e.g. deploying/laravel-forge */
-    --font-size-l-6-line-height: 1.15;
+    --font-size-l-6-line-height: 1.05;
 
     /* GROUP VARIABLES -- DECORATION -- BORDER RADIUS
     =================================================== */
@@ -309,8 +304,6 @@
     @media (width >= 1441px) {
         /* Decrease */
         --font-size-ui-rem: 0.94rem;
-        /* Slight increase based on .c-nav-sidebar-with-popover-api */
-        --spacing-l-2-horizontal: 4.2rem;
     }
     /* --mq-wide-mqs */
     @media (min-width: 1800px) {

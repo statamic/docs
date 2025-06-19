@@ -89,6 +89,12 @@ If you're using Vite to build CSS/JavaScript, make sure to uncomment the `npm` c
 For more information about Laravel Cloud, please see its [documentation](https://cloud.laravel.com/docs).
 
 
+## Static Caching
+
+You can't use full-measure static caching with Laravel Cloud, as there's no way to edit the underlying Nginx config.
+
+However, you can use [half-measure static caching](/static-caching#application-driver), which stores the cached HTML pages in your application's cache. In order for the static cache to persist between deployments, you should use a persistent cache driver like [`database` or `redis`](https://laravel.com/docs/master/cache#configuration).
+
 ## Troubleshooting
 
 ### Upstream sent too big header while reading response header from upstream

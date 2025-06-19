@@ -144,10 +144,11 @@
             --padding-inline-start: min(1.5rem, 5vw);
             padding-inline-start: var(--padding-inline-start);
             /* e.g. >> /upgrade-guide */
-            padding-block: var(--spacing-s-4) var(--spacing-l-1);
+            padding-block: var(--spacing-s-5) var(--spacing-l-1);
             li {
                 padding-inline-start: var(--spacing-s-5);
                 position: relative;
+                font-size: var(--font-size-s-1);
                 &::before {
                     content: '';
                     background: var(--color-purple-light-1);

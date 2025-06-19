@@ -28,6 +28,8 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-m);
+            /* For Safari */
+            inline-size: 100%;
             /* --mq-grid-before */
             @media (width < 1000px) {
                 position: relative;
@@ -35,7 +37,7 @@
                 top: -0.1rem;
                 /* 10.5 is an approx width of the two flanking nav buttons, to make sure we stay on the same line for mobile */
                 max-width: calc(100% - 10.5rem);
-                padding-block-end: var(--spacing-l-3);
+                padding-block-end: var(--spacing-l-2);
                 margin-block-start: -0.25rem;
             }
             /* --mq-nav-open-before */
@@ -82,6 +84,8 @@
         }
         /* --mq-grid-after */
         @media (width >= 1000px) {
+            /* For Safari */
+            display: flex;
             ol {
                 gap: var(--spacing-l);
                 block-size: 100%;
@@ -97,8 +101,8 @@
                     content: '';
                     position: absolute;
                     z-index: var(--z-index-below-body);
-                    inset: -0.8rem -1.5rem;
-                    left: -1.25rem;
+                    inset: -0.4rem -1rem;
+                    left: -1.1rem;
                     background: var(--color-gradient-full-light-2);
                     border-radius: 30% 40% 25% 60% / 80% 110% 40% 60%;
                 }

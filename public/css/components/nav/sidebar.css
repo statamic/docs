@@ -2,7 +2,7 @@
 =================================================== */
 @layer components {
     .c-nav-sidebar-with-popover-api {
-        --dropdown-nav-item-padding: 0.325rem;
+        --dropdown-nav-item-padding: 0.3rem;
         position: sticky;
         grid-area: sidebar-1;
 
@@ -84,16 +84,25 @@
             .c-nav-sidebar-with-popover-api-category-heading {
                 a {
                     display: flex;
-                    max-width: 17.9rem;
+                    max-width: 17rem;
+                    /* --mq-nav-open-after to --mq-text-bump-2-after */
+                    @media (width >= 1100px) and (width < 1441px) {
+                        max-width: 14.85rem;
+                    }
                     max-height: 4.1rem;
-                    gap: var(--spacing-s-2);
+                    gap: var(--spacing-s-1);
                     align-items: center;
                     justify-content: space-between;
-                    padding: var(--spacing-s-2) var(--spacing-l);
-                    margin-block-end: var(--spacing-m);
+                    padding: var(--spacing-s-3) var(--spacing-m);
+                    margin-block-end: var(--spacing-s-2);
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
                     line-height: var(--font-size-l-2-line-height);
+                    /* --mq-nav-open-after to custom */
+                    @media (width >= 1100px) and (width < 1240px) {
+                        font-size: var(--font-size-l-1);
+                        line-height: var(--font-size-l-1-line-height);
+                    }
                     border-radius: 50px;
                     box-shadow: var(--box-shadow-not-t-light);
                     text-decoration: none;
@@ -101,9 +110,13 @@
                         /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
                         outline-offset: -3px;
                     }
+                    /* --mq-text-bump-2-after */
+                    @media (width >= 1441px) {
+                        padding: var(--spacing-s-2) var(--spacing-l);
+                    }
                 }
                 img {
-                    inline-size: 1.55em;
+                    inline-size: 1.45em;
                 }
                 /* [1] Has .o-current-menu-item itself */
                 &.o-current-menu-item a,
@@ -223,11 +236,13 @@
                 /* position-area: bottom span-right; */
                 box-shadow: var(--box-shadow-medium);
                 &:not(:popover-open) {
-                    pointer-events: none;
+                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause pointer-events: none; to persist even when the popover was dismissed */
+                    /* pointer-events: none; */
                 }
                 body:has(&:popover-open) {
                     /* Stop the body scrolling if you try and scroll a toc that's shorter than the viewport height */
-                    overflow: clip;
+                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause overflow-clip: clip; to persist even when the popover was dismissed */
+                    /* overflow: clip; */
                 }
             }
             nav {
@@ -277,6 +292,10 @@
             .c-nav-sidebar-with-popover-api__desktop ul:not(ul ul) {
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
                 height: 80dvh;
+                /* --mq-text-bump-2-before */
+                @media (width < 1441px) {
+                    max-width: 15.5rem;
+                }
                 padding-block-end: var(--spacing-l);
             }
         }
