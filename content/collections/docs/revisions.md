@@ -38,16 +38,6 @@ Revisions are tucked away in the `storage/statamic/revisions` directory by defau
 
 ## Revision states
 
-At any given point your content can be in one or more publish states. You can control the default beginning state with the `default_status` collection setting.
-
-``` yaml
-# New entries default to published
-default_status: published
-
-# New entries will default to draft
-default_status: draft
-```
-
 ### Unpublished
 
 A new entry begins in the unpublished state. As long as your entry _remains_ unpublished, you're simply working directly on the entry located in your content/collections/{collection} directory. It will not be visible from the front-end of your site until it's published, and you can save a revision at any point.
