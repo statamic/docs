@@ -71,6 +71,30 @@ Note that the `Nav` facade is `Statamic\Facades\CP\Nav`.
 There's another Nav facade _without_ the CP namespace, and it's for the front-end ["Navs"](/navigation) feature.
 :::
 
+### Breadcrumbs
+
+Breadcrumbs are displayed at the top of the Control Panel, allowing users to navigate back to previous pages. Statamic automatically generates these breadcrumbs from the CP navigation.
+
+However, breadcrumbs support a few additional options that can be set using the `extra()` method on a `NavItem`:
+
+```php
+Nav::extend(function ($nav) {
+    $nav->content('Store')
+        ->route('store.index')
+        ->icon('shopping-cart')
+        ->extra([ // [tl! focus:start]
+            'breadcrumbs' => [
+                // Create button
+                'create_label' => 'Create Product',
+                'create_url' => cp_route('store.products.create'),
+                
+                // Configure button
+                'configure_url' => cp_route('store.settings'),
+            ],
+        ]); // [tl! focus:end]
+});
+```
+
 ## Adding Children
 
 Maybe we have `Products` and `Orders`, which we want to display as children under the `Store` item.  To do this, we'll add a `children()` call to the parent nav item:
