@@ -137,6 +137,31 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
       favorite_food: 'contains_any pizza, lasagna'
 ```
 
+### Contains in a Taxonomy
+
+When you want to compare to a value that resides in a taxonomy, you have to remember that the `contains` term needs to include the taxonomy slug in the form `slug::term`:
+
+```yaml
+-
+  handle: favorite_food
+  field:
+    type: text
+-
+  handle: food_groups
+  field:
+    type: terms
+    taxonomies:
+      - food_groups
+    display: Food Groups
+    mode: select
+-
+  handle: favorite_vegetables
+  field:
+    type: text
+    if:
+      favorite_food: 'contains food_group::vegetables'
+```
+
 ## Advanced comparisons
 
 For more advanced comparisons, several operators and right-hand-side literals/options are available to you.  For example, we could show an `email` field if age is greater than or equal to `16`:
