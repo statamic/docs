@@ -57,7 +57,6 @@
     .c-entry-content > figure,
     .c-bordered-image {
         position: relative;
-        place-items: center;
         /* e.g. >> /collections and /stache */
         margin-block-start: var(--spacing-l);
         &:not(:last-child) {
