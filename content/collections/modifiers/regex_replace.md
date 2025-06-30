@@ -9,21 +9,21 @@ title: 'Regex Replace'
 Run a find and replace regex on a string of content.
 
 ```yaml
-description: This cat video is the best thing ever.
+link: https://www.catvideo.com
 ```
 
 ::tabs
 
 ::tab antlers
 ```antlers
-{{ description | regex_replace('best', 'okayest') }}
+{{ link | regex_replace('https?://(www.)?([^/]+)/?.*', '\2') }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($description)->regexReplace(['best', 'okayest']) }}
+{{ Statamic::modify($description)->regexReplace(['https?://(www.)?([^/]+)/?.*', '\2']) }}
 ```
 ::
 
 ```html
-This cat video is the okayest thing ever.
+catvideo.com
 ```
