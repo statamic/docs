@@ -29,6 +29,10 @@
             }
         }
         background: var(--background-image) no-repeat 0% var(--background-position), var(--gradient);
+        @supports not (animation-timeline: auto) {
+            /* Remove the background image when scroll-driven animations are not supported */
+            background: no-repeat 0% var(--background-position), var(--gradient);
+        }
     }
 
     .c-docs-header__inner {
@@ -210,7 +214,7 @@
         @media (width >= 2100px) {
             main {
                 /* Increase */
-                padding-block-start: 13rem;
+                padding-block-start: 12rem;
             }
         }
     }
