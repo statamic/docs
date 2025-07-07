@@ -1,20 +1,20 @@
 :root {
     /* GROUP VARIABLES -- SPACING
     =================================================== */
-    --spacing-s-5: 0.25rem;
+    --spacing-s-5: 0.15rem;
     --spacing-s-4: 0.5rem;
     --spacing-s-3: 0.8rem;
     --spacing-s-2: 0.975rem;
     --spacing-s-1: 1.35rem;
 
-    --spacing-m: 1.6rem;
+    --spacing-m: 1.55rem;
     --spacing-l: 1.8rem;
     --spacing-l-static: 1.8rem;
     /* Based on e.g. >> Home on mobile */
     --spacing-l-1: 1.9rem;
 
     /* Smaller values for mobile */
-    --spacing-l-2: min(12vw, 3.5rem);
+    --spacing-l-2: min(12vw, 2.5rem);
     /* Increased at higher MQs */
     --spacing-l-2-horizontal: min(12vw, 3.5rem);
     --spacing-l-3: min(15vw, 4.7rem);
@@ -30,8 +30,7 @@
     =================================================== */
     /* From lowest to highest value */
     --max-width-reading: 43rem;
-    /* Increased at later MQs */
-    --max-width-content: 49rem;
+    --max-width-content: 51rem;
     /* -- */
     --max-width-1: 105rem;
 
@@ -45,7 +44,7 @@
     /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
     =================================================== */
     /* Dark to light */
-    --color-black: hsl(210deg 3.85% 0%);
+    --color-black: hsl(210deg 3.85% 5%);
     /* Stays the same for both light and dark mode */
     --color-black-static: hsl(210deg 3.85% 0%);
     --color-black-light: #334155;
@@ -175,11 +174,13 @@
         -m is just above 1rem
         -l sizes are above 1rem
     */
-    --font-size-s-2: 0.85em;
+    /* e.g. breadcrumbs */
+    --font-size-s-3: 0.8em;
+    --font-size-s-2: 0.83em;
     /* e.g. .c-tiles-with-description p */
-    --font-size-s-2-line-height: 1.45;
-    --font-size-s-1: 0.93em;
-    --font-size-s-1-fixed: 0.93em;
+    --font-size-s-2-line-height: 1.4;
+    --font-size-s-1: 0.9em;
+    --font-size-s-1-fixed: 0.9em;
     --font-size-s-1-line-height: 1.4;
 
     /* The natural font-size of Lexend feels a touch bigger than p22-mackinac-pro, so you can use this font-size variable to match it. */
@@ -188,17 +189,17 @@
     /* A touch lower */
     --font-size-ui-line-height: 1.575;
 
-    --font-size-reading-line-height: 1.6;
+    --font-size-reading-line-height: 1.5;
 
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
     =================================================== */
     /* -m is just above 1rem */
-    --font-size-m: clamp(1em, 4vw, 1.125em);
-    --font-size-m-rem: clamp(1rem, 4vw, 1.125rem);
+    --font-size-m: clamp(1em, 4vw, 1.072em);
+    --font-size-m-rem: clamp(1rem, 4vw, 1.072rem);
     /* e.g. .c-tip, with more characters, such as "Best Practice" */
     --font-size-m-uppercase: 1.075em;
     /* e.g. >> Home > Lead Text */
-    --font-size-l-1: clamp(1em, 4vw, 1.25em);
+    --font-size-l-1: clamp(1em, 4vw, 1.15em);
     --font-size-l-1-line-height: 1.5;
     /* e.g. .c-tip, just a few characters, such as "Hot Tip!" */
     --font-size-l-1-uppercase: 1.2em;
@@ -270,7 +271,6 @@
         /* GROUP VARIABLES -- SPACING
         ===================================================  */
         /* Based on nav sidebar and toc spacing */
-        --spacing-s-5: 0.27rem;
         --spacing-l: 2.2rem;
     }
     /* --mq-root-variable-adjustments-2 */
@@ -303,14 +303,7 @@
     /* --mq-text-bump-2-after */
     @media (width >= 1441px) {
         /* Decrease */
-        --font-size-ui-rem: 0.94rem;
-    }
-    /* --mq-wide-mqs */
-    @media (min-width: 1800px) {
-        /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
-        =================================================== */
-        /* Increase */
-        --max-width-content: 52rem;
+        --font-size-ui-rem: 0.85rem;
     }
 
     /* GROUP VARIABLES -- LIGHT/DARK MODE

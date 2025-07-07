@@ -2,7 +2,7 @@
 =================================================== */
 @layer components {
     .c-nav-sidebar-with-popover-api {
-        --dropdown-nav-item-padding: 0.3rem;
+        --dropdown-nav-item-padding: 0.25rem;
         position: sticky;
         grid-area: sidebar-1;
 
@@ -98,11 +98,6 @@
                     font-family: var(--font-family-prose);
                     font-size: var(--font-size-l-2);
                     line-height: var(--font-size-l-2-line-height);
-                    /* --mq-nav-open-after to custom */
-                    @media (width >= 1100px) and (width < 1240px) {
-                        font-size: var(--font-size-l-1);
-                        line-height: var(--font-size-l-1-line-height);
-                    }
                     border-radius: 50px;
                     box-shadow: var(--box-shadow-not-t-light);
                     text-decoration: none;
@@ -112,11 +107,15 @@
                     }
                     /* --mq-text-bump-2-after */
                     @media (width >= 1441px) {
-                        padding: var(--spacing-s-2) var(--spacing-l);
+                        padding-inline: var(--spacing-l);
                     }
                 }
                 img {
-                    inline-size: 1.45em;
+                    inline-size: 23px;
+                    /* --mq-text-bump-2-after */
+                    @media (width >= 1441px) {
+                        inline-size: 1.45em;
+                    }
                 }
                 /* [1] Has .o-current-menu-item itself */
                 &.o-current-menu-item a,
@@ -131,7 +130,7 @@
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-m);
+                gap: var(--spacing-s-1);
                 font-size: var(--font-size-s-2);
                 overscroll-behavior-y: contain;
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
@@ -268,9 +267,9 @@
         }
         /* --mq-nav-open-after */
         @media (width >= 1100px) {
-            --top: 9rem;
+            --top: 8.5rem;
             top: var(--top);
-            block-size: calc(100vh - var(--top) -  3.5rem);
+            block-size: calc(100vh - var(--top) - 6.5rem);
             .c-nav-sidebar-with-popover-api__mobile {
                 /* Prevent a lag in seeing the mobile nav collapse if you pull the window out  */
                 transition: unset;

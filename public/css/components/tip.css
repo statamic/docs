@@ -29,6 +29,7 @@
             position: relative;
             z-index: var(--z-index-above-body);
             padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-3);
+
             /* Custom */
             @media (width < 550px) {
                 padding-inline: var(--spacing-m);
@@ -50,7 +51,6 @@
             p {
                 max-width: 96%;
                 font-size: unset;
-                line-height: 1.55;
                 font-weight: var(--font-family-ui-weight-medium);
                 /* Custom */
                 @media (width < 500px) {
@@ -91,7 +91,7 @@
         z-index: var(--z-index-above-body);
         top: -1.3rem;
         left: -2.5rem;
-        inline-size: 5rem;
+        inline-size: 4.85rem;
         filter: var(--filter-burnt-shadow);
     }
 }

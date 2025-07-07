@@ -50,7 +50,7 @@
                 max-height: 70vh;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-s-2);
+                gap: var(--spacing-s-5);
                 list-style: none;
                 font-size: var(--font-size-s-2);
                 border-radius: var(--border-radius-l-2);
@@ -107,7 +107,7 @@
                 > ul {
                     flex-direction: row;
                     justify-content: end;
-                    font-size: unset;
+                    font-size: var(--font-size-s-1);
                     li:last-child:not(:has(.o-current-menu-item)) a {
                         padding-inline-end: 0;
                     }

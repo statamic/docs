@@ -91,8 +91,6 @@
             border-radius: 5px;
             font-family: var(--font-family-code);
             font-weight: var(--font-family-code-weight-normal);
-            /* Based on code being inside tips too */
-            font-size: 1.075rem;
             letter-spacing: -0.2px;
         }
     }
@@ -167,7 +165,7 @@
         margin-inline: 0;
         & img {
             /* Push the caption away from the image */
-            margin-block-end: var(--spacing-s-3);
+            margin-block-end: var(--spacing-s-4);
         }
     }
     /*
@@ -193,7 +191,7 @@
         padding-block-end: var(--spacing-s-3);
     }
     p {
-        margin-block-end: var(--spacing-s-1);
+        margin-block-end: var(--spacing-s-2);
         /* --mq-nav-open-before */
         @media (width < 1100px) {
             /* Decrease */
@@ -341,10 +339,10 @@
         color: inherit; /* If you use a link inside a heading, inherit the colour so it's not the default browser-purple */
     }
     h1 {
-        font-size: var(--font-size-l-6); line-height: var(--font-size-l-6-line-height);
+        font-size: var(--font-size-l-5); line-height: var(--font-size-l-5-line-height);
     }
     h2 {
-        font-size: var(--font-size-l-4); line-height: var(--font-size-l-4-line-height);
+        font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
     }
     h3 {
         font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
@@ -370,7 +368,7 @@
     * + h2,
     article + article {
         /* E.g. h2 following article intro text */
-        padding-block: var(--spacing-s-1);
+        padding-block: var(--spacing-s-2);
         &:has(+ h3) {
             /* e.g. >> /assets */
             padding-block-end: 0;
@@ -415,8 +413,8 @@
     .c-tip,
     .c-bordered-image {
         &:has(+ :is(h2, h3)) {
-            /* Decrease */
-            margin-block-end: var(--spacing-l-3);
+            /* Increase e.g. >> /assets */
+            margin-block-end: var(--spacing-l-2);
         }
     }
     /* Decrease bottom padding/margin elements previous to hr */
@@ -437,7 +435,7 @@
         --border-width: 0.3px;
     }
     .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
-        --distance: var(--spacing-l-2);
+        --distance: var(--spacing-l-1);
         margin-block-start: var(--distance);
         p:has(+ &) {
             padding-block-end: var(--spacing-s-2);
