@@ -239,10 +239,6 @@
                     /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause overflow-clip: clip; to persist even when the popover was dismissed */
                     /* overflow: clip; */
                 }
-                /* This looks complex but we're simply disabling pointer events for things under the popover. We're doing this to prevent accidental clicks on links when clicking outside the popover to softclose. E.g. without this if you tried to click outside the nav to soft-close on the homepage you may accidentally click a tile link */
-                body:has(&:popover-open) *:not(&, & *) {
-                    pointer-events: none;
-                }
             }
             nav {
                 background: var(--color-dropdown-nav-background);
