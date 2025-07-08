@@ -1,4 +1,4 @@
-/* GROUP OBJECTS / COLLAPSABLE SIDE MENU WITH CHECKBOXES
+/* GROUP OBJECTS / COLLAPSIBLE SIDE MENU WITH CHECKBOXES
 =================================================== */
 /* Notes...
 
@@ -79,7 +79,7 @@
 @layer utilities {
     .o-toggle-subnav {
         + ul {
-            padding-block: 1rem;
+            padding-block: 1rem 0.25rem;
             
         }
         &:has(input:checked) + ul {

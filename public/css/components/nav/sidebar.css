@@ -293,4 +293,9 @@
             }
         }
     }
+    .c-nav-collapse-expand {
+        svg {
+            fill: none;
+        }
+    }
 }
