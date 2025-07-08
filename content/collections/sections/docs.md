@@ -7,7 +7,7 @@ intro: 'This is where the learning begins and the veterans return for their refe
 template: home
 section: docs
 content_width: flex-1
-breadcrumb_title: 'Getting Started'
+breadcrumb_title: 'Learn Statamic'
 tiles:
   -
     id: m8fsi7v5

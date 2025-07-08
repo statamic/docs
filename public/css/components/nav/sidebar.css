@@ -82,33 +82,31 @@
                 font-weight: var(--font-family-ui-weight-light);
             }
             .c-nav-sidebar-with-popover-api-category-heading {
-                a {
-                    display: flex;
-                    max-width: 17rem;
-                    /* --mq-nav-open-after to --mq-text-bump-2-after */
-                    @media (width >= 1100px) and (width < 1441px) {
-                        max-width: 14.85rem;
-                    }
-                    max-height: 4.1rem;
-                    gap: var(--spacing-s-1);
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: var(--spacing-s-3) var(--spacing-m);
-                    margin-block-end: var(--spacing-s-2);
-                    font-family: var(--font-family-prose);
-                    font-size: var(--font-size-l-2);
-                    line-height: var(--font-size-l-2-line-height);
-                    border-radius: 50px;
-                    box-shadow: var(--box-shadow-not-t-light);
-                    text-decoration: none;
-                    &:focus-visible {
-                        /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
-                        outline-offset: -3px;
-                    }
-                    /* --mq-text-bump-2-after */
-                    @media (width >= 1441px) {
-                        padding-inline: var(--spacing-l);
-                    }
+                display: flex;
+                max-width: 17rem;
+                /* --mq-nav-open-after to --mq-text-bump-2-after */
+                @media (width >= 1100px) and (width < 1441px) {
+                    max-width: 14.85rem;
+                }
+                max-height: 4.1rem;
+                gap: var(--spacing-s-1);
+                align-items: center;
+                justify-content: space-between;
+                padding: var(--spacing-s-3) var(--spacing-m);
+                margin-block-end: var(--spacing-s-2);
+                font-family: var(--font-family-prose);
+                font-size: var(--font-size-l-2);
+                line-height: var(--font-size-l-2-line-height);
+                border-radius: 50px;
+                box-shadow: var(--box-shadow-not-t-light);
+                text-decoration: none;
+                &:focus-visible {
+                    /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
+                    outline-offset: -3px;
+                }
+                /* --mq-text-bump-2-after */
+                @media (width >= 1441px) {
+                    padding-inline: var(--spacing-l);
                 }
                 img {
                     inline-size: 23px;
@@ -117,10 +115,8 @@
                         inline-size: 1.45em;
                     }
                 }
-                /* [1] Has .o-current-menu-item itself */
-                &.o-current-menu-item a,
-                /* [/2] Or has a sub nav with .o-current-menu-item */
-                &:has(+ * .o-current-menu-item) a {
+                /* has a sub nav with .o-current-menu-item */
+                &:has(+ * .o-current-menu-item) {
                     box-shadow: none;
                     background: var(--color-gradient-full-light-2);
                     img {
