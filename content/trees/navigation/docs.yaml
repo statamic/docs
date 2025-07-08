@@ -138,7 +138,7 @@ tree:
     title: Frontend
     data:
       navigation_image: navigation/nike-air-jordans.png
-      image_width_override: 2.1em
+      image_width_override: 2.075em
     children:
       -
         id: 6482b878-b8eb-4114-886e-dc8c9eb277b8
