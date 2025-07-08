@@ -123,6 +123,9 @@
                 &:has(+ * .o-current-menu-item) a {
                     box-shadow: none;
                     background: var(--color-gradient-full-light-2);
+                    img {
+                        box-shadow: var(--box-shadow-pink-light);
+                    }
                 }
             }
 

@@ -191,7 +191,7 @@
         padding-block-end: var(--spacing-s-3);
     }
     p {
-        margin-block-end: var(--spacing-s-2);
+        margin-block-end: var(--spacing-m);
         /* --mq-nav-open-before */
         @media (width < 1100px) {
             /* Decrease */
