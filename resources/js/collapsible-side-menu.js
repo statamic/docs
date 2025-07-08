@@ -3,31 +3,45 @@ if (!localStorage.getItem('collapse-nav')) {
     localStorage.setItem('collapse-nav', 'no');
 }
 
+// Function to collapse navigation (uncheck inputs)
+function collapseNavigation() {
+    document.querySelectorAll('.o-toggle-subnav').forEach(element => {
+        if (!element.matches(':has(+ ul .o-current-menu-item)')) {
+            element.querySelector('input').checked = false;
+        }
+    });
+}
+
+// Function to expand navigation (check inputs)
+function expandNavigation() {
+    document.querySelectorAll('.o-toggle-subnav').forEach(element => {
+        if (!element.matches(':has(+ ul .o-current-menu-item)')) {
+            element.querySelector('input').checked = true;
+        }
+    });
+}
+
 // Function to handle navigation collapse/expand
 function toggleNavigation() {
-    // Toggle the collapse-nav state between 'yes' and 'no'
-    const isCurrentlyCollapsed = localStorage.getItem('collapse-nav');
-    const newCollapseState = isCurrentlyCollapsed === 'no' ? 'yes' : 'no';
-    localStorage.setItem('collapse-nav', newCollapseState);
-    
     if (localStorage.getItem('collapse-nav') === 'yes') {
-        document.querySelectorAll('.o-toggle-subnav').forEach(element => {
-            if (!element.matches(':has(+ ul .o-current-menu-item)')) {
-                element.querySelector('input').checked = false;
-            }
-        });
-        console.log('not collapsed');
+        expandNavigation();
+        localStorage.setItem('collapse-nav', 'no');
     } else {
-        document.querySelectorAll('.o-toggle-subnav').forEach(element => {
-            if (!element.matches(':has(+ ul .o-current-menu-item)')) {
-                element.querySelector('input').checked = true;
-            }
-        });
-        console.log('collapsed');
+        collapseNavigation();
+        localStorage.setItem('collapse-nav', 'yes');
     }
 }
 
+// Add click handlers
 Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(element => {
     element.onclick = toggleNavigation;
 });
 
+// Apply saved state on page load
+window.addEventListener('DOMContentLoaded', (event) => {
+    if (localStorage.getItem('collapse-nav') === 'yes') {
+        collapseNavigation();
+    } else {
+        expandNavigation();
+    }
+});
