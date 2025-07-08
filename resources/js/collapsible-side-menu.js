@@ -1,6 +1,7 @@
 // Initialize collapse-nav to 'no' if it hasn't been set yet
 if (!localStorage.getItem('collapse-nav')) {
     localStorage.setItem('collapse-nav', 'no');
+    console.log('collapse-nav not set yet');
 }
 
 // Function to collapse navigation (uncheck inputs)
@@ -10,6 +11,9 @@ function collapseNavigation() {
             element.querySelector('input').checked = false;
         }
     });
+    Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(element => {
+        element.classList.remove('js__expand-collapse-nav--collapsed');
+    });
 }
 
 // Function to expand navigation (check inputs)
@@ -18,6 +22,9 @@ function expandNavigation() {
         if (!element.matches(':has(+ ul .o-current-menu-item)')) {
             element.querySelector('input').checked = true;
         }
+    });
+    Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(element => {
+        element.classList.add('js__expand-collapse-nav--collapsed');
     });
 }
 
@@ -39,7 +46,6 @@ Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(
 
 // Apply saved state on page load
 window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOMContentLoaded');
     // Add class to prevent animations during initial state application
     Array.from(document.querySelectorAll('.o-toggle-subnav-container') || []).forEach(element => {
         element.classList.add('u-disable-animation');

@@ -244,7 +244,8 @@
     =================================================== */
     --box-shadow-medium: 0px 0px 15px rgba(0,0,0,0.125);
     --box-shadow-pink-light: 0px 5px 5px hsl(var(--color-pink-hue) 100% 95%);
-    --box-shadow-not-t-light: 0 3px 5px var(--color-shadow), 0 4px 6px -2px var(--color-shadow);
+    --box-shadow-not-t-light: 0 3px 5px var(--color-shadow), 0 4px 4px -2px var(--color-shadow);
+    --box-shadow-not-t-lighter: 0 5px 10px var(--color-shadow), 0 4px 1px -2px var(--color-shadow);
     --box-shadow-not-t-medium: 0 10px 15px -3px hsl(0deg 0% 0% / 5%), 0 4px 6px -2px hsl(0deg 0% 0% / 5%);
 
     /* GROUP VARIABLES -- DECORATION -- OTHER

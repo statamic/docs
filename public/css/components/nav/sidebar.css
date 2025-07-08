@@ -99,6 +99,9 @@
                 border-radius: 50px;
                 box-shadow: var(--box-shadow-not-t-light);
                 text-decoration: none;
+                &:has(input:checked) {
+                    box-shadow: var(--box-shadow-not-t-lighter);
+                }
                 &:focus-visible {
                     /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
                     outline-offset: -3px;
@@ -296,6 +299,19 @@
     .c-nav-collapse-expand {
         svg {
             fill: none;
+        }
+        &:not(.js__expand-collapse-nav--collapsed) {
+            #top-arrow {
+                transform: scaleY(-1);
+                transform-origin: 50% 17%;
+            }
+            #bottom-arrow {
+                transform: scaleY(-1);
+                transform-origin: 50% 83%;
+            }
+            .dash {
+                display: none;
+            }
         }
     }
 }
