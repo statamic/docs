@@ -66,4 +66,8 @@
         padding-block-end: 0;
         -webkit-line-clamp: var(--clamp, 2);
     }
+    .u-disable-animation * {
+        animation: unset;
+        transition: unset;
+    }
 }

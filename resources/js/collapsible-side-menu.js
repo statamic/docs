@@ -39,9 +39,22 @@ Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(
 
 // Apply saved state on page load
 window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOMContentLoaded');
+    // Add class to prevent animations during initial state application
+    Array.from(document.querySelectorAll('.o-toggle-subnav-container') || []).forEach(element => {
+        element.classList.add('u-disable-animation');
+    });
+
     if (localStorage.getItem('collapse-nav') === 'yes') {
         collapseNavigation();
     } else {
         expandNavigation();
     }
+    
+    // Remove the class after a short delay to allow state to be applied
+    setTimeout(() => {
+        Array.from(document.querySelectorAll('.o-toggle-subnav-container') || []).forEach(element => {
+            element.classList.remove('u-disable-animation');
+        });
+    }, 500);
 });
