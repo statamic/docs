@@ -1,11 +1,5 @@
-// Initialize collapse-nav to 'no' if it hasn't been set yet
-if (!localStorage.getItem('collapse-nav')) {
-    localStorage.setItem('collapse-nav', 'no');
-    console.log('collapse-nav not set yet');
-}
-
 // Function to collapse navigation (uncheck inputs)
-function collapseNavigation() {
+function expandNavigation() {
     document.querySelectorAll('.o-toggle-subnav').forEach(element => {
         if (!element.matches(':has(+ ul .o-current-menu-item)')) {
             element.querySelector('input').checked = false;
@@ -17,7 +11,7 @@ function collapseNavigation() {
 }
 
 // Function to expand navigation (check inputs)
-function expandNavigation() {
+function collapseNavigation() {
     document.querySelectorAll('.o-toggle-subnav').forEach(element => {
         if (!element.matches(':has(+ ul .o-current-menu-item)')) {
             element.querySelector('input').checked = true;
