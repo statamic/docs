@@ -11,16 +11,16 @@ Array.from(document.querySelectorAll('.js__expand-collapse-nav') || []).forEach(
         const newCollapseState = isCurrentlyCollapsed === 'no' ? 'yes' : 'no';
         localStorage.setItem('collapse-nav', newCollapseState);
         if (localStorage.getItem('collapse-nav') === 'yes') {
-            document.querySelectorAll('.o-toggle-subnav input').forEach(element => {
-                if (!element.closest('.o-current-menu-item')) {
-                    element.checked = false;
+            document.querySelectorAll('.o-toggle-subnav').forEach(element => {
+                if (!element.matches(':has(+ ul .o-current-menu-item)')) {
+                    element.querySelector('input').checked = false;
                 }
             });
             console.log('not collapsed');
         } else {
-            document.querySelectorAll('.o-toggle-subnav input').forEach(element => {
-                if (!element.closest('.o-current-menu-item')) {
-                    element.checked = true;
+            document.querySelectorAll('.o-toggle-subnav').forEach(element => {
+                if (!element.matches(':has(+ ul .o-current-menu-item)')) {
+                    element.querySelector('input').checked = true;
                 }
             });
             console.log('collapsed');
