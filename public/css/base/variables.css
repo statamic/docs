@@ -216,7 +216,7 @@
     --font-size-l-4: clamp(2.25em * 0.9, 6vw, 2.25em);
     --font-size-l-4-line-height: 1.15;
 
-    --font-size-l-5: clamp(2.827em * 0.8, 9vw, 2.827em);
+    --font-size-l-5: clamp(2.827em * 0.9, 9vw, 2.827em);
     --font-size-l-5-line-height: 1.15;
 
     /* e.g. >> Home > Learn Statamic */
