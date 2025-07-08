@@ -214,7 +214,7 @@
         @media (width >= 2100px) {
             main {
                 /* Increase */
-                padding-block-start: 12rem;
+                padding-block-start: 12.5rem;
             }
         }
     }

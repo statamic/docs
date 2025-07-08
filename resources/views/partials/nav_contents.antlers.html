@@ -50,6 +50,7 @@
                         {{ partial:image_dimensions/navigation_image }}
                     {{ /navigation_image }}
                 {{ /if }}
+                <input id="{{ title | slugify }}" type="checkbox">
             </label>
             <ul>
                 {{ if children }}
