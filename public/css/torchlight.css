@@ -280,6 +280,10 @@
         opacity: 0;
         backdrop-filter: blur(8px);
         z-index: var(--z-index-above-body);
+
+        svg {
+            fill: none;
+        }
         
         &:hover {
             border-color: hsl(0deg 0% 100% / 30%);
