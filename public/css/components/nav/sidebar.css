@@ -162,7 +162,7 @@
                             content: "";
                             position: absolute;
                             z-index: var(--z-index-below-body);
-                            top: 4.1rem;
+                            top: 3.25rem;
                             left: var(--spacing-l);
                             height: calc(100% - 4.1rem);
                             border-inline-start: 1px solid var(--color-pink-light-3-static);
@@ -289,6 +289,11 @@
                 position: relative;
                 display: block;
                 opacity: 1;
+                /* Custom */
+                @media (width < 1350px) {
+                    /* Make it less distracting when the sidebars are very close to the main content */
+                    opacity: 0.95;
+                }
                 inline-size: 100%;
                 max-width: var(--max-width-1);
                 margin-inline: auto;

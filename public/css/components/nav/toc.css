@@ -1,7 +1,7 @@
 /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / API
 =================================================== */
 @layer components {
-.c-nav-toc-with-popover-api {
+    .c-nav-toc-with-popover-api {
         --dropdown-nav-item-padding: 0.25rem;
 
         nav,
@@ -103,7 +103,7 @@
                             position: absolute;
                             z-index: var(--z-index-below-body);
                             top: 1rem;
-                            left: var(--spacing-l);
+                            left: var(--spacing-m);
                             height: calc(100% - 1rem);
                             border-inline-start: 1px solid var(--color-pink-light-3-static);
                         }
@@ -133,8 +133,7 @@
                     ul {
                         gap: var(--spacing-s-5);
                         max-height: unset;
-                        padding: 0 3.85rem;
-                        padding: 0 3.3rem;
+                        padding: 0 3rem;
                         font-size: var(--font-size-ui-rem);
                         .o-current-menu-item {
                             text-decoration: none;
@@ -299,6 +298,11 @@
                     height: 80dvh;
                     padding-block-end: var(--spacing-l);
                 }
+            }
+            /* Custom */
+            @media (width < 1350px) {
+                /* Make it less distracting when the sidebars are very close to the main content */
+                opacity: 0.95;
             }
         }
     }
