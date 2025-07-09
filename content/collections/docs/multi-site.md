@@ -135,10 +135,6 @@ APP_URL=http://mysite.test
 
 Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default, Statamic will use English – United States (`en_US`).
 
-:::tip
-To see the list of installed locales on your system or server, run the command `locale -a`.
-:::
-
 ### Language
 
 Statamic's control panel has been translated into more than a dozen languages. The language translations files live in `resources/lang`.
