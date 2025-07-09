@@ -23,7 +23,7 @@
 */
 @layer components {
     .c-feedback-meerkat {
-        margin-block-start: var(--spacing-l-4);
+        margin-block-start: var(--spacing-l-3);
         /* Custom */
         @media (width < 500px) {
             margin-block-start: 6.5rem;

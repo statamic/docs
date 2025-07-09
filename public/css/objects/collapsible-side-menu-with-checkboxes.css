@@ -1,0 +1,87 @@
+/* GROUP OBJECTS / COLLAPSIBLE SIDE MENU WITH CHECKBOXES
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    - Use a checkbox to hide the following submenu using :has
+
+*/
+/* HTML Example...
+
+    <nav>
+        <ul>
+            <li>
+                <label class="o-toggle-subnav">
+                    Getting Started
+                    <input type="checkbox">
+                </label>
+                <ul>
+                    <li>
+                        <a href="/">Requirements</a>
+                        <a href="/1">Quick start guide</a>
+                        <a href="/2">Upgrade guide</a>
+                        <a href="/3">Installing</a>
+                        <a href="/4">Updating</a>
+                        <a href="/5">Deploying</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+*/
+/* :root { <-- I've added this to elements so we can use it for anything in future
+    interpolate-size: allow-keywords;
+} */
+
+@layer objects {
+    .o-toggle-subnav {
+        cursor: pointer;
+        input {
+            /* START SCREEN READER TEXT
+            --------------------------- */
+            clip: rect(1px, 1px, 1px, 1px);
+
+            position: absolute!important;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            /* END SCREEN READER TEXT
+            ------------------------- */
+        }
+
+        outline-offset: -3px;
+        &:has(input:focus-visible) {
+            outline: 3px solid var(--color-focus);
+        }
+
+        + ul {
+            overflow: clip;
+            /* linear-out-slow-in */
+            transition: height 0.25s cubic-bezier(0, 0, 0.2, 1), visibility 0.5s, padding 0.25s cubic-bezier(0, 0, 0.2, 1);
+        }
+        &:has(input:checked) + ul {
+            padding-block: 0!important; 
+            height: 0;
+            visibility: hidden;
+        }
+    }
+}
+@keyframes fade-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+@layer utilities {
+    .o-toggle-subnav {
+        + ul {
+            padding-block: 1rem 0.25rem;
+            
+        }
+        &:has(input:checked) + ul {
+            .o-current-menu-item::before {
+                animation: 0.2s linear fade-out both;
+            }
+        }
+    }
+}

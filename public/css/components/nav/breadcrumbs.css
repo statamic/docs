@@ -64,8 +64,7 @@
             text-decoration: none;
             color: inherit;
             text-transform: uppercase;
-            font-size: var(--font-size-s-2);
-            font-weight: var(--font-family-ui-weight-light);
+            font-size: var(--font-size-s-3);
             text-box: text;
             line-height: 1;
             letter-spacing: 0.5px;

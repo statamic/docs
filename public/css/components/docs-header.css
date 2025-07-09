@@ -15,7 +15,7 @@
         position: sticky;
         top: 0;
         z-index: var(--z-index-nav);
-        --background-position: 5.75rem;
+        --background-position: 5rem;
         --gradient: var(--color-gradient-blue-2);
         --background-image: url('/img/paper-tear.png');
         /* Page preference is "dark" */
@@ -29,6 +29,10 @@
             }
         }
         background: var(--background-image) no-repeat 0% var(--background-position), var(--gradient);
+        @supports not (animation-timeline: auto) {
+            /* Remove the background image when scroll-driven animations are not supported */
+            background: no-repeat 0% var(--background-position), var(--gradient);
+        }
     }
 
     .c-docs-header__inner {
@@ -115,8 +119,6 @@
     /* --mq-nav-open-after */
     @media (width >= 1100px) {
         .c-docs-header {
-            /* Increase */
-            --background-position: 5.85rem;
             /* Change to include some yellow */
             --gradient: linear-gradient(175deg, var(--color-blue-light-1), var(--color-pink-light-3), var(--color-yellow-light-3));
             @container style(--color-scheme: dark) {
@@ -131,7 +133,7 @@
             }
         }
         .c-docs-header__inner {
-            padding: 1.5rem var(--spacing-l) 3.25rem;
+            padding: 1rem var(--spacing-l) 3rem;
             margin-block-end: 2rem;
             .o-logomark {
                 /* Decrease */
@@ -205,14 +207,14 @@
                 inline-size: 100%;
             }
             main {
-                padding-block-start: 9.25rem;
+                padding-block-start: 9.5rem;
             }
         }
         /* Custom */
         @media (width >= 2100px) {
             main {
                 /* Increase */
-                padding-block-start: 13rem;
+                padding-block-start: 12.5rem;
             }
         }
     }
@@ -229,7 +231,7 @@
         animation-name: compress-header;
         animation-timing-function: linear;
         animation-timeline: --body;
-        animation-range: entry 100% entry 104%;
+        animation-range: entry 100% entry 103%;
         animation-fill-mode: both;
         @supports (animation-timeline: auto) {
             margin-block-end: unset;

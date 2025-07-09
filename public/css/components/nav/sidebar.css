@@ -2,7 +2,7 @@
 =================================================== */
 @layer components {
     .c-nav-sidebar-with-popover-api {
-        --dropdown-nav-item-padding: 0.3rem;
+        --dropdown-nav-item-padding: 0.25rem;
         position: sticky;
         grid-area: sidebar-1;
 
@@ -62,7 +62,8 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
         =================================================== */
-        .c-nav-sidebar-with-popover-api__close-button {
+        .c-nav-sidebar-with-popover-api__close-button,
+        .c-nav-collapse-expand--mobile {
             position: absolute;
             z-index: var(--z-index-above-body);
             right: 1rem;
@@ -73,6 +74,13 @@
                 inline-size: unset;
             }
         }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV COLLAPSE EXPAND BUTTON
+        =================================================== */
+        .c-nav-collapse-expand--mobile {
+            left: 1rem;
+            right: unset;
+            background: radial-gradient(circle at center, var(--color-body-background) 0%, transparent 100%);
+        }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
         =================================================== */
         nav {
@@ -82,48 +90,48 @@
                 font-weight: var(--font-family-ui-weight-light);
             }
             .c-nav-sidebar-with-popover-api-category-heading {
-                a {
-                    display: flex;
-                    max-width: 17rem;
-                    /* --mq-nav-open-after to --mq-text-bump-2-after */
-                    @media (width >= 1100px) and (width < 1441px) {
-                        max-width: 14.85rem;
-                    }
-                    max-height: 4.1rem;
-                    gap: var(--spacing-s-1);
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: var(--spacing-s-3) var(--spacing-m);
-                    margin-block-end: var(--spacing-s-2);
-                    font-family: var(--font-family-prose);
-                    font-size: var(--font-size-l-2);
-                    line-height: var(--font-size-l-2-line-height);
-                    /* --mq-nav-open-after to custom */
-                    @media (width >= 1100px) and (width < 1240px) {
-                        font-size: var(--font-size-l-1);
-                        line-height: var(--font-size-l-1-line-height);
-                    }
-                    border-radius: 50px;
-                    box-shadow: var(--box-shadow-not-t-light);
-                    text-decoration: none;
-                    &:focus-visible {
-                        /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
-                        outline-offset: -3px;
-                    }
-                    /* --mq-text-bump-2-after */
-                    @media (width >= 1441px) {
-                        padding: var(--spacing-s-2) var(--spacing-l);
-                    }
+                display: flex;
+                max-width: 17rem;
+                /* --mq-nav-open-after to --mq-text-bump-2-after */
+                @media (width >= 1100px) and (width < 1441px) {
+                    max-width: 14.85rem;
+                }
+                max-height: 3.2rem;
+                gap: var(--spacing-s-1);
+                align-items: center;
+                justify-content: space-between;
+                padding: var(--spacing-s-3) var(--spacing-m);
+                font-family: var(--font-family-prose);
+                font-size: var(--font-size-l-2);
+                line-height: var(--font-size-l-2-line-height);
+                border-radius: 50px;
+                box-shadow: var(--box-shadow-not-t-light);
+                text-decoration: none;
+                &:has(input:checked) {
+                    box-shadow: var(--box-shadow-not-t-lighter);
+                }
+                &:focus-visible {
+                    /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
+                    outline-offset: -3px;
+                }
+                /* --mq-text-bump-2-after */
+                @media (width >= 1441px) {
+                    padding-inline: var(--spacing-l);
                 }
                 img {
-                    inline-size: 1.45em;
+                    inline-size: 23px;
+                    /* --mq-text-bump-2-after */
+                    @media (width >= 1441px) {
+                        inline-size: 1.45em;
+                    }
                 }
-                /* [1] Has .o-current-menu-item itself */
-                &.o-current-menu-item a,
-                /* [/2] Or has a sub nav with .o-current-menu-item */
-                &:has(+ * .o-current-menu-item) a {
+                /* has a sub nav with .o-current-menu-item */
+                &:has(+ * .o-current-menu-item) {
                     box-shadow: none;
                     background: var(--color-gradient-full-light-2);
+                    img {
+                        box-shadow: var(--box-shadow-pink-light);
+                    }
                 }
             }
 
@@ -131,7 +139,7 @@
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-m);
+                gap: var(--spacing-s-1);
                 font-size: var(--font-size-s-2);
                 overscroll-behavior-y: contain;
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
@@ -235,10 +243,6 @@
             #popover-nav-sidebar {
                 /* position-area: bottom span-right; */
                 box-shadow: var(--box-shadow-medium);
-                &:not(:popover-open) {
-                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause pointer-events: none; to persist even when the popover was dismissed */
-                    /* pointer-events: none; */
-                }
                 body:has(&:popover-open) {
                     /* Stop the body scrolling if you try and scroll a toc that's shorter than the viewport height */
                     /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause overflow-clip: clip; to persist even when the popover was dismissed */
@@ -268,9 +272,9 @@
         }
         /* --mq-nav-open-after */
         @media (width >= 1100px) {
-            --top: 9rem;
+            --top: 8.5rem;
             top: var(--top);
-            block-size: calc(100vh - var(--top) -  3.5rem);
+            block-size: calc(100vh - var(--top) - 6.5rem);
             .c-nav-sidebar-with-popover-api__mobile {
                 /* Prevent a lag in seeing the mobile nav collapse if you pull the window out  */
                 transition: unset;
@@ -298,6 +302,27 @@
                 }
                 padding-block-end: var(--spacing-l);
             }
+        }
+    }
+    .c-nav-collapse-expand {
+        svg {
+            fill: none;
+        }
+        &:not(.js__expand-collapse-nav--collapsed) {
+            #top-arrow {
+                transform: scaleY(-1);
+                transform-origin: 50% 17%;
+            }
+            #bottom-arrow {
+                transform: scaleY(-1);
+                transform-origin: 50% 83%;
+            }
+            .dash {
+                display: none;
+            }
+        }
+        @container style(--color-scheme: dark) {
+            opacity: 0.5;
         }
     }
 }

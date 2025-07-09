@@ -50,7 +50,7 @@
         }
         &:has(.c-icon-grid__item__label) {
             /* A recommended label like e.g. >> /installing */
-            padding-block-start: var(--spacing-l);
+            padding-block-start: var(--spacing-m);
         }
 
         .c-anchor,

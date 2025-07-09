@@ -27,7 +27,7 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-block: var(--spacing-s-2) var(--spacing-s-1);
+        margin-block: var(--spacing-s-4) var(--spacing-m);
         background: var(--color-gradient-full-light-3);
         border: var(--border-solid);
         border-radius: var(--border-radius-l-1);
@@ -37,8 +37,9 @@
         font-weight: var(--font-family-ui-weight-strong);
         text-transform: uppercase;
         > * {
-            padding: var(--spacing-s-2) var(--spacing-m);
+            padding: var(--spacing-s-3) var(--spacing-s-1);
             margin: 0;
+            font-size: var(--font-size-s-1);
             &:not(:last-child) {
                 border-inline-end: var(--border-solid);
             }

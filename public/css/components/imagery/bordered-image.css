@@ -57,7 +57,6 @@
     .c-entry-content > figure,
     .c-bordered-image {
         position: relative;
-        place-items: center;
         /* e.g. >> /collections and /stache */
         margin-block-start: var(--spacing-l);
         &:not(:last-child) {
@@ -78,6 +77,8 @@
                 background: var(--color-gradient-burnt-right);
             }
             font-weight: var(--font-family-ui-weight-normal);
+            font-size: var(--font-size-s-1);
+            line-height: var(--font-size-s-1-line-height);
             border-radius: var(--border-radius-s);
             border-top-left-radius: 0;
             border-top-right-radius: 0;
