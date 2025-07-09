@@ -62,7 +62,8 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
         =================================================== */
-        .c-nav-sidebar-with-popover-api__close-button {
+        .c-nav-sidebar-with-popover-api__close-button,
+        .c-nav-collapse-expand--mobile {
             position: absolute;
             z-index: var(--z-index-above-body);
             right: 1rem;
@@ -72,6 +73,13 @@
                 font-size: 1rem;
                 inline-size: unset;
             }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV COLLAPSE EXPAND BUTTON
+        =================================================== */
+        .c-nav-collapse-expand--mobile {
+            left: 1rem;
+            right: unset;
+            background: radial-gradient(circle at center, white 0%, transparent 100%);
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
         =================================================== */
