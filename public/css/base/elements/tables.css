@@ -187,6 +187,10 @@
                 white-space: nowrap;
             }
         }
+        table > tbody > tr > td:last-child p {
+            /* If the last column contains a paragraph make sure it's a sufficient length e.g. >> /tags/form-create > Variables */
+            min-width: 300px;
+        }
     }
     /* GROUP ELEMENTS / TABLES / (MODIFICATIONS) / BORDERED
     =================================================== */
