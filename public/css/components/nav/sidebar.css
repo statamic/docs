@@ -58,6 +58,7 @@
             box-shadow: var(--box-shadow-not-t-medium);
             svg {
                 color: var(--color-primary-text);
+                font-size: 1.3em;
             }
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
@@ -233,6 +234,9 @@
         @media (width < 1100px) {
             padding-inline: var(--spacing-s-3);
             top: 0.8rem;
+            @supports not (animation-timeline: auto) {
+                top: 1rem;
+            }
             z-index: var(--z-index-above-nav);
             display: inline-block;
 
