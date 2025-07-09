@@ -24,6 +24,8 @@
 @layer components {
     .c-pill-with-description {
         margin-block-end: var(--spacing-l-1);
+        /* e.g. >> /tags/form-create – handle|is|in|form|formset */
+        overflow: scroll;
         &:has(+ &) {
             /* Slightly Decrease if it's followed by another .c-pill-with-description */
             margin-block-end: var(--spacing-l);

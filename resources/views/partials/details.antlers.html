@@ -1,20 +1,18 @@
-<div class="space-y-10">
-    {{ details }}
-    <div class="c-pill-with-description">
-        <header>
-            <h3>
-                {{ name }}
-            </h3>
-            <div>
-                {{ type }}
-            </div>
-            {{ if required }}
-                <div>required</div>
-            {{ /if }}
-        </header>
+{{ details }}
+<div class="c-pill-with-description">
+    <header>
+        <h3>
+            {{ name }}
+        </h3>
         <div>
-            {{ description | widont  }}
+            {{ type }}
         </div>
+        {{ if required }}
+            <div>required</div>
+        {{ /if }}
+    </header>
+    <div>
+        {{ description | widont  }}
     </div>
-    {{ /details }}
 </div>
+{{ /details }}
