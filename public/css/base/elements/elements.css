@@ -346,7 +346,7 @@
         font-size: var(--font-size-l-5); line-height: var(--font-size-l-5-line-height);
     }
     h2 {
-        font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
+        font-size: var(--font-size-l-4); line-height: var(--font-size-l-4-line-height);
     }
     h3 {
         font-size: var(--font-size-l-3); line-height: var(--font-size-l-3-line-height);
@@ -372,7 +372,7 @@
     * + h2,
     article + article {
         /* E.g. h2 following article intro text */
-        padding-block: var(--spacing-s-2);
+        padding-block: var(--spacing-s-2) var(--spacing-m);
         &:has(+ h3) {
             /* e.g. >> /assets */
             padding-block-end: 0;
@@ -442,7 +442,7 @@
         --distance: var(--spacing-l-1);
         margin-block-start: var(--distance);
         p:has(+ &) {
-            padding-block-end: var(--spacing-s-2);
+            padding-block-end: var(--spacing-s-1);
         }
         figure:has(+ &) + h2 {
             /* e.g. >> /quick-start-guide */

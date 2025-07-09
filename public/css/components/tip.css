@@ -28,7 +28,7 @@
         &:not(.watch) {
             position: relative;
             z-index: var(--z-index-above-body);
-            padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-3);
+            padding: var(--spacing-m) var(--spacing-l-1) var(--spacing-s-4);
 
             /* Custom */
             @media (width < 550px) {
