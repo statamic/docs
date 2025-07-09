@@ -74,7 +74,7 @@ As part of the install process you should have created yourself a super user, bu
 At any time you can run `php please make:user` from the command line and follow along with the prompts (name, email, etc). For the purpose of this walkthrough, be sure to say `yes` when asked if the user should be a **super user** otherwise you'll just have to do it again. And again. And again until you finally say `yes`. Never be afraid of committing to success.
 
 <figure>
-    <img src="/img/quick-start/make-user.png" alt="Statamic Make:User Command" width="453">
+    <img src="/img/quick-start/make-user.png" alt="Statamic Make:User Command">
     <figcaption>You can customize user fields later.</figcaption>
 </figure>
 
