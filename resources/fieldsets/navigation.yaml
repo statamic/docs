@@ -25,7 +25,7 @@ fields:
     field:
       type: text
       display: 'Image Width Override'
-      instructions: 'e.g. `2.05em`. This allows you to override the width for certain navigation images. You may want to do this if the image has an unusual aspect ratio, which might make the image appear smaller, such as sunglasses that are more landscape.'
+      instructions: 'e.g. `1.9em`. This allows you to override the width for certain navigation images. You may want to do this if the image has an unusual aspect ratio, which might make the image appear smaller, such as sunglasses that are more landscape.'
   -
     handle: tile_image
     field:

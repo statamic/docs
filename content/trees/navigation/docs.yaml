@@ -74,7 +74,7 @@ tree:
     title: 'Diving Deeper'
     data:
       navigation_image: navigation/sunglasses.png
-      image_width_override: 2.05em
+      image_width_override: 1.9em
     children:
       -
         id: 50484ca7-40d5-4504-9f8f-adc8d6557a19
@@ -138,7 +138,7 @@ tree:
     title: Frontend
     data:
       navigation_image: navigation/nike-air-jordans.png
-      image_width_override: 2.075em
+      image_width_override: 1.9em
     children:
       -
         id: 6482b878-b8eb-4114-886e-dc8c9eb277b8
@@ -251,7 +251,7 @@ tree:
     title: 'Starter Kits'
     data:
       navigation_image: navigation/indiana-jones.png
-      image_width_override: 2.05em
+      image_width_override: 1.9em
     children:
       -
         id: a4591991-324c-4678-9993-a735d09269ed
