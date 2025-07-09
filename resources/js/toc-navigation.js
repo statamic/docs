@@ -32,7 +32,7 @@ function tocNavigation() {
                 }
             });
         }, { 
-            threshold: 0.1, // Reduced threshold
+            threshold: 0.75, // Sets how much of the element needs to be visible before the observer triggers. e.g. 0.1 means 10% of the element must be visible
             rootMargin: '-10% 0px -50% 0px' // Added rootMargin
         });
 
