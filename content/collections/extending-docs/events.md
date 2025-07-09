@@ -41,6 +41,30 @@ If you're creating an addon, you can quickly [register event listeners or subscr
 
 ## Available Events
 
+### AddonSettingsSaved
+`Statamic\Events\AddonSettingsSaved`
+
+Dispatched after an addon's settings have been saved.
+
+``` php
+public function handle(AddonSettingsSaved $event)
+{
+    $event->addonSettings;
+}
+```
+
+### AddonSettingsSaving
+`Statamic\Events\AddonSettingsSaving`
+
+Dispatched before an addon's settings are saved. You can return `false` to prevent them from being saved.
+
+``` php
+public function handle(AddonSettingsSaving $event)
+{
+    $event->addonSettings;
+}
+```
+
 ### AssetContainerBlueprintFound
 `Statamic\Events\AssetContainerBlueprintFound`
 
