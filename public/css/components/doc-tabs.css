@@ -35,7 +35,7 @@
             border-radius: var(--button-radius);
             border-top-left-radius: 0;
             border-block-end: 0;
-            /* Sometimes the tab content contains tips e.g. >> /taxonomies */
+            /* Sometimes the tab content contains tips e.g. >> /taxonomies and /extending/modifiers */
             &:not(:has(.c-tip)) {
                 background: var(--color-gradient-full-light-4);
                 @container style(--color-scheme: dark) {

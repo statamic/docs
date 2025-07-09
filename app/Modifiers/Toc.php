@@ -159,6 +159,9 @@ class Toc extends Modifier
     {
         $slugified = Statamic::modify($text)->replace('&amp;', '')->slugify()->stripTags();
         // Remove 'code-code' from the slugified text e.g. Otherwise "the `@` ignore symbol" gets converted to `the-code-code-ignore-symbol`
-        return str_replace('code-code-', '', $slugified);
+        $slugified = str_replace('code-code-', '', $slugified);
+        // Remove 'codelt', 'rt', and 'gtcode' from the slugified text
+        $slugified = str_replace(['codelt', 'rt', 'gtcode'], '', $slugified);
+        return $slugified;
     }
 }

@@ -1,11 +1,3 @@
-// [1] Find all <h2> elements inside .js__scroll-spy-toc__timeline and observe them
-// [2] Find all the corresponding a elements with the same ids in .js__scroll-spy-toc
-// [3] Add an event listener to each a element to check if it is currently in view
-// [4] If it is, add the active class to the a element
-// [5] If it is not, remove the active class from the a element
-// [6] Update the activeSection state variable to the id of the section that is currently in view
-// [7] Update the activeLink state variable to the link that is currently in view
-
 function tocNavigation() {
     const state = {
         activeSection: null,
@@ -40,8 +32,8 @@ function tocNavigation() {
                 }
             });
         }, { 
-            threshold: 0.1,  // Reduced threshold
-            rootMargin: '-10% 0px -50% 0px'  // Added rootMargin
+            threshold: 0.1, // Reduced threshold
+            rootMargin: '-10% 0px -50% 0px' // Added rootMargin
         });
 
         // [3] Observe each heading element
