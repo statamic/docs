@@ -418,7 +418,7 @@
     .c-bordered-image {
         &:has(+ :is(h2, h3)) {
             /* Increase e.g. >> /assets */
-            margin-block-end: var(--spacing-l-2);
+            margin-block-end: calc(var(--spacing-l-2) + var(--spacing-s-2));
         }
     }
     /* Decrease bottom padding/margin elements previous to hr */
@@ -466,7 +466,7 @@
             left: 0;
             content: "";
             inline-size: 100%;
-            border: var(--border-width) dashed white;
+            border: var(--border-width) dashed var(--color-body-background);
         }
     }
     /* [/2] This second technique is for real hrs */
