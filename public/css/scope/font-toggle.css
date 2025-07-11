@@ -6,6 +6,7 @@
     ----------------
     - Switches the font between sans-serif and sans using a radio button
     - The radio button sets a local storage value which is then fetched on subsequent page loads
+        - uses font-preferences.js to store and fetch values
 
 */
 /* HTML Example...
