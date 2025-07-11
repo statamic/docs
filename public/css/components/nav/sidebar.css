@@ -67,9 +67,10 @@
         .c-nav-collapse-expand--mobile {
             position: absolute;
             z-index: var(--z-index-above-body);
-            right: 1rem;
-            top: 1.25rem;
+            right: 1.5rem;
+            top: 1rem;
             margin-inline-end: 0;
+            padding: var(--spacing-s-4);
             & svg {
                 font-size: 1rem;
                 inline-size: unset;
@@ -77,10 +78,14 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV COLLAPSE EXPAND BUTTON
         =================================================== */
+        /* button*/
         .c-nav-collapse-expand--mobile {
-            left: 1rem;
+            left: 0.75rem;
             right: unset;
             background: radial-gradient(circle at center, var(--color-body-background) 0%, transparent 100%);
+            svg {
+                margin: 0;
+            }
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
         =================================================== */
