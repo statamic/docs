@@ -125,11 +125,7 @@
                     padding-inline: var(--spacing-l);
                 }
                 img {
-                    inline-size: 23px;
-                    /* --mq-text-bump-2-after */
-                    @media (width >= 1441px) {
-                        inline-size: 1.4em;
-                    }
+                    inline-size: 1.4em;
                 }
                 /* has a sub nav with .o-current-menu-item */
                 &:has(+ * .o-current-menu-item) {
