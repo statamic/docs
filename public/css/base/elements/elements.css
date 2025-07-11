@@ -271,6 +271,7 @@
             gap: var(--spacing-l-1) var(--spacing-m);
             max-width: var(--max-width-1);
             margin-inline: auto;
+            margin-block-end: var(--spacing-l-3);
         }
         /* --mq-nav-open-after */
         @media (width >= 1100px) {
