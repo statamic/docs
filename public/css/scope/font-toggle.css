@@ -10,10 +10,16 @@
 */
 /* HTML Example...
 
-    <div class="u-label">Hot Tip!</div>
+    <div class="o-font-toggle">
+        <input type="radio" id="font-sans-off" name="font-toggle" value="sans-off" class="font-toggle__radio" checked="">
+        <label for="font-sans-off" class="font-toggle__sans-off">Sans Off</label>
+        <input type="radio" id="font-sans-on" name="font-toggle" value="sans-on" class="font-toggle__radio">
+        <label for="font-sans-on" class="font-toggle__sans-on">Sans On</label>
+    </div>
 
 */
 :root:has(footer .o-font-toggle #font-sans-on:checked) {
+    /* Tweak text scale to compensate for a different font */
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
     =================================================== */
     --font-size-m: clamp(0.9em, 4vw, 1.03em);
@@ -23,6 +29,7 @@
     --font-size-l-1-line-height: 1.55;
     /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
     =================================================== */
+    /* Make slightly lighter to compensate for a naturally heavier font */
     --color-black-prose: light-dark(hsl(210deg 3.85% 15%), hsl(0deg 0% 90%));
     --font-family-prose-weight-medium: 450;
     --font-family-prose-weight-strong: 600;
@@ -38,7 +45,6 @@
             font-weight: var(--font-family-ui-weight-normal);
     
             p, li {
-                /* Make slightly lighter to compensate for a naturally heavier font */
                 color: var(--color-black-prose);
             }
         }
