@@ -72,7 +72,6 @@
         font-family: var(--font-family-ui);
 
         td {
-            font-size: var(--font-size-m);
             line-height: var(--font-size-m-line-height);
             font-weight: var(--font-family-ui-weight-normal);
         }
@@ -202,6 +201,7 @@
     =================================================== */
     /* =JFG. Fix it so tabular info is easier to digest */
     table {
-        font-size: 0.85rem;
+        /* e.g. >> /recent-updates */
+        font-size: 0.9rem;
     }
 }
