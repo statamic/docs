@@ -1,0 +1,39 @@
+/* GROUP SCOPE / FONT TOGGLE
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Funky green labels e.g. "Hot Tip", "Recommended", etc.
+
+*/
+/* HTML Example...
+
+    <div class="u-label">Hot Tip!</div>
+
+*/
+:root {
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
+    =================================================== */
+    --font-size-m: clamp(1em, 4vw, 1.03em);
+    --font-size-m-rem: clamp(1rem, 4vw, 1.03rem);
+    /* e.g. >> Home > Lead Text */
+    --font-size-l-1: clamp(1em, 4vw, 1.12em);
+    --font-size-l-1-line-height: 1.55;
+    /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
+    =================================================== */
+    --color-black: hsl(210deg 3.85% 10%);
+    --font-family-prose-weight-medium: 450;
+    --font-family-prose-weight-strong: 600;
+}
+@layer scope {
+    .c-entry-content {
+        --font-size-s-1: 0.88em;
+        --font-size-s-1-fixed: 0.88em;
+        --font-size-s-1-line-height: 1.4;
+
+        font-family: var(--font-family-ui);
+        font-weight: var(--font-family-ui-weight-normal);
+        font-weight: 300;
+    }
+}
