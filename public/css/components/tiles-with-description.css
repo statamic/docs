@@ -71,7 +71,7 @@
                 /* Hide the direct .external links added with javascript because we want to add the icon elsewhere instead */
                 display: none;
             }
-            background: light-dark(hsl(var(--color-purple-hue) 70% 95%), transparent);
+            background: light-dark(hsl(var(--color-purple-hue) 70% 97%), transparent);
             border-radius: 50%;
             * {
                 fill: var(--color-purple);

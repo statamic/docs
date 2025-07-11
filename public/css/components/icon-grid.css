@@ -20,6 +20,10 @@
         }
         text-align: center;
 
+        .c-anchor {
+            display: none;
+        }
+
         img {
             &:not([src*=".svg"]) {
                 max-width: 5.5rem;
@@ -30,12 +34,12 @@
         }
 
         h2, h3 {
-            padding-block: var(--spacing-l-static) var(--spacing-s-5);
+            padding-block: var(--spacing-s-2) var(--spacing-s-5);
             font-family: var(--font-family-ui);
             font-size: var(--font-size-ui);
             font-weight: var(--font-family-ui-weight-heavy);
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
         p {
@@ -64,7 +68,7 @@
             display: none;
         }
         .external {
-            background: light-dark(hsl(var(--color-purple-hue) 70% 95%), transparent);
+            background: light-dark(hsl(var(--color-purple-hue) 70% 97%), transparent);
             border-radius: 50%;
             * {
                 fill: var(--color-purple);
