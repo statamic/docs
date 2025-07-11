@@ -21,7 +21,7 @@
                 }
                 /* Make shorter because there's nuttin' to see really. Once we get to higher MQs this isn't needed because we start getting near the max-height of the .c-site-footer__scene__image-container anyway. */
                 @media (width < 2100px) {
-                    max-height: 39rem;
+                    max-height: 32rem;
                 }
             }
         }
@@ -39,7 +39,7 @@
                     }
                     /* Make shorter because there's nuttin' to see really. Once we get to higher MQs this isn't needed because we start getting near the max-height of the .c-site-footer__scene__image-container anyway. */
                     @media (width < 2100px) {
-                        max-height: 39rem;
+                        max-height: 32rem;
                     }
                 }
             }
@@ -49,7 +49,7 @@
         position: relative;
     }
     .c-site-footer__scene__image-container {
-        max-height: 45rem;
+        max-height: 40rem;
         position: relative;
         display: flex;
         --stop: 4.5rem;
