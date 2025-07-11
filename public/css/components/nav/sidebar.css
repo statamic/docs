@@ -70,7 +70,7 @@
             right: 1.5rem;
             top: 1rem;
             margin-inline-end: 0;
-            padding: var(--spacing-s-4);
+            padding: var(--spacing-s-3);
             & svg {
                 font-size: 1rem;
                 inline-size: unset;
