@@ -23,6 +23,13 @@
 =================================================== */
 .o-font-toggle {
     display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-inline-end: var(--spacing-s-1);
+    svg {
+        font-size: 2em;
+        margin-inline-end: var(--spacing-s-5);
+    }
     input {
         /* Hide the radio */
         display: none;
@@ -30,16 +37,14 @@
         &:not(:checked) + label {
             color: var(--color-gray-aa);
         }
-        :checked + & {
-            /* color: white; */
-        }
     }
     label {
-        padding: var(--spacing-s-3);
+        padding: var(--spacing-s-4) var(--spacing-s-3);
         font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
         cursor: pointer;
         border: 1px solid hsl(0deg 0% 40%);
-        input:first-child + & {
+        input:first-of-type + & {
             border-top-left-radius: var(--border-radius-m);
             border-bottom-left-radius: var(--border-radius-m);
         }
@@ -66,14 +71,14 @@
     /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
     =================================================== */
     /* Make slightly lighter to compensate for a naturally heavier font */
-    --color-black-prose: light-dark(hsl(210deg 3.85% 15%), hsl(0deg 0% 90%));
+    --color-black-prose: light-dark(hsl(210deg 3.85% 16%), hsl(0deg 0% 90%));
     --font-family-prose-weight-medium: 450;
     --font-family-prose-weight-strong: 600;
 
     @layer scope {
         .c-entry-content {
-            --font-size-s-1: 0.88em;
-            --font-size-s-1-fixed: 0.88em;
+            --font-size-s-1: 0.89em;
+            --font-size-s-1-fixed: 0.89em;
             --font-size-s-1-line-height: 1.4;
             --font-family-ui-weight-normal: 300;
     

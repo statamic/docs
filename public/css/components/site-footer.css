@@ -133,6 +133,10 @@
         margin-inline: auto;
         background: var(--color-black-off);
         padding: 3rem var(--spacing-l) var(--spacing-vh-s);
+        &:has(> :only-child) {
+            /* e.g. Sans Off / Sans On row */
+            padding-block: var(--spacing-m) var(--spacing-l-3);
+        }
 
         /* --mq-nav-open-after and --mq-wide-before */
         @media (width >= 1100px) and (width < 1650px) {
@@ -200,7 +204,6 @@
         }
 
         .o-font-toggle {
-            margin-block-start: var(--spacing-l);
             color: var(--color-link);
         }
 
