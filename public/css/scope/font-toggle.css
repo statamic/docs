@@ -19,6 +19,41 @@
     </div>
 
 */
+/* GROUP SCOPE / FONT TOGGLE
+=================================================== */
+.o-font-toggle {
+    display: flex;
+    input {
+        /* Hide the radio */
+        display: none;
+        /* Gray-out labels that are not checked */
+        &:not(:checked) + label {
+            color: var(--color-gray-aa);
+        }
+        :checked + & {
+            /* color: white; */
+        }
+    }
+    label {
+        padding: var(--spacing-s-3);
+        font-size: var(--font-size-s-1);
+        cursor: pointer;
+        border: 1px solid hsl(0deg 0% 40%);
+        input:first-child + & {
+            border-top-left-radius: var(--border-radius-m);
+            border-bottom-left-radius: var(--border-radius-m);
+        }
+        input:nth-last-child(2) + & {
+            border-top-right-radius: var(--border-radius-m);
+            border-bottom-right-radius: var(--border-radius-m);
+        }
+        &:has(+ input) {
+            border-inline-end: 0;
+        }
+    }
+}
+/* GROUP SCOPE / FONT TOGGLE / SANS CHANGES
+=================================================== */
 :root:has(footer .o-font-toggle #font-sans-on:checked) {
     /* Tweak text scale to compensate for a different font */
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
