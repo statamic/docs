@@ -50,10 +50,6 @@
             column-gap: var(--spacing-s-2);
         }
         padding-block-end: var(--spacing-l-2);
-
-        .external {
-            display: none;
-        }
     }
     .c-tiles-with-description__item {
         max-width: 21rem;
@@ -67,6 +63,25 @@
             max-width: 16rem;
             text-align: center;
             margin-inline: auto;
+        }
+
+        position: relative;
+        .external {
+            a > & {
+                /* Hide the direct .external links added with javascript because we want to add the icon elsewhere instead */
+                display: none;
+            }
+            background: light-dark(hsl(var(--color-purple-hue) 70% 95%), transparent);
+            border-radius: 50%;
+            * {
+                fill: var(--color-purple);
+            }
+        }
+
+        figcaption {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
         }
     }
     .c-tiles-with-description__item__thumbnail {

@@ -52,17 +52,23 @@
             /* A recommended label like e.g. >> /installing */
             padding-block-start: var(--spacing-m);
         }
-
-        .c-anchor,
-        .external {
-            /* Silly inside the icon grid so hide these */
-            display: none;
-        }
     }
     .c-icon-grid__item {
         position: relative;
         p {
             margin-block-end: 0;
+        }
+
+        > a .external {
+            /* Hide the direct .external links added with javascript because we want to add the icon elsewhere instead */
+            display: none;
+        }
+        .external {
+            background: light-dark(hsl(var(--color-purple-hue) 70% 95%), transparent);
+            border-radius: 50%;
+            * {
+                fill: var(--color-purple);
+            }
         }
     }
     .c-icon-grid__item__label {
