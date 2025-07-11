@@ -80,8 +80,6 @@
 
     @layer scope {
         .c-entry-content {
-            --font-size-s-1: 0.89em;
-            --font-size-s-1-fixed: 0.89em;
             --font-size-s-1-line-height: 1.4;
             --font-family-ui-weight-normal: 300;
     
