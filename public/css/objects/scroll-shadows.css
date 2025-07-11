@@ -23,7 +23,7 @@
     .o-shadow-container-vertical {
         overflow: auto;
 
-        --shadow-color: light-dark(hsl(0deg 0% 0% / 5%), hsl(var(--color-body-background-hue, 0) 50% 60% / 10%));
+        --shadow-color: light-dark(hsl(0deg 0% 0% / 10%), hsl(var(--color-body-background-hue, 0) 50% 60% / 15%));
 
         background:
         /* Shadow Cover TOP */
