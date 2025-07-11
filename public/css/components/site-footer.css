@@ -208,6 +208,7 @@
 
         .o-font-toggle {
             color: var(--color-link);
+            margin-inline-start: -1.8rem;
         }
 
         p {

@@ -26,7 +26,6 @@
     align-items: center;
     /* Custom */
     @media (width >= 1030px) {
-        justify-content: end;
         padding-inline-end: var(--spacing-s-1);
     }
     svg {
