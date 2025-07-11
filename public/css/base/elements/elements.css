@@ -104,15 +104,7 @@
         padding: 0.2rem 0.3rem;
         margin: 0.25rem;
     }
-    /* Fix popover buttons being triggered underneath the backdrops of other open popovers. If you have a popover open and there's a button underneath it, clicking on the button will trigger the popover underneath. We don't want this, so we need to disable other popover buttons when a popover is open. */
-    button[popovertarget]:not([popover] button) {
-        /* Disable by default */
-        pointer-events: none;
-        body:not(:has(:popover-open)) & {
-            /* This restores click events to buttons when other popovers are deactivated. We need to use an animation in order to to _delay_ the restoring of click events, so that clicking through the "backdrop" of a popover onto another popover trigger doesn't do anything as the popover is in the process of disappearing. */
-            animation: 1s linear restore-click both;
-        }
-    }
+
     /* Prevent images stretching too much */
     img {
         /* Maintain aspect ratio */
