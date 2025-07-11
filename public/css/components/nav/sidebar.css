@@ -68,7 +68,7 @@
             position: absolute;
             z-index: var(--z-index-above-body);
             right: 1.5rem;
-            top: 1rem;
+            top: 0.5rem;
             margin-inline-end: 0;
             padding: var(--spacing-s-3);
             & svg {
