@@ -76,6 +76,8 @@
     --color-black-prose: light-dark(hsl(210deg 3.85% 16%), hsl(0deg 0% 90%));
     --font-family-prose-weight-medium: 450;
     --font-family-prose-weight-strong: 600;
+    --max-width-reading: 50.5rem;
+    --max-width-content: 50.5rem;
 
     @layer scope {
         .c-entry-content {
