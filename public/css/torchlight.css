@@ -252,14 +252,8 @@
     }
 
     .tl-connect-down:after {
-        border-left: 2px solid var(--color-purple);
-        content: "";
-        height: 1rem;
-        left: 50%;
-        position: absolute;
-        top: 100%;
-        transform: translateX(-50%);
-        width: 0
+        border-left-width: 1px;
+        top: 50%
     }
 
     /* Copy button styles */
