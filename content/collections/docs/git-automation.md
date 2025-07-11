@@ -54,6 +54,7 @@ You are free to define the tracked paths to be considered when staging and commi
 'paths' => [
     base_path('content'),
     base_path('users'),
+    resource_path('addons'),
     resource_path('blueprints'),
     resource_path('fieldsets'),
     resource_path('forms'),

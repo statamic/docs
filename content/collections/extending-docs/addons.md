@@ -548,6 +548,66 @@ if ($addon->edition() === 'pro') {
 You don't need to check whether a license is valid, Statamic does that automatically for you.
 :::
 
+## Settings
+
+Laravel config files are great for storing application settings, but they're not ideal for settings you might want users to edit through the Control Panel.
+
+You can register a settings blueprint in your addon to give users a friendly interface for managing settings. Drop a blueprint file in `resources/blueprints/settings.yaml` or register it in your service provider like this:
+
+```php
+public function bootAddon()
+{
+    $this->registerSettingsBlueprint([
+        'tabs' => [
+            'main' => [
+                'sections' => [
+                    [
+                        'display' => __('API'),
+                        'fields' => [
+                            [
+                                'handle' => 'api_key',
+                                'field' => ['type' => 'text', 'display' => 'API Key', 'validate' => 'required'],
+                            ],
+                            // ...
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ]);
+}
+```
+
+Your addon's settings page will show up in the Control Panel under **Tools -> Addons**. Pretty convenient.
+
+You can even reference config options (and by extension environment variables) in your settings blueprint using Antlers, like so: `{{ config:app:url }}`.
+
+Settings are stored as YAML files in `resources/addons` by default, but can be moved to the database if you prefer. Just run the `php please install:eloquent-driver` command and you're all set.
+
+You can retrieve the settings using the `Addon` facade:
+
+```php
+use Statamic\Facades\Addon;
+
+$addon = Addon::get('vendor/package');
+
+// Getting settings...
+$addon->settings()->get('api_key');
+
+$addon->settings()->values();
+$addon->settings()->rawValues(); // Doesn't evaluate Antlers
+
+// Setting values...
+$addon->settings()->set('api_key', '{{ config:services:example:api_key }}');
+
+$addon->settings()->values([
+    'website_name' => 'My Awesome Site',
+    'api_key' => '{{ config:services:example:api_key }}',
+]);
+
+// Saving...
+$addon->settings()->save();
+```
 
 ## Update Scripts
 
