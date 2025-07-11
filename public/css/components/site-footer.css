@@ -135,7 +135,10 @@
         padding: 3rem var(--spacing-l) var(--spacing-vh-s);
         &:has(> :only-child) {
             /* e.g. Sans Off / Sans On row */
-            padding-block: var(--spacing-m) var(--spacing-l-3);
+            padding-block: var(--spacing-m) var(--spacing-l-2);
+            > :only-child {
+                grid-column: 1/-1;
+            }
         }
 
         /* --mq-nav-open-after and --mq-wide-before */

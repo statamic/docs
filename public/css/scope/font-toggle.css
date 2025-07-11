@@ -24,8 +24,11 @@
 .o-font-toggle {
     display: flex;
     align-items: center;
-    justify-content: end;
-    padding-inline-end: var(--spacing-s-1);
+    /* Custom */
+    @media (width >= 1030px) {
+        justify-content: end;
+        padding-inline-end: var(--spacing-s-1);
+    }
     svg {
         font-size: 2em;
         margin-inline-end: var(--spacing-s-5);
@@ -48,7 +51,7 @@
             border-top-left-radius: var(--border-radius-m);
             border-bottom-left-radius: var(--border-radius-m);
         }
-        input:nth-last-child(2) + & {
+        input:last-of-type + & {
             border-top-right-radius: var(--border-radius-m);
             border-bottom-right-radius: var(--border-radius-m);
         }
