@@ -74,9 +74,11 @@
                 <li><a href="https://statamic.com/partners">Partners</a></li>
                 <li><a href="https://statamic.com/partners/join">Become a Partner</a></li>
                 <li><br><small>&copy; Copyright 2012–{{ now | format:Y }} Statamic, LLC. All rights reserved. 🇺🇸</small></li>
-                <div class="font-toggle">
-                    <span class="font-toggle__sans-off">Sans Off</span>
-                    <span class="font-toggle__sans-on">Sans On</span>
+                <div class="o-font-toggle">
+                    <input type="radio" id="font-sans-off" name="font-toggle" value="sans-off" class="font-toggle__radio" checked>
+                    <label for="font-sans-off" class="font-toggle__sans-off">Sans Off</label>
+                    <input type="radio" id="font-sans-on" name="font-toggle" value="sans-on" class="font-toggle__radio">
+                    <label for="font-sans-on" class="font-toggle__sans-on">Sans On</label>
                 </div>
             </ul>
         </div>

@@ -199,6 +199,11 @@
             }
         }
 
+        .o-font-toggle {
+            margin-block-start: var(--spacing-l);
+            color: var(--color-link);
+        }
+
         p {
             color: var(--color-link);
         }

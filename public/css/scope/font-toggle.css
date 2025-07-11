@@ -4,7 +4,8 @@
 
     What does it do?
     ----------------
-    Funky green labels e.g. "Hot Tip", "Recommended", etc.
+    - Switches the font between sans-serif and sans using a radio button
+    - The radio button sets a local storage value which is then fetched on subsequent page loads
 
 */
 /* HTML Example...
@@ -12,7 +13,7 @@
     <div class="u-label">Hot Tip!</div>
 
 */
-:root {
+:root:has(footer .o-font-toggle #font-sans-on:checked) {
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
     =================================================== */
     --font-size-m: clamp(0.9em, 4vw, 1.03em);
@@ -25,19 +26,21 @@
     --color-black-prose: light-dark(hsl(210deg 3.85% 15%), hsl(0deg 0% 90%));
     --font-family-prose-weight-medium: 450;
     --font-family-prose-weight-strong: 600;
-}
-@layer scope {
-    .c-entry-content {
-        --font-size-s-1: 0.88em;
-        --font-size-s-1-fixed: 0.88em;
-        --font-size-s-1-line-height: 1.4;
 
-        font-family: var(--font-family-ui);
-        font-weight: var(--font-family-ui-weight-normal);
-        font-weight: 300;
-
-        p, li {
-            color: var(--color-black-prose);
+    @layer scope {
+        .c-entry-content {
+            --font-size-s-1: 0.88em;
+            --font-size-s-1-fixed: 0.88em;
+            --font-size-s-1-line-height: 1.4;
+            --font-family-ui-weight-normal: 300;
+    
+            font-family: var(--font-family-ui);
+            font-weight: var(--font-family-ui-weight-normal);
+    
+            p, li {
+                /* Make slightly lighter to compensate for a naturally heavier font */
+                color: var(--color-black-prose);
+            }
         }
     }
 }
