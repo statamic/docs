@@ -62,7 +62,7 @@
                     font-size: clamp(1rem, 4vw, 1.1rem);
                     font-family: var(--font-family-code);
                     font-weight: var(--font-family-code-weight-normal);
-                    text-transformr: lowercase;
+                    text-transform: lowercase;
                 }
                 &:last-child {
                     padding-inline: var(--spacing-s-1);
