@@ -29,7 +29,7 @@
     /* GROUP VARIABLES -- LAYOUT -- CONSTRAINTS -- MAX
     =================================================== */
     /* From lowest to highest value */
-    --max-width-reading: 43rem;
+    --max-width-reading: 51rem;
     --max-width-content: 51rem;
     /* -- */
     --max-width-1: 105rem;
