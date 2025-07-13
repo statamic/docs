@@ -13,6 +13,8 @@ related_entries:
 ---
 Turn a simple array into a comma delimited string with a friendly little ampersand between the last two items.
 
+The default can be changed from an ampersand to any string, and a second parameter for an an oxford comma.
+
 ```yaml
 fruits:
   - apples
@@ -24,14 +26,20 @@ fruits:
 ::tab antlers
 ```antlers
 {{ fruits | ampersand_list }}
+{{ fruits | ampersand_list('+') }}
+{{ fruits | ampersand_list('+', true) }}
 ```
 
 ::tab blade
 ```blade
 {{ Statamic::modify($fruits)->ampersandList() }}
+{{ Statamic::modify($fruits)->ampersandList('+') }}
+{{ Statamic::modify($fruits)->ampersandList(['+', true]) }}
 ```
 ::
 
 ```html
 apples, bananas & jerky
+apples, bananas + jerky
+apples, bananas, + jerky
 ```
