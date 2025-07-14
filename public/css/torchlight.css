@@ -7,9 +7,13 @@
         &:not(.c-doc-tabs &) {
             margin-block-end: 1.5rem;
         }
-        &:has(+ :is(h2, h3)) {
-            /* e.g. >> /collections */
+        &:has(+ h2) {
+            /* e.g. >> /collections and /configuration */
             margin-block-end: calc(var(--spacing-l-2) + var(--spacing-s-2))!important;
+        }
+        &:has(+ h3) {
+            /* e.g. >> /collections and /configuration */
+            margin-block-end: var(--spacing-l-1)!important;
         }
         margin-top: 1.5rem;
         overflow-x: auto;
