@@ -72,7 +72,7 @@
             bottom: 0;
         }
         & ul {
-            padding: var(--spacing-s-2);
+            padding: var(--spacing-s-3);
             padding-inline-end: var(--spacing-s-1);
             background: light-dark(white, var(--color-dark-mode-gray-background));
             display: inline-flex;
@@ -88,7 +88,7 @@
             display: flex;
             align-items: center;
             padding-block-end: 0;
-            & svg {
+            & svg:not(.external) {
                 margin-inline-end: var(--spacing-s-1);
                 inline-size: 0.4rem;
                 color: var(--color-gray-aa);
@@ -107,7 +107,7 @@
             text-decoration: none;
             color: var(--color-gray-aa);
             text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.775em;
             font-weight: var(--font-family-ui-weight-normal);
             text-box: trim-start cap;
             line-height: 1;
