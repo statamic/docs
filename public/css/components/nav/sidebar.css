@@ -305,7 +305,7 @@
             }
             .c-nav-sidebar-with-popover-api__desktop ul:not(ul ul) {
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
-                height: 80dvh;
+                height: 84dvh;
                 /* --mq-text-bump-2-before */
                 @media (width < 1441px) {
                     max-width: 15.5rem;

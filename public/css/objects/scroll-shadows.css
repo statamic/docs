@@ -23,7 +23,8 @@
     .o-shadow-container-vertical {
         overflow: auto;
 
-        --shadow-color: light-dark(hsl(0deg 0% 0% / 10%), hsl(var(--color-body-background-hue, 0) 50% 60% / 15%));
+        --shadow-color: light-dark(hsl(0deg 0% 0% / 5%), hsl(var(--color-body-background-hue, 0) 50% 60% / 15%));
+        --shadow-color-subtle: light-dark(hsl(0deg 0% 0% / 3%), hsl(var(--color-body-background-hue, 0) 50% 60% / 8%));
 
         background:
         /* Shadow Cover TOP */
@@ -41,7 +42,7 @@
         /* Shadow TOP */
         radial-gradient(
             farthest-side at 50% 0,
-            var(--shadow-color),
+            var(--shadow-color-subtle),
             transparent
         ) center top,
 
