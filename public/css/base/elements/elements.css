@@ -409,7 +409,7 @@
 @layer scope {
     .c-tip,
     .c-bordered-image {
-        &:has(+ :is(h2, h3)) {
+        &:has(+ h2) {
             /* Increase e.g. >> /assets */
             margin-block-end: calc(var(--spacing-l-2) + var(--spacing-s-2));
         }
