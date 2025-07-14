@@ -19,7 +19,7 @@ You can use Composer to install any addon:
 composer require vendor/package
 ```
 
-The command can be found on the addon's page in the Control Panel or the Statamic Marketplace.
+The command can be found on the addon's page in the [Statamic Marketplace](https://statamic.com/addons).
 
 :::tip
 Some first party addons – such as the Static Site Generator or Eloquent Driver - have their own dedicated commands which will be noted on the same pages.
