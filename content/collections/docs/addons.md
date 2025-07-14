@@ -50,5 +50,3 @@ You can choose which edition is installed by entering it into your `config/stata
     'vendor/package' => 'pro', // e.g., 'jezzdk/statamic-google-maps' => 'pro'
 ]
 ```
-
-Or, by choosing it from an addon's details view in the Control Panel.
