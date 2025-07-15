@@ -159,7 +159,8 @@
                             padding-inline: 0;
                             a {
                                 /* Indent the subnav */
-                                padding-inline-start: var(--spacing-s-3);
+                                margin-inline-start: 0.3rem;
+                                padding-inline: var(--spacing-s-4);
                                 /* Make it slightly smaller to improve comprehension when the TOC is busy e.g. /tags/form-create */
                                 font-size: 0.83rem;
                             }
