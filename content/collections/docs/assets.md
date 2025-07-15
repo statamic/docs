@@ -373,8 +373,30 @@ However, if you **trust your users** and need to upload SVG files without them b
 'svg_sanitization_on_upload' => false,
 ```
 
+## Custom cache stores
+
+Statamic leverages [Laravel's application cache](https://laravel.com/docs/cache) to store caches of your folder structure and asset metadata in your default cache store. This means these caches are removed any time you run `php artisan cache:clear`.
+
+If you have a lot of assets and folders it is a good idea to specify custom cache stores instead, as these will persist when you run `cache:clear`, for example when you deploy your site.
+
+The cache store can be customized in `config/cache.php`.
+
+```php
+'asset_meta' => [
+    'driver' => 'file',
+    'path' => storage_path('statamic/asset-meta'),
+],
+'asset_container_contents' => [
+    'driver' => 'file',
+    'path' => storage_path('statamic/asset-container-contents'),
+],
+```
+
+Now, if you need to clear these caches you can run `php artisan cache:clear asset_meta` or `php artisan cache:clear asset_container_contents`.
+
+
 ## Performance
 
-If you're experiencing performance issues with Assets, like slow queries or a slow asset browser, it might be worth moving your assets to the database using the Eloquent Driver. It takes a different approach to caching asset metadata, which sometimes works better for sites with more assets.
+If you're using [custom asset cache stores](#custom-cache-stores) and you're experiencing performance issues with Assets, like slow queries or a slow asset browser, it might be worth moving your assets to the database using the Eloquent Driver. It takes a different approach to caching asset metadata, which sometimes works better for sites with more assets.
 
 You can find out more about [moving assets to the database here](https://statamic.dev/tips/storing-content-in-a-database#moving-content-to-the-database).
