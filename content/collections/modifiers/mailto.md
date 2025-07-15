@@ -17,13 +17,19 @@ holler: holler@example.com
 ::tab antlers
 ```antlers
 {{ holler | mailto }}
+{{ holler | mailto('class:text-white bg-brown') }}
+{{ holler | mailto('class:text-white', 'data-tracking:true') }}
 ```
 ::tab blade
 ```blade
 {{ Statamic::modify($holler)->mailto() }}
+{{ Statamic::modify($holler)->mailto('class:text-white') }}
+{{ Statamic::modify($holler)->mailto('class:text-white', 'data-tracking:true') }}
 ```
 ::
 
 ```html
 <a href="mailto:holler@example.com">holler@example.com</a>
+<a href="mailto:holler@example.com" class="text-white bg-brown">holler@example.com</a>
+<a href="mailto:holler@example.com" class="text-white" data-tracking="true">holler@example.com</a>
 ```
