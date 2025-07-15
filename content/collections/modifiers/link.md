@@ -22,9 +22,9 @@ neat_site: http://example.com
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($neat_site)->link() }}
-{{ Statamic::modify($neat_site)->link('title:Visit my site!') }}
-{{ Statamic::modify($neat_site)->link('class:awesome-link') }}
+{!! Statamic::modify($neat_site)->link() !!}
+{!! Statamic::modify($neat_site)->link('title:Visit my site!') !!}
+{!! Statamic::modify($neat_site)->link('class:awesome-link') !!}
 ```
 ::
 

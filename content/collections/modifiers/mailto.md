@@ -22,9 +22,9 @@ holler: holler@example.com
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($holler)->mailto() }}
-{{ Statamic::modify($holler)->mailto('class:text-white') }}
-{{ Statamic::modify($holler)->mailto('class:text-white', 'data-tracking:true') }}
+{!! Statamic::modify($holler)->mailto() !!}
+{!! Statamic::modify($holler)->mailto('class:text-white') !!}
+{!! Statamic::modify($holler)->mailto('class:text-white', 'data-tracking:true') !!}
 ```
 ::
 
