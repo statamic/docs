@@ -375,9 +375,9 @@ However, if you **trust your users** and need to upload SVG files without them b
 
 ## Custom cache stores
 
-Statamic leverages [Laravel's application cache](https://laravel.com/docs/cache) to store caches of your folder structure and asset metadata in your default cache store. This means these caches are removed any time you run `php artisan cache:clear`.
+Statamic leverages [Laravel's application cache](https://laravel.com/docs/cache) to cache asset metadata and folders. However, this means that whenever you run `php artisan cache:clear`, the cached asset information will be cleared.
 
-If you have a lot of assets and folders it is a good idea to specify custom cache stores instead, as these will persist when you run `cache:clear`, for example when you deploy your site.
+If you have a lot of assets and/or folders, you might want to specify a custom cache store so the cached assets are persisted when you clear your application cache.
 
 The cache store can be customized in `config/cache.php`.
 
@@ -392,8 +392,7 @@ The cache store can be customized in `config/cache.php`.
 ],
 ```
 
-Now, if you need to clear these caches you can run `php artisan cache:clear asset_meta` or `php artisan cache:clear asset_container_contents`.
-
+To clear these caches, run `php please assets:clear-cache`.
 
 ## Performance
 
