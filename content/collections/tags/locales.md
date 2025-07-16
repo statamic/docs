@@ -83,7 +83,7 @@ variables:
 
 This tag is used to access all the locales any given entry or term is available in. It's most commonly used as a language switcher.
 
-Each locale's system data, as configured in `config/statamic/sites.php`, is available inside of a `locale` array.
+Each locale's system data, is [configured](/multi-site#configuration) in `resources/sites.yaml`.
 ## Examples
 
 ### Iterating over locales {#iterating}
