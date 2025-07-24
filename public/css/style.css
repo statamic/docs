@@ -13,7 +13,7 @@ scope;
 
 @import 'base/variables.css';
 @import 'base/reset.css';
-@import 'base/elements/all-elements.css';
+@import 'base/elements/elements.css';
 @import 'base/elements/forms.css';
 @import 'base/elements/tables.css';
 /* Objects */
