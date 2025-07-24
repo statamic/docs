@@ -427,11 +427,11 @@
     }
     /* GROUP ELEMENTS / HR
     =================================================== */
-    /* [1] This first technique is used to fake an hr */
-    hr, .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+    /* [1] This first technique is used to fake an hr. We don't want to use this when we follow a header because it would then appear to high up on the page e.g. /assets */
+    hr, .markdown h2:not(header + h2), article h2:not(header + h2) {
         --border-width: 0.3px;
     }
-    .markdown h2:not(:first-of-type), article h2:not(:first-of-type) {
+    .markdown h2:not(header + h2), article h2:not(header + h2) {
         --distance: var(--spacing-l-1);
         margin-block-start: var(--distance);
         p:has(+ &) {
