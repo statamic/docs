@@ -594,13 +594,13 @@ $addon = Addon::get('vendor/package');
 // Getting settings...
 $addon->settings()->get('api_key');
 
-$addon->settings()->values();
-$addon->settings()->rawValues(); // Doesn't evaluate Antlers
+$addon->settings()->all();
+$addon->settings()->raw(); // Doesn't evaluate Antlers
 
 // Setting values...
 $addon->settings()->set('api_key', '{{ config:services:example:api_key }}');
 
-$addon->settings()->values([
+$addon->settings()->set([
     'website_name' => 'My Awesome Site',
     'api_key' => '{{ config:services:example:api_key }}',
 ]);
