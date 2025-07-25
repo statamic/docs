@@ -56,7 +56,7 @@
             box-shadow: var(--box-shadow-not-t-medium);
             svg {
                 color: var(--color-primary-text);
-                ont-size: 1.3em;
+                font-size: 1.3em;
             }
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
