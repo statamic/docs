@@ -110,7 +110,6 @@
 
     --color-focus: var(--color-primary-accent);
     --color-link: var(--color-primary-accent);
-    --color-link: blue;
     --color-text-underline-light: hsl(0deg 0% 80%);
     --color-code-background: var(--color-gradient-blue-1);
     --color-code-background: var(--color-pink-light-2);
