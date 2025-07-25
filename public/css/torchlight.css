@@ -166,9 +166,10 @@
             font-size: 1.15em;
         }
         /* The last line with a folder */
-        :nth-last-child(1 of .line:has(&)) {
+        /* Commented out based on e.g. >> /extending/vite-in-addons */
+        /* :nth-last-child(1 of .line:has(&)) {
             margin-block-end: var(--spacing-s-4);
-        }
+        } */
     }
     .tl-files-folder:before {
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTc5LjIiIHdpZHRoPSIxNzkuMiI+PHBhdGggZD0iTTE1My42IDEzMS4yVjYwLjhxMC00LTIuOC02Ljh0LTYuOC0yLjhINzMuNnEtNCAwLTYuOC0yLjhUNjQgNDEuNnYtNi40cTAtNC0yLjgtNi44dC02LjgtMi44aC0zMnEtNCAwLTYuOCAyLjh0LTIuOCA2Ljh2OTZxMCA0IDIuOCA2Ljh0Ni44IDIuOEgxNDRxNCAwIDYuOC0yLjh0Mi44LTYuOHptMTIuOC03MC40djcwLjRxMCA5LjItNi42IDE1Ljh0LTE1LjggNi42SDIyLjRxLTkuMiAwLTE1LjgtNi42VDAgMTMxLjJ2LTk2UTAgMjYgNi42IDE5LjR0MTUuOC02LjZoMzJxOS4yIDAgMTUuOCA2LjZ0Ni42IDE1Ljh2My4ySDE0NHE5LjIgMCAxNS44IDYuNnQ2LjYgMTUuOHoiLz48L3N2Zz4=");
@@ -252,7 +253,7 @@
 
     .tl-connect-up:before {
         border-left-width: 1px;
-        top: 0
+        top: -5%;
     }
 
     .tl-connect-down:after {
