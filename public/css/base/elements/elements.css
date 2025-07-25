@@ -69,11 +69,11 @@
         font-weight: var(--font-family-code-weight-light);
         + p:not(ol p, ul p) {
             /* Not on this page e.g. >> /extending/vite-in-addons */
-            padding-block-start: var(--spacing-s-1);
+            padding-block-start: var(--spacing-s-2);
         }
         /* Put some space between paragraphs and code blocks, except if it's in a tip */
         p:has(+ &):not(.c-tip p, ol p) {
-            margin-block-end: var(--spacing-l);
+            margin-block-end: var(--spacing-m);
         }
         li & {
             /* Make code in bullet points slightly smaller */

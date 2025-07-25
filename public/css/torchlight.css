@@ -5,7 +5,7 @@
         }
         line-height: 2;
         &:not(.c-doc-tabs &) {
-            margin-block-end: 1.5rem;
+            margin-block-end: 1rem;
         }
         &:has(+ h2) {
             /* e.g. >> /collections and /configuration */
@@ -15,7 +15,7 @@
             /* e.g. >> /collections and /configuration */
             margin-block-end: var(--spacing-l-1)!important;
         }
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         overflow-x: auto;
         position: relative;
         :is(h1,h2,h3,h4,h5,h6) + & {
