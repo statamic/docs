@@ -97,7 +97,7 @@ We recommend indenting the markup in your HTML for **human readability and maint
 ### IDE integrations
 
 Syntax highlighting and auto-completion packages are available for many of the popular IDEs:
-- [Antlers Toolbox for VS Code](https://antlers.dev) (We recommend this one!)
+- [Antlers Toolbox for VS Code](https://marketplace.visualstudio.com/items?itemName=stillat-llc.vscode-antlers) (We recommend this one!)
 - [Antlers for Sublime Text](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
 - [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Panic Nova](https://extensions.panic.com/extensions/teriyaki/teriyaki.antlers/)
