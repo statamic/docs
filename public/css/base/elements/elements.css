@@ -434,7 +434,7 @@
     hr, .markdown h2:not(header + h2), article > h2:not(header + h2) {
         --border-width: 0.3px;
     }
-    .markdown h2:not(header + h2), article > h2:not(header + h2) {
+    .markdown h2:not(header + h2), article > h2:not(header + h2, hr + h2) {
         --distance: var(--spacing-l-1);
         margin-block-start: var(--distance);
         p:has(+ &) {
