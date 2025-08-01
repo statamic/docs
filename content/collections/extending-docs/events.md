@@ -1095,7 +1095,7 @@ public function handle(StaticCacheCleared $event)
 ### SubmissionCreated
 `Statamic\Events\SubmissionCreated`
 
-Dispatched after a form submission has been created. This happens after has a form has been submitted on the front-end.
+Dispatched after a form submission has been created. This happens after a form has been submitted on the front-end.
 
 ``` php
 public function handle(SubmissionCreated $event)
