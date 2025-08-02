@@ -17,13 +17,19 @@ neat_site: http://example.com
 ::tab antlers
 ```antlers
 {{ neat_site | link }}
+{{ neat_site | link('title:Visit my site!') }}
+{{ neat_site | link('class:awesome-link') }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($neat_site)->link() }}
+{!! Statamic::modify($neat_site)->link() !!}
+{!! Statamic::modify($neat_site)->link('title:Visit my site!') !!}
+{!! Statamic::modify($neat_site)->link('class:awesome-link') !!}
 ```
 ::
 
 ```html
 <a href="http://example.com">http://example.com</a>
+<a href="http://example.com">Visit my site!</a>
+<a href="http://example.com" class="awesome-link">http://example.com</a>
 ```
