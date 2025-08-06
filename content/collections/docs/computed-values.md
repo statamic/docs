@@ -87,7 +87,7 @@ You can use Laravel's [Cache](https://laravel.com/docs/cache#cache-usage) facade
 Once configured, you can simply access your computed values as properties on your instances (ie. `$user->balance` or `$entry->shares`).
 
 :::tip
-Computed values are only available for **top-level** fields. You can't use them inside Replicator or Grid fields.
+Computed values are only available for **top-level** fields. You can't use them inside Replicator or Grid fields. Likewise, computed values can't be queried as they're only evaluated after the query has been executed.
 :::
 
 ### Showing computed values in the control panel
