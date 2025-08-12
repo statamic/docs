@@ -37,4 +37,4 @@ Route::get('/from/{id?}', function ($id = null) {
     }
 
     return redirect()->to($entry->url());
-})->name('from');
+});
