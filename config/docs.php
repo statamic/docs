@@ -6,12 +6,12 @@ return [
 
     'versions' => [
         [
-            'version' => '5.0',
-            'url' => 'https://statamic.dev',
-        ],
-        [
             'version' => '6.0',
             'url' => 'https://v6.statamic.dev',
+        ],
+        [
+            'version' => '5.0',
+            'url' => 'https://statamic.dev',
         ],
     ],
 
