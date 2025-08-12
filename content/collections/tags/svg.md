@@ -19,11 +19,15 @@ parameters:
     type: boolean
     description: Determines whether the SVG should be sanitized before being output. Defaults to `true`.
   -
+    name: allow_attrs
+    type: array
+    description: >
+      Set an array of allowable attributes to bypass sanitization. Example: `allow_attrs="from|to"`.
+  -
     name: '*'
     type: string
     description: >
       Any additional parameter will be set as attributes on the `<svg>` element. For example `class="fill-current"` will set `<svg class="fill-current" ...>`.
-stage: 4
 id: 4f54ed6a-4a80-4ee4-899b-cbae5cd3b73c
 ---
 ## Overview
@@ -69,6 +73,19 @@ To make dev life easier, this tag collapses whitespace automatically and can set
   <rect width="100" height="100" />
 </svg>
 ```
+
+## Sanitization
+
+All SVGs are sanitized on upload into the control panel _and_ on output for to pretect your site from malicious code or other forms of potential compromise. You can [learn more about what's possible](https://www.cloudflare.com/threat-intelligence/research/report/svgs-the-hackers-canvas/) for hackers to attempt with SVGs.
+
+However, this sanitization may prove to be more aggressive than is beneficial for you. If you are complete control of your uploads and trust your control panel users, you can disable sanitzation on upload in your assets config file like this:
+
+``` php
+// config/statamic/assets.php
+'svg_sanitization_on_upload' => false,
+```
+
+Combine that setting with the `sanitize="false"` or `allow_attrs` parameters documented below to allow those additional SVG attributes and elements to render on your frontend.
 
 ## Additional Reading
 
