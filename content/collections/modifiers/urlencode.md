@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: URL Encode
 ---
-URL-encodes a string. The inverse of [urldecode](/modifiers/urldecode)
+URL-encodes a string. The inverse of [urldecode](/modifiers/urldecode).
 
 ```yaml
 string: I just want & need $pecial characters!
@@ -27,3 +27,5 @@ string: I just want & need $pecial characters!
 ```html
 I+just+want+%26+need+%24pecial+characters%21
 ```
+
+If you don't want forward slashes (`/`) to be encoded, use the [urlencode_except_slashes](/modifiers/urlencode_except_slashes) modifier instead.
