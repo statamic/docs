@@ -4,7 +4,7 @@ blueprint: modifiers
 modifier_types:
   - string
   - utility
-title: URL Encode
+title: URL Encode Except Slashes
 ---
 URL-encodes a string. Just like [urlencode](/modifiers/urldecode), but doesn't encode forward slashes (`/`).
 
