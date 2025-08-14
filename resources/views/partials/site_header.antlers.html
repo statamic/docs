@@ -54,7 +54,7 @@
                 </ul>
             </nav>
         </div>
-        <div>
+        <div class="c-version-selector">
             <select
                 x-data="{
                     selectedVersion: '{{ config:docs:version }}',
@@ -71,7 +71,7 @@
             >
                 {{ config:docs:versions }}
                     <option value="{{ version }}" data-url="{{ url }}">
-                        {{ version }}
+                        v{{ version | explode('.') | first }}
                     </option>
                 {{ /config:docs:versions }}
             </select>
