@@ -12,7 +12,9 @@ If you want to work on this project on your local machine, you may follow the in
 1. Fork this repository
 2. Open your terminal and cd to your `~/Sites` folder
 3. Clone your fork into the `~/Sites/docs` folder, by running the following command with your username placed into the {username} slot:
+    ```
     git clone git@github.com:{username}/docs statamic-docs
+    ```
 4. CD into the new directory you just created.
 5. Run the following commands:
   ```
