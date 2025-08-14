@@ -20,6 +20,10 @@
         }
         text-align: center;
 
+        .c-anchor {
+            display: none;
+        }
+
         img {
             &:not([src*=".svg"]) {
                 max-width: 5.5rem;
@@ -30,12 +34,12 @@
         }
 
         h2, h3 {
-            padding-block: var(--spacing-l-static) var(--spacing-s-5);
+            padding-block: var(--spacing-s-2) var(--spacing-s-5);
             font-family: var(--font-family-ui);
             font-size: var(--font-size-ui);
             font-weight: var(--font-family-ui-weight-heavy);
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
         p {
@@ -52,17 +56,23 @@
             /* A recommended label like e.g. >> /installing */
             padding-block-start: var(--spacing-m);
         }
-
-        .c-anchor,
-        .external {
-            /* Silly inside the icon grid so hide these */
-            display: none;
-        }
     }
     .c-icon-grid__item {
         position: relative;
         p {
             margin-block-end: 0;
+        }
+
+        > a .external {
+            /* Hide the direct .external links added with javascript because we want to add the icon elsewhere instead */
+            display: none;
+        }
+        .external {
+            background: light-dark(hsl(var(--color-purple-hue) 70% 97%), transparent);
+            border-radius: 50%;
+            * {
+                fill: var(--color-purple);
+            }
         }
     }
     .c-icon-grid__item__label {

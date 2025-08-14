@@ -59,7 +59,8 @@
         <div class="c-icon-grid__item">
             <a href="/installing/laravel-forge-1-click">
                 <div class="c-icon-grid__icon">
-                    <img src="/img/icons/forge.svg" alt="Laravel Forge logo" />
+                    {{# 2025-07-09 Attributes needed for the SVG to display in Firefox #}}
+                    <img src="/img/icons/forge.svg" style="width: 300px; height: 58px;" alt="Laravel Forge Logo" />
                 </div>
             </a>
             <h3>Forge</h3>
@@ -72,13 +73,14 @@
                     <img src="/img/icons/ploi-dark-mode.png" class="u-hide-in-light-mode" alt="Ploi logo" width="483" height="183" />
                 </div>
             </a>
-            <h3>Ploi</h3>
+            <h3>Ploi {{ svg src='external-link' }}</h3>
             <p>One-Click Install</p>
         </div>
         <div class="c-icon-grid__item">
             <a href="/installing/digital-ocean">
                 <div class="c-icon-grid__icon">
-                    <img src="/img/icons/digital-ocean.svg" alt="Digital Ocean logo" />
+                    {{# 2025-07-09 Attributes needed for the SVG to display in Firefox #}}
+                    <img src="/img/icons/digital-ocean.svg" style="width: 201px; height: 150px;" alt="Digital Ocean logo" />
                 </div>
             </a>
             <h3>Digital Ocean</h3>

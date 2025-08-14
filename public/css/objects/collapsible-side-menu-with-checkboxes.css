@@ -75,7 +75,7 @@
 @layer utilities {
     .o-toggle-subnav {
         + ul {
-            padding-block: 1rem 0.25rem;
+            padding-block: 0.95rem 0.25rem;
             
         }
         &:has(input:checked) + ul {

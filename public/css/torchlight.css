@@ -5,13 +5,17 @@
         }
         line-height: 2;
         &:not(.c-doc-tabs &) {
-            margin-block-end: 1.5rem;
+            margin-block-end: 1rem;
         }
-        &:has(+ :is(h2, h3)) {
-            /* e.g. >> /collections */
+        &:has(+ h2) {
+            /* e.g. >> /collections and /configuration */
             margin-block-end: calc(var(--spacing-l-2) + var(--spacing-s-2))!important;
         }
-        margin-top: 1.5rem;
+        &:has(+ h3) {
+            /* e.g. >> /collections and /configuration */
+            margin-block-end: var(--spacing-l-1)!important;
+        }
+        margin-top: 1rem;
         overflow-x: auto;
         position: relative;
         :is(h1,h2,h3,h4,h5,h6) + & {
@@ -162,9 +166,10 @@
             font-size: 1.15em;
         }
         /* The last line with a folder */
-        :nth-last-child(1 of .line:has(&)) {
+        /* Commented out based on e.g. >> /extending/vite-in-addons */
+        /* :nth-last-child(1 of .line:has(&)) {
             margin-block-end: var(--spacing-s-4);
-        }
+        } */
     }
     .tl-files-folder:before {
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTc5LjIiIHdpZHRoPSIxNzkuMiI+PHBhdGggZD0iTTE1My42IDEzMS4yVjYwLjhxMC00LTIuOC02Ljh0LTYuOC0yLjhINzMuNnEtNCAwLTYuOC0yLjhUNjQgNDEuNnYtNi40cTAtNC0yLjgtNi44dC02LjgtMi44aC0zMnEtNCAwLTYuOCAyLjh0LTIuOCA2Ljh2OTZxMCA0IDIuOCA2Ljh0Ni44IDIuOEgxNDRxNCAwIDYuOC0yLjh0Mi44LTYuOHptMTIuOC03MC40djcwLjRxMCA5LjItNi42IDE1Ljh0LTE1LjggNi42SDIyLjRxLTkuMiAwLTE1LjgtNi42VDAgMTMxLjJ2LTk2UTAgMjYgNi42IDE5LjR0MTUuOC02LjZoMzJxOS4yIDAgMTUuOCA2LjZ0Ni42IDE1Ljh2My4ySDE0NHE5LjIgMCAxNS44IDYuNnQ2LjYgMTUuOHoiLz48L3N2Zz4=");
@@ -248,11 +253,89 @@
 
     .tl-connect-up:before {
         border-left-width: 1px;
-        top: 0
+        top: -5%;
     }
 
     .tl-connect-down:after {
         border-left-width: 1px;
         top: 50%
+    }
+
+    /* Copy button styles */
+    .copy-button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        border: 1px solid hsl(0deg 0% 100% / 20%);
+        border-radius: var(--border-radius-m);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        font-size: var(--font-size-s-1);
+        font-weight: 500;
+        transition: all 0.2s ease;
+        opacity: 0;
+        backdrop-filter: blur(8px);
+        z-index: var(--z-index-above-body);
+
+        svg {
+            fill: none;
+        }
+        
+        &:hover {
+            border-color: hsl(0deg 0% 100% / 30%);
+            transform: translateY(-1px);
+        }
+        
+        &:active {
+            transform: translateY(0);
+        }
+        
+        &.copied {
+            background: rgba(34, 197, 94, 0.05);
+            border-color: rgba(34, 197, 94, 0.5);
+            color: rgb(34, 197, 94);
+
+            .copy-icon {
+                display: none;
+            }
+
+            .check-icon {
+                display: block;
+            }
+        }
+        
+        .check-icon {
+            display: none;
+        }
+    }
+
+    /* Dark mode adjustments for copy button */
+    html:has(#color-scheme option[value="dark"]:checked) .copy-button {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        
+        &:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        html:has(#color-scheme option[value="system"]:checked) .copy-button {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            
+            &:hover {
+                background: rgba(0, 0, 0, 0.5);
+                border-color: rgba(255, 255, 255, 0.2);
+                color: rgba(255, 255, 255, 1);
+            }
+        }
     }
 }

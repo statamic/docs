@@ -20,7 +20,7 @@
                             {{ partial:image_dimensions/tile }}
                         {{ /tile_image }}
                     {{ /if }}
-                    <figcaption>{{ tile_title }}</figcaption>
+                    <figcaption>{{ tile_title }} {{ if tile_link | is_external_url }}{{ svg src='external-link' }}{{ /if }}</figcaption>
                 </figure>
             </a>
             <p>{{ tile_description | remove_right('.') }}</p>

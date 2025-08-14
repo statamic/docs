@@ -72,7 +72,6 @@
         font-family: var(--font-family-ui);
 
         td {
-            font-size: var(--font-size-m);
             line-height: var(--font-size-m-line-height);
             font-weight: var(--font-family-ui-weight-normal);
         }
@@ -101,7 +100,7 @@
     table > thead > tr > td,
     table > tbody > tr > td,
     table > tfoot > tr > td {
-        padding: 0.7rem 2rem;
+        padding: 0.6rem 2rem;
         padding-inline-end: 20px;
         line-height: 1.43;
         vertical-align: top;
@@ -119,7 +118,7 @@
     }
 
     table > thead > tr > th {
-        padding-block: 1.5rem;
+        padding-block: 1.1rem;
         vertical-align: bottom;
         border-block-end: 1px dotted var(--color-pink-light-1);
         text-transform: uppercase;
@@ -187,6 +186,10 @@
                 white-space: nowrap;
             }
         }
+        table > tbody > tr > td:last-child p {
+            /* If the last column contains a paragraph make sure it's a sufficient length e.g. >> /tags/form-create > Variables */
+            min-width: 300px;
+        }
     }
     /* GROUP ELEMENTS / TABLES / (MODIFICATIONS) / BORDERED
     =================================================== */
@@ -198,6 +201,7 @@
     =================================================== */
     /* =JFG. Fix it so tabular info is easier to digest */
     table {
-        font-size: 0.85rem;
+        /* e.g. >> /recent-updates */
+        font-size: 0.9rem;
     }
 }

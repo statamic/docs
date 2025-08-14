@@ -45,6 +45,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `list`             | List all the Statamic commands |
 | `multisite`        | Converts from a single to multisite installation |
 | `addons:discover`  | Rebuild the cached addon package manifest |
+| `assets:clear-cache` | Clear the `asset_meta` and `asset_container_contents` cache stores |
 | `assets:generate-presets` | Generate asset preset manipulations |
 | `assets:meta`      | Generate asset metadata files |
 | `auth:migration`   | Generate Auth Migrations |

@@ -52,7 +52,7 @@
                 position: absolute;
                 z-index: var(--z-index-below-body);
                 top: 0;
-                left: calc(0% - var(--spacing-m));
+                left: calc(0% - 1.4rem);
             }
             /* An option to hide the timeline position. You may want to do this because many headings are on the page at once, which messes up the TOC position. To use this add {{ push:scope_classes }}u-no-scroll-spy-toc-position{{ /push:scope_classes }} to the template */
             .u-no-scroll-spy-toc-position & {

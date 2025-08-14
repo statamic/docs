@@ -58,6 +58,7 @@
             box-shadow: var(--box-shadow-not-t-medium);
             svg {
                 color: var(--color-primary-text);
+                font-size: 1.3em;
             }
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
@@ -66,9 +67,10 @@
         .c-nav-collapse-expand--mobile {
             position: absolute;
             z-index: var(--z-index-above-body);
-            right: 1rem;
-            top: 1.25rem;
+            right: 1.5rem;
+            top: 0.5rem;
             margin-inline-end: 0;
+            padding: var(--spacing-s-3);
             & svg {
                 font-size: 1rem;
                 inline-size: unset;
@@ -76,10 +78,14 @@
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV COLLAPSE EXPAND BUTTON
         =================================================== */
+        /* button*/
         .c-nav-collapse-expand--mobile {
-            left: 1rem;
+            left: 0.75rem;
             right: unset;
             background: radial-gradient(circle at center, var(--color-body-background) 0%, transparent 100%);
+            svg {
+                margin: 0;
+            }
         }
         /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
         =================================================== */
@@ -119,11 +125,7 @@
                     padding-inline: var(--spacing-l);
                 }
                 img {
-                    inline-size: 23px;
-                    /* --mq-text-bump-2-after */
-                    @media (width >= 1441px) {
-                        inline-size: 1.45em;
-                    }
+                    inline-size: 1.4em;
                 }
                 /* has a sub nav with .o-current-menu-item */
                 &:has(+ * .o-current-menu-item) {
@@ -139,7 +141,7 @@
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-s-1);
+                gap: var(--spacing-s-2);
                 font-size: var(--font-size-s-2);
                 overscroll-behavior-y: contain;
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
@@ -161,7 +163,7 @@
                             content: "";
                             position: absolute;
                             z-index: var(--z-index-below-body);
-                            top: 4.1rem;
+                            top: 3.25rem;
                             left: var(--spacing-l);
                             height: calc(100% - 4.1rem);
                             border-inline-start: 1px solid var(--color-pink-light-3-static);
@@ -184,7 +186,7 @@
                     }
 
                     & ul {
-                        gap: var(--spacing-s-5);
+                        gap: 0;
                         max-height: unset;
                         padding: 0 var(--spacing-l-2-horizontal);
                         font-size: var(--font-size-ui-rem);
@@ -233,6 +235,9 @@
         @media (width < 1100px) {
             padding-inline: var(--spacing-s-3);
             top: 0.8rem;
+            @supports not (animation-timeline: auto) {
+                top: 1rem;
+            }
             z-index: var(--z-index-above-nav);
             display: inline-block;
 
@@ -285,6 +290,11 @@
                 position: relative;
                 display: block;
                 opacity: 1;
+                /* Custom */
+                @media (width < 1350px) {
+                    /* Make it less distracting when the sidebars are very close to the main content */
+                    opacity: 0.95;
+                }
                 inline-size: 100%;
                 max-width: var(--max-width-1);
                 margin-inline: auto;
@@ -295,7 +305,7 @@
             }
             .c-nav-sidebar-with-popover-api__desktop ul:not(ul ul) {
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
-                height: 80dvh;
+                height: 84dvh;
                 /* --mq-text-bump-2-before */
                 @media (width < 1441px) {
                     max-width: 15.5rem;

@@ -133,7 +133,7 @@ APP_URL=http://mysite.test
 
 ### Locale
 
-Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default, Statamic will use English – United States (`en_US`).
+Each site has a `locale` used to format region-specific data (like date strings, number formats, etc). This should correspond to the server's locale. By default, Statamic will fallback to your app's locale.
 
 ### Language
 

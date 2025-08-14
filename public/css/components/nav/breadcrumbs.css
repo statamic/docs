@@ -86,12 +86,12 @@
             /* For Safari */
             display: flex;
             ol {
-                gap: var(--spacing-l);
+                gap: 1.7rem;
                 block-size: 100%;
             }
             li svg {
                 /* Increase to allow the gradient background to breathe */
-                margin-inline-end: 2.35rem;
+                margin-inline-end: 1.85rem;
             }
             button:last-child {
                 position: relative;

@@ -148,7 +148,7 @@
             li {
                 padding-inline-start: var(--spacing-s-5);
                 position: relative;
-                font-size: var(--font-size-s-1);
+                font-size: 0.95em;
                 &::before {
                     content: '';
                     background: var(--color-purple-light-1);
@@ -223,7 +223,7 @@
             }
             /* e.g. >> /quick-start-guide */
             + ul {
-                padding-block: var(--spacing-s-4) var(--spacing-l-1);
+                padding-block: var(--spacing-s-5) var(--spacing-l-1);
             }
         }
         /* Followed by some kind of image component (or paragraph like /javascript-frameworks). Not when the h1 is an only child, e.g. /modifiers/add */

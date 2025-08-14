@@ -43,17 +43,12 @@
     .c-tiles-with-description {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 13em), 1fr));
-        gap: var(--spacing-l-1) var(--spacing-s-4);
         gap: calc(var(--spacing-l-1) + var(--spacing-s-5)) var(--spacing-s-4);
         /* Custom */
         @media (width >= 530px) {
             column-gap: var(--spacing-s-2);
         }
         padding-block-end: var(--spacing-l-2);
-
-        .external {
-            display: none;
-        }
     }
     .c-tiles-with-description__item {
         max-width: 21rem;
@@ -67,6 +62,25 @@
             max-width: 16rem;
             text-align: center;
             margin-inline: auto;
+        }
+
+        position: relative;
+        .external {
+            a > & {
+                /* Hide the direct .external links added with javascript because we want to add the icon elsewhere instead */
+                display: none;
+            }
+            background: light-dark(hsl(var(--color-purple-hue) 70% 97%), transparent);
+            border-radius: 50%;
+            * {
+                fill: var(--color-purple);
+            }
+        }
+
+        figcaption {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
         }
     }
     .c-tiles-with-description__item__thumbnail {
@@ -89,6 +103,7 @@
             text-align: left;
             /* Decrease */
             font-size: var(--font-size-s-2);
+            font-weight: var(--font-family-ui-weight-normal);
             line-height: var(--font-size-s-2-line-height);
         }
     }
