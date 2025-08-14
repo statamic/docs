@@ -145,7 +145,7 @@ RewriteRule ^ index.php [L]
 
 On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slightly different place depending on your server setup.
 
-Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
+Some applications like [Laravel Forge](https://forge.laravel.com) and [Ploi](https://ploi.io/statamic) may let you edit your `nginx.conf` from within the UI.
 
 ``` nginx
 set $try_location @static;
