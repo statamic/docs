@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class GithubEditUrl extends \Statamic\Tags\Tags
 {
-    private $endpoint = 'https://github.com/statamic/docs/blob/master/content/';
+    private $endpoint = 'https://github.com/statamic/docs/blob/5.x/content/';
 
     public function index()
     {
