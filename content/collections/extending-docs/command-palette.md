@@ -35,7 +35,7 @@ CommandPalette::add(
 ```
 
 :::warning
-It is not recommended to add page-specific items in controllers, etc., because of Statamic's command palette caching strategy; If you wish to add more contextual items to your command palette, please use the [Javascript API](#javascript) instead.
+It is not recommended to add page-specific items in controllers, etc., because of Statamic's command palette caching strategy; If you wish to add more contextual items to your command palette, please use the [JavaScript API](#javascript) instead.
 :::
 
 #### Advanced Link Example
@@ -58,7 +58,7 @@ CommandPalette::add(
 
 ### JavaScript
 
-Javascript is a great place to add page-specific links, or even contextually relevant actions that might require JS logic.
+JavaScript is a great place to add page-specific links, or even contextually relevant actions that might require JS logic.
 
 Parameter-wise, the JS API mostly mirrors the parameter set of the PHP API, with a few key differences and additions:
 
@@ -117,7 +117,7 @@ Parameter-wise, the JS API mostly mirrors the parameter set of the PHP API, with
 
 Sometimes you'll find yourself in a situation where you want to use the JS API to wire up a simple link or button in your template to your command palette, and you don't want to have to extract out to a JS component to do so.
 
-For these situations, you may use the `<ui-command-palette-item>` component, which is a Vue component that wraps the above-mentioned JS API:
+For these situations, you may use the `<ui-command-palette-item>` component, which is a Vue component that wraps the [JS API](#javascript):
 
 ```html
 <ui-command-palette-item>
