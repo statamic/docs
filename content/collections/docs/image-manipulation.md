@@ -33,7 +33,19 @@ Presets are pre-configured sets of manipulations that can be referenced at a lat
 ],
 ```
 
-All standard [Glide API parameters](https://glide.thephpleague.com/2.0/api/quick-reference/) are available for use in presets.
+All standard [Glide API parameters](https://glide.thephpleague.com/3.0/api/quick-reference/) are available for use in presets.
+
+## Drivers
+
+Out of the box, Glide will use the [GD](https://www.php.net/manual/en/book.image.php) library for manipulating images. However, you can also use [ImageMagick](https://imagemagick.org) (which requires the `imagick` PHP extension) or [libvips](https://github.com/libvips/php-vips). 
+
+You can change the driver in your `config/statamic/assets.php` file:
+
+```php
+'driver' => 'gd', // or 'imagick', or a custom driver class name
+```
+
+To learn more about the available drivers, please refer to the [Glide documentation](https://glide.thephpleague.com/3.0/config/image-driver/).
 
 ### Glide tag
 

@@ -54,7 +54,7 @@ shape:
     name: fit
     type: string
     description: >
-      See the [Glide docs](http://glide.thephpleague.com/1.0/api/size/#fit-fit) on this parameter. In addition to the
+      See the [Glide docs](https://glide.thephpleague.com/3.0/api/crop/#fit-fitcrop-x-y---crop-based-on-focal-point) on this parameter. In addition to the
       Glide's fit options, Statamic also supports `crop_focal` to automatically fit/crop to a predefined focal point.
       See the [_Focal Crop_](#focal-point-cropping) section for more details.
   -
@@ -150,7 +150,7 @@ other:
   -
     name: markfit
     type: string
-    description: The fit of the watermark. [See Glide docs](https://glide.thephpleague.com/2.0/api/watermarks/#fit-markfit)
+    description: The fit of the watermark. [See Glide docs](https://glide.thephpleague.com/3.0/api/watermarks/#fit-markfit)
   -
     name: markx
     type: string
@@ -371,7 +371,7 @@ You may also use the shorthand as a tag pair:
 
 ## Watermarks
 
-You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
+You may use Glide's [watermarking feature](https://glide.thephpleague.com/3.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
 
 ::tabs
 
