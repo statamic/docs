@@ -1,0 +1,18 @@
+title: 'SEO Pro'
+template: page
+layout: layout
+mount: b2dfa5a7-326a-462f-bfa4-f6a06b589c3a
+revisions: false
+route: 'seo-pro/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+inject:
+  blueprint: page
+  section: seo_pro
