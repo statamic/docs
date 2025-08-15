@@ -484,3 +484,4 @@ An example use case is a frontend theme with sample content. This is the kind of
 
 - [Starter Kit Overview](/starter-kits)
 - [How to Install a Starter Kit](/starter-kits/installing-a-starter-kit)
+- [How to Update a Starter Kit](/starter-kits/updating-a-starter-kit)

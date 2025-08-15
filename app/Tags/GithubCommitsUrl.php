@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class GithubCommitsUrl extends \Statamic\Tags\Tags
 {
-    private $endpoint = 'https://github.com/statamic/docs/commits/master/content/';
+    private $endpoint = 'https://github.com/statamic/docs/commits/5.x/content/';
 
     public function index()
     {

@@ -31,4 +31,5 @@ The best way to find starter kits is by exploring the [Statamic Marketplace](htt
 ## Recommended reading
 
 - [How to install a starter kit](/starter-kits/installing-a-starter-kit)
+- [How to update a starter kit](/starter-kits/updating-a-starter-kit)
 - [How to create your own starter kit](/starter-kits/creating-a-starter-kit)

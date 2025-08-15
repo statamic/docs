@@ -98,15 +98,16 @@
             .c-nav-sidebar-with-popover-api-category-heading {
                 display: flex;
                 max-width: 17rem;
+                white-space: nowrap;
                 /* --mq-nav-open-after to --mq-text-bump-2-after */
                 @media (width >= 1100px) and (width < 1441px) {
-                    max-width: 14.85rem;
+                    max-width: 14rem;
                 }
-                max-height: 3.2rem;
+                max-height: 2.9rem;
                 gap: var(--spacing-s-1);
                 align-items: center;
                 justify-content: space-between;
-                padding: var(--spacing-s-3) var(--spacing-m);
+                padding: var(--spacing-s-4) var(--spacing-m);
                 font-family: var(--font-family-prose);
                 font-size: var(--font-size-l-2);
                 line-height: var(--font-size-l-2-line-height);
