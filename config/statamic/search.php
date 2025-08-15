@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'default' => env('STATAMIC_DEFAULT_SEARCH_INDEX', 'default'),
+    'default' => env('STATAMIC_DEFAULT_SEARCH_INDEX', 'docs-'.config('docs.version')),
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ return [
 
     'indexes' => [
 
-        'default' => [
+        'docs-'.config('docs.version') => [
             'driver' => env('SEARCH_DRIVER', 'meilisearch'),
             'searchables' => ['docs:*'],
             'fields' => [
@@ -97,12 +97,14 @@ return [
                 'secret' => env('ALGOLIA_SECRET', ''),
             ],
         ],
+
         'meilisearch' => [
             'credentials' => [
                 'url' => env('MEILISEARCH_HOST', 'http://localhost:7700'),
                 'secret' => env('MEILISEARCH_KEY', ''),
             ],
         ],
+
     ],
 
     /*
