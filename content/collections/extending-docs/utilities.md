@@ -45,9 +45,9 @@ public function boot()
         <h1>{{ __('Data Wangjangler') }}</h1>
     </div>
 
-    <button @click="commenceWangjangling">
+    <ui-button @click="commenceWangjangling">
         Wangjangle that data.
-    </button>
+    </ui-button>
 @stop
 ```
 
