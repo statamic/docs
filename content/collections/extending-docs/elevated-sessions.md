@@ -24,7 +24,7 @@ If the user closes the modal, the promise will be rejected.
 
 ```php
 <script setup>
-import { requireElevatedSession } from '@statamic/components/elevated-sessions';
+import { requireElevatedSession } from '@statamic/cms';
 
 function submit() {
     requireElevatedSession()
@@ -40,7 +40,7 @@ We also provide a `requireElevatedSessionIf` function allowing you to conditiona
 
 ```php
 <script setup>
-import { requireElevatedSessionIf } from '@statamic/components/elevated-sessions';
+import { requireElevatedSessionIf } from '@statamic/cms';
 import { ref } from 'vue';
 
 const isEditingOwnProfile = ref(true);
