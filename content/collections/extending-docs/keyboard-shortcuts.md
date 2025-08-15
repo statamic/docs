@@ -11,24 +11,21 @@ You may add keyboard shortcuts with a simple syntax, based on the [Mousetrap](ht
 Bind a keyboard shortcut in a similar way to how you would with Mousetrap. You will get a reference to a Binding object. To unbind, destroy it.
 
 ``` js
-export default {
-    data() {
-        return {
-            binding: null
-        },
-    },
-    created() {
-        this.binding = this.$keys.bind('mod+s', this.save);
-    },
-    destroyed() {
-        this.binding.destroy();
-    },
-    methods: {
-        save() {
-            //
-        }
-    }
+import { ref, onMounted, onBeforeUnmount, getCurrentInstance } from 'vue';
+
+const binding = ref(null);
+
+const save = () => {
+  //
 }
+
+onMounted(() => {
+  binding.value = Statamic.$keys.bind('mod+s', save);
+});
+
+onBeforeUnmount(() => {
+  binding.value?.destroy();
+});
 ```
 
 ## Unbinding

@@ -185,6 +185,12 @@ Vue.component('TwitterRelationshipItem', require('./TwitterRelationshipItem.vue'
 ```
 
 ``` vue
+<script setup>
+defineProps({
+    item: Object,
+});
+</script>
+
 <template>
     <div class="mb-1 item">
         <div class="item-move">&nbsp;</div>
@@ -201,14 +207,6 @@ Vue.component('TwitterRelationshipItem', require('./TwitterRelationshipItem.vue'
         </dropdown-list>
     </div>
 </template>
-
-<script>
-export default {
-    props: {
-        item: Object
-    }
-}
-</script>
 ```
 
 An `item` prop will be passed to your component which will contain one the objects provided by the `getItemData` method.

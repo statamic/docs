@@ -56,6 +56,10 @@ Statamic.$components.register('live-preview-ads', require('./LivePreviewAds.vue'
 ```
 
 ``` vue
+<script setup>
+defineProps(['value']);
+</script>
+
 <template>
     <div>
         <label>
@@ -66,12 +70,6 @@ Statamic.$components.register('live-preview-ads', require('./LivePreviewAds.vue'
         </label>
     </div>
 </template>
-
-<script>
-export default {
-    props: ['value']
-}
-</script>
 ```
 
 These values are available in your views, scoped into the `live_preview` array:

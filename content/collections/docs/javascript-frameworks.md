@@ -84,33 +84,30 @@ This method is used to fetch _any_ entry-based data, not just that available on 
 Here is a simple example component that fetches data using the asynchronous `created()` function. This data can then be used in the component or passed down to child components. The example uses the standard `Fetch` method but you can use any AJAX library (Axios, etc).
 
 ```vue
-<template>
-  <section v-if="pageData">
-    <div>
-      {{ pageData.title }}
-      {{ pageData.content }}
-    </div>
-  </section>
-</template>
+<script setup>
+import { ref, onMounted } from 'vue'
 
-<script>
-  export default {
-    data() {
-      return {
-        pageData: null,
-      }
-    },
-    async created() {
-      try {
-        const res = await fetch('/api/collections/pages/entries/home'); // Get the data from the API
-        const { data } = await res.json() // Convert it to JSON
-        this.pageData = data; // Assign the data to the component Data
-      } catch (e) {
+const pageData = ref(null)
+
+onMounted(async () => {
+    try {
+        const res = await fetch('/api/collections/pages/entries/home')
+        const { data } = await res.json()
+        pageData.value = data
+    } catch (e) {
         // Handle your errors
-      }
     }
-  }
+})
 </script>
+
+<template>
+    <section v-if="pageData">
+        <div>
+            {{ pageData.title }}
+            {{ pageData.content }}
+        </div>
+    </section>
+</template>
 ```
 
 ## Custom view models

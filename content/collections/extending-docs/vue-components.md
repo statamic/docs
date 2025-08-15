@@ -2,7 +2,7 @@
 title: 'Vue Components'
 stage: 1
 id: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
-overview: Here's how you can add your own Vue 2 components to the Statamic Control Panel.
+overview: Here's how you can add your own Vue 3 components to the Statamic Control Panel.
 ---
 
 ## Registering Components
@@ -12,15 +12,13 @@ In order to use a custom Vue component, it needs to be registered. You should do
 Once registered, you (or Statamic) will be able to use the component.
 
 ``` vue
+<script setup>
+defineProps(['hello']);
+</script>
+
 <template>
     <div>...</div>
 </template>
-
-<script>
-export default {
-    props: ['hello']
-};
-</script>
 ```
 
 ``` js
