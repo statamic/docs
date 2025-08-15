@@ -120,7 +120,7 @@ Sometimes you'll find yourself in a situation where you want to use the JS API t
 For these situations, you may use the `<ui-command-palette-item>` component, which is a Vue component that wraps the [JS API](#javascript):
 
 ```html
-<ui-command-palette-item>
+<ui-command-palette-item
     text="Hotbot"
     url="https://hotbot.com"
     open-new-tab
