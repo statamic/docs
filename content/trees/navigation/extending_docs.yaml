@@ -73,6 +73,9 @@ tree:
       -
         id: f91be384-aa3a-4b15-9d6c-2b10e33f00d8
         entry: 76abbb51-417c-460c-ad6c-c359329bfbaf
+      -
+        id: 5eba562c-9bdf-4623-9c55-a219956b8ccf
+        entry: 5eab02e3-c76b-4f44-a304-6a78877d099f
   -
     id: 73354789-cbf2-4bee-ab86-b289d748a64d
     title: Javascript
