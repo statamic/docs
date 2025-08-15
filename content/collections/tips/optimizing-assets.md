@@ -13,7 +13,7 @@ updated_at: 1622821191
 **This only Applies to Statamic 3.1+**
 :::
 :::tip
-**If you are looking at optimisation due to performance issues it may be worth taking a look at the [performance section of the Nav tag](https://statamic.dev/tags/nav#performance)**
+**If you are looking at optimisation due to performance issues it may be worth taking a look at the [performance section of the Nav tag](/tags/nav#performance)**
 :::
 
 Statamic's asset system allows you to point at a directory either locally or a remote service like Amazon S3.

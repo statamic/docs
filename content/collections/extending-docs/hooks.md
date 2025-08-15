@@ -143,7 +143,7 @@ The payload will be an array of the Bard's content.
 
 ### Static Cache Warming: `additional`
 Triggered when the `static:warm` command is run. This hook allows you to warm additional URIs during the static warming process.
-For more information about this hook, see the docs on [Static Caching](https://statamic.dev/static-caching#warming-additional-urls).
+For more information about this hook, see the docs on [Static Caching](/static-caching#warming-additional-urls).
 
 ### Multisite Command: `after`
 Triggered at the end of the `multisite` command. This hook allows you to run code when an app is being converted from a single-site to a multi-site.

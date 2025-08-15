@@ -22,7 +22,7 @@ Whichever approach you choose, know that it's designed to help you out. We’ve 
 ## Caveats
 
 * Protection only applies to the frontend of your site routed through Statamic (like entry URLs). Custom routes defined in your `routes/web.php` file and the Control Panel will be unaffected.
-* Protected pages are automatically excluded from the [static cache](https://statamic.dev/static-caching#important-preface).
+* Protected pages are automatically excluded from the [static cache](/static-caching#important-preface).
 
 
 ## Protecting an entry

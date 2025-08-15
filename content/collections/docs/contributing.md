@@ -77,7 +77,7 @@ We use [Laravel Pint](https://laravel.com/docs/master/pint#main-content) to enfo
 
 ### Control Panel translations
 
-We welcome new translations and updates! Please follow [these instructions](https://statamic.dev/cp-translations#contributing-a-new-translation) on how to contribute to Statamic's translation files.
+We welcome new translations and updates! Please follow [these instructions](/cp-translations#contributing-a-new-translation) on how to contribute to Statamic's translation files.
 
 ### Pull requests
 
