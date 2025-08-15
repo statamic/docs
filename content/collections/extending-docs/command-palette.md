@@ -28,7 +28,7 @@ However, you may find yourself in a situation where you need to add more custom 
 
 ### PHP
 
-If you wish to add basic links that will be available globally throughout the whole control panel, PHP is a great place to do this. Simply add the following to a service provider:
+If you wish to add basic links from PHP, simply add the following to a service provider, or to a controller for page-specific links:
 
 ```php
 use Statamic\Facades\CommandPalette;
@@ -39,10 +39,6 @@ CommandPalette::add(
     icon: 'calendar',
 );
 ```
-
-:::warning
-It is not recommended to add page-specific items in controllers, etc., because of Statamic's command palette caching strategy; If you wish to add more contextual items to your command palette, please use the [JavaScript API](#javascript) instead.
-:::
 
 #### Advanced Link Example
 
@@ -64,7 +60,7 @@ CommandPalette::add(
 
 ### JavaScript
 
-JavaScript is a great place to add page-specific links, or even contextually relevant actions that might require JS logic.
+JavaScript can also be a great place to add page-specific links, or even contextually relevant actions that might require JS logic.
 
 Parameter-wise, the JS API mostly mirrors the parameter set of the PHP API, with a few key differences and additions:
 
