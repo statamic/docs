@@ -141,7 +141,7 @@ If you want to dry up duplication, you may also use the `v-slot` to reuse things
 <ui-command-palette-item
     text="{{ __('Hotbot') }}"
     url="https://hotbot.com"
-    icon="visit-website"
+    icon="sexy-robot"
     open-new-tab
     v-slot="{ text, url, icon }"
 >
