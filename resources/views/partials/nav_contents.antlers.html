@@ -21,7 +21,7 @@
             $el.scrollTop = navScrollPosition;
             // Scroll to current menu item if we _didn't_ come from a click in the sidenav
             if (!localStorage.getItem('comingFromSidebarNav')) {
-                $el.querySelector('.o-current-menu-item').scrollIntoView({ block: 'center' });
+                $el.querySelector('.o-current-menu-item')?.scrollIntoView({ block: 'center' });
             }
         }
         $el.style.overflow = 'hidden';
