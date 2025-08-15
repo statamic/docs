@@ -90,7 +90,7 @@ Statamic routed URLs will expect views named `default` and `layout`. You will ne
 
 When you install Statamic into an existing Laravel application, content will be stored as flat files. 
 
-If you'd prefer to store content in a database instead, please follow the ["Storing Content in a Database"](https://statamic.dev/tips/storing-content-in-a-database) guide.
+If you'd prefer to store content in a database instead, please follow the ["Storing Content in a Database"](/tips/storing-content-in-a-database) guide.
 
 ### Users
 

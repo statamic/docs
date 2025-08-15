@@ -10,7 +10,7 @@ parent: c4f17d05-78bd-41bf-8e06-8dd52f6ec154
 :::warning
 Currently, Statamic's [Git automation](/git-automation) doesn't work on Laravel Cloud. 
 
-This may change in the future as Laravel Cloud continues to evolve. For now, we recommend moving [content](/tips/storing-content-in-a-database) and [users](https://statamic.dev/tips/storing-users-in-a-database) into the database, and moving assets [onto Laravel Cloud's object storage](#creating-an-object-storage-bucket) service. 
+This may change in the future as Laravel Cloud continues to evolve. For now, we recommend moving [content](/tips/storing-content-in-a-database) and [users](/tips/storing-users-in-a-database) into the database, and moving assets [onto Laravel Cloud's object storage](#creating-an-object-storage-bucket) service. 
 
 Alternatively, if you prefer to keep everything in flat files, you can disable the Control Panel and manually push any content changes from your local environment.
 :::
