@@ -3,7 +3,12 @@ id: 3482755d-3d20-42d5-8680-301a1cb95965
 title: Command Palette
 ---
 
-The command palette provides handy access to many pages and actions in the Control Panel without having to leave your keyboard. Make friends with the `⌘K` shortcut 😎
+The command palette provides handy access to many pages and actions in the Control Panel without having to leave your keyboard.
+
+<figure>
+    <img src="/img/command-palette.png" alt="Command Palette">
+    <figcaption>Make friends with the `⌘K` shortcut 😎</figcaption>
+</figure>
 
 Out of the box, it provides things like:
 
@@ -13,6 +18,7 @@ Out of the box, it provides things like:
 - Intelligent page-specific and contextually relevant actions
 - Links to relevant documentation
 - Access to user preferences, light/dark mode, etc.
+
 
 ## Extending the Command Palette
 
