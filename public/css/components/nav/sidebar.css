@@ -99,15 +99,18 @@
                 display: flex;
                 max-width: 17rem;
                 white-space: nowrap;
+                max-height: 3.2rem;
                 /* --mq-nav-open-after to --mq-text-bump-2-after */
                 @media (width >= 1100px) and (width < 1441px) {
+                    /* Shrink headers when we don't have much space */
+                    max-height: 2.9rem;
                     max-width: 14rem;
+                    padding-block: var(--spacing-s-4);
                 }
-                max-height: 2.9rem;
                 gap: var(--spacing-s-1);
                 align-items: center;
                 justify-content: space-between;
-                padding: var(--spacing-s-4) var(--spacing-m);
+                padding: var(--spacing-s-3) var(--spacing-m);
                 font-family: var(--font-family-prose);
                 font-size: var(--font-size-l-2);
                 line-height: var(--font-size-l-2-line-height);
