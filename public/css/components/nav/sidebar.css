@@ -100,13 +100,6 @@
                 max-width: 17rem;
                 white-space: nowrap;
                 max-height: 3.2rem;
-                /* --mq-nav-open-after to --mq-text-bump-2-after */
-                @media (width >= 1100px) and (width < 1441px) {
-                    /* Shrink headers when we don't have much space */
-                    max-height: 2.9rem;
-                    max-width: 14rem;
-                    padding-block: var(--spacing-s-4);
-                }
                 gap: var(--spacing-s-1);
                 align-items: center;
                 justify-content: space-between;
@@ -117,6 +110,13 @@
                 border-radius: 50px;
                 box-shadow: var(--box-shadow-not-t-light);
                 text-decoration: none;
+                /* --mq-nav-open-after to --mq-text-bump-2-after */
+                @media (width >= 1100px) and (width < 1441px) {
+                    /* Shrink headers when we don't have much space */
+                    max-height: 2.9rem;
+                    max-width: 14rem;
+                    padding-block: var(--spacing-s-4);
+                }
                 &:has(input:checked) {
                     box-shadow: var(--box-shadow-not-t-lighter);
                 }
