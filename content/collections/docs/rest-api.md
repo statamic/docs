@@ -720,3 +720,13 @@ curl -X GET "https://example.com/api/collections/pages/entries" \
   -H "Authorization: Bearer a-long-random-string" \
   -H "Accept: application/json"
 ```
+
+### Authenticating users
+
+If you want to authenticate based on users, we recommend using [Laravel Sanctum](https://laravel.com/docs/master/sanctum) instead. 
+
+To use Sanctum, you'll need to [store users in the database](/tips/storing-users-in-a-database) and add the `auth:sanctum` middleware to the REST API's middleware group:
+
+```php
+$this->app[\Illuminate\Contracts\Http\Kernel::class]->prependMiddlewareToGroup(config(‘statamic.api.middleware’), ‘auth:sanctum’);
+```
