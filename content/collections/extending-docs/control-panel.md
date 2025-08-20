@@ -14,70 +14,19 @@ If you're [creating an addon](/extending/addons), they will have their own ways 
 Statamic can load custom stylesheets and Javascript files located in the `public/vendor/` directory, or from external sources.
 
 ### Using Vite (recommended) {#using-vite}
-[Vite](https://vite.dev/) is a modern frontend build tool and recommended in the Statamic and Laravel ecosystems.
+[Vite](https://vite.dev) is the recommended frontend build tool in the Statamic and Laravel ecosystems. 
 
-A fresh Statamic install will have Vite ready to go (using the Laravel Vite wrapper plugin) and is the fastest way for you to add CSS and JavaScript to the Control Panel.
-
-The code snippets below will already be in your site but commented out. They just need to be uncommented.
-
-You may register a Vite asset to be loaded in the Control Panel using the `vite` method. This will accept a vendor name and an array of paths. For your application specific modifications, `app` will probably do just fine as a vendor name.
-
-```php
-use Statamic\Statamic;
-
-class AppServiceProvider
-{
-    public function boot()
-    {
-        Statamic::vite('app', [ // [tl! ++:start]
-            'resources/js/cp.js',
-            'resources/css/cp.css'
-        ]); // [tl! ++:end]
-    }
-}
-```
-
-Your `vite.config.js` can contain files for your front-end and the control panel. You'll need to add the control panel input files.
-
-If you plan to create Vue-based features (such as fieldtypes), you will need to make sure the vue2 npm package is installed. 
-
+To set up Vite for the Control Panel, run the setup command:
 
 ```bash
-npm i --save-dev @vitejs/plugin-vue2
+php please setup-cp-vite
 ```
 
-``` js
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue2 from '@vitejs/plugin-vue2'; // [tl! ++]
+It will install the necessary dependencies, create a `vite-cp.config.js` file, and publish any necessary stubs.
 
-export default defineConfig({
-    plugins: [
-        laravel({
-            input: [
-                'resources/css/site.css',
-                'resources/js/site.js',
-                'resources/css/cp.css',  // [tl! ++]
-                'resources/js/cp.js',  // [tl! ++]
-            ],
-            refresh: true,
-        }),
-        vue2(), // [tl! ++]
-    ],
-});
-```
+You can add any CSS to the `resources/css/cp.css` file, and any JavaScript to the `resources/js/cp.js` file. 
 
-Now you are ready to add JS code to `cp.js`:
-
-```php
-alert('Ready to code!');
-```
-
-To start Vite, run `npm run dev`. The control panel will automatically reload your changes as you work. 
-
-When you're ready to deploy to production, you can run `npm run build`. 
-
-These methods will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
+To start Vite, run `npm run cp:dev` and to build for production, run `npm run cp:build`.
 
 ### Using `<script>` tags in the Control Panel
 
