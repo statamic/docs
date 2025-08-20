@@ -102,7 +102,7 @@ But SEO Pro isn't the only option in the Statamic Ecosystem. You can explore som
 
 While there is no do-it-all-and-then-some solution like WooCommerce in the Statamic world, there are still quite a few options that provide a lot of flexibility depending on your specific needs.
 
-[Simple Commerce](https://statamic.com/addons/duncanmcclean/simple-commerce) developed by a core team member, provides essential features like product catalogs, shopping carts, and order management. It can handle digital and physical products, tax calculations, and shipping.
+[Cargo](https://statamic.com/addons/duncanmcclean/cargo) developed by a core team member, provides essential features like product catalogs, shopping carts, and order management. It can handle digital and physical products, tax calculations, and shipping.
 
 The [Shopify addon](https://statamic.com/addons/rad-pack/shopify) helps you integrate with Shopify's powerful platform — controlling the frontend of your site with Statamic and leaving the heavy cart, checkout flow, and product management to Shopify.
 
