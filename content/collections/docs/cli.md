@@ -67,7 +67,9 @@ You can see the list of available commands in your terminal by running `php plea
 | `make:scope`       | Create a new query scope |
 | `make:tag`         | Create a new tag |
 | `make:user`        | Create a new user account |
+| `make:user-migration` | Makes the user migration file |
 | `make:widget`      | Create a new widget |
+| `migrate-dates-to-utc` | Migrates dates in your content from your current timezone to UTC. |
 | `nocache:migration` | Generate Nocache Migrations |
 | `pro:enable`      | Enable Statamic Pro in .env |
 | `search:insert`    | Insert an item into its search indexes |
@@ -78,6 +80,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `stache:refresh`   | Clear and rebuild the "Stache" cache |
 | `stache:warm`      | Build the "Stache" cache |
 | `starter-kit:export`  | Export a starter kit package |
+| `starter-kit:init`  | Creates a new starter kit config |
 | `starter-kit:install`  | Install a starter kit |
 | `static:clear`     | Clear the static page cache |
 | `static:warm`      | Warm the static cache by crawling all URLs |
