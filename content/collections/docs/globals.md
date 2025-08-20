@@ -26,20 +26,29 @@ Globals are organized into "sets", each containing [fields](/fields). This conve
 
 ## Storage
 
-Each global set is stored in `content/globals/` as a YAML file. Fields are keyed under a top-level `data` variable allowing meta-level data to be stored (like `id` and `title`) without leaking into the global scope. Note how all data is stored under the `data` key.
+Globals are stored in the `content/globals` directory.
 
 ``` files theme:serendipity-light
 content/
   globals/
     global.yaml
     footer.yaml
+    default/
+      global.yaml
+      footer.yaml
 ```
 
+The `content/globals/{handle}.yaml` file contains metadata about the global set, like its title. While, the actual data for the global set is stored in `content/globals/{site}/{handle}.yaml`.
+
 ``` yaml
+# content/globals/footer.yaml
 title: Footer
-data:
-  copyright: 2021 Neat Fake Company, LLC
-  flair: Made with ❤️ by humans
+```
+
+```yaml
+# content/globals/default/footer.yaml
+copyright: 2021 Neat Fake Company, LLC
+flair: Made with ❤️ by humans
 ```
 
 

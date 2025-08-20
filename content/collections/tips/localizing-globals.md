@@ -17,41 +17,6 @@ When using [multiple sites](/multi-site), you'll need to specify in the Control 
 
 ![/img/globals-site-config.png](/img/globals-site-config.png)
 
-## Folder Structure
-
-The folder structure will differ from the single site structure explained in the [globals guide](/globals). Now, the `data` will be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
-
-``` files theme:serendipity-light
-globals/
-  global.yaml
-  footer.yaml
-  english/
-    global.yaml
-    footer.yaml
-  french/
-    global.yaml
-    footer.yaml
-```
-
-In these nested files, the data can exist at the top level.
-
-``` yaml
-# english/global.yaml
-food: bacon
-drink: whisky
-sport: football
-```
-``` yaml
-# french/global.yaml
-origin: english
-food: baguette
-drink: champagne
-```
-
-:::tip
-A global set will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
-:::
-
 
 ## Localizable fields
 
