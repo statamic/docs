@@ -9,27 +9,57 @@ options:
   -
     name: display
     type: text
-    description: 'The label shown above the field.'
+    description: "The field's label shown in the Control Panel."
     required: false
   -
     name: handle
     type: text
-    description: 'The field''s template variable.'
-    required: false
+    description: "The field's template variable. Avoid using [reserved words](/tips/reserved-words#as-field-names) as handles."
+    required: true
   -
     name: instructions
     type: text
-    description: 'Help text shown along with the field.'
+    description: 'Provide additional field instructions like this text. Markdown formatting is supported.'
     required: false
   -
     name: instructions_position
     type: text
-    description: 'Where the instructions should be positioned relative to the field. Options: `Above` or `Below`.'
+    description: 'Where the instructions should be positioned relative to the field. Options: `above` or `below`.'
+    required: false
+  -
+    name: variant
+    type: text
+    description: 'Show the field under its label or beside it. Options: `block` (Stacked), `inline` (Side by Side). Default: `block`.'
     required: false
   -
     name: listable
     type: mixed
-    description: 'Controls whether the field should be shown in control panel listings. Options: `hidden`, `true`, or `false`. Default: `hidden`.'
+    description: 'Controls whether the field should be shown in Control Panel listings. Options: `hidden`, `true`, or `false`. Default: `hidden`.'
+    required: false
+  -
+    name: visibility
+    type: mixed
+    description: 'Controls whether the field should be shown in Control Panel publish forms. Options: `visible`, `read_only`, [`computed`](/computed-values) or `hidden`. Default: `visible`.'
+    required: false
+  - 
+    name: sortable
+    type: toggle
+    description: 'Control if the field should be sortable in listing views.'
+    required: false
+  -
+    name: replicator_preview
+    type: toggle
+    description: 'Control preview visibility in Replicator/Bard sets.'
+    required: false
+  -
+    name: duplicate
+    type: toggle
+    description: 'Control if the field should be included when duplicating the item.'
+    required: false
+  -
+    name: actions
+    type: toggle
+    description: 'Show or hide field action controls, such as fullscreen mode.'
     required: false
   -
     name: conditions
