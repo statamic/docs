@@ -177,19 +177,6 @@ Schedule::command('statamic:git:commit')->everyTenMinutes();
 
 In this example, we schedule a commit to run 10 minutes after a user makes a content change. If at that time the repository status is clean, the commit will be cancelled.
 
-:::hint
-If you're using Laravel 10, or still have a `app/Console/Kernel.php` file in your project, you should schedule Git commits inside your `app/Console/Kernel.php` file instead:
-
-```php
-protected function schedule(Schedule $schedule)
-{
-    $schedule
-        ->command('statamic:git:commit')
-        ->everyTenMinutes();
-}
-```
-:::
-
 _Note: If you have never used Laravel's scheduler, be sure to also [configure a cron job on your server](https://laravel.com/docs/scheduling#running-the-scheduler) to run all scheduled jobs. This only needs to be done once per server._
 
 ```
