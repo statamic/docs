@@ -85,28 +85,30 @@ Here is a simple example component that fetches data using the asynchronous `cre
 
 ```vue
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 
-const pageData = ref(null)
+const pageData = ref(null);
 
-onMounted(async () => {
+const fetchPageData = async () => {
     try {
-        const res = await fetch('/api/collections/pages/entries/home')
-        const { data } = await res.json()
-        pageData.value = data
+        const res = await fetch('/api/collections/pages/entries/home'); // Get the data from the API
+        const { data } = await res.json(); // Convert it to JSON
+        pageData.value = data; // Assign the data to the reactive reference
     } catch (e) {
         // Handle your errors
     }
-})
+}
+
+onMounted(() => fetchPageData());
 </script>
 
 <template>
-    <section v-if="pageData">
-        <div>
-            {{ pageData.title }}
-            {{ pageData.content }}
-        </div>
-    </section>
+	<section v-if="pageData">
+		<div>
+			{{ pageData.title }}
+			{{ pageData.content }}
+		</div>
+	</section>
 </template>
 ```
 
