@@ -126,7 +126,7 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
 Next, require the branch of `cms` you checked out:
 
 ```shell
-composer require "statamic/cms 5.x-dev"
+composer require "statamic/cms 6.x-dev"
 ```
 
 (We'll go into more detail in a moment on what constraint should be used there.)
@@ -140,12 +140,12 @@ Running composer update statamic/cms
 Loading composer repositories with package information
 Updating dependencies
 Lock file operations: 0 installs, 1 update, 0 removals
-  - Upgrading statamic/cms (v5.7.3 => 5.x-dev) # [tl! focus]
+  - Upgrading statamic/cms (v5.7.3 => 6.x-dev) # [tl! focus]
 Writing lock file
 Installing dependencies from lock file (including require-dev)
 Package operations: 0 installs, 1 update, 0 removals
   - Removing statamic/cms (v5.7.3)
-  - Installing statamic/cms (5.x-dev): Symlinking from /path/to/cms  # [tl! focus]
+  - Installing statamic/cms (6.x-dev): Symlinking from /path/to/cms  # [tl! focus]
   - Downloading statamic/cms (dist)
     Failed to download
 Generating optimized autoload files
@@ -194,7 +194,7 @@ git checkout -b fix/issue-9999
 When requiring the `cms` package, it's important to require the appropriate constraint. If you don't use the right one, Composer may decide to use the _real_ `cms` package, and you'll be left wondering why your code changes aren't appearing.
 :::
 
-If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `5.x` should use a constraint of `5.x-dev`).
+If the branch is numeric then you need to require `BRANCH.x-dev` (e.g. a branch named `6.x` should use a constraint of `6.x-dev`).
 
 Otherwise, you'll need to use `dev-BRANCH` (e.g. a branch named `feature/mybranch` should use a constraint of `dev-feature/mybranch`).
 
