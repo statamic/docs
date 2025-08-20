@@ -11,22 +11,25 @@ Statamic's config files are located in `config/statamic/`. They are PHP files na
 
 ``` files theme:serendipity-light
 config/statamic/
-    amp.php
+    antlers.php
     api.php
     assets.php
+    autosave.php
     cp.php
+    editions.php
     forms.php
+    git.php
+    graphql.php
     live_preview.php
+    markdown.php
     oauth.php
     protect.php
     revisions.php
     routes.php
     search.php
-    sites.php
     stache.php
     static_caching.php
     system.php
-    theming.php
     users.php
 ```
 
