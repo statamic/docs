@@ -7,13 +7,15 @@ stage: 1
 id: 0782835d-1f44-4b19-99f4-2bb8ad28c7ba
 ---
 
-- [Events](/extending/js-events)
-- [Hooks](/extending/js-hooks)
-- [Toast Notifications](/extending/toast-notifications)
-- [Progress](/extending/progress)
+- [Event Bus](/extending/js-events)
+- [Extending Bard](/extending/bard)
 - [Dirty State Tracking](/extending/dirty-state-tracking)
-- [Stacks](/extending/stacks)
+- [Hooks](/extending/js-hooks)
+- [Keyboard Shortcuts](/extending/keyboard-shortcuts)
 - [Modals](/extending/modals)
-- [Slugify](/extending/slugify)
-- [Bard](/extending/bard)
+- [Progress](/extending/progress)
+- [Slugs](/extending/slugify)
+- [Stacks](/extending/stacks)
 - [Vue Components](/extending/vue-components)
+- [Publish Components](/extending/publish-components)
+- [Preferences](/preferences#using-javascript)
