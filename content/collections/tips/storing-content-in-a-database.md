@@ -35,6 +35,7 @@ When you create a new Statamic site, it will ask if you want to store content in
 ## Change your mind?
 If you change your mind about moving content to the database, you can always move it back. Just use one of the following commands to export your content back into flat-files:
 
+- Addon Settings: `php please eloquent:export-addon-settings`
 - Assets: `php please eloquent:export-assets`
 - Blueprints and Fieldsets: `php please eloquent:export-blueprints`
 - Collections: `php please eloquent:export-collections`
