@@ -181,7 +181,9 @@ protected $itemComponent = 'TwitterRelationshipItem';
 ```
 
 ``` js
-Vue.component('TwitterRelationshipItem', require('./TwitterRelationshipItem.vue'));
+import TwitterRelationshipItem from './TwitterRelationshipItem.vue';
+
+Statamic.$components.register('TwitterRelationshipItem', TwitterRelationshipItem);
 ```
 
 ``` vue
