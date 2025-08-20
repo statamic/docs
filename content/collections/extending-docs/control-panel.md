@@ -77,26 +77,6 @@ To start Vite, run `npm run dev`. The control panel will automatically reload yo
 
 When you're ready to deploy to production, you can run `npm run build`. 
 
-### Using Webpack
-
-While Vite is the recommended build tool for adding assets to the control panel, you are welcome to use other tools.
-
-If you're using Webpack, Laravel Mix, or some other tool, you may register an asset to be loaded in the Control Panel using the `script` and `style` methods. This will accept a vendor name and a path.
-
-
-``` php
-use Statamic\Statamic;
-
-class AppServiceProvider
-{
-    public function boot()
-    {
-        Statamic::script('app', 'cp.js');
-        Statamic::style('app', 'cp.css');
-    }
-}
-```
-
 These methods will make Statamic expect files at `public/vendor/app/js/cp.js` and `public/vendor/app/css/cp.css` respectively.
 
 ### Using `<script>` tags in the Control Panel
