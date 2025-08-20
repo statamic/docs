@@ -63,9 +63,11 @@ defineProps(['value']);
 <template>
     <div>
         <label>
-            <input type="checkbox"
-                   :value="value"
-                   @input="$emit('input', $event.target.checked)" />
+            <input 
+                type="checkbox"
+                :value="value"
+                @input="$emit('input', $event.target.checked)" 
+            />
             Show Advertisements
         </label>
     </div>
