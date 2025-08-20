@@ -124,6 +124,7 @@ Otherwise, in your project root's `composer.json`, add your package to the `requ
             "url": "addons/example"
         }
     ]
+}
 ```
 
 Run composer update from your _project root_ (not your addon directory).
@@ -177,6 +178,7 @@ In your project root's `composer.json`, add the package to the `require` and `re
             "url": "addons/example"
         }
     ]
+}
 ```
 
 Run composer update from your project root:
@@ -497,7 +499,7 @@ To learn more about defining events, listeners and subscribers, please consult t
 
 ## Scheduling
 
-To define a schedule from your addon, you can add a `schedule` method just like you would typically see in a Laravel application's App\Console\Kernel class.
+To define a schedule from your addon, you can add a `schedule` method and schedule tasks just like you typically would in a Laravel application's `routes/console.php` file.
 
 ``` php
 protected function schedule($schedule)
