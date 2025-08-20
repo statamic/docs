@@ -103,7 +103,6 @@ When an exception is uncaught and the `APP_DEBUG` environment variable is `true`
 
 ``` php
 return [
-
     // ...
 
     'debug_blacklist' => [

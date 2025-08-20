@@ -36,7 +36,7 @@ For example, if you chose `v4.0.1` in the control panel, this will be your Compo
 ```json
 {
     "require": {
-        "statamic/cms": "4.0.1",
+        "statamic/cms": "6.0.1",
     }
 }
 ```
@@ -46,7 +46,7 @@ To go back to a more traditional version range constraint, you may want to repla
 ```json
 {
     "require": {
-        "statamic/cms": "^4.0",
+        "statamic/cms": "^6.0",
     }
 }
 ```
