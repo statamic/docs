@@ -69,7 +69,7 @@ If you're ready to start working on your feature, bug fix, or improvement, we ha
 
 ### Compiled assets
 
-If you are submitting a change that will affect a compiled file, such as most of the files in `resources/sass` or `resources/js`, do not commit the compiled files. Due to their large size, they cannot realistically be reviewed by our team. This could be exploited as a way to inject malicious code into Statamic. In order to defensively prevent this, all compiled files will be generated and committed by the core Statamic team.
+If you are submitting a change that will affect a compiled file, such as most of the files in `resources/css` or `resources/js`, do not commit the compiled files. Due to their large size, they cannot realistically be reviewed by our team. This could be exploited as a way to inject malicious code into Statamic. In order to defensively prevent this, all compiled files will be generated and committed by the core Statamic team.
 
 ### Code style
 

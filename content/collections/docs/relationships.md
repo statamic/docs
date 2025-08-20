@@ -16,13 +16,14 @@ Statamic relationships are defined by storing an `id` or `handle` of one piece o
 
 ## Fieldtypes
 
-There are 12 fieldtypes that manage relationships in one fashion or another. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data it references.
+There are 13 fieldtypes that manage relationships in one fashion or another. When you use these fieldtypes in your [blueprint](/blueprints), the relationships are automatically resolved on the front-end of your site and you can work directly with the data it references.
 
 - [Assets](/fieldtypes/assets)
 - [Collections](/fieldtypes/collections)
 - [Entries](/fieldtypes/entries)
 - [Form](/fieldtypes/form)
 - [Link](/fieldtypes/link)
+- [Navs](/fieldtypes/navs)
 - [Sites](/fieldtypes/sites)
 - [Structures](/fieldtypes/structures)
 - [Taxonomies](/fieldtypes/taxonomies)
