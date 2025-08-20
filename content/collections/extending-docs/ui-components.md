@@ -5,13 +5,28 @@ title: UI Components
 
 When building custom areas of the Control Panel, you should aim to use the UI components as much as possible.
 
-These will allow you to write UIs that match the design of Statamic without needing to worry about styles or Tailwind classes.
+These will allow you to write UIs that match the design of Statamic without needing to worry about styles or Tailwind classes. It also allows you to keep your UIs in sync with our design system without having to do any additional work. In short, they're here to make your life easier.
 
-For example, need a card? Don't use `<div class="bg-white p-4 rounded border shadow-sm">`, use the `Card` component!
+You can treat these components like an extension of HTML itself. They should *just work*.
+
+For example, if you need a card, don't use `<div class="bg-white p-4 rounded border shadow-sm">`, use the `<ui-card>` component!
+
+## Syntax
+
+All of the components are available with their kebab-cased name prefixed with `ui-`. For example:
+
+```blade
+<ui-card>
+    <ui-heading text="A lovely card" />
+    <ui-button @click="doSomething" text="Click me" />
+</ui-card>
+```
+
+This syntax works in Blade _and_ Vue, which is especially handy for those times when you're bouncing back and forth between them.
 
 ## Importing
 
-To use a component in your Vue files, you can import them from `@statamic/cms/ui`.
+You can optionally import the UI components and namespace them, which gives your IDE the ability to autocomplete, link to the original components, and other useful dev-centric workflows. You import them from `@statamic/cms/ui`.
 
 ```vue
 <script setup>
@@ -25,18 +40,15 @@ import { Card, Heading, Button } from '@statamic/cms/ui';
 </template>
 ```
 
-## Global Components
+## Anatomy of a Component
 
-When using Blade (or if you don't like all the benefits your editor can give you when you import) you can use the global components.
+Most of our components use [Reka](https://reka-ui.com/) under the hood, and are built with Vue.js's [composition API](https://vuejs.org/api/composition-api-setup).
 
-They will be available at the kebab-cased name prefixed with `ui-`. For example:
+We utilize [Class Variariance Authority](https://cva.style/docs) to dynamically assemble our classes and styles based on variants and props.
 
-```blade
-<ui-card>
-    <ui-heading text="A lovely card" />
-    <ui-button @click="doSomething" text="Click me" />
-</ui-card>
-```
+:::tip
+These docs are a work in progress during the Alpha. We're doing some major reorganizing of the docs for the v6 launch and will have complete documentation sometime between now and then. In the meantime, [explore the components themselves](https://github.com/statamic/cms/tree/master/resources/js/components/ui) to see what exists and what props/events are avilable.
+:::
 
 ## Components
 
@@ -46,83 +58,83 @@ TODO
 ### Badge
 Highlight contextual information, like status, count, or related data. You can pass text through a `text` prop or use it like an HTML tag pair.
 
-```vue
-<Badge color="green" size="lg">New</Badge>
-<Badge color="green" size="lg" text="Few" />
+```html
+<ui-badge color="green" size="lg">New</ui-badge>
+<ui-badge color="green" size="lg" text="Few" />
 ```
 
 #### Sizes
 
 Badges are available in two sizes via the `size` prop.
 
-```vue
-<Badge size="sm">Small</Badge>
-<Badge>Default</Badge>
-<Badge size="lg">Large</Badge>
+```html
+<ui-badge size="sm">Small</ui-badge>
+<ui-badge>Default</ui-badge>
+<ui-badge size="lg">Large</ui-badge>
 ```
 
 #### Colors
 Use the `color` attribute to change the badge's color.
-```vue
-<Badge>Default</Badge>
-<Badge color="white">White</Badge>
-<Badge color="black">Black</Badge>
-<Badge color="red">Red</Badge>
-<Badge color="orange">Orange</Badge>
-<Badge color="amber">Amber</Badge>
-<Badge color="yellow">Yellow</Badge>
-<Badge color="lime">Lime</Badge>
-<Badge color="green">Green</Badge>
-<Badge color="emerald">Emerald</Badge>
-<Badge color="teal">Teal</Badge>
-<Badge color="cyan">Cyan</Badge>
-<Badge color="sky">Sky</Badge>
-<Badge color="blue">Blue</Badge>
-<Badge color="indigo">Indigo</Badge>
-<Badge color="violet">Violet</Badge>
-<Badge color="purple">Purple</Badge>
-<Badge color="fuchsia">Fuchsia</Badge>
-<Badge color="pink">Pink</Badge>
-<Badge color="rose">Rose</Badge>
+```html
+<ui-badge>Default</ui-badge>
+<ui-badge color="white">White</ui-badge>
+<ui-badge color="black">Black</ui-badge>
+<ui-badge color="red">Red</ui-badge>
+<ui-badge color="orange">Orange</ui-badge>
+<ui-badge color="amber">Amber</ui-badge>
+<ui-badge color="yellow">Yellow</ui-badge>
+<ui-badge color="lime">Lime</ui-badge>
+<ui-badge color="green">Green</ui-badge>
+<ui-badge color="emerald">Emerald</ui-badge>
+<ui-badge color="teal">Teal</ui-badge>
+<ui-badge color="cyan">Cyan</ui-badge>
+<ui-badge color="sky">Sky</ui-badge>
+<ui-badge color="blue">Blue</ui-badge>
+<ui-badge color="indigo">Indigo</ui-badge>
+<ui-badge color="violet">Violet</ui-badge>
+<ui-badge color="purple">Purple</ui-badge>
+<ui-badge color="fuchsia">Fuchsia</ui-badge>
+<ui-badge color="pink">Pink</ui-badge>
+<ui-badge color="rose">Rose</ui-badge>
 ```
 
 #### Variants
 Use the `variant` prop to change the badge's style and shape. Flat badges are in slightly taller than default ones to account for the optical perception of borders and shadows.
 
-```vue
-<Badge size="lg">Default</Badge>
-<Badge variant="flat" size="lg">Flat</Badge>
+```html
+<ui-badge size="lg">Default</ui-badge>
+<ui-badge variant="flat" size="lg">Flat</ui-badge>
 ```
 
 #### Sub-Text
 Use the `sub-text` prop to add supporting text, perfect for counts or numbers.
 
-```vue
-<Badge color="black" sub-text="42">Events</Badge>
-<Badge color="purple" sub-text="21">Updates</Badge>
+```html
+<ui-badge color="black" sub-text="42">Events</ui-badge>
+<ui-badge color="purple" sub-text="21">Updates</ui-badge>
 ```
 
 #### Icons
 Badges can contain icons through the use of slots or by using the `icon` prop to pass the name of an icon.
 
-```vue
-<Badge icon="mail">david@hasselhoff.com</Badge>
+```html
+<ui-badge icon="mail">david@hasselhoff.com</ui-badge>
 ```
 
 #### Pills
 Use the `pill` prop to round out the badge.
 
-```vue
-<Badge pill>Pill</Badge>
+```html
+<ui-badge pill>Pill</ui-badge>
 ```
 
 #### As a link
 Badges can be used as links by passing an `href` prop.
 
-```vue
-<Badge pill variant="flat" size="lg" href="https://statamic.dev/">
+```html
+<ui-badge pill variant="flat" size="lg" href="https://statamic.dev/">
 	<p>Go read the <b>docs</b></p>
-</Badge>
+</ui-badge>
 ```
 
 ### Buttons
@@ -223,7 +235,7 @@ import { Listing } from '@statamic/cms/ui';
 | items                         | If no URL is provided, you can provide an array of items to populate the table.              |
 | allowPresets                  | Lets you disable presets.                                                                    |
 | allowBulkActions              | Lets you disable bulk actions.                                                               |
-| actionUrl                     | The URL from which to retrieve actions.                                                      |         
+| actionUrl                     | The URL from which to retrieve actions.                                                      |
 | actionContext                 | The extra data to pass to the server when using actions.                                     |
 | allowActionsWhileReordering   | Enables the action twirldown while reordering is enabled.                                    |
 | reorderable                   | Adds drag handles to the rows.                                                               |
