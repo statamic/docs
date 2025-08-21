@@ -105,7 +105,8 @@
                 justify-content: space-between;
                 padding: var(--spacing-s-3) var(--spacing-m);
                 font-family: var(--font-family-prose);
-                font-size: var(--font-size-l-2);
+                /* Custom */
+                font-size: clamp(1.35em, 6vw, 1.1em);
                 line-height: var(--font-size-l-2-line-height);
                 border-radius: 50px;
                 box-shadow: var(--box-shadow-not-t-light);

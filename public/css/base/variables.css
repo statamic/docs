@@ -206,7 +206,6 @@
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- AUGMENTED FOURTH
     =================================================== */
     /* Based on Augmented Fourth - https://type-scale.com/ */
-    /* e.g. .c-nav-sidebar-with-popover-api-category-heading on mobile */
     --font-size-l-2: clamp(1.35em, 6vw, 1.5em);
     --font-size-l-2-line-height: 1.3;
 
