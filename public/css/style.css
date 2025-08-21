@@ -29,6 +29,7 @@ scope;
 @import 'components/docs-header.css';
 @import 'components/site-footer.css';
 @import 'components/theme-picker.css';
+@import 'components/version-selector.css';
 /* Components > Global > Navigation */
 @import 'components/nav/dots.css';
 @import 'components/nav/sidebar.css';

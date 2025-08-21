@@ -1,0 +1,33 @@
+@layer components {
+    .c-version-selector {
+        select {
+            --background: var(--color-body-background);
+            transition: opacity 0.2s ease-in 0s;
+            &:focus {
+                outline-offset: -1px;
+            }
+            /* Select Styling. Inspiration - https://moderncss.dev/custom-select-styles-with-pure-css/ */
+            appearance: none;
+            background: var(--background);
+            background-image: url(/img/dropdown.svg);
+            background-repeat: no-repeat;
+            background-size: 0.75em;
+            background-position: calc(100%);
+            min-inline-size: 6.5rem;
+            /* Fallback for Safari */
+            block-size: 2.5rem;
+            min-block-size: 2.5rem;
+            border: none;
+            margin: 0;
+            margin-inline-start: var(--spacing-s-5);
+            padding: var(--spacing-s-4);
+            padding-inline-start: var(--spacing-s-3);
+            color: var(--color-primary-text);
+            font-size: var(--font-size-s-1);
+            border-radius: 50px;
+            box-shadow: 0px 0px 1px var(--color-pink);
+            border-inline: var(--spacing-s-2) solid var(--color-body-background);
+            border-inline-start-width: var(--spacing-s-5);
+        }
+    }
+}

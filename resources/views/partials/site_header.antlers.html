@@ -54,5 +54,27 @@
                 </ul>
             </nav>
         </div>
+        <div class="c-version-selector">
+            <select
+                x-data="{
+                    selectedVersion: '{{ config:docs:version }}',
+                    init() {
+                        this.$watch('selectedVersion', (version) => {
+                            const selectedOption = document.querySelector(`option[value='${version}']`);
+                            const url = selectedOption.getAttribute('data-url');
+
+                            window.location = `${url}/from/{{ page:id }}`;
+                        });
+                    },
+                }"
+                x-model="selectedVersion"
+            >
+                {{ config:docs:versions }}
+                    <option value="{{ version }}" data-url="{{ url }}">
+                        {{ branch }}{{ if version === '6' }}-alpha{{ /if }}
+                    </option>
+                {{ /config:docs:versions }}
+            </select>
+        </div>
     </div>
 </header>
