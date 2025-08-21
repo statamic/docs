@@ -11,8 +11,8 @@ use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Markdown;
-use Torchlight\Engine\CommonMark\Extension;
-use Torchlight\Engine\Options;
+use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
+use Torchlight\Engine\Options as TorchlightOptions;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,11 +30,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         if (! app()->runningConsoleCommand('search:update')) {
-            Options::setDefaultOptionsBuilder(function () {
-                return Options::fromArray(config('torchlight.options'));
-            });
+            TorchlightOptions::setDefaultOptionsBuilder(fn() => TorchlightOptions::fromArray(config('torchlight.options')));
 
-            $extension = new Extension(config('torchlight.theme'));
+            $extension = new TorchlightExtension(config('torchlight.theme'));
             $extension
                 ->renderer()
                 ->setDefaultGrammar(config('torchlight.options.defaultLanguage'));
