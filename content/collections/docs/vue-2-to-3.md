@@ -12,7 +12,9 @@ As part of the Statamic 6 release, Vue was upgraded to version 3.
 
 ## Vite
 
-```js
+`package.json`:
+
+```json
 {
     "devDependencies": {
         "@vitejs/plugin-vue2": "^6.0.1", // [tl! --]
@@ -20,6 +22,8 @@ As part of the Statamic 6 release, Vue was upgraded to version 3.
     }
 }
 ```
+
+`vite.config.js`:
 
 ```js
 import vue from '@vitejs/plugin-vue2'; // [tl! --]
@@ -89,7 +93,7 @@ export default {
 And now converted to the Composition API:
 
 ```vue
-<script>
+<script setup>
 import { FooComponent, BarComponent } from './components';
 import { Button, Card } from '@statamic/cms/ui';
 import { ref, computed, watch } from 'vue';
@@ -265,7 +269,7 @@ Statamic.$component.register('my-fieldtype', MyFieldtype); // [tl! ++]
 ## Vuex to Pinia
 
 ### Publish Components
-The primary reason for Statamic including Vue at all was for the Publish components. These no longer use Vue (or Pinia). If you were using `$store` in your code it's probably for those.
+The primary reason for Statamic including Vuex at all was for the Publish components. These no longer use Vuex (or Pinia). If you were using `$store` in your code it's probably for those.
 
 ```js
 import { publishContextKey } from '@statamic/cms/ui'; // [tl! ++]
