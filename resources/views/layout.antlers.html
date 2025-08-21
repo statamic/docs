@@ -3,7 +3,7 @@
     {{ partial:site_header }}
     <body>
         {{# =jfg This is not currently in use but could be useful in future #}}
-        {{# {{ partial:partials/promo }} #}}
+        {{ partial:promo }}
 
         {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
         <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
@@ -92,11 +92,11 @@
                                                     type="image/jpeg"
                                                 >
                                                 {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img 
+                                                <img
                                                     src="{{ glide:url width='220' }}"
                                                     decoding="async"
                                                     fetchpriority="high"
-                                                    width="{{ width }}" 
+                                                    width="{{ width }}"
                                                     height="{{ height }}"
                                                     alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
                                                 />
@@ -125,11 +125,11 @@
                                                     type="image/jpeg"
                                                 >
                                                 {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img 
+                                                <img
                                                     src="{{ glide:url width='220' }}"
                                                     decoding="async"
                                                     fetchpriority="high"
-                                                    width="{{ width }}" 
+                                                    width="{{ width }}"
                                                     height="{{ height }}"
                                                     alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
                                                 />

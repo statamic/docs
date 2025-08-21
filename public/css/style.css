@@ -42,6 +42,7 @@ scope;
 @import 'components/buttons.css';
 @import 'components/search-form.css';
 @import 'components/logos.css';
+@import 'components/promo.css';
 @import 'components/tiles-with-description.css';
 @import 'components/feedback-meerkat.css';
 @import 'components/tip.css';

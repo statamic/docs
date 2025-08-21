@@ -1,6 +1,18 @@
-{{# <a href="https://github.com/statamic/cms" class="hidden md:block sticky z-50 -top-8 bg-gradient-to-r from-purple to-blue via-pink hover:bg-gradient-animate py-2 text-center text-white font-bold text-sm antialiased">
-    ⭐️ If you like Statamic, give it a star on GitHub! ⭐️
-</a> #}}
+<div class="c-promo"
+    x-cloak
+    x-data="{ dismissed: localStorage.getItem('promo-dismissed') === 'true' }"
+    x-show="!dismissed">
+    <div class="c-promo__inner">
+        You are reading the Statamic 6 Alpha docs. 👀
+        <button
+            @click="dismissed = true; localStorage.setItem('promo-dismissed', 'true')"
+            class="c-promo__close"
+            aria-label="Dismiss promo">
+            &times;
+        </button>
+    </div>
+</div>
+
 {{# <a href="https://laracasts.com/series/learn-statamic-with-jack?ref=statamic.dev" class="hidden md:block sticky z-50 -top-8 bg-gradient-to-r from-purple to-blue via-pink hover:bg-gradient-animate py-2 text-center text-white font-bold text-sm antialiased">
     📼 Learn Statamic with Jack &mdash; a 22 episode series — is now live on <span class="bg-yellow text-black px-1 rounded-sm">Laracasts!</span> 📼
 </a> #}}
