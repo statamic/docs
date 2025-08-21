@@ -1,7 +1,8 @@
 .c-promo {
     position: fixed;
     z-index: 50;
-    bottom: 0;
+    height: 2.5rem;
+    bottom: .75rem;
     padding: .5rem;
     text-align: center;
     color: white;
@@ -35,17 +36,19 @@
 
 .c-promo__close {
     position: absolute;
-    top: 50%;
+    top: -2px;
     right: 0.75rem;
-    transform: translateY(-50%);
     background: none;
     border: none;
     color: white;
     font-size: 1.25rem;
     cursor: pointer;
     padding: 0.25rem;
-    line-height: 1;
     opacity: 0.8;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: opacity 0.2s ease;
 }
 
