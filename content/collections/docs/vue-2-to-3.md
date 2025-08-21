@@ -263,7 +263,7 @@ Components should be registered using the `$components` API rather than directly
 
 ```js
 Statamic.component('my-fieldtype', MyFieldtype); // [tl! --]
-Statamic.$component.register('my-fieldtype', MyFieldtype); // [tl! ++]
+Statamic.$components.register('my-fieldtype', MyFieldtype); // [tl! ++]
 ```
 
 ## Vuex to Pinia
