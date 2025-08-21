@@ -17,7 +17,7 @@ To enable Ignition, set `APP_DEBUG=true` in your [.env](/configuration#environme
 </figure>
 
 <div x-data="{ showClippy: false }">
-    <p>Statamic will try to detect why you're receiving a specific exception and provide a **solution** for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showClippy = true">Clippy</a>, but 80% less annoying.</p>
+    <p>Statamic will try to detect why you're receiving a specific exception and provide a <strong>solution</strong> for the problem along with a link to the most relevant documentation if possible. It's like <a href="" x-on:click.prevent="showClippy = true">Clippy</a>, but 80% less annoying.</p>
     <img src="/img/clippy-docs.gif" class="clippy" x-bind:class="{ 'visible': showClippy }">
 </div>
 

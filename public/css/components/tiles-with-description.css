@@ -95,6 +95,10 @@
             display: inline-block;
             max-width: 70%;
             filter: var(--filter-image-boost-1);
+            /* Custom */
+            @media (width < 500px) {
+                margin-block-end: 0;
+            }
         }
     }
     /* Custom */
@@ -118,7 +122,10 @@
     .c-tiles-with-description__item--flush {
         & img {
             max-width: 100%;
-            margin-block-end: 1.6rem;
+            /* Custom */
+            @media (width < 500px) {
+                margin-block-end: 1.2rem;
+            }
         }
         .c-tiles-with-description__item__thumbnail {
             padding: var(--spacing-s-3);

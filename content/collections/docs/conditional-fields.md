@@ -309,4 +309,4 @@ For more advanced conditional validation, take a look at Laravel's `required_if`
 
 ## Templating
 
-You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](https://statamic.dev/tags/form-create#conditional-fields).
+You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](/tags/form-create#conditional-fields).

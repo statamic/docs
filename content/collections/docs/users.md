@@ -127,8 +127,12 @@ Super Admin accounts are special accounts with **access and permission to everyt
 
 ## User groups
 
-<div class="mb-8">
-    <a class="bg-black hover:bg-purple no-underline text-sm px-4 py-1 inline-block transform -rotate-3 text-mint font-display" href="/licensing">Pro Feature</a>
+<div class="c-pro-badge">
+    <a href="/licensing">
+        <div class="c-pro-badge__text">
+            ⭐️ Pro Feature ⭐️
+        </div>
+    </a>
 </div>
 
 User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot of users.

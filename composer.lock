@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2978be67e8b5a8012e7e5d0984db0d27",
+    "content-hash": "51717365737cbb36e84a37c79874490d",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -3231,6 +3231,60 @@
                 }
             ],
             "time": "2024-11-21T10:36:35+00:00"
+        },
+        {
+            "name": "phiki/phiki",
+            "version": "v1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phikiphp/phiki.git",
+                "reference": "3174d8cb309bdccc32b7a33500379de76148256b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phikiphp/phiki/zipball/3174d8cb309bdccc32b7a33500379de76148256b",
+                "reference": "3174d8cb309bdccc32b7a33500379de76148256b",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^2.5.3",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "illuminate/support": "^11.30",
+                "laravel/pint": "^1.18.1",
+                "pestphp/pest": "^3.5.1",
+                "phpstan/extension-installer": "^1.4.3",
+                "phpstan/phpstan": "^2.0",
+                "symfony/var-dumper": "^7.1.6"
+            },
+            "bin": [
+                "bin/phiki"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phiki\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk",
+                    "homepage": "https://ryangjchandler.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Syntax highlighting using TextMate grammars in PHP.",
+            "support": {
+                "issues": "https://github.com/phikiphp/phiki/issues",
+                "source": "https://github.com/phikiphp/phiki/tree/v1.1.6"
+            },
+            "time": "2025-06-06T20:18:29+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -7831,33 +7885,34 @@
             "time": "2024-12-21T16:25:41+00:00"
         },
         {
-            "name": "torchlight/torchlight-commonmark",
-            "version": "v0.5.5",
+            "name": "torchlight/engine",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/torchlight-api/torchlight-commonmark-php.git",
-                "reference": "eb618ae6187090126a9ef881ccaf9c315d49c99b"
+                "url": "https://github.com/torchlight-api/engine.git",
+                "reference": "8d12f611efb0b22406ec0744abb453ddd2f1fe9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/torchlight-api/torchlight-commonmark-php/zipball/eb618ae6187090126a9ef881ccaf9c315d49c99b",
-                "reference": "eb618ae6187090126a9ef881ccaf9c315d49c99b",
+                "url": "https://api.github.com/repos/torchlight-api/engine/zipball/8d12f611efb0b22406ec0744abb453ddd2f1fe9d",
+                "reference": "8d12f611efb0b22406ec0744abb453ddd2f1fe9d",
                 "shasum": ""
             },
             "require": {
-                "league/commonmark": "^1.5|^2.0",
-                "php": "^7.2|^8.0",
-                "torchlight/torchlight-laravel": "^0.5.10"
+                "league/commonmark": "^2.5.3",
+                "phiki/phiki": "^1.1.4",
+                "php": "^8.2"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3.3",
-                "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "^8.4"
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "laravel/pint": "^1.13",
+                "pestphp/pest": "^2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Torchlight\\Commonmark\\": "src/"
+                    "Torchlight\\Engine\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7868,87 +7923,22 @@
                 {
                     "name": "Aaron Francis",
                     "email": "aaron@hammerstone.dev"
-                }
-            ],
-            "description": "A Commonmark extension for Torchlight, the syntax highlighting API.",
-            "homepage": "https://torchlight.dev",
-            "keywords": [
-                "Code highlighting",
-                "commonmark",
-                "laravel",
-                "markdown",
-                "syntax highlighting"
-            ],
-            "support": {
-                "issues": "https://github.com/torchlight-api/torchlight-commonmark-php/issues",
-                "source": "https://github.com/torchlight-api/torchlight-commonmark-php/tree/v0.5.5"
-            },
-            "time": "2022-02-23T17:09:44+00:00"
-        },
-        {
-            "name": "torchlight/torchlight-laravel",
-            "version": "v0.5.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/torchlight-api/torchlight-laravel.git",
-                "reference": "6a47c9dfdc5dc11ce0ef0672337119026189326d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/torchlight-api/torchlight-laravel/zipball/6a47c9dfdc5dc11ce0ef0672337119026189326d",
-                "reference": "6a47c9dfdc5dc11ce0ef0672337119026189326d",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.2",
-                "illuminate/cache": "^8.0|^9.0|^10.0",
-                "illuminate/console": "^8.0|^9.0|^10.0",
-                "illuminate/http": "^8.0|^9.0|^10.0",
-                "illuminate/support": "^8.0|^9.0|^10.0",
-                "illuminate/view": "^8.0|^9.0|^10.0",
-                "php": "^7.3|^8.0",
-                "ramsey/uuid": "^3.7|^4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.3.3",
-                "orchestra/testbench": "^5.0|^6.0|^7.0",
-                "phpunit/phpunit": "^8.5.23|^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Torchlight\\TorchlightServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Torchlight\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
+                },
                 {
-                    "name": "Aaron Francis",
-                    "email": "aaron@hammerstone.dev"
+                    "name": "John Koster",
+                    "email": "john@stillat.com"
                 }
             ],
-            "description": "A Laravel Client for Torchlight, the syntax highlighting API.",
-            "homepage": "https://torchlight.dev",
+            "description": "The PHP-based Torchlight code annotation and rendering engine.",
             "keywords": [
                 "Code highlighting",
-                "laravel",
                 "syntax highlighting"
             ],
             "support": {
-                "issues": "https://github.com/torchlight-api/torchlight-laravel/issues",
-                "source": "https://github.com/torchlight-api/torchlight-laravel/tree/v0.5.14"
+                "issues": "https://github.com/torchlight-api/engine/issues",
+                "source": "https://github.com/torchlight-api/engine/tree/v0.1.0"
             },
-            "time": "2023-08-18T21:14:06+00:00"
+            "time": "2025-04-02T01:47:48+00:00"
         },
         {
             "name": "ueberdosis/tiptap-php",

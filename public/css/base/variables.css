@@ -3,7 +3,7 @@
     =================================================== */
     --spacing-s-5: 0.15rem;
     --spacing-s-4: 0.5rem;
-    --spacing-s-3: 0.8rem;
+    --spacing-s-3: 0.75rem;
     --spacing-s-2: 0.975rem;
     --spacing-s-1: 1.35rem;
 
@@ -101,7 +101,7 @@
     --color-body-background: white;
     --color-logo-wordmark: var(--color-black);
     --color-search-form: white;
-    --color-shadow: hsl(0deg 0% 0% / 3.5%);
+    --color-shadow: hsl(0deg 0% 0% / 3%);
 
     --color-primary-text: var(--color-black);
     --color-primary-accent: var(--color-purple);
@@ -206,8 +206,7 @@
     /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- AUGMENTED FOURTH
     =================================================== */
     /* Based on Augmented Fourth - https://type-scale.com/ */
-    /* e.g. .c-nav-sidebar-with-popover-api-category-heading on mobile */
-    --font-size-l-2: clamp(1.35em, 6vw, 1.55em);
+    --font-size-l-2: clamp(1.35em, 6vw, 1.5em);
     --font-size-l-2-line-height: 1.3;
 
     --font-size-l-3: clamp(1.8em * 0.85, 6vw, 1.8em);

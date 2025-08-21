@@ -22,7 +22,7 @@ parameters:
   -
     name: filter|query_scope
     type: string
-    description: "Apply a custom [query scope](https://statamic.dev/extending/query-scopes-and-filters) You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`."
+    description: "Apply a custom [query scope](/extending/query-scopes-and-filters) You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`."
     required: false
   -
     name: offset

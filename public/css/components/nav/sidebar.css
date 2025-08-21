@@ -98,21 +98,26 @@
             .c-nav-sidebar-with-popover-api-category-heading {
                 display: flex;
                 max-width: 17rem;
-                /* --mq-nav-open-after to --mq-text-bump-2-after */
-                @media (width >= 1100px) and (width < 1441px) {
-                    max-width: 14.85rem;
-                }
+                white-space: nowrap;
                 max-height: 3.2rem;
                 gap: var(--spacing-s-1);
                 align-items: center;
                 justify-content: space-between;
                 padding: var(--spacing-s-3) var(--spacing-m);
                 font-family: var(--font-family-prose);
-                font-size: var(--font-size-l-2);
+                /* Custom */
+                font-size: clamp(1.35em, 6vw, 1.1em);
                 line-height: var(--font-size-l-2-line-height);
                 border-radius: 50px;
                 box-shadow: var(--box-shadow-not-t-light);
                 text-decoration: none;
+                /* --mq-nav-open-after to --mq-text-bump-2-after */
+                @media (width >= 1100px) and (width < 1441px) {
+                    /* Shrink headers when we don't have much space */
+                    max-height: 2.9rem;
+                    max-width: 14rem;
+                    padding-block: var(--spacing-s-4);
+                }
                 &:has(input:checked) {
                     box-shadow: var(--box-shadow-not-t-lighter);
                 }
