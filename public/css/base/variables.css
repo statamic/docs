@@ -101,7 +101,7 @@
     --color-body-background: white;
     --color-logo-wordmark: var(--color-black);
     --color-search-form: white;
-    --color-shadow: hsl(0deg 0% 0% / 3.5%);
+    --color-shadow: hsl(0deg 0% 0% / 3%);
 
     --color-primary-text: var(--color-black);
     --color-primary-accent: var(--color-purple);
