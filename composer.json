@@ -17,7 +17,6 @@
         "statamic/cms": "^5.0",
         "statamic/ssg": "^3.0",
         "torchlight/engine": "^0.1.0",
-        "torchlight/torchlight-commonmark": "^0.5.5",
         "stillat/documentation-search": "^1.2.1"
     },
     "require-dev": {
