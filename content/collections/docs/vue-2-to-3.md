@@ -576,6 +576,26 @@ import { Text, Textarea, Combobox, Switch } from '@statamic/cms/ui'; // [tl! ++]
 </template>
 ```
 
+## Vue Devtools
+
+Vue Devtools is no longer automatically enabled during local development. To use it, you'll need to use our opt-in dev build.
+
+Your app must have debug mode enabled:
+```env
+APP_DEBUG=true
+```
+
+The dev build must be either published or symlinked:
+```bash
+# Published
+php artisan vendor:publish --tag=statamic-cp-dev
+
+# Symlinked
+ln -s /path/to/vendor/statamic/cms/resources/dist-dev public/vendor/statamic/cp-dev
+```
+
+You shouldn't commit this to your repo or use this in production.
+
 ## Removals
 
 A number of items have been removed. If you feel they shouldn't have been removed, please contact us and we can evaluate bringing them back.
