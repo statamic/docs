@@ -71,7 +71,7 @@
             >
                 {{ config:docs:versions }}
                     <option value="{{ version }}" data-url="{{ url }}">
-                        v{{ version | explode('.') | first }}
+                        v{{ version | explode('.') | first }} {{ if version === '6.0' }}(Alpha){{ /if }}
                     </option>
                 {{ /config:docs:versions }}
             </select>
