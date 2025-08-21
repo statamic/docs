@@ -103,17 +103,12 @@
     }
     /* Custom */
     @media (width >= 500px) {
-        .c-tiles-with-description__item {
-            p {
-                text-align: left;
-                /* Decrease */
-                font-size: var(--font-size-s-2);
-                font-weight: var(--font-family-ui-weight-normal);
-                line-height: var(--font-size-s-2-line-height);
-            }
-            figcaption {
-                font-size: 0.98em;
-            }
+        .c-tiles-with-description__item p {
+            text-align: left;
+            /* Decrease */
+            font-size: var(--font-size-s-2);
+            font-weight: var(--font-family-ui-weight-normal);
+            line-height: var(--font-size-s-2-line-height);
         }
     }
     /* Custom */
@@ -128,7 +123,7 @@
         & img {
             max-width: 100%;
             /* Custom */
-            @media (width >= 500px) {
+            @media (width < 500px) {
                 margin-block-end: 1.2rem;
             }
         }
