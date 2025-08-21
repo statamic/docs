@@ -28,7 +28,7 @@ As part of the Statamic 6 release, Vue was upgraded to version 3.
 ```js
 import vue from '@vitejs/plugin-vue2'; // [tl! --]
 import laravel from 'laravel-vite-plugin';
-import statamic from 'laravel-vite-plugin'; // [tl! ++]
+import statamic from '@statamic/cms/vite-plugin'; // [tl! ++]
 import { defineConfig } from 'vite';
 
 export default defineConfig({
