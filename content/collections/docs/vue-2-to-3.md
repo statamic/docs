@@ -571,8 +571,8 @@ import { Input, Textarea, Combobox, Switch } from '@statamic/cms/ui'; // [tl! ++
     <toggle-input v-model="textValue" /> <!-- [tl! --] -->
     <Input v-model="textValue" /> <!-- [tl! ++] -->
     <Textarea v-model="textareaValue" /> <!-- [tl! ++] -->
-    <Combobox v-model="textValue" /> <!-- [tl! ++] -->
-    <Switch v-model="textValue" /> <!-- [tl! ++] -->
+    <Combobox v-model="comboboxValue" /> <!-- [tl! ++] -->
+    <Switch v-model="switchValue" /> <!-- [tl! ++] -->
 </template>
 ```
 
