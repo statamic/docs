@@ -562,14 +562,14 @@ Input components such as `<text-input>`, `<textarea-input>`, `<select-input>`, a
 
 ```vue
 <script>
-import { Text, Textarea, Combobox, Switch } from '@statamic/cms/ui'; // [tl! ++]
+import { Input, Textarea, Combobox, Switch } from '@statamic/cms/ui'; // [tl! ++]
 </script>
 <template>
     <text-input v-model="textValue" /> <!-- [tl! --] -->
     <textarea-input v-model="textValue" /> <!-- [tl! --] -->
     <select-input v-model="textValue" /> <!-- [tl! --] -->
     <toggle-input v-model="textValue" /> <!-- [tl! --] -->
-    <Text v-model="textValue" /> <!-- [tl! ++] -->
+    <Input v-model="textValue" /> <!-- [tl! ++] -->
     <Textarea v-model="textareaValue" /> <!-- [tl! ++] -->
     <Combobox v-model="textValue" /> <!-- [tl! ++] -->
     <Switch v-model="textValue" /> <!-- [tl! ++] -->
