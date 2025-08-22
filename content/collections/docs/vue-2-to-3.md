@@ -558,7 +558,7 @@ You can also forgo the imports and just use `ui-dropdown`, `ui-dropdown-menu`, a
 
 ### Inputs
 
-Input components such as `<text-input>`, `<textarea-input>`, `<select-input>`, and `<toggle-input>` have been removed in favor of [Text](/ui-components/text), [Textarea](/ui-components/textarea), [Combobox](/ui-components/combobox), [Switch](/ui-components/switch) UI components respectively. 
+Input components such as `<text-input>`, `<textarea-input>`, `<select-input>`, and `<toggle-input>` have been removed in favor of [Input](/ui-components/input), [Textarea](/ui-components/textarea), [Combobox](/ui-components/combobox), [Switch](/ui-components/switch) UI components respectively. 
 
 ```vue
 <script>
