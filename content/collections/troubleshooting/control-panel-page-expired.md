@@ -11,7 +11,7 @@ There are a few common reasons why you might encounter a "419 Page Expired" erro
 ## Database session driver
 The most common reason you'll see this error is if you're using the [`database` session driver](https://laravel.com/docs/session#database).
 
-The `user_id` column on the `sessions` table expects an integer value. However, because Statamic uses UUIDs for user IDs, the session row is saved incorrectly, causing either a 419 error or a continuous redirect back to the login form—even after a successful login.
+The `user_id` column on the `sessions` table expects an integer value. However, because Statamic uses UUIDs for user IDs, the session row is saved incorrectly, causing either a 419 error or a continuous redirect back to the login form—even after correct login credentials are provided.
 
 You can workaround this by changing the `user_id` column to a string/varchar:
 
