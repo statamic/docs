@@ -1,17 +1,17 @@
 ---
 id: 3faef3ae-8673-42ba-901b-a1d7eb3db4b7
 blueprint: troubleshooting
-title: '"419 Page Expired" error when logging into the Control Panel'
+title: '"419 Page Expired" error or infinite auth loop when logging into the Control Panel'
 categories:
   - troubleshooting
 template: page
 ---
-There are a few common reasons why you might encounter a "419 Page Expired" error when attempting to login to the Control Panel.
+There are a few common reasons why you might encounter a "419 Page Expired" error or an infinite authentication loop/redirect when attempting to login to the Control Panel.
 
 ## Database session driver
 The most common reason you'll see this error is if you're using the [`database` session driver](https://laravel.com/docs/session#database).
 
-The `user_id` column on the `sessions` table expects an integer value. However, because Statamic uses UUIDs for user IDs, the session row is saved incorrectly, causing the 419 error.
+The `user_id` column on the `sessions` table expects an integer value. However, because Statamic uses UUIDs for user IDs, the session row is saved incorrectly, causing either a 419 error or a continuous redirect back to the login form—even after a successful login.
 
 You can workaround this by changing the `user_id` column to a string/varchar:
 
