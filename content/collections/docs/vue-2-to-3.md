@@ -38,7 +38,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
-        statamic(),
+        statamic(), // [tl! ++]
         laravel({
             refresh: true,
             input: ['resources/js/cp.js']
