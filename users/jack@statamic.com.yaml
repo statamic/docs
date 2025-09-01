@@ -14,6 +14,7 @@ preferences:
         - title
         - slug
         - stage
+      per_page: 100
     knowledge-base:
       columns:
         - title
@@ -24,7 +25,9 @@ preferences:
       columns:
         - title
         - intro
+    listing_mode: table
   favorites:
     -
       name: 'Create Docs Page'
       url: 'http://3-docs-new.test/cp/collections/docs/entries/create/default'
+  theme: light

@@ -60,5 +60,7 @@ tabs:
             field:
               type: slug
               localizable: true
-              validate: 'max:200'
+              validate:
+                - 'max:200'
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
 title: Advert

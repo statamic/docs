@@ -1,51 +1,56 @@
 title: Page
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          type: text
-          required: true
-          validate:
-            - required
-      -
-        handle: nav_title
-        field:
-          type: text
-      -
-        handle: intro
-        field:
-          display: Intro
-          type: markdown
-          localizable: true
-      -
-        handle: content
-        field:
-          display: Content
-          restrict: false
-          smartypants: true
-          automatic_line_breaks: false
-          automatic_links: false
-          escape_markup: false
-          type: markdown
-          localizable: true
-      -
-        handle: template
-        field:
-          display: Template
-          type: template
-          default: page
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: nav_title
+            field:
+              type: text
+          -
+            handle: intro
+            field:
+              display: Intro
+              type: markdown
+              localizable: true
+          -
+            handle: content
+            field:
+              display: Content
+              restrict: false
+              smartypants: true
+              automatic_line_breaks: false
+              automatic_links: false
+              escape_markup: false
+              type: markdown
+              localizable: true
+          -
+            handle: template
+            field:
+              display: Template
+              type: template
+              default: page
   sidebar:
     display: Sidebar
-    fields:
+    sections:
       -
-        handle: slug
-        field:
-          type: slug
-          required: true
-          localizable: true
-          validate:
-            - required
-            - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+              required: true

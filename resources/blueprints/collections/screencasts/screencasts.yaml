@@ -1,54 +1,60 @@
 title: Screencast
-sections:
+tabs:
   main:
     display: Main
-    fields:
+    sections:
       -
-        handle: title
-        field:
-          type: text
-          required: true
-          validate:
-            - required
-      -
-        handle: sidebar_title
-        field:
-          input_type: text
-          type: text
-          instructions: 'A shorter title, if necessary'
-          localizable: false
-          listable: hidden
-          display: 'Sidebar Title'
-      -
-        handle: video
-        field:
-          type: video
-          localizable: false
-          listable: hidden
-          display: Video
-      -
-        handle: length
-        field:
-          input_type: text
-          type: text
-          localizable: false
-          listable: hidden
-          display: Length
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: sidebar_title
+            field:
+              input_type: text
+              type: text
+              instructions: 'A shorter title, if necessary'
+              localizable: false
+              listable: hidden
+              display: 'Sidebar Title'
+          -
+            handle: video
+            field:
+              type: video
+              localizable: false
+              listable: hidden
+              display: Video
+          -
+            handle: length
+            field:
+              input_type: text
+              type: text
+              localizable: false
+              listable: hidden
+              display: Length
   sidebar:
     display: Sidebar
-    fields:
+    sections:
       -
-        handle: slug
-        field:
-          type: slug
-          required: true
-          localizable: true
-          validate:
-            - required
-      -
-        handle: date
-        field:
-          type: date
-          required: true
-          validate:
-            - required
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+              required: true
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required

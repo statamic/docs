@@ -1,0 +1,78 @@
+title: Common
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      validate:
+        - required
+  -
+    handle: parent
+    field:
+      type: entries
+      max_items: 1
+      listable: false
+      localizable: true
+  -
+    handle: nav_title
+    field:
+      type: text
+  -
+    handle: screenshot
+    field:
+      type: assets
+      container: main
+      max_files: 1
+  -
+    handle: parameters
+    field:
+      type: grid
+      mode: stacked
+      display: 'Add Parameters'
+      fields:
+        -
+          handle: name
+          field:
+            type: text
+            width: 33
+        -
+          handle: type
+          field:
+            type: text
+            width: 33
+        -
+          handle: required
+          field:
+            type: toggle
+            width: 33
+        -
+          handle: description
+          field:
+            type: markdown
+  -
+    handle: variables
+    field:
+      type: grid
+      mode: stacked
+      display: 'Add Variables'
+      fields:
+        -
+          handle: name
+          field:
+            type: text
+            width: 33
+        -
+          handle: type
+          field:
+            type: text
+            width: 33
+        -
+          handle: description
+          field:
+            type: markdown
+  -
+    handle: class
+    field:
+      placeholder: \Statamic\Facades\
+      display: Class
+      type: text

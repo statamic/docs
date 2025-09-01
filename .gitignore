@@ -3,6 +3,8 @@
 /public/hot
 /public/storage
 /public/vendor/statamic
+/public/build/*
+/users/*
 /public/js
 /storage/*.key
 /storage/statamic/users
