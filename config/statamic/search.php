@@ -65,12 +65,6 @@ return [
                 App\Search\DocTransformer::class,
             ],
         ],
-
-        // 'blog' => [
-        //     'driver' => 'local',
-        //     'searchables' => 'collection:blog',
-        // ],
-
     ],
 
     /*

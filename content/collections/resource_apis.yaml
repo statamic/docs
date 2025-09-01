@@ -1,10 +1,10 @@
-title: Fieldtypes
-icon: fieldsets
+title: 'Resource APIs'
+icon: programming-module-box-cube
 template: page
 layout: layout
-mount: 5a8fe626-b073-41fc-8da4-264b54837600
+mount: 082e1db7-7b52-4b92-a8bf-4c51ce7d741c
 revisions: false
-route: '/fieldtypes/{slug}'
+route: '/{mount}/{slug}'
 sort_dir: asc
 date_behavior:
   past: null
@@ -14,6 +14,3 @@ preview_targets:
     label: Entry
     url: '{permalink}'
     refresh: true
-inject:
-  section: reference
-  view_model: App\ViewModels\Fieldtypes

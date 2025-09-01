@@ -8,7 +8,7 @@
         {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
         <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
             {{ partial:nav_sidebar }}
-            <nav class="c-breadcrumbs">
+            {{# <nav class="c-breadcrumbs">
                 <ol>
                     <li><a href="{{ nav:collection:sections include_home="true" }}{{ page:section === section ?= '{ url }' }}{{ /nav:collection:sections }}">{{ page:section | replace('_', ' ') }}</a></li>
                     {{ if section }}
@@ -16,7 +16,6 @@
                         {{ if {children | where('is_current', true) | count} > 0 }}
                             <li>
                                 {{ svg src='breadcrumb-chevron' }}
-                                {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
                                 <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
                                     {{ title }}
                                 </a>
@@ -26,7 +25,7 @@
                     {{ /if }}
                     <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
                 </ol>
-            </nav>
+            </nav> #}}
 
             <div class="c-nav-toc-with-popover-api">
                 {{ unless $hide_toc == 'yes' }}
@@ -40,7 +39,7 @@
                         <ul>
                             <li>
                                 <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                    {{ if section }}
+                                    {{# {{ if section }}
                                         {{ nav :handle="section" }}
                                             {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
                                                 {{ navigation_image }}
@@ -48,7 +47,7 @@
                                                 {{ /navigation_image }}
                                             {{ /if }}
                                         {{ /nav }}
-                                    {{ /if }}
+                                    {{ /if }} #}}
                                 </span>
                                 {{ template_content | toc }}
                             </li>
@@ -60,7 +59,7 @@
                         {{ unless $hide_toc == 'yes' }}
                             <li>
                                 <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                    {{ if section }}
+                                    {{# {{ if section }}
                                         {{ nav :handle="section" }}
                                             {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
                                                 {{ navigation_image }}
@@ -68,80 +67,11 @@
                                                 {{ /navigation_image }}
                                             {{ /if }}
                                         {{ /nav }}
-                                    {{ /if }}
+                                    {{ /if }} #}}
                                 </span>
                                 {{ template_content | toc }}
                             </li>
                         {{ /unless }}
-                        <li class="c-sidebar-advert">
-                            {{ if advert_override }}
-                                {{ advert_override }}
-                                    <a href="{{ link }}">
-                                        {{ image }}
-                                            <picture>
-                                                {{# WebP #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
-                                                    type="image/webp"
-                                                >
-                                                {{# JPEG #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' }} 3x"
-                                                    type="image/jpeg"
-                                                >
-                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img
-                                                    src="{{ glide:url width='220' }}"
-                                                    decoding="async"
-                                                    fetchpriority="high"
-                                                    width="{{ width }}"
-                                                    height="{{ height }}"
-                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                                />
-                                            </picture>
-                                        {{ /image }}
-                                        <h2>{{ heading }}</h2>
-                                        <p>{{ text }}</p>
-                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
-                                    </a>
-                                {{ /advert_override }}
-                            {{ else }}
-                                {{ collection:adverts limit='1' sort='random' }}
-                                    <a href="{{ link }}">
-                                        {{ image }}
-                                            <picture>
-                                                {{# WebP #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
-                                                    type="image/webp"
-                                                >
-                                                {{# JPEG #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' }} 3x"
-                                                    type="image/jpeg"
-                                                >
-                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img
-                                                    src="{{ glide:url width='220' }}"
-                                                    decoding="async"
-                                                    fetchpriority="high"
-                                                    width="{{ width }}"
-                                                    height="{{ height }}"
-                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                                />
-                                            </picture>
-                                        {{ /image }}
-                                        <h2>{{ heading }}</h2>
-                                        <p>{{ text }}</p>
-                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
-                                    </a>
-                                {{ /collection:adverts }}
-                            {{ /if }}
-                        </li>
                     </ul>
                 </nav>
             </div>

@@ -1,4 +1,5 @@
 title: Troubleshooting
+icon: support
 template: troubleshooting/show
 layout: layout
 mount: cd0428cf-2c4a-43b9-8e61-dd8123799ed8
@@ -7,5 +8,13 @@ taxonomies:
 revisions: false
 route: '/{mount}/{slug}'
 sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
 inject:
   section: docs

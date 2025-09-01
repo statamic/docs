@@ -1,4 +1,5 @@
 title: Variables
+icon: fieldtype-code
 template: page
 layout: layout
 mount: 03cf195b-2030-43c1-a6f3-039fa55ffd6a
@@ -7,6 +8,14 @@ taxonomies:
 revisions: false
 route: '/variables/{slug}'
 sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
 inject:
   view_model: App\ViewModels\Variables
   section: reference
