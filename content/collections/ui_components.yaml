@@ -1,0 +1,16 @@
+title: 'UI Components'
+icon: favorite-star
+template: default
+layout: layout
+mount: c7f50a61-de71-43db-8da0-de75c2cbbe94
+revisions: false
+route: '/ui-components/{slug}'
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
