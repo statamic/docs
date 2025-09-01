@@ -9,23 +9,19 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^12",
         "laravel/tinker": "^2.0",
         "league/commonmark": "^2.0",
-        "statamic-rad-pack/meilisearch": "^3.4",
         "livewire/livewire": "^3.6.4",
-        "statamic/cms": "^5.0",
-        "statamic/ssg": "^3.0",
-        "torchlight/engine": "^0.1.0",
-        "stillat/documentation-search": "^1.2.1"
+        "statamic/cms": "v6.0.0-alpha.4 as 5.65.0",
+        "torchlight/engine": "^0.1.0"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.7",
         "fakerphp/faker": "^1.4",
         "filp/whoops": "^2.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.0",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0",
         "spatie/laravel-ignition": "^2.0",
         "spatie/laravel-ray": "^1.37"
     },
@@ -51,6 +47,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Helpers/Js.php"
         ]
     },
     "autoload-dev": {
@@ -59,6 +58,7 @@
         }
     },
     "prefer-stable": true,
+    "minimum-stability": "dev",
     "scripts": {
         "pre-update-cmd": [
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
