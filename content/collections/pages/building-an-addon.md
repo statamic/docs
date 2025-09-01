@@ -1,12 +1,11 @@
 ---
 id: 5bd75435-806e-458b-872e-7528f24df7e6
 blueprint: page
-title: Addons
+title: 'Building an Addon'
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569264134
 intro: 'An addon is a composer package you intend to reuse, distribute, or sell. For simple or private packages, consider implementing directly into your Laravel application.'
-stage: 1
 ---
 ## Creating an Addon
 
@@ -109,7 +108,7 @@ makes sure to boot _after_ Statamic has booted.
 
 ### Installing your freshly created addon
 
-If you ran the `make:addon` command, this would have been taken care of for you. 
+If you ran the `make:addon` command, this would have been taken care of for you.
 
 Otherwise, in your project root's `composer.json`, add your package to the `require` and `repositories` sections, like so:
 
@@ -207,7 +206,7 @@ public function bootAddon()
 
 ## Registering Components
 
-Statamic will autoload _most_ of your addon's components, as long as they're in the right place and named correctly. 
+Statamic will autoload _most_ of your addon's components, as long as they're in the right place and named correctly.
 
 However, you can still register them manually in your service provider if you need to:
 
@@ -615,7 +614,7 @@ $addon->settings()->save();
 
 You may register update scripts to help your users migrate data, etc. when new features are added or breaking changes are introduced.
 
-For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission. 
+For example, maybe you've added a new permission and want to automatically give all of your existing form admins that new permission.
 
 To do this, create a class which extends the `UpdateScript` class and implement the necessary methods:
 

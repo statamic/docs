@@ -39,7 +39,6 @@ fields:
         - pages
         - widgets
         - troubleshooting
-        - extending-docs
         - resource_apis
         - tips
       display: 'Related Entries'

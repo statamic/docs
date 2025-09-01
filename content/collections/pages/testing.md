@@ -1,7 +1,7 @@
 ---
 id: 15db07e8-6e83-4b6e-89bb-d050b5d2c823
 blueprint: page
-title: 'Testing in Addons'
+title: Testing
 template: page
 nav_title: Testing
 intro: "There's only one thing better than manual testing... automated testing. Addons are scaffolded with PHPUnit test suites out-of-the-box. Learn how to write & run tests."

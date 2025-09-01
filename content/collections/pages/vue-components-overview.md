@@ -1,10 +1,10 @@
 ---
-title: 'Vue Components'
-stage: 1
 id: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
-overview: Here's how you can add your own Vue 3 components to the Statamic Control Panel.
+blueprint: page
+title: 'Vue Components Overview'
+stage: 1
+overview: "Here's how you can add your own Vue 3 components to the Statamic Control\_Panel."
 ---
-
 ## Registering Components
 
 In order to use a custom Vue component, it needs to be registered. You should do this inside the `Statamic.booting()` callback.

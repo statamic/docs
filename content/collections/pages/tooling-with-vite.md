@@ -1,11 +1,10 @@
 ---
 id: 5f26a634-19ae-4413-8b9e-1ed9c2c76bb0
 blueprint: page
-title: 'Vite in Addons'
+title: 'Tooling with Vite'
 template: page
 intro: 'How to use Vite in your addon.'
 ---
-
 ## Files
 We recommend using Vite to manage your addon's asset build process. To use Vite, you'll need the following files inside your addon.
 
