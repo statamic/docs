@@ -2,7 +2,7 @@ title: 'Resource APIs'
 icon: programming-module-box-cube
 template: page
 layout: layout
-mount: 082e1db7-7b52-4b92-a8bf-4c51ce7d741c
+mount: 50dfaf8c-8ca4-4b58-ac84-e4c50099e42e
 revisions: false
 route: '/{mount}/{slug}'
 sort_dir: asc

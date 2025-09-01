@@ -2,6 +2,7 @@ title: Tags
 icon: favorite-award-prize
 template: page
 layout: layout
+mount: 424f5092-be39-449a-b660-f4e077631487
 revisions: false
 route: '/tags/{slug}'
 sort_dir: asc

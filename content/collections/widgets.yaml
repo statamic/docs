@@ -2,7 +2,7 @@ title: Widgets
 icon: dashboard-layout-3
 template: page
 layout: layout
-mount: 565f0285-43b1-41d2-935c-e52ad00c012c
+mount: 95da21f5-6011-4eae-973e-dfccc23ddfc3
 revisions: false
 route: '/widgets/{slug}'
 sort_dir: asc

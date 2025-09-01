@@ -2,7 +2,7 @@ title: Fieldtypes
 icon: fieldsets
 template: page
 layout: layout
-mount: 5a8fe626-b073-41fc-8da4-264b54837600
+mount: 25f01cb5-1ca9-44a1-af1b-885b32b05cc8
 revisions: false
 route: '/fieldtypes/{slug}'
 sort_dir: asc
