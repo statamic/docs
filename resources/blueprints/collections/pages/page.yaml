@@ -1,4 +1,4 @@
-title: Documentation
+title: Page
 tabs:
   main:
     display: Main
@@ -6,7 +6,12 @@ tabs:
       -
         fields:
           -
-            import: common
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
           -
             import: page
   sidebar:
@@ -15,7 +20,8 @@ tabs:
       -
         fields:
           -
-            import: common
-            config:
-              title: {  }
-              slug: {  }
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

@@ -1,23 +1,6 @@
 title: Common
 fields:
   -
-    handle: title
-    field:
-      type: text
-      validate:
-        - required
-  -
-    handle: parent
-    field:
-      type: entries
-      max_items: 1
-      listable: false
-      localizable: true
-  -
-    handle: nav_title
-    field:
-      type: text
-  -
     handle: screenshot
     field:
       type: assets
@@ -70,9 +53,3 @@ fields:
           handle: description
           field:
             type: markdown
-  -
-    handle: class
-    field:
-      placeholder: \Statamic\Facades\
-      display: Class
-      type: text

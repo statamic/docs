@@ -1,7 +1,7 @@
 ---
 id: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 blueprint: page
-title: Fieldtypes
+title: Overview
 intro: 'Fieldtypes are customizable form [fields](/fields) used to structure your content and provide an intuitive content management experience. Each fieldtype has its own UI, data format, and configuration options.'
 template: page
 options_content: 'Each fieldtype has a common set of options in addition to any unique ones specific to that type.'
@@ -41,7 +41,7 @@ options:
     type: mixed
     description: 'Controls whether the field should be shown in Control Panel publish forms. Options: `visible`, `read_only`, [`computed`](/computed-values) or `hidden`. Default: `visible`.'
     required: false
-  - 
+  -
     name: sortable
     type: toggle
     description: 'Control if the field should be sortable in listing views.'
