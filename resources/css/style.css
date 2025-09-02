@@ -13,6 +13,7 @@ scope;
 
 @import './base/variables.css';
 @import './base/reset.css';
+@import "./base/cp.css";
 
 /* @import "tailwindcss"; */
 @import "tailwindcss/theme.css" layer(theme) source(none);
