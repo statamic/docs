@@ -14,5 +14,3 @@ preview_targets:
     label: Entry
     url: '{permalink}'
     refresh: true
-inject:
-  section: reference

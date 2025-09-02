@@ -15,5 +15,4 @@ preview_targets:
     url: '{permalink}'
     refresh: true
 inject:
-  section: reference
   view_model: App\ViewModels\Tags

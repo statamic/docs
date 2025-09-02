@@ -18,4 +18,3 @@ preview_targets:
     refresh: true
 inject:
   view_model: App\ViewModels\Variables
-  section: reference
