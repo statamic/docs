@@ -76,3 +76,4 @@ scope;
 
 @source "../../resources/views";
 @source "../../content";
+@source "../../vendor/statamic/cms/resources/js/components/ui";

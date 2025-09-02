@@ -23,8 +23,7 @@ Alpine.plugin(persist);
 Alpine.start();
 window.Alpine = Alpine;
 
-// import { Button } from "../../vendor/statamic/cms/resources/js/package/ui.js";
-
+import { Button } from "../../vendor/statamic/cms/resources/js/components/ui";
 import { createApp } from "vue";
 
 const app = createApp({});
