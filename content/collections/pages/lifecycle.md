@@ -1,6 +1,5 @@
 ---
 title: Lifecycle
-stage: 1
 id: fd34ca35-57d1-4d28-97f9-ba6801656b39
 ---
 

@@ -11,7 +11,6 @@ options:
     name: html
     type: string
     description: "Store whatever HTML you want — it's up to you."
-stage: 4
 id: 55e0bd1d-4880-42ee-9a09-c4ece62f6483
 ---
 ## Data Structure

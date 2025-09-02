@@ -3,7 +3,6 @@ title: Locales
 id: ec775716-e573-4a0e-b6e6-23ca1d7b3bbd
 intro: Create links to localized content.
 overview: If you need to generate links to your site's content in other languages (using [multi-site](/multi-site)), you've come to the right place.
-stage: 4
 parameters:
   -
     name: id

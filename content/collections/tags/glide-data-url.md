@@ -1,7 +1,6 @@
 ---
 title: "Glide:Data_URL"
 description: Manipulates an image and returns a data URL
-stage: 4
 intro: Use `glide:data_url` to output a manipulated image as a Data URL.
 parameters:
   -

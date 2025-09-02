@@ -77,7 +77,6 @@ options:
     type: array
     description: |
       You can set the columns and the line style (choose between `dashed` or `solid`) of any rulers you wish to use.
-stage: 4
 id: 3ca28569-5b86-49a1-b620-ea3364561cde
 ---
 ## Overview

@@ -24,7 +24,6 @@ variables:
     description: >
       `true` if no results.
 parent_tag: 045a6e54-c792-483a-a109-f07251a79e47
-stage: 4
 id: 2d66cda0-8765-4fe8-b902-a72de83bcbed
 ---
 ## Date Order

@@ -4,7 +4,6 @@ blueprint: tag
 title: 'Get Site'
 intro: "It gets a site's config, given it's handle."
 description: "Fetches a site's config, given it's handle."
-stage: 4
 ---
 ## Overview
 

@@ -20,7 +20,6 @@ parameters:
     name: store
     type: 'string'
     description: 'Sets the [cache store](https://laravel.com/docs/cache#accessing-multiple-cache-stores) the cache tag uses to store and retrieve the cached values.'
-stage: 4
 id: 1d0d2d1f-734b-4360-af7a-6792bf670bc7
 ---
 ## Overview

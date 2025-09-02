@@ -2,7 +2,6 @@
 title: 'Publish Forms'
 intro: |
   Build custom forms by harnessing the power of Blueprints and fieldtypes.
-stage: 1
 id: b4b46ceb-9feb-4587-8f0d-2080511bf9e3
 ---
 

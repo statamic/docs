@@ -3,7 +3,6 @@ title: Permissions
 template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347255
-stage: 1
 id: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
 ---
 Permissions are the abilities that can be assigned to [Roles](/users#permissions).

@@ -31,7 +31,6 @@ options:
     type: string
     description: |
       Add text to the beginning (left-side) of the range slider.
-stage: 4
 id: 5ede219c-607e-4ad2-8498-6ca55a063e73
 ---
 ## Data Structure

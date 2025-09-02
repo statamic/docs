@@ -4,7 +4,6 @@ description: A button that reveals conditional fields like magic.
 intro: The revealer is a simple button that reveals conditional fields without saving boolean button data.
 id: 54066363-7dec-431c-86c6-7e9353380ef5
 screenshot: fieldtypes/screenshots/revealer.gif
-stage: 3
 options:
   -
     name: display

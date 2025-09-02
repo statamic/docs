@@ -2,7 +2,6 @@
 title: 'Publish Components'
 intro: |
   The components that power [Publish forms](/extending/publish-forms) throughout Statamic.
-stage: 1
 id: e2577828-504b-490b-a8b6-10991ae8a0b6
 ---
 

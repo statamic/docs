@@ -54,7 +54,6 @@ options:
     type: boolean
     description: |
       Makes the time field visible and non-dismissible. Default: `false`.
-stage: 2
 id: 7dfba904-8a74-40e1-b507-51cd2b5f6123
 ---
 

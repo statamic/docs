@@ -1,6 +1,5 @@
 ---
 title: Customizing Markdown
-stage: 1
 id: be292d2b-dc0e-48dc-bce4-0058df27ccc6
 ---
 

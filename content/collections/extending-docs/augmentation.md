@@ -3,7 +3,6 @@ title: Augmentation
 intro: |
   Augmentation is a transformation step in Statamic’s data layer which establishes a connection between your front-end and the blueprints defining your content model.
 id: af1de577-8f75-4623-a0a3-d4c4c49390aa
-stage: 3
 ---
 
 ## What is Augmentation?

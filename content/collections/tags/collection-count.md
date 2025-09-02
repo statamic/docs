@@ -14,7 +14,6 @@ parameters:
     name: "*"
     type: inherit
     description: 'All parameters available on the [collection tag](/tags/collection) are available.'
-stage: 4
 id: b888a242-ca4c-4a96-81ca-518bc5e3b085
 ---
 ## Overview

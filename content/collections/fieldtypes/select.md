@@ -45,7 +45,6 @@ options:
     type: boolean
     description: >
       Add newly created options to the list. Default: `false`.
-stage: 4
 id: 812bd19d-ec37-42d5-b8f9-310366ef8abe
 ---
 ## Overview

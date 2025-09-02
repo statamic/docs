@@ -3,7 +3,6 @@ title: Search
 description: Performs searches and displays matching results
 intro: This is how you do search. This is the tag you're looking for.
 id: fe8ec156-447d-4f03-974f-0251a8c53244
-stage: 1
 parameters:
   -
     name: index

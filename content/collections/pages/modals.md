@@ -1,6 +1,5 @@
 ---
 title: Modals
-stage: 1
 id: 88bf3f66-4b80-42c9-8b65-bef712b8f413
 ---
 ## Modals

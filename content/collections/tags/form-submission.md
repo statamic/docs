@@ -15,7 +15,6 @@ variables:
     type: array
     description: >
       All the fields that were entered in the submission are available.
-stage: 4
 ---
 ## Example
 

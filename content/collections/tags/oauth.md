@@ -2,7 +2,6 @@
 title: OAuth
 description: Generate OAuth login URLs.
 intro: If you're using [OAuth](/oauth) to manage user authentication, you may find you need to generate login URLs at some point. Here's how you do it.
-stage: 4
 parameters:
   -
     name: provider

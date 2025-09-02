@@ -29,7 +29,6 @@ variables:
     name: errors
     type: array
     description: An array of validation errors.
-stage: 4
 id: e39fad1d-8b31-4dba-b32e-a0048084d178
 ---
 ## Overview

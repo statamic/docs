@@ -34,7 +34,6 @@ options:
     description: >
       Add button text customization.
       Default: `Add Row`.
-stage: 3
 id: 457f17eb-c0ee-4345-bf90-88322abc212d
 ---
 ## Overview

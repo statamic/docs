@@ -2,7 +2,6 @@
 title: Stacks
 intro: |
   A Stack is a way to add a layer of UX to the Control Panel.
-stage: 1
 id: c21a18cc-b9a9-4b1a-b1f7-97473f7d82f1
 ---
 ## Stacks

@@ -23,7 +23,6 @@ parameters:
     type: string
     description: |
       Handle of the site you want to link to (only when using Multi-Site).
-stage: 4
 id: ce8211b3-7e33-46ae-85ff-fe8880dafe11
 ---
 ## Overview

@@ -24,7 +24,6 @@ parameters:
     type: mixed
     description: |
       Any parameter you create will be passed through to the partial as a variable.
-stage: 5
 id: 1f683992-401e-44f6-8506-7967005778a5
 ---
 ## Overview

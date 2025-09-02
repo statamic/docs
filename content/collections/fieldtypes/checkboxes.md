@@ -15,7 +15,6 @@ options:
     type: array
     description: >
       Sets of key/value pairs define the values and labels of the checkbox options.
-stage: 2
 id: f922cb9b-6fc9-4249-adf4-59aa46285c13
 ---
 ## Overview

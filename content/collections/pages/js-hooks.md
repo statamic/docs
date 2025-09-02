@@ -3,7 +3,6 @@ title: JavaScript Hooks
 nav_title: Hooks
 intro: |
   Statamic allows you to hook into specific points in JavaScript and perform asyncronous operations using [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
-stage: 1
 id: fc136da3-ba46-46e1-8443-e345d5b548ac
 ---
 :::warning

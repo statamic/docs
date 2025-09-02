@@ -4,7 +4,6 @@ title: Assets
 intro: >
     Used to retrieve [Assets](/assets) directly from a container where you can then loop, filter, and sort them in expected but exciting ways.
 description: Fetches Assets from a container
-stage: 3
 parameters:
   -
     name: id|container|handle

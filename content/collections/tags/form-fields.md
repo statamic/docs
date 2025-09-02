@@ -20,7 +20,6 @@ parameters:
     type: string
     description: >
       Loop over all except the specified field handles (pipe separated).
-stage: 4
 ---
 ## Example
 This tag can recursively loop over the `fields` array context provided within the [form:create](/tags/form-create#dynamically-rendering-fields) tag pair.

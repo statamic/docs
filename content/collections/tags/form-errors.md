@@ -16,7 +16,6 @@ variables:
     type: string
     description: >
       This tag contains a primitive array. In each iteration, the `{{ value }}` will output a different error message. See the example above.
-stage: 4
 ---
 ## Example
 

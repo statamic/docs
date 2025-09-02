@@ -4,7 +4,6 @@ blueprint: tag
 title: Children
 description: 'Fetch data from children of the current URL'
 intro: 'The Children tag allows you to loop over and fetch data from the current URL.'
-stage: 3
 ---
 ## Overview
 

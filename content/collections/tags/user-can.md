@@ -8,7 +8,6 @@ parameters:
     type: string
     description: >
       The permissions to check against. You can use the parameter `permission` or `do`, depending on you feel about the grammar of each case. Specify multiple permissions by pipe separating them: `{{ user:can do="things|stuff" }}`.
-stage: 4
 id: 649f1eb3-cd60-46ec-ba07-38e2a4747952
 ---
 ## Overview

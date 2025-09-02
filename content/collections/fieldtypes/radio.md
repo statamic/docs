@@ -16,7 +16,6 @@ options:
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the radio options.'
-stage: 4
 id: 0b662f17-1cd1-4c64-a705-980a2ca5aab4
 ---
 ## Overview

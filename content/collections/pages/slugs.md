@@ -1,6 +1,5 @@
 ---
 title: Slugs
-stage: 1
 id: d84613d5-2b2b-465d-8f02-c71b6d2aadf1
 ---
 ## Slugify Vue Component

@@ -2,7 +2,6 @@
 title: 'Session:Forget'
 description: 'Remove data from the user session.'
 intro: Remove variables from the user session by passing the names of the variables into the `keys` parameter.
-stage: 5
 id: be024503-9796-4f2f-9c75-548e2ea09cec
 ---
 ## Example

@@ -3,7 +3,6 @@ title: "Markdown:Indent"
 id: d26ec250-460e-11e7-9598-0800200c9a66
 description: Transforms inline Markdown while ignoring whitespace
 intro: This tag is used for transforming Markdown while ignoring whitespace in your view files.
-stage: 4
 ---
 ## Example {#example}
 

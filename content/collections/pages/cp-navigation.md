@@ -4,7 +4,6 @@ template: page
 updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
 updated_at: 1569347202
 intro: The Control Panel navigation is quite customizable. Addons can add their own sections, pages, and subpages, as well as remove and modify existing ones.
-stage: 1
 id: 785ffa10-8b63-44b1-9da3-3837250cacbe
 ---
 

@@ -19,7 +19,6 @@ parameters:
     type: int
     description: |
       Limits the number of items returned in the loop.
-stage: 4
 id: 34b03d03-a113-467f-a1c9-65bc6b446220
 ---
 ## Overview

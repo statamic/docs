@@ -71,7 +71,6 @@ variables:
     name: total_results
     type: integer
     description: The total number of results, if any.
-stage: 4
 ---
 
 ## Example

@@ -13,7 +13,6 @@ parameters:
     type: integer
     description: |
       The size to increment by. Default: `1`.
-stage: 4
 id: b33aa176-06e6-411d-a4b7-0a514f697d78
 ---
 ## Overview

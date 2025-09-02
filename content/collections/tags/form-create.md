@@ -68,7 +68,6 @@ variables:
     name: submission_created
     type: boolean
     description: A success boolean, which differs from `success` in that it will actually return falsey when the [honeypot](/forms#honeypot) is filled. This can be useful when you want to show a fake success message for honeypot spam, but want to prevent analytics tracking code from being rendered.
-stage: 4
 ---
 ## Overview
 

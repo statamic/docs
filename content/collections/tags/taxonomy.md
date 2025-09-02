@@ -3,7 +3,6 @@ title: Taxonomy
 overview: Fetch and filter Taxonomy terms.
 intro: Taxonomy terms are grouped into taxonomies and are fetched and filtered by this tag. A taxonomy could contain tags, categories, or sock colors.
 description: Fetches and filters terms in one or more taxonomies.
-stage: 1
 parameters:
   -
     name: taxonomy

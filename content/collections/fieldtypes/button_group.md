@@ -14,7 +14,6 @@ options:
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the buttons.'
-stage: 4
 id: 26751221-fdc8-47c6-97f0-bf4997319482
 ---
 ## Overview

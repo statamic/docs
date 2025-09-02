@@ -2,7 +2,6 @@
 title: Section
 description: Extracts markup to be rendered elsewhere with yield.
 intro: 'The section tag is a useful way to abstract and reuse your views by extracting a section of markup that can then be rendered elsewhere with a [yield tag](/tags/yield).'
-stage: 4
 id: 21481d1a-ee1b-4acd-b5ad-65dc7fcec976
 ---
 ## Overview

@@ -91,7 +91,6 @@ options:
     description: >
       Always show the "Add Set" button. Default: `false`.
 
-stage: 1
 id: f4bf58d3-cbce-4957-b883-d92fd4791e89
 ---
 ## Overview

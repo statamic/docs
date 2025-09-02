@@ -12,7 +12,6 @@ parameters:
     name: site|locale
     type: string
     description: Show the retrieved content in the selected site.
-stage: 4
 id: a33dd9d3-f2f0-4114-b19d-1126361c327e
 ---
 ## Overview

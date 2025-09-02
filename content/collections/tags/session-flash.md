@@ -2,7 +2,6 @@
 title: 'Session:Flash'
 description: 'Store data for a single request.'
 intro: Flash data is session data that is only kept for a single request. It is most often used for success/failure messages that automatically disappear after a page refresh.
-stage: 5
 id: 29957a36-a15a-4fd0-9342-b829b6235fea
 ---
 ## Example

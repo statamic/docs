@@ -1,7 +1,6 @@
 ---
 title: 'Keyboard Shortcuts'
 intro: 'Improve usability by adding keyboard shortcuts.'
-stage: 4
 id: efcca509-5690-4201-88d7-74c542bb9900
 ---
 You may add keyboard shortcuts with a simple syntax, based on the [Mousetrap](https://craig.is/killing/mice) library.

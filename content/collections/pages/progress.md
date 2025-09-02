@@ -2,7 +2,6 @@
 title: Progress
 intro: |
   Control the magic progress bar at the top of the page.
-stage: 1
 id: 28068f9a-f269-4646-87e4-881e5477558d
 ---
 You can control the progress bar at the top of the page through the `$progress` instance method.

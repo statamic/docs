@@ -4,7 +4,6 @@ blueprint: tag
 title: Get Errors
 intro: 'This tag allows you to interact with a Laravel `ViewErrorBag` object to output validation errors.'
 description: 'Gets validation errors'
-stage: 1
 parameters:
   -
     name: bag

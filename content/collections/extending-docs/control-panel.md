@@ -3,7 +3,6 @@ title: 'Control Panel'
 nav_title: Overview
 template: page
 intro: The control panel may be customized in a number of different ways. You may add new fieldtypes, widgets, a stylesheet, or maybe you just want to add some arbitrary Javascript.
-stage: 1
 id: cb8f4d8a-47b6-4567-9510-ed7d9ee9c037
 ---
 

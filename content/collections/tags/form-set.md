@@ -9,7 +9,6 @@ parameters:
     type: string
     description: >
       Specify the name of the form.
-stage: 4
 ---
 ## Overview
 
