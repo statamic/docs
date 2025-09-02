@@ -21,8 +21,9 @@ class ComponentSnippets extends Modifier
                 $code = $matches[1];
                 $code = preg_replace('/<br\s*\/?>/i', '', $code);
                 $code = trim($code);
+                $url = '/cp/ui-component/'.base64_encode($code);
 
-                return Blade::render('partials.component-example', ['code' => $code]);
+                return Blade::render('partials.component-example', ['code' => $code, 'url' => $url]);
             },
             $value
         );
