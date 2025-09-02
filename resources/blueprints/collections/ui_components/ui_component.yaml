@@ -1,0 +1,10 @@
+title: UI Component
+tabs:
+  main:
+    sections:
+      -
+        fields:
+          -
+            handle: content
+            field:
+              type: markdown

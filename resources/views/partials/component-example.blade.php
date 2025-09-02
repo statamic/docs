@@ -1,11 +1,5 @@
-{{-- <pre><x-torchlight-code>{{ $slot }}</x-torchlight-code></pre> --}}
+{!! Statamic\Facades\Markdown::parse('```html'.PHP_EOL.$code.PHP_EOL.'```') !!}
 
-{{-- {!! Illuminate\Support\Facades\Vite::getFacadeRoot()
-    ->useHotFile('')
-    ->withEntryPoints(['resources/js/app.js'])
-    ->useBuildDirectory('/../vendor/statamic/cms/resources/dist/build')
-    ->toHtml()
-!!} --}}
-
-{!! Statamic\Facades\Markdown::parse('```html'.PHP_EOL.$slot.PHP_EOL.'```') !!}
-{!! $slot !!}
+<div class="border px-12 py-6 flex justify-center">
+    {!! $code !!}
+</div>
