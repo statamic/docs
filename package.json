@@ -11,17 +11,20 @@
         "alpinejs": "^3.2.4",
         "autoprefixer": "^10.4.20",
         "axios": "^0.30",
-        "laravel-vite-plugin": "^1.0.5",
-        "@vitejs/plugin-vue2": "^2.3.1",
+        "laravel-vite-plugin": "^2.0.0",
         "lodash": "^4.17.19",
         "postcss": "^8.4.47",
         "postcss-import": "^15.1.0",
         "postcss-nesting": "^12.1.5",
-        "vite": "5.4.11"
+        "vite": "^7.0.4",
+        "vite-plugin-devtools-json": "^1.0.0"
     },
     "dependencies": {
         "@docsearch/js": "^3.0.0-alpha.40",
+        "@tailwindcss/postcss": "^4.1.12",
+        "@tailwindcss/vite": "^4.1.12",
+        "dayjs": "^1.10.7",
         "meilisearch-docsearch": "^0.7.1",
-        "dayjs": "^1.10.7"
+        "tailwindcss": "^4.1.12"
     }
 }

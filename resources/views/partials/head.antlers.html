@@ -5,7 +5,7 @@
     <title>{{ meta_title ?? title }} // Statamic {{ config:docs:version }} Docs</title>
     {{ partial:meta }}
     {{ livewire:styles }}
-    {{# GROUP WEB FONTS 
+    {{# GROUP WEB FONTS
     =================================================== #}}
     {{# Highest priority because render blocking. An additional preload improves the Lighthouse score. #}}
     {{# Typekit #}}
@@ -19,9 +19,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@250..800&family=Source+Code+Pro:ital,wght@0,200..800;1,200..900&display=swap" rel="stylesheet">
-    {{# GROUP CSS 
+    {{# GROUP CSS
     =================================================== #}}
-    {{ partial:styles/stylesheets }}
+    <link rel="stylesheet" href="{{ vite:asset src='resources/css/style.css' }}">
     {{# GROUP JS
     =================================================== #}}
     <script>
@@ -32,20 +32,20 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             // Get preferred color scheme from localStorage, default to 'light'
             const preferredScheme = localStorage.getItem('preferredColorScheme') || 'light';
-            
+
             // Check if screen width is greater than 1200px
             const isWideScreen = window.innerWidth > 1200;
 
             if (isWideScreen) {
                 // Set theme color based on preferred scheme
-                const themeColor = preferredScheme === 'dark' 
-                    ? 'hsl(230deg 17% 7%)' 
+                const themeColor = preferredScheme === 'dark'
+                    ? 'hsl(230deg 17% 7%)'
                     : 'white';
                 document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
             } else {
                 // Set theme color based on preferred scheme
-                const themeColor = preferredScheme === 'dark' 
-                    ? 'hsl(230deg 17% 7%)' 
+                const themeColor = preferredScheme === 'dark'
+                    ? 'hsl(230deg 17% 7%)'
                     : 'hsl(197deg 100% 95%)';
                 document.head.insertAdjacentHTML('beforeend', `<meta name="theme-color" content="${themeColor}">`);
             }
