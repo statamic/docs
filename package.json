@@ -25,6 +25,7 @@
         "@tailwindcss/vite": "^4.1.12",
         "dayjs": "^1.10.7",
         "meilisearch-docsearch": "^0.7.1",
-        "tailwindcss": "^4.1.12"
+        "tailwindcss": "^4.1.12",
+        "vue": "^3.5.21"
     }
 }
