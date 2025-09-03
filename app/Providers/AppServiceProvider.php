@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\View\Composers\SideNavComposer;
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -46,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
         Statamic::pushCpRoutes(function () {
             Route::get('ui-component/{snippet}', function ($snippet) {
                 View::composer('cp-snippet', JavascriptComposer::class);
-                return view('cp-snippet', ['snippet' => base64_decode($snippet), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
+                return view('cp-snippet', ['snippet' => Blade::render(base64_decode($snippet)), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
             });
         });
     }
