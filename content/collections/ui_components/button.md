@@ -21,6 +21,7 @@ Use the `variant` prop to change the appearance of the button.
 <ui-button variant="ghost">Ghost</ui-button>
 ```
 
+
 ## Sizes
 
 <p>Use the <code>size</code> prop to change the size of the button.</p>
@@ -34,13 +35,13 @@ Use the `variant` prop to change the appearance of the button.
 
 ## Icons
 
-Buttons can contain icons through the use of slots or by using the `icon` prop to pass the name of an icon.
+Automatically sized and styled icons are available for your buttons using the `icon` or `icon-append` props to pass the name of an icon.
 
 ```component
 <ui-button icon="ui/dots"></ui-button>
 
 <ui-button>
-    <ui-icon name="clipboard" text="Copy"></ui-icon>
+    <ui-icon name="clipboard"></ui-icon>
 </ui-button>
 
 <ui-button variant="primary" icon-append="arrow-right">
@@ -119,6 +120,7 @@ Attach a button to the side of a button to make it a double complete button.
 </ui-button-group>
 ```
 
+
 ## As a Link
 
 Buttons can be used as links by passing an <code>href</code> prop.
@@ -127,4 +129,14 @@ Buttons can be used as links by passing an <code>href</code> prop.
 <ui-button href="https://statamic.com" icon-append="arrow-up-right">
     Visit Statamic.com
 </ui-button>
+```
+
+
+## Inset
+
+When using `ghost` or `subtle` button variants, you can use the `inset` prop to remove any invisible padding for better alignment.
+
+```component
+<ui-button size="sm" icon="x" variant="ghost" inset></ui-button>
+<ui-button size="sm" icon="checkmark" variant="ghost" inset></ui-button>
 ```
