@@ -1,0 +1,23 @@
+{{ partial:header }}
+
+<article>
+    {{ content }}
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        {{ collection :from="mount || collection" }}
+        <tr>
+            <td>
+                <a href="{{ url }}">{{ title }}</a>
+            </td>
+            <td>
+                {{ description | markdown ?? intro | markdown }}
+            </td>
+        </tr>
+        {{ /collection }}
+    </table>
+</article>

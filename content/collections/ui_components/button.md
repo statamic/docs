@@ -9,6 +9,15 @@ intro: Buttons are used to trigger actions. They come in many sizes and flavors.
 <ui-button text="Click me" variant="primary"></ui-button>
 ```
 
+## Text
+
+You can set the button text with a `text` prop or by using the component like an HTML tag pair.
+
+```component
+<ui-button>HTMLy</ui-button>
+<ui-button text="Propy" />
+```
+
 ## Variants
 
 Use the `variant` prop to change the appearance of the button.
@@ -35,24 +44,24 @@ Use the `variant` prop to change the appearance of the button.
 
 ## Icons
 
-Automatically sized and styled icons are available for your buttons using the `icon` or `icon-append` props to pass the name of an icon.
+Automatically sized and styled icons are available for your buttons using the `icon` or `icon-append` props. You can also compose your own buttons with icons by nesting an [icon](/ui-components/icon) component.
 
 ```component
-<ui-button icon="ui/dots"></ui-button>
+<ui-button icon="ui/dots" />
 
-<ui-button>
-    <ui-icon name="clipboard"></ui-icon>
+<ui-button icon-append="arrow-right">
+    Continue
 </ui-button>
 
-<ui-button variant="primary" icon-append="arrow-right">
-    Continue
+<ui-button>
+    <ui-icon name="clipboard" />
 </ui-button>
 ```
 
 
 ## Round
 
-Round buttons have their place too. Like in Bard set pickers. Just set the `round` prop.
+Round buttons have their place too — like [Bard](/fieldtypes/bard) set pickers. Just set the `round` prop.
 
 ```component
 <ui-button icon="plus" round></ui-button>
@@ -66,9 +75,7 @@ Round buttons have their place too. Like in Bard set pickers. Just set the `roun
 Show an animated loading icon during network requests.
 
 ```component
-<ui-button loading>
-    Save
-</ui-button>
+<ui-button loading text="Save" />
 ```
 
 
