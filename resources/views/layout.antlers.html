@@ -8,24 +8,20 @@
         {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
         <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
             {{ partial:nav_sidebar }}
-            {{# <nav class="c-breadcrumbs">
+            <nav class="c-breadcrumbs">
                 <ol>
-                    <li><a href="{{ nav:collection:sections include_home="true" }}{{ page:section === section ?= '{ url }' }}{{ /nav:collection:sections }}">{{ page:section | replace('_', ' ') }}</a></li>
-                    {{ if section }}
-                    {{ nav :handle="section" }}
-                        {{ if {children | where('is_current', true) | count} > 0 }}
-                            <li>
-                                {{ svg src='breadcrumb-chevron' }}
-                                <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
-                                    {{ title }}
-                                </a>
-                            </li>
-                        {{ /if }}
-                    {{ /nav }}
-                    {{ /if }}
-                    <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
+                    {{ nav:breadcrumbs include_home="false" }}
+                        <li>
+                            {{ unless first }}{{ svg src='breadcrumb-chevron' }}{{ /unless }}
+                            {{ if is_current }}
+                                <button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button>
+                            {{ else }}
+                                <a href="{{ url }}">{{ title }}</a>
+                            {{ /if }}
+                        </li>
+                    {{ /nav:breadcrumbs }}
                 </ol>
-            </nav> #}}
+            </nav>
 
             <div class="c-nav-toc-with-popover-api">
                 {{ unless $hide_toc == 'yes' }}
