@@ -2,7 +2,7 @@ title: 'UI Components'
 icon: favorite-star
 template: default
 layout: layout
-mount: c7f50a61-de71-43db-8da0-de75c2cbbe94
+mount: f3c9d186-14a6-416d-89e7-28569adb2cfe
 revisions: false
 route: '/ui-components/{slug}'
 sort_dir: asc

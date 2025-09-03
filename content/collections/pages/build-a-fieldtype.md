@@ -1,11 +1,11 @@
 ---
-title: Building Fieldtypes
+id: 83786f60-def6-11e9-aaef-0800200c9a66
+blueprint: page
+title: 'Build a Fieldtype'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568643872
-intro: Fieldtypes determine the user interface and storage format for your [fields](/fields). Statamic includes 40+ fieldtypes to help you tailor the perfect intuitive experience for your authors, but there's always room for _one more_.
-id: 83786f60-def6-11e9-aaef-0800200c9a66
+intro: "Fieldtypes determine the user interface and storage format for your [fields](/fields). Statamic includes 40+ fieldtypes to help you tailor the perfect intuitive experience for your authors, but there's always room for _one more_."
 ---
-
 ## Prerequisites
 
 Fieldtypes have a JavaScript component, so you will need to have a JavaScript entry file that gets loaded in the Control Panel.

@@ -3,6 +3,7 @@ id: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
 blueprint: page
 title: 'Vue Components Overview'
 overview: "Here's how you can add your own Vue 3 components to the Statamic Control\_Panel."
+nav_title: Overview
 ---
 ## Registering Components
 

@@ -1,7 +1,8 @@
 ---
 id: 4b77c19b-129c-4271-a724-eea884eb3e2e
 blueprint: page
-title: Overview
+title: 'Widgets Overview'
+nav_title: Overview
 ---
 The Control Panel's dashboard may contain any number of widgets. A widget is simply a box that shows something. That something might be anything from a list of recently updated entries, to a randomized inspiration quote, and anything in between.
 

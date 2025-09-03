@@ -1,7 +1,7 @@
 ---
 id: 9a1d8b88-c600-46f2-8727-1deb56f2e87a
 blueprint: page
-title: Overview
+title: 'Fieldtypes Overview'
 intro: 'Fieldtypes are customizable form [fields](/fields) used to structure your content and provide an intuitive content management experience. Each fieldtype has its own UI, data format, and configuration options.'
 template: page
 options_content: 'Each fieldtype has a common set of options in addition to any unique ones specific to that type.'
@@ -84,6 +84,7 @@ related_entries:
   - dcf80ee6-209e-45aa-af42-46bbe01996e2
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632748812
+nav_title: Overview
 ---
 ## Overview
 
