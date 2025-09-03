@@ -97,29 +97,21 @@
             }
             .c-nav-sidebar-with-popover-api-category-heading {
                 display: flex;
-                max-width: 17rem;
+                max-width: 14rem;
                 white-space: nowrap;
-                max-height: 3.2rem;
+                max-height: 1rem;
                 gap: var(--spacing-s-1);
                 align-items: center;
                 justify-content: space-between;
-                padding: var(--spacing-s-3) var(--spacing-m);
+                padding: var(--spacing-s-2) var(--spacing-s-1);
                 font-family: var(--font-family-prose);
                 /* Custom */
                 font-size: clamp(1.35em, 6vw, 1.1em);
                 line-height: var(--font-size-l-2-line-height);
-                border-radius: 50px;
-                box-shadow: var(--box-shadow-not-t-light);
                 text-decoration: none;
-                /* --mq-nav-open-after to --mq-text-bump-2-after */
-                @media (width >= 1100px) and (width < 1441px) {
-                    /* Shrink headers when we don't have much space */
-                    max-height: 2.9rem;
-                    max-width: 14rem;
-                    padding-block: var(--spacing-s-4);
-                }
-                &:has(input:checked) {
-                    box-shadow: var(--box-shadow-not-t-lighter);
+                border-radius: 50px;
+                &:not(:has(input:checked)) {
+                    background: var(--color-gradient-full-light-2);
                 }
                 &:focus-visible {
                     /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
@@ -129,24 +121,13 @@
                 @media (width >= 1441px) {
                     padding-inline: var(--spacing-l);
                 }
-                img {
-                    inline-size: 1.4em;
-                }
-                /* has a sub nav with .o-current-menu-item */
-                &:has(+ * .o-current-menu-item) {
-                    box-shadow: none;
-                    background: var(--color-gradient-full-light-2);
-                    img {
-                        box-shadow: var(--box-shadow-pink-light);
-                    }
-                }
             }
 
             & ul {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: var(--spacing-s-2);
+                gap: var(--spacing-s-4);
                 font-size: var(--font-size-s-2);
                 overscroll-behavior-y: contain;
                 /* Need to cut this short a little to force scrolling when there are a lot of items. */
@@ -169,7 +150,7 @@
                             position: absolute;
                             z-index: var(--z-index-below-body);
                             top: 3.25rem;
-                            left: var(--spacing-l);
+                            left: var(--spacing-s-1);
                             height: calc(100% - 4.1rem);
                             border-inline-start: 1px solid var(--color-pink-light-3-static);
                         }
@@ -193,7 +174,7 @@
                     & ul {
                         gap: 0;
                         max-height: unset;
-                        padding: 0 var(--spacing-l-2-horizontal);
+                        padding: 0 2rem;
                         font-size: var(--font-size-ui-rem);
                         & a, button, span {
                             /* Increase the pointer targets a little to improve usability */
@@ -205,11 +186,11 @@
                             font-weight: var(--font-family-ui-weight-medium);
                             &::before {
                                 content: '';
-                                border-inline-start: 4px solid var(--color-pink-light-1);
+                                border-inline-start: 3px solid var(--color-pink-light-1);
                                 position: absolute;
-                                left: calc(0% + var(--spacing-l));
-                                height: 2em;
-                                transform: translateY(-0.25em);
+                                left: calc(0% + 1.2rem);
+                                height: 1.5em;
+                                /* transform: translateY(-0.25em); */
                             }
                         }
                     }
