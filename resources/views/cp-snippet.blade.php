@@ -8,7 +8,7 @@
 </style>
 </head>
 <body>
-<div id="statamic" class="p-6 flex justify-center">
+<div id="statamic" class="p-4 flex space-x-4 w-full justify-center items-center max-w-full max-lg:min-w-fit lg:max-w-96">
 {!! $snippet !!}
 </div>
 <script>

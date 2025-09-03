@@ -54,6 +54,17 @@
         }
     }
 
+    .ui-component-example {
+        pre {
+            margin-block-end: 0 !important;
+            margin-block-start: 0 !important;
+        }
+        pre, pre .torchlight {
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+        }
+    }
+
     pre code.torchlight .line {
         padding-left: .75rem;
         padding-right: .75rem
@@ -68,7 +79,7 @@
 
     [data-theme="olaolu-palenight"] .line-highlight {
          /* e.g. >> /content-queries */
-        background: light-dark(hsl(0deg 0% 0% / 50%), hsl(0deg 0% 0% / 30%))!important;   
+        background: light-dark(hsl(0deg 0% 0% / 50%), hsl(0deg 0% 0% / 30%))!important;
     }
 
     pre code.torchlight .line-number,pre code.torchlight .summary-caret {
@@ -283,16 +294,16 @@
         svg {
             fill: none;
         }
-        
+
         &:hover {
             border-color: hsl(0deg 0% 100% / 30%);
             transform: translateY(-1px);
         }
-        
+
         &:active {
             transform: translateY(0);
         }
-        
+
         &.copied {
             background: rgba(34, 197, 94, 0.05);
             border-color: rgba(34, 197, 94, 0.5);
@@ -306,7 +317,7 @@
                 display: block;
             }
         }
-        
+
         .check-icon {
             display: none;
         }
@@ -317,20 +328,20 @@
         background: rgba(0, 0, 0, 0.3);
         border-color: rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.8);
-        
+
         &:hover {
             background: rgba(0, 0, 0, 0.5);
             border-color: rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 1);
         }
     }
-    
+
     @media (prefers-color-scheme: dark) {
         html:has(#color-scheme option[value="system"]:checked) .copy-button {
             background: rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.8);
-            
+
             &:hover {
                 background: rgba(0, 0, 0, 0.5);
                 border-color: rgba(255, 255, 255, 0.2);

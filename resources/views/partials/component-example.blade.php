@@ -1,9 +1,13 @@
-{!! Statamic\Facades\Markdown::parse('```html'.PHP_EOL.$code.PHP_EOL.'```') !!}
-
-<iframe
-    src="{{ $url }}" class="border border-gray-300 rounded-lg mb-[var(--spacing-m)]"
-    id="component-iframe-{{ md5($url) }}"
-></iframe>
+<div class="ui-component-example mb-6">
+    <div class="border border-gray-200 rounded-xl rounded-b-none px-6 py-8">
+        <iframe
+            class="m-auto flex items-center justify-center space-x-4"
+            src="{{ $url }}"
+            id="component-iframe-{{ md5($url) }}"
+        ></iframe>
+    </div>
+    <div class="rounded-2xl rounded-t-none">{!! Statamic\Facades\Markdown::parse('```html'.PHP_EOL.$code.PHP_EOL.'```') !!}</div>
+</div>
 
 <script>
     // Auto-resize iframe height to fit content
