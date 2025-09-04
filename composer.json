@@ -13,7 +13,7 @@
         "laravel/tinker": "^2.0",
         "league/commonmark": "^2.0",
         "livewire/livewire": "^3.6.4",
-        "statamic/cms": "v6.0.0-alpha.4 as 5.65.0",
+        "statamic/cms": "v6.0.0-alpha.5 as 5.65.0",
         "torchlight/engine": "^0.1.0"
     },
     "require-dev": {
