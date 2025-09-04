@@ -22,7 +22,7 @@ return [
                  'symbol' => '',
                  'id_prefix' => '',
                  'fragment_prefix' => '',
-                 'apply_id_to_heading' => false,
+                 'apply_id_to_heading' => true,
                  'html_class' => 'c-anchor',
                  'aria_hidden' => false,
              ],
