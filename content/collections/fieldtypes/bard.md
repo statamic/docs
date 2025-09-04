@@ -256,12 +256,6 @@ use Statamic\Fieldtypes\Sets;
 
 public function boot()
 {
-    Sets::setIconsDirectory(folder: 'light');
+    Sets::setIconsDirectory(directory: resource_path('custom-icons'));
 }
-```
-
-Alternatively, if you want to use a different base directory altogether, you can do this:
-
-```php
-Sets::setIconsDirectory(directory: resource_path('custom-icons'));
 ```

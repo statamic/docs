@@ -13,12 +13,6 @@ options:
     description: 'Optionally set the path to the directory containing desired icons relative to the project’s root. Default: uses system icons.'
     required: false
   -
-    id: 752XSotc
-    name: folder
-    type: string
-    description: 'Optionally set a subdirectory contain a specific set of icons.'
-    required: false
-  -
     id: u8yCCuXb
     name: default
     type: string
