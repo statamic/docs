@@ -749,7 +749,7 @@ public function handle(GlobalVariablesDeleted $event)
 Dispatched after Global Variables have been saved.
 
 ``` php
-public function handle(GlobalVariablesDeleting $event)
+public function handle(GlobalVariablesSaved $event)
 {
     $event->variables;
 }
