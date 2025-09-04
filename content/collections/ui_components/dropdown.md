@@ -5,7 +5,7 @@ title: Dropdown
 template: ui-component
 intro: Displays a menu to the user—such as a set of actions or functions—triggered by a button, with full keyboard navigation support.
 ---
-
+## Overview
 The dropdown component has a `<template #trigger>` slot to contain the button that will trigger the dropdown.
 
 ```component
@@ -78,19 +78,11 @@ Items can be disabled by using the `disabled` prop.
 </ui-dropdown>
 ```
 
-## Side
+## Additional Props
+You can pass additional props to the dropdown to customize it.
 
-You can choose what side the dropdown should open on — `bottom` (default), `top`, `left`, or `right`.
-
-```component
-<ui-dropdown side="right">
-    <template #trigger>
-        <ui-button text="Go Right" icon-append="ui/chevron-vertical" class="[&_svg]:size-2" />
-    </template>
-    <ui-dropdown-menu>
-        <ui-dropdown-item text="Collections" icon="collections" />
-        <ui-dropdown-item text="Taxonomies" icon="taxonomies" disabled />
-        <ui-dropdown-item text="Globals" icon="globals" />
-    </ui-dropdown-menu>
-</ui-dropdown>
-```
+| Prop | Type | Options |
+|------|------|---------|
+| align | string | `start`/`center`/`end` |
+| side | string | `top`/ `bottom`/ `left`/ `right` |
+| offset | integer | The distance in pixels from the trigger. |
