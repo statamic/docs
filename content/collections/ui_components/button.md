@@ -6,9 +6,8 @@ template: ui-component
 intro: Buttons are used to trigger actions. They come in many sizes and flavors.
 ---
 ```component
-<ui-button text="Click me" variant="primary"></ui-button>
+<ui-button text="Click me!" variant="primary" />
 ```
-
 ## Text
 
 You can set the button text with a `text` prop or by using the component like an HTML tag pair.
