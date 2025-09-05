@@ -59,7 +59,7 @@
         <li>
             <label class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading{{ if is_current || is_parent }} o-current-menu-item{{ /if }}">
                 {{ title }}
-                <input id="{{ title | slugify }}" type="checkbox" {{ if is_current || is_parent }}checked{{ /if }}>
+                <input id="{{ title | slugify }}" type="checkbox">
             </label>
             <ul>
                 {{ if children }}
