@@ -705,4 +705,28 @@ protected function configureRateLimiting()
 
 ## Authentication
 
-**Coming soon.** There are no _native_ access tokens or other common authentication methods ready to use. Yet.
+Out of the box, the REST API is publicly accessible. 
+
+You can restrict access to the API by adding the `STATAMIC_API_TOKEN` key to your `.env` file. It should be set to a long, random string.
+
+```php
+STATAMIC_API_TOKEN=a-long-random-string
+```
+
+Then, when you make requests to the REST API, you'll need to include the token in the `Authorization` header, like this:
+
+```curl
+curl -X GET "https://example.com/api/collections/pages/entries" \
+  -H "Authorization: Bearer a-long-random-string" \
+  -H "Accept: application/json"
+```
+
+### Authenticating users
+
+If you want to authenticate based on users, we recommend using [Laravel Sanctum](https://laravel.com/docs/master/sanctum) instead. 
+
+To use Sanctum, you'll need to [store users in the database](/tips/storing-users-in-a-database) and add the `auth:sanctum` middleware to the REST API's middleware group:
+
+```php
+$this->app[\Illuminate\Contracts\Http\Kernel::class]->prependMiddlewareToGroup(config(‘statamic.api.middleware’), ‘auth:sanctum’);
+```
