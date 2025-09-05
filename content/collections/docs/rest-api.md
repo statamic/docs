@@ -707,10 +707,10 @@ protected function configureRateLimiting()
 
 Out of the box, the REST API is publicly accessible. 
 
-You can restrict access to the API by adding the `STATAMIC_API_TOKEN` key to your `.env` file. It should be set to a long, random string.
+You can restrict access to the API by adding the `STATAMIC_API_AUTH_TOKEN` key to your `.env` file. It should be set to a long, random string.
 
 ```php
-STATAMIC_API_TOKEN=a-long-random-string
+STATAMIC_API_AUTH_TOKEN=a-long-random-string
 ```
 
 Then, when you make requests to the REST API, you'll need to include the token in the `Authorization` header, like this:
