@@ -379,7 +379,7 @@ Once your Starter Kit is ready for the world, you can publish it on the [Statami
 
 Before you can publish your Starter Kit, you'll need a couple of things:
 
-- A [Statamic Seller Account](https://statamic.com/seller)
+- A [Statamic Seller Account](https://statamic.com/creator)
 - A connected [Stripe](https://stripe.com) account _only if_ you're planning to sell your Starter Kits.
 
 In your seller dashboard, you can create a product. There you'll be able to link your Composer package that you created on Packagist, choose a price, write a description, and so on.
