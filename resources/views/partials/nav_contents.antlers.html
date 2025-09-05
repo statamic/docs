@@ -33,6 +33,28 @@
     @scroll="navScrollPosition = $el.scrollTop"
     @click="localStorage.setItem('comingFromSidebarNav', 'true')"
 >
+    {{ if segment_2 && ($collection != "pages") }}
+        <li>
+            <a href="{{ parent:url }}" class="px-3 py-1 bg-gray-100 mb-4 inline-block rounded-full">&larr; Go back</a>
+            <div class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading o-current-menu-item">
+                {{ parent:title  }}
+            </div>
+            <ul>
+                {{ collection :from="collection" }}
+                <li>
+                        <a wire:navigate
+                            href="{{ url }}"
+                            {{ if segment_2 === slug }}class="o-current-menu-item"{{ /if }}
+                        >
+                            {{ nav_title ?? title }}
+                        </a>
+                    </li>
+                {{ /collection}}
+            </ul>
+        </li>
+
+    {{ else }}
+
     {{ nav:collection:pages }}
         <li>
             <label class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading{{ if is_current || is_parent }} o-current-menu-item{{ /if }}">
@@ -56,4 +78,6 @@
             </ul>
         </li>
     {{ /nav:collection:pages }}
+
+    {{ /if }}
 </ul>
