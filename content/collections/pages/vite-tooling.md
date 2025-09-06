@@ -1,7 +1,7 @@
 ---
 id: 5f26a634-19ae-4413-8b9e-1ed9c2c76bb0
 blueprint: page
-title: 'Tooling with Vite'
+title: 'Vite Tooling'
 template: page
 intro: 'How to use Vite in your addon.'
 ---
