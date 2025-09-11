@@ -595,7 +595,7 @@ Once your addon is ready to be shared, you can publish it on the [Statamic Marke
 Before you can publish your addon, you'll need a couple of things:
 
 - Publish your Composer package on [packagist.org](https://packagist.org).
-- Create a [statamic.com seller account](https://statamic.com/seller)
+- Create a [statamic.com seller account](https://statamic.com/creator/begin)
 - If you're planning to charge for your addons, you'll need to link connect your bank details to your seller account.
 
 In your seller dashboard, you can create a product. There you'll be able to link your Composer package that you created on Packagist, choose a price, write a description, and so on.
