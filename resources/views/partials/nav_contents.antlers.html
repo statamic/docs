@@ -33,7 +33,7 @@
     @scroll="navScrollPosition = $el.scrollTop"
     @click="localStorage.setItem('comingFromSidebarNav', 'true')"
 >
-    {{ if segment_2 && ($collection != "pages") }}
+    {{ if segment_2 && $collection && ($collection != "pages") }}
         <li>
             <a href="{{ parent:url }}" class="px-3 py-1 bg-gray-100 mb-4 inline-block rounded-full">&larr; Go back</a>
             <div class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading o-current-menu-item">
