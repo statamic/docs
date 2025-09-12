@@ -18,12 +18,15 @@ header_image: /assets/img/bokeh-bunnies.jpg
 ::tab antlers
 ```antlers
 {{ header_image | image }}
+{{ header_image | image('class:width-50') }}
 ```
 ::tab blade
 ```blade
 {!! Statamic::modify($header_image)->image() !!}
+{!! Statamic::modify($header_image)->image('class:width-50') !!}
 ```
 ::
 ```html
 <img src="/assets/img/bokeh-bunnies.jpg">
+<img src="/assets/img/bokeh-bunnies.jpg" class="width-50">
 ```

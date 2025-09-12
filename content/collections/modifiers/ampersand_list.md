@@ -13,6 +13,10 @@ related_entries:
 ---
 Turn a simple array into a comma delimited string with a friendly little ampersand between the last two items.
 
+:::tip
+`ampersand_list` and [Sentence List](/modifiers/sentence_list) share functionality so things like setting the glue and/or oxford comma work the same in both modifiers.
+:::
+
 ```yaml
 fruits:
   - apples
