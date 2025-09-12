@@ -24,6 +24,7 @@ This is the list of reserved words you shouldn't use as field names, in addition
 - `save`
 - `site`
 - `status`
+- `structure`
 - `path`
 - `private`
 - `publish`
@@ -44,6 +45,10 @@ Some of these _may_ work as field names in some circumstances, but can have unin
 - `global` with any datatype storing data as an array when there is _also_ a global field of the same name.
 - `type` inside a Replicator set. The type is the handle of the set.
 
+### Assets
+
+- `content` as a file driver name in `config/filesystem.php` 
+
 ### Entries
 
 - `order`
@@ -55,6 +60,10 @@ Some of these _may_ work as field names in some circumstances, but can have unin
 - `date`
 - `message`
 - `messages`
+
+### Navigation and Trees
+
+- `structure`
 
 ## Taxonomy Handles
 
