@@ -71,7 +71,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="c-entry-content-wrapper" name="top">
+            <div class="c-entry-content-wrapper" name="top" {{ if ! allow_vue }}v-pre{{ /if }}>
                 {{# {{ partial:side-nav }} #}}
                 <article id="content" class="c-entry-content js__scroll-spy-toc__timeline">
                     {{ template_content }}
