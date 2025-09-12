@@ -11,7 +11,7 @@ return [
     | assumes that git is already installed and accessible by your
     | PHP process' server user. For more info, see the docs at:
     |
-    | https://statamic.dev/git-integration
+    | https://statamic.dev/git-automation
     |
     */
 
@@ -26,9 +26,25 @@ return [
     | events are fired. If you prefer users to manually trigger commits
     | using the `Git` utility interface, you may set this to `false`.
     |
+    | https://statamic.dev/git-automation#committing-changes
+    |
     */
 
     'automatic' => env('STATAMIC_GIT_AUTOMATIC', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue Connection
+    |--------------------------------------------------------------------------
+    |
+    | You may choose which queue connection should be used when dispatching
+    | commit jobs. Unless specified, the default connection will be used.
+    |
+    | https://statamic.dev/git-automation#queueing-commits
+    |
+    */
+
+    'queue_connection' => env('STATAMIC_GIT_QUEUE_CONNECTION'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,6 +70,8 @@ return [
     | The git user that will be used when committing changes. By default, it
     | will attempt to commit with the authenticated user's name and email
     | when possible, falling back to the below user when not available.
+    |
+    | https://statamic.dev/git-automation#git-user
     |
     */
 
@@ -84,8 +102,22 @@ return [
         resource_path('forms'),
         resource_path('users'),
         resource_path('preferences.yaml'),
+        resource_path('sites.yaml'),
         storage_path('forms'),
+        public_path('assets'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Git Binary
+    |--------------------------------------------------------------------------
+    |
+    | By default, Statamic will try to use the "git" command, but you can set
+    | an absolute path to the git binary if necessary for your environment.
+    |
+    */
+
+    'binary' => env('STATAMIC_GIT_BINARY', 'git'),
 
     /*
     |--------------------------------------------------------------------------
@@ -96,11 +128,13 @@ return [
     | and `git commit` your changes. These commands will be run once
     | per repo, attempting to consolidate commits where possible.
     |
+    | https://statamic.dev/git-automation#customizing-commits
+    |
     */
 
     'commands' => [
-        'git add {{ paths }}',
-        'git -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "{{ message }}"',
+        '{{ git }} add {{ paths }}',
+        '{{ git }} -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "{{ message }}"',
     ],
 
     /*
@@ -111,6 +145,8 @@ return [
     | Determine whether `git push` should be run after the commands above
     | have finished. This is disabled by default, but can be enabled
     | globally, or per environment using the provided variable.
+    |
+    | https://statamic.dev/git-automation#pushing-changes
     |
     */
 
@@ -131,5 +167,18 @@ return [
         // \Statamic\Events\UserSaved::class,
         // \Statamic\Events\UserDeleted::class,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Locale
+    |--------------------------------------------------------------------------
+    |
+    | The locale to be used when translating commit messages, etc. By
+    | default, the authenticated user's locale will be used, but
+    | feel free to override this using the provided variable.
+    |
+    */
+
+    'locale' => env('STATAMIC_GIT_LOCALE', null),
 
 ];

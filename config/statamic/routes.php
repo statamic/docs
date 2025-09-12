@@ -4,6 +4,33 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable Routes
+    |--------------------------------------------------------------------------
+    |
+    | Statamic adds its own routes to the front-end of your site. You are
+    | free to disable this behavior.
+    |
+    | More info: https://statamic.dev/routing
+    |
+    */
+
+    'enabled' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Route Bindings
+    |--------------------------------------------------------------------------
+    |
+    | Whether route bindings for Statamic repositories (entry, taxonomy,
+    | collections, etc) are enabled for front end routes. This may be
+    | useful if you want to make your own custom routes with them.
+    |
+    */
+
+    'bindings' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Action Route Prefix
     |--------------------------------------------------------------------------
     |
@@ -14,5 +41,16 @@ return [
     */
 
     'action' => '!',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Define the middleware that will be applied to the web route group.
+    |
+    */
+
+    'middleware' => 'web',
 
 ];
