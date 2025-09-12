@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\View\Composers\SideNavComposer;
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
@@ -40,8 +39,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::composer('partials.side-nav', SideNavComposer::class);
-
         Markdown::addExtensions(function () {
             return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension];
         });
