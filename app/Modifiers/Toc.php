@@ -138,6 +138,7 @@ class Toc extends Modifier
         // Remove HTML entity remnants that might be left after processing
         // Only remove these if they appear as standalone words or at word boundaries
         $slugified = preg_replace('/\b(codelt|rt|gtcode)\b/', '', $slugified);
+
         return $slugified;
     }
 }

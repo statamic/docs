@@ -24,7 +24,7 @@ return [
                 'users' => base_path('users'),
                 'roles' => config_path('statamic/user_roles.yaml'),
                 'groups' => config_path('statamic/user_groups.yaml'),
-            ]
+            ],
         ],
 
         'eloquent' => [
@@ -33,8 +33,6 @@ return [
         ],
 
     ],
-
-
 
     /*
     |--------------------------------------------------------------------------

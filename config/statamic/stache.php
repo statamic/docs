@@ -48,6 +48,6 @@ return [
             'directory' => base_path('users'),
         ],
 
-    ]
+    ],
 
 ];

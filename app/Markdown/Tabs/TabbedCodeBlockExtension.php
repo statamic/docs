@@ -9,7 +9,7 @@ class TabbedCodeBlockExtension implements ExtensionInterface
 {
     public function register(EnvironmentBuilderInterface $environment): void
     {
-        $environment->addBlockStartParser(new TabbedCodeStartParser());
-        $environment->addRenderer(TabbedCodeBlock::class, new TabsRenderer());
+        $environment->addBlockStartParser(new TabbedCodeStartParser);
+        $environment->addRenderer(TabbedCodeBlock::class, new TabsRenderer);
     }
 }

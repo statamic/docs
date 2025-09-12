@@ -36,7 +36,7 @@ return [
         'full' => [
             'driver' => 'file',
             'path' => public_path('static'),
-            'lock_hold_length' => 0
+            'lock_hold_length' => 0,
         ],
 
     ],
@@ -53,7 +53,7 @@ return [
     */
 
     'exclude' => [
-        '/sitemap.xml'
+        '/sitemap.xml',
     ],
 
     /*
@@ -75,7 +75,7 @@ return [
 
         'rules' => [
             //
-        ]
+        ],
 
     ],
 

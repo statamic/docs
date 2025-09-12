@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         if (! app()->runningConsoleCommand('search:update')) {
-            TorchlightOptions::setDefaultOptionsBuilder(fn() => TorchlightOptions::fromArray(config('torchlight.options')));
+            TorchlightOptions::setDefaultOptionsBuilder(fn () => TorchlightOptions::fromArray(config('torchlight.options')));
 
             $extension = new TorchlightExtension(config('torchlight.theme'));
             $extension
@@ -47,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         Statamic::pushCpRoutes(function () {
             Route::get('ui-component/{snippet}', function ($snippet) {
                 View::composer('cp-snippet', JavascriptComposer::class);
+
                 return view('cp-snippet', ['snippet' => Blade::render(base64_decode($snippet)), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
             });
         });

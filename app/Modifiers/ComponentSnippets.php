@@ -10,7 +10,7 @@ class ComponentSnippets extends Modifier
 {
     public function index($value, $params, $context)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             return $value;
         }
 
