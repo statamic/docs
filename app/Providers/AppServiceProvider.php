@@ -21,8 +21,14 @@ use Torchlight\Engine\Options as TorchlightOptions;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
      *
+     * @return void
      */
+    public function register()
+    {
+        //
+    }
 
     /**
      * Bootstrap any application services.
@@ -55,15 +61,5 @@ class AppServiceProvider extends ServiceProvider
                 return view('cp-snippet', ['snippet' => Blade::render(base64_decode($snippet)), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
             });
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
