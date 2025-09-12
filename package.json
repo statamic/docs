@@ -18,7 +18,8 @@
         "postcss-import": "^15.1.0",
         "postcss-nesting": "^12.1.5",
         "vite": "^7.0.4",
-        "vite-plugin-devtools-json": "^1.0.0"
+        "vite-plugin-devtools-json": "^1.0.0",
+        "@statamic/ui": "file:./vendor/statamic/cms/packages/ui"
     },
     "dependencies": {
         "@docsearch/js": "^3.0.0-alpha.40",
