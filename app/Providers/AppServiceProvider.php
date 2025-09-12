@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Http\View\Composers\SideNavComposer;
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
+use App\Search\Listeners\SearchEntriesCreatedListener;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -15,6 +17,7 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Markdown;
 use Statamic\Http\View\Composers\JavascriptComposer;
 use Statamic\Statamic;
+use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
 use Torchlight\Engine\Options as TorchlightOptions;
 
@@ -61,5 +64,7 @@ class AppServiceProvider extends ServiceProvider
                 return view('cp-snippet', ['snippet' => Blade::render(base64_decode($snippet)), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
             });
         });
+
+        Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
     }
 }
