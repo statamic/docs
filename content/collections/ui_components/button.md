@@ -46,7 +46,7 @@ Use the `variant` prop to change the appearance of the button.
 Automatically sized and styled icons are available for your buttons using the `icon` or `icon-append` props. You can also compose your own buttons with icons by nesting an [icon](/ui-components/icon) component.
 
 ```component
-<ui-button icon="ui/dots" />
+<ui-button icon="dots" />
 
 <ui-button icon-append="arrow-right">
     Continue
@@ -122,7 +122,7 @@ Attach a button to the side of a button to make it a double complete button.
 ```component
 <ui-button-group>
     <ui-button variant="primary">Create Entry</ui-button>
-    <ui-button icon="ui/chevron-down" variant="primary"></ui-button>
+    <ui-button icon="chevron-down" variant="primary"></ui-button>
 </ui-button-group>
 ```
 

@@ -8,5 +8,5 @@ intro: Pick some dates! Also, times, if you want.
 ## Not working
 
 ```component
-<ui-datepicker date="2025-03-24" />
+<ui-date-picker date="2025-03-24" />
 ```

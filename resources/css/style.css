@@ -19,6 +19,9 @@ scope;
 @import "tailwindcss/theme.css" layer(theme) source(none);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 
+@import "@statamic/ui/ui.css";
+@source "../../vendor/statamic/cms/packages/ui/src";
+
 @import './base/elements/elements.css';
 @import './base/elements/forms.css';
 @import './base/elements/tables.css';
@@ -77,4 +80,3 @@ scope;
 
 @source "../../resources/views";
 @source "../../content";
-@source "../../vendor/statamic/cms/resources/js/components/ui";

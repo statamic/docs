@@ -54,12 +54,12 @@ class AppServiceProvider extends ServiceProvider
             Markdown::addExtension(fn () => $extension);
         }
 
-        Statamic::pushCpRoutes(function () {
-            Route::get('ui-component/{snippet}', function ($snippet) {
-                View::composer('cp-snippet', JavascriptComposer::class);
-
-                return view('cp-snippet', ['snippet' => Blade::render(base64_decode($snippet)), 'id' => 'component-iframe-'.md5('/'.request()->path())]);
-            });
+        // Converts <ui-component /> to <ui-component></ui-component>
+        Blade::prepareStringsForCompilationUsing(function ($template) {
+            return str_contains($template, '<ui-')
+                ? preg_replace_callback('/<(ui-[a-zA-Z0-9_-]+)([^>]*)\/>/',
+                    fn($match) => "<{$match[1]}{$match[2]}></{$match[1]}>", $template)
+                : $template;
         });
 
         Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
