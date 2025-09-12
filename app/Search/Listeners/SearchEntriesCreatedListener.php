@@ -2,7 +2,6 @@
 
 namespace App\Search\Listeners;
 
-use Illuminate\Support\Str;
 use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 
 class SearchEntriesCreatedListener

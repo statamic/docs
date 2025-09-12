@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use App\Http\View\Composers\SideNavComposer;
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
+use App\Search\Listeners\SearchEntriesCreatedListener;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -15,11 +16,22 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Markdown;
 use Statamic\Http\View\Composers\JavascriptComposer;
 use Statamic\Statamic;
+use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
 use Torchlight\Engine\Options as TorchlightOptions;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
     /**
      * Bootstrap any application services.
      *
@@ -27,14 +39,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::composer('partials.side-nav', SideNavComposer::class);
-
         Markdown::addExtensions(function () {
             return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension];
         });
 
         if (! app()->runningConsoleCommand('search:update')) {
-            TorchlightOptions::setDefaultOptionsBuilder(fn() => TorchlightOptions::fromArray(config('torchlight.options')));
+            TorchlightOptions::setDefaultOptionsBuilder(fn () => TorchlightOptions::fromArray(config('torchlight.options')));
 
             $extension = new TorchlightExtension(config('torchlight.theme'));
             $extension
@@ -51,15 +61,7 @@ class AppServiceProvider extends ServiceProvider
                     fn($match) => "<{$match[1]}{$match[2]}></{$match[1]}>", $template)
                 : $template;
         });
-    }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
+        Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
     }
 }

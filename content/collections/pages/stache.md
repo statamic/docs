@@ -171,7 +171,7 @@ Whatever your default caching driver is for the rest of your app is where your S
 By default it's in the filesystem, but of course you can feel free to use Redis, Memcached, etc.
 
 ``` env
-CACHE_DRIVER=redis
+CACHE_STORE=redis
 ```
 
 If you want to change which cache store is used by the Stache, you can change the `statamic.stache.cache_store` configuration key:

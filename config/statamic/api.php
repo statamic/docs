@@ -7,13 +7,27 @@ return [
     | API
     |--------------------------------------------------------------------------
     |
-    | Whether the API should be enabled, and through what route.
+    | Whether the API should be enabled, and through what route. You
+    | can enable or disable the whole API, and expose individual
+    | resources per environment, depending on your site needs.
+    |
+    | https://statamic.dev/content-api#enable-the-api
     |
     */
 
-    'enabled' => env('API_ENABLED', false),
+    'enabled' => env('STATAMIC_API_ENABLED', false),
 
-    'route' => env('API_ROUTE', 'api'),
+    'resources' => [
+        'collections' => false,
+        'navs' => false,
+        'taxonomies' => false,
+        'assets' => false,
+        'globals' => false,
+        'forms' => false,
+        'users' => false,
+    ],
+
+    'route' => env('STATAMIC_API_ROUTE', 'api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +40,7 @@ return [
     |
     */
 
-    'middleware' => env('API_MIDDLEWARE', 'api'),
+    'middleware' => env('STATAMIC_API_MIDDLEWARE', 'api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,5 +52,36 @@ return [
     */
 
     'pagination_size' => 50,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Caching
+    |--------------------------------------------------------------------------
+    |
+    | By default, Statamic will cache each endpoint until the specified
+    | expiry, or until content is changed. See the documentation for
+    | more details on how to customize your cache implementation.
+    |
+    | https://statamic.dev/content-api#caching
+    |
+    */
+
+    'cache' => [
+        'expiry' => 60,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Exclude Keys
+    |--------------------------------------------------------------------------
+    |
+    | Here you may provide an array of keys to be excluded from API responses.
+    | For example, you may want to hide things like edit_url, api_url, etc.
+    |
+    */
+
+    'excluded_keys' => [
+        //
+    ],
 
 ];
