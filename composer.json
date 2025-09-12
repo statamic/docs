@@ -8,17 +8,16 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4 || ^8.0",
-        "laravel/framework": "^12",
+        "php": "^8.2",
+        "laravel/framework": "^12.0",
         "laravel/tinker": "^2.0",
-        "league/commonmark": "^2.0",
         "livewire/livewire": "^3.6.4",
-        "statamic/cms": "v6.0.0-alpha.5 as 5.65.0",
+        "statamic/cms": "^6.0",
         "torchlight/engine": "^0.1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.4",
-        "filp/whoops": "^2.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^8.0",
         "phpunit/phpunit": "^11.0",
