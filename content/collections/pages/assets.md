@@ -398,4 +398,4 @@ To clear these caches, run `php please assets:clear-cache`.
 
 If you're using [custom asset cache stores](#custom-cache-stores) and you're experiencing performance issues with Assets, like slow queries or a slow asset browser, it might be worth moving your assets to the database using the Eloquent Driver. It takes a different approach to caching asset metadata, which sometimes works better for sites with more assets.
 
-You can find out more about [moving assets to the database here](/storing-content-in-a-database#moving-content-to-the-database).
+You can find out more about [moving assets to the database here](/tips/storing-content-in-a-database#moving-content-to-the-database).

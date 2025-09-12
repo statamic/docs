@@ -23,7 +23,7 @@ As part of the Statamic 6 release, Vue was upgraded to version 3.
     },
     "devDependencies": {
         "@vitejs/plugin-vue2": "^6.0.1", // [tl! --]
-        "@statamic/cms": "file:./vendor/statamic/cms/resources/js/package" // [tl! ++]
+        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package" // [tl! ++]
     }
 }
 ```
