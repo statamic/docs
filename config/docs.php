@@ -9,6 +9,7 @@ return [
             'version' => '6',
             'branch' => '6.x',
             'url' => 'https://v6.statamic.dev',
+            'alpha' => true,
         ],
         [
             'version' => '5',
