@@ -7,39 +7,37 @@ intro: "A full tutorial on how to install Statamic with Forge's 1-Click Installe
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 
-The Laravel team have made this an exceedingly simple process. Follow these 3 steps, and you'll have a Statamic site running that you can log right into.
+The Laravel team have made installing Statamic exceedingly simple. Follow these ... steps, and you'll have a Statamic site running that you can log right into.
 
 :::tip
 If you _already have_ a Statamic site built, you should switch over to the [Deploying Statamic on Laravel Forge](/deploying/laravel-forge) guide.
 :::
 
-
 ### 1. Create a new site
 
-Set your domain name, use PHP/Laravel/Symfony as the project type.
+Make sure to select "Statamic" from the "New site" dropdown. Then click on the "Use a starter kit" tab.
 
 <figure>
-    <img src="/img/installing-forge-new-site.png" alt="Make a new site with Laravel Forge">
+    <img src="/img/installing-forge-new-site.png" alt="Create site using a starter kit">
 </figure>
 
-### 2. Pick Statamic
+You'll first be asked to configure a domain. If you don't have one yet, you can use a `.on-forge.com` subdomain.
 
-Don't pick those other options. You want Statamic.
+Then, you can pick which Starter Kit you'd like to use. Only free/open-source Starter Kits are available through this workflow, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](/installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
 
 <figure>
-    <img src="/img/installing-forge-pick-statamic.png" alt="Pick Statamic">
+    <img src="/img/installing-forge-starter-kits.png" alt="Create site using a starter kit">
 </figure>
 
-### 3. Pick a Starter Kit
+Finally, set up an email and password and click "Create site".
 
-Now you can pick which Starter Kit you'd like to use. This Forge workflow only works with free/open source Starter Kits, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](/installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
+After creating your site, Forge will take a few seconds to configure the necessary services, like Nginx and PHP-FPM, then you'll be able to visit your new site.
 
-Set your email address and super user password, and you're good to go.
+### 2. Sign in to your new Statamic site
+
+Assuming you've pointed your DNS to this server, all that's left is to head to `yourdomain.com/cp` and sign in to the Statamic Control Panel. The site is yours.
 
 <figure>
-    <img src="/img/installing-pick-kit.png" alt="Pick your starter kit">
+    <img src="/img/quick-start/login.png" alt="Statamic Login Screen">
+    <figcaption>If you see this screen at <code>/cp</code> you've just earned 200 XP!</figcaption>
 </figure>
-
-### 4. Sign into your new Statamic site
-
-Assuming you've pointed your DNS to this server, all that's left is to head to `yourdomain.com/cp` and sign into the Statamic control panel. The site is yours.
