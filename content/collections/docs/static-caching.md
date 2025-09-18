@@ -143,9 +143,13 @@ RewriteRule ^ index.php [L]
 
 ### Nginx
 
+:::tip
+If you're using [Laravel Forge](https://forge.laravel.com) and selected the "Statamic" type when creating your site, this will already be configured for you.
+:::
+
 On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slightly different place depending on your server setup.
 
-Some applications like [Laravel Forge](https://forge.laravel.com) and [Ploi](https://ploi.io/statamic) may let you edit your `nginx.conf` from within the UI.
+If you're using a service like [Laravel Forge](https://forge.laravel.com) or [Ploi](https://ploi.io/statamic), you can edit your `nginx.conf` from within the UI.
 
 ``` nginx
 set $try_location @static;
