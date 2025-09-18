@@ -48,4 +48,4 @@ Whatever the reason, you can ignore the `content` directory in your `.gitignore`
 
 - [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) – When working with a team (and even when by yourself) it's a good practice to follow a standardized workflow for working with git. We recommend Gitflow.
 
-- [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-zero-downtime-deployment-file-structure) - If you plan on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
+- [Zero Downtime Deployment Tips](/tips/zero-downtime-deployments#understanding-the-folder-structure) - If you plan on using a zero downtime deployment tool like [Envoyer](https://envoyer.io/), [Deployer](https://deployer.org/), etc. be sure to read our tips & tricks guide.
