@@ -111,7 +111,7 @@ Permission::register('view {collection} entries', function ($permission) {
         ->replacements('collection', function () { /* ... */ });
         ->children([
             Permission::make('edit {collection} entries')->children([
-                Permission::make('create {collection} entries')
+                Permission::make('create {collection} entries'),
                 Permission::make('delete {collection} entries')
             ])
         ])
