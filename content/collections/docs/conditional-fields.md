@@ -137,9 +137,9 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
       favorite_food: 'contains_any pizza, lasagna'
 ```
 
-### Contains in a Taxonomy
+### Taxonomy Terms
 
-When you want to compare to a value that resides in a taxonomy, you have to remember that the `contains` term needs to include the taxonomy slug in the form `slug::term`:
+When you want to compare against a taxonomy term, the `contains` term needs to include the taxonomy handle, like `taxonomy::slug`:
 
 ```yaml
 -
