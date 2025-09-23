@@ -13,7 +13,7 @@ related_entries:
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1634259827
 ---
-To work with the with AssetContainer Repository, use the following Facade:
+To work with the AssetContainer Repository, use the following Facade:
 
 ```php
 use Statamic\Facades\AssetContainer;
