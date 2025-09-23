@@ -215,7 +215,7 @@ protected $except = [
 ];
 ```
 
-### Laravel 11
+### Laravel 11 and above
 
 To prevent encryption you need to use the `encryptCookies` method in your application's `bootstrap/app.php` file:
 

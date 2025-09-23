@@ -15,7 +15,7 @@ To enable the REST API, add the following to your `.env` file:
 STATAMIC_API_ENABLED=true
 ```
 
-Or you can enable for all environments in `config/statamic/api.php`:
+Or you can enable it for all environments in `config/statamic/api.php`:
 
 ```php
 'enabled' => true,
@@ -23,7 +23,7 @@ Or you can enable for all environments in `config/statamic/api.php`:
 
 You will also need to [enable the resources](#enable-resources) you want to be available. For security, they're all disabled by default.
 
-### Enable Resources
+### Enable resources
 
 You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/statamic/api.php` config:
 
@@ -35,7 +35,7 @@ You can enable resources (ie. Collections, Taxonomies, etc.) in your `config/sta
 ]
 ```
 
-### Enable Specific Sub-Resources
+### Enable specific sub-resources
 
 If you want more granular control over which sub-resources are enabled within a resource type (ie. enabling specific Collection queries only), you can use array syntax:
 
@@ -82,7 +82,7 @@ You may customize the route in your API config file or with an environment varia
 
 ## Filtering
 
-### Enabling Filters
+### Enabling filters
 
 For security, [filtering](#filtering) is disabled by default. To enable, you'll need to opt in by defining a list of `allowed_filters` for each sub-resource in your `config/statamic/api.php` config:
 
@@ -118,7 +118,7 @@ For endpoints that don't have sub-resources (ie. users), you can define `allowed
 ],
 ```
 
-### Using Filters
+### Using filters
 
 You may filter results by using the `filter` query parameter.
 
@@ -135,7 +135,7 @@ You may use the [conditions](/conditions) available to the collection tag. eg. `
 This would filter down the results to where the `title` value contains the string `"awesome"`, and the `featured`
 value is `true`. When you omit the condition, it defaults to `is`.
 
-### Advanced Filtering Config
+### Advanced filtering config
 
 You can also allow filters on all enabled sub-resources using a `*` wildcard config. For example, here we'll enable only the `articles`, `pages`, and `products` collections, with `title` filtering enabled on each, in addition to `status` filtering on the `articles` collection specifically: 
 
@@ -210,7 +210,7 @@ You can sort nested fields using the `->` operator, like this:
 /endpoint?sort=nested->field
 ```
 
-## Selecting Fields
+## Selecting fields
 
 You may specify which top level fields should be included in the response.
 
@@ -391,7 +391,7 @@ Gets terms in a taxonomy.
 If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
-## Taxonomy Term
+## Taxonomy term
 
 `GET` `/api/taxonomies/{taxonomy}/terms/{slug}`
 
@@ -576,9 +576,9 @@ The `path` in the URL should be the relative path from the container's root.
 }
 ```
 
-## Customizing Resources
+## Customizing resources
 
-By default the resources generally use the item's [Augmented](/augmentation) data.
+By default, the resources generally use the item's [Augmented](/augmentation) data.
 
 You are free to override the resource classes with your own, in turn letting you customize the responses.
 
@@ -629,7 +629,7 @@ API responses are cached by default. You may customize the cache expiry in `conf
 ],
 ```
 
-### Cache Invalidation
+### Cache invalidation
 
 Cached responses are automatically invalidated when content is changed. Depending on your API usage and blueprint schema, you may also wish to ignore specific events when invalidating.
 
@@ -643,7 +643,7 @@ Cached responses are automatically invalidated when content is changed. Dependin
 ],
 ```
 
-### Disabling Caching
+### Disabling caching
 
 If you wish to disable caching altogether, set `cache` to `false`.
 
@@ -651,7 +651,7 @@ If you wish to disable caching altogether, set `cache` to `false`.
 'cache' => false,
 ```
 
-### Custom Cache Driver
+### Custom cache driver
 
 If you need a more intricate caching solution, you may reference a custom cache driver class and pass extra config along if necessary.
 
@@ -687,11 +687,11 @@ class CustomCacher extends AbstractCacher
 }
 ```
 
-## Rate Limiting
+## Rate limiting
 
-The REST API is Rate Limited to **60 requests per minute** by default.
+The REST API is rate limited to **60 requests per minute** by default.
 
-You can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ Rate Limiting](https://laravel.com/docs/master/rate-limiting).
+You can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ rate limiting](https://laravel.com/docs/master/rate-limiting).
 
 ```php
 // app/Providers/RouteServiceProvider.php

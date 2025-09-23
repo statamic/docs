@@ -25,7 +25,7 @@ class TabsRenderer implements NodeRendererInterface
 
         $attrs = $node->data->get('attributes');
 
-        $attrs['class'] = 'doc-tabs';
+        $attrs['class'] = 'c-doc-tabs';
 
         $tabs = [];
 

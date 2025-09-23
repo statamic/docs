@@ -5,7 +5,7 @@ title: 'Code of Conduct'
 updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1632425727
 ---
-This is the Statamic Code of Conduct. By participating here, you are expected to uphold this code like a knight of old. This code of conduct applies to all spaces used by the Statamic community for communication. This includes the Statamic Discord, forums, GitHub, Twitter, Facebook, meetups, conferences, and any other relevant forums. If you believe someone is voilating the code of conduct, we ask that you report it by contacting us at [statamic.com/support](https://statamic.com/support). Your identity will remain confidential.
+This is the Statamic Code of Conduct. By participating here, you are expected to uphold this code like a knight of old. This code of conduct applies to all spaces used by the Statamic community for communication. This includes the Statamic Discord, forums, GitHub, Twitter, Facebook, meetups, conferences, and any other relevant forums. If you believe someone is violating the code of conduct, we ask that you report it by contacting us at [statamic.com/support](https://statamic.com/support). Your identity will remain confidential.
 
 - **Treat others in the way you want to be treated.** Respect each other, we’re all on the same team here so let’s have fun, share what we know, and hopefully learn something new! No bullying, harassment, foul language, racism, sexism, or other negative "isms". Generally, just be awesome to each other.
 

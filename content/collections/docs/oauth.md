@@ -13,7 +13,7 @@ Statamic supports OAuth authentication via [Laravel Socialite](https://github.co
 
 The [Socialite Providers][socialite-providers] Github organization contains over 100 additional pre-built providers that you can take advantage of as well.
 
-If you require a provider not on the list, (perhaps you need a custom one for your own application) you may [create your own provider](#custom-providers).
+If you require a provider not on the list (perhaps you need a custom one for your own application), you may [create your own provider](#custom-providers).
 
 ## Installing Socialite
 
@@ -51,7 +51,7 @@ If you plan to use a third party provider, follow the steps [below](#third-party
 
 ## Usage
 
-Send your users to the provider’s login URL to begin the OAuth workflow. You may do this with the `oauth` tag:
+Send your users to the provider’s login URL to begin the OAuth workflow. Buttons for each configured provider will be available on the Control Panel's login page, but you may also do this on the front-end with the `oauth` tag:
 
 ```
 <a href="{{ oauth:github }}">Log in with Github</a>
@@ -60,7 +60,7 @@ Send your users to the provider’s login URL to begin the OAuth workflow. You m
 Once they've logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
 They will then be automatically logged into your site with the Statamic account.
 
-You may [customize how the user is created](#customizing-user-data).
+However, you may [customize the user flow](#user-flow).
 
 
 ## Configuration
@@ -106,7 +106,24 @@ You may customize these in `config/statamic/oauth.php`:
 
 When you create your OAuth application, you will need to provide the callback URL.
 
-## Third Party Providers
+### User flow
+
+By default, once a user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
+They will then be automatically logged into your site with the Statamic account.
+
+Additionally, any user data from the provider will be merged into that user's account.
+
+You may choose to customize this flow.
+
+```php
+'create_user' => true,
+'merge_user_data' => true,
+'unauthorized_redirect' => null,
+```
+
+By setting `'create_user' => false`, if a corresponding Statamic user account doesn't exist, one will not be created for them, and they will be redirected to the unauthorized error page.
+
+## Third party providers
 
 If you would like to use a provider not natively supported by Socialite, you should use the [SocialiteProviders][socialite-providers] method.
 
@@ -150,7 +167,7 @@ If you would like to use a provider not natively supported by Socialite, you sho
     ],
     ```
 
-## Custom Providers
+## Custom providers
 
 If your OAuth provider isn’t already available in Socialite or [SocialiteProviders][socialite-providers], you may create your own.
 
@@ -158,7 +175,7 @@ To create your own OAuth provider, you should make your own SocialiteProvider-re
 
 Follow the [third party installation steps](#third-party-providers), but skip the Composer bits. You can just keep the classes somewhere in your project.
 
-## Customizing User Data
+## Customizing user data
 
 After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist. You may customize how it's handled by adding a callback to your `AppServiceProvider`.
 

@@ -6,9 +6,13 @@ html {
 
 body {
     min-height: 100%;
-    background: url('/img/splatter-tall.jpg') repeat-y;
+    /* background: url('/img/splatter-tall.jpg') repeat-y; */
     background-position: right top;
     background-size: 200px 6500px;
+}
+
+.wrapper {
+    @apply max-w-screen-2xl mx-auto px-6;
 }
 
 /* Navs */
@@ -16,31 +20,33 @@ body {
 
 #site-nav {
     ul li a {
-        @apply py-2;
+        @apply py-2 text-zinc-600;
     }
 
     ul li a.active {
-        @apply font-bold;
-        background: url('/img/ziggy.svg') 0 90% repeat-x;
+        @apply font-medium;
         background-size: auto 4px;
     }
 }
 
+.side-nav li a {
+    @apply text-base text-zinc-500;
+}
 .side-nav li.active a {
-    @apply relative font-bold;
+    @apply relative font-normal text-black;
 
-    &:before {
-        @apply absolute bg-yellow;
+    /* &:before {
+        @apply absolute;
         z-index: -1;
         height: 9px;
         top: 10px;
         left: -5%;
         width: 110%;
         content: '';
-    }
+    } */
 }
 
 .dark .side-nav li.active a {
-    @apply text-yellow !important;
-    &:before { display: none; }
+    @apply !important;
+    /* &:before { display: none; } */
 }

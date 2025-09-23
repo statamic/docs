@@ -453,7 +453,7 @@ public function handle(EntrySaving $event)
 ### EntryScheduleReached
 `Statamic\Events\EntryScheduleReached`
 
-Disptached whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.
+Dispatched whenever a scheduled entry reaches its target date. This event is used in multiple places such as updating search indexes and invalidating caches.
 
 The event will be dispatched on the minute _after_ the scheduled time.
 
@@ -671,13 +671,13 @@ public function handle(GlobalSetSaved $event)
 }
 ```
 
-### GlobalVariablesDeleting
-`Statamic\Events\GlobalVariablesDeleting`
+### GlobalVariablesCreated
+`Statamic\Events\GlobalVariablesCreated`
 
-Dispatched before Global Variables are deleted. You can return `false` to prevent it from being deleted.
+Dispatched after Global Variables have been created.
 
 ``` php
-public function handle(GlobalVariablesDeleting $event)
+public function handle(GlobalVariablesCreated $event)
 {
     $event->variables;
 }
@@ -690,6 +690,54 @@ Dispatched before Global Variables are created. You can return `false` to preven
 
 ``` php
 public function handle(GlobalVariablesCreating $event)
+{
+    $event->variables;
+}
+```
+
+### GlobalVariablesDeleting
+`Statamic\Events\GlobalVariablesDeleting`
+
+Dispatched after Global Variables have been deleted.
+
+``` php
+public function handle(GlobalVariablesDeleting $event)
+{
+    $event->variables;
+}
+```
+
+### GlobalVariablesDeleted
+`Statamic\Events\GlobalVariablesDeleted`
+
+Dispatched before Global Variables are deleted. You can return `false` to prevent it from being deleted.
+
+``` php
+public function handle(GlobalVariablesDeleted $event)
+{
+    $event->variables;
+}
+```
+
+### GlobalVariablesSaved
+`Statamic\Events\GlobalVariablesSaved`
+
+Dispatched after Global Variables have been saved.
+
+``` php
+public function handle(GlobalVariablesSaved $event)
+{
+    $event->variables;
+}
+```
+
+### GlobalVariablesSaving
+`Statamic\Events\GlobalVariablesSaving`
+
+Dispatched before Global Variables are saved. You can return `false` to prevent it from being saved.
+
+``` php
+public function handle(GlobalVariablesSaving $event)
 {
     $event->variables;
 }
@@ -1047,7 +1095,7 @@ public function handle(StaticCacheCleared $event)
 ### SubmissionCreated
 `Statamic\Events\SubmissionCreated`
 
-Dispatched after a form submission has been created. This happens after has a form has been submitted on the front-end.
+Dispatched after a form submission has been created. This happens after a form has been submitted on the front-end.
 
 ``` php
 public function handle(SubmissionCreated $event)

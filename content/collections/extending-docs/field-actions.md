@@ -218,13 +218,13 @@ You may provide blueprint field definitions that will be displayed in the modal.
     confirm: {
         fields: {
             name: {
-                type: text,
+                type: 'text',
                 display: 'Name',
                 instructions: 'Enter your name',
                 validate: ['required', 'min:2']
             },
             color: {
-                type: color,
+                type: 'color',
                 instructions: 'Select the color',
             }
         }

@@ -1,12 +1,12 @@
 {{ partial:header }}
 
-<article class="markdown md:pb-16">
-    {{ content }}
-    <ul>
-    {{ collection:tips }}
-        <li><h2 class="mb-1 mt-0"><a href="{{ url }}" class="text-xl font-medium ">{{ title }}</a></h2></li>
-    {{ /collection:tips }}
-    </ul>
-</article>
+{{ content }}
+<ul>
+{{ collection:tips }}
+    <li><h2><a href="{{ url }}">{{ title }}</a></h2></li>
+{{ /collection:tips }}
+</ul>
 
-{{ partial:suggest }}
+{{ $suggest = 'yes' }}
+{{ $hide_toc = 'yes' }}
+{{ push:scope_classes }}u-no-scroll-spy-toc-position{{ /push:scope_classes }}

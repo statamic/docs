@@ -24,7 +24,7 @@ Each structure is a hierarchy of links and/or titles. These links may be to entr
 Structures come in two flavors, unlike Pringles. They can control the discrete URL pattern and order for a collection (like v2's Pages), or manage ad hoc navigation trees. And _just like_ Pringles &mdash; once you pop the top, you can't stop.
 
 
-## Structured Collections
+## Structured collections
 
 The first type of structure is for defining the URL structure for a collection. This would be the equivalent of "Pages" in Statamic v2.
 
@@ -95,7 +95,7 @@ tree:
         entry: id-of-contact
       -
         title: 'GitHub Repo'
-        url: 'https://github.com/example/repo
+        url: 'https://github.com/example/repo'
 ```
 
 :::tip

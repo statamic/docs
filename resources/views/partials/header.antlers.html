@@ -1,10 +1,74 @@
-<header class="markdown pb-8 mb-8">
-    {{ partial:breadcrumbs }}
-    <div class="md:flex items-center">
-        <h1 class="{{ title | length > 36 ?= 'text-5xl'}}">{{ title }}</h1>
-        {{ partial:pro-badge }}
-        {{ partial:experimental }}
-    </div>
-    {{ (intro ?? overview) | markdown }}
-    {{ partial:toc hide="{hide_toc} ?? false"}}
-</header>
+{{ if pro }}
+    <header>
+        <div class="o-badge-heading">
+            <h1>{{ title }}</h1>
+            <div class="c-pro-badge">
+                <a href="/licensing">
+                    {{ global:pro_badges sort='random' limit='1' }}
+                        {{ artwork }}
+                            <picture class="c-pro-badge__artwork">
+                                {{# WebP #}}
+                                <source
+                                    srcset="{{ glide:url width='95' dpr='2' format='webp' }} 190w,
+                                            {{ glide:url width='120' dpr='2' format='webp' }} 240w"
+                                    type="image/webp"
+                                    sizes="(min-width: 1440px) 120px, 95px"
+                                >
+                                {{# JPEG #}}
+                                <source
+                                    srcset="{{ glide:url width='95' dpr='2' }} 190w,
+                                            {{ glide:url width='120' dpr='2' }} 240w"
+                                    type="image/jpeg"
+                                    sizes="(min-width: 1440px) 120px, 95px"
+                                >
+                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                                <img 
+                                    src="{{ glide:url width='95' dpr='2' }}"
+                                    decoding="async"
+                                    fetchpriority="high"
+                                    width="{{ width }}" 
+                                    height="{{ height }}"
+                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                                >
+                            </picture>
+                        {{ /artwork }}
+                        <div class="c-pro-badge__text">
+                            {{ icon }}
+                                <picture>
+                                    {{# WebP #}}
+                                    <source
+                                        srcset="{{ glide:url width='80' dpr='2' format='webp' }} 160w"
+                                        type="image/webp"
+                                        sizes="100vw"
+                                    >
+                                    {{# JPEG #}}
+                                    <source
+                                        srcset="{{ glide:url width='80' dpr='2' }} 160w"
+                                        type="image/jpeg"
+                                        sizes="100vw"
+                                    >
+                                    {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
+                                    <img 
+                                        src="{{ glide:url width='80' dpr='2' }}"
+                                        decoding="async"
+                                        fetchpriority="high"
+                                        width="{{ width }}" 
+                                        height="{{ height }}"
+                                        alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
+                                    >
+                                </picture>
+                            {{ /icon }}
+                            Pro Feature
+                        </div>
+                    {{ /global:pro_badges }}
+                </a>
+            </div>
+        </div>
+        {{ intro ?? overview | markdown }}
+    </header>
+{{ else }}
+    <header>
+        <h1>{{ title }}</h1>
+        {{ intro ?? overview | markdown }}
+    </header>
+{{ /if }}

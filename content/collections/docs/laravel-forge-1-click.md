@@ -7,7 +7,7 @@ intro: "A full tutorial on how to install Statamic with Forge's 1-Click Installe
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 
-The Laravel team have made this an exceedingly simple process. Follow these 3 steps and you'll have a Statamic site running you can log right into.
+The Laravel team have made this an exceedingly simple process. Follow these 3 steps, and you'll have a Statamic site running that you can log right into.
 
 :::tip
 If you _already have_ a Statamic site built, you should switch over to the [Deploying Statamic on Laravel Forge](/deploying/laravel-forge) guide.
@@ -32,7 +32,7 @@ Don't pick those other options. You want Statamic.
 
 ### 3. Pick a Starter Kit
 
-Now you can pick which Starter Kit you'd like to use. This Forge workflow only works with free/open source Starter Kits, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
+Now you can pick which Starter Kit you'd like to use. This Forge workflow only works with free/open source Starter Kits, so if you'd prefer one of the paid/commercial kits, you'll need to follow the [local install](/installing/laravel-herd) and [Deploy on Laravel Forge](/deploying/laravel-forge) guides.
 
 Set your email address and super user password, and you're good to go.
 

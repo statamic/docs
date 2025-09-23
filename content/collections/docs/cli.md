@@ -35,7 +35,7 @@ Every command also includes a help screen which displays and describes the comma
 php please help make:user
 ```
 
-## Available Commands {#commands}
+## Available commands {#commands}
 
 You can see the list of available commands in your terminal by running `php please list`. But for those who don't feel like it, haven't installed yet, or are scared of the command line, here they are also.
 
@@ -45,6 +45,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `list`             | List all the Statamic commands |
 | `multisite`        | Converts from a single to multisite installation |
 | `addons:discover`  | Rebuild the cached addon package manifest |
+| `assets:clear-cache` | Clear the `asset_meta` and `asset_container_contents` cache stores |
 | `assets:generate-presets` | Generate asset preset manipulations |
 | `assets:meta`      | Generate asset metadata files |
 | `auth:migration`   | Generate Auth Migrations |
@@ -84,7 +85,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `support:zip-blueprint`  | Create a zip file with a blueprint and all fieldset imports |
 | `updates:run`      | Run update scripts from a specific version |
 
-## Additional Reading
+## Additional reading
 
 Read more about [Artisan][artisan] at Laravel.com.
 

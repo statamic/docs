@@ -1,10 +1,10 @@
 {{ if {github_edit_url} }}
-<div class="relative mt-16 overflow-hidden lg:overflow-visible dark:mt-0">
-    <img src="/img/splatter-feedback.png" alt="" class="absolute max-w-none w-[820px] left-[-90px] top-[-92px] dark:hidden">
-    <div class="bg-gray-lightest p-5 border shadow-stack relative z-10 dark:bg-mint">
-        <div class="text-2xl font-display font-bold mb-3">Docs feedback</div>
-        <p class="text-base mb-3">Submit improvements, related content, or suggestions through Github.</p>
-        <a href="{{ github_edit_url }}" class="button">Betterify this page &rarr;</a>
+<div class="o-entry-content">
+    <div class="c-feedback-meerkat">
+        <h2>Docs Feedback</h2>
+        <p>Submit improvements, related content, or suggestions through Github.</p>
+        <a href="{{ github_edit_url }}" class="c-btn c-btn--1">Betterify this page</a>
+        <img src="/img/meerkat.webp" alt="Meerkat" width="150" height="278">
     </div>
 </div>
 {{ /if }}

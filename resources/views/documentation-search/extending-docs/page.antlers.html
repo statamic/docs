@@ -1,13 +1,11 @@
 {{ partial:header }}
 
-<article class="markdown md:pb-16">
-    {{ content | toc:ids }}
+{{ content | toc:ids }}
 
-    {{ if options }}
-        <h2 id="options">Options</h2>
-        {{ if options_content }}
-            {{ options_content | markdown }}
-        {{ /if }}
-        {{ partial:details :details="options" }}
+{{ if options }}
+    <h2 id="options">Options</h2>
+    {{ if options_content }}
+        {{ options_content | markdown }}
     {{ /if }}
-</article>
+    {{ partial:details :details="options" }}
+{{ /if }}

@@ -12,8 +12,7 @@ options:
   -
     name: character_limit
     type: integer
-    description: >
-      Set the maximum number of enterable characters.
+    description: 'Set the maximum number of enterable characters. This is only a recommendation, not a hard limit. To enforce a hard limit, use the [`max`](https://laravel.com/docs/master/validation#rule-max) validation rule.'
   -
     name: input_type
     type: string

@@ -32,11 +32,11 @@ You could take some text, render it as markdown, uppercase it, and ensure there 
 ```
 ::
 
-## Related Reading
+## Related reading
 
 Eager for more knowledge? Check out [Antler's modifier syntax](/antlers#modifying-data) and discover how to [build your own](/extending/modifiers#creating-a-modifier).
 
-## Core Modifiers
+## Core modifiers
 
 You can find a [full list of modifiers](/reference/modifiers) included with Statamic in the reference section.
 

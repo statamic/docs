@@ -12,11 +12,11 @@ Statamic leverages task scheduling via Laravel's Task Scheduler.
 
 In a nutshell, you can create a single cron job which will allow things to happen on a schedule, without any visitors needing to be on the site.
 
-[Learn more about scheduling tasks in the Laravel docs](https://laravel.com/docs/11.x/scheduling)
+[Learn more about scheduling tasks in the Laravel docs](https://laravel.com/docs/12.x/scheduling)
 
 ## Running the scheduler
 
-### In Production
+### In production
 
 In production, you will need to set up a single once-per-minute cron entry that runs the `schedule:run` Artisan command.
 
@@ -26,7 +26,7 @@ Using a service like Laravel Forge makes this simple.
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-### In Development
+### In development
 
 Typically, you would not add a scheduler cron entry to your local development machine. Instead, you may use the `schedule:work` Artisan command. This command will run in the foreground and invoke the scheduler every minute until you terminate the command:
 
@@ -34,7 +34,7 @@ Typically, you would not add a scheduler cron entry to your local development ma
 php artisan schedule:work
 ```   
 
-[Learn more about running the scheduler](https://laravel.com/docs/11.x/scheduling#running-the-scheduler)
+[Learn more about running the scheduler](https://laravel.com/docs/12.x/scheduling#running-the-scheduler)
 
 ## Included tasks
 
@@ -47,7 +47,7 @@ Statamic will dispatch a `Statamic\Events\EntryScheduleReached` event whenever a
 The event will be dispatched on the minute _after_ the scheduled time.
 
 
-## Defining Schedules
+## Defining schedules
 
 One way to add your own scheduled tasks is by adding items to your `routes/console.php` file.
 
@@ -57,4 +57,4 @@ Schedule::command('my-command')->daily();
 Schedule::job(new Heartbeat)->everyFiveMinutes();
 ```
 
-[Learn more about defining schedules](https://laravel.com/docs/11.x/scheduling#defining-schedules)
+[Learn more about defining schedules](https://laravel.com/docs/12.x/scheduling#defining-schedules)

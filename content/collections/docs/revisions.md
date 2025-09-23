@@ -36,17 +36,7 @@ Revisions are tucked away in the `storage/statamic/revisions` directory by defau
 'path' => base_path('content/revisions'),
 ```
 
-## Revision States
-
-At any given point your content can be in one or more publish states. You can control the default beginning state with the `default_status` collection setting.
-
-``` yaml
-# New entries default to published
-default_status: published
-
-# New entries will default to draft
-default_status: draft
-```
+## Revision states
 
 ### Unpublished
 

@@ -1,0 +1,31 @@
+/* GROUP COMPONENTS / SKIP TO CONTENT
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Accessibilty aid for keyboard users
+
+*/
+/* HTML Example...
+
+    <a href="#main" class="c-skip-to-content u-screen-reader-text" title="Skip to content">
+        Skip to content
+    </a>
+
+    <a href="#footer" class="c-skip-to-content u-screen-reader-text" title="Skip to footer navigation">
+        Skip to footer navigation
+    </a>
+
+*/
+@layer components {
+    .c-skip-to-content {
+        background: var(--color-green);
+        color: var(--color-black-static);
+        padding: var(--spacing-s-2) var(--spacing-s-1);
+        text-decoration-color: var(--color-black-static);
+        font-weight: var(--font-family-ui-weight-medium);
+        outline: 0;
+        text-box: text;
+    }
+}

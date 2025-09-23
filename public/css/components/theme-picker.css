@@ -1,0 +1,101 @@
+/* GROUP COMPONENTS / THEME PICKER
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    Home
+
+    What does it do?
+    ----------------
+    A button to switch between light and dark themes
+
+*/
+/* HTML Example...
+
+    <div class="c-theme-picker">
+        <div class="c-theme-picker__button">
+            <img src="/img/theme-light.svg" alt="Light theme" />
+            <img src="/img/theme-dark.svg" alt="Dark theme" />
+        </div>
+        <select id="color-scheme">
+            <option value="system">System</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
+    </div>
+
+*/
+@layer components {
+    .c-theme-picker {
+        /* Custom */
+        @media (width < 400px) {
+            .c-theme-picker__button {
+                padding: 0;
+                img {
+                    margin: 0;
+                }
+            }
+        }
+        .c-theme-picker__button {
+            img {
+                inline-size: 1.5rem;
+            }
+            .c-theme-picker-dark-icon {
+                opacity: 0.25;
+                /* --mq-grid-after */
+                @media (width >= 1000px) {
+                    opacity: 0.4;
+                }
+            }
+        }
+        /* position: relative; */
+        select {
+            --background: var(--color-body-background);
+            transition: opacity 0.2s ease-in 0s;
+            &:not(:focus){
+                /* Hide the select unless it's focused, to clean up the UI. The select is also focused when the preceeding SVG button is clicked in case the user is using a pointer device like a mouse. */
+                opacity: 0;
+            }
+            &:focus {
+                outline-offset: -1px;
+            }
+            /* Effectively pull the select over the faux button so "clicking" it will also open the select. The select remains tababble for keyboard users. */
+            position: absolute;
+            transform: translate(-0.25rem, -0.5rem);
+            /* Custom */
+            @media (width < 640px) {
+                /* Otherwise the theme select overlaps the navigation dots */
+                right: 18%;
+            }
+            /* Select Styling. Inspiration - https://moderncss.dev/custom-select-styles-with-pure-css/ */
+            appearance: none;
+            background: var(--background);
+            background-image: url(/img/dropdown.svg);
+            background-repeat: no-repeat;
+            background-size: 0.75em;
+            background-position: calc(100%);
+            min-inline-size: 6.5rem;
+            /* Fallback for Safari */
+            block-size: 2.5rem;
+            min-block-size: 2.5rem;
+            border: none;
+            margin: 0;
+            margin-inline-start: var(--spacing-s-5);
+            padding: var(--spacing-s-4);
+            padding-inline-start: var(--spacing-s-3);
+            color: var(--color-primary-text);
+            font-size: var(--font-size-s-1);
+            border-radius: 50px;
+            box-shadow: 0px 0px 1px var(--color-pink);
+            border-inline: var(--spacing-s-2) solid var(--color-body-background);
+            border-inline-start-width: var(--spacing-s-5);
+        }
+    }
+}
+@container style(--color-scheme: dark) {
+    /* This won't work in Safari when nested in a layer for some reason */
+    .c-theme-picker select {
+        background-image: url(/img/dropdown-dark-mode.svg);
+    }
+}

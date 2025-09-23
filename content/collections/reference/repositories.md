@@ -6,4 +6,4 @@ template: repositories/index
 intro: |
     Each of the following repository classes is a Facade used to access content in each of Statamic's core data types and query, create, modify, and delete content.
 ---
-Query, create, modify, and delete content in each of Statamic's core data types.
+Manage Statamic’s data: query, create, and modify

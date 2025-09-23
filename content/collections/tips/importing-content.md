@@ -36,7 +36,7 @@ If you need more flexibility around how the import happens, or would just prefer
 2. In that command, you'll need to get the content you're wanting to import. This could be from a JSON file, a spreadsheet or some kind of external API. It's up to you.
 3. Now, for the exciting bit, importing the content!
 
-    You can loop through the content and create entries for eeach item. Statamic provides an [entry repository](https://statamic.dev/repositories/entry-repository), which allows you to programatically create entries. Here's an example:
+    You can loop through the content and create entries for eeach item. Statamic provides an [entry repository](/repositories/entry-repository), which allows you to programatically create entries. Here's an example:
 
     ```php
     <?php
@@ -70,10 +70,10 @@ If you need more flexibility around how the import happens, or would just prefer
         {
             // Get your content...
             $teamMembers = [
-                ['name', 'Josh Lyman', 'role' => 'Deputy Chief of Staff'],
-                ['name', 'CJ Cregg', 'role' => 'Press Secretary'],
-                ['name', 'Toby Ziegler', 'role' => 'Communications Director'],
-                ['name', 'Sam Seaborn', 'role' => 'Deputy Communications Director'],
+                ['name' => 'Josh Lyman', 'role' => 'Deputy Chief of Staff'],
+                ['name' => 'CJ Cregg', 'role' => 'Press Secretary'],
+                ['name' => 'Toby Ziegler', 'role' => 'Communications Director'],
+                ['name' => 'Sam Seaborn', 'role' => 'Deputy Communications Director'],
             ];
 
             // Loop through each item and create a new entry using the Entry facade...
@@ -96,4 +96,4 @@ If you need more flexibility around how the import happens, or would just prefer
     php artisan app:import
     ```
 
-If you need to import other content, like taxonomy terms or users, please review the docs on [Repositories](https://statamic.dev/reference/repositories).
+If you need to import other content, like taxonomy terms or users, please review the docs on [Repositories](/reference/repositories).

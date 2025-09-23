@@ -15,7 +15,7 @@ The current URL.
 ```
 ::tab blade
 ```blade
-{{ $current_uri }}
+{{ $current_url }}
 ```
 ::
 

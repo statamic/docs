@@ -13,14 +13,9 @@ You can use the `php please multisite` to automate converting from a single to a
 
 ## Defining Sites
 
-When using [multiple sites](/multi-site), you'll need to specify in the globals's YAML file which sites this collection can be used in.
+When using [multiple sites](/multi-site), you'll need to specify in the Control Panel which sites this global set can be used in.
 
-``` yaml
-# content/collections/blog.yaml
-sites:
-  - en
-  - fr
-```
+![/img/globals-site-config.png](/img/globals-site-config.png)
 
 ## Folder Structure
 

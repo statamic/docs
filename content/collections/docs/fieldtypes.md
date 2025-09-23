@@ -57,7 +57,7 @@ updated_at: 1632748812
 ---
 ## Overview
 
-Fieldtypes are essentially different types of form inputs you can choose from when building a [blueprint](/blueprints). They range from simple text text fields and select boxes, to more complex WYSIWYG-style editors like Bard.
+Fieldtypes are essentially different types of form inputs you can choose from when building a [blueprint](/blueprints). They range from simple text fields and select boxes, to more complex WYSIWYG-style editors like Bard.
 
 :::watch https://www.youtube.com/embed/cs_jL6fCaA8
 Watch how to add fields to a blueprint.

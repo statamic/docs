@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Markdown;
-use Torchlight\Commonmark\V2\TorchlightExtension;
+use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
+use Torchlight\Engine\Options as TorchlightOptions;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,13 +26,18 @@ class AppServiceProvider extends ServiceProvider
         // View::composer('partials.side-nav', SideNavComposer::class);
 
         Markdown::addExtensions(function () {
-            return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension];
+            return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension];
         });
 
-        if (config('torchlight.token') && ! app()->runningConsoleCommand('search:update')) {
-            Markdown::addExtensions(function () {
-                return [new TorchlightExtension];
-            });
+        if (! app()->runningConsoleCommand('search:update')) {
+            TorchlightOptions::setDefaultOptionsBuilder(fn() => TorchlightOptions::fromArray(config('torchlight.options')));
+
+            $extension = new TorchlightExtension(config('torchlight.theme'));
+            $extension
+                ->renderer()
+                ->setDefaultGrammar(config('torchlight.options.defaultLanguage'));
+
+            Markdown::addExtension(fn () => $extension);
         }
     }
 

@@ -68,11 +68,11 @@ protected function getItems(): array
 By default, the `value` and `label` keys will be used. However, you may remap them:
 
 ```php
+protected string $valueKey = 'abbr';
+protected string $labelKey = 'name';
+
 protected function getItems(): array
 {
-    protected string $valueKey = 'abbr';
-    protected string $labelKey = 'name';
-    
     return [
         ['name' => 'Alabama', 'abbr' => 'AL', 'capital' => 'Montgomery'],
         // ...

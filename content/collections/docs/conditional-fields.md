@@ -19,7 +19,7 @@ Field conditions are set on individual field settings in [blueprints](/blueprint
 
 You may specify various rules for showing a field under either the `if` / `show_when` keys, or hiding a field under the `unless` / `hide_when` keys.
 
-### Data Flow
+### Data flow
 
 Only visible fields are submitted with your form data. This allows you to control data flow, and [conditionally apply validation](#validation) to visible fields when needed.
 
@@ -137,7 +137,32 @@ If you are dealing with a string value, `contains` and `contains_any` will perfo
       favorite_food: 'contains_any pizza, lasagna'
 ```
 
-## Advanced Comparisons
+### Taxonomy Terms
+
+When you want to compare against a taxonomy term, the `contains` term needs to include the taxonomy handle, like `taxonomy::slug`:
+
+```yaml
+-
+  handle: favorite_food
+  field:
+    type: text
+-
+  handle: food_groups
+  field:
+    type: terms
+    taxonomies:
+      - food_groups
+    display: Food Groups
+    mode: select
+-
+  handle: favorite_vegetables
+  field:
+    type: text
+    if:
+      favorite_food: 'contains food_group::vegetables'
+```
+
+## Advanced comparisons
 
 For more advanced comparisons, several operators and right-hand-side literals/options are available to you.  For example, we could show an `email` field if age is greater than or equal to `16`:
 
@@ -178,7 +203,7 @@ Available right-hand-side literals/options include:
 | `true` | Will be evaluated as a **literal** `true`. |
 | `false` | Will be evaluated as a **literal** `false`. |
 
-## Multiple Conditions
+## Multiple conditions
 
 If you define multiple field conditions, all conditions need to pass for the field to be shown (or hidden if you use the `unless` / `hide_when` parent key).  For example, the following will show the field when `this_field` is `bacon` *__AND__* `that_field` is `cheeseburger`:
 
@@ -196,7 +221,7 @@ if_any:
   that_field: cheeseburger
 ```
 
-## Nested Fields
+## Nested fields
 
 You may use dot notation to access nested values when necessary.  For example, maybe you would like to show a field when an `array` fieldtype's `country` value is `Canada`:
 
@@ -205,7 +230,7 @@ if:
   address.country: Canada
 ```
 
-## Field Context
+## Field context
 
 By default, conditions are performed against values in the current level of `fields` in your blueprint.  If you need access to values outside of this context (eg. if you are in a replicator, trying to compare against fields outside of the replicator), you can access parent field values by prepending your field with `$parent`:
 
@@ -221,7 +246,7 @@ if:
   $root.favorite_foods: includes bacon
 ```
 
-## Custom Logic
+## Custom logic
 
 If you need something more complex than the YAML syntax provides, you may write your own logic.  In a [JS script](/extending/control-panel) or addon, you can define custom functions using the `$conditions` JS API:
 
@@ -235,6 +260,10 @@ Statamic.$conditions.add('isCanadian', ({ target }) => {
     return new RegExp('eh|bud|hoser').test(target);
 });
 ```
+
+:::warning
+It's worth noting that custom conditions only work in the Control Panel, not in the context of frontend forms.
+:::
 
 ### Parameters
 
@@ -267,7 +296,7 @@ Statamic.$conditions.add('reallyLovesFood', ({ values }) => {
 
 ```
 
-### Field Context
+### Field context
 
 Furthermore, if you need access to values outside of the current [field context](#field-context), we also provide a `root` values parameter, as well as access to the VueX store via `store` and `storeName`:
 
@@ -305,4 +334,4 @@ For more advanced conditional validation, take a look at Laravel's `required_if`
 
 ## Templating
 
-You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](https://statamic.dev/tags/form-create#conditional-fields).
+You can take advantage of Conditional Fields on your front-end Forms to automatically generate dynamic forms and logic. [Learn more about it](/tags/form-create#conditional-fields).

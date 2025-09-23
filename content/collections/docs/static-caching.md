@@ -6,7 +6,7 @@ intro: |
     Nothing loads faster than static pages. Instead of rendering pages dynamically on demand, Statamic can cache static pages and pass routing to Apache or Nginx with reverse proxying.
 id: ffa24da8-3fee-4fc9-a81b-fcae8917bd74
 ---
-## Important Preface
+## Important preface
 
 Certain features — such as forms with server-side validation, page protection, or content randomization — may not work with static page caching. (You may want to check out the [nocache tag](/tags/nocache) though.) As long as you understand that, you can leverage static caching for maximum performance.
 
@@ -16,7 +16,7 @@ Whatever is on the page the first time it's visited is what will be cached for a
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
 :::
 
-## Caching Strategies
+## Caching strategies
 
 Each caching strategy can be configured independently. Inside `config/statamic/static_caching.php` you will find two pre-configured strategies - one for each supported driver.
 
@@ -37,7 +37,7 @@ return [
 
 Set `strategy` to the name of the strategy you wish to use, or `null` to disable static caching completely.
 
-## Application Driver
+## Application driver
 
 The application driver will store your cached page content within Laravel's cache. We refer to this as **half measure**.
 
@@ -59,7 +59,7 @@ return [
 You may use the [nocache tag](/tags/nocache) to keep parts of your pages dynamic.
 :::
 
-## File Driver
+## File driver
 
 The file driver will generate completely static `.html` pages ready for your web server to serve directly. This means that the HTML files will be loaded before it even reaches PHP.
 
@@ -100,9 +100,13 @@ Using the file driver, you can configure the permissions for the directories and
 ]
 ```
 
-## Server Rewrite Rules
+## Server rewrite rules
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
+
+:::tip
+If you're using Laravel Herd or Laravel Valet, you don't need to worry about configuring rewrite rules locally. They will automatically handle the rewrite rules for you.
+:::
 
 ### Apache
 
@@ -122,7 +126,6 @@ RewriteRule ^ index.php [L]
 RewriteCond %{DOCUMENT_ROOT}/static/%{REQUEST_URI}_%{QUERY_STRING}\.html -s
 RewriteCond %{REQUEST_METHOD} GET
 RewriteRule .* static/%{REQUEST_URI}_%{QUERY_STRING}\.html [L,T=text/html]
-</IfModule>
 ```
 
 :::tip
@@ -140,9 +143,9 @@ RewriteRule ^ index.php [L]
 
 ### Nginx
 
-On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slighly different place depending on your server setup.
+On Nginx servers, you will need to edit your `.conf` files. They are not located within your project, and may be in a slightly different place depending on your server setup.
 
-Some applications like [Laravel Forge](https://forge.laravel.com) may let you edit your `nginx.conf` from within the UI.
+Some applications like [Laravel Forge](https://forge.laravel.com) and [Ploi](https://ploi.io/statamic) may let you edit your `nginx.conf` from within the UI.
 
 ``` nginx
 set $try_location @static;
@@ -214,21 +217,40 @@ On Windows IIS servers, your rewrite rules can be placed in a `web.config` file.
 </rule>
 ```
 
-## Warming the Static Cache
+## Warming the static cache
 
-You can get your app to automatically generate the public views for your entries and add them to the Static Cache, making first times loads much faster. To do this run:
+Before users visit your website, you may wish to warm the static cache to make first time loads much faster. To do this, run:
 
 ```
 php please static:warm
 ```
 
-This command can take some time to process so if you have a lot of entries you might want to use the `--queue` flag.
+The `static:warm` command supports various arguments:
 
-Passing `--insecure` to the command allows you to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--queue`**
+    Indicates that URIs should be warmed on the queue (in the background).
+* **`--insecure`**
+    Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
+* **`--user` and `--password`**
+    Allows you to specify credentials to be used when your site is secured with [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Otherwise, you might end up with a `401 Unauthorized` error running the command.
+* **`--uncached`**
+    Ensure that only *uncached* pages are warmed. Perfect for when you just want to 'fill in the gaps' in your cache after some URLs were invalidated, without visiting every single URL in your website. This avoids unnecessary server load.
+* **`--include` and `--exclude`**
+    Accepts a comma-separated list of URLs you'd like to be included/excluded in the warming process.
+    Example: `--include='/about,/contact,/blog/*'`
+* **`--max-depth`**
+    Allows you to specify the max depth of pages that should be warmed.
+    For example with `--max-depth=1` it will visit pages like `/about` and `/products` but not `/products/cool-new-shoes-1` or `/any/other/path/that/is/too/deep`.
+* **`--max-requests`**
+    Limits the number of requests made by the command. Likely makes the most sense to be used alongside the `--uncached` option.
+* **`--header`**
+    Allows you to specify custom HTTP headers to be sent with each request. Can be used multiple times to set multiple headers. Useful for APIs, protected routes, or any scenario where custom headers are required. 
 
-Adding the `--user` and `--password` flags, you can run the command behind [HTTP Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme). Useful when your site is secured with a simple username and password, like on a staging or development server. Otherwise, you might end up with a `401 Unauthorized` error running the command.
+    For example: `--header="Authorization: Bearer your_token" --header="X-Ignore-Cache: true"`
 
-Depending on your site's setup, it's a good idea to add this command to your deployment script on Forge or whatever deployment tool or pipeline you use.
+    You can find [practical examples](#custom-headers) of this parameter below.
+
+Depending on your site's setup, it might be a good idea to add this command to your deployment script.
 
 ### Concurrency
 
@@ -310,6 +332,41 @@ class AppServiceProvider
 }
 ```
 
+### Custom headers
+
+The `--headers` option can be used in advanced scenarios to control how the static cache is warmed. Here are some practical examples:
+
+#### Bypassing cache for refreshes with Nginx
+
+If you have custom Nginx rules, you can check for a specific header (e.g., `X-Cache-Refresh: 1`) and bypass the `try_files` static cache, forcing a fresh request to the backend. For example:
+
+```nginx
+location / {
+    if ($http_x_cache_refresh = "1") {
+        proxy_pass http://127.0.0.1:8000; # your statamic server
+        break;
+    }
+    try_files $uri $try_location;
+}
+```
+
+Then, you can run:
+
+```
+php please static:warm --header="X-Cache-Refresh: 1"
+```
+
+#### Warming behind authentication
+
+If your site is protected by HTTP authentication or expects a specific header, you can use `--header` to provide the necessary credentials or tokens so the warm requests are not blocked. For example:
+
+```
+php please static:warm --header="Authorization: Bearer your_token"
+```
+
+This ensures the cache warming requests are accepted by your backend even when authentication is required.
+
+
 ## Excluding Pages
 
 You may wish to exclude certain URLs from being cached.
@@ -385,9 +442,11 @@ class CustomExcluder implements UrlExcluder
 }
 ```
 
+Alternatively, you may also prevent URLs from being cached by adding the `X-Statamic-Uncacheable: true` header to requests. 
+
 ## Invalidation
 
-A statically cached page will be served until it is invalidated. You have a several options for how to invalidate your cache.
+A statically cached page will be served until it is invalidated. You have several options for how to invalidate your cache.
 
 ### Time Limit
 
@@ -471,9 +530,9 @@ For example, if you schedule an entry for Friday at 8am, and you have the schedu
 
 [Learn how to use the scheduler](/scheduling)
 
-### Custom Invalidator Class
+### Custom invalidator class
 
-You can also specify a custom invalidator class to **programatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
+You can also specify a custom invalidator class to **programmatically determine which URLs should be invalidated**. To achieve that, override or extend [the default invalidator class](https://github.com/statamic/cms/blob/01f8dfd1cbe304be1848d2e4be167a0c49727170/src/StaticCaching/DefaultInvalidator.php).
 
 ```php
 return [
@@ -545,11 +604,11 @@ class CustomInvalidator extends DefaultInvalidator
 }
 ```
 
-### By Force
+### By force
 
 To clear the static file cache you can run `php please static:clear` (and/or delete the appropriate static file locations).
 
-## File Locations
+## File locations
 
 When using the file driver, the static HTML files are stored in the `static` directory of your webroot, but you can change it.
 
@@ -567,7 +626,7 @@ return [
 You will need to update your appropriate server rewrite rules.
 
 
-## Query Parameters
+## Query parameters
 
 By default, Statamic will cache all pages with the same URL but different query parameters separately. This can be helpful if you're using pagination or displaying pages differently based on user input.
 
@@ -579,8 +638,31 @@ return [
 ];
 ```
 
+### Allowed and disallowed query parameters
 
-## Multi-Site
+If you're using half measure caching, you may specify which query parameters Statamic should include in it's "normalized" static caching URL. This is useful if you only want certain query parameters to be persisted in your cache:
+
+```php
+'allowed_query_strings' => [
+    'page',
+],
+```
+
+**For example:** if you allow the `page` query parameter, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
+
+You can also do the opposite, by specifying which query parameters should be excluded from the "normalized" static caching URL:
+
+```php
+'disallowed_query_strings' => [
+    'utm_content', 'utm_medium', 'utm_source', 'utm_campaign',
+],
+```
+
+**For example:** if you disallow the UTM query parameters, and visit `/blog?page=2&utm_medium=social`, Statamic will serve/write the cached page for `/blog?page=2`.
+
+The `ignore_query_strings` option should be set to `false` in order for the `allowed_query_strings` & `disallowed_query_strings` to work.
+
+## Multi-site
 
 When using static caching alongside [multi-site](/multi-site), some additional configuration is needed.
 
@@ -623,9 +705,13 @@ return [
 ];
 ```
 
-### Rewrite Rules
+_**Note:** You only need to configure paths when you're using full-measure static caching._
+
+### Rewrite rules
 
 When you have sites across multiple domains, you will need to modify the rewrite rules on your server to include the domain name.
+
+_**Note:** You only need to configure rewrite rules when you're using full-measure static caching._
 
 #### Apache
 
@@ -686,7 +772,7 @@ APP_DOMAIN=domain1.devserver.com
 `{SERVER_NAME}` is used here instead of `{HTTP_HOST}` because `{HTTP_HOST}` may include the port.
 :::
 
-### Invalidation Rules
+### Invalidation rules
 
 In the [invalidation rules array](#when-saving) explained above, the URLs are relative.
 
@@ -764,9 +850,9 @@ If you need to output a CSRF token in another place while using full measure, yo
 </span>
 ```
 
-## Custom Cache Store
+## Custom cache store
 
-Static Caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `artisan cache:clear` command can lead invalidation to fail.
+Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
 
 The cache store can be customized in `config/cache.php`.
 
@@ -777,4 +863,4 @@ The cache store can be customized in `config/cache.php`.
 ],
 ```
 
-By default, running `artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.
+By default, running `php artisan cache:clear` won't clear Statamic's cache store. To do this, run `php please static:clear`.

@@ -1,0 +1,50 @@
+/* GROUP COMPONENTS / QUIRKY
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /quick-start-guide
+
+    What does it do?
+    ----------------
+    Possibly one-off, quirky components here
+
+*/
+/* HTML Example...
+
+*/
+@layer components {
+    .c-spaced {
+        font-weight: var(--font-family-prose-weight-strong);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .clippy {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+        margin: 2rem;
+        display: none;
+
+        &.visible {
+            display: block;
+            animation: bounce-in-right 0.8s ease-in-out;
+        }
+    }
+
+    @keyframes bounce-in-right {
+        0% {
+            opacity: 0;
+            transform: translateY(2000px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(-30px);
+        }
+        80% { transform: translateY(10px); }
+        100% { transform: translateY(0); }
+    }
+}

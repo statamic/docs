@@ -245,12 +245,14 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 
 Each item in the `fields` array contains the following data configurable in the form's blueprint.
 
+#### Fields Array Variables
+
 | Variable | Type | Description |
 |---|---| --- |
 | `handle` | string | System name for the field |
 | `display` | string | User-friendly field label |
 | `type` | string | Name of the [fieldtype](/fieldtypes) |
-| ` field` | string | [Pre-rendered field HTML](#prerendered-field-html) based on the fieldtype |
+| ` field` | string | [Pre-rendered field HTML](#pre-rendered-field-html) based on the fieldtype |
 | `error` | string | Error message from an unsuccessful submission |
 | `old` | array | Contains user input from an unsuccessful submission |
 | `instructions` | string | User-friendly instructions label |

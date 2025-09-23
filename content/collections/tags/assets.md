@@ -22,6 +22,11 @@ parameters:
     description: |
       If you enable recursion, the tag will return all the assets in all the subdirectories that match your parameters. Default: `false`.
   -
+    name: not_in
+    type: string
+    description: >
+      Filter by excluding from a subdirectory or subdirectories. You may use regex, and will be matched against the file path without a leading slash. For example: `not_in="img/(brand|logos)"`
+  -
     name: limit
     type: integer
     description: Limit the total results to a specific number.

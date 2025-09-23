@@ -1,18 +1,20 @@
 {{ partial:header }}
 
 {{ collection:fieldtypes as="fieldtypes" }}
-<article class="bg-black p-4 md:py-8 md:pl-24 w-full relative rounded-sm shadow-stack md:shadow-stack-lg text-white z-10 flex font-mono-alt font-bold antialiased">
-    {{ fieldtypes split="2" }}
-        <ul class="list-none w-1/2 space-y-3">
-            {{ items }}
-                <li>
-                    <a href="{{ url }}" class="flex items-center text-white hover:text-pink no-underline">
-                        {{ svg src="/img/fieldtypes/icons/{slug}" class="h-4 w-4 mr-3 text-white" }}
-                        {{ title }}
-                    </a>
-                </li>
-            {{ /items }}
-        </ul>
-    {{ /fieldtypes }}
-</article>
+    <article class="c-panel-list">
+        {{ fieldtypes split="1" }}
+            <ul>
+                {{ items }}
+                    <li>
+                        <a href="{{ url }}">
+                            {{ svg src="/img/fieldtypes/icons/{slug}" }}
+                            {{ title }}
+                        </a>
+                    </li>
+                {{ /items }}
+            </ul>
+        {{ /fieldtypes }}
+    </article>
 {{ /collection:fieldtypes }}
+
+{{ $hide_toc = 'yes' }}

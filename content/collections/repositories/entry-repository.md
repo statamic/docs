@@ -242,6 +242,10 @@ $entry->afterSave(function ($entry) {
 $entry->save();
 ```
 
+:::tip
+Make sure the parent entry exists in the tree by appending it in an "afterSave" callback with `->append($entry)` just like in the example above.
+:::
+
 ### Localization
 
 #### Localizing an entry

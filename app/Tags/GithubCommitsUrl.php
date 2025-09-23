@@ -7,8 +7,6 @@ use Illuminate\Support\Str;
 
 class GithubCommitsUrl extends \Statamic\Tags\Tags
 {
-    private $endpoint = 'https://github.com/statamic/docs/commits/master/content/';
-
     public function index()
     {
         if (! $id = $this->context->get('id')) {
@@ -21,8 +19,15 @@ class GithubCommitsUrl extends \Statamic\Tags\Tags
             return;
         }
 
-        $path = Str::after($path = $content->path(), 'content/');
+        $path = Str::after($content->path(), 'content/');
 
-        return $this->endpoint . $path;
+        return "https://github.com/statamic/docs/commits/{$this->getCurrentBranch()}/content/{$path}";
+    }
+
+    private function getCurrentBranch(): string
+    {
+        return collect(config('docs.versions'))
+            ->where('version', config('docs.version'))
+            ->first()['branch'] ?? '5.x';
     }
 }

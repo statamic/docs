@@ -18,7 +18,7 @@ Anything you can do in Laravel you can do here. Because you're using Laravel. Yo
 These explicitly defined routes will take precedence over Statamic routes and URL patterns. Keep this in mind.
 :::
 
-For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app\Http\Controllers\ExampleController.php` file like this:
+For example, you can map a `GET` request to `yoursite.com/example` to the `index` method in the `app/Http/Controllers/ExampleController.php` file like this:
 
 ``` php
 use App\Http\Controllers\ExampleController;
@@ -26,7 +26,7 @@ use App\Http\Controllers\ExampleController;
 Route::get('example', [ExampleController::class, 'index']);
 ```
 
-## Basic Controller
+## Basic controller
 
 In your controller, render views like you would in a regular Laravel app:
 
@@ -57,7 +57,7 @@ php artisan make:controller ExampleController
 ```
 :::
 
-## Antlers Views
+## Antlers views
 
 Returning `view('myview')` _will_ render the `myview.antlers.html` view. To take advantage of Statamic's standard template-injected-into-a-layout behavior, return a `Statamic\View\View` instance instead of a regular Laravel one.
 
@@ -93,10 +93,10 @@ public function index()
 }
 ```
 
-## Related Reading
+## Related reading
 
-- [Laravel Controllers][laravel-controllers]
-- [Laravel Routes][laravel-routes]
+- [Laravel controllers][laravel-controllers]
+- [Laravel routes][laravel-routes]
 - [Antlers](/antlers)
 
 [laravel-controllers]: https://laravel.com/docs/controllers

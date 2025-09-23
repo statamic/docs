@@ -15,7 +15,7 @@ The file size of the asset, in kilobytes. Also available as `size_kb`.
 ```
 ::tab blade
 ```blade
-{{ $size_kiobytes }}
+{{ $size_kilobytes }}
 ```
 ::
 

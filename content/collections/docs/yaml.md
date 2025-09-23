@@ -15,7 +15,7 @@ YAML complies with the JSON spec, making it easy to interchange it with nearly a
 variable_name: value
 ```
 
-YAML is usually stored in `.yaml` or `.yml` files, but can often (and in Statamic's case) can be found inside and top of other text files. This is referred to as "Front Matter" and looks like this:
+YAML is usually stored in `.yaml` or `.yml` files, but can often (and in Statamic's case) be found inside and at the top of other text files. This is referred to as "Front Matter" and looks like this:
 
 ```md
 ---
@@ -40,7 +40,7 @@ $school = "Flatside High";
 var school = "Flatside High";
 ```
 
-### String Escaping
+### String escaping
 
 As YAML is a **structured** data format, you will occasionally need to quote your strings to prevent rogue apostrophes, commas, and other reserved constructs from confusing the parser, allowing you to structure your data exactly as desired.
 
@@ -58,7 +58,7 @@ cartoon: Rocko's Modern Life
 cartoon: "Rocko's Modern Life"
 ```
 
-### Preserving Newlines
+### Preserving newlines
 
 You can preserve the line breaks in your string block by using the `|` pipe symbol followed by a line break and indented content. This is useful if you're writing Markdown or preserving HTML line breaks.
 
@@ -72,7 +72,7 @@ lyrics: |
   I'm at the corner just in time to see the bus fly by
 ```
 
-### Collapsing Newlines
+### Collapsing newlines
 
 Completely ignore line breaks with a `>` character and indent the rest of the content.
 
@@ -132,7 +132,7 @@ to_sell: [aloe vera, winter coat, mittens]
 To render the values from a YAML array:
 
 
-### Element Map
+### Element map
 
 ```yaml
 antisocial:
@@ -170,7 +170,7 @@ This is a very common pattern in Statamic. Bard, Grid, and Replicator fieldtypes
 ```yaml
 students:
   -
-    name: Zack Slater
+    name: Zach Slater
     school: Bayside High
   -
     name: Jack McDade
@@ -192,7 +192,7 @@ $students = [
 ];
 ```
 
-### Mixing and Matching
+### Mixing and matching
 
 You can build multidimensional arrays full of associative arrays, and vice versa.
 
@@ -217,7 +217,7 @@ title: Another Monday
 
 ## Explicit Typing
 
-YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or  boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
+YAML autodetects the datatype of the entity. Sometimes you'll want to cast the datatype explicitly, like when a single word string looks like a number or boolean may need disambiguation by surrounding it with quotes or use of an explicit datatype tag.
 
 ```yaml
 a: 42                      # integer
@@ -230,7 +230,7 @@ o: Yes                     # string
 p: Yes we have No whiskey  # string, disambiguated by context.
 ```
 
-## Related Reading
+## Related reading
 
 So there you have it &mdash; YAML in its many shapes and forms. To learn how to render all this lovely data in a template, check out the [Antlers][antlers] section.
 

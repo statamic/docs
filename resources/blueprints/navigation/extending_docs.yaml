@@ -1,0 +1,17 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+          -
+            handle: navigation_image
+            field: navigation.navigation_image
+          -
+            handle: image_width_override
+            field: navigation.image_width_override

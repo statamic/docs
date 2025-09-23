@@ -1,0 +1,95 @@
+/* GROUP SCOPE / FONT TOGGLE
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    - Switches the font between sans-serif and sans using a radio button
+    - The radio button sets a local storage value which is then fetched on subsequent page loads
+        - uses font-preferences.js to store and fetch values
+
+*/
+/* HTML Example...
+
+    <div class="o-font-toggle">
+        <input type="radio" id="font-sans-off" name="font-toggle" value="sans-off" class="font-toggle__radio" checked="">
+        <label for="font-sans-off" class="font-toggle__sans-off">Sans Off</label>
+        <input type="radio" id="font-sans-on" name="font-toggle" value="sans-on" class="font-toggle__radio">
+        <label for="font-sans-on" class="font-toggle__sans-on">Sans On</label>
+    </div>
+
+*/
+/* GROUP SCOPE / FONT TOGGLE
+=================================================== */
+.o-font-toggle {
+    display: flex;
+    align-items: center;
+    /* Custom */
+    @media (width >= 1030px) {
+        padding-inline-end: var(--spacing-s-1);
+    }
+    svg {
+        font-size: 2em;
+        margin-inline-end: var(--spacing-s-5);
+    }
+    input {
+        /* Hide the radio */
+        display: none;
+        /* Gray-out labels that are not checked */
+        &:not(:checked) + label {
+            color: var(--color-gray-aa);
+        }
+    }
+    label {
+        padding: var(--spacing-s-4) var(--spacing-s-3);
+        font-size: var(--font-size-s-1);
+        line-height: var(--font-size-s-1-line-height);
+        cursor: pointer;
+        border: 1px solid hsl(0deg 0% 40%);
+        input:first-of-type + & {
+            border-top-left-radius: var(--border-radius-m);
+            border-bottom-left-radius: var(--border-radius-m);
+        }
+        input:last-of-type + & {
+            border-top-right-radius: var(--border-radius-m);
+            border-bottom-right-radius: var(--border-radius-m);
+        }
+        &:has(+ input) {
+            border-inline-end: 0;
+        }
+    }
+}
+/* GROUP SCOPE / FONT TOGGLE / SANS CHANGES
+=================================================== */
+:root:has(footer .o-font-toggle #font-sans-on:checked) {
+    /* Tweak text scale to compensate for a different font */
+    /* GROUP VARIABLES -- DECORATION -- TEXT -- SIZES -- OUTSIDE SCALE
+    =================================================== */
+    --font-size-m: clamp(0.9em, 4vw, 1.03em);
+    --font-size-m-rem: clamp(0.9rem, 4vw, 1.03rem);
+    /* e.g. >> Home > Lead Text */
+    --font-size-l-1: clamp(1em, 4vw, 1.12em);
+    --font-size-l-1-line-height: 1.55;
+    /* GROUP VARIABLES -- DECORATION -- COLORS -- THEME
+    =================================================== */
+    /* Make slightly lighter to compensate for a naturally heavier font */
+    --color-black-prose: light-dark(hsl(210deg 3.85% 16%), hsl(0deg 0% 90%));
+    --font-family-prose-weight-medium: 450;
+    --font-family-prose-weight-strong: 600;
+    --max-width-reading: 50.5rem;
+    --max-width-content: 50.5rem;
+
+    @layer scope {
+        .c-entry-content {
+            --font-size-s-1-line-height: 1.4;
+            --font-family-ui-weight-normal: 300;
+    
+            font-family: var(--font-family-ui);
+            font-weight: var(--font-family-ui-weight-normal);
+    
+            p, li {
+                color: var(--color-black-prose);
+            }
+        }
+    }
+}

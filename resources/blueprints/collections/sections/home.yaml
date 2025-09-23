@@ -1,0 +1,128 @@
+title: Home
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: nav_title
+            field: page.nav_title
+          -
+            handle: breadcrumb_title
+            field: page.breadcrumb_title
+          -
+            handle: intro
+            field: page.intro
+          -
+            handle: tiles
+            field:
+              max_sets: 6
+              type: replicator
+              display: Tiles
+              sets:
+                tiles:
+                  display: Tiles
+                  sets:
+                    tile:
+                      display: Tile
+                      icon: programming-module-box-cube
+                      fields:
+                        -
+                          handle: tile_image
+                          field:
+                            max_files: 1
+                            container: main
+                            type: assets
+                            display: 'Tile Image'
+                            folder: tiles
+                        -
+                          handle: tile_title
+                          field:
+                            character_limit: 38
+                            type: text
+                            display: 'Tile Title'
+                        -
+                          handle: tile_description
+                          field:
+                            character_limit: 60
+                            type: text
+                            display: 'Tile Description'
+                        -
+                          handle: tile_link
+                          field:
+                            type: link
+                            display: 'Tile Link'
+                        -
+                          handle: advanced_options
+                          field:
+                            type: revealer
+                            display: 'Advanced Options'
+                        -
+                          handle: flush_image
+                          field:
+                            type: toggle
+                            display: 'Flush Image'
+                            instructions: 'Makes the image flush, which may be useful, e.g. a screenshot of Antlers code'
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
+                        -
+                          handle: hue_rotate
+                          field: hue_rotate.hue_rotate
+                          config:
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
+                        -
+                          handle: dark_mode
+                          field:
+                            type: section
+                            display: 'Dark Mode'
+                            if:
+                              advanced_options: 'equals true'
+                        -
+                          handle: tile_image_dark_mode
+                          field:
+                            max_files: 1
+                            container: main
+                            type: assets
+                            display: 'Tile Image Dark Mode (optional override)'
+                            folder: tiles
+                            width: 50
+                            if:
+                              advanced_options: 'equals true'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - docs
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+          -
+            import: advert_override

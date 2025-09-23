@@ -8,6 +8,6 @@ class Fieldtypes extends ViewModel
 {
     public function data(): array
     {
-        return ['title' => ucwords($this->cascade->get('title')) . ' Fieldtype'];
+        return ['title' => ucwords($this->cascade->get('title')).' Fieldtype'];
     }
 }

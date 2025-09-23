@@ -87,7 +87,7 @@ Your navigation tree _may_ contain references to entries. The control panel's en
     <figcaption>If you want to put pants in your navs, you can.</figcaption>
 </figure>
 
-## Blueprints and Data
+## Blueprints and data
 
 Out of the box, nav items are fairly light. If you create a standard nav item, you can type in the URL and title. For entry reference nav items, you can override the title.
 

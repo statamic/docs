@@ -19,7 +19,7 @@ Fieldsets contain [fields](/fields), just like Blueprints, but the benefit of us
 Fieldsets can only have fields. They don't have sections like Blueprints can.
 
 
-## Creating Fieldsets
+## Creating fieldsets
 
 There are 2 ways to create fieldsets:
 
@@ -28,7 +28,7 @@ There are 2 ways to create fieldsets:
 
 Once created, you can begin to define its fields.
 
-## Directory Structure
+## Directory structure
 
 Whether you manually create your fieldsets's YAML file, or use the control panel, they will all end up as YAML files in the `resources/fieldsets` directory.
 
@@ -40,7 +40,7 @@ resources/
     common.yaml
 ```
 
-## YAML Structure
+## YAML structure
 
 At its most basic, a fieldset has an array of fields.
 
@@ -54,7 +54,7 @@ fields:
     type: toggle
 ```
 
-## Using Fields
+## Using fields
 
 As mentioned earlier, a Fieldset is not inherently attached to anything. In order to use a field (or fields) in a fieldset, you'll need to approach it from the Blueprint side.
 

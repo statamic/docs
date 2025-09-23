@@ -6,7 +6,7 @@ intro: Preferences are easy to manage settings available from and generally affe
 ---
 Where application configuration lives in PHP config files, preferences can be accessed from the control panel where they can be edited by clients or users. The actual preferences themselves are stored in YAML files, whether on the user, role, or [default preferences file](#storage).
 
-## Accessing Preferences
+## Accessing preferences
 
 Users can access preferences through the cog icon in the upper right hand corner of the CP.
 
@@ -15,7 +15,7 @@ Users can access preferences through the cog icon in the upper right hand corner
     <figcaption>Manage your own preferences!</figcaption>
 </figure>
 
-## Customizing Preferences For Other Users
+## Customizing preferences for other users
 
 In order to customize preferences for other users, you must first enable [Statamic Pro](/tips/how-to-enable-statamic-pro), and you must either be a super user or have permissions to manage preferences.
 
@@ -46,7 +46,7 @@ Since a user may have multiple roles, they will inherit the preferences of their
 
 ## Storage
 
-Default preferences are stored in `resources/preferences.yaml` as simple array.
+Default preferences are stored in `resources/preferences.yaml` as a simple array.
 
 ```yaml
 locale: en
@@ -56,7 +56,7 @@ start_page: collections/articles
 Role and user preferences are stored in their existing respective locations as the same array in a `preferences` key.
 
 
-## Adding Fields
+## Adding fields
 
 You may add additional preference fields from within a service provider.
 

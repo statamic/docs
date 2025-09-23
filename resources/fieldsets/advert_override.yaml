@@ -1,0 +1,11 @@
+title: 'Advert Override'
+fields:
+  -
+    handle: advert_override
+    field:
+      max_items: 1
+      collections:
+        - adverts
+      type: entries
+      display: 'Advert Override'
+      instructions: 'If you want a specific advert to show on this page rather than a random advert'

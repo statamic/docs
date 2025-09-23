@@ -15,7 +15,7 @@ id: 499d808b-18be-42e9-acd0-91bcdff73193
     <figcaption>Behold, the stache of all staches!</figcaption>
 </figure>
 
-## The Stache is Watching Your Files {#watcher}
+## The Stache is watching your files {#watcher}
 
 Each page request from the frontend or Control Panel triggers a scan of the `last_modified` timestamps on all content and configuration files in your Statamic application. When Statamic sees a change, the Stache performs selective updates to any corresponding indexes.
 
@@ -162,7 +162,7 @@ return [
 
 Any additional indexes you have will be updated [when appropriate](#when-does-indexing-happen).
 
-## Cache Driver
+## Cache driver
 
 By default the Stache places its data in the default [Laravel cache store](https://laravel.com/docs/cache#configuration), there's no special configuration necessary to change it.
 
@@ -200,7 +200,7 @@ return [
 ]
 ```
 
-## Diving Even Deeper
+## Diving even deeper
 
 You can dive even deeper and learn how to build your own Stache Indexes and fine-tune performance with Michael Aerni's 2021 Statameet talk.
 

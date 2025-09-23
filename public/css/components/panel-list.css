@@ -1,0 +1,85 @@
+/* GROUP COMPONENTS / PANEL LIST
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /reference/fieldtypes
+    /reference/modifiers
+
+    What does it do?
+    ----------------
+    Display a list-like panel with a grid of icons e.g. /reference/fieldtypes or a grid of words e.g. /reference/modifiers
+
+*/
+/* HTML Example...
+
+<article class="c-panel-list">
+    <ul>
+        <li>
+            <a href="/fieldtypes/array">
+                <svg>
+            </a>
+        </li>
+    </ul>
+</article>
+
+*/
+@layer components {
+    .c-panel-list {
+        font-family: var(--font-family-code);
+        padding: var(--spacing-l-1) var(--spacing-l-2);
+        margin-block-start: calc(var(--spacing-l-2) - 0.75rem);
+        background: var(--color-purple-light-2);
+        &:has(svg) {
+            /* Check if there's any SVGs first because we want to affect e.g. >> /reference/fieldtypes but not /reference/modifiers */
+            a:not(:has(svg)) {
+                /* If there's no icon create a space */
+                margin-inline-start: 29px;
+            }
+        }
+        ul {
+            /* Custom */
+            @media (width >= 500px) {
+                column-count: 2;
+            }
+            /* Word-type list rather than icon-type list */
+            &:not(:has(svg)) {
+                /* More colums when there are no icons e.g. /reference/modifiers */
+                /* Custom */
+                @media (width >= 800px) {
+                    column-count: 3;
+                }
+                gap: var(--spacing-l-3);
+                a {
+                    /* Decrease */
+                    font-size: var(--font-size-s-2);
+                    line-height: var(--font-size-s-2-line-height);
+                }
+                li {
+                    padding-block-end: var(--spacing-s-4);
+                }
+            }
+        }
+        li {
+            padding-block-end: var(--spacing-s-3);
+        }
+        h3 {
+            padding-block-end: var(--spacing-s-2);
+            &:first-child {
+                padding-block-start: 0;
+            }
+        }
+        a {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s-3);
+            /* Where SVGs are used remove text decoration */
+            .c-panel-list:has(svg) &:not(:hover) {
+                text-decoration: none;
+            }
+            font-size: var(--font-size-s-1-fixed);
+            line-height: var(--font-size-s-1-line-height);
+        }
+   }
+}

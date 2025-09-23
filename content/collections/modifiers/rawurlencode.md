@@ -24,7 +24,7 @@ https://example.com/{{ Statamic::modify($example)->rawurlencode() }}
 ::
 
 ```html
-http://example.com/please%20and%thank&20you%2FMommy
+http://example.com/please%20and%20thank%20you/Mommy
 ```
 
 [rfc-3986]: http://php.net/manual/en/function.rawurlencode.php

@@ -1,5 +1,5 @@
 title: Repositories
-template: repositories/show
+template: page
 layout: layout
 mount: 082e1db7-7b52-4b92-a8bf-4c51ce7d741c
 revisions: false

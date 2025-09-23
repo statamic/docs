@@ -104,7 +104,7 @@ Here is a simple example component that fetches data using the asynchronous `cre
       try {
         const res = await fetch('/api/collections/pages/entries/home'); // Get the data from the API
         const { data } = await res.json() // Convert it to JSON
-        this.pageData = data; // Assign the data to the components Data
+        this.pageData = data; // Assign the data to the component Data
       } catch (e) {
         // Handle your errors
       }
@@ -113,5 +113,5 @@ Here is a simple example component that fetches data using the asynchronous `cre
 </script>
 ```
 
-## Custom View Models
+## Custom view models
 It is also possible to create [a view model](/view-models) which will return only the data you require. However, this requires PHP knowledge.

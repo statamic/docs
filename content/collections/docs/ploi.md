@@ -58,12 +58,12 @@ After doing this, you'll be able to customize the deployment script if needed. Y
     <img src="/img/deployment-ploi-script-example.jpg" alt="Deployment script example">
 </figure>
 
-The "Deploy script" area is where you'd add commands to install Composer and NPM dependencies, compile CSS and JavaScript if you need to, and clear Statamic's cache. Most deploy scripts look like something like this:
+The "Deploy script" area is where you'd add commands to install Composer and NPM dependencies, compile CSS and JavaScript if you need to, and clear Statamic's cache. Most deploy scripts look something like this:
 
 ``` shell
 cd /home/ploi/{example}.{tld}
 git pull origin main
-composer install--no-interaction--prefer-dist--optimize-autoloader
+composer install --no-interaction --prefer-dist --optimize-autoloader
 echo ... sudo-S service php8.1-fpm reload
 php please cache:clear
 npm ci && npm run production
@@ -73,7 +73,7 @@ If you're planning on using the Git integration, you may want to prevent content
 
 ## Statamic specific features
 
-Ploi let's you interact with your Statamic installation without you having to connect to your server via SSH. This includes clearing the (static) cache, warming the stache, generating meta data for assets etc.
+Ploi lets you interact with your Statamic installation without you having to connect to your server via SSH. This includes clearing the (static) cache, warming the stache, generating meta data for assets etc.
 
 <figure>
     <img src="/img/deployment-ploi-statamic-features.jpg" alt="Ploi's Statamic specific features">
