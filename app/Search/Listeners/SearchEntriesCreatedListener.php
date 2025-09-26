@@ -55,7 +55,11 @@ class SearchEntriesCreatedListener
 
         foreach ($event->sections as $section) {
             $data = $section->searchEntry->data();
-            $category = $collection.' » '.$data['origin_title'];
+
+            $category = match (true) {
+                $collection === 'Pages' => ($event->entry->parent() ? $event->entry->parent()?->title.' » ' : null).$data['origin_title'],
+                default => $collection.' » '.$data['origin_title'],
+            };
 
             $parentHeadings = null;
 
