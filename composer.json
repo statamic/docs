@@ -14,7 +14,8 @@
         "livewire/livewire": "^3.6.4",
         "statamic-rad-pack/meilisearch": "dev-statamic-6",
         "statamic/cms": "^v6.0.0-alpha.9",
-        "torchlight/engine": "^0.1.0"
+        "torchlight/engine": "^0.1.0",
+        "stillat/documentation-search": "^1.3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.16",

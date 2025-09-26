@@ -27,8 +27,8 @@ return [
 
         'docs-'.config('docs.version') => [
             'driver' => env('SEARCH_DRIVER', 'meilisearch'),
-            // 'searchables' => ['docs:*'],
-            'searchables' => ['collection:*', 'taxonomy:*'],
+            'searchables' => ['docs:*'],
+            // 'searchables' => ['collection:*', 'taxonomy:*'],
             'fields' => [
                 'title',
                 'search_title',
