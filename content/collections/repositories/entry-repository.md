@@ -23,11 +23,11 @@ use Statamic\Facades\Entry;
 | `all()` | Get all Entries |
 | `find($id)` | Get Entry by `id` |
 | `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
-| `findByIds([$ids])` | Get Entries by `id`. Returns in same order as `$ids`. |
 | `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when the entry cannot be found. |
 | `query()` | Query Builder |
 | `whereCollection($handle)` | Get all Entries in a `Collection` |
 | `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
+| `whereInId([$ids])` | Get all entries in array of IDs. Entries returned in the same order as `$ids` |
 | `make()` | Makes a new entry instance |
 
 ## Querying
@@ -62,12 +62,12 @@ Entry::findByUri('/blog/my-first-post');
 **What is the difference between `URI` and `URL`?** `URL` includes the site root (e.g. `/fr/` in a multisite), if there is one, while `URI` is site agnostic and will not. As you may have surmised, when you only have a single site — they are identical.
 :::
 
-#### Get multiple entires in a specific order by id
+#### Get entries by IDs
 
-You may want to find some entries and have them returned in a specific order. Whilst you can use the query builder to do this, it is much more simple with the repository’s `findByIds()` method:
+If you already know the IDs of the entries you want to find, you can call the `whereInId` method. The entries will be returned in the same order you provided them.
 
 ```php
-Entry::findByIds([ 3, 1, 2 ]);
+Entry::whereInId([3, 1, 2]);
 ```
 
 #### Get all entries in a collection
