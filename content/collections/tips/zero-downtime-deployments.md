@@ -112,7 +112,7 @@ fi
 
 When adding these steps to your deployment process, you should be mindful of the order in which they happen. Here's the order we recommend:
 
-* Cancel deployments when commit message contains `[BOT}`
+* Cancel deployments when commit message contains `[BOT]`
 * Create release
 * Init Git repository & add Git remote (if necessary)
 * The rest of your deployment script...
