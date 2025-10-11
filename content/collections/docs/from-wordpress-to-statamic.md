@@ -106,8 +106,6 @@ While there is no do-it-all-and-then-some solution like WooCommerce in the Stata
 
 The [Shopify addon](https://statamic.com/addons/rad-pack/shopify) helps you integrate with Shopify's powerful platform — controlling the frontend of your site with Statamic and leaving the heavy cart, checkout flow, and product management to Shopify.
 
-[Charge](https://statamic.com/addons/silentz/charge) is perfect for simpler one-time digital payments or recurring billing for memberships.
-
 [Donation Checkout](https://statamic.com/addons/ghijk/donation-checkout) lets you accept Stripe payments of arbitrary amounts via Stripe Checkout.
 
 There are integrations for [Lemon Squeezy](https://statamic.com/addons/rias/lemon-squeezy) and [Snipcart](https://statamic.com/addons/aerni/snipcart) as well.
