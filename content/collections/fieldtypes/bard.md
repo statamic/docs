@@ -90,6 +90,11 @@ options:
     type: boolean
     description: >
       Always show the "Add Set" button. Default: `false`.
+  -
+    name: remove_empty_nodes
+    type: string
+    description: >
+      Choose what to do with empty nodes: false, true, trim . Default: `false`.
 
 stage: 1
 id: f4bf58d3-cbce-4957-b883-d92fd4791e89
