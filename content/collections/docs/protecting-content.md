@@ -111,7 +111,7 @@ password: local-password
 ```
 
 ``` php
-// config/statamic/protection.php
+// config/statamic/protect.php
 
 'password' => [
     'driver' => 'password',
