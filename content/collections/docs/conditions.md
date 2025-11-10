@@ -210,6 +210,8 @@ The following conditions apply to fields with data stored as strings.
 | `doesnt_exist` / `is_empty` / `null` | Include if field **doesn't exist**. |
 | `contains` | Include if field **contains** value. |
 | `doesnt_contain` | Include if field **doesn't contain** value. |
+| `in` | Include if field value is **in** the provided array. |
+| `not_in` | Include if field value is **not in** the provided array. |
 | `starts_with` | Include if field **starts with** value. |
 | `doesnt_start_with` | Include if field **doesn't start** with value. |
 | `ends_with` | Include if field **ends with** value. |
@@ -236,10 +238,8 @@ The following conditions apply to fields with data stored as an array.
 
 | Condition | Description |
 | :--- | :--- |
-| `in` | Include if field value is **in** the provided array. |
-| `not_in` | Include if field value is **not_in** the provided array. |
-| `overlaps` | Include if any value in a given array is **in** the provided array. |
-| `doesnt_overlap` | Include if no value of a given array is **not_in** the provided array. |
+| `overlaps` | Include if any field value **matches** the provided array (has). |
+| `doesnt_overlap` | Include if **no** value **matches** the provided array (has not). |
 
 ## Taxonomy conditions
 
