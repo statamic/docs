@@ -21,6 +21,25 @@ Dropping it in a template or layout will show you all the data that's been injec
 ```
 ::
 
+:::tip
+dump will return nothing when your app.debug config is false
+:::
+
+If you really need your dump to display when debugging is turned off you can use the `force` parameter:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ dump force="true" }}
+```
+::tab blade
+```blade
+<statamic:dumpp force="true" />
+```
+::
+
+
 Dropping it inside a loop will dump all the data _just for that loop context_.
 
 ::tabs
