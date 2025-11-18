@@ -1,6 +1,6 @@
 import { Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import persist from '@alpinejs/persist'
-import { registerIconSet, Button, Icon } from '@statamic/ui';
+import { StatamicUI, registerIconSet } from '@statamic/ui';
 import './anchors.js';
 import './cookies.js';
 import './color-scheme-preferences.js';
@@ -22,6 +22,8 @@ window.Alpine = Alpine;
 
 import { createApp } from "vue";
 const app = createApp({});
+
+app.use(StatamicUI);
 
 // For every export in `@ui`, register it as a Vue component with a `ui-` prefix.
 for (const [name, component] of Object.entries(await import('@statamic/ui'))) {
