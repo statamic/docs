@@ -646,6 +646,18 @@ public function boot()
 ]
 ```
 
+You can also include your searchable in the `content` or `addons` wildcard searchables, which are used by default for front-end and Control Panel searches.
+
+```php
+// Pass the handle...
+Search::addContentSearchable('product');
+Search::addCpSearchable('order');
+
+// Or the provider class...
+Search::addContentSearchable(ProductsProvider::class);
+Search::addCpSearchable(OrdersProvider::class);
+```
+
 #### Event Listeners
 
 You will want to update the indexes when you create, edit, or delete your searchable items.
