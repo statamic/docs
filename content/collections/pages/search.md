@@ -91,7 +91,7 @@ Your site's default index includes _only_ the title from _all_ collections. The 
 ``` php
 'default' => [
     'driver' => 'local',
-    'searchables' => 'all',
+    'searchables' => 'content',
     'fields' => ['title'],
 ],
 ```
@@ -294,7 +294,7 @@ de:
 'indexes' => [
     'default' => [
         'driver' => 'local',
-        'searchables' => 'all',
+        'searchables' => 'content',
     ]
 ]
 ```
@@ -305,7 +305,7 @@ By default, all entries will go into the `default` index, regardless of what sit
 'indexes' => [
     'default' => [
         'driver' => 'local',
-        'searchables' => 'all',
+        'searchables' => 'content',
         'sites' => ['en', 'fr'], // You can also use "all" [tl! ++ **]
     ]
 ]
@@ -337,7 +337,7 @@ You may provide local driver specific settings in a `settings` array.
 
 ```php
 'driver' => 'local',
-'searchables' => 'all',
+'searchables' => 'content',
 // [tl! **:start]
 'min_characters' => 3,
 'use_stemming' => true,
@@ -381,7 +381,7 @@ Algolia is a full-featured search and navigation cloud service. They offer fast 
 ``` php
 'default' => [
     'driver' => 'algolia',
-    'searchables' => 'all',
+    'searchables' => 'content',
 ],
 ```
 
@@ -403,7 +403,7 @@ You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-refe
 
 ```php
 'driver' => 'algolia',
-'searchables' => 'all',
+'searchables' => 'content',
 'settings' => [ // [tl! **:start]
     'attributesForFaceting' => [
         'filterOnly(post_tags)',
