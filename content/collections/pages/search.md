@@ -434,6 +434,31 @@ You can also add values to the drivers array, which will cascade down to any ind
 Any values you add to an individual index will only be applied there.
 
 
+## Control Panel
+
+Statamic configures a `cp` search index behind the scenes, used by the Command Palette.
+
+By default, it uses the `local` driver and includes content (entries/terms/assets), users, and any addon-provided searchables.
+
+You can override the configuration in your `search.php` config file:
+
+```php
+// config/statamic/search.php
+
+'indexes' => [  
+
+	// ...
+  
+    'cp' => [  
+        'driver' => 'local',  
+        'searchables' => ['content', 'users', 'addons'],  
+        'fields' => ['title'],
+    ],
+    
+],
+```
+
+
 ## Digging deeper
 
 Search is split into a handful of different parts behind the scenes.
