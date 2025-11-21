@@ -570,17 +570,24 @@ class ProductProvider extends Provider
     }
 
     /**
-     * Get a collection of all searchables.
+     * Get all searchables and return a collection of 
+     * their references.
+     * 
+     * e.g. 'entry::123'
      */
     public function provide(): Collection
     {
-        return Product::all();
+        return Product::query()
+            ->pluck('id')
+            ->map(fn ($id) => "product::{$id}");
 
         // If you wanted to allow subsets of products, you could specify them in your
         // config then retrieve them appropriately here using keys.
         // e.g. 'searchables' => ['products:hats', 'products:shoes'],
         // $this->keys would be ['keys', 'hats'].
-        return Product::whereIn('type', $this->keys)->get();
+        return Product::whereIn('type', $this->keys)
+            ->pluck('id')
+            ->map(fn ($id) => "product::{$id}");
     }
 
     /**
@@ -689,7 +696,7 @@ class FastSearchIndex extends Index
     /**
      * Insert items into the index.
      */
-    protected function insertDocuments(Documents $documents)
+    public function insertDocuments(Documents $documents)
     {
         $this->client->insertObjects($documents->all());
     }
