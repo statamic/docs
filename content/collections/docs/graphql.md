@@ -1521,6 +1521,10 @@ EntriesQuery::auth(function () {
 });
 ```
 
+:::warning
+Make sure to [disable caching](#disabling-caching) when using authorization. Otherwise the cached authorized response will be served even to unauthorized clients!
+:::
+
 ## Custom fields
 
 You can add fields to certain types by using the `addField` method on the facade.
