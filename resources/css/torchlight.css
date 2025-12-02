@@ -58,17 +58,6 @@
         }
     }
 
-    .ui-component-example {
-        pre {
-            margin-block-end: 0 !important;
-            margin-block-start: 0 !important;
-        }
-        pre, pre .torchlight {
-            border-top-left-radius: 0 !important;
-            border-top-right-radius: 0 !important;
-        }
-    }
-
     pre code.torchlight .line {
         padding-left: .75rem;
         padding-right: .75rem

@@ -18,9 +18,6 @@ scope;
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import "@statamic/ui/ui.css";
-@source "../../vendor/statamic/cms/packages/ui/src";
-
 @import './base/variables.css';
 @layer elements {
     /* This needs to outside the @scope for Safari */
