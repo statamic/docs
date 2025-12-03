@@ -23,12 +23,13 @@
 */
 @layer components {
     .c-pill-with-description {
-        margin-block-end: var(--spacing-2xl);
+        /* Use padding instead of margin to avoid collapsing with the next element e.g. a heading like on /tags/collection */
+        padding-block-end: var(--spacing-2xl);
         /* e.g. >> /tags/form-create – handle|is|in|form|formset */
         overflow: scroll;
         &:has(+ &) {
             /* Slightly Decrease if it's followed by another .c-pill-with-description */
-            margin-block-end: var(--spacing-xl);
+            padding-block-end: var(--spacing-xl);
         }
         header {
             display: inline-flex;

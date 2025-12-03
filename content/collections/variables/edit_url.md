@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: 'Edit Url'
+description: Get the URL to edit the current page or entry in the Control Panel.
 ---
 Get the URL to edit the current page or entry in the Control Panel, if there is one (for example, there is no `edit_url` for a template route).
 

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - term
 title: Taxonomy
+description: Get the name of the taxonomy the term belongs to.
 ---
 Get the name of the taxonomy the term belongs to.
 

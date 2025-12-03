@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: Collection
+description: Get the name of the collection the entry belongs to.
 ---
 Get the name of the collection the entry belongs to.
 

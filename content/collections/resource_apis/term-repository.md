@@ -18,14 +18,16 @@ use Statamic\Facades\Term;
 
 ## Methods
 
-| Methods | Description |
-| ------- | ----------- |
-| `all()` | Get all Terms |
-| `find($id)` | Get Term by `id` |
-| `findByUri($uri)` | Get Term by `uri` |
-| `findOrFail($id)` | Get Term by `id`. Throws a `TermNotFoundException` when the term cannot be found. |
-| `query()` | Query Builder |
-| `make()` | Makes a new `Term` instance |
+| Methods                  | Description                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| `all()`                  | Get all Terms                                                                     |
+| `find($id)`              | Get Term by `id`                                                                  |
+| `findByUri($uri)`        | Get Term by `uri`                                                                 |
+| `findOrFail($id)`        | Get Term by `id`. Throws a `TermNotFoundException` when the term cannot be found. |
+| `findOrMake($id)`        | Get Term by `id` or make a new term.                                              |
+| `findOr($id, $callback)` | Get Term by `id` or execute callback.                                             |
+| `query()`                | Query Builder                                                                     |
+| `make()`                 | Makes a new `Term` instance                                                       |
 
 ## Querying
 

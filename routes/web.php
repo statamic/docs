@@ -21,4 +21,8 @@ Route::get('/from/{id?}', function ($id = null) {
     return redirect()->to($entry->url());
 });
 
+Route::get('ui-components/{component}', function ($component) {
+    return redirect()->to('https://ui.statamic.dev/?path=/docs/components-'.$component);
+})->where('component', '(?!all-ui-components).*');
+
 require __DIR__.'/redirects.php';

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: 'Size Bytes'
+description: The file size of the asset in bytes. Also available as `size_b`.
 ---
 The file size of the asset, in bytes. Also available as `size_b`.
 

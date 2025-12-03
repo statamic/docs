@@ -40,6 +40,8 @@ resources/
     common.yaml
 ```
 
+You can even nest fieldsets in subdirectories to further organize them. Use `.` in the handle to indicate a subdirectory.
+
 ## YAML structure
 
 At its most basic, a fieldset has an array of fields.

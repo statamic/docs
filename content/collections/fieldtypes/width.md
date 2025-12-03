@@ -2,7 +2,8 @@
 id: b8b51bb8-a4bd-4aec-90bd-4f150a29c8a0
 blueprint: fieldtype
 title: Width
-screenshot: fieldtypes/screenshots/width.png
+screenshot: fieldtypes/screenshots/v6/width.webp
+screenshot_dark: fieldtypes/screenshots/v6/width-dark.webp
 intro: 'A slick way to select a width in your blueprints. Although you could use it for anything you want as it stores the value in your markdown as an integer. Neat!'
 width_field: 50
 options:

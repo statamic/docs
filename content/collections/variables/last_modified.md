@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: 'Last Modified'
+description: The last modified time for the content file or asset.
 ---
 The last modified time for the content file, or the asset.
 

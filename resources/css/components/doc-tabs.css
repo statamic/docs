@@ -111,4 +111,25 @@
             border-top-left-radius: 0;
         }
     }
+
+    /* Handle tabs with multiple blocks, such as /tags/yield > The Template followed by The Layout */
+    .c-doc-tabs {
+        .tab-content:has(pre + pre) {
+            /* Only when there are multiple pre tags. In this instance it's better to have a solid background because you can't really see the subtle gradient */
+            background: var(--color-yellow-light-2);
+        }
+        pre:has(+ pre) {
+            &, code {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            /* In case there's more than one */
+            + * {
+                &, code {
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+        }
+    }
 }

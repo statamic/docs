@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Live Preview'
+description: A boolean indicating whether the current page is being viewed in Live Preview.
 related_entries:
   - cdffd2c9-cf42-495d-a8f1-f416ddfddc29
 ---

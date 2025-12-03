@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: Datestring
+description: Get the pre-formatted date of the entry as a string.
 ---
 Get the pre-formatted date of the entry as a string.
 

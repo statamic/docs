@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'CSRF Token'
+description: Output the CSRF token from the session.
 ---
 Output the CSRF token from the session.
 

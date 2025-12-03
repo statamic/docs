@@ -389,7 +389,6 @@ You may use Glide's [watermarking feature](https://glide.thephpleague.com/3.0/ap
 You don't need to worry about setting up a watermark filesystem yourself. Statamic will take care of that automatically based on the source you provide.
 :::
 
-
 ## Usage in Blade
 
 To use the Glide tag within Blade, you can also use the `generate` tag, which follows the same rules as the [tag pair](#tag-pair).
@@ -411,8 +410,9 @@ Focal point cropping helps ensure the important bits of an image stay in the bou
 You can set focal points and zoom-levels for your images in the control panel using the asset editor. Use `fit="crop_focal"` while cropping to use an asset's saved focal point, if it has one.
 
 <figure>
-  <img src="/img/focal-point-picker.jpg" alt="The Focal Point Picker">
-  <figcaption>The focal point picker. Make sure to keep that hair in the shot!</figcaption>
+  <img src="/img/focal-point-picker-v6.webp" alt="The Focal Point Picker" class="u-hide-in-dark-mode">
+  <img src="/img/focal-point-picker-v6-dark.webp" alt="The Focal Point Picker" class="u-hide-in-light-mode">
+  <figcaption>The focal point picker. Make sure to keep those eyes in the shot! They're delightfully menacing.</figcaption>
 </figure>
 
 ### Manually setting focal points
@@ -424,7 +424,6 @@ For example, `fit="crop-75-50"` would crop the image and make sure that the poin
 If an asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
-
 
 ``` php
 // config/statamic/assets.php

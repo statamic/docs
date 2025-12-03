@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Segment X'
+description: Get a specific URL segment by number (e.g., `segment_3` returns the third segment).
 ---
 Given "x", any segment number, will return the value of that particular URL segment if it's present.
 

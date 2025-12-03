@@ -18,17 +18,19 @@ use Statamic\Facades\Entry;
 
 ## Methods
 
-| Methods | Description |
-| ------- | ----------- |
-| `all()` | Get all Entries |
-| `find($id)` | Get Entry by `id` |
-| `findByUri($uri, $site)` | Get Entry by `uri`, optionally in a site |
-| `findOrFail($id)` | Get Entry by `id`. Throws an `EntryNotFoundException` when the entry cannot be found. |
-| `query()` | Query Builder |
-| `whereCollection($handle)` | Get all Entries in a `Collection` |
-| `whereInCollection([$handles])` | Get all Entries in an array of `Collections` |
-| `whereInId([$ids])` | Get all entries in array of IDs. Entries returned in the same order as `$ids` |
-| `make()` | Makes a new entry instance |
+| Methods                         | Description                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------- |
+| `all()`                         | Get all Entries                                                                       |
+| `find($id)`                     | Get Entry by `id`                                                                     |
+| `findByUri($uri, $site)`        | Get Entry by `uri`, optionally in a site                                              |
+| `findOrFail($id)`               | Get Entry by `id`. Throws an `EntryNotFoundException` when the entry cannot be found. |
+| `findOrMake($id)`               | Get Entry by `id` or make a new entry.                                                |
+| `findOr($id, $callback)`        | Get Entry by `id` or execute callback.                                                |
+| `query()`                       | Query Builder                                                                         |
+| `whereCollection($handle)`      | Get all Entries in a `Collection`                                                     |
+| `whereInCollection([$handles])` | Get all Entries in an array of `Collections`                                          |
+| `whereInId([$ids])`             | Get all entries in array of IDs. Entries returned in the same order as `$ids`         |
+| `make()`                        | Makes a new entry instance                                                            |
 
 ## Querying
 

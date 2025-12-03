@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Current Url'
+description: The current URL.
 ---
 The current URL.
 

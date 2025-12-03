@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: Url
+description: Get the relative URL to the content (does not include the site URL).
 ---
 Get the URL to the content. This is relative and will _not_ include your site URL.
 

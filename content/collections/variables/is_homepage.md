@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Is Homepage
+description: A boolean indicating whether you're on the homepage.
 ---
 Whether you're on the homepage.
 

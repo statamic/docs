@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: 'Has Timestamp'
+description: A boolean indicating whether an entry is time-based.
 ---
 A boolean for whether or not an entry is time-based.
 

@@ -22,10 +22,14 @@
     .c-back-nav {
         display: inline-block;
         background: var(--color-pink-light-3);
+        @container style(--color-scheme: dark) {
+            /* Make it a bit more obvious */
+            background: var(--color-red-burnt-4);
+        }
         padding: var(--spacing-3xs) var(--spacing-xs);
         margin-block-end: var(--spacing-sm);
         border-radius: 50px;
-    
+
         &a {
             font-weight: var(--font-family-main-weight-normal);
         }

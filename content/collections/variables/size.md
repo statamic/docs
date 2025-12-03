@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Size
+description: The file size of the asset in a human-readable format.
 ---
 The file size of the asset, in an appropriate human-readable format.
 

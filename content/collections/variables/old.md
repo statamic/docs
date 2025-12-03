@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Old
+description: An array of sanitized variables POSTed from the previous request, useful for form validation errors.
 ---
 An array of sanitized variables POSTed from the previous request.
 

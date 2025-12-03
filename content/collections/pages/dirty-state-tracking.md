@@ -5,9 +5,8 @@ intro: |
   Prevent users from accidentally leaving the page and losing their work.
 ---
 Accidentally navigating away from a page while you're in the middle of filling out a form could cause you to lose your progress and be really frustrating.
-Statamic will pop up a warning if you're in the middle of something and about to leave, to give you a chance to change your mind. You can tap into this feature, too.
 
-The component can track the dirty state from multiple places, and will only be considered clean once all of them are clean.
+Statamic will pop up a warning if you're in the middle of something and about to leave, to give you a chance to change your mind. You can tap into this feature, too. The component can track the dirty state from multiple places, and will only be considered clean once all of them are clean.
 
 ``` js
 this.$dirty.add(name); // Mark a thing as dirty

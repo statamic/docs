@@ -5,6 +5,7 @@ types:
   - system
   - content
 title: Current Layout
+description: The name of the layout currently in use.
 ---
 The name of the layout currently in use.
 

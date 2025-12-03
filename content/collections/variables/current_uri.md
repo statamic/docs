@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Current Uri'
+description: The current URI (URL without domain).
 ---
 The current URI (URL without domain).
 

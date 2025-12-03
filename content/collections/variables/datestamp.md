@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: Datestamp
+description: Get the timestamp of the entry as an integer. Alias of `timestamp`.
 ---
 Get the timestamp of the entry. This will be an integer.
 

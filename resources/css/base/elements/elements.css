@@ -367,6 +367,10 @@
         &h4 {
             /* e.g. >> /frontend/augmentation */
             padding-block: var(--spacing-md) var(--spacing-sm);
+            /* e.g. /vue-components/publish-components */
+            h3 + & {
+                padding-block-start: 0;
+            }
             &:has(code) {
                 /* e.g. >> /forms */
                 padding-block-start: var(--spacing-lg);

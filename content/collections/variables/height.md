@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Height
+description: The height of an image asset, in pixels.
 ---
 The height of an image asset, in pixels.
 

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Site
+description: The current site being targeted in the request, available as a single tag or tag pair.
 ---
 The current site being targeted in the request.
 

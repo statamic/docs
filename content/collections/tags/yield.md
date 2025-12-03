@@ -10,8 +10,8 @@ Most commonly this section/yield approach is used to create a global area in you
 
 **Cheatsheet:**
 
-- <span class="text-red font-bold">No thank you:</span> `{{ if template == "news" }} hardcode something {{ /if }}`
-- <span class="text-green font-bold">Yes please:</span> `{{ yield:something }}` + `{{ section:something }}`
+- <span class="text-red-600 font-bold">No thank you:</span> `{{ if template == "news" }} hardcode something {{ /if }}`
+- <span class="text-green-700 font-bold">Yes please:</span> `{{ yield:something }}` + `{{ section:something }}`
 
 ## Example
 

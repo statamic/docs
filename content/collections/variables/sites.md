@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Sites
+description: A collection containing all configured sites as Site objects that can be looped over.
 ---
 A collection containing all the configured sites as `Statamic\Sites\Site` objects which you can loop over using a tag pair.
 

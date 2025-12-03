@@ -2,7 +2,8 @@
 title: Time
 description: A timepicker. It lets you pick a time.
 intro: The original time field from the set of Kiefer Sutherland's hit drama "24". It's a simple timepicker that operates in 24-hour mode and supports keyboard `up` and `down` controls.
-screenshot: fieldtypes/screenshots/time.gif
+screenshot: fieldtypes/screenshots/v6/time.webp
+screenshot_dark: fieldtypes/screenshots/v6/time-dark.webp
 id: ccfbaf71-7823-4f71-a375-e874035f80ca
 ---
 

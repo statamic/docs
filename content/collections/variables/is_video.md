@@ -2,6 +2,8 @@
 types:
   - asset
 id: 89e75dec-7f33-4217-b040-2c2a18de5d83
+title: 'Is Video'
+description: A boolean indicating whether the asset is a video.
 ---
 A boolean for whether the asset is an video.
 

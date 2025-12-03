@@ -2,7 +2,8 @@
 id: 42baf054-f3d5-4317-b7dd-466882c47c06
 blueprint: fieldtype
 title: 'User Roles'
-screenshot: fieldtypes/screenshots/user-roles.png
+screenshot: fieldtypes/screenshots/v6/user-roles.webp
+screenshot_dark: fieldtypes/screenshots/v6/user-roles-dark.webp
 description: 'Create a relationship with a User Role'
 overview: |
   Use this fieldtype to create a relationship with [User Roles](/users#user-roles).

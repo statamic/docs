@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Width
+description: The width of an image asset, in pixels.
 ---
 The width of an image asset, in pixels.
 

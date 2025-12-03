@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: 'Is Image'
+description: A boolean indicating whether the asset is an image.
 ---
 A boolean for whether the asset is an image.
 

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Filename
+description: The filename of the asset, without the extension.
 ---
 The filename of the asset, without the extension.
 

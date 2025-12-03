@@ -4,5 +4,6 @@ blueprint: variables
 types:
   - asset
 title: 'Is Asset'
+description: A boolean indicating whether the current content is an asset.
 ---
 A boolean for whether the current content is an asset. Naturally, this will be `true` for assets.

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Logged In'
+description: A boolean indicating whether the visitor is logged in.
 ---
 Whether the visitor is logged in.
 

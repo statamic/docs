@@ -67,6 +67,11 @@ options:
     description: |
       Switch the field to inline mode. Block elements such as sets, headings and images are not supported in inline mode and should not be enabled.
   -
+    name: inline_hard_breaks
+    type: boolean
+    description: |
+      Enable support for hard breaks in inline mode. Only works when `inline` is set to `true`. Default: `false`.
+  -
     name: toolbar_mode
     type: string
     description: >

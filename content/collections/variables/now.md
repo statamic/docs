@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Now
+description: The current date/time, formatted according to your display timezone and default time format.
 ---
 
 The current date/time. If you use it on its own, it will be converted to your [`display_timezone`](/tips/timezones) and formatted using the default time format.

@@ -91,7 +91,7 @@ Your site's default index includes _only_ the title from _all_ collections. The 
 ``` php
 'default' => [
     'driver' => 'local',
-    'searchables' => 'all',
+    'searchables' => 'content',
     'fields' => ['title'],
 ],
 ```
@@ -294,7 +294,7 @@ de:
 'indexes' => [
     'default' => [
         'driver' => 'local',
-        'searchables' => 'all',
+        'searchables' => 'content',
     ]
 ]
 ```
@@ -305,7 +305,7 @@ By default, all entries will go into the `default` index, regardless of what sit
 'indexes' => [
     'default' => [
         'driver' => 'local',
-        'searchables' => 'all',
+        'searchables' => 'content',
         'sites' => ['en', 'fr'], // You can also use "all" [tl! ++ **]
     ]
 ]
@@ -337,7 +337,7 @@ You may provide local driver specific settings in a `settings` array.
 
 ```php
 'driver' => 'local',
-'searchables' => 'all',
+'searchables' => 'content',
 // [tl! **:start]
 'min_characters' => 3,
 'use_stemming' => true,
@@ -381,7 +381,7 @@ Algolia is a full-featured search and navigation cloud service. They offer fast 
 ``` php
 'default' => [
     'driver' => 'algolia',
-    'searchables' => 'all',
+    'searchables' => 'content',
 ],
 ```
 
@@ -403,7 +403,7 @@ You may provide Algolia-specific [settings](https://www.algolia.com/doc/api-refe
 
 ```php
 'driver' => 'algolia',
-'searchables' => 'all',
+'searchables' => 'content',
 'settings' => [ // [tl! **:start]
     'attributesForFaceting' => [
         'filterOnly(post_tags)',
@@ -432,6 +432,31 @@ You can add values into the defaults array, which will cascade down to all the i
 You can also add values to the drivers array, which will cascade down to any indexes using that respective driver. A good use case for this is to share API credentials across indexes.
 
 Any values you add to an individual index will only be applied there.
+
+
+## Control Panel
+
+Statamic configures a `cp` search index behind the scenes, used by the Command Palette.
+
+By default, it uses the `local` driver and includes content (entries/terms/assets), users, and any addon-provided searchables.
+
+You can override the configuration in your `search.php` config file:
+
+```php
+// config/statamic/search.php
+
+'indexes' => [  
+
+	// ...
+  
+    'cp' => [  
+        'driver' => 'local',  
+        'searchables' => ['content', 'users', 'addons'],  
+        'fields' => ['title'],
+    ],
+    
+],
+```
 
 
 ## Digging deeper
@@ -626,6 +651,18 @@ public function boot()
         'fields' => ['title']
     ]
 ]
+```
+
+You can also include your searchable in the `content` or `addons` wildcard searchables, which are used by default for front-end and Control Panel searches.
+
+```php
+// Pass the handle...
+Search::addContentSearchable('product');
+Search::addCpSearchable('order');
+
+// Or the provider class...
+Search::addContentSearchable(ProductsProvider::class);
+Search::addCpSearchable(OrdersProvider::class);
 ```
 
 #### Event Listeners

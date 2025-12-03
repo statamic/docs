@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: Published
+description: A boolean indicating whether the content is published (not a draft).
 ---
 A boolean that specifies whether the content is published. Or "live", or "not a draft".
 

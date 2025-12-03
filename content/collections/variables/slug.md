@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: Slug
+description: The string that identifies your content, usually appearing at the end of the URL.
 ---
 A slug is the string that identifies your content. It usually sits at the end of the URL.
 

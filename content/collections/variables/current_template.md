@@ -5,6 +5,7 @@ types:
   - system
   - content
 title: Current Template
+description: The name of the template currently in use.
 ---
 The name of the template currently in use.
 

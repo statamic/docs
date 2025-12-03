@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Path
+description: The path to the file, relative to the asset container.
 ---
 The path to the file, relative to the asset container.
 

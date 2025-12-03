@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Post
+description: An array of sanitized POST variables from form data submitted to the current URL.
 ---
 An array of sanitized `POST` variables that come from any form data present for a POST to the current URL. It can be used as a tag pair with access to all your data or as a single tag to access variables directly. A counterpart to `{{ get }}`.
 

@@ -30,7 +30,9 @@ config/statamic/
     stache.php
     static_caching.php
     system.php
+    templates.php
     users.php
+    webauthn.php
 ```
 
 ## Environment variables
