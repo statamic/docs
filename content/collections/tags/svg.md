@@ -78,7 +78,7 @@ To make dev life easier, this tag collapses whitespace automatically and can set
 
 All SVGs are sanitized on upload into the control panel _and_ on output for to pretect your site from malicious code or other forms of potential compromise. You can [learn more about what's possible](https://www.cloudflare.com/threat-intelligence/research/report/svgs-the-hackers-canvas/) for hackers to attempt with SVGs.
 
-However, this sanitization may prove to be more aggressive than is beneficial for you. If you are complete control of your uploads and trust your control panel users, you can disable sanitzation on upload in your assets config file like this:
+However, this sanitization may prove to be more aggressive than is beneficial for you. If you are in complete control of your uploads and trust your control panel users, you can disable sanitzation on upload in your assets config file like this:
 
 ``` php
 // config/statamic/assets.php
