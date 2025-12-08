@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
+use App\Search\Storybook\StorybookSearchProvider;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -55,5 +56,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
+
+        StorybookSearchProvider::register();
     }
 }
