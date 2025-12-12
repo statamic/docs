@@ -181,11 +181,11 @@ We can also pass dynamic values to parameters:
 Partials also work with Antlers Blade components, and are intended to be used when you'd like to include an Antlers partial inside your Blade template:
 
 ```blade
-<s:partial/the-partial-name>
+<s:partial:the-partial-name>
   <s:slot:header>The header content.</s:slot:header>
 
   Default slot content.
-</s:partial/the-partial-name>
+</s:partial:the-partial-name>
 ```
 
 :::tip
