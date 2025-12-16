@@ -34,7 +34,7 @@ Route::permanentRedirect('extending/relationship-fieldtypes', '/fieldtypes/relat
 Route::permanentRedirect('extending/repositories', '/backend-apis/repositories');
 Route::permanentRedirect('extending/search', '/frontend/search#digging-deeper');
 Route::permanentRedirect('extending/slugs', '/vue-components/slugs');
-Route::permanentRedirect('extending/stacks', '/vue-components/stacks');
+Route::permanentRedirect('extending/stacks', 'https://ui.statamic.dev/?path=/docs/components-stack--docs');
 Route::permanentRedirect('extending/tags', '/tags/building-a-tag');
 Route::permanentRedirect('extending/testing-in-addons', '/addons/testing');
 Route::permanentRedirect('extending/toast-notifications', '/control-panel/toast-notifications');
