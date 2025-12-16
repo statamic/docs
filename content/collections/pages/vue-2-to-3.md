@@ -578,7 +578,7 @@ import { Input, Textarea, Combobox, Switch } from '@statamic/cms/ui'; // [tl! ++
 
 ## Modals and Stacks
 
-Previously, you had to use `v-if` to control the "open state" of Modals and Stacks. You should now `v-model` the open state instead:
+Previously, you had to use `v-if` to control the "open state" of Modals and Stacks. You should now use `v-model` to control the open state instead:
 
 ```vue
 <!-- Using v-model -->
