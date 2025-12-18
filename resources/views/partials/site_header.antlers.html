@@ -72,7 +72,7 @@
                 >
                     {{ config:docs:versions }}
                         <option value="{{ version }}" data-url="{{ url }}">
-                            v&hairsp;{{ branch }}{{ if alpha }}-alpha{{ /if }}
+                            v&hairsp;{{ branch }}{{ if alpha }}-alpha{{ /if }}{{ if beta }}-beta{{ /if }}
                         </option>
                     {{ /config:docs:versions }}
                 </select>
