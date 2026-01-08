@@ -1,13 +1,11 @@
 ---
-title: Modals
+title: Confirmation Modals
 id: 88bf3f66-4b80-42c9-8b65-bef712b8f413
 ---
 
-You can learn more about our `<Modal>` component on the [UI Component docs](https://ui.statamic.dev/?path=/docs/components-modal--docs).
+Statamic ships with a [`<Modal>` UI component](https://ui.statamic.dev/?path=/docs/components-modal--docs) you can use to build custom modals. 
 
-## Confirmation Modals
-
-There is a prebuilt modal component available to you if you don't need something completely custom. You should use `v-if` to make it appear.
+However, if all you need is a confirmation prompt, you can use the `ConfirmationModal` component instead. You should use `v-if` to make it appear.
 
 ``` html
 <confirmation-modal
@@ -18,7 +16,7 @@ There is a prebuilt modal component available to you if you don't need something
 />
 ```
 
-### Props
+## Props
 
 | Prop | Description |
 |------|-------------|
@@ -27,14 +25,14 @@ There is a prebuilt modal component available to you if you don't need something
 | `buttonText` | Text for the confirmation button label. Defaults to `Confirm`. |
 | `danger` | Boolean for making the modal red. Useful for when you're doing something scary like deletions. |
 
-### Events
+## Events
 
 | Event | Description |
 |-------|-------------|
 | `confirm` | When the user clicks the confirm button. |
 | `cancel` | When the user clicks the cancel button. |
 
-### Slots
+## Slots
 
 The default slot replaces the `bodyText` prop. Useful when you need something more complicated than a single paragraph.
 

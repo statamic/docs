@@ -23,7 +23,7 @@ Route::permanentRedirect('extending/js-hooks', '/vue-components/js-hooks');
 Route::permanentRedirect('extending/keyboard-shortcuts', '/control-panel/keyboard-shortcuts');
 Route::permanentRedirect('extending/lifecycle', '/advanced-topics/lifecycle');
 Route::permanentRedirect('extending/markdown', '/frontend/markdown');
-Route::permanentRedirect('extending/modals', '/vue-components/modals');
+Route::permanentRedirect('extending/modals', '/vue-components/confirmation-modals');
 Route::permanentRedirect('extending/modifiers', '/modifiers/modifiers');
 Route::permanentRedirect('extending/permissions', '/control-panel/permissions');
 Route::permanentRedirect('extending/progress', '/vue-components/progress');
