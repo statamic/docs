@@ -23,7 +23,7 @@ Route::permanentRedirect('extending/js-hooks', '/vue-components/js-hooks');
 Route::permanentRedirect('extending/keyboard-shortcuts', '/control-panel/keyboard-shortcuts');
 Route::permanentRedirect('extending/lifecycle', '/advanced-topics/lifecycle');
 Route::permanentRedirect('extending/markdown', '/frontend/markdown');
-Route::permanentRedirect('extending/modals', '/vue-components/confirmation-modals');
+Route::permanentRedirect('extending/modals', 'https://ui.statamic.dev/?path=/docs/overlays-modal--docs');
 Route::permanentRedirect('extending/modifiers', '/modifiers/modifiers');
 Route::permanentRedirect('extending/permissions', '/control-panel/permissions');
 Route::permanentRedirect('extending/progress', '/vue-components/progress');
@@ -34,7 +34,7 @@ Route::permanentRedirect('extending/relationship-fieldtypes', '/fieldtypes/relat
 Route::permanentRedirect('extending/repositories', '/backend-apis/repositories');
 Route::permanentRedirect('extending/search', '/frontend/search#digging-deeper');
 Route::permanentRedirect('extending/slugs', '/vue-components/slugs');
-Route::permanentRedirect('extending/stacks', 'https://ui.statamic.dev/?path=/docs/components-stack--docs');
+Route::permanentRedirect('extending/stacks', 'https://ui.statamic.dev/?path=/docs/overlays-stack--docs');
 Route::permanentRedirect('extending/tags', '/tags/building-a-tag');
 Route::permanentRedirect('extending/testing-in-addons', '/addons/testing');
 Route::permanentRedirect('extending/toast-notifications', '/control-panel/toast-notifications');

@@ -3,7 +3,7 @@ title: Confirmation Modals
 id: 88bf3f66-4b80-42c9-8b65-bef712b8f413
 ---
 
-Statamic ships with a [`<Modal>` UI component](https://ui.statamic.dev/?path=/docs/components-modal--docs) you can use to build custom modals. 
+Statamic ships with a [`<Modal>` UI component](https://ui.statamic.dev/?path=/docs/overlays-modal--docs) you can use to build custom modals. 
 
 However, if all you need is a confirmation prompt, you can use the `ConfirmationModal` component instead. You should use `v-if` to make it appear.
 
