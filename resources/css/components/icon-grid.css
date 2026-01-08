@@ -104,6 +104,10 @@
         background: var(--color-gradient-full-light-2);
         border: var(--border-dashed-red);
         border-radius: var(--border-radius-xl);
+        @supports (corner-shape: squircle) {
+            border-radius: 35px;
+            corner-shape: squircle;
+        }
     }
 }
 @layer utilities {

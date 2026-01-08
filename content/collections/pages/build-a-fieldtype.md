@@ -253,6 +253,17 @@ Text::appendConfigFields([
 ]);
 ```
 
+You can also append a config field to _all_ fieldtypes via the `Fieldtype` class:
+
+```php
+use Statamic\Fields\Fieldtype;
+
+Fieldtype::appendConfigField('group', [
+    'type' => 'text',
+    'display' => 'A new group',
+]);
+```
+
 ## Processing
 
 You may need to modify the data going to and from the browser.

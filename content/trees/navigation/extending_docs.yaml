@@ -114,9 +114,6 @@ tree:
         id: 912c7cdd-8c3f-4824-8af5-95ad81f45fb5
         entry: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
       -
-        id: 68f1a25e-f039-409a-840e-52e39b232cd1
-        entry: e2577828-504b-490b-a8b6-10991ae8a0b6
-      -
         id: 37a82f80-92ad-11ed-b05e-0800200c9a66
         url: '/preferences#using-javascript'
         title: Preferences

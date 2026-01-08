@@ -90,6 +90,10 @@
         background: var(--color-gradient-full-light-6);
         border: var(--dark-mode-border);
         border-radius: var(--border-radius-xl);
+        @supports (corner-shape: squircle) {
+            border-radius: 35px;
+            corner-shape: squircle;
+        }
 
         img {
             display: inline-block;

@@ -114,6 +114,60 @@ Bard also has the ability to manage "sets" of fields inline with your text. Thes
 
 You can use any fieldtypes inside your Bard sets. Make sure to compare the experience with the other meta-fields: [Grid](/fieldtypes/grid) and [Replicator](/fieldtypes/replicator). You can even use Grids and Replicators inside your Bard sets. Just remember that because you can doesn't mean you should. Your UI experience can vary greatly.
 
+### Set Previews
+
+New to Statamic v6, you can add an image preview of your set, _as well as_ an icon. Previews make it easy to identify sets by showing a screenshot of what the rendered set might look like on the front-end. Clients can now say “ah, that one” without pretending to know the names you carefully gave them.
+
+#### Configuring Set Previews
+
+To add a set preview, click the little "pencil" icon next to the set name.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-edit-preview.webp" alt="Bard Set Edit Preview" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-edit-preview-dark.webp" alt="Bard Set Edit Preview" class="u-hide-in-light-mode">
+    <figcaption>Let's give the set a preview.</figcaption>
+</figure>
+
+Once you're in the set editor, you can add a preview image and icon. Here we're showing a lovely screenshot of what the newsletter signup form might look like on the front-end. We can even add some instructions to explain how the set is used.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-previews.webp" alt="Bard Set Previews" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-previews-dark.webp" alt="Bard Set Previews" class="u-hide-in-light-mode">
+    <figcaption>Behold a <em>Preview Image</em>, for the love of all clients.</figcaption>
+</figure>
+
+#### Set Previews in Action
+
+Once you've set a preview image, users adding a bard set can hover over the set to preview what it might look like on the frontend.
+
+You can view previews in two different UI modes: in a list of set names, or in a grid of sets with their preview images.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-list.webp" alt="Bard Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-list-dark.webp" alt="Bard Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a list of sets.</figcaption>
+</figure>
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-grid.webp" alt="Bard Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-grid-dark.webp" alt="Bard Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a grid of sets. Previews fall back to the set icon if no preview image is set.</figcaption>
+</figure>
+
+### Custom Set Icons
+
+You can change the icons available in the set picker by configuring an icon set in a service provider.
+
+For example, you can drop this into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Fieldtypes\Sets;
+
+public function boot()
+{
+    Sets::useIcons('heroicons', resource_path('svg/heroicons'));
+}
+```
 
 ## Data Structure
 
@@ -254,18 +308,3 @@ Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [Prose
 
 
 [prosemirror]: https://prosemirror.net/
-
-## Custom set icons
-
-You can change the icons available in the set picker by configuring an icon set in a service provider.
-
-For example, you can drop this into your `AppServiceProvider`'s `boot` method:
-
-```php
-use Statamic\Fieldtypes\Sets;
-
-public function boot()
-{
-    Sets::useIcons('heroicons', resource_path('svg/heroicons'));
-}
-```

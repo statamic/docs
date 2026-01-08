@@ -5,27 +5,31 @@ intro: |
 id: 28068f9a-f269-4646-87e4-881e5477558d
 ---
 You can control the progress bar at the top of the page through the `$progress` instance method.
-This progress bar will get a little further in small intervals automatically but will never reach 100% until
-it's told to.
+
+This progress bar will get a little further in small intervals automatically but will never reach 100% until it's told to.
 
 The component can track the progress from multiple places, and will only be considered complete once all of them are complete.
 
 ``` js
-this.$progress.start($name); // Starts the progress bar
-this.$progress.complete($name); // Instantly progress to 100% and disappear
+import { progress } from '@statamic/cms/api';
 
-this.$progress.loading($name, true); // Alias of .start() - Useful for passing a boolean
-this.$progress.loading($name, false); // Alias of complete()
+progress.start($name); // Starts the progress bar
+progress.complete($name); // Instantly progress to 100% and disappear
 
-this.$progress.names(); // The names of the items that are being tracked.
-this.$progress.count(); // How many are being tracked.
-this.$progress.isComplete(); // Whether all the items that were being tracked have completed.
+progress.loading($name, true); // Alias of .start() - Useful for passing a boolean
+progress.loading($name, false); // Alias of complete()
+
+progress.names(); // The names of the items that are being tracked.
+progress.count(); // How many are being tracked.
+progress.isComplete(); // Whether all the items that were being tracked have completed.
 ```
 
 :::tip
-If you have a component that may appear multiple times on one page (like a Fieldtype), make sure the name is unique. All Vue components already have a unique `_uid` property that can be used for this purpose.
+If you have a component that may appear multiple times on one page (like a Fieldtype), make sure the name is unique. You could use the browser's crypto API for this:
 
 ``` js
-this.$progress.start('things' + this._uid);
+const uniqueId = crypto.randomUUID();
+
+progress.start(`things-${uniqueId}`);
 ```
 :::

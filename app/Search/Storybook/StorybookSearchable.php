@@ -18,7 +18,7 @@ class StorybookSearchable implements SearchableContract
         $instance = new static();
 
         $instance->id = $component['id'];
-        $instance->title = Str::after($component['title'], 'Components/');
+        $instance->title = Str::after($component['title'], '/');
 
         return $instance;
     }

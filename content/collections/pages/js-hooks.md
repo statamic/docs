@@ -77,32 +77,63 @@ Statamic.$hooks.on('example', (resolve, reject) => {
 
 ## Available hooks
 
-### entry.saving
+### `entry.saving`
 
 Triggered when you click save on the publish form.
-You can use `reject()` to prevent the request. Payload contains collection name, form values, and a reference to the publish container component.
 
-### entry.saved
+You can use `reject()` to prevent the request. Payload contains the collection handle, entry reference and form values.
+
+### `entry.saved`
 
 Triggered when you click save, but after the request has finished.
-Payload contains collection name, and the Axios response.
 
-### entry.publishing
+Payload contains the collection handle, entry reference and the Axios response.
+
+### `entry.publishing`
 
 Triggered when revisions are enabled, and you click publish in the publish action stack.
-You can use `reject()` to stop the request. Payload contains collection name and revision message.
 
-### entry.published
+You can use `reject()` to stop the request. Payload contains the collection handle and revision message.
+
+### `entry.published`
 
 Triggered when revisions are enabled, but after the request has finished.
+
 Payload contains collection name, revision message, and the Axios response.
 
-### global-set.saving
+### `global-set.saving`
 
 Triggered when you click save on the publish form.
-You can use `reject()` to prevent the request. Payload contains global set name, form values, and a reference to the publish container component.
 
-### global-set.saved
+You can use `reject()` to prevent the request. Payload contains the global set handle and form values.
+
+### `global-set.saved`
 
 Triggered when you click save, but after the request has finished.
-Payload contains global set name, and the Axios response.
+
+Payload contains the global set handle and the Axios response.
+
+### `term.saving`
+
+Triggered when you click save on the publish form.
+
+You can use `reject()` to prevent the request. Payload contains the taxonomy handle, term reference and form values.
+
+### `term.saved`
+
+Triggered when you click save, but after the request has finished.
+
+Payload contains the taxonomy handle, term reference, and the Axios response.
+
+### `user.saving`
+
+Triggered when you click save on the publish form.
+
+You can use `reject()` to prevent the request. Payload contains the user reference and form values.
+
+### `user.saved`
+
+Triggered when you click save, but after the request has finished.
+
+Payload contains the user reference and the Axios response.
+

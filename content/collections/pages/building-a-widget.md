@@ -40,7 +40,7 @@ class LocalWeather extends Widget
 <script setup>
 import { Widget } from '@statamic/cms/ui';
 
-efineProps(['message']);
+defineProps(['message']);
 </script>
 
 <template>

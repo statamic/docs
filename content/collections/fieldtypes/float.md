@@ -2,8 +2,8 @@
 title: Float
 description: 'For when all you want is decimal numbers.'
 intro: 'The float fieldtype is a text-style input that only accepts floats (numbers) and has increment and decrement controls.'
-# screenshot: fieldtypes/screenshots/v6/float.webp
-# screenshot_dark: fieldtypes/screenshots/v6/float-dark.webp
+screenshot: fieldtypes/screenshots/v6/float.webp
+screenshot_dark: fieldtypes/screenshots/v6/float-dark.webp
 id: 3dcf9495-9a02-4044-b6bb-428b7ff23807
 options:
   -

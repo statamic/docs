@@ -22,46 +22,6 @@ options:
     description: Allows you to define a label for the "Add Set" button.
 id: 00b140e3-413a-4d91-b9e7-65f58d56a41b
 ---
-## Set Previews
-
-New to Statamic v6, you can add an image preview of your set, _as well as_ an icon. Previews make it easy to identify sets by showing a screenshot of what the rendered set might look like on the front-end. Clients can now say “ah, that one” without pretending to know the names you carefully gave them.
-
-### Configuring Set Previews
-
-To add a set preview, click the little "pencil" icon next to the set name.
-
-<figure>
-    <img src="/img/fieldtypes/screenshots/v6/replicator-set-edit-preview.webp" alt="Replicator Set Edit Preview" class="u-hide-in-dark-mode">
-    <img src="/img/fieldtypes/screenshots/v6/replicator-set-edit-preview-dark.webp" alt="Replicator Set Edit Preview" class="u-hide-in-light-mode">
-    <figcaption>Let's give the set a preview.</figcaption>
-</figure>
-
-Once you're in the set editor, you can add a preview image and icon. Here we're showing a lovely screenshot of what the newsletter signup form might look like on the front-end. We can even add some instructions to explain how the set is used.
-
-<figure>
-    <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews.webp" alt="Replicator Set Previews" class="u-hide-in-dark-mode">
-    <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews-dark.webp" alt="Replicator Set Previews" class="u-hide-in-light-mode">
-    <figcaption>Behold a <em>Preview Image</em>, for the love of all clients.</figcaption>
-</figure>
-
-### Set Previews in Action
-
-Once you've set a preview image, users adding a replicator block can hover over the set to preview what it might look like on the frontend.
-
-You can view previews in two different UI modes: in a list of set names, or in a grid of sets with their preview images.
-
-<figure>
-    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-list.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-dark-mode">
-    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-list-dark.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-light-mode">
-    <figcaption>A preview in a list of sets.</figcaption>
-</figure>
-
-<figure>
-    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-grid.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-dark-mode">
-    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-grid-dark.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-light-mode">
-    <figcaption>A preview in a grid of sets. Previews fall back to the set icon if no preview image is set.</figcaption>
-</figure>
-
 ## Usage
 
 You will be presented with a button for each set you’ve defined. Clicking one will replicate an empty set. You can [replicate](https://www.youtube.com/watch?v=qD4EVXkfe0w) a single set type as many times as you like as well as dragging and dropping them to adjust their order.
@@ -103,6 +63,48 @@ fields:
               left: Left Align
               right: Right Align
 ```
+
+## Set Previews
+
+New to Statamic v6, you can add an image preview of your set, _as well as_ an icon. Previews make it easy to identify sets by showing a screenshot of what the rendered set might look like on the front-end. Clients can now say “ah, that one” without pretending to know the names you carefully gave them.
+
+### Configuring Set Previews
+
+To add a set preview, click the little "pencil" icon next to the set name.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/replicator-set-edit-preview.webp" alt="Replicator Set Edit Preview" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/replicator-set-edit-preview-dark.webp" alt="Replicator Set Edit Preview" class="u-hide-in-light-mode">
+    <figcaption>Let's give the set a preview.</figcaption>
+</figure>
+
+Once you're in the set editor, you can add a preview image and icon. Here we're showing a lovely screenshot of what the newsletter signup form might look like on the front-end. We can even add some instructions to explain how the set is used.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews.webp" alt="Replicator Set Previews" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews-dark.webp" alt="Replicator Set Previews" class="u-hide-in-light-mode">
+    <figcaption>Behold a <em>Preview Image</em>, for the love of all clients.</figcaption>
+</figure>
+
+### Set Previews in Action
+
+Once you've set a preview image, users adding a replicator set can hover over the set to preview what it might look like on the frontend.
+
+You can view previews in two different UI modes: in a list of set names, or in a grid of sets with their preview images.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-list.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-list-dark.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a list of sets.</figcaption>
+</figure>
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-grid.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/replicator-hover-preview-grid-dark.webp" alt="Replicator Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a grid of sets. Previews fall back to the set icon if no preview image is set.</figcaption>
+</figure>
+
+
 ## Fieldtypes
 
 You can use any fieldtypes inside your Replicator sets. Make sure to compare the experience with the other meta-fields: [Grid](/fieldtypes/grid) and [Bard](/fieldtypes/bard).

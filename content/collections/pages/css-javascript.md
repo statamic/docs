@@ -8,7 +8,7 @@ intro: 'Statamic can load custom stylesheets and Javascript files located in the
 This guide is intended for apps adding CSS & JavaScript to the Control Panel. If you're building an addon, please see our [Vite Tooling](/addons/vite-tooling) guide instead.
 :::
 
-## Using Vite (recommended) {#using-vite}
+## Setting up Vite {#using-vite}
 [Vite](https://vite.dev) is the recommended frontend build tool in the Statamic and Laravel ecosystems. 
 
 To set up Vite for the Control Panel, run the setup command:
@@ -40,6 +40,46 @@ ln -s /path/to/vendor/statamic/cms/resources/dist-dev public/vendor/statamic/cp-
 ```
 
 Statamic will use the dev build as long as `APP_DEBUG=true` in your `.env` and the `public/vendor/statamic/cp-dev` directory exists. You **shouldn't** commit these or use this on production.
+
+## Inertia
+
+The Control Panel is powered by [Inertia.js](https://inertiajs.com), which lets Statamic render pages as Vue components while still using Laravel’s server-side routing. Using Inertia for your custom pages is strongly recommended if you want them to match the SPA-like behaviour seen throughout the Control Panel.
+
+To expose a Vue page component to Statamic, register it in your `cp.js` file:
+
+```js
+import Foo from './pages/Foo.vue';
+
+Statamic.booting(() => {
+    Statamic.$inertia.register('app::Foo', Foo);
+});
+```
+
+Then return that page from your controller:
+
+```php
+use Inertia\Inertia;
+
+return Inertia::render('app::Foo', [
+    'message' => 'Hello world!',
+]);
+```
+
+All data passed to `Inertia::render()` becomes props on the Vue component.
+
+For proper SPA behaviour, make sure your page uses Inertia’s `<Head>` component to set the document title, and use `<Link>` instead of `<a>` so navigation stays instant and avoids a full refresh:
+
+```vue
+<script setup>
+import { Head, Link } from '@statamic/cms/inertia';
+</script>
+
+<template>
+    <Head title="Foo" />
+
+    <Link :href="cp_url('bar')">Go to another page</Link>
+</template>
+```
 
 ## Using `<script>` tags in the Control Panel
 

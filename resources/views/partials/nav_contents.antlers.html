@@ -58,6 +58,7 @@
                             <a
                                 href="{{ url }}"
                                 {{ if is_current || is_parent }}class="o-current-menu-item"{{ /if }}
+                                {{ if url | is_external_url }} target="_blank" {{ /if }}
                             >
                                 {{ nav_title ?? title }}
                             </a>
