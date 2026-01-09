@@ -85,7 +85,7 @@ Triggered immediately after the opening form tag. The payload is an array contai
 - 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
 - 'data' - the data assembled about the form (config, blueprint, sections etc.)
 
-### Form tag: `before-open`
+### Form tag: `before-close`
 Triggered immediately before the closing form tag. The payload is an array containing two properties:
 - 'html' - A string containing the rendered markup of the form so far. Modifications to this string will affect the final rendered markup.
 - 'data' - the data assembled about the form (config, blueprint, sections etc.)
