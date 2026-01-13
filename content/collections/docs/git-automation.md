@@ -126,10 +126,10 @@ git reset HEAD
 
 ## Queueing commits
 
-When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request.
+When automatic [committing](#committing-changes) is enabled, commits are automatically pushed onto a [queue](https://laravel.com/docs/queues) for processing. By default, your Statamic app is configured to use the `sync` queue driver, which will run the job immediately after your content is saved during the web request. You have the option to set a dedicated queue connection using the `STATAMIC_GIT_QUEUE_CONNECTION` environment variable.
 
 ```env
-QUEUE_CONNECTION=sync
+STATAMIC_GIT_QUEUE_CONNECTION=redis
 ```
 
 ### Queueing for performance
