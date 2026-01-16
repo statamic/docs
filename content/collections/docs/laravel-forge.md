@@ -20,7 +20,7 @@ You can host your site on Laravel VPS (which is billed on top of your Forge subs
     <img src="/img/deploying/forge/create-server-02.png" alt="Configure new server">
 </figure>
 
-On the next size, you'll be asked to configure your server. 
+On the next screen, you'll be asked to configure your server. 
 
 For most Statamic sites, you'll want to leave the type as "App server". You should pick the region closest to your users and select a server size suitable for your project.
 
