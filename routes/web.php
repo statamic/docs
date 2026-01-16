@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\LlmsTxtController;
+use App\Http\Controllers\DocsMarkdownController;
 use Statamic\Facades\Entry;
+
+Route::get('llms.txt', LlmsTxtController::class);
+Route::get('{any}.md', DocsMarkdownController::class)->where('any', '.*');
 
 Route::statamic('search-results', 'search', ['hide_sidebar' => true]);
 Route::statamic('sitemap.xml', 'sitemap', ['content_type' => 'xml', 'layout' => 'sitemap']);
