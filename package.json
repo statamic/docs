@@ -12,7 +12,7 @@
         "autoprefixer": "^10.4.20",
         "axios": "^0.30",
         "laravel-vite-plugin": "^1.0.5",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.23",
         "postcss": "^8.4.47",
         "postcss-import": "^15.1.0",
         "postcss-nesting": "^12.1.5",
