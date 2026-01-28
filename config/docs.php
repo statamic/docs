@@ -8,13 +8,12 @@ return [
         [
             'version' => '6',
             'branch' => '6.x',
-            'url' => 'https://v6.statamic.dev',
-            'beta' => true,
+            'url' => 'https://statamic.dev',
         ],
         [
             'version' => '5',
             'branch' => '5.x',
-            'url' => 'https://statamic.dev',
+            'url' => 'https://v5.statamic.dev',
         ],
     ],
 
