@@ -1,3 +1,18 @@
+<div class="c-promo"
+     x-cloak
+     x-data="{ dismissed: localStorage.getItem('promo-dismissed') === 'true' }"
+     x-show="!dismissed">
+    <div class="c-promo__inner">
+        You are reading the docs for an old version of Statamic. Consider upgrading to <a href="https://statamic.dev/getting-started/upgrade-guide/5-to-6">Statamic 6</a>.
+<!--        <button-->
+<!--                @click="dismissed = true; localStorage.setItem('promo-dismissed', 'true')"-->
+<!--                class="c-promo__close"-->
+<!--                aria-label="Dismiss promo">-->
+<!--            &times;-->
+<!--        </button>-->
+    </div>
+</div>
+
 {{# <a href="https://github.com/statamic/cms" class="hidden md:block sticky z-50 -top-8 bg-gradient-to-r from-purple to-blue via-pink hover:bg-gradient-animate py-2 text-center text-white font-bold text-sm antialiased">
     ⭐️ If you like Statamic, give it a star on GitHub! ⭐️
 </a> #}}
