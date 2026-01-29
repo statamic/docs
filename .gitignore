@@ -12,6 +12,7 @@
 /storage/debugbar/*
 /storage/glide/*
 /storage/antlers-language-server/*
+/storage/stillat/*
 /vendor
 .env
 .env.backup
