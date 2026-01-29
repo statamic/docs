@@ -115,15 +115,6 @@ tabs:
                 - 'max:200'
                 - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
           -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true
-          -
             handle: template
             field:
               type: template
