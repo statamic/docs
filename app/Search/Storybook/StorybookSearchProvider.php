@@ -20,7 +20,8 @@ class StorybookSearchProvider extends Provider
             ->collect('entries')
             ->filter(fn (array $story) => Str::endsWith($story['id'], ['--docs', '--default']))
             ->unique('title')
-            ->map(fn (array $story) => StorybookSearchable::from($story));
+            ->map(fn (array $story) => StorybookSearchable::from($story))
+            ->map->reference();
     }
 
     public function contains($searchable): bool
