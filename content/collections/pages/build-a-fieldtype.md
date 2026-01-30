@@ -6,33 +6,39 @@ updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
 updated_at: 1568643872
 intro: "Fieldtypes determine the user interface and storage format for your [fields](/fields). Statamic includes 40+ fieldtypes to help you tailor the perfect intuitive experience for your authors, but there's always room for _one more_."
 ---
-## Prerequisites
-
-Fieldtypes have a JavaScript component, so you will need to have a JavaScript entry file that gets loaded in the Control Panel. We recommend using [Vite](https://github.com/statamic/cms/pull/12533) for this.
-
-Throw an `alert('It works!')` into your JS file. Once you see that appear in the browser, you're ready to build your fieldtype!  
-
-## Registering
-
-Once created (we'll get to that in a moment), a fieldtype will need to be registered.
-
-Any fieldtype classes inside the `App\Fieldtypes` namespace will be automatically registered.
-
-To store them elsewhere, manually register an action in a service provider by calling the static `register` method on your fieldtype's class.
-
-``` php
-public function boot()
-{
-    Your\Fieldtype::register();
-}
-```
 
 ## Creating
 
 Fieldtypes have a PHP component and JS component. You can use a command to generate both pieces:
 
 ``` shell
-php please make:fieldtype TogglePassword
+php please make:fieldtype Uppercase
+```
+
+``` files theme:serendipity-light
+app/
+    Fieldtypes/
+        Uppercase.php
+resources/
+    js/
+        components/
+            fieldtypes/
+                Uppercase.vue
+```
+
+If you haven't already [set up Vite](https://statamic.dev.test/control-panel/css-javascript) for the Control Panel, the command will do it for you.
+
+## Registering
+
+Statamic will automatically register any fieldtype classes in the `App\Fieldtypes` namespace. 
+
+However, if you wish to store them elsewhere, you'll need to manually register it by calling the static `register` method on your fieldtype's class:
+
+``` php
+public function boot()
+{
+    \App\SomewhereElse\Uppercase::register();
+}
 ```
 
 
