@@ -2,7 +2,7 @@
 id: e8504150-db55-4986-b567-19c046cc03de
 blueprint: page
 title: 'Blade Form Field Templates'
-intro: 'By default, [Pre-rendered Field](tags/form-create#prerendered-field-html) templates are implemented in Antlers. If you prefer to use Blade, you may use the following snippets as a starting point in your project.'
+intro: 'By default, [Pre-rendered Field](/tags/form-create#pre-rendered-field-html) templates are implemented in Antlers. If you prefer to use Blade, you may use the following snippets as a starting point in your project.'
 ---
 
 ## Publishing Existing Templates
