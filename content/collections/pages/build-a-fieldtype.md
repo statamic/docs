@@ -42,73 +42,6 @@ public function boot()
 ```
 
 
-## Vue component
-The Vue component is responsible for the view and data binding. It's what your user will be interacting with.
-
-The `make:fieldtype` command would have generated a Vue component into `resources/js/components/fieldtypes/TogglePassword.vue`.
-
-You should register this Vue component within your JS entry file (`cp.js`):
-
-``` js
-import UppercaseFieldtype from './components/fieldtypes/Uppercase.vue';
-
-Statamic.booting(() => {
-    // Should be named [snake_case_handle]-fieldtype
-    Statamic.$components.register('uppercase-fieldtype', UppercaseFieldtype);
-});
-```
-
-Your component should use our `Fieldtype` composable for defining props & emits, updating the field value and accessing meta.
-
-Other than that, your component can do whatever you like!
-
-:::best-practice
-**Do not** modify the `value` prop directly. Instead, call `update(value)` (or `updateDebounced(value)`) from the composable and let Statamic handle the update appropriately.
-:::
-
-
-### Example Vue component
-
-For this example we will create an input field with a button to make the text uppercase:
-
-<figure>
-    <img src="/img/uppercase-fieldtype-example.gif" alt="An example fieldtype with a button to make the text uppercase" class="p-4 bg-white" width="477">
-    <figcaption>Follow along and you could make this!</figcaption>
-</figure>
-
-
-``` vue
-<script setup>
-import { Fieldtype } from '@statamic/cms';
-import { Input, Button } from '@statamic/cms/ui';
-
-const emit = defineEmits(Fieldtype.emits);
-const props = defineProps(Fieldtype.props);
-const { expose, update } = Fieldtype.use(emit, props);
-defineExpose(expose);
-
-function makeItUppercase() {
-    update(props.value.toUpperCase());
-}
-</script>
-
-<template>
-    <div>
-        <Input :model-value="value" @update:model-value="update" />
-        <Button @click="makeItUppercase">Make it upper case!</Button>
-    </div>
-</template>
-```
-
-#### What's happening?
-
-1. The `Fieldtype` composable is providing the `emits` and `props` we need to define, as well as the `expose, update` and `updateDebounced` methods.
-2. When you type into the text field, an `update` method is called which emits an event. Statamic listens to that event and updates the `value` prop.
-
-Those are the two requirements satisfied. ✅
-
-In addition to that, when the button is clicked, we're converting the string to uppercase and calling `update` in our function.
-
 ## PHP Class
 
 The PHP class can be very barebones. At the most basic level, it just needs to exist in order to let Statamic know about it.
@@ -128,9 +61,11 @@ class Uppercase extends Fieldtype
 
 Of course, you may add functionality to it, outlined below.
 
-## Fieldtype icon
+### Icon
 
-You can use an existing SVG icon from Statamic's `resources/svg` directory by passing its name into an `$icon` class variable, by returning a full SVG as a string, or returning it as a string from the `icon()` method.
+You can either specify the name of [icon included in Statamic](https://ui.statamic.dev/?path=/docs/components-icon--docs#available-icons) or an SVG string containing a custom icon (be sure to use `fill="currentColor"`) via the `$icon` property.
+
+Alternatively, you may return an SVG string from the `icon()` method:
 
 ```php
 <?php
@@ -148,9 +83,11 @@ class Uppercase extends Fieldtype
 }
 ```
 
-## Fieldtype categories
+### Categories
 
-When using the blueprint builder inside the control panel, your fieldtype will be listed under the `special` category by default. To move your fieldtype into a different category, define the `$categories` property on your class:
+When using the blueprint builder inside the Control Panel, your fieldtype will be listed under the `special` category by default. 
+
+To move your fieldtype into a different category, define the `$categories` property on your class:
 
 ```php
 <?php
@@ -171,7 +108,7 @@ You can select from any of the keys available in the `FieldtypeSelector`:
 - `special`
 
 
-## Fieldtype keywords
+### Keywords
 
 You may specify keywords to be used when searching in the fieldtype selector.
 
@@ -186,7 +123,7 @@ class CustomFieldtype extends Fieldtype
 }
 ```
 
-## Configuration fields
+### Config fields
 
 You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
 
@@ -222,60 +159,117 @@ The configuration values can be accessed in the Vue component using the `config`
 return this.config.mode; // regular
 ```
 
-### Options
+#### Options
 
-| Key | Definition |
-|---|---|
-| **display** | The field's display label |
-| **instructions** | Text shown underneath the display label. Supports Markdown. |
-| **type** | Name of the fieldtype used to manage the config option. |
-| **default** | An optional default value. |
-| **width** | The field's width. |
-| ***other*** | Some fieldtypes have additional configuration options available. |
+| Key              | Definition                                                       |
+|------------------|------------------------------------------------------------------|
+| **display**      | The field's display label                                        |
+| **instructions** | Text shown underneath the display label. Supports Markdown.      |
+| **type**         | Name of the fieldtype used to manage the config option.          |
+| **default**      | An optional default value.                                       |
+| **width**        | The field's width.                                               |
+| ***other***      | Some fieldtypes have additional configuration options available. |
 
 :::tip
 A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/6.x/src/Fieldtypes>
 :::
 
-### Adding configuration fields to existing fieldtypes
 
-Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
+## Vue Component
+The Vue component is responsible for the view and data binding. It's what your user will be interacting with.
 
-You can do this using the `appendConfigField` or `appendConfigFields` methods on the respective fieldtype.
+The `make:fieldtype` command would have generated a Vue component into `resources/js/components/fieldtypes/Uppercase.vue`.
 
-```php
-use Statamic\Fieldtypes\Text;
+You'll need to register this Vue component in your JS entry file (`resources/js/cp.js`):
 
-// One field...
-Text::appendConfigField('group', [
-  'type' => 'text',
-  'display' => 'Group',
-]);
+``` js
+import UppercaseFieldtype from './components/fieldtypes/Uppercase.vue';
 
-// Multiple fields...
-Text::appendConfigFields([
-  'group' => ['type' => 'text', 'display' => '...',],
-  'another' => ['type' => 'text', 'display' => '...',],
-]);
+Statamic.booting(() => {
+    // Should be named [snake_case_handle]-fieldtype
+    Statamic.$components.register('uppercase-fieldtype', UppercaseFieldtype);
+});
 ```
 
-You can also append a config field to _all_ fieldtypes via the `Fieldtype` class:
+Your component should use our `Fieldtype` composable for defining props & emits, updating the field value and accessing meta.
 
-```php
-use Statamic\Fields\Fieldtype;
+``` vue
+<script setup>
+import { Fieldtype } from '@statamic/cms';
 
-Fieldtype::appendConfigField('group', [
-    'type' => 'text',
-    'display' => 'A new group',
-]);
+const emit = defineEmits(Fieldtype.emits);
+const props = defineProps(Fieldtype.props);
+const { expose, ... } = Fieldtype.use(emit, props);
+defineExpose(expose);
+</script>
+
+<template>
+    <!-- -->
+</template>
 ```
+
+Other than that, your component can do whatever you like!
+
+### Example
+
+For this example we will create an input field with a button to make the text uppercase:
+
+<figure>
+    <img src="/img/uppercase-fieldtype-example.gif" alt="An example fieldtype with a button to make the text uppercase" class="p-4 bg-white" width="477">
+    <figcaption>Follow along and you could make this!</figcaption>
+</figure>
+
+``` vue
+<script setup>
+import { Fieldtype } from '@statamic/cms';
+import { Input, Button } from '@statamic/cms/ui';
+
+const emit = defineEmits(Fieldtype.emits);
+const props = defineProps(Fieldtype.props);
+const { expose, update } = Fieldtype.use(emit, props);
+defineExpose(expose);
+
+function makeItUppercase() {
+    update(props.value.toUpperCase());
+}
+</script>
+
+<template>
+    <div>
+        <Input :model-value="value" @update:model-value="update" />
+        <Button @click="makeItUppercase">Make it upper case!</Button>
+    </div>
+</template>
+```
+
+#### What's happening?
+
+1. The `Fieldtype` composable is providing the `emits` and `props` we need to define, as well as the `expose, update` and `updateDebounced` methods.
+2. When you type into the text field, an `update` method is called which emits an event. Statamic listens to that event and updates the `value` prop.
+
+Those are the two requirements satisfied. ✅
+
+In addition to that, when the button is clicked, we're converting the string to uppercase and calling `update` in our function.
+
+### Accessing other fields
+
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component:
+
+```js
+import { injectPublishContext } from '@statamic/cms/ui';
+const { values } = injectPublishContext();
+
+// Do what you need to with values
+console.log(values.value.title)
+```
+
 
 ## Processing
 
 You may need to modify the data going to and from the browser.
 
-The `preProcess` method allows you to modify the original value into what the Vue component requires.
-The `process` method does the opposite. It takes the Vue component's value and allows you to modify it for what gets saved.
+* The `preProcess` method allows you to modify the original value into what the Vue component requires.
+* The `process` method does the opposite. It takes the Vue component's value and allows you to modify it for what gets saved.
 
 For example, the YAML fieldtype stores its value in content as an array but the field needs it as a string in order for it to be editable:
 
@@ -324,7 +318,7 @@ updateMeta({ foo: 'baz' });
 props.meta; // { foo: 'baz' }
 ```
 
-### Example use cases -
+### Example use cases
 
 Here are some reasons why you might want to use this feature:
 
@@ -332,7 +326,7 @@ Here are some reasons why you might want to use this feature:
 - Grid, Bard, and Replicator fields all preload values for what a new row/set contains, plus the recursive meta values of any nested fields.
 
 
-## Replicator preview
+## Replicator Preview
 
 When [Replicator](/fieldtypes/replicator) (or [Bard](/fieldtypes/bard)) sets are collapsed, Statamic will display a preview of the values within it.
 
@@ -406,14 +400,35 @@ public function augment($value)
 
 [Read more about augmentation](/extending/augmentation)
 
-## Accessing other fields
+## Adding config fields to existing fieldtypes
 
-If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component: 
+Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
 
-```js
-import { injectPublishContext } from '@statamic/ui';
-const { values } = injectPublishContext();
+You can do this using the `appendConfigField` or `appendConfigFields` methods on the respective fieldtype.
 
-// Do what you need to with values
-console.log(values.value.title)
+```php
+use Statamic\Fieldtypes\Text;
+
+// One field...
+Text::appendConfigField('group', [
+  'type' => 'text',
+  'display' => 'Group',
+]);
+
+// Multiple fields...
+Text::appendConfigFields([
+  'group' => ['type' => 'text', 'display' => '...',],
+  'another' => ['type' => 'text', 'display' => '...',],
+]);
+```
+
+You can also append a config field to _all_ fieldtypes via the `Fieldtype` class:
+
+```php
+use Statamic\Fields\Fieldtype;
+
+Fieldtype::appendConfigField('group', [
+    'type' => 'text',
+    'display' => 'A new group',
+]);
 ```
