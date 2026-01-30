@@ -45,6 +45,10 @@ Here's `package.json`, which contains the commands you'll need to run, and the d
 }
 ```
 
+:::tip Note
+If you aren't already, your addon should require `statamic/cms` as a Composer dependency. Otherwise, the `vendor/statamic/cms` directory won't exist.
+:::
+
 ### vite.config.js
 Here's `vite.config.js`, which configures Vite itself.
 
