@@ -120,7 +120,7 @@ namespace App\Fieldtypes;
 
 use Statamic\Fields\Fieldtype;
 
-class TogglePassword extends Fieldtype
+class Uppercase extends Fieldtype
 {
     //
 }
@@ -135,7 +135,7 @@ You can use an existing SVG icon from Statamic's `resources/svg` directory by pa
 ```php
 <?php
 
-class CustomFieldtype extends Fieldtype
+class Uppercase extends Fieldtype
 {
     protected $icon = 'tags';
     // or
@@ -155,9 +155,9 @@ When using the blueprint builder inside the control panel, your fieldtype will b
 ```php
 <?php
 
-class CustomFieldtype extends Fieldtype
+class Uppercase extends Fieldtype
 {
-    public $categories = ['number'];
+    public $categories = ['text'];
 }
 ```
 
