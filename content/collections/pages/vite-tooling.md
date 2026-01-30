@@ -159,6 +159,7 @@ If you use the `php please make:fieldtype` command, these files will be created 
 If you visit the Control Panel before running any commands, you will be greeted with a `Vite manifest not found` error. You'll need to install dependencies (the first time only) and start the development server.
 
 ```bash
+cd addons/your/addon
 npm install
 npm run dev
 ```
