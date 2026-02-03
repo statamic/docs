@@ -13,7 +13,7 @@ Statamic Core carries a few limitations you'll need to upgrade to Pro to remove:
 
 Additionally, **Statamic Pro** also includes the following, exclusive features:
 
-- [Roles & Permissions](/permissions)
+- [Roles & Permissions](/control-panel/users#permissions)
 - [Revisions, Drafts, and Content History](/revisions)
 - Headless mode via [REST API](/rest-api) and [GraphQL](/graphql)
 - [Multi-site, multilingual, and multi-user-editing](/multi-site)
