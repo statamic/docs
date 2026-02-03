@@ -3,7 +3,7 @@
 Route::permanentRedirect('extending/actions', '/backend-apis/actions');
 Route::permanentRedirect('extending/addons', '/addons/building-an-addon');
 Route::permanentRedirect('extending/augmentation', '/frontend/augmentation#digging-deeper');
-Route::permanentRedirect('extending/bard', '/fieldtypes/bard');
+Route::permanentRedirect('extending/bard', '/fieldtypes/extending-bard');
 Route::permanentRedirect('extending/blink-cache', '/backend-apis/blink-cache');
 Route::permanentRedirect('extending/breadcrumbs', '/control-panel/cp-navigation#breadcrumbs');
 Route::permanentRedirect('extending/command-palette', '/control-panel/command-palette');
