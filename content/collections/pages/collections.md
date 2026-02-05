@@ -211,7 +211,7 @@ We recommend [filtering](/tags/collection#published-status) and [querying](/repo
 
 ## Time
 
-**Time** nmay be enabled on your [date field](/fieldtypes/date) to have entries publish at a **specific time**, e.g. `11:45am`, or to ensure that multiple entries in the same day are published in chronological order. We recommend leaving the **Time Enabled** setting on.
+**Time** may be enabled on your [date field](/fieldtypes/date) to have entries publish at a **specific time**, e.g. `11:45am`, or to ensure that multiple entries in the same day are published in chronological order. We recommend leaving the **Time Enabled** setting on.
 
 You can also enable the **Show Seconds** setting if you need to publish more than one entry per minute.
 
