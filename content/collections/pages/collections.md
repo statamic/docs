@@ -259,7 +259,7 @@ For non-structured collections, you can choose which field and direction to sort
 
 If you specify that your collection should "expect a root page", the first item in the tree UI will be considered the "root". This entry will _not_ use a slug in its URI — it will be treated as a `/`.
 
-The most common usage for this is to define a home page in a pages' collection. In this example, the root page's url would be `/` instead of `/home`. But this woudl also be true of a sub-section. If you had an ordered `documents` collection that was set up to live at `/documents/`, the "root" of that collection in this case would be the `/documents/` URL.
+The most common usage for this is to define a home page in a pages' collection. In this example, the root page's url would be `/` instead of `/home`. But this would also be true of a sub-section. If you had an ordered `documents` collection that was set up to live at `/documents/`, the "root" of that collection in this case would be the `/documents/` URL.
 
 ## Routing
 
