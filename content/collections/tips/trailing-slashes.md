@@ -27,7 +27,7 @@ Add this to your `.htaccess` file:
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ /$1/ [R=301,L]
+RewriteRule ^(.*)$ /$1/ [R=308,L]
 ```
 
 ### Nginx
@@ -36,11 +36,11 @@ Add this to your `server` block:
 
 ```
 location / {
-    if (!-f $request_filename) {
-        rewrite ^/(.*)([^/])$ /$1$2/ permanent;
+    if ($request_uri ~ "^[^?\\.]*[^/]$") {
+        return 308 $request_uri/;
     }
     try_files $uri $uri/ /index.php?$query_string;
-}
+  }
 ```
 
 ### IIS
@@ -57,7 +57,7 @@ Add this to your `web.config` file:
                     <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
                     <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
                 </conditions>
-                <action type="Redirect" url="{R:1}/" redirectType="Permanent" />
+                <action type="Redirect" url="{R:1}/" redirectType="Permanent308" />
             </rule>
         </rules>
     </rewrite>
