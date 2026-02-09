@@ -448,7 +448,7 @@ import { PublishContainer } from '@statamic/cms/ui';
 </template>
 ```
 
-View the [Publish component docs page](/ui-components/publish) for more details.
+View the [Publish component docs page](https://ui.statamic.dev/?path=/docs/components-publishcontainer--docs) for more details.
 
 
 ### Listing
