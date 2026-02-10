@@ -69,7 +69,7 @@ Statamic.booting(() => {
 
 Then, the Vue app will boot and you'll have a chance to do other JavaScript work within a `booted` callback. This is almost equivalent to putting things in a `created` hook of a Vue component.
 
-This is where you'd do things like adding [Bard extensions](/extending/bard) and wiring up [Hooks](/extending/hooks) or [events](/extending/js-events).
+This is where you'd do things like adding [Bard extensions](/fieldtypes/bard#extending-bard) and wiring up [Hooks](/backend-apis/hooks) or [events](/vue-components/js-events).
 
 ``` js
 Statamic.booted(() => {
