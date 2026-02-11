@@ -24,7 +24,7 @@ You'll get a bunch of things automatically set up for you, like a pages collecti
 
 ## Supported Versions of Laravel
 
-**Laravel 10, 11 and 12 are supported with Statamic 5.** If you need Laravel 9 support, you can still use Statamic 4.x.
+**Statamic 6 supports Laravel 12**. If you are on an earlier version of Laravel you can still use Statamic 5 or previous versions. Keep in mind that these version might not be supported by us anymore. For more details please have a look at our [release and support schedule](/knowledge-base/release-schedule-support-policy).
 
 ## Install Statamic
 
