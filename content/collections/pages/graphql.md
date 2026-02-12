@@ -75,13 +75,15 @@ and `Entry_Pages_Home` types. These implementations would provide fields specifi
     entries {
         id
         title
-        ... on Entry_Pages_Page {
-            subtitle
-            content
-        }
-        ... on Entry_Pages_Home {
-            hero_intro
-            hero_image
+        data {
+            ... on Entry_Pages_Page {
+                subtitle
+                content
+            }
+            ... on Entry_Pages_Home {
+                hero_intro
+                hero_image
+            }
         }
     }
 }
@@ -840,13 +842,15 @@ You will need to query the implementations using fragments in order to get bluep
     entries {
         id
         title
-        ... on Entry_Blog_Post {
-            intro
-            content
-        }
-        ... on Entry_Blog_ArtDirected_Post {
-            hero_image
-            content
+        data {
+            ... on Entry_Blog_Post {
+                intro
+                content
+            }
+            ... on Entry_Blog_ArtDirected_Post {
+                hero_image
+                content
+            }
         }
     }
 }
