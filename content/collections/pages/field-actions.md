@@ -103,6 +103,7 @@ The payload provided to the `run`, `quick`, `visible`, and `icon` functions will
 | `updateMeta`      | function | Whatever you pass to this method will update the field's meta data. When used in a set, this expects a field handle as the first argument. |
 | `fieldPathPrefix` | string   | The path to the field handle, when nested inside another field like a Grid or Replicator.                                                  |
 | `vm`              | Object   | The Vue component                                                                                                                          |
+| `container`       | Object   | Context from the [PublishContainer](https://ui.statamic.dev/?path=/docs/components-publishcontainer--docs).                                |
 | `fieldVm`         | Object   | When inside a Bard or Replicator set, this is the Vue component of the Bard/Replicator.                                                    |
 | `isReadOnly`      | bool     | Whether the field is read only.                                                                                                            |
 | `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.                                   |                                   
@@ -246,12 +247,12 @@ The `confirmation` property is an object containing the following properties:
 
 ## Accessing Other Fields
 
-If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your `run` function: 
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish container within your `run` function:
 
 ```js
 {
-    run: ({ store, storeName }) => {
-        const values = store.state.publish[storeName].values;
+    run: ({ container }) => {
+        const values = container.values.value;
     }
 }
 ```
