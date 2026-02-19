@@ -27,7 +27,7 @@ Locally, run the queue worker:
 php artisan queue:listen
 ```
 
-Or on production, make sure you a worker configured to run the `queue:work` command.
+Or on production, make sure you have a worker configured to run the `queue:work` command.
 
 ## Horizon
 
