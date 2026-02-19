@@ -267,7 +267,7 @@ In this example, you would also need to create a Redis database named `glide` in
 ],
 ```
 
-When using the [database driver](https://laravel.com/docs/12.x/cache#prerequisites-database), make sure to specify the connection and table, like so:
+When using the [database driver](https://laravel.com/docs/13.x/cache#prerequisites-database), make sure to specify the connection and table, like so:
 
 ```php
 'glide' => [

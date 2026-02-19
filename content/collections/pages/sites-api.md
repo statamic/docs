@@ -26,7 +26,7 @@ Http::acceptJson()
   ->post('https://statamic.com/api/v1/sites', $payload);
 ```
 
-_*For more info, read more about [headers](https://laravel.com/docs/12.x/http-client#headers) and [bearer tokens](https://laravel.com/docs/12.x/http-client#bearer-tokens) in Laravel.*_
+_*For more info, read more about [headers](https://laravel.com/docs/13.x/http-client#headers) and [bearer tokens](https://laravel.com/docs/13.x/http-client#bearer-tokens) in Laravel.*_
 
 ## Endpoints
 

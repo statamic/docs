@@ -98,7 +98,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             $table->foreignUuid('user_id')->nullable()->change();  // [tl! ++] [tl! **]
         });  // [tl! ++] [tl! **]
         ```
-    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/12.x/migrations).
+    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/13.x/migrations).
         ```php
         $table->string('some_field');
         ```

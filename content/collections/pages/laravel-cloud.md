@@ -103,4 +103,4 @@ You may encounter this error when submitting a form on the frontend, or updating
 
 You can fix it by changing your application's session driver from `cookie` to another driver, like `database` or `redis`. 
 
-You can find more information about session drivers on the [Laravel documentation](https://laravel.com/docs/12.x/session#introduction).
+You can find more information about session drivers on the [Laravel documentation](https://laravel.com/docs/13.x/session#introduction).
