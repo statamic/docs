@@ -26,7 +26,7 @@ resources/
                 Uppercase.vue
 ```
 
-If you haven't already [set up Vite](https://statamic.dev.test/control-panel/css-javascript) for the Control Panel, the command will do it for you.
+If you haven't already [set up Vite](https://statamic.dev/control-panel/css-javascript) for the Control Panel, the command will do it for you.
 
 ## Registering
 
