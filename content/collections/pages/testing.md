@@ -106,6 +106,10 @@ class ExampleTest extends TestCase
 }
 ```
 
+:::warning
+The `RunsUpdateScripts` trait is only available in Statamic v6.3.0 and above. You may need to bump your minimum supported version to use it.
+:::
+
 ## Running Tests
 
 Once you've written some tests, you can run them using `phpunit`:
