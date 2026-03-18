@@ -1525,6 +1525,39 @@ EntriesQuery::auth(function () {
 });
 ```
 
+## Authentication
+
+Out of the box, the GraphQL API is publicly accessible.
+
+You can restrict access to the API by adding the `STATAMIC_GRAPHQL_AUTH_TOKEN` key to your `.env` file. It should be set to a long, random string.
+
+```php
+STATAMIC_GRAPHQL_AUTH_TOKEN=a-long-random-string
+```
+
+Then, when you make requests to the GraphQL API, you'll need to include the token in the `Authorization` header, like this:
+
+```curl
+curl -X GET "https://example.com/graphql" \
+  -H "Authorization: Bearer a-long-random-string" \
+  -H "Accept: application/json"
+  -d '{"query": "{ping}"}'
+```
+
+### Authenticating users
+
+If you want to authenticate based on users, we recommend using [Laravel Sanctum](https://laravel.com/docs/master/sanctum) instead.
+
+To use Sanctum, you'll need to [store users in the database](/tips/storing-users-in-a-database) and add the `auth:sanctum` middleware in the `graphql.php` config.
+
+```php
+// config/statamic/graphql.php
+
+'middleware' => [
+    'auth:sanctum',
+],
+```
+
 ## Custom fields
 
 You can add fields to certain types by using the `addField` method on the facade.
