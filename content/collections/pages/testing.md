@@ -85,6 +85,27 @@ class ExampleTest extends TestCase
 }
 ```
 
+### Update Scripts
+
+To test an [update script](/addons/building-an-addon#update-scripts), import the `RunsUpdateScripts` trait and call `$this->runUpdateScript()` with your script class.
+
+```php
+use Statamic\Testing\Concerns\RunsUpdateScripts; // [tl! focus]
+
+class ExampleTest extends TestCase
+{
+	use RunsUpdateScripts; // [tl! focus]
+
+    #[Test]
+    public function it_does_what_it_needs_to_do()
+    {
+        $this->runUpdateScript(YourUpdateScript::class); // [tl! focus]
+    }
+    
+    // ...
+}
+```
+
 ## Running Tests
 
 Once you've written some tests, you can run them using `phpunit`:
