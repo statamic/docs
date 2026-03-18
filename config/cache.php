@@ -27,7 +27,8 @@ return [
     | same cache driver to group types of items stored in your caches.
     |
     | Supported drivers: "array", "database", "file", "memcached",
-    |                    "redis", "dynamodb", "octane", "null"
+    |                    "redis", "dynamodb", "octane",
+    |                    "failover", "null"
     |
     */
 
@@ -90,20 +91,19 @@ return [
             'driver' => 'octane',
         ],
 
+        'failover' => [
+            'driver' => 'failover',
+            'stores' => [
+                'database',
+                'array',
+            ],
+        ],
+
         'static_cache' => [
             'driver' => 'file',
             'path' => storage_path('statamic/static-urls-cache'),
         ],
 
-        'asset_container_contents' => [
-            'driver' => 'file',
-            'path' => storage_path('statamic/asset-container-contents'),
-        ],
-
-        'asset_meta' => [
-            'driver' => 'file',
-            'path' => storage_path('statamic/asset-meta'),
-        ],
     ],
 
     /*
@@ -118,5 +118,18 @@ return [
     */
 
     'prefix' => env('CACHE_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-cache-'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Serializable Classes
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the classes that can be unserialized from cache
+    | storage. By default, no PHP classes will be unserialized from your
+    | cache to prevent gadget chain attacks if your APP_KEY is leaked.
+    |
+    */
+
+    'serializable_classes' => false,
 
 ];

@@ -7,16 +7,11 @@ use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
 use App\Search\Storybook\StorybookSearchProvider;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Markdown;
-use Statamic\Http\View\Composers\JavascriptComposer;
-use Statamic\Statamic;
 use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
 use Torchlight\Engine\Options as TorchlightOptions;
@@ -25,20 +20,16 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Markdown::addExtensions(function () {
             return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension];
