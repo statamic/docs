@@ -125,8 +125,8 @@ jobs:
   php_tests:
     strategy:
       matrix:
-        php: [8.2, 8.3]
-        laravel: [10.*, 11.*]
+        php: [8.3, 8.4, 8.5]
+        laravel: [12.*, 13.*]
         os: [ubuntu-latest]
 
     name: ${{ matrix.php }} - ${{ matrix.laravel }}
