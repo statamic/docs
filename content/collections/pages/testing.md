@@ -110,6 +110,28 @@ class ExampleTest extends TestCase
 The `RunsUpdateScripts` trait is only available in Statamic v6.3.0 and above. You may need to bump your minimum supported version to use it.
 :::
 
+### Inertia.js
+
+The Control Panel is powered by [Inertia.js](https://inertiajs.com), allowing
+
+
+which lets Statamic render pages as Vue components, rather than traditional Blade views.
+
+To assert that a controller returns an Inertia response, you may use Inertia's `->assertInertia()` macro:
+
+```php
+use Inertia\Testing\AssertableInertia as Assert;
+
+$this
+    ->get(cp_route('my-addon.index'))
+    ->assertInertia(fn (Assert $page) => $page
+        ->component('my-addon::Foo')
+        ->has('message');
+    );
+```
+
+For more details, see the [Inertia.js testing documentation](https://inertiajs.com/docs/v2/advanced/testing).
+
 ## Running Tests
 
 Once you've written some tests, you can run them using `phpunit`:
