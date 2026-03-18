@@ -112,12 +112,9 @@ The `RunsUpdateScripts` trait is only available in Statamic v6.3.0 and above. Yo
 
 ### Inertia.js
 
-The Control Panel is powered by [Inertia.js](https://inertiajs.com), allowing
+The Control Panel is powered by [Inertia.js](https://inertiajs.com), allowing Statamic to render pages as Vue components instead of traditional Blade views.
 
-
-which lets Statamic render pages as Vue components, rather than traditional Blade views.
-
-To assert that a controller returns an Inertia response, you may use Inertia's `->assertInertia()` macro:
+To assert an Inertia response, use the `->assertInertia()` macro:
 
 ```php
 use Inertia\Testing\AssertableInertia as Assert;
