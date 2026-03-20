@@ -158,14 +158,16 @@ An array is a collection of elements (values and/or variables). Elements inside 
 
 #### Looping
 
-```
+``` yaml
 ---
 songs:
   - Brand New Funk
   - Parents Just Don't Understand
   - Summertime
 ---
+```
 
+```
 <ul>
 {{ songs }}
   <li>{{ value }}</li>
@@ -204,7 +206,7 @@ While in a loop, you can get the respective iterations using the `next` or `prev
 
 To pluck values out of an array, you may use "colon", "dot", or "bracket" notation to pull out values by their array key. All three of these syntaxes are equivalent, so feel free to use the one that feels most natural to you. Note that the first item of the array starts with a zero-index key.
 
-```
+``` yaml
 ---
 sports:
   - BMXing
@@ -212,7 +214,9 @@ sports:
   - skateboarding
   - scootering
 ---
+```
 
+```
 <p>Let's go {{ sports:0 }}, {{ sports.1 }} or {{ sports[2] }}.</p>
 ```
 
