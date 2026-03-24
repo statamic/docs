@@ -24,4 +24,4 @@ Toast::error('message');
 Toast::info('message')->duration(3000);
 ```
 
-You don't have to return them to a response. Simply calling them is enough. They will automatically routed through the response into JavaScript.
+You don't have to return them in a response, simply calling them is enough. They will automatically be routed through the response into JavaScript.
