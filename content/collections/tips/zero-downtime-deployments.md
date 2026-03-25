@@ -24,9 +24,9 @@ releases
     app
     routes
     etc
-  20220322153109
-  20220323180225
-  20220322153109
+   20220322153109
+   20220323180225
+   20220322153109
 ```
 
 Every deployment has its own timestamped release directory, with a fresh clone of the app. The `.env` file is stored at the top level, and shared between releases using symlinks.
