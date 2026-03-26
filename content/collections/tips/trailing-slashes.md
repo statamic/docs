@@ -40,7 +40,7 @@ location / {
         return 308 $request_uri/;
     }
     try_files $uri $uri/ /index.php?$query_string;
-  }
+}
 ```
 
 ### IIS
