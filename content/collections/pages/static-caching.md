@@ -634,9 +634,9 @@ To clear the static file cache you can run `php please static:clear` (and/or del
 
 ## Background Re-caching
 
-By default, when a page is invalidated, the cached item is deleted, so the next person to visit the page will get a fresh version, which might be slow.
+By default, when a page is invalidated, the cached item is deleted. This means the next page visitor will get a fresh version, which might be slow.
 
-You may opt into background re-caching which will refresh the item rather than deleting it. There
+To refresh the item rather than delete it, you may opt in to background re-caching.
 
 ```php
 'background_recache' => true,
