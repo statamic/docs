@@ -7,6 +7,7 @@ related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
   - bbea4454-efa2-4372-842b-b295376230f7
+  - aea5645d-cffa-4029-b04e-58efcd4303e4
 ---
 To work with the Form Submissions Repository, use the following Facade:
 
@@ -82,3 +83,5 @@ Finally, save it. It'll return a boolean for whether it succeeded.
 ```php
 $submission->save(); // true or false
 ```
+
+Form submissions may also be created using the [`SubmitForm` action](/backend-apis/php-actions#submitform), which handles file uploads, honeypot validation, event dispatching and sending emails.

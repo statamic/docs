@@ -3,6 +3,9 @@ id: aea5645d-cffa-4029-b04e-58efcd4303e4
 blueprint: page
 title: Actions
 intro: Actions are invokable classes that perform discrete tasks outside of the HTTP request lifecycle, making them reusable across controllers, console commands, Livewire components, and more.
+related_entries:
+  - bbea4454-efa2-4372-842b-b295376230f7
+  - 02261135-24fa-4d2f-9bc5-a7d2f5e6a975
 ---
 
 ## Overview {#overview}
