@@ -1,6 +1,6 @@
 ---
 title: Licensing
-intro: 'Statamic is available in two distinct flavors, but one splendid codebase. Statamic Core is **free and open source** and can be used for anything you wish, while **Statamic Pro** is powerful commercial software designed for team use.'
+intro: 'Statamic is available in two distinct flavors, but one splendid codebase. Statamic Core is **free and open source** and can be used for any type of project, while **Statamic Pro** is powerful commercial software designed for team and more robust use.'
 blueprint: page
 id: 56fadb93-b846-4867-ad73-4f721cc940c2
 ---
