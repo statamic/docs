@@ -1589,6 +1589,20 @@ GraphQL uses a basic whole-response cache by default. Each query/variables combi
 ],
 ```
 
+### Cache exclusion
+
+Responses can be excluded from the whole-response cache by adding their query names to the `exclude` array.
+
+```php
+'cache' => [
+    'expiry' => 60,
+    'exclude' => [
+        'ping',
+        'user',
+    ],
+],
+```
+
 ### Cache invalidation
 
 Cached responses are automatically invalidated when content is changed. Depending on your GraphQL usage and blueprint schema, you may also wish to ignore specific events when invalidating.
