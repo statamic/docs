@@ -276,10 +276,12 @@ To enable 2FA, head to your **Profile** in the Control Panel. Scan the QR code w
 ],
 ```
 
+You may also disable 2FA altogether by setting `STATAMIC_TWO_FACTOR_ENABLED=false` in your `.env` file.
+
 :::warning
 Statamic uses your `APP_KEY` to encrypt the two-factor authentication secret and recovery codes.
 
-You may run into issues with two-factor authentication if you have different `APP_KEY` values between environments *and* they share the same users (eg. you're tracking users in Git).
+You may run into issues with two-factor authentication if you have different `APP_KEY` values between environments *and* they share the same users (eg. you're tracking users in Git). You may want to disable 2FA locally in this case.
 :::
 
 ## Passkeys
