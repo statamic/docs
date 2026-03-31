@@ -17,6 +17,14 @@ parameters:
     type: boolean
     description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
   -
+    name: two_factor_challenge_url
+    type: string
+    description: URL to redirect users who have 2FA enabled for code verification.
+  -
+    name: two_factor_setup_url
+    type: string
+    description: URL to redirect users who are required to set up 2FA.
+  -
     name: HTML Attributes
     type:
     description: >
