@@ -15,7 +15,9 @@ Once you've started an elevated session, you won't be prompted for your password
 
 Statamic uses elevated sessions before allowing you to update your 2FA settings, edit roles or manage other users. It's trivial to integrate elevated sessions into your own code.
 
-## JavaScript
+## Control Panel
+
+### JavaScript
 
 You can use the `requireElevatedSession` function to ensure users are who they say they are before continuing.
 
@@ -55,8 +57,6 @@ function submit() {
 }
 ```
 
-## PHP
-
 ### Middleware
 
 The easiest way to require an elevated session in PHP is by adding the `RequireElevatedSession` middleware to your routes.
@@ -95,3 +95,7 @@ class ProfileController extends CpController
 When the user doesn't have an elevated session, they'll be redirected to a page where they can confirm their password. After that, they'll be redirected back to your route.
 
 Your controller will need to extend Statamic's `CpController` in order to use the `requireElevatedSession()` method.
+
+## Frontend
+
+Elevated sessions can also be used to protect sensitive actions on your frontend. To learn more, visit the [{{ user:elevated_session_form }}](/tags/user-elevated_session_form) docs.
