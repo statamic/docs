@@ -34,6 +34,18 @@ variables:
     name: success
     type: string
     description: A success message.
+  -
+    name: passkeys_enabled
+    type: boolean
+    description: Whether passkey authentication is configured.
+  -
+    name: passkey_options_url
+    type: string
+    description: URL to fetch WebAuthn assertion options for passkey login.
+  -
+    name: passkey_verify_url
+    type: string
+    description: URL to verify passkey login.
 id: 7432f1cb-7418-4d54-8e65-51b1ae3bcb3a
 ---
 ## Overview
@@ -101,3 +113,49 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 </s:user:login_form>
 ```
 ::
+
+## Passkeys
+
+You can add passkey authentication to your login form using Statamic's frontend JavaScript helpers.
+
+1. First, include the helpers script on your page:
+    ```html
+    <script src="/vendor/statamic/frontend/js/helpers.js"></script>
+    ```
+
+2. Use the provided variables to add a passkey login option:
+    ```antlers
+    {{ user:login_form }}
+        <input type="email" name="email" value="{{ old:email }}" />
+        <input type="password" name="password" value="{{ old:password }}" />
+        <button type="submit">Log in with Password</button>
+
+        {{ if passkeys_enabled }} {{# [tl! focus:start] #}}
+            <button type="button" id="passkey-login">Login with Passkey</button>
+
+            <script>
+                document.getElementById('passkey-login').addEventListener('click', () => {
+                    Statamic.$passkeys.authenticate({
+                        optionsUrl: '{{ passkey_options_url }}',
+                        verifyUrl: '{{ passkey_verify_url }}',
+                        onSuccess: (data) => window.location = data.redirect || '/',
+                        onError: (error) => alert(error.message)
+                    });
+                });
+
+                // Enable browser autofill for passkeys
+                Statamic.$passkeys.initAutofill({
+                    optionsUrl: '{{ passkey_options_url }}',
+                    verifyUrl: '{{ passkey_verify_url }}',
+                    onSuccess: (data) => window.location = data.redirect || '/'
+                });
+            </script>
+        {{ /if }} {{# [tl! focus:end] #}}
+    {{ /user:login_form }}
+    ```
+3. Add `autocomplete="username webauthn"` to your email input for browser autofill to work.
+
+For more information on managing passkeys on the frontend, see the following docs:
+- [`{{ user:passkeys }}`](/tags/user-passkeys)
+- [`{{ user:passkey_form }}`](/tags/user-passkey_form)
+- [`{{ user:delete_passkey_form }}`](/tags/user-delete_passkey_form)
