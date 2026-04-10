@@ -6,21 +6,13 @@ description: 'Creates a passkey registration form'
 intro: 'Allows authenticated users to set up passkeys'
 variables:
   -
-    name: create_url
+    name: passkey_option_url
     type: string
     description: 'URL to fetch WebAuthn attestation options for creating a new passkey.'
   -
-    name: store_url
+    name: passkey_verify_url
     type: string
     description: 'URL to store the new passkey after registration.'
-  -
-    name: errors
-    type: array
-    description: An array of validation errors.
-  -
-    name: success
-    type: string
-    description: A success message.
 related_entries:
     - 38323438-4719-4a7b-ba5a-8abfe0d7dfc0
     - d0ed4ac0-536a-47a1-965b-202b52baddb2
@@ -48,25 +40,13 @@ You'll need to include the frontend helpers script on your page:
     <input type="text" id="passkey-name" placeholder="Passkey name (e.g., My Laptop)">
     <button type="button" id="create-passkey">Create Passkey</button>
 
-    {{ if success }}
-        <p>Passkey created successfully!</p>
-    {{ /if }}
-
-    {{ if errors }}
-        <ul>
-            {{ errors }}
-                <li>{{ value }}</li>
-            {{ /errors }}
-        </ul>
-    {{ /if }}
-
     <script>
         document.getElementById('create-passkey').addEventListener('click', () => {
             const name = document.getElementById('passkey-name').value || 'My Passkey';
 
             Statamic.$passkeys.register({
-                optionsUrl: '{{ create_url }}',
-                verifyUrl: '{{ store_url }}',
+                optionsUrl: '{{ passkey_option_url }}',
+                verifyUrl: '{{ passkey_verify_url }}',
                 name: name,
                 onSuccess: () => location.reload(),
                 onError: (error) => alert(error.message),
@@ -82,25 +62,13 @@ You'll need to include the frontend helpers script on your page:
     <input type="text" id="passkey-name" placeholder="Passkey name (e.g., My Laptop)">
     <button type="button" id="create-passkey">Create Passkey</button>
 
-    @if ($success)
-        <p>Passkey created successfully!</p>
-    @endif
-
-    @if ($errors)
-        <ul>
-            @foreach ($errors as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
     <script>
         document.getElementById('create-passkey').addEventListener('click', () => {
             const name = document.getElementById('passkey-name').value || 'My Passkey';
 
             Statamic.$passkeys.register({
-                optionsUrl: '{{ $create_url }}',
-                verifyUrl: '{{ $store_url }}',
+                optionsUrl: '{{ $passkey_option_url }}',
+                verifyUrl: '{{ $passkey_verify_url }}',
                 name: name,
                 onSuccess: () => location.reload(),
                 onError: (error) => alert(error.message),
