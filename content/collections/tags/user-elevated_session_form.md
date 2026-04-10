@@ -15,10 +15,25 @@ variables:
     description: |
       The authentication method required. One of: `password_confirmation`, `verification_code`, or `passkey`.
   -
+    name: allow_passkey
+    type: boolean
+    description: |
+      Whether the user has passkeys available as an authentication option.
+  -
     name: resend_code_url
     type: string
     description: |
       URL to resend the verification code. Only relevant when `method` is `verification_code`.
+  -
+    name: passkey_options_url
+    type: string
+    description: |
+      URL to fetch WebAuthn assertion options for passkey authentication.
+  -
+    name: submit_url
+    type: string
+    description: |
+      The URL where the form submits to. Useful when implementing passkey authentication via JavaScript.
   -
     name: errors
     type: array
@@ -46,7 +61,6 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 ::tab antlers
 ```antlers
 {{ user:elevated_session_form }}
-
     {{ if errors }}
         <div class="bg-red-300 text-white p-2">
             {{ errors }}
@@ -68,7 +82,6 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
     {{ /if }}
 
     <button type="submit">Confirm</button>
-
 {{ /user:elevated_session_form }}
 ```
 ::tab blade
@@ -105,7 +118,46 @@ The `method` variable indicates how the user should confirm their identity:
 
 - **`password_confirmation`** - User should enter their password.
 - **`verification_code`** - User doesn't have a password, so they should enter the verification code sent to their email.
-- **`passkey`** - User requires a passkey to login. _Note: Passkeys aren't currently supported on the frontend._
+- **`passkey`** - User requires a passkey to login. Passkey authentication requires JavaScript - see the below section for more details.
+
+### Passkeys
+
+Passkey authentication requires JavaScript. Include the frontend helpers script and use the `passkey_options_url` and `submit_url` variables:
+
+```antlers
+{{ user:elevated_session_form }}
+    {{ if method == "password_confirmation" }}
+        <input type="password" name="password" />
+        <button type="submit">Confirm with Password</button>
+    {{ /if }}
+
+    {{ if method == "verification_code" }}
+        <p>A verification code has been sent to your email.</p>
+        <label>Verification Code</label>
+        <input type="text" name="verification_code" />
+        <a href="{{ resend_code_url }}">Resend code</a>
+        <button type="submit">Confirm with Verification Code</button>
+    {{ /if }}
+
+    {{ if allow_passkey }}
+        <button type="button" id="passkey-confirm">Confirm with Passkey</button> {{# [tl! focus:start] #}}
+
+        <script src="/vendor/statamic/frontend/js/helpers.js"></script>
+        <script>
+            Statamic.$passkeys.configure({
+                optionsUrl: '{{ passkey_options_url }}',
+                verifyUrl: '{{ submit_url }}',
+                onSuccess: (data) => window.location = data.redirect || '/',
+                onError: (error) => alert(error.message)
+            });
+
+            document.getElementById('passkey-confirm').addEventListener('click', () => {
+                Statamic.$passkeys.authenticate();
+            });
+        </script> {{# [tl! focus:end] #}}
+    {{ /if }}
+{{ /user:elevated_session_form }}
+```
 
 ## Protecting routes
 
