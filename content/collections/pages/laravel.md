@@ -29,7 +29,7 @@ You'll get a bunch of things automatically set up for you, like a pages collecti
 :::warning
 Inertia 3 is not currently supported.
 
-If you've used Laravel's Vue starter kit recently, it would be using Inertia 3. If you want to use Statamic 6 you will need to downgrade to Inertia 2. We plan to add support for Inertia 3 in Statamic 7.
+If you've used Laravel's React, Vue or Svelte starter kits recently, it would be using Inertia 3. If you want to use Statamic 6 you will need to downgrade to Inertia 2. We plan to add support for Inertia 3 in Statamic 7.
 :::
 
 ## Install Statamic
