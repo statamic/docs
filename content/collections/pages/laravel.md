@@ -26,6 +26,12 @@ You'll get a bunch of things automatically set up for you, like a pages collecti
 
 **Statamic 6 supports Laravel 12 and 13**. If you are on an earlier version of Laravel you can still use Statamic 5 or previous versions. Keep in mind that these version might not be supported by us anymore. For more details please have a look at our [release and support schedule](/knowledge-base/release-schedule-support-policy).
 
+:::warning
+Inertia 3 is not currently supported.
+
+If you've used Laravel's Vue starter kit recently, it would be using Inertia 3. If you want to use Statamic 6 you will need to downgrade to Inertia 2. We plan to add support for Inertia 3 in Statamic 7.
+:::
+
 ## Install Statamic
 
 There are 3 steps to follow to install Statamic into your Laravel app.
