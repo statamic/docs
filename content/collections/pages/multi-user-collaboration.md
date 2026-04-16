@@ -16,7 +16,7 @@ id: a3adf32a-37a5-4e96-beee-f107dc1b81a9
 - Content changes are updated in real-time for all users
 
 <figure>
-    <img src="https://statamic.com/storage/products/oMTSYVZJlh4j0Qr8Zm4T5Tl3WM1GQLj5hXRMsnx1.png" alt="Statamic's multi-user collaboration in action">
+    <img src="/img/collaboration.png" alt="Statamic's multi-user collaboration in action">
     <figcaption>A glimpse of multi-user collaboration in action.</figcaption>
 </figure>
 
