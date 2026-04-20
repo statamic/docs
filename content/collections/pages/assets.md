@@ -57,6 +57,20 @@ Most of the asset actions are also available inside the editor, along with the a
     <figcaption>The asset editor is pretty slick, if we say so ourselves.</figcaption>
 </figure>
 
+### Crop
+The crop action lets you visually crop an image directly in the Control Panel. It's available from the toolbar inside the [Asset Editor](#edit) for any image asset (except GIFs) when the current user has permission to upload to the container.
+
+You can drag to define a custom crop area, or pick one of the built-in aspect ratio presets: `16:9`, `4:3`, `3:2`, `2:1`, and `1:1`. A flip button rotates the ratio between landscape and portrait orientation. Hold the <kbd>Option</kbd> / <kbd>Alt</kbd> key while resizing to resize from the center, and press <kbd>Enter</kbd> to apply the crop.
+
+After cropping, you'll be asked whether you want to save the crop as a **new copy** (uploaded to the same folder with a timestamped filename) or **replace the original** image. Replacing requires the user to also have the `reupload` permission on the asset.
+
+:::tip
+Cropping external images (for example, from an S3 container on a different domain) requires that the source be served with proper CORS headers. If the image can't be loaded cross-origin, the crop editor will warn you and close.
+:::
+
+Bulk
+: No
+
 ### Copy URL
 Running this action allows you to copy the URL of an asset. You can use the copied URL to share or reference the asset in other places, such as in emails, documents, or on other websites.
 
