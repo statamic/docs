@@ -363,8 +363,8 @@ You may provide local driver specific settings in a `settings` array.
 - `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `1`.
 - `property_weights`: An array of weights for each property to use when calculating relevance scores. Defaults to `[]`.
 - `query_mode`: The query mode to use when searching (e.g. "whole", "words", "boolean"). Defaults to `boolean`.
-- `use_stemming`: Whether to use stemming when searching (e.g. "jumping" matches "jump"). Defaults to `false`.
-- `use_alternates`: Whether to use alternate spellings when searching (e.g. "color" matches "colour"). Defaults to `false`.
+- `use_stemming`: Whether to match singular and plural forms of each word (e.g. "cats" matches "cat"). Powered by Laravel's `Str::singular()`, so it handles English inflection only — not true verb stemming like "jumping" → "jump". Only applies when `query_mode` is `words` or `boolean`. Defaults to `false`.
+- `use_alternates`: Whether to match a small set of typographic alternates in the query. Specifically: `and` ↔ `&`, and swapping between straight (`'`) and curly (`‘` / `’`) apostrophes. It does _not_ handle US/UK spelling differences (e.g. "color" / "colour") or synonyms. Only applies when `query_mode` is `words` or `boolean`. Defaults to `false`.
 - `include_full_query`: Whether to include the full search query in the search results. Defaults to `true`.
 - `stop_words`: An array of stop words to exclude from the search query. Defaults to `[]`.
 - `limit`: Whether to limit the number of results returned. Defaults to `null`.
