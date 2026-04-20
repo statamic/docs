@@ -212,6 +212,15 @@ It would bring every field inline and prefix each field's handle appropriately.
 
 If you omit the `prefix` you won't be able to import them more than once at the same level because they would have the same handle and overwrite each other.
 
+If the fieldset you're importing has [its own sections](/fieldsets#sections), you can control how they're rendered with `section_behavior`. Set it to `preserve` (the default) to keep the fieldset's sections intact in the publish form, or `flatten` to merge everything into the current section.
+
+```yaml
+fields:
+  -
+    import: seo
+    section_behavior: flatten
+```
+
 
 ## Validation
 
