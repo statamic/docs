@@ -390,6 +390,56 @@ However, if you **trust your users** and need to upload SVG files without them b
 'svg_sanitization_on_upload' => false,
 ```
 
+## Video thumbnails
+
+Statamic can generate thumbnails for video assets so they display alongside images in the Control Panel's asset browser, instead of showing a generic file icon.
+
+<figure>
+    <img src="/img/video-thumbnails.webp" alt="Video thumbnails in the asset browser">
+    <figcaption>Videos get real thumbnails instead of generic file icons.</figcaption>
+</figure>
+
+### Requirements
+
+Video thumbnail generation relies on [FFmpeg](https://ffmpeg.org/) being installed and available on your server.
+
+``` shell
+# macOS (Homebrew)
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+```
+
+If FFmpeg isn't found on the system `PATH`, you can point Statamic at the binary explicitly in `config/statamic/assets.php`:
+
+```php
+'ffmpeg' => [
+    'binary' => '/usr/local/bin/ffmpeg',
+    'cache_path' => storage_path('statamic/glide/ffmpeg'),
+],
+```
+
+Generated thumbnails are cached to disk at `cache_path` so FFmpeg only runs once per video.
+
+### Disabling
+
+Video thumbnail generation is enabled by default. To disable it, set `video_thumbnails` to `false` in `config/statamic/assets.php`:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Control Panel Video Thumbnails
+|--------------------------------------------------------------------------
+|
+| When enabled, Statamic will generate thumbnails for videos.
+| Generated thumbnails are displayed in the Control Panel.
+|
+*/
+
+'video_thumbnails' => false,
+```
+
 ## Custom cache stores
 
 Statamic leverages [Laravel's application cache](https://laravel.com/docs/cache) to cache asset metadata and folders. However, this means that whenever you run `php artisan cache:clear`, the cached asset information will be cleared.
