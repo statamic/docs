@@ -48,6 +48,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `assets:clear-cache` | Clear the `asset_meta` and `asset_container_contents` cache stores |
 | `assets:generate-presets` | Generate asset preset manipulations |
 | `assets:meta`      | Generate asset metadata files |
+| `assets:meta-clean` | Clean orphaned asset metadata files |
 | `auth:migration`   | Generate Auth Migrations |
 | `eloquent:import-groups` | Imports file based groups into the database. |
 | `eloquent:import-roles` | Imports file based roles into the database. |

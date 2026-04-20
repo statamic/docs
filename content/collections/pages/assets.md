@@ -147,6 +147,20 @@ data:
 You should consider version controlling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
 :::
 
+### Cleaning orphaned metadata
+
+When asset files are deleted outside of Statamic (e.g., directly via the filesystem or an S3 console), their metadata `.yaml` files can be left behind. Run the `assets:meta-clean` command to find and remove these orphaned metadata files, along with any now-empty `.meta` directories.
+
+``` shell
+php please assets:meta-clean
+```
+
+Pass a container handle to scope the cleanup to a single container, or use `--dry-run` to preview what would be deleted without making any changes.
+
+``` shell
+php please assets:meta-clean images --dry-run
+```
+
 ## Containers
 
 Each container has its own settings, configurable permissions, and [blueprint](#blueprints). One container might be a local filesystem with upload, download, rename, and move permissions enabled, and another could be a read-only remote S3 bucket or stock image service.
