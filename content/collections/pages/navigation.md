@@ -14,7 +14,7 @@ related_entries:
 Each Nav is a [structure](/structures) giving you the ability to rearrange items through the delightful experience of dragging and dropping boxes.
 
 <figure>
-    <img src="/img/structure.webp" alt="A Statamic structure page tree" class="u-hide-in-dark-mode">
+    <img src="/img/collection-structure.webp" alt="A Statamic structure page tree" class="u-hide-in-dark-mode">
     <img src="/img/structure-dark.webp" alt="A Statamic structure page tree" class="u-hide-in-light-mode">
 </figure>
 
