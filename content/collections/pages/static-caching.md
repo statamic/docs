@@ -12,6 +12,8 @@ Certain features — such as forms with server-side validation, page protection,
 
 Whatever is on the page the first time it's visited is what will be cached for all users. For example, if you're using page protection and a user who has access visits the page, it'll be accessible to everyone.
 
+Protected pages are excluded from the static cache by default. If you've written a [custom protection driver](/protecting-content#custom-drivers) whose logic doesn't vary between visitors, you can opt it back into caching by marking it [cacheable](/protecting-content#cacheable-drivers).
+
 :::tip
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
 :::
