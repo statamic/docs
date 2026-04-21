@@ -26,7 +26,7 @@ The `user:reset_two_factor_recovery_codes_form` tag renders a form that allows a
 The tag will render the opening and closing `<form>` HTML elements for you. No input fields are required—just a submit button.
 
 :::tip
-This form requires the user to be authenticated with 2FA enabled.
+This form requires the user to be authenticated with 2FA enabled and an [elevated session](/tags/user-elevated_session_form). If the session isn't elevated, the user will be redirected to confirm their identity first.
 :::
 
 ### Example
