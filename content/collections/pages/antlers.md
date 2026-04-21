@@ -1345,19 +1345,70 @@ You may **enable** Antlers parsing on a per-field basis by setting `antlers: tru
 
 When Antlers parses content (fields with `antlers: true`, or anything run through `Antlers::parse()`), it runs in a hardened mode that disables PHP syntax and restricts which tags and modifiers are available. This is **not** the same as a regular `.antlers.html` view — views still get the full, unrestricted Antlers experience.
 
-If you need a specific tag or modifier available inside content fields, opt into it via `config/statamic/antlers.php`:
+#### What's allowed by default
+
+Out of the box — with the `allowedContentTags` and `allowedContentModifiers` keys unset (the default shipped state) — you get:
+
+**Default tags:**
+
+- `link:*`
+- `obfuscate:*`
+- `trans:*`
+- `trans_choice:*`
+- `widont:*`
+- Any tags you've created in your own `App\Tags\` namespace (auto-allowed)
+
+**Default modifiers:** The broad set of safe built-in modifiers, including:
+
+- `markdown`
+- `sanitize`
+- `upper`
+- `lower`
+- `format`
+- `where`
+- `excerpt`
+- `nl2br`
+- `slugify`
+- ~150 others
+- Custom modifiers in your `App\Modifiers\` namespace (auto-allowed)
+
+The full list lives in `Statamic\Providers\ViewServiceProvider::defaultAllowedContentModifiers()`.
+
+The defaults are deliberately narrow. Any tag that can **fetch or expose site data** is excluded, because a content author typing `{{ collection from="private_drafts" }}` or `{{ users }}` into an `antlers: true` field could otherwise "leak" data they they may or may not be entitled to. If you want those tags in content, opt in explicitly.
+
+#### Common tags you may want to opt into
+
+These aren't on by default — add them to `allowedContentTags` if your editors need them:
+
+| Tag | Why it's not default |
+| --- | --- |
+| `collection:*` | Fetches entries from any collection |
+| `taxonomy:*` | Fetches terms from any taxonomy |
+| `nav`, `structure:*` | Fetches navigation trees |
+| `users:*` | Fetches user data |
+| `form:*` | Fetches form fields and submissions |
+| `assets:*`, `asset:*` | Fetches assets from any container |
+| `glide:*` | Image manipulation (generally safe, just not in the default set) |
+| `search:*` | Runs search queries |
+| `get_content`, `get_files` | Arbitrary data fetching |
+| `relate:*` | Follows relationships |
+
+#### Extending or replacing the defaults
+
+If you need to allow additional tags or modifiers (like `{{ glide }}` or `{{ nav }}`), opt into them via `config/statamic/antlers.php`. Use the `@default` token to **keep the defaults and add to them** — without it, your array **replaces** the defaults entirely:
 
 ```php
 // config/statamic/antlers.php
 return [
     'allowedContentTags' => [
+        '@default',     // keep the built-in defaults
         'glide:*',      // allow {{ glide }}, {{ glide:src }}, etc.
         'nav',          // allow just {{ nav }}
     ],
 
     'allowedContentModifiers' => [
-        'markdown',
-        'upper',
+        '@default',     // keep the built-in defaults
+        'my_custom',
     ],
 ];
 ```
