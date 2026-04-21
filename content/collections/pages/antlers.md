@@ -1341,6 +1341,42 @@ Antlers template code inside your content **is not** parsed automatically for se
 
 You may **enable** Antlers parsing on a per-field basis by setting `antlers: true` in a given field's blueprint config.
 
+### Opting into tags and modifiers {#allowing-tags-and-modifiers-in-content}
+
+When Antlers parses content (fields with `antlers: true`, or anything run through `Antlers::parse()`), it runs in a hardened mode that disables PHP syntax and restricts which tags and modifiers are available. This is **not** the same as a regular `.antlers.html` view — views still get the full, unrestricted Antlers experience.
+
+If you need a specific tag or modifier available inside content fields, opt into it via `config/statamic/antlers.php`:
+
+```php
+// config/statamic/antlers.php
+return [
+    'allowedContentTags' => [
+        'glide:*',      // allow {{ glide }}, {{ glide:src }}, etc.
+        'nav',          // allow just {{ nav }}
+    ],
+
+    'allowedContentModifiers' => [
+        'markdown',
+        'upper',
+    ],
+];
+```
+
+Tag entries are **patterns** — append `:*` to allow the tag and any of its parameters/sub-tags (`glide`, `glide:src`, `glide:generate`, etc). Modifier entries are exact handle matches.
+
+### Allowing config values
+
+Referencing config in content fields (e.g. `{{ config:app:url }}`) goes through a separate allowlist. Statamic's `@default` list covers the common safe keys. If you're pulling a custom key, or chaining modifiers onto a config value, add it to `view_config_allowlist` in `config/statamic/system.php`:
+
+```php
+// config/statamic/system.php
+'view_config_allowlist' => [
+    '@default',
+    'app.url2',
+    'services.stripe.key',
+],
+```
+
 ## Code comments {#comments}
 
 Antlers code comments are not rendered in HTML (unlike HTML comments), which allows you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.
