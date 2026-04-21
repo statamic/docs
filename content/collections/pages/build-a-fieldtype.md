@@ -400,6 +400,107 @@ public function augment($value)
 
 [Read more about augmentation](/extending/augmentation)
 
+## Updating References
+
+If your fieldtype stores references to assets or taxonomy terms — either directly or nested inside sub-fields — you'll want to keep those references in sync when an asset is renamed, moved, or deleted, or when a term is renamed or deleted. Otherwise you end up with broken references pointing at stale URLs or IDs.
+
+Statamic handles this for all built-in fieldtypes automatically. For custom fieldtypes you can opt in by using the `UpdatesReferences` trait and overriding one or more of its methods.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+}
+```
+
+The trait provides three no-op methods you can override, depending on what kind of data your fieldtype stores:
+
+| Method | Purpose |
+|--------|---------|
+| `replaceAssetReferences($data, $newValue, $oldValue, $container)` | Replace direct asset references (URLs or IDs). |
+| `replaceTermReferences($data, $newValue, $oldValue, $taxonomy)` | Replace direct term references. |
+| `iterateReferenceFields($data, NestedFieldUpdater $updater)` | Traverse nested sub-fields so Statamic can recurse into them. |
+
+It also gives you three helper methods for the common cases: `replaceValue()`, `replaceValuesInArray()`, and `replaceStatamicUrls()`.
+
+### Asset references
+
+If your fieldtype stores a single asset reference, override `replaceAssetReferences` and use the `replaceValue()` helper. Bail early if the container doesn't match your field's configured container.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyLinkFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function replaceAssetReferences($data, ?string $newValue, string $oldValue, string $container)
+    {
+        if ($this->config('container') !== $container) {
+            return $data;
+        }
+
+        return $this->replaceValue($data, $newValue, $oldValue);
+    }
+}
+```
+
+When `$newValue` is `null`, the asset was deleted — Statamic will remove the reference from your data.
+
+### Term references
+
+If your fieldtype stores an array of term references, override `replaceTermReferences` and use `replaceValuesInArray()`.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyTagsFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function replaceTermReferences($data, ?string $newValue, string $oldValue, string $taxonomy)
+    {
+        return $this->replaceValuesInArray($data, $newValue, $oldValue);
+    }
+}
+```
+
+### Nested sub-fields
+
+If your fieldtype contains nested fields (like Grid, Replicator, or a custom Columns fieldtype), override `iterateReferenceFields` and hand each set of nested fields off to the `NestedFieldUpdater`. Statamic will recurse into them and run the appropriate reference updates against any fieldtypes within that also use the trait.
+
+```php
+use Statamic\Data\NestedFieldUpdater;
+use Statamic\Fields\Fields;
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class ColumnsFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function iterateReferenceFields($data, NestedFieldUpdater $updater): void
+    {
+        if (! is_array($data)) {
+            return;
+        }
+
+        $fields = new Fields($this->config('fields'));
+
+        foreach (array_keys($data) as $idx) {
+            $updater->update($fields, "{$idx}.");
+        }
+    }
+}
+```
+
+The second argument to `$updater->update()` is a key prefix used when walking the data array — use it to tell the updater where the nested field's value lives within your data structure.
+
 ## Adding config fields to existing fieldtypes
 
 Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
