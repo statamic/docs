@@ -52,6 +52,10 @@ All relationship fields use [augmentation](/augmentation) to fetch the actual da
 
 The following example assumes `max_items` has been set to `1`.
 
+:::hint
+When `max_items: 1`, the field augments directly to the related user so you can use dot/colon notation (`{{ author:name }}`). If you'd rather always get a query builder back — so you can chain scopes or filters — enable [`always_augment_to_query`](/augmentation#always-augment-relationships-to-a-query).
+:::
+
 ::tabs
 
 ::tab antlers
