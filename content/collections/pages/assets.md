@@ -368,38 +368,39 @@ For security reasons, Statamic restricts the file extensions that can be uploade
 Common extensions like `.jpg`, `.csv` and `.txt` are permitted by default. To upload additional file extensions, specify them in `config/statamic/assets.php`:
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Additional Uploadable Extensions
-|--------------------------------------------------------------------------
-|
-| Statamic will only allow uploads of certain approved file extensions.
-| If you need to allow more file extensions, you may add them here.
-|
-*/
+// config/statamic/assets.php
 
 'additional_uploadable_extensions' => [
     'gpx', 'vcf', // ...
 ],
 ```
 
+## Filename character replacements
+
+When files are uploaded, Statamic sanitizes the filename by replacing a handful of characters (spaces, `#`, `:`, `/`, `\`, `?`, `<`, `>`, `"`, `|`, `*`, `%`, `'`, and double dashes) with a single dash to keep filenames URL-safe.
+
+If you need to replace additional characters — for example, commas and parentheses that clients keep sneaking their ways into filenames — you can add them to `config/statamic/assets.php`. These are **merged** with the native replacements and cannot override them.
+
+```php
+// config/statamic/assets.php
+
+'additional_filename_replacements' => [
+    ',' => '',
+    '(' => '',
+    ')' => '',
+],
+```
+
+With the config above, `My Photo, (v2).jpg` would be saved as `my-photo-v2.jpg`.
+
 ## SVG sanitization
 
-For security reasons, Statamic automatically sanitizes uploaded SVG files. 
+For security reasons, Statamic automatically sanitizes uploaded SVG files.
 
 However, if you **trust your users** and need to upload SVG files without them being sanitization, you may disable it:
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| SVG Sanitization
-|--------------------------------------------------------------------------
-|
-| Statamic will automatically sanitize SVG files when uploaded to avoid
-| potential security issues. However, if you have a valid reason for
-| disabling this, and you trust your users, you may do so here.
-|
-*/
+// config/statamic/assets.php
 
 'svg_sanitization_on_upload' => false,
 ```
@@ -407,11 +408,6 @@ However, if you **trust your users** and need to upload SVG files without them b
 ## Video thumbnails
 
 Statamic can generate thumbnails for video assets so they display alongside images in the Control Panel's asset browser, instead of showing a generic file icon.
-
-<figure>
-    <img src="/img/video-thumbnails.webp" alt="Video thumbnails in the asset browser">
-    <figcaption>Videos get real thumbnails instead of generic file icons.</figcaption>
-</figure>
 
 ### Requirements
 
@@ -428,6 +424,8 @@ sudo apt install ffmpeg
 If FFmpeg isn't found on the system `PATH`, you can point Statamic at the binary explicitly in `config/statamic/assets.php`:
 
 ```php
+// config/statamic/assets.php
+
 'ffmpeg' => [
     'binary' => '/usr/local/bin/ffmpeg',
     'cache_path' => storage_path('statamic/glide/ffmpeg'),
@@ -441,15 +439,7 @@ Generated thumbnails are cached to disk at `cache_path` so FFmpeg only runs once
 Video thumbnail generation is enabled by default. To disable it, set `video_thumbnails` to `false` in `config/statamic/assets.php`:
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Control Panel Video Thumbnails
-|--------------------------------------------------------------------------
-|
-| When enabled, Statamic will generate thumbnails for videos.
-| Generated thumbnails are displayed in the Control Panel.
-|
-*/
+//config/statamic/assets.php
 
 'video_thumbnails' => false,
 ```
@@ -463,6 +453,8 @@ If you have a lot of assets and/or folders, you might want to specify a custom c
 The cache store can be customized in `config/cache.php`.
 
 ```php
+// config/cache.php
+
 'asset_meta' => [
     'driver' => 'file',
     'path' => storage_path('statamic/asset-meta'),
