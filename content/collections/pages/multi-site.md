@@ -180,6 +180,12 @@ en:
 ```
 ::
 
+In Blade, you can also use the `attribute()` method, which supports dot notation and a fallback value for attributes that may not be set:
+
+```blade
+<body class="theme-{{ $site->attribute('theme', 'standard') }}">
+```
+
 :::tip
 Nothing fancy happens here, the values are passed along "as is" to your templates. If you need them to be editable, or store more complex data, you could use [Globals](/globals).
 :::
