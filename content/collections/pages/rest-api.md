@@ -691,7 +691,7 @@ class CustomCacher extends AbstractCacher
 
 The REST API is rate limited to **60 requests per minute** by default.
 
-You can change this configuration in your `RouteServiceProvider`. Learn more about [Laravel 8+ rate limiting](https://laravel.com/docs/master/rate-limiting).
+You can change this configuration in your `RouteServiceProvider`. Learn more about [rate limits in Laravel](https://laravel.com/docs/master/rate-limiting).
 
 ```php
 // app/Providers/RouteServiceProvider.php

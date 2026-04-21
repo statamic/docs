@@ -19,7 +19,7 @@ parameters:
     type: string
     required: false
     description: >
-      The site you wish to search. If you wish to search in all sites, you can use a wildcard: `*`. Default: the current site.
+      The site(s) you wish to search. Pass a single site handle (`one`), multiple handles pipe-separated (`one|two`), or a wildcard (`*`) to search all sites. Default: the current site.
   -
     name: limit
     type: integer
@@ -175,6 +175,36 @@ The search form itself — that text box users type into, is a normal, every day
     <button type="submit">Make it so!</button>
 </form>
 ```
+
+## Multiple Sites
+
+On [multi-site](/multi-site) installations, you can search within a specific site, a subset of sites, or across all of them.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ search:results site="one" }}
+
+{{ search:results site="one|two" }}
+
+{{ search:results site="*" }}
+```
+::tab blade
+```blade
+<s:search:results site="one" />
+
+<s:search:results site="one|two" />
+
+<s:search:results site="*" />
+```
+::
+
+If you omit the `site` parameter, results will be scoped to the current site.
+
+:::tip
+When using `supplement_data="false"` with multiple sites, make sure the `site` field is indexed — otherwise results will be filtered out. See [Supplementing Data](#supplementing-data) below.
+:::
 
 ## Supplementing Data
 

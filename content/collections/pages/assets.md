@@ -57,6 +57,20 @@ Most of the asset actions are also available inside the editor, along with the a
     <figcaption>The asset editor is pretty slick, if we say so ourselves.</figcaption>
 </figure>
 
+### Crop
+The crop action lets you visually crop an image directly in the Control Panel. It's available from the toolbar inside the [Asset Editor](#edit) for any image asset (except GIFs) when the current user has permission to upload to the container.
+
+You can drag to define a custom crop area, or pick one of the built-in aspect ratio presets: `16:9`, `4:3`, `3:2`, `2:1`, and `1:1`. A flip button rotates the ratio between landscape and portrait orientation. Hold the <kbd>Option</kbd> / <kbd>Alt</kbd> key while resizing to resize from the center, and press <kbd>Enter</kbd> to apply the crop.
+
+After cropping, you'll be asked whether you want to save the crop as a **new copy** (uploaded to the same folder with a timestamped filename) or **replace the original** image. Replacing requires the user to also have the `reupload` permission on the asset.
+
+:::tip
+Cropping external images (for example, from an S3 container on a different domain) requires that the source be served with proper CORS headers. If the image can't be loaded cross-origin, the crop editor will warn you and close.
+:::
+
+Bulk
+: No
+
 ### Copy URL
 Running this action allows you to copy the URL of an asset. You can use the copied URL to share or reference the asset in other places, such as in emails, documents, or on other websites.
 
@@ -146,6 +160,20 @@ data:
 :::tip
 You should consider version controlling these files if you plan to set data like alt tags and focal points. Make sure your efforts are preserved.
 :::
+
+### Cleaning orphaned metadata
+
+When asset files are deleted outside of Statamic (e.g., directly via the filesystem or an S3 console), their metadata `.yaml` files can be left behind. Run the `assets:meta-clean` command to find and remove these orphaned metadata files, along with any now-empty `.meta` directories.
+
+``` shell
+php please assets:meta-clean
+```
+
+Pass a container handle to scope the cleanup to a single container, or use `--dry-run` to preview what would be deleted without making any changes.
+
+``` shell
+php please assets:meta-clean images --dry-run
+```
 
 ## Containers
 
@@ -374,6 +402,56 @@ However, if you **trust your users** and need to upload SVG files without them b
 */
 
 'svg_sanitization_on_upload' => false,
+```
+
+## Video thumbnails
+
+Statamic can generate thumbnails for video assets so they display alongside images in the Control Panel's asset browser, instead of showing a generic file icon.
+
+<figure>
+    <img src="/img/video-thumbnails.webp" alt="Video thumbnails in the asset browser">
+    <figcaption>Videos get real thumbnails instead of generic file icons.</figcaption>
+</figure>
+
+### Requirements
+
+Video thumbnail generation relies on [FFmpeg](https://ffmpeg.org/) being installed and available on your server.
+
+``` shell
+# macOS (Homebrew)
+brew install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+```
+
+If FFmpeg isn't found on the system `PATH`, you can point Statamic at the binary explicitly in `config/statamic/assets.php`:
+
+```php
+'ffmpeg' => [
+    'binary' => '/usr/local/bin/ffmpeg',
+    'cache_path' => storage_path('statamic/glide/ffmpeg'),
+],
+```
+
+Generated thumbnails are cached to disk at `cache_path` so FFmpeg only runs once per video.
+
+### Disabling
+
+Video thumbnail generation is enabled by default. To disable it, set `video_thumbnails` to `false` in `config/statamic/assets.php`:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Control Panel Video Thumbnails
+|--------------------------------------------------------------------------
+|
+| When enabled, Statamic will generate thumbnails for videos.
+| Generated thumbnails are displayed in the Control Panel.
+|
+*/
+
+'video_thumbnails' => false,
 ```
 
 ## Custom cache stores

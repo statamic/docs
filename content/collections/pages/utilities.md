@@ -125,7 +125,7 @@ Utility::register('data_wangjangler')
     ->action([WangjanglerController::class, 'index']); // call the index method
 ```
 
-Then, in the controller, you can do whatever you need to do and return the Inertia.js component manually:
+In your controller, you can do whatever you need to do, then return an Inertia.js Vue component:
 
 ``` php
 use Inertia\Inertia;
@@ -141,6 +141,16 @@ class WangjanglerController
         ]);
     }
 }
+```
+
+Data will be passed to the component as props:
+
+```vue
+<script setup>
+defineProps({
+    items: Array,
+});
+</script>
 ```
 
 ## Routing

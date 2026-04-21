@@ -311,8 +311,8 @@
         }
     }
     h4, h4 a, h5, h5 a, h6, h6 a {
-        /* When a heading is inside a link, escape the link colour */
-        color: initial;
+        /* When a heading is inside a link, escape the link colour. Use the theme-aware primary text var — `initial` resolves to black in Safari/Firefox and breaks dark mode. */
+        color: var(--color-primary-text);
     }
     &:is(h4, h4 a, h5, h5 a, h6, h6 a) {
         font-family: var(--font-family-serif);

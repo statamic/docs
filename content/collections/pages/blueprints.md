@@ -71,6 +71,27 @@ Globals, Asset Containers, and Forms can only have one blueprint per item, so th
 
 All users will share the same blueprint, and it hangs out in the root of the directory.
 
+### Customizing the Path
+
+You can change where blueprints are stored by setting the `blueprints_path` option in `config/statamic/system.php`:
+
+```php
+'blueprints_path' => resource_path('blueprints'),
+```
+
+You may also provide an array to use different paths for specific blueprint types. This is especially useful for form blueprints when you want to keep them alongside other editable content — for example, if you exclude the `content/` directory from git and don't want form blueprints tracked:
+
+```php
+'blueprints_path' => [
+    'default' => resource_path('blueprints'),
+    'forms' => base_path('content/forms/blueprints'),
+],
+```
+
+The `default` key is required when using an array — it's used for any blueprint types you haven't explicitly specified.
+
+When a type-specific path is set, the type is _not_ appended to the path. Using the example above, a contact form blueprint lives at `content/forms/blueprints/contact.yaml`, not `content/forms/blueprints/forms/contact.yaml`.
+
 ## Conditional Fields
 
 It’s possible to have fields be displayed only under certain conditions. For example, you may only want to show a caption field if an asset field has an image selected, or a whole block of fields if a toggle switch is enabled.
@@ -211,6 +232,15 @@ fields:
 It would bring every field inline and prefix each field's handle appropriately.
 
 If you omit the `prefix` you won't be able to import them more than once at the same level because they would have the same handle and overwrite each other.
+
+If the fieldset you're importing has [its own sections](/fieldsets#sections), you can control how they're rendered with `section_behavior`. Set it to `preserve` (the default) to keep the fieldset's sections intact in the publish form, or `flatten` to merge everything into the current section.
+
+```yaml
+fields:
+  -
+    import: seo
+    section_behavior: flatten
+```
 
 
 ## Validation
