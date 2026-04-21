@@ -87,7 +87,7 @@
             font-family: var(--font-family-main);
             &, & code {
                 /* Custom */
-                font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+                font-size: clamp(0.8rem, 3.5vw, 0.9rem);
             }
         }
         ul:last-child {
