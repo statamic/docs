@@ -133,6 +133,8 @@ variables:
     name: 'entry data'
     type: mixed
     description: 'Each result has access to all the variables inside that entry (`title`, `content`, etc).'
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 related_entries:
   - 7202c698-942a-4dc0-b006-b982784efb03
   - 8ed04215-9f46-4000-bd67-c71b21b67d85
