@@ -1341,6 +1341,93 @@ Antlers template code inside your content **is not** parsed automatically for se
 
 You may **enable** Antlers parsing on a per-field basis by setting `antlers: true` in a given field's blueprint config.
 
+### Opting into tags and modifiers {#allowing-tags-and-modifiers-in-content}
+
+When Antlers parses content (fields with `antlers: true`, or anything run through `Antlers::parse()`), it runs in a hardened mode that disables PHP syntax and restricts which tags and modifiers are available. This is **not** the same as a regular `.antlers.html` view — views still get the full, unrestricted Antlers experience.
+
+#### What's allowed by default
+
+Out of the box — with the `allowedContentTags` and `allowedContentModifiers` keys unset (the default shipped state) — you get:
+
+**Default tags:**
+
+- `link:*`
+- `obfuscate:*`
+- `trans:*`
+- `trans_choice:*`
+- `widont:*`
+- Any tags you've created in your own `App\Tags\` namespace (auto-allowed)
+
+**Default modifiers:** The broad set of safe built-in modifiers, including:
+
+- `markdown`
+- `sanitize`
+- `upper`
+- `lower`
+- `format`
+- `where`
+- `excerpt`
+- `nl2br`
+- `slugify`
+- ~150 others
+- Custom modifiers in your `App\Modifiers\` namespace (auto-allowed)
+
+The full list lives in `Statamic\Providers\ViewServiceProvider::defaultAllowedContentModifiers()`.
+
+The defaults are deliberately narrow. Any tag that can **fetch or expose site data** is excluded, because a content author typing `{{ collection from="private_drafts" }}` or `{{ users }}` into an `antlers: true` field could otherwise "leak" data they they may or may not be entitled to. If you want those tags in content, opt in explicitly.
+
+#### Common tags you may want to opt into
+
+These aren't on by default — add them to `allowedContentTags` if your editors need them:
+
+| Tag | Why it's not default |
+| --- | --- |
+| `collection:*` | Fetches entries from any collection |
+| `taxonomy:*` | Fetches terms from any taxonomy |
+| `nav`, `structure:*` | Fetches navigation trees |
+| `users:*` | Fetches user data |
+| `form:*` | Fetches form fields and submissions |
+| `assets:*`, `asset:*` | Fetches assets from any container |
+| `glide:*` | Image manipulation (generally safe, just not in the default set) |
+| `search:*` | Runs search queries |
+| `get_content`, `get_files` | Arbitrary data fetching |
+| `relate:*` | Follows relationships |
+
+#### Extending or replacing the defaults
+
+If you need to allow additional tags or modifiers (like `{{ glide }}` or `{{ nav }}`), opt into them via `config/statamic/antlers.php`. Use the `@default` token to **keep the defaults and add to them** — without it, your array **replaces** the defaults entirely:
+
+```php
+// config/statamic/antlers.php
+return [
+    'allowedContentTags' => [
+        '@default',     // keep the built-in defaults
+        'glide:*',      // allow {{ glide }}, {{ glide:src }}, etc.
+        'nav',          // allow just {{ nav }}
+    ],
+
+    'allowedContentModifiers' => [
+        '@default',     // keep the built-in defaults
+        'my_custom',
+    ],
+];
+```
+
+Tag entries are **patterns** — append `:*` to allow the tag and any of its parameters/sub-tags (`glide`, `glide:src`, `glide:generate`, etc). Modifier entries are exact handle matches.
+
+### Allowing config values
+
+Referencing config in content fields (e.g. `{{ config:app:url }}`) goes through a separate allowlist. Statamic's `@default` list covers the common safe keys. If you're pulling a custom key, or chaining modifiers onto a config value, add it to `view_config_allowlist` in `config/statamic/system.php`:
+
+```php
+// config/statamic/system.php
+'view_config_allowlist' => [
+    '@default',
+    'app.url2',
+    'services.stripe.key',
+],
+```
+
 ## Code comments {#comments}
 
 Antlers code comments are not rendered in HTML (unlike HTML comments), which allows you to use them to "turn off" chunks of code, document your work, or leave notes and inside jokes for yourself and other developers.

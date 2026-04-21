@@ -30,23 +30,28 @@
 
 <hr>
 
-<h2 id="sponsors" class="u-center-on-lower-mqs o-scroll-spy-timeline__track">Sponsors</h2>
-<p class="u-center-on-lower-mqs">We've reserved this space to thank our top open source sponsors.</p>
-<div class="c-logo-grid u-center-on-lower-mqs">
-    {{ hero_sponsors }}
-        <div class="c-logo-grid__item">
+<div class="mt-8 rounded-2xl px-8 py-10" style="background: var(--color-gradient-full-light-3);">
+    <div class="text-center mb-8">
+        <h2 id="sponsors" class="text-2xl font-semibold tracking-tight text-balance o-scroll-spy-timeline__track">Loved by the Community</h2>
+        <p class="mt-2 opacity-60">These docs are generously sponsored by these cool people and companies.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6">
+        {{ hero_sponsors }}
             {{ if error }}
                 <p>We're having trouble loading the sponsors at the moment.</p>
             {{ else }}
-                <a href="{{ url }}">
-                    <img src="{{ avatarUrl }}">
-                    <span>{{ name }}</span>
+                <a href="{{ url }}" class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/60 dark:bg-white/10 hover:bg-white/80 dark:hover:bg-white/20 transition-colors no-underline">
+                    <img src="{{ avatarUrl }}" class="size-10 rounded-lg">
+                    <span class="text-sm font-medium">{{ name }}</span>
                 </a>
             {{ /if }}
-        </div>
-    {{ /hero_sponsors }}
-    <div class="c-logo-grid__item">
-        <a href="https://github.com/sponsors/statamic">Sponsor Statamic</a>
+        {{ /hero_sponsors }}
+    </div>
+    <div class="text-center mt-8">
+        <a href="https://github.com/sponsors/statamic" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-primary-text)] text-[var(--color-body-background)] text-sm font-medium no-underline hover:opacity-90 transition-opacity">
+            <svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Become a Sponsor
+        </a>
     </div>
 </div>
 

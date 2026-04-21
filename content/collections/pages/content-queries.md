@@ -348,6 +348,65 @@ Note: `orWhereJsonContains` and `orWhereJsonLength` are also both supported.
 
 
 
+## Querying relationships
+
+You can query across [relationship fields](/fieldtypes/entries) (like `entries`, `terms`, and `users`) using `has`, `whereHas`, and `whereRelation` — mirroring Laravel's Eloquent relationship methods.
+
+:::tip
+Relationship querying is supported on the **Entry**, **Term**, and **User** query builders. The field passed as `$relation` must be a relationship field (`entries`, `terms`, or `users`) defined on a blueprint that belongs to the query builder.
+:::
+
+### whereHas
+
+Use `whereHas` to constrain the query to results where a relationship exists and its related records match additional conditions provided via a closure.
+
+```php
+Entry::query()
+    ->whereHas('related_posts', function ($query) {
+        $query->where('title', 'Post 2');
+    })
+    ->get();
+```
+
+Without a closure, `whereHas` simply checks that the relationship is not empty:
+
+```php
+Entry::query()->whereHas('related_posts')->get();
+```
+
+Note: `orWhereHas`, `whereDoesntHave`, and `orWhereDoesntHave` are also supported.
+
+### whereRelation
+
+`whereRelation` is syntactic sugar for a `whereHas` with a single `where` clause against the related records:
+
+```php
+Entry::query()
+    ->whereRelation('related_posts', 'title', 'Post 2')
+    ->get();
+```
+
+It accepts the same signature as `where` — an operator and value, or a closure for more complex logic. `orWhereRelation` is also supported.
+
+### has
+
+Use `has` to constrain the query to results where a relationship has any related records. Pair with `doesntHave` for the inverse.
+
+```php
+Entry::query()->has('related_posts')->get();
+Entry::query()->doesntHave('related_posts')->get();
+```
+
+Note: `orHas` and `orDoesntHave` are also supported.
+
+:::warning
+A couple of things to be aware of:
+
+- **Nested relations** (e.g. `author.posts`) are not supported and will throw an `InvalidArgumentException`.
+- **Counting with subqueries** (e.g. `whereHas('posts', fn ($q) => ..., '>=', 10)`) is not supported and will throw an `InvalidArgumentException`.
+:::
+
+
 ## Operators
 
 The following operators are available in [basic where clauses](#basic-where-clauses) when appropriate for a targeted field's datatype, just like SQL.
