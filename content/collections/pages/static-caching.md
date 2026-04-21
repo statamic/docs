@@ -370,6 +370,22 @@ php please static:warm --header="Authorization: Bearer your_token"
 
 This ensures the cache warming requests are accepted by your backend even when authentication is required.
 
+### Warming behind Cloudflare
+
+Cloudflare's bot protection (particularly "Verified Bots" and "Bot Fight Mode") can block or challenge the outgoing requests that `static:warm` makes back to your own site, since those requests look like automated traffic. When this happens you'll typically see `403` responses, challenge pages, or silently failing warms.
+
+The fix is to allow your server's own public IP through Cloudflare's WAF before it hits any bot rules. Create a WAF custom rule:
+
+- **Field:** `IP Source Address`
+- **Operator:** `equals`
+- **Value:** your server's public IPv4 (and IPv6 if applicable)
+- **Action:** `Skip` → skip *All remaining custom rules*, *Managed Rules*, *Rate limiting rules*, and *Bot Fight Mode / Super Bot Fight Mode*
+
+If you're on a load-balanced or multi-node setup, add each origin IP. Once the rule is in place, `static:warm` requests will bypass bot challenges and complete normally.
+
+:::tip
+If you can't whitelist an IP (shared hosting, dynamic IPs), an alternative is to send a secret header with `--header="X-Warm-Secret: your-token"` and add a Cloudflare WAF rule that skips bot checks when that header is present. Keep the token out of source control.
+:::
 
 ## Excluding Pages
 
