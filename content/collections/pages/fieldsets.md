@@ -41,6 +41,14 @@ resources/
 
 You can even nest fieldsets in subdirectories to further organize them. Use `.` in the handle to indicate a subdirectory.
 
+### Customizing the path
+
+You can change where fieldsets are stored by setting the `fieldsets_path` option in `config/statamic/system.php`:
+
+```php
+'fieldsets_path' => resource_path('fieldsets'),
+```
+
 ## YAML structure
 
 At its most basic, a fieldset has an array of fields.
