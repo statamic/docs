@@ -90,6 +90,23 @@ If you only want to change the `directory`, you don't need to include the `class
 
 \* The `assets` store cannot have its directory customized here. You configure its location through the [container](/assets#containers).
 
+### Excluding stores {#excluding-stores}
+
+You can exclude a registered store from the `stache:warm` and `stache:clear` operations. This is useful when you've [swapped out a repository](/extending/repositories) with your own implementation (e.g. a custom database-backed driver) and don't want the Stache to waste time warming or clearing stores that aren't backed by files.
+
+```php
+use Statamic\Facades\Stache;
+
+Stache::exclude('entries');
+Stache::exclude('terms');
+```
+
+Call this from a service provider's `boot` method. The store stays registered (queries still work through it), but it's skipped during warming and clearing.
+
+:::tip
+The [Eloquent Driver](https://github.com/statamic/eloquent-driver) handles this automatically for whichever repositories you've configured it to manage.
+:::
+
 ## Indexes
 
 Each store will organize data from its items into indexes. It'll then use those to narrow down items when performing queries.
