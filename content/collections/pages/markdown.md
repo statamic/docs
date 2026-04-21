@@ -184,6 +184,39 @@ Markdown::extend('special', $config, function ($parser) {
 ```
 :::
 
+### Extending the Parser class
+
+If you need more control than configuration and extensions allow – for example, manipulating the raw Markdown string before it hits the parser, or adding your own helper methods – you can extend the `Statamic\Markdown\Parser` class directly.
+
+```php
+<?php
+
+namespace App\Markdown;
+
+use Statamic\Markdown\Parser;
+
+class CustomParser extends Parser
+{
+    public function parse(string $markdown): string
+    {
+        $markdown = str_replace(':sparkles:', '✨', $markdown);
+
+        return parent::parse($markdown);
+    }
+}
+```
+
+Then register an instance of your custom parser using `Markdown::extend()`:
+
+```php
+use Statamic\Facades\Markdown;
+use App\Markdown\CustomParser;
+
+Markdown::extend('custom', fn () => new CustomParser);
+```
+
+Because the underlying `newInstance()` method returns `new static`, chained helpers like `withAutoLinks()`, `withStatamicDefaults()`, and `newInstance()` will return instances of your subclass – so you keep access to your custom methods even after chaining.
+
 ### Using a custom parser in a modifier
 
 The `markdown` modifier accepts an optional argument to choose which parser to use.
