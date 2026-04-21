@@ -139,6 +139,12 @@ And then enable the "Logs" collector in your new `config/debugbar.php` config fi
     ],
 ```
 
+## Laravel Nightwatch
+
+[Laravel Nightwatch](https://nightwatch.laravel.com) is a monitoring service that captures requests, queries, cache events, queued jobs, and more. It works with Statamic, but because Statamic leans heavily on the cache layer, a default install can burn through your event quota quickly.
+
+See [Using Statamic Alongside Laravel Nightwatch](/tips/using-statamic-with-laravel-nightwatch) for recommended filters to keep your event volume under control.
+
 ## Laravel Telescope
 
 Statamic supports [Laravel Telescope][telescope], an elegant debug assistant for the Laravel framework. It's most useful when you're building addons or doing custom Laravel things outside the normal Statamic site scope.
