@@ -247,6 +247,53 @@ if:
   $root.favorite_foods: includes bacon
 ```
 
+## Extra values
+
+In addition to field values, a handful of "extra" values are made available so you can write conditions against native data that isn't part of the blueprint.
+
+### Assets
+
+When editing an asset, the following values are available:
+
+| Value | Description |
+| :--- | :--- |
+| `filename` | The filename including extension (e.g. `beach.jpg`). |
+| `basename` | The filename without the extension (e.g. `beach`). |
+| `extension` | The file extension (e.g. `jpg`). |
+| `path` | The full path to the asset within its container. |
+| `mimeType` | The mime type (e.g. `image/jpeg`). |
+| `width` | The width in pixels, for assets with dimensions. |
+| `height` | The height in pixels, for assets with dimensions. |
+| `duration` | The duration in seconds, for audio and video. |
+
+For example, to only show an `Autoplay` toggle on video assets shorter than one minute:
+
+```yaml
+-
+  handle: autoplay
+  field:
+    type: toggle
+    display: Autoplay
+    if:
+      extension: mp4
+      duration: '<= 60'
+```
+
+### Entries
+
+When editing an entry in a structured collection, the following value is available:
+
+| Value | Description |
+| :--- | :--- |
+| `depth` | The depth of the entry in the structure. Top-level entries are `1`. |
+
+For example, to only show a field on entries nested deeper than two levels:
+
+```yaml
+if:
+  depth: '> 2'
+```
+
 ## Custom logic
 
 If you need something more complex than the YAML syntax provides, you may write your own logic.  In a [JS script](/extending/control-panel) or addon, you can define custom functions using the `$conditions` JS API:
