@@ -342,7 +342,8 @@ Inside your email view, you have a number of variables available:
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
-- `email_config` - The form's config
+- `email_config` - The email's config (the current item from your `email:` array)
+- `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
