@@ -61,6 +61,20 @@ return [
 You may use the [nocache tag](/tags/nocache) to keep parts of your pages dynamic.
 :::
 
+### Caching 404s
+
+When using the application driver, 404 responses are statically cached automatically. This stops a heavy "page not found" view from being re-rendered on every request when bots or broken links repeatedly hit non-existent URLs.
+
+You can go a step further and have Statamic share a single cached 404 across every 404-ing URL. The first 404 is rendered and cached, and every subsequent 404 — regardless of URL — is served that same cached response. Each URL still gets its own cache entry, but the rendering work is skipped.
+
+```php
+// config/statamic/static_caching.php
+
+'share_errors' => true,
+```
+
+Both behaviors are only available when using half measure. With full measure, the 404 never reaches PHP if the rewrite rules send the request to `index.php`, so there's nothing to cache.
+
 ## File driver
 
 The file driver will generate completely static `.html` pages ready for your web server to serve directly. This means that the HTML files will be loaded before it even reaches PHP.
