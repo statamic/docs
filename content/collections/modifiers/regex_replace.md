@@ -9,21 +9,23 @@ title: 'Regex Replace'
 Run a find and replace regex on a string of content.
 
 ```yaml
-description: This cat video is the best thing ever.
+message: 'This is a great video: https://www.youtube.com/watch?v=YO_spdAYjPk'
 ```
 
 ::tabs
 
 ::tab antlers
 ```antlers
-{{ description | regex_replace('best', 'okayest') }}
+{{ message | regex_replace('watch\?v=[\w-]+', 'watch?v=dQw4w9WgXcQ') }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($description)->regexReplace(['best', 'okayest']) }}
+{{ Statamic::modify($message)->regexReplace(['watch\?v=[\w-]+', 'watch?v=dQw4w9WgXcQ']) }}
 ```
 ::
 
 ```html
-This cat video is the okayest thing ever.
+Check out this video: https://www.youtube.com/watch?v=eBGIQ7ZuuiU
 ```
+
+Great for when your client keeps putting YouTube links in their content and you want to, uh, help them out.

@@ -342,7 +342,8 @@ Inside your email view, you have a number of variables available:
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
-- `email_config` - The form's config
+- `email_config` - The email's config (the current item from your `email:` array)
+- `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
@@ -733,5 +734,100 @@ document.addEventListener('alpine:init', () => {
 </script>
 ```
 
+### User Forms
+
+The user form tags ([login][login_form], [register][register_form], [profile][profile_form], and [password][password_form]) also support Precognition — but at the request level only. The tags themselves don't accept a `js="alpine_precognition"` parameter, so you wire it up manually against the form's action URL.
+
+Install the Alpine adapter:
+
+```shell
+npm install laravel-precognition-alpine
+```
+
+Register it before Alpine starts:
+
+```js
+import Alpine from 'alpinejs'
+import precognition from 'laravel-precognition-alpine'
+
+Alpine.plugin(precognition)
+Alpine.start()
+```
+
+Then bind a `$form` to the appropriate endpoint inside the user form tag:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ user:login_form
+    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
+}}
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        x-model="form.email"
+        @change="form.validate('email')"
+    >
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        x-model="form.password"
+        @change="form.validate('password')"
+    >
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <button type="submit" :disabled="form.processing">Log in</button>
+{{ /user:login_form }}
+```
+::tab blade
+```blade
+<s:user:login_form
+    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
+>
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        x-model="form.email"
+        @change="form.validate('email')"
+    >
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        x-model="form.password"
+        @change="form.validate('password')"
+    >
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <button type="submit" :disabled="form.processing">Log in</button>
+</s:user:login_form>
+```
+::
+
+The same pattern applies to the other user forms — just swap the action URL and the data fields:
+
+| Tag | Endpoint |
+|---|---|
+| `{{ user:login_form }}` | `/!/auth/login` |
+| `{{ user:register_form }}` | `/!/auth/register` |
+| `{{ user:profile_form }}` | `/!/auth/profile` |
+| `{{ user:password_form }}` | `/!/auth/password` |
+
+If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
+
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
+[login_form]: /tags/user-login_form
+[register_form]: /tags/user-register_form
+[profile_form]: /tags/user-profile_form
+[password_form]: /tags/user-password_form

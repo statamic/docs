@@ -315,3 +315,51 @@ class CustomEntry extends Entry
     }
 }
 ```
+
+### Always Augment Relationships to a Query
+
+By default, [relationship fieldtypes](/fieldtypes/entries) ([Entries](/fieldtypes/entries), [Terms](/fieldtypes/terms), [Users](/fieldtypes/users), and [Assets](/fieldtypes/assets)) augment differently based on their `max_items` setting:
+
+- When `max_items` is **not** `1`, the field augments to a **query builder** that you can chain, filter, and iterate.
+- When `max_items` **is** `1`, the field short-circuits and augments to the **first result** (e.g. an `Entry`, `Term`, `User`, or `Asset` instance).
+
+That shortcut is convenient, but it's inconsistent with the multi-item case and has a subtle side-effect: the automatic "first result" query only considers **published** items. If you need to alter the query (e.g. include drafts or scheduled entries), you can't — you never see the query builder.
+
+To force relationship fields to **always** augment to a query builder regardless of `max_items`, enable the `always_augment_to_query` option in `config/statamic/system.php`:
+
+``` php
+// config/statamic/system.php
+'always_augment_to_query' => true,
+```
+
+:::hint
+**This is opt-in and will change your templates.** With it enabled, a `max_items: 1` field no longer returns a single object — it returns a query builder. That means shorthand like `{{ product:title }}` stops working and you must loop (or call `.first()`) explicitly.
+:::
+
+::tabs
+
+::tab antlers
+```antlers
+{{# Before: max_items: 1 augments to the related entry #}}
+{{ product:title }}
+
+{{# After: max_items: 1 augments to a query builder #}}
+{{ product }}
+    {{ title }}
+{{ /product }}
+```
+
+::tab blade
+```blade
+{{-- Before: $product is an Entry --}}
+{{ $product->title }}
+
+{{-- After: $product is a query builder --}}
+@foreach ($product as $item)
+    {{ $item->title }}
+@endforeach
+```
+
+::
+
+The upside is that you can now modify the query anywhere a relationship field is used — apply scopes, include drafts, change ordering, etc. — using the same fluent API you'd use on a collection query.

@@ -113,3 +113,34 @@ You may also show this field as a column on your listings using the `Listable` s
     <img src="/img/computed-field-listing-dark.webp" alt="Computed field visibility config" class="u-hide-in-light-mode">
     <figcaption>One of us didn't win anything, but does he need the money anyway?</figcaption>
 </figure>
+
+## Computed default values
+
+Sometimes you want a field's default value to be dynamic — pulled from a config file, an addon setting, the current user, or any other runtime source. You can register a **computed default** closure and reference it from any field's `default` config.
+
+Register the callback inside a service provider's `boot` method using the `Field` facade:
+
+```php
+use Statamic\Facades\Field;
+
+Field::computedDefault('default_timezone', function () {
+    return config('app.timezone');
+});
+```
+
+Then reference it from your blueprint or fieldset using the `computed:` prefix followed by the key you registered:
+
+```yaml
+fields:
+  -
+    handle: timezone
+    field:
+      type: text
+      default: 'computed:default_timezone' # [tl!**]
+```
+
+The closure will be resolved each time a new entry is created, so the default stays fresh. Stored values on existing entries are untouched.
+
+:::tip
+Computed defaults are great for addon authors — register a default that reads from your addon's settings so users see a sensible initial value without hardcoding it into every blueprint.
+:::

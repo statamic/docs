@@ -98,6 +98,31 @@ If you use a method, it will give you a query builder and allow you to chain cla
 @endforeach
 ```
 
+### Loop variables {#loop-variables}
+
+The helper variables Antlers exposes inside loops — `first`, `last`, `count`, `index`, `total_results` — are an Antlers feature and are **not** available in Blade. Instead, use Laravel's built-in [`$loop` variable](https://laravel.com/docs/blade#the-loop-variable), which is available inside every `@foreach` and gives you the same information (and more).
+
+| Antlers | Blade equivalent |
+| --- | --- |
+| `{{ first }}` | `$loop->first` |
+| `{{ last }}` | `$loop->last` |
+| `{{ count }}` | `$loop->iteration` |
+| `{{ index }}` | `$loop->index` |
+| `{{ total_results }}` | `$loop->count` |
+
+```blade
+<ul>
+<s:collection:blog>
+    <li @class(['featured' => $loop->first])>
+        {{ $loop->iteration }} of {{ $loop->count }} — {{ $title }}
+        @if ($loop->last) (that's all, folks!) @endif
+    </li>
+</s:collection:blog>
+</ul>
+```
+
+For nested loops, `$loop->parent` gives you access to the outer loop's variable. See the [Laravel docs](https://laravel.com/docs/blade#the-loop-variable) for the full list of properties.
+
 ### Cascade directive
 
 When using blade components or rendering views loaded by non-Statamic routes/controllers, the cascade data will be not available by default. In these situations you can use the `@cascade` directive to populate the current scope with cascade data.

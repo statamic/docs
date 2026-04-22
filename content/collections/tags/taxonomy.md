@@ -82,6 +82,8 @@ variables:
     type: query builder
     description: >
       If you use this as a tag pair, you can loop through entries associated with the term. See [entries](#entries) above.
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 id: ba832b71-a567-491c-b1a3-3b3fae214703
 ---
 ## Example {#example}

@@ -114,6 +114,35 @@ public function visibleTo($item)
 Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
 :::
 
+## Collection Actions
+
+Actions aren't just for entries, terms, assets, and users. You can also write actions that target [collections](/collections) themselves. They appear in the contextual menu on the collections listing page, and in the twirldown menu on a collection's entries listing page.
+
+Use the `visibleTo` method to scope your action to collections, and you'll receive `Collection` instances in `run`.
+
+``` php
+use Statamic\Contracts\Entries\Collection;
+
+class ClearCache extends Action
+{
+    protected $icon = 'refresh';
+
+    public function visibleTo($item)
+    {
+        return $item instanceof Collection;
+    }
+
+    public function run($collections, $values)
+    {
+        $collections->each(fn ($collection) => cache()->forget("collection.{$collection->handle()}"));
+
+        return trans_choice('Cache cleared.|:count caches cleared.', $collections);
+    }
+}
+```
+
+After the action runs from a collection's entries listing page, the page will reload (unless you return a [redirect](#redirects) or [download](#downloads) response).
+
 ## Authorizing Actions
 
 Before any actions are run, Statamic will make sure the user is allowed to run them. You can return a boolean like this:

@@ -51,6 +51,22 @@ Let's say we want a link to edit the current entry in the control panel if the u
 
 [Super users](/users#super-users) are granted permission for any Statamic-related abilities. When a permission doesn't exist in Statamic, it'll fall back to [traditional Laravel authorization](https://laravel.com/docs/master/authorization#main-content).
 
+## Passing Arguments to Gates
+
+When falling back to Laravel authorization, you can pass additional arguments to your gate by adding extra parameters to the tag. Any parameter besides `do`/`permission` will be forwarded to the gate in the order it's defined.
+
+```php
+Gate::define('view secret', function ($user, $secret) {
+    return $user->hasAccessToSecret($secret);
+});
+```
+
+```antlers
+{{ user:can do="view secret" secret="foo" }}
+    ...
+{{ /user:can }}
+```
+
 ## Can’t
 
 We also support the negative use case using `{{ user:cant }}` tags.

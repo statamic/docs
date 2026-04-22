@@ -347,6 +347,18 @@ On any pages that use a `nocache` tag, a small snippet of JavaScript will be inj
 
 The nocache fragments will be retrieved from the server using an AJAX request. Because of this, there may be a slight delay before the fragments are replaced. This is similar to a "FOUC" or "flash of unstyled content". In this case, there will be empty `<span>` tags until they are replaced by the real fragments.
 
+### JavaScript position
+
+By default, the nocache JavaScript is injected just before the closing `</body>` tag so replacements happen after the full HTML has parsed. If you need the script to load earlier — for example, when using Livewire — you can move it into the `<head>` via the `nocache_js_position` option:
+
+```php
+// config/statamic/static_caching.php
+
+'nocache_js_position' => 'head', // 'body' (default) or 'head'
+```
+
+When set to `head`, the script is inserted before the first `<link>`, `<script>`, or the closing `</head>` tag (whichever comes first).
+
 You can optionally define the inner html of these `span` tags, if you wanted to have a "loading" state, for example.
 
 ```php

@@ -33,6 +33,7 @@
 
     {{ if variables }}
         <h2 id="variables">Variables</h2>
+        {{ variables_content | markdown ?? '' }}
         {{ partial:variables }}
     {{ /if }}
 {{# </div> #}}

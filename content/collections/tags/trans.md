@@ -19,6 +19,10 @@ parameters:
     name: count
     type: 'integer *1*'
     description: 'When using `trans_choice`, this is the number that defines the pluralization.'
+  -
+    name: fallback
+    type: string
+    description: 'A fallback string or translation key to use when the requested key does not exist.'
 id: 8ff99539-8b1a-4380-adf7-bdad979f8afd
 ---
 This tag is the equivalent of the [trans and trans_choice methods](https://laravel.com/docs/localization) provided by Laravel.
@@ -94,4 +98,36 @@ To pluralize, use the `trans_choice` tag with a `count` parameter.
 
 ```html
 There are 2 apples
+```
+
+## Fallback
+
+Provide a `fallback` parameter to use when the translation key doesn't exist. The fallback can be either a literal string or another translation key.
+
+```antlers
+{{ trans key="messages.does_not_exist" fallback="Literal fallback" }}
+```
+
+```html
+Literal fallback
+```
+
+If the fallback itself is a valid translation key, that translation will be used instead.
+
+```antlers
+{{ trans key="messages.does_not_exist" fallback="messages.fallback_key" }}
+```
+
+```html
+Fallback from existing key
+```
+
+Parameter replacements are also applied to the fallback.
+
+```antlers
+{{ trans key="messages.does_not_exist" name="Bob" fallback="Hello, :name" }}
+```
+
+```html
+Hello, Bob
 ```

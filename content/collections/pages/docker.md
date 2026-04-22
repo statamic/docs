@@ -9,7 +9,7 @@ parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ## Overview
 [Laravel Sail](https://laravel.com/docs/13.x/sail) is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building Laravel applications without requiring prior Docker experience, and is a perfect fit for Statamic with a few tweaks.
 
-At its heart, Sail is a `docker-compose.yml` file and script that is stored at the root of your project. The sail script provides a CLI with convenient methods for interacting with the Docker containers defined by the `docker-compose.yml` file.
+At its heart, Sail is a `compose.yaml` file and script that is stored at the root of your project. The sail script provides a CLI with convenient methods for interacting with the Docker containers defined by the `compose.yaml` file.
 
 Laravel Sail is supported on macOS, Linux, and Windows (via WSL2).
 
@@ -23,7 +23,7 @@ If you don't already have Docker installed, head to [docker.com/get-started](htt
 
 ## Installing Laravel
 
-Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/12.x#creating-a-laravel-project).
+Follow the install instructions for creating a fresh Laravel app from [their documentation](https://laravel.com/docs/13.x#creating-a-laravel-project).
 
 Install Laravel Sail into your new Laravel app with no additional services, unless you want to get fancy and use MySQL with Statamic (yes, you can do that).
 
@@ -32,13 +32,17 @@ composer require laravel/sail --dev
 php artisan sail:install --with=none
 ```
 
+:::tip
+Need to add MySQL, Redis, Meilisearch, or another service later? Run `sail artisan sail:add` and pick what you want.
+:::
+
 ## Starting and Stopping Sail
 
 :::tip
 **Before starting Sail**, ensure that no other web servers or databases are running on your local computer.
 :::
 
-To start all of the Docker containers defined in your site's `docker-compose.yml` file, execute the up command:
+To start all of the Docker containers defined in your site's `compose.yaml` file, execute the up command:
 
 ``` shell
 ./vendor/bin/sail up

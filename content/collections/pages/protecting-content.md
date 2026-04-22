@@ -22,7 +22,7 @@ Whichever approach you choose, know that it's designed to help you out. We’ve 
 ## Caveats
 
 * Protection only applies to the frontend of your site routed through Statamic (like entry URLs). Custom routes defined in your `routes/web.php` file and the Control Panel will be unaffected.
-* Protected pages are automatically excluded from the [static cache](/static-caching#important-preface).
+* Protected pages are automatically excluded from the [static cache](/static-caching#important-preface), unless the driver explicitly opts in by [marking itself cacheable](#cacheable-drivers).
 
 
 ## Protecting an entry
@@ -290,6 +290,37 @@ $this->config; // The configuration array of the scheme.
 $this->url;    // The URL the protection was triggered on.
 $this->data;   // The data object (eg. the Entry) being protected.
 ```
+
+### Cacheable drivers
+
+By default, any page using a protection scheme is excluded from the [static cache](/static-caching) — Statamic adds an `X-Statamic-Protected` header to the response which prevents caching. This is a safe default because the first visitor's view of a protected page would otherwise get served to everyone.
+
+If your custom driver's protection logic doesn't depend on the visitor (for example: a scheme that only allows access during a specific date range, or only on certain environments), you can opt it into static caching by overriding the `cacheable` method and returning `true`.
+
+``` php
+<?php
+
+use Statamic\Auth\Protect\Protectors\Protector;
+
+class ComingSoon extends Protector
+{
+    public function protect()
+    {
+        abort_if(now()->lt('2026-01-01'), 404);
+    }
+
+    public function cacheable()
+    {
+        return true;
+    }
+}
+```
+
+When `cacheable()` returns `true`, the `X-Statamic-Protected` header will not be added and the page is eligible for the static cache.
+
+:::warning
+Only mark a driver as cacheable when its `protect()` logic produces the same outcome for every visitor. User-specific, IP-specific, or password-based protection must not be cached.
+:::
 
 ### Registering the driver
 

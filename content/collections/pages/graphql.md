@@ -1525,6 +1525,10 @@ EntriesQuery::auth(function () {
 });
 ```
 
+:::warning
+Per-request authorization logic is **not safe to cache**. Statamic's response cache keys on the query and variables only — not on the user or request — so the first response is served to everyone after it. If you use `::auth()` closures or per-user authorization, [disable the cache](#disabling-caching).
+:::
+
 ## Authentication
 
 Out of the box, the GraphQL API is publicly accessible.
@@ -1557,6 +1561,10 @@ To use Sanctum, you'll need to [store users in the database](/tips/storing-users
     'auth:sanctum',
 ],
 ```
+
+:::warning
+When responses vary per authenticated user, you must [disable the response cache](#disabling-caching). The default cache is shared across all clients and does not account for the request's user, so one user's data can be served to another.
+:::
 
 ## Custom fields
 
@@ -1625,6 +1633,12 @@ GraphQL uses a basic whole-response cache by default. Each query/variables combi
     'expiry' => 60,
 ],
 ```
+
+:::warning
+The cache key is based on the **query and variables only** — not the authenticated user or request context. This means any per-request authorization (via [`::auth()`](#authorization) closures or [per-user authentication](#authenticating-users) like Sanctum) is **not safe to cache**, because the first response will be served to every subsequent client regardless of who they are.
+
+A global [auth token](#authentication) is safe — the request is rejected before it ever reaches the cache, so everyone who gets through has identical access. Per-user auth is not. If any of your queries return data that depends on who's asking, [disable caching](#disabling-caching).
+:::
 
 ### Cache invalidation
 

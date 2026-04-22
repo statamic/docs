@@ -114,7 +114,8 @@ variables:
     type: array
     description: >
       Available when using the [Algolia driver](https://www.algolia.com/doc/api-client/php/search#fields). Displays a field with the search term automatically highlighted. Example: `{{ _highlightResult:myfield:value }}`
-
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 ---
 ## Overview
 

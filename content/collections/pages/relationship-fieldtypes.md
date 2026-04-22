@@ -12,15 +12,15 @@ You can create your own relationship fields that provide the ability to select a
 
 ## Example
 
-To illustrate that you can get items from anywhere — even remote APIs — we'll build a field where you can select tweets from a given user.
+To illustrate that you can get items from anywhere — even remote APIs — we'll build a field where you can select GitHub repositories for a given user.
 
-In your blueprints, you'll be able to use `type: tweets` (whatever you name your fieldtype) and all the options that the relationship field would normally give you, like `max_items`:
+In your blueprints, you'll be able to use `type: repos` (whatever you name your fieldtype) and all the options that the relationship field would normally give you, like `max_items`:
 
 ``` yaml
 fields:
-  handle: tweets
+  handle: repos
   field:
-    type: tweets
+    type: repos
     max_items: 3
 ```
 
@@ -29,7 +29,7 @@ fields:
 You will need to create the fieldtype – no Vue component necessary – so you can skip it with the <nobr>`--php`</nobr> flag:
 
 ``` shell
-php please make:fieldtype Tweets --php
+php please make:fieldtype Repos --php
 ```
 
 Then instead of extending `Fieldtype`, you'll extend the existing `Relationship` fieldtype:
@@ -37,7 +37,7 @@ Then instead of extending `Fieldtype`, you'll extend the existing `Relationship`
 ``` php
 use Statamic\Fieldtypes\Relationship;
 
-class Tweets extends Relationship
+class Repos extends Relationship
 {
     //
 }
@@ -60,31 +60,34 @@ public function getIndexQuery($request)
 }
 ```
 
-Or, you can override `getIndexItems` for full control. We'll use this for our Twitter example.
+Or, you can override `getIndexItems` for full control. We'll use this for our GitHub example.
 
 ``` php
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 
 public function getIndexItems($request)
 {
-    $tweets = Twitter::getUserTimeline([
-        'screen_name' => $this->config('screen_name')
-    ]);
+    $repos = Http::github()
+        ->get("/users/{$this->config('username')}/repos")
+        ->json();
 
-    return $this->formatTweets($tweets);
+    return $this->formatRepos($repos);
 }
 
-protected function formatTweets($tweets)
+protected function formatRepos($repos)
 {
-    return collect($tweets)->map(function ($tweet) {
-        $date = Carbon::parse($tweet->created_at);
+    return collect($repos)->map(function ($repo) {
+        $updated = Carbon::parse($repo['updated_at']);
 
         return [
-            'id'            => $tweet->id_str,
-            'text'          => $tweet->text,
-            'date'          => $date->timestamp,
-            'date_relative' => $date->diffForHumans(),
-            'user'          => $tweet->user->screen_name,
+            'id'               => $repo['id'],
+            'name'             => $repo['name'],
+            'description'      => $repo['description'],
+            'stars'            => $repo['stargazers_count'],
+            'updated'          => $updated->timestamp,
+            'updated_relative' => $updated->diffForHumans(),
+            'owner'            => $repo['owner']['login'],
         ];
     });
 }
@@ -98,9 +101,10 @@ use Statamic\CP\Column;
 protected function getColumns()
 {
     return [
-        Column::make('text'),
-        Column::make('user'),
-        Column::make('date')->value('date_relative'),
+        Column::make('name'),
+        Column::make('description'),
+        Column::make('stars'),
+        Column::make('updated')->value('updated_relative'),
     ];
 }
 ```
@@ -111,7 +115,7 @@ Once you select items, their `id` values will be used as the value for your fiel
 something like this in your content files:
 
 ``` yaml
-tweets:
+repos:
   - 54376134
   - 89473529
 ```
@@ -119,11 +123,11 @@ tweets:
 In order to convert those values into something useful, you'll either need to override the `getItemData` method or the `toItemArray` method. For our example, we'll use the former:
 
 ``` php
-public function getItemData($values, $site = null)
+public function getItemData($values)
 {
-    $tweets = Twitter::getStatusesLookup(['id' => implode(',', $values)]);
+    $repos = collect($values)->map(fn ($id) => Http::github()->get("/repositories/{$id}")->json());
 
-    return $this->formatTweets($tweets);
+    return $this->formatRepos($repos);
 }
 ```
 
@@ -131,16 +135,31 @@ public function getItemData($values, $site = null)
 
 When field data is to be displayed in a listing view (eg. in the entries listing table or the entry fieldtype), you may customize the display by overwriting the `preProcessIndex` method.
 
-In our Twitter field, let's show only the text:
+In our GitHub field, let's show only the repo names:
 
 ```php
 public function preProcessIndex($data)
 {
-    $tweets = Twitter::getStatusesLookup(['id' => implode(',', $data)]);
-
-    return collect($tweets)->map(fn($tweet) => $tweet->text)->join(', ');
+    return collect($data)
+        ->map(fn ($id) => Http::github()->get("/repositories/{$id}")->json('name'))
+        ->join(', ');
 }
 ```
+
+## Hints
+
+Hints are short bits of secondary text shown next to selected items and dropdown options. They're useful when multiple items could share the same title and you need a way to disambiguate them — like an entry titled "About" that could exist in several collections.
+
+Override the `getItemHint` method to return a string (or `null` for no hint):
+
+``` php
+public function getItemHint($item): ?string
+{
+    return $item['owner'];
+}
+```
+
+The built-in `Entries` and `Terms` fieldtypes use this to show the collection or taxonomy title when more than one is configured.
 
 ## Creating Items
 
@@ -159,8 +178,8 @@ By default, the search bar will be visible in the selector stack. When a user ty
 public function getIndexItems($request)
 {
     return $request->search
-        ? $this->searchTweets($request->search)
-        : $this->userTweets();
+        ? $this->searchRepos($request->search)
+        : $this->userRepos();
 }
 ```
 
@@ -177,13 +196,13 @@ By default, the fieldtype will show the standard draggable block, with the `titl
 own Vue component to the `itemComponent` property to replace it.
 
 ``` php
-protected $itemComponent = 'TwitterRelationshipItem';
+protected $itemComponent = 'GithubRepoRelationshipItem';
 ```
 
 ``` js
-import TwitterRelationshipItem from './TwitterRelationshipItem.vue';
+import GithubRepoRelationshipItem from './GithubRepoRelationshipItem.vue';
 
-Statamic.$components.register('TwitterRelationshipItem', TwitterRelationshipItem);
+Statamic.$components.register('GithubRepoRelationshipItem', GithubRepoRelationshipItem);
 ```
 
 ``` vue
@@ -198,8 +217,8 @@ defineProps({
         <div class="item-move">&nbsp;</div>
         <div class="item-inner">
             <div class="p-3">
-                <p class="mb-2 text-lg">{{ item.text }}</p>
-                <p class="text-grey">{{ item.user }} – {{ item.date_relative }}</p>
+                <p class="mb-2 text-lg">{{ item.name }}</p>
+                <p class="text-grey">{{ item.owner }} – ★ {{ item.stars }} –  {{ item.updated_relative }}</p>
             </div>
         </div>
         <dropdown-list class="pr-1">

@@ -120,17 +120,16 @@ Route::statamic('stats', 'statistics.show', function (Request $request) {
 });
 ```
 
-## Redirects
+### Disabling {#disabling-statamic-routes}
 
-Creating redirects can be done in your `routes/web.php` using native Laravel Route methods:
+If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting it in `config/statamic/routes.php`.
 
 ``` php
-Route::redirect('/here', '/there');
-Route::redirect('/here', '/there', 301);
-Route::permanentRedirect('/here', '/there');
+// config/statamic/routes.php
+
+'enabled' => false,
 ```
 
-[More details on the Laravel docs](https://laravel.com/docs/routing#redirect-routes).
 
 ## Laravel routes
 
@@ -146,6 +145,38 @@ Route::get('/thingy', function () {
 ```
 :::
 
+## Redirects
+
+Creating redirects can be done in your `routes/web.php` using native Laravel Route methods:
+
+``` php
+Route::redirect('/here', '/there');
+Route::redirect('/here', '/there', 301);
+Route::permanentRedirect('/here', '/there');
+```
+
+[More details on the Laravel docs](https://laravel.com/docs/routing#redirect-routes).
+
+## Absolute domain redirects
+
+Domain names ending in a dot (e.g. `https://example.com./`) are technically valid "absolute" domains per [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034) and [RFC 1035](https://www.rfc-editor.org/rfc/rfc1035), but they can cause real problems:
+
+- Browsers treat them as a different origin for CORS, so scripts, fonts, and other cross-origin assets may fail to load.
+- If a user first hits your site via the dot variant while [static caching](/static-caching) is active, the cached HTML will contain dot-suffixed internal links and poison the cache for every subsequent visitor.
+
+Statamic ships with a `RedirectAbsoluteDomains` middleware that redirects `https://example.com./foo` → `https://example.com/foo`. It's opt-in — register it application-wide in `bootstrap/app.php`:
+
+```php
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->append(\Statamic\Http\Middleware\RedirectAbsoluteDomains::class); // [tl! add]
+})
+```
+
+:::tip
+Append it at the app level (not just the `web` group) so it also covers the control panel and any other routes.
+:::
+
+
 ## Error pages
 
 Whenever an error is encountered, a view will be rendered based on the status code. It will look for the view in `resources/views/errors/{status_code}.antlers.html`.
@@ -157,12 +188,3 @@ Statamic will automatically render `404` pages for any unhandled routes.
 :::tip
 For 5xx errors (e.g. 500, 503, etc) only the template will be rendered. It will not be injected into a layout.
 :::
-
-## Disable Statamic routes
-
-If you want to defer **everything** to explicit Laravel routes (perhaps you're using Statamic as a headless CMS or API), you can disable this behavior by setting it in `config/statamic/routes.php`.
-
-``` php
-// Lemme do it my way
-'enabled' => false,
-```

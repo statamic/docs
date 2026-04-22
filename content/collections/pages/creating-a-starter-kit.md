@@ -140,6 +140,16 @@ Anything not configured in your `starter-kit.yaml` **will not be exported**. Thi
 
 Once your export paths are configured, re-run the above `starter-kit:export` command. Your files should now be available at your new export repo path.
 
+#### Clearing stale files
+
+Re-running the export command will overwrite files in your export repo, but it _won't_ remove files that you've since deleted or renamed in your sandbox project. To wipe your configured `export_paths` in the destination before re-exporting, pass the `--clear` flag:
+
+``` shell
+php please starter-kit:export ../kung-fury-theme --clear
+```
+
+Since this is destructive, it's opt-in. Review the resulting git diff in your export repo before committing — anything outside your `export_paths` (like `.github`, the stubbed `composer.json`, etc.) is left untouched, so you can discard any overzealous changes before pushing.
+
 
 ### Exporting dependencies
 

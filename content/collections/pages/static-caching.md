@@ -12,6 +12,8 @@ Certain features — such as forms with server-side validation, page protection,
 
 Whatever is on the page the first time it's visited is what will be cached for all users. For example, if you're using page protection and a user who has access visits the page, it'll be accessible to everyone.
 
+Protected pages are excluded from the static cache by default. If you've written a [custom protection driver](/protecting-content#custom-drivers) whose logic doesn't vary between visitors, you can opt it back into caching by marking it [cacheable](/protecting-content#cacheable-drivers).
+
 :::tip
 You can **alternatively** use the [static site generator](https://github.com/statamic/ssg) to pre-generate and deploy **fully static HTML sites**.
 :::
@@ -58,6 +60,20 @@ return [
 :::tip
 You may use the [nocache tag](/tags/nocache) to keep parts of your pages dynamic.
 :::
+
+### Caching 404s
+
+When using the application driver, 404 responses are statically cached automatically. This stops a heavy "page not found" view from being re-rendered on every request when bots or broken links repeatedly hit non-existent URLs.
+
+You can go a step further and have Statamic share a single cached 404 across every 404-ing URL. The first 404 is rendered and cached, and every subsequent 404 — regardless of URL — is served that same cached response. Each URL still gets its own cache entry, but the rendering work is skipped.
+
+```php
+// config/statamic/static_caching.php
+
+'share_errors' => true,
+```
+
+Both behaviors are only available when using half measure. With full measure, the 404 never reaches PHP if the rewrite rules send the request to `index.php`, so there's nothing to cache.
 
 ## File driver
 
@@ -370,6 +386,22 @@ php please static:warm --header="Authorization: Bearer your_token"
 
 This ensures the cache warming requests are accepted by your backend even when authentication is required.
 
+### Warming behind Cloudflare
+
+Cloudflare's bot protection (particularly "Verified Bots" and "Bot Fight Mode") can block or challenge the outgoing requests that `static:warm` makes back to your own site, since those requests look like automated traffic. When this happens you'll typically see `403` responses, challenge pages, or silently failing warms.
+
+The fix is to allow your server's own public IP through Cloudflare's WAF before it hits any bot rules. Create a WAF custom rule:
+
+- **Field:** `IP Source Address`
+- **Operator:** `equals`
+- **Value:** your server's public IPv4 (and IPv6 if applicable)
+- **Action:** `Skip` → skip *All remaining custom rules*, *Managed Rules*, *Rate limiting rules*, and *Bot Fight Mode / Super Bot Fight Mode*
+
+If you're on a load-balanced or multi-node setup, add each origin IP. Once the rule is in place, `static:warm` requests will bypass bot challenges and complete normally.
+
+:::tip
+If you can't whitelist an IP (shared hosting, dynamic IPs), an alternative is to send a secret header with `--header="X-Warm-Secret: your-token"` and add a Cloudflare WAF rule that skips bot checks when that header is present. Keep the token out of source control.
+:::
 
 ## Excluding Pages
 
@@ -913,9 +945,39 @@ If you need to output a CSRF token in another place while using full measure, yo
 </span>
 ```
 
+## Locks
+
+To prevent race conditions, the static cache middleware uses an atomic lock around the bits that write to the cache. If multiple requests for the same uncached URL come in at once, only the first one will render and write the page — the rest wait, and once the lock releases they get served the freshly cached response instead of redundantly writing it themselves.
+
+Cached responses are served _without_ acquiring the lock, so a hit is never blocked by a concurrent miss for a different URL.
+
+### Lock store
+
+Locks use [Laravel's atomic cache locks](https://laravel.com/docs/cache#atomic-locks) on the [`static_cache` store](#custom-cache-store) if you've defined one, otherwise the default cache store. For horizontally-scaled setups (multiple app servers) you should point this at a shared driver like Redis or Memcached so the lock is visible across nodes. The default `file` driver only locks within a single server.
+
+### Lock timeout
+
+Requests will wait up to 30 seconds for an in-progress request to finish caching the page. If that timeout is exceeded, you'll get a blank `503 Service Unavailable` response with a meta refresh that retries automatically.
+
+### File write locks
+
+When using the `file` driver, there's a separate `lock_hold_length` option that controls how long (in seconds) a worker should retry while another worker holds the file write lock. Defaults to `0` — no retry, the second writer just bails.
+
+```php
+'strategies' => [
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static'),
+        'lock_hold_length' => 0, // [tl! highlight]
+    ],
+],
+```
+
+You generally don't need to touch this — the middleware-level lock above already serializes writes for the same URL. Bump it up only if you're seeing contention from outside the middleware (e.g. multiple `static:warm` runs or external tooling writing to the same directory).
+
 ## Custom cache store
 
-Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
+Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames, as well as the [locks](#locks) used by the middleware. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
 
 The cache store can be customized in `config/cache.php`.
 

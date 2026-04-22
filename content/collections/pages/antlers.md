@@ -202,6 +202,34 @@ While in a loop, you can get the respective iterations using the `next` or `prev
 </ul>
 ```
 
+#### Loop variables {#loop-variables}
+
+Inside any loop — whether you're iterating an array, the results of a tag like [`collection`](/tags/collection) or [`taxonomy`](/tags/taxonomy), or a relationship field — Antlers automatically exposes a handful of helper variables describing where you are in the loop.
+
+| Variable | Type | Description |
+| --- | --- | --- |
+| `first` | boolean | `true` on the first iteration. |
+| `last` | boolean | `true` on the last iteration. |
+| `count` | integer | The current iteration, starting at `1`. |
+| `index` | integer | The current iteration, starting at `0`. |
+| `total_results` | integer | The total number of items in the loop. |
+| `no_results` | boolean | `true` when the loop has zero results. Available in tag loops. |
+
+```antlers
+<ul>
+{{ collection:blog }}
+    <li class="{{ if first }}featured{{ /if }}">
+        {{ count }} of {{ total_results }} — {{ title }}
+        {{ if last }} (that's all, folks!){{ /if }}
+    </li>
+{{ /collection:blog }}
+</ul>
+```
+
+:::tip
+These loop variables are an **Antlers-only** feature. If you're writing Blade, use Laravel's native [`$loop` variable](/blade#loop-variables) instead.
+:::
+
 #### Plucking
 
 To pluck values out of an array, you may use "colon", "dot", or "bracket" notation to pull out values by their array key. All three of these syntaxes are equivalent, so feel free to use the one that feels most natural to you. Note that the first item of the array starts with a zero-index key.
