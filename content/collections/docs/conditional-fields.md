@@ -192,7 +192,8 @@ Available operators include:
 | `<` | Less than comparison. |
 | `<=` | Less than or equal to comparison. |
 | `contains` `includes` | Check if array contains a value, or if a string contains a sub-string value. |
-| `contains_any` `includes_any` | Check if array contains any of a comma-separated list of values, or if a string contains any of a comma-separated list of sub-strings values. |
+| `contains_any` | Check if any of a comma-separated list of values is contained in an array or string (also matches sub-strings). |
+| `includes_any` | Check if any of a comma-separated list of values is included in an array or matches a string exactly. |
 
 Available right-hand-side literals/options include:
 
