@@ -182,5 +182,5 @@ In `config/statamic/users.php`:
 
 // URL to a custom elevated session page.
 // When null, it'll fallback to a Statamic-powered page.
-'elevated_session_url' => null,
+'elevated_sessions_url' => null,
 ```
