@@ -110,6 +110,10 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 ```
 ::
 
+## Precognition
+
+The login endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation. See [Precognition for User Forms](/forms#user-forms) for setup and a full example.
+
 ## Passkeys
 
 You can add passkey authentication to your login form using Statamic's frontend JavaScript helpers.
