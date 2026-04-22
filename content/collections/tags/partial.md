@@ -215,6 +215,16 @@ You can render a partial only if a condition is met.
 
 Also supports the converse using `:unless`.
 
+## Using With Modifiers
+
+Because the `partial` tag is a tag and not a variable, you can't pipe it through [modifiers](/modifiers) directly. To apply modifiers to a partial's rendered output, wrap it in a [sub-expression](/antlers#sub-expressions) using curly braces.
+
+```antlers
+{{ { partial:component } | spaceless }}
+```
+
+Everything inside the `{ ... }` is parsed first, and the result is then passed through the modifier chain — handy for things like `spaceless`, `markdown`, `trim`, or any other modifier you'd want to run on a partial's output.
+
 ## Related Reading
 
 If you haven't read up on [views](/views) yet, you should. It's considered fundamental knowledge, like knowing that seals are just dog mermaids. 🐕 🧜‍♀️
