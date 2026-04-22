@@ -375,6 +375,24 @@ Common extensions like `.jpg`, `.csv` and `.txt` are permitted by default. To up
 ],
 ```
 
+## Upload validation
+
+Each [container](#containers) can define [Laravel validation rules](https://laravel.com/docs/validation#available-validation-rules) that are applied to every file uploaded to it — through the Control Panel asset browser, the [Assets fieldtype](/fieldtypes/assets), or [Forms](/forms).
+
+You can configure rules in the Control Panel by editing the container and filling out the **Validation Rules** field, or by editing the container's YAML file directly:
+
+``` yaml
+# content/assets/images.yaml
+title: Images
+disk: assets
+validate:
+  - 'mimes:jpg,jpeg,png,webp'
+  - 'max:2048'
+  - 'dimensions:min_width=600,min_height=600'
+```
+
+Rules are merged with Statamic's built-in `file` and [allowed extension](#allowed-file-extensions) checks, so you only need to specify the additional constraints you care about. Failing uploads return a `422` response and surface the first validation message in the uploader UI.
+
 ## Filename character replacements
 
 When files are uploaded, Statamic sanitizes the filename by replacing a handful of characters (spaces, `#`, `:`, `/`, `\`, `?`, `<`, `>`, `"`, `|`, `*`, `%`, `'`, and double dashes) with a single dash to keep filenames URL-safe.
