@@ -277,6 +277,54 @@ When using the [database driver](https://laravel.com/docs/13.x/cache#prerequisit
 ],
 ```
 
+## Custom hash
+
+By default, Glide-generated images are saved into a directory named after an md5 hash of the manipulation parameters, resulting in a path like this:
+
+```
+containers/assets/path/to/image.jpg/0638baede3a7fc1a91f605e095ab74cc/image.jpg
+```
+
+You may customize how that hash is generated — for example, to produce human-readable paths for debugging, QA, or aesthetics. Register a closure in a service provider's `boot` (or `register`) method:
+
+```php
+use Statamic\Facades\Glide;
+
+public function boot()
+{
+    Glide::generateHashUsing(function (string $source, array $params) {
+        return collect($params)
+            ->sortKeys()
+            ->map(fn ($value, $param) => "$param-$value")
+            ->join('-');
+    });
+}
+```
+
+With the closure above, this tag:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ glide:myimage width="100" height="50" fit="crop" quality="50" }}
+```
+::tab blade
+```blade
+<s:glide:myimage width="100" height="50" fit="crop" quality="50" />
+```
+::
+
+...would generate to a path like this:
+
+```
+containers/assets/path/to/image.jpg/fit-crop-h-50-q-50-w-100/image.jpg
+```
+
+:::warning
+Your closure must return a string that is unique per combination of parameters. Collisions will cause the wrong image to be served.
+:::
+
 ## Clearing the cache
 
 You may manually clear the Glide cache by running the following command:
