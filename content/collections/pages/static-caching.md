@@ -931,9 +931,39 @@ If you need to output a CSRF token in another place while using full measure, yo
 </span>
 ```
 
+## Locks
+
+To prevent race conditions, the static cache middleware uses an atomic lock around the bits that write to the cache. If multiple requests for the same uncached URL come in at once, only the first one will render and write the page — the rest wait, and once the lock releases they get served the freshly cached response instead of redundantly writing it themselves.
+
+Cached responses are served _without_ acquiring the lock, so a hit is never blocked by a concurrent miss for a different URL.
+
+### Lock store
+
+Locks use [Laravel's atomic cache locks](https://laravel.com/docs/cache#atomic-locks) on the [`static_cache` store](#custom-cache-store) if you've defined one, otherwise the default cache store. For horizontally-scaled setups (multiple app servers) you should point this at a shared driver like Redis or Memcached so the lock is visible across nodes. The default `file` driver only locks within a single server.
+
+### Lock timeout
+
+Requests will wait up to 30 seconds for an in-progress request to finish caching the page. If that timeout is exceeded, you'll get a blank `503 Service Unavailable` response with a meta refresh that retries automatically.
+
+### File write locks
+
+When using the `file` driver, there's a separate `lock_hold_length` option that controls how long (in seconds) a worker should retry while another worker holds the file write lock. Defaults to `0` — no retry, the second writer just bails.
+
+```php
+'strategies' => [
+    'full' => [
+        'driver' => 'file',
+        'path' => public_path('static'),
+        'lock_hold_length' => 0, // [tl! highlight]
+    ],
+],
+```
+
+You generally don't need to touch this — the middleware-level lock above already serializes writes for the same URL. Bump it up only if you're seeing contention from outside the middleware (e.g. multiple `static:warm` runs or external tooling writing to the same directory).
+
 ## Custom cache store
 
-Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
+Static caching leverages [Laravel's application cache](https://laravel.com/docs/cache) to store mappings of the URLs to the filenames, as well as the [locks](#locks) used by the middleware. To ensure proper invalidation of changes to your content, Statamic uses a cache store _outside_ of the default one. Otherwise, running the `php artisan cache:clear` command can lead invalidation to fail.
 
 The cache store can be customized in `config/cache.php`.
 
