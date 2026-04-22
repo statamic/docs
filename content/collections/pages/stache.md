@@ -52,6 +52,64 @@ php please stache:refresh
 It's a good idea to perform a `php please stache:refresh` when deploying changes to your production server so they're immediately available for the next request.
 :::
 
+## Parallel warming {#parallel-warming}
+
+For large sites, you can warm stores in parallel rather than sequentially. On content-heavy projects this can cut warm times by **6x or more** with proportional drops in peak memory usage.
+
+Parallel warming is **disabled by default**. Enable it via env vars:
+
+``` env
+STATAMIC_STACHE_PARALLEL_WARMING=true
+STATAMIC_STACHE_CONCURRENCY_DRIVER=fork
+STATAMIC_STACHE_MAX_PROCESSES=0
+STATAMIC_STACHE_MIN_STORES_PARALLEL=3
+```
+
+Or in `config/statamic/stache.php`:
+
+```php
+// config/statamic/stache.php
+'warming' => [
+    'parallel_processing' => env('STATAMIC_STACHE_PARALLEL_WARMING', false),
+    'max_processes' => env('STATAMIC_STACHE_MAX_PROCESSES', 0),
+    'min_stores_for_parallel' => env('STATAMIC_STACHE_MIN_STORES_PARALLEL', 3),
+    'concurrency_driver' => env('STATAMIC_STACHE_CONCURRENCY_DRIVER', 'process'),
+],
+```
+
+### Concurrency drivers
+
+Powered by [Laravel's Concurrency](https://laravel.com/docs/concurrency) facade:
+
+| Driver | Description |
+|--------|-------------|
+| `process` | Spawns separate PHP processes. Works everywhere, but has the most overhead per task. The default. |
+| `fork`    | Uses the `pcntl` extension to fork the current process. Significantly faster but **CLI-only**. Requires `spatie/fork`. |
+| `sync`    | Runs everything sequentially in the current process. Useful for debugging. |
+
+For deploys, `fork` is almost always the right choice. Install it with:
+
+``` shell
+composer require spatie/fork
+```
+
+The `fork` driver requires the `pcntl` PHP extension. It's compiled in by default on Linux and macOS (and works on Forge, Vapor, Laravel Cloud, and Herd) but is **unavailable on Windows** and is sometimes disabled on shared hosting. Verify with:
+
+``` shell
+php -m | grep pcntl
+```
+
+If `pcntl` isn't available, use the `process` driver instead.
+
+### Tuning
+
+- `max_processes` — `0` auto-detects CPU cores. Bump it up if your CI/deploy box has plenty of headroom.
+- `min_stores_for_parallel` — small sites with only a couple stores won't benefit from parallelism (the orchestration overhead exceeds the win), so this skips it below the threshold.
+
+:::tip
+Parallel warming only applies to CLI operations like `php please stache:warm` and `stache:refresh`. Web requests can't fork, so on-demand warming during a request always runs sequentially.
+:::
+
 ## Stores
 
 The Stache is comprised of different stores responsible for fetching their own data sets.
