@@ -67,7 +67,19 @@ Statamic.booting(() => {
 })
 ```
 
-Then, the Vue app will boot and you'll have a chance to do other JavaScript work within a `booted` callback. This is almost equivalent to putting things in a `created` hook of a Vue component.
+Once the Vue app has been created but _before_ it's mounted, you'll have a chance to configure it inside a `configuring` callback. This is where you'd register Vue plugins or add global properties — anything that needs to happen on the app instance prior to mounting.
+
+``` js
+Statamic.configuring(() => {
+    Statamic.$app.use(SomePlugin);
+
+    Object.assign(Statamic.$app.config.globalProperties, {
+        $something: something,
+    });
+});
+```
+
+Then, the Vue app will mount and you'll have a chance to do other JavaScript work within a `booted` callback. This is almost equivalent to putting things in a `created` hook of a Vue component.
 
 This is where you'd do things like adding [Bard extensions](/fieldtypes/bard#extending-bard) and wiring up [Hooks](/backend-apis/hooks) or [events](/vue-components/js-events).
 
