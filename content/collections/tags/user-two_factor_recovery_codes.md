@@ -23,7 +23,7 @@ This tag requires the user to be authenticated with 2FA enabled. If 2FA is not e
 
 ::tab antlers
 ```antlers
-{{ if current_user:two_factor_confirmed_at }}
+{{ if {user:two_factor_enabled} }}
     <h2>Your Recovery Codes</h2>
     <p>Store these codes in a safe place. Each code can only be used once.</p>
 
@@ -38,7 +38,7 @@ This tag requires the user to be authenticated with 2FA enabled. If 2FA is not e
 ```
 ::tab blade
 ```blade
-@if (current_user()->two_factor_confirmed_at)
+@if (Statamic::tag('user:two_factor_enabled')->fetch())
     <h2>Your Recovery Codes</h2>
     <p>Store these codes in a safe place. Each code can only be used once.</p>
 
@@ -52,4 +52,8 @@ This tag requires the user to be authenticated with 2FA enabled. If 2FA is not e
 @endif
 ```
 ::
+
+:::tip
+[`{{ user:two_factor_enabled }}`](/tags/user-two_factor_enabled) is a tag, not a variable, so conditionals need the extra braces: `{{ if {user:two_factor_enabled} }}`.
+:::
 

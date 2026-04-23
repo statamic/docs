@@ -8,9 +8,9 @@ parameters:
     type: string
     description: Where the user should be taken after disabling 2FA.
   -
-    name: setup_url
-    type: string
-    description: URL to redirect to if the user's role requires 2FA. They will need to set it up again immediately.
+    name: allow_request_redirect
+    type: boolean
+    description: When set to true, the `redirect` parameter will get overridden by a `redirect` query parameter in the URL.
   -
     name: HTML Attributes
     type:
@@ -39,7 +39,7 @@ This form requires the user to be authenticated with 2FA enabled and an [elevate
 
 ::tab antlers
 ```antlers
-{{ user:disable_two_factor_form redirect="/account" setup_url="/account/setup-2fa" }}
+{{ user:disable_two_factor_form redirect="/account" }}
 
     {{ if success }}
         <div class="bg-green-300 text-white p-2">
@@ -54,7 +54,7 @@ This form requires the user to be authenticated with 2FA enabled and an [elevate
 ```
 ::tab blade
 ```blade
-<s:user:disable_two_factor_form redirect="/account" setup_url="/account/setup-2fa">
+<s:user:disable_two_factor_form redirect="/account">
     @if ($success)
         <div class="bg-green-300 text-white p-2">
             {{ $success }}
@@ -69,4 +69,4 @@ This form requires the user to be authenticated with 2FA enabled and an [elevate
 
 ## Enforced 2FA
 
-If the user belongs to a role that has 2FA enforced (configured via `two_factor_enforced_roles` in your config), they will be redirected to the `setup_url` after disabling. This ensures they immediately set up 2FA again to maintain compliance with your security requirements.
+If the user belongs to a role that has 2FA enforced (configured via `two_factor_enforced_roles` in your config), they can't really stay signed in with 2FA off — so after the form is submitted, Statamic ignores the `redirect` parameter and sends them to the setup page instead. That destination is pulled from the `statamic.users.two_factor_setup_url` config key in `config/statamic/users.php`, falling back to Statamic's built-in setup route if that's left `null`.

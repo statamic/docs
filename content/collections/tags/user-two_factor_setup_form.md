@@ -1,7 +1,7 @@
 ---
 title: User:Two_Factor_Setup_Form
-description: Renders a form for authenticated users to set up 2FA on their account
-intro: Allow your users to enable two-factor authentication on their accounts. This tag provides everything needed to display a QR code and verify the setup.
+description: Renders the second step of 2FA setup — the QR code and confirmation form
+intro: Step two of the two-factor authentication setup flow. This tag displays the QR code and verifies the code the user enters to confirm their authenticator app is working.
 parameters:
   -
     name: redirect
@@ -11,6 +11,10 @@ parameters:
     name: error_redirect
     type: string
     description: Where the user should be redirected on validation errors.
+  -
+    name: allow_request_redirect
+    type: boolean
+    description: When set to true, the `redirect` and `error_redirect` parameters will get overridden by `redirect` and `error_redirect` query parameters in the URL.
   -
     name: HTML Attributes
     type:
@@ -45,12 +49,12 @@ id: 4b9f0c5d-6e8a-4b3c-9d2f-7a0e1b4c6d8f
 ---
 ## Overview
 
-The `user:two_factor_setup_form` tag renders a form for authenticated users to enable two-factor authentication. The form displays a QR code that users scan with their authenticator app, and requires them to enter a verification code to confirm the setup.
+The `user:two_factor_setup_form` tag renders **step two** of the two-factor authentication setup flow. At this point the user has already generated a 2FA secret (via [`{{ user:two_factor_enable_form }}`](/tags/user-two_factor_enable_form)) and just needs to scan the QR code with their authenticator app and enter a verification code to confirm the setup.
 
 The tag will render the opening and closing `<form>` HTML elements for you. You'll need to provide a `code` input field for the verification code.
 
 :::tip
-This form requires the user to be authenticated. If the user already has 2FA enabled, the form contents won't be rendered.
+This form only renders for an authenticated user who has a 2FA secret but hasn't yet confirmed it. If the user doesn't have a secret yet, send them through [`{{ user:two_factor_enable_form }}`](/tags/user-two_factor_enable_form) first. If the user already has 2FA enabled, the form contents won't be rendered.
 :::
 
 ### Example
@@ -136,3 +140,10 @@ You have two options for displaying the QR code:
 1. **SVG Markup** (`qr_code`): Renders directly in the HTML. This is generally preferred as it scales well and doesn't require an additional request.
 
 2. **Data URL** (`qr_code_url`): Use with an `<img>` tag if you prefer image-based rendering or need more control over sizing.
+
+## Flow
+
+The frontend 2FA setup flow is split across two pages:
+
+1. Submit [`{{ user:two_factor_enable_form }}`](/tags/user-two_factor_enable_form) — this generates the user's 2FA secret and, by default, redirects to `statamic.users.two_factor_setup_url` (or wherever you specify via `_redirect`).
+2. On that setup page, use `{{ user:two_factor_setup_form }}` (this tag) to display the QR code and confirm the code.
