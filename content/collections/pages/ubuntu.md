@@ -3,18 +3,17 @@ id: c0009fa6-0f8f-4b45-8d65-0cb784d07031
 blueprint: page
 title: 'How to Install Statamic on Ubuntu'
 breadcrumb_title: Ubuntu
-intro: A full walk-through for installing, configuring and running Statamic on an Ubuntu server, perfect for production use.
+intro: 'A full walk-through for installing, configuring and running Statamic on an Ubuntu server, perfect for production use.'
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 ## Prerequisites
 
 To install Statamic on an Ubuntu instance you will need the following:
 
-- An Ubuntu 22.04 or 20.04 VPS with root access enabled or a user with Sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
+- An Ubuntu 24.04 VPS with root access enabled or a user with sudo privileges (you can follow our [Digital Ocean](/installing/digital-ocean) or [Linode](/installing/linode) guides to get yours set up)
 - A server with at least 1GB memory
 - A valid domain name pointed to your server and SSL certificate in place
-- PHP 8.2+
-
+- PHP 8.3+
 
 ## Update Packages
 
@@ -28,7 +27,7 @@ sudo apt-get upgrade
 ## Install PHP & Required Modules
 
 ``` shell
-sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer php-curl -y
+sudo apt install php-common php-fpm php-json php-mbstring zip unzip php-zip php-cli php-xml php-tokenizer php-curl php-gd -y
 ```
 
 ## Install Composer
@@ -45,6 +44,10 @@ Next, you need to move the `composer.phar` file to a globally accessible directo
 sudo mv composer.phar /usr/local/bin/composer
 sudo chmod +x /usr/local/bin/composer
 ```
+
+:::tip
+Do not run `composer` as root. If you followed the steps for creating a Digital Ocean droplet, you will need to create a new user to run `composer` as.
+:::
 
 Now you can check to make sure Composer is installed and configured correctly by running this command:
 
@@ -64,18 +67,31 @@ Upon installation, you can now use the `statamic new` command to spin up fresh S
 
 Our CLI is essentially a super fancy wrapper around the `composer create-project` command. You can choose to not install it, but only at your own annoyance.
 
+## Install & Configure Nginx
+
+Next, install [Nginx](https://nginx.com) with the following command:
+
+``` shell
+sudo apt install nginx -y
+```
+
+After the install completes, Nginx will start automatically. You can verify the service by running the following the command:
+
+``` shell
+sudo systemctl status nginx
+```
 
 ## Create a new Statamic Application
 
 Now we'll create a new Statamic application using the `statamic new` command.
 
-First, navigate to the `/var/www` directory:
+First, navigate to the default Nginx root directory:
 
 ``` shell
-cd /var/www
+cd /var/www/html
 ```
 
-Next, run the following install command:
+Next, run the following install command (you may need to update your [$PATH](/knowledge-base/troubleshooting/command-not-found-statamic)):
 
 ``` shell
 statamic new example.com
@@ -95,35 +111,16 @@ Once Statamic is installed, you'll need to grant appropriate permissions to the 
 
 ``` shell
 sudo chmod -R 755 /var/www/example.com
-sudo chown -R www-data:www-data /var/www/example.com
-sudo chown -R www-data:www-data /var/www/example.com/storage
-sudo chown -R www-data:www-data /var/www/example.com/content
-sudo chown -R www-data:www-data /var/www/example.com/bootstrap/cache
+sudo chown -R www-data:www-data /var/www/html/example.com
 ```
 
-
-## Install & Configure Nginx
-
-Next, install [Nginx](https://nginx.com) with the following command:
-
-``` shell
-sudo apt install nginx -y
-```
-
-After the install completes, Nginx will start automatically. You can verify the service by running the following the command:
-
-``` shell
-sudo systemctl status nginx
-```
-
-Next, let's set up the minimum recommended config file to serve your site. Create a new file with `vim` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
-
+Next, let's set up the minimum recommended config file to serve your site. Create a new file with `sudo vim` (or your command line editor of choice) at `/etc/nginx/sites-available/example.com`, making sure to replace `example.com` everywhere with your desired domain.
 
 ```php
 server {
     listen 80;
     server_name example.com; // [tl! highlight:1]
-    root /var/www/example.com/public;
+    root /var/www/html/example.com/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
@@ -161,7 +158,7 @@ server {
     error_page 404 /index.php;
 
     location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
         include fastcgi_params;
@@ -176,7 +173,7 @@ server {
 :::tip
 You should ensure that the PHP path matches the version of PHP-FPM you have installed. 
 
-For example: the example config above specifies `fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;`, but if you update all packages, you may end up with a later version.
+For example: the example config above specifies `fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;`, but if you update all packages, you may end up with a later version.
 :::
 
 You can confirm that the configuration doesn’t contain any syntax errors with the following command:
@@ -193,9 +190,10 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-Time to reload Nginx and apply these changes:
+Symlink the newly created config file and reload Nginx to apply these changes:
 
 ``` shell
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 sudo systemctl reload nginx
 ```
 

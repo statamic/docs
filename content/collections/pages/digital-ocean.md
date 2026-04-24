@@ -4,19 +4,19 @@ blueprint: page
 title: 'How to Install Statamic on Digital Ocean'
 breadcrumb_title: 'Digital Ocean'
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
-intro: A full walk-through for installing, configuring, and running Statamic on a Digital Ocean Ubuntu virtual private server.
+intro: 'A full walk-through for installing, configuring, and running Statamic on a Digital Ocean Ubuntu virtual private server.'
 ---
 ## Prerequisites
 
 There is only one prerequisite for this guide. You must have:
 
-- A Digital Ocean account ([this signup link](https://m.do.co/c/6469827e2269)  will give you $100 in free credit)
+- A Digital Ocean account ([this signup link](https://m.do.co/c/6469827e2269) will give you $100 in free credit)
 
 ## Server Setup
 
-Follow the official [How to Set Up an Ubuntu 20.04 Server on a DigitalOcean Droplet](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ubuntu-20-04-server-on-a-digitalocean-droplet) guide to setup your server.
+Follow the official [How To Set Up an Ubuntu Server on a DigitalOcean Droplet](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ubuntu-server-on-a-digitalocean-droplet) guide to setup your server.
 
-<a href="(https://m.do.co/c/6469827e2269"><img src="https://images.prismic.io/digitalocean/0b619d51-a723-4748-997f-39ed5697a540_intro-to-cloud.jpg?auto=compress,format" class="rounded-lg"></a>
+<a href="https://m.do.co/c/6469827e2269"><img src="https://images.prismic.io/digitalocean/0b619d51-a723-4748-997f-39ed5697a540_intro-to-cloud.jpg?auto=compress,format" class="rounded-lg"></a>
 
 ## Secure Your Server
 
