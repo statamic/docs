@@ -652,6 +652,14 @@ The null coalescing operator (`$a ?? $b`) considers each variable in a statement
 {{ meta_title ?? title ?? "Someone Forgot the Title" }}
 ```
 
+:::tip
+Use `???` to fall through only on `null`. Keeps `0`, `false`, `''` intact.
+
+```antlers
+{{ power_level ??? "It's over 9000!" }}
+```
+:::
+
 ### The Gatekeeper (Truthy assignment) {#gatekeeper}
 
 The Gatekeeper operator (`a ?= b`) will execute an expression **if and only if** it passes a "truthy" check. It doesn't exist in any programming language — we invented this one. Enjoy!
