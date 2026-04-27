@@ -303,3 +303,33 @@ Click **Create Passkey** and follow the prompts to complete setup. Once a passke
 </figure>
 
 Passkey behaviour, including whether password logins are still allowed for users with passkeys and whether “remember me” applies when logging in with a passkey, can be configured in `config/statamic/webauthn.php`.
+
+## Rate limiting
+
+Statamic's authentication and passkey endpoints are rate limited by IP address to help protect against brute force attacks. The defaults apply to both the front-end and Control Panel:
+
+| Limiter | Default | Routes |
+| --- | --- | --- |
+| `statamic.auth` | 4 per minute | Front-end login, register, password email, password reset |
+| `statamic.cp.auth` | Inherits `statamic.auth` | Control Panel login, password email, password reset |
+| `statamic.passkeys` | 30 per minute | Front-end passkey authentication |
+| `statamic.cp.passkeys` | Inherits `statamic.passkeys` | Control Panel passkey authentication |
+
+You can customize any of these limits by redefining the named rate limiter in your `AppServiceProvider`'s `boot` method:
+
+```php
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+
+public function boot()
+{
+    RateLimiter::for('statamic.auth', function (Request $request) {
+        return Limit::perMinute(10)->by($request->ip());
+    });
+}
+```
+
+Overriding `statamic.auth` will affect both the front-end and Control Panel buckets unless you also define a separate `statamic.cp.auth` limiter. The same inheritance applies to `statamic.passkeys` and `statamic.cp.passkeys`.
+
+Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.

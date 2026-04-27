@@ -586,6 +586,27 @@ You'll also need to set your ajax library's `X-Requested-With` header to `XMLHtt
 
 The URL endpoint to send the request to is `/!/forms/{form-handle}`. You can configure the action route prefix which defaults to `!` in `config/statamic/routes.php`.
 
+## Rate limiting
+
+Form submissions are rate limited by IP address to help protect against abuse. By default, the `statamic.forms` limiter allows 10 submissions per minute across all forms.
+
+You can customize the limit by redefining the named rate limiter in your `AppServiceProvider`'s `boot` method:
+
+```php
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+
+public function boot()
+{
+    RateLimiter::for('statamic.forms', function (Request $request) {
+        return Limit::perMinute(20)->by($request->ip());
+    });
+}
+```
+
+Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.
+
 ## Caching
 
 If you are static caching the URL containing a form, return responses like 'success' and 'errors' will not be available after submitting unless you [exclude this page from caching](/static-caching#excluding-pages) or wrap the form in {{ nocache }} tags.
