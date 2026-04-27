@@ -99,3 +99,15 @@ Your controller will need to extend Statamic's `CpController` in order to use th
 ## Frontend
 
 Elevated sessions can also be used to protect sensitive actions on your frontend. To learn more, visit the [{{ user:elevated_session_form }}](/tags/user-elevated_session_form) docs.
+
+## Disabling Elevated Sessions
+
+If you're using a third-party authentication provider (such as OAuth or SSO) and password re-confirmation isn't applicable to your setup, you can disable elevated sessions entirely.
+
+Set `STATAMIC_ELEVATED_SESSIONS_ENABLED=false` in your `.env` file, or set the corresponding option in `config/statamic/users.php`:
+
+```php
+'elevated_sessions_enabled' => env('STATAMIC_ELEVATED_SESSIONS_ENABLED', true),
+```
+
+When disabled, the `RequireElevatedSession` middleware and `requireElevatedSession()` controller method are bypassed, the related routes are not registered, and users will never be prompted to reauthorize.
