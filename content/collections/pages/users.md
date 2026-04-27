@@ -284,6 +284,28 @@ Statamic uses your `APP_KEY` to encrypt the two-factor authentication secret and
 You may run into issues with two-factor authentication if you have different `APP_KEY` values between environments *and* they share the same users (eg. you're tracking users in Git). You may want to disable 2FA locally in this case.
 :::
 
+### Frontend Two-Factor Authentication
+
+Users who authenticate through your site's frontend (via [`{{ user:login_form }}`](/tags/user-login_form)) can also set up and challenge 2FA without ever touching the Control Panel. Statamic ships a set of tags for building those pages yourself:
+
+- [`{{ user:two_factor_challenge_form }}`](/tags/user-two_factor_challenge_form) — the code verification form shown during login
+- [`{{ user:two_factor_enable_form }}`](/tags/user-two_factor_enable_form) — step 1 of setup, generates the secret
+- [`{{ user:two_factor_setup_form }}`](/tags/user-two_factor_setup_form) — step 2 of setup, displays the QR code and confirms the code
+- [`{{ user:disable_two_factor_form }}`](/tags/user-disable_two_factor_form) — lets users turn 2FA off
+- [`{{ user:two_factor_recovery_codes }}`](/tags/user-two_factor_recovery_codes) and [`{{ user:reset_two_factor_recovery_codes_form }}`](/tags/user-reset_two_factor_recovery_codes_form) — show and regenerate recovery codes
+- [`{{ user:two_factor_enabled }}`](/tags/user-two_factor_enabled) — a boolean for conditionally rendering the above
+
+When a user with 2FA enabled signs in on the frontend, Statamic redirects them to a challenge page. When 2FA is enforced for the user's role and they haven't set it up, Statamic redirects them to a setup page. Point these redirects at your own pages with the following config keys:
+
+```php
+// config/statamic/users.php
+
+'two_factor_challenge_url' => '/account/2fa/challenge',
+'two_factor_setup_url' => '/account/2fa/setup',
+```
+
+Leave either value `null` to use Statamic's built-in page for that step. Control Panel flows are unaffected — they always use their own pages.
+
 ## Passkeys
 
 Statamic supports **passkeys** as a secure alternative to email-and-password logins. Passkeys are a passwordless authentication method built on WebAuthn and are supported by most modern operating systems and password managers. On macOS, iOS, and iPadOS, for example, you can sign in using Touch ID or Face ID.

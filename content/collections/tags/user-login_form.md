@@ -155,3 +155,22 @@ For more information on managing passkeys on the frontend, see the following doc
 - [`{{ user:passkeys }}`](/tags/user-passkeys)
 - [`{{ user:passkey_form }}`](/tags/user-passkey_form)
 - [`{{ user:delete_passkey_form }}`](/tags/user-delete_passkey_form)
+
+## Two-Factor Authentication
+
+When a user with two-factor authentication (2FA) enabled submits the login form, Statamic will redirect them to a challenge page so they can enter a code from their authenticator app. If the user belongs to a role that requires 2FA but hasn't set it up yet, they'll be redirected to the setup page instead.
+
+You can customize where each of these redirects goes using the `two_factor_challenge_url` and `two_factor_setup_url` config keys in `config/statamic/users.php`. Leave them `null` to use Statamic's built-in pages.
+
+```php
+// config/statamic/users.php
+
+'two_factor_challenge_url' => '/account/2fa/challenge',
+'two_factor_setup_url' => '/account/2fa/setup',
+```
+
+When rolling your own frontend pages, use the following tags to render the forms:
+
+- [`{{ user:two_factor_challenge_form }}`](/tags/user-two_factor_challenge_form) — the code verification form during login
+- [`{{ user:two_factor_enable_form }}`](/tags/user-two_factor_enable_form) — step 1 of setup, generates the secret
+- [`{{ user:two_factor_setup_form }}`](/tags/user-two_factor_setup_form) — step 2 of setup, displays the QR code and confirms the code
