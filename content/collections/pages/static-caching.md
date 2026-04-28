@@ -12,6 +12,8 @@ Certain features — such as forms with server-side validation, page protection,
 
 Whatever is on the page the first time it's visited is what will be cached for all users. For example, if you're using page protection and a user who has access visits the page, it'll be accessible to everyone.
 
+Query parameters are ignored by default, so `/blog` and `/blog?utm_source=twitter` will serve the same cached page. You can [change this behavior](#query-parameters) if needed.
+
 Protected pages are excluded from the static cache by default. If you've written a [custom protection driver](/protecting-content#custom-drivers) whose logic doesn't vary between visitors, you can opt it back into caching by marking it [cacheable](/protecting-content#cacheable-drivers).
 
 :::tip
@@ -723,13 +725,13 @@ You will need to update your appropriate server rewrite rules.
 
 ## Query parameters
 
-By default, Statamic will cache all pages with the same URL but different query parameters separately. This can be helpful if you're using pagination or displaying pages differently based on user input.
+By default, Statamic will ignore query parameters and cache each URL once. This is the recommended setting for most sites.
 
-However, if you wish, you can disable this behaviour so each URL will only be cached once, regardless of query parameters:
+However, if you wish to enable this behaviour so pages with different query parameters are cached separately (useful for pagination or displaying pages differently based on user input), you can do so:
 
 ```php
 return [
-    'ignore_query_strings' => true,
+    'ignore_query_strings' => false,
 ];
 ```
 
@@ -749,7 +751,7 @@ You can also do the opposite, by specifying which query parameters should be exc
 
 ```php
 'disallowed_query_strings' => [
-    'utm_content', 'utm_medium', 'utm_source', 'utm_campaign',
+    'fbclid', 'gclid', 'msclkid', 'utm_campaign', 'utm_content', 'utm_medium', 'utm_source', 'utm_term',
 ],
 ```
 
