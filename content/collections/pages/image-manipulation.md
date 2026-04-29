@@ -170,7 +170,7 @@ When using this method, since the Glide tag only needs to generate URLs, the loa
 Be sure to set `STATAMIC_STACHE_WATCHER=false` in your `.env`.
 :::
 
-### Custom path (static)
+### Custom path (Static)
 
 The next level of caching would be to specify a custom, publicly accessible location for the images to be generated.
 
@@ -191,6 +191,28 @@ Since the images are generated to a publicly accessible location, the next time 
 :::tip
 When using this method, since the Glide tag has to generate the images, the initial load time of the page will be slower.
 :::
+
+### Half-Measure (On-Demand Static) {#half-measure}
+
+This strategy gives you the best of both worlds: fast template rendering (like dynamic mode) and fast image serving on subsequent requests (like static mode).
+
+``` php
+// config/statamic/assets.php
+
+'image_manipulation' => [
+    'cache' => 'half',
+    'cache_path' => public_path('img'),
+]
+```
+
+The [Glide tag][glide-tag] will output URLs pointing to where the cached image _will_ exist, but won't generate the image during template rendering. When the browser requests the image URL:
+
+1. If the image already exists on disk, your web server serves it directly — no PHP needed.
+2. If the image doesn't exist yet, the request falls through to PHP, which generates the image, saves it to the public `cache_path`, and serves it.
+
+After the first request, the web server (Nginx, Apache, etc.) will serve the static file directly on all subsequent requests.
+
+This works the same way as [full-measure static caching](/static-caching#file-driver). Unlike full-measure static caching however, the standard Laravel server configuration should already handle this — no additional rewrite rules are needed.
 
 ### Custom disk (CDN)
 
