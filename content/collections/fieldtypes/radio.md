@@ -46,6 +46,10 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Brownies
 ```
 
+### Options in blueprint YAML
+
+See [Select · Options in blueprint YAML](/fieldtypes/select#options-in-blueprint-yaml)—checklists defined in the blueprint use the same expanded `key` / `value` option rows for ordered, storage-agnostic option lists.
+
 ## Data Structure
 
 The chosen option is stored as a string. If you only specified values for the `options` array, then the label will be saved.

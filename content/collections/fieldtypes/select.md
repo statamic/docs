@@ -75,6 +75,20 @@ Your saved data will be:
 select: face
 ```
 
+### Options in blueprint YAML {#options-in-blueprint-yaml}
+
+In the blueprint file, the field’s `options` list is stored in **expanded** form (an ordered sequence of `key` / `value` pairs) so Statamic can preserve option order everywhere content is stored—including SQL-backed databases. If you author blueprints by hand, use that shape or mirror what the Blueprint Editor writes:
+
+```yaml
+options:
+  - key: face
+    value: "So's your face."
+  - key: know
+    value: "I know you are, but what am I?"
+```
+
+That setting applies to the blueprint definition only, not to the entry value (`select: face` above).
+
 
 ## Templating
 

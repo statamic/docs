@@ -44,6 +44,18 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Right
 ```
 
+### Options in blueprint YAML
+
+Like the [select](/fieldtypes/select) fieldtype, `options` in the blueprint are saved in **expanded** form (ordered `key` / `value` rows) so option order is preserved in all storage backends. Hand-written blueprints should follow that structure if you are not using the visual editor.
+
+```yaml
+options:
+  - key: left
+    value: Left
+  - key: middle
+    value: Middle
+```
+
 ## Data Structure
 
 The chosen option is stored as a string. If you only specified values for the `options` array, then the label will be saved.
