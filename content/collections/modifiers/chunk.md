@@ -9,6 +9,9 @@ title: Chunk
 ---
 Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
 
+:::tip
+Want a set number of _groups_ regardless of item count? The [split](/modifiers/split) modifier does the opposite — give it a _count_ and it divides the collection into that many roughly equal pieces.
+:::
 
 ::tabs
 
