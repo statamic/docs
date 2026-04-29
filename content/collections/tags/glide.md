@@ -86,6 +86,13 @@ shape:
     type: string
     description: >
       Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif`, `webp` or `avif`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg`
+  -
+    name: border
+    type: string
+    description: >
+      Adds a border to the image. Required format: `width,color,method` (comma-separated).
+      Width is in pixels or a relative dimension; color follows Glide's [color formats](https://glide.thephpleague.com/3.0/api/colors/) (defaults to `ffffff` if omitted);
+      method is `overlay` (default), `shrink`, or `expand`. [See Glide border docs](https://glide.thephpleague.com/3.0/api/border/).
 
 filters:
   -
@@ -167,6 +174,11 @@ other:
     name: markpos
     type: string
     description: Sets where the watermark is positioned. Accepts `top-left`, `top`, `top-right`, `left`, `center`, `right`, `bottom-left`, `bottom`, `bottom-right`. Default is `bottom-right`.
+  -
+    name: markalpha
+    type: integer
+    description: >
+      Sets the opacity of the watermark. Use values between `0` and `100`, where `100` is fully opaque and `0` is fully transparent. Default: `100`. [See Glide docs](https://glide.thephpleague.com/3.0/api/watermarks/#alpha-markalpha).
 variables:
   -
     name: url
@@ -371,7 +383,7 @@ You may also use the shorthand as a tag pair:
 
 ## Watermarks
 
-You may use Glide's [watermarking feature](https://glide.thephpleague.com/3.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
+You may use Glide's [watermarking feature](https://glide.thephpleague.com/3.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, `markalpha`, etc).
 
 ::tabs
 
