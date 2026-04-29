@@ -1,30 +1,32 @@
 ---
-id: 10b38f50-e33c-47e0-8e94-bc4dc551600f
+id: f1f9e882-e9e1-4161-8d6e-13fa9838dde1
 blueprint: modifiers
 modifier_types:
   - array
   - markup
   - utility
-title: Chunk
+title: Split
 ---
-Break arrays or collections into smaller (wait for it) chunks of any given size. This is useful for performing various gymnastics with your HTML markup.
+Break an array or collection into a given number of (roughly equal) groups.
 
 :::tip
-Want a set number of _groups_ regardless of item count? The [split](/modifiers/split) modifier does the opposite — give it a _count_ and it divides the collection into that many roughly equal pieces.
+Need a fixed number of items _per group_ instead of a fixed group count? The [chunk](/modifiers/chunk) modifier does the opposite — give it a _size_ and it makes as many groups as needed.
 :::
+
+For example, `split:3` on a 6-item array produces 3 groups of 2. Each group is available as `{{ items }}` in Antlers (or `$group['items']` in Blade).
 
 ::tabs
 
 ::tab antlers
 ```antlers
 {{ collection:news as="posts" limit="6" }}
-  {{ posts chunk="3" }}
+  {{ posts split="3" }}
   <div class="flex space-x-4">
-    {{ chunk }}
+    {{ items }}
       <a href="{{ url }}" class="bg-purple-800 text-white p-4">
         {{ title }}
       </a>
-    {{ /chunk }}
+    {{ /items }}
   </div>
   {{ /posts }}
 {{ /collection:news }}
@@ -33,9 +35,9 @@ Want a set number of _groups_ regardless of item count? The [split](/modifiers/s
 ```blade
 <s:collection:news as="posts" limit="6">
 
-  @foreach (Statamic::modify($posts)->chunk(3) as $chunk)
+  @foreach (Statamic::modify($posts)->split(3) as $group)
     <div class="flex space-x-4">
-      @foreach ($chunk['chunk'] as $entry)
+      @foreach ($group['items'] as $entry)
         <a href="{{ $entry->url }}" class="bg-purple-800 text-white p-4">
           {{ $entry->title }}
         </a>
@@ -55,14 +57,16 @@ Want a set number of _groups_ regardless of item count? The [split](/modifiers/s
   <a href="/ideas/party" class="bg-purple-800 text-white p-4">
     Party: Goodbye Toby
   </a>
+</div>
+<div class="flex space-x-4">
   <a href="/ideas/screenplay" class="bg-purple-800 text-white p-4">
     Screenplay: Threat Level Midnight
   </a>
-</div>
-<div class="flex space-x-4">
   <a href="/ideas/art" class="bg-purple-800 text-white p-4">
     Art: A Stapler
   </a>
+</div>
+<div class="flex space-x-4">
   <a href="/ideas/poster" class="bg-purple-800 text-white p-4">
     Poster: Kids Playing Instruments
   </a>
