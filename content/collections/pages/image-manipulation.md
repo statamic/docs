@@ -192,7 +192,7 @@ Since the images are generated to a publicly accessible location, the next time 
 When using this method, since the Glide tag has to generate the images, the initial load time of the page will be slower.
 :::
 
-### Half-Measure (On-Demand Static) {#half-measure}
+### Hybrid (On-Demand Static) {#hybrid}
 
 This strategy gives you the best of both worlds: fast template rendering (like dynamic mode) and fast image serving on subsequent requests (like static mode).
 
@@ -200,7 +200,7 @@ This strategy gives you the best of both worlds: fast template rendering (like d
 // config/statamic/assets.php
 
 'image_manipulation' => [
-    'cache' => 'half',
+    'cache' => 'hybrid',
     'cache_path' => public_path('img'),
 ]
 ```
