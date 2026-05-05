@@ -20,6 +20,11 @@ parameters:
     description: |
       The converse of `when`.
   -
+    name: handle_prefix
+    type: string
+    description: |
+      A prefix to prepend to variable names when looking up data. For example, if you have a variable named `hero_title` and use `handle_prefix="hero_"`, you can reference it as `{{ title }}`.
+  -
     name: "*"
     type: mixed
     description: |
