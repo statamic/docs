@@ -56,6 +56,11 @@ options:
     type: boolean
     description: |
       Makes the time field visible and non-dismissible. Default: `false`.
+  -
+    name: timezone
+    type: string
+    description: |
+      The timezone dates will be displayed and entered in within the Control Panel. Accepts any [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) (e.g. `America/New_York`). Defaults to the site-wide [`default_timezone`](#control-panel-timezone) configured in `config/statamic/cp.php`, which itself defaults to `auto` (the browser's local timezone).
 id: 7dfba904-8a74-40e1-b507-51cd2b5f6123
 ---
 
@@ -181,6 +186,20 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 Dates are stored in your application timezone, then converted before being displayed to users.
 
 For more information on how Statamic handles timezones, please review our [Timezones](/tips/timezones) guide.
+
+### Control Panel Timezone
+
+By default, dates in the Control Panel are displayed and entered in the browser's local timezone. This means a user in New York and a user in London editing the same entry would each see the date in their own timezone.
+
+If you'd prefer all users to see and enter dates in a specific timezone, you can configure it site-wide in `config/statamic/cp.php`:
+
+```php
+'default_timezone' => env('STATAMIC_CP_DEFAULT_TIMEZONE', 'auto'),
+```
+
+Set this to any [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) (e.g. `America/New_York`) to pin all date fields to that timezone. The default value of `auto` uses each user's browser timezone.
+
+You can also override this on a per-field basis with the [`timezone`](#options) field config option.
 
 
 
