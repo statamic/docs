@@ -53,6 +53,22 @@ dateFormatter.format('2026-03-26', {
 // March 26, 2026
 ```
 
+### Overriding preset options
+
+To start from a preset and tweak only a few fields, pass an options object with a `preset` key alongside any other `Intl.DateTimeFormat` options. The overrides are merged on top of the preset.
+
+```js
+dateFormatter.format('2026-03-26T20:24:21', {
+    preset: 'datetime',
+    timeZone: 'Australia/Sydney',
+});
+
+dateFormatter.format('2026-03-26T20:24:21', {
+    preset: 'datetime',
+    month: 'short',
+});
+```
+
 ### Relative dates
 
 Pass `relative: true` (or a specificity) to output a humanized relative string powered by `Intl.RelativeTimeFormat`.
