@@ -60,7 +60,7 @@ Most of the asset actions are also available inside the editor, along with the a
 ### Crop
 The crop action lets you visually crop an image directly in the Control Panel. It's available from the toolbar inside the [Asset Editor](#edit) for any image asset (except GIFs) when the current user has permission to upload to the container.
 
-You can drag to define a custom crop area, or pick one of the built-in aspect ratio presets: `16:9`, `4:3`, `3:2`, `2:1`, and `1:1`. A flip button rotates the ratio between landscape and portrait orientation. Hold the <kbd>Option</kbd> / <kbd>Alt</kbd> key while resizing to resize from the center, and press <kbd>Enter</kbd> to apply the crop.
+You can drag to define a custom crop area, or pick one of the [aspect ratio presets](#crop-aspect-ratios). A flip button rotates the ratio between landscape and portrait orientation. Hold the <kbd>Option</kbd> / <kbd>Alt</kbd> key while resizing to resize from the center, and press <kbd>Enter</kbd> to apply the crop.
 
 After cropping, you'll be asked whether you want to save the crop as a **new copy** (uploaded to the same folder with a timestamped filename) or **replace the original** image. Replacing requires the user to also have the `reupload` permission on the asset.
 
@@ -70,6 +70,30 @@ Cropping external images (for example, from an S3 container on a different domai
 
 Bulk
 : No
+
+#### Crop aspect ratios
+
+Statamic ships with five aspect ratio presets (`16:9`, `4:3`, `3:2`, `2:1`, and `1:1`) available in the crop editor. You can customize them — or remove the dropdown entirely — via the `crop_aspect_ratios` array in `config/statamic/assets.php`.
+
+Each entry can be a `W:H` string, or an array with a `label` and a `ratio`. Labels are passed through Laravel's translator, so you can use translation keys to localize them.
+
+```php
+// config/statamic/assets.php
+
+'crop_aspect_ratios' => [
+    '16:9',
+    '4:3',
+    ['label' => 'Wide', 'ratio' => '16:9'],
+    ['label' => 'US Letter', 'ratio' => '8.5:11'],
+    ['label' => 'Golden', 'ratio' => 1.618],
+],
+```
+
+Set `crop_aspect_ratios` to an empty array to hide the preset dropdown entirely and force users to drag custom selections.
+
+```php
+'crop_aspect_ratios' => [],
+```
 
 ### Copy URL
 Running this action allows you to copy the URL of an asset. You can use the copied URL to share or reference the asset in other places, such as in emails, documents, or on other websites.
