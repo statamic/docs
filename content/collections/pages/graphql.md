@@ -1654,6 +1654,20 @@ Cached responses are automatically invalidated when content is changed. Dependin
 ],
 ```
 
+### Cache exclusion
+
+Responses can be excluded from the whole-response cache by adding their query names to the `exclude` array in `config/statamic/graphql.php`.
+
+```php
+'cache' => [
+    'expiry' => 60,
+    'exclude' => [
+        'ping',
+        'user',
+    ],
+],
+```
+
 ### Disabling caching
 
 If you wish to disable caching altogether, set `cache` to `false`.
