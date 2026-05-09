@@ -42,7 +42,7 @@ You can solve this by adding Composer's `bin` directory to your `PATH` (sometime
 
     ``` shell
     # Replace the path below with the path identified in step 1
-    export PATH="/Users/me/.composer/vendor/bin/":$PATH # MacOS
+    export PATH="$HOME/.composer/vendor/bin/":$PATH # MacOS
 
     export PATH="$HOME/.config/composer/vendor/bin/":$PATH # Linux
     ```
