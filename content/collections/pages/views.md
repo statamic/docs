@@ -103,6 +103,21 @@ For example, if you have an `articles` collection entry that uses a blueprint wi
 You can still set a template on the entry level and override the default.
 :::
 
+#### Customizing the template path
+
+By default, Statamic looks for the template in a directory matching the collection's handle. If you'd like to look somewhere else, you can map collections to a different path using the `blueprint_templates` config in `config/statamic/system.php`.
+
+``` php
+'blueprint_templates' => [
+    'blog' => 'shared',
+    'news' => 'shared',
+],
+```
+
+With the above config, both the `blog` and `news` collection entries using the `post` blueprint will look for `/resources/views/shared/post.antlers.html`.
+
+This could be useful when you have templates that are similar across collections.
+
 ## Partials
 
 Partials are reusable views that may find themselves in any number of other layouts, templates, and other partials. You can use any view as a partial by using the [partial](/tags/partial) tag.
