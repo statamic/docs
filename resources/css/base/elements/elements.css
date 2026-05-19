@@ -494,11 +494,6 @@
             margin-inline-start: var(--spacing-3xs);
             width: 0.7rem;
             color: var(--color-primary-text);
-
-            *:has(> &) {
-                /* The SVG container */
-                display: flex;
-            }
         }
     }
 }
