@@ -1,11 +1,7 @@
 {{ partial:header }}
 
 {{ if content }}
-    <div class="c-tip">
-        <div class="c-tip__title">Good to know</div>
-        {{ content }}
-        <img src="/img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />
-    </div>
+    {{ content }}
 {{ /if }}
 
 {{ collection:tips as="tips" }}
