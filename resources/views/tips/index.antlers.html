@@ -7,9 +7,8 @@
 {{ collection:tips as="tips" }}
     <div
         class="c-tips-index-page"
-        x-data="{ filter: (window.location.hash || '').replace('#', '') || 'all' }"
-        x-init="$watch('filter', value => history.replaceState(null, '', value === 'all' ? window.location.pathname : `#${value}`))"
-        x-cloak
+        x-data='{ filter: (window.location.hash || "").replace("#", "") || "all" }'
+        x-init='$watch("filter", value => history.replaceState(null, "", value === "all" ? window.location.pathname : "#" + value))'
     >
         <nav class="c-tips-index__nav" aria-label="Filter by category">
             <button
