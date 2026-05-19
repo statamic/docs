@@ -1,11 +1,79 @@
 {{ partial:header }}
 
-{{ content }}
-<ul>
-{{ collection:tips }}
-    <li><h2><a href="{{ url }}">{{ title }}</a></h2></li>
+{{ if content }}
+    <div class="c-tip">
+        <div class="c-tip__title">Good to know</div>
+        {{ content }}
+        <img src="/img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />
+    </div>
+{{ /if }}
+
+{{ collection:tips as="tips" }}
+    <div
+        class="c-tips-index-page"
+        x-data="{ filter: (window.location.hash || '').replace('#', '') || 'all' }"
+        x-init="$watch('filter', value => history.replaceState(null, '', value === 'all' ? window.location.pathname : `#${value}`))"
+        x-cloak
+    >
+        <nav class="c-tips-index__nav" aria-label="Filter by category">
+            <button
+                type="button"
+                class="c-tips-index__nav-item"
+                :class="{ 'is-active': filter === 'all' }"
+                @click="filter = 'all'"
+            >
+                All
+            </button>
+            {{ taxonomy:categories collection="tips" sort="title:asc" }}
+                <button
+                    type="button"
+                    class="c-tips-index__nav-item"
+                    :class="{ 'is-active': filter === '{{ slug }}' }"
+                    @click="filter = '{{ slug }}'"
+                >
+                    {{ svg src="/img/tips/{slug | replace('privacy-gdpr', 'privacy')}" class="c-tips-index__nav-icon" }}
+                    {{ title }}
+                </button>
+            {{ /taxonomy:categories }}
+        </nav>
+
+        {{ taxonomy:categories collection="tips" sort="title:asc" }}
+            {{ entries sort="title:asc" as="section_entries" }}
+                <section
+                    class="c-tips-index__section"
+                    id="tips-{{ slug }}"
+                    x-show="filter === 'all' || filter === '{{ slug }}'"
+                >
+                    <header class="c-tips-index__section-header">
+                        <div class="c-tips-index__section-icon" aria-hidden="true">
+                            {{ svg src="/img/tips/{slug | replace('privacy-gdpr', 'privacy')}" }}
+                        </div>
+                        <div>
+                            <h2>{{ title }}</h2>
+                            {{ if content }}
+                                <p>{{ content | markdown | strip_tags }}</p>
+                            {{ /if }}
+                            <p class="c-tips-index__section-count">{{ section_entries | count }} guides</p>
+                        </div>
+                    </header>
+
+                    <ul class="c-tips-index" role="list">
+                        {{ section_entries }}
+                            <li>
+                                <a href="{{ url }}" class="c-tips-index__card u-link-style-none">
+                                    <h3 class="pt-0">{{ title }}</h3>
+                                    {{ if intro }}
+                                        <p>{{ intro | markdown | strip_tags | truncate:140 }}</p>
+                                    {{ /if }}
+                                </a>
+                            </li>
+                        {{ /section_entries }}
+                    </ul>
+                </section>
+            {{ /entries }}
+        {{ /taxonomy:categories }}
+    </div>
 {{ /collection:tips }}
-</ul>
 
 {{ $suggest = 'yes' }}
 {{ $hide_toc = 'yes' }}

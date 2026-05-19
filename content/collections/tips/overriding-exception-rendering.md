@@ -1,7 +1,7 @@
 ---
 id: 839eac3b-c4d9-4686-9e7e-f90c4515d405
 title: 'Overriding Exception Rendering'
-intro: 'Statamic''s HTTP exceptions (404, 403, 401) implement their own `render` method, which means Laravel''s usual `bootstrap/app.php` render callbacks never fire. Each exception exposes a `renderUsing` method so you can provide your own callback instead.'
+intro: 'Statamic 404, 403, and 401 exceptions bypass Laravel''s renderer. Use renderUsing() to customize how they are displayed.'
 template: page
 categories:
   - development

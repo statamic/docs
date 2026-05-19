@@ -1,7 +1,7 @@
 ---
 id: 748f88ce-85f6-491b-8e9c-fa2b1895be31
 title: 'Storing Laravel Users in Files'
-intro: 'Sometimes the Statamic way overrules the Laravel way.'
+intro: 'Store Laravel app users as Statamic YAML files when your project needs both frameworks sharing the same user format.'
 template: page
 categories:
   - development

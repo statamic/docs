@@ -2,8 +2,11 @@
 id: 7af5ee6c-234a-48eb-b02b-c72b52562618
 blueprint: tips
 title: 'How to change your timezone to UTC'
-intro: "Statamic 6 introduces improved timezone handling. Using UTC as your timezone is a best practice."
+intro: 'Statamic 6 improves timezone handling. Switch your app timezone back to UTC and let Statamic handle display conversion.'
 template: page
+categories:
+  - development
+  - localization
 related_entries:
   - 7dfba904-8a74-40e1-b507-51cd2b5f6123
 ---

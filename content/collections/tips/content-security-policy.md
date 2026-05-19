@@ -3,7 +3,9 @@ id: a3fab450-3ce1-451c-b51d-cfc79bafd317
 blueprint: tips
 title: 'Content Security Policy'
 template: page
-intro: Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross-Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft, to site defacement, to malware distribution.
+categories:
+  - development
+intro: 'Lock down scripts, styles, and frames with a Content Security Policy — plus what Statamic needs whitelisted.'
 ---
 
 ## What is a Content Security Policy (CSP)?

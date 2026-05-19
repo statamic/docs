@@ -1,7 +1,7 @@
 ---
 id: 1e22effb-69e4-46cf-9bad-6500d7347362
 title: 'Recursive Nav Examples'
-intro: 'Statamic''s [nav tag](/tags/nav) is capable of some pretty rad stuff, but recursion can be a little bit hard on the old brain (on the old brain).'
+intro: 'Recursive nav examples for trees, footers, and sidebars — for when the nav tag makes your brain hurt a little.'
 template: page
 categories:
   - development

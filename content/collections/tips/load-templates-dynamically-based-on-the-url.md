@@ -1,7 +1,7 @@
 ---
 id: 8eac02d5-1fc1-477c-a571-4aba29f1b60e
 title: 'Load templates dynamically based on the URL'
-intro: 'If you''ve ever just wanted to start working on the frontend HTML/CSS without messing around with collections and blueprints yet, here''s a fun little trick. These two route rules will give you a homepage and then dynamically map your URLs to match the folder structure of your views directory.'
+intro: 'Map URLs to view files with two route rules — prototype frontend layouts without setting up collections first.'
 template: page
 categories:
   - development

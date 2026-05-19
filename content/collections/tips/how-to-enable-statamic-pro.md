@@ -4,6 +4,9 @@ blueprint: tips
 title: 'How to Enable Statamic Pro'
 intro: 'A fresh Statamic install starts in Solo edition mode. Here''s how to enable Pro mode and unlock every feature Statamic has.'
 template: page
+categories:
+  - development
+  - cli
 ---
 A fresh Statamic install starts in Solo edition mode. You can enable Pro in your `.env` file at any time by running:
 

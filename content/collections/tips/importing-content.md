@@ -1,8 +1,11 @@
 ---
 id: c52a611e-2694-4a70-a974-75934d178017
 title: 'Importing Existing Content'
-intro: "After configuring collections and blueprints, you'll likely want to import content from an existing CMS into Statamic. This guide walks you through the various options."
+intro: 'Import content from another CMS into Statamic — built-in tools, converters, and manual approaches for every situation.'
 template: page
+categories:
+  - development
+  - cli
 ---
 ## Overview
 

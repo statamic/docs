@@ -1,7 +1,7 @@
 ---
 id: 112bf1e2-9616-4d22-ac4e-9fbeba84f32b
 title: 'Using Statamic Alongside Laravel Nightwatch'
-intro: 'Laravel Nightwatch is a great way to monitor your application, but a default install on a Statamic site will burn through your event quota faster than a toddler through a bag of fruit snacks. Here''s how to keep it in check.'
+intro: 'Nightwatch on Statamic burns through your event quota fast. Filter noisy events and keep monitoring costs under control.'
 template: page
 categories:
   - development

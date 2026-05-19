@@ -1,6 +1,7 @@
 ---
 id: 660e700e-0602-49fc-a8fb-ac47b9884e52
 title: 'Localizing Globals'
+intro: 'Configure which sites use a global set, and which fields are localizable vs. shared across locales.'
 template: page
 categories:
   - localization

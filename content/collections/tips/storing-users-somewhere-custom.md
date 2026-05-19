@@ -1,7 +1,7 @@
 ---
 id: 1ee69ba0-2fa4-4155-9b8d-82536ce95f99
 title: 'Storing Users Somewhere Custom'
-intro: 'Sometimes you just gotta be special.'
+intro: 'Build a custom user repository when file or Eloquent storage does not fit how your users need to work.'
 template: page
 categories:
   - database

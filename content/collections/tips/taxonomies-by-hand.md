@@ -1,7 +1,7 @@
 ---
 id: 3f5506d6-03e0-4fcf-b4e8-334c48d51f81
 title: 'Working with Taxonomies by Hand'
-intro: 'Sometimes you just don''t feel like using a control panel. Managing content in your Code Editor can be the most productive or fun option.'
+intro: 'Create and manage taxonomies and terms by hand in YAML when the Control Panel is not your vibe.'
 template: page
 categories:
   - development

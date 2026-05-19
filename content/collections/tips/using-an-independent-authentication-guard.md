@@ -1,6 +1,7 @@
 ---
 id: d42da120-03f9-4eaf-bdfe-420736ca55e7
 title: 'Using an Independent Authentication Guard'
+intro: 'Separate Laravel app users from Statamic CP users with independent guards and providers in config/auth.php.'
 template: page
 categories:
   - development

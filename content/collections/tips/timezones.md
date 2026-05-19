@@ -1,8 +1,11 @@
 ---
 id: 2080f786-9c04-4916-b77a-c62202ec4f07
 title: 'Timezones'
-intro: "Every developer's worst nightmare."
+intro: 'UTC storage, display timezones, and the config that ties them together — every developer''s least favorite topic.'
 template: page
+categories:
+  - development
+  - localization
 related_entries:
     - 7dfba904-8a74-40e1-b507-51cd2b5f6123
 ---

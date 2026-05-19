@@ -2,6 +2,9 @@
 id: 66edce16-321a-4e94-8e71-44c1ae7b934e
 blueprint: tips
 title: 'Enforce trailing slashes in URLs'
+intro: 'Keep trailing slashes on URLs for SEO when migrating from another CMS — one helper call in AppServiceProvider.'
+categories:
+  - development
 ---
 If you're moving from another CMS that uses trailing slashes in URLs and you'd like to keep the same format in Statamic for SEO purposes, you can!
 

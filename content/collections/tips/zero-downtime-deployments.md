@@ -2,6 +2,7 @@
 id: 5e1dbeb6-b59d-4c6c-a3fa-950c4372acba
 blueprint: tips
 title: 'Zero Downtime Deployments'
+intro: 'How zero-downtime deploy tools structure releases, and which Statamic paths should live outside the release folder.'
 template: page
 categories:
   - development

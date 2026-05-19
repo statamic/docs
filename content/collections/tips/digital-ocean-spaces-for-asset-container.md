@@ -1,6 +1,7 @@
 ---
 id: 2aa44c22-f626-4f9e-826d-c23ef482cf08
 title: 'Using Digital Ocean Spaces for an Asset Container'
+intro: 'Point an asset container at DigitalOcean Spaces using the S3 driver — install the adapter, add credentials, and you are set.'
 template: page
 categories:
   - development

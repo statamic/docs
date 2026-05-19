@@ -1,7 +1,7 @@
 ---
 id: 4c3f5caa-a861-4ffd-a856-1692cafeb870
 title: 'Storing Users in a Database'
-intro: 'If you have a large or unknown number of users, it can be a good idea to store them in a database instead of the filesystem for the sake of performance or scaling.'
+intro: 'Move users from flat files to a database when your user count grows and filesystem storage stops scaling.'
 template: page
 categories:
   - development

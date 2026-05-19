@@ -1,6 +1,7 @@
 ---
 id: e1da92af-a0d8-40bb-9417-52675fad5e1f
 title: 'Converting from Single to Multi-Site'
+intro: 'Convert a single-site Statamic project to multi-site with `php please multisite`, or walk through the manual conversion steps.'
 template: page
 categories:
   - development
