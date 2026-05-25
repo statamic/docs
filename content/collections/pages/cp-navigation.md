@@ -38,6 +38,10 @@ public function bootAddon()
 }
 ```
 
+:::hint
+If you want nothing more than adding an item to your nav, you don't need to create a full-blown addon. Just `Nav::extend` from the `boot` method of your `AppServiceProvider`.
+:::
+
 The `content()` method there is a [magic method](http://php.net/manual/en/language.oop5.magic.php), and the name of method defines the section name that will be used.  If we need to display special characters in our section name, we can `create()` the nav item and explicitly define the section name:
 
 ```php
