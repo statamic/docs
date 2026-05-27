@@ -542,6 +542,30 @@ fields:
       container: main
 ```
 
+### Configuring temporary file storage
+
+When using the `files` fieldtype, uploads are temporarily stored on your server before being attached to emails and then deleted. By default, these files are stored on the `local` disk at `storage/app/private/statamic/file-uploads`.
+
+In multi-server environments where a file might be uploaded on one server but processed (eg. queued form emails) on another, you can configure the storage location to use a shared filesystem like S3:
+
+```env
+STATAMIC_FILE_UPLOADS_DISK=s3
+STATAMIC_FILE_UPLOADS_PATH=statamic/file-uploads
+```
+
+Or in your `config/statamic/system.php` file:
+
+```php
+'file_uploads' => [
+    'disk' => env('STATAMIC_FILE_UPLOADS_DISK', 'local'),
+    'path' => env('STATAMIC_FILE_UPLOADS_PATH', 'statamic/file-uploads'),
+],
+```
+
+:::tip
+Since these are temporary files containing user uploads, you should use a private filesystem to prevent unauthorized access.
+:::
+
 ## Honeypot
 
 Simple and effective spam prevention.
