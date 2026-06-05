@@ -7,11 +7,6 @@ screenshot: fieldtypes/screenshots/v6/bard-with-sets.webp
 screenshot_dark: fieldtypes/screenshots/v6/bard-with-sets-dark.webp
 options:
   -
-    name: allow_source
-    type: boolean
-    description: |
-      Controls whether the "show source code" button is available to your editors. Default: `true`.
-  -
     name: sets
     type: array
     description: An array containing sets of fields. If you don't provide any sets, Bard will act like a basic text/WYSIWYG editor and you won't see the "Add Set" button.
