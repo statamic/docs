@@ -13,7 +13,7 @@
         "laravel/tinker": "^3.0",
         "statamic-rad-pack/meilisearch": "^4.1",
         "statamic/cms": "^6.0",
-        "torchlight/engine": "^1",
+        "torchlight/engine": "^1.0",
         "stillat/documentation-search": "^2.0"
     },
     "require-dev": {
