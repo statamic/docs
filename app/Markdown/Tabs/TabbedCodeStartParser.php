@@ -25,6 +25,6 @@ class TabbedCodeStartParser implements BlockStartParserInterface
 
         $cursor->advanceToEnd();
 
-        return BlockStart::of(new TabsParser())->at($cursor);
+        return BlockStart::of(new TabsParser)->at($cursor);
     }
 }

@@ -1,6 +1,20 @@
-{{# <a href="https://github.com/statamic/cms" class="hidden md:block sticky z-50 -top-8 bg-gradient-to-r from-purple to-blue via-pink hover:bg-gradient-animate py-2 text-center text-white font-bold text-sm antialiased">
-    ⭐️ If you like Statamic, give it a star on GitHub! ⭐️
-</a> #}}
+<div class="c-promo"
+    x-cloak
+    x-data="{ dismissed: localStorage.getItem('vote-dismissed') === 'true' }"
+    x-show="!dismissed">
+    <div class="c-promo__inner">
+        <a href="https://cmscritic.com/vote" target="_blank" class="block text-white">
+            🏆 Vote for your favorite CMS at the CMS Critic Awards! Voting ends Feb 28th.
+        </a>
+        <button
+            @click="dismissed = true; localStorage.setItem('vote-dismissed', 'true')"
+            class="c-promo__close relative z-10"
+            aria-label="Dismiss promo">
+            &times;
+        </button>
+    </div>
+</div>
+
 {{# <a href="https://laracasts.com/series/learn-statamic-with-jack?ref=statamic.dev" class="hidden md:block sticky z-50 -top-8 bg-gradient-to-r from-purple to-blue via-pink hover:bg-gradient-animate py-2 text-center text-white font-bold text-sm antialiased">
     📼 Learn Statamic with Jack &mdash; a 22 episode series — is now live on <span class="bg-yellow text-black px-1 rounded-sm">Laracasts!</span> 📼
 </a> #}}

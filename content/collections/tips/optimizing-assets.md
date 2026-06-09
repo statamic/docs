@@ -1,6 +1,7 @@
 ---
 id: b50310b0-64ae-4ae4-b219-a637ed89e4d7
 title: 'Optimizing Assets'
+intro: 'Slow asset browser on S3 or Spaces? Cache listing metadata so the CP does not hit the API every time.'
 template: page
 categories:
   - development

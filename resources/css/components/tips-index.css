@@ -1,0 +1,211 @@
+/* GROUP COMPONENTS / TIPS INDEX
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /tips
+
+    What does it do?
+    ----------------
+    Category-filtered card grid for the Tips & Tricks collection index.
+
+*/
+@layer components {
+    .c-tips-index-page {
+        padding-block-end: var(--spacing-4xl);
+    }
+
+    .c-tips-index__meta {
+        padding-block: var(--spacing-lg) var(--spacing-md);
+        font-family: var(--font-family-code);
+        font-size: var(--font-size-xs);
+        line-height: var(--font-size-xs-line-height);
+        font-weight: var(--font-family-code-weight-light);
+        color: var(--color-black-light);
+        @container style(--color-scheme: dark) {
+            color: hsl(0deg 0% 65%);
+        }
+    }
+
+    .c-tips-index__nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-2xs);
+        padding-block-end: var(--spacing-2xl);
+        position: sticky;
+        top: var(--spacing-sm);
+        z-index: var(--z-index-above-body);
+        padding: var(--spacing-sm);
+        margin-inline: calc(var(--spacing-sm) * -1);
+        margin-block-end: var(--spacing-xl);
+        border-radius: var(--border-radius-lg);
+        background: light-dark(hsl(0deg 0% 100% / 92%), hsl(210deg 5% 8% / 92%));
+        backdrop-filter: blur(8px);
+        border: 1px solid light-dark(hsl(var(--color-purple-hue) 25% 90%), hsl(var(--color-purple-hue) 20% 18%));
+    }
+
+    .c-tips-index__nav-item {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-2xs);
+        padding: var(--spacing-2xs) var(--spacing-sm);
+        font-family: var(--font-family-main);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-family-main-weight-medium);
+        line-height: 1.2;
+        color: var(--color-primary-text);
+        background: var(--color-purple-light-2);
+        border: 1px solid light-dark(hsl(var(--color-purple-hue) 30% 88%), hsl(var(--color-purple-hue) 25% 22%));
+        border-radius: var(--border-radius-lg);
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+            background: var(--color-purple-light-2-highlight);
+            border-color: light-dark(hsl(var(--color-purple-hue) 40% 78%), hsl(var(--color-purple-hue) 35% 32%));
+        }
+
+        &.is-active {
+            background: var(--color-gradient-purple);
+            border-color: transparent;
+            color: white;
+
+            .c-tips-index__nav-icon * {
+                fill: white;
+            }
+        }
+    }
+
+    .c-tips-index__nav-icon {
+        inline-size: 1.1rem;
+        block-size: 1.1rem;
+        flex-shrink: 0;
+
+        * {
+            fill: var(--color-purple);
+        }
+    }
+
+    .c-tips-index__section {
+        padding-block-end: var(--spacing-3xl);
+
+        &:not(:last-child) {
+            border-block-end: 1px dashed light-dark(hsl(var(--color-purple-hue) 25% 85%), hsl(var(--color-purple-hue) 20% 22%));
+            margin-block-end: var(--spacing-3xl);
+        }
+    }
+
+    .c-tips-index__section-header {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        padding-block-end: var(--spacing-lg);
+
+        h2 {
+            padding-block-end: var(--spacing-3xs);
+            font-family: var(--font-family-main);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-family-main-weight-heavy);
+            letter-spacing: 0.2px;
+        }
+
+        > div > p:not(.c-tips-index__section-count) {
+            margin: 0;
+            max-width: 40rem;
+            font-family: var(--font-family-code);
+            font-size: var(--font-size-xs);
+            line-height: var(--font-size-xs-line-height);
+            font-weight: var(--font-family-code-weight-light);
+            color: var(--color-black-light);
+            @container style(--color-scheme: dark) {
+                color: hsl(0deg 0% 68%);
+            }
+        }
+    }
+
+    .c-tips-index__section-icon {
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        inline-size: 3.25rem;
+        block-size: 3.25rem;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-lg);
+        background: var(--color-gradient-full-light-2);
+        border: var(--border-dashed-red);
+
+        svg {
+            inline-size: 100%;
+            block-size: 100%;
+        }
+    }
+
+    .c-tips-index__section-count {
+        margin: 0;
+        padding-block-start: var(--spacing-3xs);
+        font-family: var(--font-family-code);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-family-code-weight-medium);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: var(--color-purple);
+    }
+
+    .c-tips-index {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+        gap: var(--spacing-sm);
+        list-style: none;
+        padding-inline: 0;
+        margin: 0;
+    }
+
+    .c-tips-index__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2xs);
+        block-size: 100%;
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        background: var(--color-purple-light-2);
+        border: 1px solid light-dark(hsl(var(--color-purple-hue) 35% 88% / 65%), hsl(var(--color-purple-hue) 30% 22%));
+        transition: background-color 0.2s ease, border-color 0.2s ease, translate 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--color-purple-light-2-highlight);
+            border-color: light-dark(hsl(var(--color-purple-hue) 45% 75%), hsl(var(--color-purple-hue) 40% 35%));
+            translate: 0 -2px;
+        }
+
+        h3 {
+            font-family: var(--font-family-main);
+            font-size: var(--font-size-ui);
+            font-weight: var(--font-family-main-weight-heavy);
+            line-height: var(--font-size-ui-line-height);
+            letter-spacing: 0.2px;
+            color: var(--color-primary-text);
+        }
+
+        p {
+            margin: 0;
+            font-family: var(--font-family-code);
+            font-size: var(--font-size-2xs);
+            line-height: 1.35;
+            font-weight: var(--font-family-code-weight-light);
+            color: var(--color-black-light);
+            @container style(--color-scheme: dark) {
+                color: hsl(0deg 0% 68%);
+            }
+        }
+
+        &:not(:has(p)) h3 {
+            margin-block: auto;
+        }
+    }
+
+    header:has(h1:only-child) + .c-tip + .c-tips-index-page .c-tips-index__meta {
+        padding-block-start: var(--spacing-md);
+    }
+}

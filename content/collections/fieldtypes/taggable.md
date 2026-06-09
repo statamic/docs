@@ -1,6 +1,7 @@
 ---
 title: Tags
-screenshot: fieldtypes/screenshots/taggable.png
+screenshot: fieldtypes/screenshots/v6/taggable.webp
+screenshot_dark: fieldtypes/screenshots/v6/taggable-dark.webp
 description: Enter a list of items with a tag-style interface.
 overview: >
   Users can enter “taggable” values, which are formatted

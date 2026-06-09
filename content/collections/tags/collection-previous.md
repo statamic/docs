@@ -24,7 +24,6 @@ variables:
     type: boolean
     description: >
       `true` if no results.
-stage: 4
 id: 741cf972-c0bd-4e3c-81e2-8cc8bea60737
 ---
 ## Date Order

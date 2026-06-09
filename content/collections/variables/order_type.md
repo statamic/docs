@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: 'Order Type'
+description: Get the order type of an entry (date, alphabetical, or number).
 ---
 Get the order type of an entry. This could be `date`, `alphabetical`, or `number`.
 

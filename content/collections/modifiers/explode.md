@@ -32,3 +32,24 @@ places: Scotland, England, Switzerland, Italy
   <li>Italy</li>
 </ul>
 ```
+
+To limit the number of splits, pass the limit as the second argument:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ places | explode(',', 2) | ul }}
+```
+::tab blade
+```blade
+{!! Statamic::modify($places)->explode(',', 2)->ul() !!}
+```
+::
+
+```html
+<ul>
+  <li>Scotland</li>
+  <li>England, Switzerland, Italy</li>
+</ul>
+```

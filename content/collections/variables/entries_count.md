@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - term
 title: 'Entries Count'
+description: Get the number of entries that use this taxonomy term.
 ---
 Get the number of entries that use this taxonomy term.
 

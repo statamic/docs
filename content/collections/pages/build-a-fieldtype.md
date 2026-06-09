@@ -1,0 +1,535 @@
+---
+id: 83786f60-def6-11e9-aaef-0800200c9a66
+blueprint: page
+title: 'Build a Fieldtype'
+updated_by: 3a60f79d-8381-4def-a970-5df62f0f5d56
+updated_at: 1568643872
+intro: "Fieldtypes determine the user interface and storage format for your [fields](/fields). Statamic includes 40+ fieldtypes to help you tailor the perfect intuitive experience for your authors, but there's always room for _one more_."
+---
+
+## Creating
+
+Fieldtypes have a PHP component and JS component. You can use a command to generate both pieces:
+
+``` shell
+php please make:fieldtype Uppercase
+```
+
+``` files theme:serendipity-light
+app/
+    Fieldtypes/
+        Uppercase.php
+resources/
+    js/
+        components/
+            fieldtypes/
+                Uppercase.vue
+```
+
+If you haven't already [set up Vite](/control-panel/css-javascript) for the Control Panel, the command will do it for you.
+
+## Registering
+
+Statamic will automatically register any fieldtype classes in the `App\Fieldtypes` namespace. 
+
+However, if you wish to store them elsewhere, you'll need to manually register it by calling the static `register` method on your fieldtype's class:
+
+``` php
+public function boot()
+{
+    \App\SomewhereElse\Uppercase::register();
+}
+```
+
+
+## PHP Class
+
+The PHP class can be very barebones. At the most basic level, it just needs to exist in order to let Statamic know about it.
+
+```php
+<?php
+
+namespace App\Fieldtypes;
+
+use Statamic\Fields\Fieldtype;
+
+class Uppercase extends Fieldtype
+{
+    //
+}
+```
+
+Of course, you may add functionality to it, outlined below.
+
+### Icon
+
+You can either specify the name of [icon included in Statamic](https://ui.statamic.dev/?path=/docs/components-icon--docs#available-icons) or an SVG string containing a custom icon (be sure to use `fill="currentColor"`) via the `$icon` property.
+
+Alternatively, you may return an SVG string from the `icon()` method:
+
+```php
+<?php
+
+class Uppercase extends Fieldtype
+{
+    protected $icon = 'tags';
+    // or
+    protected $icon = '<svg> ... </svg>';
+    // or
+    function icon()
+    {
+        return file_get_contents(resource_path('svg/left_shark.svg'));
+    }
+}
+```
+
+### Categories
+
+When using the blueprint builder inside the Control Panel, your fieldtype will be listed under the `special` category by default. 
+
+To move your fieldtype into a different category, define the `$categories` property on your class:
+
+```php
+<?php
+
+class Uppercase extends Fieldtype
+{
+    public $categories = ['text'];
+}
+```
+
+You can select from any of the keys available in the `FieldtypeSelector`:
+- `text`
+- `controls`
+- `media`
+- `number`
+- `relationship`
+- `structured`
+- `special`
+
+
+### Keywords
+
+You may specify keywords to be used when searching in the fieldtype selector.
+
+For example: if you search for "rich text" or "gutenberg", the [Bard fieldtype](/fieldtypes/bard) will be returned as a result.
+
+```php
+<?php
+
+class CustomFieldtype extends Fieldtype
+{
+    protected $keywords = ['file', 'files', 'image', 'images', 'video', 'videos', 'audio', 'upload'];
+}
+```
+
+### Config fields
+
+You can make your fieldtype configurable with configuration fields. These fields are defined by adding a `configFieldItems()` method on your PHP class that returns an array of fields.
+
+``` php
+protected function configFieldItems(): array
+{
+    return [
+        'mode' => [
+            'display' => 'Mode',
+            'instructions' => 'Choose which mode you want to use',
+            'type' => 'select',
+            'default' => 'regular',
+            'options' => [
+                'regular' => __('Regular'),
+                'enhanced' => __('Enhanced'),
+            ],
+            'width' => 50
+        ],
+        'secret_agent_features' => [
+            'display' => 'Enable super secret agent features',
+            'instructions' => 'Can you even handle these features?',
+            'type' => 'toggle',
+            'default' => false,
+            'width' => 50
+        ],
+    ];
+}
+```
+
+The configuration values can be accessed in the Vue component using the `config` property.
+
+``` js
+return this.config.mode; // regular
+```
+
+#### Options
+
+| Key              | Definition                                                       |
+|------------------|------------------------------------------------------------------|
+| **display**      | The field's display label                                        |
+| **instructions** | Text shown underneath the display label. Supports Markdown.      |
+| **type**         | Name of the fieldtype used to manage the config option.          |
+| **default**      | An optional default value.                                       |
+| **width**        | The field's width.                                               |
+| ***other***      | Some fieldtypes have additional configuration options available. |
+
+:::tip
+A little code diving will reveal all the possible config options for each field type. Look for the `configFieldItems()` method in each class here: <https://github.com/statamic/cms/tree/6.x/src/Fieldtypes>
+:::
+
+
+## Vue Component
+The Vue component is responsible for the view and data binding. It's what your user will be interacting with.
+
+The `make:fieldtype` command would have generated a Vue component into `resources/js/components/fieldtypes/Uppercase.vue`.
+
+You'll need to register this Vue component in your JS entry file (`resources/js/cp.js`):
+
+``` js
+import UppercaseFieldtype from './components/fieldtypes/Uppercase.vue';
+
+Statamic.booting(() => {
+    // Should be named [snake_case_handle]-fieldtype
+    Statamic.$components.register('uppercase-fieldtype', UppercaseFieldtype);
+});
+```
+
+Your component should use our `Fieldtype` composable for defining props & emits, updating the field value and accessing meta.
+
+``` vue
+<script setup>
+import { Fieldtype } from '@statamic/cms';
+
+const emit = defineEmits(Fieldtype.emits);
+const props = defineProps(Fieldtype.props);
+const { expose, ... } = Fieldtype.use(emit, props);
+defineExpose(expose);
+</script>
+
+<template>
+    <!-- -->
+</template>
+```
+
+Other than that, your component can do whatever you like!
+
+### Example
+
+For this example we will create an input field with a button to make the text uppercase:
+
+<figure>
+    <img src="/img/uppercase-fieldtype-example.gif" alt="An example fieldtype with a button to make the text uppercase" class="p-4 bg-white" width="477">
+    <figcaption>Follow along and you could make this!</figcaption>
+</figure>
+
+``` vue
+<script setup>
+import { Fieldtype } from '@statamic/cms';
+import { Input, Button } from '@statamic/cms/ui';
+
+const emit = defineEmits(Fieldtype.emits);
+const props = defineProps(Fieldtype.props);
+const { expose, update } = Fieldtype.use(emit, props);
+defineExpose(expose);
+
+function makeItUppercase() {
+    update(props.value.toUpperCase());
+}
+</script>
+
+<template>
+    <div>
+        <Input :model-value="value" @update:model-value="update" />
+        <Button @click="makeItUppercase">Make it upper case!</Button>
+    </div>
+</template>
+```
+
+#### What's happening?
+
+1. The `Fieldtype` composable is providing the `emits` and `props` we need to define, as well as the `expose, update` and `updateDebounced` methods.
+2. When you type into the text field, an `update` method is called which emits an event. Statamic listens to that event and updates the `value` prop.
+
+Those are the two requirements satisfied. ✅
+
+In addition to that, when the button is clicked, we're converting the string to uppercase and calling `update` in our function.
+
+### Accessing other fields
+
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your Vue component:
+
+```js
+import { injectPublishContext } from '@statamic/cms/ui';
+const { values } = injectPublishContext();
+
+// Do what you need to with values
+console.log(values.value.title)
+```
+
+
+## Processing
+
+You may need to modify the data going to and from the browser.
+
+* The `preProcess` method allows you to modify the original value into what the Vue component requires.
+* The `process` method does the opposite. It takes the Vue component's value and allows you to modify it for what gets saved.
+
+For example, the YAML fieldtype stores its value in content as an array but the field needs it as a string in order for it to be editable:
+
+```php
+public function preProcess($value)
+{
+    return YAML::dump($value); // dump a yaml string from an array
+}
+```
+
+In the other direction, it takes the YAML string and needs to convert it back to an array when saving:
+
+```php
+public function process($value)
+{
+    return YAML::parse($value); // parses a yaml string into an array
+}
+```
+
+_(These snippets are simplified for example purposes.)_
+
+## Meta Data
+
+Fieldtypes can preload additional "meta" data from PHP into JavaScript. This can be anything you want, from settings to eager loaded data.
+
+``` php
+public function preload()
+{
+    return ['foo' => 'bar'];
+}
+```
+
+This can be accessed in the Vue component using the `meta` prop.
+
+``` js
+return props.meta; // { foo: bar }
+```
+
+If you have a need to update this meta data on the _JavaScript side_, use the `updateMeta` method. This will persist the value back to Vuex store and communicate the update to the appropriate places.
+
+``` js
+const props = defineProps(Fieldtype.props);
+const { updateMeta } = Fieldtype.use(emit, props);
+
+updateMeta({ foo: 'baz' });
+props.meta; // { foo: 'baz' }
+```
+
+### Example use cases
+
+Here are some reasons why you might want to use this feature:
+
+- The assets and relationship fieldtypes only store IDs, so they will fetch item data using AJAX requests. If you have many of these fields in one form, you'd have a bunch of AJAX requests fire off when the page loads. Preload the item data to avoid the initial AJAX requests.
+- Grid, Bard, and Replicator fields all preload values for what a new row/set contains, plus the recursive meta values of any nested fields.
+
+
+## Replicator Preview
+
+When [Replicator](/fieldtypes/replicator) (or [Bard](/fieldtypes/bard)) sets are collapsed, Statamic will display a preview of the values within it.
+
+By default, Statamic will do its best to display your fields value. However, if you have a value more complex than a simple string or array, you may want to customize it.
+
+You may customize the preview text by calling `defineReplicatorPreview` from your Vue component. For example:
+
+``` js
+const { defineReplicatorPreview } = Fieldtype.use(emit, props);
+
+defineReplicatorPreview(() => props.value.join('+'));
+```
+
+:::tip
+This _does_ support returning an HTML string so you could display image tags for a thumbnail, etc. Just be aware of the limited space.
+:::
+
+## Index fieldtypes
+
+In listings (collection indexes in the Control Panel, for example), string values will be displayed as a truncated string and arrays will be displayed as JSON.
+
+You can adjust the value before it gets sent to the listing with the `preProcessIndex` method:
+
+``` php
+public function preProcessIndex($value)
+{
+    return str_repeat('*', strlen($value));
+}
+```
+
+If you need extra control or functionality, fieldtypes may have an additional "index" Vue component.
+
+
+``` js
+import UppercaseIndexFieldtype from './UppercaseIndexFieldtype.vue';
+
+// Should be named [snake_case_handle]-fieldtype-index
+Statamic.$components.register('toggle_password-fieldtype-index', UppercaseIndexFieldtype);
+```
+
+``` vue
+<script setup>
+import { IndexFieldtype } from '@statamic/cms';
+
+const props = defineProps(IndexFieldtype.props);
+
+const numberOfUppercaseCharacters = computed(() => {
+    return [...props.value].filter(char => char >= 'A' && char <= 'Z').length;
+});
+</script>
+
+<template>
+    <div>String contains {{ numberOfUppercaseCharacters }} uppercase characters.</div>
+</template>
+```
+
+The `IndexFieldtype` composable will provide you with a `value` prop so you can display it however you'd like. Continuing our example above, we will calculate how many characters of the given string are uppercase.
+
+## Augmentation
+
+By default, a fieldtype will not perform any augmentation. It will just return the value as-is.
+
+You can customize how it gets augmented with an augment method:
+
+``` php
+public function augment($value)
+{
+    return strtoupper($value);
+}
+```
+
+[Read more about augmentation](/extending/augmentation)
+
+## Updating References
+
+If your fieldtype stores references to assets or taxonomy terms — either directly or nested inside sub-fields — you'll want to keep those references in sync when an asset is renamed, moved, or deleted, or when a term is renamed or deleted. Otherwise you end up with broken references pointing at stale URLs or IDs.
+
+Statamic handles this for all built-in fieldtypes automatically. For custom fieldtypes you can opt in by using the `UpdatesReferences` trait and overriding one or more of its methods.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+}
+```
+
+The trait provides three no-op methods you can override, depending on what kind of data your fieldtype stores:
+
+| Method | Purpose |
+|--------|---------|
+| `replaceAssetReferences($data, $newValue, $oldValue, $container)` | Replace direct asset references (URLs or IDs). |
+| `replaceTermReferences($data, $newValue, $oldValue, $taxonomy)` | Replace direct term references. |
+| `iterateReferenceFields($data, NestedFieldUpdater $updater)` | Traverse nested sub-fields so Statamic can recurse into them. |
+
+It also gives you three helper methods for the common cases: `replaceValue()`, `replaceValuesInArray()`, and `replaceStatamicUrls()`.
+
+### Asset references
+
+If your fieldtype stores a single asset reference, override `replaceAssetReferences` and use the `replaceValue()` helper. Bail early if the container doesn't match your field's configured container.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyLinkFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function replaceAssetReferences($data, ?string $newValue, string $oldValue, string $container)
+    {
+        if ($this->config('container') !== $container) {
+            return $data;
+        }
+
+        return $this->replaceValue($data, $newValue, $oldValue);
+    }
+}
+```
+
+When `$newValue` is `null`, the asset was deleted — Statamic will remove the reference from your data.
+
+### Term references
+
+If your fieldtype stores an array of term references, override `replaceTermReferences` and use `replaceValuesInArray()`.
+
+```php
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class MyTagsFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function replaceTermReferences($data, ?string $newValue, string $oldValue, string $taxonomy)
+    {
+        return $this->replaceValuesInArray($data, $newValue, $oldValue);
+    }
+}
+```
+
+### Nested sub-fields
+
+If your fieldtype contains nested fields (like Grid, Replicator, or a custom Columns fieldtype), override `iterateReferenceFields` and hand each set of nested fields off to the `NestedFieldUpdater`. Statamic will recurse into them and run the appropriate reference updates against any fieldtypes within that also use the trait.
+
+```php
+use Statamic\Data\NestedFieldUpdater;
+use Statamic\Fields\Fields;
+use Statamic\Fields\Fieldtype;
+use Statamic\Fieldtypes\UpdatesReferences;
+
+class ColumnsFieldtype extends Fieldtype
+{
+    use UpdatesReferences;
+
+    public function iterateReferenceFields($data, NestedFieldUpdater $updater): void
+    {
+        if (! is_array($data)) {
+            return;
+        }
+
+        $fields = new Fields($this->config('fields'));
+
+        foreach (array_keys($data) as $idx) {
+            $updater->update($fields, "{$idx}.");
+        }
+    }
+}
+```
+
+The second argument to `$updater->update()` is a key prefix used when walking the data array — use it to tell the updater where the nested field's value lives within your data structure.
+
+## Adding config fields to existing fieldtypes
+
+Sometimes you may want to add a config field to another fieldtype rather than creating a completely new one.
+
+You can do this using the `appendConfigField` or `appendConfigFields` methods on the respective fieldtype.
+
+```php
+use Statamic\Fieldtypes\Text;
+
+// One field...
+Text::appendConfigField('group', [
+  'type' => 'text',
+  'display' => 'Group',
+]);
+
+// Multiple fields...
+Text::appendConfigFields([
+  'group' => ['type' => 'text', 'display' => '...',],
+  'another' => ['type' => 'text', 'display' => '...',],
+]);
+```
+
+You can also append a config field to _all_ fieldtypes via the `Fieldtype` class:
+
+```php
+use Statamic\Fields\Fieldtype;
+
+Fieldtype::appendConfigField('group', [
+    'type' => 'text',
+    'display' => 'A new group',
+]);
+```

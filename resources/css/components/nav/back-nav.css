@@ -1,0 +1,37 @@
+/* GROUP COMPONENTS / BACK NAV
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A small navigation component that displays a "go back" link.
+
+*/
+/* HTML Example...
+
+    {{ if segment_2 && $collection && ($collection != "pages") }}
+        <li>
+            <a href="{{ parent:url }}" class="c-back-nav">&larr; Go back</a>
+            etc.
+        </li>
+    {{ else }}
+        ...
+
+*/
+@layer components {
+    .c-back-nav {
+        display: inline-block;
+        background: var(--color-pink-light-3);
+        @container style(--color-scheme: dark) {
+            /* Make it a bit more obvious */
+            background: var(--color-red-burnt-4);
+        }
+        padding: var(--spacing-3xs) var(--spacing-xs);
+        margin-block-end: var(--spacing-sm);
+        border-radius: 50px;
+
+        &a {
+            font-weight: var(--font-family-main-weight-normal);
+        }
+    }
+}

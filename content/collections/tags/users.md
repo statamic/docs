@@ -72,6 +72,8 @@ variables:
     name: 'user data'
     type: mixed
     description: 'Each result has access to all the variables inside that entry (`name`, `email`, etc).'
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 ---
 ## Overview
 

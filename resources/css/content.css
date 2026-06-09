@@ -1,9 +1,0 @@
-/* Main Content */
-/* -------------------------------------------------- */
-
-article figure {
-    @apply bg-zinc-50 border px-6 py-8 rounded-lg;
-    img {
-        @apply rounded;
-    }
-}

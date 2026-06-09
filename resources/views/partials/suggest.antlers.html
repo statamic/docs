@@ -1,8 +1,11 @@
+{{ if {github_edit_url} }}
 <div class="o-entry-content">
-    <div class="c-feedback-meerkat">
-        <h2>Suggest Content</h2>
-        <p>Help us improve the docs by suggesting new content</p>
-        <a href="https://github.com/statamic/docs/issues/new" class="c-btn c-btn--1">Suggest Content</a>
+    <a href="{{ github_edit_url }}" class="c-feedback-meerkat flex items-center gap-3">
+        <div>
+            <h2>Suggest content</h2>
+            <p>Help us improve the docs by suggesting new content with a Pull Request on GitHub.</p>
+        </div>
         <img src="/img/meerkat.webp" alt="Meerkat" width="150" height="278">
-    </div>
+    </a>
 </div>
+{{ /if }}

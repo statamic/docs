@@ -3,7 +3,8 @@ title: Checkboxes
 description: Boxes you check. You can check 'em all.
 intro: >
   Checkboxes! Make some checkboxes, click the checkboxes, and store a record of which boxes of which ones you clicked. They're boxes you check.
-screenshot: fieldtypes/screenshots/checkboxes.png
+screenshot: fieldtypes/screenshots/v6/checkboxes.webp
+screenshot_dark: fieldtypes/screenshots/v6/checkboxes-dark.webp
 options:
   -
     name: inline
@@ -15,7 +16,6 @@ options:
     type: array
     description: >
       Sets of key/value pairs define the values and labels of the checkbox options.
-stage: 2
 id: f922cb9b-6fc9-4249-adf4-59aa46285c13
 ---
 ## Overview
@@ -44,6 +44,10 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Ice Cream
     - Brownies
 ```
+
+### Options in blueprint YAML
+
+See [Select · Options in blueprint YAML](/fieldtypes/select#options-in-blueprint-yaml)—checkbox options in the blueprint use the same expanded `key` / `value` rows so order is preserved everywhere.
 
 ## Data Structure
 

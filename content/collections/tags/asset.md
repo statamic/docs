@@ -8,7 +8,6 @@ parameters:
     type: string
     description: >
       The path to the file, relative to the web root.
-stage: 4
 id: de348605-5489-4282-9257-bd9ffd92438e
 ---
 ## Overview

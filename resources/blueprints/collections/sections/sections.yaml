@@ -43,3 +43,4 @@ tabs:
               localizable: true
               validate:
                 - required
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'

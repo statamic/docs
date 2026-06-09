@@ -3,7 +3,8 @@ title: Users
 description: Relate users with your content.
 intro: >
   Attach users to your content to show authorship, list team members, assign the winners of a foot race, or even winners of an elbow race.
-screenshot: fieldtypes/screenshots/users.png
+screenshot: fieldtypes/screenshots/v6/users.webp
+screenshot_dark: fieldtypes/screenshots/v6/users-dark.webp
 options:
   -
     name: default
@@ -25,7 +26,6 @@ options:
     type: string
     description: >
       Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
-stage: 4
 id: 0f8102b9-c948-4264-8cb8-cbfbd0415a04
 ---
 ## Overview
@@ -51,6 +51,10 @@ author: abc-123-cba-321
 All relationship fields use [augmentation](/augmentation) to fetch the actual data objects, allowing you to interact with the related data automatically and dynamically.
 
 The following example assumes `max_items` has been set to `1`.
+
+:::hint
+When `max_items: 1`, the field augments directly to the related user so you can use dot/colon notation (`{{ author:name }}`). If you'd rather always get a query builder back — so you can chain scopes or filters — enable [`always_augment_to_query`](/augmentation#always-augment-relationships-to-a-query).
+:::
 
 ::tabs
 

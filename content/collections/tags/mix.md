@@ -12,7 +12,6 @@ parameters:
     name: in
     type: string
     description: The location of your mix manifest file relative to the `public/` directory.
-stage: 4
 id: b8936f37-a237-4fad-bf70-a6421ab413ae
 ---
 ## Overview

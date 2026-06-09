@@ -1,0 +1,41 @@
+title: Resource APIs
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            import: page
+          -
+            handle: class
+            field:
+              placeholder: \Statamic\Facades\
+              input_type: text
+              antlers: false
+              display: Class
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+                - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+              required: true

@@ -3,8 +3,8 @@ title: Table
 description: Create and manage simple tables of limitless columns and rows.
 intro: >
   Creating tables can be a nuisance in a WYSIWYG editor. This fieldtype gives you a way to create flexible tabular data.
-screenshot: fieldtypes/screenshots/table.gif
-stage: 4
+screenshot: fieldtypes/screenshots/v6/table.gif
+screenshot_dark: fieldtypes/screenshots/v6/table-dark.gif
 id: 11e0ab78-7698-44c8-98f1-1194cb12ce28
 options:
   -

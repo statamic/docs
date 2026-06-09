@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Xml Header'
+description: Outputs an XML header tag, useful when Statamic's template parser encodes PHP tags.
 ---
 Simply outputs an XML Header tag.
 

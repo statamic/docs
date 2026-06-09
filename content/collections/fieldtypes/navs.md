@@ -3,7 +3,8 @@ title: Navs
 meta_title: 'Navs Fieldtype'
 description: Choose from one or more navigations.
 overview: Allows you to choose from one or more navigations.
-screenshot: fieldtypes/screenshots/navs.png
+screenshot: fieldtypes/screenshots/v6/navs.webp
+screenshot_dark: fieldtypes/screenshots/v6/navs-dark.webp
 options:
   -
     name: max_items

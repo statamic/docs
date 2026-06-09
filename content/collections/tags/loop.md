@@ -21,7 +21,6 @@ parameters:
     name: to
     type: int
     description: 'Number to stop looping at.'
-stage: 4
 id: 0c59949c-2a78-4f83-94c3-164736140f03
 ---
 ## Overview

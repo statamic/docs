@@ -2,7 +2,6 @@
 title: 'Session:Dump'
 description: 'Peek into the user session for debugging purposes.'
 intro: The contents of the user session can be dumped to the browser. You never know when you need to peek inside the black box.
-stage: 5
 id: d1ef36ac-7d21-40b2-a7fc-b53a0be3c79c
 ---
 ## Example

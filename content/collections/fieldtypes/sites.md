@@ -2,7 +2,8 @@
 id: db0162b1-c58c-4093-841c-b386cc2e5c21
 blueprint: fieldtype
 title: Sites
-screenshot: fieldtypes/screenshots/sites.png
+screenshot: fieldtypes/screenshots/v6/sites.webp
+screenshot_dark: fieldtypes/screenshots/v6/sites-dark.webp
 intro: 'Allows you to select one or more sites when running a [multi site](/multi-site).'
 options:
   -

@@ -3,12 +3,16 @@
 /public/hot
 /public/storage
 /public/vendor/statamic
+/public/build/*
+/users/*
 /public/js
+/public/css/scratch.css
 /storage/*.key
 /storage/statamic/users
 /storage/debugbar/*
 /storage/glide/*
 /storage/antlers-language-server/*
+/storage/stillat/*
 /vendor
 .env
 .env.backup

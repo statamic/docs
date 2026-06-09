@@ -1,0 +1,127 @@
+/* GROUP COMPONENTS / TIP
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    A positive tip box with a troll. We also have a tip-warning component.
+
+*/
+/* HTML Example...
+
+    <div class="c-tip">
+        <div class="c-tip__title">Hot Tip!</div>
+        <p>If a view file ends with <code>.blade.php</code> it will use Laravel’s <a href="https://statamic.dev/blade" >Blade templates</a>. This same pattern applies for any other template engine you may wish to install in the future, like Twig or something that hasn't been invented yet.</p>
+        <img src="/img/tip-troll.webp" class="c-tip__mascot" alt="A troll pointing a teaching stick" width="242" height="293" />
+    </div>
+
+*/
+/* Modifiers...
+
+    .c-tip--warning <- a warning tip such as leaving the debug bar on for production.
+        - Uses an evil troll and red colours instead.
+
+*/
+@layer components {
+    .c-tip,
+    .best-practice {
+        &:not(.watch) {
+            position: relative;
+            z-index: var(--z-index-above-body);
+            padding: var(--spacing-lg) var(--spacing-2xl) var(--spacing-2xs);
+
+            /* Custom */
+            @media (width < 550px) {
+                padding-inline: var(--spacing-lg);
+            }
+            margin-block: var(--spacing-3xl);
+            font-family: var(--font-family-main);
+            &:hover .c-tip__mascot {
+                animation: wiggle 0.5s linear;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: var(--z-index-below-body);
+                background: var(--color-gradient-burnt);
+                rotate: -1deg;
+                border-radius: var(--border-radius-2xl);
+            }
+            p {
+                font-weight: var(--font-family-main-weight-medium);
+                /* Custom */
+                @media (width < 500px) {
+                    font-size: 0.9rem;
+                }
+            }
+            /* GROUP COMPONENTS / TIP / SCOPE TWEAKS
+            =================================================== */
+            &:has(+ h2) {
+                /* e.g. >> /updating */
+                margin-block-end: var(--spacing-lg);
+            }
+            h2 + & {
+                /* e.g. >> /tags/children */
+                margin-block-start: var(--spacing-3xs);
+            }
+            header + & {
+                /* e.g. >> /updating */
+                margin-block-start: var(--spacing-lg);
+            }
+            header:has(h1:only-child) + & {
+                /* e.g. >> ui-components/overview */
+                margin-block-start: var(--spacing-2xs);
+            }
+        }
+    }
+    /* Cross pollinated */
+    .c-tip__title,
+    .hint-title {
+        display: inline-block;
+        padding: var(--spacing-3xs) var(--spacing-md);
+        margin-block-end: var(--spacing-sm);
+        font-size: var(--font-size-lg-uppercase);
+        text-transform: uppercase;
+    }
+    .c-tip__title--long {
+        font-size: var(--font-size-md-uppercase);
+    }
+    /* img*/
+    .c-tip__mascot {
+        position: absolute;
+        z-index: var(--z-index-above-body);
+        top: -1rem;
+        left: -1.75rem;
+        inline-size: 4rem;
+        filter: var(--filter-burnt-shadow);
+    }
+}
+@layer scope {
+    .c-tip--warning {
+        &::before {
+            background: var(--color-gradient-burnt-dark);
+        }
+        .hint-title,
+        .c-tip__title {
+            &, &::before {
+                background: var(--color-red-burnt-1);
+                color: var(--color-red-bright);
+                border-radius: var(--border-radius-sm);
+            }
+            @container style(--color-scheme: dark) {
+                border: 1px solid var(--color-red);
+                &, &::before {
+                    rotate: unset;
+                    border-radius: var(--border-radius-md);
+                }
+            }
+        }
+        img {
+            filter: hue-rotate(-20deg) saturate(1.25);
+        }
+        code {
+            background: var(--color-gradient-fire);
+        }
+    }
+}

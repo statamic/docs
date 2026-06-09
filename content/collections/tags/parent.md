@@ -2,7 +2,6 @@
 title: Parent
 description: Fetches data from a parent entry
 intro: The Parent tag fetches data from the "parent" page — the URL one level above the current one. For example, the parent of this very URL (`/tags/parent`) is `/tags`, and the parent title is "Tags".
-stage: 3
 id: 932ae2b5-0ff0-40e3-b8a4-1c71784917e4
 ---
 ## Overview

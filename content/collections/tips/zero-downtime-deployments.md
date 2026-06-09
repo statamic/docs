@@ -2,6 +2,7 @@
 id: 5e1dbeb6-b59d-4c6c-a3fa-950c4372acba
 blueprint: tips
 title: 'Zero Downtime Deployments'
+intro: 'How zero-downtime deploy tools structure releases, and which Statamic paths should live outside the release folder.'
 template: page
 categories:
   - development
@@ -24,9 +25,9 @@ releases
     app
     routes
     etc
-  20220322153109
-  20220323180225
-  20220322153109
+   20220322153109
+   20220323180225
+   20220322153109
 ```
 
 Every deployment has its own timestamped release directory, with a fresh clone of the app. The `.env` file is stored at the top level, and shared between releases using symlinks.

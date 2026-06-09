@@ -164,3 +164,7 @@ You will also find the field's `old` input on unsuccessful submission, as well a
 
 Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-forms`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
 
+## Precognition
+
+The password update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — useful for catching mismatched confirmations or weak passwords before submitting. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/password` with `current_password`, `password`, and `password_confirmation` in the `$form` data object.
+

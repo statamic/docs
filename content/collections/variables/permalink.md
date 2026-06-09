@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - content
 title: Permalink
+description: Get the absolute URL to the content, including your site URL.
 ---
 Get the absolute URL to the content. This will include your site URL.
 

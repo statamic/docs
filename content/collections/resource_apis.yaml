@@ -1,0 +1,16 @@
+title: 'Resource APIs'
+icon: programming-module-box-cube
+template: page
+layout: layout
+mount: 50dfaf8c-8ca4-4b58-ac84-e4c50099e42e
+revisions: false
+route: '/{mount}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

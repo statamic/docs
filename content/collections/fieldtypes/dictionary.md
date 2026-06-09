@@ -2,7 +2,8 @@
 title: Dictionary
 description: Choose from options provided by dictionaries.
 intro: Give your users a list of options to choose from. Similar to the Select field, but allows you to read options from YAML or JSON files, or even hit external APIs.
-screenshot: fieldtypes/screenshots/dictionary.png
+screenshot: fieldtypes/screenshots/v6/dictionary.webp
+screenshot_dark: fieldtypes/screenshots/v6/dictionary-dark.webp
 options:
   -
     name: dictionary

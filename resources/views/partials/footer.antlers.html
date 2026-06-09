@@ -1,16 +1,4 @@
 <footer id="footer" class="c-site-footer">
-    <div class="c-site-footer__scene">
-        <div class="c-site-footer__scene__image-container">
-            <img src="/img/footer/waterfall.avif" alt="" />
-        </div>
-        <div class="c-site-footer__scene__stars u-hide-in-light-mode">
-            <img src="/img/theme-dark.svg" alt="Stars" />
-            <img src="/img/theme-dark.svg" alt="Stars" />
-            <img src="/img/theme-dark.svg" alt="Stars" />
-            <img src="/img/theme-dark.svg" alt="Stars" />
-            <img src="/img/theme-dark.svg" alt="Stars" />
-        </div>
-    </div>
     <div class="c-site-footer__nav">
         <div class="c-site-footer__nav__item">
             <div class="c-site-footer-heading">
@@ -19,9 +7,7 @@
             </div>
             <ul>
                 <li><a href="/recent-updates">What's New</a></li>
-                {{ nav:collection:sections include_home="true" }}
-                <li><a href="{{ url }}">{{ title }}</a></li>
-                {{ /nav:collection:sections }}
+                {{#  @TODO Put Something Here #}}
             </ul>
         </div>
         <div class="c-site-footer__nav__item">
@@ -75,17 +61,6 @@
                 <li><a href="https://statamic.com/partners/join">Become a Partner</a></li>
                 <li><br><small>&copy; Copyright 2012–{{ now | format:Y }} Statamic, LLC. All rights reserved. 🇺🇸</small></li>
             </ul>
-        </div>
-    </div>
-    <div class="c-site-footer__nav">
-        <div class="c-site-footer__nav__item">
-            <div class="o-font-toggle">
-                {{ svg src='crane-kick' }}
-                <input type="radio" id="font-sans-off" name="font-toggle" value="sans-off" class="font-toggle__radio" checked>
-                <label for="font-sans-off" class="font-toggle__sans-off">Sans Off</label>
-                <input type="radio" id="font-sans-on" name="font-toggle" value="sans-on" class="font-toggle__radio">
-                <label for="font-sans-on" class="font-toggle__sans-on">Sans On</label>
-            </div>
         </div>
     </div>
 </footer>

@@ -1,7 +1,7 @@
 name: 'Jack McDade'
 super: true
 id: 3a60f79d-8381-4def-a970-5df62f0f5d56
-password_hash: $2y$10$6ihzAltBt72rVle60ZQxYuO1k0a3Jm/y45FF9P7Pi4rhV2RPfOoLu
+password_hash: $2y$12$CeWXn7/CWrzEW/lhPQjTT.Gi1lTeFUmTujrO0MtwVBv8VYSld8fEu
 preferences:
   collections:
     docs:
@@ -14,6 +14,7 @@ preferences:
         - title
         - slug
         - stage
+      per_page: 100
     knowledge-base:
       columns:
         - title
@@ -24,7 +25,12 @@ preferences:
       columns:
         - title
         - intro
+    listing_mode: table
+    pages:
+      view: tree
   favorites:
     -
       name: 'Create Docs Page'
       url: 'http://3-docs-new.test/cp/collections/docs/entries/create/default'
+  theme: light
+  color_mode: light

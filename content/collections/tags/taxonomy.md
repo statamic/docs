@@ -3,7 +3,6 @@ title: Taxonomy
 overview: Fetch and filter Taxonomy terms.
 intro: Taxonomy terms are grouped into taxonomies and are fetched and filtered by this tag. A taxonomy could contain tags, categories, or sock colors.
 description: Fetches and filters terms in one or more taxonomies.
-stage: 1
 parameters:
   -
     name: taxonomy
@@ -83,6 +82,8 @@ variables:
     type: query builder
     description: >
       If you use this as a tag pair, you can loop through entries associated with the term. See [entries](#entries) above.
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 id: ba832b71-a567-491c-b1a3-3b3fae214703
 ---
 ## Example {#example}

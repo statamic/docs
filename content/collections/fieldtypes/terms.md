@@ -4,7 +4,8 @@ extends: 9dd58c40-6e33-49c8-83fa-61a69f6371be
 description: Attach Taxonomy Terms to your content.
 intro: >
   Allows you attach Taxonomy Terms to your content. They could be Tags, Categories, Colors, Flavors, you name it. We highly recommend [learning more about Taxonomies](/taxonomies) before going any further.
-screenshot: fieldtypes/screenshots/terms.png
+screenshot: fieldtypes/screenshots/v6/terms.webp
+screenshot_dark: fieldtypes/screenshots/v6/terms-dark.webp
 options:
   -
     name: max_items
@@ -27,7 +28,6 @@ options:
     type: string
     description: >
       Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
-stage: 2
 id: 31adcc00-4fbb-4fe9-9b48-401061273096
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: 4c3f5caa-a861-4ffd-a856-1692cafeb870
 title: 'Storing Users in a Database'
-intro: 'If you have a large or unknown number of users, it can be a good idea to store them in a database instead of the filesystem for the sake of performance or scaling.'
+intro: 'Move users from flat files to a database when your user count grows and filesystem storage stops scaling.'
 template: page
 categories:
   - development
@@ -19,7 +19,7 @@ If you installed Statamic using the `statamic new` command, or created a project
 Statamic comes with an Eloquent driver to make the transition as seamless as possible.
 
 1. Ensure you have a [database configured](https://laravel.com/docs/database#configuration).
-1. In your user model, cast the preferences column to json.
+1. In your `User` model, add casts for the `preferences` and `two_factor_confirmed_at` columns:
     ```php
     class User extends Authenticatable
     {
@@ -27,6 +27,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
         { // [tl! focus]
             return [ // [tl! focus]
                 'preferences' => 'json', // [tl! ++] [tl! focus]
+                'two_factor_confirmed_at' => 'datetime', // [tl! ++] [tl! focus]
             ]; // [tl! focus]
         } // [tl! focus]
 
@@ -70,21 +71,24 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             $table->json('preferences')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('password')->nullable()->change();
+            $table->text('two_factor_secret')->nullable();
+            $table->text('two_factor_recovery_codes')->nullable();
+            $table->timestamp('two_factor_confirmed_at')->nullable();
         });
 
         Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
-            $table->uuid('user_id');  // [tl! ++] [tl! **]
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! ** --]
+            $table->uuid('user_id');  // [tl! ** ++]
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ** ++]
             $table->string('role_id');
         });
 
         Schema::create('group_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! --] [tl! **]
-            $table->uuid('user_id');  // [tl! ++] [tl! **]
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ++] [tl! **]
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();  // [tl! ** --]
+            $table->uuid('user_id');  // [tl! ** ++]
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();  // [tl! ** ++]
             $table->string('group_id');
         });
         ```
@@ -94,7 +98,7 @@ Statamic comes with an Eloquent driver to make the transition as seamless as pos
             $table->foreignUuid('user_id')->nullable()->change();  // [tl! ++] [tl! **]
         });  // [tl! ++] [tl! **]
         ```
-    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/12.x/migrations).
+    - If you've customized your `user` blueprint, edit the migration so it includes those fields as columns. You can also create a new migration file by running `php artisan make:migration`. You'll have to manually edit the migration file to reflect your changes. Read up on [Laravel database migrations here](https://laravel.com/docs/13.x/migrations).
         ```php
         $table->string('some_field');
         ```

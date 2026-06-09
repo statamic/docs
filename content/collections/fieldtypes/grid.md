@@ -6,7 +6,8 @@ overview: >
 
   Let's go deeper.
 
-screenshot: fieldtypes/screenshots/v4/grid.png
+screenshot: fieldtypes/screenshots/v6/grid.webp
+screenshot_dark: fieldtypes/screenshots/v6/grid-dark.webp
 options:
   -
     name: min_rows

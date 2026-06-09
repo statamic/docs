@@ -14,7 +14,8 @@ options:
     type: string
     description: >
       Set some default placeholder text.
-screenshot: fieldtypes/screenshots/v4/textarea.png
+screenshot: fieldtypes/screenshots/v6/textarea.webp
+screenshot_dark: fieldtypes/screenshots/v6/textarea-dark.webp
 id: 7c54484a-7ba5-4314-b9af-9d9a462090fc
 ---
 

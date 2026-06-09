@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'Last Segment'
+description: Get the last segment of the current URL.
 ---
 Since you don't always know how many segments your URL will have, you can always grab the last segment.
 

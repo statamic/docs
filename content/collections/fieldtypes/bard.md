@@ -3,13 +3,9 @@ title: Bard
 description: "Rich article writing and block-based layouts made easy."
 intro: |
   Bard is more than just a content editor, and more flexible than a block-based editor. **It is designed to provide a delightful and powerful writing experience** with unparalleled flexibility on your front-end.
-screenshot: fieldtypes/screenshots/v4/bard-with-sets.png
+screenshot: fieldtypes/screenshots/v6/bard-with-sets.webp
+screenshot_dark: fieldtypes/screenshots/v6/bard-with-sets-dark.webp
 options:
-  -
-    name: allow_source
-    type: boolean
-    description: |
-      Controls whether the "show source code" button is available to your editors. Default: `true`.
   -
     name: sets
     type: array
@@ -66,6 +62,11 @@ options:
     description: |
       Switch the field to inline mode. Block elements such as sets, headings and images are not supported in inline mode and should not be enabled.
   -
+    name: inline_hard_breaks
+    type: boolean
+    description: |
+      Enable support for hard breaks in inline mode. Only works when `inline` is set to `true`. Default: `false`.
+  -
     name: toolbar_mode
     type: string
     description: >
@@ -96,7 +97,6 @@ options:
     description: >
       Choose how to deal with empty nodes. Options: `false`, `true`, `trim`. Default: `false`.
 
-stage: 1
 id: f4bf58d3-cbce-4957-b883-d92fd4791e89
 ---
 ## Overview
@@ -109,6 +109,60 @@ Bard also has the ability to manage "sets" of fields inline with your text. Thes
 
 You can use any fieldtypes inside your Bard sets. Make sure to compare the experience with the other meta-fields: [Grid](/fieldtypes/grid) and [Replicator](/fieldtypes/replicator). You can even use Grids and Replicators inside your Bard sets. Just remember that because you can doesn't mean you should. Your UI experience can vary greatly.
 
+### Set Previews
+
+New to Statamic v6, you can add an image preview of your set, _as well as_ an icon. Previews make it easy to identify sets by showing a screenshot of what the rendered set might look like on the front-end. Clients can now say “ah, that one” without pretending to know the names you carefully gave them.
+
+#### Configuring Set Previews
+
+To add a set preview, click the little "pencil" icon next to the set name.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-edit-preview.webp" alt="Bard Set Edit Preview" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-edit-preview-dark.webp" alt="Bard Set Edit Preview" class="u-hide-in-light-mode">
+    <figcaption>Let's give the set a preview.</figcaption>
+</figure>
+
+Once you're in the set editor, you can add a preview image and icon. Here we're showing a lovely screenshot of what the newsletter signup form might look like on the front-end. We can even add some instructions to explain how the set is used.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-previews.webp" alt="Bard Set Previews" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-set-previews-dark.webp" alt="Bard Set Previews" class="u-hide-in-light-mode">
+    <figcaption>Behold a <em>Preview Image</em>, for the love of all clients.</figcaption>
+</figure>
+
+#### Set Previews in Action
+
+Once you've set a preview image, users adding a bard set can hover over the set to preview what it might look like on the frontend.
+
+You can view previews in two different UI modes: in a list of set names, or in a grid of sets with their preview images.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-list.webp" alt="Bard Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-list-dark.webp" alt="Bard Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a list of sets.</figcaption>
+</figure>
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-grid.webp" alt="Bard Set Previews in the CP" class="u-hide-in-dark-mode">
+    <img src="/img/fieldtypes/screenshots/v6/bard-hover-preview-grid-dark.webp" alt="Bard Set Previews in the CP" class="u-hide-in-light-mode">
+    <figcaption>A preview in a grid of sets. Previews fall back to the set icon if no preview image is set.</figcaption>
+</figure>
+
+### Custom Set Icons
+
+You can change the icons available in the set picker by configuring an icon set in a service provider.
+
+For example, you can drop this into your `AppServiceProvider`'s `boot` method:
+
+```php
+use Statamic\Fieldtypes\Sets;
+
+public function boot()
+{
+    Sets::useIcons('heroicons', resource_path('svg/heroicons'));
+}
+```
 
 ## Data Structure
 
@@ -244,29 +298,202 @@ resources/views/partials/sets/
 
 Bard uses [TipTap](https://tiptap.dev/) (which in turn is built on top of [ProseMirror][prosemirror]) as the foundation for our quintessential block-based editor.
 
-[Learn how to extend Bard](/extending/bard)
-
-
-
 [prosemirror]: https://prosemirror.net/
 
-## Custom set icons
+### Required Reading
 
-You can change the icons available in the set picker by setting an icons directory in a service provider.
+Before you attempt to create any Bard extensions, it is wise to learn how to write a Tiptap extension first. Otherwise you'd be trying to learn how to ride a motorcycle before you can even ride a bike. Or a unicycle before you can juggle. To have a better understanding of how to write a Tiptap extension, you'd in turn benefit greatly on reading about how ProseMirror works.
 
-For example, you can drop this into your `AppServiceProvider`'s `boot` method:
+:::tip
+Writing custom extensions for Bard is pretty complicated, but can be rewarding and provide powerful results.
+:::
 
-```php
-use Statamic\Fieldtypes\Sets;
+In short, here's a quick-start of the things you should probably start with:
+
+- [The ProseMirror guide](https://prosemirror.net/docs/guide/) — Yes, it's really long, but you should at least pretend to read it
+- Checking out the [The Tiptap documentation](https://tiptap.dev/docs/editor/getting-started/overview) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages), so you can understand how Tiptap relates to ProseMirror
+- If you don't know [how to extend the control panel](/control-panel/css-javascript) yet, go ahead and read up on that first. The code snippets later will be part of your extension to the control panel. Alternatively, you may also [extend the control panel through the creation of an addon](/addons/building-an-addon).
+- Come back here again and keep on going.
+
+### Adding New Extensions
+
+You may add your own Tiptap extensions to Bard using the `addExtension` method. The callback may return a single extension, or an array of them.
+
+``` js
+const { Node, Mark, Extension } = Statamic.$bard.tiptap.core;
+
+Statamic.$bard.addExtension(() => Node.create({...}));
+```
+
+``` js
+Statamic.$bard.addExtension(() => {
+    return [
+        Node.create({...}),
+        Mark.create({...}),
+        Extension.create({...}),
+    ]
+});
+```
+
+Check out [Tiptap's custom extension documentation](https://tiptap.dev/docs/editor/extensions/custom-extensions) and [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap/tree/develop/packages) to find out how to write an extension.
+
+If you're providing a new mark or node and intend to use this Bard field on the front-end, you will also need to create a Mark or Node class to be used by the PHP [renderer](#tiptap-php-rendering).
+
+:::tip
+If you need any other Tiptap helpers or utilities you can use our [Tiptap API](#tiptap-api).
+:::
+
+### Replacing Existing Extensions
+
+If you'd like to replace a [native extension](https://github.com/ueberdosis/tiptap/tree/develop/packages) (e.g. headings or paragraphs) you can use the `replaceExtension` method. It takes the `name` of the extension, and a callback that returns a single extension instance.
+
+```js
+const { Node } = Statamic.$bard.tiptap.core;
+
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return Node.create({
+        name: 'heading',
+        ...
+    });
+});
+```
+
+The callback will provide you with the existing extension instance, so if you are doing simple tweaks to an extension (e.g. customizing an input rule) you can simply extend the existing instance. Then you don't need to author an entire extension:
+
+```js
+const { nodeInputRule } = Statamic.$bard.tiptap.core;
+
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return extension.extend({
+        addInputRules() {
+            return [
+                nodeInputRule({...}),
+            ];
+        },
+    });
+});
+```
+
+You can also reconfigure extensions (e.g. to add Tailwind classes to headings or disable specific "smart typography" rules):
+
+```js
+Statamic.$bard.replaceExtension('heading', ({ extension, bard }) => {
+    return extension.configure({
+        HTMLAttributes: {
+            class: 'font-bold',
+        },
+    });
+});
+```
+```js
+Statamic.$bard.replaceExtension('typography', ({ extension, bard }) => {
+    return extension.configure({
+        oneHalf: false,
+        oneQuarter: false,
+        threeQuarters: false,
+    });
+});
+```
+
+### Buttons
+
+To add a button to the toolbar, provide a callback to the `buttons` method.
+
+The callback will receive two arguments:
+- `buttons` - an array of the existing buttons in the toolbar (more about that in a moment)
+- `button` - a function that wraps your button objects
+
+The callback may return a `button` object, or an array of them.
+
+``` js
+Statamic.$bard.buttons((buttons, button) => {
+    return button({
+        name: 'custom_bold',
+        text: __('Custom Bold'), // Tooltip text
+        svg: 'bold', // Name of an SVG icon
+        html: '<svg>...</svg>', // Custom icon HTML
+        args: { class: 'font-bold' }, // The command arguments
+        command: (editor, args) => editor.chain().focus().setCustomBold(args).run(), // The command to run
+        activeName: 'customBold', // The active node/mark type that will activate this button (falls back to name)
+        active: (editor, args) => editor.isActive('bold'), // Active check callback (overrides activeName)
+        visibleWhenActive: 'example', // The active node/mark type that will show this button (always visible if not set)
+        visible: (editor, args) => editor.isActive('example'), // Visible check callback (overrides visibleWhenActive)
+    });
+});
+```
+
+``` js
+Statamic.$bard.buttons((buttons, button) => [
+    button({...}),
+    button({...}),
+]);
+```
+
+Returning values to the `buttons` method will push them onto the end. If you need more control, you can manipulate the supplied `buttons` argument, and then return nothing. For example, we'll add a button after wherever the existing bold button happens to be:
+
+``` js
+Statamic.$bard.buttons((buttons, button) => {
+    const indexOfBold = _.findIndex(buttons, { name: 'bold' });
+
+    buttons.splice(indexOfBold + 1, 0, button({...}));
+});
+```
+
+:::tip
+Using the `button()` method will make the button only appear if the Bard field has been configured to show your button.
+
+If you'd like your button to appear on all Bard fields, regardless of whether it's been configured to use that button, you can just return an object. Don't wrap with `button()`.
+:::
+
+### Tiptap API
+
+In your extensions, you may need to use functions from the `tiptap` library. Rather than importing the library yourself and bloating your JS files, you may use methods through our API.
+
+``` js
+Statamic.$bard.tiptap.core; // `tiptap` (core, commands, utilities and helpers)
+Statamic.$bard.tiptap.pm.state; // `prosemirror-state`
+Statamic.$bard.tiptap.pm.model; // `prosemirror-model`
+Statamic.$bard.tiptap.pm.view; // `prosemirror-view`
+```
+
+You could shorten things up by using destructuring. For example:
+
+``` js
+const { InputRule, insertText, getAttributes } = Statamic.$bard.tiptap.core;
+new InputRule(...);
+insertText(...);
+getAttributes(...);
+```
+
+### Tiptap PHP Rendering
+
+If you have created an extension on the JS side to be used inside the Bard fieldtype, you will need to be able to render it on the PHP side (in your views).
+
+The Bard `Augmentor` class is responsible for converting the ProseMirror structure to HTML.
+
+You can use the `addExtension` or `replaceExtension` methods to bind an extension class into the renderer. Your AppServiceProvider's `boot` method is a good place to do this.
+
+``` php
+use Statamic\Fieldtypes\Bard\Augmentor;
 
 public function boot()
 {
-    Sets::setIconsDirectory(folder: 'light');
+    // Pass an object
+    Augmentor::addExtension('myExtension', new MyExtension);
+
+    // or a closure. You will be passed the bard fieldtype and an array of options as arguments.
+    Augmentor::addExtension('myExtension', function ($bard, $options) {
+        return new MyExtension(['foo' => $bard->config('should_foo')];
+    });
+
+    // Same for replacing extensions.
+    Augmentor::replaceExtension('paragraph', new MyCustomParagraph);
+
+    // Closures too. There will be an additional argument at the front which is the existing extension.
+    Augmentor::replaceExtension('paragraph', function ($existing, $bard, $options) {
+        return new CustomParagraph;
+    });
 }
 ```
 
-Alternatively, if you want to use a different base directory altogether, you can do this:
-
-```php
-Sets::setIconsDirectory(directory: resource_path('custom-icons'));
-```
+Check out [code samples for the core Tiptap extensions](https://github.com/ueberdosis/tiptap-php/tree/main/src) to find out how to write PHP extensions.

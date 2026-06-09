@@ -53,7 +53,6 @@ class Toc extends Modifier
         // Initialize TOC with an unordered list
         $toc = '<ul class="o-scroll-spy-timeline__toc js__scroll-spy-toc">'."\n";
         $i = 0;
-        $tiCounter = 1; // Add counter for --ti values
 
         foreach ($matches as $heading) {
             // Track the starting heading level for proper list nesting
@@ -99,9 +98,8 @@ class Toc extends Modifier
                 }
             }
 
-            // Add TOC entry with --ti style (only for leaf nodes)
-            $toc .= '<li style="--ti: --'.$tiCounter.'"><a href="#'.$anchor.'">'.$title.'</a>';
-            $tiCounter++;
+            // Add TOC entry (only for leaf nodes)
+            $toc .= '<li><a href="#'.$anchor.'">'.$title.'</a>';
 
             $prevlvl = $lvl;
 
@@ -141,6 +139,7 @@ class Toc extends Modifier
         // Remove HTML entity remnants that might be left after processing
         // Only remove these if they appear as standalone words or at word boundaries
         $slugified = preg_replace('/\b(codelt|rt|gtcode)\b/', '', $slugified);
+
         return $slugified;
     }
 }

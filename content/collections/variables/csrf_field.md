@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: 'CSRF Field'
+description: Outputs the CSRF token inside a hidden field named `_token` from the session.
 ---
 A helper to output the CSRF token inside a hidden field named `_token` from the session.
 

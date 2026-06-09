@@ -14,7 +14,7 @@ class HintParser extends AbstractBlockContinueParser implements BlockContinuePar
 
     public function __construct(?string $headerText)
     {
-        $this->block = new Hint();
+        $this->block = new Hint;
         $this->block->setHeader($headerText);
     }
 

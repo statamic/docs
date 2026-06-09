@@ -1,0 +1,126 @@
+/* GROUP COMPONENTS / BORDERED IMAGE
+=================================================== */
+/* Notes...
+
+    URL example
+    -----------
+    /assets
+
+    What does it do?
+    ----------------
+    Used on all figured images.
+
+*/
+/* HTML Example...
+
+    <picture class="c-bordered-image">
+        <source> etc.
+        <img />
+    </picture>
+
+    or with a figure
+
+    <figure class="c-bordered-image">
+        <picture>
+            <!-- {{# WebP #}} -->
+            <source
+                srcset="/img/2/make-user.png 750w,
+                        /img/2/make-user.png 1000w,
+                        /img/2/make-user.png 1536w"
+                type="image/webp"
+                sizes="(min-width: 1000px) 33.333vw, 100vw"
+            >
+            <!-- {{# JPEG #}} -->
+            <source
+                srcset="/img/2/make-user.png 750w,
+                        /img/2/make-user.png 1000w,
+                        /img/2/make-user.png 1536w"
+                type="image/jpeg"
+                sizes="(min-width: 1000px) 33.333vw, 100vw"
+            >
+            <!-- {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}} -->
+            <img
+                src="/img/2/make-user.png"
+                loading="lazy"
+                decoding="async"
+                width="906"
+                height="568"
+                alt="Statamic Make:User Command"
+            >
+        </picture>
+        <figcaption>You can customize user fields later.</figcaption>
+    </figure>
+
+*/
+@layer components {
+    /* Make sure so we don't descend from a further component, so we don't affect things like the homepage where we have the .c-tiles-with-description component */
+    .c-entry-content figure:not(.c-entry-content [class^="c-"]),
+    .c-bordered-image {
+        position: relative;
+        /* e.g. >> /collections and /stache */
+        margin-block-start: var(--spacing-xl);
+        /* e.g. >> /frontend/protecting-content where there's a heading of "Password form" followed by a figure */
+        :is(h2, h3, h4, h5, h6) + &,
+        ul + & {
+            /* Decrease, e.g. >> /getting-started/quick-start-guide */
+            margin-block-start: var(--spacing-2xs);
+        }
+        &:not(:last-child) {
+            margin-block-end: calc(var(--spacing-2xl) + var(--spacing-2xs));
+        }
+        img {
+            margin-block-end: 0;
+            margin-inline: auto;
+            /* e.g. >> /getting-started/installing/laravel-forge-1-click */
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--color-black);
+            /* Screenshots can look a little washed out, let's boost them a smidgen */
+            filter: var(--filter-image-boost-content);
+        }
+        figcaption {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: var(--color-yellow-light-2);
+            /* --mq-nav-open-after */
+            @media (width >= 1100px) {
+                /* Lighter now that we have more things going on */
+                background: var(--color-gradient-burnt-right);
+            }
+            font-weight: var(--font-family-main-weight-medium);
+            font-size: var(--font-size-sm);
+            line-height: var(--font-size-sm-line-height);
+            border-radius: var(--border-radius-sm);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        /* Custom */
+        @media (width < 768px) {
+            &:has(figcaption) img {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+        /* Custom */
+        @media (width >= 768px) {
+            padding: var(--spacing-sm);
+            &::before {
+                position: absolute;
+                z-index: var(--z-index-below-body);
+                inset: 0;
+                content: "";
+                background: var(--color-gradient-full-light-2);
+                border-radius: var(--border-radius-lg);
+            }
+            &:has(figcaption) {
+                /* Increase. Make a bit more room for the caption */
+                padding-block-end: calc(var(--spacing-3xl) + 1rem);
+            }
+            figcaption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-radius: 0 var(--border-radius-lg);
+            }
+        }
+    }
+}

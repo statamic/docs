@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: 'Size Kilobytes'
+description: The file size of the asset in kilobytes. Also available as `size_kb`.
 ---
 The file size of the asset, in kilobytes. Also available as `size_kb`.
 

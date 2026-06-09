@@ -3,7 +3,8 @@ title: 'Button Group'
 description: 'Buttons you click. You can only choose one.'
 intro: |
   Buttons. Create some options and let your users select one and only one. May they choose wisely.
-screenshot: fieldtypes/screenshots/button_group.png
+screenshot: fieldtypes/screenshots/v6/button-group.webp
+screenshot_dark: fieldtypes/screenshots/v6/button-group-dark.webp
 options:
   -
     name: clearable
@@ -14,7 +15,6 @@ options:
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the buttons.'
-stage: 4
 id: 26751221-fdc8-47c6-97f0-bf4997319482
 ---
 ## Overview
@@ -42,6 +42,18 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Left
     - Middle
     - Right
+```
+
+### Options in blueprint YAML
+
+Like the [select](/fieldtypes/select) fieldtype, `options` in the blueprint are saved in **expanded** form (ordered `key` / `value` rows) so option order is preserved in all storage backends. Hand-written blueprints should follow that structure if you are not using the visual editor.
+
+```yaml
+options:
+  - key: left
+    value: Left
+  - key: middle
+    value: Middle
 ```
 
 ## Data Structure

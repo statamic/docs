@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: Date
+description: Get the date of the entry as a Carbon instance, formatted according to system settings.
 ---
 Get the date of the entry. This will be a `Carbon` instance.
 

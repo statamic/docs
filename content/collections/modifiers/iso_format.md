@@ -12,7 +12,7 @@ The language that will be used for translations depends on what you configured i
 
 This is also compatible with [momentjs format method](https://momentjs.com/), it means you can use same format strings as you may have used in moment from your front-end or other node.js application.
 
-Check out the [complete list of available replacements](https://carbon.nesbot.com/docs/#iso-format-available-replacements).
+Check out the [complete list of available replacements](https://carbon.nesbot.com/guide/getting-started/localization.html#iso-format-available-replacements).
 
 ```yaml
 event_date: June 19 2020
@@ -60,6 +60,12 @@ And this on your French site:
 5 janv. 2017
 ```
 
-Check out the [complete list of available macro-formats](https://carbon.nesbot.com/docs/#available-macro-formats).
+Check out the [complete list of available macro-formats](https://carbon.nesbot.com/guide/getting-started/localization.html#iso-format-available-replacements).
+
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
 
 [carbon]: http://carbon.nesbot.com

@@ -4,5 +4,6 @@ blueprint: variables
 types:
   - entry
 title: 'Is Entry'
+description: A boolean indicating whether the current content is an entry.
 ---
 A boolean for whether the current content is an entry. Naturally, this will be `true` for entries.

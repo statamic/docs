@@ -1,6 +1,7 @@
 ---
 id: 660e700e-0602-49fc-a8fb-ac47b9884e52
 title: 'Localizing Globals'
+intro: 'Configure which sites use a global set, and which fields are localizable vs. shared across locales.'
 template: page
 categories:
   - localization
@@ -16,41 +17,6 @@ You can use the `php please multisite` to automate converting from a single to a
 When using [multiple sites](/multi-site), you'll need to specify in the Control Panel which sites this global set can be used in.
 
 ![/img/globals-site-config.png](/img/globals-site-config.png)
-
-## Folder Structure
-
-The folder structure will differ from the single site structure explained in the [globals guide](/globals). Now, the `data` will be relocated into separate files organized into sites. The meta level information will remain in the existing YAML file.
-
-``` files theme:serendipity-light
-globals/
-  global.yaml
-  footer.yaml
-  english/
-    global.yaml
-    footer.yaml
-  french/
-    global.yaml
-    footer.yaml
-```
-
-In these nested files, the data can exist at the top level.
-
-``` yaml
-# english/global.yaml
-food: bacon
-drink: whisky
-sport: football
-```
-``` yaml
-# french/global.yaml
-origin: english
-food: baguette
-drink: champagne
-```
-
-:::tip
-A global set will be considered unavailable for a particular site if a file doesn't exist in its subdirectory.
-:::
 
 
 ## Localizable fields

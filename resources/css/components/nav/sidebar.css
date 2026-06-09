@@ -1,0 +1,312 @@
+/* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / API
+=================================================== */
+@layer components {
+    .c-nav-sidebar-with-popover-api {
+        --dropdown-nav-item-padding: 0.25rem;
+        position: sticky;
+        max-width: 15rem;
+
+        nav,
+        nav [popover] {
+            /* Reset */
+            margin: 0;
+            padding: 0;
+            border: 0;
+
+            display: none;
+            opacity: 0;
+            transition: opacity 350ms, margin 350ms allow-discrete, display 350ms allow-discrete, overlay 350ms allow-discrete;
+
+            &:popover-open {
+                display: block;
+                opacity: 1;
+
+                @starting-style {
+                    /* opacity: 0; */
+                    margin-block-start: 0;
+                    margin-inline-start: -50%;
+                    &::backdrop {
+                        /* Needed to get the popover backdrop to fade in when opening */
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+        nav {
+            /* Override the default background color of the popover */
+            background: inherit;
+            [popover] {
+                max-width: 14rem;
+                &:popover-open {
+                    margin-block-start: var(--spacing-3xs);
+                }
+            }
+        }
+        #anchor-nav-mobile {
+            anchor-name: --anchor-nav-mobile;
+        }
+        #popover-nav-sidebar {
+            /* Naturally the user-agent applies fit-content but sometimes this doesn't feel wide enough e.g. /fieldtypes/replicator */
+            min-width: min(60%, 15rem);
+            position-anchor: --anchor-nav-mobile;
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MOBILE NAV BUTTON
+        =================================================== */
+        .c-nav-sidebar-with-popover-api__mobile-button {
+            padding: 1.2rem;
+            margin: 0;
+            background: var(--color-dropdown-nav-background);
+            border-radius: 40%;
+            box-shadow: var(--box-shadow-not-t-medium);
+            svg {
+                color: var(--color-primary-text);
+                font-size: 1.3em;
+                /* Prevent the mobile nav button from getting squashed on pages with long code overflow areas such as /advanced-topics/oauth */
+                min-width: 1.28rem;
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / CLOSE BUTTON
+        =================================================== */
+        .c-nav-sidebar-with-popover-api__close-button {
+            position: absolute;
+            z-index: var(--z-index-above-body);
+            right: 0.5rem;
+            top: 0.25rem;
+            margin-inline-end: 0;
+            padding: var(--spacing-xs);
+            & svg {
+                font-size: 1rem;
+                inline-size: unset;
+            }
+        }
+        .c-nav-sidebar-with-popover-api__disclosure {
+            position: absolute;
+            left: 0;
+            font-size: 0.4em;
+            transition: rotate 0.2s ease-in-out;
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / NAV STYLING
+        =================================================== */
+        nav {
+            color: var(--color-primary-text);
+            & * {
+                line-height: 1.3;
+                font-weight: var(--font-family-main-weight-light);
+            }
+            .c-nav-sidebar-with-popover-api-category-heading {
+                position: relative;
+                display: flex;
+                max-width: 14rem;
+                white-space: nowrap;
+                gap: var(--spacing-md);
+                align-items: center;
+                justify-content: space-between;
+                /* Nudge so the nav aligns horizontally with the breadcrumbs */
+                padding: 0.4rem 0 0.4rem var(--spacing-md);
+                font-size: var(--font-size-md);
+                line-height: var(--font-size-md-line-height);
+                font-weight: var(--font-family-main-weight-normal);
+                text-transform: uppercase;
+                text-decoration: none;
+                &:not(:has(input:checked)) .c-nav-sidebar-with-popover-api__disclosure {
+                    rotate: 90deg;
+                }
+                &:focus-visible {
+                    /* Pull the focus outline state in slightly on the category headings so it doesn't disappear into the overflow:hidden; */
+                    outline-offset: -3px;
+                }
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                font-size: var(--font-size-xs);
+                overscroll-behavior-y: contain;
+                /* Need to cut this short a little to force scrolling when there are a lot of items. */
+                &:not(ul ul) {
+                    height: 100dvh;
+                }
+                /* Increase */
+                outline-offset: 5px;
+
+                li {
+                    &:not(ul ul li) {
+                        padding-block-end: 0;
+                        &:not(:has(input:checked)) {
+                            padding-block-end: var(--spacing-lg);
+                        }
+                    }
+                    position: relative;
+                    padding-block-end: 0;
+                    a {
+                        /* Otherwise the sidebar might grow too big e.g. >> /reference */
+                        max-width: 12rem;
+                        border-radius: var(--border-radius-md);
+                        &:hover {
+                            background: var(--color-pink-light-4);
+                        }
+                    }
+
+                    button {
+                        text-align: left;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: var(--spacing-sm);
+                        /* Reset */
+                        margin-inline-end: 0;
+                        padding: 0;
+                        cursor: pointer;
+                        & svg {
+                            font-size: 0.6em;
+                        }
+                    }
+
+                    ul {
+                        gap: var(--spacing-4xs);
+                        max-height: unset;
+                        padding-inline: calc(var(--spacing-md) - var(--dropdown-nav-item-padding));
+                        font-size: var(--font-size-ui-rem);
+                        border: 1px solid transparent;
+                        /* Switch the border color when the disclosure is open */
+                        label:not(:has(input:checked)) + &,
+                        /* When there's no disclosure add the border by default e.g. >> /fieldtypes/integer */
+                        &:not(label ~ &) {
+                            border-color: var(--color-pink-light-2);
+                            box-shadow: var(--box-shadow-pink-light-sm);
+                        }
+                        border-radius: var(--border-radius-lg);
+                        & a, button, span {
+                            /* Increase the pointer targets a little to improve usability */
+                            padding: var(--dropdown-nav-item-padding);
+                            display: inline-block;
+                            /* Break at word boundaries when possible, for example, break on a long word like User:Forgot_Password_Form: */
+                            word-break: break-word;
+                            text-box: trim-start;
+                        }
+                        .o-current-menu-item {
+                            text-decoration: none;
+                            font-weight: var(--font-family-main-weight-medium);
+                            &::before {
+                                content: '';
+                                border-inline-start: 3.5px solid var(--color-pink-light-1);
+                                position: absolute;
+                                left: calc(0% - (var(--spacing-md) - var(--dropdown-nav-item-padding)));
+                                height: 1.5em;
+                            }
+                        }
+                    }
+                }
+
+                /* Subnav */
+                & ul[popover] {
+                    &:popover-open {
+                        display: flex;
+                    }
+                    padding: var(--spacing-lg);
+                    /* Just clear the outline state of the parent so it looks cleaner when tabbing through with a keyboard */
+                    margin-block-start: var(--spacing-3xs);
+                    letter-spacing: 1px;
+                    & a, button {
+                        outline-offset: unset;
+                    }
+                }
+            }
+            & a:not(.o-current-menu-item) {
+                /* https://app.typographychecklist.com/ - 43. Links that are clearly part of navigation usually don't need a special link treatment. */
+                text-decoration: none;
+            }
+        }
+        /* GROUP COMPONENTS / NAV DROPDOWN WITH POPOVER API AND ANCHOR POSITIONING / MQS
+        =================================================== */
+        /* --mq-nav-open-before */
+        @media (width < 1100px) {
+            padding-inline: var(--spacing-xs);
+            top: 0.8rem;
+            @supports not (animation-timeline: auto) {
+                top: 1rem;
+            }
+            z-index: var(--z-index-above-nav);
+            display: inline-block;
+
+            .c-nav-sidebar-with-popover-api__desktop {
+                /* Prevent a lag in seeing the desktop nav collapse if you pull the window in  */
+                transition: unset;
+            }
+            #popover-nav-sidebar {
+                /* position-area: bottom span-right; */
+                box-shadow: var(--box-shadow-medium);
+                body:has(&:popover-open) {
+                    /* Stop the body scrolling if you try and scroll a toc that's shorter than the viewport height */
+                    /* =JFG I've temporarily disabled this because believe there is a bug in iOS 18.5 where :popover-open does not disengage when closing a popover, which means this would cause overflow-clip: clip; to persist even when the popover was dismissed */
+                    /* overflow: clip; */
+                }
+            }
+            nav {
+                background: var(--color-dropdown-nav-background);
+                &::backdrop {
+                    transition: all 0.5s var(--animation-timing-function-hipster) 0s;
+                }
+                &:popover-open::backdrop {
+                    backdrop-filter: blur(5px);
+                    background: var(--popover-backdrop);
+                }
+                & ul {
+                    padding: var(--spacing-2xl) var(--spacing-md);
+                    & ul {
+                        padding: 0 var(--spacing-3xl);
+                    }
+                }
+            }
+            .c-nav-sidebar-with-popover-api-category-heading {
+                inline-size: 91%;
+            }
+        }
+        /* --mq-nav-open-after */
+        @media (width >= 1100px) {
+            grid-area: sidebar-1;
+            --top: 7rem;
+            @media (width >= 2100px) {
+                --top: 8rem;
+            }
+            top: var(--top);
+            block-size: calc(100vh - var(--top) * 2);
+            .c-nav-sidebar-with-popover-api__mobile {
+                /* Prevent a lag in seeing the mobile nav collapse if you pull the window out  */
+                transition: unset;
+            }
+            --color-dropdown-nav-background: unset;
+            nav {
+                /* Override `popover`'s default position:fixed; */
+                position: relative;
+                display: block;
+                opacity: 1;
+                /* Custom */
+                @media (width < 1350px) {
+                    /* Make it less distracting when the sidebars are very close to the main content */
+                    opacity: 0.95;
+                }
+                inline-size: 100%;
+                max-width: var(--max-width-1);
+                margin-inline: auto;
+                padding-block-end: var(--spacing-xl);
+            }
+            .c-nav-sidebar-with-popover-api__mobile-button {
+                display: none;
+            }
+            .c-nav-sidebar-with-popover-api__desktop {
+                ul {
+                    ul {
+                        max-width: min(93%, 12.75rem);
+                    }
+                    &:not(ul ul) {
+                        /* Need to cut this short a little to force scrolling when there are a lot of items. */
+                        height: 86dvh;
+                        padding-block-end: var(--spacing-md);
+                    }
+                }
+            }
+        }
+    }
+}

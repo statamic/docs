@@ -12,8 +12,6 @@ class Split extends Modifier
     /**
      * Break an array into a given number of groups.
      *
-     * @param $value
-     * @param $params
      * @return array
      */
     public function index($value, $params)

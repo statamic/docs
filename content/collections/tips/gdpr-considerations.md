@@ -1,7 +1,7 @@
 ---
 id: 3859a6bf-8ece-44d0-9a30-4879c93924bf
 title: 'GDPR Considerations'
-intro: 'We aren''t lawyers and this isn''t official advice, but here are some things to consider if you need to comply with [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation).'
+intro: 'Not legal advice, but practical GDPR considerations for forms, user accounts, analytics, and consent in Statamic.'
 template: page
 categories:
   - privacy-gdpr

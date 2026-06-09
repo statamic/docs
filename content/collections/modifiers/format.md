@@ -28,6 +28,12 @@ event_date: April 15 2016
 2016-04-15
 ```
 
+:::warning
+By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+
+Please refer to our [Timezones](/tips/timezones) guide for more information.
+:::
+
 ## Parameters
 
 ### Day
@@ -87,7 +93,7 @@ event_date: April 15 2016
 | `I`  | Whether or not the date is in daylight saving time | `1` if Daylight Saving Time, `0` otherwise. |
 | `O` | Difference to Greenwich time (GMT) without colon between hours and minutes | `+0200` |
 | `P` | Difference to Greenwich time (GMT) with colon between hours and minutes | `+02:00`  |
-| `p` | The same as `P`, but returns `Z` instead of `+00:00` (available as of PHP 8.0.0)  | `+02:00` |
+| `p` | The same as `P`, but returns `Z` instead of `+00:00` | `+02:00` |
 | `T` | Timezone abbreviation, if known; otherwise the GMT offset.  | `EST`, `MDT`, `+05`  |
 | `Z` | Timezone offset in seconds. The offset for timezones west of UTC is always negative, and for those east of UTC is always positive. | `-43200` to `50400`  |
 

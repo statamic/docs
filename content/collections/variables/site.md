@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Site
+description: The current site being targeted in the request, available as a single tag or tag pair.
 ---
 The current site being targeted in the request.
 
@@ -107,3 +108,20 @@ You can also access those variables directly as single tags:
 My Statamic Site
 bar
 ```
+
+## The `attribute()` Helper
+
+When using Blade, accessing an attribute that doesn't exist via `$site->attributes['key']` will throw an "Undefined array key" exception. The `attribute()` method handles missing keys gracefully, supports dot notation for nested values, and lets you provide a fallback.
+
+```blade
+{{ $site->attribute('company_name') }}
+
+{{-- Dot notation for nested attributes --}}
+{{ $site->attribute('social.twitter') }}
+
+{{-- Fallback value when the attribute is missing --}}
+{{ $site->attribute('theme', 'standard') }}
+```
+:::tip
+In Antlers, missing keys are already null-safe, so `{{site:attributes:company_name}}` would work without the helper.
+:::

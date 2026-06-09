@@ -1,7 +1,7 @@
 ---
 id: 55993382-c928-48d0-8559-c88b226d4657
 title: 'Creating Users by Hand'
-intro: 'Did you know you can create users by hand by making new text files? Well now you do. Here''s how.'
+intro: 'Create CP users by adding YAML files to the users directory — Statamic encrypts the password on first load.'
 template: page
 categories:
   - development

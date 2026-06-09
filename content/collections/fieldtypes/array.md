@@ -4,7 +4,8 @@ meta_title: Array Fieldtype
 intro: Manage data in a `key:value` array format.
 overview: |
   The array fieldtype is used to manage `key: value` array data. It's similar to the [table](/fieldtypes/table) fieldtype but with a more strict data structure and compact user interface.
-screenshot: fieldtypes/screenshots/v4/array.png
+screenshot: fieldtypes/screenshots/v6/array.webp
+screenshot_dark: fieldtypes/screenshots/v6/array-dark.webp
 options:
   -
     name: keys
@@ -34,7 +35,13 @@ options:
     description: >
       Add button text customization.
       Default: `Add Row`.
-stage: 3
+  -
+    name: expand
+    type: boolean
+    description: >
+      Save the field as an ordered list of `key` / `value` objects instead of a flat YAML mapping.
+      Enable when you need numeric keys, stable option order with database-backed content stores, or to avoid YAML limitations with certain key types.
+      Default: `false`.
 id: 457f17eb-c0ee-4345-bf90-88322abc212d
 ---
 ## Overview
@@ -89,10 +96,43 @@ value_header: Type of Bacon
 key_header: Why is it awesome?
 ```
 
+### Expanded storage (`expand`) {#expanded-storage}
+
+By default, array data is stored as a YAML mapping (`key: value`). Set `expand: true` to store it as an ordered list of objects instead:
+
+```yaml
+# expand: false (default)
+sizes:
+  "42": Medium
+  "7": Small
+
+# expand: true
+sizes:
+  -
+    key: "42"
+    value: Medium
+  -
+    key: "7"
+    value: Small
+```
+
+Use expanded storage when keys need to be **numbers** (YAML mappings treat numeric keys oddly), when you rely on **explicit row order** (for example with the Eloquent Driver and MySQL, where key order on associative arrays is not preserved), or when you edit raw YAML and want unambiguous structure.
+
+```yaml
+inventory:
+  type: array
+  expand: true
+  keys:
+    sku: SKU
+    qty: Quantity
+```
+
+[Augmentation](/augmentation) still exposes the field as a normal key/value structure for templates and Antlers, so `{{ inventory:sku }}` and nested variable syntax behave the same whether `expand` is on or off.
+
 
 ## Data Structure
 
-In the example above, the keyed mode and dynamic mode would save the exact same data.
+In the example above, the keyed mode and dynamic mode would save the exact same data (unless [expanded storage](#expanded-storage) is enabled—in that case the same logical keys are stored as a list of `key` / `value` objects).
 
 ```yaml
 address:
@@ -111,7 +151,7 @@ address:
 
 ## Templating
 
-_This fieldtype is not [augmented](/augmentation)._
+This fieldtype _is not_ [augmented](/augmentation).
 
 
 ::tabs

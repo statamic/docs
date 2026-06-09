@@ -4,7 +4,8 @@ blueprint: widgets
 title: 'Updater Widget'
 intro: 'Shows if there are any Statamic core or addon updates available.'
 nav_title: Updater
-screenshot: widgets/updater.png
+screenshot: widgets/updater-v6.webp
+screenshot_dark: widgets/updater-v6-dark.webp
 options:
   -
     name: width
@@ -25,7 +26,6 @@ Widgets can be added to the dashboard by modifying the `widgets` array in the `c
 // config/statamic/cp.php
 
 'widgets' => [
-  'getting_started',
   [ // [tl! focus:start]
       'type' => 'updater',
       'width' => 100,

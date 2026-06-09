@@ -1,7 +1,7 @@
 ---
 id: 853b6690-c1fc-46bc-b865-e61a33d14563
 title: 'Building your own Entries Repository'
-intro: 'Statamic stores your content in "flat files" by default, but its data layer is completely driver-driven – giving you the ability to store content **anywhere**. In this article we''ll show you how to store entries in a database with [Laravel Eloquent](https://laravel.com/docs/12.x/eloquent).'
+intro: 'Statamic''s data layer is driver-driven. Build a custom Eloquent repository when flat files are not enough.'
 template: page
 categories:
   - development
@@ -244,7 +244,7 @@ public function register()
 
 ## The Model
 
-Since we're using Eloquent, we need a [model](https://laravel.com/docs/12.x/eloquent#generating-model-classes). Let's set one up.
+Since we're using Eloquent, we need a [model](https://laravel.com/docs/13.x/eloquent#generating-model-classes). Let's set one up.
 
 ``` php
 <?php

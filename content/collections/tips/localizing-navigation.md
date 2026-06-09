@@ -1,6 +1,7 @@
 ---
 id: 35c9cd07-f377-4fcb-b02c-72c1925e6fdf
 title: 'Localizing Navigation'
+intro: 'How navigation trees are organized per site in a multi-site setup — folders, YAML, and tree files.'
 template: page
 categories:
   - localization

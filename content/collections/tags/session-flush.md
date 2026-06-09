@@ -2,7 +2,6 @@
 title: 'Session:Flush'
 description: 'Clears the entire user session.'
 intro: The flush tag will wipe the entire user session. This will also sign a user out if they're signed in.
-stage: 5
 id: 1f522665-9fc2-4c9f-9594-04a518c51b39
 ---
 ## Example

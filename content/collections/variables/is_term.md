@@ -4,5 +4,6 @@ blueprint: variables
 types:
   - term
 title: 'Is Term'
+description: A boolean indicating whether the current content is a term.
 ---
 A boolean for whether the current content is a term. Naturally, this will be `true` for terms.

@@ -150,3 +150,7 @@ You will also find the field's `old` input on unsuccessful submission, as well a
 
 Finally, the `field` value contains a pre-rendered form input.  Using this will intelligently render inputs as inputs, textareas as textareas, and snozzberries as snozzberries.  You can customize these pre-rendered templates by running `php artisan vendor:publish --tag=statamic-forms`, which will expose editable templates in your `views/vendor/statamic/forms/fields` folder.
 
+## Precognition
+
+The profile update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation against your user blueprint's `validate` rules. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/profile` and seed the `$form` data object with the user's current values.
+

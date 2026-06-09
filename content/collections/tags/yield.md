@@ -2,7 +2,6 @@
 title: Yield
 description: 'Displays content extracted elsewhere by the section tag'
 intro: 'The yield tag is a useful way to abstract and reuse your views by displaying content or markup extracted in a template by the [section tag](/tags/section).'
-stage: 4
 id: f3035f71-347e-4b99-bc27-71956315692a
 ---
 ## Overview
@@ -11,8 +10,8 @@ Most commonly this section/yield approach is used to create a global area in you
 
 **Cheatsheet:**
 
-- <span class="text-red font-bold">No thank you:</span> `{{ if template == "news" }} hardcode something {{ /if }}`
-- <span class="text-green font-bold">Yes please:</span> `{{ yield:something }}` + `{{ section:something }}`
+- <span class="text-red-600 font-bold">No thank you:</span> `{{ if template == "news" }} hardcode something {{ /if }}`
+- <span class="text-green-700 font-bold">Yes please:</span> `{{ yield:something }}` + `{{ section:something }}`
 
 ## Example
 

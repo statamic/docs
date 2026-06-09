@@ -67,6 +67,15 @@ tree:
       -
         id: 4ca9478d-e066-49e3-ba99-fc005b507609
         entry: 52af4663-ebbd-467c-8659-9c7bb94cb7cc
+      -
+        id: 65babe8f-192b-449b-9c21-bc0008d531ba
+        entry: 3482755d-3d20-42d5-8680-301a1cb95965
+      -
+        id: f91be384-aa3a-4b15-9d6c-2b10e33f00d8
+        entry: 76abbb51-417c-460c-ad6c-c359329bfbaf
+      -
+        id: 5eba562c-9bdf-4623-9c55-a219956b8ccf
+        entry: 5eab02e3-c76b-4f44-a304-6a78877d099f
   -
     id: 73354789-cbf2-4bee-ab86-b289d748a64d
     title: Javascript
@@ -81,9 +90,6 @@ tree:
         id: 407dca74-15d5-41bb-bd98-a1ea4bd02b63
         entry: b7519137-73b6-46c7-8432-da7725b1d9b4
       -
-        id: 27fc74be-f9dc-478a-9759-eac9cf841986
-        entry: e2078e40-0b3f-415b-8963-e99b4cc84f02
-      -
         id: e24ebb53-28fd-41bc-861c-f08a606092f4
         entry: bbf752d3-ffdb-4ac9-a5c5-0b32e3db9d6f
       -
@@ -93,23 +99,14 @@ tree:
         id: 658a74a4-85b6-49b4-81e2-c5fb312c69b1
         entry: efcca509-5690-4201-88d7-74c542bb9900
       -
-        id: a9670a39-ca85-4537-9a63-237ba534cc3a
-        entry: 88bf3f66-4b80-42c9-8b65-bef712b8f413
-      -
         id: 1e667ec1-a50d-4fd7-a6ed-cf5750a64dbf
         entry: 28068f9a-f269-4646-87e4-881e5477558d
       -
         id: dbea0d9e-6a6a-42fd-83bf-d0d2eae539b6
         entry: d84613d5-2b2b-465d-8f02-c71b6d2aadf1
       -
-        id: 6a3e2a46-90fa-420b-b48b-79ba5ad0ac20
-        entry: c21a18cc-b9a9-4b1a-b1f7-97473f7d82f1
-      -
         id: 912c7cdd-8c3f-4824-8af5-95ad81f45fb5
         entry: b80820bb-c2e8-475f-98bd-8ea0ef9f5339
-      -
-        id: 68f1a25e-f039-409a-840e-52e39b232cd1
-        entry: e2577828-504b-490b-a8b6-10991ae8a0b6
       -
         id: 37a82f80-92ad-11ed-b05e-0800200c9a66
         url: '/preferences#using-javascript'

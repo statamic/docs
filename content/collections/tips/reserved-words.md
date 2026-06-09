@@ -1,6 +1,7 @@
 ---
 id: 264048cb-30fd-4529-aa48-7236434d1ec4
 title: 'List of Reserved Words'
+intro: 'Reserved field handles and variable names that collide with Statamic tags — avoid these in your blueprints.'
 template: page
 categories:
   - development

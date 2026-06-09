@@ -14,7 +14,7 @@ class TabsParser extends AbstractBlockContinueParser implements BlockContinuePar
 
     public function __construct()
     {
-        $this->tabs = new TabbedCodeBlock();
+        $this->tabs = new TabbedCodeBlock;
     }
 
     public function isContainer(): bool

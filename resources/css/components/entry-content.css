@@ -1,0 +1,301 @@
+/* GROUP COMPONENTS / ENTRY / ENTRY CONTENT
+=================================================== */
+/*
+
+    - Entry content is the main page content which houses prose and other writing components
+    - Although technically, this is more like a scope, housing different components, it should sit at the component layer so that the components inside can easily override this base layer.
+
+*/
+/* HTML Example...
+
+    <div class="c-entry-content-wrapper"> <-- container to help with placement
+        <article class="c-entry-content">
+            <h1>Title</h1>
+            <p>Entry content</p>
+        </article>
+    </div>
+
+*/
+
+/* Put some rules at the element layer where components should easily override them */
+@layer elements {
+    .c-entry-content {
+        /* Sometimes there are p tags in tables e.g. >> /tags */
+        p:not(table *) {
+            /* Rem instead of em because of p tags inside li tags e.g. e.g. >> /fields */
+            font-size: var(--font-size-md-rem);
+        }
+        strong {
+            font-weight: var(--font-family-serif-weight-strong);
+        }
+    }
+}
+@layer components {
+    .c-entry-content-wrapper {
+        max-width: var(--max-width-1);
+        /* If it's the first entry-content on the page then push it away from the header */
+        :is(main) > section > article &:first-child {
+            padding-block-start: var(--spacing-vh-sm);
+        }
+        /* The last entry-content but not if it's the last main item. */
+        main > *:not(:last-child) &:last-child {
+            padding-block-end: var(--spacing-5xl);
+        }
+        /* If it's the last item set padding to 0 */
+        main > section:last-child &:last-child {
+            padding-block-end: 0;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            grid-area: content;
+        }
+    }
+    .c-entry-content {
+        --font-size-sm-line-height: 1.4;
+        --font-family-main-weight-normal: 300;
+
+        max-width: var(--max-width-reading);
+        margin-inline: auto;
+        /* Based on e.g. >> Home on mobile */
+        padding-inline: var(--spacing-xl);
+        font-family: var(--font-family-main);
+        font-weight: var(--font-family-main-weight-normal);
+
+        /* e.g. .o-badge-heading */
+        > :has(h1),
+        > h1, > .h1 {
+            padding-block-start: 0;
+        }
+
+        :nth-child(1 of header) {
+            /* Article intro text */
+            p,
+            /* Or if there's no article intro text in the header, instead make the first following paragraph an "intro" style text e.g. >> /reference/widgets */
+            &:has(:not(p)) + article > p:first-child {
+                font-size: var(--font-size-lg);
+                line-height: var(--font-size-lg-line-height);
+                max-width: var(--max-width-reading);
+                margin-block-end: var(--spacing-lg);
+            }
+            /* Compress the heading under certain conditions */
+            &:has(h1:only-child) {
+                /* e.g. >> /extending/markdown */
+                &:has(+ h2) h1,
+                /* e.g. >> /ui-components/all-ui-components */
+                &:has(+ .c-table) h1 {
+                    padding-block-end: var(--spacing-2xs);
+                }
+            }
+        }
+
+        & h2 {
+            :is(.c-entry-content) > &:first-child {
+                /* Add top spacing for the beginning of a section */
+                padding-block-start: var(--spacing-md);
+            }
+        }
+
+        ol, ul {
+            /* Rem because sometimes there are lists within lists e.g. >> /taxonomies */
+            font-size: var(--font-size-md-rem);
+            /* e.g. >> /upgrade-guide */
+            /* margin-block: var(--spacing-xl); */
+            &:has(+ :is(h2, h3, h4, h5, h6)) {
+                padding-block-end: var(--spacing-md);
+            }
+            :is(h2, h3, h4, h5, h6) {
+                font-size: inherit;
+                line-height: inherit;
+                padding-block-end: 0;
+            }
+            img {
+                /* e.g. >> /getting-started/deploying/laravel-cloud */
+                border-radius: var(--border-radius-sm);
+                border: 1px solid var(--color-black);
+                /* Screenshots can look a little washed out, let's boost them a smidgen */
+                filter: var(--filter-image-boost-content);
+            }
+        }
+
+        p, li {
+            color: var(--color-black-prose);
+        }
+
+        li :is(ol, ul) {
+            /* e.g.
+
+            <ul>
+                <li>something</li>
+                <li>something else
+                    <ol> <-- we don't want this to have extra padding
+
+            */
+            padding-inline: 0;
+            padding-block-start: 0;
+        }
+
+        li {
+            /* Bard wraps <li> text in a <p> tag */
+            p {
+                padding-block-end: 0!important;
+            }
+        }
+
+        :has(+ .c-tip, + pre) {
+            ol& {
+                /* e.g. >> /forms */
+                padding-block-end: 0;
+            }
+            ul& {
+                /* e.g. >> /graphql */
+                padding-block-end: var(--spacing-xs);
+            }
+        }
+
+        /* Direct descendents only because we don't want to affect components such as .c-related */
+        > ul {
+            --padding-inline-start: min(1.5rem, 5vw);
+            padding-inline-start: var(--padding-inline-start);
+            /* e.g. >> /upgrade-guide */
+            padding-block: var(--spacing-3xs) var(--spacing-2xl);
+            li {
+                padding-inline-start: var(--spacing-3xs);
+                position: relative;
+                &::before {
+                    content: '';
+                    background: var(--color-purple-light-1);
+                    position: absolute;
+                    left: calc(0% - var(--padding-inline-start));
+                    top: 0.5rem;
+                    inline-size: 0.5em;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                }
+                /* Lists within lists e.g. >> /taxonomies */
+                ul li {
+                    padding-inline-start: 0;
+                    padding-block-end: var(--spacing-3xs);
+                    &:first-child {
+                        padding-block-start: var(--spacing-2xs);
+                    }
+                    &:last-child {
+                        padding-block-end: var(--spacing-2xs);
+                    }
+                    &::before {
+                        /* Remove the purple dot for lists within lists */
+                        content: unset;
+                    }
+                }
+            }
+        }
+
+        ol {
+            counter-reset: item;
+            li {
+                --size: 1.75rem;
+                list-style: none;
+
+                &:not(:last-child) {
+                    padding-block-end: var(--spacing-xs);
+                }
+                position: relative;
+
+                /* Sometimes we have an ul inside an ol e.g. >> /getting-started/installing/laravel */
+                &:not(ol ul *) {
+                    padding-inline-start: calc(var(--size) + var(--spacing-sm));
+                    &::before {
+                        position: absolute;
+                        left: 0;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        inline-size: var(--size);
+                        block-size: var(--size);
+                        content: counter(item);
+                        counter-increment: item;
+                        color: light-dark(var(--color-primary-text), var(--color-body-background));
+                        font-size: var(--font-size-sm);
+                        font-weight: var(--font-family-serif-weight-strong);
+                        margin-inline-end: min(var(--spacing-md), 3vw);
+                        background: var(--color-yellow-light-1);
+                        border-radius: 50%;
+                    }
+                }
+            }
+            ul {
+                /* e.g. >> /getting-started/installing/laravel */
+                padding-block-start: var(--spacing-xs);
+                padding-inline-start: var(--spacing-sm);
+                li {
+                    list-style-type: circle;
+                    padding-inline-start: var(--spacing-4xs);
+                    &:not(:last-child) {
+                        padding-block-end: var(--spacing-2xs);
+                    }
+                }
+            }
+        }
+
+        a {
+            /* Improve legibility */
+            font-weight: var(--font-family-main-weight-strong);
+            &:has(.external):not(.c-icon-grid *) {
+                /* Needed for external link icons Safari 18.3.1 */
+                display: inline-flex;
+            }
+        }
+
+        p {
+            /* e.g. >> /quick-start-guide */
+            + ol {
+                padding-block: var(--spacing-sm) var(--spacing-2xl);
+            }
+            /* e.g. >> /quick-start-guide */
+            + ul {
+                padding-block: var(--spacing-3xs) var(--spacing-2xl);
+            }
+        }
+        /* Followed by some kind of image component (or paragraph like /javascript-frameworks). Not when the h1 is an only child, e.g. /modifiers/add */
+        > :is(header, p):has(+ * img, + p):not:has(h1:only-child) {
+            margin-block-end: calc(var(--spacing-2xl));
+        }
+
+        .external {
+            /* e.g. external links */
+            display: inline-block;
+            margin: 0.15em 0 0 0.1em;
+            font-size: 0.95em;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-weight: var(--font-family-main-weight-medium);
+            padding-inline-start: var(--spacing-lg);
+            margin-block-end: var(--spacing-xl);
+            border-inline-start: 3px solid var(--color-primary-accent);
+        }
+        /* Use this if you want to embed entry content in a component that already handles inline padding */
+        .c-entry-content--flush {
+            padding-inline: 0;
+        }
+
+        /* --mq-wider-entry-content-after */
+        @media (width >= 1500px) {
+            padding-inline: var(--spacing-xl);
+        }
+    }
+}
+
+@layer plugins {
+    .c-entry-content {
+        /* When lists have a pre compress things a little so it's more readable e.g. >> /addons/vite-tooling */
+        li:has(pre) {
+            p {
+                margin-block-end: var(--spacing-sm);
+            }
+            pre {
+                margin-block: var(--spacing-xs);
+            }
+        }
+    }
+}

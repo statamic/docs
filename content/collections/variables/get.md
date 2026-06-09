@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Get
+description: An array of GET variables from query strings in the current URL.
 ---
 An array of `GET` variables that come from any query strings present in the current URL. It can be used as a tag pair with access to all your parameters or as a single tag to access parameters directly. A counterpart to `{{ post }}`.
 

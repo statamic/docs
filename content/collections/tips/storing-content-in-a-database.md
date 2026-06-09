@@ -1,7 +1,7 @@
 ---
 id: 61d9e659-10e4-4eed-94b0-c5e639493dfd
 title: 'Storing Content in a Database'
-intro: 'Statamic stores your content in "flat files" by default, however, as you scale, you might reach a point where a traditional database might work better. In this short article, we''ll show you how to move your entries (& other content) into a database.'
+intro: 'Outgrown flat-file content? Move entries, collections, and assets into a database with Statamic''s Eloquent driver.'
 template: page
 categories:
   - development
@@ -35,6 +35,7 @@ When you create a new Statamic site, it will ask if you want to store content in
 ## Change your mind?
 If you change your mind about moving content to the database, you can always move it back. Just use one of the following commands to export your content back into flat-files:
 
+- Addon Settings: `php please eloquent:export-addon-settings`
 - Assets: `php please eloquent:export-assets`
 - Blueprints and Fieldsets: `php please eloquent:export-blueprints`
 - Collections: `php please eloquent:export-collections`

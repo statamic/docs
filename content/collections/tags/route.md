@@ -2,7 +2,6 @@
 title: Route
 description: 'Generate URLs to your named routes'
 intro: 'The route tag allows you to generate the full URL for a given named route, including any parameters.'
-stage: 2
 variables:
   -
     name: name

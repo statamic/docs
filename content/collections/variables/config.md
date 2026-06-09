@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Config
+description: Access configuration values from Statamic and Laravel config files.
 ---
 Statamic (and Laravel) have many config files in the `config` directory. Each file/directory is the 'key' to retrieve its data.
 

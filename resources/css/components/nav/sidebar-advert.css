@@ -1,0 +1,57 @@
+/* GROUP COMPONENTS / SIDEBAR ADVERT
+=================================================== */
+@layer ui {
+    .c-sidebar-advert {
+        &:first-child {
+            /* I.e. when the toc is hidden with {{ $hide_toc = 'yes' }} */
+            padding-block-start: var(--spacing-2xl);
+        }
+        padding-inline-start: 3.85rem;
+        padding-inline-start: 2.85rem;
+        a {
+            padding: 0;
+        }
+        img {
+            margin-inline-start: -0.25rem;
+            inline-size: 64%;
+            rotate: -4deg;
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0px 15px 25px -10px hsl(0deg 0% 0% / 55%);
+            /* Make the advert less distracting */
+            opacity: 0.95;
+        }
+        h2 {
+            padding-block: var(--spacing-2xl) var(--spacing-sm);
+            font-size: var(--font-size-xs);
+            font-family: var(--font-family-main);
+            font-weight: var(--font-family-main-weight-normal);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: inherit;
+        }
+        p {
+            margin-block-end: var(--spacing-xs);
+            font-weight: var(--font-family-main-weight-medium);
+            line-height: var(--font-size-sm-line-height);
+            text-wrap: balance;
+            a {
+                text-decoration: underline;
+                font-size: var(--font-size-xs);
+                font-family: var(--font-family-main);
+                font-weight: var(--font-family-main-weight-normal);
+                text-transform: uppercase;
+                text-decoration-color: var(--color-text-underline-light);
+            }
+        }
+        @container style(--color-scheme: dark) {
+            img {
+                /* Tweak the default dark-mode image filter, increasing the hue rotation so there's more of a stylised purple tinge. */
+                filter:
+                    hue-rotate(-18deg)
+                    contrast(110%)
+                    brightness(85%)
+                ;
+            }
+        }
+    }
+}

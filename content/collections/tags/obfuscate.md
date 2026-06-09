@@ -2,7 +2,6 @@
 title: Obfuscate
 description: Obfuscates content to foil screen-scraping nightmare bots from hell
 intro: Whenever you need to obfuscate something, reach for the obfuscate tag. It's an obfuscating good time.
-stage: 4
 id: 161f6255-465d-41bd-8028-d6aba01cebbf
 
 ---

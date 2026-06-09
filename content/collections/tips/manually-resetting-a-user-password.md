@@ -1,6 +1,7 @@
 ---
 id: f7de14cd-9160-43c1-a017-c3af018ab8ab
 title: 'Manually Resetting a User Password'
+intro: 'Stuck in a login loop? Reset a password by editing the user YAML file — Statamic hashes it automatically.'
 template: page
 categories:
   - development

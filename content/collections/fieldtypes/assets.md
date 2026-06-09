@@ -3,8 +3,8 @@ title: Assets
 meta_title: Assets Fieldtype
 intro: Any time you want to list, display, or work with assets (external files with enhanced abilities), this is the way to do it. Upload, browse, reorder, delete, and even manage field data on individual assets.
 description: Upload files and use the Asset Browser to pick from existing files in your Asset Containers.
-screenshot: fieldtypes/screenshots/v4/assets-list.png
-stage: 1
+screenshot: fieldtypes/screenshots/v6/assets-list.webp
+screenshot_dark: fieldtypes/screenshots/v6/assets-list-dark.webp
 options:
   -
     name: allow_uploads
@@ -62,11 +62,12 @@ Files are rearrangeable via drag-and-drop.
 
 ## UI Modes
 
-The list mode is shown above, while the grid mode is below. There are no functional differences, only visual ones. List mode is more compact – useful if you're not primarily managing images.
+The list mode is shown in the previous screenshot, while the grid mode is shown below. There are no functional differences, only visual ones. List mode is more compact – useful if you're not primarily managing images.
 
 <figure>
-  <img src="/img/fieldtypes/screenshots/assets-grid.png" width="543" alt="Assets Grid mode">
-  <figcaption>Grid mode reveals a fanny pack in all of its glory.</figcaption>
+  <img src="/img/fieldtypes/screenshots/v6/assets-grid.webp" alt="Assets List mode" class="u-hide-in-dark-mode">
+  <img src="/img/fieldtypes/screenshots/v6/assets-grid-dark.webp" alt="Assets List mode" class="u-hide-in-light-mode">
+  <figcaption>List mode reveals a fanny pack in all its glory. And if you’re British—go on, have a little chuckle.</figcaption>
 </figure>
 
 ## Data Structure
@@ -176,6 +177,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `is_audio` | `true` when file is one of `aac`, `flac`, `m4a`, `mp3`, `ogg`, or `wav`. |
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
 | `is_svg` | `true` when file is an `svg`. |
+| `is_pdf` | `true` when file is a `pdf`. |
 | `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
 | `last_modified` | Formatted date string of the last modified time |
 | `last_modified_instance` | [Carbon][carbon] instance of the last modified time |

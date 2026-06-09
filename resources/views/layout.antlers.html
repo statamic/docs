@@ -1,30 +1,30 @@
+<!doctype html>
 <html lang="en" class="{{ stack:scope_classes }}{{ value }}{{ !last ?= ' ' }}{{ /stack:scope_classes }}">
     {{ partial:head }}
     {{ partial:site_header }}
     <body>
-        {{# =jfg This is not currently in use but could be useful in future #}}
-        {{# {{ partial:partials/promo }} #}}
+        {{# {{ partial:promo }} #}}
 
         {{# Need tabindex="-1" to lock the tab focus here when using Skip to Content #}}
         <main tabindex="-1" id="main" class="s-main o-scroll-spy-timeline">
             {{ partial:nav_sidebar }}
             <nav class="c-breadcrumbs">
                 <ol>
-                    <li><a href="{{ nav:collection:sections include_home="true" }}{{ page:section === section ?= '{ url }' }}{{ /nav:collection:sections }}">{{ page:section | replace('_', ' ') }}</a></li>
-                    {{ if section }}
-                    {{ nav :handle="section" }}
-                        {{ if {children | where('is_current', true) | count} > 0 }}
-                            <li>
-                                {{ svg src='breadcrumb-chevron' }}
-                                {{# It's possible to add a URL to the section heading here in /cp/navigation/docs, e.g. we want to do this for "Getting Started". If a section heading URL is not present then we fall back to the first child URL. #}}
-                                <a href="{{ if url }}{{ url }}{{ else }}{{ children | first }}{{ url }}{{ /children }}{{ /if }}">
-                                    {{ title }}
-                                </a>
-                            </li>
-                        {{ /if }}
-                    {{ /nav }}
-                    {{ /if }}
-                    <li>{{ svg src='breadcrumb-chevron' }}<button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button></li>
+                    {{ nav:breadcrumbs include_home="false" }}
+                        <li>
+                            {{# Output the parent for the homepage #}}
+                            {{ if current_uri == '/' }}
+                                <a href="{{ url }}">Getting Started</a>
+                                </li><li>{{ svg src='breadcrumb-chevron' }}
+                            {{ /if }}
+                            {{ unless first }}{{ svg src='breadcrumb-chevron' }}{{ /unless }}
+                            {{ if is_current }}
+                                <button popovertarget="popover-nav-sidebar">{{ breadcrumb_title ?? nav_title ?? title }}</button>
+                            {{ else }}
+                                <a href="{{ url }}">{{ title }}</a>
+                            {{ /if }}
+                        </li>
+                    {{ /nav:breadcrumbs }}
                 </ol>
             </nav>
 
@@ -39,17 +39,7 @@
                         </button>
                         <ul>
                             <li>
-                                <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                    {{ if section }}
-                                        {{ nav :handle="section" }}
-                                            {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
-                                                {{ navigation_image }}
-                                                    {{ partial:image_dimensions/navigation_image }}
-                                                {{ /navigation_image }}
-                                            {{ /if }}
-                                        {{ /nav }}
-                                    {{ /if }}
-                                </span>
+                                <span class="c-nav-toc-with-popover-api-category-heading">On this page</span>
                                 {{ template_content | toc }}
                             </li>
                         </ul>
@@ -59,93 +49,14 @@
                     <ul class="o-shadow-container-vertical">
                         {{ unless $hide_toc == 'yes' }}
                             <li>
-                                <span class="c-nav-toc-with-popover-api-category-heading">On this page
-                                    {{ if section }}
-                                        {{ nav :handle="section" }}
-                                            {{ if ({children | where('is_current', true) | count} > 0) || is_current }}
-                                                {{ navigation_image }}
-                                                    {{ partial:image_dimensions/navigation_image }}
-                                                {{ /navigation_image }}
-                                            {{ /if }}
-                                        {{ /nav }}
-                                    {{ /if }}
-                                </span>
+                                <span class="c-nav-toc-with-popover-api-category-heading">On this page</span>
                                 {{ template_content | toc }}
                             </li>
                         {{ /unless }}
-                        <li class="c-sidebar-advert">
-                            {{ if advert_override }}
-                                {{ advert_override }}
-                                    <a href="{{ link }}">
-                                        {{ image }}
-                                            <picture>
-                                                {{# WebP #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
-                                                    type="image/webp"
-                                                >
-                                                {{# JPEG #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' }} 3x"
-                                                    type="image/jpeg"
-                                                >
-                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img 
-                                                    src="{{ glide:url width='220' }}"
-                                                    decoding="async"
-                                                    fetchpriority="high"
-                                                    width="{{ width }}" 
-                                                    height="{{ height }}"
-                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                                />
-                                            </picture>
-                                        {{ /image }}
-                                        <h2>{{ heading }}</h2>
-                                        <p>{{ text }}</p>
-                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
-                                    </a>
-                                {{ /advert_override }}
-                            {{ else }}
-                                {{ collection:adverts limit='1' sort='random' }}
-                                    <a href="{{ link }}">
-                                        {{ image }}
-                                            <picture>
-                                                {{# WebP #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' format='webp' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' format='webp' }} 3x"
-                                                    type="image/webp"
-                                                >
-                                                {{# JPEG #}}
-                                                <source
-                                                    srcset="{{ glide:url width='220' dpr='2' }} 2x,
-                                                            {{ glide:url width='220' dpr='3' }} 3x"
-                                                    type="image/jpeg"
-                                                >
-                                                {{# Fallback, with dimensions set to minimise layout shift. See Jay George's Wiki under Performance > Images for more information. #}}
-                                                <img 
-                                                    src="{{ glide:url width='220' }}"
-                                                    decoding="async"
-                                                    fetchpriority="high"
-                                                    width="{{ width }}" 
-                                                    height="{{ height }}"
-                                                    alt="{{ if alt }}{{ alt | ucfirst | ensure_right('.') | smartypants }}{{ else }}{{ filename | ucfirst | ensure_right('.') | replace('-| ') | smartypants }}{{ /if }}"
-                                                />
-                                            </picture>
-                                        {{ /image }}
-                                        <h2>{{ heading }}</h2>
-                                        <p>{{ text }}</p>
-                                        <p><a href="{{ link }}">{{ link_text }}</a></p>
-                                    </a>
-                                {{ /collection:adverts }}
-                            {{ /if }}
-                        </li>
                     </ul>
                 </nav>
             </div>
-            <div class="c-entry-content-wrapper" name="top">
+            <div class="c-entry-content-wrapper" name="top" {{ if ! allow_vue }}v-pre{{ /if }}>
                 {{# {{ partial:side-nav }} #}}
                 <article id="content" class="c-entry-content js__scroll-spy-toc__timeline">
                     {{ template_content }}

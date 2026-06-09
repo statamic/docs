@@ -11,7 +11,7 @@ There's also a [tag](/tags/trans) version that you may prefer.
 
 ## Usage {#usage}
 
-Get the `bar` string from the `resources/lang/en/foo.php` translation file (where `en` is the current locale).
+Get the `bar` string from the `lang/en/foo.php` translation file (where `en` is the current locale).
 
 ```php
 <?php
@@ -72,7 +72,7 @@ There are 2 apples
 ## Strings
 
 As you can see above, you may use the modifier on inline strings. Instead of translation keys, you can use simple strings.
-These will be referenced from `resources/lang/fr.json` (where `fr` is the locale).
+These will be referenced from `lang/fr.json` (where `fr` is the locale).
 
 ``` json
 {

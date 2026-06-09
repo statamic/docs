@@ -13,9 +13,6 @@
             {{ svg src='wordmark' }}
         </a>
         <div class="c-docs-header__search">
-            <button class="c-nav-collapse-expand js__expand-collapse-nav u-hide-on-small-screens">
-                {{ svg src='nav-collapsed' }}
-            </button>
             <form class="c-search-form" action="/search-results">
                 <div id="docsearch" ref="docSearch"></div>
             </form>
@@ -31,52 +28,27 @@
                 </select>
             </div>
         </div>
-        <div class="c-docs-header__extra">
-            <div class="c-nav-dots-with-popover-api">
-                <button id="anchor-nav-dots" class="c-docs-header__nav-dots c-nav-dots-with-popover-api__mobile-button" popovertarget="popover-nav-dots">
-                    {{ svg src='nav-dots' }}
-                </button>
-                <nav id="popover-nav-dots" class="c-nav-dots-with-popover-api__mobile u-hide-on-large-screens" popover>
-                    <ul>
-                        {{ nav:collection:sections include_home="true" }}
-                            <li>
-                                <a wire:navigate href="{{ url }}" {{ page:section === section ?= 'class="o-current-menu-item"' }}>{{ nav_title ?? title }}</a>
-                            </li>
-                        {{ /nav:collection:sections }}
-                    </ul>
-                </nav>
-                <nav class="c-nav-dots-with-popover-api__desktop u-hide-on-small-screens u-hide-on-medium-screens">
-                    <ul>
-                        {{ nav:collection:sections include_home="true" }}
-                            <li>
-                                <a wire:navigate href="{{ url }}" {{ page:section === section ?= 'class="o-current-menu-item"' }}>{{ nav_title ?? title }}</a>
-                            </li>
-                        {{ /nav:collection:sections }}
-                    </ul>
-                </nav>
-            </div>
-            <div class="c-version-selector">
-                <select
-                    x-data="{
-                        selectedVersion: '{{ config:docs:version }}',
-                        init() {
-                            this.$watch('selectedVersion', (version) => {
-                                const selectedOption = document.querySelector(`option[value='${version}']`);
-                                const url = selectedOption.getAttribute('data-url');
+        <div class="c-version-selector">
+            <select
+                x-data="{
+                    selectedVersion: '{{ config:docs:version }}',
+                    init() {
+                        this.$watch('selectedVersion', (version) => {
+                            const selectedOption = document.querySelector(`option[value='${version}']`);
+                            const url = selectedOption.getAttribute('data-url');
 
-                                window.location = `${url}/from/{{ page:id }}`;
-                            });
-                        },
-                    }"
-                    x-model="selectedVersion"
-                >
-                    {{ config:docs:versions }}
-                        <option value="{{ version }}" data-url="{{ url }}">
-                            v&hairsp;{{ branch }}{{ if alpha }}-alpha{{ /if }}
-                        </option>
-                    {{ /config:docs:versions }}
-                </select>
-            </div>
+                            window.location = `${url}/from/{{ page:id }}`;
+                        });
+                    },
+                }"
+                x-model="selectedVersion"
+            >
+                {{ config:docs:versions }}
+                    <option value="{{ version }}" data-url="{{ url }}">
+                        v&hairsp;{{ branch }}{{ if alpha }}-alpha{{ /if }}{{ if beta }}-beta{{ /if }}
+                    </option>
+                {{ /config:docs:versions }}
+            </select>
         </div>
     </div>
 </header>

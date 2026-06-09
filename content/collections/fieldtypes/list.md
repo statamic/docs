@@ -4,7 +4,8 @@ description: Manage simple lists with the help of a keyboard-friendly interface.
 intro: >
   Create YAML lists with a robust user interface. It has full keyboard controls
   so you can use `up` to go up, `down` to go down, drag and drop to rearrange the order, and click an item to select it and begin editing.
-screenshot: fieldtypes/screenshots/v4/list.png
+screenshot: fieldtypes/screenshots/v6/list.webp
+screenshot_dark: fieldtypes/screenshots/v6/list-dark.webp
 id: bd079cba-c5d2-475d-ae82-57874818858e
 ---
 ## Overview

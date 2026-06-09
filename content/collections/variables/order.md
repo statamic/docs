@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - entry
 title: Order
+description: Get the order key of the content (the value at the beginning of the filename).
 ---
 Get the order key of the content. It's what's at the beginning of the filename.
 

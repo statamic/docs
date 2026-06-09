@@ -2,8 +2,11 @@
 id: b47a6f6c-37bf-4269-9930-9096ee21891a
 blueprint: tips
 title: 'Disabling Control Panel Authentication'
-intro: 'BYO login page.'
+intro: 'Disable the CP login, forgot-password, and registration pages when you are rolling your own authentication.'
 template: page
+categories:
+  - development
+  - laravel
 ---
 In some cases, you may want to disable the Control Panel's authentication pages (login, forgot password, etc.) This could be handy if you are building that part of your app yourself.
 

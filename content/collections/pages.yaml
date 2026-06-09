@@ -1,0 +1,20 @@
+title: Pages
+icon: collections
+template: page
+layout: layout
+revisions: false
+route: '{parent_uri}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+inject:
+  blueprint: page
+  section: docs
+structure:
+  root: true

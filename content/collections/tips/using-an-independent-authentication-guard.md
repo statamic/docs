@@ -1,6 +1,7 @@
 ---
 id: d42da120-03f9-4eaf-bdfe-420736ca55e7
 title: 'Using an Independent Authentication Guard'
+intro: 'Separate Laravel app users from Statamic CP users with independent guards and providers in config/auth.php.'
 template: page
 categories:
   - development
@@ -72,12 +73,13 @@ While you're in the `config/auth.php` file, ensure you have separate brokers for
 ],
 ```
 
-Next, in Statamic's `users.php` configuration file, you'll want to configure which user guard should be used on the frontend and which should be used for the Control Panel:
+Next, in Statamic's `users.php` configuration file, you'll want to change the `repository` from `eloquent` to `file` and configure which user guard should be used on the frontend and which should be used for the Control Panel:
 
 In the example below, we're using the `statamic` driver for Control Panel users and the `web` driver for frontend users.
 
 ```php
 // config/statamic/users.php
+'repository' => 'file',
 
 'guards' => [
     'cp' => 'statamic',

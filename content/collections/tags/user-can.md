@@ -8,7 +8,6 @@ parameters:
     type: string
     description: >
       The permissions to check against. You can use the parameter `permission` or `do`, depending on you feel about the grammar of each case. Specify multiple permissions by pipe separating them: `{{ user:can do="things|stuff" }}`.
-stage: 4
 id: 649f1eb3-cd60-46ec-ba07-38e2a4747952
 ---
 ## Overview
@@ -50,7 +49,23 @@ Let's say we want a link to edit the current entry in the control panel if the u
 
 ## Super Users
 
-[Super users](/users#super-users) can always do everything, so no matter what you check for — whether it exists as an actual permission or not — it will always return `true`.
+[Super users](/users#super-users) are granted permission for any Statamic-related abilities. When a permission doesn't exist in Statamic, it'll fall back to [traditional Laravel authorization](https://laravel.com/docs/master/authorization#main-content).
+
+## Passing Arguments to Gates
+
+When falling back to Laravel authorization, you can pass additional arguments to your gate by adding extra parameters to the tag. Any parameter besides `do`/`permission` will be forwarded to the gate in the order it's defined.
+
+```php
+Gate::define('view secret', function ($user, $secret) {
+    return $user->hasAccessToSecret($secret);
+});
+```
+
+```antlers
+{{ user:can do="view secret" secret="foo" }}
+    ...
+{{ /user:can }}
+```
 
 ## Can’t
 

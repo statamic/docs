@@ -1,17 +1,32 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import vue2 from '@vitejs/plugin-vue2';
+import tailwindcss from "@tailwindcss/vite";
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 export default defineConfig({
     plugins: [
+        tailwindcss(),
         laravel({
             input: [
-                // CSS
-                'public/css/style.css',
-                // JS
-                'resources/js/site.js',
+                "resources/css/style.css",
+                "resources/js/site.js",
             ],
         }),
-        vue2(),
+        vue(),
     ],
+    server: {
+        fs: {
+            allow: [".."],
+        },
+    },
+    css: {
+        devSourcemap: true,
+    },
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.esm-bundler.js',
+            '@': path.resolve(__dirname, 'vendor/statamic/cms/resources/js')
+        },
+    }
 });

@@ -3,7 +3,8 @@ title: Link
 description: 'Create links to URLs, entries, or child entries.'
 intro: |
   A select box gives you the option to choose what type of link you'd like to create. When set to URL it gives you a text box to enter the hyperlink. When set to Entry it opens a stack with all your entries to choose from. And when set to First Child will redirect a visitor to the first child page in a structure.
-screenshot: fieldtypes/screenshots/link.png
+screenshot: fieldtypes/screenshots/v6/link.webp
+screenshot_dark: fieldtypes/screenshots/v6/link-dark.webp
 id: 69975d6f-760e-4ce4-a92b-d98e122744a8
 options:
   -
@@ -37,7 +38,8 @@ Creating a "first child" link will dynamically return the URL to first entry nes
 For example, if you set a First Child link on the Getting Started entry below, it will return the URL to the "Requirements" entry.
 
 <figure>
-    <img src="/img/structure.png" alt="A Statamic 3 structure tree" width="535">
+    <img src="/img/structure.webp" alt="A Statamic 6 structure tree" width="535" class="u-hide-in-dark-mode">
+    <img src="/img/structure-dark.webp" alt="A Statamic 6 structure tree" width="535" class="u-hide-in-light-mode">
 </figure>
 
 This option will only be provided when the field is in a collection. Globals and terms, by their nature, don't have children.

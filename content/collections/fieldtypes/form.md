@@ -2,7 +2,8 @@
 id: d630ea15-d94f-4404-84d2-0926a898e672
 blueprint: fieldtype
 title: Form
-screenshot: fieldtypes/screenshots/form.png
+screenshot: fieldtypes/screenshots/v6/form.webp
+screenshot_dark: fieldtypes/screenshots/v6/form-dark.webp
 description: 'Pick a form, any form.'
 overview: |
   Use this fieldtype to create a relationship with one of your site's [forms](/forms).

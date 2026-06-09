@@ -1,8 +1,0 @@
-title: Extending
-template: page
-layout: layout
-revisions: false
-route: '/extending/{slug}'
-sort_dir: asc
-inject:
-  section: extending_docs

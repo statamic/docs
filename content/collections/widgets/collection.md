@@ -39,7 +39,13 @@ options:
     type: string
     required: false
     description: 'The title of the widget. Defaults to the collection name.'
-screenshot: widgets/collection.png
+  -
+    name: show_table_header
+    type: boolean
+    required: false
+    description: 'Show table column headers. Off by default.'
+screenshot: widgets/collection-v6.webp
+screenshot_dark: widgets/collection-v6-dark.webp
 nav_title: Collection
 ---
 ## Configuring
@@ -50,7 +56,6 @@ Widgets can be added to the dashboard by modifying the `widgets` array in the `c
 // config/statamic/cp.php
 
 'widgets' => [
-  'getting_started',
   [ // [tl! focus:start]
       'type' => 'collection',
       'collection' => 'blog',

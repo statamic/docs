@@ -43,7 +43,7 @@ function tocNavigation() {
     return { init };
 }
 
-// Initialize when DOM is ready
+// Initialize when DOM is ready, with delay for Vue compatibility
 document.addEventListener('DOMContentLoaded', () => {
-    tocNavigation().init();
+    setTimeout(() => tocNavigation().init(), 100);
 });

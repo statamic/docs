@@ -4,7 +4,8 @@ description: 'Circles you click. You can only choose one.'
 intro: |
   Radio buttons. The "you can only have one" variation of checkboxes. Create some options and let your users select one and only one. May they choose wisely.
 
-screenshot: fieldtypes/screenshots/radio.png
+screenshot: fieldtypes/screenshots/v6/radio.webp
+screenshot_dark: fieldtypes/screenshots/v6/radio-dark.webp
 options:
   -
     name: inline
@@ -16,7 +17,6 @@ options:
     name: options
     type: array
     description: 'Sets of key/value pairs define the values and labels of the radio options.'
-stage: 4
 id: 0b662f17-1cd1-4c64-a705-980a2ca5aab4
 ---
 ## Overview
@@ -45,6 +45,10 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Ice Cream
     - Brownies
 ```
+
+### Options in blueprint YAML
+
+See [Select · Options in blueprint YAML](/fieldtypes/select#options-in-blueprint-yaml)—checklists defined in the blueprint use the same expanded `key` / `value` option rows for ordered, storage-agnostic option lists.
 
 ## Data Structure
 

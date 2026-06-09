@@ -35,7 +35,13 @@ options:
     type: string
     required: false
     description: 'The title of the widget. Defaults to the form name.'
-screenshot: widgets/form.png
+  -
+    name: show_table_header
+    type: boolean
+    required: false
+    description: 'Show table column headers. Off by default.'
+screenshot: widgets/form-v6.webp
+screenshot_dark: widgets/form-v6-dark.webp
 ---
 ## Configuring
 
@@ -45,7 +51,6 @@ Widgets can be added to the dashboard by modifying the `widgets` array in the `c
 // config/statamic/cp.php
 
 'widgets' => [
-  'getting_started',
   [ // [tl! focus:start]
       'type' => 'form',
       'form' => 'contact',

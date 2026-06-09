@@ -24,7 +24,9 @@ https://example.com/{{ Statamic::modify($example)->rawurlencode() }}
 ::
 
 ```html
-http://example.com/please%20and%20thank%20you/Mommy
+http://example.com/please%20and%20thank%20you%2FMommy
 ```
+
+If you don't want forward slashes (`/`) to be encoded, use the [rawurlencode_except_slashes](/modifiers/rawurlencode_except_slashes) modifier instead.
 
 [rfc-3986]: http://php.net/manual/en/function.rawurlencode.php

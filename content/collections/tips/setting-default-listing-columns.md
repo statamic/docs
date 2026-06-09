@@ -1,7 +1,7 @@
 ---
 id: 62656a00-d225-4906-8387-de780476497e
 title: 'Setting Default Columns on Listing Tables'
-intro: ''
+intro: 'Set default columns and sort order on CP listing tables by editing preference YAML — no UI required.'
 template: page
 categories:
   - development

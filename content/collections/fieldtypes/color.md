@@ -2,7 +2,8 @@
 title: Color
 description: 'Manage colors by hex code with swatches and text inputs.'
 intro: 'A simple color picker with support for pre-defined swatches as well as entering a color by hex code.'
-screenshot: fieldtypes/screenshots/color.png
+screenshot: fieldtypes/screenshots/v6/color.webp
+screenshot_dark: fieldtypes/screenshots/v6/color-dark.webp
 options:
   -
     name: swatches

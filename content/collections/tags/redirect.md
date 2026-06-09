@@ -3,7 +3,6 @@ title: Redirect
 description: Redirects visitor to another URL
 intro: |
   Anytime this tag is rendered — whether in a template, partial, or content, Statamic will redirect the visitor to the specified URL.
-stage: 4
 parameters:
   -
     name: url

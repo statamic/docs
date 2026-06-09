@@ -2,7 +2,8 @@
 title: Select
 description: Choose from predefined options. This field is highly configurable.
 intro: Give your users a list of options to choose from. This select field is highly configurable with support for search, multiple choice, and creating new options on the fly.
-screenshot: fieldtypes/screenshots/select.png
+screenshot: fieldtypes/screenshots/v6/select.webp
+screenshot_dark: fieldtypes/screenshots/v6/select-dark.webp
 options:
   -
     name: clearable
@@ -45,7 +46,6 @@ options:
     type: boolean
     description: >
       Add newly created options to the list. Default: `false`.
-stage: 4
 id: 812bd19d-ec37-42d5-b8f9-310366ef8abe
 ---
 ## Overview
@@ -74,6 +74,20 @@ Your saved data will be:
 ``` yaml
 select: face
 ```
+
+### Options in blueprint YAML {#options-in-blueprint-yaml}
+
+In the blueprint file, the field’s `options` list is stored in **expanded** form (an ordered sequence of `key` / `value` pairs) so Statamic can preserve option order everywhere content is stored—including SQL-backed databases. If you author blueprints by hand, use that shape or mirror what the Blueprint Editor writes:
+
+```yaml
+options:
+  - key: face
+    value: "So's your face."
+  - key: know
+    value: "I know you are, but what am I?"
+```
+
+That setting applies to the blueprint definition only, not to the entry value (`select: face` above).
 
 
 ## Templating

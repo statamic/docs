@@ -2,8 +2,8 @@
 
 namespace App\Tags;
 
-use Statamic\Facades\Data;
 use Illuminate\Support\Str;
+use Statamic\Facades\Data;
 
 class GithubCommitsUrl extends \Statamic\Tags\Tags
 {

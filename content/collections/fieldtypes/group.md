@@ -5,7 +5,8 @@ title: Group
 description: 'Group fields visually and scoped their own key in the data.'
 overview: |
   Organize the data by visually grouping related fields and assigning a distinct key to each group for clearer data structuring.
-screenshot: fieldtypes/screenshots/group.png
+screenshot: fieldtypes/screenshots/v6/group.webp
+screenshot_dark: fieldtypes/screenshots/v6/group-dark.webp
 ---
 ## Overview
 

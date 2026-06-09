@@ -4,7 +4,8 @@ description: 'Choose a number between a min and max value.'
 intro: |
   Range fields let the user choose a numeric value which must be _no less_ than a given value, and _no more_ than another. Supports both integer and decimal values.
 
-screenshot: fieldtypes/screenshots/range.png
+screenshot: fieldtypes/screenshots/v6/range.webp
+screenshot_dark: fieldtypes/screenshots/v6/range-dark.webp
 options:
   -
     name: min
@@ -31,7 +32,6 @@ options:
     type: string
     description: |
       Add text to the beginning (left-side) of the range slider.
-stage: 4
 id: 5ede219c-607e-4ad2-8498-6ca55a063e73
 ---
 ## Data Structure

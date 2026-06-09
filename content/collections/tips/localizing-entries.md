@@ -1,6 +1,7 @@
 ---
 id: 4bc357de-4711-4010-8b83-77ca7337e90b
 title: 'Localizing Entries'
+intro: 'Entries, blueprints, and folder structure when localizing content across multiple Statamic sites.'
 template: page
 categories:
   - localization

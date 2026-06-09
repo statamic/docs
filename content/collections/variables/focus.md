@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: Focus
+description: The focal point of the asset, defaulting to center (50-50).
 ---
 The focal point of the asset, defaulting to center (`50-50`).
 

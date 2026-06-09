@@ -14,7 +14,6 @@ parameters:
     name: "*"
     type: inherit
     description: 'All parameters available on the [taxonomy tag](/tags/taxonomy) are available.'
-stage: 4
 id: b32c0902-9642-4625-b4bc-de68fa8dfee2
 ---
 ## Overview

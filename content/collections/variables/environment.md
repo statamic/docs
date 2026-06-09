@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Environment
+description: Outputs the current environment (the value of `APP_ENV` in your `.env` file).
 ---
 Outputs the current environment.
 

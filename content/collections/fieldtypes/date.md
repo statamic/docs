@@ -3,7 +3,8 @@ title: Date
 description: Helps you pick a date, but not get one.
 intro: >
   Work with dates, times, and ranges with a variety of user interface options that make you really enjoy basically just picking numbers from a table.
-screenshot: fieldtypes/screenshots/date.png
+screenshot: fieldtypes/screenshots/v6/date.webp
+screenshot_dark: fieldtypes/screenshots/v6/date-dark.webp
 options:
   -
     name: columns
@@ -19,7 +20,7 @@ options:
     name: format
     type: string
     description: |
-      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php)
+      How the date should be stored, using the [PHP date format](https://www.php.net/manual/en/datetime.format.php). We recommend choosing a format which stores date & time.
   -
     name: full_width
     type: boolean
@@ -46,7 +47,8 @@ options:
     description: |
       Enable/disable the timepicker. Default: `false`.
       <figure>
-        <img src="/img/fieldtypes/screenshots/date-and-time.png" alt="Date fieldtype with time enabled" width="492">
+        <img src="/img/fieldtypes/screenshots/v6/date-and-time.webp" alt="Date fieldtype with time enabled" class="u-hide-in-dark-mode">
+        <img src="/img/fieldtypes/screenshots/v6/date-and-time-dark.webp" alt="Date fieldtype with time enabled" class="u-hide-in-light-mode">
         <figcaption>Now you can pick a time, too!</figcaption>
       </figure>
   -
@@ -54,7 +56,11 @@ options:
     type: boolean
     description: |
       Makes the time field visible and non-dismissible. Default: `false`.
-stage: 2
+  -
+    name: timezone
+    type: string
+    description: |
+      The timezone dates will be displayed and entered in within the Control Panel. Accepts any [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) (e.g. `America/New_York`). Defaults to the site-wide [`default_timezone`](#control-panel-timezone) configured in `config/statamic/cp.php`, which itself defaults to `auto` (the browser's local timezone).
 id: 7dfba904-8a74-40e1-b507-51cd2b5f6123
 ---
 
@@ -67,12 +73,15 @@ Date fields have highly configurable user interfaces. They can be as simple as a
 Single dates are stored as a date/timestring. Ranges are stored as an array with a `start` and `end` key.
 
 ``` yaml
-date: 1983-10-01
-date_with_time: 1983-10-01 12:00:00
+date: 1983-10-01 12:00:00
 date_range:
-  start: 2019-11-18
-  end: 2019-11-22
+  start: 2019-11-18 00:00
+  end: 2019-11-22 00:00
 ```
+
+Dates are stored in your application's timezone. 
+
+The time will be when `time_enabled` is `true`, or depending on the timezone of the user who selected the date. e.g. On date fields where there is no time configured, it will assume midnight for the person who selected it.
 
 ## Templating
 
@@ -104,7 +113,8 @@ Event: {{ $date_range['start'] }} through {{ $date_range['end'] }}
 ::
 
 <figure>
-  <img src="/img/fieldtypes/screenshots/date-range.png" alt="Date fieldtype in range mode" width="301">
+  <img src="/img/fieldtypes/screenshots/v6/date-range.webp" alt="Date fieldtype in range mode" class="u-hide-in-dark-mode"s>
+  <img src="/img/fieldtypes/screenshots/v6/date-range-dark.webp" alt="Date fieldtype in range mode" class="u-hide-in-light-mode">
   <figcaption>Ranges are much simpler than two date fields.</figcaption>
 </figure>
 
@@ -170,5 +180,27 @@ When using Blade, you may also call the `->isoFormat` method on Carbon instances
 ```
 
 ::
+
+## Timezones
+
+Dates are stored in your application timezone, then converted before being displayed to users.
+
+For more information on how Statamic handles timezones, please review our [Timezones](/tips/timezones) guide.
+
+### Control Panel Timezone
+
+By default, dates in the Control Panel are displayed and entered in the browser's local timezone. This means a user in New York and a user in London editing the same entry would each see the date in their own timezone.
+
+If you'd prefer all users to see and enter dates in a specific timezone, you can configure it site-wide in `config/statamic/cp.php`:
+
+```php
+'default_timezone' => env('STATAMIC_CP_DEFAULT_TIMEZONE', 'auto'),
+```
+
+Set this to any [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) (e.g. `America/New_York`) to pin all date fields to that timezone. The default value of `auto` uses each user's browser timezone.
+
+You can also override this on a per-field basis with the [`timezone`](#options) field config option.
+
+
 
 [carbon]: https://carbon.nesbot.com/docs/

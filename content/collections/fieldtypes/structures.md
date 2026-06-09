@@ -5,7 +5,8 @@ description: 'Create relationships with structures.'
 intro: |
   For when you need to create a relationship to one or more [Structures](/structures). This could be useful to pick which version of a sidebar or footer to include on a page, or other similar things.
 
-screenshot: fieldtypes/screenshots/structures.png
+screenshot: fieldtypes/screenshots/v6/structures.webp
+screenshot_dark: fieldtypes/screenshots/v6/structures-dark.webp
 options:
   -
     name: max_items

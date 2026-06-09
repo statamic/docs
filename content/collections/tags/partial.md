@@ -20,11 +20,15 @@ parameters:
     description: |
       The converse of `when`.
   -
+    name: handle_prefix
+    type: string
+    description: |
+      A prefix to prepend to variable names when looking up data. For example, if you have a variable named `hero_title` and use `handle_prefix="hero_"`, you can reference it as `{{ title }}`.
+  -
     name: "*"
     type: mixed
     description: |
       Any parameter you create will be passed through to the partial as a variable.
-stage: 5
 id: 1f683992-401e-44f6-8506-7967005778a5
 ---
 ## Overview
@@ -215,6 +219,16 @@ You can render a partial only if a condition is met.
 ::
 
 Also supports the converse using `:unless`.
+
+## Using With Modifiers
+
+Because the `partial` tag is a tag and not a variable, you can't pipe it through [modifiers](/modifiers) directly. To apply modifiers to a partial's rendered output, wrap it in a [sub-expression](/antlers#sub-expressions) using curly braces.
+
+```antlers
+{{ { partial:component } | spaceless }}
+```
+
+Everything inside the `{ ... }` is parsed first, and the result is then passed through the modifier chain — handy for things like `spaceless`, `markdown`, `trim`, or any other modifier you'd want to run on a partial's output.
 
 ## Related Reading
 

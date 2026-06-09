@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - system
 title: Homepage
+description: The URL of the homepage. Usually the same as `site:url`.
 ---
 The URL of the homepage. Usually (but not always) the same as `{{ site:url }}`.
 

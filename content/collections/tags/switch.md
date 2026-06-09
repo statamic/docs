@@ -9,7 +9,6 @@ parameters:
     type: array
     description: >
       A set of values to iterate over, using a pipe-separated string.
-stage: 4
 id: 8b558556-a08b-4134-b77d-102b4fb34060
 ---
 ## Overview

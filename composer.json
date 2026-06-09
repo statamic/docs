@@ -8,24 +8,20 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4 || ^8.0",
-        "laravel/framework": "^10.0",
-        "laravel/tinker": "^2.0",
-        "league/commonmark": "^2.0",
-        "statamic-rad-pack/meilisearch": "^3.4",
-        "livewire/livewire": "^3.6.4",
-        "statamic/cms": "^5.0",
-        "statamic/ssg": "^3.0",
-        "torchlight/engine": "^0.1.0",
-        "stillat/documentation-search": "^1.2.1"
+        "php": "^8.2",
+        "laravel/framework": "^13.0",
+        "laravel/tinker": "^3.0",
+        "statamic-rad-pack/meilisearch": "^4.1",
+        "statamic/cms": "^6.0",
+        "torchlight/engine": "^1.0",
+        "stillat/documentation-search": "^2.0"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.7",
+        "fruitcake/laravel-debugbar": "^4.0",
         "fakerphp/faker": "^1.4",
-        "filp/whoops": "^2.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.0",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^12.0",
         "spatie/laravel-ignition": "^2.0",
         "spatie/laravel-ray": "^1.37"
     },
@@ -46,12 +42,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -59,6 +53,7 @@
         }
     },
     "prefer-stable": true,
+    "minimum-stability": "dev",
     "scripts": {
         "pre-update-cmd": [
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"

@@ -4,6 +4,7 @@ blueprint: variables
 types:
   - asset
 title: 'Focus Css'
+description: The focal point of the asset in a format suitable for the background-position CSS property.
 ---
 The focal point of the asset, in a format suitable for the background-position CSS property, if one has been set.
 

@@ -3,7 +3,8 @@ title: Code
 description: 'Write code and see it highlight. But will you choose spaces or tabs?'
 intro: What are you doing writing code in a browser?! Just kidding, it's fine. We made it easy, flexible, and pretty too. We use this fieldtype a lot.
 
-screenshot: fieldtypes/screenshots/code.png
+screenshot: fieldtypes/screenshots/v6/code.webp
+screenshot_dark: fieldtypes/screenshots/v6/code-dark.webp
 options:
   -
     name: theme
@@ -77,7 +78,6 @@ options:
     type: array
     description: |
       You can set the columns and the line style (choose between `dashed` or `solid`) of any rulers you wish to use.
-stage: 4
 id: 3ca28569-5b86-49a1-b620-ea3364561cde
 ---
 ## Overview

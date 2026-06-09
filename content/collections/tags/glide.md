@@ -54,7 +54,7 @@ shape:
     name: fit
     type: string
     description: >
-      See the [Glide docs](http://glide.thephpleague.com/1.0/api/size/#fit-fit) on this parameter. In addition to the
+      See the [Glide docs](https://glide.thephpleague.com/3.0/api/crop/#fit-fitcrop-x-y---crop-based-on-focal-point) on this parameter. In addition to the
       Glide's fit options, Statamic also supports `crop_focal` to automatically fit/crop to a predefined focal point.
       See the [_Focal Crop_](#focal-point-cropping) section for more details.
   -
@@ -86,6 +86,13 @@ shape:
     type: string
     description: >
       Encodes the image to a specific format. Accepts `jpg`, `pjpg` (progressive jpeg), `png`, `gif`, `webp` or `avif`. If using the imagick image manipulation driver, glide can additionally handle `tif`, `bmp` and `psd`. The default format: `jpg`
+  -
+    name: border
+    type: string
+    description: >
+      Adds a border to the image. Required format: `width,color,method` (comma-separated).
+      Width is in pixels or a relative dimension; color follows Glide's [color formats](https://glide.thephpleague.com/3.0/api/colors/) (defaults to `ffffff` if omitted);
+      method is `overlay` (default), `shrink`, or `expand`. [See Glide border docs](https://glide.thephpleague.com/3.0/api/border/).
 
 filters:
   -
@@ -150,7 +157,7 @@ other:
   -
     name: markfit
     type: string
-    description: The fit of the watermark. [See Glide docs](https://glide.thephpleague.com/2.0/api/watermarks/#fit-markfit)
+    description: The fit of the watermark. [See Glide docs](https://glide.thephpleague.com/3.0/api/watermarks/#fit-markfit)
   -
     name: markx
     type: string
@@ -167,6 +174,11 @@ other:
     name: markpos
     type: string
     description: Sets where the watermark is positioned. Accepts `top-left`, `top`, `top-right`, `left`, `center`, `right`, `bottom-left`, `bottom`, `bottom-right`. Default is `bottom-right`.
+  -
+    name: markalpha
+    type: integer
+    description: >
+      Sets the opacity of the watermark. Use values between `0` and `100`, where `100` is fully opaque and `0` is fully transparent. Default: `100`. [See Glide docs](https://glide.thephpleague.com/3.0/api/watermarks/#alpha-markalpha).
 variables:
   -
     name: url
@@ -371,7 +383,7 @@ You may also use the shorthand as a tag pair:
 
 ## Watermarks
 
-You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, etc).
+You may use Glide's [watermarking feature](https://glide.thephpleague.com/3.0/api/watermarks/) by passing in a [source](#sources) to the `mark` parameter, and then manipulate it using the various watermark parameters (`markw`, `markh`, `markfit`, `markalpha`, etc).
 
 ::tabs
 
@@ -388,7 +400,6 @@ You may use Glide's [watermarking feature](https://glide.thephpleague.com/2.0/ap
 :::tip
 You don't need to worry about setting up a watermark filesystem yourself. Statamic will take care of that automatically based on the source you provide.
 :::
-
 
 ## Usage in Blade
 
@@ -411,8 +422,9 @@ Focal point cropping helps ensure the important bits of an image stay in the bou
 You can set focal points and zoom-levels for your images in the control panel using the asset editor. Use `fit="crop_focal"` while cropping to use an asset's saved focal point, if it has one.
 
 <figure>
-  <img src="/img/focal-point-picker.jpg" alt="The Focal Point Picker">
-  <figcaption>The focal point picker. Make sure to keep that hair in the shot!</figcaption>
+  <img src="/img/focal-point-picker-v6.webp" alt="The Focal Point Picker" class="u-hide-in-dark-mode">
+  <img src="/img/focal-point-picker-v6-dark.webp" alt="The Focal Point Picker" class="u-hide-in-light-mode">
+  <figcaption>The focal point picker. Make sure to keep those eyes in the shot! They're delightfully menacing.</figcaption>
 </figure>
 
 ### Manually setting focal points
@@ -425,11 +437,31 @@ If an asset doesn't have a focal point set it will simply crop from the center.
 
 _Note: All Glide generated images are cropped at their focal point, unless you disable the _Auto Crop_ setting. This happens even when you don't specify a `fit` parameter. You may override this behavior per-image/tag by specifying the `fit` parameter as described above._
 
-
 ``` php
 // config/statamic/assets.php
 
 'auto_crop' => true,
+```
+
+
+### focus_css
+
+You may use the [`focus_css`](/variables/focus_css) variable to get an asset's focal point in a format suitable for the `background-position` CSS property. 
+
+::tabs
+
+::tab antlers
+```antlers
+{{ focus_css }}
+```
+::tab blade
+```blade
+{{ $focus_css }}
+```
+::
+
+```html
+50% 30%
 ```
 
 ## Unsupported formats

@@ -1,0 +1,115 @@
+/* GROUP COMPONENTS / PRO BADGE
+=================================================== */
+/* Notes...
+
+    What does it do?
+    ----------------
+    Pro Feature badge used on pages such as Git Automation
+
+*/
+/* HTML Example...
+
+    <header>
+        <div class="o-badge-heading">
+            <h1>{{ title }}</h1>
+            <div class="c-pro-badge">
+                <a href="/licensing">
+                    {{ global:pro_badges sort='random' limit='1' }}
+                        {{ artwork }}
+                            <picture class="c-pro-badge__artwork">
+                                <img/>
+                            </picture>
+                        {{ /artwork }}
+                        <div class="c-pro-badge__text">
+                            {{ icon }}
+                                <picture>
+                                    <img/>
+                                </picture>
+                            {{ /icon }}
+                            Pro Feature
+                        </div>
+                    {{ /global:pro_badges }}
+                </a>
+            </div>
+        </div>
+        {{ intro ?? overview | markdown }}
+    </header>
+
+    Or you can use this in text, with the pro badge on its own e.g.
+
+    <div class="c-pro-badge">
+        <a href="/licensing">
+            <div class="c-pro-badge__text">
+                <span>⭐️</span> Pro Feature <span>⭐️</span>
+            </div>
+        </a>
+    </div>
+
+*/
+@layer components {
+    .c-pro-badge {
+        position: relative;
+
+        img {
+            filter: contrast(102%) saturate(1.05) brightness(105%);
+            @container style(--color-scheme: dark) {
+                filter: var(--filter-dark-tint);
+            }
+        }
+
+        a {
+            &, &:hover {
+                color: var(--color-primary-text)!important;
+            }
+            font-family: var(--font-family-main);
+            font-weight: var(--font-family-main-weight-heavy);
+            font-size: var(--font-size-sm);
+            line-height: var(--font-size-sm-line-height);
+            letter-spacing: 0.25px;
+            text-transform: uppercase;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        + p {
+            margin-block-start: var(--spacing-lg);
+        }
+        h2:has(+ &) {
+            padding-block-end: var(--spacing-xs);
+        }
+    }
+    .c-pro-badge__artwork img {
+        border-radius: 50%;
+    }
+    .c-pro-badge__text {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-2xs);
+        padding: 0.35rem var(--spacing-2xs);
+        background: linear-gradient(to right, var(--color-yellow-light-3) 0%,var(--color-yellow-light-2) 100%);
+        font-size: var(--font-size-xs);
+        rotate: -3deg;
+        .o-badge-heading & {
+            min-width: 9.5rem;
+            background: linear-gradient(to right, var(--color-yellow-light-4) 0%,var(--color-yellow-light-2) 100%);
+        }
+
+        img {
+            inline-size: 2em;
+        }
+    }
+    .c-pro-badge:has(img) {
+        .c-pro-badge__text {
+            position: absolute;
+            left: -1.75rem;
+            transform: translateY(-1.2rem);
+            rotate: -5deg;
+        }
+        /* --mq-grid-after */
+        @media (width >= 1000px) {
+            bottom: var(--spacing-xl);
+        }
+    }
+}

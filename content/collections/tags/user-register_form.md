@@ -191,6 +191,10 @@ Most of the time, new members will need some roles assigned to them so that they
 
 It’s best to remember that these are _starting_ roles for the user. You can later either manually add roles to users in their files, update their account through the Control Panel, or have add-ons automatically add or remove roles as needed when users perform certain tasks.
 
+## Precognition
+
+The registration endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — handy for telling users their chosen email is already taken before they hit submit. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/register` and include any blueprint fields you want validated live in the data object passed to `$form`.
+
 ## Honeypot
 
 If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key.

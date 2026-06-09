@@ -47,7 +47,6 @@ variables:
     name: email_sent
     type: string
     description: An alias of the `success` variable.
-stage: 4
 id: 3e69f12e-72ac-4f1a-9847-fa08d651e750
 ---
 ## Overview

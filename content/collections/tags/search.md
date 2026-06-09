@@ -3,7 +3,6 @@ title: Search
 description: Performs searches and displays matching results
 intro: This is how you do search. This is the tag you're looking for.
 id: fe8ec156-447d-4f03-974f-0251a8c53244
-stage: 1
 parameters:
   -
     name: index
@@ -20,7 +19,7 @@ parameters:
     type: string
     required: false
     description: >
-      The site you wish to search. If you wish to search in all sites, you can use a wildcard: `*`. Default: the current site.
+      The site(s) you wish to search. Pass a single site handle (`one`), multiple handles pipe-separated (`one|two`), or a wildcard (`*`) to search all sites. Default: the current site.
   -
     name: limit
     type: integer
@@ -115,7 +114,8 @@ variables:
     type: array
     description: >
       Available when using the [Algolia driver](https://www.algolia.com/doc/api-client/php/search#fields). Displays a field with the search term automatically highlighted. Example: `{{ _highlightResult:myfield:value }}`
-
+variables_content: |
+  The following variables are **Antlers-only**. See [Loop variables](/antlers#loop-variables) for details, or the [Blade equivalents](/blade#loop-variables) if you're writing Blade.
 ---
 ## Overview
 
@@ -176,6 +176,36 @@ The search form itself — that text box users type into, is a normal, every day
     <button type="submit">Make it so!</button>
 </form>
 ```
+
+## Multiple Sites
+
+On [multi-site](/multi-site) installations, you can search within a specific site, a subset of sites, or across all of them.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ search:results site="one" }}
+
+{{ search:results site="one|two" }}
+
+{{ search:results site="*" }}
+```
+::tab blade
+```blade
+<s:search:results site="one" />
+
+<s:search:results site="one|two" />
+
+<s:search:results site="*" />
+```
+::
+
+If you omit the `site` parameter, results will be scoped to the current site.
+
+:::tip
+When using `supplement_data="false"` with multiple sites, make sure the `site` field is indexed — otherwise results will be filtered out. See [Supplementing Data](#supplementing-data) below.
+:::
 
 ## Supplementing Data
 

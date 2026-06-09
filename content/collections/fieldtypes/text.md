@@ -28,7 +28,8 @@ options:
     type: string
     description: >
       Set some default placeholder text.
-screenshot: fieldtypes/screenshots/text.png
+screenshot: fieldtypes/screenshots/v6/text.webp
+screenshot_dark: fieldtypes/screenshots/v6/text-dark.webp
 id: 306b112b-b0cc-4359-b681-da353eeb50ac
 ---
 
