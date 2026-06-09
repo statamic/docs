@@ -63,10 +63,12 @@
     <p>Keep your Statamic superpowers up-to-date with the latest updates to the docs.</p>
     <table>
         <thead>
-            <th>Page</th>
-            <th>The Change</th>
-            <th>Section</th>
-            <th>Last Updated</th>
+            <tr>
+                <th>Page</th>
+                <th>The Change</th>
+                <th>Section</th>
+                <th>Last Updated</th>
+            </tr>
         </thead>
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="5" title:not="Documentation" scope="entry" }}
