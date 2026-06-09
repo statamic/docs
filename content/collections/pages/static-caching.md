@@ -250,7 +250,7 @@ php please static:warm
 The `static:warm` command supports various arguments:
 
 * **`--queue`**
-    Indicates that URIs should be warmed on the queue (in the background).
+    Indicates that URIs should be warmed on the queue (in the background). Works only when using a queue driver other than `sync`.
 * **`--insecure`**
     Allows the command to skip SSL verification. This can come in handy when running the site behind a reverse proxy or when using self-signed certificates, for example.
 * **`--user` and `--password`**
@@ -298,7 +298,8 @@ Lower the `warm_concurrency` to reduce the overhead and slow the process down, r
 
 ### Queuing
 
-When you're using a queue driver other than `sync`, Statamic will push the warming out to the queue.
+When you're using a queue driver other than `sync`, you can run `php please static:warm` with `--queue` option.
+As a result, Statamic will push the warming out to the queue, onto whichever queue is defined for the default queue connection.
 
 If needed, you can explicitly tell Statamic which queue and queue connection should be used when warming the static cache:
 
