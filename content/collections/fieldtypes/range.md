@@ -75,7 +75,6 @@ fields:
     min: 0
     max: 1
     step: 0.1
-    append: '%'
   temperature:
     type: range
     min: -10.5
