@@ -202,6 +202,51 @@ You may choose to create aliases for your tag too. It will then be usable by its
 protected static $aliases = ['sample'];
 ```
 
+## Namespaced Tags
+
+Tags can be registered under a namespace to avoid handle collisions between addons. Without namespacing, if two addons register a tag with the same handle, the last one registered wins.
+
+### Enabling namespacing in an addon
+
+Set the `$tagNamespace` property on your addon's service provider. All tags registered by that addon will be callable under that namespace.
+
+```php
+class ServiceProvider extends AddonServiceProvider
+{
+    protected $tagNamespace = 'juicebox';
+}
+```
+
+::tabs
+
+::tab antlers
+```antlers
+{{ juicebox::my_tag:method }}
+```
+::tab blade
+```blade
+<s:juicebox::my_tag:method />
+```
+::
+
+When using the [fluent tag syntax](/blade#using-fluent-tags-with-blade), include the namespace:
+
+```php
+Statamic::tag('juicebox::my_tag:method')->fetch();
+```
+
+### Manual registration with a namespace
+
+You can also register a single tag class under a namespace directly:
+
+```php
+MyTag::register('juicebox');
+```
+
+:::tip
+Namespacing is opt-in. Addons without `$tagNamespace` continue to work exactly as before. Tags can still be called without the namespace if there is no collision.
+:::
+
 ## Parameters
 
 You may get the values of parameters through the `parameters` property.

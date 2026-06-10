@@ -234,6 +234,15 @@ protected $commands = [
 ];
 ```
 
+To avoid tag handle collisions with other addons, you can register all your tags under a namespace by setting `$tagNamespace` on your service provider:
+
+``` php
+protected $tagNamespace = 'your-addon-slug';
+```
+
+Tags will then be callable as `{{ your-addon-slug::tag_name }}`. See [Namespaced Tags](/building-a-tag#namespaced-tags) for full details.
+
+
 ## Assets
 
 ### CSS and Javascript
