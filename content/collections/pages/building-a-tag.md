@@ -213,7 +213,7 @@ Set the `$tagNamespace` property on your addon's service provider. All tags regi
 ```php
 class ServiceProvider extends AddonServiceProvider
 {
-    protected $tagNamespace = 'juicebox';
+    protected $tagNamespace = 'my-addon';
 }
 ```
 
@@ -221,18 +221,18 @@ class ServiceProvider extends AddonServiceProvider
 
 ::tab antlers
 ```antlers
-{{ juicebox::my_tag:method }}
+{{ my-addon::my_tag:method }}
 ```
 ::tab blade
 ```blade
-<s:juicebox::my_tag:method />
+<s:my-addon::my_tag:method />
 ```
 ::
 
 When using the [fluent tag syntax](/blade#using-fluent-tags-with-blade), include the namespace:
 
 ```php
-Statamic::tag('juicebox::my_tag:method')->fetch();
+Statamic::tag('my-addon::my_tag:method')->fetch();
 ```
 
 ### Manual registration with a namespace
@@ -240,7 +240,7 @@ Statamic::tag('juicebox::my_tag:method')->fetch();
 You can also register a single tag class under a namespace directly:
 
 ```php
-MyTag::register('juicebox');
+MyTag::register('my-addon');
 ```
 
 :::tip
