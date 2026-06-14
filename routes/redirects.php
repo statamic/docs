@@ -149,7 +149,7 @@ Route::permanentRedirect('deploying/ploi', '/getting-started/deploying/ploi');
 Route::permanentRedirect('preferences', '/control-panel/preferences');
 Route::permanentRedirect('protecting-content', '/frontend/protecting-content');
 Route::permanentRedirect('quick-start-guide', '/getting-started/quick-start-guide');
-Route::permanentRedirect('recent-updates', '/');
+Route::permanentRedirect('recent-updates', '/knowledge-base/recent-updates');
 Route::permanentRedirect('relationships', '/content-modeling/relationships');
 Route::permanentRedirect('release-schedule-support-policy', '/knowledge-base/release-schedule-support-policy');
 Route::permanentRedirect('requirements', '/getting-started/requirements');
