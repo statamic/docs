@@ -51,3 +51,15 @@ You should probably avoid these. It doesn't mean it's impossible, but it'll like
 - [Go Daddy](https://godaddy.com) - doesn't meet server requirements
 - [NameCheap](https://namecheap.com)
 - [Rackspace Cloud](https://www.rackspace.com/cloud/) - issues with out-of-sync file timestamps and permissions
+
+### Development environments
+
+For local development, these work well. See [requirements](/getting-started/requirements#development-environments) for the environments we recommend.
+
+- [Laravel Herd](https://herd.laravel.com/)
+- [Laravel Valet](https://laravel.com/docs/valet)
+- [DDEV](https://ddev.com/) - Docker-based PHP development environment
+- [Laravel Homestead](https://laravel.com/docs/homestead)
+- [Vagrant](https://www.vagrantup.com/)
+- [MAMP](https://www.mamp.info/)
+- Jack's iMac
