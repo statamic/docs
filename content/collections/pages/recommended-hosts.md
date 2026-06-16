@@ -20,12 +20,14 @@ Spot something out of date or have a host to add? Use the [feedback link at the 
 
 These work well with Statamic out of the box.
 
+- [ArcusTech](https://arcustech.com/)
 - [AWS](https://aws.amazon.com/)
 - [Azure](https://azure.microsoft.com/)
 - [Cyon](https://www.cyon.ch/) - Switzerland
 - [Digital Ocean](https://www.digitalocean.com/)
 - [Digital Ocean App Platform](https://www.digitalocean.com/products/app-platform/)
 - [Digital Pacific](https://www.digitalpacific.com.au/) - Sydney, Australia
+- [DreamHost](https://www.dreamhost.com/)
 - [Exigo](https://www.exigo.ch/) - Switzerland
 - [fortrabbit](https://www.fortrabbit.com/) - US & EU
 - [Google Cloud Platform](https://cloud.google.com/)
@@ -35,6 +37,8 @@ These work well with Statamic out of the box.
 - [Metanet](https://www.metanet.ch) - Switzerland
 - [MyHost](https://myhost.nz/) - New Zealand & Australia
 - [OVH](https://www.ovhcloud.com/) - France & Canada
+- [Panthur](https://www.panthur.com.au/) - Sydney, Australia
+- [SiteHost](https://sitehost.nz/) - New Zealand & Australia
 - [Vultr](https://www.vultr.com/) - Worldwide
 
 #### Paired with a deployment tool
