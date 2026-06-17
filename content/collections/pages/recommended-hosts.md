@@ -62,8 +62,8 @@ For local development, these work well. See [requirements](/getting-started/requ
 
 - [Laravel Herd](https://herd.laravel.com/)
 - [Laravel Valet](https://laravel.com/docs/valet)
+- [Laravel Sail](https://laravel.com/docs/sail)
 - [DDEV](https://ddev.com/) - Docker-based PHP development environment
-- [Laravel Homestead](https://laravel.com/docs/homestead)
 - [Vagrant](https://www.vagrantup.com/)
 - [MAMP](https://www.mamp.info/)
 - Jack's iMac
