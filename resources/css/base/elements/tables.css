@@ -121,6 +121,11 @@
         }
     }
 
+    /* Prevent keyboard shortcuts from wrapping. e.g. >> /blueprints keyboard shortcuts, where we want to keep command + shift + s on one line */
+    table:has(td:first-child kbd) > :is(thead, tbody) > tr > :first-child {
+        white-space: nowrap;
+    }
+
     table > thead > tr > th {
         padding-block: 1.1rem;
         vertical-align: bottom;

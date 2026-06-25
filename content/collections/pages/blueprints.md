@@ -35,6 +35,16 @@ There are 3 ways to create blueprints:
 
 Once created, you can begin to define fields and the sections that hold them. If you have more than one section, each becomes a tab in the publish form.
 
+## Blueprint Workflow and Keyboard Shortcuts
+
+Managing blueprints in the control panel is something you’ll be doing a lot. These contextual shortcuts help you save without losing your place in the stack.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | <strong>When you've just added a new field</strong> — Save the blueprint and close the stack overlay. |
+| <kbd>⌘</kbd> <kbd>S</kbd> | <strong>When going back into a field you've already edited</strong> — "Soft" save the blueprint. Use this to save changes <em>without closing the stack overlay</em>.<br><br>This is particularly useful when you're working on a blueprint in a second tab, flipping back and forth between tabs. Unlike <em>clicking</em> the Save button in the top right, it does not close the stack overlay. |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack overlay. This works no matter how many levels deep you are. It will save everything and close the stack. This is also handy when you have a single stack open and want to save and close it. |
+
 ## Directory Structure
 
 Whether you manually create your blueprint's YAML file, or use the control panel, they will all end up as YAML files in the `resources/blueprints` directory.
