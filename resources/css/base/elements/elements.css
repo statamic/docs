@@ -85,6 +85,7 @@
         min-width: 1.5rem;
         padding-inline: 0.25rem;
         border: 1px solid hsl(var(--color-pink-hue)100% 90%);
+        box-shadow: var(--box-shadow-pink-light-sm);
         background: white;
         @container style(--color-scheme: dark) {
             background: var(--docsearch-key-gradient);
