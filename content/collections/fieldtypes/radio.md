@@ -70,6 +70,24 @@ favorite:
 `inline: true` still works on publish forms, but when you edit and save the field in the blueprint editor, Statamic converts it to `appearance: inline`.
 :::
 
+#### Chips
+
+The chips appearance option is new in Statamic v6.22. Chips are inline pill-style buttons with larger touch targets. You can select them in the control panel under the appearance setting or configure them in the blueprint YAML, as shown above.
+
+Chips are available for both radio and [checkbox](/fieldtypes/checkboxes) fieldtypes.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/chips-configuration-radio.webp" alt="Chips configuration for radio fieldtype" class="u-hide-in-dark-mode" style="max-width: 100%;">
+    <img src="/img/fieldtypes/screenshots/v6/chips-configuration-radio-dark.webp" alt="Chips configuration for radio fieldtype" class="u-hide-in-light-mode" style="max-width: 100%;">
+    <figcaption>Appearance options for the radio fieldtype, including chips.</figcaption>
+</figure>
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/chips-on-a-publish-form-radio.webp" alt="Chips on a publish form for radio fieldtype" class="u-hide-in-dark-mode" style="max-width: 100%;">
+    <img src="/img/fieldtypes/screenshots/v6/chips-on-a-publish-form-radio-dark.webp" alt="Chips on a publish form for radio fieldtype" class="u-hide-in-light-mode" style="max-width: 100%;">
+    <figcaption>And here's what it looks like on a publish form.</figcaption>
+</figure>
+
 ### Options in blueprint YAML
 
 See [Select · Options in blueprint YAML](/fieldtypes/select#options-in-blueprint-yaml)—checklists defined in the blueprint use the same expanded `key` / `value` option rows for ordered, storage-agnostic option lists.
