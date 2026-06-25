@@ -9,6 +9,7 @@ import './language-badges.js';
 import './dayjs.js';
 import './docsearch.js';
 import './torchlight.js';
+import './kbd-mod.js';
 import './toc-navigation.js';
 
 Alpine.start();
