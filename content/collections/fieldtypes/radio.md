@@ -8,10 +8,10 @@ screenshot: fieldtypes/screenshots/v6/radio.webp
 screenshot_dark: fieldtypes/screenshots/v6/radio-dark.webp
 options:
   -
-    name: inline
-    type: bool
+    name: appearance
+    type: string *default*
     description: |
-      Show the radio buttons next to each other in a row instead of stacked vertically. Default: `false`
+      Choose how the radio buttons are displayed in the Control Panel. One of `default`, `inline`, or `chips`. Default: `default`.
 
   -
     name: options
@@ -45,6 +45,30 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Ice Cream
     - Brownies
 ```
+
+### Appearance
+
+Use the `appearance` setting to change how options are rendered in the Control Panel:
+
+``` yaml
+favorite:
+  type: radio
+  appearance: chips
+  options:
+    donuts: Donuts
+    icecream: Ice Cream
+    brownies: Brownies
+```
+
+| Value | Description |
+|-------|-------------|
+| `default` | Standard radio buttons, stacked vertically. |
+| `inline` | Radio buttons in a horizontal row. |
+| `chips` | Pill-style buttons with larger touch targets. |
+
+:::tip
+`inline: true` still works on publish forms, but when you edit and save the field in the blueprint editor, Statamic converts it to `appearance: inline`.
+:::
 
 ### Options in blueprint YAML
 
