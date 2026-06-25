@@ -41,9 +41,9 @@ Managing blueprints in the control panel is something you’ll be doing a lot. T
 
 | Shortcut | Action |
 |----------|--------|
-| <kbd>⌘</kbd> <kbd>S</kbd> | <strong>When you've just added a new field</strong> — Save the blueprint and close the stack overlay. |
-| <kbd>⌘</kbd> <kbd>S</kbd> | <strong>When going back into a field you've already edited</strong> — "Soft" save the blueprint. Use this to save changes <em>without closing the stack overlay</em>.<br><br>This is particularly useful when you're working on a blueprint in a second tab, flipping back and forth between tabs. Unlike <em>clicking</em> the Save button in the top right, it does not close the stack overlay. |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack overlay. This works no matter how many levels deep you are. It will save everything and close the stack. This is also handy when you have a single stack open and want to save and close it. |
+| <kbd>⌘</kbd> <kbd>S</kbd> | **New field** — Save the blueprint and close the stack overlay. |
+| <kbd>⌘</kbd> <kbd>S</kbd> | **Existing field** — Soft save the blueprint without closing the stack overlay. Useful when editing a blueprint in a second tab and switching back and forth. Unlike the **Save** button in the top right, the stack stays open. |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack overlay, at any depth. Works whether you're nested several levels deep or have a single stack open. |
 
 ## Directory Structure
 
