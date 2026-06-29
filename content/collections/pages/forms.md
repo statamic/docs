@@ -88,7 +88,7 @@ Statamic\Fieldtypes\Dictionary::makeUnselectableInForms();
 
 ### The template
 
-Several [tags](tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
+Several [tags](/tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
 
 This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#dynamic-rendering).
 
@@ -724,14 +724,14 @@ To build on the regular form submission example above, here's an example for AJA
 ::tab antlers
 ```antlers
 {{ form:contact
-    js="alpine_precognition:form:contact" 
+    js="alpine_precognition:form:contact"
     @submit.prevent="submit"
 }}
 ```
 ::tab blade
 ```blade
-<s:form:contact 
-    js="alpine_precognition:form:contact" 
+<s:form:contact
+    js="alpine_precognition:form:contact"
     @submit.prevent="submit"
 >
 ```
