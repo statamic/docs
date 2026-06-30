@@ -46,6 +46,12 @@ Statamic will dispatch a `Statamic\Events\EntryScheduleReached` event whenever a
 
 The event will be dispatched on the minute _after_ the scheduled time.
 
+### DeletePartialFormSubmissions
+
+This job runs daily and deletes any partial form submissions older than the configured threshold (7 days by default).
+
+The threshold and whether attached assets should also be deleted can be configured in `config/statamic/forms.php`.
+
 
 ## Defining schedules
 
