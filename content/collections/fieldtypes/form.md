@@ -31,9 +31,7 @@ related_entries:
 
 The Form fieldtype is gives your users a way to pick a form to include along with the current entry. How that form is implemented or shows up on the page is up to you.
 
-:::tip
-Don't confuse this with [form fieldtypes](/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
-:::
+Not to be confused with [form fieldtypes](/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
 
 ## Data Storage
 
@@ -49,4 +47,20 @@ The Form fieldtype provides a few useful variables:
 * `api_url`
 * `honeypot`
 
-You can use the [`form:create`](/tags/form-create) tag to render a `<form>` on your page.
+You can pass the `handle` to the [`{{ form:create }}`](/tags/form-create) tag to render a `<form>` on your page:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:create :in="form_fieldtype:handle" }}
+    ...
+{{ /form:create }}
+```
+::tab blade
+```blade
+<s:form:create :in="$form_fieldtype->handle">
+    ...
+</s:form:create>
+```
+::

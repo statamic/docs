@@ -170,28 +170,6 @@ Using this tag, Statamic will automatically take care of opening your form with 
 
 It also provides helpers for [rendering](#rendering-fields) sections and fields, conditionally showing and hiding fields with [logic](#logic-conditional-fields), etc.
 
-## Rendering a Selected Form
-
-When you need to render a form that's selected via the [Form Fieldtype](/fieldtypes/form), you can use this pattern:
-
-::tabs
-
-::tab antlers
-```antlers
-{{ form:create :in="form_fieldtype:handle" }}
-    ...
-{{ /form:create }}
-```
-::tab blade
-```blade
-<s:form:create :in="$form_fieldtype->handle">
-    ...
-</s:form:create>
-```
-::
-
-This way you can let Control Panel users select which form should be used on an entry.
-
 ## Rendering Fields
 
 Loop through the `fields` array using the [form:fields](/tags/form-fields) tag to render your form's fields.
