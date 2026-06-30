@@ -31,6 +31,10 @@ related_entries:
 
 The Form fieldtype is gives your users a way to pick a form to include along with the current entry. How that form is implemented or shows up on the page is up to you.
 
+:::tip
+Don't confuse this with [form fieldtypes](/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
+:::
+
 ## Data Storage
 
 The Form fieldtype stores the `handle` of a single form as a string, or an array of handles if `max_items` is greater than 1.

@@ -53,9 +53,13 @@ Some of these _may_ work as field names in some circumstances, but can have unin
 
 ### Forms
 
+These handles are reserved on form submissions:
+
 - `date`
 - `message`
 - `messages`
+- `partial`
+- `site`
 
 ## Taxonomy Handles
 

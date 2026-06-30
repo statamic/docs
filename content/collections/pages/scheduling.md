@@ -48,9 +48,9 @@ The event will be dispatched on the minute _after_ the scheduled time.
 
 ### DeletePartialFormSubmissions
 
-This job runs daily and deletes any partial form submissions older than the configured threshold (7 days by default).
+This job runs daily and deletes any [partial form submissions](/repositories/form-submission-repository#partial-submissions) older than the configured threshold (7 days by default).
 
-The threshold and whether attached assets should also be deleted can be configured in `config/statamic/forms.php`.
+You may configure the threshold (or disable automatic deletion entirely) using the `delete_partial_submissions_after` key in `config/statamic/forms.php`.
 
 
 ## Defining schedules

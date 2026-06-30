@@ -56,6 +56,15 @@ FormSubmission::query()
     ->get();
 ```
 
+#### Get partial form submissions
+
+```php
+FormSubmission::query()
+    ->where('form', 'postbox')
+    ->where('partial', true)
+    ->get();
+```
+
 
 ## Creating
 
@@ -81,4 +90,43 @@ Finally, save it. It'll return a boolean for whether it succeeded.
 
 ```php
 $submission->save(); // true or false
+```
+
+## Partial Submissions
+
+A partial submission is an incomplete submission that's been saved before the user has finished filling out the form.
+
+They're primarily used by the [Forms Pro](/forms#forms-pro) addon to persist progress between the pages of a multi-page form, but addons and custom code can use them too.
+
+To mark a submission as partial, call `asPartial()` before saving:
+
+```php
+$submission = FormSubmission::make()->form($form);
+
+$submission->data(['name' => 'David Hasselhoff']);
+
+$submission->asPartial()->save();
+```
+
+You can check whether a submission is partial using `isPartial()`, or by getting its `status()` (which either returns `partial` or `finalized`):
+
+```php
+$submission->isPartial(); // true
+$submission->status(); // "partial"
+```
+
+Partial submissions are [automatically deleted](/scheduling#deletepartialformsubmissions) after a configurable number of days (7 by default).
+
+:::tip
+The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `SubmissionSaved` events are dispatched when creating partial submissions, just like any other submission.
+
+If you're listening to these events in your code, and you _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](/events#formsubmitted) or [`SubmissionFinalized`](/events#submissionfinalized) events.
+:::
+
+### Finalizing
+
+When a submission is complete, call `finalize()` on it. This removes its partial status, deletes it (if storage is disabled for the form), triggers the relevent connections, and dispatches the [`SubmissionFinalized`](/events#submissionfinalized) event.
+
+```php
+$submission->finalize();
 ```

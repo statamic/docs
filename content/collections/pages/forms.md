@@ -19,78 +19,30 @@ Okay, let's just pretend you're a famous celebrity's _web developer_. You've bee
 
 - name
 - age
-- level of adoration (appreciation, fixation, or obsession)
+- level of adoration
 - message
 
 ### Create the form
 
 First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `resources/forms` which will contain all the form's settings.
 
-Each form should contain a title. Optionally it may also have an email configuration.
+Each form should contain a title.
 
 ```yaml
 title: Super Fans
-email: []
 ```
 
-### The blueprint
+### Add your fields
 
-The [blueprint](blueprints) is where you define your form's `fields` and validation rules to be used on form submission.
+With your form created, you can start adding fields using the **Form Builder** in the Control Panel. Each field you add is a [form fieldtype](#form-fieldtypes) — like a short answer, dropdown, or file upload — and you can configure its display name, validation rules, and [logic](/conditional-fields) without leaving the Control Panel.
 
-The blueprint is located in `resources/blueprints/forms/{handle}.yaml`
-
-```yaml
-fields:
-  -
-    handle: name
-    field:
-      display: Name
-      type: text
-      validate: required
-  -
-    handle: age
-    field:
-      display: Age
-      type: text
-      validate: required|integer
-  -
-    handle: adoration
-    field:
-      display: Level of Adoration
-      type: text
-      validate: required
-  -
-    handle: comment
-    field:
-      display: Comment
-      type: textarea
-      validate: required
-```
-
-:::warning
-The `message` variable is a Laravel reserved word within this email context, so you should avoid using that as a field handle if you intend on using the email feature.
-:::
-
-If you use the Control Panel to build your blueprint, you will find that there's only a subset of fieldtypes available to you.
-These are the fields that have corresponding views ready to be used on the front-end.
-
-If you'd like to include more fieldtypes, you can opt into each one by calling `makeSelectableInForms` on the respective class within a service provider:
-
-```php
-Statamic\Fieldtypes\Section::makeSelectableInForms();
-```
-
-You can also do the opposite and prevent a fieldtype from being used in forms by calling `makeUnselectableInForms` on the respective class within a service provider:
-
-```php
-Statamic\Fieldtypes\Dictionary::makeUnselectableInForms();
-```
+For our EF-Mail form, you'd add a Name field for the name, a Number for the age, a Star Rating for the level of adoration, and a Long Answer for the message.
 
 ### The template
 
 Several [tags](/tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
 
-This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#dynamic-rendering).
+This example loops over your form's fields and dynamically renders each input's HTML, so you don't need to hardcode field handles. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#pre-rendered-field-html).
 
 ::tabs
 
@@ -171,19 +123,161 @@ This example dynamically renders each input's HTML. You could alternatively writ
     // This is just a submit button.
     <button type="submit">Submit</button>
   @endif
+
 </s:form:super_fans>
 ```
 ::
 
+## Form fieldtypes
+
+When building a form, you add fields using **form fieldtypes**. These are purpose-built versions of Statamic's [fieldtypes](/fieldtypes), designed specifically for collecting input from your visitors and rendering on the front-end. Each one comes with a corresponding front-end view, so it's ready to drop into your templates.
+
+The following form fieldtypes are available:
+
+| Fieldtype | Description |
+|---|---|
+| Group | Group related fields together. |
+| Spacer | Add visual spacing between form fields. |
+| Heading | A heading to organize your form. |
+| Paragraph | A paragraph to provide information in your form. |
+| Banner | A banner to highlight important information in your form. |
+| Short Answer | A simple field for short, one-line answers. |
+| Long Answer | A larger field for detailed responses, comments, or messages. |
+| Dropdown | A dropdown list where respondents pick from your options. |
+| Yes / No | A simple yes or no question. |
+| Multiple Choice | A question with a range of answer options. Respondents can only choose one answer. |
+| Checkboxes | Respondents can select multiple options from a list. |
+| Image Choice | An image-based choice selector for visual options. |
+| Toggle | A simple yes or no switch. |
+| Dictionary | Select from a predefined list like countries, timezones, or currencies. |
+| Opinion Scale | An opinion scale for measuring agreement or satisfaction. |
+| Star Rating | A star rating input for collecting ratings. |
+| Ranking | A ranking input for ordering items by preference. |
+| Name | Collects someone's name. |
+| Email | Collects an email address and ensures it's properly formatted. |
+| Website | Collects a website address and ensures it's properly formatted. |
+| Phone | A field for collecting phone numbers. |
+| Number | Collects a number. You can set minimum and maximum values. |
+| Currency | Collects a monetary amount. |
+| Date Picker | Lets respondents pick a date. |
+| Time Picker | Lets respondents pick a time of day. |
+| Upload | Lets respondents upload one or more files. See [File uploads](#file-uploads). |
+
+:::tip
+Click a fieldtype in the Form Builder to see an example of what it looks like.
+:::
+
+### Customizing the front-end views
+
+Each form fieldtype renders using a publishable view. To customize the HTML, run `php artisan vendor:publish --tag=statamic-forms`, which exposes editable templates in your `resources/views/vendor/statamic/forms/fields` directory.
+
+:::tip
+Publishable views are implemented in Antlers by default. Blade versions will be used instead if your `statamic.templates.language` config is set to `blade`.
+:::
+
+### Controlling which fieldtypes are selectable
+
+Most form fieldtypes are selectable in the Form Builder by default. You can change this from a service provider by calling `makeSelectable()` or `makeUnselectable()` on the relevant fieldtype class:
+
+```php
+use Statamic\Forms\Fieldtypes\Dictionary;
+
+public function boot()
+{
+    Dictionary::makeUnselectable();
+}
+```
+
+### Building a custom form fieldtype
+
+Each form fieldtype wraps a regular [fieldtype](/fieldtypes) and tailors it for use in forms.
+
+You can build your own by creating a class in the `app/FormFieldtypes` directory that extends `Statamic\Forms\Fields\FormFieldtype`. Statamic will discover it automatically.
+
+```php
+<?php
+
+namespace App\FormFieldtypes;
+
+use Statamic\Forms\Fields\FormFieldtype;
+
+class RangeSlider extends FormFieldtype
+{
+    protected static $fieldtype = 'range';
+    protected $categories = ['rate'];
+    protected $description = 'A slider for picking a number within a range.';
+    protected $icon = 'fieldtype-range';
+
+    public function configFieldItems(): array
+    {
+        return [
+            'min' => ['display' => 'Minimum', 'type' => 'integer'],
+            'max' => ['display' => 'Maximum', 'type' => 'integer'],
+        ];
+    }
+
+    public function toFieldArray(): array
+    {
+        return [
+            'type' => 'range',
+            'min' => $this->config('min'),
+            'max' => $this->config('max'),
+        ];
+    }
+
+    public function example(): ?array
+    {
+        return [
+            'config' => [
+                'display' => 'How confident are you about your answer?',
+                'min' => 1,
+                'max' => 5,
+            ],
+            'value' => 3,
+        ];
+    }
+}
+```
+
+#### Properties
+
+| Property | Description |
+| --- | --- |
+| `$fieldtype` | The handle of the regular fieldtype this form fieldtype wraps. |
+| `$description` | A short description shown in the Form Builder. |
+| `$categories` | The categories the fieldtype is grouped under in the Form Builder. Should be an array. |
+| `$icon` | The icon shown in the Form Builder. |
+| `$order` | Controls the fieldtype's position within its category. |
+
+#### Methods
+
+| Method | Description |
+| --- | --- |
+| `configFieldItems()` | The configuration fields shown when editing the field in the Form Builder. |
+| `toFieldArray()` | Translates the form fieldtype's config into a regular field definition. |
+| `example()` | An example configuration used to preview the field in the Form Builder. Optional. |
+| `view()` | The front-end view used to render the field. Optional. |
+
 ## Viewing submissions
 
-In the Forms area of the control panel you can explore the collected responses, configure dashboards and export the data to CSV or JSON formats.
+In the Forms area of the Control Panel you can explore the collected responses and export the data to CSV or JSON formats.
 
 <figure>
   <img src="/img/cp-forms.webp" alt="List of form submissions in the control panel" class="u-hide-in-dark-mode">
   <img src="/img/cp-forms-dark.webp" alt="List of form submissions in the control panel" class="u-hide-in-light-mode">
   <figcaption>Forms. Submissions. Features.</figcaption>
 </figure>
+
+When running a [multi-site](/multi-site), you'll only see submissions submitted from the current site. You may remove the filter to see submissions from all sites you have access to.
+
+### Generating fake submissions
+
+To help test how your submissions display on the front-end with the [form submissions](/tags/form-submissions) tag, you can generate fake submissions populated with realistic data. From the submissions listing, use the **Generate Fake Submission** button:
+
+- **Generate Fake Submission** creates a submission directly, without firing events or sending [connections](#connections).
+- **Generate Fake Submission + Run All Workflows** runs the submission through the full pipeline, firing events and sending any configured [connections](#connections) — handy for testing those too.
+
+Fake submissions are flagged so you can tell them apart and bulk-delete them when you're done. If you'd like to disable fake submission generation for a form, you can turn it off in the form's settings.
 
 ## Displaying submission data
 
@@ -313,11 +407,15 @@ Then, to make the exporter available on your forms, simply add it to your forms 
 ],
 ```
 
-## Emails
+## Connections
 
-Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? Let's hook that up next.
+Out of the box, you'll only know about a submission when you head into the Control Panel to view it. Most of the time you'll want something to happen when a form is submitted — like being notified by email.
 
-You can add any number of emails to your formset.
+**Connections** let you send submissions off to other places. Statamic ships with an Email connection out of the box, and more will be added over time.
+
+### Email
+
+The Email connection sends an email whenever a form is submitted. You can add any number of emails to your form.
 
 ```yaml
 email:
@@ -334,7 +432,7 @@ email:
 
 Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses custom html and text views while the other doesn't, so it'll get an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
 
-### Email variables
+#### Email variables
 
 Inside your email view, you have a number of variables available:
 
@@ -391,7 +489,7 @@ In each iteration of the `fields` array, you have access to:
 - `config` - The configuration of the blueprint field
 
 
-### Setting the from and reply-to name
+#### Setting the from and reply-to name
 
 You can set a full "From" and "Reply-To" name in addition to the email address using the following syntax:
 
@@ -401,7 +499,7 @@ reply_to: 'Jack Black <jack@jackblack.com>'
 ```
 
 
-### Setting the recipient dynamically
+#### Setting the recipient dynamically
 
 You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
@@ -412,7 +510,7 @@ email:
     # other settings here
 ```
 
-### Setting the "Reply to" dynamically
+#### Setting the "Reply to" dynamically
 
 You can set the "reply to" to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
 
@@ -423,7 +521,7 @@ email:
     # other settings here
 ```
 
-### Setting the "Subject" dynamically
+#### Setting the "Subject" dynamically
 
 You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
 
@@ -436,9 +534,9 @@ email:
 
 [Learn how to create your emails](/email)
 
-### Attachments
+#### Attachments
 
-When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any `assets` fields will be automatically attached.
+When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any uploaded files will be automatically attached.
 
 ```yaml
 email:
@@ -447,9 +545,9 @@ email:
     # other settings here
 ```
 
-If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained in the [File Uploads](#file-uploads) section.
+If you don't want the attachments to be kept around on your server, configure your [Upload field](#file-uploads) so it doesn't store the files — they'll be attached to the email and then deleted.
 
-### Using Markdown Mailable Templates
+#### Using Markdown Mailable Templates
 
 Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
 
@@ -495,52 +593,14 @@ You can customize the components further by reviewing the [Laravel documentation
 
 ## File uploads
 
-Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
+Maybe your fans want to send a photo, or you're collecting resumes and cover letters. Whatever the files, add an **Upload** field to your form and you're collecting them.
 
-First, add a file upload field to your blueprint:
-- Add an `assets` field if you want the uploaded files to be stored in one of your asset containers.
-- Add a `files` field if you're only wanting to attach the uploads to the email. Anything uploaded using this fieldtype will be attached and then deleted after the emails are sent.
+When configuring the Upload field, you decide whether the uploaded files should be kept around:
 
-Then decide if you need single or multiple files to be uploaded.
+- **Store the files** and they'll be permanently saved as reusable [Assets](/assets) in the asset container you choose.
+- **Don't store the files** and they'll only stick around long enough to be sent with your form's [connections](#connections) (like email attachments), then they'll be deleted shortly after the form is submitted.
 
-### Single files
-
-On your field, add a `max_files` setting of `1`:
-
-```
-<input type="file" name="cat_selfie" />
-```
-
-```yaml
-fields:
-  -
-    handle: cat_selfie
-    field:
-      type: assets
-      container: main
-      max_files: 1
-```
-
-### Multiple files
-
-You have two methods available to you:
-
-First, you can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
-
-Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
-
-```
-<input type="file" name="selfies[]" multiple />
-```
-
-```yaml
-fields:
-  -
-    handle: selfies
-    field:
-      type: assets
-      container: main
-```
+You can also set a maximum number of files to control whether respondents can upload a single file or several.
 
 ## Honeypot
 
@@ -575,16 +635,8 @@ For example:
 ```
 
 :::tip
-In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your formset config.
+In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your form's config.
 :::
-
-## Using AJAX
-
-To submit the form with AJAX, be sure to pass all the form inputs in with the submission, as Statamic sets `_token` and `_params`, both of which are required.
-
-You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest`.
-
-The URL endpoint to send the request to is `/!/forms/{form-handle}`. You can configure the action route prefix which defaults to `!` in `config/statamic/routes.php`.
 
 ## Rate limiting
 
@@ -607,248 +659,60 @@ public function boot()
 
 Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.
 
-## Caching
+## Submitting forms programmatically
 
-If you are static caching the URL containing a form, return responses like 'success' and 'errors' will not be available after submitting unless you [exclude this page from caching](/static-caching#excluding-pages) or wrap the form in {{ nocache }} tags.
+The [`form:create`](/tags/form-create) tag handles submissions for you, but you can also submit a form yourself using the `SubmitForm` action. This makes it easy to submit forms from a Livewire component, a custom controller, or your own API endpoint.
 
-**Wrapping the form in {{ nocache }}**
+```php
+use Statamic\Facades\Form;
+use Statamic\Forms\SubmitForm;
+use Statamic\Exceptions\SilentFormFailureException;
+use Illuminate\Validation\ValidationException;
 
-::tabs
+$form = Form::find('contact');
 
-::tab antlers
-```antlers
-{{ nocache }}
-    {{ form:create formset="contact" }}
-        ...
-    {{ /form:create }}
-{{ /nocache }}
-```
-::tab blade
-```blade
-<s:nocache>
-  <s:form:create formset="contact">
-    ...
-  </s:form:create>
-</s:nocache>
-```
-::
+try {
+    $submission = app(SubmitForm::class)
+        ->form($form)
+        ->submit(
+            data: ['name' => 'John', 'email' => 'john@example.com'],
+            files: [], // Optional
+        );
+} catch (ValidationException $e) {
+    return back()->withErrors($e->errors());
+} catch (SilentFormFailureException $e) {
+    // The honeypot was triggered, or an event listener rejected the
+    // submission. To the user, it should appear as though it succeeded.
+    return back()->with('success', 'Form submitted successfully!');
+}
 
-### Axios example
-
-``` javascript
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-form = document.getElementById('form');
-
-// On submit...
-axios.post(form.action, new FormData(form))
-  .then(response => {
-      console.log(response.data)
-  });
+return back()->with('success', 'Form submitted successfully!');
 ```
 
-## Precognition
+The action provides the following methods:
 
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/13.x/precognition) in forms.
+| Method | Description |
+| --- | --- |
+| `form` | Provide the `Form` you want to use. |
+| `page` | Optional. (intended to be used alongside Forms Pro's multi-page forms feature) ID of the page you want to submit. |
+| `resume` | `Submission` instance of the partial submission you wish to resume. |
+| `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
+| `validate` | Validate the current page. Accepts an array of `$data` and an optional array of `$files`. Also accepts an array of field handles to limit which fields are validated. |
 
-Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
+:::tip
+When the [honeypot](#honeypot) catches spam — or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — a `SilentFormFailureException` is thrown rather than a validation error, so spam bots still see a success response. The submission data is available via `$e->submission()`.
+:::
 
-Note that `js="alpine_precognition"` is used rather than just `alpine`.
+## Forms Pro
 
-::tabs
+Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
 
-::tab antlers
-```antlers
-{{ form:contact js="alpine_precognition" }}
-    {{ if success }}
-        Success!
-    {{ /if }}
+- Multi-page forms
+- Dedicated form pages
+- Unique form instances per entry
+- Additional fieldtypes & connections
+- Enhanced spam prevention
 
-    <template x-if="form.hasErrors">
-        <div>
-            Errors!
-            <ul>
-                <template x-for="error in form.errors">
-                    <li x-text="error"></li>
-                </template>
-            </ul>
-        </div>
-    </template>
+Learn more about Forms Pro [on the Statamic Marketplace](https://statamic.com/addons/statamic/forms-pro).
 
-    {{ fields }}
-        <label>{{ display }}</label>
-        {{ field }}
-        <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
-    {{ /fields }}
-
-    <button :disabled="form.processing">Submit</button>
-{{ /form:contact }}
-```
-
-::tab blade
-```blade
-<s:form:contact js="alpine_precognition">
-    @if ($success) Success! @endif
-
-    <template x-if="form.hasErrors">
-      <div>
-        Errors!
-        <ul>
-          <template x-for="error in form.errors">
-            <li x-text="error"></li>
-          </template>
-        </ul>
-      </div>
-    </template>
-
-    @foreach ($fields as $field)
-      <label>{{ $field['display'] }}</label>
-      {!! $field['field'] !!}
-
-      <small
-        x-show="form.invalid('{{ $field['handle'] }}')"
-        x-text="form.errors.{{ $field['handle'] }}"
-      ></small>
-    @endforeach
-
-    <button :disabled="form.processing">Submit</button>
-</s:form:contact>
-```
-::
-
-To build on the regular form submission example above, here's an example for AJAX submission.
-- The third argument of the `js` parameter defines the Alpine component.
-- The native form's submit event is listened for, prevented, and the component's `submit` method is called instead.
-
-::tabs
-
-::tab antlers
-```antlers
-{{ form:contact
-    js="alpine_precognition:form:contact"
-    @submit.prevent="submit"
-}}
-```
-::tab blade
-```blade
-<s:form:contact
-    js="alpine_precognition:form:contact"
-    @submit.prevent="submit"
->
-```
-::
-
-```html
-<script>
-document.addEventListener('alpine:init', () => {
-    Alpine.data('contact', (data) => ({
-        ...data,
-        submit() {
-            this.form.submit().then(response => {
-                this.form.reset();
-                console.log("Success")
-            }).catch(error => {
-                console.log(error);
-            });
-        }
-    }));
-});
-</script>
-```
-
-### User Forms
-
-The user form tags ([login][login_form], [register][register_form], [profile][profile_form], and [password][password_form]) also support Precognition — but at the request level only. The tags themselves don't accept a `js="alpine_precognition"` parameter, so you wire it up manually against the form's action URL.
-
-Install the Alpine adapter:
-
-```shell
-npm install laravel-precognition-alpine
-```
-
-Register it before Alpine starts:
-
-```js
-import Alpine from 'alpinejs'
-import precognition from 'laravel-precognition-alpine'
-
-Alpine.plugin(precognition)
-Alpine.start()
-```
-
-Then bind a `$form` to the appropriate endpoint inside the user form tag:
-
-::tabs
-
-::tab antlers
-```antlers
-{{ user:login_form
-    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
-    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
-}}
-    <label>Email</label>
-    <input
-        type="email"
-        name="email"
-        x-model="form.email"
-        @change="form.validate('email')"
-    >
-    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
-
-    <label>Password</label>
-    <input
-        type="password"
-        name="password"
-        x-model="form.password"
-        @change="form.validate('password')"
-    >
-    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
-
-    <button type="submit" :disabled="form.processing">Log in</button>
-{{ /user:login_form }}
-```
-::tab blade
-```blade
-<s:user:login_form
-    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
-    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
->
-    <label>Email</label>
-    <input
-        type="email"
-        name="email"
-        x-model="form.email"
-        @change="form.validate('email')"
-    >
-    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
-
-    <label>Password</label>
-    <input
-        type="password"
-        name="password"
-        x-model="form.password"
-        @change="form.validate('password')"
-    >
-    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
-
-    <button type="submit" :disabled="form.processing">Log in</button>
-</s:user:login_form>
-```
-::
-
-The same pattern applies to the other user forms — just swap the action URL and the data fields:
-
-| Tag | Endpoint |
-|---|---|
-| `{{ user:login_form }}` | `/!/auth/login` |
-| `{{ user:register_form }}` | `/!/auth/register` |
-| `{{ user:profile_form }}` | `/!/auth/profile` |
-| `{{ user:password_form }}` | `/!/auth/password` |
-
-If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
-
-[tags]: /tags/form
 [submissions]: /tags/form-submissions
-[login_form]: /tags/user-login_form
-[register_form]: /tags/user-register_form
-[profile_form]: /tags/user-profile_form
-[password_form]: /tags/user-password_form
