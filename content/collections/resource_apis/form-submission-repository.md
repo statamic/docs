@@ -120,7 +120,7 @@ Partial submissions are [automatically deleted](/scheduling#deletepartialformsub
 :::tip
 The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `SubmissionSaved` events are dispatched when creating partial submissions, just like any other submission.
 
-If you're listening to these events in your code, and you _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](/events#formsubmitted) or [`SubmissionFinalized`](/events#submissionfinalized) events.
+If you're listening to these events in your code, and _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](/events#formsubmitted) or [`SubmissionFinalized`](/events#submissionfinalized) events instead.
 :::
 
 ### Finalizing
