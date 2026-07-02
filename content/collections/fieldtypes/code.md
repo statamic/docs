@@ -17,6 +17,8 @@ options:
     description: |
       Set a default language for syntax highlighting. Your choices include:
 
+      - `application/json`
+      - `application/ld+json`
       - `clike`
       - `css`
       - `diff`
