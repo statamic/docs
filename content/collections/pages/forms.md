@@ -708,10 +708,35 @@ When the [honeypot](#honeypot) catches spam — or an event listener returns `fa
 Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
 
 - Multi-page forms
+  - Control page logic in a list or edit rules in a tree view
 - Dedicated form pages
 - Unique form instances per entry
 - Additional fieldtypes & connections
 - Enhanced spam prevention
+
+### Multi-page forms
+
+When it comes to creating form logic, you can already show and hide fields based on a user's previous responses. Forms Pro supercharges this by introducing **multi-page forms**.
+
+This is especially useful for longer forms. Breaking them into pages makes them easier to complete, and gives you greater control over the user journey—skipping entire sections or guiding users down different paths based on their answers.
+
+<figure>
+  <img src="/img/forms-pro/page-logic.webp" alt="Page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/page-logic-dark.webp" alt="Page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
+  <figcaption>With Forms Pro you get Page logic as well as field logic</figcaption>
+</figure>
+
+#### Customize page buttons
+
+Page buttons default to “Next” and “Previous” but you can customize them to say whatever you want. Tease your users with something informative or cheeky—“Let's find out what Star Sign you are!”, “Ready to find out your perfect career?”, “Which Ninja Turtle are you?”, etc.
+
+<figure>
+  <img src="/img/forms-pro/customize-button-text.webp" alt="Customize button text for Forms Pro" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/customize-button-text-dark.webp" alt="Customize button text for Forms Pro" class="u-hide-in-light-mode">
+  <figcaption>Customize button text for Forms Pro</figcaption>
+</figure>
+
+### Dedicated form pages
 
 Learn more about Forms Pro [on the Statamic Marketplace](https://statamic.com/addons/statamic/forms-pro).
 
