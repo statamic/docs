@@ -176,6 +176,8 @@
                     position: relative;
                     padding-inline-start: 1.2rem;
                     padding-block-end: var(--spacing-3xs);
+                    /* Just a touch, to reinforce hierarchy */
+                    font-size: 0.98em;
                     &:first-child {
                         padding-block-start: var(--spacing-2xs);
                     }
