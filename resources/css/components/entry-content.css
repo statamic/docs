@@ -173,7 +173,8 @@
                 }
                 /* Lists within lists e.g. >> /taxonomies */
                 ul li {
-                    padding-inline-start: 0;
+                    position: relative;
+                    padding-inline-start: 1.2rem;
                     padding-block-end: var(--spacing-3xs);
                     &:first-child {
                         padding-block-start: var(--spacing-2xs);
@@ -181,10 +182,14 @@
                     &:last-child {
                         padding-block-end: var(--spacing-2xs);
                     }
-                    &::before {
-                        /* Remove the purple dot for lists within lists */
-                        content: unset;
-                    }
+                }
+                ul li::before {
+                    background: none;
+                    border: 2px solid var(--color-purple-light-1);
+                    left: 0;
+                }
+                ul li:first-child::before {
+                    top: 1rem;
                 }
             }
         }
