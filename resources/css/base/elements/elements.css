@@ -542,8 +542,11 @@
         text-decoration-skip-ink: auto;
         text-underline-offset: 0.2rem;
         text-decoration-thickness: 1px;
-        text-decoration-color: light-dark(var(--color-primary-accent), var(--color-link));
+        text-decoration-color: light-dark(hsl(from var(--color-primary-accent) h s l / 0.5), hsl(from var(--color-link) h s l / 0.5));
         color: var(--color-link);
+    }
+    a {
+        text-decoration-line: underline;
     }
 }
 @layer elements {
