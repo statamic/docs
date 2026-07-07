@@ -7,6 +7,13 @@ intro: 'Forms are a natural part of the internet experience and a core component
 related_entries:
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
 ---
+
+Forms comes in two flavours: built-in and [Forms Pro](#forms-pro).
+
+If you’re building a typical contact form, RSVP, or similar, the built-in Forms feature will probably be all you need. It’s included with Statamic core, so there’s nothing extra to install or purchase.
+
+If you need [more](https://youtu.be/uNy_MLr8mXA?si=66HfGKi1asv6PmgM&t=13), Forms Pro is a separate paid add-on with advanced features like third-party integrations, enhanced workflows, and other powerful tools. You can [try it out for free locally](#installation).
+
 ## Overview
 
 Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
@@ -707,9 +714,10 @@ When the [honeypot](#honeypot) catches spam — or an event listener returns `fa
 
 Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
 
-- Multi-page forms
-  - Control page logic in a list or edit rules in a tree view
-- Dedicated form pages
+- [Multi-page forms](#multi-page-forms)
+  - Control page logic
+  - Edit rules in a tree view
+- [Dedicated form pages](#dedicated-form-pages)
 - Unique form instances per entry
 - Additional fieldtypes & connections
 - Enhanced spam prevention

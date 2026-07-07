@@ -140,7 +140,6 @@ When using the [multi-site](/multi-site) feature, Statamic will check for approp
 
 For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
 
-
 ### Super users
 
 Super Admin accounts are special accounts with **access and permission to everything**. This includes things reserved only for super users like the ability to _create more super users_. It's important to prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
