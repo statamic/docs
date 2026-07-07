@@ -715,8 +715,9 @@ When the [honeypot](#honeypot) catches spam — or an event listener returns `fa
 Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
 
 - [Multi-page forms](#multi-page-forms)
-  - Control page logic
-  - Edit rules in a tree view
+  - [Controlling page logic](#controlling-page-logic)
+  - Use a dedicated tree view to understand complex page logic
+  - [Customizing page buttons](#customizing-page-buttons)
 - [Dedicated form pages](#dedicated-form-pages)
 - Unique form instances per entry
 - Additional fieldtypes & connections
@@ -741,7 +742,7 @@ This is especially useful for longer forms. Breaking them into pages makes them 
 <figure>
   <img src="/img/forms-pro/page-logic.webp" alt="Page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
   <img src="/img/forms-pro/page-logic-dark.webp" alt="Page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
-  <figcaption>With Forms Pro you get Page logic as well as field logic</figcaption>
+  <figcaption>With Forms Pro you get page logic <em>as well as</em> field logic</figcaption>
 </figure>
 
 :::warning
@@ -750,7 +751,41 @@ The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `Submissio
 If you're listening to these events in your code, and _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](https://statamic.dev/backend-apis/events/events#formsubmitted) or [`SubmissionFinalized`](https://statamic.dev/backend-apis/events/events#submissionfinalized) events instead.
 :::
 
-#### Customize page buttons
+#### Controlling page logic
+
+With Forms Pro you can control page logic in a few different ways:
+
+<ol>
+  <li>
+    <p>The Edit tab — edit page logic <strong>inline</strong>. This is useful for adjusting logic "as you go", by clicking on the page name in Edit mode, and selecting the logic tab.</p>
+    <figure>
+     <img src="/img/forms-pro/editing-logic-inline.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
+     <img src="/img/forms-pro/editing-logic-inline-dark.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
+     <figcaption>Edit page logic as you go in the control panel</figcaption>
+   </figure>
+  </li>
+  <li>
+    <p>The logic tab <strong>(List view)</strong>. See page and field-level logic side by side, then open any rule to inspect and refine it.</p>
+    <figure>
+     <img src="/img/forms-pro/editing-logic-list.webp" alt="Edit page logic in a list view" class="u-hide-in-dark-mode" style="border-bottom-left-radius: 14px; border-bottom-right-radius: 14px;">
+     <img src="/img/forms-pro/editing-logic-list-dark.webp" alt="Edit page logic in a list view" class="u-hide-in-light-mode">
+     <figcaption>All your form logic in a dedicated list</figcaption>
+   </figure>
+  </li>
+  <li>
+    <p>The logic tab <strong>(Tree view)</strong>. This is useful for comprehending and adjusting more complex page logic.</p>
+    <figure>
+     <img src="/img/forms-pro/tree-view.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
+     <img src="/img/forms-pro/tree-view-dark.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
+     <figcaption>See and arrange everything with the tree view. Drag and drop to reorder pages and rules. You have now reached Marie Kondo level of form organisation 💅</figcaption>
+   </figure>
+  </li>
+</ol>
+
+- [List](#list)
+- [Tree view](#tree-view)
+
+#### Customizing page buttons
 
 Page buttons default to “Next” and “Previous” but you can customize them to say whatever you want. Tease your users with something informative or cheeky—“Let's find out what Star Sign you are!”, “Ready to find out your perfect career?”, “Which Ninja Turtle are you?”, etc.
 
@@ -984,6 +1019,14 @@ Confused? Here's a visual example:
 > **or** `country` is `Canada`
 
 ...is evaluated as `(country is United States and state is California) or (country is Canada)`.
+
+### Form summaries
+
+<figure>
+  <img src="/img/forms-pro/form-summaries.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/form-summaries-dark.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
+  <figcaption>Edit page logic as you go in the control panel</figcaption>
+</figure>
 
 ### Dedicated form pages
 

@@ -293,6 +293,13 @@
     }
 }
 
+@layer scope {
+    .c-entry-content ol li figure {
+        /* e.g. >> /frontend/forms, where we have figures inside a list */
+        margin-block: 0 var(--spacing-lg);
+    }
+}
+
 @layer plugins {
     .c-entry-content {
         /* When lists have a pre compress things a little so it's more readable e.g. >> /addons/vite-tooling */
