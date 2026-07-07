@@ -9,6 +9,24 @@ use Illuminate\Support\LazyCollection;
 use Statamic\Support\Arr;
 use Statamic\Tags\Tags;
 
+/**
+ * The homepage's sponsors list is pulled from GitHub's Sponsors GraphQL API, which requires
+ * a `GITHUB_TOKEN` in your `.env`. The `statamic` org doesn't allow personal access tokens,
+ * so this must be a user access token from an OAuth App authorized by an org owner:
+ *
+ * 1. OAuth app should be created (it is) in the `statamic` org.
+ * 2. A statamic org owner visit `https://github.com/login/oauth/authorize?client_id={client_id}&scope=read:org`
+ * 3. After authorizing, GitHub redirects to `http://localhost/?code={code}`. The page won't load — just copy the `code` from the URL.
+ * 4. Exchange the code for a token:
+ * ```
+ * curl -X POST https://github.com/login/oauth/access_token \
+ *   -H "Accept: application/json" \
+ *   -d "client_id={client_id}&client_secret={client_secret}&code={code}"
+ * ```
+ * 5. Put the returned `access_token` into `GITHUB_TOKEN` in your `.env`.
+ *
+ * Classic OAuth App tokens don't expire, so this is a one-time setup.
+ */
 class HeroSponsors extends Tags
 {
     public function index()
