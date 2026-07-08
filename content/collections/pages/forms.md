@@ -1023,9 +1023,9 @@ Confused? Here's a visual example:
 ### Form summaries
 
 <figure>
-  <img src="/img/forms-pro/form-summaries.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
-  <img src="/img/forms-pro/form-summaries-dark.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-light-mode">
-  <figcaption>Edit page logic as you go in the control panel</figcaption>
+  <img src="/img/forms-pro/form-summaries.webp" alt="A summary of form responses the control panel, showing various graph types and questions" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/form-summaries-dark.webp" alt="A summary of form responses the control panel, showing various graph types and questions" class="u-hide-in-light-mode">
+  <figcaption>View a summary of form responses without leaving the control panel</figcaption>
 </figure>
 
 ### Dedicated form pages
