@@ -135,6 +135,7 @@
         }
 
         li {
+            scroll-margin-top: 10rem;
             /* Bard wraps <li> text in a <p> tag */
             p {
                 padding-block-end: 0!important;

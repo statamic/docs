@@ -716,8 +716,10 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
 
 - [Multi-page forms](#multi-page-forms)
   - [Controlling page logic](#controlling-page-logic)
-  - Use a dedicated tree view to understand complex page logic
+  - [The page logic tree view](#tree-view)
   - [Customizing page buttons](#customizing-page-buttons)
+- [Form summaries](#form-summaries)
+- [Form summary graphs](#form-summary-graphs)
 - [Dedicated form pages](#dedicated-form-pages)
 - Unique form instances per entry
 - Additional fieldtypes & connections
@@ -772,7 +774,7 @@ With Forms Pro you can control page logic in a few different ways:
      <figcaption>All your form logic in a dedicated list</figcaption>
    </figure>
   </li>
-  <li>
+  <li id="tree-view">
     <p>The logic tab <strong>(Tree view)</strong>. This is useful for comprehending and adjusting more complex page logic.</p>
     <figure>
      <img src="/img/forms-pro/tree-view.webp" alt="Edit page logic for Forms Pro in the control panel" class="u-hide-in-dark-mode">
@@ -1001,6 +1003,7 @@ You may use the `error` object (keyed by field handle) to display messages again
 The final page's submission is left up to you — let the native `<form>` POST handle it, or submit it over AJAX like the intermediate pages.
 
 #### Logic
+
 By default, submitting a page takes the visitor to the next page in sequence. However, **logic** can be used to skip pages, or branch out to different pages based on the answers they provide.
 
 Logic can be configured in the **Form Builder**, under the "Logic" tab when inspecting a page. Pages can have multiple rules, and each rule can have multiple conditions, paired with a destination (the page to jump to when those conditions are met). You can also manage logic from the "Logic" page in the Control Panel.
@@ -1022,11 +1025,25 @@ Confused? Here's a visual example:
 
 ### Form summaries
 
+Forms Pro lets you view a summary of your form responses without needing to export submissions.
+
+This is useful for spotting trends in your responses. See how many people signed up to your newsletter, or find out whether Robert Smith fans are also secretly listening to Olivia Rodrigo.
+
 <figure>
   <img src="/img/forms-pro/form-summaries.webp" alt="A summary of form responses the control panel, showing various graph types and questions" class="u-hide-in-dark-mode">
   <img src="/img/forms-pro/form-summaries-dark.webp" alt="A summary of form responses the control panel, showing various graph types and questions" class="u-hide-in-light-mode">
   <figcaption>View a summary of form responses without leaving the control panel</figcaption>
 </figure>
+
+### Form summary graphs
+
+Each fieldtype automatically displays a certain graph type — for example, the Dictionary fieldtype displays as a lollipop bar chart (yummy), and multi choice fieldtypes display as pie charts. These were designed to display the data in a way that's easy to understand and best represent the data.
+
+Here are some other things worth knowing about graphs:
+
+- If there’s more data than can fit in a graph, pagination controls will appear in the top-right corner, letting you page through the remaining results.
+- Some fieldtypes, such as the Dictionary fieldtype, support multiple graph styles. Simply click the graph type icon in the top-right corner to switch between them.
+- The Rating fieldtype automatically chooses the most appropriate layout. Ratings below 5 are shown as a horizontal bar chart, while ratings of 5 or more are displayed as a vertical bar chart.
 
 ### Dedicated form pages
 
