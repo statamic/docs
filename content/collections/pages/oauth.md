@@ -175,6 +175,12 @@ To create your own OAuth provider, you should make your own SocialiteProvider-re
 
 Follow the [third party installation steps](#third-party-providers), but skip the Composer bits. You can just keep the classes somewhere in your project.
 
+If you are using a custom provider and trust your own provider that the e-mails coming in are verified, you need to add `trusted_providers` with array of your own provider's handle:
+
+```php
+`trusted_providers => ['my-custom-provider']
+```
+
 ## Customizing user data
 
 After authenticating with the provider, Statamic will try to retrieve the corresponding user, or create one if it doesn't exist. You may customize how it's handled by adding a callback to your `AppServiceProvider`.
