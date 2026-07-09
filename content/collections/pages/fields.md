@@ -81,7 +81,7 @@ The visual UI and storage format for any given field is determined by its [field
 
 ## Augmentation
 
-Each field type has its own data storage format. Text and Markdown fields store strings (simple text), lists and YAML fields store arrays, Bard stores ProseMirror document objects, and so on.
+Each fieldtype has its own data storage format. Text and Markdown fields store strings (simple text), lists and YAML fields store arrays, Bard stores ProseMirror document objects, and so on.
 
 Each fieldtype has the ability to _augment_ this data when accessed from the frontend of your site, transforming it into whatever format is easiest to work with.  In Statamic v2 this would need to be done manually with [modifiers](/modifiers). For example:
 
