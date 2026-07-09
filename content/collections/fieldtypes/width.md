@@ -20,7 +20,7 @@ options:
 ---
 ## Overview
 
-An alternative to the [Button Group](/fieldtypes/button_group) or [Select](/fieldtypes/select) field types that is a bit more compact and visually appealing.
+An alternative to the [Button Group](/fieldtypes/button_group) or [Select](/fieldtypes/select) fieldtypes that is a bit more compact and visually appealing.
 
 ## Data structure
 
