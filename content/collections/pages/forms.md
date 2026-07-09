@@ -784,9 +784,6 @@ With Forms Pro you can control page logic in a few different ways:
   </li>
 </ol>
 
-- [List](#list)
-- [Tree view](#tree-view)
-
 #### Customizing page buttons
 
 Page buttons default to “Next” and “Previous” but you can customize them to say whatever you want. Tease your users with something informative or cheeky—“Let's find out what Star Sign you are!”, “Ready to find out your perfect career?”, “Which Ninja Turtle are you?”, etc.
