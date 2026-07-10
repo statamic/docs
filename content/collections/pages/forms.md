@@ -784,9 +784,13 @@ With Forms Pro you can control page logic in a few different ways:
   </li>
 </ol>
 
+:::tip
 The tree view uses `Esc` as a handy power-user shortcut. When you select a field or page, a side panel opens on the right so you can edit it.
 
+If the selected field has connected page logic, other connections are dimmed, making it easier to follow the one you’ve selected.
+
 Press `Esc` once to clear your selection. Press it again to close the side panel and return to the full-width view.
+:::
 
 #### Customizing page buttons
 
