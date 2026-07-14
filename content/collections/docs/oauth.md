@@ -89,6 +89,24 @@ If a provider requires ["stateless authentication"](https://laravel.com/docs/soc
 ],
 ```
 
+### Trusted providers
+
+The first time someone signs in with an OAuth provider, and no account is already linked to that provider, Statamic will try to match them to an existing Statamic user by email address.
+
+Since not every provider guarantees that the email it reports is verified, this email-based matching is limited to a trusted allow-list. By default, that's `google`, `github`, `apple`, `bitbucket`, `slack`, `slack-openid`, and `twitter-oauth-2`.
+
+You may customize the list with the `trusted_providers` option:
+
+``` php
+'trusted_providers' => [
+    'google',
+    'okta',
+    'your_provider',
+],
+```
+
+A provider that isn't on this list will never be matched to an existing account by email — only by a provider ID that's already been linked to that account. If no linked account is found, a new one will still be created when [`create_user`](#user-flow) is enabled; otherwise the user is redirected to the unauthorized page.
+
 ### Routes
 
 There are 2 required routes in order for the OAuth workflow to function:
