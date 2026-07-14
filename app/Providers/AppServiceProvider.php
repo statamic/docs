@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Markdown\Hint\HintExtension;
+use App\Markdown\Mermaid\MermaidExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
 use App\Search\Storybook\StorybookSearchProvider;
@@ -32,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Markdown::addExtensions(function () {
-            return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension];
+            return [new DescriptionListExtension, new HintExtension, new TabbedCodeBlockExtension, new AttributesExtension, new HeadingPermalinkExtension, new MermaidExtension];
         });
 
         if (! app()->runningConsoleCommand('search:update')) {
