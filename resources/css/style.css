@@ -69,6 +69,7 @@ scope;
 @import './components/tips-index.css';
 @import './components/video.css';
 @import './components/related.css';
+@import './components/mermaid.css';
 /* Components > Unique/Quriky */
 @import './components/list-turtles.css';
 @import './components/syntax-explainer.css';

@@ -1,0 +1,30 @@
+/* GROUP COMPONENTS / MERMAID
+=================================================== */
+/* Notes...
+
+    Renders mermaid diagrams from fenced code blocks, e.g.
+
+    ```mermaid
+    graph TD;
+        A-->B;
+    ```
+
+*/
+@layer components {
+    pre.mermaid {
+        overflow-x: auto;
+        text-align: center;
+        background: var(--color-body-background);
+        padding: var(--spacing-lg);
+
+        svg {
+            display: inline-block;
+            /* Overrides the [class^="c-"] svg icon-sizing rule in elements.css, which
+            otherwise shrinks the diagram down to icon size (1em) since it's nested
+            inside .c-entry-content. */
+            width: auto !important;
+            height: auto !important;
+            max-width: 100%;
+        }
+    }
+}
