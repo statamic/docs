@@ -102,4 +102,4 @@ We also support the negative use case using `{{ user:cant }}` tags.
 
 ## Permissions List
 
-Check out the the complete [list of user permissions](/users#permissions).
+Check out the the complete [list of user permissions](/permissions#native-permissions).

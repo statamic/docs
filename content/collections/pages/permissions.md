@@ -1,207 +1,100 @@
 ---
+id: 11434ba8-33f6-4229-b5d7-e4c9c3ea867e
+blueprint: page
 title: Permissions
+intro: 'Permissions are the individual abilities you tick when building a role — view entries, edit assets, manage users, and so on.'
 template: page
-updated_by: 42bb2659-2277-44da-a5ea-2f1eed146402
-updated_at: 1569347255
-id: ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
+pro: true
+related_entries:
+  - 5da3761e-cbf9-4faa-bc69-3cc0fab4ff29
+  - 3c4e7a62-bd05-4f93-8f03-55cd6ceec6d4
+  - 6b691e04-8f28-4eb2-8288-b61433883fe4
+  - ff397ebf-4b53-4dbd-b81b-0dec839e0e5f
 ---
-Permissions are the abilities that can be assigned to [Roles](/users#permissions).
-
-Out of the box, Statamic has its own set of permissions that you can choose from to configure your roles. However, you are free to add your own that can be used throughout your project, or included with addons.
-
-## Basic permissions
-
-You can register a basic permission in a service provider by specifying the string. Make sure to surround any permission registrations in a `Permission::extend` closure.
-
-``` php
-use Statamic\Facades\Permission;
-
-public function boot()
-{
-    Permission::extend(function () {
-        Permission::register('manage stuff')
-                  ->label('Manage Custom Stuff');
-    });
-}
-```
-
-This will add an option to the permissions list when editing a role in the Control Panel.
-
-If selected, this will add the permission string to the role:
-
-``` yaml
-permissions:
-  - manage stuff
-```
-
-## Nested permissions
-
-It could be useful to only allow some permissions if others have already been granted. For example, you want a tree like this:
-
-``` files theme:serendipity-light
-view blog entries
-    edit blog entries
-        create blog entries
-        delete blog entries
-```
-
-Initially, only the `view` option will be selectable. When you check it, then the `edit` option becomes selectable.
-Check that, and the `create` and `delete` options become selectable.
-
-This can be achieved by passing an array of permissions to the `children` method on the parent permission:
-
-``` php
-Permission::register('view blog entries', function ($permission) {
-    $permission->children([
-        Permission::make('edit blog entries')->children([
-            Permission::make('create blog entries'),
-            Permission::make('delete blog entries')
-        ])
-    ]);
-});
-```
-
-The second argument of the `register` method accepts a closure that allows you to modify the permission.
-
-
-## Policy based permissions
-
-When dealing with a permission that could apply to a variable number of items, it makes more sense to use a [Policy](https://laravel.com/docs/authorization#creating-policies).
-
-You may combine your policy with a wildcard permission. A new permission will be created for each item you require.
-
-For example, Statamic creates a `view {collection} entries` permission for each collection that exists.
-
-It does this by using a `replacements` method to return a list of items to determines the replacements. It should return an array of arrays where `value` is the string to be inserted into the permission, and a `label` to be inserted into the label.
-
-``` php
-Permission::register('view {collection} entries', function ($permission) {
-    $permission
-        ->label('View :collection entries')
-        ->replacements('collection', function () {
-            return Collection::all()->map(function ($collection) {
-                return [
-                    'value' => $collection->handle(),
-                    'label' => $collection->title()
-                ];
-            });
-    });
-});
-```
-
-To use your policy permissions, you should write the authorization checks from within a Policy class. For example:
-
-``` php
-class EntryPolicy
-{
-    public function edit($user, $entry)
-    {
-        return $user->hasPermission("view {$entry->collectionName()} entries");
-    }
-}
-```
-
-Finally, you may combine policy wildcard permissions with nested permissions.
-
-``` php
-Permission::register('view {collection} entries', function ($permission) {
-    $permission
-        ->label('View :collection entries')
-        ->replacements('collection', function () { /* ... */ });
-        ->children([
-            Permission::make('edit {collection} entries')->children([
-                Permission::make('create {collection} entries'),
-                Permission::make('delete {collection} entries')
-            ])
-        ])
-});
-```
-
 :::tip
-When using replacements, ensure your `label` string contains a placeholder prefixed with a colon.
+Permissions get bundled into [Roles](/roles), which you assign to [users](/users) or [user groups](/user-groups). Developers registering new abilities in PHP should see [Custom Permissions](/control-panel/custom-permissions).
 :::
 
-## Groups
+## Overview
 
-You can put your permissions in your own group. Give it a name, a label, and then any permissions created inside
-the callback will be added to that group.
+A permission is a single capability, identified by a string handle (e.g. `edit blog entries`). You don't assign permissions directly to users — you add them to a [role](/roles), then attach that role to users or groups.
 
-``` php
-Permission::group('myaddon', 'My Addon', function () {
-    Permission::make(...);
-});
-```
+Out of the box Statamic ships with the matrix below. Wildcard handles like `{collection}` or `{site}` expand once per matching item (one permission per collection, site, etc.).
 
-If you want to add permissions to an existing group (eg. the core ones like collections, taxonomies, etc.) you can
-just leave out the label argument:
+## Statamic's native permissions {#native-permissions}
 
-``` php
-Permission::group('collections', function () {
-    Permission::make(...);
-});
-```
+| Permission                                                | Handle                                       |
+| --------------------------------------------------------- | -------------------------------------------- |
+| Access the Control Panel                                  | `access cp`                                  |
+| Configure Sites                                           | `configure sites`                            |
+| Configure Fields                                          | `configure fields`                           |
+| Configure Form Fields                                     | `configure form fields`                      |
+| Manage Preferences                                        | `manage preferences`                         |
+| Access site                                               | `access {site} site`                         |
+| Create, edit, and delete collections                      | `configure collections`                      |
+| View entries                                              | `view {collection} entries`                  |
+| ↳  Edit entries                                           | `edit {collection} entries`                  |
+| &nbsp;&nbsp;↳  Create entries                             | `create {collection} entries`                |
+| &nbsp;&nbsp;↳  Delete entries                             | `delete {collection} entries`                |
+| &nbsp;&nbsp;↳  Publish entries                            | `publish {collection} entries`               |
+| &nbsp;&nbsp;↳  Reorder entries                            | `reorder {collection} entries`               |
+| &nbsp;&nbsp;↳  Edit other author's entries                | `edit other authors {collection} entries`    |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries  | `delete other authors {collection} entries`  |
+| Create, edit, and delete navs                             | `configure navs`                             |
+| ↳  View nav                                               | `view {nav} nav`                             |
+| &nbsp;&nbsp;↳  Edit nav                                   | `edit {nav} nav`                             |
+| Create, edit and delete global sets                       | `configure globals`                          |
+| Edit global variables                                     | `edit {global} globals`                      |
+| Create, edit and delete taxonomies                        | `configure taxonomies`                       |
+| View terms                                                | `view {taxonomy} terms`                      |
+| ↳ Edit terms                                              | `edit {taxonomy} terms`                      |
+| &nbsp;&nbsp;↳  Create terms                               | `create {taxonomy} terms`                    |
+| &nbsp;&nbsp;↳  Delete terms                               | `delete {taxonomy} terms`                    |
+| Configure asset containers                                | `configure asset containers`                 |
+| View asset container                                      | `view {container} assets`                    |
+| ↳  Upload assets                                          | `upload {container} assets`                  |
+| ↳  Edit folders                                           | `edit {container} folders`                   |
+| ↳  Edit assets                                            | `edit {container} assets`                    |
+| &nbsp;&nbsp;↳  Move assets                                | `move {container} assets`                    |
+| &nbsp;&nbsp;↳  Rename assets                              | `rename {container} assets`                  |
+| &nbsp;&nbsp;↳  Delete assets                              | `delete {container} assets`                  |
+| View users                                                | `view users`                                 |
+| ↳ Edit users                                              | `edit users`                                 |
+| &nbsp;&nbsp;↳ Create users                                | `create users`                               |
+| &nbsp;&nbsp;↳ Delete users                                | `delete users`                               |
+| &nbsp;&nbsp;↳ Change passwords                            | `change passwords`                           |
+| &nbsp;&nbsp;↳ Assign user groups                          | `assign user groups`                         |
+| &nbsp;&nbsp;↳ Assign roles                                | `assign roles`                               |
+| Edit user groups                                          | `edit user groups`                           |
+| Edit roles                                                | `edit roles`                                 |
+| Impersonate users                                         | `impersonate users`                          |
+| View updates                                              | `view updates`                               |
+| Configure forms                                           | `configure forms`                            |
+| View form submissions                                     | `view {form} form submissions`               |
+| &nbsp;&nbsp;↳ Delete form submissions                     | `delete {form} form submissions`             |
+| Configure addons                                          | `configure addons`                           |
+| Edit addon settings                                       | `edit {addon} settings`                      |
+| Access utility                                            | `access {utility} utility`                   |
+| Resolve Duplicate IDs                                     | `resolve duplicate ids`                      |
+| View GraphQL                                              | `view graphql`                               |
 
-## Adding to the core permissions
+Need something that isn't in this list? [Register a custom permission](/control-panel/custom-permissions).
 
-It's possible to add to the built-in permission tree if you need to.
+## Author permissions
 
-For example, maybe you want to add a permission to send tweets once an entry is published. You might want to jam
-that in every collection's permission tree under its 'edit' permission.
+Author permissions are a little bit special. They determine the control users can have over their own entries or those created by other authors.
 
-You can use the `addChild` method on an existing permission to inject it at that position.
+:::warning Important!
+This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
+:::
 
-``` php
-Permission::extend(function () {
-    Permission::get('edit {collection} entries')->addChild(
-        Permission::make('tweet {collection} entries')
-    );
-});
-```
+## Site permissions
 
+When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
 
-## Overriding Policies
+For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
 
-You may override policies by registering a binding in your AppServiceProvider.
+## Super users
 
-```php
-public function register()
-{
-    $this->app->bind(
-        \Statamic\Policies\EntryPolicy::class, 
-        \App\Policies\CustomEntryPolicy::class
-    );
-}
-```
-
-```php
-class CustomEntryPolicy extends \Statamic\Policies\EntryPolicy
-{
-    public function edit($user, $entry)
-    {
-        // ...
-    }
-}
-```
-
-Keep in mind that most of Statamic policies will grant access earlier if the user is a super user. If you need to disable or override the super user logic, you will need to also adjust the `before` method. For example:
-
-```php
-class CustomEntryPolicy extends \Statamic\Policies\EntryPolicy
-{
-    public function before($user, $ability) // [tl! **:start]
-    {
-        if ($ability === 'edit') {
-            // Returning null here will allow the method to be called.
-            return null;
-        }
-        
-        return parent::before($user, $ability);
-    } // [tl! **:end]
-    
-    
-    public function edit($user, $entry)
-    {
-        // ...
-    }
-}
-```
+[Super users](/users#super-users) bypass the permission matrix entirely. They aren't granted each permission — they skip the checks. Use them sparingly.
