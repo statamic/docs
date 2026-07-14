@@ -6,6 +6,9 @@ template: page
 pro: true
 related_entries:
   - 6b691e04-8f28-4eb2-8288-b61433883fe4
+  - f7676fe0-abb3-4a05-8530-6d23a9b5130d
+  - 9c953755-175e-48c1-a196-b840f5620587
+  - 5eab02e3-c76b-4f44-a304-6a78877d099f
 ---
 ## Overview
 
@@ -34,6 +37,8 @@ Add the provider to the [oauth config](#configuration). This will allow Statamic
 ``` php
 'providers' => [
     'github',
+    'apple',
+    // etc
 ],
 ```
 
@@ -51,17 +56,35 @@ If you plan to use a third party provider, follow the steps [below](#third-party
 
 ## Usage
 
-Send your users to the provider’s login URL to begin the OAuth workflow. Buttons for each configured provider will be available on the Control Panel's login page, but you may also do this on the front-end with the `oauth` tag:
+OAuth can be used to log in and to create new accounts.
+
+### Authenticating
+
+Send your users to the provider’s login URL to begin the OAuth workflow. Buttons for each configured provider will be available on the Control Panel's login page, but you may also do this on the front-end with the [`oauth` tag][tag]:
 
 ```
 <a href="{{ oauth:github }}">Log in with Github</a>
+
+{{# or with a loop... #}}
+
+{{ oauth }}
+  <a href="{{ url }}">Log in with {{ label }}</a>
+{{ /oauth }}
 ```
 
-Once they've logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
-They will then be automatically logged into your site with the Statamic account.
+Check out the [tag usage][tag] for more information.
 
-However, you may [customize the user flow](#user-flow).
+### Creating accounts
 
+If logged out and no existing user matches the provider account, Statamic will automatically create a new user the first time someone logs in with a provider. This behavior can be disabled via the `create_user` [config option](#user-flow).
+
+By default, only a subset of data will be copied to the new user account. You can customize this in [customizing user data](#customizing-user-data).
+
+### Connecting accounts
+
+A user can connect their account to any configured providers within their account area of the Control Panel.
+
+On the front-end, you can build your own OAuth connect/disconnect UI using the [`oauth` tags][tag].
 
 ## Configuration
 
@@ -89,18 +112,22 @@ If a provider requires ["stateless authentication"](https://laravel.com/docs/soc
 ],
 ```
 
+However, existing accounts cannot be connected to a stateless OAuth provider. They can only be used to create fresh accounts.
+
 ### Routes
 
-There are 2 required routes in order for the OAuth workflow to function:
+There are 3 routes involved in the OAuth workflow:
   - A login redirect route, which sends users to the provider's login page.
   - A callback route, which the provider will redirect to after a successful login.
+  - A disconnect route, which disconnects a provider from the current user's account.
 
 You may customize these in `config/statamic/oauth.php`:
 
 ``` php
 'routes' => [
     'login' => 'oauth/{provider}',
-    'callback' => 'oauth/{provider}/callback'
+    'callback' => 'oauth/{provider}/callback',
+    'disconnect' => 'oauth/{provider}/disconnect',
 ],
 ```
 
@@ -108,20 +135,30 @@ When you create your OAuth application, you will need to provide the callback UR
 
 ### User flow
 
-By default, once a user has logged in at their provider's site, they will be redirected back to your site where a Statamic user account will either be retrieved or created.
-They will then be automatically logged into your site with the Statamic account.
+Here's the complete flow, including the config options below that affect it:
 
-Additionally, any user data from the provider will be merged into that user's account.
-
-You may choose to customize this flow.
-
-```php
-'create_user' => true,
-'merge_user_data' => true,
-'unauthorized_redirect' => null,
+```mermaid
+flowchart TD
+    Start(["User clicks Log in button"]) --> Provider[Redirected to provider<br/>to authenticate]
+    Provider --> Callback[Redirected back<br/>to your site]
+    Callback --> UserConnected{Connected<br/>previously?}
+    UserConnected -->|Yes| MergeEnabled{Merge user data?}
+    MergeEnabled -->|Yes| Merge[Update user with<br/>latest data from provider]
+    MergeEnabled -->|No| LoggedIn
+    UserConnected -->|No| CreateEnabled{Create new users?}
+    CreateEnabled -->|Yes| Create[Create a new user]
+    CreateEnabled -->|No| Denied[Redirect to<br/>unauthorized page]
+    Create --> LoggedIn
+    Merge --> LoggedIn([User is logged in])
 ```
 
-By setting `'create_user' => false`, if a corresponding Statamic user account doesn't exist, one will not be created for them, and they will be redirected to the unauthorized error page.
+You may choose to customize this flow:
+
+| Option | Description |
+|--------|-------------|
+| `create_user` | Whether a new Statamic user account should be created when no matching user is found. If `false`, the user will be redirected to the unauthorized page instead. |
+| `merge_user_data` | Whether an existing user's data should be updated with the latest data from the provider each time they log in. |
+| `unauthorized_redirect` | The URL to redirect to when a user is denied access (for example, when `create_user` is `false` and no matching user exists). If left `null`, it will redirect to the Control Panel's unauthorized page when applicable, or to the home page. |
 
 ## Third party providers
 
@@ -242,3 +279,4 @@ private function userData($user)
 :::
 
 [socialite-providers]: https://socialiteproviders.com/
+[tag]: /tags/oauth
