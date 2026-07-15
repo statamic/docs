@@ -116,7 +116,7 @@ Finally, you may combine policy wildcard permissions with nested permissions.
 Permission::register('view {collection} entries', function ($permission) {
     $permission
         ->label('View :collection entries')
-        ->replacements('collection', function () { /* ... */ });
+        ->replacements('collection', function () { /* ... */ })
         ->children([
             Permission::make('edit {collection} entries')->children([
                 Permission::make('create {collection} entries'),
