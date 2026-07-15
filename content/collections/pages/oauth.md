@@ -150,6 +150,9 @@ flowchart TD
     CreateEnabled -->|No| Denied[Redirect to<br/>unauthorized page]
     Create --> LoggedIn
     Merge --> LoggedIn([User is logged in])
+
+    class LoggedIn ok
+    class Denied nope
 ```
 
 You may choose to customize this flow:
