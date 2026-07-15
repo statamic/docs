@@ -14,7 +14,9 @@
     pre.mermaid {
         overflow-x: auto;
         text-align: center;
-        background: var(--color-body-background);
+        background: light-dark(var(--color-pink-light-4), hsl(287deg 25% 12%));
+        border: 1px solid light-dark(var(--color-pink-light-2), hsl(287deg 20% 22%));
+        border-radius: var(--radius-lg, 0.75rem);
         padding: var(--spacing-lg);
 
         svg {
