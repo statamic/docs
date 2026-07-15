@@ -5,7 +5,7 @@ screenshot: fieldtypes/screenshots/v6/user-groups.webp
 screenshot_dark: fieldtypes/screenshots/v6/user-groups-dark.webp
 description: Create a relationship with a User Group
 overview: >
-  Use this fieldtype to create a relationship with [User Groups](/users#user-groups).
+  Use this fieldtype to create a relationship with [User Groups](/user-groups).
 pro: true
 options:
   -

@@ -11,7 +11,7 @@ id: 8c7f38bb-ee6f-43ee-b775-4eeae0a87bf3
 ---
 ## Overview
 
-User tags are designed for sites that have areas or features behind a login. The `user:is` tag is used to check if the currently logged in user has a one or more specific [roles](/users#permissions).
+User tags are designed for sites that have areas or features behind a login. The `user:is` tag is used to check if the currently logged in user has a one or more specific [roles](/roles).
 
 ## Example
 
@@ -71,4 +71,4 @@ We also support the negative use case using `user:isnt` tags.
 
 ## Super Users
 
-While [super users](/users#super-users) have [permission](/users#permissions) to do everything, they do not automatically inherit all roles. Keep this in mind when testing your template logic.
+While [super users](/users#super-users) have [permission](/permissions) to do everything, they do not automatically inherit all roles. Keep this in mind when testing your template logic.

@@ -67,9 +67,6 @@ tree:
         id: ae4b6bf9-31bb-4ec1-9976-cbf8f1d7d9a8
         entry: 6a18eac8-6139-419c-9d64-a2c960ccc3cd
       -
-        id: 140277d8-99fa-47eb-8e8f-c9f3cc9d65e3
-        entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
-      -
         id: 2b4da9ae-fbd2-4477-b59f-2daacd814df4
         entry: 93cf3f23-24c4-4722-a6e2-5b369e952a3b
   -
@@ -235,6 +232,18 @@ tree:
       -
         id: 4a2e132e-7fd6-4c84-95a1-ab6c732abf12
         entry: 4b77c19b-129c-4271-a724-eea884eb3e2e
+      -
+        id: 140277d8-99fa-47eb-8e8f-c9f3cc9d65e3
+        entry: 6b691e04-8f28-4eb2-8288-b61433883fe4
+      -
+        id: 58b91d3a-8864-495a-be7c-8e859b3c5cdc
+        entry: 3c4e7a62-bd05-4f93-8f03-55cd6ceec6d4
+      -
+        id: 10e619a7-7166-4548-8714-08ec80fed391
+        entry: 5da3761e-cbf9-4faa-bc69-3cc0fab4ff29
+      -
+        id: 8c4e2f1a-9b7d-4e6c-a5f0-3d2b1c0e9a87
+        entry: 11434ba8-33f6-4229-b5d7-e4c9c3ea867e
   -
     id: 54d885ee-1b58-41ed-9268-baca6e83e9e8
     title: Addons
