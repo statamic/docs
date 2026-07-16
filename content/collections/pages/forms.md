@@ -556,10 +556,8 @@ STATAMIC_FILE_UPLOADS_PATH=statamic/file-uploads
 Or in your `config/statamic/system.php` file:
 
 ```php
-'file_uploads' => [
-    'disk' => env('STATAMIC_FILE_UPLOADS_DISK', 'local'),
-    'path' => env('STATAMIC_FILE_UPLOADS_PATH', 'statamic/file-uploads'),
-],
+'file_uploads_disk' => env('STATAMIC_FILE_UPLOADS_DISK', 'local'),
+'file_uploads_path' => env('STATAMIC_FILE_UPLOADS_PATH', 'statamic/file-uploads'),
 ```
 
 :::tip
