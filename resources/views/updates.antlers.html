@@ -3,12 +3,14 @@
     {{ intro }}
 </header>
 
-<section class=mt-8 w-full">
+<section class="mt-8 w-full">
     <table>
         <thead>
-            <th>Page</th>
-            <th>Section</th>
-            <th>Last Updated</th>
+            <tr>
+                <th>Page</th>
+                <th>Section</th>
+                <th>Last Updated</th>
+            </tr>
         </thead>
         <tbody>
             {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="100" title:not="Documentation" scope="entry" }}

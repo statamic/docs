@@ -32,6 +32,7 @@ _*For more info, read more about [headers](https://laravel.com/docs/13.x/http-cl
 
 - [Sites Index](#sites-index)
 - [Create Site](#create-site)
+- [Update Site](#update-site)
 - [Delete Site](#delete-site)
 
 ### Sites Index
@@ -73,6 +74,9 @@ _*For more info, read more about [headers](https://laravel.com/docs/13.x/http-cl
 | --- | --- | --- |
 | `name` | yes | `Jurassic World` |
 | `domain` | no | `jurassicworld.ca` |
+| `domains` | no | `["jurassicworld.ca", "staging.jurassicworld.ca"]` |
+
+To license more than one domain (for example, a production domain and a staging domain) provide a `domains` array instead of a single `domain`. The first domain in the array is treated as the production domain and the rest as testing domains. You may provide `domain` or `domains`, but not both.
 
 #### Example Output
 
@@ -82,7 +86,38 @@ _*For more info, read more about [headers](https://laravel.com/docs/13.x/http-cl
     "name": "Jurassic World",
     "key": "pwkknrxl6y7z1n9v",
     "domains": [
-      "jurassicworld.ca"
+      "jurassicworld.ca",
+      "staging.jurassicworld.ca"
+    ],
+    "created_at": "2021-11-18 19:45:41"
+  }
+}
+```
+
+### Update Site
+
+#### `PATCH https://statamic.com/api/v1/sites/[your-site-key-here]`
+
+Any param you provide will override the site's current value. Params you leave out are left untouched. Providing `domain` or `domains` replaces _all_ of the site's existing domains.
+
+#### Params
+
+| Param | Required | Example |
+| --- | --- | --- |
+| `name` | no | `Jurassic World` |
+| `domain` | no | `jurassicworld.ca` |
+| `domains` | no | `["jurassicworld.ca", "staging.jurassicworld.ca"]` |
+
+#### Example Output
+
+```json
+{
+  "data": {
+    "name": "Jurassic World",
+    "key": "pwkknrxl6y7z1n9v",
+    "domains": [
+      "jurassicworld.ca",
+      "staging.jurassicworld.ca"
     ],
     "created_at": "2021-11-18 19:45:41"
   }

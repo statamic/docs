@@ -2,38 +2,35 @@
 id: 2af9fc45-66d0-4ca5-9761-00017076144f
 blueprint: page
 title: Navigation
-intro: 'A nav (or navigation for long) is a hierarchy of links and text nodes that are used to build navs and menus on the frontend of your site. Trust me, you''ve seen them before. You''re looking at one right now, just move your eyeballs up a little bit. Yeah, there it is.'
+intro: 'A nav is a freestyle structure for menus — headers, footers, sidebars, the chrome. It composes links; it does not own your URLs.'
 related_entries:
+  - 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
   - ed746608-87f9-448f-bf57-051da132fef7
   - 485f1703-fc6f-4d0f-94f2-e84ae625e1b7
-  - 3c34ef5c-781e-4a22-a09b-25f58bdb58a8
   - 35c9cd07-f377-4fcb-b02c-72c1925e6fdf
 ---
 ## Overview
 
-Each Nav is a [structure](/structures) giving you the ability to rearrange items through the delightful experience of dragging and dropping boxes.
+Need a header, footer, or mega-menu? That's a **nav**. Under the hood it's a [structure](/structures) — same tree UI — but the tree's job is composition, not URL ownership.
+
+Referenced entries keep the URLs defined by their collection. You can mix entry links, hardcoded URLs, and text-only nodes, and you can place the same entry more than once.
+
+Not sure whether you want a nav or a structured collection? Start with [Structures](/structures) — that's the decision page.
 
 <figure>
-    <img src="/img/collection-structure.webp" alt="A Statamic structure page tree" class="u-hide-in-dark-mode">
-    <img src="/img/structure-dark.webp" alt="A Statamic structure page tree" class="u-hide-in-light-mode">
+    <img src="/img/structure.webp" alt="A Statamic navigation tree" class="u-hide-in-dark-mode">
+    <img src="/img/structure-dark.webp" alt="A Statamic navigation tree" class="u-hide-in-light-mode">
 </figure>
 
-
-- You can **reference** entries, enter hardcoded URLs (internal or external), or enter simple text blocks (which can be used as section headers for dropdown navs, for example).
-- You can **choose** which collections' entries will be available to choose from.
-- Any referenced entries will use the URLs **defined by the collection**, regardless of the position in the Structure.
-- You can place the same entry **multiple** times. Two times, three times, four times, even six times are all possible numbers of times you can place something.
-
-
 :::watch https://www.youtube.com/embed/POgIsLeWGGQ
-Watch how to build a simple nav with a Structured Collection
+Watch how to build a simple nav
 :::
 
 ## Storage
 
 Navs are stored in `content/navigation`. Each gets its own YAML file whose handle matches its filename.
 
-The actual contents of the structure - the "tree" - is stored separately in `content/trees/navigation`.
+The tree itself lives separately in `content/trees/navigation`.
 
 ``` files theme:serendipity-light
 content/
@@ -41,8 +38,9 @@ content/
         header.yaml
         footer.yaml
     trees/
-        header.yaml
-        footer.yaml
+        navigation/
+            header.yaml
+            footer.yaml
 ```
 
 ``` yaml
@@ -57,7 +55,7 @@ collections:
 
 ## Templating
 
-You can work with the [nav](/tags/nav) to loop through and render your HTML with access to all the entries and nodes in the navigation.
+Loop a nav with the [nav tag](/tags/nav).
 
 ::tabs
 
@@ -71,17 +69,19 @@ You can work with the [nav](/tags/nav) to loop through and render your HTML with
 ```
 ::tab blade
 ```blade
-<statamic:nav:footer>
-  <li><a href="{{ $url }}">{{ $title }}</a></li>
-</statamic:nav:footer>
+<ul>
+  <statamic:nav:footer>
+    <li><a href="{{ $url }}">{{ $title }}</a></li>
+  </statamic:nav:footer>
+</ul>
 ```
 ::
 
-Within the tag pair, you will have access to any fields defined on that particular nav item - the item itself or the entry. See [blueprints and data](#blueprints-and-data) below for more information.
+Within the tag pair you get fields from that nav item — the branch itself or the referenced entry. See [blueprints and data](#blueprints-and-data) below.
 
 ## Collections
 
-Your navigation tree _may_ contain references to entries. The control panel's entry selector will show you entries across all collections by default. You may narrow down which collections will appear in the selector in the config area.
+Your navigation tree _may_ contain references to entries. The Control Panel's entry selector shows entries across all collections by default. Narrow which collections appear in the nav's config.
 
 <figure>
     <img src="/img/navigation-collection-picker.webp" alt="Configuring navigation collections" class="u-hide-in-dark-mode">
@@ -91,18 +91,16 @@ Your navigation tree _may_ contain references to entries. The control panel's en
 
 ## Blueprints and data
 
-Out of the box, nav items are fairly light. If you create a standard nav item, you can type in the URL and title. For entry reference nav items, you can override the title.
+Out of the box, nav items are fairly light. Standard items get a URL and title; entry references can override the title.
 
-If you'd like to add more data, you can add fields to the nav's blueprint.
-
-Any fields you add will appear in the editor pane in the control panel.
+Want more fields? Add them to the nav's blueprint. They show up in the editor pane.
 
 <figure>
     <img src="/img/navigation-page-editor.png" alt="Navigation Page Editor" width="448" height="282">
     <figcaption>The excerpt and icon fields have been added</figcaption>
 </figure>
 
-The data will be saved in a `data` key on the tree branch.
+Data saves under a `data` key on the tree branch.
 
 ``` yaml
 -
@@ -113,9 +111,8 @@ The data will be saved in a `data` key on the tree branch.
     icon: page.svg
 ```
 
-In the case of entry reference nav items, any fields you add to the nav blueprint will override the fields for that entry. This is useful if you intentionally want to override an entry's value. If you want to do this, make sure that you use the same fieldtype as what's in the entry's blueprint. A good way to handle that is to make a [reusable field](/blueprints#reusable-fields).
-
+For entry references, fields on the nav blueprint override the entry's fields for that branch. Useful when you intentionally want a different title/excerpt in the menu. Match the entry's fieldtype — a [reusable field](/blueprints#reusable-fields) is the clean way.
 
 ## Localization
 
-When running a [multi-site](/multi-site) installation, you can have a different tree for each nav. Learn more about [localizing navs](/tips/localizing-navigation).
+On a [multi-site](/multi-site) install you can have a different tree per site. See [localizing navs](/tips/localizing-navigation).

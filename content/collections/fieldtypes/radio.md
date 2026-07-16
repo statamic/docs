@@ -8,10 +8,10 @@ screenshot: fieldtypes/screenshots/v6/radio.webp
 screenshot_dark: fieldtypes/screenshots/v6/radio-dark.webp
 options:
   -
-    name: inline
-    type: bool
+    name: appearance
+    type: string *default*
     description: |
-      Show the radio buttons next to each other in a row instead of stacked vertically. Default: `false`
+      Choose how the radio buttons are displayed in the Control Panel. One of `default`, `inline`, or `chips`. Default: `default`.
 
   -
     name: options
@@ -45,6 +45,48 @@ You may omit the labels and just specify keys. If you use this syntax, the value
     - Ice Cream
     - Brownies
 ```
+
+### Appearance
+
+Use the `appearance` setting to change how options are rendered in the Control Panel:
+
+``` yaml
+favorite:
+  type: radio
+  appearance: chips
+  options:
+    donuts: Donuts
+    icecream: Ice Cream
+    brownies: Brownies
+```
+
+| Value | Description |
+|-------|-------------|
+| `default` | Standard radio buttons, stacked vertically. |
+| `inline` | Radio buttons in a horizontal row. |
+| `chips` | Pill-style buttons with larger touch targets. |
+
+:::tip
+`inline: true` still works on publish forms, but when you edit and save the field in the blueprint editor, Statamic converts it to `appearance: inline`.
+:::
+
+#### Chips
+
+The chips appearance option is new in Statamic v6.22. Chips are inline pill-style buttons with larger touch targets. You can select them in the control panel under the appearance setting or configure them in the blueprint YAML, as shown above.
+
+Chips are available for both radio and [checkbox](/fieldtypes/checkboxes) fieldtypes.
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/chips-configuration-radio.webp" alt="Chips configuration for radio fieldtype" class="u-hide-in-dark-mode" style="max-width: 100%;">
+    <img src="/img/fieldtypes/screenshots/v6/chips-configuration-radio-dark.webp" alt="Chips configuration for radio fieldtype" class="u-hide-in-light-mode" style="max-width: 100%;">
+    <figcaption>Appearance options for the radio fieldtype, including chips.</figcaption>
+</figure>
+
+<figure>
+    <img src="/img/fieldtypes/screenshots/v6/chips-on-a-publish-form-radio.webp" alt="Chips on a publish form for radio fieldtype" class="u-hide-in-dark-mode" style="max-width: 100%;">
+    <img src="/img/fieldtypes/screenshots/v6/chips-on-a-publish-form-radio-dark.webp" alt="Chips on a publish form for radio fieldtype" class="u-hide-in-light-mode" style="max-width: 100%;">
+    <figcaption>And here's what it looks like on a publish form.</figcaption>
+</figure>
 
 ### Options in blueprint YAML
 

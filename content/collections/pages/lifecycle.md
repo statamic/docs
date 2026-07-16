@@ -30,7 +30,7 @@ public function boot()
 ## Auth service provider boots
 
 As part of the boot process, Statamic will set up its permissions. If you'd like to do anything permission or auth
-related, (like adding custom [permissions](/extending/permissions)) you should wrap your provider code in a booted
+related, (like adding [custom permissions](/control-panel/custom-permissions)) you should wrap your provider code in a booted
 callback to ensure it happens _after_ Statamic has done its thing.
 
 ``` php

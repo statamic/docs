@@ -77,6 +77,24 @@
         /* Stop code elements with a long path in causing overflow. Source: https://stackoverflow.com/questions/1165497/how-to-prevent-text-from-overflowing-in-css#3791058 */
         word-wrap: break-word;
     }
+    .s-main kbd {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5rem;
+        min-width: 1.5rem;
+        padding-inline: 0.25rem;
+        border: 1px solid hsl(var(--color-pink-hue)100% 90%);
+        box-shadow: var(--box-shadow-pink-light-sm);
+        background: white;
+        @container style(--color-scheme: dark) {
+            background: var(--docsearch-key-gradient);
+            border: none;
+        }
+        font-family: var(--font-family-main);
+        font-size: var(--font-size-xs);
+        border-radius: 5px;
+    }
     /* Only descending from certain tags, otherwise torchlight is used */
     :is(h2, h3, h4, p, figure, li) {
         code {
@@ -524,8 +542,11 @@
         text-decoration-skip-ink: auto;
         text-underline-offset: 0.2rem;
         text-decoration-thickness: 1px;
-        text-decoration-color: light-dark(var(--color-primary-accent), var(--color-link));
+        text-decoration-color: light-dark(hsl(from var(--color-primary-accent) h s l / 0.5), hsl(from var(--color-link) h s l / 0.5));
         color: var(--color-link);
+    }
+    a {
+        text-decoration-line: underline;
     }
 }
 @layer elements {

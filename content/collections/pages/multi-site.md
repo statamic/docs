@@ -244,7 +244,7 @@ permissions:
   - access french site  # [tl!++]
 ```
 
-[Read more about permissions](/users#permissions)
+[Read more about permissions](/permissions)
 
 
 ## Per-Site Views {#views}

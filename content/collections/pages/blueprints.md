@@ -2,7 +2,7 @@
 id: 54548616-fd6d-44a3-a379-bdf71c492c63
 blueprint: page
 title: Blueprints
-intro: 'Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which field types they''ll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.'
+intro: 'Blueprints are a key component of the content modeling process. Inside a blueprint you define your fields, which fieldtypes they''ll implement, group them into sections if you desire, and define conditions controlling their visibility. The control panel uses blueprints to render publish forms so you can manage content.'
 related_entries:
   - 2940c834-7062-47a1-957c-88a69e790cbb
   - 9a1d8b88-c600-46f2-8727-1deb56f2e87a
@@ -34,6 +34,16 @@ There are 3 ways to create blueprints:
 - Creating a YAML file in the appropriate place within `resources/blueprints/`. More on that in a moment.
 
 Once created, you can begin to define fields and the sections that hold them. If you have more than one section, each becomes a tab in the publish form.
+
+## Blueprint Workflow and Keyboard Shortcuts
+
+Managing blueprints in the control panel is something you’ll be doing a lot. These contextual shortcuts help you save without losing your place in the stack.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | **New field** — Save the blueprint and close the stack overlay. |
+| <kbd>⌘</kbd> <kbd>S</kbd> | **Existing field** — Soft save the blueprint without closing the stack overlay. Useful when editing a blueprint in a second tab and switching back and forth. Unlike the **Save** button in the top right, the stack stays open. |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack overlay, at any depth. Works whether you're nested several levels deep or have a single stack open. |
 
 ## Directory Structure
 

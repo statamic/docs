@@ -26,7 +26,7 @@ id: 5a55198f-fcb6-4cb1-aacc-4aec3ad45003
 Use this fieldtype to create a one-way relationship with one or more structures in your site. It's a simple-little-helper type of thing.
 
 :::tip
-[Structures](/structures) come in two flavors: Ordered Collections and Navigations.
+[Structures](/structures) are trees with two jobs: structured collections (own URLs) and navigations (compose menus). Same fieldtype picks either.
 :::
 
 ## Data Storage

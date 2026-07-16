@@ -63,4 +63,4 @@ We also support the negative use case using the `{{ user:not_in }}` tag.
 
 ## Super Users
 
-While [super users](/users#super-users) have [permission](/users#permissions) to do everything, they are not automatically in all groups. Keep this in mind when testing your template logic.
+While [super users](/users#super-users) have [permission](/permissions) to do everything, they are not automatically in all groups. Keep this in mind when testing your template logic.
