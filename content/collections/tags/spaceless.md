@@ -6,7 +6,7 @@ intro: 'You formatted your Antlers nicely, and now there''s a mystery gap betwee
 ---
 ## Overview
 
-Prettier loves indenting your templates. Browsers turn that indentation into a visible gap between inline elements. `spaceless` strips whitespace-only gaps between tags in its rendered content, so your formatter can do its thing without leaving fingerprints in the DOM.
+Prettier and friends love breaking markup onto new lines, one tag per line, neatly indented. Browsers turn that line break into a visible gap between inline elements. `spaceless` strips whitespace-only gaps between tags in its rendered content, so your formatter can keep breaking lines without leaving fingerprints in the DOM.
 
 ::tabs
 ::tab antlers
