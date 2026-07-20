@@ -93,7 +93,7 @@ Permission::register('edit {form} form', function ($permission) {
 ```
 
 :::tip
-`hiddenBy` is purely visual. It doesn't grant anything, and it doesn't establish a hierarchy between permissions the way `children` does — it just avoids showing checkboxes that a broader permission already covers.
+`hiddenBy` only affects the roles UI. Unlike `children`, it doesn't grant anything or establish a hierarchy — it just keeps the checkbox out of sight once a broader permission already covers it.
 :::
 
 ## Policy based permissions
