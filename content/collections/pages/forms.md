@@ -784,7 +784,7 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
   - [Customizing page buttons](#customizing-page-buttons)
 - [Form summaries](#form-summaries)
 - [Form summary graphs](#form-summary-graphs)
-- [Dedicated form pages](#dedicated-form-pages)
+- [Automagic Forms](#automagic-forms)
 - Unique form instances per entry
 - Additional fieldtypes & connections
 - Enhanced spam prevention
@@ -1197,8 +1197,39 @@ Here are some other things worth knowing about graphs:
 - Some fieldtypes, such as the Dictionary fieldtype, support multiple graph styles. Simply click the graph type icon in the top-right corner to switch between them.
 - The Rating fieldtype automatically chooses the most appropriate layout. Ratings below 5 are shown as a horizontal bar chart, while ratings of 5 or more are displayed as a vertical bar chart.
 
-### Dedicated form pages
+### Automagic Forms
 
-TODO
+Sometimes you don't want to build a page for a form at all. **Automagic Forms** gives every form its own hosted, shareable page — no template or entry required. It's positioned similarly to Google Forms or Typeform's form pages, so non-technical clients can build and share a form without switching to another system.
+
+Form pages support your own branding, multi-page navigation, a progress bar, real-time validation, and file uploads.
+
+#### Enabling it on a form
+
+Each form has an **Automagic Forms** section in its configuration. Flip the **Enable Automagic Form** toggle and the form goes live at its own shareable URL.
+
+Once enabled, you can:
+
+- Copy the **Automagic Form URL** and share it with anyone you'd like to fill it out.
+- Customize the **Success Heading** and **Success Message** shown after a visitor submits.
+- Turn on **Let visitors fill out the form again?** to show a button on the confirmation page for starting a new submission, with a customizable **Fill out again button label**.
+
+#### Branding
+
+You can customize the look and feel of your Automagic Forms from **Addons → Forms Pro** in the Control Panel:
+
+- **Logo** — shown in the top-left corner of every Automagic Form. The asset container it's picked from can be set via `asset_container` in `config/forms-pro.php`; it defaults to your first container.
+- **Brand Color** — overrides the color used for buttons and the progress bar. Leave it blank to use the default colors.
+- **Background** — the background pattern shown behind every Automagic Form, picked from Steve Schoger's [Heropatterns](https://heropatterns.com/).
+
+#### Disabling Automagic Forms
+
+Automagic Forms are enabled by default. If you'd rather disable them entirely, turn them off in `config/forms-pro.php`:
+
+```php
+'automagic_forms' => [
+    'enabled' => false,
+    // ...
+],
+```
 
 [submissions]: /tags/form-submissions
