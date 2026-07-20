@@ -730,6 +730,7 @@ The [`form:create`](/tags/form-create) tag handles submissions for you, but you 
 ```php
 use Statamic\Facades\Form;
 use Statamic\Forms\SubmitForm;
+use Statamic\Exceptions\FormRestrictedException;
 use Statamic\Exceptions\SilentFormFailureException;
 use Illuminate\Validation\ValidationException;
 
@@ -744,6 +745,10 @@ try {
         );
 } catch (ValidationException $e) {
     return back()->withErrors($e->errors());
+} catch (FormRestrictedException $e) {
+    // The form is closed, its submission limit has been reached, or
+    // it requires login and the visitor is logged out.
+    return back()->withErrors(['*' => $e->getMessage()]);
 } catch (SilentFormFailureException $e) {
     // The honeypot was triggered, or an event listener rejected the
     // submission. To the user, it should appear as though it succeeded.
@@ -763,9 +768,10 @@ The action provides the following methods:
 | `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
 | `validate` | Validate the current page. Accepts an array of `$data` and an optional array of `$files`. Also accepts an array of field handles to limit which fields are validated. |
 
-:::tip
-When the [honeypot](#honeypot) catches spam — or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — a `SilentFormFailureException` is thrown rather than a validation error, so spam bots still see a success response. The submission data is available via `$e->submission()`.
-:::
+The action also throws various exceptions:
+
+- `SilentFormFailureException` is thrown when the [honeypot](#honeypot) catches spam, or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — so spam bots still see a success response. The submission data is available via `$e->submission()`.
+- `FormRestrictedException` is thrown when a form is [restricted](#restricting-submissions). Its message is the form's [restriction message](#restricting-submissions), and the restricted `Form` is available via `$e->form()`.
 
 ## Forms Pro
 
