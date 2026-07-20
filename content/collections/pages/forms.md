@@ -39,6 +39,10 @@ Each form should contain a title.
 title: Super Fans
 ```
 
+:::tip
+Statamic Core allows you to create a single form. To create any more, either enable [Statamic Pro](/getting-started/licensing) or install [Forms Pro](#forms-pro).
+:::
+
 ### Add your fields
 
 With your form created, you can start adding fields using the **Form Builder** in the Control Panel. Each field you add is a [form fieldtype](#form-fieldtypes) — like a short answer, dropdown, or file upload — and you can configure its display name, validation rules, and [logic](/conditional-fields) without leaving the Control Panel.
