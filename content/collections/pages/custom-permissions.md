@@ -72,6 +72,29 @@ Permission::register('view blog entries', function ($permission) {
 
 The second argument of the `register` method accepts a closure that allows you to modify the permission.
 
+## Hiding permissions covered by a broader one
+
+Sometimes a broader permission already grants everything a more specific one does — for example, `configure asset containers` already grants every ability `view {container} assets` guards. Rather than show redundant checkboxes for both, you can hide a permission behind one or more others with `hiddenBy`:
+
+``` php
+Permission::register('view {container} assets', function ($permission) {
+    $permission->hiddenBy('configure asset containers');
+});
+```
+
+When any of the hiding permissions are checked in the roles UI, this permission — and its children — disappear. Unchecking brings them back, with their checked state intact.
+
+You may pass an array to hide a permission behind more than one:
+
+``` php
+Permission::register('edit {form} form', function ($permission) {
+    $permission->hiddenBy(['configure forms', 'edit forms']);
+});
+```
+
+:::tip
+`hiddenBy` is purely visual. It doesn't grant anything, and it doesn't establish a hierarchy between permissions the way `children` does — it just avoids showing checkboxes that a broader permission already covers.
+:::
 
 ## Policy based permissions
 
