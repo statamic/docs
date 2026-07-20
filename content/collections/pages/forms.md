@@ -657,6 +657,15 @@ Statamic rejects restricted submissions server-side with a validation error, so 
 
 The message shown for a closed or limit-reached form can be customized with the **Closed Message** setting, and the message shown when login is required can be customized separately with **Require Login Message**. Leave either blank to use Statamic's default wording. If a form is both closed/limit-reached and requires login, the closed message takes precedence.
 
+## Localizing forms
+
+Form fields aren't yet localizable — a field's display label, instructions, and options are shared across every site. We're planning on adding support for this soon.
+
+In the meantime, you have a couple of options if you need a form's labels translated per site:
+
+- Use the [Translation Manager](https://statamic.com/addons/thoughtco/translation-manager) addon by Thought Collective, which lets you manage translations for content that isn't otherwise localizable.
+- Duplicate the form once per site, and translate its labels, instructions, and options by hand.
+
 ## Honeypot
 
 Simple and effective spam prevention.
