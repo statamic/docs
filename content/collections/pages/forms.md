@@ -631,6 +631,28 @@ Or in your `config/statamic/system.php` file:
 Since these are temporary files containing user uploads, you should use a private filesystem to prevent unauthorized access.
 :::
 
+## Restricting submissions
+
+Sometimes you don't want a form to accept submissions forever. From the form's settings, under **Access**, you can restrict submissions using any combination of:
+
+- **Close Date** — the form stops accepting submissions after this date.
+- **Submission Limit** — the maximum number of submissions to accept, optionally scoped to a period (Total, Per Day, Per Week, or Per Month). The limit resets at the app timezone's midnight, start of the week, or start of the month.
+- **Require Login** — only logged in visitors may submit the form.
+
+Statamic rejects restricted submissions server-side with a validation error, so nothing gets through even if you don't check for it in your template. You can also hide or replace the form's contents on the front-end using the `restricted` and `restriction_message` variables:
+
+```antlers
+{{ form:contact }}
+    {{ if restricted }}
+        <p>{{ restriction_message }}</p>
+    {{ else }}
+        {{ fields }} ... {{ /fields }}
+    {{ /if }}
+{{ /form:contact }}
+```
+
+The message shown for a closed or limit-reached form can be customized with the **Closed Message** setting, and the message shown when login is required can be customized separately with **Require Login Message**. Leave either blank to use Statamic's default wording. If a form is both closed/limit-reached and requires login, the closed message takes precedence.
+
 ## Honeypot
 
 Simple and effective spam prevention.
