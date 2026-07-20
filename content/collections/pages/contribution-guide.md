@@ -10,6 +10,10 @@ First, you need to create a fork of the repo. A fork is a copy of the repo where
 
 Head to the [cms repo][cms-repo] and click the "Fork" button at the top right.
 
+:::tip
+If you use AI tools that write code (Claude, Codex etc.), please review changes carefully before opening a pull request. This helps us to maintain our code quality and speeds up the review process, which can be a lot of work.
+:::
+
 ## Clone it
 Once you have a fork, you can clone it on your local machine with git. It can go anywhere - you probably already have a folder where your projects live. Most people use `~/Sites/` or `~/Code`.
 

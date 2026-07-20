@@ -1,91 +1,85 @@
 ---
 id: 2093f557-8d4a-4baf-bf5c-cbbf584acd3b
 blueprint: page
-title: 'How to Install Statamic Locally'
-nav_title: Local
-intro: 'Fast-track local install for getting Statamic running on your computer or development machine.'
+title: 'How to Install Statamic with the CLI'
+nav_title: CLI
+intro: 'Install Statamic anywhere you already have PHP and Composer — Linux, custom environments, or anytime you prefer the terminal over a guided Herd setup.'
 parent: ab08f409-8bbe-4ede-b421-d05777d292f7
 ---
 ## Overview
 
-Running Statamic locally is the preferred method for building and maintaining your sites. With version control (we recommend git), it's quite simple to deploy changes almost instantly from your local computer to a live site with a single command.
+On Mac or Windows and just getting started? Use **[Laravel Herd](/installing/laravel-herd)** instead. It installs PHP, Composer, and a local web server for you — that's our recommended path.
 
-:::watch https://youtube.com/embed/zuKZQNUYSf8
-Feel free to watch instead of read!
-:::
-
-:::tip Heads up!
-This video assumes you're serving your local sites using [Laravel Valet][valet].
-:::
+This page is the CLI-first install for when you already have a working PHP environment (or you're on Linux and setting things up yourself). Same end result: a fresh Statamic site via `statamic new`.
 
 ## Prerequisites
 
-To install Statamic locally you will need the following:
+You'll need:
 
-- A computer running MacOS, Windows, or Linux
-- A supported version of [PHP](https://php.net) (we recommend PHP 8)
+- A computer running macOS, Windows, or Linux
+- [PHP 8.3+](https://php.net) with the [required extensions](/requirements)
 - [Composer](https://getcomposer.org) to manage PHP packages
 
-## Install Statamic CLI
+macOS and Windows users who don't already have these: install [Laravel Herd](/installing/laravel-herd). It gives you PHP, Composer, and npm in one shot.
 
-Statamic CLI is a commandline tool to help you get Statamic installed quickly and easily. The package can be installed on your machine using Composer:
+## Install Statamic CLI
 
 ``` shell
 composer global require statamic/cli
 ```
 
-Once installed, you can run the command `statamic list` to see a list of available commands.
+Confirm it worked:
+
+``` shell
+statamic list
+```
 
 :::tip
-If you run into any issues or errors, check out this [helpful article](/troubleshooting/fixing-issues-with-global-composer-packages) on what to do next.
+Hit a `command not found` or PATH issue? See [troubleshooting global Composer packages](/troubleshooting/fixing-issues-with-global-composer-packages) and [command not found: statamic](/troubleshooting/command-not-found-statamic).
 :::
 
-## Install Statamic
-In your terminal, `cd` to the parent directory you want to start a new Statamic project in and run the install command.
+The CLI is a nicer wrapper around `composer create-project`. You can skip it and run `composer create-project statamic/statamic project_name` if you prefer — you'll just miss the setup wizard (starter kits, first user, git init).
+
+## Create a new site
+
+`cd` to wherever you keep projects and run:
 
 ``` shell
 statamic new project_name
 ```
 
-You'll be asked if you want to install a blank site or a [Starter Kit](/starter-kits). If this is your first time, we usually recommend starting with a blank site. Keep it simple.
+You'll be asked whether you want a blank site or a [Starter Kit](/starter-kits). First time? Blank site. Keep it simple.
 
-Next, you'll be prompted to set up your first super admin user. Do it.
+Then create your first super user when prompted. Do it.
 
-_After that_, everything is finished!
+If you're using [Herd](https://herd.laravel.com), create the site inside your Herd directory (usually `~/Herd`) so it gets a `*.test` URL automatically.
 
 ## Accessing the site
 
-The address where you access the site will be different depending on your development environment.
+How you hit the site depends on your environment:
 
-For example, if you're using [Valet][valet] then your site would be at `http://$project_name.test` and the Control Panel at `/cp`.
-
-If you don't have Valet or some other server set up, you can run `php artisan serve` to use the built-in server, then use the URL it provides, (which is typically `http://127.0.0.1:8000`).
+| Environment | Frontend | Control Panel |
+| --- | --- | --- |
+| [Laravel Herd](/installing/laravel-herd) | `http://project_name.test` | `/cp` |
+| Built-in PHP server | run `php artisan serve` → usually `http://127.0.0.1:8000` | `/cp` |
 
 ```cli
 $ php artisan serve
 Starting Laravel development server: http://127.0.0.1:8000
 ```
 
+Herd (or any proper local nginx/valet-style setup) is nicer for day-to-day work — pretty URLs, multiple sites, no juggling ports. `artisan serve` is fine for a quick smoke test.
+
 ## Troubleshooting
 
-If your local environment is reasonably "up to date", everything should have gone smoothly. But let's face it, tech doesn't always work the way it's supposed to on the [first try](https://www.youtube.com/watch?v=3KDnrGdpNZY).
-
-Check out the [troubleshooting section](/troubleshooting) to get help about common error messages.
+If your environment is current, this usually Just Works™. When it doesn't, check the [troubleshooting section](/troubleshooting) for common error messages.
 
 ## What's Next
 
-You're now (probably) running the latest and greatest version of Statamic! Well done! 🎉 You can now get on with the fun parts.
+You're running Statamic. Nice. 🎉
 
-The [Quick Start Guide](/quick-start-guide) is a great place to head next if you're just kicking the tires (or tyres — if you're not from our neck of the woods).
+Head to the [Quick Start Guide](/quick-start-guide) if you're kicking the tires, or [Laracasts](https://laracasts.com/series/learn-statamic-with-jack) if you'd rather watch someone else click around first.
 
 :::tip
-You can use Pro features while in development (like users, permissions revisions, REST API, and so on), by setting `'pro' => true` in `config/statamic/editions.php`.
+Use Pro features while developing (users, permissions, GraphQL, REST API, and more) by setting `'pro' => true` in `config/statamic/editions.php`.
 :::
-
-:::tip Another Hot Tip
-The default install and all first-party Starter Kits use [TailwindCSS](https://tailwindcss.com/docs/just-in-time-mode) in Just In Time mode, so anytime you change classes in your HTML you'll need to recompile your CSS.
-
-This is super easy and happens automatically when you run `npm run dev` from the terminal in your project directory (as long as you've run `npm install` first).
-:::
-
-[valet]: https://laravel.com/docs/valet

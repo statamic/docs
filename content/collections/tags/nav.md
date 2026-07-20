@@ -129,7 +129,7 @@ This tag is designed to be used for top-level and multi-level navs.
 
 ## Navs or Collections
 
-The nav tag supports both [navigations](/navigation) or multi-depth [collections](/collections).
+The nav tag supports both [navigations](/navigation) and multi-depth [collections](/collections). Deciding which tree you need? See [Structures](/structures).
 
 You specify what kind you need by using the second tag part:
 

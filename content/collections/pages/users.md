@@ -6,6 +6,9 @@ intro: 'Users are the member accounts to your site or application. What a user c
 template: page
 pro: true
 related_entries:
+  - 5da3761e-cbf9-4faa-bc69-3cc0fab4ff29
+  - 3c4e7a62-bd05-4f93-8f03-55cd6ceec6d4
+  - 11434ba8-33f6-4229-b5d7-e4c9c3ea867e
   - 878f0dd7-2d31-479c-b58d-bc60685fa7d2
   - 748f88ce-85f6-491b-8e9c-fa2b1895be31
   - 4c3f5caa-a861-4ffd-a856-1692cafeb870
@@ -52,7 +55,7 @@ You're more than welcome — encouraged even — to customize what fields and in
 
 To customize these fields, edit the included `user` [blueprint](/blueprints) and configure it however you'd like.
 
-## Permissions
+## Access control {#permissions}
 
 <div class="c-pro-badge">
     <a href="/licensing">
@@ -62,101 +65,21 @@ To customize these fields, edit the included `user` [blueprint](/blueprints) and
     </a>
 </div>
 
-A User by itself has no permission to access or change any aspect of Statamic. It takes explicit permissions for a user to access the control panel, create, edit, or publish content, create users, and so on.
+A user by itself can't access or change anything in the Control Panel. Access is granted through this stack:
 
-Permissions are grouped into **roles**, and are very simple to manage in the Control Panel and are stored in `resources/users/roles.yaml`.
+1. **[Permissions](/permissions)** — individual abilities (`edit blog entries`, `access cp`, …)
+2. **[Roles](/roles)** — named bundles of those permissions
+3. **Users / [groups](/user-groups)** — who gets which roles
 
-In turn, **roles** are attached directly to individual users or [user groups](#user-groups).
+Most of the time you'll create a role, tick the permissions it needs, then assign that role to users (or a [user group](/user-groups)). Developers adding new abilities in PHP should see [Custom Permissions](/control-panel/custom-permissions).
 
-### Statamic's native permissions {#native-permissions}
-
-| Permission                                                | Handle                                       |
-| --------------------------------------------------------- | -------------------------------------------- |
-| Access the Control Panel                                  | `access cp`                                  |
-| Configure Sites                                           | `configure sites`                            |
-| Configure Fields                                          | `configure fields`                           |
-| Configure Form Fields                                     | `configure form fields`                      |
-| Manage Preferences                                        | `manage preferences`                         |
-| Access site                                               | `access {site} site`                         |
-| Create, edit, and delete collections                      | `configure collections`                      |
-| View entries                                              | `view {collection} entries`                  |
-| ↳  Edit entries                                           | `edit {collection} entries`                  |
-| &nbsp;&nbsp;↳  Create entries                             | `create {collection} entries`                |
-| &nbsp;&nbsp;↳  Delete entries                             | `delete {collection} entries`                |
-| &nbsp;&nbsp;↳  Publish entries                            | `publish {collection} entries`               |
-| &nbsp;&nbsp;↳  Reorder entries                            | `reorder {collection} entries`               |
-| &nbsp;&nbsp;↳  Edit other author's entries                | `edit other authors {collection} entries`    |
-| &nbsp;&nbsp;&nbsp;&nbsp;↳  Publish other author's entries | `publish other authors {collection} entries` |
-| &nbsp;&nbsp;&nbsp;&nbsp;↳  Delete other author's entries  | `delete other authors {collection} entries`  |
-| Create, edit, and delete navs                             | `configure navs`                             |
-| ↳  View nav                                               | `view {nav} nav`                             |
-| &nbsp;&nbsp;↳  Edit nav                                   | `edit {nav} nav`                             |
-| Create, edit and delete global sets                       | `configure globals`                          |
-| Edit global variables                                     | `edit {global} globals`                      |
-| Create, edit and delete taxonomies                        | `configure taxonomies`                       |
-| View terms                                                | `view {taxonomy} terms`                      |
-| ↳ Edit terms                                              | `edit {taxonomy} terms`                      |
-| &nbsp;&nbsp;↳  Create terms                               | `create {taxonomy} terms`                    |
-| &nbsp;&nbsp;↳  Delete terms                               | `delete {taxonomy} terms`                    |
-| Configure asset containers                                | `configure asset containers`                 |
-| View asset container                                      | `view {container} assets`                    |
-| ↳  Upload assets                                          | `upload {container} assets`                  |
-| ↳  Edit folders                                           | `edit {container} folders`                   |
-| ↳  Edit assets                                            | `edit {container} assets`                    |
-| &nbsp;&nbsp;↳  Move assets                                | `move {container} assets`                    |
-| &nbsp;&nbsp;↳  Rename assets                              | `rename {container} assets`                  |
-| &nbsp;&nbsp;↳  Delete assets                              | `delete {container} assets`                  |
-| View users                                                | `view users`                                 |
-| ↳ Edit users                                              | `edit users`                                 |
-| &nbsp;&nbsp;↳ Create users                                | `create users`                               |
-| &nbsp;&nbsp;↳ Delete users                                | `delete users`                               |
-| &nbsp;&nbsp;↳ Change passwords                            | `change passwords`                           |
-| &nbsp;&nbsp;↳ Assign user groups                          | `assign user groups`                         |
-| &nbsp;&nbsp;↳ Assign roles                                | `assign roles`                               |
-| Edit user groups                                          | `edit user groups`                           |
-| Edit roles                                                | `edit roles`                                 |
-| Impersonate users                                         | `impersonate users`                          |
-| View updates                                              | `view updates`                               |
-| Configure forms                                           | `configure forms`                            |
-| View form submissions                                     | `view {form} form submissions`               |
-| &nbsp;&nbsp;↳ Delete form submissions                     | `delete {form} form submissions`             |
-| Configure addons                                          | `configure addons`                           |
-| Edit addon settings                                       | `edit {addon} settings`                      |
-| Access utility                                            | `access {utility} utility`                   |
-| Resolve Duplicate IDs                                     | `resolve duplicate ids`                      |
-| View GraphQL                                              | `view graphql`                               |
-
-### Author permissions
-
-Author permissions are a little bit special. They determine the control users can have over their own entries or those created by other authors.
-
-:::warning Important!
-This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
-:::
-
-### Site permissions
-
-When using the [multi-site](/multi-site) feature, Statamic will check for appropriate site permissions in addition to whatever it's checking.
-
-For example, when you try to edit a `blog` entry in the `french` site, Statamic will check if you have both the `edit blog entries` and `access french site` permissions.
-
-### Super users
+## Super users {#super-users}
 
 Super Admin accounts are special accounts with **access and permission to everything**. This includes things reserved only for super users like the ability to _create more super users_. It's important to prevent the robot apocalypse and this is an important firewall. We're just doing our part to save the world.
 
-## User groups
+## User groups {#user-groups}
 
-<div class="c-pro-badge">
-    <a href="/licensing">
-        <div class="c-pro-badge__text">
-            <span>⭐️</span> Pro Feature <span>⭐️</span>
-        </div>
-    </a>
-</div>
-
-User groups allow you to attach roles, include users, thereby assign all the corresponding permissions automatically. This approach is much simpler than assigning roles individually if you have a lot of users.
-
-User groups are stored in `resources/users/groups.yaml`.
+When several people share the same access, put them in a [user group](/user-groups) and attach [roles](/roles) once on the group instead of per user.
 
 ## Password resets
 

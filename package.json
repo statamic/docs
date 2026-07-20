@@ -25,6 +25,7 @@
         "@tailwindcss/vite": "^4.1.12",
         "dayjs": "^1.10.7",
         "meilisearch-docsearch": "^0.7.1",
+        "mermaid": "^11.16.0",
         "tailwindcss": "^4.1.12"
     }
 }

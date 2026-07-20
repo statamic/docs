@@ -6,7 +6,7 @@ screenshot: fieldtypes/screenshots/v6/user-roles.webp
 screenshot_dark: fieldtypes/screenshots/v6/user-roles-dark.webp
 description: 'Create a relationship with a User Role'
 overview: |
-  Use this fieldtype to create a relationship with [User Roles](/users#user-roles).
+  Use this fieldtype to create a relationship with [Roles](/roles).
 pro: true
 options:
   -

@@ -37,7 +37,7 @@ password_hash: $2y$10$Vopn8T7e.EMVEjxdP5p.g.AU5GTTN4RklvgR2l0dTwSPeJal91v/q
 
 ## Assigning Non-Super Roles
 
-If you've created roles with limited permissions, you can assign those to your user's YAML file in an array:
+If you've [created roles](/roles) with limited permissions, you can assign those to your user's YAML file in an array:
 
 ``` yaml
 roles:
