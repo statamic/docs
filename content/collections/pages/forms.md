@@ -797,7 +797,13 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
    composer require statamic/forms-pro
    ```
 
-2. You can now use Forms Pro's features when building and configuring forms in the Control Panel.
+2. Next, publish the configuration file to `config/forms-pro.php`:
+
+   ```bash
+   php artisan vendor:publish --tag=forms-pro-config
+   ```
+
+3. You can now use Forms Pro's features when building and configuring forms in the Control Panel.
 
 ### Address fieldtype
 
