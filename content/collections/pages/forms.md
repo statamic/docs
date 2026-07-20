@@ -758,6 +758,7 @@ When the [honeypot](#honeypot) catches spam — or an event listener returns `fa
 
 Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
 
+- [Address fieldtype](#address-fieldtype)
 - [Multi-page forms](#multi-page-forms)
   - [Controlling page logic](#controlling-page-logic)
   - [The page logic tree view](#tree-view)
@@ -778,6 +779,85 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
    ```
 
 2. You can now use Forms Pro's features when building and configuring forms in the Control Panel.
+
+### Address fieldtype
+
+Forms Pro ships an **Address** fieldtype with localized field labels and autocomplete powered by [Google Places](https://developers.google.com/maps/documentation/places/web-service/place-autocomplete) or [Geoapify](https://www.geoapify.com/).
+
+#### Localization
+
+Address formats differ by country, so the field adapts itself to country changes:
+
+- The "Region" label becomes "State", "Province", "County", "Prefecture", and so on. It's hidden entirely for countries that don't use one.
+- The "Postcode" label becomes "ZIP Code", "Postal Code", "Eircode", and so on. It's likewise hidden where it doesn't apply.
+- Some countries (the US, Canada, China, and Italy) require a region, so it's marked as required even when the field as a whole is optional.
+
+You can set a **Default Country** in the field's configuration to control which country — and therefore which labels — are shown by default.
+
+#### Autocomplete
+
+To enable autocomplete, specify a provider and publishable API key in your `.env`:
+
+```env
+FORMS_PRO_ADDRESS_AUTOCOMPLETE_PROVIDER=google # or: geoapify
+FORMS_PRO_ADDRESS_AUTOCOMPLETE_KEY=your-key
+```
+
+Typing into the "Line 1" field suggests addresses; picking one fills in the rest of the fields. Forms Pro supports two autocomplete providers:
+
+- **Google Places** — the best data, and the only provider that returns unit numbers, handles UK postal towns, and per-country administrative levels. A billing account (payment method) is required to obtain an API key.
+- **Geoapify** — free up to 3,000 requests per day. It doesn't have the concept of a "subpremise" — the sub-unit of a building, like a flat number in the UK — so it won't fill in Line 2.
+
+#### Customizing the front-end
+
+Like Statamic's own form fieldtypes, the Address fieldtype ships with basic stubs to get up and running. If you wish to customize how the field is rendered, you may publish the Antlers/Blade views into your project with:
+
+```bash
+php artisan vendor:publish --tag=forms-pro-fields
+```
+
+The stubs will be published to `resources/views/vendor/forms-pro/forms`.
+
+You'll also need to publish Forms Pro's JS and add it to your layout. Without it, the field still renders and submits, but labels won't localize and autocomplete won't work:
+
+```bash
+php artisan vendor:publish --tag=forms-pro-frontend
+```
+
+```html
+<script src="/vendor/forms-pro/frontend/js/forms-pro.js"></script>
+```
+
+Forms Pro binds what it needs to `data` attributes, so as long as you keep them, you're free to customize the markup:
+
+- `data-forms-pro-address` — the root element.
+- `data-address-field` — wraps a sub-field, so it can be hidden for countries that don't use it.
+- `data-address-input` — the `<input>`/`<select>` itself. Read and written by autocomplete.
+- `data-address-error` — where a validation error is displayed.
+- `data-labels` and `data-autocomplete` — configuration, passed through from the fieldtype.
+
+##### Autocomplete markup
+
+You can find the suggestions dropdown's markup in the published view:
+
+```antlers
+<template data-address-suggestions>
+    <ul class="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg">
+        <li data-address-option class="px-3 py-2 aria-selected:bg-gray-100">
+            <span data-address-label></span>
+        </li>
+        <li data-address-attribution class="px-3 py-1 text-xs text-gray-500"></li>
+    </ul>
+</template>
+```
+
+- `[data-address-option]` is a prototype, cloned once per suggestion.
+- `[data-address-label]` is where the suggestion text is written. It's optional — omit it and the text goes into the option itself.
+- `[data-address-attribution]` receives the provider's required attribution, and must not be removed.
+
+Forms Pro applies the roles, IDs, and ARIA state itself, so restyling can't break the combobox. Since the active option is marked with `aria-selected`, Tailwind's `aria-selected:` variant is enough for the highlight state.
+
+The dropdown is inserted directly after the "Line 1" input, so give that field's wrapper `position: relative` to position it.
 
 ### Multi-page forms
 
