@@ -79,3 +79,84 @@ You can access other data of the link field by using it like an array. This coul
 {{ $link_field['title'] }}
 ```
 ::
+
+## Extending
+
+Addons can register their own link types, adding new options to the type selector alongside URL, Entry, and Asset.
+
+Register a link type by giving `Statamic\Fieldtypes\Link` a handle and a class extending `Statamic\Fieldtypes\Link\LinkType`, typically from a service provider's `boot()` method:
+
+```php
+use Statamic\Fieldtypes\Link;
+
+Link::extend('form', \App\FormLinkType::class);
+```
+
+Your `LinkType` class controls how the type is displayed, how a stored value resolves back to a real link, and what fieldtype powers its picker:
+
+```php
+<?php
+
+namespace App;
+
+use Statamic\Facades\Form;
+use Statamic\Fields\Field;
+use Statamic\Fieldtypes\Link\LinkType;
+
+class FormLinkType extends LinkType
+{
+    protected ?string $icon = 'forms';
+
+    public function title(): string
+    {
+        return 'Form';
+    }
+
+    public function resolve(string $id, $parent = null, bool $localize = false): mixed
+    {
+        $form = Form::find($id);
+
+        if (! $form) {
+            return;
+        }
+
+        return "/forms/{$form->handle()}";
+    }
+
+    public function fieldtype(Field $field): ?array
+    {
+        return ['type' => 'form', 'max_items' => 1];
+    }
+}
+```
+
+Values are stored with your handle as a prefix, the same way entries and assets are (for example `form::contact-us`).
+
+Once registered, your type automatically gets its own picker in the field's type selector, rendered using whatever fieldtype you return from `fieldtype()`.
+
+If your link type needs its own config options in the field's config sidebar — similar to how Entry has `collections` and Asset has `container` — override `configFieldItems()`:
+
+```php
+public function configFieldItems(): array
+{
+    return [
+        'forms' => [
+            'display' => 'Forms',
+            'instructions' => 'Restrict which forms are available.',
+            'type' => 'forms',
+            'mode' => 'select',
+        ],
+    ];
+}
+```
+
+A link type is shown by default. To only show it conditionally — for example, the Asset option only appears once a `container` is configured — override `visible()`:
+
+```php
+public function visible(Field $field): bool
+{
+    return $field->get('forms') !== null;
+}
+```
+
+Custom link types also become available in [Bard](/fieldtypes/bard#custom-link-types)'s link button.
