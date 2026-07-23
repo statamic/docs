@@ -422,26 +422,29 @@ Then, to make the exporter available on your forms, simply add it to your forms 
 
 Out of the box, you'll only know about a submission when you head into the Control Panel to view it. Most of the time you'll want something to happen when a form is submitted — like being notified by email.
 
-**Connections** let you send submissions off to other places. Statamic ships with an Email connection out of the box, and more will be added over time.
+**Connections** let you send submissions off to other places. Statamic ships with Email and Webhook connections out of the box.
+
+You'll find them in the **Connect** area of your form in the Control Panel, along with how many of each are configured.
+
+_TODO: Screenshot of the Connect area_
 
 ### Email
 
-The Email connection sends an email whenever a form is submitted. You can add any number of emails to your form.
+The Email connection sends emails whenever the form is submitted. You can add any number of emails to your form, each with their own settings.
 
-```yaml
-email:
-  -
-    to: hello@celebrity.com
-    from: website@celebrity.com
-    subject: You've got fan mail!
-    html: fan-mail
-    text: fan-mail-text
-  -
-    to: agent@celebrity.com
-    subject: Someone still likes your client
-```
+The Recipient, CC, BCC, Sender and Reply-To fields suggest your form's fields — so you can send the email to whatever address the visitor submitted — and you can type email addresses in directly (including the `Jack Black <jack@jackblack.com>` syntax) to send to fixed addresses.
 
-Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses custom html and text views while the other doesn't, so it'll get an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
+Each email can be sent for every submission, or only when the submission matches a set of conditions — like only sending the "sales" email when the visitor picked "Sales" from your enquiry type field.
+
+_TODO: Screenshot of configuring an email_
+
+#### The email body
+
+You can write the email body directly in the Control Panel — no need to create any views. Use `@` to insert your form's fields into the body.
+
+If you'd rather have full control over the email's design, you can specify custom HTML and Text views instead. To output the written body inside your view, use `{{ email_config:body }}`. When there's no body and no views, Statamic will send an "automagic" email — a simple text email with a list of all the fields and values in the submission.
+
+[Learn how to create your emails](/email)
 
 #### Email variables
 
@@ -451,7 +454,7 @@ Inside your email view, you have a number of variables available:
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
-- `email_config` - The email's config (the current item from your `email:` array)
+- `email_config` - The email's config
 - `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
@@ -502,59 +505,25 @@ In each iteration of the `fields` array, you have access to:
 
 #### Setting the from and reply-to name
 
-You can set a full "From" and "Reply-To" name in addition to the email address using the following syntax:
+You can set a full "From" and "Reply-To" name in addition to the email address by typing it into the Sender or Reply-To fields using the following syntax:
 
 ```
-from: 'Jack Black <jack@jackblack.com>'
-reply_to: 'Jack Black <jack@jackblack.com>'
+Jack Black <jack@jackblack.com>
 ```
 
+#### Dynamic recipients and subjects
 
-#### Setting the recipient dynamically
+The address fields suggest your form's fields — select one and the address the visitor submitted will be used when the email is sent. For example, selecting your "Email Address" field as the Reply-To means you can hit reply in your inbox to respond directly to the visitor.
 
-You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
+The Subject field supports Antlers, so you can reference submitted values there too using their field handles:
 
-```yaml
-email:
-  -
-    to: "{{ email }}"
-    # other settings here
 ```
-
-#### Setting the "Reply to" dynamically
-
-You can set the "reply to" to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
-
-```yaml
-email:
-  -
-    reply_to: "{{ email }}"
-    # other settings here
+{{ subject ?? "Email Form Submission" }}
 ```
-
-#### Setting the "Subject" dynamically
-
-You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
-
-```yaml
-email:
-  -
-    subject: '{{ subject ?? "Email Form Submission" }}'
-    # other settings here
-```
-
-[Learn how to create your emails](/email)
 
 #### Attachments
 
-When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any uploaded files will be automatically attached.
-
-```yaml
-email:
-  -
-    attachments: true
-    # other settings here
-```
+When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email by enabling the **Attachments** toggle.
 
 If you don't want the attachments to be kept around on your server, configure your [Upload field](#file-uploads) so it doesn't store the files — they'll be attached to the email and then deleted.
 
@@ -562,24 +531,9 @@ If you don't want the attachments to be kept around on your server, configure yo
 
 Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
 
-1. Enable Markdown parsing in your email config:
+1. Enable the **Markdown** toggle when configuring the email.
 
-```yaml
-email:
-  -
-    # other settings here
-    markdown: true # [tl! add]
-```
-
-2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
-
-```yaml
-email:
-  -
-    # other settings here
-    markdown: true
-    html: 'contact-us' # [tl! add]
-```
+2. Next, create a **Blade** view for your email template, select it as the **HTML view**, and start using Laravel's Markdown Mailable components:
 
 ```blade
 {{-- contact-us.blade.php --}}
@@ -600,7 +554,166 @@ Someone has taken the time to fill out a form on your website. Here are the deta
 Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
 :::
 
-You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/13.x/mail#customizing-the-components).
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/mail#customizing-the-components).
+
+### Webhooks
+
+The Webhook connection sends a POST request to a URL of your choice whenever the form is submitted. You can add any number of webhooks to your form and, like emails, each webhook can be sent for every submission or based on conditions.
+
+The request contains the form's handle and the submission's data as JSON:
+
+```json
+{
+    "form": "contact_us",
+    "submission": {
+        "id": "1753264619.65652",
+        "date": "2026-07-23T10:00:00.000000Z",
+        "name": "Jack Black",
+        "email": "jack@jackblack.com"
+    }
+}
+```
+
+Only `http` and `https` URLs are supported. If you're developing locally, or sending requests to internal services with self-signed certificates, you can disable SSL verification per webhook.
+
+_TODO: Screenshot of configuring a webhook_
+
+### Building custom connections
+
+You can build your own connections to send submissions anywhere you like.
+
+Create a class in the `app/FormConnections` directory that extends `Statamic\Forms\Connections\Connection` and Statamic will discover it automatically. Addons can do the same in their `FormConnections` directory, or register classes explicitly using the `$formConnections` property on their service provider.
+
+```php
+<?php
+
+namespace App\FormConnections;
+
+use App\Http\Controllers\AcmeConnectionController;
+use Statamic\Contracts\Forms\Form;
+use Statamic\Forms\Connections\Connection;
+use Statamic\Support\VueComponent;
+
+class Acme extends Connection
+{
+    protected static $title = 'Acme';
+    protected $description = 'Send submissions to Acme.';
+    protected $icon = 'globe-arrow';
+
+    public function count(Form $form): ?int
+    {
+        return count($form->connections()->get('acme', []));
+    }
+
+    public function render(Form $form): VueComponent
+    {
+        return VueComponent::render('acme-connection', [
+            'action' => cp_route('forms.connect.acme.update', $form->handle()),
+            'config' => $form->connections()->get('acme', []),
+        ]);
+    }
+
+    public function routes($router): void
+    {
+        $router->patch('/', [AcmeConnectionController::class, 'update'])->name('update');
+    }
+}
+```
+
+#### Properties & Methods
+
+| Property/Method | Description |
+| --- | --- |
+| `$title` | The title shown on the Connect index. Defaults to a title generated from the class name. |
+| `$description` | A short description shown on the Connect index. |
+| `$icon` | The icon shown on the Connect index. |
+| `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
+| `render()` | The Vue component (and its props) rendered on the connection's page. |
+| `routes()` | Routes for the connection, like the one your component saves to. They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
+| `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
+
+#### The frontend
+
+The `render()` method determines which Vue component gets rendered, along with its props.
+
+Connections handle their own saving — your component should post back to a route you've registered in the `routes()` method.
+
+If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionList>` component to get a head start.
+
+Pass it your array of configs via `v-model`, a header slot and a body slot for each row, and it takes care of the collapsible row UI, along with the add/duplicate/remove actions.
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { nanoid as uniqid } from 'nanoid';
+import { ConnectionList } from '@statamic/cms';
+import { Badge } from '@statamic/cms/ui';
+
+const props = defineProps({ config: Array });
+
+const notifications = ref([...props.config]);
+
+const addNotification = () => notifications.value.push({ id: uniqid(), conditions: [] });
+const duplicateNotification = (notification) => notifications.value.push({ ...notification, id: uniqid() });
+const removeNotification = (notification) => (notifications.value = notifications.value.filter((item) => item !== notification));
+</script>
+
+<template>
+    <ConnectionList
+        v-model="notifications"
+        :add-label="__('Add Notification')"
+        @add="addNotification"
+        @duplicate="duplicateNotification"
+        @remove="removeNotification"
+    >
+        <template #header="{ item: notification, collapsed }">
+            <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+        </template>
+
+        <template #default="{ item: notification, index }">
+            <!-- Each row's fields go here... -->
+        </template>
+    </ConnectionList>
+</template>
+```
+
+#### Conditional logic
+
+If you want your connection to support conditional logic, the `<ConnectionLogic>` component renders the logic builder. Bind your conditions with `v-model:conditions` and put whatever the conditions control inside its `then` slot.
+
+```vue
+<template #default="{ item: notification, index }">
+    <ConnectionLogic
+        v-model:conditions="notification.conditions"
+        :always-label="__('Always send')"
+        :if-label="__('Send if...')"
+    >
+        <template #then>
+            <!-- The fields controlled by the conditions go here... -->
+        </template>
+    </ConnectionLogic>
+</template>
+```
+
+On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles the rest:
+
+- When saving, `ConnectionLogic::normalize($conditions)` strips out any incomplete conditions, and returns `null` when there's nothing to save.
+- When a submission comes in, `ConnectionLogic::passes($config, $submission)` evaluates the conditions against the submission, so you can decide whether to send anything or not.
+
+#### Sending notifications
+
+When a submission is finalized, Statamic dispatches a single job chain: file uploads are converted to assets, then each of the connection jobs run and finally temporary file uploads are deleted.
+
+To hook into this process, return a job (or array of jobs) from the `finalized()` method:
+
+```php
+public function finalized($submission)
+{
+    return new SendNotificationToThirdPartyService($submission);
+}
+```
+
+Because Statamic uses Laravel's [job chaining](https://laravel.com/docs/queues#job-chaining) feature, if you need to dispatch additional jobs within one of your jobs, call `$this->prependToChain($job)` (from Laravel's `Queueable` trait) so they stay part of the chain.
 
 ## File uploads
 
@@ -721,7 +834,7 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.
+Consult the [Laravel documentation](https://laravel.com/docs/routing#rate-limiting) to learn more about defining rate limiters.
 
 ## Submitting forms programmatically
 
