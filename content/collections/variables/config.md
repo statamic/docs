@@ -34,3 +34,33 @@ To retrieve from the `config/app.php` you would:
 {{ config('statamic.app.variable_you_want') }}
 ```
 ::
+
+## Custom Config
+
+  No longer available by default since 5.73.11. To use custom config variables in views you need to add
+  them to the view config allowlist in `config/statamic/system.php`.
+
+  Here is how to add the custom `foo` config variable from the app.php config file:
+
+```php
+// config/app.php
+
+return [
+    // ...
+    'foo' => 'bar'
+    // ...
+];
+
+// config/statamic/system.php
+
+return [
+    // ...
+    'view_config_allowlist' => [
+        '@default', // spreads the defaults into this array
+        'app.foo',
+    ],
+    // ...
+];
+```
+
+  Now you can access it in your views:  `{{ config:app:foo }}`
