@@ -5,8 +5,19 @@ modifier_types:
   - array
   - markup
 title: UL
+related_entries:
+  - fbdb7bf5-ac19-444c-9536-57332ffff388
+  - 327f4a3b-04d4-4069-881a-fe50ddb9be23
 ---
 Turn an array into an HTML unordered list element.
+
+:::hot tip
+`ul` accepts colon delimited key:value pairs to pass HTML attributes to the `<ul>` element; you cannot pass attributes to individual `<li>` elements.
+
+```antlers
+{{ food | ul('class:style-circle', 'disabled:') }}
+```
+:::
 
 ```yaml
 food:
