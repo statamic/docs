@@ -374,6 +374,25 @@ public function handle(EntryBlueprintFound $event)
 }
 ```
 
+You can also use this to replace the whole blueprint content. 
+An example would be if you have a collection that should use a blueprint from another collection.
+
+```php
+use Statamic\Facades\Blueprint;
+
+public function handle(EntryBlueprintFound $event)
+{
+    if ($event->blueprint->fullyQualifiedHandle() === 'collections.subpages.subpage') {
+        $pageBlueprint = Blueprint::find('collections.pages.page');
+        
+        $event->blueprint->setContents($pageBlueprint->contents());
+        
+        // The entrys blueprint would be `subpage`, but the blueprint
+        // fields etc. would be the same as in `page`.
+    }
+}
+```
+
 ### EntryCreated
 `Statamic\Events\EntryCreated`
 
