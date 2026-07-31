@@ -1326,6 +1326,23 @@ Once enabled, you can:
 - Customize the **Success Heading** and **Success Message** shown after a visitor submits.
 - Turn on **Let visitors fill out the form again?** to show a button on the confirmation page for starting a new submission, with a customizable **Fill out again button label**.
 
+#### The form's URL
+
+Automagic Forms live at `/forms/{handle}`, so a form with the handle `contact` is served at `https://example.com/forms/contact`.
+
+If `/forms` clashes with something else on your site, or you'd just prefer something different, change the `route` in `config/forms-pro.php`:
+
+```php
+'automagic_forms' => [
+    'route' => 'get-in-touch', // [tl! focus]
+    // ...
+],
+```
+
+On a [multi-site](/multi-site) install, each site serves the form at its own URL, built from that site's URL.
+
+For example: a French site at `/fr` serves it at `/fr/forms/contact`, and a site on its own domain serves it at `https://example.fr/forms/contact`.
+
 #### Branding
 
 You can customize the look and feel of your Automagic Forms from **Addons → Forms Pro** in the Control Panel:
