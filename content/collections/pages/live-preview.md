@@ -133,6 +133,8 @@ You may opt-out of this behavior if you wish:
 
 ## Headless / front-end frameworks
 
+Collections without routes can still offer Live Preview when they define preview targets — [Sidecar](/sidecar) collections rely on this.
+
 To use Live Preview with a front-end framework, you may use a [preview target](#preview-targets) that points to a custom URL.
 
 For example, [Nuxt.js's Preview Mode](https://nuxtjs.org/docs/features/live-preview#preview-mode) requires that you point to a URL with a `preview=true` query parameter.

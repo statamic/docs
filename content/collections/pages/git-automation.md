@@ -69,6 +69,8 @@ You are free to define the tracked paths to be considered when staging and commi
 
 :::tip
 You may also reference absolute paths to external repositories! If Statamic detects an external repository path, changes will be staged and committed relative to your external repository.
+
+Using [Sidecar](/sidecar)? Add those content directories (and nav files like `navigation.php`) here too, or CP edits won't get committed.
 :::
 
 ## Committing changes

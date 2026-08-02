@@ -13,6 +13,7 @@ related_entries:
   - 54548616-fd6d-44a3-a379-bdf71c492c63
   - cb21fabb-65ba-4869-9acd-f6aa2fb58a01
   - 420f083d-99be-4d54-9f81-3c09cb1f97b7
+  - 47f8c4c4-8268-4375-adc4-b8c4521fbfd9
 ---
 ## Overview
 
@@ -35,6 +36,10 @@ content/collections/
 
 :::tip
 Creating a collection in the control panel takes care of all of this for you automatically, so don't stress too hard about memorizing all the details.
+:::
+
+:::tip
+Need to edit markdown that already lives somewhere else — a LaraDocs `docs/` folder, a Jigsaw site, etc. — without importing it into `content/collections`? That's [Sidecar](/sidecar).
 :::
 
 ## Entries

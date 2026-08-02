@@ -58,6 +58,7 @@ You can see the list of available commands in your terminal by running `php plea
 | `install:collaboration` | Installs the Statamic Collaboration addon and enables broadcasting in Laravel. |
 | `install:eloquent-driver` | Install & configure Statamic's Eloquent Driver package |
 | `install:ssg` | Install & configure Statamic's Static Site Generator package |
+| `sidecar:install` | Install & configure a [Sidecar](/sidecar) collection adapter driver |
 | `license:set` | Set Statamic license key in .env |
 | `make:action`      | Create a new action |
 | `make:addon`       | Create a new addon |
