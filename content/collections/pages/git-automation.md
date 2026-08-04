@@ -198,14 +198,18 @@ _Note: When commits are scheduled to run via cron, there will be no authenticate
 
 To customize the commit messages themselves, modify the `commands` array in the [configuration](#configuration) file.
 
-For example, you can append `[BOT]` to the commit message so that you can selectively disable automatic site deployments when a commit is [automatically pushed](#pushing-changes) back to your repository:
+For example, you can prepend `[BOT]` to the commit message so that you can selectively disable automatic site deployments when a commit is [automatically pushed](#pushing-changes) back to your repository:
 
 ```php
 'commands' => [
     'git add {{ paths }}',
-    'git -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "{{ message }} [BOT]"',
+    'git -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "[BOT] {{ message }}"',
 ],
 ```
+
+:::tip
+Prepend rather than append. Deployment services generally only expose the commit message's subject — its first line — to your deploy script. Forge, for example, discards the body entirely. If a commit message ever spans multiple lines, a trailing `[BOT]` would never be seen and the deploy would run anyway.
+:::
 
 In your deploy scripts on [Forge](https://forge.laravel.com), [Ploi](https://ploi.io), or [Cleavr](https://cleavr.io) you could then add the following:
 
