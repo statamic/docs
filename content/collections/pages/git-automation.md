@@ -216,7 +216,7 @@ In your deploy scripts on [Forge](https://forge.laravel.com), [Ploi](https://plo
 ### Forge
 
 ``` shell
-if [[ $FORGE_DEPLOY_MESSAGE =~ "[BOT]" ]]; then
+if [[ "$FORGE_DEPLOY_MESSAGE" == *"[BOT]"* || "$FORGE_DEPLOY_AUTHOR" == *"[BOT]"* ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
 fi
@@ -225,7 +225,7 @@ fi
 ### Ploi
 
 ``` shell
-if [[ {COMMIT_MESSAGE} =~ "[BOT]" ]]; then
+if [[ {COMMIT_MESSAGE} == *"[BOT]"* ]] || [[ {COMMIT_AUTHOR} == *"[BOT]"* ]]; then
     echo "AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY."
     exit 0
 fi
@@ -234,7 +234,7 @@ fi
 ### Cleavr
 
 ``` shell
-if [[ "{{ commitMessage }}" =~ "[BOT]" ]]; then
+if [[ "{{ commitMessage }}" == *"[BOT]"* ]] || [[ "{{ commitAuthor }}" == *"[BOT]"* ]]; then
     echo 'AUTO-COMMITTED ON PRODUCTION. NOTHING TO DEPLOY.'
     exit 1
 fi
