@@ -1,7 +1,7 @@
 {{ if pro }}
     <header>
         <div class="o-badge-heading">
-            <h1>{{ title }}</h1>
+            <h1 id="page-{{ title | slugify }}">{{ title }}</h1>
             <div class="c-pro-badge">
                 <a href="/licensing">
                     {{ global:pro_badges sort='random' limit='1' }}
@@ -68,7 +68,7 @@
     </header>
 {{ else }}
     <header>
-        <h1>{{ title }}</h1>
+        <h1 id="page-{{ title | slugify }}">{{ title }}</h1>
         {{ intro | markdown ?? overview | markdown }}
     </header>
 {{ /if }}

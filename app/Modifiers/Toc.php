@@ -42,6 +42,10 @@ class Toc extends Modifier
             preg_match_all('/<h([1-'.$maxHeadingLevels.'])([^>]*)>(.*)<\/h[1-'.$maxHeadingLevels.']>/i', $content, $matches, PREG_SET_ORDER);
         }
 
+        // Headings without an ID have nothing to anchor to, so leave them out
+        // rather than linking to something that doesn't exist on the page.
+        $matches = array_values(array_filter($matches, fn ($heading) => str_contains($heading[2], 'id="')));
+
         if (! $matches) {
             return [null, $content];
         }
