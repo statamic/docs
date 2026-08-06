@@ -14,6 +14,11 @@ options:
     type: string
     description: >
       Set some default placeholder text.
+  -
+    name: rows
+    type: integer
+    description: >
+      Set the number of visible text rows. Defaults to `4`.
 screenshot: fieldtypes/screenshots/v6/textarea.webp
 screenshot_dark: fieldtypes/screenshots/v6/textarea-dark.webp
 id: 7c54484a-7ba5-4314-b9af-9d9a462090fc
