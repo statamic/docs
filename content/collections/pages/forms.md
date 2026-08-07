@@ -454,13 +454,13 @@ Inside your email view, you have a number of variables available:
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
-- `email_config` - The email's config
+- `email_config` - The email's settings, keyed by the handles of the fields you filled in when configuring it — `{{ email_config:subject }}`, `{{ email_config:mailer }}`, and so on.
 - `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
 
-The submitted form values will be augmented for you. For instance, if you have an `assets` field, you will get a collection of Asset objects rather than just an array of paths. Or, a `select` field will be an array with `label` and `value` rather than just the value.
+The submitted form values will be augmented for you. For instance, an **Upload** field gives you Asset objects when **Store Files** is enabled, or plain file paths when it isn't. Or, a **Dropdown** field will be an array with `label` and `value` rather than just the value.
 
 ::tabs
 
@@ -527,6 +527,10 @@ When using [file uploads](#file-uploads) in your form, you may choose to have th
 
 If you don't want the attachments to be kept around on your server, configure your [Upload field](#file-uploads) so it doesn't store the files — they'll be attached to the email and then deleted.
 
+#### Mailer
+
+If your app has more than one [mailer configured](https://laravel.com/docs/mail#configuration), you can choose which one sends the email. Leave it blank to use your app's default mailer.
+
 #### Using Markdown Mailable Templates
 
 Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
@@ -590,6 +594,7 @@ Create a class in the `app/FormConnections` directory that extends `Statamic\For
 namespace App\FormConnections;
 
 use App\Http\Controllers\AcmeConnectionController;
+use Illuminate\Routing\Router;
 use Statamic\Contracts\Forms\Form;
 use Statamic\Forms\Connections\Connection;
 use Statamic\Support\VueComponent;
@@ -599,6 +604,7 @@ class Acme extends Connection
     protected static $title = 'Acme';
     protected $description = 'Send submissions to Acme.';
     protected $icon = 'globe-arrow';
+    protected $developer = 'Acme Inc.';
 
     public function count(Form $form): ?int
     {
@@ -609,11 +615,10 @@ class Acme extends Connection
     {
         return VueComponent::render('acme-connection', [
             'action' => cp_route('forms.connect.acme.update', $form->handle()),
-            'config' => $form->connections()->get('acme', []),
         ]);
     }
 
-    public function routes($router): void
+    public function routes(Router $router): void
     {
         $router->patch('/', [AcmeConnectionController::class, 'update'])->name('update');
     }
@@ -627,6 +632,7 @@ class Acme extends Connection
 | `$title` | The title shown on the Connect index. Defaults to a title generated from the class name. |
 | `$description` | A short description shown on the Connect index. |
 | `$icon` | The icon shown on the Connect index. |
+| `$developer` | Who built the connection, shown on the Connect index. |
 | `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
 | `render()` | The Vue component (and its props) rendered on the connection's page. |
 | `routes()` | Routes for the connection, like the one your component saves to. They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
@@ -635,6 +641,8 @@ class Acme extends Connection
 #### The frontend
 
 The `render()` method determines which Vue component gets rendered, along with its props.
+
+Your component is rendered inside the connection's page, which passes it two props automatically — `form`, and `config` containing the connection's saved config for that form. You don't need to pass either through `render()` yourself.
 
 Connections handle their own saving — your component should post back to a route you've registered in the `routes()` method.
 
@@ -700,6 +708,19 @@ On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles 
 - When saving, `ConnectionLogic::normalize($conditions)` strips out any incomplete conditions, and returns `null` when there's nothing to save.
 - When a submission comes in, `ConnectionLogic::passes($config, $submission)` evaluates the conditions against the submission, so you can decide whether to send anything or not.
 
+Statamic also exports `conditionsSummary`, which turns a row's conditions into a readable sentence — like _"if Enquiry Type equals Sales"_ — handy for describing a row in its header when collapsed.
+
+```vue
+<script setup>
+import { conditionsSummary } from '@statamic/cms';
+</script>
+
+<template #header="{ item: notification, collapsed }">
+    <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+    <Subheading v-show="collapsed">{{ conditionsSummary(notification.conditions) }}</Subheading>
+</template>
+```
+
 #### Sending notifications
 
 When a submission is finalized, Statamic dispatches a single job chain: file uploads are converted to assets, then each of the connection jobs run and finally temporary file uploads are deleted.
@@ -707,7 +728,7 @@ When a submission is finalized, Statamic dispatches a single job chain: file upl
 To hook into this process, return a job (or array of jobs) from the `finalized()` method:
 
 ```php
-public function finalized($submission)
+public function finalized($submission): object|array
 {
     return new SendNotificationToThirdPartyService($submission);
 }
