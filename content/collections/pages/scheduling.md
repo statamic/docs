@@ -46,6 +46,18 @@ Statamic will dispatch a `Statamic\Events\EntryScheduleReached` event whenever a
 
 The event will be dispatched on the minute _after_ the scheduled time.
 
+#### Disabling
+
+Statamic runs this task every minute, which means your application boots once a minute whether or not you have any scheduled entries. On usage-billed platforms like Laravel Cloud, you may prefer to opt out.
+
+Set `STATAMIC_HANDLE_SCHEDULED_ENTRIES=false` in your `.env` file, or set the corresponding option in `config/statamic/system.php`:
+
+```php
+'handle_scheduled_entries' => env('STATAMIC_HANDLE_SCHEDULED_ENTRIES', true),
+```
+
+Entries will still go live at their scheduled time — an entry's status is derived from its date whenever it's read. What you lose is the `EntryScheduleReached` event, so your static cache and search indexes won't be updated until something else saves the entry.
+
 ### DeletePartialFormSubmissions
 
 This job runs daily and deletes any [partial form submissions](/repositories/form-submission-repository#partial-submissions) older than the configured threshold (7 days by default).

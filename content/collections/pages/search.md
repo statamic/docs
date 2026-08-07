@@ -333,6 +333,31 @@ public function boot()
 
 The callback receives the configured `$name` and the `$locale` (or `null` for non-localized indexes). Statamic's default naming logic is bypassed entirely, so if you want the locale suffix, append it yourself.
 
+### Indexing queue
+
+Index updates are dispatched as queued jobs, with the documents split into chunks. You can configure the queue, connection, chunk size, and how long each job is allowed to run before timing out.
+
+```php
+// config/statamic/search.php
+
+'queue' => env('STATAMIC_SEARCH_QUEUE'),
+
+'queue_connection' => env('STATAMIC_SEARCH_QUEUE_CONNECTION'),
+
+'queue_timeout' => env('STATAMIC_SEARCH_QUEUE_TIMEOUT'),
+
+'chunk_size' => 100,
+```
+
+- `queue`: The queue the indexing jobs are pushed onto. Defaults to the connection's default queue.
+- `queue_connection`: The connection the indexing jobs are pushed onto. Defaults to your app's default connection.
+- `queue_timeout`: The number of seconds each indexing job may run for. When left empty, your queue worker's timeout is used.
+- `chunk_size`: The number of documents handled by each job. The higher you make it, the more memory it will use, but the quicker the indexing process will be.
+
+:::tip
+If you see large indexes failing with `MaxAttemptsExceededException`, raising `queue_timeout` (or lowering `chunk_size` so each job does less work) will usually sort it out.
+:::
+
 
 ## Drivers
 
