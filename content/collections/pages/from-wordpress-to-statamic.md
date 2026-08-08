@@ -9,6 +9,10 @@ intro: |-
   Hopefully this guide will open your eyes to a different approach to building sites. One that doesn't require so many addons and taps into a more flexible way of building bigger features out of smaller ones. And we'll show you Statamic's answers to WordPress plugins you're probably most familiar with.
 ---
 
+:::tip
+If you want to move your data from WordPress to Statamic, we recommend using the [Official WordPress Importer](https://github.com/statamic/importer)
+:::
+
 ## ACF and Custom Fields
 
 Arguably one of the best ways to build modern content-driven WordPress sites — especially those with a proper separation of content and style — is with Advanced Custom Fields (ACF) or Pods Framework.
@@ -70,7 +74,7 @@ These fields store **structured content**, but don't explicitly give control ove
 
 ## Themes
 
-Statamic uses [Starter Kits](/starter-kits) instead of traditional themes. These kits go beyond just styling – they can include plugins, custom code, and entire workflows. 
+Statamic uses [Starter Kits](/starter-kits) instead of traditional themes. These kits go beyond just styling – they can include plugins, custom code, and entire workflows.
 
 You can [get Starter Kits from the Marketplace](https://statamic.com/starter-kits), where there are free and commercially available options. For example, the first-party [Cool Writings](https://statamic.com/starter-kits/statamic/cool-writings) starter kit is an excellent choice to use as the basis for a simple blog.
 
