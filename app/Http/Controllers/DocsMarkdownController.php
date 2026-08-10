@@ -8,10 +8,12 @@ use Statamic\Facades\Data;
 
 class DocsMarkdownController extends Controller
 {
-    public function __invoke(string $uri)
+    public function __invoke(string $uri = '')
     {
+        $uri = $this->normalizeUri($uri);
+
         $markdown = Cache::rememberForever("markdown.$uri", function () use ($uri) {
-            $entry = Data::findByUri('/'.$uri);
+            $entry = Data::findByUri($uri);
 
             throw_unless($entry, new NotFoundHttpException);
 
@@ -29,31 +31,59 @@ class DocsMarkdownController extends Controller
         ]);
     }
 
+    /**
+     * `/index.md` is the conventional Markdown twin of the home page — agents guess it, and
+     * appending `.md` to the root URL isn't possible. Everything else maps straight across.
+     */
+    private function normalizeUri(string $uri): string
+    {
+        $uri = trim($uri, '/');
+
+        return ($uri === '' || $uri === 'index') ? '/' : '/'.$uri;
+    }
+
+    /**
+     * Point internal links at their Markdown twins, so an agent following links from one
+     * `.md` page stays in Markdown instead of falling back into HTML.
+     */
     private function appendMdExtensionToInternalLinks(string $markdown): string
     {
         return preg_replace_callback(
             '/(?<!!)\[([^\]]+)\]\(([^)]+)\)/',
             function ($matches) {
-                $text = $matches[1];
-                $url = $matches[2];
+                [, $text, $url] = $matches;
 
-                if ($this->shouldAppendMdExtension($url)) {
-                    $url .= '.md';
-                }
-
-                return "[$text]($url)";
+                return "[$text]({$this->markdownUrl($url)})";
             },
             $markdown
         );
     }
 
-    private function shouldAppendMdExtension(string $url): bool
+    private function markdownUrl(string $url): string
     {
-        if (preg_match('/^https?:\/\//', $url)) {
+        // Split the fragment/query off first: the extension belongs on the path, so
+        // "/tags/collection#parameters" has to become "/tags/collection.md#parameters".
+        $path = preg_split('/(?=[#?])/', $url, 2);
+        $suffix = $path[1] ?? '';
+        $path = $path[0];
+
+        return $this->shouldAppendMdExtension($path) ? $path.'.md'.$suffix : $url;
+    }
+
+    private function shouldAppendMdExtension(string $path): bool
+    {
+        // Empty path means the link was a bare fragment like "#overview".
+        if ($path === '') {
             return false;
         }
 
-        if (preg_match('/\.[a-z0-9]{2,4}$/i', $url)) {
+        // Absolute URLs, protocol-relative URLs, and non-HTTP schemes (mailto:, tel:).
+        if (preg_match('/^([a-z][a-z0-9+.-]*:|\/\/)/i', $path)) {
+            return false;
+        }
+
+        // Already points at a file.
+        if (preg_match('/\.[a-z0-9]{2,4}$/i', $path)) {
             return false;
         }
 
