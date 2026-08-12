@@ -920,7 +920,8 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
 - [Form summary graphs](#form-summary-graphs)
 - [Automagic Forms](#automagic-forms)
 - Unique form instances per entry
-- Additional fieldtypes & connections
+- [Connections for HubSpot, Mailchimp and more](#connections-1)
+- Additional fieldtypes
 - Enhanced spam prevention
 
 ### Installation
@@ -938,6 +939,48 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
    ```
 
 3. You can now use Forms Pro's features when building and configuring forms in the Control Panel.
+
+### Connections
+
+Alongside the Email and Webhook connections that ship with Statamic, Forms Pro adds connections for a number of third-party services. You'll find them in the same **Connect** area of your form.
+
+When you set each one up, it'll guide you through getting everything connected.
+
+_TODO: Screenshot of the Connect area showing the Forms Pro connections_
+
+#### HubSpot
+
+Sends submissions to a form in your [HubSpot](https://www.hubspot.com) account, so any workflows and follow-up emails attached to that form run as normal.
+
+You choose which of the HubSpot form's properties to map to your fields, and if it collects GDPR consent, you can map those options too.
+
+If you've added HubSpot's tracking code to your site, submissions will be linked to the visitor's browsing history. You'll want to turn off "Collect data from website forms" in HubSpot, otherwise it'll record its own copy of every submission.
+
+#### Kit
+
+Subscribes people to your [Kit](https://kit.com) account. You can map custom fields and apply tags to subscribers — they'll need to exist in Kit first so you can pick them.
+
+Subscribers can also be attributed to a Kit form, so any automations linked to it will run.
+
+#### Mailchimp
+
+Subscribes people to a [Mailchimp](https://mailchimp.com) audience. You can apply tags, map fields to the audience's merge fields, add people to groups based on what they chose, and record GDPR marketing permissions against the contact.
+
+New subscribers are added as pending until they confirm by email, unless you turn on "Skip Confirmation Email".
+
+#### Mailcoach
+
+Subscribes people to a [Mailcoach](https://www.mailcoach.app) email list. You can apply tags and store extra values as attributes.
+
+For lists using double opt-in, "Skip Confirmation Email" subscribes people immediately rather than asking them to confirm.
+
+#### Slack
+
+Posts submissions to a [Slack](https://slack.com) channel, with a button linking through to the submission in the Control Panel. You can write your own heading and choose which fields to include.
+
+#### Twilio
+
+Sends a text message via [Twilio](https://www.twilio.com) when the form is submitted. Text a fixed number, or pick a form field to text whoever submitted. The message body can include values from the submission.
 
 ### Address fieldtype
 
