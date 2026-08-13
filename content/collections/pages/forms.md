@@ -646,52 +646,43 @@ Your component is rendered inside the connection's page, which passes it two pro
 
 Connections handle their own saving — your component should post back to a route you've registered in the `routes()` method.
 
-If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionList>` component to get a head start.
+If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionRows>` component to get a head start.
 
-Pass it your array of configs via `v-model`, a header slot and a body slot for each row, and it takes care of the collapsible row UI, along with the add/duplicate/remove actions.
+Pass it your array of rows via `v-model`, the default `values`/`meta` for new rows via `defaults`, and a header slot and a body slot for each row. It takes care of the collapsible row UI, the add/duplicate/remove actions, and dirty state tracking (under the `connection` key, which you should clear after saving).
+
+The `connectionRows` helper builds the initial rows for you — pass it the saved configs and an object of `values`/`meta` keyed by row id (which you'd pass along as props from your `render()` method).
 
 ```vue
 <script setup>
 import { ref } from 'vue';
-import { nanoid as uniqid } from 'nanoid';
-import { ConnectionList } from '@statamic/cms';
+import { ConnectionRows, connectionRows } from '@statamic/cms';
 import { Badge } from '@statamic/cms/ui';
 
-const props = defineProps({ config: Array });
+const props = defineProps({ config: Array, notifications: Object, defaults: Object });
 
-const notifications = ref([...props.config]);
-
-const addNotification = () => notifications.value.push({ id: uniqid(), conditions: [] });
-const duplicateNotification = (notification) => notifications.value.push({ ...notification, id: uniqid() });
-const removeNotification = (notification) => (notifications.value = notifications.value.filter((item) => item !== notification));
+const notifications = ref(connectionRows(props.config, props.notifications));
 </script>
 
 <template>
-    <ConnectionList
-        v-model="notifications"
-        :add-label="__('Add Notification')"
-        @add="addNotification"
-        @duplicate="duplicateNotification"
-        @remove="removeNotification"
-    >
+    <ConnectionRows v-model="notifications" :defaults :add-label="__('Add Notification')">
         <template #header="{ item: notification, collapsed }">
-            <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+            <Badge size="lg" pill>{{ notification.values.channel || __('New Notification') }}</Badge>
         </template>
 
         <template #default="{ item: notification, index }">
             <!-- Each row's fields go here... -->
         </template>
-    </ConnectionList>
+    </ConnectionRows>
 </template>
 ```
 
 #### Conditional logic
 
-If you want your connection to support conditional logic, the `<ConnectionLogic>` component renders the logic builder. Bind your conditions with `v-model:conditions` and put whatever the conditions control inside its `then` slot.
+If you want your connection to support conditional logic, the `<ConnectionRules>` component renders the logic builder. Bind your conditions with `v-model:conditions` and put whatever the conditions control inside its `then` slot.
 
 ```vue
 <template #default="{ item: notification, index }">
-    <ConnectionLogic
+    <ConnectionRules
         v-model:conditions="notification.conditions"
         :always-label="__('Always send')"
         :if-label="__('Send if...')"
@@ -699,14 +690,14 @@ If you want your connection to support conditional logic, the `<ConnectionLogic>
         <template #then>
             <!-- The fields controlled by the conditions go here... -->
         </template>
-    </ConnectionLogic>
+    </ConnectionRules>
 </template>
 ```
 
 On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles the rest:
 
 - When saving, `ConnectionLogic::normalize($conditions)` strips out any incomplete conditions, and returns `null` when there's nothing to save.
-- When a submission comes in, `ConnectionLogic::passes($config, $submission)` evaluates the conditions against the submission, so you can decide whether to send anything or not.
+- When a submission comes in, `ConnectionLogic::passes($config, $submission)` tells you whether a row should run — it fails when the row has been disabled, or when its conditions don't match the submission.
 
 Statamic also exports `conditionsSummary`, which turns a row's conditions into a readable sentence — like _"if Enquiry Type equals Sales"_ — handy for describing a row in its header when collapsed.
 
