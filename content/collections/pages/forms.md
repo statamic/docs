@@ -948,6 +948,12 @@ When you set each one up, it'll guide you through getting everything connected.
 
 _TODO: Screenshot of the Connect area showing the Forms Pro connections_
 
+#### Google Sheets
+
+Adds submissions as rows in a [Google Sheet](https://workspace.google.com/products/sheets/). You paste the spreadsheet's address, choose a tab, and pick which fields become columns — or leave that empty to include everything.
+
+Rows are added to the bottom, so your existing rows are left alone. Columns are named after field handles, and appear the first time a field is submitted.
+
 #### HubSpot
 
 Sends submissions to a form in your [HubSpot](https://www.hubspot.com) account, so any workflows and follow-up emails attached to that form run as normal.
