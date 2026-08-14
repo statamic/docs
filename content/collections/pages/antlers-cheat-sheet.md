@@ -2,9 +2,7 @@
 id: 0c54fe7c-c87a-4812-b76e-48f16cf08e0d
 blueprint: page
 title: 'Antlers Cheat Sheet'
-nav_title: 'Cheat Sheet'
-intro: |-
-  A brief overview of the Antlers features you're likely to use, or may not have known existed!
+intro: "A brief overview of the Antlers features you're likely to use, or may not have known existed!"
 template: page
 related_entries:
   - d37b2af2-f2bf-493a-9345-7087fb5929ce
