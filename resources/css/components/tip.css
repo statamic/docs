@@ -49,7 +49,7 @@
                 border-radius: var(--border-radius-2xl);
             }
             p {
-                font-weight: var(--font-family-main-weight-medium);
+                font-weight: var(--font-family-main-weight-normal);
                 /* Custom */
                 @media (width < 500px) {
                     font-size: 0.9rem;
