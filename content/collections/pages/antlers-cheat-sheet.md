@@ -2,7 +2,7 @@
 id: 0c54fe7c-c87a-4812-b76e-48f16cf08e0d
 blueprint: page
 title: 'Antlers Cheat Sheet'
-intro: "A brief overview of the Antlers features you're likely to use, or may not have known existed!"
+intro: "A brief overview of the Antlers features you're likely to use — and a few you may not have known existed."
 template: page
 related_entries:
   - d37b2af2-f2bf-493a-9345-7087fb5929ce
@@ -22,7 +22,7 @@ related_entries:
 | Run PHP | `{{? $year = now()->year; ?}}` |
 | Echo the result of PHP | `{{$ now()->year $}}` |
 
-Expressions are case sensitive, use underscores rather than dashes, and may break across multiple lines. See [formatting rules](/frontend/antlers#formatting-rules).
+Expressions are case-sensitive and may break across multiple lines. Use underscores rather than dashes in variable names. See [formatting rules](/frontend/antlers#formatting-rules).
 
 ## Reading values
 
@@ -76,7 +76,7 @@ Full detail: [plucking](/frontend/antlers#plucking), [associative arrays](/front
 ```
 
 :::warning
-Array keys must be **literal** strings or numbers. `{{ person = [$key => 'Bob'] }}` will throw an error, and there's no way to build a dynamic key inline at the moment. Set up the data in a [view model](/frontend/view-models) instead when the shape isn't known ahead of time. *Reading* a dynamic key is fine: `{{ person[field] }}` works exactly as you'd hope.
+Array keys must be **literal** strings or numbers. `{{ person = [$key => 'Bob'] }}` will throw an error, and there's no way to build a dynamic key inline at the moment. When the shape isn't known ahead of time, set it up in a [view model](/frontend/view-models). *Reading* a dynamic key is fine: `{{ person[field] }}` works exactly as you'd hope.
 :::
 
 When you assign something iterable, the variable name works as a tag pair straight away, with no second step. This is [self-iterating assignment](/frontend/antlers#self-iterating-assignments).
@@ -108,7 +108,7 @@ More: [creating variables](/frontend/antlers#creating-variables), [concatenation
 {{ /foreach:song_reviews }}
 ```
 
-Inside any loop these are set for you. There's no `$loop` object to reach for; they're just variables:
+Inside any loop, these are set for you. There's no `$loop` object to reach for; they're just variables:
 
 | Variable | Meaning |
 |----------|-------------|
@@ -137,7 +137,7 @@ More: [loop variables](/frontend/antlers#loop-variables), [`{{ foreach }}`](/tag
     Your cart is empty.
 {{ /unless }}
 
-{{# Many branches, and it works inside tag parameters #}}
+{{# Many branches. Works inside tag parameters, too. #}}
 {{ switch(
     (size == 'sm') => '35vw',
     (size == 'lg') => '75vw',
@@ -153,7 +153,7 @@ More: [loop variables](/frontend/antlers#loop-variables), [`{{ foreach }}`](/tag
 | First value that isn't `null` (keeps `0`, `false`, `''`) | `{{ power_level ??? "Over 9000" }}` |
 | Only run this if it's truthy, using the [Gatekeeper](/frontend/antlers#gatekeeper) | `{{ show_bio ?= author:bio }}` |
 
-A variable is **falsy** when it doesn't exist, is an empty string, or is an empty array. That means you can skip the existence check and just open the tag pair when looping over data. See [truthy and falsy](/frontend/antlers#truthy-and-falsy).
+A variable is **falsy** when it doesn't exist, is an empty string, or is an empty array or object. That means you can skip the existence check and just open the tag pair when looping over data. See [truthy and falsy](/frontend/antlers#truthy-and-falsy).
 
 Also available: `==` `===` `!=` `!==` `>` `<` `>=` `<=` `<=>`, and `&&` `||` `!` `xor` (or the words `and` / `or` / `not`). See [comparison](/frontend/antlers#comparison) and [logical](/frontend/antlers#logical) operators.
 
@@ -183,7 +183,7 @@ There are [over 150 of them](/modifiers/all-modifiers), and you can [write your 
 These are operators, not modifiers, and they shine in assignments.
 
 ``` antlers
-{{ articles = favourites merge everything_else }}
+{{ articles = favorites merge everything_else }}
 {{ people = people orderby (age 'desc', last_name 'asc') }}
 {{ bulls  = players where (team == "Chicago Bulls") }}
 {{ afford = products where (x => x.price < budget) }}
@@ -274,17 +274,17 @@ Some helpful things you may need when building your frontend:
     <script src="/js/map.js"></script>
 {{ /push:scripts }}
 
-{{# Same, but adds it to the beggining of the stack #}}
+{{# Same, but adds it to the beginning of the stack #}}
 {{ prepend:scripts }}
     <script src="/js/polyfill.js"></script>
 {{ /prepend:scripts }}
 
-{{# Runs once per request, however many times it's reached #}}
+{{# Runs once per request, no matter how many times it's reached #}}
 {{ once }}
     <link rel="stylesheet" href="/css/gallery.css">
 {{ /once }}
 
-{{# A layout region a template can override... #}}
+{{# A layout region that a template can override... #}}
 {{ yield:footer }}
     <p>The usual footer</p>
 {{ /yield:footer }}
