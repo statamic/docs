@@ -281,6 +281,8 @@ In the Forms area of the Control Panel you can explore the collected responses a
 
 When running a [multi-site](/multi-site), you'll only see submissions submitted from the current site. You may remove the filter to see submissions from all sites you have access to.
 
+Submissions marked as [spam](#spam-submissions) are also hidden by default. Switch the **Status** filter to **Spam** to review them.
+
 ### Generating fake submissions
 
 To help test how your submissions display on the front-end with the [form submissions](/tags/form-submissions) tag, you can generate fake submissions populated with realistic data. From the submissions listing, use the **Generate Fake Submission** button:
@@ -795,7 +797,7 @@ In the meantime, you have a couple of options if you need a form's labels transl
 
 Simple and effective spam prevention.
 
-The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
+The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. By default, nothing will be saved and no [connections](#connections) are triggered.
 
 Hide this field by a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
@@ -826,6 +828,44 @@ For example:
 :::tip
 In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your form's config.
 :::
+
+### Honeypot behavior
+
+The **Honeypot Behavior** setting on the form's configuration screen controls what happens to submissions caught by the honeypot:
+
+- **Ignore** (default): the submission is silently discarded.
+- **Save as Spam**: the submission is stored and [marked as spam](#spam-submissions), so you can review it later.
+
+Either way, the visitor receives the same response as a successful submission, so bots can't tell they've been caught.
+
+## Spam submissions
+
+Rather than being discarded, submissions caught by spam protection can be kept out of sight for review. A submission marked as spam is hidden from the submissions listing by default, doesn't count towards [submission limits](#restricting-submissions), and doesn't trigger any [connections](#connections).
+
+To review them, switch the **Status** filter on the submissions listing to **Spam**. From there, you can use the **Mark as Spam** and **Mark as Not Spam** actions.
+
+When a submission that was caught before being finalized (by the [honeypot](#honeypot), for example) is marked as not spam, it gets finalized as normal — triggering any configured [connections](#connections) at that point. Submissions that were manually flagged after being finalized simply have the flag removed, so nothing is re-triggered.
+
+### Marking submissions as spam from addons
+
+The honeypot is the first thing to take advantage of the spam status, but addon developers can also mark submissions as spam inside event listeners:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Statamic\Events\FormSubmitted;
+
+Event::listen(function (FormSubmitted $event) {
+    if (Akismet::isSpam($event->submission)) {
+        $event->submission->markAsSpam()->save();
+
+        return false;
+    }
+});
+```
+
+Returning `false` halts the submission pipeline while still giving the visitor a successful response. Since the submission was saved as spam beforehand, it'll be waiting in the submissions listing for review.
+
+You can find more details about working with spam submissions in the [Form Submission Repository](/repositories/form-submission-repository#spam-submissions) docs.
 
 ## Rate limiting
 
