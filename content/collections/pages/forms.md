@@ -953,7 +953,7 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
 - Unique form instances per entry
 - [Connections for HubSpot, Mailchimp and more](#connections-1)
 - Additional fieldtypes
-- Enhanced spam prevention
+- [Spam prevention with Cloudflare Turnstile](#cloudflare-turnstile)
 
 ### Installation
 
@@ -1463,4 +1463,78 @@ Automagic Forms are enabled by default. If you'd rather disable them entirely, t
 ],
 ```
 
-[submissions]: /tags/form-submissions
+### Cloudflare Turnstile
+
+Forms Pro can protect your forms from bots using [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/), Cloudflare's free CAPTCHA alternative.
+
+Failed verifications are rejected with a normal validation error — nothing is saved, and the visitor is asked to try again.
+
+#### Getting set up
+
+First, create a widget in the [Cloudflare dashboard](https://dash.cloudflare.com/?to=/:account/turnstile) and grab its **Site Key** and **Secret Key**.
+
+:::warning
+If you're using Automagic Forms, that's all you need to do. Cloudflare Turnstile will "just work".
+:::
+
+Next, add the Turnstile tag to your form templates, wherever you'd like the widget to appear (usually just before the submit button):
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:contact }}
+    ...
+
+    {{ turnstile }}
+    <button>Submit</button>
+{{ /form:contact }}
+```
+::tab blade
+```blade
+<s:form:contact>
+    ...
+
+    <s:turnstile />
+    <button>Submit</button>
+</s:form:contact>
+```
+::
+
+Make sure Forms Pro's frontend JavaScript is loaded. It takes care of loading Cloudflare's API, rendering the widget, and disabling the submit button until the visitor has been verified:
+
+```bash
+php artisan vendor:publish --tag=forms-pro-frontend
+```
+
+```html
+<script src="/vendor/forms-pro/frontend/js/forms-pro.js"></script>
+```
+
+Finally, add both keys to your `.env`:
+
+```env
+FORMS_PRO_TURNSTILE_SITE_KEY=your-site-key
+FORMS_PRO_TURNSTILE_SECRET_KEY=your-secret-key
+```
+
+:::warning
+Once both keys are set, Forms Pro will require all form submissions to have a valid Turnstile token, otherwise validation will fail. You should add the Turnstile tag anywhere you render a form.
+:::
+
+#### Widget appearance
+
+Whether visitors see a checkbox, a spinner, or nothing at all isn't something Forms Pro controls — it depends on the **Widget Mode** (Managed, Non-Interactive, or Invisible) you chose when creating the widget in the Cloudflare dashboard.
+
+[Automagic Forms](#automagic-forms) are protected automatically — the widget appears on every form page without any template changes.
+
+#### Multi-page forms
+
+On [multi-page forms](#multi-page-forms), Turnstile only verifies the visitor once, when the final page is submitted. How the widget behaves before then depends on how your form is rendered:
+
+- **Without a JavaScript driver**, the tag renders nothing on intermediate pages — a submission can only be finalized from the final page, so that's the only place the widget appears. You can safely output the tag on every page.
+- **With the Alpine drivers**, the widget renders once and sticks around for the whole form. Intermediate pages are submitted over AJAX, so they're never held back — only the final submission waits for verification.
+
+:::tip
+When using the Alpine drivers, output the Turnstile tag *outside* the `{{ pages }}` loop. The widget is wired up on page load, so it won't work inside a page's `<template x-if>` block. If you'd rather it only appeared on the last page, hide it with `x-show="formsPro.isFinalPage"` instead.
+:::
