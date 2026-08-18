@@ -36,3 +36,12 @@ php please updates:run 3.0
 :::tip
 This is a one-time thing and will be automatically triggered by future Statamic updates.
 :::
+
+### Running update scripts when doing zero downtime deployments 
+
+Since zero downtime deployments typically use a multiple-release directory structure, where each new deployment is a fresh installation of the application, update scripts can be missed. 
+To ensure update scripts are run, add a step to your deployment pipeline that makes a backup of the `composer.lock` file.
+``` shell
+# Backup composer lock file to ensure update scripts are run
+cp composer.lock storage/statamic/updater/composer.lock.bak
+```
