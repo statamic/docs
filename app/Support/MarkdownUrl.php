@@ -16,13 +16,24 @@ class MarkdownUrl
             return null;
         }
 
-        // Off-site links (ui.statamic.dev, YouTube) have no Markdown twin.
-        if (str_starts_with($url, 'http')) {
+        // Off-site links and non-HTTP schemes have no Markdown twin.
+        if (preg_match('/^([a-z][a-z0-9+.-]*:|\/\/)/i', $url)) {
             return null;
         }
 
+        [$path, $suffix] = array_pad(preg_split('/(?=[#?])/', $url, 2), 2, '');
+        $path = rtrim($path, '/');
+
         // The home page can't take a ".md" suffix, so it lives at /index.md — which is the
         // convention agents guess anyway.
-        return $url === '/' ? url('/index.md') : url($url).'.md';
+        if ($path === '') {
+            return url('/index.md').$suffix;
+        }
+
+        if (! str_ends_with($path, '.md')) {
+            $path .= '.md';
+        }
+
+        return url($path).$suffix;
     }
 }

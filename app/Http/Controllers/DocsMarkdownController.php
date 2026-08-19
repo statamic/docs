@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\MarkdownUrl;
+use Illuminate\Http\Request;
+use Illuminate\Routing\RedirectController;
+use Illuminate\Routing\Router;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Cache;
 use Statamic\Exceptions\NotFoundHttpException;
 use Statamic\Facades\Data;
@@ -11,12 +16,13 @@ class DocsMarkdownController extends Controller
     public function __invoke(string $uri = '')
     {
         $uri = $this->normalizeUri($uri);
+        $entry = Data::findByUri($uri);
 
-        $markdown = Cache::rememberForever("markdown.$uri", function () use ($uri) {
-            $entry = Data::findByUri($uri);
+        if (! $entry) {
+            return $this->redirectLegacyUri($uri);
+        }
 
-            throw_unless($entry, new NotFoundHttpException);
-
+        $markdown = Cache::rememberForever("markdown.$uri", function () use ($entry) {
             return collect([
                 '# '.$entry->value('title'),
                 $entry->value('intro'),
@@ -40,6 +46,33 @@ class DocsMarkdownController extends Controller
         $uri = trim($uri, '/');
 
         return ($uri === '' || $uri === 'index') ? '/' : '/'.$uri;
+    }
+
+    /**
+     * Mirror the redirects used by the HTML docs, but keep internal destinations in
+     * Markdown. This makes legacy links such as `/users.md` redirect to the canonical
+     * `/control-panel/users.md` instead of returning a 404.
+     */
+    private function redirectLegacyUri(string $uri)
+    {
+        $request = Request::create($uri, 'GET');
+        $route = app(Router::class)->getRoutes()->match($request);
+
+        if (ltrim($route->getActionName(), '\\') !== RedirectController::class) {
+            throw new NotFoundHttpException;
+        }
+
+        $request->setRouteResolver(fn () => $route);
+
+        $redirect = app(RedirectController::class)(
+            $request,
+            app(UrlGenerator::class),
+        );
+
+        $destination = $redirect->getTargetUrl();
+        $destination = MarkdownUrl::for($destination) ?? $destination;
+
+        return redirect()->away($destination, $redirect->getStatusCode());
     }
 
     /**
