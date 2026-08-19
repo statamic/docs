@@ -27,13 +27,24 @@ class ServeMarkdown
             $uri = '';
         }
 
-        if (! Data::findByUri($uri === '' ? '/' : $uri)) {
+        $entry = Data::findByUri($uri === '' ? '/' : $uri);
+
+        if (! $entry) {
             return $this->handlePotentialDocsRedirect($request, $next($request));
         }
 
-        $response = $this->prefersMarkdown($request)
+        $prefersMarkdown = $this->prefersMarkdown($request);
+
+        $response = $prefersMarkdown
             ? ($this->markdown)($uri)
             : $next($request);
+
+        if (! $prefersMarkdown) {
+            $response->headers->set('Link', implode(', ', [
+                sprintf('<%s>; rel="alternate"; type="text/markdown"', MarkdownUrl::for($entry->url())),
+                sprintf('<%s>; rel="describedby"; type="text/plain"', url('/llms.txt')),
+            ]), false);
+        }
 
         $response->setVary('Accept', false);
 

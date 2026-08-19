@@ -32,9 +32,16 @@ class DocsMarkdownController extends Controller
 
         $markdown = $this->appendMdExtensionToInternalLinks($markdown);
 
-        return response($markdown, 200, [
+        $response = response($markdown, 200, [
             'Content-Type' => 'text/markdown; charset=UTF-8',
         ]);
+
+        $response->headers->set('Link', implode(', ', [
+            sprintf('<%s>; rel="canonical"; type="text/html"', url($entry->url())),
+            sprintf('<%s>; rel="describedby"; type="text/plain"', url('/llms.txt')),
+        ]), false);
+
+        return $response;
     }
 
     /**
