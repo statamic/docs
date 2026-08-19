@@ -85,11 +85,17 @@ class ServeMarkdown
     private function prefersMarkdown(Request $request): bool
     {
         $accept = strtolower((string) $request->header('Accept'));
-        $markdown = AcceptHeader::fromString($accept)->get('text/markdown');
+        $header = AcceptHeader::fromString($accept);
 
         // A wildcard Accept header should continue to receive the normal HTML response.
         // Negotiate Markdown only when the client explicitly asks for it and prefers it.
-        return $markdown && $markdown->getQuality() > 0
+        if (! $header->has('text/markdown')) {
+            return false;
+        }
+
+        $markdown = $header->get('text/markdown');
+
+        return $markdown->getQuality() > 0
             && $request->prefers(['text/markdown', 'text/html']) === 'text/markdown';
     }
 }
