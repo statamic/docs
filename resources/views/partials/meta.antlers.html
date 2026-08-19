@@ -1,14 +1,29 @@
-<meta name="description" content="{{ intro | striptags }}">
-<meta property="og:type" content="website" />
-<meta property="og:title" content="{{ title }}" />
-<meta property="og:description" content="{{ intro | striptags }}" />
-<meta property="og:url" content="{{ permalink }}" />
+<link rel="canonical" href="{{ permalink ?? current_url }}">
+{{ if noindex }}
+    <meta name="robots" content="noindex, follow">
+{{ else }}
+    {{# max-snippet:-1 lets answer engines quote a full passage rather than a clipped one. #}}
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+{{ /if }}
+{{ if id }}
+    {{# Every page has a Markdown twin. It's a fraction of the tokens of the HTML. #}}
+    <link rel="alternate" type="text/markdown" href="{{ url | markdown_url }}" title="Markdown version of this page">
+{{ /if }}
+<meta name="description" content="{{ meta_description | sanitize }}">
+{{ if id }}
+    <meta property="og:type" content="article" />
+{{ else }}
+    <meta property="og:type" content="website" />
+{{ /if }}
+<meta property="og:title" content="{{ title | sanitize }}" />
+<meta property="og:description" content="{{ meta_description | sanitize }}" />
+<meta property="og:url" content="{{ permalink ?? current_url }}" />
 <meta property="og:site_name" content="Statamic {{ config:docs:version }} Docs" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:image" content="{{ config:app:url }}/img/social-placeholder.jpg" />
-<meta property="twitter:title" content="{{ title }}" />
+<meta property="twitter:title" content="{{ title | sanitize }}" />
 <meta property="twitter:card" content="summary" />
 <meta property="twitter:site" content="@statamic" />
 <meta property="twitter:image" content="{{ config:app:url }}/img/social-placeholder.jpg" />
-<meta property="twitter:description" content="{{ intro | striptags }}" />
+<meta property="twitter:description" content="{{ meta_description | sanitize }}" />
 {{ partial:favicons }}

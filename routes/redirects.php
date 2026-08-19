@@ -77,6 +77,7 @@ Route::permanentRedirect('tips/localizing-globals', '/knowledge-base/tips/locali
 Route::permanentRedirect('tips/storing-content-in-a-database', '/knowledge-base/tips/storing-content-in-a-database');
 Route::permanentRedirect('tips/storing-users-in-a-database', '/knowledge-base/tips/storing-users-in-a-database');
 Route::permanentRedirect('tips/timezones', '/knowledge-base/tips/timezones');
+Route::permanentRedirect('tips/using-statamic-with-laravel-nightwatch', '/knowledge-base/tips/using-statamic-with-laravel-nightwatch');
 Route::permanentRedirect('tips/excluding-the-control-panel-from-maintenance-mode', '/knowledge-base/tips/excluding-the-control-panel-from-maintenance-mode');
 Route::permanentRedirect('upgrade-guide/3-0-to-3-1', '/getting-started/upgrade-guide/3-0-to-3-1');
 Route::permanentRedirect('upgrade-guide/3-1-to-3-2', '/getting-started/upgrade-guide/3-1-to-3-2');
@@ -119,6 +120,7 @@ Route::permanentRedirect('deploying/digitalocean', '/getting-started/deploying/d
 Route::permanentRedirect('installing/docker', '/getting-started/installing/docker');
 Route::permanentRedirect('email', '/advanced-topics/email');
 Route::permanentRedirect('fields', '/content-modeling/fields');
+Route::permanentRedirect('fieldset', '/content-modeling/fieldsets');
 Route::permanentRedirect('fieldsets', '/content-modeling/fieldsets');
 Route::permanentRedirect('fieldtypes', '/fieldtypes/overview');
 Route::permanentRedirect('forms', '/frontend/forms');
@@ -154,6 +156,7 @@ Route::permanentRedirect('protecting-content', '/frontend/protecting-content');
 Route::permanentRedirect('quick-start-guide', '/getting-started/quick-start-guide');
 Route::permanentRedirect('recent-updates', '/');
 Route::permanentRedirect('relationships', '/content-modeling/relationships');
+Route::permanentRedirect('replicator', '/fieldtypes/replicator');
 Route::permanentRedirect('release-schedule-support-policy', '/knowledge-base/release-schedule-support-policy');
 Route::permanentRedirect('requirements', '/getting-started/requirements');
 Route::permanentRedirect('rest-api', '/frontend/rest-api');
@@ -173,6 +176,7 @@ Route::permanentRedirect('installing/ubuntu', '/getting-started/installing/ubunt
 Route::permanentRedirect('updating', '/getting-started/updating');
 Route::permanentRedirect('upgrade-guide', '/getting-started/upgrade-guide');
 Route::permanentRedirect('users', '/control-panel/users');
+Route::permanentRedirect('utilities', '/control-panel/utilities');
 Route::permanentRedirect('upgrade-guide/v2-to-v3', '/getting-started/upgrade-guide/v2-to-v3');
 Route::permanentRedirect('validation', '/content-modeling/validation');
 Route::permanentRedirect('deploying/vercel', '/getting-started/deploying/vercel');

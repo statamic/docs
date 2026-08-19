@@ -7,11 +7,13 @@ use App\Markdown\Mermaid\MermaidExtension;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
 use App\Search\Storybook\StorybookSearchProvider;
+use App\Support\Description;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use Statamic\Facades\Collection;
 use Statamic\Facades\Markdown;
 use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
 use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
@@ -49,6 +51,23 @@ class AppServiceProvider extends ServiceProvider
 
         Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
 
+        $this->registerComputedValues();
+
         StorybookSearchProvider::register();
+    }
+
+    /**
+     * A value every collection needs but no blueprint defines. Registering it as a computed
+     * value means one implementation serves Antlers templates ({{ meta_description }}) and
+     * PHP alike ($entry->value('meta_description')).
+     */
+    private function registerComputedValues(): void
+    {
+        $collections = [
+            'pages', 'tags', 'modifiers', 'fieldtypes', 'variables',
+            'widgets', 'tips', 'troubleshooting', 'resource_apis',
+        ];
+
+        Collection::computed($collections, 'meta_description', fn ($entry) => Description::for($entry));
     }
 }
