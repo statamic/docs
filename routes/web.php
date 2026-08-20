@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\DocsMarkdownController;
-use App\Http\Controllers\RobotsTxtController;
 use Statamic\Facades\Entry;
 
-Route::get('robots.txt', RobotsTxtController::class);
 Route::get('llms.txt', LlmsTxtController::class);
 Route::get('{any}.md', DocsMarkdownController::class)->where('any', '.*');
 
