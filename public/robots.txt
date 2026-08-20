@@ -1,0 +1,26 @@
+# Statamic 6 Documentation
+#
+# Machine-readable index: /llms.txt
+# Every page is also available as Markdown by appending .md to its URL,
+# e.g. /tags/collection.md — far cheaper to read than the HTML.
+
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: Bytespider
+User-agent: CCBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+Sitemap: https://statamic.dev/sitemap.xml
