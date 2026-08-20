@@ -1,7 +1,7 @@
 {{ if related_entries }}
     <section class="c-related">
         <div class="u-label">{{ badge ?? "Learn More!" }}</div>
-        <p>{{ description ?? "There is more to learn more in these related articles:" }}</p>
+        <p>{{ description ?? "There is more to learn in these related articles:" }}</p>
 
         {{ related_entries as="entries" }}
             {{ entries group_by="collection:title" }}
