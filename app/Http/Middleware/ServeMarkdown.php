@@ -21,6 +21,17 @@ class ServeMarkdown
             return $next($request);
         }
 
+        if (str_ends_with($request->path(), '.md')) {
+            $uri = substr($request->path(), 0, -3);
+            $response = ($this->markdown)($uri);
+
+            if ($request->isMethod('HEAD')) {
+                $response->setContent('');
+            }
+
+            return $response;
+        }
+
         $uri = '/'.trim($request->path(), '/');
 
         if ($uri === '/') {
