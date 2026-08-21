@@ -21,6 +21,17 @@ class ServeMarkdown
             return $next($request);
         }
 
+        if (str_ends_with($request->path(), '.md')) {
+            $uri = substr($request->path(), 0, -3);
+            $response = ($this->markdown)($uri);
+
+            if ($request->isMethod('HEAD')) {
+                $response->setContent('');
+            }
+
+            return $response;
+        }
+
         $uri = '/'.trim($request->path(), '/');
 
         if ($uri === '/') {
@@ -43,10 +54,10 @@ class ServeMarkdown
             $response->headers->set('Link', implode(', ', [
                 sprintf('<%s>; rel="alternate"; type="text/markdown"', MarkdownUrl::for($entry->url())),
                 sprintf('<%s>; rel="describedby"; type="text/plain"', url('/llms.txt')),
-            ]), false);
+            ]));
         }
 
-        $response->setVary('Accept', false);
+        $this->addAcceptToVary($response);
 
         if ($request->isMethod('HEAD')) {
             $response->setContent('');
@@ -73,13 +84,21 @@ class ServeMarkdown
             return $response;
         }
 
-        $response->setVary('Accept', false);
+        $this->addAcceptToVary($response);
 
         if ($this->prefersMarkdown($request)) {
             $response->setTargetUrl(MarkdownUrl::for($destination) ?? $destination);
         }
 
         return $response;
+    }
+
+    private function addAcceptToVary(Response $response): void
+    {
+        $response->setVary(array_values(array_unique([
+            ...$response->getVary(),
+            'Accept',
+        ])));
     }
 
     private function prefersMarkdown(Request $request): bool
