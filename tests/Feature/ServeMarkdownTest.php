@@ -86,6 +86,7 @@ class ServeMarkdownTest extends TestCase
 
         $response->assertOk();
         $response->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+        $response->assertHeaderMissing('Set-Cookie');
         $this->assertStringStartsWith('# Home', $response->getContent());
     }
 }
