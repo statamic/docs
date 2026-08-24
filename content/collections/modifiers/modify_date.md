@@ -35,7 +35,7 @@ April 1, 2000
 ```
 
 :::tip
-As of Statamic 5, this modifier will return a copy of the Date. Earlier versions would **modify the variable directly** which will be passed onto any additional modifiers.
+This modifier returns a **copy** of the date — the original variable is left untouched for any additional modifiers.
 :::
 
 :::warning

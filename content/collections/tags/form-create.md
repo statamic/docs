@@ -377,7 +377,7 @@ For our Alpine.js example, the first step is to include Alpine, as well as Stata
 <script src="/vendor/statamic/frontend/js/helpers.js"></script>
 ```
 
-These can be added to your [layout](/views#layouts) just before your `</body>` tag. Alternatively, you could also work these into your webpack/mix build, but this is the simplest way.
+These can be added to your [layout](/views#layouts) just before your `</body>` tag. Alternatively, you could also work these into your Vite build, but this is the simplest way.
 
 ### Enabling the JS Driver
 
@@ -562,7 +562,7 @@ class RadJs extends AbstractJsDriver
 In this above example, we provide `r-data` and `r-model` attributes for a fictional framework called `Rad.js`, as well as `show_field` [conditional logic](#the-helpersjs-script) for each renderable field.
 
 :::tip
-For a more real-world example, here is how you could create [a custom driver for Vue.js](https://gist.github.com/jesseleite/3507f7ad3dd062b9e5f7592c899bf297). Of course, you should also check out our built-in [Alpine.js driver](https://github.com/statamic/cms/blob/13721c5738c3fe43ce5b2161595a6d42016e7594/src/Forms/JsDrivers/Alpine.php).
+For a real-world example, check out our built-in [Alpine.js driver](https://github.com/statamic/cms/blob/6.x/src/Forms/JsDrivers/Alpine.php).
 :::
 
 ### Registering the Driver

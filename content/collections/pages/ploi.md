@@ -64,9 +64,9 @@ The "Deploy script" area is where you'd add commands to install Composer and NPM
 cd /home/ploi/{example}.{tld}
 git pull origin main
 composer install --no-interaction --prefer-dist --optimize-autoloader
-echo ... sudo-S service php8.1-fpm reload
+echo "" | sudo -S service php8.3-fpm reload
 php please cache:clear
-npm ci && npm run production
+npm ci && npm run build
 ```
 
 If you're planning on using the Git integration, you may want to prevent content changes from the Control Panel from triggering "full" deployments in Ploi. Learn more about this on the [Git Automation](/git-automation#customizing-commits) page.

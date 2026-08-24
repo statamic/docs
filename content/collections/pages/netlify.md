@@ -15,7 +15,7 @@ Deployments are triggered by committing changes to your Git repository. Alternat
 ## Prerequisites
 
 :::tip
-While Netlify supports PHP versions from 7.4 through 8.3, it defaults to PHP 8.0. You can [specify the PHP version](https://docs.netlify.com/configure-builds/manage-dependencies/#php) using the `PHP_VERSION` environment variable.
+Netlify's build image defaults to PHP 8.0, which is too old for Statamic. You'll need to [specify the PHP version](https://docs.netlify.com/configure-builds/manage-dependencies/#php) by setting the `PHP_VERSION` environment variable to `8.3` or above.
 :::
 
 - A [Netlify](https://netlify.com) account
