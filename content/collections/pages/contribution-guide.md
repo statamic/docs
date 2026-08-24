@@ -112,8 +112,7 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true,
-            "pixelfear/composer-dist-plugin": true
+            "php-http/discovery": true
         }
     }, // [tl! collapse:end]
     "minimum-stability": "dev",
@@ -150,8 +149,6 @@ Installing dependencies from lock file (including require-dev)
 Package operations: 0 installs, 1 update, 0 removals
   - Removing statamic/cms (v5.7.3)
   - Installing statamic/cms (6.x-dev): Symlinking from /path/to/cms  # [tl! focus]
-  - Downloading statamic/cms (dist)
-    Failed to download
 Generating optimized autoload files
 > Illuminate\Foundation\ComposerScripts::postAutoloadDump
 > @php artisan package:discover --ansi
