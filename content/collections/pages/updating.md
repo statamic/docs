@@ -3,6 +3,8 @@ title: Updating
 id: e6f05019-6bdd-488e-ba45-39ae7ea5cee7
 blueprint: page
 intro: Updates are handled by [Composer](https://getcomposer.org/), PHP's dependency manager. We recommend running all updates locally (not on production) via the command line and deploying those changes to production after verifying everything still works as it should.
+related_entries:
+  - 3c2c6894-0b47-4281-b798-7fb91fc7c34c
 ---
 
 :::best-practice
@@ -54,3 +56,7 @@ To go back to a more traditional version range constraint, you may want to repla
 ## Major upgrades
 
 Upgrading between major Statamic versions sometimes involves extra manual steps. Check out [these guides](/upgrade-guide) for further details.
+
+## Need a fix that isn't released yet?
+
+If a bug you're hitting has already been fixed in a pull request but hasn't shipped in a release, you don't have to wait — you can apply the fix today with [Composer patches](/knowledge-base/tips/using-composer-patches).
