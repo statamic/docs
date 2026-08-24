@@ -37,6 +37,8 @@ Not to be confused with [form fieldtypes](/forms#form-fieldtypes) — the fields
 
 The Form fieldtype stores the `handle` of a single form as a string, or an array of handles if `max_items` is greater than 1.
 
+When an entry overrides a [unique instances](#unique-instances) form's settings, the value is stored as an array with `form` and `config` keys instead.
+
 ## Templating
 
 The Form fieldtype provides a few useful variables:
@@ -64,3 +66,10 @@ You can pass the `handle` to the [`{{ form:create }}`](/tags/form-create) tag to
 </s:form:create>
 ```
 ::
+
+## Unique Instances
+
+When the selected form has [Unique Instances](/forms#unique-instances) enabled (a [Forms Pro](/forms#forms-pro) feature), the fieldtype does a little more on the entry's publish form:
+
+- A **Configure** option lets you override the form's Access settings — close date, submission limit, closed message, and require login — for that entry. Anything you leave blank falls back to the form's setting.
+- A **View Submissions** button opens the entry's submissions in a stack.

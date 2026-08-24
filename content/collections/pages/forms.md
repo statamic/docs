@@ -784,6 +784,10 @@ Statamic rejects restricted submissions server-side with a validation error, so 
 
 The message shown for a closed or limit-reached form can be customized with the **Closed Message** setting, and the message shown when login is required can be customized separately with **Require Login Message**. Leave either blank to use Statamic's default wording. If a form is both closed/limit-reached and requires login, the closed message takes precedence.
 
+:::tip
+When a form has [Forms Pro](#forms-pro)'s [Unique Instances](#unique-instances) enabled, these restrictions are checked per entry — and each entry can override them.
+:::
+
 ## Localizing forms
 
 Form fields aren't yet localizable — a field's display label, instructions, and options are shared across every site. We're planning on adding support for this soon.
@@ -929,6 +933,7 @@ The action provides the following methods:
 | --- | --- |
 | `form` | Provide the `Form` you want to use. |
 | `page` | Optional. (intended to be used alongside Forms Pro's multi-page forms feature) ID of the page you want to submit. |
+| `entry` | Optional. (intended to be used alongside Forms Pro's [unique instances](#unique-instances) feature) ID of the entry the submission is attached to. |
 | `resume` | `Submission` instance of the partial submission you wish to resume. |
 | `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
 | `validate` | Validate the current page. Accepts an array of `$data` and an optional array of `$files`. Also accepts an array of field handles to limit which fields are validated. |
@@ -950,7 +955,7 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
 - [Form summaries](#form-summaries)
 - [Form summary graphs](#form-summary-graphs)
 - [Automagic Forms](#automagic-forms)
-- Unique form instances per entry
+- [Unique form instances per entry](#unique-instances)
 - [Connections for HubSpot, Mailchimp and more](#connections-1)
 - Additional fieldtypes
 - [Spam prevention with Cloudflare Turnstile](#cloudflare-turnstile)
@@ -1462,6 +1467,115 @@ Automagic Forms are enabled by default. If you'd rather disable them entirely, t
     // ...
 ],
 ```
+
+### Unique Instances
+
+Sometimes one form needs to act like many. Picture an Events collection where every event has its own RSVP form — you don't want one big pile of RSVPs, you want to know who's coming to _which_ event, close registrations per event, and cap the numbers per event.
+
+Rather than duplicating the form for every entry, **Unique Instances** lets a single form be shared across your entries, with each entry treated as its own instance. Submissions are attached to the entry they were submitted from, and [restrictions](#restricting-submissions) like close dates and submission limits apply per entry — with the option to override them per entry too.
+
+#### Enabling it on a form
+
+On the form's configure screen, under **Submissions**, flip the **Unique Instances** toggle. (You'll only see it when Forms Pro is installed.)
+
+#### Attaching the form to entries
+
+Add a [Form fieldtype](/fieldtypes/form) to your collection's blueprint and select the form on each entry. In your template, pass the selected form to the `{{ form:create }}` tag as usual:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:create :in="rsvp_form:handle" }}
+    ...
+{{ /form:create }}
+```
+::tab blade
+```blade
+<s:form:create :in="$rsvp_form->handle">
+    ...
+</s:form:create>
+```
+::
+
+When the tag is rendered on an entry's page, it automatically outputs a hidden `_entry` input containing the entry's ID — no template changes needed.
+
+Submissions to a unique instances form **must** come from an entry. If the `_entry` input is missing, or doesn't point to a real entry, the submission is rejected with a validation error.
+
+#### Submissions
+
+Each submission stores the ID of the entry it was submitted from. The `entry` value is augmented into the entry itself, so you can use its variables when [displaying submission data](#displaying-submission-data):
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:submissions in="rsvps" }}
+    {{ name }} is coming to {{ entry:title }}!
+{{ /form:submissions }}
+```
+::tab blade
+```blade
+<s:form:submissions in="rsvps">
+    {{ $name }} is coming to {{ $entry->title }}!
+</s:form:submissions>
+```
+::
+
+And since `entry` is stored like any other value, you can filter by it using [conditions](/conditions) — handy for showing an entry's own submissions on its page:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:submissions in="rsvps" :entry:is="id" }}
+    {{ name }} is coming!
+{{ /form:submissions }}
+```
+::tab blade
+```blade
+<s:form:submissions in="rsvps" :entry:is="$id">
+    {{ $name }} is coming!
+</s:form:submissions>
+```
+::
+
+#### Per-entry restrictions
+
+When unique instances is enabled, [submission restrictions](#restricting-submissions) are checked against the entry being submitted from. A submission limit of 100 means 100 submissions _per event_, not 100 across the whole form. The same goes for close dates, closed messages, and requiring login — and the `restricted`, `restriction_message`, and `status` variables on the `{{ form:create }}` tag reflect the current entry's instance, so your existing template handles it all.
+
+The form's own **Access** settings act as defaults, and each entry can override them. On the entry's publish form, use the Form fieldtype's **Configure** option to set the entry's own close date, submission limit (and period), closed message, and require login settings. Anything you leave blank falls back to the form's setting.
+
+This way, your Summer Barbecue can stop taking RSVPs the day before the event, while the Winter Gala caps out at 200 guests — all from the same form.
+
+#### In the Control Panel
+
+Unique instances are woven through the Forms area of the Control Panel:
+
+- The submissions listing gains an **Entry** column, and an **Entry** filter for narrowing the listing down to a single entry's submissions.
+- When viewing a submission, a badge links back to the entry it was submitted from.
+- Back on the entry's publish form, the Form fieldtype gets a **View Submissions** button, which opens that entry's submissions in a stack.
+
+_TODO: Screenshot of the submissions listing with the Entry column and filter_
+
+#### PHP API
+
+You can tell whether a form has unique instances enabled with `$form->hasUniqueInstances()`. (It's always `false` when Forms Pro isn't installed.)
+
+To work with a specific entry's instance, call `$form->instance($entryId)` to get a `Statamic\Forms\Instance`:
+
+```php
+$instance = $form->instance($entry->id());
+
+$instance->status(); // "open", "closed", or "limit_reached"
+$instance->restricted(); // Whether the instance is currently rejecting submissions.
+$instance->restrictionMessage(); // The message to show, or null when open.
+$instance->config('submission_limit'); // A setting, using the entry's override when there is one.
+```
+
+The form's own `status()`, `restricted()`, and `restrictionMessage()` methods delegate to the default instance — the form's behavior outside the context of any entry.
+
+When [submitting forms programmatically](#submitting-forms-programmatically), pass the entry's ID to the `SubmitForm` action's `entry` method to submit to that entry's instance.
 
 ### Cloudflare Turnstile
 
