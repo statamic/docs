@@ -7,7 +7,7 @@ use Statamic\Facades\Entry;
 Route::get('llms.txt', LlmsTxtController::class);
 Route::get('{any}.md', DocsMarkdownController::class)->where('any', '.*');
 
-Route::statamic('search-results', 'search', ['hide_sidebar' => true]);
+Route::statamic('search-results', 'search', ['hide_sidebar' => true, 'noindex' => true]);
 Route::statamic('sitemap.xml', 'sitemap', ['content_type' => 'xml', 'layout' => 'sitemap']);
 
 Route::get('versions.json', fn () => config('docs.versions'));

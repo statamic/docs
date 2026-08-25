@@ -13,7 +13,7 @@ Control Panel will gently fail, particularly in the **Assets** section and **Gli
 
 - mbstring
 - exif
-- gd2
+- gd
 - fileinfo
 
 Not all PHP installations will have these enabled by default.  Consult your php.ini file or **Utilities > PHP Info** to determine whether you have them installed.

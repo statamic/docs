@@ -10,12 +10,11 @@ intro: A full walk-through for installing, configuring, and running Statamic on 
 
 There is only one prerequisite for this guide. You must have:
 
-- A [Linode](https://www.linode.com/) account (Use this referral code for )
-- A Linode account ([this signup link](https://linode.gvw92c.net/9WzZX5) will give you $100 in free credit)
+- A [Linode](https://www.linode.com/) account ([this signup link](https://linode.gvw92c.net/9WzZX5) will give you $100 in free credit)
 
 ## Server Setup
 
-Follow the [official “Getting Started with Linode”](https://www.linode.com/docs/guides/getting-started/) guide to setup your server. Be sure to choose the Ubuntu image when creating your server — preferably the Ubuntu version 20.04 LTS. You can still use Ubuntu 18.04 or 16.04 if you want. To use old software.
+Follow the [official “Getting Started with Linode”](https://www.linode.com/docs/guides/getting-started/) guide to setup your server. Be sure to choose the Ubuntu image when creating your server — preferably the latest LTS release (24.04 at the time of writing).
 
 We recommend at least 1GB of memory on your VPS.
 

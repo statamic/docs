@@ -14,9 +14,9 @@ A fresh Statamic install starts in Solo edition mode. You can enable Pro in your
 php please pro:enable
 ```
 
-You can also set `pro` to `true` in `config/statamic/editions.php` for all environments (which you may need to do for older installations of Statamic where the above command doesn't exist).
+You can also set `pro` to `true` in `config/statamic/editions.php` for all environments.
 
-Once you've opted in, many additional features become be available.
+Once you've opted in, many additional features become available.
 
 ## Trying Pro Mode {#trial-mode}
 

@@ -1,0 +1,46 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://statamic.com/#organization",
+            "name": "Statamic",
+            "url": "https://statamic.com/"
+        },
+        {
+            "@type": "WebSite",
+            "@id": "{{ config:app:url }}/#website",
+            "url": "{{ config:app:url }}/",
+            "name": "Statamic {{ config:docs:version }} Documentation",
+            "inLanguage": "en",
+            "publisher": {
+                "@id": "https://statamic.com/#organization"
+            }
+        }{{ if id }}{{ unless url == '/' }},
+        {
+            "@type": "TechArticle",
+            "@id": "{{ permalink }}#article",
+            "url": "{{ permalink }}",
+            "headline": {{ title | json }},
+            "description": {{ meta_description | json }},
+            "image": "{{ config:app:url }}/img/social-placeholder.jpg",
+            "inLanguage": "en",
+            "version": "{{ config:docs:version }}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ permalink }}#webpage"
+            },
+            "isPartOf": {
+                "@id": "{{ config:app:url }}/#website"
+            },
+            "author": {
+                "@id": "https://statamic.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://statamic.com/#organization"
+            }
+        }{{ /unless }}{{ /if }}
+    ]
+}
+</script>

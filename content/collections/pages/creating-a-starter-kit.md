@@ -132,8 +132,7 @@ export_paths:
   - public/assets
   - public/css
   - package.json
-  - tailwind.config.js
-  - webpack.mix.js
+  - vite.config.js
 ```
 
 Anything not configured in your `starter-kit.yaml` **will not be exported**. This way you don't have to maintain a full Statamic site, or any bootstrap code that is unrelated to your Starter Kit.

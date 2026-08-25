@@ -91,7 +91,7 @@ The user will receive an email with a temporary, single-use token allowing them 
 
 ## Password validation
 
-By default, passwords need to be 8 characters long. If you'd like to customize the default rules, you can use the `Password` rule object. (Requires at least Laravel 8.43).
+By default, passwords need to be 8 characters long. If you'd like to customize the default rules, you can use the `Password` rule object.
 
 These rules will be used when creating passwords throughout Statamic. In the `make:user` command, in the `user:register_form` tag, or during the password activation/reset flows. If you create the password by hand in user yaml files, the rules will be bypassed.
 

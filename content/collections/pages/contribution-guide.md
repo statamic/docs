@@ -54,20 +54,21 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
     "description": "Statamic",
     "keywords": ["statamic", "cms", "flat file", "laravel"],
     "require": { // [tl! collapse:start]
-        "php": "^8.2",
-        "laravel/framework": "^11",
-        "laravel/tinker": "^2.9",
-        "statamic/cms": "^5.0"
+        "php": "^8.3",
+        "laravel/framework": "^13.17",
+        "laravel/tinker": "^3.0",
+        "statamic/cms": "^6.0"
     }, // [tl! collapse:end]
     "require-dev": { // [tl! collapse:start]
-        "barryvdh/laravel-debugbar": "^3.8.1",
         "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
+        "fruitcake/laravel-debugbar": "^4.0",
+        "laravel/pail": "^1.2.5",
+        "laravel/pint": "^1.27",
+        "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0",
-        "spatie/laravel-ignition": "^2.4"
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^12.5.12",
+        "spatie/laravel-error-solutions": "^1.1"
     }, // [tl! collapse:end]
     "autoload": { // [tl! collapse:start]
         "psr-4": {
@@ -112,8 +113,7 @@ In your app's `composer.json`, add a `repositories` array with a "path" reposito
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true,
-            "pixelfear/composer-dist-plugin": true
+            "php-http/discovery": true
         }
     }, // [tl! collapse:end]
     "minimum-stability": "dev",
@@ -150,8 +150,6 @@ Installing dependencies from lock file (including require-dev)
 Package operations: 0 installs, 1 update, 0 removals
   - Removing statamic/cms (v5.7.3)
   - Installing statamic/cms (6.x-dev): Symlinking from /path/to/cms  # [tl! focus]
-  - Downloading statamic/cms (dist)
-    Failed to download
 Generating optimized autoload files
 > Illuminate\Foundation\ComposerScripts::postAutoloadDump
 > @php artisan package:discover --ansi

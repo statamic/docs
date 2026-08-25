@@ -26,7 +26,7 @@ In today's tech-driven ecosystem there are countless ways to build a website. So
 
 - Write a Single Page Application (SPA) with [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to run your entire site without the need for page refreshes
 - Use HTML and Statamic's [Antlers](/antlers) template language to build a dynamic site with smart caching
-- Use [Vite][vite], [Webpack](https://webpack.js.org), [Laravel Mix][mix], or [Gulp](https://gulpjs.com) to compile your JavaScript and SCSS/LESS
+- Use [Vite][vite] (or any bundler you like) to compile your JavaScript and CSS
 - Go for the [JAMStack](https://jamstack.org) approach and run a statically generated site without server-side processing
 - Build a standard Statamic site and deploy a static version to [Netlify](https://www.netlify.com)
 - Go skateboarding and stay away from computers and nerdy webmasters
@@ -48,7 +48,7 @@ You don't have to go Antlers + Tailwind. At all. That's just our preference.
 
 You could do so many different things, like:
 
-- Use our [GraphQL](/graphql) integration and build your frontend with [Gatsby.js](https://www.gatsbyjs.com/)
+- Use our [GraphQL](/graphql) integration and build your frontend with [Nuxt](https://nuxt.com) or [Astro](https://astro.build)
 - Use our [REST API](/rest-api) and build a single page application with [Vue.js](https://vuejs.org) or [React](https://reactjs.org/)
 - Use [Laravel Blade](https://laravel.com/docs/13.x/blade) and some controllers and write your own routes.
 
@@ -64,5 +64,4 @@ Let's take a quick look at what happens during a typical Statamic frontend reque
 4. Statamic loads the appropriate [view](/views) and injects the variables into it.
 5. The Contents of the rendered view is sent to the user's browser.
 
-[mix]: https://laravel.com/docs/mix
 [vite]: https://vitejs.dev

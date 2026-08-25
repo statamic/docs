@@ -88,7 +88,7 @@ title: Mon Premier Jour
 Here you can see that since the French version does not have `image` defined, it will inherit it from the English version.
 
 :::tip
-Notice that the French version has a different ID from the English version. In Statamic v3, **every entry has its own ID**, which is different from the Statamic v2 behavior.
+Notice that the French version has a different ID from the English version — **every entry has its own ID**.
 :::
 
 ## Deleting

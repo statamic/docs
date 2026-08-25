@@ -5,12 +5,18 @@ title: 'Antlers Templates'
 intro: |-
   Antlers is a simple and powerful templating engine provided with Statamic.  It can fetch and filter content, display, modify, and set variables, tap into core features like user authentication and search, and handle complex logic. Coming from Laravel and want to stick to Blade? [We got you covered](/blade).
 template: page
+related_entries:
+  - 0c54fe7c-c87a-4812-b76e-48f16cf08e0d
+  - c7816387-ebc4-4204-b5f2-8e7073a4db8b
 ---
 ## Overview
 
 Antlers is one of Statamic's foundational features. It consists of a tightly coupled template language, runtime engine, and library of [Tags](#tags) that can be used to fetch and manipulate data, handle logic, and help you write easier to maintain HTML.
 
 Antlers templates are also called views. Any files in the `resources/views` directory with an `.antlers.html` file extension is an "Antlers Template", and will be parsed with the Antlers Engine.
+
+## Cheat Sheet
+Antlers is quite powerful and this page covers _most_ of what you can do with it. If you want to skip to just the _most common_ use cases, feel free to check out the [Antlers Cheat Sheet](/frontend/antlers-cheat-sheet).
 
 :::tip
 The `.antlers.html` extension is important. Without it, your template will be rendered as **unparsed, static HTML**.
@@ -101,7 +107,6 @@ Syntax highlighting and auto-completion packages are available for many of the p
 - [Antlers Toolbox for PhpStorm](https://plugins.jetbrains.com/plugin/32203-antlers-toolbox) (Built by John Koster, creator of the current Antlers parser)
 - [Antlers for PHPStorm (IntelliJ IDEs)](https://github.com/BALOTIAS/intellij-antlers)
 - [Antlers for Sublime Text](https://github.com/addisonhall/antlers-statamic-sublime-syntax)
-- [Antlers for Atom](https://github.com/addisonhall/language-antlers)
 - [Antlers for Panic Nova](https://extensions.panic.com/extensions/teriyaki/teriyaki.antlers/)
 
 ## Variables

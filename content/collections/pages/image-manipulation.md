@@ -227,6 +227,12 @@ Make sure that the `visibility` is `public` and that the `url` points to the cor
 :::
 
 :::warning
+On Amazon S3, a `visibility` of `public` is applied to each object using an ACL. Buckets created since April 2023 have ACLs disabled by default, so Glide won't be able to write to them, failing with an `AccessControlListNotSupported` error.
+
+To fix this, enable ACLs on the bucket by setting its Object Ownership to "Bucket owner preferred".
+:::
+
+:::warning
 Don't use the same disk, bucket or url as your source images. If you were to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
 

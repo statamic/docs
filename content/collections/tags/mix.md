@@ -15,9 +15,12 @@ parameters:
 id: b8936f37-a237-4fad-bf70-a6421ab413ae
 ---
 ## Overview
-[Laravel Mix][mix] is an Webpack API wrapper for compiling and building CSS and JavaScript files. The mix tag returns the path to a versioned [Mix][mix] file. Don't worry, if you're not using versioning it will return the path to the _non_-versioned file.
 
-[Webpack][webpack] and asset compilation can be a pretty complicated task and Laravel Mix does a really good job of simplifying it as far as it can possibly go.
+:::tip
+Laravel Mix is a **legacy** build tool — new Statamic projects use [Vite](https://laravel.com/docs/vite) and the [vite tag](/tags/vite) instead. This tag is here for older sites that still compile their assets with Mix.
+:::
+
+[Laravel Mix][mix] is a Webpack API wrapper for compiling and building CSS and JavaScript files. The mix tag returns the path to a versioned [Mix][mix] file. Don't worry, if you're not using versioning it will return the path to the _non_-versioned file.
 
 ::tabs
 
@@ -58,9 +61,8 @@ By default Mix will assume that the `mix-manifest.json` file that points to the 
 ## Related Reading
 
 - [Laravel Mix docs][mix]
-- [Laravel Mix FAQs](https://laravel-mix.com/docs/4.0/faq)
-- [Using TailwindCSS with Laravel Mix](https://tailwindcss.com/docs/installation/#laravel-mix)
+- [The vite tag](/tags/vite) — the modern replacement
 - [Webpack][webpack]
 
-[mix]: https://laravel.com/docs/mix
+[mix]: https://laravel-mix.com
 [webpack]: https://webpack.js.org/
