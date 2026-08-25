@@ -595,8 +595,6 @@ Create a class in the `app/FormConnections` directory that extends `Statamic\For
 
 namespace App\FormConnections;
 
-use App\Http\Controllers\AcmeConnectionController;
-use Illuminate\Routing\Router;
 use Statamic\Contracts\Forms\Form;
 use Statamic\Forms\Connections\Connection;
 use Statamic\Support\VueComponent;
@@ -615,14 +613,15 @@ class Acme extends Connection
 
     public function render(Form $form): VueComponent
     {
-        return VueComponent::render('acme-connection', [
-            'action' => cp_route('forms.connect.acme.update', $form->handle()),
-        ]);
+        return VueComponent::render('acme-connection');
     }
 
-    public function routes(Router $router): void
+    public function rules(Form $form): array
     {
-        $router->patch('/', [AcmeConnectionController::class, 'update'])->name('update');
+        return [
+            '*' => ['array'],
+            '*.channel' => ['required'],
+        ];
     }
 }
 ```
@@ -636,47 +635,69 @@ class Acme extends Connection
 | `$icon` | The icon shown on the Connect index. |
 | `$developer` | Who built the connection, shown on the Connect index. |
 | `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
-| `render()` | The Vue component (and its props) rendered on the connection's page. |
-| `routes()` | Routes for the connection, like the one your component saves to. They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
+| `render()` | The Vue component (and its props) rendered on the connection's edit page. |
+| `preProcess()` | Prepares the saved config for editing. Whatever it returns is passed to your Vue component as its `modelValue`. Returns the config untouched by default. |
+| `rules()` | Validation rules for the value being saved. |
+| `process()` | Prepares the submitted value for saving. Whatever it returns gets saved to the form. Returns the value untouched by default. |
+| `routes()` | Additional routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
 | `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
+
+#### Saving
+
+You don't need any routes or controllers to save your connection — the edit page owns the whole save flow, including the save button, the <kbd>Cmd</kbd>+<kbd>S</kbd> shortcut, validation errors and dirty state tracking.
+
+Your config makes a round trip through your connection class:
+
+1. When the page loads, the saved config is passed through your `preProcess()` method and handed to your Vue component as its `modelValue`.
+2. Your component emits `update:modelValue` as the user makes changes.
+3. When the user saves, the value is sent back as-is, validated against your `rules()`, passed through your `process()` method, and saved to the form under your connection's handle.
+
+The value is the request body itself, so your rules are keyed from the root — `*.channel` rather than nesting under some key — and validation errors come back keyed the same way (`0.channel`), passed to your component via the `errors` prop.
 
 #### The frontend
 
 The `render()` method determines which Vue component gets rendered, along with its props.
 
-Your component is rendered inside the connection's page, which passes it two props automatically — `form`, and `config` containing the connection's saved config for that form. You don't need to pass either through `render()` yourself.
-
-Connections handle their own saving — your component should post back to a route you've registered in the `routes()` method.
+Your component is rendered inside the connection's edit page, which passes it three props automatically — `form`, `modelValue` containing the pre-processed value, and `errors` containing any validation errors. You don't need to pass any of these through `render()` yourself.
 
 If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionRows>` component to get a head start.
 
-Pass it your array of rows via `v-model`, the default `values`/`meta` for new rows via `defaults`, and a header slot and a body slot for each row. It takes care of the collapsible row UI, the add/duplicate/remove actions, and dirty state tracking (under the `connection` key, which you should clear after saving).
-
-The `connectionRows` helper builds the initial rows for you — pass it the saved configs and an object of `values`/`meta` keyed by row id (which you'd pass along as props from your `render()` method).
+Pass it your array of rows via `v-model`, your validation errors via `errors`, and a header slot and a body slot for each row. It takes care of the collapsible row UI and the add/duplicate/remove actions. New rows are seeded from `defaults.values`, and each row is given an `id`, `enabled` state and empty `conditions` for you.
 
 ```vue
 <script setup>
-import { ref } from 'vue';
-import { ConnectionRows, connectionRows } from '@statamic/cms';
+import { ConnectionRows } from '@statamic/cms';
 import { Badge } from '@statamic/cms/ui';
 
-const props = defineProps({ config: Array, notifications: Object, defaults: Object });
+defineEmits(['update:modelValue']);
 
-const notifications = ref(connectionRows(props.config, props.notifications));
+defineProps({
+    modelValue: { type: Array, default: () => [] },
+    errors: { type: Object, default: () => ({}) },
+    defaults: Object,
+});
 </script>
 
 <template>
-    <ConnectionRows v-model="notifications" :defaults :add-label="__('Add Notification')">
+    <ConnectionRows
+        :model-value="modelValue"
+        :errors
+        :defaults
+        :add-label="__('Add Notification')"
+        @update:model-value="$emit('update:modelValue', $event)"
+    >
         <template #header="{ item: notification, collapsed }">
-            <Badge size="lg" pill>{{ notification.values.channel || __('New Notification') }}</Badge>
+            <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
         </template>
 
-        <template #default="{ item: notification, index }">
+        <template #default="{ item: notification, errors }">
             <!-- Each row's fields go here... -->
         </template>
     </ConnectionRows>
 </template>
 ```
+
+The default slot hands each row its own validation errors, grouped by field handle, ready to pass along to your fields.
 
 #### Conditional logic
 
@@ -698,7 +719,8 @@ If you want your connection to support conditional logic, the `<ConnectionRules>
 
 On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles the rest:
 
-- When saving, `ConnectionLogic::normalize($conditions)` strips out any incomplete conditions, and returns `null` when there's nothing to save.
+- When editing, `ConnectionLogic::preProcess($conditions)` gives each condition the row ID the logic builder needs — call it on each row's conditions from your connection's `preProcess()` method.
+- When saving, `ConnectionLogic::process($conditions)` strips out the row IDs and any incomplete conditions, and returns `null` when there's nothing to save — call it from your `process()` method.
 - When a submission comes in, `ConnectionLogic::passes($config, $submission)` tells you whether a row should run — it fails when the row has been disabled, or when its conditions don't match the submission.
 
 Statamic also exports `conditionsSummary`, which turns a row's conditions into a readable sentence — like _"if Enquiry Type equals Sales"_ — handy for describing a row in its header when collapsed.
