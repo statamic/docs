@@ -100,11 +100,13 @@ Loop through in each locale to get URLs to translated versions of an entry or ta
 </ul>
 ```
 ::tab blade
+```blade
 <ul>
 <s:locales>
   <li><a href="{{ $locale['permalink'] }}">View in {{ $locale['name'] }}</a></li>
 </s:locales>
 </ul>
+```
 ::
 
 ### Targeting a locale {#targeting}
