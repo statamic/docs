@@ -615,14 +615,6 @@ class Acme extends Connection
     {
         return VueComponent::render('acme-connection');
     }
-
-    public function rules(Form $form): array
-    {
-        return [
-            '*' => ['array'],
-            '*.channel' => ['required'],
-        ];
-    }
 }
 ```
 
@@ -639,20 +631,20 @@ class Acme extends Connection
 | `preProcess()` | Prepares the saved config for editing. Whatever it returns is passed to your Vue component as its `modelValue`. Returns the config untouched by default. |
 | `rules()` | Validation rules for the value being saved. |
 | `process()` | Prepares the submitted value for saving. Whatever it returns gets saved to the form. Returns the value untouched by default. |
-| `routes()` | Additional routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
+| `routes()` | Routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
 | `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
 
 #### Saving
 
-You don't need any routes or controllers to save your connection — the edit page owns the whole save flow, including the save button, the <kbd>Cmd</kbd>+<kbd>S</kbd> shortcut, validation errors and dirty state tracking.
+You don't need any routes or controllers to save your connection — Statamic owns the save process.
 
 Your config makes a round trip through your connection class:
 
 1. When the page loads, the saved config is passed through your `preProcess()` method and handed to your Vue component as its `modelValue`.
 2. Your component emits `update:modelValue` as the user makes changes.
-3. When the user saves, the value is sent back as-is, validated against your `rules()`, passed through your `process()` method, and saved to the form under your connection's handle.
+3. When the user saves, the value is validated against your `rules()`, passed through your `process()` method, and saved to the form under your connection's handle.
 
-The value is the request body itself, so your rules are keyed from the root — `*.channel` rather than nesting under some key — and validation errors come back keyed the same way (`0.channel`), passed to your component via the `errors` prop.
+Validation errors are passed to your component via the `errors` prop, keyed by row index — like `0.channel`.
 
 #### The frontend
 
