@@ -32,10 +32,10 @@ You may also opt to use a middleware to add a header. If you do this, you'll wan
 // app/bootstrap/app.php [tl! focus]
 
 ->withMiddleware(function (Middleware $middleware) {
-            $middleware->web(append: [ // [tl! ++ focus]
-                \App\Http\Middleware\ContentSecurityPolicy::class, // [tl! ++ focus]
-            ]); // [tl! ++ focus]
-        })
+    $middleware->web(append: [ // [tl! ++ focus]
+        \App\Http\Middleware\ContentSecurityPolicy::class, // [tl! ++ focus]
+    ]); // [tl! ++ focus]
+})
 ```
 ```php
 <?php // app/Http/Middleware/ContentSecurityPolicy.php
