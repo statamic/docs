@@ -203,6 +203,19 @@ public function bootAddon()
 }
 ```
 
+## Including Fieldtypes with your Addon
+
+If you plan to build a [fieldtype](/fieldtypes/build-a-fieldtype) into your addon, you can do so by including your addon when you generate the fieldtype:
+
+```shell
+php please make:fieldtype Uppercase example/my-addon
+```
+
+In this case, please also pay special attention to the [Vite tooling development](/addons/vite-tooling#development) requirements. In particular, you will probably want to publish a special "dev build" so that the manifest for the fieldtype can be found within the addon:
+
+```shell
+php artisan vendor:publish --tag=my-addon
+```
 
 ## Registering Components
 
