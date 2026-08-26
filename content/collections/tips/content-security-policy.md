@@ -29,19 +29,13 @@ The simplest way to do this is to add a `meta` tag to your `head`.
 You may also opt to use a middleware to add a header. If you do this, you'll want to prevent applying it to Control Panel routes, since Statamic needs to be able to run inline JavaScript. You can add it to the `web` middleware group, which your front-end will use but the Control Panel won't.
 
 ```php
-// app/Http/Kernel.php [tl! focus]
+// app/bootstrap/app.php [tl! focus]
 
-protected $middlewareGroups = [ // [tl! focus]
-    'web' => [ // [tl! focus]
-        \App\Http\Middleware\EncryptCookies::class,
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\VerifyCsrfToken::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \App\Http\Middleware\ContentSecurityPolicy::class, // [tl! ++ focus]
-    ], // [tl! focus]
-]; // [tl! focus]
+->withMiddleware(function (Middleware $middleware) {
+            $middleware->web(append: [ // [tl! ++ focus]
+                \App\Http\Middleware\ContentSecurityPolicy::class, // [tl! ++ focus]
+            ]); // [tl! ++ focus]
+        })
 ```
 ```php
 <?php // app/Http/Middleware/ContentSecurityPolicy.php
