@@ -269,6 +269,10 @@ class RangeSlider extends FormFieldtype
 | `example()` | An example configuration used to preview the field in the Form Builder. Optional. |
 | `view()` | The front-end view used to render the field. Optional. |
 
+:::tip
+When [Forms Pro](#forms-pro) is installed, form fieldtypes can also opt into [form summaries](#charting-your-own-fieldtypes) with a default chart, chart options, and insights.
+:::
+
 ## Viewing submissions
 
 In the Forms area of the Control Panel you can explore the collected responses and export the data to CSV or JSON formats.
@@ -627,6 +631,7 @@ class Acme extends Connection
 | `$icon` | The icon shown on the Connect index. |
 | `$developer` | Who built the connection, shown on the Connect index. |
 | `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
+| `isConfigured()` | Whether the connection is ready to use (eg. its credentials are present). When `false`, the edit page hides the save button so your component can render setup instructions instead. Defaults to `true`. |
 | `render()` | The Vue component (and its props) rendered on the connection's edit page. |
 | `preProcess()` | Prepares the saved config for editing. Whatever it returns is passed to your Vue component as its `modelValue`. Returns the config untouched by default. |
 | `rules()` | Validation rules for the value being saved. |
@@ -967,7 +972,9 @@ Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/form
   - [The page logic tree view](#tree-view)
   - [Customizing page buttons](#customizing-page-buttons)
 - [Form summaries](#form-summaries)
-- [Form summary graphs](#form-summary-graphs)
+  - [Customizing the charts](#customizing-the-charts)
+  - [Building custom charts](#building-custom-charts)
+  - [Building custom insights](#building-custom-insights)
 - [Automagic Forms](#automagic-forms)
 - [Unique form instances per entry](#unique-instances)
 - [Connections for HubSpot, Mailchimp and more](#connections-1)
@@ -1420,15 +1427,181 @@ This is useful for spotting trends in your responses. See how many people signed
   <figcaption>View a summary of form responses without leaving the control panel</figcaption>
 </figure>
 
-### Form summary graphs
+You'll find the summary behind a toggle at the top of the [submissions listing](#viewing-submissions). Each of your form's questions gets its own chart, and any filters or search you apply to the listing narrow the summary too — handy for summarizing just this month's responses, or just the ones that mention "racoon".
 
-Each fieldtype automatically displays a certain graph type — for example, the Dictionary fieldtype displays as a lollipop bar chart (yummy), and multi choice fieldtypes display as pie charts. These were designed to display the data in a way that's easy to understand and best represent the data.
+A few other things worth knowing:
 
-Here are some other things worth knowing about graphs:
+- The toggle in the top-left switches every chart between percentages and response counts.
+- Some fieldtypes show **insights** alongside their chart — small stat badges like the average, the minimum & maximum, or how many people checked a toggle.
+- Your submissions/summary and percentage/count choices are remembered between visits.
 
-- If there’s more data than can fit in a graph, pagination controls will appear in the top-right corner, letting you page through the remaining results.
-- Some fieldtypes, such as the Dictionary fieldtype, support multiple graph styles. Simply click the graph type icon in the top-right corner to switch between them.
-- The Rating fieldtype automatically chooses the most appropriate layout. Ratings below 5 are shown as a horizontal bar chart, while ratings of 5 or more are displayed as a vertical bar chart.
+#### Charts
+
+Each fieldtype comes with a sensible default chart:
+
+| Chart | Used by default for |
+| --- | --- |
+| Pie chart | Multiple Choice |
+| Bar chart | Checkboxes, Dropdown, Image Choice, Yes/No, Toggle, Star Rating, and free-text fields like Short Answer and Email |
+| Column chart | Number, Currency, Opinion Scale |
+| Lollipop chart | Dictionary |
+| Ranking | Ranking |
+
+Free-text fields chart their most popular answers, and numeric answers are automatically grouped into ranges when there are too many distinct values to plot individually.
+
+Charts cap how many items they show — four segments in a pie chart, five rows in a bar or lollipop chart. The least popular answers beyond that are grouped into an **Other** item, and on pie charts you can click the Other segment to drill into a breakdown of what's inside it.
+
+Date, Time, Name and Upload fields aren't charted.
+
+#### Customizing the charts
+
+If you can edit the form, you'll see a **Customize Charts** button in the summary. While customizing, you can:
+
+- **Add Chart** to chart a field that isn't in the summary yet.
+- Drag charts around to reorder them.
+- Switch a chart's type using the dropdown on each chart. Any chart type can be used with any field — pie chart your star ratings, we won't judge.
+- Remove charts you don't need.
+
+Hit **Save** and the layout is saved to the form itself, so everyone sees the same summary.
+
+#### Building custom charts
+
+You can build your own chart types too. Create a class in the `app/FormCharts` directory that extends `Statamic\Forms\Charts\Chart` and Statamic will discover it automatically. Addons can do the same in their `FormCharts` directory, or register classes explicitly using the `$formCharts` property on their service provider.
+
+```php
+<?php
+
+namespace App\FormCharts;
+
+use Statamic\Forms\Charts\Chart;
+
+class Doughnut extends Chart
+{
+    protected static $title = 'Doughnut chart';
+
+    protected ?string $component = 'doughnut-chart';
+    protected ?string $icon = 'chart-doughnut';
+    protected ?int $limit = 4;
+}
+```
+
+| Property/Method | Description |
+| --- | --- |
+| `$title` | The name shown when picking a chart type. Defaults to a title generated from the class name. |
+| `$component` | The Vue component used to render the chart. |
+| `$icon` | The icon shown when picking a chart type. |
+| `$limit` | The maximum number of items to show before the rest are grouped into "Other". Optional. |
+| `props()` | The props passed to the Vue component. |
+| `drilldownProps()` | The props the chart re-renders with when drilling into its "Other" items. Returning an empty array (the default) means the chart doesn't drill down. |
+
+You don't usually need to touch `props()` — the base class counts the answers against the field's [chart options](#charting-your-own-fieldtypes) (or derives options from the answers themselves), and handles the "Other" grouping for you. Each item it produces has a `key`, `label`, `count` and `percent`.
+
+On the frontend, register the Vue component in your JS entry file (`resources/js/cp.js`):
+
+```js
+import DoughnutChart from './components/charts/DoughnutChart.vue';
+
+Statamic.booting(() => {
+    Statamic.$components.register('doughnut-chart', DoughnutChart);
+});
+```
+
+Your component receives whatever `props()` returns, along with two extras: `metric` (either `percent` or `count`, following the toggle at the top of the summary) and `accessibleLabel` (a screen-reader-friendly rundown of the results). It's also handed a `summary` slot containing the field's [insights](#building-custom-insights) — render it if you'd like them to appear inside your chart.
+
+```vue
+<script setup>
+defineProps({
+    items: { type: Array, default: () => [] },
+    metric: { type: String, default: 'percent' },
+    accessibleLabel: String,
+});
+</script>
+
+<template>
+    <div role="img" :aria-label="accessibleLabel">
+        <slot name="summary" />
+        <div v-for="item in items" :key="item.key">
+            {{ item.label }}: {{ metric === 'count' ? item.count : `${item.percent}%` }}
+        </div>
+    </div>
+</template>
+```
+
+:::tip
+The chart components Statamic itself uses — `PieChart`, `HorizontalBarChart`, `VerticalBarChart` and `HorizontalLollipopChart` — are available from `@statamic/cms/ui` if you'd rather build on top of them.
+:::
+
+#### Building custom insights
+
+Insights are the small stat badges shown alongside a field's chart. Statamic ships with `Average`, `MinMax`, `Checked` and `StarRating` insights, and you can build your own.
+
+Create a class in the `app/FormInsights` directory that extends `Statamic\Forms\Insights\Insight` and Statamic will discover it automatically. Addons can do the same in their `FormInsights` directory, or register classes explicitly using the `$formInsights` property on their service provider.
+
+```php
+<?php
+
+namespace App\FormInsights;
+
+use Illuminate\Support\Collection;
+use Statamic\Forms\Insights\Insight;
+
+class Median extends Insight
+{
+    public function props(Collection $values): array
+    {
+        $values = $values->filter(fn ($value) => is_numeric($value))->sort()->values();
+
+        return ['median' => $values->get(intdiv($values->count(), 2)) ?? 0];
+    }
+}
+```
+
+The `props()` method receives every answer to the field and returns the props for the insight's Vue component. The component is named after the class by default — `median-insight` for the class above — but you can override that with a `$component` property. Register it the same way as a chart component:
+
+```js
+import MedianInsight from './components/insights/MedianInsight.vue';
+
+Statamic.booting(() => {
+    Statamic.$components.register('median-insight', MedianInsight);
+});
+```
+
+Unlike charts, insights aren't picked in the Control Panel — fieldtypes attach them with their `insights()` method, which you'll read about next.
+
+#### Charting your own fieldtypes
+
+[Custom form fieldtypes](#building-a-custom-form-fieldtype) opt into the summary using three methods:
+
+| Method | Description |
+| --- | --- |
+| `defaultChart()` | The class name of the chart the field uses by default. Returning `null` (the default) keeps the field out of the summary. |
+| `chartOptions()` | The full set of options answers are counted against, in the order they should be charted. Returning `null` (the default) derives the options from the answers themselves. |
+| `insights()` | An array of insight instances to show alongside the chart. |
+
+```php
+use Illuminate\Support\Collection;
+use Statamic\Forms\Charts\ChartOption;
+use Statamic\Forms\Charts\VerticalBar;
+use Statamic\Forms\Insights\Average;
+
+public function defaultChart(): ?string
+{
+    return VerticalBar::class;
+}
+
+public function chartOptions(Collection $values): ?Collection
+{
+    return collect(range($this->config('min'), $this->config('max')))
+        ->map(fn ($value) => new ChartOption((string) $value));
+}
+
+public function insights(): array
+{
+    return [new Average];
+}
+```
+
+Returning options from `chartOptions()` means every option is charted — even the ones nobody picked — in the order you choose. Each `ChartOption` takes a `key` (matching the stored answer), an optional `label`, and an optional `icon`, `image` or `badge` to display alongside it.
 
 ### Automagic Forms
 
