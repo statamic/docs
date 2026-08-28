@@ -581,6 +581,34 @@ public function bootAddon()
 
 Your addon's settings page will show up in the Control Panel under **Tools -> Addons**. Pretty convenient.
 
+You can also pass a closure to `registerSettingsBlueprint()`, which will only be evaluated when the blueprint is actually needed. This is handy if building the blueprint is expensive, or requires services that aren't available at boot time.
+
+```php
+public function bootAddon()
+{
+    $this->registerSettingsBlueprint(function () {
+        return [
+            'tabs' => [
+                'main' => [
+                    'sections' => [
+                        [
+                            'display' => __('API'),
+                            'fields' => [
+                                [
+                                    'handle' => 'api_key',
+                                    'field' => ['type' => 'text', 'display' => 'API Key', 'validate' => 'required'],
+                                ],
+                                // ...
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    });
+}
+```
+
 You can even reference config options (and by extension environment variables) in your settings blueprint using Antlers, like so: `{{ config:app:url }}`.
 
 Settings are stored as YAML files in `resources/addons` by default, but can be moved to the database if you prefer. Just run the `php please install:eloquent-driver` command and you're all set.
