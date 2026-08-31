@@ -71,5 +71,5 @@ You can pass the `handle` to the [`{{ form:create }}`](/tags/form-create) tag to
 
 When the selected form has [Unique Instances](/forms#unique-instances) enabled (a [Forms Pro](/forms#forms-pro) feature), the fieldtype does a little more on the entry's publish form:
 
-- A **Configure** option lets you override the form's Access settings — close date, submission limit, closed message, and require login — for that entry. Anything you leave blank falls back to the form's setting.
+- A **Configure** option lets you override the form's Access settings — close date, submission limit, closed message, and require login — and its [connections](/forms#connections), for that entry. Anything you leave blank, or any connection you don't touch, falls back to the form's setting.
 - A **View Submissions** button opens the entry's submissions in a stack.

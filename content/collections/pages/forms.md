@@ -638,6 +638,7 @@ class Acme extends Connection
 | `process()` | Prepares the submitted value for saving. Whatever it returns gets saved to the form. Returns the value untouched by default. |
 | `routes()` | Routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
 | `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
+| `config()` | The connection's saved config for this submission — call it from `finalized()` to get what to send. |
 
 #### Saving
 
@@ -737,12 +738,12 @@ import { conditionsSummary } from '@statamic/cms';
 
 When a submission is finalized, Statamic dispatches a single job chain: file uploads are converted to assets, then each of the connection jobs run and finally temporary file uploads are deleted.
 
-To hook into this process, return a job (or array of jobs) from the `finalized()` method:
+To hook into this process, return a job (or array of jobs) from the `finalized()` method. Your connection's saved config — the entry's override when [unique instances](#unique-instances) is enabled, otherwise the form's own — is available via `$this->config()`:
 
 ```php
 public function finalized($submission): object|array
 {
-    return new SendNotificationToThirdPartyService($submission);
+    return new SendNotificationToThirdPartyService($submission, $this->config());
 }
 ```
 
@@ -1735,6 +1736,12 @@ The form's own **Access** settings act as defaults, and each entry can override 
 
 This way, your Summer Barbecue can stop taking RSVPs the day before the event, while the Winter Gala caps out at 200 guests — all from the same form.
 
+#### Per-entry connections
+
+Each entry can also override the form's [connections](#connections) — so the Winter Gala's confirmation email can go out from a different address than the Summer Barbecue's, without touching the form itself.
+
+From the same **Configure** option, open the **Connections** field to browse the form's connection types. Click one to edit it for this entry alone, using the same editor you'd see on the form's own [Connect](#connections) page. Applying an edit doesn't save it to the form — it's stored against the entry, and used instead of the form's connections whenever this entry's instance sends notifications. Leave a connection type alone and the entry keeps following the form's own configuration for it.
+
 #### In the Control Panel
 
 Unique instances are woven through the Forms area of the Control Panel:
@@ -1758,6 +1765,7 @@ $instance->status(); // "open", "closed", or "limit_reached"
 $instance->restricted(); // Whether the instance is currently rejecting submissions.
 $instance->restrictionMessage(); // The message to show, or null when open.
 $instance->config('submission_limit'); // A setting, using the entry's override when there is one.
+$instance->connections(); // The connections to run — the entry's override when there is one, otherwise the form's own.
 ```
 
 The form's own `status()`, `restricted()`, and `restrictionMessage()` methods delegate to the default instance — the form's behavior outside the context of any entry.
