@@ -19,6 +19,12 @@ options:
     type: string
     description: 'Set the default option key. Default: none.'
     required: false
+  -
+    id: iA4enf0t
+    name: mode
+    type: string
+    description: 'Choose between `default` (dropdown) and `compact` (icon picker) UI modes. Default: `default`.'
+    required: false
 ---
 ## Overview
 
@@ -64,4 +70,16 @@ Icon::register('heroicons', base_path('resources/heroicons')); // [tl! ++]
   field:
     type: icon
     set: heroicons # [tl! ++]
+```
+
+## UI Mode
+
+By default, the Icon field displays a searchable dropdown. Setting `mode` to `compact` swaps this out for a single icon-only button that opens a modal picker, saving vertical space in your publish forms.
+
+```yaml
+-
+  handle: favourite_icon
+  field:
+    type: icon
+    mode: compact # [tl! ++]
 ```
