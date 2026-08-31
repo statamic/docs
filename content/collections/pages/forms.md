@@ -3,16 +3,16 @@ id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
 title: Forms
 template: page
-intro: 'Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.'
+intro: 'Build forms, collect submissions, and send responses where they need to go, all without leaving Statamic. From a quick contact form to a multi-page application with CRM-integration, it’s all here.'
 related_entries:
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
 ---
 
-Forms comes in two flavours: built-in and [Forms Pro](#forms-pro).
+Forms are a pillar of the internet experience, especially once marketing is involved. Statamic Forms enable any authorized control panel user to build forms, configure fields, collect and review submissions, and configure notifications for virtually any type of imagineable form.
 
-If you’re building a typical contact form, RSVP, or similar, the built-in Forms feature will probably be all you need. It’s included with Statamic core, so there’s nothing extra to install or purchase.
+When a form becomes _more_ than a form, that’s where **Forms Pro** comes in. Build polished multi-page experiences, publish branded forms without creating a template, explore responses with charts and insights, and send submissions directly to Google Sheets, HubSpot, Mailchimp, Slack, and more.
 
-If you need [more](https://youtu.be/uNy_MLr8mXA?si=66HfGKi1asv6PmgM&t=13), Forms Pro is a separate paid add-on with advanced features like third-party integrations, enhanced workflows, and other powerful tools. You can [try it out for free locally](#installation).
+Forms Pro is a paid add-on, and you can try every feature locally for free. [Take it for a spin](#installation).
 
 ## Overview
 
