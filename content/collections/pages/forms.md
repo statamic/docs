@@ -3,20 +3,16 @@ id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
 title: Forms
 template: page
-intro: 'Build forms, collect submissions, and send responses where they need to go, all without leaving Statamic. From a quick contact form to a multi-page application with CRM-integration, it’s all here.'
+intro: 'Build forms, collect submissions, and send responses where they need to go, all without leaving Statamic. From a quick contact form to a multi-page application with CRM integrations, it’s all here.'
 related_entries:
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
 ---
 
-Forms are a pillar of the internet experience, especially once marketing is involved. Statamic Forms enable any authorized control panel user to build forms, configure fields, collect and review submissions, and configure notifications for virtually any type of imagineable form.
+Forms are a pillar of the internet experience, especially once marketing is involved. Statamic Forms gives anyone with Control Panel access the tools to build forms, configure fields, collect and review submissions, and set up notifications for virtually any form you can imagine.
 
 When a form becomes _more_ than a form, that’s where **Forms Pro** comes in. Build polished multi-page experiences, publish branded forms without creating a template, explore responses with charts and insights, and send submissions directly to Google Sheets, HubSpot, Mailchimp, Slack, and more.
 
 Forms Pro is a paid add-on, and you can try every feature locally for free. [Take it for a spin](#installation).
-
-## Overview
-
-Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
 
 ## Your first form
 
@@ -31,9 +27,9 @@ Okay, let's just pretend you're a famous celebrity's _web developer_. You've bee
 
 ### Create the form
 
-First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `resources/forms` which will contain all the form's settings.
+Head to `/cp/forms` in the Tools area of the Control Panel and click **Create Form**. Give it a title, click **Create**, and you're off.
 
-Each form should contain a title.
+Prefer working with files? You can create a `.yaml` file in `resources/forms` instead:
 
 ```yaml
 title: Super Fans
@@ -49,11 +45,15 @@ With your form created, you can start adding fields using the **Form Builder** i
 
 For our EF-Mail form, you'd add a Name field for the name, a Number for the age, a Star Rating for the level of adoration, and a Long Answer for the message.
 
+:::tip
+Want to put your form online without building a template? [Forms Pro's Automagic Forms](#automagic-forms) gives it a polished, shareable URL — no template or entry required.
+:::
+
 ### The template
 
-Several [tags](/tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
+Statamic can render all of your form's fields automatically, so your template doesn't need to know which fields the form contains. Drop in the example below and you've got a working form — customize the markup whenever you're ready.
 
-This example loops over your form's fields and dynamically renders each input's HTML, so you don't need to hardcode field handles. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#pre-rendered-field-html).
+This example loops over your form's fields and dynamically renders each input's HTML, so you don't need to hardcode field handles. You can also write the HTML yourself, perform conditions on the field's `type`, or [customize the automatic HTML](/tags/form-create#pre-rendered-field-html). The full set of [form tags](/tags/form) is there when you need it.
 
 ::tabs
 
@@ -965,38 +965,32 @@ The action also throws various exceptions:
 
 ## Forms Pro
 
-Need more from your forms? [Forms Pro](https://statamic.com/addons/statamic/forms-pro) is a paid addon that builds on Statamic's built-in forms with features like:
+[Forms Pro](https://statamic.com/addons/statamic/forms-pro) turns forms into complete experiences and workflows — not just places to collect a name and email address.
 
-- [Address fieldtype](#address-fieldtype)
-- [Multi-page forms](#multi-page-forms)
-  - [Controlling page logic](#controlling-page-logic)
-  - [The page logic tree view](#tree-view)
-  - [Customizing page buttons](#customizing-page-buttons)
-- [Form summaries](#form-summaries)
-  - [Customizing the charts](#customizing-the-charts)
-  - [Building custom charts](#building-custom-charts)
-  - [Building custom insights](#building-custom-insights)
-- [Automagic Forms](#automagic-forms)
-- [Unique form instances per entry](#unique-instances)
-- [Connections for HubSpot, Mailchimp and more](#connections-1)
-- Additional fieldtypes
-- [Spam prevention with Cloudflare Turnstile](#cloudflare-turnstile)
+- **Launch without building a page.** [Automagic Forms](#automagic-forms) gives every form its own branded, shareable URL.
+- **Make long forms feel manageable.** Split them into [multiple pages](#multi-page-forms) and guide visitors down different paths based on their answers.
+- **See what people are telling you.** Turn responses into customizable [charts and insights](#form-summaries) inside the Control Panel.
+- **Put submissions to work.** Send them directly to [Google Sheets, HubSpot, Mailchimp, Slack, and more](#connections-1).
+- **Reuse one form across many entries.** Give every event, listing, or entry [its own submissions, limits, and notifications](#unique-instances).
+- **Collect better data.** Add [address autocomplete](#address-fieldtype), additional fieldtypes, and [Cloudflare Turnstile](#cloudflare-turnstile) protection.
+
+You can try every Forms Pro feature locally for free. When you're ready, installation takes two commands.
 
 ### Installation
 
-1. You can install the Forms Pro addon via Composer:
+1. Install the Forms Pro add-on via Composer:
 
    ```bash
    composer require statamic/forms-pro
    ```
 
-2. Next, publish the configuration file to `config/forms-pro.php`:
+2. Publish the configuration file to `config/forms-pro.php`:
 
    ```bash
    php artisan vendor:publish --tag=forms-pro-config
    ```
 
-3. You can now use Forms Pro's features when building and configuring forms in the Control Panel.
+That's it. Forms Pro's features are now ready and waiting in the Control Panel.
 
 ### Connections
 
