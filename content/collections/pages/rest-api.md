@@ -288,7 +288,7 @@ If you are using [Multi-Site](/multi-site), the entries endpoint will serve from
 
 `GET` `/api/collections/{collection}/entries/{id}`
 
-Gets a single entry.
+Gets a single entry by ID or slug. If both an ID and a slug match, the entry matched by ID takes priority. When resolving by slug on a multi-site collection, the `site` query parameter will be used if provided, otherwise the collection's first configured site will be used.
 
 ``` json
 {
