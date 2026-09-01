@@ -400,6 +400,7 @@ Inside your email view, you have a number of variables available:
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
+- `pages` and `sections` arrays
 
 The submitted form values will be augmented for you. For instance, an **Upload** field gives you Asset objects when **Store Files** is enabled, or plain file paths when it isn't. Or, a **Dropdown** field will be an array with `label` and `value` rather than just the value.
 
@@ -442,6 +443,36 @@ In each iteration of the `fields` array, you have access to:
 - `value` - The augmented value (same as explained above)
 - `fieldtype` - The handle of the fieldtype (e.g. "assets")
 - `config` - The configuration of the blueprint field
+
+If you'd rather render the submission with its page and section structure, use the `pages` and `sections` arrays. Each page has a `display`, `instructions`, and its `sections`; each section has a `display`, `instructions`, and its `fields` — containing the same variables as the `fields` array explained above.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ pages }}
+    <h2>{{ display }}</h2>
+    {{ sections }}
+        <h3>{{ display }}</h3>
+        {{ fields }}
+            <b>{{ display }}</b> {{ value }}
+        {{ /fields }}
+    {{ /sections }}
+{{ /pages }}
+```
+::tab blade
+```blade
+@foreach ($pages as $page)
+  <h2>{{ $page['display'] }}</h2>
+  @foreach ($page['sections'] as $section)
+    <h3>{{ $section['display'] }}</h3>
+    @foreach ($section['fields'] as $field)
+      <b>{{ $field['display'] }}</b> {{ $field['value'] }}
+    @endforeach
+  @endforeach
+@endforeach
+```
+::
 
 
 #### Setting the from and reply-to name
