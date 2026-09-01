@@ -280,7 +280,7 @@ Gets entries within a collection.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
 
@@ -396,7 +396,7 @@ Gets terms in a taxonomy.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), you can select the site using the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
 ## Taxonomy term
