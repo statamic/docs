@@ -59,6 +59,8 @@ https://yourdomain.tld/api/{endpoint}
 `
 You may send requests to the following endpoints:
 
+- [Ping](#ping)
+- [Sites](#sites)
 - [Entries](#entries) / [Entry](#entry)
 - [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
@@ -260,6 +262,44 @@ The response will contain your `data`, `links` to easily get next/previous URLs,
 ```
 
 ---
+
+## Ping
+
+`GET` `/api/ping`
+
+A simple health check endpoint. It returns `pong`, and is available whenever the REST API is enabled, regardless of which resources are enabled.
+
+``` json
+{
+  "ping": "pong"
+}
+```
+
+## Sites
+
+`GET` `/api/sites`
+
+Gets all configured sites. This resource is disabled by default. You can enable it with `resources.sites` in your `config/statamic/api.php` config:
+
+```php
+'resources' => [
+    'sites' => true,
+],
+```
+
+``` json
+{
+  "data": [
+    {
+      "handle": "default",
+      "name": "Default",
+      "locale": "en_US",
+      "short_locale": "en",
+      "url": "http://example.com/"
+    }
+  ]
+}
+```
 
 ## Entries
 
