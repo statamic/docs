@@ -8,6 +8,11 @@ use Torchlight\Engine\Preprocessors\PreprocessorArgs;
 
 class StripEnvTrailingNewlines implements Preprocessor
 {
+    public function supports(?string $grammarName): bool
+    {
+        return $grammarName === 'env';
+    }
+
     /**
      * Torchlight's env grammar uses `([^#]*)` for unquoted values, which
      * swallows the newline Phiki appends to every line. That leaves
