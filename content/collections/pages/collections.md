@@ -142,6 +142,8 @@ To use modifiers in title formats, make sure to use the `{{` Antlers syntax, lik
 ```
 :::
 
+As you fill in the fields referenced by your title format, the entry's title (and therefore its slug) will update live in the Control Panel — you don't need to save first to see them.
+
 ## Slugs
 
 Slugs are used in entry URLs. For an entry named `My Entry`, the slug would default to `my-entry` unless you edit it.

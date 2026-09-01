@@ -53,6 +53,14 @@ class States extends BasicDictionary
 
 In the example above, you can see that each item has a `label` and `value`. These will be used in the dropdown field. Any additional keys will be available within templates.
 
+You may also provide an `icon`, which will be displayed alongside the item's label in the fieldtype:
+
+```php
+['label' => 'Alabama', 'value' => 'AL', 'capital' => 'Montgomery', 'icon' => 'map-pin'],
+```
+
+The `icon` may be the name of one of Statamic's built-in icons, or an inline SVG string. Like `label`, it will not be available within templates, and won't be considered when [searching](#basic-search).
+
 Here we are returning a hardcoded array. But in reality you may be getting options from somewhere like a file, database, or an API:
 
 ```php
@@ -145,6 +153,7 @@ public function get(string $key): ?Item
     return new Item($key, $product->name, [
         'price' => $product->price,
         'sku' => $product->sku,
+        'icon' => 'tag',
     ]);
 }
 ```
