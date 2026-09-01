@@ -27,7 +27,7 @@ You can try every Forms Pro feature locally for free. When you're ready, install
    composer require statamic/forms-pro
    ```
 
-2. Publish the configuration file to `config/forms-pro.php`:
+2. Publish the configuration file to `config/statamic/forms-pro.php`:
 
    ```bash
    php artisan vendor:publish --tag=forms-pro-config
@@ -661,7 +661,7 @@ Once enabled, you can:
 
 Automagic Forms live at `/forms/{handle}`, so a form with the handle `contact` is served at `https://example.com/forms/contact`.
 
-If `/forms` clashes with something else on your site, or you'd just prefer something different, change the `route` in `config/forms-pro.php`:
+If `/forms` clashes with something else on your site, or you'd just prefer something different, change the `route` in `config/statamic/forms-pro.php`:
 
 ```php
 'automagic_forms' => [
@@ -678,13 +678,13 @@ For example: a French site at `/fr` serves it at `/fr/forms/contact`, and a site
 
 You can customize the look and feel of your Automagic Forms from **Addons → Forms Pro** in the Control Panel:
 
-- **Logo** — shown in the top-left corner of every Automagic Form. The asset container it's picked from can be set via `asset_container` in `config/forms-pro.php`; it defaults to your first container.
+- **Logo** — shown in the top-left corner of every Automagic Form. The asset container it's picked from can be set via `asset_container` in `config/statamic/forms-pro.php`; it defaults to your first container.
 - **Brand Color** — overrides the color used for buttons and the progress bar. Leave it blank to use the default colors.
 - **Background** — the background pattern shown behind every Automagic Form, picked from Steve Schoger's [Heropatterns](https://heropatterns.com/).
 
 ### Disabling Automagic Forms
 
-Automagic Forms are enabled by default. If you'd rather disable them entirely, turn them off in `config/forms-pro.php`:
+Automagic Forms are enabled by default. If you'd rather disable them entirely, turn them off in `config/statamic/forms-pro.php`:
 
 ```php
 'automagic_forms' => [
