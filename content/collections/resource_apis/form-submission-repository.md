@@ -105,7 +105,7 @@ $submission->save(); // true or false
 
 A partial submission is an incomplete submission that's been saved before the user has finished filling out the form.
 
-They're primarily used by the [Forms Pro](/forms#forms-pro) addon to persist progress between the pages of a multi-page form, but addons and custom code can use them too.
+They're primarily used by the [Forms Pro](/frontend/forms-pro) add-on to persist progress between the pages of a multi-page form, but add-ons and custom code can use them too.
 
 To mark a submission as partial, call `asPartial()` before saving:
 
