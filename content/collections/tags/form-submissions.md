@@ -147,6 +147,27 @@ Want to get entries where the title has the words "awesome" and "thing", and "jo
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
 
+### Statuses
+
+By default, only finalized submissions are included — [spam](/forms#spam-submissions) and [partial](/forms-pro#multi-page-forms) submissions are excluded. Submissions can be queried against `finalized`, `partial`, `spam`, or `any` status with conditions on `status`:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:submissions in="feedback" status:is="spam" }}
+```
+::tab blade
+```blade
+<s:form:submissions
+  in="feedback"
+  status:is="spam"
+>
+
+</s:form:submissions>
+```
+::
+
 ### Custom Query Scopes
 
 Doing something custom or complicated? You can create [query scopes](/extending/query-scopes-and-filters) to narrow down those results with the `query_scope` or `filter` parameter:
