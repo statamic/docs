@@ -125,7 +125,7 @@ There are a number of ways to filter your submissions. There's the conditions sy
 
 ### Conditions
 
-Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
+Want to get submissions where the name contains "David" and the email is a Gmail address? You can write it how you'd say it:
 
 ::tabs
 
