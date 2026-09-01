@@ -523,6 +523,25 @@ Text::appendConfigFields([
 ]);
 ```
 
+You may also append an entire section of fields, rather than a single field, by passing an array without a string key. It should have a `display` and `fields`, just like a regular blueprint section.
+
+```php
+Text::appendConfigFields([
+    [
+        'display' => 'Extra section',
+        'fields' => [
+            'more_options' => [
+                'type' => 'array',
+                'display' => 'Options',
+                'instructions' => 'Instructions for this field',
+            ],
+        ],
+    ],
+]);
+```
+
+You may mix fields and sections in the same call. Anything with a string key will be treated as a single field, while anything without one will be treated as a section.
+
 You can also append a config field to _all_ fieldtypes via the `Fieldtype` class:
 
 ```php
