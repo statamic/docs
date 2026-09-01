@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Mermaid\MermaidExtension;
+use App\Markdown\StripEnvTrailingNewlines;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
 use App\Search\Storybook\StorybookSearchProvider;
@@ -41,7 +42,11 @@ class AppServiceProvider extends ServiceProvider
         if (! app()->runningConsoleCommand('search:update')) {
             TorchlightOptions::setDefaultOptionsBuilder(fn () => TorchlightOptions::fromArray(config('torchlight.options')));
 
-            $extension = new TorchlightExtension(config('torchlight.theme'));
+            $extension = new TorchlightExtension(
+                config('torchlight.theme'),
+                true,
+                ['env' => new StripEnvTrailingNewlines],
+            );
             $extension
                 ->renderer()
                 ->setDefaultGrammar(config('torchlight.options.defaultLanguage'));
