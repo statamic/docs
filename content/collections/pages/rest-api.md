@@ -218,6 +218,14 @@ You may specify which top level fields should be included in the response.
 /endpoint?fields=id,title,content
 ```
 
+You may also use array syntax:
+
+``` url
+/endpoint?fields[]=id&fields[]=title&fields[]=content
+```
+
+On the [Entry](#entry) and [Asset](#asset) endpoints, `fields` will also be honored when fetching a single item, not just when listing them.
+
 ## Pagination
 
 Results will be paginated into 25 items per page by default. You may specify the items per page and which page you are viewing with the `limit` and `page` parameters:
