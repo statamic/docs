@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Markdown\Hint\HintExtension;
 use App\Markdown\Mermaid\MermaidExtension;
+use App\Markdown\StripEnvTrailingNewlines;
 use App\Markdown\Tabs\TabbedCodeBlockExtension;
 use App\Search\Listeners\SearchEntriesCreatedListener;
 use App\Search\Storybook\StorybookSearchProvider;
@@ -44,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
             TorchlightOptions::setDefaultOptionsBuilder(fn () => TorchlightOptions::fromArray(config('torchlight.options')));
 
             $engine = new Engine;
+            $engine->registerPreprocessor(new StripEnvTrailingNewlines, 'env');
             $engine->getEnvironment()->grammar('antlers', resource_path('syntaxes/antlers.json'));
 
             $renderer = (new CodeBlockRenderer(config('torchlight.theme'), $engine))
