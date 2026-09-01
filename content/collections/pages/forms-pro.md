@@ -608,7 +608,7 @@ Unlike charts, insights aren't picked in the Control Panel — fieldtypes attach
 
 ### Charting your own fieldtypes
 
-[Custom form fieldtypes](/frontend/forms#building-a-custom-form-fieldtype) opt into the summary using three methods:
+[Custom form fieldtypes](/fieldtypes/build-a-form-fieldtype) opt into the summary using three methods:
 
 | Method | Description |
 | --- | --- |
