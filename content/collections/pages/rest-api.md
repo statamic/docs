@@ -61,9 +61,13 @@ You may send requests to the following endpoints:
 
 - [Ping](#ping)
 - [Sites](#sites)
+- [Collections](#collections) / [Collection](#collection)
 - [Entries](#entries) / [Entry](#entry)
 - [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
+- [Navs](#navs) / [Nav](#nav)
+- [Taxonomies](#taxonomies) / [Taxonomy](#taxonomy)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
+- [Asset Containers](#asset-containers) / [Asset Container](#asset-container)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
 - [Forms](#forms) / [Form](#form)
@@ -301,6 +305,46 @@ Gets all configured sites. This resource is disabled by default. You can enable 
 }
 ```
 
+## Collections
+
+`GET` `/api/collections`
+
+Gets all collections.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "blog",
+      "title": "Blog",
+      "structure": null,
+      "mount": "9412926e-8d33-4f83-8db9-72cbc4c69bcf",
+      "api_url": "http://example.com/api/collections/blog"
+    }
+  ]
+}
+```
+
+## Collection
+
+`GET` `/api/collections/{collection}`
+
+Gets a single collection.
+
+``` json
+{
+  "data": {
+    "handle": "blog",
+    "title": "Blog",
+    "structure": null,
+    "mount": "9412926e-8d33-4f83-8db9-72cbc4c69bcf",
+    "api_url": "http://example.com/api/collections/blog"
+  }
+}
+```
+
+If the collection is structured, `structure` will contain its `max_depth` and `expects_root` values instead of `null`.
+
 ## Entries
 
 `GET` `/api/collections/{collection}/entries`
@@ -378,6 +422,44 @@ On this endpoint, the [fields](#selecting-fields) param will allow you to select
 ```
 
 
+## Navs
+
+`GET` `/api/navs`
+
+Gets all navigations.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "main",
+      "title": "Main Navigation",
+      "max_depth": null,
+      "expects_root": false,
+      "api_url": "http://example.com/api/navs/main"
+    }
+  ]
+}
+```
+
+## Nav
+
+`GET` `/api/navs/{nav}`
+
+Gets a single navigation.
+
+``` json
+{
+  "data": {
+    "handle": "main",
+    "title": "Main Navigation",
+    "max_depth": null,
+    "expects_root": false,
+    "api_url": "http://example.com/api/navs/main"
+  }
+}
+```
+
 ## Navigation Tree
 
 `GET` `/api/navs/{nav}/tree`
@@ -416,6 +498,40 @@ On this endpoint, the [fields](#selecting-fields) param will allow you to select
 /api/navs/{nav}/tree?fields=title,url&max_depth=2&site=fr
 ```
 
+
+## Taxonomies
+
+`GET` `/api/taxonomies`
+
+Gets all taxonomies.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "tags",
+      "title": "Tags",
+      "api_url": "http://example.com/api/taxonomies/tags"
+    }
+  ]
+}
+```
+
+## Taxonomy
+
+`GET` `/api/taxonomies/{taxonomy}`
+
+Gets a single taxonomy.
+
+``` json
+{
+  "data": {
+    "handle": "tags",
+    "title": "Tags",
+    "api_url": "http://example.com/api/taxonomies/tags"
+  }
+}
+```
 
 ## Taxonomy Terms
 
@@ -580,6 +696,40 @@ Get a single user.
     "id": "1",
     "email": "john@smith.com",
     "api_url": "http://example.com/api/users/1"
+  }
+}
+```
+
+## Asset Containers
+
+`GET` `/api/asset-containers`
+
+Gets all asset containers. This uses the same `resources.assets` config as the [Assets](#assets) endpoint.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "main",
+      "title": "Main",
+      "api_url": "http://example.com/api/asset-containers/main"
+    }
+  ]
+}
+```
+
+## Asset Container
+
+`GET` `/api/asset-containers/{container}`
+
+Gets a single asset container.
+
+``` json
+{
+  "data": {
+    "handle": "main",
+    "title": "Main",
+    "api_url": "http://example.com/api/asset-containers/main"
   }
 }
 ```
