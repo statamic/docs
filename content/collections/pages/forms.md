@@ -367,7 +367,11 @@ Out of the box, you'll only know about a submission when you head into the Contr
 
 You'll find them in the **Connect** area of your form in the Control Panel, along with how many of each are configured.
 
-_TODO: Screenshot of the Connect area_
+<figure>
+  <img src="/img/forms-connect.webp" alt="Statamic's form connect area" class="u-hide-in-dark-mode">
+  <img src="/img/forms-connect-dark.webp" alt="Statamic's form connect area" class="u-hide-in-light-mode">
+  <figcaption>The Connect area</figcaption>
+</figure>
 
 ### Email
 
@@ -377,11 +381,15 @@ The Recipient, CC, BCC, Sender and Reply-To fields suggest your form's fields �
 
 Each email can be sent for every submission, or only when the submission matches a set of conditions — like only sending the "sales" email when the visitor picked "Sales" from your enquiry type field.
 
-_TODO: Screenshot of configuring an email_
+<figure>
+  <img src="/img/configure-emails.webp" alt="Email configuration form" class="u-hide-in-dark-mode">
+  <img src="/img/configure-emails-dark.webp" alt="Email configuration form" class="u-hide-in-light-mode">
+  <figcaption>A very, very simple email</figcaption>
+</figure>
 
 #### The email body
 
-You can write the email body directly in the Control Panel — no need to create any views. Use `@` to insert your form's fields into the body.
+You can write the email body directly in the Control Panel — no need to create any views. You can use [Antlers](/frontend/antlers) to insert your form's fields into the body.
 
 If you'd rather have full control over the email's design, you can specify custom HTML and Text views instead. To output the written body inside your view, use `{{ email_config:body }}`. When there's no body and no views, Statamic will send an "automagic" email — a simple text email with a list of all the fields and values in the submission.
 
@@ -552,7 +560,11 @@ The request contains the form's handle and the submission's data as JSON:
 
 Only `http` and `https` URLs are supported. If you're developing locally, or sending requests to internal services with self-signed certificates, you can disable SSL verification per webhook.
 
-_TODO: Screenshot of configuring a webhook_
+<figure>
+  <img src="/img/configure-webhooks.webp" alt="Webhook configuration form" class="u-hide-in-dark-mode">
+  <img src="/img/configure-webhooks-dark.webp" alt="Webhook configuration form" class="u-hide-in-light-mode">
+  <figcaption>You can send as many webhooks as you want.</figcaption>
+</figure>
 
 ### Building custom connections
 

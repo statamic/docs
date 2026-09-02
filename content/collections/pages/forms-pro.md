@@ -41,7 +41,11 @@ Alongside the Email and Webhook connections that ship with Statamic, Forms Pro a
 
 When you set each one up, it'll guide you through getting everything connected.
 
-_TODO: Screenshot of the Connect area showing the Forms Pro connections_
+<figure>
+  <img src="/img/forms-pro/connect-area.webp" alt="Statamic's form connect area" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/connect-area-dark.webp" alt="Statamic's form connect area" class="u-hide-in-light-mode">
+  <figcaption>The Connect area</figcaption>
+</figure>
 
 ### Google Sheets
 
@@ -787,7 +791,11 @@ Unique instances are woven through the Forms area of the Control Panel:
 - When viewing a submission, a badge links back to the entry it was submitted from.
 - Back on the entry's publish form, the Form fieldtype gets a **View Submissions** button, which opens that entry's submissions in a stack.
 
-_TODO: Screenshot of the submissions listing with the Entry column and filter_
+<figure>
+  <img src="/img/forms-pro/unique-instances-listing.webp" alt="Submissions listing with entry filter applied" class="u-hide-in-dark-mode">
+  <img src="/img/forms-pro/unique-instances-listing-dark.webp" alt="Submissions listing with entry filter applied" class="u-hide-in-light-mode">
+  <figcaption>The Submissions Listing with the Entry filter applied</figcaption>
+</figure>
 
 ### PHP API
 
