@@ -559,6 +559,18 @@ public function handle(FormBlueprintFound $event)
 }
 ```
 
+### FormCreated
+`Statamic\Events\FormCreated`
+
+Dispatched after a form has been created.
+
+``` php
+public function handle(FormCreated $event)
+{
+    $event->form;
+}
+```
+
 ### FormCreating
 `Statamic\Events\FormCreating`
 
@@ -1138,7 +1150,7 @@ public function handle(StaticCacheCleared $event)
 ### SubmissionCreated
 `Statamic\Events\SubmissionCreated`
 
-Dispatched after a form submission has been created. This happens after a form has been submitted on the front-end.
+Dispatched after a form submission (including [partial submissions](/repositories/form-submission-repository#partial-submissions)) has been created. This happens after a form has been submitted on the front-end.
 
 ``` php
 public function handle(SubmissionCreated $event)
@@ -1152,10 +1164,24 @@ If you're looking to prevent a form being submitted or trigger validation errors
 ### SubmissionCreating
 `Statamic\Events\SubmissionCreating`
 
-Dispatched before a submission is created. You can return `false` to prevent it from being created.
+Dispatched before a submission (including [partial submissions](/repositories/form-submission-repository#partial-submissions)) is created. You can return `false` to prevent it from being created.
 
 ``` php
 public function handle(SubmissionCreating $event)
+{
+    $event->submission;
+}
+```
+
+### SubmissionFinalized
+`Statamic\Events\SubmissionFinalized`
+
+Dispatched when a submission is finalized — either when a regular form is submitted, or when the final page of a multi-page form is submitted and its [partial submission](/repositories/form-submission-repository#partial-submissions) becomes complete.
+
+Unlike `SubmissionCreated`, this event never fires for partial submissions, making it the best place to hook in logic that should only run once a submission is truly complete.
+
+``` php
+public function handle(SubmissionFinalized $event)
 {
     $event->submission;
 }

@@ -3,13 +3,23 @@ id: fdb45b84-3568-437d-84f7-e3c93b6da3e6
 blueprint: page
 title: Forms
 template: page
-intro: 'Forms are a natural part of the internet experience and a core component of most websites. From a basic "Contact Me" form to a multi-page job application, Statamic can help manage your forms, submissions, and thereby make your life a little bit easier.'
+intro: 'Build forms, collect submissions, and send responses where they need to go, all without leaving Statamic. From a quick contact form to a multi-page application with CRM integrations, it’s all here.'
 related_entries:
   - e4f4f91e-a442-4e15-9e16-3b9880a25522
+  - ecf1c18e-cdc6-4120-b19a-af1c3851ea53
 ---
-## Overview
 
-Statamic forms collect submissions, provide reports on them on aggregate, and display user submitted data on the [frontend](/frontend). The end-to-end solution includes tags, settings, and a dedicated area of the Control Panel.
+Forms are a pillar of the internet experience, especially once marketing is involved. Statamic Forms gives anyone with Control Panel access the tools to build forms, configure fields, collect and review submissions, and set up notifications for virtually any form you can imagine.
+
+<figure>
+  <img src="/img/forms-edit.webp" alt="The Statamic Form editor" class="u-hide-in-dark-mode">
+  <img src="/img/forms-edit-dark.webp" alt="The Statamic Form editor" class="u-hide-in-light-mode">
+  <figcaption>Behold — Forms!</figcaption>
+</figure>
+
+When a form becomes _more_ than a form, that’s where **[Forms Pro](/frontend/forms-pro)** comes in. Build polished multi-page experiences, publish branded forms without creating a template, explore responses with charts and insights, and send submissions directly to Google Sheets, HubSpot, Mailchimp, Slack, and more.
+
+Forms Pro is a paid add-on, and you can try every feature locally for free. [Take it for a spin](/frontend/forms-pro#installation).
 
 ## Your first form
 
@@ -19,78 +29,38 @@ Okay, let's just pretend you're a famous celebrity's _web developer_. You've bee
 
 - name
 - age
-- level of adoration (appreciation, fixation, or obsession)
+- level of adoration
 - message
 
 ### Create the form
 
-First, head to `/cp/forms` in the Tools area of the Control Panel and click the **Create Form** button. Alternately you can create a `.yaml` file in `resources/forms` which will contain all the form's settings.
+Head to `/cp/forms` in the Tools area of the Control Panel and click **Create Form**. Give it a title, click **Create**, and you're off.
 
-Each form should contain a title. Optionally it may also have an email configuration.
+Prefer working with files? You can create a `.yaml` file in `resources/forms` instead:
 
 ```yaml
 title: Super Fans
-email: []
 ```
 
-### The blueprint
-
-The [blueprint](blueprints) is where you define your form's `fields` and validation rules to be used on form submission.
-
-The blueprint is located in `resources/blueprints/forms/{handle}.yaml`
-
-```yaml
-fields:
-  -
-    handle: name
-    field:
-      display: Name
-      type: text
-      validate: required
-  -
-    handle: age
-    field:
-      display: Age
-      type: text
-      validate: required|integer
-  -
-    handle: adoration
-    field:
-      display: Level of Adoration
-      type: text
-      validate: required
-  -
-    handle: comment
-    field:
-      display: Comment
-      type: textarea
-      validate: required
-```
-
-:::warning
-The `message` variable is a Laravel reserved word within this email context, so you should avoid using that as a field handle if you intend on using the email feature.
+:::tip
+Statamic Core allows you to create a single form. To create any more, either enable [Statamic Pro](/getting-started/licensing) or install [Forms Pro](/frontend/forms-pro).
 :::
 
-If you use the Control Panel to build your blueprint, you will find that there's only a subset of fieldtypes available to you.
-These are the fields that have corresponding views ready to be used on the front-end.
+### Add your fields
 
-If you'd like to include more fieldtypes, you can opt into each one by calling `makeSelectableInForms` on the respective class within a service provider:
+With your form created, you can start adding fields using the **Form Builder** in the Control Panel. Each field you add is a [form fieldtype](#form-fieldtypes) — like a short answer, dropdown, or file upload — and you can configure its display name, validation rules, and [logic](/conditional-fields) without leaving the Control Panel.
 
-```php
-Statamic\Fieldtypes\Section::makeSelectableInForms();
-```
+For our EF-Mail form, you'd add a Name field for the name, a Number for the age, a Star Rating for the level of adoration, and a Long Answer for the message.
 
-You can also do the opposite and prevent a fieldtype from being used in forms by calling `makeUnselectableInForms` on the respective class within a service provider:
-
-```php
-Statamic\Fieldtypes\Dictionary::makeUnselectableInForms();
-```
+:::tip
+Want to put your form online without building a template? [Forms Pro's Automagic Forms](/frontend/forms-pro#automagic-forms) gives it a polished, shareable URL — no template or entry required.
+:::
 
 ### The template
 
-Several [tags](/tags/form) are provided to help you manage your form. You can explore these at your leisure, but for now here's a look at a basic form template.
+Statamic can render all of your form's fields automatically, so your template doesn't need to know which fields the form contains. Drop in the example below and you've got a working form — customize the markup whenever you're ready.
 
-This example dynamically renders each input's HTML. You could alternatively write the HTML yourself, perform conditions on the field's `type`, or even [customize the automatic HTML](/tags/form-create#dynamic-rendering).
+This example loops over your form's fields and dynamically renders each input's HTML, so you don't need to hardcode field handles. You can also write the HTML yourself, perform conditions on the field's `type`, or [customize the automatic HTML](/tags/form-create#pre-rendered-field-html). The full set of [form tags](/tags/form) is there when you need it.
 
 ::tabs
 
@@ -171,19 +141,95 @@ This example dynamically renders each input's HTML. You could alternatively writ
     // This is just a submit button.
     <button type="submit">Submit</button>
   @endif
+
 </s:form:super_fans>
 ```
 ::
 
+## Form fieldtypes
+
+When building a form, you add fields using **form fieldtypes**. These are purpose-built versions of Statamic's [fieldtypes](/fieldtypes), designed specifically for collecting input from your visitors and rendering on the front-end. Each one comes with a corresponding front-end view, so it's ready to drop into your templates.
+
+The following form fieldtypes are available:
+
+| Fieldtype | Description |
+|---|---|
+| Group | Group related fields together. |
+| Spacer | Add visual spacing between form fields. |
+| Heading | A heading to organize your form. |
+| Paragraph | A paragraph to provide information in your form. |
+| Banner | A banner to highlight important information in your form. |
+| Short Answer | A simple field for short, one-line answers. |
+| Long Answer | A larger field for detailed responses, comments, or messages. |
+| Dropdown | A dropdown list where respondents pick from your options. |
+| Yes / No | A simple yes or no question. |
+| Multiple Choice | A question with a range of answer options. Respondents can only choose one answer. |
+| Checkboxes | Respondents can select multiple options from a list. |
+| Image Choice | An image-based choice selector for visual options. |
+| Toggle | A simple yes or no switch. |
+| Dictionary | Select from a predefined list like countries, timezones, or currencies. |
+| Opinion Scale | An opinion scale for measuring agreement or satisfaction. |
+| Star Rating | A star rating input for collecting ratings. |
+| Ranking | A ranking input for ordering items by preference. |
+| Name | Collects someone's name. |
+| Email | Collects an email address and ensures it's properly formatted. |
+| Website | Collects a website address and ensures it's properly formatted. |
+| Phone | A field for collecting phone numbers. |
+| Number | Collects a number. You can set minimum and maximum values. |
+| Currency | Collects a monetary amount. |
+| Date Picker | Lets respondents pick a date. |
+| Time Picker | Lets respondents pick a time of day. |
+| Upload | Lets respondents upload one or more files. See [File uploads](#file-uploads). |
+
+:::tip
+Click a fieldtype in the Form Builder to see an example of what it looks like.
+:::
+
+### Customizing the front-end views
+
+Each form fieldtype renders using a publishable view. To customize the HTML, run `php artisan vendor:publish --tag=statamic-forms`, which exposes editable templates in your `resources/views/vendor/statamic/forms/fields` directory.
+
+:::tip
+Publishable views are implemented in Antlers by default. Blade versions will be used instead if your `statamic.templates.language` config is set to `blade`.
+:::
+
+### Controlling which fieldtypes are selectable
+
+Most form fieldtypes are selectable in the Form Builder by default. You can change this from a service provider by calling `makeSelectable()` or `makeUnselectable()` on the relevant fieldtype class:
+
+```php
+use Statamic\Forms\Fieldtypes\Dictionary;
+
+public function boot()
+{
+    Dictionary::makeUnselectable();
+}
+```
+
+Need something the built-ins don't cover? [Build a Form Fieldtype](/fieldtypes/build-a-form-fieldtype) and make it feel right at home in the Form Builder.
+
 ## Viewing submissions
 
-In the Forms area of the control panel you can explore the collected responses, configure dashboards and export the data to CSV or JSON formats.
+In the Forms area of the Control Panel you can explore the collected responses and export the data to CSV or JSON formats.
 
 <figure>
   <img src="/img/cp-forms.webp" alt="List of form submissions in the control panel" class="u-hide-in-dark-mode">
   <img src="/img/cp-forms-dark.webp" alt="List of form submissions in the control panel" class="u-hide-in-light-mode">
   <figcaption>Forms. Submissions. Features.</figcaption>
 </figure>
+
+When running a [multi-site](/multi-site), you'll only see submissions submitted from the current site. You may remove the filter to see submissions from all sites you have access to.
+
+Submissions marked as [spam](#spam-submissions) are also hidden by default. Switch the **Status** filter to **Spam** to review them.
+
+### Generating fake submissions
+
+To help test how your submissions display on the front-end with the [form submissions](/tags/form-submissions) tag, you can generate fake submissions populated with realistic data. From the submissions listing, use the **Generate Fake Submission** button:
+
+- **Generate Fake Submission** creates a submission directly, without firing events or sending [connections](#connections).
+- **Generate Fake Submission + Run All Workflows** runs the submission through the full pipeline, firing events and sending any configured [connections](#connections) — handy for testing those too.
+
+Fake submissions are flagged so you can tell them apart and bulk-delete them when you're done. If you'd like to disable fake submission generation for a form, you can turn it off in the form's settings.
 
 ## Displaying submission data
 
@@ -313,28 +359,43 @@ Then, to make the exporter available on your forms, simply add it to your forms 
 ],
 ```
 
-## Emails
+## Connections
 
-Allowing your fans to send their comments is all well and good, but at this point you will only know about it when you head back into the Control Panel to view the submissions. Wouldn't it be better to get notified? Let's hook that up next.
+Out of the box, you'll only know about a submission when you head into the Control Panel to view it. Most of the time you'll want something to happen when a form is submitted — like being notified by email.
 
-You can add any number of emails to your formset.
+**Connections** let you send submissions off to other places. Statamic ships with Email and Webhook connections out of the box.
 
-```yaml
-email:
-  -
-    to: hello@celebrity.com
-    from: website@celebrity.com
-    subject: You've got fan mail!
-    html: fan-mail
-    text: fan-mail-text
-  -
-    to: agent@celebrity.com
-    subject: Someone still likes your client
-```
+You'll find them in the **Connect** area of your form in the Control Panel, along with how many of each are configured.
 
-Here we'll send two emails for every submission of this form. One will go to the celebrity, and one to the agent. The first one uses custom html and text views while the other doesn't, so it'll get an "automagic" email. The automagic email will be a simple text email with a list of all fields and values in the submission.
+<figure>
+  <img src="/img/forms-connect.webp" alt="Statamic's form connect area" class="u-hide-in-dark-mode">
+  <img src="/img/forms-connect-dark.webp" alt="Statamic's form connect area" class="u-hide-in-light-mode">
+  <figcaption>The Connect area</figcaption>
+</figure>
 
-### Email variables
+### Email
+
+The Email connection sends emails whenever the form is submitted. You can add any number of emails to your form, each with their own settings.
+
+The Recipient, CC, BCC, Sender and Reply-To fields suggest your form's fields — so you can send the email to whatever address the visitor submitted — and you can type email addresses in directly (including the `Jack Black <jack@jackblack.com>` syntax) to send to fixed addresses.
+
+Each email can be sent for every submission, or only when the submission matches a set of conditions — like only sending the "sales" email when the visitor picked "Sales" from your enquiry type field.
+
+<figure>
+  <img src="/img/configure-emails.webp" alt="Email configuration form" class="u-hide-in-dark-mode">
+  <img src="/img/configure-emails-dark.webp" alt="Email configuration form" class="u-hide-in-light-mode">
+  <figcaption>A very, very simple email</figcaption>
+</figure>
+
+#### The email body
+
+You can write the email body directly in the Control Panel — no need to create any views. You can use [Antlers](/frontend/antlers) to insert your form's fields into the body.
+
+If you'd rather have full control over the email's design, you can specify custom HTML and Text views instead. To output the written body inside your view, use `{{ email_config:body }}`. When there's no body and no views, Statamic will send an "automagic" email — a simple text email with a list of all the fields and values in the submission.
+
+[Learn how to create your emails](/email)
+
+#### Email variables
 
 Inside your email view, you have a number of variables available:
 
@@ -342,13 +403,14 @@ Inside your email view, you have a number of variables available:
 - `site_url` - The site home page.
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
-- `email_config` - The email's config (the current item from your `email:` array)
+- `email_config` - The email's settings, keyed by the handles of the fields you filled in when configuring it — `{{ email_config:subject }}`, `{{ email_config:mailer }}`, and so on.
 - `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
+- `pages` and `sections` arrays
 
-The submitted form values will be augmented for you. For instance, if you have an `assets` field, you will get a collection of Asset objects rather than just an array of paths. Or, a `select` field will be an array with `label` and `value` rather than just the value.
+The submitted form values will be augmented for you. For instance, an **Upload** field gives you Asset objects when **Store Files** is enabled, or plain file paths when it isn't. Or, a **Dropdown** field will be an array with `label` and `value` rather than just the value.
 
 ::tabs
 
@@ -390,87 +452,72 @@ In each iteration of the `fields` array, you have access to:
 - `fieldtype` - The handle of the fieldtype (e.g. "assets")
 - `config` - The configuration of the blueprint field
 
+If you'd rather render the submission with its page and section structure, use the `pages` and `sections` arrays. Each page has a `display`, `instructions`, and its `sections`; each section has a `display`, `instructions`, and its `fields` — containing the same variables as the `fields` array explained above.
 
-### Setting the from and reply-to name
+::tabs
 
-You can set a full "From" and "Reply-To" name in addition to the email address using the following syntax:
+::tab antlers
+```antlers
+{{ pages }}
+    <h2>{{ display }}</h2>
+    {{ sections }}
+        <h3>{{ display }}</h3>
+        {{ fields }}
+            <b>{{ display }}</b> {{ value }}
+        {{ /fields }}
+    {{ /sections }}
+{{ /pages }}
+```
+::tab blade
+```blade
+@foreach ($pages as $page)
+  <h2>{{ $page['display'] }}</h2>
+  @foreach ($page['sections'] as $section)
+    <h3>{{ $section['display'] }}</h3>
+    @foreach ($section['fields'] as $field)
+      <b>{{ $field['display'] }}</b> {{ $field['value'] }}
+    @endforeach
+  @endforeach
+@endforeach
+```
+::
+
+
+#### Setting the from and reply-to name
+
+You can set a full "From" and "Reply-To" name in addition to the email address by typing it into the Sender or Reply-To fields using the following syntax:
 
 ```
-from: 'Jack Black <jack@jackblack.com>'
-reply_to: 'Jack Black <jack@jackblack.com>'
+Jack Black <jack@jackblack.com>
 ```
 
+#### Dynamic recipients and subjects
 
-### Setting the recipient dynamically
+The address fields suggest your form's fields — select one and the address the visitor submitted will be used when the email is sent. For example, selecting your "Email Address" field as the Reply-To means you can hit reply in your inbox to respond directly to the visitor.
 
-You can set the recipient to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
+The Subject field supports Antlers, so you can reference submitted values there too using their field handles:
 
-```yaml
-email:
-  -
-    to: "{{ email }}"
-    # other settings here
+```
+{{ subject ?? "Email Form Submission" }}
 ```
 
-### Setting the "Reply to" dynamically
+#### Attachments
 
-You can set the "reply to" to an address submitted in the form by using the variable in your config block. Assuming you have a form input with `name="email"`:
+When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email by enabling the **Attachments** toggle.
 
-```yaml
-email:
-  -
-    reply_to: "{{ email }}"
-    # other settings here
-```
+If you don't want the attachments to be kept around on your server, configure your [Upload field](#file-uploads) so it doesn't store the files — they'll be attached to the email and then deleted.
 
-### Setting the "Subject" dynamically
+#### Mailer
 
-You can set the email "subject" to a value in your form by using the variable in your config block. Assuming you have a form input with `name="subject"`:
+If your app has more than one [mailer configured](https://laravel.com/docs/mail#configuration), you can choose which one sends the email. Leave it blank to use your app's default mailer.
 
-```yaml
-email:
-  -
-    subject: '{{ subject ?? "Email Form Submission" }}'
-    # other settings here
-```
-
-[Learn how to create your emails](/email)
-
-### Attachments
-
-When using [file uploads](#file-uploads) in your form, you may choose to have those attached to the email. By adding `attachments: true` to the email config, any `assets` fields will be automatically attached.
-
-```yaml
-email:
-  -
-    attachments: true
-    # other settings here
-```
-
-If you don't want the attachments to be kept around on your server, you should pick the `files` fieldtype option explained in the [File Uploads](#file-uploads) section.
-
-### Using Markdown Mailable Templates
+#### Using Markdown Mailable Templates
 
 Laravel allows you to create email templates [using Markdown](https://laravel.com/docs/mail#markdown-mailables). It's pretty simple to wire these up with your form emails:
 
-1. Enable Markdown parsing in your email config:
+1. Enable the **Markdown** toggle when configuring the email.
 
-```yaml
-email:
-  -
-    # other settings here
-    markdown: true # [tl! add]
-```
-
-2. Next, create a **Blade** view for your email template and start using Laravel's Markdown Mailable components:
-
-```yaml
-email:
-  -
-    # other settings here
-    markdown: true
-    html: 'contact-us' # [tl! add]
-```
+2. Next, create a **Blade** view for your email template, select it as the **HTML view**, and start using Laravel's Markdown Mailable components:
 
 ```blade
 {{-- contact-us.blade.php --}}
@@ -491,56 +538,205 @@ Someone has taken the time to fill out a form on your website. Here are the deta
 Make sure you don't use indentation in your Markdown view. Laravel's markdown parser will render it as code.
 :::
 
-You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/13.x/mail#customizing-the-components).
+You can customize the components further by reviewing the [Laravel documentation](https://laravel.com/docs/mail#customizing-the-components).
+
+### Webhooks
+
+The Webhook connection sends a POST request to a URL of your choice whenever the form is submitted. You can add any number of webhooks to your form and, like emails, each webhook can be sent for every submission or based on conditions.
+
+The request contains the form's handle and the submission's data as JSON:
+
+```json
+{
+    "form": "contact_us",
+    "submission": {
+        "id": "1753264619.65652",
+        "date": "2026-07-23T10:00:00.000000Z",
+        "name": "Jack Black",
+        "email": "jack@jackblack.com"
+    }
+}
+```
+
+Only `http` and `https` URLs are supported. If you're developing locally, or sending requests to internal services with self-signed certificates, you can disable SSL verification per webhook.
+
+<figure>
+  <img src="/img/configure-webhooks.webp" alt="Webhook configuration form" class="u-hide-in-dark-mode">
+  <img src="/img/configure-webhooks-dark.webp" alt="Webhook configuration form" class="u-hide-in-light-mode">
+  <figcaption>You can send as many webhooks as you want.</figcaption>
+</figure>
+
+### Building custom connections
+
+You can build your own connections to send submissions anywhere you like.
+
+Create a class in the `app/FormConnections` directory that extends `Statamic\Forms\Connections\Connection` and Statamic will discover it automatically. Addons can do the same in their `FormConnections` directory, or register classes explicitly using the `$formConnections` property on their service provider.
+
+```php
+<?php
+
+namespace App\FormConnections;
+
+use Statamic\Contracts\Forms\Form;
+use Statamic\Forms\Connections\Connection;
+use Statamic\Support\VueComponent;
+
+class Acme extends Connection
+{
+    protected static $title = 'Acme';
+    protected $description = 'Send submissions to Acme.';
+    protected $icon = 'globe-arrow';
+    protected $developer = 'Acme Inc.';
+
+    public function count(Form $form): ?int
+    {
+        return count($form->connections()->get('acme', []));
+    }
+
+    public function render(Form $form): VueComponent
+    {
+        return VueComponent::render('acme-connection');
+    }
+}
+```
+
+#### Properties & Methods
+
+| Property/Method | Description |
+| --- | --- |
+| `$title` | The title shown on the Connect index. Defaults to a title generated from the class name. |
+| `$description` | A short description shown on the Connect index. |
+| `$icon` | The icon shown on the Connect index. |
+| `$developer` | Who built the connection, shown on the Connect index. |
+| `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
+| `isConfigured()` | Whether the connection is ready to use (eg. its credentials are present). When `false`, the edit page hides the save button so your component can render setup instructions instead. Defaults to `true`. |
+| `render()` | The Vue component (and its props) rendered on the connection's edit page. |
+| `preProcess()` | Prepares the saved config for editing. Whatever it returns is passed to your Vue component as its `modelValue`. Returns the config untouched by default. |
+| `rules()` | Validation rules for the value being saved. |
+| `process()` | Prepares the submitted value for saving. Whatever it returns gets saved to the form. Returns the value untouched by default. |
+| `routes()` | Routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
+| `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
+| `config()` | The connection's saved config for this submission — call it from `finalized()` to get what to send. |
+
+#### Saving
+
+You don't need any routes or controllers to save your connection — Statamic owns the save process.
+
+Your config makes a round trip through your connection class:
+
+1. When the page loads, the saved config is passed through your `preProcess()` method and handed to your Vue component as its `modelValue`.
+2. Your component emits `update:modelValue` as the user makes changes.
+3. When the user saves, the value is validated against your `rules()`, passed through your `process()` method, and saved to the form under your connection's handle.
+
+Validation errors are passed to your component via the `errors` prop, keyed by row index — like `0.channel`.
+
+#### The frontend
+
+The `render()` method determines which Vue component gets rendered, along with its props.
+
+Your component is rendered inside the connection's edit page, which passes it three props automatically — `form`, `modelValue` containing the pre-processed value, and `errors` containing any validation errors. You don't need to pass any of these through `render()` yourself.
+
+If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionRows>` component to get a head start.
+
+Pass it your array of rows via `v-model`, your validation errors via `errors`, and a header slot and a body slot for each row. It takes care of the collapsible row UI and the add/duplicate/remove actions. New rows are seeded from `defaults.values`, and each row is given an `id`, `enabled` state and empty `conditions` for you.
+
+```vue
+<script setup>
+import { ConnectionRows } from '@statamic/cms';
+import { Badge } from '@statamic/cms/ui';
+
+defineEmits(['update:modelValue']);
+
+defineProps({
+    modelValue: { type: Array, default: () => [] },
+    errors: { type: Object, default: () => ({}) },
+    defaults: Object,
+});
+</script>
+
+<template>
+    <ConnectionRows
+        :model-value="modelValue"
+        :errors
+        :defaults
+        :add-label="__('Add Notification')"
+        @update:model-value="$emit('update:modelValue', $event)"
+    >
+        <template #header="{ item: notification, collapsed }">
+            <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+        </template>
+
+        <template #default="{ item: notification, errors }">
+            <!-- Each row's fields go here... -->
+        </template>
+    </ConnectionRows>
+</template>
+```
+
+The default slot hands each row its own validation errors, grouped by field handle, ready to pass along to your fields.
+
+#### Conditional logic
+
+If you want your connection to support conditional logic, the `<ConnectionRules>` component renders the logic builder. Bind your conditions with `v-model:conditions` and put whatever the conditions control inside its `then` slot.
+
+```vue
+<template #default="{ item: notification, index }">
+    <ConnectionRules
+        v-model:conditions="notification.conditions"
+        :always-label="__('Always send')"
+        :if-label="__('Send if...')"
+    >
+        <template #then>
+            <!-- The fields controlled by the conditions go here... -->
+        </template>
+    </ConnectionRules>
+</template>
+```
+
+On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles the rest:
+
+- When editing, `ConnectionLogic::preProcess($conditions)` gives each condition the row ID the logic builder needs — call it on each row's conditions from your connection's `preProcess()` method.
+- When saving, `ConnectionLogic::process($conditions)` strips out the row IDs and any incomplete conditions, and returns `null` when there's nothing to save — call it from your `process()` method.
+- When a submission comes in, `ConnectionLogic::passes($config, $submission)` tells you whether a row should run — it fails when the row has been disabled, or when its conditions don't match the submission.
+
+Statamic also exports `conditionsSummary`, which turns a row's conditions into a readable sentence — like _"if Enquiry Type equals Sales"_ — handy for describing a row in its header when collapsed.
+
+```vue
+<script setup>
+import { conditionsSummary } from '@statamic/cms';
+</script>
+
+<template #header="{ item: notification, collapsed }">
+    <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+    <Subheading v-show="collapsed">{{ conditionsSummary(notification.conditions) }}</Subheading>
+</template>
+```
+
+#### Sending notifications
+
+When a submission is finalized, Statamic dispatches a single job chain: file uploads are converted to assets, then each of the connection jobs run and finally temporary file uploads are deleted.
+
+To hook into this process, return a job (or array of jobs) from the `finalized()` method. Your connection's saved config — the entry's override when [unique instances](/frontend/forms-pro#unique-instances) is enabled, otherwise the form's own — is available via `$this->config()`:
+
+```php
+public function finalized($submission): object|array
+{
+    return new SendNotificationToThirdPartyService($submission, $this->config());
+}
+```
+
+Because Statamic uses Laravel's [job chaining](https://laravel.com/docs/queues#job-chaining) feature, if you need to dispatch additional jobs within one of your jobs, call `$this->prependToChain($job)` (from Laravel's `Queueable` trait) so they stay part of the chain.
 
 ## File uploads
 
-Sometimes your fans want to show you things they've created, like scissor-cut love letters and innocent selfies with cats. No problem! File input types to the rescue. Inform Statamic you intend to collect files, specify where you'd like the uploads to go, and whether you'd like them to simply be placed in a directory somewhere, or become reusable Assets.
+Maybe your fans want to send a photo, or you're collecting resumes and cover letters. Whatever the files, add an **Upload** field to your form and you're collecting them.
 
-First, add a file upload field to your blueprint:
-- Add an `assets` field if you want the uploaded files to be stored in one of your asset containers.
-- Add a `files` field if you're only wanting to attach the uploads to the email. Anything uploaded using this fieldtype will be attached and then deleted after the emails are sent.
+When configuring the Upload field, you decide whether the uploaded files should be kept around:
 
-Then decide if you need single or multiple files to be uploaded.
+- **Store the files** and they'll be permanently saved as reusable [Assets](/assets) in the asset container you choose.
+- **Don't store the files** and they'll only stick around long enough to be sent with your form's [connections](#connections) (like email attachments), then they'll be deleted shortly after the form is submitted.
 
-### Single files
-
-On your field, add a `max_files` setting of `1`:
-
-```
-<input type="file" name="cat_selfie" />
-```
-
-```yaml
-fields:
-  -
-    handle: cat_selfie
-    field:
-      type: assets
-      container: main
-      max_files: 1
-```
-
-### Multiple files
-
-You have two methods available to you:
-
-First, you can create separate fields for each upload. This is useful if each has a separate purpose, like Resume, Cover Letter, and Headshot. You'll need to explicitly create each and every one in your formset.
-
-Or, you can enable multiple files on one field by dropping the `max_files` setting on your field, and using array syntax on your input by adding a set of square brackets to the `name` attribute:
-
-```
-<input type="file" name="selfies[]" multiple />
-```
-
-```yaml
-fields:
-  -
-    handle: selfies
-    field:
-      type: assets
-      container: main
-```
+You can also set a maximum number of files to control whether respondents can upload a single file or several.
 
 ### Configuring temporary file storage
 
@@ -564,11 +760,46 @@ Or in your `config/statamic/system.php` file:
 Since these are temporary files containing user uploads, you should use a private filesystem to prevent unauthorized access.
 :::
 
+## Restricting submissions
+
+Sometimes you don't want a form to accept submissions forever. From the form's settings, under **Access**, you can restrict submissions using any combination of:
+
+- **Close Date** — the form stops accepting submissions after this date.
+- **Submission Limit** — the maximum number of submissions to accept, optionally scoped to a period (Total, Per Day, Per Week, or Per Month). The limit resets at the app timezone's midnight, start of the week, or start of the month.
+- **Require Login** — only logged in visitors may submit the form.
+
+Statamic rejects restricted submissions server-side with a validation error, so nothing gets through even if you don't check for it in your template. You can also hide or replace the form's contents on the front-end using the `restricted` and `restriction_message` variables:
+
+```antlers
+{{ form:contact }}
+    {{ if restricted }}
+        <p>{{ restriction_message }}</p>
+    {{ else }}
+        {{ fields }} ... {{ /fields }}
+    {{ /if }}
+{{ /form:contact }}
+```
+
+The message shown for a closed or limit-reached form can be customized with the **Closed Message** setting, and the message shown when login is required can be customized separately with **Require Login Message**. Leave either blank to use Statamic's default wording. If a form is both closed/limit-reached and requires login, the closed message takes precedence.
+
+:::tip
+When a form has [Forms Pro](/frontend/forms-pro)'s [Unique Instances](/frontend/forms-pro#unique-instances) enabled, these restrictions are checked per entry — and each entry can override them.
+:::
+
+## Localizing forms
+
+Form fields aren't yet localizable — a field's display label, instructions, and options are shared across every site. We're planning on adding support for this soon.
+
+In the meantime, you have a couple of options if you need a form's labels translated per site:
+
+- Use the [Translation Manager](https://statamic.com/addons/thoughtco/translation-manager) addon by Thought Collective, which lets you manage translations for content that isn't otherwise localizable.
+- Duplicate the form once per site, and translate its labels, instructions, and options by hand.
+
 ## Honeypot
 
 Simple and effective spam prevention.
 
-The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. Nothing will be saved and no emails are sent.
+The honeypot technique is simple. Add a field to your forms, that when filled in will cause the submission to fail, but appear successful. By default, nothing will be saved and no [connections](#connections) are triggered.
 
 Hide this field by a method of your choosing (ie. CSS), so your users won't see it but spam bots will just think it’s another field.
 
@@ -597,16 +828,46 @@ For example:
 ```
 
 :::tip
-In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your formset config.
+In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your form's config.
 :::
 
-## Using AJAX
+### Honeypot behavior
 
-To submit the form with AJAX, be sure to pass all the form inputs in with the submission, as Statamic sets `_token` and `_params`, both of which are required.
+The **Honeypot Behavior** setting on the form's configuration screen controls what happens to submissions caught by the honeypot:
 
-You'll also need to set your ajax library's `X-Requested-With` header to `XMLHttpRequest`.
+- **Ignore** (default): the submission is silently discarded.
+- **Save as Spam**: the submission is stored and [marked as spam](#spam-submissions), so you can review it later.
 
-The URL endpoint to send the request to is `/!/forms/{form-handle}`. You can configure the action route prefix which defaults to `!` in `config/statamic/routes.php`.
+Either way, the visitor receives the same response as a successful submission, so bots can't tell they've been caught.
+
+## Spam submissions
+
+Rather than being discarded, submissions caught by spam protection can be kept out of sight for review. A submission marked as spam is hidden from the submissions listing by default, doesn't count towards [submission limits](#restricting-submissions), and doesn't trigger any [connections](#connections).
+
+To review them, switch the **Status** filter on the submissions listing to **Spam**. From there, you can use the **Mark as Spam** and **Mark as Not Spam** actions.
+
+When a submission that was caught before being finalized (by the [honeypot](#honeypot), for example) is marked as not spam, it gets finalized as normal — triggering any configured [connections](#connections) at that point. Submissions that were manually flagged after being finalized simply have the flag removed, so nothing is re-triggered.
+
+### Marking submissions as spam from addons
+
+The honeypot is the first thing to take advantage of the spam status, but addon developers can also mark submissions as spam inside event listeners:
+
+```php
+use Illuminate\Support\Facades\Event;
+use Statamic\Events\FormSubmitted;
+
+Event::listen(function (FormSubmitted $event) {
+    if (Akismet::isSpam($event->submission)) {
+        $event->submission->markAsSpam()->save();
+
+        return false;
+    }
+});
+```
+
+Returning `false` halts the submission pipeline while still giving the visitor a successful response. Since the submission was saved as spam beforehand, it'll be waiting in the submissions listing for review.
+
+You can find more details about working with spam submissions in the [Form Submission Repository](/repositories/form-submission-repository#spam-submissions) docs.
 
 ## Rate limiting
 
@@ -627,250 +888,55 @@ public function boot()
 }
 ```
 
-Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.
+Consult the [Laravel documentation](https://laravel.com/docs/routing#rate-limiting) to learn more about defining rate limiters.
 
-## Caching
+## Submitting forms programmatically
 
-If you are static caching the URL containing a form, return responses like 'success' and 'errors' will not be available after submitting unless you [exclude this page from caching](/static-caching#excluding-pages) or wrap the form in {{ nocache }} tags.
+The [`form:create`](/tags/form-create) tag handles submissions for you, but you can also submit a form yourself using the `SubmitForm` action. This makes it easy to submit forms from a Livewire component, a custom controller, or your own API endpoint.
 
-**Wrapping the form in {{ nocache }}**
+```php
+use Statamic\Facades\Form;
+use Statamic\Forms\SubmitForm;
+use Statamic\Exceptions\FormRestrictedException;
+use Statamic\Exceptions\SilentFormFailureException;
+use Illuminate\Validation\ValidationException;
 
-::tabs
+$form = Form::find('contact');
 
-::tab antlers
-```antlers
-{{ nocache }}
-    {{ form:create formset="contact" }}
-        ...
-    {{ /form:create }}
-{{ /nocache }}
-```
-::tab blade
-```blade
-<s:nocache>
-  <s:form:create formset="contact">
-    ...
-  </s:form:create>
-</s:nocache>
-```
-::
+try {
+    $submission = app(SubmitForm::class)
+        ->form($form)
+        ->submit(
+            data: ['name' => 'John', 'email' => 'john@example.com'],
+            files: [], // Optional
+        );
+} catch (ValidationException $e) {
+    return back()->withErrors($e->errors());
+} catch (FormRestrictedException $e) {
+    // The form is closed, its submission limit has been reached, or
+    // it requires login and the visitor is logged out.
+    return back()->withErrors(['*' => $e->getMessage()]);
+} catch (SilentFormFailureException $e) {
+    // The honeypot was triggered, or an event listener rejected the
+    // submission. To the user, it should appear as though it succeeded.
+    return back()->with('success', 'Form submitted successfully!');
+}
 
-### Axios example
-
-``` javascript
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-form = document.getElementById('form');
-
-// On submit...
-axios.post(form.action, new FormData(form))
-  .then(response => {
-      console.log(response.data)
-  });
+return back()->with('success', 'Form submitted successfully!');
 ```
 
-## Precognition
+The action provides the following methods:
 
-Statamic supports using [Laravel Precognition](https://laravel.com/docs/13.x/precognition) in forms.
+| Method | Description |
+| --- | --- |
+| `form` | Provide the `Form` you want to use. |
+| `page` | Optional. (intended to be used alongside Forms Pro's multi-page forms feature) ID of the page you want to submit. |
+| `entry` | Optional. (intended to be used alongside Forms Pro's [unique instances](/frontend/forms-pro#unique-instances) feature) ID of the entry the submission is attached to. |
+| `resume` | `Submission` instance of the partial submission you wish to resume. |
+| `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
+| `validate` | Validate the current page. Accepts an array of `$data` and an optional array of `$files`. Also accepts an array of field handles to limit which fields are validated. |
 
-Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
+The action also throws various exceptions:
 
-Note that `js="alpine_precognition"` is used rather than just `alpine`.
-
-::tabs
-
-::tab antlers
-```antlers
-{{ form:contact js="alpine_precognition" }}
-    {{ if success }}
-        Success!
-    {{ /if }}
-
-    <template x-if="form.hasErrors">
-        <div>
-            Errors!
-            <ul>
-                <template x-for="error in form.errors">
-                    <li x-text="error"></li>
-                </template>
-            </ul>
-        </div>
-    </template>
-
-    {{ fields }}
-        <label>{{ display }}</label>
-        {{ field }}
-        <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
-    {{ /fields }}
-
-    <button :disabled="form.processing">Submit</button>
-{{ /form:contact }}
-```
-
-::tab blade
-```blade
-<s:form:contact js="alpine_precognition">
-    @if ($success) Success! @endif
-
-    <template x-if="form.hasErrors">
-      <div>
-        Errors!
-        <ul>
-          <template x-for="error in form.errors">
-            <li x-text="error"></li>
-          </template>
-        </ul>
-      </div>
-    </template>
-
-    @foreach ($fields as $field)
-      <label>{{ $field['display'] }}</label>
-      {!! $field['field'] !!}
-
-      <small
-        x-show="form.invalid('{{ $field['handle'] }}')"
-        x-text="form.errors.{{ $field['handle'] }}"
-      ></small>
-    @endforeach
-
-    <button :disabled="form.processing">Submit</button>
-</s:form:contact>
-```
-::
-
-To build on the regular form submission example above, here's an example for AJAX submission.
-- The third argument of the `js` parameter defines the Alpine component.
-- The native form's submit event is listened for, prevented, and the component's `submit` method is called instead.
-
-::tabs
-
-::tab antlers
-```antlers
-{{ form:contact
-    js="alpine_precognition:form:contact"
-    @submit.prevent="submit"
-}}
-```
-::tab blade
-```blade
-<s:form:contact
-    js="alpine_precognition:form:contact"
-    @submit.prevent="submit"
->
-```
-::
-
-```html
-<script>
-document.addEventListener('alpine:init', () => {
-    Alpine.data('contact', (data) => ({
-        ...data,
-        submit() {
-            this.form.submit().then(response => {
-                this.form.reset();
-                console.log("Success")
-            }).catch(error => {
-                console.log(error);
-            });
-        }
-    }));
-});
-</script>
-```
-
-### User Forms
-
-The user form tags ([login][login_form], [register][register_form], [profile][profile_form], and [password][password_form]) also support Precognition — but at the request level only. The tags themselves don't accept a `js="alpine_precognition"` parameter, so you wire it up manually against the form's action URL.
-
-Install the Alpine adapter:
-
-```shell
-npm install laravel-precognition-alpine
-```
-
-Register it before Alpine starts:
-
-```js
-import Alpine from 'alpinejs'
-import precognition from 'laravel-precognition-alpine'
-
-Alpine.plugin(precognition)
-Alpine.start()
-```
-
-Then bind a `$form` to the appropriate endpoint inside the user form tag:
-
-::tabs
-
-::tab antlers
-```antlers
-{{ user:login_form
-    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
-    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
-}}
-    <label>Email</label>
-    <input
-        type="email"
-        name="email"
-        x-model="form.email"
-        @change="form.validate('email')"
-    >
-    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
-
-    <label>Password</label>
-    <input
-        type="password"
-        name="password"
-        x-model="form.password"
-        @change="form.validate('password')"
-    >
-    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
-
-    <button type="submit" :disabled="form.processing">Log in</button>
-{{ /user:login_form }}
-```
-::tab blade
-```blade
-<s:user:login_form
-    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
-    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
->
-    <label>Email</label>
-    <input
-        type="email"
-        name="email"
-        x-model="form.email"
-        @change="form.validate('email')"
-    >
-    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
-
-    <label>Password</label>
-    <input
-        type="password"
-        name="password"
-        x-model="form.password"
-        @change="form.validate('password')"
-    >
-    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
-
-    <button type="submit" :disabled="form.processing">Log in</button>
-</s:user:login_form>
-```
-::
-
-The same pattern applies to the other user forms — just swap the action URL and the data fields:
-
-| Tag | Endpoint |
-|---|---|
-| `{{ user:login_form }}` | `/!/auth/login` |
-| `{{ user:register_form }}` | `/!/auth/register` |
-| `{{ user:profile_form }}` | `/!/auth/profile` |
-| `{{ user:password_form }}` | `/!/auth/password` |
-
-If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
-
-[tags]: /tags/form
-[submissions]: /tags/form-submissions
-[login_form]: /tags/user-login_form
-[register_form]: /tags/user-register_form
-[profile_form]: /tags/user-profile_form
-[password_form]: /tags/user-password_form
+- `SilentFormFailureException` is thrown when the [honeypot](#honeypot) catches spam, or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — so spam bots still see a success response. The submission data is available via `$e->submission()`.
+- `FormRestrictedException` is thrown when a form is [restricted](#restricting-submissions). Its message is the form's [restriction message](#restricting-submissions), and the restricted `Form` is available via `$e->form()`.
