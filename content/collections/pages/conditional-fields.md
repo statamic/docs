@@ -222,6 +222,15 @@ if_any:
   that_field: cheeseburger
 ```
 
+You may also define multiple conditions against the *same* field by providing an array of conditions. For example, the following will show the field when `age` is greater than `18` *__AND__* less than `65`:
+
+```yaml
+if:
+  age:
+    - '> 18'
+    - '< 65'
+```
+
 ## Nested fields
 
 You may use dot notation to access nested values when necessary.  For example, maybe you would like to show a field when an `array` fieldtype's `country` value is `Canada`:

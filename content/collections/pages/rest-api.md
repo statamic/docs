@@ -59,9 +59,15 @@ https://yourdomain.tld/api/{endpoint}
 `
 You may send requests to the following endpoints:
 
+- [Ping](#ping)
+- [Sites](#sites)
+- [Collections](#collections) / [Collection](#collection)
 - [Entries](#entries) / [Entry](#entry)
 - [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
+- [Navs](#navs) / [Nav](#nav)
+- [Taxonomies](#taxonomies) / [Taxonomy](#taxonomy)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
+- [Asset Containers](#asset-containers) / [Asset Container](#asset-container)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
 - [Forms](#forms) / [Form](#form)
@@ -218,6 +224,14 @@ You may specify which top level fields should be included in the response.
 /endpoint?fields=id,title,content
 ```
 
+You may also use array syntax:
+
+``` url
+/endpoint?fields[]=id&fields[]=title&fields[]=content
+```
+
+On the [Entry](#entry) and [Asset](#asset) endpoints, `fields` will also be honored when fetching a single item, not just when listing them.
+
 ## Pagination
 
 Results will be paginated into 25 items per page by default. You may specify the items per page and which page you are viewing with the `limit` and `page` parameters:
@@ -253,6 +267,84 @@ The response will contain your `data`, `links` to easily get next/previous URLs,
 
 ---
 
+## Ping
+
+`GET` `/api/ping`
+
+A simple health check endpoint. It returns `pong`, and is available whenever the REST API is enabled, regardless of which resources are enabled.
+
+``` json
+{
+  "ping": "pong"
+}
+```
+
+## Sites
+
+`GET` `/api/sites`
+
+Gets all configured sites. This resource is disabled by default. You can enable it with `resources.sites` in your `config/statamic/api.php` config:
+
+```php
+'resources' => [
+    'sites' => true,
+],
+```
+
+``` json
+{
+  "data": [
+    {
+      "handle": "default",
+      "name": "Default",
+      "locale": "en_US",
+      "short_locale": "en",
+      "url": "http://example.com/"
+    }
+  ]
+}
+```
+
+## Collections
+
+`GET` `/api/collections`
+
+Gets all collections.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "blog",
+      "title": "Blog",
+      "structure": null,
+      "mount": "9412926e-8d33-4f83-8db9-72cbc4c69bcf",
+      "api_url": "http://example.com/api/collections/blog"
+    }
+  ]
+}
+```
+
+## Collection
+
+`GET` `/api/collections/{collection}`
+
+Gets a single collection.
+
+``` json
+{
+  "data": {
+    "handle": "blog",
+    "title": "Blog",
+    "structure": null,
+    "mount": "9412926e-8d33-4f83-8db9-72cbc4c69bcf",
+    "api_url": "http://example.com/api/collections/blog"
+  }
+}
+```
+
+If the collection is structured, `structure` will contain its `max_depth` and `expects_root` values instead of `null`.
+
 ## Entries
 
 `GET` `/api/collections/{collection}/entries`
@@ -272,7 +364,7 @@ Gets entries within a collection.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
 
@@ -280,7 +372,7 @@ If you are using [Multi-Site](/multi-site), the entries endpoint will serve from
 
 `GET` `/api/collections/{collection}/entries/{id}`
 
-Gets a single entry.
+Gets a single entry by ID or slug. If both an ID and a slug match, the entry matched by ID takes priority. When resolving by slug on a multi-site collection, the `site` query parameter will be used if provided, otherwise the collection's first configured site will be used.
 
 ``` json
 {
@@ -330,6 +422,44 @@ On this endpoint, the [fields](#selecting-fields) param will allow you to select
 ```
 
 
+## Navs
+
+`GET` `/api/navs`
+
+Gets all navigations.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "main",
+      "title": "Main Navigation",
+      "max_depth": null,
+      "expects_root": false,
+      "api_url": "http://example.com/api/navs/main"
+    }
+  ]
+}
+```
+
+## Nav
+
+`GET` `/api/navs/{nav}`
+
+Gets a single navigation.
+
+``` json
+{
+  "data": {
+    "handle": "main",
+    "title": "Main Navigation",
+    "max_depth": null,
+    "expects_root": false,
+    "api_url": "http://example.com/api/navs/main"
+  }
+}
+```
+
 ## Navigation Tree
 
 `GET` `/api/navs/{nav}/tree`
@@ -369,6 +499,40 @@ On this endpoint, the [fields](#selecting-fields) param will allow you to select
 ```
 
 
+## Taxonomies
+
+`GET` `/api/taxonomies`
+
+Gets all taxonomies.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "tags",
+      "title": "Tags",
+      "api_url": "http://example.com/api/taxonomies/tags"
+    }
+  ]
+}
+```
+
+## Taxonomy
+
+`GET` `/api/taxonomies/{taxonomy}`
+
+Gets a single taxonomy.
+
+``` json
+{
+  "data": {
+    "handle": "tags",
+    "title": "Tags",
+    "api_url": "http://example.com/api/taxonomies/tags"
+  }
+}
+```
+
 ## Taxonomy Terms
 
 `GET` `/api/taxonomies/{taxonomy}/terms`
@@ -388,7 +552,7 @@ Gets terms in a taxonomy.
 ```
 
 :::tip
-If you are using [Multi-Site](/multi-site), you can select the site using a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
+If you are using [Multi-Site](/multi-site), you can select the site using the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
 ## Taxonomy term
@@ -532,6 +696,40 @@ Get a single user.
     "id": "1",
     "email": "john@smith.com",
     "api_url": "http://example.com/api/users/1"
+  }
+}
+```
+
+## Asset Containers
+
+`GET` `/api/asset-containers`
+
+Gets all asset containers. This uses the same `resources.assets` config as the [Assets](#assets) endpoint.
+
+``` json
+{
+  "data": [
+    {
+      "handle": "main",
+      "title": "Main",
+      "api_url": "http://example.com/api/asset-containers/main"
+    }
+  ]
+}
+```
+
+## Asset Container
+
+`GET` `/api/asset-containers/{container}`
+
+Gets a single asset container.
+
+``` json
+{
+  "data": {
+    "handle": "main",
+    "title": "Main",
+    "api_url": "http://example.com/api/asset-containers/main"
   }
 }
 ```

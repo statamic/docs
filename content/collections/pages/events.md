@@ -382,6 +382,13 @@ public function handle(CollectionTreeSaving $event)
 }
 ```
 
+You may suppress the `CollectionTreeSaving`, `CollectionTreeSaved`, and `CollectionTreeDeleted` events by using the `saveQuietly` and `deleteQuietly` methods on the tree, instead of `save` and `delete`.
+
+``` php
+$tree->saveQuietly();
+$tree->deleteQuietly();
+```
+
 ### EntryBlueprintFound
 `Statamic\Events\EntryBlueprintFound`
 
