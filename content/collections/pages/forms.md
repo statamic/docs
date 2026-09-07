@@ -606,7 +606,8 @@ class Acme extends Connection
 | --- | --- |
 | `$title` | The title shown on the Connect index. Defaults to a title generated from the class name. |
 | `$description` | A short description shown on the Connect index. |
-| `$icon` | The icon shown on the Connect index. |
+| `$icon` | The icon shown on the Connect index. Either the name of an icon or inline SVG markup. |
+| `smallIcon()` | An optional simpler icon for small spaces, like the breadcrumb on the edit page. Falls back to `$icon`. Bake any colours into the SVG itself, using `light-dark()` to support dark mode. |
 | `$developer` | Who built the connection, shown on the Connect index. |
 | `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
 | `isConfigured()` | Whether the connection is ready to use (eg. its credentials are present). When `false`, the edit page hides the save button so your component can render setup instructions instead. Defaults to `true`. |
