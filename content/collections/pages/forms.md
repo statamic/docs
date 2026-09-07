@@ -638,7 +638,7 @@ Your component is rendered inside the connection's edit page, which passes it th
 
 If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionRows>` component to get a head start.
 
-Pass it your array of rows via `v-model`, your validation errors via `errors`, and a header slot and a body slot for each row. It takes care of the collapsible row UI and the add/duplicate/remove actions. New rows are seeded from `defaults.values`, and each row is given an `id`, `enabled` state and empty `conditions` for you.
+Pass it your array of rows via `v-model`, your validation errors via `errors`, and a header slot and a body slot for each row. It takes care of the collapsible row UI, the expand and collapse all button, and the add/duplicate/remove actions. New rows are seeded from `defaults.values`, and each row is given an `id`, `enabled` state and empty `conditions` for you.
 
 ```vue
 <script setup>
@@ -660,6 +660,7 @@ defineProps({
         :errors
         :defaults
         :add-label="__('Add Notification')"
+        :description="__('Post to a channel whenever this form receives a submission.')"
         @update:model-value="$emit('update:modelValue', $event)"
     >
         <template #header="{ item: notification, collapsed }">
@@ -699,16 +700,16 @@ On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles 
 - When saving, `ConnectionLogic::process($conditions)` strips out the row IDs and any incomplete conditions, and returns `null` when there's nothing to save — call it from your `process()` method.
 - When a submission comes in, `ConnectionLogic::passes($config, $submission)` tells you whether a row should run — it fails when the row has been disabled, or when its conditions don't match the submission.
 
-Statamic also exports `conditionsSummary`, which turns a row's conditions into a readable sentence — like _"if Enquiry Type equals Sales"_ — handy for describing a row in its header when collapsed.
+Statamic also exports the `<ConnectionRowSummary>` component, which describes a row's conditions in its header when collapsed — like _"If Enquiry Type equals Sales"_. When a row has no conditions, it shows whatever you pass as `fallback` (the row's subject or heading, say), or _"Always"_.
 
 ```vue
 <script setup>
-import { conditionsSummary } from '@statamic/cms';
+import { ConnectionRowSummary } from '@statamic/cms';
 </script>
 
 <template #header="{ item: notification, collapsed }">
     <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
-    <Subheading v-show="collapsed">{{ conditionsSummary(notification.conditions) }}</Subheading>
+    <ConnectionRowSummary v-show="collapsed" :conditions="notification.conditions" :fallback="notification.heading" />
 </template>
 ```
 
