@@ -3,7 +3,6 @@ id: 06027289-825e-4205-bd3a-f375e26ab81e
 blueprint: modifiers
 modifier_types:
   - date
-date: 'October 1 2015 8:30:am'
 title: 'Minutes Ago'
 related_entries:
   - e73f1574-732e-4a74-be47-37e1fddb05d6
@@ -16,7 +15,8 @@ related_entries:
 Returns the number of minutes since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
 ```yaml
-date: October 1 2015 8:30:am
+# Assuming the current time is June 19, 2012 at 9:00 am.
+date: June 19 2012 8:30 am
 ```
 
 ::tabs
@@ -32,5 +32,5 @@ date: October 1 2015 8:30:am
 ::
 
 ```html
-{{ test_date | minutes_ago }}
+30
 ```

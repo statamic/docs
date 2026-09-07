@@ -8,6 +8,8 @@ modifier_types:
 ---
 Given the URL to an Asset file, returns the string output of an Asset file's contents. This is primarily useful for rendering inline SVGs, but could also be used to display a lot of gibberish to your users if you're into that kind of thing.
 
+The file must belong to a configured asset container. An asset ID such as `assets::icons/heart.svg` can also be used.
+
 ```yaml
 icon: /img/icons/heart.svg
 ```

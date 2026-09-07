@@ -29,12 +29,12 @@ sponsors:
 
 ```
 {{ sponsors | group_by('sport') }}
-  <h1>Basketball</h2>
+  <h1>Basketball</h1>
   {{ basketball }}
     {{ team }}
   {{ /basketball }}
 
-  <h1>Baseball</h2>
+  <h1>Baseball</h1>
   {{ baseball }}
     {{ team }}
   {{ /baseball }}

@@ -8,21 +8,21 @@ title: Repeat
 Repeats a value any given number of times. For fun.
 
 ```yaml
-lyric: can't touch this
+line: 'Beatlejuice '
 ```
 
 ::tabs
 
 ::tab antlers
 ```antlers
-{{ lyric | repeat(3) }}
+{{ line | repeat(3) }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($lyric)->repeat(3) }}
+{{ Statamic::modify($line)->repeat(3) }}
 ```
 ::
 
 ```html
-can't touch this can't touch this can't touch this
+Beatlejuice Beatlejuice Beatlejuice
 ```

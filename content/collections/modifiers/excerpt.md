@@ -19,11 +19,11 @@ Lorem Ipsum dolor sit amet.<!--more--> consectetur adipiscing elit, sed do eiusm
 
 ::tab antlers
 ```antlers
-{{ books | excerpt }}
+{{ content | excerpt }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($books)->excerpt() }}
+{{ Statamic::modify($content)->excerpt() }}
 ```
 ::
 
@@ -34,5 +34,5 @@ Lorem Ipsum dolor sit amet.
 You can override the marker by passing an alternative as the first parameter:
 
 ```
-{{ books | excerpt:<!-- end --> }}
+{{ content | excerpt('<!-- end -->') }}
 ```

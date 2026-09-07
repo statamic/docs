@@ -4,7 +4,7 @@ modifier_types:
   - array
 title: 'Filter Empty'
 ---
-Filters out null values from an array.
+Filters falsy values out of an array or collection, including `null`, `false`, `0`, `'0'`, empty strings, and empty arrays. Existing keys are preserved.
 
 ```yaml
 favorite_things:

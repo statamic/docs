@@ -6,7 +6,7 @@ modifier_types:
 attributes: true
 title: 'Obfuscate Email'
 ---
-Obfuscates an email address with special characters making it hard for spam bots to sniff out and scrape off your site. Still reads like an email address as far as readers are concerned.
+Encodes an email address with HTML entities while keeping it readable in the browser. Bots that decode HTML can still read the address.
 
 ```yaml
 holler: holler@example.com
@@ -19,7 +19,9 @@ holler: holler@example.com
 {{ holler | obfuscate_email }}
 ```
 ::tab blade
-{{ Statamic::modify($holler)->obfuscateEmail() }}
+```blade
+{!! Statamic::modify($holler)->obfuscateEmail() !!}
+```
 ::
 
 ```html

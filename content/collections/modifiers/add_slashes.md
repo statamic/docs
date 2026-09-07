@@ -9,8 +9,9 @@ Modifies a string by adding backslashes before characters that need to be escape
 - single quote `'`
 - double quote `"`
 - backslash `\`
+- NUL (the null byte)
 
-This is most often used when passing string data into JavaScript.
+This uses PHP's [addslashes()](https://www.php.net/manual/en/function.addslashes.php). It does not encode a complete JavaScript string; use an appropriate JSON encoder when passing data to JavaScript.
 
 ``` yaml
 summary: >

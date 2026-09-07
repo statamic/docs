@@ -28,6 +28,6 @@ summary: |
 ::
 
 ```html
-This is a summary
-on multiple lines
+This is a summary<br />
+on multiple lines<br />
 ```

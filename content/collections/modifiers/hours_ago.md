@@ -15,7 +15,8 @@ related_entries:
 Returns the number of hours since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
 ```yaml
-date: October 1 2015
+# Assuming the current time is June 20, 2012 at midnight.
+date: June 19 2012
 ```
 
 ::tabs
@@ -30,5 +31,5 @@ date: October 1 2015
 ```
 ::
 ```html
-{{ test_date | hours_ago }}
+24
 ```

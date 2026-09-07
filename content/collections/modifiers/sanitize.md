@@ -25,7 +25,7 @@ example: <b>NEAT</b>
 ::
 
 ```html
-&lt;b&gt;NEAT&lt;b&gt;
+&lt;b&gt;NEAT&lt;/b&gt;
 ```
 
 ## Double Encoding

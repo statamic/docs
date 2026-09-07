@@ -9,15 +9,13 @@ modifier_types:
 Converts an array or array-like value into a query string using Laravel's [Arr::query()](https://laravel.com/docs/13.x/helpers#method-array-query) helper method.
 
 ```yaml
-$params = [
-    'mode' => 'plaid',
-    'area' => [51, 52],
-    'hat' => null,
-    'transportation' => [
-        'bike' => true,
-        'delorian' => false,
-    ],
-];
+params:
+  mode: plaid
+  area: [51, 52]
+  hat: null
+  transportation:
+    bike: true
+    delorian: false
 ```
 
 ```antlers

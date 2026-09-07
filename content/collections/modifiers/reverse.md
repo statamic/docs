@@ -28,7 +28,7 @@ order_of_ceremony:
 ::tab blade
 ```blade
 {{ Statamic::modify($status)->reverse() }}
-{{ Statamic::modify($status)->reverse()->list() }}
+{{ Statamic::modify($order_of_ceremony)->reverse()->list() }}
 ```
 ::
 

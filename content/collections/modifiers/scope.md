@@ -19,7 +19,7 @@ posts:
     slug: cactus-cuddles
 ```
 
-Without scoping, `{{ title }}` inside the loop falls back to the page's `title`. Prefix the variables with a scope to get exactly what you want.
+Inside the loop, `{{ title }}` uses the item's title when present, and can fall back to the page's title when it is missing. A scope makes it explicit that you want the item's value.
 
 ::tabs
 

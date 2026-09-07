@@ -15,7 +15,7 @@ example: please and thank you/Mommy
 
 ::tab antlers
 ```antlers
-http://example.com/{{ example | rawurlencode_except_slashes }}
+https://example.com/{{ example | rawurlencode_except_slashes }}
 ```
 ::tab blade
 ```blade
@@ -24,7 +24,7 @@ https://example.com/{{ Statamic::modify($example)->rawurlencode_except_slashes()
 ::
 
 ```html
-http://example.com/please%20and%20thank%20you/Mommy
+https://example.com/please%20and%20thank%20you/Mommy
 ```
 
 [rfc-3986]: http://php.net/manual/en/function.rawurlencode.php

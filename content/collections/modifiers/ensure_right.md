@@ -25,7 +25,7 @@ links:
 ::tab blade
 ```blade
 @foreach ($links as $link)
-  <li>{{ Statamic::modify($value)->ensureRight('.com') }}</li>
+  <li>{{ Statamic::modify($link)->ensureRight('.com') }}</li>
 @endforeach
 ```
 ::

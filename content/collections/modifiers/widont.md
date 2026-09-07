@@ -8,7 +8,7 @@ title: Widont
 ---
 Attempts to prevent widows (a line with a single word) in a string by adding non-breaking spaces between the last two words of each paragraph.
 
-The first parameter allows you to customize the number of words to add non-breaking spaces to.
+The first parameter controls how many spaces are replaced at the end of each paragraph. It defaults to `1`, joining the final two words. A value of `4` joins the final five words.
 
 ```yaml
 string: I Just Want Pretty Headlines and Sentences
@@ -23,12 +23,12 @@ string: I Just Want Pretty Headlines and Sentences
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($string)->widont() }}
-{{ Statamic::modify($string)->widont(4) }}
+{!! Statamic::modify($string)->widont() !!}
+{!! Statamic::modify($string)->widont(4) !!}
 ```
 ::
 
 ```html
 I Just Want Pretty Headlines and&nbsp;Sentences
-I Just Want Pretty&nbsp;Headlines&nbsp;and&nbsp;Sentences
+I Just Want&nbsp;Pretty&nbsp;Headlines&nbsp;and&nbsp;Sentences
 ```

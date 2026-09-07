@@ -8,7 +8,7 @@ title: Surround
 Surrounds a string with another string.
 
 ```yaml
-string:  ͜
+string: ' ͜ '
 ```
 
 ::tabs

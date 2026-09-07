@@ -7,7 +7,7 @@ modifier_types:
 title: Substr
 ---
 Returns the string beginning at a given position with an optional length.
-If length not specific, will return the rest of the string.
+If no length is specified, it returns the rest of the string.
 
 ```yaml
 string: How neat is that?

@@ -20,7 +20,7 @@ string: "The 'bacon' is <b>crispy</b>"
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($string)->entities() }}
+{!! Statamic::modify($string)->entities() !!}
 ```
 ::
 

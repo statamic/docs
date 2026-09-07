@@ -5,7 +5,7 @@ modifier_types:
   - math
 title: Subtract
 ---
-Subtract a value or another variable to your variable. Pass an integer or the name of a second variable as the parameter. Also supports `-` as shorthand.
+Subtract a value or another variable from your variable. Pass an integer or the name of a second variable as the parameter. Also supports `-` as shorthand.
 
 ```yaml
 capacity: 2500

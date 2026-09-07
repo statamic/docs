@@ -17,7 +17,7 @@ You can pass a string with a color name as parameter to get it colored in Ray. N
 ::tab antlers
 ```antlers
 {{ your_field | ray }}
-{{ your_field | ray('red'} }
+{{ your_field | ray('red') }}
 ```
 ::tab blade
 ```blade

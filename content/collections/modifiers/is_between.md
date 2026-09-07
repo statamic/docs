@@ -10,9 +10,9 @@ title: 'Is Between'
 Returns `true` if a date variable is between two other dates. Those dates can be the name of other variables or literal date strings.
 
 ```yaml
-date: November 15 2015
-start_date: July 4 2015
-end_date: December 1 2015
+date: June 19 2012
+start_date: June 1 2012
+end_date: July 1 2012
 ```
 
 ::tabs
@@ -32,7 +32,7 @@ true
 ```
 
 :::warning
-By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+Date modifiers preserve the date value's timezone by default. Dated entries use UTC. Enable `localize_dates_in_modifiers` in `config/statamic/system.php` to convert dates to your display timezone before applying modifiers.
 
 Please refer to our [Timezones](/tips/timezones) guide for more information.
 :::
