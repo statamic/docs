@@ -235,3 +235,5 @@ Everything inside the `{ ... }` is parsed first, and the result is then passed t
 If you haven't read up on [views](/views) yet, you should. It's considered fundamental knowledge, like knowing that seals are just dog mermaids. 🐕 🧜‍♀️
 
 You may also be interested in the [`partial:exists`](/tags/partial-exists) or [`partial:if_exists`](/tags/partial-if-exists) tags.
+
+If you'd rather a view *not* inherit anything from the surrounding template, take a look at the [`include`](/tags/include) tag.
