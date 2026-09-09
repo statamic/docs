@@ -178,7 +178,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
 | `is_svg` | `true` when file is an `svg`. |
 | `is_pdf` | `true` when file is a `pdf`. |
-| `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
+| `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, `webm`, `mov`, `mpeg`, `mpg`, or `mkv`. |
 | `last_modified` | Formatted date string of the last modified time |
 | `last_modified_instance` | [Carbon][carbon] instance of the last modified time |
 | `last_modified_timestamp` | Unix timestamp of the last modified time |
