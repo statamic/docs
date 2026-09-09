@@ -39,6 +39,12 @@ Skip plain bug fixes, performance-only changes, translations, and internal refac
 
 ## 3. Research each candidate
 
+Contributors sometimes open a docs PR for a specific feature ahead of the CMS release, on a branch unrelated to the release tag (e.g. `feat/include-tag`). Pull the full list of open docs PRs once, up front, so you can cross-reference it per-candidate below and avoid writing a duplicate:
+
+```sh
+gh pr list --repo statamic/docs --state open --json number,title,url,body,author --limit 100
+```
+
 For each entry, look at the linked number:
 
 ```sh
@@ -49,6 +55,11 @@ gh pr diff <number> --repo statamic/cms
 (Fall back to `gh issue view` if it's not a PR.) Read the actual diff, not just the title — the changelog line is often too terse to document from directly. For a fieldtype/field option, find the exact option name, type, and default in the PHP/Vue source. For a modifier/tag, find the exact parameter name.
 
 Read the PR body itself too, not just the diff. Authors often already explain the feature, why it exists, and include a usage example or config snippet — sometimes it's close enough to adapt directly into the doc rather than writing the explanation from scratch. Still rewrite it to match the doc's existing voice and conventions (step 5), and verify any example against the actual diff before using it — PR descriptions can describe an earlier version of the change.
+
+Cross-reference the candidate against the open-PR list you pulled above: search its titles/bodies for the cms PR/issue number, the feature name, and the likely doc file path (e.g. `content/collections/tags/include`). If an open docs PR already covers it:
+- Don't write your own version of it — that produces a duplicate PR that has to be closed later.
+- Drop it from your candidate list, but keep a note of which PR covers it (number + URL) for the report in step 8.
+- If that PR is missing something obviously related (e.g. a cross-link from a sibling doc page) and you're already deep in the research for it, it's fine to add a small commit to that PR instead — but confirm with the user first, since it means pushing to someone else's branch.
 
 Drop anything that turns out to already be documented, or that's a private/internal API not meant for end users.
 
@@ -127,4 +138,4 @@ If anything from step 5's "genuinely new feature" branch happened, call out the 
 
 ## 8. Report back
 
-Tell the user the PR URL and, briefly, what got skipped and why (e.g. "skipped #15251, perf-only" ) so they know the triage was deliberate, not missed.
+Tell the user the PR URL and, briefly, what got skipped and why (e.g. "skipped #15251, perf-only") so they know the triage was deliberate, not missed. Separately call out anything skipped because it's already covered by another open docs PR (number + URL), so the user knows to review that one too.
