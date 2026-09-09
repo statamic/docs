@@ -136,6 +136,8 @@ This pull request documents the new features and improvements from [<tag>](https
 
 If anything from step 5's "genuinely new feature" branch happened, call out the nav placement for review under its own bullet or a short "Needs a look" section.
 
+Don't explain what was skipped in the PR body — that belongs in the step 8 report to the user, not the description.
+
 ## 8. Report back
 
 Tell the user the PR URL and, briefly, what got skipped and why (e.g. "skipped #15251, perf-only") so they know the triage was deliberate, not missed. Separately call out anything skipped because it's already covered by another open docs PR (number + URL), so the user knows to review that one too.
