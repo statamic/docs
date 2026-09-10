@@ -117,6 +117,10 @@
                 }
             }
         }
+        a:has(code) {
+            color: var(--color-black-prose);
+            text-decoration-color: var(--color-black-prose);
+        }
         img {
             filter: hue-rotate(-20deg) saturate(1.25);
         }

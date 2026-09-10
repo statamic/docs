@@ -56,6 +56,24 @@ FormSubmission::query()
     ->get();
 ```
 
+#### Get partial form submissions
+
+```php
+FormSubmission::query()
+    ->where('form', 'postbox')
+    ->where('partial', true)
+    ->get();
+```
+
+#### Get spam form submissions
+
+```php
+FormSubmission::query()
+    ->where('form', 'postbox')
+    ->where('spam', true)
+    ->get();
+```
+
 
 ## Creating
 
@@ -81,4 +99,70 @@ Finally, save it. It'll return a boolean for whether it succeeded.
 
 ```php
 $submission->save(); // true or false
+```
+
+## Partial Submissions
+
+A partial submission is an incomplete submission that's been saved before the user has finished filling out the form.
+
+They're primarily used by the [Forms Pro](/frontend/forms-pro) add-on to persist progress between the pages of a multi-page form, but add-ons and custom code can use them too.
+
+To mark a submission as partial, call `asPartial()` before saving:
+
+```php
+$submission = FormSubmission::make()->form($form);
+
+$submission->data(['name' => 'David Hasselhoff']);
+
+$submission->asPartial()->save();
+```
+
+You can check whether a submission is partial using `isPartial()`, or by getting its `status()` (which returns `partial`, `finalized` or `spam`):
+
+```php
+$submission->isPartial(); // true
+$submission->status(); // "partial"
+```
+
+Partial submissions are [automatically deleted](/scheduling#deletepartialformsubmissions) after a configurable number of days (7 by default).
+
+:::tip
+The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `SubmissionSaved` events are dispatched when creating partial submissions, just like any other submission.
+
+If you're listening to these events in your code, and _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](/events#formsubmitted) or [`SubmissionFinalized`](/events#submissionfinalized) events instead.
+:::
+
+### Finalizing
+
+When a submission is complete, call `finalize()` on it. This removes its partial status, deletes it (if storage is disabled for the form), triggers the relevent connections, and dispatches the [`SubmissionFinalized`](/events#submissionfinalized) event.
+
+```php
+$submission->finalize();
+```
+
+## Spam Submissions
+
+A submission can be [marked as spam](/forms#spam-submissions), which hides it from the submissions listing by default and excludes it from submission counts and limits.
+
+```php
+$submission->markAsSpam()->save();
+
+$submission->isSpam(); // true
+$submission->status(); // "spam"
+```
+
+To remove the flag again, call `markAsNotSpam()`:
+
+```php
+$submission->markAsNotSpam()->save();
+```
+
+When a partial submission is marked as spam, it stops reporting itself as partial — `isPartial()` returns `false`, so it can't be resumed, and it's skipped by the automatic partial submission cleanup. Under the hood, the `partial` key stays in its data as a record that the submission was never finalized. That way, marking it as not spam and calling `finalize()` will send the submission through the full pipeline, as if it had just been submitted:
+
+```php
+$submission->markAsNotSpam();
+
+$submission->isPartial()
+    ? $submission->finalize()
+    : $submission->save();
 ```
