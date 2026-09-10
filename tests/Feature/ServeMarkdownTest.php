@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Middleware\ServeMarkdown;
 use Illuminate\Http\Request;
+use Statamic\Facades\Data;
 use Tests\TestCase;
 
 class ServeMarkdownTest extends TestCase
@@ -57,6 +58,8 @@ class ServeMarkdownTest extends TestCase
             'HTTP_ACCEPT' => 'text/html',
         ]);
 
+        $request->setRouteResolver(fn () => app('router')->getRoutes()->getByName('statamic.site'));
+
         $response = app(ServeMarkdown::class)->handle($request, fn () => response('cached', headers: [
             'Link' => '<https://example.com/stale>; rel="alternate"',
             'Vary' => 'Accept',
@@ -68,6 +71,48 @@ class ServeMarkdownTest extends TestCase
         $this->assertSame(1, substr_count($link, 'rel="alternate"'));
         $this->assertSame(1, substr_count($link, 'rel="describedby"'));
         $this->assertSame(['Accept'], $response->getVary());
+    }
+
+    public function test_cached_page_requests_do_not_touch_the_stache(): void
+    {
+        Data::spy();
+
+        $request = Request::create('/control-panel/users', server: [
+            'HTTP_ACCEPT' => 'text/html',
+        ]);
+
+        $request->setRouteResolver(fn () => app('router')->getRoutes()->getByName('statamic.site'));
+
+        app(ServeMarkdown::class)->handle($request, fn () => response('cached'));
+
+        Data::shouldNotHaveReceived('findByUri');
+    }
+
+    public function test_home_page_alternate_link_points_at_index_md(): void
+    {
+        $response = $this->get('/', ['Accept' => 'text/html']);
+
+        $response->assertOk();
+        $this->assertStringContainsString(
+            sprintf('<%s>; rel="alternate"; type="text/markdown"', url('/index.md')),
+            $response->headers->get('Link')
+        );
+    }
+
+    public function test_pages_outside_the_docs_route_have_no_alternate_link(): void
+    {
+        $response = $this->get('/search-results', ['Accept' => 'text/html']);
+
+        $response->assertOk();
+        $response->assertHeaderMissing('Link');
+    }
+
+    public function test_unknown_urls_have_no_alternate_link(): void
+    {
+        $response = $this->get('/nope-not-a-page', ['Accept' => 'text/html']);
+
+        $response->assertNotFound();
+        $response->assertHeaderMissing('Link');
     }
 
     public function test_legacy_url_with_markdown_accept_redirects_to_markdown_twin(): void
