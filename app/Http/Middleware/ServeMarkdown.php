@@ -32,29 +32,23 @@ class ServeMarkdown
             return $response;
         }
 
-        $uri = '/'.trim($request->path(), '/');
-
-        if ($uri === '/') {
-            $uri = '';
-        }
-
-        $entry = Data::findByUri($uri === '' ? '/' : $uri);
-
-        if (! $entry) {
+        if (! $this->isDocsPageRoute($request)) {
             return $this->handlePotentialDocsRedirect($request, $next($request));
         }
 
-        $prefersMarkdown = $this->prefersMarkdown($request);
+        $uri = '/'.trim($request->path(), '/');
 
-        $response = $prefersMarkdown
-            ? ($this->markdown)($uri)
-            : $next($request);
+        if ($this->prefersMarkdown($request)) {
+            $response = ($this->markdown)($uri);
+        } else {
+            $response = $next($request);
 
-        if (! $prefersMarkdown) {
-            $response->headers->set('Link', implode(', ', [
-                sprintf('<%s>; rel="alternate"; type="text/markdown"', MarkdownUrl::for($entry->url())),
-                sprintf('<%s>; rel="describedby"; type="text/plain"', url('/llms.txt')),
-            ]));
+            if ($response->isSuccessful()) {
+                $response->headers->set('Link', implode(', ', [
+                    sprintf('<%s>; rel="alternate"; type="text/markdown"', MarkdownUrl::for($uri)),
+                    sprintf('<%s>; rel="describedby"; type="text/plain"', url('/llms.txt')),
+                ]));
+            }
         }
 
         $this->addAcceptToVary($response);
@@ -64,6 +58,17 @@ class ServeMarkdown
         }
 
         return $response;
+    }
+
+    /**
+     * Statamic's catch-all front-end route. This middleware runs outside the static caching
+     * middleware, which lives on the front-end controller, so resolving the entry here to
+     * decide whether we're on a docs page would hit the Stache on every request, including
+     * ones that are about to be answered by a cached page.
+     */
+    private function isDocsPageRoute(Request $request): bool
+    {
+        return $request->route()?->getName() === 'statamic.site';
     }
 
     /**
