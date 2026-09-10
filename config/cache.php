@@ -104,6 +104,17 @@ return [
             'path' => storage_path('statamic/static-urls-cache'),
         ],
 
+        /*
+        | The Markdown twins of the docs pages, and llms.txt. These are derived entirely from
+        | git-tracked content, so they're kept in their own store that the deploy script can
+        | clear (`php artisan cache:clear markdown`) without touching the app cache.
+        */
+        'markdown' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/markdown'),
+            'lock_path' => storage_path('framework/cache/markdown'),
+        ],
+
     ],
 
     /*

@@ -22,7 +22,7 @@ class DocsMarkdownController extends Controller
             return $this->redirectLegacyUri($uri);
         }
 
-        $markdown = Cache::rememberForever("markdown.$uri", function () use ($entry) {
+        $markdown = Cache::store('markdown')->rememberForever("markdown.$uri", function () use ($entry) {
             return collect([
                 '# '.$entry->value('title'),
                 $entry->value('intro'),
