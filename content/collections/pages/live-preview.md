@@ -96,6 +96,7 @@ preview_targets:
   -
     label: Entry
     url: /blog/{slug}
+    refresh: false
   -
     label: Index
     url: /blog
@@ -111,9 +112,11 @@ If you don't define any targets, it will use the entry's URL.
 If you're using Statamic in a headless environment, please refer to the [Auto-refreshing](#auto-refreshing-1) section below.
 :::
 
-When the `refresh` option is enabled, a full refresh will occur whenever a change is made.
+Each preview target has a `refresh` option (defaults to `true`), set in the collection's YAML as shown above.
 
-When its disabled, Statamic will attempt to update the iframe's HTML automatically. If you're using Alpine or Livewire, its morphing function will be used.
+When `refresh` is enabled, a full refresh will occur whenever a change is made.
+
+When it's disabled, Statamic will attempt to update the iframe's HTML automatically. If you're using Alpine or Livewire, its morphing function will be used.
 
 If you need to override how the iframe is updated, you may define a `StatamicLivePreviewMorph` closure:
 
@@ -128,7 +131,7 @@ You may opt-out of this behavior if you wish:
 ```php
 // config/statamic/live_preview.php
 
-'hot_reload_contents' => true,
+'hot_reload_contents' => false,
 ```
 
 ## Headless / front-end frameworks
