@@ -253,6 +253,8 @@ The one-liners:
 | Include a view | `{{ partial:footer }}` |
 | Include one that might not exist | `{{ partial:if_exists src="blog/card" }}` |
 | Pass data to a partial | `{{ partial:blog/card mode="stacked" }}` |
+| Render a component | `<x-alert type="warning" />` |
+| Pass a variable to a component | `<x-alert :title="page_title" />` |
 | Render everything pushed onto a stack | `{{ stack:scripts }}` |
 
 Some helpful things you may need when building your frontend:
@@ -295,7 +297,7 @@ Some helpful things you may need when building your frontend:
 {{ /section:footer }}
 ```
 
-More: [partials](/frontend/antlers#partials), [slots](/frontend/antlers#slots), [stacks](/frontend/antlers#stacks), [section & yield](/frontend/antlers#section--yield).
+More: [partials](/frontend/antlers#partials), [partial slots](/frontend/antlers#slots), [components](/frontend/antlers-components), [stacks](/frontend/antlers#stacks), [section & yield](/frontend/antlers#section--yield).
 
 ## Escaping and preventing parsing
 
