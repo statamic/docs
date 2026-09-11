@@ -14,6 +14,8 @@ options:
     description: "Store whatever HTML you want — it's up to you."
 id: 55e0bd1d-4880-42ee-9a09-c4ece62f6483
 ---
+For simpler and pre-styled instructions, tips, and warnings with Markdown support, check out the [Info fieldtype](/fieldtypes/info).
+
 ## Data Structure
 
 This fieldtype is presentation-only and stores no data.
