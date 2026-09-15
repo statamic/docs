@@ -27,7 +27,7 @@ tabs:
               validate:
                 - required
                 - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
-              required: true
+              show_regenerate: true
           -
             handle: categories
             field:
