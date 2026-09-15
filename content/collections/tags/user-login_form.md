@@ -112,7 +112,85 @@ The tag will render the opening and closing `<form>` HTML elements for you. The 
 
 ## Precognition
 
-The login endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation. See [Precognition for User Forms](/forms#user-forms) for setup and a full example.
+The login endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation.
+
+First, install the Precognition adapter for Alpine (or [Vue or React](https://laravel.com/docs/13.x/precognition#live-validation)):
+
+```shell
+npm install laravel-precognition-alpine
+```
+
+Register the Precognition adapter before Alpine starts:
+
+```js
+import Alpine from 'alpinejs'
+import precognition from 'laravel-precognition-alpine'
+
+Alpine.plugin(precognition)
+Alpine.start()
+```
+
+Then bind a `$form` to the login endpoint (`/!/auth/login`) inside the tag:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ user:login_form
+    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
+}}
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        x-model="form.email"
+        @change="form.validate('email')"
+    >
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        x-model="form.password"
+        @change="form.validate('password')"
+    >
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <button type="submit" :disabled="form.processing">Log in</button>
+{{ /user:login_form }}
+```
+::tab blade
+```blade
+<s:user:login_form
+    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
+>
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        x-model="form.email"
+        @change="form.validate('email')"
+    >
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        x-model="form.password"
+        @change="form.validate('password')"
+    >
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <button type="submit" :disabled="form.processing">Log in</button>
+</s:user:login_form>
+```
+::
+
+If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
 
 ## Passkeys
 

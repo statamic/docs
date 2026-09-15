@@ -193,9 +193,72 @@ It’s best to remember that these are _starting_ roles for the user. You can la
 
 ## Precognition
 
-The registration endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — handy for telling users their chosen email is already taken before they hit submit. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/register` and include any blueprint fields you want validated live in the data object passed to `$form`.
+The registration endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — handy for surfacing things like password requirements before the user submits.
+
+First, install the Precognition adapter for Alpine (or [Vue or React](https://laravel.com/docs/13.x/precognition#live-validation)):
+
+```shell
+npm install laravel-precognition-alpine
+```
+
+Register the Precognition adapter before Alpine starts:
+
+```js
+import Alpine from 'alpinejs'
+import precognition from 'laravel-precognition-alpine'
+
+Alpine.plugin(precognition)
+Alpine.start()
+```
+
+Then bind a `$form` to the registration endpoint (`/!/auth/register`) inside the tag, seeding the data object with any blueprint fields you want validated live:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ user:register_form
+    x-data="{ form: $form('post', '/!/auth/register', { email: '', password: '', password_confirmation: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/welcome')"
+}}
+    <label>Email</label>
+    <input type="email" name="email" x-model="form.email" @change="form.validate('email')">
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input type="password" name="password" x-model="form.password" @change="form.validate('password')">
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <label>Confirm Password</label>
+    <input type="password" name="password_confirmation" x-model="form.password_confirmation">
+
+    <button type="submit" :disabled="form.processing">Register</button>
+{{ /user:register_form }}
+```
+::tab blade
+```blade
+<s:user:register_form
+    x-data="{ form: $form('post', '/!/auth/register', { email: '', password: '', password_confirmation: '' }) }"
+    @submit.prevent="form.submit().then(() => window.location = '/welcome')"
+>
+    <label>Email</label>
+    <input type="email" name="email" x-model="form.email" @change="form.validate('email')">
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <label>Password</label>
+    <input type="password" name="password" x-model="form.password" @change="form.validate('password')">
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <label>Confirm Password</label>
+    <input type="password" name="password_confirmation" x-model="form.password_confirmation">
+
+    <button type="submit" :disabled="form.processing">Register</button>
+</s:user:register_form>
+```
+::
+
+If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
 
 ## Honeypot
 
 If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key.
-

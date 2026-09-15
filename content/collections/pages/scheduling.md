@@ -58,6 +58,13 @@ Set `STATAMIC_HANDLE_SCHEDULED_ENTRIES=false` in your `.env` file, or set the co
 
 Entries will still go live at their scheduled time — an entry's status is derived from its date whenever it's read. What you lose is the `EntryScheduleReached` event, so your static cache and search indexes won't be updated until something else saves the entry.
 
+### DeletePartialFormSubmissions
+
+This job runs daily and deletes any [partial form submissions](/repositories/form-submission-repository#partial-submissions) older than the configured threshold (7 days by default).
+
+You may configure the threshold (or disable automatic deletion entirely) using the `delete_partial_submissions_after` key in `config/statamic/forms.php`.
+
+
 ## Defining schedules
 
 One way to add your own scheduled tasks is by adding items to your `routes/console.php` file.
