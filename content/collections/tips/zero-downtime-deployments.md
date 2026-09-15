@@ -34,6 +34,15 @@ Every deployment has its own timestamped release directory, with a fresh clone o
 
 After a successful deployment, the `current` folder is then symlinked to the latest release. This symlink swap is the secret sauce for zero downtime.
 
+### Ensure update scripts are run 
+
+Since each new deployment is a fresh installation of the application, update scripts can be missed. 
+To ensure update scripts are run, add a step to your deployment pipeline that makes a backup of the `composer.lock` file.
+``` shell
+# Backup composer lock file to ensure update scripts are run
+cp composer.lock storage/statamic/updater/composer.lock.bak
+```
+
 ## Cache storage
 
 Statamic's content management heavily relies on caching, and sometimes it's necessary for the [Stache](/stache) to store absolute file paths in your app's cache. This can lead to deployment errors when users are hitting your frontend, since each release [exists in a separate timestamped folder](#understanding-the-folder-structure).
