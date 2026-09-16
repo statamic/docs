@@ -245,6 +245,14 @@ php please search:update name
 php please search:update --all
 ```
 
+You can override the [configured queue and connection](#indexing-queue) for a single run with the `--queue` and `--connection` options. This is handy for zero-downtime deployments, where indexing on the `sync` connection ensures the index is ready by the time the deploy finishes.
+
+``` shell
+php please search:update --all --connection=sync
+
+php please search:update --all --queue=indexing
+```
+
 ### Connecting indexes
 
 When a search is performed in the control panel (in collections, taxonomies, or asset containers, for example), Statamic will search the configured index for that content type.
