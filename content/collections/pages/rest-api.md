@@ -63,10 +63,11 @@ You may send requests to the following endpoints:
 - [Sites](#sites)
 - [Collections](#collections) / [Collection](#collection)
 - [Entries](#entries) / [Entry](#entry)
-- [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree)
+- [Collection Tree](#collection-tree) / [Navigation Tree](#navigation-tree) / [Taxonomy Tree](#taxonomy-tree)
 - [Navs](#navs) / [Nav](#nav)
 - [Taxonomies](#taxonomies) / [Taxonomy](#taxonomy)
 - [Taxonomy Terms](#taxonomy-terms) / [Taxonomy Term](#taxonomy-term)
+- [Taxonomy Term Entries](#taxonomy-term-entries)
 - [Asset Containers](#asset-containers) / [Asset Container](#asset-container)
 - [Assets](#assets) / [Asset](#asset)
 - [Globals](#globals) / [Global](#global)
@@ -367,6 +368,12 @@ Gets entries within a collection.
 If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
+When you [filter](#filtering) by a term on a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), entries tagged with that term's descendants are included. Add `?with_descendants=false` to match only the exact term.
+
+```url
+/api/collections/products/entries?filter[taxonomy:product_categories]=clothing&with_descendants=false
+```
+
 
 ## Entry
 
@@ -568,6 +575,72 @@ Gets a single taxonomy term.
   }
 }
 ```
+
+## Taxonomy Term Entries
+
+`GET` `/api/taxonomies/{taxonomy}/terms/{slug}/entries`
+
+Gets the entries tagged with a taxonomy term.
+
+``` json
+{
+  "data": [
+    {
+      "title": "My First Day"
+    }
+  ],
+  "links": {...},
+  "meta": {...}
+}
+```
+
+On a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), the entries tagged with the term's descendants are included. Add `?with_descendants=false` to get only the entries tagged with this exact term.
+
+```url
+/api/taxonomies/product_categories/terms/clothing/entries?with_descendants=false
+```
+
+## Taxonomy Tree
+
+`GET` `/api/taxonomies/{taxonomy}/tree`
+
+Gets the term tree for a [structured taxonomy](/taxonomies#ordering-and-hierarchy). Returns a 404 if the taxonomy isn't structured.
+
+``` json
+{
+  "data": [
+    {
+      "term": {
+        "title": "Clothing",
+        "url": "/product-categories/clothing"
+      },
+      "depth": 1,
+      "children": [
+        {
+          "term": {
+            "title": "Shirts",
+            "url": "/product-categories/clothing/shirts"
+          },
+          "depth": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Params
+
+On this endpoint, the [fields](#selecting-fields) param will allow you to select fields within each `term` object. You may also set a `max_depth` to limit nesting depth, or `site` to choose the site.
+
+```url
+/api/taxonomies/{taxonomy}/tree?fields=title,url&max_depth=2&site=fr
+```
+
+:::warning
+Taxonomy trees are **not per-site**. The `site` param localizes each `term` payload — its title, slug, and URL — but the tree's shape and order are the same for every site. Requesting a site the taxonomy isn't available in returns a 404.
+:::
 
 ## Globals
 
