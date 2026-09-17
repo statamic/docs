@@ -65,6 +65,8 @@ For each taxonomy [assigned to a collection](#collections) you will also get the
   - Accessible at `/{collection-url}/{taxonomy-slug}/{term-slug}` (eg. `/products/tags/t-shirts`)
   - The `{collection_handle}/{taxonomy_handle}/show` view will be used. (eg. `products/tags/show.antlers.html`)
 
+If the taxonomy is [nestable](#nested-term-urls), term URLs include the slugs of the term's ancestors.
+
 ## Term values and slugs
 
 A term **value** is how you might identify a term in your content. For example, “Star Wars”.
@@ -87,6 +89,179 @@ tags:
 Titles are saved on a first-come, first-serve basis, which means consistency is important. If you enter `Star Wars` in one entry, and `star wars` in another, whichever term Statamic encounters first will be used as the title.
 
 To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If case-sensitivity is important, you can add a `title` field to the taxonomy blueprint.
+
+## Ordering and hierarchy
+
+Flick on the **Orderable** switch in the "Ordering & Hierarchy" area of a taxonomy's settings and you'll have a drag and drop UI in the control panel to order and nest the terms. The taxonomy is now "structured". Learn more about [structures](/structures).
+
+Existing terms are added to the tree in their current sort order, so turning the switch on doesn't rearrange anything on its own.
+
+### Constraining depth
+
+A structured taxonomy will **not** have a maximum depth unless you set one, allowing you to nest terms as deep as you like. Set the **Max Depth** option to limit this behavior. Setting it to `1` gives you a flat, reorderable list — order without nesting, and term URLs stay flat.
+
+``` yaml
+# content/taxonomies/product_categories.yaml
+title: 'Product Categories'
+structure:
+  max_depth: 3
+```
+
+:::tip
+Max depth is enforced on the server, not just in the tree UI. Nesting a term too deep — by dragging it, or by choosing a parent when creating one — will be rejected.
+:::
+
+### Nested term URLs
+
+Once a taxonomy is nestable (structured with a max depth other than `1`), the default term route gains a `{parent_uri}` segment:
+
+```url
+/{taxonomy-slug}/{parent_uri}/{term-slug}
+```
+
+So a `shirts` term nested under `clothing` lives at `/product-categories/clothing/shirts`. Root terms have an empty `parent_uri` and keep their existing URL.
+
+### The tree
+
+A taxonomy's tree is stored in a single file at `content/trees/taxonomies/{taxonomy_handle}.yaml`, and each branch references a term by slug.
+
+``` yaml
+tree:
+  -
+    term: clothing
+    children:
+      -
+        term: shirts
+  -
+    term: footwear
+```
+
+:::tip
+You *can* edit the tree in the file. You *shouldn't*, unless you enjoy YAML indentation as a hobby. The Control Panel's drag-and-drop UI is the move.
+:::
+
+### Multi-site
+
+**Taxonomy trees are not per-site.** There is one tree per taxonomy, shared by every site — which is why there's only one tree file, with no site directory. Shape and order are global. Titles, slugs, and therefore parent URIs *are* localized, exactly as they already were for terms.
+
+This is a **deliberate divergence from [collection structures](/collections#ordering)**, which do have a tree per site. A long-standing complaint about collection trees is that people want to arrange things once and have it apply everywhere, which is closer to how terms already work.
+
+Two consequences are worth stating outright, because both read the other way round at first glance:
+
+- **The site selector on a taxonomy switches which site the tree is _rendered_ in, not which tree you are editing.** It swaps the titles, slugs, and URLs shown on each branch. Dragging a term to a new position applies that move to every site. The same control on a collection means something different.
+- **The `site` parameter on the [tree endpoint](/rest-api#taxonomy-tree) localizes the term payloads, not the tree's shape or order.** The parameter reads as though it selects a tree; it doesn't.
+
+Branches reference a term by its slug in the default site, so renaming a slug in a secondary site never moves a term in the tree.
+
+### Hierarchy variables
+
+On a structured taxonomy, terms get these variables in addition to the usual ones.
+
+| Variable | Description |
+|----------|-------------|
+| `parent` | The term one level up, or `null` for a root term. |
+| `children` | The terms directly beneath this one. |
+| `ancestors` | Every term above this one, root first. |
+| `depth` | How deep the term sits in the tree. Root terms are `1`. |
+
+::tabs
+
+::tab antlers
+```antlers
+{{ ancestors }}
+  <a href="{{ url }}">{{ title }}</a> /
+{{ /ancestors }}
+
+<h1>{{ title }}</h1>
+
+<ul>
+  {{ children }}
+    <li><a href="{{ url }}">{{ title }}</a></li>
+  {{ /children }}
+</ul>
+```
+::tab blade
+```blade
+@foreach ($ancestors as $ancestor)
+  <a href="{{ $ancestor->url }}">{{ $ancestor->title }}</a> /
+@endforeach
+
+<h1>{{ $title }}</h1>
+
+<ul>
+  @foreach ($children as $child)
+    <li><a href="{{ $child->url }}">{{ $child->title }}</a></li>
+  @endforeach
+</ul>
+```
+::
+
+:::tip
+Terms don't have an `is_root` variable. To check whether you're on a top-level term, compare the depth — `{{ if depth == 1 }}` in Antlers, or `@if ($depth == 1)` in Blade. That's the same check Statamic uses internally.
+
+If you're writing PHP, don't reach for `LocalizedTerm::isRoot()` for this. It's unrelated, and answers a different question: whether the term is in the default site.
+:::
+
+### Descendant entries
+
+Filtering entries by a term on a nestable taxonomy **includes the entries of that term's whole subtree by default**. Asking for entries in `clothing` gets you everything tagged `shirts` and `shoes` too, which is almost always what you want from a category page.
+
+When it isn't, pass `with_descendants="false"` to limit the results to entries tagged with that exact term.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ collection:products taxonomy:product_categories="clothing" with_descendants="false" }}
+  {{ title }}
+{{ /collection:products }}
+```
+::tab blade
+```blade
+<statamic:collection:products
+    taxonomy:product_categories="clothing"
+    with_descendants="false"
+>
+    {{ $title }}
+</statamic:collection:products>
+```
+::
+
+The opt-out is available wherever you can filter entries by a term:
+
+| Where | How |
+|-------|-----|
+| [Collection tag](/tags/collection) | `with_descendants="false"` |
+| `{{ entries }}` on a [term route](#routing) | `with_descendants="false"` |
+| The `{{ query }}` tag, and any other tag pair that loops over a query builder | `with_descendants="false"` |
+| [REST API](/rest-api#entries) collection entries | `?with_descendants=false` |
+| [REST API](/rest-api#taxonomy-term-entries) term entries | `?with_descendants=false` |
+| [GraphQL](/graphql#entries-query) `entries` query | `with_descendants: false` |
+
+On a flat taxonomy — or one with a max depth of `1` — there are no descendants, so the parameter does nothing.
+
+:::tip
+In PHP, call `withTaxonomyDescendants(false)` on the [query builder](/content-queries).
+
+```php
+Entry::query()
+    ->whereTaxonomy('product_categories::clothing')
+    ->withTaxonomyDescendants(false)
+    ->get();
+```
+:::
+
+The `entries_count` variable counts descendants too, so it agrees with what `{{ entries }}` gives you. It has no opt-out — query the entries yourself if you need a count of only the directly tagged ones.
+
+### Turning it off
+
+:::warning
+Switching **Orderable** back off **deletes the taxonomy's tree file immediately**, without a confirmation, and there's no undoing it.
+
+Your terms are untouched, but they stop being nested — so every nested term's URL moves. A term that lived at `/product-categories/clothing/shirts` is now at `/product-categories/shirts`, and the old URL returns a 404. Set up [redirects](/routing#redirects) before you flip the switch on a live site.
+
+Structured collections behave the same way when you turn **Orderable** off.
+:::
 
 ## Templating
 
@@ -213,6 +388,8 @@ When on a [term route](#routing), you can list the entries by using an `entries`
 </ul>
 ```
 ::
+
+On a nestable taxonomy this includes the entries of the term's [descendants](#descendant-entries). Add `with_descendants="false"` to get only the entries tagged with this exact term.
 
 ## Search indexes
 
