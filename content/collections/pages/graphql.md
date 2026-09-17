@@ -237,6 +237,7 @@ Returns a [paginated](#pagination) list of [EntryInterface](#entry-interface) ty
 | `page` | `Int` | The paginated page to be shown. Defaults to `1`.
 | `filter` | `JsonArgument` | Narrows down the results based on [filters](#filtering).
 | `sort` | `[String]` | [Sorts](#sorting) the results based on one or more fields and directions.
+| `with_descendants` | `Boolean` | Defaults to `true`. When filtering by a term on a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), entries tagged with its descendant terms are included. Pass `false` to match only the exact term.
 
 Example query and response:
 

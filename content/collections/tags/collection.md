@@ -67,6 +67,11 @@ parameters:
     description: 'A multitude of ways to filter by taxonomies. [More details](#taxonomies)'
     required: false
   -
+    name: with_descendants
+    type: 'boolean *true*'
+    description: 'When filtering by a term on a nestable taxonomy, entries tagged with its descendant terms are included. Set to `false` to match only the exact term. [More details](#descendant-terms)'
+    required: false
+  -
     name: paginate
     type: 'boolean|int *false*'
     description: 'Specify whether your entries should be paginated. You can pass `true` and also use the `limit` param, or just pass the limit directly in here.'
@@ -285,6 +290,32 @@ It is important that the collection has been [configured to use this taxonomy](/
 :::tip
 There are several different ways to use this filtering parameter. They are explained in depth on the [Conditions page](/conditions#taxonomy-conditions).
 :::
+
+#### Descendant terms
+
+If the taxonomy is [nestable](/taxonomies#ordering-and-hierarchy), filtering by a term also matches entries tagged with any of that term's descendants. Asking for `clothing` gets you the entries tagged `shirts` and `shoes` too.
+
+Pass `with_descendants="false"` to match only the entries tagged with the exact term.
+
+::tabs
+::tab antlers
+```antlers
+{{ collection:products taxonomy:product_categories="clothing" with_descendants="false" }}
+```
+
+::tab blade
+
+```blade
+<statamic:collection:products
+    taxonomy:product_categories="clothing"
+    with_descendants="false"
+>
+
+</statamic:collection:products>
+```
+::
+
+On a flat taxonomy there are no descendants, so the parameter does nothing.
 
 ### Published Status
 
