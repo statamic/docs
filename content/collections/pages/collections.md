@@ -253,6 +253,16 @@ A structured collection will **not** have a maximum depth unless you set one, al
     <figcaption>These reorderable entries have a max depth of 1.</figcaption>
 </figure>
 
+### Turning ordering off
+
+:::warning
+Switching **Orderable** back off **deletes the collection's tree immediately**, without a confirmation, and there's no undoing it.
+
+Your entries are untouched, but they stop being nested — so every nested entry's URL moves. An entry that lived at `/about/staff` falls back to whatever its collection's route produces without a `parent_uri`, and the old URL returns a 404. Set up [redirects](/routing#redirects) before you flip the switch on a live site.
+
+[Structured taxonomies](/taxonomies#turning-it-off) behave the same way.
+:::
+
 ### Default sort order in listings
 
 For non-structured collections, you can choose which field and direction to sort the list of entries in the Control Panel by setting the `sort_by` and `sort_dir` variables in your collection.yaml. By default, the Title field will be used.
