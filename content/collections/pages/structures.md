@@ -17,6 +17,7 @@ Every structure is a hierarchy of branches. What differs is *what the hierarchy 
 
 1. **Structured collections** — the tree *is* the content hierarchy. Nesting and order drive URLs (and sibling order). Your sitemap lives on the collection.
 2. **Navigations** — the tree is a menu. Mix entry references, hard URLs, and text nodes. Position in the tree does **not** rewrite entry URLs.
+3. **Structured taxonomies** — the tree is a term hierarchy. Nesting and order drive term URLs, and entry queries for a term include its whole subtree. Covered in [Taxonomies](/taxonomies#ordering-and-hierarchy).
 
 Same drag-and-drop UI. Same YAML tree shape. Different jobs.
 
@@ -44,13 +45,14 @@ Same drag-and-drop UI. Same YAML tree shape. Different jobs.
 
 **Use both when** a pages collection owns the URLs and one or more navs compose what appears in chrome. That's normal — not overkill.
 
-| | Structured collection | Navigation |
-| --- | --- | --- |
-| Owns URLs | Yes — position drives routes | No — entries keep their collection URLs |
-| Entry once | Yes | No — can repeat |
-| Freeform links / text | Entry-link redirects (via collection settings) | Yes — URLs and text nodes |
-| Config lives in | The collection itself | `content/navigation` |
-| Tree lives in | `content/trees/collections` | `content/trees/navigation` |
+| | Structured collection | Navigation | Structured taxonomy |
+| --- | --- | --- | --- |
+| Owns URLs | Yes — position drives routes | No — entries keep their collection URLs | Yes — position drives term routes |
+| Item once | Yes | No — can repeat | Yes |
+| Freeform links / text | Entry-link redirects (via collection settings) | Yes — URLs and text nodes | No |
+| Config lives in | The collection itself | `content/navigation` | The taxonomy itself |
+| Tree lives in | `content/trees/collections` | `content/trees/navigation` | `content/trees/taxonomies` |
+| Tree per site | Yes | Yes | No — one tree, shared |
 
 ## Structured collections
 
@@ -108,6 +110,8 @@ Each page may have an optional `children` array which is itself another tree. Ne
 - **Text**\* can be just a `title` (Support above)
 
 _\* Text and link branches are only available in navs._
+
+In a taxonomy's tree, branches reference a term by slug with a `term` key instead — see [Taxonomies](/taxonomies#the-tree).
 
 ## Templating
 
