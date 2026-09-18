@@ -17,7 +17,7 @@ Every structure is a hierarchy of branches. What differs is *what the hierarchy 
 
 1. **Structured collections** — the tree *is* the content hierarchy. Nesting and order drive URLs (and sibling order). Your sitemap lives on the collection.
 2. **Navigations** — the tree is a menu. Mix entry references, hard URLs, and text nodes. Position in the tree does **not** rewrite entry URLs.
-3. **Structured taxonomies** — the tree is a term hierarchy. Nesting and order drive term URLs, and entry queries for a term include its whole subtree. Covered in [Taxonomies](/taxonomies#ordering-and-hierarchy).
+3. **Structured taxonomies** — the tree nests terms inside each other. Nesting and order drive term URLs, and entry queries for a term include its whole subtree. Covered in [Taxonomies](/taxonomies#ordering-and-nesting).
 
 Same drag-and-drop UI. Same YAML tree shape. Different jobs.
 

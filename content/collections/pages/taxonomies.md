@@ -90,9 +90,9 @@ Titles are saved on a first-come, first-serve basis, which means consistency is 
 
 To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If case-sensitivity is important, you can add a `title` field to the taxonomy blueprint.
 
-## Ordering and hierarchy
+## Ordering and nesting
 
-Flick on the **Orderable** switch in the "Ordering & Hierarchy" area of a taxonomy's settings and you'll have a drag and drop UI in the control panel to order and nest the terms. The taxonomy is now "structured". Learn more about [structures](/structures).
+Flick on the **Orderable** switch in the "Ordering & Nesting" area of a taxonomy's settings and you'll have a drag and drop UI in the control panel to order and nest the terms. The taxonomy is now "structured". Learn more about [structures](/structures).
 
 Existing terms are added to the tree in their current sort order, so turning the switch on doesn't rearrange anything on its own.
 
@@ -153,7 +153,7 @@ Two consequences are worth stating outright, because both read the other way rou
 
 Branches reference a term by its slug in the default site, so renaming a slug in a secondary site never moves a term in the tree.
 
-### Hierarchy variables
+### Nesting variables
 
 On a structured taxonomy, terms get these variables in addition to the usual ones.
 

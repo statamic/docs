@@ -293,7 +293,7 @@ There are several different ways to use this filtering parameter. They are expla
 
 #### Descendant terms
 
-If the taxonomy is [nestable](/taxonomies#ordering-and-hierarchy), filtering by a term also matches entries tagged with any of that term's descendants. Asking for `clothing` gets you the entries tagged `shirts` and `shoes` too.
+If the taxonomy is [nestable](/taxonomies#ordering-and-nesting), filtering by a term also matches entries tagged with any of that term's descendants. Asking for `clothing` gets you the entries tagged `shirts` and `shoes` too.
 
 Pass `with_descendants="false"` to match only the entries tagged with the exact term.
 

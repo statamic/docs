@@ -368,7 +368,7 @@ Gets entries within a collection.
 If you are using [Multi-Site](/multi-site), the entries endpoint will serve from all sites at once. If needed, you can limit the fetched data to a specific site with the `site` query parameter (ie. `?site=fr`), or a `site` [filter](#filtering) (ie. `&filter[site]=fr`).
 :::
 
-When you [filter](#filtering) by a term on a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), entries tagged with that term's descendants are included. Add `?with_descendants=false` to match only the exact term.
+When you [filter](#filtering) by a term on a [nestable taxonomy](/taxonomies#ordering-and-nesting), entries tagged with that term's descendants are included. Add `?with_descendants=false` to match only the exact term.
 
 ```url
 /api/collections/products/entries?filter[taxonomy:product_categories]=clothing&with_descendants=false
@@ -594,7 +594,7 @@ Gets the entries tagged with a taxonomy term.
 }
 ```
 
-On a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), the entries tagged with the term's descendants are included. Add `?with_descendants=false` to get only the entries tagged with this exact term.
+On a [nestable taxonomy](/taxonomies#ordering-and-nesting), the entries tagged with the term's descendants are included. Add `?with_descendants=false` to get only the entries tagged with this exact term.
 
 ```url
 /api/taxonomies/product_categories/terms/clothing/entries?with_descendants=false
@@ -604,7 +604,7 @@ On a [nestable taxonomy](/taxonomies#ordering-and-hierarchy), the entries tagged
 
 `GET` `/api/taxonomies/{taxonomy}/tree`
 
-Gets the term tree for a [structured taxonomy](/taxonomies#ordering-and-hierarchy). Returns a 404 if the taxonomy isn't structured.
+Gets the term tree for a [structured taxonomy](/taxonomies#ordering-and-nesting). Returns a 404 if the taxonomy isn't structured.
 
 ``` json
 {
