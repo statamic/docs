@@ -67,6 +67,6 @@ tiles:
     enabled: true
     flush_image: false
     hue_rotate: false
-    tile_link: 'entry::a77eb282-e050-4288-b83d-789840e245fd'
+    tile_link: 'entry::f269a0d2-061d-4cc9-a24d-3ea82ea9558f'
 advert_override: 972d7159-e76a-4817-a441-65d965d8c794
 ---
