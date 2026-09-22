@@ -17,7 +17,7 @@ The route controls where your Glide images will be served.
 By default your Glide images will be served from `'/img/...'` but you are free to change that. Perhaps if you intend to have some actual images stored in the `img` directory.
 
 :::tip
-This route setting may become irrelevant when using customized [caching options](#caching) explained further down this page.
+This route setting may become irrelevant when using customized [caching options](#caching) explained further down this page, except when using [hybrid caching](#hybrid), where `cache_path` must be served at this route.
 :::
 
 ## Presets
@@ -212,7 +212,25 @@ The [Glide tag][glide-tag] will output URLs pointing to where the cached image _
 
 After the first request, the web server (Nginx, Apache, etc.) will serve the static file directly on all subsequent requests.
 
-This works the same way as [full-measure static caching](/static-caching#file-driver). Unlike full-measure static caching however, the standard Laravel server configuration should already handle this — no additional rewrite rules are needed.
+Because the URL is the image's actual path inside `public/`, your standard Laravel server configuration (the shipped `.htaccess`, or `try_files $uri` in Nginx) already serves it — no additional rewrite rules are needed.
+
+:::tip
+`cache_path` must be the public directory for `route` (e.g. `route => 'img'` should map to `cache_path => public_path('img')`). If they don't line up, images will always be served through PHP, and Statamic will log a warning.
+:::
+
+:::tip
+Hybrid caching always writes to the local `cache_path`. It can't be combined with the [custom disk](#custom-disk-cdn) option.
+:::
+
+The `{{ glide:generate }}` tag pair still generates the image during rendering, since it needs the resulting dimensions for its attributes. Only the single [Glide tag][glide-tag] defers generation.
+
+:::warning
+Hybrid URLs only resolve while their mapping exists in the Glide [path cache store](#path-cache-store). Behind a load balancer or multiple servers, that store must be shared (e.g. Redis or a database) and shouldn't be cleared on deploy, or previously generated URLs will 404 until they're regenerated.
+:::
+
+:::warning
+Running `glide:clear`, or changing `image_manipulation.defaults` or a preset's parameters, changes or removes the URLs your images are served from. If you use [static caching](/static-caching), clear it too, or cached pages will reference image URLs that no longer resolve. The same applies when switching an existing site to hybrid caching: previously published dynamic URLs (like `/img/asset/...`, `/img/http/...`, or signed paths) will stop working, so clear your static cache and update any external references (e.g. emails) after switching.
+:::
 
 ### Custom disk (CDN)
 
@@ -259,6 +277,8 @@ Before Glide tries to generate an image, it will look into the filesystem to det
 However, when using the [Custom Disk CDN](#custom-disk-cdn) caching option with a service like Amazon S3 for example, Glide will need to make an API call just to be able to check if a file exists. This would cause a slowdown.
 
 To alleviate this problem, Statamic will keep track of whether the images have already been generated in its own separate cache.
+
+When using [hybrid caching](#hybrid), this store also holds the mapping between each generated URL and its source image and parameters, so it's required rather than just a performance optimization.
 
 This cache is separate from your application cache. Running `php artisan cache:clear` will **not** clear this Glide cache. This allows the Glide cache to persist through deployments or other scenarios where you might clear your application cache. It will be cleared when running `php please glide:clear`.
 
@@ -356,6 +376,10 @@ php please glide:clear
 ```
 
 This will **delete all the files** within your Glide cache filesystem location, as well as clearing the [path cache](#path-cache-store).
+
+:::tip
+If you're using [hybrid caching](#hybrid), this also removes the URL mappings, so [clear your static cache](/static-caching) too if you have one.
+:::
 
 
 [glide-tag]: /tags/glide
