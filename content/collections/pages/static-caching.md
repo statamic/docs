@@ -118,6 +118,17 @@ Using the file driver, you can configure the permissions for the directories and
 ]
 ```
 
+### Script delivery
+
+Full measure caching injects small inline `<script>` blocks into cached pages to hydrate CSRF tokens and [nocache](/tags/nocache) regions. If your site sends a `Content-Security-Policy` header that blocks inline scripts (like `script-src 'self'`), you can have these snippets served from same-origin routes instead, using the `script_delivery` option.
+
+```php
+'script_delivery' => env('STATAMIC_STATIC_CACHING_SCRIPT_DELIVERY', 'inline'),
+```
+
+- `inline` (default) — the snippets are output directly in the page.
+- `external` — the snippets are served from same-origin routes and referenced with `<script src="…">`.
+
 ## Server rewrite rules
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.

@@ -226,6 +226,27 @@ This protection method is meant for short-term access control. For example, show
 ### Password expiration
 Each user’s passwords will expire along with their session. To manually invalidate a password, remove it from the list of allowed passwords on the page. The next time a user with that password visits this page they’ll be redirected to the password form just like everyone else.
 
+### Rate limiting
+
+Password submissions are rate limited by IP address to help protect against brute force attacks. By default, the `statamic.protect.password` limiter allows 5 attempts per minute.
+
+You can customize the limit by redefining the named rate limiter in your `AppServiceProvider`'s `boot` method:
+
+```php
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+
+public function boot()
+{
+    RateLimiter::for('statamic.protect.password', function (Request $request) {
+        return Limit::perMinute(10)->by($request->ip());
+    });
+}
+```
+
+Consult the [Laravel documentation](https://laravel.com/docs/13.x/routing#rate-limiting) to learn more about defining rate limiters.
+
 
 ## Endgame protection
 

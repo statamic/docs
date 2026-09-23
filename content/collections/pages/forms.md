@@ -211,6 +211,10 @@ You can display any or all of the submissions of your forms on the front-end of 
 
 Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
 
+### Choosing columns
+
+When exporting, you can choose which fields to include as columns, using the checkboxes in the export modal. All fields (plus the submission date) are selected by default.
+
 ### Configuring exporters
 
 Out of the box, Statamic gives you two exporters: a CSV exporter and a JSON exporter.
@@ -294,6 +298,22 @@ class SpecialExporter extends Exporter
 ```
 
 The `export` method should return the file contents and the `extension` method should return the file extension.
+
+If you'd like your custom exporter to support the [column selection](#choosing-columns) checkboxes, override `supportsColumnSelection` to return `true`, then call the `columns` method inside `export` to get the selected column handles (in form order, defaulting to every field plus `date` when nothing has been selected):
+
+```php
+public function supportsColumnSelection(): bool
+{
+    return true;
+}
+
+public function export(): string
+{
+    $columns = $this->columns();
+
+    // ...
+}
+```
 
 Then, to make the exporter available on your forms, simply add it to your forms config:
 
