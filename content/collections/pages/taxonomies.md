@@ -67,6 +67,51 @@ For each taxonomy [assigned to a collection](#collections) you will also get the
 
 If the taxonomy is [nestable](#nested-term-urls), term URLs include the slugs of the term's ancestors.
 
+### Route modes
+
+The **Routing & URLs** area of a taxonomy's settings controls how those URLs are built.
+
+**Automagic** is the default, and gives you everything described above. Nothing is written to the taxonomy file.
+
+**Custom** lets you define the URL pattern yourself.
+
+``` yaml
+routes: /topics/{slug}
+```
+
+A custom route is a **complete URL pattern**, not a suffix. A taxonomy [assigned to a collection](#collections) therefore stops getting the second, collection-prefixed set of URLs — you get exactly the pattern you asked for. The automagic URLs stop working, too, so set up [redirects](/routing#redirects) if the old ones are already out in the world.
+
+If you're building a multi-site and want different routes per site:
+
+``` yaml
+routes:
+  english: /topics/{slug}
+  french: /sujets/{slug}
+```
+
+Any site you leave out falls back to automagic routing, collection-prefixed URLs included.
+
+**Disabled** removes URLs from the taxonomy and its terms entirely. `$taxonomy->url()` and `$term->url()` return `null`, and the front end responds with a 404.
+
+``` yaml
+routes: false
+```
+
+### Route placeholders
+
+| Placeholder | Description |
+|-------------|-------------|
+| `{slug}` | The term's slug. Required — the Control Panel rejects a route without it. |
+| `{parent_uri}` | The ancestor path, for [nestable](#nested-term-urls) taxonomies. Empty for a root term. |
+
+:::warning
+Unlike [collection routes](/collections#routing), **term routes don't support Antlers** — only placeholders. An incoming URL has to be matched back against the pattern to work out which term it is, and Antlers can't be run in reverse. The Control Panel rejects a route containing `{{ }}`.
+:::
+
+:::tip
+On a nestable taxonomy, a term is also resolvable by its slug anywhere under the taxonomy — its old flat URL, for example — and permanently redirects (301) to the canonical nested URL. That makes converting an existing flat taxonomy to a nested one painless.
+:::
+
 ## Term values and slugs
 
 A term **value** is how you might identify a term in your content. For example, “Star Wars”.
@@ -201,6 +246,8 @@ Terms don't have an `is_root` variable. To check whether you're on a top-level t
 
 If you're writing PHP, don't reach for `LocalizedTerm::isRoot()` for this. It's unrelated, and answers a different question: whether the term is in the default site.
 :::
+
+In PHP, `parent` is also queryable — see [querying terms](/repositories/term-repository#querying).
 
 ### Descendant entries
 
