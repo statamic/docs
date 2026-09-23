@@ -93,6 +93,12 @@ You may want to generate the presets manually (for example after you changed the
 php please assets:generate-presets
 ```
 
+To generate only a single preset, pass its handle to `--preset`. Use `cp_thumbnail` to regenerate the Control Panel thumbnails.
+
+```bash
+php please assets:generate-presets --preset=small
+```
+
 ### Process source images
 
 Sometimes you may wish to process your actual source images on upload. For example, maybe you need to enforce maximum dimensions on extremely large images in order to save on disk space.
