@@ -80,6 +80,17 @@ To add a set preview, click the little "pencil" icon next to the set name.
 
 Once you're in the set editor, you can add a preview image and icon. Here we're showing a lovely screenshot of what the newsletter signup form might look like on the front-end. We can even add some instructions to explain how the set is used.
 
+:::tip
+The preview image field only appears when `set_preview_images` in `config/statamic/assets.php` points to an existing asset container. New sites include it, but you may need to add it to older ones:
+
+```php
+'set_preview_images' => [
+    'container' => 'assets',
+    'folder' => 'set-previews',
+],
+```
+:::
+
 <figure>
     <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews.webp" alt="Replicator Set Previews" class="u-hide-in-dark-mode">
     <img src="/img/fieldtypes/screenshots/v6/replicator-set-previews-dark.webp" alt="Replicator Set Previews" class="u-hide-in-light-mode">
