@@ -822,6 +822,9 @@ GraphQL::addQuery(MyCustomQuery::class);
 - [CollectionTreeBranch](#collection-tree-branch-type)
 - [NavTreeBranch](#nav-tree-branch-type)
 - [PageInterface](#page-interface)
+- [Taxonomy](#taxonomy-type)
+- [TaxonomyStructure](#taxonomy-structure-type)
+- [TaxonomyTreeBranch](#taxonomy-tree-branch-type)
 - [TermInterface](#term-interface)
 - [AssetInterface](#asset-interface)
 - [GlobalSetInterface](#global-set-interface)
@@ -943,6 +946,56 @@ page {
 }
 ```
 
+### Taxonomy {#taxonomy-type}
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `handle` | `String!` |
+| `title` | `String!` |
+| `structure` | [`TaxonomyStructure`](#taxonomy-structure-type) | If the taxonomy is [structured](/taxonomies#ordering-and-nesting), you can use this to query its tree.
+
+### TaxonomyStructure {#taxonomy-structure-type}
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `handle` | `String!` |
+| `title` | `String!` |
+| `max_depth` | `Int` | The configured [max depth](/taxonomies#constraining-depth), or `null` if unlimited.
+| `expects_root` | `Boolean!` | Always `false`. Taxonomies have no equivalent of a collection's root page.
+| `tree` | [[`TaxonomyTreeBranch`](#taxonomy-tree-branch-type)] | A list of tree branches. Accepts a `site` argument.
+
+Taxonomy trees are [not per-site](/taxonomies#multi-site). The `site` argument localizes each branch's term, not the shape or order of the tree.
+
+```graphql
+{
+    taxonomy(handle: "product_categories") {
+        structure {
+            tree(site: "french") {
+                depth
+                term {
+                    title
+                    url
+                }
+            }
+        }
+    }
+}
+```
+
+### TaxonomyTreeBranch {#taxonomy-tree-branch-type}
+
+Represents a branch within a structured taxonomy's tree.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `depth` | `Int!` | The nesting level of the current branch.
+| `term` | [`TermInterface`](#term-interface) | Contains the term's fields.
+| `children` | [[`TaxonomyTreeBranch`](#taxonomy-tree-branch-type)] | A list of tree branches.
+
+:::tip
+It's not possible to perform recursive queries in GraphQL. If you want to retrieve multiple levels of child branches, take a look at a workaround in [recursive tree branches](#recursive-tree-branches) below.
+:::
+
 ### TermInterface {#term-interface}
 
 | Field | Type | Description |
@@ -972,6 +1025,33 @@ You will need to query the implementations using fragments in order to get bluep
 ```
 
 The fieldtypes will define their types. For instance, a text field will be a `String`, a [grid](#grid-fieldtype) field will expose a list of `GridItem` types.
+
+#### Nesting fields
+
+On a [nestable taxonomy](/taxonomies#ordering-and-nesting), the implementations also get the term's position in the tree.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `parent` | [`TermInterface`](#term-interface) | The term one level up, or `null` for a root term.
+| `children` | [[`TermInterface`](#term-interface)] | The terms directly beneath this one.
+| `ancestors` | [[`TermInterface`](#term-interface)] | Every term above this one, root first.
+| `depth` | `Int` | How deep the term sits in the tree. Root terms are `1`.
+
+These live on the implementations rather than on `TermInterface` itself, so that a flat taxonomy is free to use those handles for its own blueprint fields. That means reaching them from an interface-typed field — `term`, `terms`, a terms field, a tree branch — needs an inline fragment.
+
+```graphql
+{
+    term(id: "product_categories::shirts") {
+        title
+        ... on Term_ProductCategories_Category {
+            depth
+            parent {
+                title
+            }
+        }
+    }
+}
+```
 
 ### AssetInterface {#asset-interface}
 
