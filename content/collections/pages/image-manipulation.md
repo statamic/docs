@@ -75,7 +75,7 @@ Each named preset can be referenced with the `preset` parameter on the [Glide ta
 
 When uploading an image asset, any configured presets will be generated so they're ready when you need to reference them, e.g. in the Glide tag.
 
-By default, all presets are generated, however you can [customize this per-container](#customize-glide-preset-warming).
+By default, all presets are generated, however you can [customize this per-container](#customize-preset-warming).
 
 You may also choose to disable image generation on upload completely:
 
