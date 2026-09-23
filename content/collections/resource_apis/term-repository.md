@@ -85,6 +85,32 @@ Term::query()
     ->get();
 ```
 
+#### Get the children of a term
+
+On a [structured taxonomy](/taxonomies#ordering-and-nesting), `parent` is queryable the same way it is for entries. Its value is the parent term's ID.
+
+```php
+Term::query()
+    ->where('taxonomy', 'product_categories')
+    ->where('parent', 'product_categories::clothing')
+    ->get();
+```
+
+#### Get the top level terms
+
+Terms at the root of the tree have no parent.
+
+```php
+Term::query()
+    ->where('taxonomy', 'product_categories')
+    ->whereNull('parent')
+    ->get();
+```
+
+:::tip
+This only applies to taxonomies with a structure. On an unstructured taxonomy, `parent` is an ordinary blueprint field and queries whatever you've stored in it.
+:::
+
 
 ## Creating
 
