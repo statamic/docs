@@ -143,6 +143,31 @@ class ClearCache extends Action
 
 After the action runs from a collection's entries listing page, the page will reload (unless you return a [redirect](#redirects) or [download](#downloads) response).
 
+## Asset Container Actions
+
+You can also write actions that target [asset containers](/assets) themselves. They appear in the contextual menu on the asset containers listing page.
+
+Use the `visibleTo` method to scope your action to asset containers, and you'll receive `AssetContainer` instances in `run`.
+
+``` php
+use Statamic\Contracts\Assets\AssetContainer;
+
+class UploadArchive extends Action
+{
+    public function visibleTo($item)
+    {
+        return $item instanceof AssetContainer;
+    }
+
+    public function run($items, $values)
+    {
+        $container = $items->first();
+
+        // ...
+    }
+}
+```
+
 ## Authorizing Actions
 
 Before any actions are run, Statamic will make sure the user is allowed to run them. You can return a boolean like this:
