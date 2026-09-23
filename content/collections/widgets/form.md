@@ -12,9 +12,9 @@ options:
     description: 'The form''s handle.'
   -
     name: width
-    type: int
+    type: string
     required: false
-    description: 'Width of dashboard area as a percentage. Accepts `25`, `33`, `50`, `66`, `75` and `100`.'
+    description: 'Width of the widget on the dashboard. Accepts `sm`, `md`, `lg`, and `full`. Default: `full`.'
   -
     name: sites
     type: array

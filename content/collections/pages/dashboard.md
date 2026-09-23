@@ -30,12 +30,12 @@ Widgets can be added to the dashboard by modifying the `widgets` array in `confi
     [
         'type' => 'collection',
         'collection' => 'blog',
-        'width' => 50
+        'width' => 'md'
     ],
     [
         'type' => 'collection',
         'collection' => 'pages',
-        'width' => 50
+        'width' => 'md'
     ],
 ],
 ```
@@ -44,8 +44,9 @@ Each item in the array should specify the widget as `type` along with any widget
 
 You may use the same widget multiple times, configured in different ways.
 
-Each widget may have a `width` defined as a percentage.
-`25`, `33`, `50`, `66`, `75`, and `100` (the default).
+Each widget may have a `width` of `sm`, `md`, `lg`, or `full` (the default). Widths are responsive, so widgets stack on narrow screens and sit side by side on wider ones.
+
+Numeric widths from older versions still work: `25` and `33` map to `sm`, `50` and `66` to `md`, `75` to `lg`, and `100` to `full`.
 
 For widgets not requiring any configuration you can provide the string instead of an array, like this:
 
@@ -55,12 +56,12 @@ For widgets not requiring any configuration you can provide the string instead o
     [
         'type' => 'collection',
         'collection' => 'blog',
-        'width' => 50
+        'width' => 'md'
     ],
     [
         'type' => 'collection',
         'collection' => 'pages',
-        'width' => 50
+        'width' => 'md'
     ],
 ],
 ```

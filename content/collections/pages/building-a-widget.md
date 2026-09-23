@@ -65,7 +65,7 @@ Widgets can be added to the dashboard by modifying the `widgets` array in the `c
 'widgets' => [
   [ // [tl! focus:start]
       'type' => 'local_weather',
-      'width' => 100,
+      'width' => 'full',
   ], // [tl! focus:end]
 ],
 ```
