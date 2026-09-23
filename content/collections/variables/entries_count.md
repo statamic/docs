@@ -23,3 +23,5 @@ There are {{ $entries_count }} 'news' entries.
 ```html
 There are 85 'news' entries.
 ```
+
+On a [nestable taxonomy](/taxonomies#ordering-and-nesting) this counts the entries tagged with the term's descendants too, so it agrees with what `{{ entries }}` returns. There's no way to opt out — [query the entries yourself](/taxonomies#descendant-entries) with `with_descendants="false"` if you need a count of only the directly tagged ones.
