@@ -17,6 +17,12 @@ options:
     type: string
     description: >
       An asset container ID. When specified, the fieldtype will allow the user to add a link to an asset from the specified container.
+  -
+    name: default_option
+    type: string
+    description: >
+      The link type selected when the field is empty: `url`, `entry`, `asset`, `first-child`, or the handle of a [custom link type](#extending). If that type isn't available for the field, it falls back to the default.
+      Default: `url` when the field is required, otherwise none.
 ---
 ## Overview
 
