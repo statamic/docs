@@ -647,5 +647,6 @@ A number of items have been removed. If you feel they shouldn't have been remove
 - `resource_url` and `file_icon` methods are no longer available in Vue templates but are still available as global functions.
 - The deprecated `$slugify` function has been removed in favor of the `$slug` API.
 - The `v-focus` directive has been removed.
-- The `store`/`storeName` are no longer included field action payloads. 
+- The `store`/`storeName` keys are no longer included in field action payloads. You should instead use the `container` context.
+- The `vm`/`fieldVm` keys are no longer included in field action payloads.
 - The `vue-select` package has been removed. If you're using `<v-select>` you should change to the [Combobox UI component](https://ui.statamic.dev/?path=/docs/forms-combobox--docs).
