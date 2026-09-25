@@ -92,7 +92,9 @@ In the example below, we're using the `statamic` driver for Control Panel users 
 - The `cp` guard is used to log in to the Control Panel.
 - The `web` guard is used by Statamic's front-end features, like the [user tags](/tags/user-login_form), [protected pages](/protecting-content), [OAuth](/oauth), and the `logged_in` variable. It is also the guard Statamic considers "logged in" on its own front-end routes.
 
-Pointing `web` at your application's guard means your application's users are the ones logging in through Statamic's front-end forms and accessing protected content. If your application's users shouldn't interact with Statamic at all, set both guards to `statamic` instead:
+Pointing `web` at your application's guard means Statamic will check that guard for things like the `logged_in` variable and [authenticated protection](/protecting-content#authentication). However, Statamic's user tags (login forms, profile forms, etc.) still need to convert the logged-in user into a Statamic user. With the `file` repository, your application's users can't be converted, so those forms won't work for them.
+
+If your application's users shouldn't interact with Statamic at all, set both guards to `statamic` instead:
 
 ```php
 // config/statamic/users.php

@@ -74,7 +74,7 @@ A few of these deserve some explanation:
 
 - **`bindings()`** is a static method that tells Statamic which classes to use for its user-related contracts. When your repository is resolved, each of these will be bound in the service container, which is how `User::make()` knows to return an instance of your user class. You'll need to bind `Statamic\Contracts\Auth\User`, and `Statamic\Contracts\Auth\Passkey` if you want to support passkeys.
 - **`$roleRepository` and `$userGroupRepository`** are the classes used for roles and user groups. The file-based repositories above store them in `resources/users/roles.yaml` and `resources/users/groups.yaml`. If you'd prefer to store them in the database, have a look at `Statamic\Auth\Eloquent\RoleRepository` and `Statamic\Auth\Eloquent\UserGroupRepository`.
-- **`query()`** should return a query builder. It's used by the Control Panel's user listing, the `users` tag, search, and anywhere else users are queried. If your users are Eloquent models, you can return an instance of `Statamic\Auth\Eloquent\UserQueryBuilder` wrapping your model's query.
+- **`query()`** should return a query builder. It's used by the Control Panel's user listing, the `users` tag, search, and anywhere else users are queried. If your users are Eloquent models, you can return an instance of `Statamic\Auth\Eloquent\UserQueryBuilder` wrapping your model's query. Just be aware that it converts results by calling `User::make()->model($model)`, so your user class will need a `model()` method that accepts the Eloquent model (or you can extend `Statamic\Auth\Eloquent\User`, which already has one).
 - **`fromUser()`** receives whatever Laravel's authentication guard returns (e.g. `auth()->user()`) and should convert it into an instance of your user class, or return `null` if it isn't one of your users.
 
 ## The user class
@@ -87,6 +87,7 @@ On top of the methods in the `Statamic\Contracts\Auth\User` interface, you'll ne
 - The remember token methods required by Laravel's `Authenticatable` interface: `getRememberToken()`, `setRememberToken()` and `getRememberTokenName()`.
 - `lastLogin()` and `setLastLogin()`, which are used to record when a user last logged in.
 - `lastModified()`
+- `getCurrentDirtyStateAttributes()`, which returns an array of the attributes used to track whether a user has unsaved changes.
 - The preference methods. Statamic reads and writes each user's Control Panel preferences using `preferences()`, which you can add using the `Statamic\Preferences\HasPreferences` trait. The trait expects you to implement `getPreferences()`, `setPreferences()` and `mergePreferences()`.
 
 ``` php
