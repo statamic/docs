@@ -618,6 +618,9 @@ Used for querying a single form.
     form(handle: "contact") {
         handle
         title
+        status
+        require_login
+        restriction_message
         fields {
             handle
             display
@@ -631,10 +634,79 @@ Used for querying a single form.
     "form": {
         "handle": "contact",
         "title": "Contact",
+        "status": "open",
+        "require_login": false,
+        "restriction_message": null,
         "fields": [
             { "handle": "name", "display": "Name" },
             { "handle": "email", "display": "Email" },
             { "handle": "inquiry", "display": "Inquiry" }
+        ]
+    }
+}
+```
+
+The `status` field will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). When the form isn't open, `restriction_message` contains the message configured in the Control Panel.
+
+The `require_login` field tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
+
+The `fields` field lists every field in the form. To render the form with the same structure as the Control Panel, query `sections` instead, which groups fields into the sections you've configured in the form builder.
+
+If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), query `pages` to get each page along with its sections.
+
+```graphql
+{
+    form(handle: "contact") {
+        pages {
+            id
+            display
+            instructions
+            sections {
+                display
+                instructions
+                fields {
+                    handle
+                    display
+                }
+            }
+        }
+    }
+}
+```
+
+```json
+{
+    "form": {
+        "pages": [
+            {
+                "id": "about_you",
+                "display": "About You",
+                "instructions": null,
+                "sections": [
+                    {
+                        "display": "Your Details",
+                        "instructions": null,
+                        "fields": [
+                            { "handle": "name", "display": "Name" },
+                            { "handle": "email", "display": "Email" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "your_inquiry",
+                "display": "Page 2 of 2",
+                "instructions": null,
+                "sections": [
+                    {
+                        "display": null,
+                        "instructions": null,
+                        "fields": [
+                            { "handle": "inquiry", "display": "Inquiry" }
+                        ]
+                    }
+                ]
+            }
         ]
     }
 }

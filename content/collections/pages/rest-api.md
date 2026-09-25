@@ -629,6 +629,8 @@ Gets all forms.
         "email": {...},
         "inquiry": {...}
       },
+      "sections": [...],
+      "pages": [...],
       "api_url": "http://example.com/api/forms/contact",
     },
     {
@@ -637,6 +639,8 @@ Gets all forms.
       "fields": {
         "email": {...}
       },
+      "sections": [...],
+      "pages": [...],
       "api_url": "http://example.com/api/forms/newsletter",
     }
   ],
@@ -659,10 +663,46 @@ Gets a single form.
       "email": {...},
       "inquiry": {...}
     },
+    "sections": [
+      {
+        "display": "Your Details",
+        "instructions": null,
+        "fields": {
+          "name": {...},
+          "email": {...}
+        }
+      },
+      {
+        "display": "Your Inquiry",
+        "instructions": null,
+        "fields": {
+          "inquiry": {...}
+        }
+      }
+    ],
+    "pages": [
+      {
+        "id": "main",
+        "display": "Page 1 of 1",
+        "instructions": null,
+        "sections": [...]
+      }
+    ],
+    "status": "open",
+    "require_login": false,
+    "restriction_message": null,
     "api_url": "http://example.com/api/forms/contact",
   }
 }
 ```
+
+The `fields` key contains every field in the form, keyed by handle. The `sections` key groups those same fields into the sections you've configured in the form builder, so you can render the form with the same structure as the Control Panel.
+
+If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), the `pages` key contains each page's `id`, `display`, `instructions` and its `sections`. Single-page forms return a single page.
+
+The `status` key will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). When the form isn't open, `restriction_message` contains the message configured in the Control Panel.
+
+The `require_login` key tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
 
 ## Users
 

@@ -135,6 +135,7 @@
         }
 
         li {
+            scroll-margin-top: 10rem;
             /* Bard wraps <li> text in a <p> tag */
             p {
                 padding-block-end: 0!important;
@@ -173,18 +174,25 @@
                 }
                 /* Lists within lists e.g. >> /taxonomies */
                 ul li {
-                    padding-inline-start: 0;
+                    position: relative;
+                    padding-inline-start: 1.2rem;
                     padding-block-end: var(--spacing-3xs);
+                    /* Just a touch, to reinforce hierarchy */
+                    font-size: 0.98em;
                     &:first-child {
                         padding-block-start: var(--spacing-2xs);
                     }
                     &:last-child {
                         padding-block-end: var(--spacing-2xs);
                     }
-                    &::before {
-                        /* Remove the purple dot for lists within lists */
-                        content: unset;
-                    }
+                }
+                ul li::before {
+                    background: none;
+                    border: 2px solid var(--color-purple-light-1);
+                    left: 0;
+                }
+                ul li:first-child::before {
+                    top: 1rem;
                 }
             }
         }
@@ -283,6 +291,13 @@
         @media (width >= 1500px) {
             padding-inline: var(--spacing-xl);
         }
+    }
+}
+
+@layer scope {
+    .c-entry-content ol li figure {
+        /* e.g. >> /frontend/forms, where we have figures inside a list */
+        margin-block: 0 var(--spacing-lg);
     }
 }
 
