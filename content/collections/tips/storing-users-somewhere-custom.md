@@ -83,7 +83,7 @@ Your user class should extend `Statamic\Auth\User`, which handles most of the St
 
 On top of the methods in the `Statamic\Contracts\Auth\User` interface, you'll need to implement:
 
-- The data methods: `id()`, `data()`, `get()`, `has()`, `set()`, `remove()` and `merge()`. If you're keeping the user's data in an array, the `Statamic\Data\ContainsData` trait implements most of these for you.
+- The data methods: `id()`, `data()`, `get()`, `has()`, `set()`, `remove()` and `merge()`. Called without arguments, `data()` should return a collection. If you're keeping the user's data in an array, the `Statamic\Data\ContainsData` trait implements most of these for you. If you implement your own data methods, also use the `Statamic\Data\ContainsSupplementalData` trait, which augmentation relies on. `ContainsData` already includes it.
 - The remember token methods required by Laravel's `Authenticatable` interface: `getRememberToken()`, `setRememberToken()` and `getRememberTokenName()`.
 - `lastLogin()` and `setLastLogin()`, which are used to record when a user last logged in.
 - `lastModified()`
