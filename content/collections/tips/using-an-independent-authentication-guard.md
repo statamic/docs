@@ -87,6 +87,28 @@ In the example below, we're using the `statamic` driver for Control Panel users 
 ],
 ```
 
+### What the `cp` and `web` guards do
+
+- The `cp` guard is used to log in to the Control Panel.
+- The `web` guard is used by Statamic's front-end features, like the [user tags](/tags/user-login_form), [protected pages](/protecting-content), [OAuth](/oauth), and the `logged_in` variable. It is also the guard Statamic considers "logged in" on its own front-end routes.
+
+Pointing `web` at your application's guard means your application's users are the ones logging in through Statamic's front-end forms and accessing protected content. If your application's users shouldn't interact with Statamic at all, set both guards to `statamic` instead:
+
+```php
+// config/statamic/users.php
+
+'guards' => [
+    'cp' => 'statamic',
+    'web' => 'statamic',
+],
+```
+
+:::warning
+Statamic updates a user's "last login" timestamp whenever someone logs in through either of these guards. When using the `file` repository, this is skipped for users that aren't Statamic users. However, the `eloquent` repository treats _any_ Eloquent model as a Statamic user, so if you've pointed `web` at a guard backed by a different model, Statamic will attempt to write a `last_login` column to that model's table.
+:::
+
+Both guards share the same session. If your application invalidates or flushes the session when logging in or out (e.g. `$request->session()->invalidate()`), users will also be logged out of the Control Panel.
+
 You should also ensure the `passwords` is setup to point to the correct reset & activation configs:
 
 ```php
