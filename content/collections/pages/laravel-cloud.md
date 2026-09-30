@@ -91,9 +91,33 @@ For more information about Laravel Cloud, please see its [documentation](https:/
 
 ## Static Caching
 
-You can't use full-measure static caching with Laravel Cloud, as there's no way to edit the underlying Nginx config.
+Laravel Cloud supports both of Statamic's [static caching](/static-caching) strategies. Which one you should use depends on how you scale your application.
 
-However, you can use [half-measure static caching](/static-caching#application-driver), which stores the cached HTML pages in your application's cache. In order for the static cache to persist between deployments, you should use a persistent cache driver like [`database` or `redis`](https://laravel.com/docs/master/cache#configuration).
+### Half measure
+
+The [half measure](/static-caching#application-driver) strategy stores cached pages in your application's cache store. Requests still reach PHP, but Statamic returns the cached response without rendering the page.
+
+You should attach a [cache](https://cloud.laravel.com/docs/resources/caches/valkey) to your environment and use it as your application's cache store. This way, the static cache persists between deployments and is shared between replicas, so it works with [autoscaling](https://cloud.laravel.com/docs/compute#autoscaling).
+
+```env
+STATAMIC_STATIC_CACHING_STRATEGY=half
+```
+
+### Full measure
+
+The [full measure](/static-caching#file-driver) strategy writes each page as an HTML file to `public/static`, allowing them to be served directly by Nginx without reaching PHP.
+
+Laravel Cloud detects Statamic at deploy time and configures Nginx for you, so there's no need to worry about [rewrite rules](/static-caching#server-rewrite-rules).
+
+```env
+STATAMIC_STATIC_CACHING_STRATEGY=full
+```
+
+:::warning
+The full measure cache lives on each instance's filesystem and is cleared on every deployment. Statamic only invalidates the cache on the instance that handled the content change, so other replicas will continue serving stale pages.
+
+When using full measure, you should set your App cluster's [autoscaling strategy](https://cloud.laravel.com/docs/compute#autoscaling) to "None" and scale vertically by choosing a larger instance size. If your site needs to scale horizontally, use [half measure](#half-measure) instead.
+:::
 
 ## Troubleshooting
 

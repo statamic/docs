@@ -135,6 +135,8 @@ You will need to configure its rewrite rules when using full measure caching. He
 
 :::tip
 If you're using Laravel Herd or Laravel Valet, you don't need to worry about configuring rewrite rules locally. They will automatically handle the rewrite rules for you.
+
+The same goes for [Laravel Cloud](/deploying/laravel-cloud#full-measure), which configures Nginx for you when deploying.
 :::
 
 ### Apache
