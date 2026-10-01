@@ -166,6 +166,22 @@ class UploadArchive extends Action
 
 After the action runs from a collection's entries listing page, the page will reload (unless you return a [redirect](#redirects) or [download](#downloads) response). Asset container listings refresh in place.
 
+## Tree View Actions
+
+Entry actions are also available in the contextual menu of each page when viewing a [structured collection](/structures) in its tree view. [Dangerous](#dangerous-actions) actions are left out, since the tree has its own "Delete" option.
+
+When run from the tree view, the action's [context](#context) will contain `view` set to `tree`. You can use this to limit an action to (or exclude it from) the tree view:
+
+``` php
+public function visibleTo($item)
+{
+    return $item instanceof Entry
+        && ($this->context['view'] ?? null) === 'tree';
+}
+```
+
+Once the action completes, the tree will be refreshed, unless it has unsaved changes.
+
 ## Authorizing Actions
 
 Before any actions are run, Statamic will make sure the user is allowed to run them. You can return a boolean like this:

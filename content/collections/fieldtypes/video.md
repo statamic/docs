@@ -53,3 +53,47 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
 @endif
 ```
 ::
+
+### Provider, ID, and embed URL
+
+The video field is augmented into an object that still outputs the URL you entered, but also gives you access to the video's provider, ID, and embed URL.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ video }}             {{# https://www.youtube.com/watch?v=s9F5fhJQo34 #}}
+{{ video:provider }}    {{# youtube #}}
+{{ video:id }}          {{# s9F5fhJQo34 #}}
+{{ video:embed_url }}   {{# https://www.youtube-nocookie.com/embed/s9F5fhJQo34 #}}
+```
+::tab blade
+```blade
+{{ $video }}               {{-- https://www.youtube.com/watch?v=s9F5fhJQo34 --}}
+{{ $video->provider() }}   {{-- youtube --}}
+{{ $video->id() }}         {{-- s9F5fhJQo34 --}}
+{{ $video->embedUrl() }}   {{-- https://www.youtube-nocookie.com/embed/s9F5fhJQo34 --}}
+```
+::
+
+| Variable | Description |
+|----------|-------------|
+| `url` | The URL that was entered. |
+| `provider` | `youtube`, `vimeo`, `file` (a direct link to a video file), or `unsupported`. |
+| `id` | The YouTube or Vimeo video ID. `null` for other providers. |
+| `privacy_hash` | The privacy hash of an unlisted Vimeo video (e.g. the `abc123` in `vimeo.com/22439234/abc123`). `null` otherwise. |
+| `embed_url` | The embeddable player URL for YouTube and Vimeo, the URL itself for video files, or `null` for anything unsupported. |
+
+This lets you check the provider directly rather than reaching for modifiers:
+
+```antlers
+{{ if video:provider == 'file' }}
+    <video src="{{ video }}" ...></video>
+{{ elseif video:embed_url }}
+    <iframe src="{{ video:embed_url }}" ...></iframe>
+{{ /if }}
+```
+
+:::tip
+These values are only available in templates. The REST API and GraphQL still return the plain URL string.
+:::
