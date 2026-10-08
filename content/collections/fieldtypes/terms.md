@@ -35,6 +35,15 @@ id: 31adcc00-4fbb-4fe9-9b48-401061273096
 
 Taxonomies are usually relationships established on the collection-configuration level. Make sure to read the [Taxonomies documentation](/taxonomies) to understand how everything works.
 
+## Keyboard Shortcuts
+
+Related terms open in a stack, so you can edit them without leaving the page.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | Save the term and keep the stack open. |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save the term and close the stack. |
+
 ## Data Structure
 
 If the field is being used for taxonomizing your content (ie. the field name matches the taxonomy handle), the term's _slugs_ will be saved.
