@@ -36,12 +36,12 @@ Hit `cmd+k` (or `ctrl+k` on Windows/Linux) and the Command Palette pops up — a
 
 ## Saving with the Keyboard
 
-Hit <kbd>⌘</kbd> <kbd>S</kbd> (or <kbd>Ctrl</kbd> <kbd>S</kbd> on Windows/Linux) to save whatever you're working on. When you're editing in a stack, it depends on what you're doing:
+Hit <kbd>⌘</kbd> <kbd>S</kbd> to save whatever you're working on. When you're editing in a stack, it depends on what you're doing:
 
 | Where | <kbd>⌘</kbd> <kbd>S</kbd> | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> |
 |-------|---------|---------------|
-| Small, narrow stacks, like editing a navigation page | Save and close | Same as <kbd>⌘</kbd> <kbd>S</kbd> |
-| Creating something new in a stack, like a related entry | Save and close | Same as <kbd>⌘</kbd> <kbd>S</kbd> |
+| Small, narrow stacks, like editing a navigation page | Save and close | Same |
+| Creating something new in a stack, like a related entry | Save and close | Same |
 | Editing something that already exists in a stack, like a related entry, term, user or asset | Save and keep the stack open | Save and close |
 
 Hover over the Save button in a stack to see which shortcut closes it.
