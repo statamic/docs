@@ -12,12 +12,14 @@ use App\Support\Description;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\DescriptionList\DescriptionListExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use Statamic\Facades\Collection;
 use Statamic\Facades\Markdown;
 use Stillat\DocumentationSearch\Events\SearchEntriesCreated;
-use Torchlight\Engine\CommonMark\Extension as TorchlightExtension;
+use Torchlight\Engine\CommonMark\CodeBlockRenderer;
+use Torchlight\Engine\Engine;
 use Torchlight\Engine\Options as TorchlightOptions;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,16 +44,14 @@ class AppServiceProvider extends ServiceProvider
         if (! app()->runningConsoleCommand('search:update')) {
             TorchlightOptions::setDefaultOptionsBuilder(fn () => TorchlightOptions::fromArray(config('torchlight.options')));
 
-            $extension = new TorchlightExtension(
-                config('torchlight.theme'),
-                true,
-                ['env' => new StripEnvTrailingNewlines],
-            );
-            $extension
-                ->renderer()
+            $engine = new Engine;
+            $engine->registerPreprocessor(new StripEnvTrailingNewlines, 'env');
+            $engine->getEnvironment()->grammar('antlers', resource_path('syntaxes/antlers.json'));
+
+            $renderer = (new CodeBlockRenderer(config('torchlight.theme'), $engine))
                 ->setDefaultGrammar(config('torchlight.options.defaultLanguage'));
 
-            Markdown::addExtension(fn () => $extension);
+            Markdown::addRenderer(fn () => [FencedCode::class, $renderer, 10]);
         }
 
         Event::listen(SearchEntriesCreated::class, SearchEntriesCreatedListener::class);
