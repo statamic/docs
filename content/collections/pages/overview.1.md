@@ -34,6 +34,18 @@ The Users section lets you create, manage, and invite people who can log into th
 
 Hit `cmd+k` (or `ctrl+k` on Windows/Linux) and the Command Palette pops up — a quick way to navigate around the control panel, jump right into editing specific entries, and run actions without clicking through menus. It's like Spotlight for your CMS.
 
+## Saving with the Keyboard
+
+Hit <kbd>⌘</kbd> <kbd>S</kbd> (or <kbd>Ctrl</kbd> <kbd>S</kbd> on Windows/Linux) to save whatever you're working on. When you're editing in a stack, it depends on what you're doing:
+
+| Where | <kbd>⌘</kbd> <kbd>S</kbd> | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> |
+|-------|---------|---------------|
+| Small, narrow stacks, like editing a navigation page | Save and close | Same as <kbd>⌘</kbd> <kbd>S</kbd> |
+| Creating something new in a stack, like a related entry | Save and close | Same as <kbd>⌘</kbd> <kbd>S</kbd> |
+| Editing something that already exists in a stack, like a related entry, term, user or asset | Save and keep the stack open | Save and close |
+
+Hover over the Save button in a stack to see which shortcut closes it.
+
 ## Preferences
 
 Every user can adjust their own Preferences — like theme (light/dark), start page, locale, and more, while admins can also set defaults or role-based preferences. Make the control panel work the way you work.
