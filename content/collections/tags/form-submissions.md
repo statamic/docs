@@ -125,7 +125,7 @@ There are a number of ways to filter your submissions. There's the conditions sy
 
 ### Conditions
 
-Want to get entries where the title has the words "awesome" and "thing", and "joe" is the author? You can write it how you'd say it:
+Want to get submissions where the name contains "David" and the email is a Gmail address? You can write it how you'd say it:
 
 ::tabs
 
@@ -146,6 +146,27 @@ Want to get entries where the title has the words "awesome" and "thing", and "jo
 ::
 
 There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contains`, `:starts_with`, and `:is_before`. There are many more than that. In fact, there's a whole page dedicated to [conditions - check them out][conditions].
+
+### Statuses
+
+By default, only finalized submissions are included — [spam](/forms#spam-submissions) and [partial](/forms-pro#multi-page-forms) submissions are excluded. Submissions can be queried against `finalized`, `partial`, `spam`, or `any` status with conditions on `status`:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:submissions in="feedback" status:is="spam" }}
+```
+::tab blade
+```blade
+<s:form:submissions
+  in="feedback"
+  status:is="spam"
+>
+
+</s:form:submissions>
+```
+::
 
 ### Custom Query Scopes
 

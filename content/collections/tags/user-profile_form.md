@@ -152,5 +152,63 @@ Finally, the `field` value contains a pre-rendered form input.  Using this will 
 
 ## Precognition
 
-The profile update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation against your user blueprint's `validate` rules. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/profile` and seed the `$form` data object with the user's current values.
+The profile update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) for live, server-driven validation against your user blueprint's `validate` rules.
+
+First, install the Precognition adapter for Alpine (or [Vue or React](https://laravel.com/docs/13.x/precognition#live-validation)):
+
+```shell
+npm install laravel-precognition-alpine
+```
+
+Register the Precognition adapter before Alpine starts:
+
+```js
+import Alpine from 'alpinejs'
+import precognition from 'laravel-precognition-alpine'
+
+Alpine.plugin(precognition)
+Alpine.start()
+```
+
+Then bind a `$form` to the profile endpoint (`/!/auth/profile`) inside the tag, seeding the data object with the user's current values:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ user:profile_form
+    x-data="{ form: $form('post', '/!/auth/profile', { name: '{{ current_user:name }}', email: '{{ current_user:email }}' }) }"
+    @submit.prevent="form.submit()"
+}}
+    <label>Name</label>
+    <input type="text" name="name" x-model="form.name" @change="form.validate('name')">
+    <small x-show="form.invalid('name')" x-text="form.errors.name"></small>
+
+    <label>Email</label>
+    <input type="email" name="email" x-model="form.email" @change="form.validate('email')">
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <button type="submit" :disabled="form.processing">Save</button>
+{{ /user:profile_form }}
+```
+::tab blade
+```blade
+<s:user:profile_form
+    x-data="{ form: $form('post', '/!/auth/profile', { name: '{{ $current_user->name }}', email: '{{ $current_user->email }}' }) }"
+    @submit.prevent="form.submit()"
+>
+    <label>Name</label>
+    <input type="text" name="name" x-model="form.name" @change="form.validate('name')">
+    <small x-show="form.invalid('name')" x-text="form.errors.name"></small>
+
+    <label>Email</label>
+    <input type="email" name="email" x-model="form.email" @change="form.validate('email')">
+    <small x-show="form.invalid('email')" x-text="form.errors.email"></small>
+
+    <button type="submit" :disabled="form.processing">Save</button>
+</s:user:profile_form>
+```
+::
+
+If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
 
