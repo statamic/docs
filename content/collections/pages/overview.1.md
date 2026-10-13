@@ -54,7 +54,7 @@ The control panel includes powerful tools that make content work easier:
 
 [Utilities](/utilities) — standalone tools with their own screens and permissions, like the Cache Manager, PHP Info Viewer, and Email Config.
 
-[Multi-Site](/multi-site), [Translations](/cp-translations), [Conditional Fields](/control-panel/conditional-fields), [Elevated Sessions](/control-panel/elevated-sessions), [White Labeling](/control-panel/white-labeling), and more — all features that let you shape the CP experience to your needs.
+[Multi-Site](/multi-site), [Translations](/cp-translations), [Conditional Fields](/control-panel/conditional-fields), [Elevated Sessions](/control-panel/elevated-sessions), [Organizing Collection Listings](/control-panel/organizing-collection-listings), [White Labeling](/control-panel/white-labeling), and more — all features that let you shape the CP experience to your needs.
 
 ## Navigation & Extensibility
 
