@@ -37,7 +37,7 @@ Taxonomies are usually relationships established on the collection-configuration
 
 ## Keyboard Shortcuts
 
-Related terms open in a stack, so you can edit them without leaving the page.
+Related terms open in a stack, so you can edit them without leaving the page. These shortcuts apply when editing an existing term. A new term created from the field saves and closes with either shortcut.
 
 | Shortcut | Action |
 |----------|--------|

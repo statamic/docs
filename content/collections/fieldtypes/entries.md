@@ -54,7 +54,7 @@ Watch how to build a "Related Articles" feature using the Entries Fieldtype
 
 ## Keyboard Shortcuts
 
-Related entries open in a stack, so you can edit them without leaving the page.
+Related entries open in a stack, so you can edit them without leaving the page. These shortcuts apply when editing an existing entry. A new entry created from the field saves and closes with either shortcut.
 
 | Shortcut | Action |
 |----------|--------|

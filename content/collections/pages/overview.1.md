@@ -36,7 +36,7 @@ Hit `cmd+k` (or `ctrl+k` on Windows/Linux) and the Command Palette pops up — a
 
 ## Saving with the Keyboard
 
-Hit <kbd>⌘</kbd> <kbd>S</kbd> to save whatever you're working on. When you're editing in a stack, it depends on what you're doing:
+Hit <kbd>⌘</kbd> <kbd>S</kbd> (or <kbd>Ctrl</kbd> <kbd>S</kbd> on Windows/Linux) to save whatever you're working on. When you're editing in a stack, it depends on what you're doing:
 
 | Where | <kbd>⌘</kbd> <kbd>S</kbd> | <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> |
 |-------|---------|---------------|
