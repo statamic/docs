@@ -129,6 +129,11 @@
         white-space: nowrap;
     }
 
+    /* Keep keyboard shortcuts in table headings on one line. e.g. >> /control-panel/overview#saving-with-the-keyboard */
+    table > thead > tr > th:has(kbd) {
+        white-space: nowrap;
+    }
+
     table > thead > tr > th {
         padding-block: 1.1rem;
         vertical-align: bottom;
