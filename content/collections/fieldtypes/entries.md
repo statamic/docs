@@ -54,14 +54,12 @@ Watch how to build a "Related Articles" feature using the Entries Fieldtype
 
 ## Keyboard Shortcuts
 
-When you edit a related entry, it opens in a stack so you don't leave the page.
+Editing or creating a related entry opens it in a stack, so you don't leave the page.
 
-| Shortcut | Action |
-|----------|--------|
-| <kbd>⌘</kbd> <kbd>S</kbd> | Save the entry and keep the stack open. |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save the entry and close the stack. |
-
-When you create a new entry from the field, both shortcuts save it and close the stack.
+| Shortcut | Editing an existing entry | Creating a new entry |
+|----------|--------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | Save and keep the stack open | Save and close the stack |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack | Save and close the stack |
 
 ## Data Structure
 

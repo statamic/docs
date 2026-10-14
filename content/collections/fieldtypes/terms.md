@@ -37,14 +37,12 @@ Taxonomies are usually relationships established on the collection-configuration
 
 ## Keyboard Shortcuts
 
-When you edit a related term, it opens in a stack so you don't leave the page.
+Editing or creating a related term opens it in a stack, so you don't leave the page.
 
-| Shortcut | Action |
-|----------|--------|
-| <kbd>⌘</kbd> <kbd>S</kbd> | Save the term and keep the stack open. |
-| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save the term and close the stack. |
-
-When you create a new term from the field, both shortcuts save it and close the stack.
+| Shortcut | Editing an existing term | Creating a new term |
+|----------|--------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | Save and keep the stack open | Save and close the stack |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack | Save and close the stack |
 
 ## Data Structure
 
