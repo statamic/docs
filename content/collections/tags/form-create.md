@@ -34,7 +34,7 @@ parameters:
   -
     name: js
     type: string
-    description: Enable [conditional fields](#conditional-fields) using one of the provided JS drivers.
+    description: Enable [logic](#logic-conditional-fields) using one of the provided JS drivers.
   -
     name: HTML Attributes
     type: string
@@ -45,7 +45,7 @@ variables:
     name: fields
     type: array
     description: >
-      An array of available fields for [dynamic rendering](#dynamically-rendering-fields).
+      An array of available fields for [rendering](#rendering-fields).
   -
     name: errors
     type: array
@@ -93,11 +93,15 @@ Here we'll be creating a form to submit an entry in a `contact` form.
         </div>
     {{ /if }}
 
-    <label>Email</label>
-    <input type="text" name="email" value="{{ old:email }}" />
-
-    <label>Message</label>
-    <textarea name="message" rows="5">{{ old:message }}</textarea>
+    {{ fields }}
+        <div class="p-2">
+            <label>{{ display }}</label>
+            <div class="p-1">{{ field }}</div>
+            {{ if error }}
+                <p class="text-gray-500">{{ error }}</p>
+            {{ /if }}
+        </div>
+    {{ /fields }}
 
     <button>Submit</button>
 
@@ -121,11 +125,15 @@ Here we'll be creating a form to submit an entry in a `contact` form.
         </div>
     @endif
 
-    <label>Email</label>
-    <input type="text" name="email" value="{{ old('email') }}" />
-
-    <label>Message</label>
-    <textarea name="message" rows="5">{{ old('message') }}</textarea>
+    @foreach ($fields as $field)
+        <div class="p-2">
+            <label>{{ $field['display'] }}</label>
+            <div class="p-1">{!! $field['field'] !!}</div>
+            @if ($field['error'])
+                <p class="text-gray-500">{{ $field['error'] }}</p>
+            @endif
+        </div>
+    @endforeach
 
     <button>Submit</button>
 
@@ -160,35 +168,11 @@ Using this tag, Statamic will automatically take care of opening your form with 
 </form>
 ```
 
-It also provides helpers for [dynamically rendering](#dynamic-rendering) sections and fields, [conditionally rendering](#conditional-fields) fields, etc.
+It also provides helpers for [rendering](#rendering-fields) sections and fields, conditionally showing and hiding fields with [logic](#logic-conditional-fields), etc.
 
-## Dynamic Rendering
+## Rendering Fields
 
-### Dynamically Rendering via Form Fieldtype
-
-When you need to render a form that's selected via the [Form Fieldtype](/fieldtypes/form) you can use this pattern:
-
-::tabs
-
-::tab antlers
-```antlers
-{{ form:create :in="form_fieldtype:handle" }}
-    ...
-{{ /form:create }}
-```
-::tab blade
-```blade
-<s:form:create :in="$form_fieldtype->handle">
-    ...
-</s:form:create>
-```
-::
-
-This way you can let Control Panel users select which form should be used on an entry.
-
-### Dynamically Rendering Fields
-
-Instead of hardcoding individual fields, you may loop through the `fields` array using the [form:fields](/tags/form-fields) tag to render your blueprint's fields in a dynamic fashion.
+Loop through the `fields` array using the [form:fields](/tags/form-fields) tag to render your form's fields.
 
 ::tabs
 
@@ -242,7 +226,7 @@ Instead of hardcoding individual fields, you may loop through the `fields` array
 
 Each item in this `fields` array contains the following data:
 
-#### Fields Array Variables
+### Fields Array Variables
 
 | Variable | Type | Description |
 |---|---| --- |
@@ -258,6 +242,7 @@ Each item in this `fields` array contains the following data:
 | `error` | string | Error message from an unsuccessful submission |
 | `validate` | array | Contains an array of validation rules |
 | `width` | string | Width of the field assigned in the blueprint |
+| `is_informative` | boolean | `true` for informative fields like headings, banners, and paragraphs that don't collect data. Use it to skip rendering a label and error. |
 
 
 ### Pre-rendered Field HTML
@@ -270,7 +255,7 @@ You can customize these pre-rendered snippets by running `php artisan vendor:pub
 Pre-rendered snippets are implemented in Antlers by default. Blade versions will be used instead if your `statamic.templates.language` config is set to `blade`.
 :::
 
-This approach, combined with the [blueprint editor](/blueprints), will give you something very similar to a traditional "Form Builder" from other platforms.
+This approach, combined with the Form Builder, will give you something very similar to a traditional "Form Builder" from other platforms.
 
 **Example**
 
@@ -311,9 +296,9 @@ This approach, combined with the [blueprint editor](/blueprints), will give you 
 </div>
 ```
 
-### Dynamically Rendering Sections
+## Rendering Sections
 
-If you have defined multiple sections in your form's blueprint, you can loop over these `sections` in a dynamic fashion as well.
+If your form has multiple sections, you can loop over the `sections` array to render them as well.
 
 ::tabs
 
@@ -359,12 +344,12 @@ Each item in the `sections` array contains the following data configurable in th
 |---|---| --- |
 | `display` | string | User-friendly section label |
 | `instructions` | string | User-friendly section instructions |
-| `fields` | array | An array of [fields](#dynamically-rendering-fields) defined within that section |
+| `fields` | array | An array of [fields](#rendering-fields) defined within that section |
 
 
-## Conditional Fields
+## Logic (Conditional Fields)
 
-You may conditionally show and hide fields by utilizing the [conditional fields](/conditional-fields#overview) settings in your form's blueprint editor. Once configured, by including the necessary front-end scripts and enabling JavaScript on the `form:create` tag, all of the conditional logic will Just Work™.
+You may conditionally show and hide fields by configuring logic on your fields in the Form Builder. Once configured, by including the necessary front-end scripts and enabling JavaScript on the `form:create` tag, all of the logic will Just Work™.
 
 Statamic includes an [Alpine.js](https://alpinejs.dev/) driver or you can build your own [custom JS driver](#custom-js-drivers) to wire up whichever framework you prefer.
 
@@ -435,7 +420,7 @@ For nested fields, you can get `show_field` JS by passing the whole dotted handl
 
 ### Wiring Up Dynamically Rendered Fields
 
-If you are [dynamically rendering your fields](#dynamic-rendering) using the `fields` loop, your template might look something like this:
+If you are [rendering your fields](#rendering-fields) using the `fields` loop, your template might look something like this:
 
 ::tabs
 
@@ -487,36 +472,10 @@ If you are using other Alpine components in your form or on your page, the inclu
 
 The above will nest your form fields in a `contact_form` object within the generated `x-data`.
 
-If you are hardcoding your inputs, you will need adjust your `x-model` to follow suit.
-
-::tabs
-
-::tab antlers
-```antlers
-<template x-if="{{ show_field:name }}">
-    <div class="p-2">
-        <label>Name</label>
-        <input type="text" name="name" value="{{ old:name }}" x-model.fill="contact_form.name" />
-    </div>
-</template>
-```
-::tab blade
-```blade
-<template x-if="{{ $show_field['name'] }}">
-    <div class="p-2">
-        <label>Name</label>
-        <input type="text" name="name" value="{{ old('name') }}" x-model.fill="contact_form.name" />
-    </div>
-</template>
-```
-::
-
-If you are [dynamically rendering your fields](#dynamic-rendering) using the `fields` loop, this is once again handled for you.
-
 
 ## Custom JS Drivers
 
-Should you need to work with another JS framework for handling [conditional fields](#conditional-fields) and form state in realtime, we've provided a few tools to help you build your own JS driver.
+Should you need to work with another JS framework for handling [logic](#logic-conditional-fields) and form state in realtime, we've provided a few tools to help you build your own JS driver.
 
 ### Creating the Driver
 
@@ -638,3 +597,137 @@ The `conditions` parameter accepts your field's conditions, typically generated 
 The `data` parameter accept's an object containing your form's values, typically stored somewhere within your form's javascript state.
 
 This JS helper will evaluate your [field conditions](/conditional-fields#overview) in realtime against your form's field values to determine whether or not the field in question should be shown.
+
+## Precognition
+
+Statamic supports using [Laravel Precognition](https://laravel.com/docs/precognition) in forms.
+
+Here is a basic example that uses Alpine.js for the Precognition validation, and a regular form submission. This is a starting point that you may customize as needed. For instance, you might prefer to use AJAX to submit the form.
+
+Note that `js="alpine_precognition"` is used rather than just `alpine`.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:contact js="alpine_precognition" }}
+    {{ if success }}
+        Success!
+    {{ /if }}
+
+    <template x-if="form.hasErrors">
+        <div>
+            Errors!
+            <ul>
+                <template x-for="error in form.errors">
+                    <li x-text="error"></li>
+                </template>
+            </ul>
+        </div>
+    </template>
+
+    {{ fields }}
+        <label>{{ display }}</label>
+        {{ field }}
+        <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
+    {{ /fields }}
+
+    <button :disabled="form.processing">Submit</button>
+{{ /form:contact }}
+```
+
+::tab blade
+```blade
+<s:form:contact js="alpine_precognition">
+    @if ($success) Success! @endif
+
+    <template x-if="form.hasErrors">
+      <div>
+        Errors!
+        <ul>
+          <template x-for="error in form.errors">
+            <li x-text="error"></li>
+          </template>
+        </ul>
+      </div>
+    </template>
+
+    @foreach ($fields as $field)
+      <label>{{ $field['display'] }}</label>
+      {!! $field['field'] !!}
+
+      <small
+        x-show="form.invalid('{{ $field['handle'] }}')"
+        x-text="form.errors.{{ $field['handle'] }}"
+      ></small>
+    @endforeach
+
+    <button :disabled="form.processing">Submit</button>
+</s:form:contact>
+```
+::
+
+To build on the regular form submission example above, here's an example for AJAX submission.
+- The third argument of the `js` parameter defines the Alpine component.
+- The native form's submit event is listened for, prevented, and the component's `submit` method is called instead.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:contact
+    js="alpine_precognition:form:contact"
+    @submit.prevent="submit"
+}}
+```
+::tab blade
+```blade
+<s:form:contact
+    js="alpine_precognition:form:contact"
+    @submit.prevent="submit"
+>
+```
+::
+
+```html
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('contact', (data) => ({
+        ...data,
+        submit() {
+            this.form.submit().then(response => {
+                this.form.reset();
+                console.log("Success")
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+    }));
+});
+</script>
+```
+
+:::tip
+The user form tags ([login](/tags/user-login_form#precognition), [register](/tags/user-register_form#precognition), [profile](/tags/user-profile_form#precognition), and [password](/tags/user-password_form#precognition)) also support Precognition, but are wired up a little differently. See each tag's documentation for details.
+:::
+
+## Submitting with AJAX
+
+To submit the form with AJAX, be sure to pass all the form inputs in with the submission, as Statamic sets `_token` and `_params`, both of which are required.
+
+You'll also need to set your AJAX library's `X-Requested-With` header to `XMLHttpRequest`.
+
+The URL endpoint to send the request to is `/!/forms/{form-handle}`. You can configure the action route prefix which defaults to `!` in `config/statamic/routes.php`.
+
+### Axios example
+
+``` javascript
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+form = document.getElementById('form');
+
+// On submit...
+axios.post(form.action, new FormData(form))
+  .then(response => {
+      console.log(response.data)
+  });
+```
