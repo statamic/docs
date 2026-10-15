@@ -35,10 +35,10 @@
 
     {{ nav:collection:pages }}
         <li>
-            <label class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading{{ if is_current || is_parent }} o-current-menu-item{{ /if }}">
+            <label class="o-toggle-subnav c-nav-sidebar-with-popover-api-category-heading{{ if response_code === 200 && (is_current || is_parent) }} o-current-menu-item{{ /if }}">
                 <div class="c-nav-sidebar-with-popover-api__disclosure">{{ svg src='chevron' }}</div>
                 {{ title }}
-                <input id="nav-{{ title | slugify }}" type="checkbox" {{ unless is_current || is_parent || (current_uri == '/' && first) }}checked{{ /unless }}>
+                <input id="nav-{{ title | slugify }}" type="checkbox" {{ unless (response_code === 200 && (is_current || is_parent)) || (current_uri == '/' && first) }}checked{{ /unless }}>
             </label>
             <ul>
                 {{# Make sure we output the homepage for the 'Getting Started' disclosure #}}
@@ -57,7 +57,7 @@
                         <li>
                             <a
                                 href="{{ url }}"
-                                {{ if is_current || is_parent }}class="o-current-menu-item"{{ /if }}
+                                {{ if response_code === 200 && (is_current || is_parent) }}class="o-current-menu-item"{{ /if }}
                                 {{ if url | is_external_url }} target="_blank" {{ /if }}
                             >
                                 {{ nav_title ?? title }}
