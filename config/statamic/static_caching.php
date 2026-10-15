@@ -188,6 +188,6 @@ return [
     |
     */
 
-    'share_errors' => false,
+    'share_errors' => true,
 
 ];
