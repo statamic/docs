@@ -101,7 +101,7 @@ class ServeMarkdownTest extends TestCase
 
     public function test_pages_outside_the_docs_route_have_no_alternate_link(): void
     {
-        $response = $this->get('/search-results', ['Accept' => 'text/html']);
+        $response = $this->get('/versions.json', ['Accept' => 'text/html']);
 
         $response->assertOk();
         $response->assertHeaderMissing('Link');
