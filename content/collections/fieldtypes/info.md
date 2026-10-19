@@ -16,7 +16,7 @@ options:
     type: string
     description: 'The visual style of the message. Choose from `notice`, `tip`, `warning`, `important`, or `success`. Default: `notice`.'
   -
-    name: alert_icon
+    name: icon
     type: string
     description: "Choose an icon from Statamic's built-in icons. Leave empty to use the state's default icon."
 ---
