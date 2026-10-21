@@ -166,5 +166,69 @@ Finally, the `field` value contains a pre-rendered form input.  Using this will 
 
 ## Precognition
 
-The password update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — useful for catching mismatched confirmations or weak passwords before submitting. See [Precognition for User Forms](/forms#user-forms) for setup and a full example. Post to `/!/auth/password` with `current_password`, `password`, and `password_confirmation` in the `$form` data object.
+The password update endpoint supports [Laravel Precognition](https://laravel.com/docs/precognition) — useful for catching mismatched confirmations or weak passwords before submitting.
+
+First, install the Precognition adapter for Alpine (or [Vue or React](https://laravel.com/docs/13.x/precognition#live-validation)):
+
+```shell
+npm install laravel-precognition-alpine
+```
+
+Register the Precognition adapter before Alpine starts:
+
+```js
+import Alpine from 'alpinejs'
+import precognition from 'laravel-precognition-alpine'
+
+Alpine.plugin(precognition)
+Alpine.start()
+```
+
+Then bind a `$form` to the password endpoint (`/!/auth/password`) inside the tag:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ user:password_form
+    x-data="{ form: $form('post', '/!/auth/password', { current_password: '', password: '', password_confirmation: '' }) }"
+    @submit.prevent="form.submit()"
+}}
+    <label>Current Password</label>
+    <input type="password" name="current_password" x-model="form.current_password" @change="form.validate('current_password')">
+    <small x-show="form.invalid('current_password')" x-text="form.errors.current_password"></small>
+
+    <label>New Password</label>
+    <input type="password" name="password" x-model="form.password" @change="form.validate('password')">
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <label>Confirm New Password</label>
+    <input type="password" name="password_confirmation" x-model="form.password_confirmation">
+
+    <button type="submit" :disabled="form.processing">Update Password</button>
+{{ /user:password_form }}
+```
+::tab blade
+```blade
+<s:user:password_form
+    x-data="{ form: $form('post', '/!/auth/password', { current_password: '', password: '', password_confirmation: '' }) }"
+    @submit.prevent="form.submit()"
+>
+    <label>Current Password</label>
+    <input type="password" name="current_password" x-model="form.current_password" @change="form.validate('current_password')">
+    <small x-show="form.invalid('current_password')" x-text="form.errors.current_password"></small>
+
+    <label>New Password</label>
+    <input type="password" name="password" x-model="form.password" @change="form.validate('password')">
+    <small x-show="form.invalid('password')" x-text="form.errors.password"></small>
+
+    <label>Confirm New Password</label>
+    <input type="password" name="password_confirmation" x-model="form.password_confirmation">
+
+    <button type="submit" :disabled="form.processing">Update Password</button>
+</s:user:password_form>
+```
+::
+
+If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
 
