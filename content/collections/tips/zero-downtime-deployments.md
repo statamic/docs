@@ -142,6 +142,23 @@ There are two ways to avoid sharing a Redis cache between your deployment releas
     The `stache` connection above shares Redis database `1` with the default `cache` connection. Key prefixes keep their entries separate during normal use, but `php artisan cache:clear` wipes both. Point the `stache` connection at a different database (e.g. `'database' => env('REDIS_STACHE_DB', '2')`) for complete isolation, mirroring the file cache option above where the two stores naturally live in separate directories.
     :::
 
+### Skipping the cache clear on install
+
+Statamic's `statamic:install` command runs on every `composer install` via the `post-autoload-dump` script in your `composer.json`, and it clears the application cache each time. If your releases share a cache store, this wipes the live site's cache mid-deploy, before the new release is even activated.
+
+Add the `--no-cache-clear` option to skip it:
+
+```json
+"post-autoload-dump": [
+    "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+    "@php artisan package:discover --ansi",
+    "@php artisan statamic:install --ansi", // [tl! --]
+    "@php artisan statamic:install --ansi --no-cache-clear" // [tl! ++]
+]
+```
+
+If you still need the cache cleared, run `php artisan cache:clear` in your deploy script after the new release has been activated.
+
 ## Git Automation
 
 If you plan to use Statamic's [Git Automation](/git-automation) feature alongside zero downtime deployments, you'll need to set up a dedicated git clone for Statamic's content writes so they survive the symlink swap. See [Why this setup is needed](#why-this-setup-is-needed) at the end of this section for the full picture.
