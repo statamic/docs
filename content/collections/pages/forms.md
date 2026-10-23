@@ -363,7 +363,7 @@ Inside your email view, you have a number of variables available:
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
 - `email_config` - The email's config (the current item from your `email:` array)
-- `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
+- `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using [`Form::appendConfigFields()`](#adding-config-fields))
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
@@ -887,6 +887,44 @@ The same pattern applies to the other user forms — just swap the action URL an
 | `{{ user:password_form }}` | `/!/auth/password` |
 
 If you'd rather submit normally (full page reload) and only use Precognition for live validation, drop the `@submit.prevent` handler.
+
+## Adding config fields
+
+Addons can add their own fields to the form's "Configure Form" page using `Form::appendConfigFields()`, typically in a service provider's `boot` method.
+
+```php
+use Statamic\Facades\Form;
+
+Form::appendConfigFields(
+    handles: ['contact', 'newsletter'],
+    display: 'CRM',
+    fields: [
+        'crm_list' => [
+            'type' => 'text',
+            'display' => 'List ID',
+        ],
+    ],
+);
+```
+
+The first argument is a form handle, an array of form handles, or `*` for all forms. The fields are added as a new section using the `display` as its heading. If a section with that `display` already exists, the fields are merged into it instead.
+
+The values are saved alongside the form's config and are available as `form_config` inside the [`form:create`](/tags/form-create) tag and in your [email views](#email-variables).
+
+### Positioning the section
+
+By default, the new section is added after the built-in ones. Use `beforeSection` or `afterSection` to place it relative to one of the existing sections: `name`, `fields`, `submissions`, or `email`.
+
+```php
+Form::appendConfigFields(
+    handles: '*',
+    display: 'CRM',
+    fields: [...],
+    afterSection: 'name', // [tl! ++]
+);
+```
+
+Only one of `beforeSection` or `afterSection` may be passed. Positions only apply to new sections, so passing one when your `display` matches an existing section will throw an exception. If the target section doesn't exist, the section is added at the end and a warning is logged.
 
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
