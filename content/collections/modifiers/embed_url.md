@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: 'Embed Url'
 ---
-Converts a Youtube or Vimeo link to their embed URLs.
+Converts a Youtube, Vimeo, or Cloudflare Stream link to their embed URLs.
 
 Plays nicely with the [Video fieldtype](/fieldtypes/video) and the [is_embeddable modifier](/modifiers/is_embeddable).
 

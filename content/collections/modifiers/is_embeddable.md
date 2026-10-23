@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: 'Is Embeddable'
 ---
-Recognizes YouTube and Vimeo URLs as supported embed sources. This does not check whether the video exists or whether its owner permits embedding.
+Recognizes YouTube, Vimeo, and Cloudflare Stream URLs as supported embed sources. This does not check whether the video exists or whether its owner permits embedding.
 
 Plays nicely with the [Video fieldtype](/fieldtypes/video) and the [embed_url modifier](/modifiers/embed_url).
 
