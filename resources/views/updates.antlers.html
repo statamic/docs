@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ collection from="docs|tags|modifiers|variables|fieldtypes|screencasts" sort="last_modified:desc" limit="100" title:not="Documentation" scope="entry" }}
+            {{ collection from="pages|tags|modifiers|variables|fieldtypes|tips|resource_apis" sort="last_modified:desc" limit="100" title:not="Home" scope="entry" }}
                 <tr>
                     <td class="w-1/2"><a href="{{ github_commits_url }}" target="_blank">{{ entry:title ?? entry:slug|title }}</a></td>
                     <td>{{ entry:collection | deslugify | title }}</td>
