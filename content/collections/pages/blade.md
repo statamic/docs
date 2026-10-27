@@ -163,7 +163,7 @@ Under the hood, this is syntactic sugar for creating an Antlers partial and does
 
 ## Using Antlers Blade components
 
-Despite the name, Antlers Blade Components are a Blade-only feature that allows you to use existing tags inside your Blade templates using a custom tag syntax. For example, you can gather all entries from a "pages" collection using the [collection](/tags/collection) tag like so:
+Antlers Blade Components allow you to use existing tags inside your Blade templates with a custom tag syntax. The same component-style syntax also works [inside Antlers templates](/frontend/antlers-components#component-style-statamic-tags). For example, you can gather all entries from a "pages" collection using the [collection](/tags/collection) tag like so:
 
 ```blade
 <s:collection:pages>
