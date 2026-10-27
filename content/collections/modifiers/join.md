@@ -34,3 +34,5 @@ tasks:
 take a shower, brush hair, clip toenails
 take a shower + brush hair + clip toenails = ready
 ```
+
+Can also be used by its aliases, `implode` and [`list`](/modifiers/list).
