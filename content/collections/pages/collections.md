@@ -37,6 +37,8 @@ content/collections/
 Creating a collection in the control panel takes care of all of this for you automatically, so don't stress too hard about memorizing all the details.
 :::
 
+You can [organize the collections listing page](/control-panel/organizing-collection-listings) into named groups.
+
 ## Entries
 
 Each entry has, at the very least, a title, published status, id, and _usually_ additional content fields. These content fields are determined by one or more [blueprints](/blueprints) set on the collection.
