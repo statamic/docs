@@ -53,6 +53,8 @@ You can see the list of available commands in your terminal by running `php plea
 | `eloquent:import-groups` | Imports file based groups into the database. |
 | `eloquent:import-roles` | Imports file based roles into the database. |
 | `eloquent:import-users` | Imports file based users into the database. |
+| `fieldtypes:list` | List the installed fieldtypes |
+| `fieldtypes:show` | Show configuration definitions for an installed fieldtype |
 | `flat:camp` | Flat Camp ⛺ |
 | `glide:clear`      | Clear the Glide image cache |
 | `install:collaboration` | Installs the Statamic Collaboration addon and enables broadcasting in Laravel. |
@@ -88,6 +90,27 @@ You can see the list of available commands in your terminal by running `php plea
 | `support:details`  | List useful details to help with support |
 | `support:zip-blueprint`  | Create a zip file with a blueprint and all fieldset imports |
 | `updates:run`      | Run update scripts from a specific version |
+
+## Inspecting fieldtypes
+
+The `fieldtypes:list` and `fieldtypes:show` commands let you inspect the fieldtypes installed in your project, including those registered by addons, without digging through PHP classes. They're handy for developers and AI agents alike.
+
+``` shell
+php please fieldtypes:list
+php please fieldtypes:show bard
+```
+
+`fieldtypes:list` outputs a table of every fieldtype's handle, title, class, and whether it's selectable. `fieldtypes:show` outputs a fieldtype's config options, including their defaults, options, and conditions, along with the options shared by every field, as YAML.
+
+Pass the `--json` flag to either command to get machine-readable output instead.
+
+``` shell
+php please fieldtypes:show bard --json
+```
+
+:::tip
+The defaults describe the fieldtype itself, not the configuration of any particular field in your blueprints. Values that can't be determined from PHP (like options provided by a closure or the control panel's JavaScript) are listed under `unresolved`, rather than guessed.
+:::
 
 ## Additional reading
 
