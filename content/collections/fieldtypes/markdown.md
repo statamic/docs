@@ -24,6 +24,14 @@ options:
     description: >
       Automatically links any URLs in the text. Default: `false`.
   -
+    name: buttons
+    type: array
+    description: |
+      An array of buttons you want available in the toolbar.
+      You can choose from `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `bold`, `italic`, `strikethrough`, `unorderedlist`, `orderedlist`, `quote`, `link`, `table`, `image`, `asset`, `code`, and `codeblock`.
+
+      The defaults are `bold`, `italic`, `unorderedlist`, `orderedlist`, `quote`, `link`, `image`, and `table`.
+  -
     name: container
     type: string
     description: |
