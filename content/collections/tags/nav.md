@@ -36,6 +36,16 @@ parameters:
     description: >
       This limits how deep the tag will render. If you are using [recursion](#multi-level), this could be useful to stop at a certain point. It also helps with [performance](#performance). By default there is no max.
   -
+    name: limit
+    type: 'int'
+    description: >
+      Limits the number of top level items returned. Child items aren't affected. See [splitting a nav](#splitting-a-nav).
+  -
+    name: offset
+    type: 'int'
+    description: >
+      Skips a specified number of top level items. Child items aren't affected. See [splitting a nav](#splitting-a-nav).
+  -
     name: select
     type: array
     description: >
@@ -275,6 +285,48 @@ Use the `uri` to get the children of the current page.
 </ul>
 ```
 ::
+
+## Splitting a nav
+
+You can use the `limit` and `offset` parameters to split a nav into multiple parts. For example, if you want to put your logo in the middle of your header:
+
+::tabs
+
+::tab antlers
+```antlers
+<nav>
+  {{ nav:main limit="3" }}
+    <a href="{{ url }}">{{ title }}</a>
+  {{ /nav:main }}
+</nav>
+
+<div class="logo">...</div>
+
+<nav>
+  {{ nav:main offset="3" }}
+    <a href="{{ url }}">{{ title }}</a>
+  {{ /nav:main }}
+</nav>
+```
+::tab blade
+```blade
+<nav>
+  <s:nav:main limit="3">
+    <a href="{{ $url }}">{{ $title }}</a>
+  </s:nav:main>
+</nav>
+
+<div class="logo">...</div>
+
+<nav>
+  <s:nav:main offset="3">
+    <a href="{{ $url }}">{{ $title }}</a>
+  </s:nav:main>
+</nav>
+```
+::
+
+The items are sliced before they're rendered, so variables like `first`, `last`, `index`, and `count` match the items you're actually looping over.
 
 ## Multi-level Nav Example Recursion {#multi-level}
 
