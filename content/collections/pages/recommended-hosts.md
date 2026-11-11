@@ -40,6 +40,7 @@ These work well with Statamic out of the box.
 - [Panthur](https://www.panthur.com.au/) - Sydney, Australia
 - [SiteHost](https://sitehost.nz/) - New Zealand & Australia
 - [Vultr](https://www.vultr.com/) - Worldwide
+- [xCloud](https://xcloud.host/statamic-hosting/) - One-click Statamic on your own server
 
 #### Paired with a deployment tool
 
