@@ -46,6 +46,20 @@ Hit <kbd>⌘</kbd> <kbd>S</kbd> (or <kbd>Ctrl</kbd> <kbd>S</kbd> on Windows/Linu
 
 Hover over the Save button in a stack to see which shortcut closes it.
 
+## After Saving
+
+By default, saving an entry or term takes you back to its listing. Users can pick a different option from the Save button's dropdown, and their choice is remembered as a [preference](/control-panel/preferences).
+
+To change the default for users who haven't picked an option, set `after_save` in your config:
+
+```php
+// config/statamic/cp.php
+
+'after_save' => 'continue_editing',
+```
+
+Supported values are `listing`, `continue_editing`, and `create_another`.
+
 ## Preferences
 
 Every user can adjust their own Preferences — like theme (light/dark), start page, locale, and more, while admins can also set defaults or role-based preferences. Make the control panel work the way you work.

@@ -329,6 +329,29 @@ STATAMIC_STATIC_WARM_QUEUE=warming
 STATAMIC_STATIC_WARM_QUEUE_CONNECTION=database
 ```
 
+#### Custom warm job
+
+Each URL is warmed by a queued `StaticWarmJob`. If you need to change how that job behaves, like adjusting its uniqueness or adding a delay, you may extend it and specify your own class:
+
+```php
+// config/statamic/static_caching.php
+
+'warm_job' => \App\Jobs\StaticWarmJob::class,
+```
+
+```php
+namespace App\Jobs;
+
+use Statamic\Console\Commands\StaticWarmJob as BaseJob;
+
+class StaticWarmJob extends BaseJob
+{
+    //
+}
+```
+
+This job is used by `static:warm --queue` (except when using `--uncached`) and by [background re-caching](#background-re-caching).
+
 ### Warming additional URLs
 
 Statamic will automatically warm pages for entries, taxonomy terms and any basic `Route::statamic()` routes. If you wish to warm additional URLs as part of the `static:warm` command, you may add a hook into your `AppServiceProvider`'s `boot` method:

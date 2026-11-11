@@ -40,7 +40,7 @@ options:
     name: mode
     type: string
     description: >
-      Set to `list` to use the table layout mode, and `grid` to use the grid mode with larger thumbnails. Default: `grid`.
+      Set to `list` to use the table layout mode, `grid` to use the grid mode with larger thumbnails, or `compact` to use small square thumbnails. See [UI modes](#ui-modes). Default: `list`.
   -
     name: query_scopes
     type: string
@@ -69,6 +69,14 @@ The list mode is shown in the previous screenshot, while the grid mode is shown 
   <img src="/img/fieldtypes/screenshots/v6/assets-grid-dark.webp" alt="Assets List mode" class="u-hide-in-light-mode">
   <figcaption>List mode reveals a fanny pack in all its glory. And if you’re British—go on, have a little chuckle.</figcaption>
 </figure>
+
+Compact mode shows selected assets as small square thumbnails alongside a button for adding more. It's designed for tight layouts, like inside a [Grid](/fieldtypes/grid) or [Replicator](/fieldtypes/replicator) field.
+
+```yaml
+image:
+  type: assets
+  mode: compact
+```
 
 ## Data Structure
 
