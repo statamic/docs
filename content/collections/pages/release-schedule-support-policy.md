@@ -60,7 +60,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
          <td>7</td>
          <td>13-14</td>
          <td>8.4-8.6</td>
-         <td>Q1 2027</td>
+         <td>2027</td>
          <td>TBC</td>
          <td>TBC</td>
       </tr>
