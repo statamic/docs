@@ -404,8 +404,11 @@ You may provide local driver specific settings in a `settings` array.
         'partial_whole' => 2,
         'partial_whole_start' => 2,
         'whole' => 10,
+        'phrase' => 0,
+        'phrase_start' => 0,
     ]
     ```
+    `partial_whole` and `partial_whole_start` also count each word in the query. `phrase` counts only when a field contains the full query, and `phrase_start` counts only when a field starts with it. Both apply when the query contains more than one word, and both default to `0`.
 - `min_characters`: The minimum number of characters required in a search query. Defaults to `1`.
 - `min_word_characters`: The minimum number of characters required in a word in a search query. Defaults to `2`.
 - `score_threshold`: The minimum score required for a result to be included in the search results. Defaults to `1`.
