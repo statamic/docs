@@ -12,6 +12,11 @@ options:
     description: |
       Enable to allow uploading new files into the container. Default: `true`.
   -
+    name: aspect_ratio
+    type: string
+    description: |
+      The ratio of the preview in `full` mode. Only affects the Control Panel, not the original asset or your front end. Options: `8/3`, `2/1`, `16/9`, `3/2`, `4/3`, `1/1`, `3/4`, `2/3`, `9/16`. Default: `8/3`.
+  -
     name: container
     type: string
     description: |
@@ -40,7 +45,7 @@ options:
     name: mode
     type: string
     description: >
-      Set to `list` to use the table layout mode, `grid` to use the grid mode with larger thumbnails, or `compact` to use small square thumbnails. See [UI modes](#ui-modes). Default: `list`.
+      Set to `list` to use the table layout mode, `grid` to use the grid mode with larger thumbnails, `compact` to use small square thumbnails, or `full` to use a large preview. See [UI modes](#ui-modes). Default: `list`.
   -
     name: query_scopes
     type: string
@@ -76,6 +81,18 @@ Compact mode shows selected assets as small square thumbnails alongside a button
 image:
   type: assets
   mode: compact
+```
+
+Full mode shows the first asset as a large, full-width preview that respects its focal point and zoom. It's designed for "hero" style images. When more than one asset is allowed, any additional assets are shown as compact thumbnails below it.
+
+The preview uses an `8/3` aspect ratio by default, which you can change with the `aspect_ratio` option. This only affects the Control Panel—it doesn't crop the original asset or change how it's displayed on your front end.
+
+```yaml
+hero_image:
+  type: assets
+  mode: full
+  aspect_ratio: 16/9
+  max_files: 1
 ```
 
 ## Data Structure
