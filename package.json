@@ -20,7 +20,6 @@
         "vite-plugin-devtools-json": "^1.0.0"
     },
     "dependencies": {
-        "@docsearch/js": "^3.0.0-alpha.40",
         "@tailwindcss/postcss": "^4.1.12",
         "@tailwindcss/vite": "^4.1.12",
         "dayjs": "^1.10.7",
