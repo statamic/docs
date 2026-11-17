@@ -42,10 +42,10 @@ If you are the fieldtype author, you may choose to define actions internally by 
 computed: {
     internalFieldActions() {
         return [
-            { ... },  
-            { ... },  
+            { ... },
+            { ... },
         ];
-    }    
+    }
 }
 ```
 
@@ -102,10 +102,9 @@ The payload provided to the `run`, `quick`, `visible`, and `icon` functions will
 | `update`          | function | Whatever you pass to this method will update the field's value. When used in a set, this expects a field handle as the first argument.     |
 | `updateMeta`      | function | Whatever you pass to this method will update the field's meta data. When used in a set, this expects a field handle as the first argument. |
 | `fieldPathPrefix` | string   | The path to the field handle, when nested inside another field like a Grid or Replicator.                                                  |
-| `vm`              | Object   | The Vue component                                                                                                                          |
-| `fieldVm`         | Object   | When inside a Bard or Replicator set, this is the Vue component of the Bard/Replicator.                                                    |
+| `container`       | Object   | Context from the [PublishContainer](https://ui.statamic.dev/?path=/docs/components-publishcontainer--docs).                                |
 | `isReadOnly`      | bool     | Whether the field is read only.                                                                                                            |
-| `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.                                   |                                   
+| `confirmation`    | Object   | When using a [confirmation modal](#confirmation-modals), this will contain the result of the submission.                                   |
 
 ## Quick Actions
 
@@ -163,7 +162,7 @@ You may also pair this with the `isReadOnly` property within the payload.
     visibleWhenReadOnly: true,
     run: ({ update, value, isReadOnly }) => {
         doSomething();
-        
+
         if (!isReadOnly) update(...);
     }
 }
@@ -183,11 +182,11 @@ When running your action, you may use a modal as confirmation and to ask for add
 }
 ```
 
-If the user closes the modal without confirming, the `run` won't be executed. 
+If the user closes the modal without confirming, the `run` won't be executed.
 
 ### Confirmation Modal Options
 
-The `confirm` option will give a generic "Are you sure" prompt if you pass `true`. 
+The `confirm` option will give a generic "Are you sure" prompt if you pass `true`.
 
 You may pass an options object to the `confirm` property in order to customize it. For example:
 
@@ -197,7 +196,7 @@ You may pass an options object to the `confirm` property in order to customize i
         title: 'My Modal',
         text: 'Are you sure you want to do that?'
     }
-} 
+}
 ```
 
 | Option        | Type   | Description                                                                                                      |
@@ -206,7 +205,7 @@ You may pass an options object to the `confirm` property in order to customize i
 | `buttonText`  | string | The text to be displayed in the confirmation button. Default: `Confirm`.                                         |
 | `text`        | string | The body text. Defaults to `Are you sure?` if the modal would otherwise be empty (no fields, warning text, etc). |
 | `warningText` | string | Red warning text. It will be displayed after confirmationText if defined.                                        |
-| `dangerous`   | bool   | Whether the confirmation button should be red.                                                                   | 
+| `dangerous`   | bool   | Whether the confirmation button should be red.                                                                   |
 | `fields`      | object | An object containing field definitions. See [fields](#confirmation-modal-fields).                                |
 
 ### Confirmation Modal Fields
@@ -246,12 +245,12 @@ The `confirmation` property is an object containing the following properties:
 
 ## Accessing Other Fields
 
-If you find yourself needing to access other form field values, configs, etc., you can reach into the publish form store from within your `run` function: 
+If you find yourself needing to access other form field values, configs, etc., you can reach into the publish container within your `run` function:
 
 ```js
 {
-    run: ({ store, storeName }) => {
-        const values = store.state.publish[storeName].values;
+    run: ({ container }) => {
+        const values = container.values.value;
     }
 }
 ```
