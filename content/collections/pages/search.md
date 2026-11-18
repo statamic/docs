@@ -172,6 +172,35 @@ class BlogFilter
 }
 ```
 
+### Query scopes
+
+On large sites, a filter can be slow, since every item has to be loaded before the filter can decide whether to keep it. Instead, you can narrow down the searchables with a [query scope](/extending/query-scopes-and-filters#scopes), which is applied to the query before any items are loaded.
+
+```php
+'searchables' => ['collection:blog'],
+'query_scope' => 'searchable_entries',
+```
+
+The value is the handle of the scope, which is the snake case version of its class name:
+
+```php
+namespace App\Scopes;
+
+use Statamic\Query\Scopes\Scope;
+
+class SearchableEntries extends Scope
+{
+    public function apply($query, $values)
+    {
+        $query->where('show_in_search', true);
+    }
+}
+```
+
+Unlike a filter, a query scope doesn't override the native filters. Drafts are still left out of the index.
+
+Query scopes are applied to entries, terms and users. They aren't applied to assets.
+
 ### Records & fields
 
 The best practice for creating search indexes is to simplify your record structure as much as possible. Each record should contain only enough information to be discoverable on its own, and no more. You can customize this record by deciding which _fields_ are included in the index.
