@@ -1245,6 +1245,11 @@ Now you can define the context of the named slot using the `slot:name` tag forma
   </a>
 {{ /partial:modal }}
 ```
+
+### Components
+
+Components are reusable, isolated chunks of UI with props, attribute bags, and slots. Antlers can render existing Laravel Blade components, and you can author anonymous components with Antlers itself. Head over to [Antlers Components](/frontend/antlers-components) to learn more.
+
 ### Stacks
 
 Antlers allows you to push template code to a "stack" which can be rendered somewhere else in your layout (most commonly) or another view. This can be particularly useful for specifying any JavaScript libraries required by your child views:
