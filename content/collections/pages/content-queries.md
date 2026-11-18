@@ -229,6 +229,14 @@ Entry::query()
 
 Note: `orWhereNull` and `orWhereNotNull` are also both supported.
 
+On the flat-file (Stache) driver, an entry that doesn't have a field at all is treated as having a `null` value, so `whereNull` matches it and `whereNotNull` doesn't. Equality is loose, too: `where('field', false)` and `where('field', '')` match entries where the field is missing, `null`, `false`, or an empty string. To keep entries where a toggle is missing or `true` and exclude only those set to `false` (or an empty string), use `!=`:
+
+```php
+Entry::query()
+    ->where('searchable', '!=', false) // [tl! ~~]
+    ->get();
+```
+
 
 
 ## Complex where clauses
