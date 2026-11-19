@@ -51,7 +51,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       <tr>
          <td>6</td>
          <td>12-13</td>
-         <td>8.3-8.5</td>
+         <td>8.3-8.6</td>
          <td>Jan 2026</td>
          <td>Mar 2027</td>
          <td>Dec 2027</td>
@@ -59,7 +59,7 @@ Statamic and its other first-party packages follow [Semantic Versioning](https:/
       <tr>
          <td>7</td>
          <td>13-14</td>
-         <td>8.4-8.6</td>
+         <td>8.5-8.7</td>
          <td>2027</td>
          <td>TBC</td>
          <td>TBC</td>
