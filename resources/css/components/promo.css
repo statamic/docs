@@ -3,7 +3,8 @@
 /* Notes...
 
     Near-black purple banner at the very top of the page, above the docs header. It scrolls away with the page.
-    Dismissing it adds .is-promo-dismissed to <html>,
+    On wide screens the docs header is fixed, so it starts --promo-block-size down and slides up with the
+    banner as you scroll (see docs-header.css), leaving no gap above it. Dismissing it adds .is-promo-dismissed to <html>,
     which an inline script also sets before first paint, so it never pops in or shifts the layout.
     On small screens the long description is hidden so it fits on one or two lines.
 
@@ -22,6 +23,16 @@
             button.c-promo__close
 
 */
+
+/* The banner's height on wide screens, where the fixed docs header slides up by this much as it scrolls away.
+   Only set while the banner is on the page, so taking the partial out leaves the header at the top. */
+:root:has(.c-promo) {
+    --promo-block-size: 2.5rem;
+}
+
+:root.is-promo-dismissed {
+    --promo-block-size: 0px;
+}
 
 .c-promo {
     position: relative;
@@ -45,6 +56,15 @@
     position: relative;
     padding: .5rem 2.5rem;
     background: hsl(256deg 35% 12%);
+
+    /* --mq-nav-open-after: one line, at a fixed height the docs header can line up with */
+    @media (width >= 1100px) {
+        box-sizing: border-box;
+        display: grid;
+        align-content: center;
+        block-size: var(--promo-block-size);
+        padding-block: 0;
+    }
 }
 
 .c-promo__link {

@@ -212,8 +212,12 @@
         @media (width >= 1100px) {
             .c-docs-header {
                 position: fixed;
-                top: unset;
                 inline-size: 100%;
+                /* Start below the promo banner, then slide up with it as it scrolls away, ending at the top of the window */
+                top: var(--promo-block-size, 0px);
+                animation: header-follow-promo linear both;
+                animation-timeline: scroll(root);
+                animation-range: 0px var(--promo-block-size, 0px);
             }
             main {
                 padding-block-start: 9rem;
@@ -225,6 +229,11 @@
                 /* Increase */
                 padding-block-start: 11rem;
             }
+        }
+    }
+    @keyframes header-follow-promo {
+        to {
+            top: 0;
         }
     }
     body {
