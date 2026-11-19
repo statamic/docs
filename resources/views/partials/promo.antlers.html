@@ -1,14 +1,19 @@
-<div class="c-promo"
-    x-cloak
-    x-data="{ dismissed: localStorage.getItem('summit-2027-dismissed') === 'true' }"
-    x-show="!dismissed">
+{{# Hidden before first paint once dismissed, so the banner at the top of the page doesn't pop in or out and shift the layout #}}
+<script>try { if (localStorage.getItem('summit-2027-dismissed') === 'true') document.documentElement.classList.add('is-promo-dismissed') } catch {}</script>
+<div class="c-promo">
     <div class="c-promo__inner">
-        <a href="https://statamicsummit.com" target="_blank" class="block text-white">
-            Statamic Summit 2027 &middot; Feb 16&ndash;19 &middot; Talks, workshops, and three nights in a German castle. Get tickets &rarr;
+        <a class="c-promo__link" href="https://statamicsummit.com" target="_blank">
+            <span class="c-promo__name"><span style="margin-inline-end: 0.15rem">🏰</span> Statamic Summit 2027</span>
+            <span class="c-promo__separator" aria-hidden="true">/</span>
+            <span class="c-promo__date">Feb 16&ndash;19</span>
+            <span class="c-promo__separator" aria-hidden="true">/</span>
+            <span class="c-promo__details">Talks, workshops, and three nights in a German castle.</span>
+            <span class="c-promo__cta">Get Tickets</span>
         </a>
         <button
-            @click="dismissed = true; localStorage.setItem('summit-2027-dismissed', 'true')"
-            class="c-promo__close relative z-10"
+            type="button"
+            onclick="document.documentElement.classList.add('is-promo-dismissed'); try { localStorage.setItem('summit-2027-dismissed', 'true') } catch {}"
+            class="c-promo__close"
             aria-label="Dismiss promo">
             &times;
         </button>

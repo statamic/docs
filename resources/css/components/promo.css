@@ -1,54 +1,121 @@
+/* GROUP COMPONENTS / PROMO
+=================================================== */
+/* Notes...
+
+    Near-black purple banner at the very top of the page, above the docs header. It scrolls away with the page.
+    Dismissing it adds .is-promo-dismissed to <html>,
+    which an inline script also sets before first paint, so it never pops in or shifts the layout.
+    On small screens the long description is hidden so it fits on one or two lines.
+
+*/
+/* HTML Example...
+
+    .c-promo
+        .c-promo__inner
+            a.c-promo__link
+                span.c-promo__name
+                span.c-promo__separator
+                span.c-promo__date
+                span.c-promo__separator.c-promo__details
+                span.c-promo__details
+                span.c-promo__cta
+            button.c-promo__close
+
+*/
+
 .c-promo {
-    position: fixed;
-    z-index: 50;
-    height: 2.5rem;
-    bottom: .75rem;
-    padding: .5rem;
+    position: relative;
+    /* Above the docs header, whose graph-paper pattern (.c-docs-header__inner::before) otherwise reaches up over the banner */
+    z-index: var(--z-index-above-nav);
     text-align: center;
     color: white;
     font-weight: bold;
     font-size: 0.875rem;
-    width: 100%;
+    line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    .is-promo-dismissed & {
+        display: none;
+    }
 }
 
+/* Near-black purple strip */
 .c-promo__inner {
-    background: var(--color-gradient-purple);
-    padding: .5rem;
-    border-radius: .5rem;
-    margin-inline: auto;
     position: relative;
-    padding-right: 2.5rem;
+    padding: .5rem 2.5rem;
+    background: hsl(256deg 35% 12%);
 }
 
-.c-promo:hover .c-promo__inner {
-    background: linear-gradient(to right, var(--color-purple), var(--color-pink), var(--color-blue));
-    background-size: 200% 100%;
-    animation: gradient-animate 2s ease infinite;
+.c-promo__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
 }
 
-@keyframes gradient-animate {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.c-promo__separator {
+    margin-inline: .25em;
+    color: hsl(0deg 0% 100% / 40%);
+}
+
+/* Softer than the event name */
+.c-promo__date,
+.c-promo__details {
+    color: hsl(0deg 0% 100% / 75%);
+    font-weight: 500;
+}
+
+.c-promo__name,
+.c-promo__date,
+.c-promo__cta {
+    white-space: nowrap;
+}
+
+/* "Get tickets" as an 80s neon sign: pink outline pill, white-hot letters, glowing brighter on hover */
+.c-promo__cta {
+    display: inline-block;
+    margin-inline-start: .75em;
+    padding: .125rem .625rem;
+    border-radius: 999px;
+    color: hsl(287deg 100% 95%);
+    box-shadow:
+        inset 0 0 0 1px hsl(287deg 100% 75%),
+        0 0 6px hsl(287deg 100% 60%),
+        0 0 14px hsl(287deg 100% 50% / 70%),
+        inset 0 0 8px hsl(287deg 100% 60% / 60%);
+    text-shadow: 0 0 4px hsl(287deg 100% 65%), 0 0 10px hsl(287deg 100% 55%);
+    transition: color .2s ease, box-shadow .2s ease;
+}
+
+.c-promo:hover .c-promo__cta {
+    color: white;
+    box-shadow:
+        inset 0 0 0 1px hsl(287deg 100% 85%),
+        0 0 8px hsl(287deg 100% 65%),
+        0 0 22px hsl(287deg 100% 55%),
+        inset 0 0 12px hsl(287deg 100% 60% / 80%);
+}
+
+.c-promo__details {
+    @media (width < 40rem) {
+        display: none;
+    }
 }
 
 .c-promo__close {
     position: absolute;
-    top: -2px;
+    inset-block: 0;
     right: 0.75rem;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 0.25rem;
-    opacity: 0.8;
-    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0.8;
     transition: opacity 0.2s ease;
 }
 
