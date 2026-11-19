@@ -1,13 +1,13 @@
 <div class="c-promo"
     x-cloak
-    x-data="{ dismissed: localStorage.getItem('vote-dismissed') === 'true' }"
+    x-data="{ dismissed: localStorage.getItem('summit-2027-dismissed') === 'true' }"
     x-show="!dismissed">
     <div class="c-promo__inner">
-        <a href="https://cmscritic.com/vote" target="_blank" class="block text-white">
-            🏆 Vote for your favorite CMS at the CMS Critic Awards! Voting ends Feb 28th.
+        <a href="https://statamicsummit.com" target="_blank" class="block text-white">
+            Statamic Summit 2027 &middot; Feb 16&ndash;19 &middot; Talks, workshops, and three nights in a German castle. Get tickets &rarr;
         </a>
         <button
-            @click="dismissed = true; localStorage.setItem('vote-dismissed', 'true')"
+            @click="dismissed = true; localStorage.setItem('summit-2027-dismissed', 'true')"
             class="c-promo__close relative z-10"
             aria-label="Dismiss promo">
             &times;
