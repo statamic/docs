@@ -6,7 +6,7 @@
     On wide screens the docs header is fixed, so it starts --promo-block-size down and slides up with the
     banner as you scroll (see docs-header.css), leaving no gap above it. Dismissing it adds .is-promo-dismissed to <html>,
     which an inline script also sets before first paint, so it never pops in or shifts the layout.
-    On small screens it's left-aligned, in line with the page content, the long description is hidden and the text and button shrink, so it fits on one line
+    Below 900px it's left-aligned, in line with the page content, the long description is hidden and the text and button shrink, so it fits on one line
     ("Statamic Summit 2027 / Feb 16–19 [Tickets]"), only wrapping the button under it on the narrowest phones.
 
 */
@@ -48,7 +48,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    @media (width < 40rem) {
+    @media (width < 900px) {
         text-align: start;
         font-size: .8125rem;
     }
@@ -64,9 +64,10 @@
     padding: .5rem 2.5rem;
     background: hsl(256deg 35% 12%);
 
-    /* On phones the text starts in line with the page content below (.c-entry-content's padding) */
-    @media (width < 40rem) {
-        padding: .625rem var(--spacing-xl);
+    /* Below 900px the text starts in line with the page content below: .c-entry-content's padding,
+       plus the space either side once it reaches its max width and centres */
+    @media (width < 900px) {
+        padding: .625rem calc(max(0px, (100% - var(--max-width-reading)) / 2) + var(--spacing-xl));
     }
 
     /* --mq-nav-open-after: one line, at a fixed height the docs header can line up with */
@@ -89,7 +90,7 @@
     margin-inline: .25em;
     color: hsl(0deg 0% 100% / 40%);
 
-    @media (width < 40rem) {
+    @media (width < 900px) {
         margin-inline: .2em;
     }
 }
@@ -122,7 +123,7 @@
     text-shadow: 0 0 4px hsl(287deg 100% 65%), 0 0 10px hsl(287deg 100% 55%);
     transition: color .2s ease, box-shadow .2s ease;
 
-    @media (width < 40rem) {
+    @media (width < 900px) {
         margin-inline-start: .5em;
         padding-inline: .5rem;
     }
@@ -137,11 +138,11 @@
         inset 0 0 12px hsl(287deg 100% 60% / 80%);
 }
 
-/* On phones the description goes, along with the slash before it, and the button just says "Tickets" */
+/* Below 900px the description goes, along with the slash before it, and the button just says "Tickets" */
 .c-promo__details,
 .c-promo__separator--details,
 .c-promo__cta-verb {
-    @media (width < 40rem) {
+    @media (width < 900px) {
         display: none;
     }
 }
