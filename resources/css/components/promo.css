@@ -6,7 +6,8 @@
     On wide screens the docs header is fixed, so it starts --promo-block-size down and slides up with the
     banner as you scroll (see docs-header.css), leaving no gap above it. Dismissing it adds .is-promo-dismissed to <html>,
     which an inline script also sets before first paint, so it never pops in or shifts the layout.
-    On small screens the long description is hidden so it fits on one or two lines.
+    On small screens the long description is hidden and the text and button shrink, so it fits on one line
+    ("Statamic Summit 2027 / Feb 16–19 [Tickets]"), only wrapping the button under it on the narrowest phones.
 
 */
 /* HTML Example...
@@ -17,9 +18,10 @@
                 span.c-promo__name
                 span.c-promo__separator
                 span.c-promo__date
-                span.c-promo__separator.c-promo__details
+                span.c-promo__separator.c-promo__separator--details
                 span.c-promo__details
                 span.c-promo__cta
+                    span.c-promo__cta-verb
             button.c-promo__close
 
 */
@@ -46,6 +48,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
+    @media (width < 40rem) {
+        font-size: .8125rem;
+    }
+
     .is-promo-dismissed & {
         display: none;
     }
@@ -56,6 +62,11 @@
     position: relative;
     padding: .5rem 2.5rem;
     background: hsl(256deg 35% 12%);
+
+    /* The wide padding leaves room for the × (hidden for now); on phones it's needed for the text */
+    @media (width < 40rem) {
+        padding-inline: .5rem;
+    }
 
     /* --mq-nav-open-after: one line, at a fixed height the docs header can line up with */
     @media (width >= 1100px) {
@@ -76,6 +87,10 @@
 .c-promo__separator {
     margin-inline: .25em;
     color: hsl(0deg 0% 100% / 40%);
+
+    @media (width < 40rem) {
+        margin-inline: .2em;
+    }
 }
 
 /* Softer than the event name */
@@ -105,6 +120,11 @@
         inset 0 0 8px hsl(287deg 100% 60% / 60%);
     text-shadow: 0 0 4px hsl(287deg 100% 65%), 0 0 10px hsl(287deg 100% 55%);
     transition: color .2s ease, box-shadow .2s ease;
+
+    @media (width < 40rem) {
+        margin-inline-start: .5em;
+        padding-inline: .5rem;
+    }
 }
 
 .c-promo:hover .c-promo__cta {
@@ -116,7 +136,10 @@
         inset 0 0 12px hsl(287deg 100% 60% / 80%);
 }
 
-.c-promo__details {
+/* On phones the description goes, along with the slash before it, and the button just says "Tickets" */
+.c-promo__details,
+.c-promo__separator--details,
+.c-promo__cta-verb {
     @media (width < 40rem) {
         display: none;
     }
