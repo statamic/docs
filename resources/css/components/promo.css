@@ -6,7 +6,7 @@
     On wide screens the docs header is fixed, so it starts --promo-block-size down and slides up with the
     banner as you scroll (see docs-header.css), leaving no gap above it. Dismissing it adds .is-promo-dismissed to <html>,
     which an inline script also sets before first paint, so it never pops in or shifts the layout.
-    On small screens it's left-aligned, the long description is hidden and the text and button shrink, so it fits on one line
+    On small screens it's left-aligned, in line with the page content, the long description is hidden and the text and button shrink, so it fits on one line
     ("Statamic Summit 2027 / Feb 16–19 [Tickets]"), only wrapping the button under it on the narrowest phones.
 
 */
@@ -64,9 +64,9 @@
     padding: .5rem 2.5rem;
     background: hsl(256deg 35% 12%);
 
-    /* The wide padding leaves room for the × (hidden for now); on phones it's needed for the text */
+    /* On phones the text starts in line with the page content below (.c-entry-content's padding) */
     @media (width < 40rem) {
-        padding: .625rem .5rem;
+        padding: .625rem var(--spacing-xl);
     }
 
     /* --mq-nav-open-after: one line, at a fixed height the docs header can line up with */
