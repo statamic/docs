@@ -136,6 +136,8 @@ _*Each rename action only accepts one new filename, so this is only useful in bu
 ### Replace
 The replace action lets you replace an existing asset with a new version with a new filename. This helps to ensure that your visitors don't run into browser-cached, old versions of your assets. Replaced assets with the replace action will update any references to it throughout your content wherever the [Assets field](/fieldtypes/assets) is used.
 
+By default, the original asset's data (alt text, focal point, and any other blueprint fields) is copied over to the new asset. Values from the original take precedence over any matching fields already on the new asset. Turn off the **Copy Data** toggle in the action's modal if you'd rather keep the new asset's data as-is.
+
 Bulk
 : No
 
