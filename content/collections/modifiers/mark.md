@@ -36,6 +36,30 @@ This cat <mark class="highlight">video</mark> is the okayest thing ever.
 
 If no words are specified the `get:q` value will be used by default.
 
+By default, matches inside longer words are highlighted too, so `two` would mark part of `network`. Pass `substring:false` to only highlight whole words.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ description | mark('cat thing', 'substring:false') }}
+{{ description | mark('ok', 'substring:false', 'class:highlight') }}
+```
+::tab blade
+```blade
+{!! Statamic::modify($description)->mark(['cat thing', 'substring:false']) !!}
+{!! Statamic::modify($description)->mark(['ok', 'substring:false', 'class:highlight']) !!}
+```
+::
+
+```html
+This <mark>cat</mark> video is the okayest <mark>thing</mark> ever.
+```
+
+```html
+This cat video is the okayest thing ever.
+```
+
 :::tip
 This modifier expects HTML input. While most plain text strings will work just fine you should escape the value with the `entities` modifier if your text contains less than or greater than symbols: `{{ plain_text | entities | mark }}`
 :::
