@@ -279,6 +279,23 @@ To fix this, enable ACLs on the bucket by setting its Object Ownership to "Bucke
 Don't use the same disk, bucket or url as your source images. If you were to clear your Glide cache (e.g. when using the `glide:clear` command) the whole disk will be emptied.
 :::
 
+### Permissions
+
+When Glide caches images to the local filesystem (every option above except a [custom disk](#custom-disk-cdn)), you can configure the permissions given to the directories and files it creates. For example, you may want them to be group-writable.
+
+```php
+// config/statamic/assets.php
+
+'image_manipulation' => [
+    'permissions' => [ // [tl! focus]
+        'directory' => 0755, // [tl! focus]
+        'file' => 0644, // [tl! focus]
+    ], // [tl! focus]
+]
+```
+
+Directory permissions are still subject to the process's umask.
+
 ## Path cache store
 
 Before Glide tries to generate an image, it will look into the filesystem to determine whether the image has already been generated. This will prevent the need for the image to be needlessly re-generated.
