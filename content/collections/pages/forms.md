@@ -1158,7 +1158,9 @@ Existing forms are converted to the Forms 2 format when they're saved, whether f
 - moves its `email:` config to `connections.email`.
 
 ### Custom email jobs
-**Affects apps with a custom `send_email_job` class.**
+**Affects apps with a custom `send_email_job` class, or code and tests that look for the `SendEmails` job.**
+
+Statamic no longer dispatches the `SendEmails` job. Instead, your `send_email_job` class (`Statamic\Forms\SendEmail` by default) is dispatched once per email, so if your tests or code look for `SendEmails`, look for that class instead.
 
 When an email's recipient, sender, or reply-to is set to one of your form's fields, it's saved as a `field:` token, like `field:email`. Custom `send_email_job` classes still receive the addresses as comma-separated strings, but those strings may now contain these tokens — like `field:email, jack@jackblack.com`. Statamic's own `Email` mailable resolves them to the submitted values. If your job reads the addresses itself, you'll need to resolve the tokens yourself:
 
