@@ -6,7 +6,7 @@ screenshot: fieldtypes/screenshots/v6/form.webp
 screenshot_dark: fieldtypes/screenshots/v6/form-dark.webp
 description: 'Pick a form, any form.'
 overview: |
-  Use this fieldtype to create a relationship with one of your site's [forms](/forms).
+  Use this fieldtype to create a relationship with one of your site's [forms](/frontend/forms).
 options:
   -
     name: max_items
@@ -31,7 +31,7 @@ related_entries:
 
 The Form fieldtype is gives your users a way to pick a form to include along with the current entry. How that form is implemented or shows up on the page is up to you.
 
-Not to be confused with [form fieldtypes](/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
+Not to be confused with [form fieldtypes](/frontend/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
 
 ## Data Storage
 
@@ -46,6 +46,12 @@ The Form fieldtype provides a few useful variables:
 * `handle`
 * `title`
 * `fields`
+* `sections`
+* `pages`
+* `status`
+* `require_login`
+* `closed_message`
+* `require_login_message`
 * `api_url`
 * `honeypot`
 
@@ -71,5 +77,5 @@ You can pass the `handle` to the [`{{ form:create }}`](/tags/form-create) tag to
 
 When the selected form has [Unique Instances](/frontend/forms-pro#unique-instances) enabled (a [Forms Pro](/frontend/forms-pro) feature), the fieldtype does a little more on the entry's publish form:
 
-- A **Configure** option lets you override the form's Access settings — close date, submission limit, closed message, and require login — and its [connections](/forms#connections), for that entry. Anything you leave blank, or any connection you don't touch, falls back to the form's setting.
+- A **Configure** option lets you override the form's Access settings — close date, submission limit, closed message, and require login — and its [connections](/frontend/forms#connections), for that entry. Anything you leave blank, or any connection you don't touch, falls back to the form's setting.
 - A **View Submissions** button opens the entry's submissions in a stack.
