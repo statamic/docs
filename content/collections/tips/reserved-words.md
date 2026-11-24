@@ -56,7 +56,6 @@ Some of these _may_ work as field names in some circumstances, but can have unin
 These handles are reserved on form submissions:
 
 - `date`
-- `entry`
 - `message`
 - `messages`
 - `site`

@@ -893,10 +893,6 @@ Statamic rejects restricted submissions server-side with a validation error, so 
 
 The message shown for a closed or limit-reached form can be customized with the **Closed Message** setting, and the message shown when login is required can be customized separately with **Require Login Message**. Leave either blank to use Statamic's default wording. If a form is both closed/limit-reached and requires login, the closed message takes precedence.
 
-:::tip
-When a form has [Forms Pro](/frontend/forms-pro)'s [Unique Instances](/frontend/forms-pro#unique-instances) enabled, these restrictions are checked per entry — and each entry can override them.
-:::
-
 ## Localizing forms
 
 Form fields aren't yet localizable — a field's display label, instructions, and options are shared across every site. We're planning on adding support for this soon.
@@ -1080,7 +1076,6 @@ The action provides the following methods:
 | --- | --- |
 | `form` | Provide the `Form` you want to use. |
 | `page` | Optional. (intended to be used alongside Forms Pro's multi-page forms feature) ID of the page you want to submit. |
-| `entry` | Optional. (intended to be used alongside Forms Pro's [unique instances](/frontend/forms-pro#unique-instances) feature) ID of the entry the submission is attached to. |
 | `resume` | `Submission` instance of the partial submission you wish to resume. |
 | `submission` | Returns the `Submission` being submitted or resumed, if there is one. |
 | `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
