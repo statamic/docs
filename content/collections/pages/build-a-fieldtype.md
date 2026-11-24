@@ -400,6 +400,26 @@ public function augment($value)
 
 [Read more about augmentation](/extending/augmentation)
 
+## Form sample values
+
+If your fieldtype can be used in [forms](/frontend/forms), you can provide sample values for it. Form email previews use `previewValue()`, and [fake submissions](/frontend/forms#generating-fake-submissions) use `fakeValue()`, which falls back to `previewValue()`.
+
+``` php
+public function previewValue(): mixed
+{
+    return 'Lorem ipsum';
+}
+
+public function fakeValue(\Faker\Generator $faker): mixed
+{
+    return $faker->sentence();
+}
+```
+
+Return the value in the same shape it's stored in. You can read the field's config with `$this->field()`. If your fieldtype doesn't collect a value, return `null`.
+
+`previewValue()` may run in production, so it should return the same value every time and shouldn't use Faker. `fakeValue()` only runs locally.
+
 ## Updating References
 
 If your fieldtype stores references to assets or taxonomy terms — either directly or nested inside sub-fields — you'll want to keep those references in sync when an asset is renamed, moved, or deleted, or when a term is renamed or deleted. Otherwise you end up with broken references pointing at stale URLs or IDs.

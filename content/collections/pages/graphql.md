@@ -618,6 +618,10 @@ Used for querying a single form.
     form(handle: "contact") {
         handle
         title
+        status
+        require_login
+        closed_message
+        require_login_message
         fields {
             handle
             display
@@ -631,10 +635,80 @@ Used for querying a single form.
     "form": {
         "handle": "contact",
         "title": "Contact",
+        "status": "open",
+        "require_login": false,
+        "closed_message": "This form is no longer accepting submissions.",
+        "require_login_message": "You must be logged in to submit this form.",
         "fields": [
             { "handle": "name", "display": "Name" },
             { "handle": "email", "display": "Email" },
             { "handle": "inquiry", "display": "Inquiry" }
+        ]
+    }
+}
+```
+
+The `status` field will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). The `closed_message` and `require_login_message` fields contain the messages configured in the Control Panel, or the default messages if none were configured, so you can show the right one when the form isn't open or the visitor isn't logged in.
+
+The `require_login` field tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
+
+The `fields` field lists every field in the form. Upload fields converted from 6.x `assets` or `files` fields report their `type` as `form_upload` ([what's changed](/frontend/forms#whats-changed-from-forms-1)). To render the form with the same structure as the Control Panel, query `sections` instead, which groups fields into the sections you've configured in the form builder.
+
+If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), query `pages` to get each page along with its sections.
+
+```graphql
+{
+    form(handle: "contact") {
+        pages {
+            id
+            display
+            instructions
+            sections {
+                display
+                instructions
+                fields {
+                    handle
+                    display
+                }
+            }
+        }
+    }
+}
+```
+
+```json
+{
+    "form": {
+        "pages": [
+            {
+                "id": "about_you",
+                "display": "About You",
+                "instructions": null,
+                "sections": [
+                    {
+                        "display": "Your Details",
+                        "instructions": null,
+                        "fields": [
+                            { "handle": "name", "display": "Name" },
+                            { "handle": "email", "display": "Email" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "your_inquiry",
+                "display": null,
+                "instructions": null,
+                "sections": [
+                    {
+                        "display": null,
+                        "instructions": null,
+                        "fields": [
+                            { "handle": "inquiry", "display": "Inquiry" }
+                        ]
+                    }
+                ]
+            }
         ]
     }
 }

@@ -28,7 +28,6 @@ Out of the box Statamic ships with the matrix below. Wildcard handles like `{col
 | Access the Control Panel                                  | `access cp`                                  |
 | Configure Sites                                           | `configure sites`                            |
 | Configure Fields                                          | `configure fields`                           |
-| Configure Form Fields                                     | `configure form fields`                      |
 | Manage Preferences                                        | `manage preferences`                         |
 | Access site                                               | `access {site} site`                         |
 | Create, edit, and delete collections                      | `configure collections`                      |
@@ -71,8 +70,16 @@ Out of the box Statamic ships with the matrix below. Wildcard handles like `{col
 | Impersonate users                                         | `impersonate users`                          |
 | View updates                                              | `view updates`                               |
 | Configure forms                                           | `configure forms`                            |
-| View form submissions                                     | `view {form} form submissions`               |
-| &nbsp;&nbsp;↳ Delete form submissions                     | `delete {form} form submissions`             |
+| Edit forms                                                | `edit forms`                                 |
+| ↳ Create forms                                            | `create forms`                               |
+| ↳ Delete forms                                            | `delete forms`                               |
+| View submissions                                          | `view form submissions`                      |
+| ↳ Delete submissions                                      | `delete form submissions`                    |
+| ↳ Manage spam                                             | `manage form spam`                           |
+| Edit {form} form                                          | `edit {form} form`                           |
+| View {form} submissions                                   | `view {form} form submissions`               |
+| ↳ Delete {form} submissions                               | `delete {form} form submissions`             |
+| ↳ Manage {form} spam                                      | `manage {form} form spam`                    |
 | Configure addons                                          | `configure addons`                           |
 | Edit addon settings                                       | `edit {addon} settings`                      |
 | Access utility                                            | `access {utility} utility`                   |
@@ -88,6 +95,15 @@ Author permissions are a little bit special. They determine the control users ca
 :::warning Important!
 This feature only has any effect if your entry blueprint has an `author` field. If you don't already have an `author` field, this functionality is not available.
 :::
+
+## Form permissions
+
+A few form features combine permissions rather than having their own:
+
+- Editing a form's [connections](/frontend/forms#connections) requires permission to both edit the form and view its submissions.
+- [Generating fake submissions](/frontend/forms#generating-fake-submissions) requires the `configure forms` permission.
+
+The `configure form fields` permission can no longer be assigned, but roles that already have it can still edit form fields.
 
 ## Site permissions
 

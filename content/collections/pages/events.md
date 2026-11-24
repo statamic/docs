@@ -559,6 +559,18 @@ public function handle(FormBlueprintFound $event)
 }
 ```
 
+### FormCreated
+`Statamic\Events\FormCreated`
+
+Dispatched after a form has been created.
+
+``` php
+public function handle(FormCreated $event)
+{
+    $event->form;
+}
+```
+
 ### FormCreating
 `Statamic\Events\FormCreating`
 
@@ -610,7 +622,7 @@ public function handle(FormSaved $event)
 ### FormSubmitted
 `Statamic\Events\FormSubmitted`
 
-Dispatched when a [Form](/forms) is submitted on the front-end, before the Submission is created.
+Dispatched when a [Form](/frontend/forms) is submitted on the front-end, before the Submission is created. On a [multi-page form](/frontend/forms-pro#multi-page-forms), it's only dispatched when the final page is submitted, after a [partial submission](/backend-apis/resource-apis/form-submission-repository#partial-submissions) already exists.
 
 ``` php
 public function handle(FormSubmitted $event)
@@ -1140,6 +1152,8 @@ public function handle(StaticCacheCleared $event)
 
 Dispatched after a form submission has been created. This happens after a form has been submitted on the front-end.
 
+[Partial submissions](/backend-apis/resource-apis/form-submission-repository#partial-submissions) aren't considered created until they're finalized, so this is dispatched when the final page of a multi-page form is submitted. If the form doesn't store submissions, it's still dispatched once.
+
 ``` php
 public function handle(SubmissionCreated $event)
 {
@@ -1152,10 +1166,26 @@ If you're looking to prevent a form being submitted or trigger validation errors
 ### SubmissionCreating
 `Statamic\Events\SubmissionCreating`
 
-Dispatched before a submission is created. You can return `false` to prevent it from being created.
+Dispatched before a submission is created. You can return `false` to prevent it from being stored. Connections and the [SubmissionFinalized](#submissionfinalized) event will still run.
+
+[Partial submissions](/backend-apis/resource-apis/form-submission-repository#partial-submissions) aren't considered created until they're finalized, so this is dispatched when the final page of a multi-page form is submitted. It isn't dispatched for forms that don't store submissions.
 
 ``` php
 public function handle(SubmissionCreating $event)
+{
+    $event->submission;
+}
+```
+
+### SubmissionFinalized
+`Statamic\Events\SubmissionFinalized`
+
+Dispatched when a submission is finalized — either when a regular form is submitted, when the final page of a multi-page form is submitted and its [partial submission](/backend-apis/resource-apis/form-submission-repository#partial-submissions) becomes complete, or when a spam submission is marked as not spam.
+
+Unlike `SubmissionCreated`, it's dispatched even when the form doesn't store submissions or a `SubmissionCreating` listener prevents storage, making it the best place to hook in logic that should run once a submission is truly complete. It isn't dispatched for [fake submissions](/frontend/forms#generating-fake-submissions).
+
+``` php
+public function handle(SubmissionFinalized $event)
 {
     $event->submission;
 }
@@ -1176,10 +1206,22 @@ public function handle(SubmissionDeleted $event)
 ### SubmissionSaved
 `Statamic\Events\SubmissionSaved`
 
-Dispatched after a form submission has been saved.
+Dispatched after a form submission has been saved, including each time a page of a multi-page form is submitted.
 
 ``` php
 public function handle(SubmissionSaved $event)
+{
+    $event->submission;
+}
+```
+
+### SubmissionSaving
+`Statamic\Events\SubmissionSaving`
+
+Dispatched before a form submission is saved, including each time a page of a multi-page form is submitted. You can return `false` to prevent it from saving.
+
+``` php
+public function handle(SubmissionSaving $event)
 {
     $event->submission;
 }

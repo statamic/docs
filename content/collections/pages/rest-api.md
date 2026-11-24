@@ -629,6 +629,8 @@ Gets all forms.
         "email": {...},
         "inquiry": {...}
       },
+      "sections": [...],
+      "pages": [...],
       "api_url": "http://example.com/api/forms/contact",
     },
     {
@@ -637,6 +639,8 @@ Gets all forms.
       "fields": {
         "email": {...}
       },
+      "sections": [...],
+      "pages": [...],
       "api_url": "http://example.com/api/forms/newsletter",
     }
   ],
@@ -659,10 +663,47 @@ Gets a single form.
       "email": {...},
       "inquiry": {...}
     },
+    "sections": [
+      {
+        "display": "Your Details",
+        "instructions": null,
+        "fields": {
+          "name": {...},
+          "email": {...}
+        }
+      },
+      {
+        "display": "Your Inquiry",
+        "instructions": null,
+        "fields": {
+          "inquiry": {...}
+        }
+      }
+    ],
+    "pages": [
+      {
+        "id": "main",
+        "display": null,
+        "instructions": null,
+        "sections": [...]
+      }
+    ],
+    "status": "open",
+    "require_login": false,
+    "closed_message": "This form is no longer accepting submissions.",
+    "require_login_message": "You must be logged in to submit this form.",
     "api_url": "http://example.com/api/forms/contact",
   }
 }
 ```
+
+The `fields` key contains every field in the form, keyed by handle. The `sections` key groups those same fields into the sections you've configured in the form builder, so you can render the form with the same structure as the Control Panel. Upload fields converted from 6.x `assets` or `files` fields report their `type` as `form_upload` ([what's changed](/frontend/forms#whats-changed-from-forms-1)).
+
+If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), the `pages` key contains each page's `id`, `display`, `instructions` and its `sections`. Single-page forms return a single page.
+
+The `status` key will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). The `closed_message` and `require_login_message` keys contain the messages configured in the Control Panel, or the default messages if none were configured, so you can show the right one when the form isn't open or the visitor isn't logged in.
+
+The `require_login` key tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
 
 ## Users
 

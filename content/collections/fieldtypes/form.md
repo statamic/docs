@@ -6,7 +6,7 @@ screenshot: fieldtypes/screenshots/v6/form.webp
 screenshot_dark: fieldtypes/screenshots/v6/form-dark.webp
 description: 'Pick a form, any form.'
 overview: |
-  Use this fieldtype to create a relationship with one of your site's [forms](/forms).
+  Use this fieldtype to create a relationship with one of your site's [forms](/frontend/forms).
 options:
   -
     name: max_items
@@ -22,7 +22,7 @@ options:
     name: query_scopes
     type: string
     description: >
-      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable assets. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
+      Allows you to specify a [query scope](/extending/query-scopes-and-filters#scopes) which should be applied when retrieving selectable forms. You should specify the query scope's handle, which is usually the name of the class in snake case. For example: `MyAwesomeScope` would be `my_awesome_scope`.
 related_entries:
   - fdb45b84-3568-437d-84f7-e3c93b6da3e6
   - aa96fcf1-510c-404b-9b63-cea8942e1bf8
@@ -30,6 +30,8 @@ related_entries:
 ## Overview
 
 The Form fieldtype is gives your users a way to pick a form to include along with the current entry. How that form is implemented or shows up on the page is up to you.
+
+Not to be confused with [form fieldtypes](/frontend/forms#form-fieldtypes) — the fields you add _inside_ a form when building it. This fieldtype is for selecting an entire form from elsewhere, like an entry.
 
 ## Data Storage
 
@@ -42,7 +44,29 @@ The Form fieldtype provides a few useful variables:
 * `handle`
 * `title`
 * `fields`
+* `sections`
+* `pages`
+* `status`
+* `require_login`
+* `closed_message`
+* `require_login_message`
 * `api_url`
 * `honeypot`
 
-You can use the [`form:create`](/tags/form-create) tag to render a `<form>` on your page.
+You can pass the `handle` to the [`{{ form:create }}`](/tags/form-create) tag to render a `<form>` on your page:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:create :in="form_fieldtype:handle" }}
+    ...
+{{ /form:create }}
+```
+::tab blade
+```blade
+<s:form:create :in="$form_fieldtype->handle">
+    ...
+</s:form:create>
+```
+::
