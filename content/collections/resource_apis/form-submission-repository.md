@@ -126,7 +126,7 @@ $submission->status(); // "partial"
 Partial submissions are [automatically deleted](/scheduling#deletepartialformsubmissions) after a configurable number of days (7 by default).
 
 :::tip
-Saving a partial submission only dispatches the [`SubmissionSaving`](/events#submissionsaving) and [`SubmissionSaved`](/events#submissionsaved) events. The [`SubmissionCreating`](/events#submissioncreating) and [`SubmissionCreated`](/events#submissioncreated) events aren't dispatched until the submission is finalized.
+Saving a partial submission only dispatches the [`SubmissionSaving`](/backend-apis/events#submissionsaving) and [`SubmissionSaved`](/backend-apis/events#submissionsaved) events. The [`SubmissionCreating`](/backend-apis/events#submissioncreating) and [`SubmissionCreated`](/backend-apis/events#submissioncreated) events aren't dispatched until the submission is finalized.
 :::
 
 ### Finalizing
@@ -134,9 +134,9 @@ Saving a partial submission only dispatches the [`SubmissionSaving`](/events#sub
 When a submission is complete, call `finalize()` on it. You don't need to call `save()` yourself. It:
 
 1. Removes its partial status and converts any uploaded files into assets.
-2. Dispatches the [`SubmissionCreating`](/events#submissioncreating) event. If a listener returns `false`, the submission isn't stored, but finalizing carries on.
-3. Saves the submission, then dispatches [`SubmissionCreated`](/events#submissioncreated).
-4. Dispatches [`SubmissionFinalized`](/events#submissionfinalized).
+2. Dispatches the [`SubmissionCreating`](/backend-apis/events#submissioncreating) event. If a listener returns `false`, the submission isn't stored, but finalizing carries on.
+3. Saves the submission, then dispatches [`SubmissionCreated`](/backend-apis/events#submissioncreated).
+4. Dispatches [`SubmissionFinalized`](/backend-apis/events#submissionfinalized).
 5. Triggers the form's [connections](/frontend/forms#connections).
 
 If storage is disabled for the form, `SubmissionCreating` doesn't fire. Instead, `SubmissionCreated` fires and the partial submission is deleted, before carrying on with `SubmissionFinalized` and the connections.

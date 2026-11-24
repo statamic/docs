@@ -250,10 +250,10 @@ Submissions marked as [spam](#spam-submissions) are also hidden by default. Swit
 
 To help test how your submissions display on the front-end with the [form submissions](/tags/form-submissions) tag, you can generate fake submissions populated with realistic data. From the submissions listing, use the **Generate Fake Submission** button:
 
-- **Submission Only** saves the submission without running the [`FormSubmitted`](/events#formsubmitted) event or sending [connections](#connections). The submission's own events, like [`SubmissionCreated`](/events#submissioncreated) and [`SubmissionSaved`](/events#submissionsaved), still fire.
+- **Submission Only** saves the submission without running the [`FormSubmitted`](/backend-apis/events#formsubmitted) event or sending [connections](#connections). The submission's own events, like [`SubmissionCreated`](/backend-apis/events#submissioncreated) and [`SubmissionSaved`](/backend-apis/events#submissionsaved), still fire.
 - **Submission + All Workflows** fires `FormSubmitted` first (a listener returning `false` cancels it), saves the submission, then sends any configured [connections](#connections) — handy for testing those too. If your local environment has real mail credentials, those emails really will be sent.
 
-[`SubmissionFinalized`](/events#submissionfinalized) doesn't fire in either mode.
+[`SubmissionFinalized`](/backend-apis/events#submissionfinalized) doesn't fire in either mode.
 
 Fake submissions are real, finalized submissions. They count towards [submission limits](#restricting-submissions), and show up in the `form:submissions` tag, exports, and submission counts. They're flagged so you can tell them apart, and the **Delete All Fake Submissions** option removes them when you're done.
 
@@ -977,7 +977,7 @@ To review them, switch the **Status** filter on the submissions listing to **Spa
 
 When a submission that was caught before being finalized (by the [honeypot](#honeypot), for example) is marked as not spam, it gets finalized as normal — triggering any configured [connections](#connections) at that point. Submissions that were manually flagged after being finalized simply have the flag removed, so nothing is re-triggered.
 
-Finalizing a rescued submission fires the [`SubmissionCreating`](/events#submissioncreating) event. If a listener returns `false`, the submission stays marked as spam and the action reports that it failed.
+Finalizing a rescued submission fires the [`SubmissionCreating`](/backend-apis/events#submissioncreating) event. If a listener returns `false`, the submission stays marked as spam and the action reports that it failed.
 
 Spam submissions are deleted automatically 30 days after being marked as spam, along with any files uploaded with them. The uploads are kept until then, so a submission marked as not spam can still be finalized with its files. You can change the number of days, or set it to `null` to keep spam forever:
 
@@ -1103,7 +1103,7 @@ The action provides the following methods:
 
 The action also throws various exceptions:
 
-- `SilentFormFailureException` is thrown when the [honeypot](#honeypot) catches spam, or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — so spam bots still see a success response. The submission data is available via `$e->submission()`.
+- `SilentFormFailureException` is thrown when the [honeypot](#honeypot) catches spam, or an event listener returns `false` from the [`FormSubmitted`](/backend-apis/events#formsubmitted) event — so spam bots still see a success response. The submission data is available via `$e->submission()`.
 - `FormRestrictedException` is thrown when a form is [restricted](#restricting-submissions). Its message is the form's [restriction message](#restricting-submissions), and the restricted `Form` is available via `$e->form()`.
 
 ## Adding config fields
