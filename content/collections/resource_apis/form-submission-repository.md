@@ -131,7 +131,15 @@ Saving a partial submission only dispatches the [`SubmissionSaving`](/events#sub
 
 ### Finalizing
 
-When a submission is complete, call `finalize()` on it. This removes its partial status, converts any uploaded files into assets, and saves it (or deletes it, if storage is disabled for the form). It then dispatches the `SubmissionCreating`, `SubmissionCreated` and [`SubmissionFinalized`](/events#submissionfinalized) events and triggers the relevant connections. You don't need to call `save()` yourself.
+When a submission is complete, call `finalize()` on it. You don't need to call `save()` yourself. It:
+
+1. Removes its partial status and converts any uploaded files into assets.
+2. Dispatches the [`SubmissionCreating`](/events#submissioncreating) event. If a listener returns `false`, the submission isn't stored, but finalizing carries on.
+3. Saves the submission, then dispatches [`SubmissionCreated`](/events#submissioncreated).
+4. Dispatches [`SubmissionFinalized`](/events#submissionfinalized).
+5. Triggers the form's [connections](/frontend/forms#connections).
+
+If storage is disabled for the form, `SubmissionCreating` doesn't fire. Instead, `SubmissionCreated` fires and the partial submission is deleted, before carrying on with `SubmissionFinalized` and the connections.
 
 Calling `finalize()` on a submission that isn't partial does nothing.
 
