@@ -149,10 +149,10 @@ You can find the suggestions dropdown's markup in the published view:
 
 ```antlers
 <template data-address-suggestions>
-	<ul>
-		<li data-address-option><span data-address-label></span></li>
-		<li data-address-attribution></li>
-	</ul>
+    <ul>
+        <li data-address-option><span data-address-label></span></li>
+        <li data-address-attribution></li>
+    </ul>
 </template>
 ```
 
