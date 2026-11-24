@@ -59,9 +59,7 @@ These handles are reserved on form submissions:
 - `entry`
 - `message`
 - `messages`
-- `partial`
 - `site`
-- `spam`
 
 ## Taxonomy Handles
 
