@@ -208,6 +208,26 @@ public function boot()
 
 Need something the built-ins don't cover? [Build a Form Fieldtype](/fieldtypes/build-a-form-fieldtype) and make it feel right at home in the Form Builder.
 
+## Storing submissions
+
+Submissions are stored by default. If you'd rather not keep them around — say, you only need the email — disable **Store Submissions** in the form's settings. Events still fire and [connections](#connections) still run, but nothing is saved.
+
+### Partial submissions
+
+[Forms Pro](/frontend/forms-pro)'s [multi-page forms](/frontend/forms-pro#multi-page-forms) save a **partial** submission as the visitor moves between pages, and finalize it when they submit the last page. Partials are stored even when **Store Submissions** is disabled, since they're needed to carry the visitor's answers between pages. In that case, they're deleted once the submission is finalized.
+
+Abandoned partials are deleted automatically, a number of days after they were created. You can change how long they're kept, or set it to `null` to keep them forever:
+
+```php
+// config/statamic/forms.php
+
+'delete_partial_submissions_after' => 7,
+```
+
+:::warning
+The cleanup runs as a daily queued job, so it needs the [scheduler](/scheduling) running, and a queue worker if you're not using the `sync` queue. Without it, abandoned partials stick around forever — even on forms that don't store submissions.
+:::
+
 ## Viewing submissions
 
 In the Forms area of the Control Panel you can explore the collected responses and export the data to CSV or JSON formats.
@@ -226,10 +246,16 @@ Submissions marked as [spam](#spam-submissions) are also hidden by default. Swit
 
 To help test how your submissions display on the front-end with the [form submissions](/tags/form-submissions) tag, you can generate fake submissions populated with realistic data. From the submissions listing, use the **Generate Fake Submission** button:
 
-- **Generate Fake Submission** creates a submission directly, without firing events or sending [connections](#connections).
-- **Generate Fake Submission + Run All Workflows** runs the submission through the full pipeline, firing events and sending any configured [connections](#connections) — handy for testing those too.
+- **Submission Only** saves the submission without running the [`FormSubmitted`](/events#formsubmitted) event or sending [connections](#connections). The submission's own events, like [`SubmissionCreated`](/events#submissioncreated) and [`SubmissionSaved`](/events#submissionsaved), still fire.
+- **Submission + All Workflows** fires `FormSubmitted` first (a listener returning `false` cancels it), saves the submission, then sends any configured [connections](#connections) — handy for testing those too. If your local environment has real mail credentials, those emails really will be sent.
 
-Fake submissions are flagged so you can tell them apart and bulk-delete them when you're done. If you'd like to disable fake submission generation for a form, you can turn it off in the form's settings.
+[`SubmissionFinalized`](/events#submissionfinalized) doesn't fire in either mode.
+
+Fake submissions are real, finalized submissions. They count towards [submission limits](#restricting-submissions), and show up in the `form:submissions` tag, exports, and submission counts. They're flagged so you can tell them apart, and the **Delete All Fake Submissions** option removes them when you're done.
+
+:::tip
+Fake submissions are only available when your app is running in the `local` environment, and only to super users and users with the `configure forms` permission.
+:::
 
 ## Displaying submission data
 
@@ -256,6 +282,14 @@ You can display any or all of the submissions of your forms on the front-end of 
 ## Exporting your data
 
 Exporting your data is just a click of the **Export** button away. You have the choice between CSV and JSON. Choose wisely, or choose both, it doesn't matter to us.
+
+Exports only include finalized submissions, unless you've applied a **Status** filter to the listing — in which case they follow it.
+
+### Choosing columns
+
+When exporting, you can choose which fields to include as columns, using the checkboxes in the export modal. All fields (plus the submission date) are selected by default.
+
+Column selection is available for the built-in CSV and JSON exporters. [Custom exporters](#custom-exporter) can opt in by returning `true` from a `supportsColumnSelection()` method.
 
 ### Configuring exporters
 
@@ -310,6 +344,20 @@ This allows you to configure whether the field handle or the field display text 
 // config/statamic/forms.php
 
 'csv_headers' => 'handle',
+```
+
+Both options can also be set per exporter, using `delimiter` and `headers` keys in the exporter's config. These take precedence over the global options:
+
+```php
+// config/statamic/forms.php
+
+'exporters' => [
+    'csv' => [
+        'class' => Statamic\Forms\Exporters\CsvExporter::class,
+        'delimiter' => ';', // [tl! focus]
+        'headers' => 'display', // [tl! focus]
+    ],
+],
 ```
 
 ### Custom exporter
@@ -389,9 +437,9 @@ Each email can be sent for every submission, or only when the submission matches
 
 #### The email body
 
-You can write the email body directly in the Control Panel — no need to create any views. You can use [Antlers](/frontend/antlers) to insert your form's fields into the body.
+You can write the email body directly in the Control Panel — no need to create any views. The **Message** field supports Markdown, and you can type `@` to insert any of your form's fields. When the email is sent, each one is replaced with the value that was submitted.
 
-If you'd rather have full control over the email's design, you can specify custom HTML and Text views instead. To output the written body inside your view, use `{{ email_config:body }}`. When there's no body and no views, Statamic will send an "automagic" email — a simple text email with a list of all the fields and values in the submission.
+If you'd rather have full control over the email's design, you can specify custom HTML and Text views instead. To output the written body inside your view, use `{{ email_config:body }}` — it's already rendered to HTML, with the submitted values filled in. When there's no body and no views, Statamic will send an "automagic" email — a simple text email with a list of all the fields and values in the submission.
 
 [Learn how to create your emails](/email)
 
@@ -404,7 +452,7 @@ Inside your email view, you have a number of variables available:
 - `site`, `locale` - The handle of the site
 - `config` - Any app configuration values
 - `email_config` - The email's settings, keyed by the handles of the fields you filled in when configuring it — `{{ email_config:subject }}`, `{{ email_config:mailer }}`, and so on.
-- `form_config` - Any extra config values appended to the form's blueprint (e.g. via addons using `Form::appendBlueprintTab()`)
+- `form_config` - Any extra config values added to the form's settings by addons using [`Form::appendConfigFields()`](#adding-config-fields)
 - Any data from [Global Sets](/globals#global-sets)
 - All of the submitted form values
 - A `fields` array
@@ -449,8 +497,10 @@ In each iteration of the `fields` array, you have access to:
 - `display` - The display name of the field. (e.g. "Name")
 - `handle` - The handle of the field (e.g. "name")
 - `value` - The augmented value (same as explained above)
-- `fieldtype` - The handle of the fieldtype (e.g. "assets")
+- `fieldtype` - The handle of the fieldtype (e.g. "form_upload")
 - `config` - The configuration of the blueprint field
+
+Heading, Paragraph, Banner, and Spacer fields aren't included, since they don't collect a value.
 
 If you'd rather render the submission with its page and section structure, use the `pages` and `sections` arrays. Each page has a `display`, `instructions`, and its `sections`; each section has a `display`, `instructions`, and its `fields` — containing the same variables as the `fields` array explained above.
 
@@ -495,11 +545,11 @@ Jack Black <jack@jackblack.com>
 
 The address fields suggest your form's fields — select one and the address the visitor submitted will be used when the email is sent. For example, selecting your "Email Address" field as the Reply-To means you can hit reply in your inbox to respond directly to the visitor.
 
-The Subject field supports Antlers, so you can reference submitted values there too using their field handles:
+Like the message, the Subject field lets you type `@` to insert your form's fields, so you can include submitted values in the subject too — like _"New enquiry from @Name"_.
 
-```
-{{ subject ?? "Email Form Submission" }}
-```
+:::tip
+Subjects and addresses written for earlier versions of Statamic using Antlers, like `{{ subject }}`, still work. However, only super users and users with the `configure forms` permission can add or change Antlers or `{env:}` syntax in a subject or address, so we recommend switching to `@` mentions.
+:::
 
 #### Attachments
 
@@ -558,7 +608,9 @@ The request contains the form's handle and the submission's data as JSON:
 }
 ```
 
-Only `http` and `https` URLs are supported. If you're developing locally, or sending requests to internal services with self-signed certificates, you can disable SSL verification per webhook.
+Only `http` and `https` URLs are supported. Outside of the `local` environment, the URL must resolve to a public address — webhooks can't be sent to private or internal hosts. If an endpoint uses a self-signed certificate, you can disable SSL verification per webhook.
+
+Requests time out after 30 seconds (or 5 seconds to connect), and redirects aren't followed — a redirect response is treated as a failure. Failed webhooks are retried, with up to 5 attempts in total. Outside of the `local` environment, sending webhooks requires the `curl` PHP extension.
 
 <figure>
   <img src="/img/configure-webhooks.webp" alt="Webhook configuration form" class="u-hide-in-dark-mode">
@@ -570,35 +622,52 @@ Only `http` and `https` URLs are supported. If you're developing locally, or sen
 
 You can build your own connections to send submissions anywhere you like.
 
-Create a class in the `app/FormConnections` directory that extends `Statamic\Forms\Connections\Connection` and Statamic will discover it automatically. Addons can do the same in their `FormConnections` directory, or register classes explicitly using the `$formConnections` property on their service provider.
+Create a class in the `app/FormConnectors` directory that extends `Statamic\Forms\Connectors\Connector` and Statamic will discover it automatically. Addons can do the same in their `FormConnectors` directory, or register classes explicitly using the `$formConnectors` property on their service provider.
+
+A connector manages a list of **connections** — like the individual emails in the Email connector. Each connection's settings are defined by a blueprint, and when a submission comes in, the connector returns a job to run for each connection.
 
 ```php
 <?php
 
-namespace App\FormConnections;
+namespace App\FormConnectors;
 
-use Statamic\Contracts\Forms\Form;
-use Statamic\Forms\Connections\Connection;
+use App\Jobs\SendToAcme;
+use Statamic\Contracts\Forms\Submission;
+use Statamic\Facades\Blueprint;
+use Statamic\Forms\Connectors\Connector;
 use Statamic\Support\VueComponent;
 
-class Acme extends Connection
+class AcmeConnector extends Connector
 {
     protected static $title = 'Acme';
-    protected $description = 'Send submissions to Acme.';
+    protected $description = 'Post submissions to an Acme channel.';
     protected $icon = 'globe-arrow';
     protected $developer = 'Acme Inc.';
 
-    public function count(Form $form): ?int
+    public function blueprint(): \Statamic\Fields\Blueprint
     {
-        return count($form->connections()->get('acme', []));
+        return Blueprint::makeFromFields([
+            'channel' => [
+                'type' => 'text',
+                'display' => 'Channel',
+                'validate' => ['required'],
+            ],
+        ]);
     }
 
-    public function render(Form $form): VueComponent
+    public function render(): VueComponent
     {
-        return VueComponent::render('acme-connection');
+        return VueComponent::render('acme-connector', $this->blueprintProps());
+    }
+
+    protected function job(Submission $submission, array $connection): ?object
+    {
+        return new SendToAcme($submission, $connection);
     }
 }
 ```
+
+The connector's handle is generated from the class name, minus any `Connector` suffix — `AcmeConnector` becomes `acme`. Its connections are saved to the form under that handle.
 
 #### Properties & Methods
 
@@ -608,126 +677,161 @@ class Acme extends Connection
 | `$description` | A short description shown on the Connect index. |
 | `$icon` | The icon shown on the Connect index. Either the name of an icon or inline SVG markup. |
 | `$smallIcon` | An optional simpler icon for small spaces, like the breadcrumb on the edit page. Falls back to `$icon`. |
-| `$developer` | Who built the connection, shown on the Connect index. |
-| `count()` | The number shown in the "Connections" badge on the Connect index. Optional. |
-| `isConfigured()` | Whether the connection is ready to use (eg. its credentials are present). When `false`, the edit page hides the save button so your component can render setup instructions instead. Defaults to `true`. |
-| `render()` | The Vue component (and its props) rendered on the connection's edit page. |
-| `preProcess()` | Prepares the saved config for editing. Whatever it returns is passed to your Vue component as its `modelValue`. Returns the config untouched by default. |
-| `rules()` | Validation rules for the value being saved. |
-| `process()` | Prepares the submitted value for saving. Whatever it returns gets saved to the form. Returns the value untouched by default. |
-| `routes()` | Routes for the connection (eg. OAuth callbacks). They're registered under `/forms/{form}/connect/{handle}` and automatically wrapped in authorization. |
-| `finalized()` | The job (or array of jobs) to be dispatched when a submission is finalized. |
-| `config()` | The connection's saved config for this submission — call it from `finalized()` to get what to send. |
+| `$developer` | Who built the connector, shown on the Connect index. |
+| `blueprint()` | Required. The fields for each connection. Used to render the fields, validate them, and process them for saving. |
+| `render()` | Required. The Vue component (and its props) rendered on the connector's edit page. |
+| `job()` | Required. Returns the job to dispatch for a single connection when a submission is finalized, or `null` to skip it. |
+| `count()` | The number shown in the "Connections" badge on the Connect index. Defaults to the number of connections. |
+| `isConfigured()` | Whether the connector is ready to use (eg. its credentials are present). When `false`, the edit page hides the save button so your component can render setup instructions instead. Defaults to `true`. |
+| `connectionRules()` | Extra validation rules for each connection's values, merged with the rules from the blueprint. |
+| `preProcessConnection()` | Prepares a single saved connection for editing. Pre-processes the values through the blueprint by default. |
+| `processConnection()` | Prepares a single connection's submitted values for saving. Processes the values through the blueprint by default. |
+| `routes()` | Routes for the connector (eg. OAuth callbacks). See [Routes](#routes). |
+| `form()` | The form being edited or submitted. |
+| `connections()` | The form's saved connections for this connector. |
 
 #### Saving
 
-You don't need any routes or controllers to save your connection — Statamic owns the save process.
+You don't need any routes or controllers to save your connections — Statamic owns the save process.
 
-Your config makes a round trip through your connection class:
+Your connections make a round trip through your connector class:
 
-1. When the page loads, the saved config is passed through your `preProcess()` method and handed to your Vue component as its `modelValue`.
+1. When the page loads, each saved connection is passed through `preProcessConnection()`, and the list is handed to your Vue component as its `modelValue`.
 2. Your component emits `update:modelValue` as the user makes changes.
-3. When the user saves, the value is validated against your `rules()`, passed through your `process()` method, and saved to the form under your connection's handle.
+3. When the user saves, each connection is validated against your blueprint and `connectionRules()`, passed through `processConnection()`, and saved to the form.
 
-Validation errors are passed to your component via the `errors` prop, keyed by row index — like `0.channel`.
+Each connection is given an `id`, its `enabled` state, and its `conditions` for you, so you don't need to handle those yourself.
+
+:::warning
+Values entered into a connection are written by Control Panel users, so treat them as plain values. Don't parse them as Antlers, or resolve `{env:}` or `{config:}` syntax in them.
+:::
 
 #### The frontend
 
-The `render()` method determines which Vue component gets rendered, along with its props.
+The `render()` method determines which Vue component gets rendered, along with its props. Passing `$this->blueprintProps()` gives your component the `blueprint`, the fieldtype `meta` for each connection, and the `defaults` for new connections.
 
-Your component is rendered inside the connection's edit page, which passes it three props automatically — `form`, `modelValue` containing the pre-processed value, and `errors` containing any validation errors. You don't need to pass any of these through `render()` yourself.
+Your component is rendered inside the connector's edit page, which also passes it three props automatically — `form`, `modelValue` containing the pre-processed connections, and `errors` containing any validation errors. You don't need to pass any of these through `render()` yourself.
 
-If your connection supports multiple "rows" (eg. multiple emails per form), you can use the `<ConnectionRows>` component to get a head start.
-
-Pass it your array of rows via `v-model`, your validation errors via `errors`, and a header slot and a body slot for each row. It takes care of the collapsible row UI, the expand and collapse all button, and the add/duplicate/remove actions. New rows are seeded from `defaults.values`, and each row is given an `id`, `enabled` state and empty `conditions` for you.
+The `<ConnectionList>` component gives you a head start. It takes care of the collapsible connection UI, the expand and collapse all button, the add/duplicate/remove/enable actions, the conditional logic builder, and rendering your blueprint's fields — with their validation errors — for each connection.
 
 ```vue
 <script setup>
-import { ConnectionRows } from '@statamic/cms';
+import { ConnectionList, ConnectionSummary } from '@statamic/cms';
 import { Badge } from '@statamic/cms/ui';
 
 defineEmits(['update:modelValue']);
 
 defineProps({
+    form: Object,
     modelValue: { type: Array, default: () => [] },
     errors: { type: Object, default: () => ({}) },
+    blueprint: Object,
+    meta: { type: Object, default: () => ({}) },
     defaults: Object,
 });
 </script>
 
 <template>
-    <ConnectionRows
+    <ConnectionList
         :model-value="modelValue"
         :errors
         :defaults
-        :add-label="__('Add Notification')"
+        :blueprint
+        :meta
+        name="acme-connection"
+        :add-label="__('Add Channel')"
         :description="__('Post to a channel whenever this form receives a submission.')"
+        :delete-heading="__('Delete Channel')"
+        :delete-description="__('Are you sure you want to stop posting to this channel?')"
+        :always-label="__('Always post')"
+        :if-label="__('Post if...')"
         @update:model-value="$emit('update:modelValue', $event)"
     >
-        <template #header="{ item: notification, collapsed }">
-            <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
+        <template #header="{ item: connection, collapsed }">
+            <Badge size="lg" pill>{{ connection.channel || __('New Channel') }}</Badge>
+            <ConnectionSummary v-show="collapsed" :conditions="connection.conditions" />
         </template>
-
-        <template #default="{ item: notification, errors }">
-            <!-- Each row's fields go here... -->
-        </template>
-    </ConnectionRows>
+    </ConnectionList>
 </template>
 ```
 
-The default slot hands each row its own validation errors, grouped by field handle, ready to pass along to your fields.
+Then register the component in your JS entry file (`resources/js/cp.js`):
 
-#### Conditional logic
+```js
+import AcmeConnector from './components/AcmeConnector.vue';
 
-If you want your connection to support conditional logic, the `<ConnectionRules>` component renders the logic builder. Bind your conditions with `v-model:conditions` and put whatever the conditions control inside its `then` slot.
+Statamic.booting(() => {
+    Statamic.$components.register('acme-connector', AcmeConnector);
+});
+```
+
+The `header` slot is shown at the top of each connection, and receives the connection as `item`, along with its `index` and whether it's `collapsed`. `<ConnectionSummary>` describes a connection's conditions while it's collapsed — like _"If Enquiry Type equals Sales"_. When there are no conditions, it shows whatever you pass as `fallback` (the connection's subject, say), or _"Always"_.
+
+If you'd rather lay out a connection's body yourself, pass `<ConnectionList>` a default slot. It receives the connection as `item`, along with its `index`, `errors`, and `meta`. Inside it, you can use `<ConnectionRules>` to render the conditional logic builder (bind it with `v-model:conditions`), and `<ConnectionFields>` to render your blueprint's fields. Pass `<ConnectionFields>` a `fields` or `except` array of handles to render only some of them.
 
 ```vue
-<template #default="{ item: notification, index }">
+<template #default="{ item: connection }">
     <ConnectionRules
-        v-model:conditions="notification.conditions"
-        :always-label="__('Always send')"
-        :if-label="__('Send if...')"
+        v-model:conditions="connection.conditions"
+        :always-label="__('Always post')"
+        :if-label="__('Post if...')"
     >
         <template #then>
-            <!-- The fields controlled by the conditions go here... -->
+            <ConnectionFields :except="['internal_note']" />
         </template>
     </ConnectionRules>
 </template>
 ```
 
-On the PHP side, the `Statamic\Forms\Connections\ConnectionLogic` class handles the rest:
+:::tip
+Only render one `<ConnectionFields>` per connection, since fieldtypes rely on it holding all of the connection's values.
+:::
 
-- When editing, `ConnectionLogic::preProcess($conditions)` gives each condition the row ID the logic builder needs — call it on each row's conditions from your connection's `preProcess()` method.
-- When saving, `ConnectionLogic::process($conditions)` strips out the row IDs and any incomplete conditions, and returns `null` when there's nothing to save — call it from your `process()` method.
-- When a submission comes in, `ConnectionLogic::passes($config, $submission)` tells you whether a row should run — it fails when the row has been disabled, or when its conditions don't match the submission.
+`ConnectionList`, `ConnectionSummary`, `ConnectionRules`, and `ConnectionFields` are all exported from `@statamic/cms`.
 
-Statamic also exports the `<ConnectionRowSummary>` component, which describes a row's conditions in its header when collapsed — like _"If Enquiry Type equals Sales"_. When a row has no conditions, it shows whatever you pass as `fallback` (the row's subject or heading, say), or _"Always"_.
+#### Routes
 
-```vue
-<script setup>
-import { ConnectionRowSummary } from '@statamic/cms';
-</script>
-
-<template #header="{ item: notification, collapsed }">
-    <Badge size="lg" pill>{{ notification.channel || __('New Notification') }}</Badge>
-    <ConnectionRowSummary v-show="collapsed" :conditions="notification.conditions" :fallback="notification.heading" />
-</template>
-```
-
-#### Sending notifications
-
-When a submission is finalized, Statamic dispatches a single job chain: file uploads are converted to assets, then each of the connection jobs run and finally temporary file uploads are deleted.
-
-To hook into this process, return a job (or array of jobs) from the `finalized()` method. Your connection's saved config — the entry's override when [unique instances](/frontend/forms-pro#unique-instances) is enabled, otherwise the form's own — is available via `$this->config()`:
+If your connector needs routes, like an OAuth callback, define them in the `routes()` method:
 
 ```php
-public function finalized($submission): object|array
+use Illuminate\Routing\Router;
+
+public function routes(Router $router): void
 {
-    return new SendNotificationToThirdPartyService($submission, $this->config());
+    $router->get('callback', AcmeCallbackController::class)->name('callback');
 }
 ```
 
-Because Statamic uses Laravel's [job chaining](https://laravel.com/docs/queues#job-chaining) feature, if you need to dispatch additional jobs within one of your jobs, call `$this->prependToChain($job)` (from Laravel's `Queueable` trait) so they stay part of the chain.
+They're registered in the Control Panel under `/forms/{form}/connect/{handle}`.
+
+Like the edit page itself, your routes can only be used by users who can both edit the form and view its submissions.
+
+#### Sending submissions
+
+When a submission is finalized, Statamic converts any file uploads to assets, then calls your connector's `job()` method for each of its connections — skipping any that are disabled, or whose conditions don't match the submission — and dispatches the jobs you return.
+
+```php
+protected function job(Submission $submission, array $connection): ?object
+{
+    return new SendToAcme($submission, $connection);
+}
+```
+
+The `$connection` array contains the connection's saved values, like `$connection['channel']`.
+
+Each connection's job is dispatched on its own, so one failing job doesn't stop the others.
+
+Files from Upload fields that don't store their files are kept until every queued connection job has finished, so your job can still attach them. To be tracked, your job needs to implement `ShouldQueue` and use Laravel's `Queueable` trait. Other jobs are considered done as soon as they're dispatched.
+
+Statamic uses a cache store to keep track of which jobs have finished. Since that tracking needs to survive until your queue catches up, you should use a persistent store, like `database` or `redis`:
+
+```php
+// config/statamic/forms.php
+
+'connections_cache_store' => 'redis',
+```
+
+It uses your default cache store when `null`.
 
 ## File uploads
 
@@ -742,21 +846,26 @@ You can also set a maximum number of files to control whether respondents can up
 
 ### Configuring temporary file storage
 
-When using the `files` fieldtype, uploads are temporarily stored on your server before being attached to emails and then deleted. By default, these files are stored on the `local` disk at `storage/app/private/statamic/file-uploads`.
+Uploads are temporarily stored on your server when the form is submitted. Files from Upload fields that don't store their files are kept until they've been sent with your [connections](#connections), then deleted. Files that are being stored are kept until they've been converted to assets. By default, these files are stored on the `local` disk at `storage/app/private/statamic/form-uploads`.
 
 In multi-server environments where a file might be uploaded on one server but processed (eg. queued form emails) on another, you can configure the storage location to use a shared filesystem like S3:
 
 ```env
 STATAMIC_FILE_UPLOADS_DISK=s3
-STATAMIC_FILE_UPLOADS_PATH=statamic/file-uploads
+STATAMIC_FORM_UPLOADS_PATH=statamic/form-uploads
 ```
 
-Or in your `config/statamic/system.php` file:
+Or in your config files:
 
 ```php
+// config/statamic/system.php
 'file_uploads_disk' => env('STATAMIC_FILE_UPLOADS_DISK', 'local'),
-'file_uploads_path' => env('STATAMIC_FILE_UPLOADS_PATH', 'statamic/file-uploads'),
+
+// config/statamic/forms.php
+'file_uploads_path' => env('STATAMIC_FORM_UPLOADS_PATH', 'statamic/form-uploads'),
 ```
+
+The disk is shared with the Control Panel's own temporary uploads, which use a separate path (`system.file_uploads_path`).
 
 :::tip
 Since these are temporary files containing user uploads, you should use a private filesystem to prevent unauthorized access.
@@ -770,12 +879,12 @@ Sometimes you don't want a form to accept submissions forever. From the form's s
 - **Submission Limit** — the maximum number of submissions to accept, optionally scoped to a period (Total, Per Day, Per Week, or Per Month). The limit resets at the app timezone's midnight, start of the week, or start of the month.
 - **Require Login** — only logged in visitors may submit the form.
 
-Statamic rejects restricted submissions server-side with a validation error, so nothing gets through even if you don't check for it in your template. You can also hide or replace the form's contents on the front-end using the `restricted` and `restriction_message` variables:
+Statamic rejects restricted submissions server-side with a validation error, so nothing gets through even if you don't check for it in your template. You can also hide or replace the form's contents on the front-end using the `form_restricted` and `form_restriction_message` variables:
 
 ```antlers
 {{ form:contact }}
-    {{ if restricted }}
-        <p>{{ restriction_message }}</p>
+    {{ if form_restricted }}
+        <p>{{ form_restriction_message }}</p>
     {{ else }}
         {{ fields }} ... {{ /fields }}
     {{ /if }}
@@ -813,14 +922,14 @@ For example:
 ```antlers
 {{ form:create }}
     ...
-    <input type="text" name="honeypot" class="honeypot" />
+    <input type="text" name="{{ honeypot ?? 'honeypot' }}" class="honeypot" />
 {{ /form:create }}
 ```
 ::tab blade
 ```blade
 <s:form:create>
   ...
-  <input type="text" name="honeypot" class="honeypot" />
+  <input type="text" name="{{ $honeypot ?? 'honeypot' }}" class="honeypot" />
 </s:form:create>
 ```
 ::
@@ -830,7 +939,7 @@ For example:
 ```
 
 :::tip
-In order to fool smarter spam bots, you should customize the name of the field by changing the `name=""` attribute to something common, but not used by your particular form. Like `username` or `address`. Then, add `honeypot: your_field_name` to your form's config.
+In order to fool smarter spam bots, you should give the field a name that's common, but not used by your particular form. Like `username` or `address`. Set it in the **Honeypot** setting on the form's configuration screen, and the `honeypot` variable will output it for you.
 :::
 
 ### Honeypot behavior
@@ -839,6 +948,8 @@ The **Honeypot Behavior** setting on the form's configuration screen controls wh
 
 - **Ignore** (default): the submission is silently discarded.
 - **Save as Spam**: the submission is stored and [marked as spam](#spam-submissions), so you can review it later.
+
+This setting is only available when [Store Submissions](#storing-submissions) is enabled.
 
 Either way, the visitor receives the same response as a successful submission, so bots can't tell they've been caught.
 
@@ -849,6 +960,18 @@ Rather than being discarded, submissions caught by spam protection can be kept o
 To review them, switch the **Status** filter on the submissions listing to **Spam**. From there, you can use the **Mark as Spam** and **Mark as Not Spam** actions.
 
 When a submission that was caught before being finalized (by the [honeypot](#honeypot), for example) is marked as not spam, it gets finalized as normal — triggering any configured [connections](#connections) at that point. Submissions that were manually flagged after being finalized simply have the flag removed, so nothing is re-triggered.
+
+Finalizing a rescued submission fires the [`SubmissionCreating`](/events#submissioncreating) event. If a listener returns `false`, the submission stays marked as spam and the action reports that it failed.
+
+Spam submissions are deleted automatically 30 days after being marked as spam, along with any files uploaded with them. The uploads are kept until then, so a submission marked as not spam can still be finalized with its files. You can change the number of days, or set it to `null` to keep spam forever:
+
+```php
+// config/statamic/forms.php
+
+'delete_spam_submissions_after' => 30,
+```
+
+Like [partial submissions](#partial-submissions), the cleanup runs as a daily queued job, so it needs the [scheduler](/scheduling) running.
 
 ### Marking submissions as spam from addons
 
@@ -869,7 +992,31 @@ Event::listen(function (FormSubmitted $event) {
 
 Returning `false` halts the submission pipeline while still giving the visitor a successful response. Since the submission was saved as spam beforehand, it'll be waiting in the submissions listing for review.
 
-You can find more details about working with spam submissions in the [Form Submission Repository](/repositories/form-submission-repository#spam-submissions) docs.
+You can find more details about working with spam submissions in the [Form Submission Repository](/backend-apis/resource-apis/form-submission-repository#spam-submissions) docs.
+
+## Caching
+
+If you're [static caching](/static-caching) the page containing a form, responses like `success` and `errors` won't be available after submitting unless you [exclude the page from caching](/static-caching#excluding-pages) or wrap the form in `nocache` tags:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ nocache }}
+    {{ form:create in="contact" }}
+        ...
+    {{ /form:create }}
+{{ /nocache }}
+```
+::tab blade
+```blade
+<s:nocache>
+  <s:form:create in="contact">
+    ...
+  </s:form:create>
+</s:nocache>
+```
+::
 
 ## Rate limiting
 
@@ -935,6 +1082,7 @@ The action provides the following methods:
 | `page` | Optional. (intended to be used alongside Forms Pro's multi-page forms feature) ID of the page you want to submit. |
 | `entry` | Optional. (intended to be used alongside Forms Pro's [unique instances](/frontend/forms-pro#unique-instances) feature) ID of the entry the submission is attached to. |
 | `resume` | `Submission` instance of the partial submission you wish to resume. |
+| `submission` | Returns the `Submission` being submitted or resumed, if there is one. |
 | `submit` | Submit the form. Accepts an array of `$data` and an optional array of `$files`. Returns a `SubmissionResult` object containing the submission and the ID of the next page (in the case of a multi-page form). |
 | `validate` | Validate the current page. Accepts an array of `$data` and an optional array of `$files`. Also accepts an array of field handles to limit which fields are validated. |
 
@@ -942,3 +1090,41 @@ The action also throws various exceptions:
 
 - `SilentFormFailureException` is thrown when the [honeypot](#honeypot) catches spam, or an event listener returns `false` from the [`FormSubmitted`](/events#formsubmitted) event — so spam bots still see a success response. The submission data is available via `$e->submission()`.
 - `FormRestrictedException` is thrown when a form is [restricted](#restricting-submissions). Its message is the form's [restriction message](#restricting-submissions), and the restricted `Form` is available via `$e->form()`.
+
+## Adding config fields
+
+Addons can add their own fields to the form's settings using `Form::appendConfigFields()`, typically in a service provider's `boot` method.
+
+```php
+use Statamic\Facades\Form;
+
+Form::appendConfigFields(
+    handles: ['contact', 'newsletter'],
+    display: 'CRM',
+    fields: [
+        'crm_list' => [
+            'type' => 'text',
+            'display' => 'List ID',
+        ],
+    ],
+);
+```
+
+The first argument is a form handle, an array of form handles, or `*` for all forms. The fields are added as a new section using the `display` as its heading. If a section with that `display` already exists, the fields are merged into it instead.
+
+The values are saved alongside the form's config and are available as `form_config` inside the [`form:create`](/tags/form-create) tag and in your [email views](#email-variables). Fields using a handle Statamic reserves for itself — `title`, `honeypot`, `store`, `email`, `connections`, or `fields` — are ignored.
+
+### Positioning the section
+
+By default, the new section is added after the built-in ones. Use `beforeSection` or `afterSection` to place it relative to one of the existing sections: `name`, `fields`, `submissions`, or `access`.
+
+```php
+Form::appendConfigFields(
+    handles: '*',
+    display: 'CRM',
+    fields: [...],
+    afterSection: 'name', // [tl! ++]
+);
+```
+
+If the target section doesn't exist, the section is added at the end and a warning is logged.
