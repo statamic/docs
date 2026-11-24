@@ -149,7 +149,7 @@ There are a bunch of conditions available to you, like `:is`, `:isnt`, `:contain
 
 ### Statuses
 
-By default, only finalized submissions are included — [spam](/forms#spam-submissions) and [partial](/forms-pro#multi-page-forms) submissions are excluded. Submissions can be queried against `finalized`, `partial`, `spam`, or `any` status with conditions on `status`:
+By default, only finalized submissions are included — [spam](/frontend/forms#spam-submissions) and [partial](/frontend/forms-pro#multi-page-forms) submissions are excluded. Submissions can be queried against `finalized`, `partial`, `spam`, or `any` status with the `status:is` condition. Other conditions aren't supported on `status`.
 
 ::tabs
 
