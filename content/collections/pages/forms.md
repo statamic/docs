@@ -1136,7 +1136,19 @@ Existing forms are converted to the Forms 2 format when they're saved, whether f
 - deletes its `resources/blueprints/forms/{handle}.yaml` blueprint;
 - moves its `email:` config to `connections.email`.
 
-Editing an email in the Control Panel also turns its `to`, `cc`, `bcc`, and `reply_to` values into arrays. If you have a custom `send_email_job` class or an `Email` subclass that reads them as strings, update it to handle arrays.
+### Custom email jobs
+
+When an email's recipient, sender, or reply-to is set to one of your form's fields, it's saved as a `field:` token, like `field:email`. Custom `send_email_job` classes still receive the addresses as comma-separated strings, but those strings may now contain these tokens — like `field:email, jack@jackblack.com`. Statamic's own `Email` mailable resolves them to the submitted values. If your job reads the addresses itself, you'll need to resolve the tokens yourself:
+
+```php
+use Statamic\Support\Str;
+
+$addresses = collect(explode(',', $this->config['to']))
+    ->map(fn ($address) => trim($address))
+    ->flatMap(fn ($address) => Str::startsWith($address, 'field:')
+        ? (array) $this->submission->get(Str::after($address, 'field:'))
+        : [$address]);
+```
 
 ### Upload fields
 
@@ -1149,13 +1161,3 @@ Other existing fields keep their original `type`, like `text`, `textarea`, or `s
 - Date and time fields render native `type="date"` and `type="time"` inputs, including in the [user registration](/tags/user-register_form) and [profile](/tags/user-profile_form) forms. A published `date` view still takes priority.
 - Published 6.x field views (`text`, `textarea`, `select`, `radio`, `integer`, `assets`, and `files`) still take priority over the new Forms 2 views, even after you publish those. Delete the old views to use the new ones.
 - After a successful submission, Statamic removes the `?page=` query parameter from the URL it redirects back to. If the previous URL was on another site, it redirects to your home page instead.
-
-### Emails
-
-- Text wrapped in `[[` and `]]` in an email subject is now treated as a field [mention](#dynamic-recipients-and-subjects).
-- Only super users and users with the `configure forms` permission can add or change Antlers or `{env:}` syntax in an email's subject or addresses. Existing values keep working until someone edits them.
-
-### Permissions
-
-The `configure form fields` permission has been removed from the permissions screen. Roles that already have it can still edit form fields.
-
