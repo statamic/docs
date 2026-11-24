@@ -18,12 +18,16 @@ use Statamic\Facades\FormSubmission;
 
 | Methods | Description |
 | ------- | ----------- |
-| `all()` | Get all form submissions. |
-| `whereForm($handle)` | Get submissions by form handle. |
+| `all()` | Get all form submissions, including partial and spam submissions. |
+| `whereForm($handle)` | Get submissions by form handle, including partial and spam submissions. |
 | `whereInForm($handles)` | Get submissions, across multiple forms. Accepts an array of form handles. |
 | `find($id)` | Get a form submission, by its submission ID. |
 | `make()` | Makes a new `Submission` instance |
 | `query()` | Query Builder |
+
+:::tip
+These methods return submissions of every [status](#partial-submissions). `$form->submissions()` and the form's submission count only include finalized submissions. Use `$form->querySubmissions()` if you need the others.
+:::
 
 ## Querying
 
@@ -56,29 +60,24 @@ FormSubmission::query()
     ->get();
 ```
 
-#### Get partial form submissions
+#### Get form submissions by status
 
 ```php
 FormSubmission::query()
     ->where('form', 'postbox')
-    ->where('partial', true)
+    ->whereStatus('partial') // or 'finalized', 'spam' or 'any'
     ->get();
 ```
 
-#### Get spam form submissions
-
-```php
-FormSubmission::query()
-    ->where('form', 'postbox')
-    ->where('spam', true)
-    ->get();
-```
+:::tip
+`whereStatus()` is available on the default (Stache) submission query builder, but isn't part of the query builder contract, so custom drivers may not support it. Partial submissions have a `_partial` key set to `true`, and spam submissions have a `_marked_spam_at` timestamp, so you can query those directly instead.
+:::
 
 
 ## Creating
 
 Start by making an instance of a form submission with the `make` method.
-You need to pass in [a `Form` instance](/repositories/form-repository) before you can save a form submission.
+You need to pass in [a `Form` instance](/backend-apis/resource-apis/form-repository) before you can save a form submission.
 
 ```php
 $form = \Statamic\Facades\Form::find('postbox');
@@ -127,14 +126,14 @@ $submission->status(); // "partial"
 Partial submissions are [automatically deleted](/scheduling#deletepartialformsubmissions) after a configurable number of days (7 by default).
 
 :::tip
-The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `SubmissionSaved` events are dispatched when creating partial submissions, just like any other submission.
-
-If you're listening to these events in your code, and _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](/events#formsubmitted) or [`SubmissionFinalized`](/events#submissionfinalized) events instead.
+Saving a partial submission only dispatches the [`SubmissionSaving`](/events#submissionsaving) and [`SubmissionSaved`](/events#submissionsaved) events. The [`SubmissionCreating`](/events#submissioncreating) and [`SubmissionCreated`](/events#submissioncreated) events aren't dispatched until the submission is finalized.
 :::
 
 ### Finalizing
 
-When a submission is complete, call `finalize()` on it. This removes its partial status, deletes it (if storage is disabled for the form), triggers the relevent connections, and dispatches the [`SubmissionFinalized`](/events#submissionfinalized) event.
+When a submission is complete, call `finalize()` on it. This removes its partial status, converts any uploaded files into assets, and saves it (or deletes it, if storage is disabled for the form). It then dispatches the `SubmissionCreating`, `SubmissionCreated` and [`SubmissionFinalized`](/events#submissionfinalized) events and triggers the relevant connections. You don't need to call `save()` yourself.
+
+Calling `finalize()` on a submission that isn't partial does nothing.
 
 ```php
 $submission->finalize();
@@ -142,7 +141,7 @@ $submission->finalize();
 
 ## Spam Submissions
 
-A submission can be [marked as spam](/forms#spam-submissions), which hides it from the submissions listing by default and excludes it from submission counts and limits.
+A submission can be [marked as spam](/frontend/forms#spam-submissions), which hides it from the submissions listing by default and excludes it from submission counts and limits.
 
 ```php
 $submission->markAsSpam()->save();
@@ -157,7 +156,7 @@ To remove the flag again, call `markAsNotSpam()`:
 $submission->markAsNotSpam()->save();
 ```
 
-When a partial submission is marked as spam, it stops reporting itself as partial — `isPartial()` returns `false`, so it can't be resumed, and it's skipped by the automatic partial submission cleanup. Under the hood, the `partial` key stays in its data as a record that the submission was never finalized. That way, marking it as not spam and calling `finalize()` will send the submission through the full pipeline, as if it had just been submitted:
+When a partial submission is marked as spam, it stops reporting itself as partial — `isPartial()` returns `false`, so it can't be resumed, and it's skipped by the automatic partial submission cleanup. Under the hood, the internal `_partial` key is kept as a record that the submission was never finalized. That way, marking it as not spam and calling `finalize()` will send the submission through the full pipeline, as if it had just been submitted:
 
 ```php
 $submission->markAsNotSpam();
@@ -166,3 +165,7 @@ $submission->isPartial()
     ? $submission->finalize()
     : $submission->save();
 ```
+
+If a `SubmissionCreating` listener returns `false` while a spam submission is being finalized, `finalize()` returns `false` and the submission stays marked as spam.
+
+Spam submissions are [automatically deleted](/scheduling#deletespamformsubmissions) a configurable number of days after being marked as spam (30 by default).
