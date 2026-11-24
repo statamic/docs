@@ -2,7 +2,7 @@
 title: "Form:Create"
 id: aa96fcf1-510c-404b-9b63-cea8942e1bf8
 description: Manages markup and success/error handling for forms.
-intro: Statamic [forms](/forms) serve to collect, report, and reuse user submitted data. This tag handles the HTML markup, redirect behavior, and success/error states and messages for these forms.
+intro: Statamic [forms](/frontend/forms) serve to collect, report, and reuse user submitted data. This tag handles the HTML markup, redirect behavior, and success/error states and messages for these forms.
 parameters:
   -
     name: handle|is|in|form|formset
@@ -47,6 +47,51 @@ variables:
     description: >
       An array of available fields for [rendering](#rendering-fields).
   -
+    name: sections
+    type: array
+    description: >
+      An array of the current page's sections, each containing its fields, for [rendering](#rendering-sections).
+  -
+    name: honeypot
+    type: string
+    description: The name of the form's [honeypot](/frontend/forms#honeypot) field.
+  -
+    name: form_config
+    type: array
+    description: Any extra config values added to the form's settings by addons using [`Form::appendConfigFields()`](/frontend/forms#adding-config-fields).
+  -
+    name: form_status
+    type: string
+    description: The status of the form. Either `open`, `closed` (its close date has passed), or `limit_reached`.
+  -
+    name: form_restricted
+    type: boolean
+    description: Whether the form is [restricted](/frontend/forms#restricting-submissions) — it's closed, its submission limit has been reached, or it requires login and the visitor is logged out.
+  -
+    name: form_restriction_message
+    type: string
+    description: The message to show when the form is restricted. `null` when it isn't.
+  -
+    name: form_pages
+    type: array
+    description: For [Forms Pro](/frontend/forms-pro#multi-page-forms) multi-page forms. An array of the form's pages, each with an `id`, `display`, `instructions`, `button_label`, `previous_page_label`, and `sections`.
+  -
+    name: form_page
+    type: array
+    description: For [Forms Pro](/frontend/forms-pro#multi-page-forms) multi-page forms. The current page, with the same variables as each item in `form_pages`, minus `sections`.
+  -
+    name: form_button_label
+    type: string
+    description: The label for the current page's submit button. Defaults to "Next", or "Submit" on the last page.
+  -
+    name: form_previous_page_label
+    type: string
+    description: For [Forms Pro](/frontend/forms-pro#multi-page-forms) multi-page forms. The label for the current page's previous button, when it's enabled.
+  -
+    name: form_previous_page_url
+    type: string
+    description: For [Forms Pro](/frontend/forms-pro#multi-page-forms) multi-page forms. The URL of the previous page. Set on every page except the first, so check `form_previous_page_label` to see whether the button is enabled.
+  -
     name: errors
     type: array
     description: |
@@ -67,7 +112,7 @@ variables:
   -
     name: submission_created
     type: boolean
-    description: A success boolean, which differs from `success` in that it will actually return falsey when the [honeypot](/forms#honeypot) is filled. This can be useful when you want to show a fake success message for honeypot spam, but want to prevent analytics tracking code from being rendered.
+    description: A success boolean, which differs from `success` in that it will actually return falsey when the [honeypot](/frontend/forms#honeypot) is filled. This can be useful when you want to show a fake success message for honeypot spam, but want to prevent analytics tracking code from being rendered.
 ---
 ## Overview
 
@@ -230,6 +275,7 @@ Each item in this `fields` array contains the following data:
 
 | Variable | Type | Description |
 |---|---| --- |
+| `id` | string | A unique ID for the field's input, like `contact-form-email-field`. Handy for a label's `for` attribute. |
 | `display` | string | User-friendly field label configured in blueprint |
 | `instructions` | string | User-friendly instructions label configured in blueprint |
 | `field` | string | [Pre-rendered field HTML](#pre-rendered-field-html) based on the fieldtype |
@@ -718,6 +764,18 @@ To submit the form with AJAX, be sure to pass all the form inputs in with the su
 You'll also need to set your AJAX library's `X-Requested-With` header to `XMLHttpRequest`.
 
 The URL endpoint to send the request to is `/!/forms/{form-handle}`. You can configure the action route prefix which defaults to `!` in `config/statamic/routes.php`.
+
+A successful submission responds with JSON containing:
+
+| Key | Description |
+|---|---|
+| `success` | Always `true`. |
+| `submission_created` | `false` when the submission was silently rejected, like when the [honeypot](/frontend/forms#honeypot) is filled. |
+| `submission` | The submitted values. |
+| `redirect` | The URL to redirect to, if there is one. |
+| `next_page` | For [Forms Pro](/frontend/forms-pro#multi-page-forms) multi-page forms, the ID of the next page. `null` on the last page. |
+
+A failed submission responds with a `400` status, along with `errors` (an array of all error messages) and `error` (the first error message for each field, keyed by field handle).
 
 ### Axios example
 
