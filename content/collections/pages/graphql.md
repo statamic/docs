@@ -620,7 +620,8 @@ Used for querying a single form.
         title
         status
         require_login
-        restriction_message
+        closed_message
+        require_login_message
         fields {
             handle
             display
@@ -636,7 +637,8 @@ Used for querying a single form.
         "title": "Contact",
         "status": "open",
         "require_login": false,
-        "restriction_message": null,
+        "closed_message": "This form is no longer accepting submissions.",
+        "require_login_message": "You must be logged in to submit this form.",
         "fields": [
             { "handle": "name", "display": "Name" },
             { "handle": "email", "display": "Email" },
@@ -646,7 +648,7 @@ Used for querying a single form.
 }
 ```
 
-The `status` field will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). When the form isn't open, `restriction_message` contains the message configured in the Control Panel.
+The `status` field will be `open`, `closed` or `limit_reached`, depending on the form's [submission restrictions](/frontend/forms#restricting-submissions). The `closed_message` and `require_login_message` fields contain the messages configured in the Control Panel, or the default messages if none were configured, so you can show the right one when the form isn't open or the visitor isn't logged in.
 
 The `require_login` field tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
 
@@ -695,7 +697,7 @@ If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), query `p
             },
             {
                 "id": "your_inquiry",
-                "display": "Page 2 of 2",
+                "display": null,
                 "instructions": null,
                 "sections": [
                     {
