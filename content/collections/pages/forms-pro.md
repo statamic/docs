@@ -14,7 +14,7 @@ related_entries:
 - **Make long forms feel manageable.** Split them into [multiple pages](#multi-page-forms) and guide visitors down different paths based on their answers.
 - **See what people are telling you.** Turn responses into customizable [charts and insights](#form-summaries) inside the Control Panel.
 - **Put submissions to work.** Send them directly to [Google Sheets, HubSpot, Mailchimp, Slack, and more](#connections).
-- **Collect better data.** Add [address autocomplete](#address-fieldtype), additional fieldtypes, and [Cloudflare Turnstile](#cloudflare-turnstile) protection.
+- **Collect better data.** Add [address autocomplete](#address-fieldtype) and additional fieldtypes.
 
 You can try every Forms Pro feature locally for free. When you're ready, installation takes two commands.
 
@@ -718,6 +718,7 @@ Automagic Forms are enabled by default. If you'd rather disable them entirely, t
 ],
 ```
 
+<!--
 ## Cloudflare Turnstile
 
 Forms Pro can protect your forms from bots using [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/), Cloudflare's free CAPTCHA alternative.
@@ -793,3 +794,4 @@ On [multi-page forms](#multi-page-forms), Turnstile only verifies the visitor on
 :::tip
 When using the Alpine drivers, output the Turnstile tag *outside* the `{{ form_pages }}` loop. The widget is wired up on page load, so it won't work inside a page's `<template x-if>` block. If you'd rather it only appeared on the last page, hide it with `x-show="formsPro.isFinalPage"` instead.
 :::
+-->
