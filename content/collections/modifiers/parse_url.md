@@ -21,7 +21,7 @@ url: 'http://example.com/path?query=1'
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($url)->parseUrl() }}
+@php($parts = Statamic::modify($url)->parseUrl()->fetch())
 {{ Statamic::modify($url)->parseUrl('host') }}
 ```
 ::

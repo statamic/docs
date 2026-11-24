@@ -8,9 +8,9 @@ title: Overlaps
 ---
 Check if any values in an array are found in another array. Returns `true` if at least one value matches, otherwise `false`.
 
-The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching variable, otherwise it will use the parameter as the value. The needle can be a single value or an array.
+The first parameter is the "needle" to find in the "haystack". The needle can be a single value or an array. In Antlers method syntax, leave variable names unquoted. In PHP, supply the context when referring to an array by name.
 
-This is a loose comparison that mirrors how [`whereJsonOverlaps()`](https://laravel.com/docs/queries#json-where-clauses) works on the query builder side.
+Values are compared using PHP's `array_intersect`, which compares their string representations.
 
 ```yaml
 shopping_list:
@@ -26,7 +26,7 @@ want:
 
 ::tab antlers
 ```antlers
-{{ if shopping_list | overlaps('want') }} GOT SOMETHING! {{ /if }}
+{{ if shopping_list | overlaps(want) }} GOT SOMETHING! {{ /if }}
 {{ if shopping_list | overlaps('flour') }} GOT IT! {{ /if }}
 {{ if shopping_list | overlaps('kale') }} Not today. {{ /if }}
 ```

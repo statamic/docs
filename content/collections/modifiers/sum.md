@@ -33,7 +33,7 @@ stats:
 ::tab blade
 ```blade
 {{ Statamic::modify($numbers)->sum() }}
-{{ Statamic::modify($numbers)->sum('score') }}
+{{ Statamic::modify($stats)->sum('score') }}
 ```
 ::
 

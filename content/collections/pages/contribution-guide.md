@@ -258,10 +258,6 @@ Branch 'feature/new-thing' set up to track remote branch 'feature/new-thing' fro
 
 ## Create the Pull Request
 
-:::best-practice
-When creating a pull request that introduces a **new feature or changes current behavior**, please open an issue referencing your PR on the [statamic/docs](https://github.com/statamic/docs/issues/new) repo. No need to write the docs yourself. We'll take care of that for you. Any hints or bullet points are appreciated though!
-:::
-
 In the output from pushing your branch above, it'll give you a link to create the pull request. If you missed it, no problem. Just head over to `statamic/cms` and you should see a banner waiting for you.
 
 ![](/img/guides/contribution-guide/pull-request-banner.png)
@@ -271,6 +267,8 @@ Click through there and you'll be taken to a form where you can describe what's 
 ![](/img/guides/contribution-guide/pull-request-form.png)
 
 Please be as thorough as possible. Explain what's being added, what it fixes, list any relevant issues or discussions, and explain how we can test out the changes.
+
+You don't need to document new features or behavior changes. We'll write the docs as part of the release process. That said, if you've built something big and would prefer to write the docs yourself, feel free to open a pull request on the [statamic/docs](https://github.com/statamic/docs) repo.
 
 ## Cleaning Up
 Once the PR is resolved, either by being merged or closed, you're free to delete the branch or even the entire fork.

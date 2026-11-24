@@ -28,7 +28,7 @@ class LlmsTxtController extends Controller
 
     public function __invoke()
     {
-        $lines = Cache::rememberForever('llms.txt', fn () => $this->build());
+        $lines = Cache::store('markdown')->rememberForever('llms.txt', fn () => $this->build());
 
         return response(implode("\n", $lines), 200, [
             'Content-Type' => 'text/plain; charset=UTF-8',

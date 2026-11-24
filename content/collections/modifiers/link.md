@@ -20,7 +20,7 @@ neat_site: http://example.com
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($neat_site)->link() }}
+{!! Statamic::modify($neat_site)->link() !!}
 ```
 ::
 

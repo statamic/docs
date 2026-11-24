@@ -30,7 +30,7 @@ title: Actually i don't know what we're talking about.
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($title)->macro('headline') }}
+{!! Statamic::modify($title)->macro('headline') !!}
 ```
 ::
 

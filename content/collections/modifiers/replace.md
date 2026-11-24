@@ -19,7 +19,9 @@ description: This cat video is the okayest thing ever.
 {{ description | replace('cat', 'dog') }}
 ```
 ::tab blade
+```blade
 {{ Statamic::modify($description)->replace(['cat', 'dog']) }}
+```
 ::
 
 ```html

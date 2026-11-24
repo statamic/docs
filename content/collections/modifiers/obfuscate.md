@@ -7,7 +7,7 @@ modifier_types:
 attributes: true
 title: Obfuscate
 ---
-Obfuscates a string with special characters making it hard for spam bots to sniff out and scrape off your site. Still appears like the same string to the reader. This is usually used for email addresses.
+Replaces characters in a string with a mixture of HTML entities. The text appears unchanged in the browser. This is often used for email addresses, but bots that decode HTML can still read them.
 
 ```yaml
 magic_word: Abracadabra
@@ -21,7 +21,7 @@ magic_word: Abracadabra
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($magic_word)->obfuscate() }}
+{!! Statamic::modify($magic_word)->obfuscate() !!}
 ```
 ::
 

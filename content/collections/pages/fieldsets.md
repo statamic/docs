@@ -141,3 +141,7 @@ sections:
 | `flatten` | All fields from the imported fieldset are merged directly into the current section as if it were a flat fieldset. |
 
 The control panel surfaces this automatically — when you link a fieldset that contains sections, the "Section Behavior" control appears in the import settings, and a badge on the field indicates whether sections are being preserved or ignored.
+
+:::tip
+Sections are only preserved when a fieldset is imported directly into a blueprint. When it's imported into another fieldset, or inside a field such as a Replicator or Bard set, a Grid, or a Group, its sections are always flattened and the "Section Behavior" control isn't shown.
+:::

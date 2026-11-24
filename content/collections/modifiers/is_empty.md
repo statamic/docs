@@ -5,17 +5,17 @@ modifier_types:
   - array
 title: 'Is Empty'
 ---
-Checks to see if an array is empty without any set values. Works with numeric indexes, associative, and string keyed arrays of all depths. It's pretty smart, as these things go.
+Checks an array recursively. It returns `true` for empty arrays and arrays containing only empty strings or other empty arrays. Values such as `null`, `false`, and `0` count as non-empty for this modifier.
 
 ```yaml
 some_data:
   - is living here
 more_data:
-  with:
-  hopes:
-  and:
+  with: ''
+  hopes: ''
+  and: ''
   dreams:
-    -
+    - ''
 ```
 
 ::tabs

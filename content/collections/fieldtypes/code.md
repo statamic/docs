@@ -80,6 +80,11 @@ options:
     type: array
     description: |
       You can set the columns and the line style (choose between `dashed` or `solid`) of any rulers you wish to use.
+  -
+    name: placeholder
+    type: string
+    description: >
+      Set some default placeholder text.
 id: 3ca28569-5b86-49a1-b620-ea3364561cde
 ---
 ## Overview

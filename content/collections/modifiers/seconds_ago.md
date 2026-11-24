@@ -15,7 +15,8 @@ related_entries:
 Returns the number of seconds since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
 ```yaml
-date: October 1 2015 8:30:am
+# Assuming the current time is June 19, 2012 at 8:31 am.
+date: June 19 2012 8:30 am
 ```
 
 ::tabs
@@ -31,5 +32,5 @@ date: October 1 2015 8:30:am
 ::
 
 ```html
-{{ test_date | seconds_ago }}
+60
 ```

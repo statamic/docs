@@ -36,7 +36,7 @@ start_time: 13:45
 
 ## Parameters
 
-You can technically use any date formatting variables, but only the time-related really ones make sense here.
+You can technically use any date formatting variables, but only the time-related ones really make sense here.
 
 | Value | Description | Example |
 | --------- | ----------- | -------------- |

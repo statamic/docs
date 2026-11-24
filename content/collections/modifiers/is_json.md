@@ -9,7 +9,7 @@ title: 'Is Json'
 Returns `true` if string is valid json
 
 ```yaml
-data: '{"book": "All The Places You'll Go"}'
+data: '{"book": "All The Places You''ll Go"}'
 ```
 
 ::tabs

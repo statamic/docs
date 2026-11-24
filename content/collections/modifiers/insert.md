@@ -16,11 +16,11 @@ opinion: This is yummy.
 
 ::tab antlers
 ```antlers
-{{ opinion | insert('not', 8) }}
+{{ opinion | insert('not ', 8) }}
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($opinion)->insert(['not', 8]) }}
+{{ Statamic::modify($opinion)->insert(['not ', 8]) }}
 ```
 ::
 

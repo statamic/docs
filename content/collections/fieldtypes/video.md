@@ -1,8 +1,8 @@
 ---
 title: Video
-description: Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline.
+description: Extract embed URLs from Youtube, Vimeo, Cloudflare Stream, and HTML5 compatible video links and preview them right inline.
 intro: |
-  Extract embed URLs from Youtube, Vimeo, and HTML5 compatible video links and preview them right inline. Feel free watch the whole thing instead of working – we won't tell.
+  Extract embed URLs from Youtube, Vimeo, Cloudflare Stream, and HTML5 compatible video links and preview them right inline. Feel free watch the whole thing instead of working – we won't tell.
 screenshot: fieldtypes/screenshots/v6/video.webp
 screenshot_dark: fieldtypes/screenshots/v6/video-dark.webp
 id: ced8b901-95bd-4006-b70e-4ea04d72fcb7
@@ -15,7 +15,10 @@ You may enter:
 
 - YouTube URLs: `https://www.youtube.com/watch?v=s9F5fhJQo34`
 - Vimeo URLs: `https://vimeo.com/22439234`
+- Cloudflare Stream URLs: `https://customer-abc123.cloudflarestream.com/b209b1484821fff0ed2e5535fbb4ff7b/watch`
 - mp4, ogv, mov, or webm URLs: `http://example.com/video.mp4`
+
+For Cloudflare Stream, use the URL from the **Video Link** button in the Cloudflare dashboard. The `/iframe` URL from the embed code works too, and keeps any player options (like `autoplay` or `muted`) from its query string. Manifest URLs (`.m3u8` and `.mpd`) can't be embedded.
 
 ## Data Structure
 
@@ -35,7 +38,7 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
 ::tab antlers
 ```antlers
 {{ if video | is_embeddable }}
-    <!-- Youtube and Vimeo -->
+    <!-- Youtube, Vimeo, and Cloudflare Stream -->
     <iframe src="{{ video | embed_url }}" ...></iframe>
 {{ else }}
     <!-- Other HTML5 video types -->
@@ -45,7 +48,7 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
 ::tab blade
 ```blade
 @if (Statamic::modify($video)->isEmbeddable()->fetch())
-	<!-- Youtube and Vimeo -->
+	<!-- Youtube, Vimeo, and Cloudflare Stream -->
 	<iframe src="{{ Statamic::modify($video)->embedUrl() }}" ...></iframe>
 @else
 	<!-- Other HTML5 video types -->
@@ -53,3 +56,47 @@ You can use the [is_embeddable](/modifiers/is_embeddable) and
 @endif
 ```
 ::
+
+### Provider, ID, and embed URL
+
+The video field is augmented into an object that still outputs the URL you entered, but also gives you access to the video's provider, ID, and embed URL.
+
+::tabs
+
+::tab antlers
+```antlers
+{{ video }}             {{# https://www.youtube.com/watch?v=s9F5fhJQo34 #}}
+{{ video:provider }}    {{# youtube #}}
+{{ video:id }}          {{# s9F5fhJQo34 #}}
+{{ video:embed_url }}   {{# https://www.youtube-nocookie.com/embed/s9F5fhJQo34 #}}
+```
+::tab blade
+```blade
+{{ $video }}               {{-- https://www.youtube.com/watch?v=s9F5fhJQo34 --}}
+{{ $video->provider() }}   {{-- youtube --}}
+{{ $video->id() }}         {{-- s9F5fhJQo34 --}}
+{{ $video->embedUrl() }}   {{-- https://www.youtube-nocookie.com/embed/s9F5fhJQo34 --}}
+```
+::
+
+| Variable | Description |
+|----------|-------------|
+| `url` | The URL that was entered. |
+| `provider` | `youtube`, `vimeo`, `cloudflare`, `file` (a direct link to a video file), or `unsupported`. |
+| `id` | The YouTube, Vimeo, or Cloudflare Stream video ID. `null` for other providers. |
+| `privacy_hash` | The privacy hash of an unlisted Vimeo video (e.g. the `abc123` in `vimeo.com/22439234/abc123`). `null` otherwise. |
+| `embed_url` | The embeddable player URL for YouTube, Vimeo, and Cloudflare Stream, the URL itself for video files, or `null` for anything unsupported. |
+
+This lets you check the provider directly rather than reaching for modifiers:
+
+```antlers
+{{ if video:provider == 'file' }}
+    <video src="{{ video }}" ...></video>
+{{ elseif video:embed_url }}
+    <iframe src="{{ video:embed_url }}" ...></iframe>
+{{ /if }}
+```
+
+:::tip
+These values are only available in templates. The REST API and GraphQL still return the plain URL string.
+:::

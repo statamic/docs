@@ -39,6 +39,22 @@ You can customize the list of device sizes in `config/statamic/live_preview.php`
     <figcaption>This dropdown will obey you better than any puppy will, guaranteed.</figcaption>
 </figure>
 
+## Debounce
+
+Live Preview waits until you stop typing for a moment before it updates the preview. By default, it waits 150 milliseconds.
+
+If your pages take a while to render, you may want a longer delay so the preview doesn't reload on every pause. You can change it in `config/statamic/live_preview.php`:
+
+``` php
+'debounce_ms' => (int) env('STATAMIC_LIVE_PREVIEW_DEBOUNCE_MS', 150),
+```
+
+Or set it in your `.env` file:
+
+``` env
+STATAMIC_LIVE_PREVIEW_DEBOUNCE_MS=500
+```
+
 ## Customizing the toolbar
 
 You may add extra input fields to Live Preview's header toolbar using custom Vue components. The values of these fields will be available in the data injected into the template.
@@ -114,6 +130,8 @@ If you're using Statamic in a headless environment, please refer to the [Auto-re
 When the `refresh` option is enabled, a full refresh will occur whenever a change is made.
 
 When its disabled, Statamic will attempt to update the iframe's HTML automatically. If you're using Alpine or Livewire, its morphing function will be used.
+
+If you only need to change how long Statamic waits before it updates the preview, adjust the [debounce](#debounce) setting instead.
 
 If you need to override how the iframe is updated, you may define a `StatamicLivePreviewMorph` closure:
 

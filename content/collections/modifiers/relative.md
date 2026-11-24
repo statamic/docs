@@ -12,8 +12,9 @@ You can turn off the extra words "ago", "until", and so on by passing `true` as 
 The string will be localized into your current site locale.
 
 ```yaml
-past_date: October 1 2020
-future_date: October 1 2024
+# Assuming the current date is June 19, 2014.
+past_date: June 19 2012
+future_date: June 19 2015
 ```
 
 ::tabs
@@ -42,7 +43,7 @@ future_date: October 1 2024
 ```
 
 :::warning
-By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+Date modifiers preserve the date value's timezone by default. Dated entries use UTC. Enable `localize_dates_in_modifiers` in `config/statamic/system.php` to convert dates to your display timezone before applying modifiers.
 
 Please refer to our [Timezones](/tips/timezones) guide for more information.
 :::

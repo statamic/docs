@@ -88,6 +88,17 @@ Titles are saved on a first-come, first-serve basis, which means consistency is 
 
 To further clarify, `Star wars`, `star wars`, `StAr WaRS`, and `star-wars` are all treated as the same term. If case-sensitivity is important, you can add a `title` field to the taxonomy blueprint.
 
+## Default sort order in listings
+
+You can choose which field and direction to sort the list of terms in the Control Panel by setting `sort_by` and `sort_dir` in your taxonomy's YAML file. By default, terms are sorted by title in ascending order.
+
+``` yaml
+# content/taxonomies/tags.yaml
+title: Tags
+sort_by: slug
+sort_dir: desc
+```
+
 ## Templating
 
 ### Views

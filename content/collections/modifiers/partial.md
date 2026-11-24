@@ -15,14 +15,16 @@ data:
   content: Science died a little bit today.
 ```
 
-```
-<!-- /site/themes/<your_theme>/partials/demo.html -->
+```antlers
+{{# resources/partials/demo.html #}}
 <h1>{{ title }}</h1>
 {{ content | markdown }}
 
-<!-- Template Markup -->
+{{# Template markup #}}
 {{ data | partial('demo') }}
 ```
+
+This modifier reads from `resources/partials/`. For partials in your normal `resources/views/` directory, use the [partial tag](/tags/partial).
 
 ```html
 <h1>Bubble Guppies</h1>

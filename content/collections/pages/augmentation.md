@@ -196,12 +196,21 @@ class Product implements Augmentable
 | Method | Description |
 |--------|-------------|
 | `augmentedValue($key)` | Gets a single augmented value by the key. |
-| `toAugmentedArray($keys = null)` | Gets an array of augmented values. You can specify which keys or leave it blank for all of them. |
+| `toAugmentedArray($keys = null)` | Gets an array of [`Value`](#value) objects. You can specify which keys or leave it blank for all of them. |
 | `toAugmentedCollection($keys = null)` | Same as toAugmentedArray, but you get a collection object. |
+| `toDeferredAugmentedArray($keys = null)` | Same as toAugmentedArray, but each value is only loaded when it's used. |
+| `toEvaluatedAugmentedArray($keys = null)` | Gets a plain array of fully augmented values, including nested ones. This is what `toArray()` and JSON serialization use. |
 | `toShallowAugmentedArray()` | Gets an array of augmented values, but limited to a specific subset of them. See [shallow augmentation](#shallow-augmentation) |
 | `toShallowAugmentedCollection()` | Same as toShallowAugmentedArray, but a collection object. |
 
-The difference betwen the array and collection methods are that when casting to JSON, the collection will [shallow augment](#shallow-augmentation) nested values.
+The difference between the array and collection methods is that when casting to JSON, the collection will [shallow augment](#shallow-augmentation) nested values.
+
+#### Which method should I use?
+
+- **`toAugmentedArray`** when you want `Value` objects, so you can choose between `value()` and `raw()` yourself.
+- **`toDeferredAugmentedArray`** when passing data to a view that might only use some of it. Statamic uses this for Antlers and Blade.
+- **`toEvaluatedAugmentedArray`** (or `toArray()`) when you need plain data, like for JSON or caching.
+- **`toShallowAugmentedArray`** when you only need a few basic values, like for nested items in an API response.
 
 ### Augmented
 

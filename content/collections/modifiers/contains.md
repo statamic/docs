@@ -7,15 +7,13 @@ modifier_types:
   - string
 title: Contains
 ---
-Check if a value contains another value. Supports both strings and arrays.
+Check if a string or array contains a value. Returns `true` if a match is found, otherwise `false`.
 
-Returns `true` if a match is found, otherwise `false`.
-
-The first parameter is the "needle" to find in the "haystack". It will read from the context if there is a matching variable, otherwise it will use the parameter as the value.
+In Antlers method syntax, quote literal strings and leave variable names unquoted. The older colon syntax resolves a matching variable from the context before treating its argument as a literal.
 
 ## Strings
 
-Case-insensitive by default but can be made sensitive by setting the second parameter to `true`.
+String comparisons are case-insensitive by default. Set the second parameter to `true` for a case-sensitive comparison.
 
 ```yaml
 summary: "It was the best of times, it was the worst of times."
@@ -24,32 +22,33 @@ noun: carrot
 ```
 
 ::tabs
-
 ::tab antlers
 ```antlers
-{{ if summary | contains('BEST') }}
-{{ if summary | contains('BEST', true) }}
-{{ if summary | contains('adjective') }}
-{{ if summary | contains('noun') }}
+{{ summary | contains('BEST') | bool_string }}
+{{ summary | contains('BEST', true) | bool_string }}
+{{ summary | contains(adjective) | bool_string }}
+{{ summary | contains(noun) | bool_string }}
 ```
 ::tab blade
 ```blade
-@if (Statamic::modify($summary)->contains('BEST')->fetch()) ... @endif
-@if (Statamic::modify($summary)->contains(['BEST', true])->fetch()) ... @endif
-@if (Statamic::modify($summary)->contains('adjective')->fetch()) ... @endif
-@if (Statamic::modify($summary)->contains('noun')->fetch()) ... @endif
+{{ Statamic::modify($summary)->contains('BEST')->boolString() }}
+{{ Statamic::modify($summary)->contains(['BEST', true])->boolString() }}
+{{ Statamic::modify($summary)->contains($adjective)->boolString() }}
+{{ Statamic::modify($summary)->contains($noun)->boolString() }}
 ```
 ::
 
-```html
-true   (the substring "BEST" was in the string, and it didn't care about the case.)
-false  (the substring "BEST" was in the string, however it didn't match the case.)
-true   (there's a field named "adjective", and it got the value which was "best")
-false  (there's a field named "noun", and it got the value which was "carrot")
+```text
+true
+false
+true
+false
 ```
 
 ## Arrays
-You can set strict type checking by setting the second parameter to `true`.
+
+For a list, this checks its values using loose comparison: the string `'1'` matches the integer `1`. For an associative array, set the second parameter to `true` to check whether the key exists.
+
 ```yaml
 foods:
   - bacon
@@ -57,41 +56,33 @@ foods:
   - tomato
 delicious: bacon
 gross: broccoli
-
 numbers: [1, 2]
 number: '1'
 ```
 
 ::tabs
-
 ::tab antlers
 ```antlers
-{{ if foods | contains('bacon') }}
-{{ if foods | contains('delicious') }}
-{{ if foods | contains('gross') }}
-{{ if (foods | contains('vegan bacon strips')) }}
-
-{{ if numbers | contains(number) }}
-{{ if numbers | contains(number, true) }}
+{{ foods | contains('bacon') | bool_string }}
+{{ foods | contains(delicious) | bool_string }}
+{{ foods | contains(gross) | bool_string }}
+{{ foods | contains('vegan bacon strips') | bool_string }}
+{{ numbers | contains(number) | bool_string }}
 ```
 ::tab blade
 ```blade
-@if (Statamic::modify($foods)->contains('bacon')->fetch()) ... @endif
-@if (Statamic::modify($foods)->contains('delicious')->fetch()) ... @endif
-@if (Statamic::modify($foods)->contains('gross')->fetch()) ... @endif
-@if (Statamic::modify($foods)->contains('vegan bacon strips')->fetch()) ... @endif
-
-@if (Statamic::modify($foods)->contains($number)->fetch()) ... @endif
-@if (Statamic::modify($foods)->contains([$number, true])->fetch()) ... @endif
+{{ Statamic::modify($foods)->contains('bacon')->boolString() }}
+{{ Statamic::modify($foods)->contains($delicious)->boolString() }}
+{{ Statamic::modify($foods)->contains($gross)->boolString() }}
+{{ Statamic::modify($foods)->contains('vegan bacon strips')->boolString() }}
+{{ Statamic::modify($numbers)->contains($number)->boolString() }}
 ```
 ::
 
-```html
-true   (there's no field named "bacon", so it searched for literally "bacon")
-true   (there's a field named "delicious", and it got the value which was "bacon")
-false  (there's a field named "gross", and it got the value which was "broccoli")
-true   (there's no field named "vegan bacon strips", so it searched the expression for a literal string "vegan bacon strips")
-
-true   (the value of "number" is the string "1", which is fine in non-strict mode)
-false  (with strict mode enabled, the string "1" won't match the integer)
+```text
+true
+true
+false
+false
+true
 ```

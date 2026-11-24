@@ -22,12 +22,11 @@ fruit:
 ```
 ::tab blade
 ```blade
-@php(Statamic::modify($fruit)->consoleLog())
+{!! Statamic::modify($fruit)->consoleLog() !!}
 ```
 ::
 
 ```js
-["apples", "banana", "jerky"]
+["apples", "bananas", "bacon"]
 ```
-
 

@@ -25,7 +25,7 @@ message: 'This is a great video: https://www.youtube.com/watch?v=YO_spdAYjPk'
 ::
 
 ```html
-Check out this video: https://www.youtube.com/watch?v=eBGIQ7ZuuiU
+This is a great video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
 Great for when your client keeps putting YouTube links in their content and you want to, uh, help them out.

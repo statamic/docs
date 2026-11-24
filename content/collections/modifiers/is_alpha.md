@@ -6,7 +6,7 @@ modifier_types:
   - conditions
 title: 'Is Alpha'
 ---
-Returns `true` if string contains **only** alphabetic characters. Numbers, punctuation, whitespace, and another other special characters will cause a `false`.
+Returns `true` if string contains **only** alphabetic characters. Numbers, punctuation, whitespace, and other special characters will cause a `false`.
 
 ```yaml
 secret_phrase: abcdefg

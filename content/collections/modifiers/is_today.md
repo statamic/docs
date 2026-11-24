@@ -6,10 +6,11 @@ modifier_types:
   - conditions
 title: 'Is Today'
 ---
-Returns `true` if a given date is today, using the server's time.
+Returns `true` if a given date is today, using the date value's timezone.
 
 ```yaml
-date: January 1, 2000
+# Assuming the current date is June 19, 2012.
+date: June 19 2012
 ```
 
 ::tabs
@@ -25,11 +26,11 @@ date: January 1, 2000
 ::
 
 ```html
-false
+true
 ```
 
 :::warning
-By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+Date modifiers preserve the date value's timezone by default. Dated entries use UTC. Enable `localize_dates_in_modifiers` in `config/statamic/system.php` to convert dates to your display timezone before applying modifiers.
 
 Please refer to our [Timezones](/tips/timezones) guide for more information.
 :::

@@ -52,6 +52,15 @@ Use this fieldtype to create a one-way relationship with entries of any collecti
 Watch how to build a "Related Articles" feature using the Entries Fieldtype
 :::
 
+## Keyboard Shortcuts
+
+Editing or creating a related entry opens it in a stack, so you don't leave the page.
+
+| Shortcut | Editing an existing entry | Creating a new entry |
+|----------|--------|--------|
+| <kbd>⌘</kbd> <kbd>S</kbd> | Save and keep the stack open | Save and close the stack |
+| <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>S</kbd> | Save and close the stack | Save and close the stack |
+
 ## Data Structure
 
 This fieldtype will store an array of ids to the selected entries. They will be augmented in your Antlers templates to give you access to each entry's data.

@@ -114,12 +114,15 @@ public function visibleTo($item)
 Don't include authorization in your `visibleTo` method. Instead, use the authorize method below.
 :::
 
-## Collection Actions
+## Collection & Asset Container Actions
 
-Actions aren't just for entries, terms, assets, and users. You can also write actions that target [collections](/collections) themselves. They appear in the contextual menu on the collections listing page, and in the twirldown menu on a collection's entries listing page.
+Actions aren't just for entries, terms, assets, and users. You can also write actions that target [collections](/collections) or [asset containers](/assets) themselves. For collections, they appear in the contextual menu on the collections listing page, and in the twirldown menu on a collection's entries listing page. For asset containers, they appear in the contextual menu on the container's page.
 
-Use the `visibleTo` method to scope your action to collections, and you'll receive `Collection` instances in `run`.
+Use the `visibleTo` method to scope your action to the type you want, and you'll receive matching instances in `run`.
 
+::tabs
+
+::tab Collection
 ``` php
 use Statamic\Contracts\Entries\Collection;
 
@@ -140,8 +143,44 @@ class ClearCache extends Action
     }
 }
 ```
+::tab Asset Container
+``` php
+use Statamic\Contracts\Assets\AssetContainer;
 
-After the action runs from a collection's entries listing page, the page will reload (unless you return a [redirect](#redirects) or [download](#downloads) response).
+class UploadArchive extends Action
+{
+    public function visibleTo($item)
+    {
+        return $item instanceof AssetContainer;
+    }
+
+    public function run($items, $values)
+    {
+        $container = $items->first();
+
+        // ...
+    }
+}
+```
+::
+
+After the action runs from a collection's entries listing page, the page will reload (unless you return a [redirect](#redirects) or [download](#downloads) response). Asset container listings refresh in place.
+
+## Tree View Actions
+
+Entry actions are also available in the contextual menu of each page when viewing a [structured collection](/structures) in its tree view. [Dangerous](#dangerous-actions) actions are left out, since the tree has its own "Delete" option.
+
+When run from the tree view, the action's [context](#context) will contain `view` set to `tree`. You can use this to limit an action to (or exclude it from) the tree view:
+
+``` php
+public function visibleTo($item)
+{
+    return $item instanceof Entry
+        && ($this->context['view'] ?? null) === 'tree';
+}
+```
+
+Once the action completes, the tree will be refreshed, unless it has unsaved changes.
 
 ## Authorizing Actions
 

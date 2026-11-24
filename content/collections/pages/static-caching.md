@@ -118,12 +118,25 @@ Using the file driver, you can configure the permissions for the directories and
 ]
 ```
 
+### Script delivery
+
+Full measure caching injects small inline `<script>` blocks into cached pages to hydrate CSRF tokens and [nocache](/tags/nocache) regions. If your site sends a `Content-Security-Policy` header that blocks inline scripts (like `script-src 'self'`), you can have these snippets served from same-origin routes instead, using the `script_delivery` option.
+
+```php
+'script_delivery' => env('STATAMIC_STATIC_CACHING_SCRIPT_DELIVERY', 'inline'),
+```
+
+- `inline` (default) — the snippets are output directly in the page.
+- `external` — the snippets are served from same-origin routes and referenced with `<script src="…">`.
+
 ## Server rewrite rules
 
 You will need to configure its rewrite rules when using full measure caching. Here are the rules for each type of server.
 
 :::tip
 If you're using Laravel Herd or Laravel Valet, you don't need to worry about configuring rewrite rules locally. They will automatically handle the rewrite rules for you.
+
+The same goes for [Laravel Cloud](/deploying/laravel-cloud#full-measure), which configures Nginx for you when deploying.
 :::
 
 ### Apache
@@ -315,6 +328,29 @@ If needed, you can explicitly tell Statamic which queue and queue connection sho
 STATAMIC_STATIC_WARM_QUEUE=warming
 STATAMIC_STATIC_WARM_QUEUE_CONNECTION=database
 ```
+
+#### Custom warm job
+
+Each URL is warmed by a queued `StaticWarmJob`. If you need to change how that job behaves, like adjusting its uniqueness or adding a delay, you may extend it and specify your own class:
+
+```php
+// config/statamic/static_caching.php
+
+'warm_job' => \App\Jobs\StaticWarmJob::class,
+```
+
+```php
+namespace App\Jobs;
+
+use Statamic\Console\Commands\StaticWarmJob as BaseJob;
+
+class StaticWarmJob extends BaseJob
+{
+    //
+}
+```
+
+This job is used by `static:warm --queue` (except when using `--uncached`) and by [background re-caching](#background-re-caching).
 
 ### Warming additional URLs
 

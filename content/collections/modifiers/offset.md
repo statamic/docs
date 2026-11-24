@@ -49,7 +49,7 @@ Or using the parameter syntax:
 
 ```blade
 @foreach (Statamic::modify($playlist)->offset(1)->fetch() as $value)
-    <li>{{ $valuie }}</li>
+    <li>{{ $value }}</li>
 @endforeach
 ```
 ::

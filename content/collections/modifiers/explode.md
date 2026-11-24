@@ -16,11 +16,11 @@ places: Scotland, England, Switzerland, Italy
 
 ::tab antlers
 ```antlers
-{{ places | explode(',') | ul }}
+{{ places | explode(', ') | ul }}
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($places)->explode(',')->ul() !!}
+{!! Statamic::modify($places)->explode(', ')->ul() !!}
 ```
 ::
 
@@ -39,11 +39,11 @@ To limit the number of splits, pass the limit as the second argument:
 
 ::tab antlers
 ```antlers
-{{ places | explode(',', 2) | ul }}
+{{ places | explode(', ', 2) | ul }}
 ```
 ::tab blade
 ```blade
-{!! Statamic::modify($places)->explode(',', 2)->ul() !!}
+{!! Statamic::modify($places)->explode([', ', 2])->ul() !!}
 ```
 ::
 

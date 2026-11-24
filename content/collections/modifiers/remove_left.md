@@ -9,7 +9,7 @@ title: 'Remove Left'
 Ensures that the string never begins with a specified string.
 
 ```yaml
-twitter: @statamic
+twitter: '@statamic'
 ```
 
 ::tabs

@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: Compact
 ---
-Converts a comma-delimited list of variable names into an array that can be used anywhere. Arrays are accepted.
+Converts a comma-delimited string of variable names into an array of their values.
 
 It allows colon delimited syntax to target nested variables.
 
@@ -31,8 +31,6 @@ stuff:
 
 Would produce the following output:
 
-::tabs
-
 ```html
 <ul>
     <li>Value One</li>
@@ -47,6 +45,6 @@ It's similar to PHP's `compact()` function.
 ```php
 $foo = 'bar';
 $baz = 'qux';
-compact('foo', 'baz'); // ['bar', 'qux']
+compact('foo', 'baz'); // ['foo' => 'bar', 'baz' => 'qux']
 ```
 :::

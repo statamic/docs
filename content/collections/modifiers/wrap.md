@@ -6,7 +6,7 @@ modifier_types:
   - string
 title: Wrap
 ---
-Wraps a string with a given HTML tag. Has the nice benefit of returning null if there is no data, eliminating the need for simple `{{ if }}` wrappers.
+Wraps a string with a given HTML tag. Empty or falsy values are returned unchanged, so they do not produce an empty wrapper.
 
 ```yaml
 title: As the World Turns

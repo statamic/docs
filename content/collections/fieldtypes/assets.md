@@ -12,6 +12,11 @@ options:
     description: |
       Enable to allow uploading new files into the container. Default: `true`.
   -
+    name: aspect_ratio
+    type: string
+    description: |
+      The ratio of the preview in `full` mode. Only affects the Control Panel, not the original asset or your front end. Options: `8/3`, `2/1`, `16/9`, `3/2`, `4/3`, `1/1`, `3/4`, `2/3`, `9/16`. Default: `8/3`.
+  -
     name: container
     type: string
     description: |
@@ -40,7 +45,7 @@ options:
     name: mode
     type: string
     description: >
-      Set to `list` to use the table layout mode, and `grid` to use the grid mode with larger thumbnails. Default: `grid`.
+      Set to `list` to use the table layout mode, `grid` to use the grid mode with larger thumbnails, `compact` to use small square thumbnails, or `full` to use a large preview. See [UI modes](#ui-modes). Default: `list`.
   -
     name: query_scopes
     type: string
@@ -69,6 +74,26 @@ The list mode is shown in the previous screenshot, while the grid mode is shown 
   <img src="/img/fieldtypes/screenshots/v6/assets-grid-dark.webp" alt="Assets List mode" class="u-hide-in-light-mode">
   <figcaption>List mode reveals a fanny pack in all its glory. And if you’re British—go on, have a little chuckle.</figcaption>
 </figure>
+
+Compact mode shows selected assets as small square thumbnails alongside a button for adding more. It's designed for tight layouts, like inside a [Grid](/fieldtypes/grid) or [Replicator](/fieldtypes/replicator) field.
+
+```yaml
+image:
+  type: assets
+  mode: compact
+```
+
+Full mode shows the first asset as a large, full-width preview that respects its focal point and zoom. It's designed for "hero" style images. When more than one asset is allowed, any additional assets are shown as compact thumbnails below it.
+
+The preview uses an `8/3` aspect ratio by default, which you can change with the `aspect_ratio` option. This only affects the Control Panel—it doesn't crop the original asset or change how it's displayed on your front end.
+
+```yaml
+hero_image:
+  type: assets
+  mode: full
+  aspect_ratio: 16/9
+  max_files: 1
+```
 
 ## Data Structure
 
@@ -178,7 +203,7 @@ Inside an asset variable's tag pair you'll have access to the following variable
 | `is_image` | `true` when file is one of `jpg`, `jpeg`, `png`, `gif`, or `webp`. |
 | `is_svg` | `true` when file is an `svg`. |
 | `is_pdf` | `true` when file is a `pdf`. |
-| `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, or `webm`. |
+| `is_video` | `true` when file is one of `h264`, `mp4`, `m4v`, `ogv`, `webm`, `mov`, `mpeg`, `mpg`, or `mkv`. |
 | `last_modified` | Formatted date string of the last modified time |
 | `last_modified_instance` | [Carbon][carbon] instance of the last modified time |
 | `last_modified_timestamp` | Unix timestamp of the last modified time |

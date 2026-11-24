@@ -9,8 +9,9 @@ title: 'Is Future'
 Returns `true` if date is in the future.
 
 ```yaml
-date: October 21 2015
-another_date: November 2030
+# Assuming the current date is June 20, 2012.
+date: June 19 2012
+another_date: June 21 2012
 ```
 
 ::tabs
@@ -33,7 +34,7 @@ true
 ```
 
 :::warning
-By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+Date modifiers preserve the date value's timezone by default. Dated entries use UTC. Enable `localize_dates_in_modifiers` in `config/statamic/system.php` to convert dates to your display timezone before applying modifiers.
 
 Please refer to our [Timezones](/tips/timezones) guide for more information.
 :::

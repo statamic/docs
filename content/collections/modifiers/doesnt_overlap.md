@@ -8,7 +8,7 @@ title: "Doesn't Overlap"
 ---
 The inverse of [`overlaps`](/modifiers/overlaps). Returns `true` when _none_ of the needle values are found in the haystack array, otherwise `false`.
 
-The first parameter is the "needle" to compare against the "haystack". It will read from the context if there is a matching variable, otherwise it will use the parameter as the value. The needle can be a single value or an array.
+The first parameter is the "needle" to compare against the "haystack". The needle can be a single value or an array. In Antlers method syntax, pass a variable without quotes to use its value.
 
 ```yaml
 shopping_list:
@@ -24,7 +24,7 @@ avoid:
 
 ::tab antlers
 ```antlers
-{{ if shopping_list | doesnt_overlap('avoid') }} All clear! {{ /if }}
+{{ if shopping_list | doesnt_overlap(avoid) }} All clear! {{ /if }}
 {{ if shopping_list | doesnt_overlap('flour') }} Nope, there's flour. {{ /if }}
 ```
 ::tab blade

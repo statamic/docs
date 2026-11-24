@@ -19,8 +19,8 @@ Returns the number of days since a given date variable. Statamic will attempt to
 
 
 ```yaml
-# Let's assume a server date of "December 31 2021"
-date: December 25 2021
+# Assuming the current date is June 25, 2012.
+date: June 19 2012
 ```
 
 ::tabs
@@ -30,9 +30,9 @@ date: December 25 2021
 {{ date | days_ago }}
 ```
 ::tab blade
-```blade`
+```blade
 {{ Statamic::modify($date)->daysAgo() }}
-``
+```
 ::
 
 ```output

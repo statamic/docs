@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: 'String Pad Left'
 ---
-This modifier returns the string padded on the left to the specified padding length (paramameter 1) with a character of choice (parameter 2).
+This modifier returns the string padded on the left to the specified padding length (parameter 1) with a character of choice (parameter 2).
 
 ::tabs
 

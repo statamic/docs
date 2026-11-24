@@ -9,8 +9,8 @@ title: 'Is Leap Year'
 Returns `true` if date is in a leap year. Try and find a regular use for this one, we dare you.
 
 ```yaml
-date: November 2016
-another_date: November 2017
+date: June 19 2012
+another_date: June 19 2013
 ```
 
 ::tabs
@@ -33,7 +33,7 @@ false
 ```
 
 :::warning
-By default, when using a modifier on a date variable, it will be operating on the UTC date rather than the localized date.
+Date modifiers preserve the date value's timezone by default. Dated entries use UTC. Enable `localize_dates_in_modifiers` in `config/statamic/system.php` to convert dates to your display timezone before applying modifiers.
 
 Please refer to our [Timezones](/tips/timezones) guide for more information.
 :::

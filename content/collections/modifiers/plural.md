@@ -29,8 +29,9 @@ Please pick up the following items:
 ```
 ::tab blade
 ```blade
+Please pick up the following items:
 @foreach ($shopping_list as $item)
-  - {{ $item['quantity'] }} {{ Statamic::modify($item)->plural($item['quantity']) }}
+  - {{ $item['quantity'] }} {{ Statamic::modify($item['item'])->plural($item['quantity']) }}.
 @endforeach
 ```
 ::
@@ -38,6 +39,6 @@ Please pick up the following items:
 ```html
 Please pick up the following items:
 - 1 pickle
-- 3 apples
+- 12 apples
 - 500 donuts
 ```

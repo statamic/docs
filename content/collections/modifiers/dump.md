@@ -22,12 +22,12 @@ food:
 ```
 ::tab blade
 ```blade
-@dd($food)
+@dump($food)
 ```
 ::
 
 ```html
-array:2 [▼
+array:1 [▼
   "delicious" => array:2 [▶]
 ]
 ```

@@ -5,7 +5,7 @@ modifier_types:
   - string
 title: Title
 ---
-Returns a trimmed string with the first letter of each word capitalized, ignoring articles, coordinating conjunctions, and short propositions: `a`, `an`, `the`, `at`, `by`, `for`, `in`, `of`, `on`, `to`, `up`, `and`, `as`, `but`, `or`, and `nor`.
+Returns a trimmed string with the first letter of each word capitalized, ignoring articles, coordinating conjunctions, and short prepositions: `a`, `an`, `the`, `at`, `by`, `for`, `in`, `of`, `on`, `to`, `up`, `and`, `as`, `but`, `or`, and `nor`.
 
 ```yaml
 string: It was one of the best adventures of my life

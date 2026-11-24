@@ -393,6 +393,22 @@ class SpecialExporter extends Exporter
 
 The `export` method should return the file contents and the `extension` method should return the file extension.
 
+If you'd like your custom exporter to support the [column selection](#choosing-columns) checkboxes, override `supportsColumnSelection` to return `true`, then call the `columns` method inside `export` to get the selected column handles (in form order, defaulting to every field plus `date` when nothing has been selected):
+
+```php
+public function supportsColumnSelection(): bool
+{
+    return true;
+}
+
+public function export(): string
+{
+    $columns = $this->columns();
+
+    // ...
+}
+```
+
 Then, to make the exporter available on your forms, simply add it to your forms config:
 
 ```php
@@ -1169,3 +1185,10 @@ Published `assets` and `files` field views, stored submission values, and fields
 **Affects apps with custom code that reads temporary form uploads.**
 
 Uploads are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`, and only become assets after the submission is saved, rather than during validation.
+
+[tags]: /tags/form
+[submissions]: /tags/form-submissions
+[login_form]: /tags/user-login_form
+[register_form]: /tags/user-register_form
+[profile_form]: /tags/user-profile_form
+[password_form]: /tags/user-password_form

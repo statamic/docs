@@ -15,7 +15,7 @@ example: please and thank you/Mommy
 
 ::tab antlers
 ```antlers
-http://example.com/{{ example | rawurlencode }}
+https://example.com/{{ example | rawurlencode }}
 ```
 ::tab blade
 ```blade
@@ -24,7 +24,7 @@ https://example.com/{{ Statamic::modify($example)->rawurlencode() }}
 ::
 
 ```html
-http://example.com/please%20and%20thank%20you%2FMommy
+https://example.com/please%20and%20thank%20you%2FMommy
 ```
 
 If you don't want forward slashes (`/`) to be encoded, use the [rawurlencode_except_slashes](/modifiers/rawurlencode_except_slashes) modifier instead.

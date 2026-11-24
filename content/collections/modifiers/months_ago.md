@@ -15,7 +15,8 @@ related_entries:
 Returns the number of months since a given date variable. Statamic will attempt to parse any string as a date, but try to keep it in the least ambiguous date format possible.
 
 ```yaml
-date: October 1 2017
+# Assuming the current date is December 19, 2012.
+date: June 19 2012
 ```
 
 ::tabs
@@ -31,5 +32,5 @@ date: October 1 2017
 ::
 
 ```html
-{{ test_date | months_ago }}
+6
 ```

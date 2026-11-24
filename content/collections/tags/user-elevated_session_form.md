@@ -180,7 +180,8 @@ In `config/statamic/users.php`:
 // Duration in minutes before the elevated session expires
 'elevated_session_duration' => 15,
 
-// URL to a custom elevated session page.
+// URL to a custom frontend elevated session page.
 // When null, it'll fallback to a Statamic-powered page.
+// This doesn't affect the Control Panel.
 'elevated_sessions_url' => null,
 ```

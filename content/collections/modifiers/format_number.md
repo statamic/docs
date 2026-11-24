@@ -24,7 +24,7 @@ lucky_number: 130134.109
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($lucky_number)->formatNumber(1, ',', ',') }}
+{{ Statamic::modify($lucky_number)->formatNumber([1, ',', ',']) }}
 ```
 ::
 

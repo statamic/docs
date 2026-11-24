@@ -36,6 +36,12 @@ options:
       Add button text customization.
       Default: `Add Row`.
   -
+    name: compact
+    type: boolean
+    description: >
+      Display a button that opens the editor in a popover. Useful in Grid fields and other tight layouts. See [compact mode](#compact-mode).
+      Default: `false`.
+  -
     name: expand
     type: boolean
     description: >
@@ -129,6 +135,20 @@ inventory:
 
 [Augmentation](/augmentation) still exposes the field as a normal key/value structure for templates and Antlers, so `{{ inventory:sku }}` and nested variable syntax behave the same whether `expand` is on or off.
 
+
+## Compact Mode
+
+Set `compact: true` to display a button that opens the array editor in a popover. This is useful inside a [Grid](/fieldtypes/grid) field or anywhere you want to keep the layout compact until someone needs to edit the values.
+
+```yaml
+attributes:
+  type: array
+  compact: true
+```
+
+The button shows a comma-separated list of the array's keys, or the configured `add_button` text ("Add Row" by default) when the array is empty. Click the button to edit, then click **Close** or press **Esc** to dismiss the popover.
+
+Compact mode works with the dynamic, keyed, and single modes. It changes how the editor is displayed without changing the data format.
 
 ## Data Structure
 

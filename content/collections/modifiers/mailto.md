@@ -20,7 +20,7 @@ holler: holler@example.com
 ```
 ::tab blade
 ```blade
-{{ Statamic::modify($holler)->mailto() }}
+{!! Statamic::modify($holler)->mailto() !!}
 ```
 ::
 

@@ -29,11 +29,11 @@ collections:
 ```
 ::tab blade
 ```blade
-<statamic:collection
+<s:collection
   :from="Statamic::modify($collections)->optionList()->fetch()"
 >
 
-</statamic:collection>
+</s:collection>
 ```
 ::
 

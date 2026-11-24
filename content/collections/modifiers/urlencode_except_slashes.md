@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: URL Encode Except Slashes
 ---
-URL-encodes a string. Just like [urlencode](/modifiers/urldecode), but doesn't encode forward slashes (`/`).
+URL-encodes a string. Just like [urlencode](/modifiers/urlencode), but doesn't encode forward slashes (`/`).
 
 ```yaml
 string: please and thank you/Mommy

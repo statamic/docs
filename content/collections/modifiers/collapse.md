@@ -6,7 +6,7 @@ modifier_types:
   - utility
 title: Collapse
 ---
-Collapses an array of arrays into a flat array. If duplicate keys exist they *will* get stomped over.
+Collapses an array of arrays into a flat array. Duplicate string keys are overwritten; numeric keys are reindexed.
 
 ```yaml
 numbers:
@@ -23,7 +23,7 @@ numbers:
 ::tab blade
 ```blade
 <?php
-  $collapsed = Satamic::modify($numbers)->collapse()->fetch();
+  $collapsed = Statamic::modify($numbers)->collapse()->fetch();
 ?>
 ```
 ::

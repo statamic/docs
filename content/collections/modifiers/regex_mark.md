@@ -35,5 +35,5 @@ This cat <mark class="highlight">video</mark> is the okayest thing ever.
 ```
 
 :::tip
-This modifier expects HTML input. While most plain text strings will work just fine you should escape the value with the `entities` modifier if your text contains less than or greater than symbols: `{{ plain_text | entities | mark }}`
+This modifier expects HTML input. Escape plain text containing less-than or greater-than symbols before matching: `{{ plain_text | entities | regex_mark('pattern') }}`.
 :::
