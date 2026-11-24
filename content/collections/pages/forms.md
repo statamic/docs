@@ -1182,9 +1182,9 @@ If you check for `assets` or `files` anywhere, check for `form_upload` and `stor
 Published `assets` and `files` field views, stored submission values, and fields imported from a [fieldset](/content-modeling/fieldsets) are unchanged. Other existing fields keep their original `type`, like `text` or `select`.
 
 ### Temporary uploads
-**Affects apps with custom code that reads temporary form uploads.**
+**Affects apps that customize `STATAMIC_FILE_UPLOADS_PATH` or have custom code that reads temporary form uploads.**
 
-Uploads are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`, and only become assets after the submission is saved, rather than during validation.
+Uploaded files are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`. Files for fields that store uploads as assets are only moved into the asset container once the whole form has been submitted, just before the `FormSubmitted` event. If you'd customized `STATAMIC_FILE_UPLOADS_PATH` for form uploads, set `STATAMIC_FORM_UPLOADS_PATH` instead.
 
 [tags]: /tags/form
 [submissions]: /tags/form-submissions
