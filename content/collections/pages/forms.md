@@ -193,6 +193,10 @@ Each form fieldtype renders using a publishable view. To customize the HTML, run
 Publishable views are implemented in Antlers by default. Blade versions will be used instead if your `statamic.templates.language` config is set to `blade`.
 :::
 
+:::tip
+If you published field views before Forms 2, like `text`, `textarea`, or `select`, those still take priority over the new views. Delete them to use the new ones.
+:::
+
 ### Controlling which fieldtypes are selectable
 
 Most form fieldtypes are selectable in the Form Builder by default. You can change this from a service provider by calling `makeSelectable()` or `makeUnselectable()` on the relevant fieldtype class:
@@ -1126,9 +1130,10 @@ If the target section doesn't exist, the section is added at the end and a warni
 
 ## What's changed from Forms 1 {#whats-changed-from-forms-1}
 
-If you're upgrading a site with forms built before Forms 2, your forms keep working as they are. A few things behave differently, though.
+If you're upgrading a site with forms built before Forms 2, your forms keep working as they are, and most sites won't need to change anything. Each section below says who it affects, so you can skip any that don't apply to you.
 
-### Saving converts the form
+### Forms are converted when saved
+**Affects apps or addons that read a form's YAML or blueprint file directly.**
 
 Existing forms are converted to the Forms 2 format when they're saved, whether from the Control Panel or with `$form->save()`. Saving a form:
 
@@ -1137,6 +1142,7 @@ Existing forms are converted to the Forms 2 format when they're saved, whether f
 - moves its `email:` config to `connections.email`.
 
 ### Custom email jobs
+**Affects apps with a custom `send_email_job` class.**
 
 When an email's recipient, sender, or reply-to is set to one of your form's fields, it's saved as a `field:` token, like `field:email`. Custom `send_email_job` classes still receive the addresses as comma-separated strings, but those strings may now contain these tokens — like `field:email, jack@jackblack.com`. Statamic's own `Email` mailable resolves them to the submitted values. If your job reads the addresses itself, you'll need to resolve the tokens yourself:
 
@@ -1151,31 +1157,15 @@ $addresses = collect(explode(',', $this->config['to']))
 ```
 
 ### Upload fields
+**Affects apps whose templates, email views, code, or API consumers check for `assets` or `files` fields.**
 
-`assets` and `files` fields in your form are now [Upload](#file-uploads) fields, and their `type` is `form_upload`. That's the case in:
+`assets` and `files` fields are now [Upload](#file-uploads) fields, so their `type` is `form_upload` everywhere — in templates, [email data](#email-variables), the [REST API](/frontend/rest-api#forms), [GraphQL](/frontend/graphql#form-query), and PHP. To tell them apart, check the `store` config: it's `true` for former `assets` fields and `false` for former `files` fields.
 
-- `{{ fields }}` loops, and the `fields`, `sections`, and `pages` variables of the [form tags](/tags/form);
-- the [REST API](/frontend/rest-api#forms) and [GraphQL](/frontend/graphql#form-query);
-- the `fieldtype` in [email data](#email-variables);
-- PHP, where `$field->type()` returns `form_upload` and `$field->fieldtype()` is a `Statamic\Fieldtypes\FormUpload`.
+If you check for `assets` or `files` anywhere, check for `form_upload` and `store` instead. Watch out for email views in particular, like an overridden `automagic-email` template — a `fieldtype == "assets"` check won't match anymore, so uploads show up as raw values instead of links.
 
-To tell them apart, check the field's `store` config. It's `true` for former `assets` fields (the uploads become assets) and `false` for former `files` fields (the uploads are attached to emails, then deleted). Update anything that compares against `assets` or `files` to check `form_upload` and `store` instead.
+Published `assets` and `files` field views, stored submission values, and fields imported from a [fieldset](/content-modeling/fieldsets) are unchanged. Other existing fields keep their original `type`, like `text` or `select`.
 
-:::warning
-Look out for email templates. If you've overridden the `automagic-email` template, or your own email views check for `fieldtype == "assets"`, uploads will show up as raw values instead of links. The same goes for headless front-ends that build file inputs from the API's `type`.
-:::
+### Temporary uploads
+**Affects apps with custom code that reads temporary form uploads.**
 
-A few things stay the same:
-
-- Fields imported from a [fieldset](/content-modeling/fieldsets) aren't converted, and keep their 6.x `type` and behavior.
-- Published `assets` and `files` field views are still used, picked by the field's `store` config.
-- Stored submission values haven't changed, so existing submissions and exports keep working.
-- Other existing fields keep their original `type`, like `text`, `textarea`, or `select`.
-
-Uploads are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`, and only become assets after the submission is saved, rather than during validation. If you have custom code that reads temporary uploads from the old path, update it.
-
-### Front-end changes
-
-- Date and time fields render native `type="date"` and `type="time"` inputs, including in the [user registration](/tags/user-register_form) and [profile](/tags/user-profile_form) forms. A published `date` view still takes priority.
-- Published 6.x field views (`text`, `textarea`, `select`, `radio`, `integer`, `assets`, and `files`) still take priority over the new Forms 2 views, even after you publish those. Delete the old views to use the new ones.
-- After a successful submission, Statamic removes the `?page=` query parameter from the URL it redirects back to. If the previous URL was on another site, it redirects to your home page instead.
+Uploads are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`, and only become assets after the submission is saved, rather than during validation.
