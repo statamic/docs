@@ -95,9 +95,9 @@ Forms Pro ships an **Address** fieldtype with localized field labels and autocom
 
 Address formats differ by country, so the field adapts itself to country changes:
 
-- The "Region" label becomes "State", "Province", "County", "Prefecture", and so on. It's hidden entirely for countries that don't use one.
-- The "Postcode" label becomes "ZIP Code", "Postal Code", "Eircode", and so on. It's likewise hidden where it doesn't apply.
-- Some countries (the US, Canada, China, and Italy) require a region, so it's marked as required even when the field as a whole is optional.
+- The "State / Province / Region" label becomes "State", "Province", "County", "Prefecture", and so on. It's hidden entirely for countries that don't use one.
+- The "Postal Code" label becomes "ZIP Code", "Postcode", "Eircode", and so on. It's likewise hidden where it doesn't apply.
+- Some countries (the US, Canada, Australia, India, Japan, Brazil, China, Italy, and the UAE) require a region, so it's marked as required even when the field as a whole is optional. This is only enforced in the browser.
 
 You can set a **Default Country** in the field's configuration to control which country — and therefore which labels — are shown by default.
 
@@ -149,12 +149,10 @@ You can find the suggestions dropdown's markup in the published view:
 
 ```antlers
 <template data-address-suggestions>
-    <ul class="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg">
-        <li data-address-option class="px-3 py-2 aria-selected:bg-gray-100">
-            <span data-address-label></span>
-        </li>
-        <li data-address-attribution class="px-3 py-1 text-xs text-gray-500"></li>
-    </ul>
+	<ul>
+		<li data-address-option><span data-address-label></span></li>
+		<li data-address-attribution></li>
+	</ul>
 </template>
 ```
 
@@ -179,10 +177,12 @@ This is especially useful for longer forms. Breaking them into pages makes them 
 </figure>
 
 :::warning
-The `SubmissionCreating`, `SubmissionCreated`, `SubmissionSaving` and `SubmissionSaved` events are dispatched when creating partial submissions, just like any other submission.
+While a visitor moves through the pages, their partial submission only dispatches the `SubmissionSaving` and `SubmissionSaved` events. `SubmissionCreating`, `SubmissionCreated` and [`SubmissionFinalized`](/backend-apis/events#submissionfinalized) are dispatched once the final page is submitted.
 
-If you're listening to these events in your code, and _don't_ want to receive incomplete submissions, you should listen to either the [`FormSubmitted`](https://statamic.dev/backend-apis/events/events#formsubmitted) or [`SubmissionFinalized`](https://statamic.dev/backend-apis/events/events#submissionfinalized) events instead.
+If you're listening to `SubmissionSaving` or `SubmissionSaved` and _don't_ want to receive incomplete submissions, listen to [`SubmissionFinalized`](/backend-apis/events#submissionfinalized) instead.
 :::
+
+Partial submissions are stored between pages even when the form's **Store Submissions** setting is off, and deleted once the final page is submitted. Abandoned ones are cleaned up by a scheduled job, so make sure the scheduler is running. See [Storing submissions](/frontend/forms#storing-submissions) for details.
 
 ### Controlling page logic
 
@@ -223,7 +223,7 @@ The tree view uses `Esc` as a handy power-user shortcut. Press it once to clear 
 
 ### Customizing page buttons
 
-Page buttons default to “Next” and “Previous” but you can customize them to say whatever you want. Tease your users with something informative or cheeky—“Let's find out what Star Sign you are!”, “Ready to find out your perfect career?”, “Which Ninja Turtle are you?”, etc.
+Page buttons default to “Next” (or “Submit” on the last page) but you can customize them to say whatever you want. You can also turn on a “Previous Page” button for every page after the first, and change its label too. Tease your users with something informative or cheeky—“Let's find out what Star Sign you are!”, “Ready to find out your perfect career?”, “Which Ninja Turtle are you?”, etc.
 
 <figure>
   <img src="/img/forms-pro/customize-button-text.webp" alt="Customize button text for Forms Pro" class="u-hide-in-dark-mode">
@@ -240,13 +240,13 @@ The `{{ sections }}` and `{{ form:fields }}` loops are automatically scoped to t
 
 Forms Pro makes the following variables available on each page:
 
-| Variable              | Description                                                                 |
-|-----------------------|-----------------------------------------------------------------------------|
-| `page:display`        | The page's display name.                                                    |
-| `page:instructions`   | The page's help text.                                                       |
-| `button_label`        | Label for the submit button.                                                |
-| `previous_page_url`   | URL to navigate back to the previous page. Not available on the first page. |
-| `previous_page_label` | Label for the "previous page" link.                                         |
+| Variable                   | Description                                                                                     |
+|----------------------------|-------------------------------------------------------------------------------------------------|
+| `form_page:display`        | The page's display name.                                                                        |
+| `form_page:instructions`   | The page's help text.                                                                           |
+| `form_button_label`        | Label for the submit button.                                                                    |
+| `form_previous_page_url`   | URL to navigate back to the previous page. Not available on the first page.                     |
+| `form_previous_page_label` | Label for the "previous page" link. Only set when the page's Previous Page button is turned on. |
 
 Apart from wiring up button labels and a link back to the previous page, you can use an existing template as-is:
 
@@ -256,8 +256,8 @@ Apart from wiring up button labels and a link back to the previous page, you can
         <p>Success!</p>
     {{ /if }}
 
-    <h2>{{ page:display }}</h2>
-    <p>{{ page:instructions }}</p>
+    <h2>{{ form_page:display }}</h2>
+    <p>{{ form_page:instructions }}</p>
 
     {{ sections }}
         <fieldset>
@@ -275,23 +275,23 @@ Apart from wiring up button labels and a link back to the previous page, you can
         </fieldset>
     {{ /sections }}
 
-    {{ if previous_page_url }}
-        <a href="{{ previous_page_url }}">{{ previous_page_label }}</a>
+    {{ if form_previous_page_label }}
+        <a href="{{ form_previous_page_url }}">{{ form_previous_page_label }}</a>
     {{ /if }}
 
-    <button>{{ button_label }}</button>
+    <button>{{ form_button_label }}</button>
 {{ /form:survey }}
 ```
 
 :::warning
 When moving between pages, fields are pre-populated from the visitor's partial submission.
-If you're using [static caching](https://statamic.dev/static-caching), you should wrap your forms in the [`{{ nocache }}`](https://statamic.dev/tags/nocache) tag to prevent submitted data from being cached.
+If you're using [static caching](/static-caching), you should wrap your forms in the [`{{ nocache }}`](/tags/nocache) tag to prevent submitted data from being cached.
 :::
 
 ### Submitting with JavaScript
 Out of box, every page is submitted with a native `<form>` POST, incurring a full page reload.
 
-Forms Pro ships with two Alpine JS drivers — `forms_pro_alpine` and `forms_pro_alpine_precognition` — that manage page state on the frontend and submit intermediate pages over AJAX, letting your visitors move between pages without a full page reload. They build on Statamic's [core Alpine drivers](https://statamic.dev/tags/form-create#logic-conditional-fields).
+Forms Pro ships with two Alpine JS drivers — `forms_pro_alpine` and `forms_pro_alpine_precognition` — that manage page state on the frontend and submit intermediate pages over AJAX, letting your visitors move between pages without a full page reload. They build on Statamic's [core Alpine drivers](/tags/form-create#logic-conditional-fields).
 
 Forms Pro is responsible for submitting intermediate pages, leaving the final submission up to you.
 
@@ -315,7 +315,7 @@ In your template, add `js="forms_pro_alpine"` (or `forms_pro_alpine_precognition
 + {{ form:survey js="forms_pro_alpine" }}
 ```
 
-Next, loop through `{{ pages }}` and wrap each page in `<template x-if="{{ show_page }}">`. Make sure anything page-related (like the page's display name and button labels) is _inside_ the loop and without the `page:` prefix.
+Next, loop through `{{ form_pages }}` and wrap each page in `<template x-if="{{ show_page }}">`. Make sure anything page-related (like the page's display name and button labels) is _inside_ the loop and without the `form_page:` and `form_` prefixes.
 
 Also, add click handler to the previous/next buttons to call `formsPro.goToPreviousPage()` and `formsPro.submit($event)` respectively.
 
@@ -323,7 +323,7 @@ Also, add click handler to the previous/next buttons to call `formsPro.goToPrevi
 {{ form:survey js="forms_pro_alpine" }}
    {{-- ... --}}
 
-   {{ pages }}
+   {{ form_pages }}
        <template x-if="{{ show_page }}">
             <h2>{{ display }}</h2>
             <p>{{ instructions }}</p>
@@ -338,7 +338,7 @@ Also, add click handler to the previous/next buttons to call `formsPro.goToPrevi
 
             <button @click="formsPro.submit($event)" :disabled="formsPro.submitting">{{ button_label }}</button>
        </template>
-   {{ /pages }}
+   {{ /form_pages }}
 
    {{-- ... --}}
 {{ /form:survey }}
@@ -346,7 +346,7 @@ Also, add click handler to the previous/next buttons to call `formsPro.goToPrevi
 
 Finally, render validation errors for each field using `formsPro.errors['{{ handle }}']` in addition to your existing error handling. Forms Pro's error handling will be used for intermediate pages, but you'll need to display errors for the final page separately.
 
-```php
+```antlers
 <small
     x-show="formsPro.errors['{{ handle }}']"
     x-text="formsPro.errors['{{ handle }}']"
@@ -388,12 +388,12 @@ All methods are namespaced under `formsPro` to avoid conflicts with your own Alp
 ### Building your own driver
 While the Alpine drivers are the easiest way to get started, you can also build your own driver.
 
-Statamic's [custom JS drivers](https://statamic.dev/tags/form-create#custom-js-drivers) documentation covers how a driver is built and registered; this section covers what a driver needs to do to support multi-page forms specifically.
+Statamic's [custom JS drivers](/tags/form-create#custom-js-drivers) documentation covers how a driver is built and registered; this section covers what a driver needs to do to support multi-page forms specifically.
 
 A page-aware driver has two responsibilities: **tracking the active page**, and **submitting intermediate pages over AJAX**.
 
 #### Tracking page state
-Render every page up-front (using the `{{ pages }}` loop), then only show the current page to the visitor. At a minimum, you'll want to keep track of:
+Render every page up-front (using the `{{ form_pages }}` loop), then only show the current page to the visitor. At a minimum, you'll want to keep track of:
 
 - the current page
 - the pages the visitor has already visited (so you can offer a "previous" button)
@@ -484,16 +484,16 @@ Each fieldtype comes with a sensible default chart:
 | Chart | Used by default for |
 | --- | --- |
 | Pie chart | Multiple Choice |
-| Bar chart | Checkboxes, Dropdown, Image Choice, Yes/No, Toggle, Star Rating, and free-text fields like Short Answer and Email |
+| Bar chart | Checkboxes, Dropdown, Image Choice, Yes/No, Toggle, Star Rating |
 | Column chart | Number, Currency, Opinion Scale |
 | Lollipop chart | Dictionary |
 | Ranking | Ranking |
 
-Free-text fields chart their most popular answers, and numeric answers are automatically grouped into ranges when there are too many distinct values to plot individually.
+Numeric answers are automatically grouped into ranges when there are too many distinct values to plot individually.
 
-Charts cap how many items they show — four segments in a pie chart, five rows in a bar or lollipop chart. The least popular answers beyond that are grouped into an **Other** item, and on pie charts you can click the Other segment to drill into a breakdown of what's inside it.
+Charts cap how many items they show — four segments in a pie chart, five rows in a bar or lollipop chart, twelve columns in a column chart. The least popular answers beyond that are grouped into an **Other** item, and you can drill into a breakdown of what's inside it.
 
-Date, Time, Name and Upload fields aren't charted.
+Free-text fields (Short Answer, Long Answer, Email, Name, Phone, Website), Date, Time and Upload fields aren't charted.
 
 ### Customizing the charts
 
@@ -501,7 +501,7 @@ If you can edit the form, you'll see a **Customize Charts** button in the summar
 
 - **Add Chart** to chart a field that isn't in the summary yet.
 - Drag charts around to reorder them.
-- Switch a chart's type using the dropdown on each chart. Any chart type can be used with any field — pie chart your star ratings, we won't judge.
+- Switch a chart's type using the dropdown on each chart. You'll be offered every chart type that suits the field's answers — pie chart your star ratings, we won't judge.
 - Remove charts you don't need.
 
 Hit **Save** and the layout is saved to the form itself, so everyone sees the same summary.
@@ -516,6 +516,7 @@ You can build your own chart types too. Create a class in the `app/FormCharts` d
 namespace App\FormCharts;
 
 use Statamic\Forms\Charts\Chart;
+use Statamic\Forms\Fields\FormValueType;
 
 class Doughnut extends Chart
 {
@@ -524,6 +525,11 @@ class Doughnut extends Chart
     protected ?string $component = 'doughnut-chart';
     protected ?string $icon = 'chart-doughnut';
     protected ?int $limit = 4;
+
+    public function supports(): array
+    {
+        return [FormValueType::Number, FormValueType::Boolean, FormValueType::Choice];
+    }
 }
 ```
 
@@ -533,10 +539,10 @@ class Doughnut extends Chart
 | `$component` | The Vue component used to render the chart. |
 | `$icon` | The icon shown when picking a chart type. |
 | `$limit` | The maximum number of items to show before the rest are grouped into "Other". Optional. |
-| `props()` | The props passed to the Vue component. |
-| `drilldownProps()` | The props the chart re-renders with when drilling into its "Other" items. Returning an empty array (the default) means the chart doesn't drill down. |
+| `supports()` | Required. The kinds of answers the chart can display, as an array of `FormValueType` cases (`Number`, `Boolean`, `Choice`, `Choices` or `Ranking`). The chart is only offered for fields whose [value type](#charting-your-own-fieldtypes) is in this list. |
+| `props(FieldResponses $responses, ?Collection $options = null)` | The props passed to the Vue component. |
 
-You don't usually need to touch `props()` — the base class counts the answers against the field's [chart options](#charting-your-own-fieldtypes) (or derives options from the answers themselves), and handles the "Other" grouping for you. Each item it produces has a `key`, `label`, `count` and `percent`.
+You don't usually need to touch `props()` — the base class counts the answers against the field's [chart options](#charting-your-own-fieldtypes) (or derives options from the answers themselves), and handles the "Other" grouping for you. Each item it produces has a `key`, `label`, `count` and `percent`. When answers are grouped into "Other", it also adds a `drilldown` prop, which the summary uses to show a breakdown of what's inside it.
 
 On the frontend, register the Vue component in your JS entry file (`resources/js/cp.js`):
 
@@ -548,7 +554,7 @@ Statamic.booting(() => {
 });
 ```
 
-Your component receives whatever `props()` returns, along with two extras: `metric` (either `percent` or `count`, following the toggle at the top of the summary) and `accessibleLabel` (a screen-reader-friendly rundown of the results). It's also handed a `summary` slot containing the field's [insights](#building-custom-insights) — render it if you'd like them to appear inside your chart.
+Your component receives whatever `props()` returns, along with a few extras: `metric` (either `percent` or `count`, following the toggle at the top of the summary), `responses` (the number of responses), and `accessibleLabel` (a screen-reader-friendly rundown of the results). When answers are grouped into "Other", that item has `clickable: true`. Emit a `select` event when it's clicked to show the breakdown.
 
 ```vue
 <script setup>
@@ -557,12 +563,13 @@ defineProps({
     metric: { type: String, default: 'percent' },
     accessibleLabel: String,
 });
+
+const emit = defineEmits(['select']);
 </script>
 
 <template>
     <div role="img" :aria-label="accessibleLabel">
-        <slot name="summary" />
-        <div v-for="item in items" :key="item.key">
+        <div v-for="item in items" :key="item.key" @click="item.clickable && emit('select', item)">
             {{ item.label }}: {{ metric === 'count' ? item.count : `${item.percent}%` }}
         </div>
     </div>
@@ -584,62 +591,77 @@ Create a class in the `app/FormInsights` directory that extends `Statamic\Forms\
 
 namespace App\FormInsights;
 
-use Illuminate\Support\Collection;
+use Statamic\Forms\Fields\FormValueType;
 use Statamic\Forms\Insights\Insight;
+use Statamic\Forms\Summary\FieldResponses;
 
-class Median extends Insight
+class MostPopular extends Insight
 {
-    public function props(Collection $values): array
+    public function supports(): array
     {
-        $values = $values->filter(fn ($value) => is_numeric($value))->sort()->values();
+        return [FormValueType::Number, FormValueType::Choice];
+    }
 
-        return ['median' => $values->get(intdiv($values->count(), 2)) ?? 0];
+    public function props(FieldResponses $responses): array
+    {
+        return ['answer' => $responses->counts()->sortDesc()->keys()->first()];
     }
 }
 ```
 
-The `props()` method receives every answer to the field and returns the props for the insight's Vue component. The component is named after the class by default — `median-insight` for the class above — but you can override that with a `$component` property. Register it the same way as a chart component:
+The `supports()` method lists the kinds of answers the insight applies to, just like a chart. The `props()` method receives the field's responses and returns the props for the insight's Vue component. `$responses->counts()` gives you a count for each answer, `$responses->total()` the number of responses, and `$responses->numeric()` the count, sum, min, max and average for numeric answers.
+
+The component is named after the class by default — `most-popular-insight` for the class above — but you can override that with a `$component` property. It receives whatever `props()` returns, along with `metric`. Register it the same way as a chart component:
 
 ```js
-import MedianInsight from './components/insights/MedianInsight.vue';
+import MostPopularInsight from './components/insights/MostPopularInsight.vue';
 
 Statamic.booting(() => {
-    Statamic.$components.register('median-insight', MedianInsight);
+    Statamic.$components.register('most-popular-insight', MostPopularInsight);
 });
 ```
 
-Unlike charts, insights aren't picked in the Control Panel — fieldtypes attach them with their `insights()` method, which you'll read about next.
+Unlike charts, insights aren't picked in the Control Panel — fieldtypes attach them with their `defaultInsights()` method, which you'll read about next.
 
 ### Charting your own fieldtypes
 
-[Custom form fieldtypes](/fieldtypes/build-a-form-fieldtype) opt into the summary using three methods:
+[Custom form fieldtypes](/fieldtypes/build-a-form-fieldtype) opt into the summary using these methods:
 
 | Method | Description |
 | --- | --- |
+| `valueType()` | The kind of answers the field stores, as a `FormValueType` case. Charts and insights only apply when their `supports()` includes it. Returning `null` (the default) means none apply. |
 | `defaultChart()` | The class name of the chart the field uses by default. Returning `null` (the default) keeps the field out of the summary. |
-| `chartOptions()` | The full set of options answers are counted against, in the order they should be charted. Returning `null` (the default) derives the options from the answers themselves. |
-| `insights()` | An array of insight instances to show alongside the chart. |
+| `chartOptions(FieldResponses $responses)` | The full set of options answers are counted against, in the order they should be charted. Returning `null` (the default) derives the options from the answers themselves. |
+| `defaultInsights()` | An array of insight class names to show alongside the chart. |
+| `insightConfig(Insight $insight)` | Config passed to each insight, like a `prefix`, `suffix` or `precision`. |
 
 ```php
 use Illuminate\Support\Collection;
 use Statamic\Forms\Charts\ChartOption;
 use Statamic\Forms\Charts\VerticalBar;
+use Statamic\Forms\Fields\FormValueType;
 use Statamic\Forms\Insights\Average;
+use Statamic\Forms\Summary\FieldResponses;
+
+public function valueType(): ?FormValueType
+{
+    return FormValueType::Number;
+}
 
 public function defaultChart(): ?string
 {
     return VerticalBar::class;
 }
 
-public function chartOptions(Collection $values): ?Collection
+public function chartOptions(FieldResponses $responses): ?Collection
 {
     return collect(range($this->config('min'), $this->config('max')))
         ->map(fn ($value) => new ChartOption((string) $value));
 }
 
-public function insights(): array
+public function defaultInsights(): array
 {
-    return [new Average];
+    return [Average::class];
 }
 ```
 
@@ -771,7 +793,7 @@ And since `entry` is stored like any other value, you can filter by it using [co
 
 ### Per-entry restrictions
 
-When unique instances is enabled, [submission restrictions](/frontend/forms#restricting-submissions) are checked against the entry being submitted from. A submission limit of 100 means 100 submissions _per event_, not 100 across the whole form. The same goes for close dates, closed messages, and requiring login — and the `restricted`, `restriction_message`, and `status` variables on the `{{ form:create }}` tag reflect the current entry's instance, so your existing template handles it all.
+When unique instances is enabled, [submission restrictions](/frontend/forms#restricting-submissions) are checked against the entry being submitted from. A submission limit of 100 means 100 submissions _per event_, not 100 across the whole form. The same goes for close dates, closed messages, and requiring login — and the `form_restricted`, `form_restriction_message`, and `form_status` variables on the `{{ form:create }}` tag reflect the current entry's instance, so your existing template handles it all.
 
 The form's own **Access** settings act as defaults, and each entry can override them. On the entry's publish form, use the Form fieldtype's **Configure** option to set the entry's own close date, submission limit (and period), closed message, and require login settings. Anything you leave blank falls back to the form's setting.
 
@@ -890,5 +912,5 @@ On [multi-page forms](#multi-page-forms), Turnstile only verifies the visitor on
 - **With the Alpine drivers**, the widget renders once and sticks around for the whole form. Intermediate pages are submitted over AJAX, so they're never held back — only the final submission waits for verification.
 
 :::tip
-When using the Alpine drivers, output the Turnstile tag *outside* the `{{ pages }}` loop. The widget is wired up on page load, so it won't work inside a page's `<template x-if>` block. If you'd rather it only appeared on the last page, hide it with `x-show="formsPro.isFinalPage"` instead.
+When using the Alpine drivers, output the Turnstile tag *outside* the `{{ form_pages }}` loop. The widget is wired up on page load, so it won't work inside a page's `<template x-if>` block. If you'd rather it only appeared on the last page, hide it with `x-show="formsPro.isFinalPage"` instead.
 :::
