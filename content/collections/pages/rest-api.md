@@ -697,7 +697,7 @@ Gets a single form.
 }
 ```
 
-The `fields` key contains every field in the form, keyed by handle. The `sections` key groups those same fields into the sections you've configured in the form builder, so you can render the form with the same structure as the Control Panel.
+The `fields` key contains every field in the form, keyed by handle. The `sections` key groups those same fields into the sections you've configured in the form builder, so you can render the form with the same structure as the Control Panel. Upload fields converted from 6.x `assets` or `files` fields report their `type` as `form_upload` ([what's changed](/frontend/forms#whats-changed-from-forms-1)).
 
 If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), the `pages` key contains each page's `id`, `display`, `instructions` and its `sections`. Single-page forms return a single page.
 

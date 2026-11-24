@@ -652,7 +652,7 @@ The `status` field will be `open`, `closed` or `limit_reached`, depending on the
 
 The `require_login` field tells you whether the form only accepts submissions from logged in users. The API doesn't know who is visiting your headless frontend, so it's up to you to check that before showing the form.
 
-The `fields` field lists every field in the form. To render the form with the same structure as the Control Panel, query `sections` instead, which groups fields into the sections you've configured in the form builder.
+The `fields` field lists every field in the form. Upload fields converted from 6.x `assets` or `files` fields report their `type` as `form_upload` ([what's changed](/frontend/forms#whats-changed-from-forms-1)). To render the form with the same structure as the Control Panel, query `sections` instead, which groups fields into the sections you've configured in the form builder.
 
 If the form has [multiple pages](/frontend/forms-pro#multi-page-forms), query `pages` to get each page along with its sections.
 
