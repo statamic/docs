@@ -1152,9 +1152,27 @@ $addresses = collect(explode(',', $this->config['to']))
 
 ### Upload fields
 
-`assets` and `files` fields are now [Upload](#file-uploads) fields, and their `type` is `form_upload` — in `{{ fields }}` loops, the [REST API](/rest-api#forms) and [GraphQL](/graphql#form-query), the `fieldtype` in [email data](#email-variables), and `$form->blueprint()`. Update anything that compares against `assets` or `files`.
+`assets` and `files` fields in your form are now [Upload](#file-uploads) fields, and their `type` is `form_upload`. That's the case in:
 
-Other existing fields keep their original `type`, like `text`, `textarea`, or `select`.
+- `{{ fields }}` loops, and the `fields`, `sections`, and `pages` variables of the [form tags](/tags/form);
+- the [REST API](/frontend/rest-api#forms) and [GraphQL](/frontend/graphql#form-query);
+- the `fieldtype` in [email data](#email-variables);
+- PHP, where `$field->type()` returns `form_upload` and `$field->fieldtype()` is a `Statamic\Fieldtypes\FormUpload`.
+
+To tell them apart, check the field's `store` config. It's `true` for former `assets` fields (the uploads become assets) and `false` for former `files` fields (the uploads are attached to emails, then deleted). Update anything that compares against `assets` or `files` to check `form_upload` and `store` instead.
+
+:::warning
+Look out for email templates. If you've overridden the `automagic-email` template, or your own email views check for `fieldtype == "assets"`, uploads will show up as raw values instead of links. The same goes for headless front-ends that build file inputs from the API's `type`.
+:::
+
+A few things stay the same:
+
+- Fields imported from a [fieldset](/content-modeling/fieldsets) aren't converted, and keep their 6.x `type` and behavior.
+- Published `assets` and `files` field views are still used, picked by the field's `store` config.
+- Stored submission values haven't changed, so existing submissions and exports keep working.
+- Other existing fields keep their original `type`, like `text`, `textarea`, or `select`.
+
+Uploads are now stored temporarily under the `statamic.forms.file_uploads_path` path (`statamic/form-uploads` by default) rather than `statamic.system.file_uploads_path`, and only become assets after the submission is saved, rather than during validation. If you have custom code that reads temporary uploads from the old path, update it.
 
 ### Front-end changes
 
