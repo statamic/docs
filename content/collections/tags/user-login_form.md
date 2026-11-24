@@ -137,7 +137,7 @@ Then bind a `$form` to the login endpoint (`/!/auth/login`) inside the tag:
 ::tab antlers
 ```antlers
 {{ user:login_form
-    x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
+    \x-data="{ form: $form('post', '/!/auth/login', { email: '', password: '' }) }"
     @submit.prevent="form.submit().then(() => window.location = '/dashboard')"
 }}
     <label>Email</label>

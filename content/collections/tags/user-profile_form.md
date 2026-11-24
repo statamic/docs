@@ -170,16 +170,14 @@ Alpine.plugin(precognition)
 Alpine.start()
 ```
 
-Then bind a `$form` to the profile endpoint (`/!/auth/profile`) inside the tag, seeding the data object with the user's current values:
+Then bind a `$form` to the profile endpoint (`/!/auth/profile`), seeding the data object with the user's current values:
 
 ::tabs
 
 ::tab antlers
 ```antlers
-{{ user:profile_form
-    x-data="{ form: $form('post', '/!/auth/profile', { name: '{{ current_user:name }}', email: '{{ current_user:email }}' }) }"
-    @submit.prevent="form.submit()"
-}}
+<div x-data="{ form: $form('post', '/!/auth/profile', { name: {{ current_user:name | to_json | entities }}, email: {{ current_user:email | to_json | entities }} }) }">
+{{ user:profile_form @submit.prevent="form.submit()" }}
     <label>Name</label>
     <input type="text" name="name" x-model="form.name" @change="form.validate('name')">
     <small x-show="form.invalid('name')" x-text="form.errors.name"></small>
@@ -190,11 +188,12 @@ Then bind a `$form` to the profile endpoint (`/!/auth/profile`) inside the tag, 
 
     <button type="submit" :disabled="form.processing">Save</button>
 {{ /user:profile_form }}
+</div>
 ```
 ::tab blade
 ```blade
 <s:user:profile_form
-    x-data="{ form: $form('post', '/!/auth/profile', { name: '{{ $current_user->name }}', email: '{{ $current_user->email }}' }) }"
+    x-data="{ form: $form('post', '/!/auth/profile', { name: {{ Js::from($current_user->name) }}, email: {{ Js::from($current_user->email) }} }) }"
     @submit.prevent="form.submit()"
 >
     <label>Name</label>

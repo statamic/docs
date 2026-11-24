@@ -218,7 +218,7 @@ Then bind a `$form` to the registration endpoint (`/!/auth/register`) inside the
 ::tab antlers
 ```antlers
 {{ user:register_form
-    x-data="{ form: $form('post', '/!/auth/register', { email: '', password: '', password_confirmation: '' }) }"
+    \x-data="{ form: $form('post', '/!/auth/register', { email: '', password: '', password_confirmation: '' }) }"
     @submit.prevent="form.submit().then(() => window.location = '/welcome')"
 }}
     <label>Email</label>
@@ -261,4 +261,4 @@ If you'd rather submit normally (full page reload) and only use Precognition for
 
 ## Honeypot
 
-If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key.
+If you want to protect your registration form from spam bots you can specify the handle of a [honeypot field](/frontend/forms#honeypot) in `config/statamic/users.php` using the `registration_form_honeypot_field` key.

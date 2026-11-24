@@ -191,7 +191,7 @@ Then bind a `$form` to the password endpoint (`/!/auth/password`) inside the tag
 ::tab antlers
 ```antlers
 {{ user:password_form
-    x-data="{ form: $form('post', '/!/auth/password', { current_password: '', password: '', password_confirmation: '' }) }"
+    \x-data="{ form: $form('post', '/!/auth/password', { current_password: '', password: '', password_confirmation: '' }) }"
     @submit.prevent="form.submit()"
 }}
     <label>Current Password</label>
