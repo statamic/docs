@@ -52,6 +52,8 @@ With your form created, you can start adding fields using the **Form Builder** i
 
 For our EF-Mail form, you'd add a Name field for the name, a Number for the age, a Star Rating for the level of adoration, and a Long Answer for the message.
 
+The submit button says "Submit" by default. To change it, click the button at the bottom of the Form Builder and set its **Submit Button Label** — maybe "Send it to Jack" — then output it in your template with `{{ form_button_label }}`.
+
 :::tip
 Want to put your form online without building a template? [Forms Pro's Automagic Forms](/frontend/forms-pro#automagic-forms) gives it a polished, shareable URL — no template or entry required.
 :::
@@ -98,8 +100,8 @@ This example loops over your form's fields and dynamically renders each input's 
         // Add the honeypot field
         <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
 
-        // This is just a submit button.
-        <button type="submit">Submit</button>
+        // The submit button, using the label from the form builder.
+        <button type="submit">{{ form_button_label }}</button>
     {{ /if }}
 
 {{ /form:super_fans }}
@@ -138,8 +140,8 @@ This example loops over your form's fields and dynamically renders each input's 
     // Add the honeypot field
     <input type="text" class="hidden" name="{{ isset($honeypot) ? $honeypot : 'honeypot' }}" />
 
-    // This is just a submit button.
-    <button type="submit">Submit</button>
+    // The submit button, using the label from the form builder.
+    <button type="submit">{{ $form_button_label }}</button>
   @endif
 
 </s:form:super_fans>

@@ -82,7 +82,7 @@ variables:
   -
     name: form_button_label
     type: string
-    description: The label for the current page's submit button. Defaults to "Next", or "Submit" on the last page.
+    description: The label for the current page's submit button, set in the Form Builder. Defaults to "Next", or "Submit" on the last page.
   -
     name: form_previous_page_label
     type: string
@@ -148,7 +148,7 @@ Here we'll be creating a form to submit an entry in a `contact` form.
         </div>
     {{ /fields }}
 
-    <button>Submit</button>
+    <button>{{ form_button_label }}</button>
 
 {{ /form:create }}
 ```
@@ -180,7 +180,7 @@ Here we'll be creating a form to submit an entry in a `contact` form.
         </div>
     @endforeach
 
-    <button>Submit</button>
+    <button>{{ $form_button_label }}</button>
 
 </s:form:create>
 ```
@@ -240,7 +240,7 @@ Loop through the `fields` array using the [form:fields](/tags/form-fields) tag t
         </div>
     {{ /form:fields }}
 
-    <button>Submit</button>
+    <button>{{ form_button_label }}</button>
 
 {{ /form:contact }}
 ```
@@ -263,7 +263,7 @@ Loop through the `fields` array using the [form:fields](/tags/form-fields) tag t
         </div>
     </s:form:fields>
 
-    <button>Submit</button>
+    <button>{{ $form_button_label }}</button>
 
 </s:form:contact>
 ```
@@ -361,7 +361,7 @@ If your form has multiple sections, you can loop over the `sections` array to re
         </fieldset>
     {{ /sections }}
 
-    <button>Submit</button>
+    <button>{{ form_button_label }}</button>
 
 {{ /form:contact }}
 ```
@@ -378,7 +378,7 @@ If your form has multiple sections, you can loop over the `sections` array to re
         </fieldset>
     @endforeach
 
-    <button>Submit</button>
+    <button>{{ $form_button_label }}</button>
 
 </s:form:contact>
 ```
@@ -678,7 +678,7 @@ Note that `js="alpine_precognition"` is used rather than just `alpine`.
         <small x-show="form.invalid('{{ handle }}')" x-text="form.errors.{{ handle }}"></small>
     {{ /fields }}
 
-    <button :disabled="form.processing">Submit</button>
+    <button :disabled="form.processing">{{ form_button_label }}</button>
 {{ /form:contact }}
 ```
 
@@ -708,7 +708,7 @@ Note that `js="alpine_precognition"` is used rather than just `alpine`.
       ></small>
     @endforeach
 
-    <button :disabled="form.processing">Submit</button>
+    <button :disabled="form.processing">{{ $form_button_label }}</button>
 </s:form:contact>
 ```
 ::
