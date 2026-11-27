@@ -39,6 +39,8 @@ If you prefix the field name with a colon, it will use the value of a variable i
 :author:is="author"
 ```
 
+If a condition's value is an empty string, the condition is skipped and the results are not filtered by it. If a variable reference resolves to `null`, the condition filters for entries where that field is empty.
+
 
 ### Multiple values
 You can pass multiple values by separating them with a pipe.
