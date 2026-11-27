@@ -187,6 +187,19 @@ The following form fieldtypes are available:
 Click a fieldtype in the Form Builder to see an example of what it looks like.
 :::
 
+### Image Choice images
+
+The Image Choice fieldtype stores its option images in the asset container set by `image_choice_images` in `config/statamic/assets.php`. It defaults to the `assets` container. To use a different one, add this to your config:
+
+```php
+'image_choice_images' => [
+    'container' => 'assets',
+    'folder' => null,
+],
+```
+
+If the container doesn't exist, Statamic falls back to your first asset container.
+
 ### Customizing the front-end views
 
 Each form fieldtype renders using a publishable view. To customize the HTML, run `php artisan vendor:publish --tag=statamic-forms`, which exposes editable templates in your `resources/views/vendor/statamic/forms/fields` directory.
