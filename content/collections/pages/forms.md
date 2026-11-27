@@ -167,7 +167,7 @@ The following form fieldtypes are available:
 | Yes / No | A simple yes or no question. |
 | Multiple Choice | A question with a range of answer options. Respondents can only choose one answer. |
 | Checkboxes | Respondents can select multiple options from a list. |
-| Image Choice | An image-based choice selector for visual options. |
+| Image Choice | An image-based choice selector for visual options. See [Image choices](#image-choices). |
 | Toggle | A simple yes or no switch. |
 | Dictionary | Select from a predefined list like countries, timezones, or currencies. |
 | Opinion Scale | An opinion scale for measuring agreement or satisfaction. |
@@ -854,6 +854,21 @@ Statamic uses a cache store to keep track of which jobs have finished. Since tha
 ```
 
 It uses your default cache store when `null`.
+
+## Image choices
+
+The **Image Choice** field lets respondents pick from options that are shown as images, like choosing a design or a product.
+
+The images are stored in the asset container set by `image_choice_images` in `config/statamic/assets.php`. It defaults to the `assets` container. To use a different one, add this to your config:
+
+```php
+'image_choice_images' => [
+    'container' => 'assets',
+    'folder' => null,
+],
+```
+
+If the container doesn't exist, Statamic falls back to your first asset container.
 
 ## File uploads
 
