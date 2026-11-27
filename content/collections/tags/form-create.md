@@ -56,6 +56,10 @@ variables:
     type: string
     description: The name of the form's [honeypot](/frontend/forms#honeypot) field.
   -
+    name: form_captcha
+    type: string
+    description: The form's [captcha](/frontend/forms#captcha) widget, for placing it yourself. Empty when the form doesn't use a captcha, and on every page but the last of a multi-page form.
+  -
     name: form_config
     type: array
     description: Any extra config values added to the form's settings by addons using [`Form::appendConfigFields()`](/frontend/forms#adding-config-fields).

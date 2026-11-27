@@ -986,6 +986,147 @@ This setting is only available when [Store Submissions](#storing-submissions) is
 
 Either way, the visitor receives the same response as a successful submission, so bots can't tell they've been caught.
 
+## Captcha
+
+A captcha stops the bots that get past the [honeypot](#honeypot), like the ones that leave hidden fields alone or run a real browser. Statamic supports [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/), [hCaptcha](https://www.hcaptcha.com/), and Google's [reCAPTCHA](https://developers.google.com/recaptcha) v2 and v3 out of the box.
+
+### Setting it up
+
+Pick a driver and add the keys from your provider to your `.env` file:
+
+```env
+STATAMIC_CAPTCHA_DRIVER=turnstile
+STATAMIC_CAPTCHA_SITE_KEY=your-site-key
+STATAMIC_CAPTCHA_SECRET_KEY=your-secret-key
+```
+
+The available drivers are `turnstile`, `hcaptcha`, `recaptcha` (the v2 "I'm not a robot" checkbox), `recaptcha_v3`, and `null`. The rest of the options live in `config/statamic/forms.php`:
+
+```php
+'captcha' => [
+    'driver' => env('STATAMIC_CAPTCHA_DRIVER', 'turnstile'),
+    'site_key' => env('STATAMIC_CAPTCHA_SITE_KEY'),
+    'secret_key' => env('STATAMIC_CAPTCHA_SECRET_KEY'),
+    'score' => 0.5,
+    'action' => 'submit',
+    'timeout' => 5,
+],
+```
+
+- `score` and `action` are for reCAPTCHA v3 only. Visits scoring under `score` (from 0, a bot, to 1, a person) are refused, and so are tokens made for a different action.
+- `timeout` is how many seconds to wait for the provider. A provider that can't be reached in time counts as a failed check.
+
+Then turn on the **Captcha** setting on the form's configuration screen. Captchas are off for every form until you do.
+
+:::warning
+A form with the captcha turned on refuses every submission until both keys are set, rather than accepting them unchecked. Set the `null` driver to turn captchas off, such as when developing locally without keys.
+:::
+
+### Captcha behavior
+
+The **Captcha Behavior** setting controls what happens to submissions that fail the captcha:
+
+- **Show an Error** (default): the submission is refused, and the visitor sees an error under `captcha`, so they can try again.
+- **Save as Spam**: the submission is stored and [marked as spam](#spam-submissions), so you can review it later.
+
+This setting is only available when [Store Submissions](#storing-submissions) is enabled. Forms that don't store submissions always show an error.
+
+### Placing the widget
+
+The `form:create` tag adds the captcha widget to the end of the form for you. To put it somewhere else, output the `form_captcha` variable where you want it, and show its error with the rest:
+
+::tabs
+
+::tab antlers
+```antlers
+{{ form:create in="contact" }}
+    ...
+    {{ form_captcha }}
+    {{ if error:captcha }}<p>{{ error:captcha }}</p>{{ /if }}
+
+    <button>Send</button>
+{{ /form:create }}
+```
+::tab blade
+```blade
+<s:form:create in="contact">
+  ...
+  {!! $form_captcha !!}
+  @if (isset($error['captcha']))<p>{{ $error['captcha'] }}</p>@endif
+
+  <button>Send</button>
+</s:form:create>
+```
+::
+
+The `{{ form:captcha }}` tag does the same thing, and works outside of the form too when you tell it which form with `{{ form:captcha in="contact" }}`. Either way, the widget is only added once.
+
+On a [multi-page form](/frontend/forms-pro#multi-page-forms), the widget only appears on the last page, since that's where the captcha is checked.
+
+When the keys aren't set, the widget is replaced with an HTML comment saying which ones are missing.
+
+### Submitting with JavaScript
+
+Turnstile, hCaptcha and reCAPTCHA v2 tokens can only be used once. If you submit a form with `fetch()` and it comes back with an error, reset the widget before the visitor tries again, for example with `turnstile.reset()`, `hcaptcha.reset()` or `grecaptcha.reset()`.
+
+reCAPTCHA v3 gets a fresh token every time the form is submitted, including when it's sent with `fetch()`, so there's nothing to reset.
+
+If you're using [Alpine Precognition](/tags/form-create#precognition), make sure the widget's token (in the `cf-turnstile-response`, `h-captcha-response` or `g-recaptcha-response` input) is sent along with the rest of the form's data.
+
+### Content Security Policy
+
+The widget loads its provider's script from their own domain, so a site with a Content Security Policy needs to allow it. When you've set a nonce with Laravel's `Vite::useCspNonce()`, the widget's script tags use it.
+
+### Custom captcha drivers
+
+You can add a driver for another provider in a service provider's `boot` method:
+
+```php
+use Statamic\Facades\Captcha;
+
+Captcha::extend('friendly', fn ($app, array $config) => new FriendlyCaptcha($config));
+```
+
+Set `STATAMIC_CAPTCHA_DRIVER=friendly` to use it. The driver gets the `captcha` config array, so you can add any options it needs there.
+
+A driver implements `Statamic\Contracts\Forms\Captcha`:
+
+```php
+use Statamic\Contracts\Forms\Captcha;
+
+class FriendlyCaptcha implements Captcha
+{
+    public function __construct(protected array $config)
+    {
+        //
+    }
+
+    // The HTML that goes inside the form. Its outermost element needs
+    // a data-captcha attribute, so it isn't added to the form twice.
+    public function widget(): string
+    {
+        return '<div class="frc-captcha" data-captcha data-sitekey="..."></div>';
+    }
+
+    // The name of the input the widget puts its token in.
+    public function field(): string
+    {
+        return 'frc-captcha-response';
+    }
+
+    // Whether the visitor passed. Return false when the check fails,
+    // or when the provider can't be reached.
+    public function verify(?string $token, ?string $ip = null): bool
+    {
+        // ...
+    }
+}
+```
+
+If the provider checks tokens with a "siteverify" endpoint like the built-in ones do, you can extend `Statamic\Forms\Captcha\SiteverifyCaptcha` instead and only provide the field name, the endpoint, and the widget's markup.
+
+Addons can use the same captcha on their own forms with `Captcha::driver()->widget()` and `Captcha::driver()->verify($token, $request->ip())`.
+
 ## Spam submissions
 
 Rather than being discarded, submissions caught by spam protection can be kept out of sight for review. A submission marked as spam is hidden from the submissions listing by default, doesn't count towards [submission limits](#restricting-submissions), and doesn't trigger any [connections](#connections).
